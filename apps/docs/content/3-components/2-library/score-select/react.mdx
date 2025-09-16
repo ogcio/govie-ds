@@ -1,0 +1,88 @@
+---
+title: Score Select
+description: Score Select HTML Component React Component
+status: stable
+component:
+  id: 'score-select-react'
+  link: '?path=/docs/components-scoreselect--docs'
+  status: 'stable'
+  properties:
+    - name: ScoreSelectProps
+      fields:
+        - name: 'label'
+          ofType: 'string'
+          description: 'The main label displayed above the button group.'
+          required: true
+        - name: 'hint'
+          ofType: 'string'
+          description: 'A brief description or instruction shown under the label.'
+          required: false
+        - name: 'name'
+          ofType: 'string'
+          description: 'The name attribute used for form submission and identification of the group of buttons.'
+          required: true
+        - name: 'type'
+          ofType: 'string'
+          description: "Defines the scale of the button group. Options: '1-5', '1-7', '0-10'."
+          required: true
+        - name: 'leftLabel'
+          ofType: 'string'
+          description: "The text that appears on the left side of the score range (for example, 'Not Likely')."
+          required: false
+        - name: 'rightLabel'
+          ofType: 'string'
+          description: "The text that appears on the right side of the score range (for example, 'Extremely Likely')."
+          required: false
+        - name: 'size'
+          ofType: 'string'
+          description: "The size of the buttons. Options: 'small', 'medium', 'large'. Default is 'medium'."
+          required: false
+        - name: 'onChange'
+          ofType: 'function'
+          description: 'Callback function when the selected score changes.'
+          required: false
+  stories:
+    - name: 'opinion-scale-1-5'
+      url: '/story/components-scoreselect--opinion-scale-5'
+    - name: 'net-promoter-score-0-10'
+      url: '/story/components-scoreselect--nps'
+---
+
+# Score Select
+
+Score Select is used to collect a rating score from users, typically in the form of Net Promoter Score (NPS). It displays a horizontal row of buttons representing numeric values from 0 to 10, and includes labels on either side to help frame the scale.
+
+<Section current="react">
+<ComponentPreview>
+  <ScoreSelect
+    label="How satisfied are you with your experience?"
+    leftLabel="Very Dissatisfied"
+    name="opinion-scale-7"
+    rightLabel="Very Satisfied"
+    size="large"
+    type="1-7"
+  />
+</ComponentPreview>
+## Examples
+
+### Opinion Scale (1–5)
+
+<StorybookFrame
+  className="h-[200px] w-full"
+  componentId="score-select-react"
+  story="opinion-scale-1-5"
+/>
+
+### Net Promoter Score (0–10)
+
+<StorybookFrame
+  className="h-[200px] w-full"
+  componentId="score-select-react"
+  story="net-promoter-score-0-10"
+/>
+
+## Properties
+
+<ComponentPropertiesTable componentId="score-select-react" />
+
+</Section>

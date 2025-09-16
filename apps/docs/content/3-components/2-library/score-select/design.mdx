@@ -1,0 +1,63 @@
+---
+title: 'Score Select'
+description: 'Score Select HTML Component'
+status: stable
+component:
+  id: 'score-select'
+  link: 'https://www.figma.com/design/ZEqfpXhocdZs1K5YfsE5ws/Design-system?node-id=8898-39373'
+  status: 'stable'
+---
+
+# Score Select
+
+Score Select is used to collect a rating score from users, typically in the form of Net Promoter Score (NPS). It displays a horizontal row of buttons representing numeric values from 0 to 10, and includes labels on either side to help frame the scale.
+
+<Section current="design">
+
+<ComponentPreview>
+  <ScoreSelect
+    label="How satisfied are you with your experience?"
+    leftLabel="Very Dissatisfied"
+    name="opinion-scale-7"
+    rightLabel="Very Satisfied"
+    size="large"
+    type="1-7"
+  />
+</ComponentPreview>
+<FigmaPreviewButton href="https://www.figma.com/design/ZEqfpXhocdZs1K5YfsE5ws/Design-system?node-id=8898-39373" />
+
+## Usage
+
+Use the `ScoreSelect` component when you need a quick and intuitive way to collect user ratings, such as:
+
+- **Net Promoter Score (NPS)** surveys.
+- **Satisfaction ratings** or **feedback forms** requiring numeric ratings.
+- Collecting user **opinions** on a Likert scale.
+
+### Do
+
+- **Provide clear, descriptive end labels**: "Not Likely" and "Extremely Likely".
+- **Choose an appropriate scale for the task**: 1–5, 1–7, or 0–10.
+
+### Don't
+
+- **Don't use unclear or subjective wording like “Good?” or “Bad?”**: Ambiguity reduces the reliability of responses.
+- **Don't overload the scale with multiple questions at once**: Each scale should only measure one thing.
+- **Don't mix scales on the same page (for example, a 1–5 and a 0–10 side by side)**: This creates inconsistency and confuses respondents.
+- **Don't skip labels entirely — without context**: Users may interpret the numbers differently.
+- **Don't use this component for continuous values (like age or percentage)**: Where a slider or numeric input would be more appropriate.
+
+**Example:**
+
+<ComponentContainer>
+  <ScoreSelect
+    label="Rate it"
+    name="mixed-scale"
+    type="0-10"
+    leftLabel="Bad?"
+    rightLabel="Good?"
+    size="small"
+  />
+</ComponentContainer>
+
+</Section>
