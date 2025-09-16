@@ -1,0 +1,43 @@
+---
+title: 'Icon Button'
+description: 'Icon Button HTML Component'
+status: 'stable'
+component:
+  id: 'icon-button'
+  link: 'https://www.figma.com/design/ZEqfpXhocdZs1K5YfsE5ws/Design-system?node-id=1386-7470&t=TDHF1QkZpdPfgn8m-4'
+  status: 'stable'
+---
+
+# Icon Button
+
+An Icon Button is a button that uses an icon instead of text to represent an action, like a thumbs-up for 'like' or a trash can for 'delete.' It's commonly used in places where space is limited, such as toolbars or mobile interfaces.
+
+<Section current="design">
+<ComponentPreview>
+  <IconButton icon={{ icon: 'thumb_up' }} size="large" />
+</ComponentPreview>
+<FigmaPreviewButton href="https://www.figma.com/design/ZEqfpXhocdZs1K5YfsE5ws/Design-system?node-id=1386-7470&t=TDHF1QkZpdPfgn8m-4" />
+
+## Usage
+
+Icon buttons are ideal for quick, easily recognised actions, but they rely on familiar icons to avoid confusion. They work best when users can immediately understand the action without additional labels.
+
+## Do's and Don'ts
+
+**Do**
+
+- Use for quick, universally understood actions (like, favourite, close).
+- Prefer in tight spaces (toolbars, cards, mobile headers).
+- Provide accessible text (aria-label or title) for screen readers.
+
+**Don't**
+
+- Don't use ambiguous icons that users may not recognise.
+- Don't rely on icon-only buttons for complex or primary actions.
+- Don't omit accessible names or focus styles.
+
+<ComponentContainer>
+  <IconButton icon={{ icon: 'more_horiz' }} />
+</ComponentContainer>
+
+</Section>

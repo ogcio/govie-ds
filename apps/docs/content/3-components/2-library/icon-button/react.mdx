@@ -1,0 +1,291 @@
+---
+title: 'Icon Button'
+description: 'Icon Button HTML Component React Component'
+status: 'stable'
+component:
+  id: 'icon-button-react'
+  link: '/story/form-iconbutton--default'
+  status: 'stable'
+  properties:
+    - name: 'IconButtonProps'
+      fields:
+        - name: 'icon'
+          ofType: 'object'
+          description: 'Specifies the Icon component that the button will accept. The value should be an object with an icon property.'
+          required: true
+        - name: 'variant'
+          ofType: 'string'
+          description: 'Defines the variant style of the button. Options: primary, secondary, flat.'
+          required: false
+        - name: 'appearance'
+          ofType: 'string'
+          description: 'Specifies the visual appearance style of the button. Options: default, dark, light.'
+          required: false
+        - name: 'size'
+          ofType: 'string'
+          description: 'Defines the size of the button. Options: medium, small, large.'
+          required: false
+        - name: 'disabled'
+          ofType: 'boolean'
+          description: 'Specifies whether the button is disabled.'
+          required: false
+        - name: 'onClick'
+          ofType: 'function'
+          description: 'A callback function that is triggered when the button is clicked.'
+          required: false
+  stories:
+    - name: 'default'
+      url: '/story/form-iconbutton--default'
+    - name: 'small'
+      url: '/story/form-iconbutton--small'
+    - name: 'large'
+      url: '/story/form-iconbutton--large'
+    - name: 'disabled'
+      url: '/story/form-iconbutton--disabled'
+    - name: 'primary-default'
+      url: '/story/form-iconbutton--primary-default'
+    - name: 'primary-hover'
+      url: '/story/form-iconbutton--primary-hover'
+    - name: 'primary-focus'
+      url: '/story/form-iconbutton--primary-focus'
+    - name: 'primary-disabled'
+      url: '/story/form-iconbutton--primary-disabled'
+    - name: 'secondary-default'
+      url: '/story/form-iconbutton--secondary-default'
+    - name: 'secondary-hover'
+      url: '/story/form-iconbutton--secondary-hover'
+    - name: 'secondary-focus'
+      url: '/story/form-iconbutton--secondary-focus'
+    - name: 'secondary-disabled'
+      url: '/story/form-iconbutton--secondary-disabled'
+    - name: 'flat-default'
+      url: '/story/form-iconbutton--flat-default'
+    - name: 'flat-hover'
+      url: '/story/form-iconbutton--flat-hover'
+    - name: 'flat-focus'
+      url: '/story/form-iconbutton--flat-focus'
+    - name: 'flat-disabled'
+      url: '/story/form-iconbutton--flat-disabled'
+    - name: 'primary-light'
+      url: '/story/form-iconbutton--primary-light'
+    - name: 'primary-light-hover'
+      url: '/story/form-iconbutton--primary-light-hover'
+    - name: 'primary-light-focus'
+      url: '/story/form-iconbutton--primary-light-focus'
+    - name: 'primary-light-disabled'
+      url: '/story/form-iconbutton--primary-light-disabled'
+    - name: 'secondary-light'
+      url: '/story/form-iconbutton--secondary-light'
+    - name: 'secondary-light-hover'
+      url: '/story/form-iconbutton--secondary-light-hover'
+    - name: 'secondary-light-focus'
+      url: '/story/form-iconbutton--secondary-light-focus'
+    - name: 'secondary-light-disabled'
+      url: '/story/form-iconbutton--secondary-light-disabled'
+    - name: 'flat-light'
+      url: '/story/form-iconbutton--flat-light'
+    - name: 'flat-light-hover'
+      url: '/story/form-iconbutton--flat-light-hover'
+    - name: 'flat-light-focus'
+      url: '/story/form-iconbutton--flat-light-focus'
+    - name: 'flat-light-disabled'
+      url: '/story/form-iconbutton--flat-light-disabled'
+---
+
+# Icon Button
+
+An Icon Button is a button that uses an icon instead of text to represent an action, like a thumbs-up for 'like' or a trash can for 'delete.' It’s commonly used in places where space is limited, such as toolbars or mobile interfaces.
+
+<Section current="react">
+<ComponentPreview>
+  <IconButton icon={{ icon: 'thumb_up' }} size="large" />
+</ComponentPreview>
+<FigmaPreviewButton href="https://www.figma.com/design/ZEqfpXhocdZs1K5YfsE5ws/Design-system?node-id=1386-7470&t=TDHF1QkZpdPfgn8m-4" />
+
+## Stories
+
+### Default
+
+<ComponentPreview>
+  <StorybookFrame componentId="icon-button-react" story="default" />
+</ComponentPreview>
+
+### Small
+
+<ComponentPreview>
+  <StorybookFrame componentId="icon-button-react" story="small" />
+</ComponentPreview>
+
+### Large
+
+<ComponentPreview>
+  <StorybookFrame componentId="icon-button-react" story="large" />
+</ComponentPreview>
+
+### Disabled
+
+<ComponentPreview>
+  <StorybookFrame componentId="icon-button-react" story="disabled" />
+</ComponentPreview>
+
+### Primary Default
+
+<ComponentPreview>
+  <StorybookFrame componentId="icon-button-react" story="primary-default" />
+</ComponentPreview>
+
+### Primary Hover
+
+<ComponentPreview>
+  <StorybookFrame componentId="icon-button-react" story="primary-hover" />
+</ComponentPreview>
+
+### Primary Focus
+
+<ComponentPreview>
+  <StorybookFrame componentId="icon-button-react" story="primary-focus" />
+</ComponentPreview>
+
+### Primary Disabled
+
+<ComponentPreview>
+  <StorybookFrame componentId="icon-button-react" story="primary-disabled" />
+</ComponentPreview>
+
+### Secondary Default
+
+<ComponentPreview>
+  <StorybookFrame componentId="icon-button-react" story="secondary-default" />
+</ComponentPreview>
+
+### Secondary Hover
+
+<ComponentPreview>
+  <StorybookFrame componentId="icon-button-react" story="secondary-hover" />
+</ComponentPreview>
+
+### Secondary Focus
+
+<ComponentPreview>
+  <StorybookFrame componentId="icon-button-react" story="secondary-focus" />
+</ComponentPreview>
+
+### Secondary Disabled
+
+<ComponentPreview>
+  <StorybookFrame componentId="icon-button-react" story="secondary-disabled" />
+</ComponentPreview>
+
+### Flat Default
+
+<ComponentPreview>
+  <StorybookFrame componentId="icon-button-react" story="flat-default" />
+</ComponentPreview>
+
+### Flat Hover
+
+<ComponentPreview>
+  <StorybookFrame componentId="icon-button-react" story="flat-hover" />
+</ComponentPreview>
+
+### Flat Focus
+
+<ComponentPreview>
+  <StorybookFrame componentId="icon-button-react" story="flat-focus" />
+</ComponentPreview>
+
+### Flat Disabled
+
+<ComponentPreview>
+  <StorybookFrame componentId="icon-button-react" story="flat-disabled" />
+</ComponentPreview>
+
+### Primary Light
+
+<ComponentPreview>
+  <StorybookFrame componentId="icon-button-react" story="primary-light" />
+</ComponentPreview>
+
+### Primary Light Hover
+
+<ComponentPreview>
+  <StorybookFrame componentId="icon-button-react" story="primary-light-hover" />
+</ComponentPreview>
+
+### Primary Light Focus
+
+<ComponentPreview>
+  <StorybookFrame componentId="icon-button-react" story="primary-light-focus" />
+</ComponentPreview>
+
+### Primary Light Disabled
+
+<ComponentPreview>
+  <StorybookFrame
+    componentId="icon-button-react"
+    story="primary-light-disabled"
+  />
+</ComponentPreview>
+
+### Secondary Light
+
+<ComponentPreview>
+  <StorybookFrame componentId="icon-button-react" story="secondary-light" />
+</ComponentPreview>
+
+### Secondary Light Hover
+
+<ComponentPreview>
+  <StorybookFrame
+    componentId="icon-button-react"
+    story="secondary-light-hover"
+  />
+</ComponentPreview>
+
+### Secondary Light Focus
+
+<ComponentPreview>
+  <StorybookFrame
+    componentId="icon-button-react"
+    story="secondary-light-focus"
+  />
+</ComponentPreview>
+
+### Secondary Light Disabled
+
+<ComponentPreview>
+  <StorybookFrame
+    componentId="icon-button-react"
+    story="secondary-light-disabled"
+  />
+</ComponentPreview>
+
+### Flat Light
+
+<ComponentPreview>
+  <StorybookFrame componentId="icon-button-react" story="flat-light" />
+</ComponentPreview>
+
+### Flat Light Hover
+
+<ComponentPreview>
+  <StorybookFrame componentId="icon-button-react" story="flat-light-hover" />
+</ComponentPreview>
+
+### Flat Light Focus
+
+<ComponentPreview>
+  <StorybookFrame componentId="icon-button-react" story="flat-light-focus" />
+</ComponentPreview>
+
+### Flat Light Disabled
+
+<ComponentPreview>
+  <StorybookFrame componentId="icon-button-react" story="flat-light-disabled" />
+</ComponentPreview>
+
+## Properties
+
+<ComponentPropertiesTable componentId="icon-button-react" />
+
+</Section>
