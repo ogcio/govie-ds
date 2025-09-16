@@ -6,13 +6,15 @@ export type ProgressBarProps = {
   value?: number;
   isIndeterminate?: boolean;
   label?: string;
-};
+} & React.HTMLAttributes<HTMLDivElement>;
 
 export function ProgressBar({
   value = 0,
   max = 100,
   isIndeterminate,
   label,
+  className,
+  ...props
 }: ProgressBarProps) {
   const fillPercentage = (value * 100) / max;
 
@@ -26,8 +28,8 @@ export function ProgressBar({
         aria-label={t('progressBar.progressBar', {
           defaultValue: 'Progress bar',
         })}
-        data-testid="progress-bar"
-        className="gi-progress-bar"
+        className={cn('gi-progress-bar', className)}
+        {...props}
       >
         <div
           className={cn({

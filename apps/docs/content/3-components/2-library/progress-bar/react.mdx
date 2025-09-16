@@ -1,0 +1,66 @@
+---
+title: 'Progress Bar'
+description: 'Progress bars indicate the status of a process'
+status: 'stable'
+component:
+  id: 'progressbar-react'
+  link: '/story/indicators-progressbar--default'
+  status: 'stable'
+  properties:
+    - name: ProgressBarProps
+      fields:
+        - name: 'value'
+          ofType: 'number'
+          description: 'The current value of the progress bar.'
+          required: true
+        - name: 'max'
+          ofType: 'number'
+          description: 'The maximum value of the progress bar.'
+          required: false
+        - name: 'isIndeterminate'
+          ofType: 'boolean'
+          description: 'When true, sets the progress bar to an indeterminate state with an animation.'
+          required: false
+        - name: 'label'
+          ofType: 'string'
+          description: 'Custom label text to display alongside the progress bar.'
+          required: false
+        - name: 'size'
+          ofType: 'string'
+          description: 'Size of the progress bar. Options: sm, md, lg.'
+          required: false
+  stories:
+    - name: 'default'
+      url: '/story/indicators-progressbar--default'
+    - name: 'indeterminate'
+      url: '/story/indicators-progressbar--with-label-indeterminate'
+    - name: 'completed'
+      url: '/story/indicators-progressbar--completed'
+---
+
+# Progress Bar
+
+A progress bar is a visual indicator that shows the status or completion level of a process. It provides users with feedback on the progress of ongoing tasks, such as file uploads, downloads, or form submissions.
+
+<Section current="react">
+<ComponentPreview>
+  <ProgressBar value="40" max="100" size="sm" className="w-120" />
+</ComponentPreview>
+
+### Default
+
+<StorybookFrame componentId="progressbar-react" story="default" />
+
+### Indeterminate
+
+<StorybookFrame componentId="progressbar-react" story="indeterminate" />
+
+### Completed
+
+<StorybookFrame componentId="progressbar-react" story="completed" />
+
+## Properties
+
+<ComponentPropertiesTable componentId="progressbar-react" />
+
+</Section>
