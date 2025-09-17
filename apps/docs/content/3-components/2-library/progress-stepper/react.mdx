@@ -37,6 +37,10 @@ component:
           ofType: 'number'
           description: 'Vertical spacing between steps. Default value is 14'
           required: false
+        - name: 'stepStates'
+          ofType: 'array'
+          description: 'Per-step visual overrides. Each item is { status, fill } where status: "active" | "completed" | "disabled" and fill: "empty" | "half" | "full".'
+          required: false
 
     - name: StepItemProps
       fields:
@@ -59,6 +63,8 @@ component:
       url: '/story/application-progressstepper--with-vertical-long-text'
     - name: 'with-step-content'
       url: '/story/application-progressstepper--with-step-content'
+    - name: 'stepStates'
+      url: '/story/application-progressstepper--with-step-and-fill-states'
 ---
 
 # Progress Stepper
@@ -102,6 +108,14 @@ It can be used in both horizontal and vertical orientations, making it adaptable
   className="h-96"
   componentId="progress-stepper-react"
   story="with-step-content"
+/>
+
+### With Step States and Fill Content
+
+<StorybookFrame
+  className="h-96"
+  componentId="progress-stepper-react"
+  story="stepStates"
 />
 
 ## Properties

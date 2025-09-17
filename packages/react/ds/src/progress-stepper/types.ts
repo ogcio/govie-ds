@@ -1,5 +1,21 @@
 type Orientation = 'vertical' | 'horizontal';
 
+export const StepStatus = {
+  Active: 'active',
+  Disabled: 'disabled',
+  Completed: 'completed',
+} as const;
+
+export type StepStatusType = (typeof StepStatus)[keyof typeof StepStatus];
+
+export const StepFillLevel = {
+  Empty: 'empty',
+  Half: 'half',
+  Full: 'full',
+} as const;
+export type StepFillLevelType =
+  (typeof StepFillLevel)[keyof typeof StepFillLevel];
+
 export const ProgressStepperIndicator = {
   Hashtag: 'hashtag',
   Number: 'number',
@@ -25,11 +41,13 @@ export type ProgressStepperProps = {
   currentStepIndex?: number;
   orientation?: Orientation;
   completeAll?: boolean;
-  dataTestId?: string;
   indicator?: ProgressStepperIndicatorType;
   className?: string;
   verticalGap?: number;
-  stepStates?: { completed?: boolean; current?: boolean; disabled?: boolean }[];
+  stepStates?: {
+    status: StepStatusType;
+    fill: StepFillLevelType;
+  }[];
 };
 
 export type InnerStepProps = {
@@ -54,4 +72,6 @@ export type ConnectorProps = {
   isCompleted: boolean;
   orientation?: Orientation;
   verticalGap: number;
+  fill?: StepFillLevelType;
+  useFill?: boolean;
 };

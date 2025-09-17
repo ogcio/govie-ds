@@ -3,11 +3,13 @@ import { cn } from '../cn.js';
 import { Icon } from '../icon/icon.js';
 import {
   ProgressStepperIndicator,
+  StepStatus,
   type ConnectorProps,
   type InnerStepProps,
   type ProgressStepperIndicatorType,
   type ProgressStepperProps,
   type StepItemProps,
+  StepFillLevelType,
 } from './types.js';
 
 const getVerticalConnectorHeight = (gap: number): string => {
@@ -21,6 +23,8 @@ const Connector = ({
   isCurrentStep,
   isCompleted,
   verticalGap,
+  fill,
+  useFill,
 }: ConnectorProps) => {
   const connectorStyle =
     orientation === 'vertical'
@@ -35,6 +39,8 @@ const Connector = ({
       className={'gi-progress-stepper-step-connector'}
       aria-hidden="true"
       style={connectorStyle}
+      data-use-fill={useFill ? 'true' : undefined}
+      data-fill={useFill ? fill : undefined}
     >
       <span />
       {isCurrentStep ? <span /> : null}
@@ -91,7 +97,13 @@ export const Step = ({
   dataTestId,
   ariaLabel,
   verticalGap,
-}: InnerStepProps & { isDisabled?: boolean }) => {
+  fill,
+  useFill,
+}: InnerStepProps & {
+  isDisabled?: boolean;
+  fill?: StepFillLevelType;
+  useFill?: boolean;
+}) => {
   const isNextStep = !isCompleted && !isCurrentStep;
   const showVerticalSlots =
     orientation === 'vertical' && (isCurrentStep || defaultOpen || isCompleted);
@@ -137,6 +149,8 @@ export const Step = ({
           orientation={orientation}
           stepNumber={stepNumber}
           verticalGap={verticalGap}
+          fill={fill}
+          useFill={useFill}
         />
       )}
       {showVerticalSlots && verticalSlot && (
@@ -163,15 +177,17 @@ export const ProgressStepper = ({
   indicator = 'number',
   completeAll,
   stepStates,
-  dataTestId,
   className,
   verticalGap = 14,
+  ...props
 }: ProgressStepperProps) => {
   const slot = children[currentStepIndex]?.props?.children;
   const showHorizontalSlot = orientation === 'horizontal' && slot;
+  const useFill = !!(stepStates && stepStates?.length);
 
   return (
     <div
+      {...props}
       role="presentation"
       className={cn('gi-w-full', {
         'gi-flex': orientation === 'vertical',
@@ -201,13 +217,13 @@ export const ProgressStepper = ({
           let isCompleted: boolean;
           let isDisabled: boolean;
 
-          if (stepStates && stepStates[index]) {
-            // Explicit state control (FREE mode)
-            isCurrentStep = !!stepStates[index].current;
-            isCompleted = !!stepStates[index].completed;
-            isDisabled = !!stepStates[index].disabled;
+          const step = stepStates?.[index];
+
+          if (step) {
+            isCurrentStep = step.status === StepStatus.Active;
+            isCompleted = step.status === StepStatus.Completed;
+            isDisabled = step.status === StepStatus.Disabled;
           } else {
-            // Default LINEAR mode
             isCurrentStep = !completeAll && currentStepIndex === index;
             isCompleted = completeAll || index < currentStepIndex;
             isDisabled = false;
@@ -218,7 +234,7 @@ export const ProgressStepper = ({
           return (
             <div className="gi-w-full" role="listitem">
               <Step
-                key={dataTestId || `progress-stepper-step-${index}`}
+                key={`progress-stepper-step-${index}`}
                 stepNumber={index + 1}
                 isCurrentStep={isCurrentStep}
                 isCompleted={isCompleted}
@@ -228,9 +244,10 @@ export const ProgressStepper = ({
                 verticalSlot={children[index]?.props?.children}
                 defaultOpen={defaultOpen}
                 indicator={indicator}
-                dataTestId={dataTestId}
                 ariaLabel={ariaLabel}
                 verticalGap={verticalGap}
+                fill={useFill ? step?.fill : undefined}
+                useFill={useFill}
               >
                 {label}
               </Step>
