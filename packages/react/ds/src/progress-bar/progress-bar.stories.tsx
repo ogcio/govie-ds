@@ -32,6 +32,7 @@ export const Default: Story = {
   args: {
     value: 50,
     label: 'Label',
+    dataTestid: 'progress-bar',
   },
   play: async ({ canvasElement, step }) => {
     const canvas = within(canvasElement);
@@ -55,6 +56,7 @@ export const WithLabelIndeterminate: Story = {
   args: {
     isIndeterminate: true,
     label: 'Loading...',
+    dataTestid: 'progress-bar',
   },
   play: async ({ canvasElement, step }) => {
     const canvas = within(canvasElement);
@@ -84,6 +86,7 @@ export const TestMax500Value200: Story = {
   args: {
     max: 500,
     value: 200,
+    dataTestid: 'progress-bar',
   },
   tags: ['skip-playwright'],
   play: async ({ canvasElement, step }) => {

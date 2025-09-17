@@ -6,6 +6,7 @@ export type ProgressBarProps = {
   value?: number;
   isIndeterminate?: boolean;
   label?: string;
+  dataTestid?: string;
 } & React.HTMLAttributes<HTMLDivElement>;
 
 export function ProgressBar({
@@ -14,6 +15,7 @@ export function ProgressBar({
   isIndeterminate,
   label,
   className,
+  dataTestid,
   ...props
 }: ProgressBarProps) {
   const fillPercentage = (value * 100) / max;
@@ -29,6 +31,7 @@ export function ProgressBar({
           defaultValue: 'Progress bar',
         })}
         className={cn('gi-progress-bar', className)}
+        data-testid={dataTestid}
         {...props}
       >
         <div
