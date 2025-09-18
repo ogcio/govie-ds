@@ -11,10 +11,13 @@ import { cn } from '../cn.js';
 import { IconButton } from '../icon-button/icon-button.js';
 import { TableAlign, VerticalAlign } from './table.js';
 
+type TableDataSize = 'xs-fixed' | 'sm-fixed' | 'md-fixed' | 'lg-flex' | 'fluid';
+
 interface TableDataProps extends TdHTMLAttributes<HTMLTableCellElement> {
   align?: TableAlign;
   valign?: VerticalAlign;
   tableCellClassName?: string;
+  size?: TableDataSize;
   children: any;
 }
 
@@ -33,6 +36,7 @@ type TableDataSlotProps = Omit<TableDataProps, 'align' | 'valign'>;
 export function TableData({
   align = 'left',
   valign = 'middle',
+  size,
   className,
   children,
   tableCellClassName,
@@ -49,6 +53,8 @@ export function TableData({
     middle: 'gi-align-middle',
     bottom: 'gi-align-bottom',
   }[valign];
+
+  const sizeClass = size ? `gi-table-td-${size}` : undefined;
 
   const ref = useRef<HTMLTableCellElement>(null);
   const [hasFormElement, setHasFormElement] = useState(false);
@@ -67,6 +73,7 @@ export function TableData({
       ref={ref}
       className={cn(
         'gi-table-td',
+        sizeClass,
         alignmentClass,
         verticalAlignmentClass,
         className,
