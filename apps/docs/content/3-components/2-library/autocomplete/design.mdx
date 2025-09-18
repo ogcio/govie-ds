@@ -1,0 +1,54 @@
+---
+title: Autocomplete
+description: Autocomplete
+status: stable
+component:
+  id: 'autocomplete'
+  link: 'https://www.figma.com/design/ZEqfpXhocdZs1K5YfsE5ws/Design-system?node-id=5499-6827'
+  status: 'stable'
+---
+
+# Autocomplete
+
+The Autocomplete component is a user interface element that provides real-time suggestions to users as they type into an input field. It enhances the user experience by helping users quickly find and select options from a predefined list, reducing the need for extensive typing and minimizing errors.
+
+<Section current="design" >
+
+<ComponentPreview>
+  <FormField className="h-56 w-64 max-w-64">
+    <FormFieldLabel>Role:</FormFieldLabel>
+    <Autocomplete>
+      <AutocompleteItem value="frontend_dev">Frontend Dev.</AutocompleteItem>
+      <AutocompleteItem value="backend_dev">Backend Dev.</AutocompleteItem>
+      <AutocompleteItem value="fullstack_dev">Full Stack Dev.</AutocompleteItem>
+      <AutocompleteItem value="devops_engineer">
+        DevOps Engineer
+      </AutocompleteItem>
+      <AutocompleteItem value="qa_engineer">QA Engineer</AutocompleteItem>
+      <AutocompleteItem value="ui_ux_designer">UI/UX Designer</AutocompleteItem>
+      <AutocompleteItem value="product_manager">
+        Product Manager
+      </AutocompleteItem>
+      <AutocompleteItem value="data_scientist">Data Scientist</AutocompleteItem>
+    </Autocomplete>
+  </FormField>
+</ComponentPreview>
+
+<FigmaPreviewButton href="https://www.figma.com/design/ZEqfpXhocdZs1K5YfsE5ws/Design-system?node-id=5499-6827" />
+
+## Usage
+
+A common usage for the Autocomplete component is in search fields, where users can quickly find and select items such as products, locations, or addresses. For example, when entering an address, autocomplete can suggest valid street names and cities as the user types, helping them complete the form faster and with fewer errors.
+
+### Do
+
+- Use the autocomplete component to help users quickly find and select options from a predefined list.
+- Ensure the suggestions are relevant and update dynamically as the user types.
+
+
+### Don't
+
+- Don't preload the suggestions list with too many items; keep it concise and focused on the user's input.
+- Don't forget to consider accessibility; ensure the autocomplete is keyboard-navigable and screen-reader friendly.
+
+</Section>

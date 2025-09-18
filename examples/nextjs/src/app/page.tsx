@@ -79,6 +79,8 @@ import {
   toaster,
   ToastProvider,
   ToastVariant,
+  StepFillLevel,
+  StepStatus,
 } from '@ogcio/design-system-react';
 import { useEffect, useState } from 'react';
 
@@ -128,6 +130,18 @@ const headerProps: HeaderProps = {
     },
   ],
 };
+
+// StepStates for ProgressStepper
+const stepStates = [
+  { status: StepStatus.Active, fill: StepFillLevel.Full },
+  { status: StepStatus.Active, fill: StepFillLevel.Empty },
+  { status: StepStatus.Active, fill: StepFillLevel.Half },
+  { status: StepStatus.Disabled, fill: StepFillLevel.Full },
+  { status: StepStatus.Disabled, fill: StepFillLevel.Full },
+  { status: StepStatus.Active, fill: StepFillLevel.Empty },
+  { status: StepStatus.Active, fill: StepFillLevel.Empty },
+  { status: StepStatus.Completed, fill: StepFillLevel.Empty },
+];
 
 // Toast Handler
 const handleCreateToast = (
@@ -1034,6 +1048,51 @@ export default function Home() {
                           <StepItem label="Review your information" />
                           <StepItem label="Submit for approval" />
                           <StepItem label="Await confirmation" />
+                        </ProgressStepper>
+                      </div>
+
+                      <div>
+                        <h6 className="text-sm font-medium mb-2">
+                          Progress Stepper With `stepStates`
+                        </h6>
+
+                        <ProgressStepper
+                          stepStates={stepStates}
+                          orientation="vertical"
+                          data-testid="progress-stepper-states"
+                        >
+                          <StepItem
+                            key="with-step-states-step-1"
+                            label="Step 1"
+                          />
+                          <StepItem
+                            key="with-step-states-step-2"
+                            label="Step 2"
+                          />
+                          <StepItem
+                            key="with-step-states-step-3"
+                            label="Step 3"
+                          />
+                          <StepItem
+                            key="with-step-states-step-4"
+                            label="Step 4"
+                          />
+                          <StepItem
+                            key="with-step-states-step-5"
+                            label="Step 5"
+                          />
+                          <StepItem
+                            key="with-step-states-step-6"
+                            label="Step 6"
+                          />
+                          <StepItem
+                            key="with-step-states-step-7"
+                            label="Step 7"
+                          />
+                          <StepItem
+                            key="with-step-states-step-8"
+                            label="Step 8"
+                          />
                         </ProgressStepper>
                       </div>
                     </div>

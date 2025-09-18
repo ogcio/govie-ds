@@ -1,0 +1,40 @@
+---
+title: Section Break
+description: Section Break React Component
+status: stable
+component:
+  id: 'section-break-react'
+  link: '/docs/typography-sectionbreak--docs'
+  status: 'stable'
+  properties:
+    - name: SectionBreakProps
+      fields:
+        - name: 'size'
+          ofType: 'string'
+          description: 'Controls the height or spacing of the section break. Options: sm, md, lg, xl.'
+          required: true
+        - name: 'color'
+          ofType: 'string'
+          description: 'A string representing the color of the section break. Can be any valid CSS color value.'
+          required: false
+  stories:
+    - name: 'default'
+      url: '/story/typography-sectionbreak--default'
+---
+
+# Section Break
+
+You can use the Section Break component to create a thematic break between sections of content.
+The section break has modifiers for different size margins.
+
+<Section current="react">
+
+<ComponentPreview>
+  <SectionBreak size="md" />
+</ComponentPreview>
+
+## Properties
+
+<ComponentPropertiesTable componentId="section-break-react" />
+
+</Section>

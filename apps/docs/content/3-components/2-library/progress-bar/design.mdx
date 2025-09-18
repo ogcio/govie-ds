@@ -1,0 +1,43 @@
+---
+title: 'Progress Bar'
+description: 'Progress bars indicate the status of a process'
+status: 'stable'
+component:
+  id: 'progress-bar'
+  link: 'https://www.figma.com/design/ZEqfpXhocdZs1K5YfsE5ws/Design-system?node-id=4393-5943'
+  status: 'stable'
+---
+
+# Progress Bar
+
+A progress bar is a visual indicator that shows the status or completion level of a process. It provides users with feedback on the progress of ongoing tasks, such as file uploads, downloads, or form submissions.
+
+<Section current="design">
+
+<ComponentPreview>
+  <ProgressBar value="40" max="100" size="sm" className="w-120" />
+</ComponentPreview>
+<FigmaPreviewButton href="https://www.figma.com/design/ZEqfpXhocdZs1K5YfsE5ws/Design-system?node-id=4393-5943" />
+
+## Usage
+
+Progress bars are commonly used to visually communicate the status of ongoing operations. For example, when uploading a file, a progress bar can show how much of the file has been uploaded and how much remains. They can also be used in multi-step forms to indicate completion, or during data processing tasks to reassure users that the process is underway.
+
+- Ensure progress bars are visually distinct and easy to interpret against their background for clarity.
+- Place progress bars close to the task or content they represent to maintain contextual relevance.
+- Provide additional textual feedback (e.g., percentage complete or estimated time) to improve user understanding, especially for long-duration tasks.
+
+### Do's
+
+- Use a determinate progress bar when the progress of a task can be measured (e.g., file upload, form completion).
+- Use an indeterminate progress bar when the duration of a task is unknown but progress should be indicated (e.g., loading state).
+- Use progress bars for tasks that take longer than a few seconds.
+- Provide clear labels and context for the progress bar.
+
+### Don'ts
+
+- Don't use progress bars for short tasks that can be completed quickly.
+- Don't make the progress bar the only indicator of progress; provide additional context or information as needed.
+
+
+</Section>

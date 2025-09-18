@@ -1,0 +1,97 @@
+---
+title: 'Icon'
+description: 'Icon React Component'
+status: 'stable'
+component:
+  id: 'icon-react'
+  link: '/story/components-icon--default'
+  status: 'stable'
+  properties:
+    - name: 'IconProps'
+      fields:
+        - name: 'icon'
+          ofType: 'string'
+          description: 'Specifies the name of the icon.'
+          required: true
+        - name: 'size'
+          ofType: 'string'
+          description: 'Specifies the size of the icon. Options: sm, md, lg, xl.'
+          required: false
+        - name: 'filled'
+          ofType: 'boolean'
+          description: 'Specifies whether the icon has a filled style.'
+          required: false
+        - name: 'disabled'
+          ofType: 'boolean'
+          description: 'Specifies whether the icon is disabled.'
+          required: false
+        - name: 'ariaHidden'
+          ofType: 'string'
+          description: 'Hides non-interactive content from accessibility tools.'
+          required: false
+        - name: 'ariaLabel'
+          ofType: 'string'
+          description: 'Defines a string value that can be used to name an element for accessibility purposes.'
+          required: false
+        - name: 'inline'
+          ofType: 'boolean'
+          description: 'Specifies whether the icon should be displayed as inline.'
+          required: false
+  stories:
+    - name: 'default'
+      url: '/story/components-icon--default'
+    - name: 'small'
+      url: '/story/components-icon--small'
+    - name: 'large'
+      url: '/story/components-icon--large'
+    - name: 'extra-large'
+      url: '/story/components-icon--extra-large'
+    - name: 'disabled'
+      url: '/story/components-icon--disabled'
+---
+
+# Icon
+
+Icons help users quickly recognise actions, states and categories. Use them to complement labels in buttons, inputs, tables and navigation—not to replace text for critical actions.
+
+<Section current="react">
+<ComponentPreview>
+  <Icon icon="thumb_up" size="md" />
+</ComponentPreview>
+<FigmaPreviewButton href="https://www.figma.com/design/ZEqfpXhocdZs1K5YfsE5ws/Design-system?node-id=3166-3067&t=Re0xIRAmWNDNItHY-4" />
+
+### Default
+
+<ComponentPreview>
+  <StorybookFrame componentId="icon-react" story="default" />
+</ComponentPreview>
+
+### Small
+
+<ComponentPreview>
+  <StorybookFrame componentId="icon-react" story="small" />
+</ComponentPreview>
+
+### Large
+
+<ComponentPreview>
+  <StorybookFrame componentId="icon-react" story="large" />
+</ComponentPreview>
+
+### Extra Large
+
+<ComponentPreview>
+  <StorybookFrame componentId="icon-react" story="extra-large" />
+</ComponentPreview>
+
+### Disabled
+
+<ComponentPreview>
+  <StorybookFrame componentId="icon-react" story="disabled" />
+</ComponentPreview>
+
+## Properties
+
+<ComponentPropertiesTable componentId="icon-react" />
+
+</Section>

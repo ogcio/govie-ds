@@ -1,0 +1,39 @@
+---
+title: 'Progress Bar'
+description: 'Progress bars indicate the status of a process'
+status: 'stable'
+component:
+  id: 'progressbar-html'
+  link: '/story/default'
+  status: 'stable'
+  stories:
+    - name: 'default'
+      url: '/story/indicators-progressbar--default'
+    - name: 'indeterminate'
+      url: '/story/indicators-progressbar--with-label-indeterminate'
+    - name: 'completed'
+      url: '/story/indicators-progressbar--completed'
+---
+
+# Progress Bar
+
+A progress bar is a visual indicator that shows the status or completion level of a process. It provides users with feedback on the progress of ongoing tasks, such as file uploads, downloads, or form submissions.
+
+<Section current="html">
+<ComponentPreview>
+  <ProgressBar value="40" max="100" size="sm" className="w-120" />
+</ComponentPreview>
+
+### Default
+
+<StorybookFrame componentId="progressbar-html" story="default" />
+
+### Indeterminate
+
+<StorybookFrame componentId="progressbar-html" story="indeterminate" />
+
+### Completed
+
+<StorybookFrame componentId="progressbar-html" story="completed" />
+
+</Section>

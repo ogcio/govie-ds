@@ -100,7 +100,9 @@ function mapPlatformName(platform: string): ComponentPlatformId {
  */
 
 export function getComponents(): ComponentsDocument[] {
-  const componentsDocuments = getAll().filter((document) => document.component);
+  const componentsDocuments = getAll().filter(
+    (document) => document.component && document.slug.includes('components/'),
+  );
 
   const componentWithLibraries = componentsDocuments.filter(
     (component) => component.libraries,

@@ -15,6 +15,7 @@ import { Select, SelectItem } from '../select/select.js';
 import { Stack } from '../stack/stack.js';
 import { TextArea } from '../textarea/textarea.js';
 import { ProgressStepper, StepItem } from './progress-stepper.js';
+import { StepStatus, StepFillLevel } from './types.js';
 
 const meta = {
   title: 'Application/ProgressStepper',
@@ -45,11 +46,6 @@ export const Default: Story = {
       type: { name: 'boolean', required: false },
       description: 'Complete all steps regardless of progress',
       defaultValue: false,
-    },
-    dataTestId: {
-      control: 'text',
-      type: { name: 'string', required: false },
-      description: 'Custom data-testid for test selectors',
     },
     indicator: {
       control: { type: 'select' },
@@ -105,37 +101,92 @@ export const Default: Story = {
   },
 };
 
-export const WithStepStates: Story = {
-  args: {
-    currentStepIndex: 1,
-    indicator: 'number',
-    children: [],
-  },
+export const WithStepAndFillStates: StoryObj = {
   parameters: {
     docs: {
       description: {
-        story:
-          '`stepStates` allows independent navigation between steps, where each step can be completed without following a strict order. This object can be used to control the state of each step with `completed`, `current`, and `disabled` properties.',
+        story: `
+\`stepVisuals\` enables non-linear navigation: each step can be controlled independently without following a strict order.  
+Each step is described with two fields:
+
+- \`status\`: lifecycle of the step — \`active\`, \`completed\`, or \`disabled\`.
+- \`fill\`: visual completion level — \`empty\`, \`half\`, or \`full\`.
+
+Use \`stepVisuals\` to override defaults derived from \`currentStepIndex\` and explicitly mark steps as completed, active, or disabled while also controlling the fill shown in the indicator.
+      `,
       },
     },
   },
+
   render: () => {
     const stepStates = [
-      { completed: false, disabled: false, current: true },
-      { completed: false, disabled: false, current: true },
-      { completed: false, disabled: false, current: false },
-      { completed: false, disabled: false, current: false },
-      { completed: true, disabled: false, current: false },
+      { status: StepStatus.Active, fill: StepFillLevel.Full },
+      { status: StepStatus.Active, fill: StepFillLevel.Empty },
+      { status: StepStatus.Active, fill: StepFillLevel.Half },
+      { status: StepStatus.Disabled, fill: StepFillLevel.Full },
+      { status: StepStatus.Disabled, fill: StepFillLevel.Full },
+      { status: StepStatus.Active, fill: StepFillLevel.Empty },
+      { status: StepStatus.Active, fill: StepFillLevel.Empty },
+      { status: StepStatus.Completed, fill: StepFillLevel.Empty },
     ];
 
     return (
-      <ProgressStepper stepStates={stepStates} orientation="vertical">
+      <ProgressStepper
+        stepStates={stepStates}
+        orientation="vertical"
+        data-testid="progress-stepper-states"
+      >
         <StepItem key="with-step-states-step-1" label="Step 1" />
         <StepItem key="with-step-states-step-2" label="Step 2" />
         <StepItem key="with-step-states-step-3" label="Step 3" />
         <StepItem key="with-step-states-step-4" label="Step 4" />
         <StepItem key="with-step-states-step-5" label="Step 5" />
+        <StepItem key="with-step-states-step-6" label="Step 6" />
+        <StepItem key="with-step-states-step-7" label="Step 7" />
+        <StepItem key="with-step-states-step-8" label="Step 8" />
       </ProgressStepper>
+    );
+  },
+  play: async ({ canvasElement, step }) => {
+    const canvas = within(canvasElement);
+
+    await step(
+      'should render steps status and fill states correctly',
+      async () => {
+        const container = await canvas.findByTestId('progress-stepper-states');
+
+        const steps = container.querySelectorAll(
+          '.gi-progress-stepper-step-container',
+        );
+        expect(steps).toHaveLength(8);
+
+        expect(steps[0]).toHaveAttribute('data-current', 'true');
+        expect(steps[0].nextElementSibling).toHaveAttribute(
+          'data-fill',
+          'full',
+        );
+
+        expect(steps[1]).toHaveAttribute('data-current', 'true');
+        expect(steps[1].nextElementSibling).toHaveAttribute(
+          'data-fill',
+          'empty',
+        );
+
+        expect(steps[2]).toHaveAttribute('data-current', 'true');
+        expect(steps[2].nextElementSibling).toHaveAttribute(
+          'data-fill',
+          'half',
+        );
+
+        expect(steps[3]).toHaveAttribute('data-next', 'true');
+        expect(steps[3].nextElementSibling).toHaveAttribute(
+          'data-fill',
+          'full',
+        );
+
+        expect(steps[7]).toHaveAttribute('data-completed', 'true');
+        expect(steps[7]).not.toHaveAttribute('data-fill');
+      },
     );
   },
 };
@@ -746,7 +797,11 @@ export const TestIndicatorChecksWhenCompleted: Story = {
 export const TestExplicitStepStates: Story = {
   tags: ['skip-playwright'],
   args: {
-    stepStates: [{ completed: true }, { current: true }, { disabled: true }],
+    stepStates: [
+      { status: StepStatus.Completed, fill: StepFillLevel.Full },
+      { status: StepStatus.Active, fill: StepFillLevel.Full },
+      { status: StepStatus.Disabled, fill: StepFillLevel.Full },
+    ],
     children: [
       <StepItem label="Step 1" key="test-es-1">
         <div>Step 1 Content</div>

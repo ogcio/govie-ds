@@ -5,13 +5,12 @@ export type SectionBreakSize = 'sm' | 'md' | 'lg' | 'xl';
 export type SectionBreakProps = {
   size?: SectionBreakSize;
   color?: string;
-  dataTestid?: string;
-};
+} & React.HtmlHTMLAttributes<HTMLHRElement>;
 
 export function SectionBreak({
   size = 'sm',
   color = 'gi-border-gray-400',
-  dataTestid,
+  ...props
 }: SectionBreakProps) {
   let marginClass = 'gi-section-break-sm';
   switch (size) {
@@ -33,12 +32,12 @@ export function SectionBreak({
   }
   return (
     <hr
-      data-testid={dataTestid}
       className={cn(marginClass, color)}
       role="separator"
       aria-label={t('sectionBreak.sectionBreak', {
         defaultValue: 'Section Break',
       })}
+      {...props}
     />
   );
 }

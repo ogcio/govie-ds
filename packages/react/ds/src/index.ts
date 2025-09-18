@@ -144,6 +144,11 @@ export {
   ProgressBar,
   type ProgressBarProps,
 } from './progress-bar/progress-bar.js';
+export {
+  type ProgressStepperProps,
+  StepFillLevel,
+  StepStatus,
+} from './progress-stepper/types.js';
 export * from './progress-stepper/progress-stepper.js';
 export { RadioGroup } from './radio/radio-group.js';
 export { Radio } from './radio/radio.js';

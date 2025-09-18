@@ -115,3 +115,37 @@
 .gi-progress-stepper-step-label[data-orientation='vertical'] {
   @apply gi-mt-1 gi-max-w-full;
 }
+
+.gi-progress-stepper-step-connector[data-use-fill='true' i][data-orientation='horizontal'][data-fill='empty' i]
+  > span {
+  @apply gi-border-t-gray-300;
+}
+.gi-progress-stepper-step-connector[data-use-fill='true' i][data-orientation='horizontal'][data-fill='half' i]
+  > span:first-child {
+  @apply gi-border-t-gray-400 gi-absolute gi-w-full;
+}
+.gi-progress-stepper-step-connector[data-use-fill='true' i][data-orientation='horizontal'][data-fill='half' i]
+  > span:last-child {
+  @apply gi-absolute gi-border-t-sm gi-block gi-border-t-gray-950 gi-w-1/2;
+}
+.gi-progress-stepper-step-connector[data-use-fill='true' i][data-orientation='horizontal'][data-fill='full' i]
+  > span {
+  @apply gi-border-t-gray-950;
+}
+
+.gi-progress-stepper-step-connector[data-use-fill='true' i][data-orientation='vertical'][data-fill='empty' i]
+  > span {
+  @apply gi-bg-gray-300;
+}
+.gi-progress-stepper-step-connector[data-use-fill='true' i][data-orientation='vertical'][data-fill='half' i]
+  > span:first-child {
+  @apply gi-bg-gray-400 gi-absolute gi-h-full;
+}
+.gi-progress-stepper-step-connector[data-use-fill='true' i][data-orientation='vertical'][data-fill='half' i]
+  > span:last-child {
+  @apply gi-absolute gi-block gi-bg-gray-950 gi-h-1/2;
+}
+.gi-progress-stepper-step-connector[data-use-fill='true' i][data-orientation='vertical'][data-fill='full' i]
+  > span {
+  @apply gi-bg-gray-950;
+}
