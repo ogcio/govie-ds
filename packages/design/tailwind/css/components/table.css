@@ -25,6 +25,33 @@
   height: inherit;
 }
 
+.gi-table-th-xs-fixed,
+.gi-table-td-xs-fixed {
+  @apply gi-w-12 gi-max-w-12 gi-min-w-12;
+}
+
+.gi-table-th-sm-fixed,
+.gi-table-td-sm-fixed {
+  /* TODO Usage of token, create 30 as 120 */
+  @apply gi-w-[120px] gi-max-w-[120px] gi-min-w-[120px];
+}
+
+.gi-table-th-md-fixed,
+.gi-table-td-md-fixed {
+  @apply gi-w-48 gi-max-w-48 gi-min-w-48;
+}
+
+.gi-table-th-lg-flex,
+.gi-table-td-lg-flex {
+  @apply gi-w-60 gi-max-w-120 gi-min-w-60;
+}
+
+.gi-table-th-fluid,
+.gi-table-td-fluid {
+  /* TODO Usage of token, create 100 as 400px */
+  @apply gi-w-[400px] gi-min-w-[gi-px-3];
+}
+
 .gi-table-tr:last-child .gi-table-td {
   @apply gi-border-b-0;
 }

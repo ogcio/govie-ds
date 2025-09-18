@@ -645,7 +645,7 @@ export const WithReactHookForm: Story = {
           stripped
           className="gi-mt-4 gi-w-full"
         >
-          <TableHead>
+          <TableHead size="fluid">
             {table.getHeaderGroups().map((headerGroup) => (
               <TableRow key={headerGroup.id}>
                 {headerGroup.headers.map((header) => (
