@@ -251,6 +251,9 @@ export const WithReactHookForm: Story = {
           header: 'Full Name',
           cell: (info) => info.getValue(),
           filterFn: 'fuzzy',
+          meta: {
+            size: 'md-fixed',
+          },
         },
         {
           accessorKey: 'email',
@@ -650,7 +653,7 @@ export const WithReactHookForm: Story = {
               <TableRow key={headerGroup.id}>
                 {headerGroup.headers.map((header) => (
                   <TableHeader
-                    size="fluid"
+                    size={(header.column.columnDef.meta as any)?.size}
                     id={header.id}
                     key={header.id}
                     sorted={header.column.getIsSorted()}

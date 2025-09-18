@@ -49,7 +49,7 @@
 .gi-table-th-fluid,
 .gi-table-td-fluid {
   /* TODO Usage of token, create 100 as 400px */
-  @apply gi-w-[400px] gi-min-w-[gi-px-3];
+  @apply gi-w-[400px] gi-min-w-[400px];
 }
 
 .gi-table-tr:last-child .gi-table-td {
