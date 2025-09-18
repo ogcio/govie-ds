@@ -645,11 +645,12 @@ export const WithReactHookForm: Story = {
           stripped
           className="gi-mt-4 gi-w-full"
         >
-          <TableHead size="fluid">
+          <TableHead>
             {table.getHeaderGroups().map((headerGroup) => (
               <TableRow key={headerGroup.id}>
                 {headerGroup.headers.map((header) => (
                   <TableHeader
+                    size="fluid"
                     id={header.id}
                     key={header.id}
                     sorted={header.column.getIsSorted()}
