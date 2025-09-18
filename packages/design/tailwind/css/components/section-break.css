@@ -1,15 +1,15 @@
 .gi-section-break-sm {
-  @apply gi-border-t-xs gi-m-0;
+  @apply gi-border-t-xs gi-m-0 gi-w-full;
 }
 
 .gi-section-break-md {
-  @apply gi-border-t-xs gi-my-4;
+  @apply gi-border-t-xs gi-my-4 gi-w-full;
 }
 
 .gi-section-break-lg {
-  @apply gi-border-t-xs gi-my-8;
+  @apply gi-border-t-xs gi-my-8 gi-w-full;
 }
 
 .gi-section-break-xl {
-  @apply gi-border-t-xs gi-my-12;
+  @apply gi-border-t-xs gi-my-12 gi-w-full;
 }

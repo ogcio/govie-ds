@@ -1,0 +1,59 @@
+---
+title: 'Heading'
+description: 'Heading Component'
+status: 'stable'
+component:
+  id: 'heading'
+  link: 'https://www.figma.com/design/ZEqfpXhocdZs1K5YfsE5ws/Design-system?node-id=32-923&t=Re0xIRAmWNDNItHY-4'
+  status: 'stable'
+---
+
+# Heading
+
+A Heading is a typographic element used to define the titles and subtitles of sections on a page. It helps organize content, establish hierarchy, and improve readability by visually distinguishing different levels of information.
+
+<Section current="design">
+
+<ComponentPreview>
+  <div style={{ display: 'flex', flexDirection: 'column'}}>
+    <Heading as="h1">This is an h1</Heading>
+    <Heading as="h2">This is an h2</Heading>
+    <Heading as="h3">This is an h3</Heading>
+    <Heading as="h4">This is an h4</Heading>
+    <Heading as="h5">This is an h5</Heading>
+    <Heading as="h6">This is an h6</Heading>
+  </div>
+</ComponentPreview>
+<FigmaPreviewButton href="https://www.figma.com/design/ZEqfpXhocdZs1K5YfsE5ws/Design-system?node-id=32-923&t=Re0xIRAmWNDNItHY-4" />
+
+## Variants
+
+### With a caption
+
+<ComponentContainer>
+  <Heading caption="This is a caption">This is a heading</Heading>
+</ComponentContainer>
+
+## Usage
+
+Use heading as, such as `<h1>`, `<h2>` and so on, to tag the headings on a page. Style headings consistently to create a clear content structure throughout your service.
+For a question page, or pages with long headings, follow the usual hierarchy of heading levels and styles associated with them. For example, `<h1>`, followed by an `<h2>` and so on. In rare cases, you might want to alter how you use the headings hierarchy to achieve a better visual balance. An example of this is in the design system’s notification banner which uses heading levels in a different order to emphasise the most important information. If you do change the heading hierarchy in a similar way, it needs to go through accessibility testing before use.
+Write all headings in sentence case.
+
+### Do
+
+- Use `<h1>` for the main page heading; only one `<h1>` per page.
+- Use headings in a logical order: `<h1>`, then `<h2>`, `<h3>`, etc.
+- Write headings in sentence case for clarity and consistency.
+- Ensure headings describe the content that follows.
+- Use headings to create a clear content structure and improve accessibility.
+
+### Don't
+
+- Skip heading levels (e.g., jumping from `<h1>` to `<h4>`).
+- Use headings purely for visual styling; use them for semantic structure.
+- Use multiple `<h1>` elements on the same page.
+- Write headings in all caps or with inconsistent casing.
+- Make headings too vague or unrelated to the content below.
+
+</Section>

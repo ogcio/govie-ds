@@ -1,0 +1,88 @@
+---
+title: 'Heading'
+description: 'Heading Component React Component'
+status: 'stable'
+component:
+  id: 'heading-react'
+  link: '/story/typography-heading--default'
+  status: 'stable'
+  properties:
+    - name: HeadingProps
+      fields:
+        - name: 'children'
+          ofType: 'node'
+          description: 'The text content of the heading.'
+          required: true
+        - name: 'as'
+          ofType: 'string'
+          description: 'Specifies which HTML heading tag the component should render as (h1, h2, h3, h4, h5, h6).'
+          required: false
+        - name: 'size'
+          ofType: 'string'
+          description: 'Defines the size of the heading (small, medium, large).'
+          required: false
+        - name: 'caption'
+          ofType: 'string'
+          description: 'A caption or additional text that will be displayed under the heading.'
+          required: false
+  stories:
+    - name: 'default'
+      url: '/story/typography-heading--default'
+    - name: 'small'
+      url: '/story/typography-heading--small'
+    - name: 'medium'
+      url: '/story/typography-heading--medium'
+    - name: 'large'
+      url: '/story/typography-heading--large'
+    - name: 'extra-large'
+      url: '/story/typography-heading--extra-large'
+    - name: 'caption'
+      url: '/story/typography-heading--caption'
+---
+
+# Heading
+
+A Heading is a typographic element used to define the titles and subtitles of sections on a page. It helps organize content, establish hierarchy, and improve readability by visually distinguishing different levels of information.
+
+<Section current="react">
+
+<ComponentPreview>
+  <div style={{ display: 'flex', flexDirection: 'column'}}>
+    <Heading as="h1">This is an h1</Heading>
+    <Heading as="h2">This is an h2</Heading>
+    <Heading as="h3">This is an h3</Heading>
+    <Heading as="h4">This is an h4</Heading>
+    <Heading as="h5">This is an h5</Heading>
+    <Heading as="h6">This is an h6</Heading>
+  </div>
+</ComponentPreview>
+
+### Default
+
+<StorybookFrame componentId="heading-react" story="default" />
+
+### Small
+
+<StorybookFrame componentId="heading-react" story="small" />
+
+### Medium
+
+<StorybookFrame componentId="heading-react" story="medium" />
+
+### Large
+
+<StorybookFrame componentId="heading-react" story="large" />
+
+### Extra Large
+
+<StorybookFrame componentId="heading-react" story="extra-large" />
+
+### Caption
+
+<StorybookFrame componentId="heading-react" story="caption" />
+
+## Properties
+
+<ComponentPropertiesTable componentId="heading-react" />
+
+</Section>
