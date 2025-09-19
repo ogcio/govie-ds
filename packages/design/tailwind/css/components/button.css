@@ -176,6 +176,14 @@
   @apply gi-h-12 gi-px-4 gi-py-3 gi-text-2md;
 }
 
+.gi-btn-large:not([data-button-group='true']) {
+  @apply gi-px-4;
+}
+
+.gi-btn-large[data-button-group='true'] {
+  @apply gi-px-0;
+}
+
 .gi-btn-regular {
   @apply gi-h-10 gi-px-3 gi-py-2 gi-text-sm;
 }

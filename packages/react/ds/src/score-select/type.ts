@@ -11,5 +11,8 @@ export type ScoreSelectProps = {
   leftLabel?: string;
   rightLabel?: string;
   type: ScoreSelectType;
+  orientation?: 'vertical' | 'horizontal';
+  startLabel?: string;
+  endLabel?: string;
   onChange?: (value: string) => void;
 };

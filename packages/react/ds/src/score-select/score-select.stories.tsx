@@ -1,4 +1,5 @@
 import type { Meta, StoryObj } from '@storybook/react';
+import { within, expect } from 'storybook/test';
 import { ButtonSize } from '../button/types.js';
 import { ScoreSelect } from './score-select.js';
 
@@ -28,6 +29,11 @@ const meta = {
       options: ['1-5', '1-7', '0-10'],
     },
     onChange: { action: 'selected' },
+    orientation: {
+      control: 'select',
+      options: ['horizontal', 'vertical'],
+      description: 'Layout direction of the score buttons.',
+    },
   },
 } satisfies Meta<typeof ScoreSelect>;
 
@@ -77,5 +83,39 @@ export const NPS: Story = {
     onChange(value) {
       console.log('Selected value:', value);
     },
+  },
+};
+
+export const Vertical: Story = {
+  args: {
+    name: 'nps',
+    label:
+      'How likely are you to recommend our service to a friend or colleague?',
+    hint: 'Description',
+    size: 'large',
+    type: '0-10',
+    value: '5',
+    leftLabel: 'Not Likely',
+    rightLabel: 'Extremely Likely',
+    orientation: 'vertical',
+    onChange() {
+      return null;
+    },
+  },
+  play: async ({ canvasElement }) => {
+    const canvas = within(canvasElement);
+
+    const buttons = await canvas.findAllByRole('radio');
+    expect(buttons).toHaveLength(11);
+
+    await canvas.findByText('Not Likely');
+    await canvas.findByText('Extremely Likely');
+
+    const group = buttons[0].closest('div');
+    expect(group).toHaveClass('gi-flex-col');
+    expect(group).toHaveClass('gi-items-start');
+
+    const fiveButton = await canvas.findByRole('radio', { name: '5' });
+    expect(fiveButton).toHaveAttribute('aria-checked', 'true');
   },
 };

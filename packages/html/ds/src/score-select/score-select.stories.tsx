@@ -86,3 +86,35 @@ export const NPS: Story = {
     await canvas.findAllByText(/Extremely Likely/);
   },
 };
+
+export const Vertical: Story = {
+  args: {
+    name: 'nps',
+    label:
+      'How likely are you to recommend our service to a friend or colleague?',
+    hint: 'Description',
+    size: 'large',
+    type: '0-10',
+    value: '5',
+    leftLabel: 'Not Likely',
+    rightLabel: 'Extremely Likely',
+    orientation: 'vertical',
+  },
+  render: (arguments_) => createElement(arguments_),
+  play: async ({ canvasElement }) => {
+    const canvas = within(canvasElement);
+
+    const buttons = await canvas.findAllByRole('radio');
+    expect(buttons).toHaveLength(11);
+
+    await canvas.findByText('Not Likely');
+    await canvas.findByText('Extremely Likely');
+
+    const group = buttons[0].closest('div');
+    expect(group).toHaveClass('gi-flex-col');
+    expect(group).toHaveClass('gi-items-start');
+
+    const fiveButton = await canvas.findByRole('radio', { name: '5' });
+    expect(fiveButton).toHaveAttribute('aria-checked', 'true');
+  },
+};

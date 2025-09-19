@@ -1,36 +1,18 @@
 'use client';
-import {
-  createContext,
-  FC,
-  PropsWithChildren,
-  useContext,
-  useState,
-  useEffect,
-} from 'react';
-import { Button } from '../button/button.js';
-import { ButtonAppearance, ButtonSize } from '../button/types.js';
-import { useDomId } from '../hooks/use-dom-id.js';
 
-type ButtonGroupContextType = {
-  selectedValue?: string;
-  setSelectedValue: (value: string) => void;
-  name: string;
-  size: ButtonSize;
-  appearance?: ButtonAppearance;
-  onChange?: (value: string) => void;
-  groupId: string;
-};
+import { createContext, FC, useContext, useState, useEffect } from 'react';
+import { Button } from '../button/button.js';
+import { cn } from '../cn.js';
+import { useDomId } from '../hooks/use-dom-id.js';
+import type {
+  ButtonGroupContextType,
+  ButtonGroupItemProps,
+  ButtonGroupProps,
+} from './types.js';
 
 const ButtonGroupContext = createContext<ButtonGroupContextType | undefined>(
   undefined,
 );
-
-type ButtonGroupItemProps = PropsWithChildren<{
-  value: string;
-  role?: string;
-  'aria-checked'?: boolean;
-  'aria-label'?: string;
-}>;
 
 export const ButtonGroupItem: FC<ButtonGroupItemProps> = ({
   value,
@@ -72,24 +54,13 @@ export const ButtonGroupItem: FC<ButtonGroupItemProps> = ({
       role={customRole || 'radio'}
       aria-checked={ariaChecked === undefined ? isSelected : ariaChecked}
       aria-label={ariaLabel}
+      data-button-group="true"
       type="button"
     >
       {children}
     </Button>
   );
 };
-
-type ButtonGroupProps = PropsWithChildren<{
-  name: string;
-  size?: ButtonSize;
-  appearance?: ButtonAppearance;
-  onChange?: (value: string) => void;
-  defaultValue?: string;
-  value?: string;
-  role?: string;
-  'aria-labelledby'?: string;
-  'aria-describedby'?: string;
-}>;
 
 export const ButtonGroup: FC<ButtonGroupProps> = ({
   name,
@@ -102,6 +73,7 @@ export const ButtonGroup: FC<ButtonGroupProps> = ({
   role: customRole,
   'aria-labelledby': ariaLabelledby,
   'aria-describedby': ariaDescribedby,
+  className,
 }) => {
   const [internalValue, setInternalValue] = useState<string | undefined>(
     defaultValue,
@@ -138,7 +110,7 @@ export const ButtonGroup: FC<ButtonGroupProps> = ({
       }}
     >
       <div
-        className="gi-btn-group"
+        className={cn('gi-btn-group', className)}
         role={customRole || 'radiogroup'}
         aria-labelledby={ariaLabelledby}
         aria-describedby={ariaDescribedby}
