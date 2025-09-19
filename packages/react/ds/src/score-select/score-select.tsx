@@ -82,16 +82,22 @@ export const ScoreSelect: React.FC<ScoreSelectProps> = ({
         aria-labelledby={labelId}
         aria-describedby={hintId}
       >
-        {leftLabel && rightLabel && scoreOptions.length > 2 && (
-          <div className="gi-score-select-labels-responsive" aria-hidden="true">
-            <div>
-              {scoreOptions[0]?.label} – {leftLabel}
+        {leftLabel &&
+          rightLabel &&
+          scoreOptions.length > 2 &&
+          orientation === 'horizontal' && (
+            <div
+              className={cn('gi-score-select-labels-responsive')}
+              aria-hidden="true"
+            >
+              <div>
+                {scoreOptions[0]?.label} – {leftLabel}
+              </div>
+              <div>
+                {scoreOptions.at(-1)?.label} – {rightLabel}
+              </div>
             </div>
-            <div>
-              {scoreOptions.at(-1)?.label} – {rightLabel}
-            </div>
-          </div>
-        )}
+          )}
         <ButtonGroup
           name={name}
           size={size}
