@@ -89,15 +89,14 @@ export const NPS: Story = {
 
 export const Vertical: Story = {
   args: {
-    name: 'nps',
     label:
       'How likely are you to recommend our service to a friend or colleague?',
     hint: 'Description',
     size: 'large',
     type: '0-10',
     value: '5',
-    leftLabel: 'Not Likely',
-    rightLabel: 'Extremely Likely',
+    leftLabel: '0 - Not Likely',
+    rightLabel: '10 - Extremely Likely',
     orientation: 'vertical',
   },
   render: (arguments_) => createElement(arguments_),
@@ -107,8 +106,8 @@ export const Vertical: Story = {
     const buttons = await canvas.findAllByRole('radio');
     expect(buttons).toHaveLength(11);
 
-    await canvas.findByText('Not Likely');
-    await canvas.findByText('Extremely Likely');
+    await canvas.findByText('0 - Not Likely');
+    await canvas.findByText('10 - Extremely Likely');
 
     const group = buttons[0].closest('div');
     expect(group).toHaveClass('gi-flex-col');
