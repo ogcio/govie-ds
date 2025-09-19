@@ -10,6 +10,7 @@ export const createScoreSelect = ({
   hint,
   leftLabel,
   rightLabel,
+  orientation = 'horizontal',
 }: ScoreSelectProps): HTMLElement => {
   const fieldset = document.createElement('fieldset');
   fieldset.className = 'gi-w-full';
@@ -40,7 +41,7 @@ export const createScoreSelect = ({
   }
 
   const wrapper = document.createElement('div');
-  wrapper.className = 'gi-score-select-button-group';
+  wrapper.className = `gi-score-select-button-group ${orientation === 'vertical' ? 'gi-score-select-button-group-vertical' : 'gi-score-select-button-group-horizontal'}`;
 
   // Define score options based on the 'type' prop
   let scoreOptions: { value: string; label: string }[] = [];
@@ -107,7 +108,8 @@ export const createScoreSelect = ({
   }
 
   const buttonGroup = document.createElement('div');
-  buttonGroup.className = 'gi-btn-group';
+
+  buttonGroup.className = `gi-btn-group ${orientation === 'vertical' ? 'gi-flex-col gi-items-start' : ''} `;
   buttonGroup.setAttribute('role', 'radiogroup');
   if (groupLabelId) {
     buttonGroup.setAttribute('aria-labelledby', groupLabelId);
@@ -132,6 +134,7 @@ export const createScoreSelect = ({
     button.setAttribute('aria-checked', isSelected ? 'true' : 'false');
     button.setAttribute('name', name);
     button.setAttribute('id', `score-select-${index}`);
+    button.dataset.groupButton = 'true';
     button.dataset.value = _value;
 
     buttonGroup.append(button);
@@ -142,7 +145,8 @@ export const createScoreSelect = ({
   // Bottom static labels (decorative)
   if (leftLabel || rightLabel) {
     const labelRow = document.createElement('div');
-    labelRow.className = 'gi-score-select-labels';
+    labelRow.className = `gi-score-select-labels ${orientation === 'vertical' ? 'gi-score-select-labels-vertical' : ''}`;
+
     labelRow.setAttribute('aria-hidden', 'true');
 
     const left = document.createElement('div');

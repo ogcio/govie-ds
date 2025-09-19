@@ -1,6 +1,7 @@
 'use client';
-import React from 'react';
+import React, { useId } from 'react';
 import { ButtonGroup, ButtonGroupItem } from '../button-group/button-group.js';
+import { cn } from '../cn.js';
 import {
   FormField,
   FormFieldHint,
@@ -18,8 +19,9 @@ export const ScoreSelect: React.FC<ScoreSelectProps> = ({
   rightLabel,
   onChange,
   type,
+  orientation = 'horizontal',
 }) => {
-  const controlId = React.useId();
+  const controlId = useId();
   const labelId = `${controlId}-label`;
   const hintId = hint ? `${controlId}-hint` : undefined;
 
@@ -71,21 +73,31 @@ export const ScoreSelect: React.FC<ScoreSelectProps> = ({
       <FormFieldLabel id={labelId}>{label}</FormFieldLabel>
       {hint && <FormFieldHint id={hintId}>{hint}</FormFieldHint>}
       <div
-        className="gi-score-select-button-group"
+        className={cn('gi-score-select-button-group', {
+          'gi-score-select-button-group-vertical': orientation === 'vertical',
+          'gi-score-select-button-group-horizontal':
+            orientation === 'horizontal',
+        })}
         role="group"
         aria-labelledby={labelId}
         aria-describedby={hintId}
       >
-        {leftLabel && rightLabel && scoreOptions.length > 2 && (
-          <div className="gi-score-select-labels-responsive" aria-hidden="true">
-            <div>
-              {scoreOptions[0]?.label} – {leftLabel}
+        {leftLabel &&
+          rightLabel &&
+          scoreOptions.length > 2 &&
+          orientation === 'horizontal' && (
+            <div
+              className={cn('gi-score-select-labels-responsive')}
+              aria-hidden="true"
+            >
+              <div>
+                {scoreOptions[0]?.label} – {leftLabel}
+              </div>
+              <div>
+                {scoreOptions.at(-1)?.label} – {rightLabel}
+              </div>
             </div>
-            <div>
-              {scoreOptions.at(-1)?.label} – {rightLabel}
-            </div>
-          </div>
-        )}
+          )}
         <ButtonGroup
           name={name}
           size={size}
@@ -94,6 +106,9 @@ export const ScoreSelect: React.FC<ScoreSelectProps> = ({
           role="radiogroup"
           aria-labelledby={labelId}
           aria-describedby={hintId}
+          className={cn({
+            'gi-flex-col gi-items-start': orientation === 'vertical',
+          })}
         >
           {scoreOptions.map((option) => (
             <ButtonGroupItem
@@ -109,7 +124,12 @@ export const ScoreSelect: React.FC<ScoreSelectProps> = ({
         </ButtonGroup>
 
         {(leftLabel || rightLabel) && (
-          <div className="gi-score-select-labels" aria-hidden="true">
+          <div
+            className={cn('gi-score-select-labels', {
+              'gi-score-select-labels-vertical': orientation === 'vertical',
+            })}
+            aria-hidden="true"
+          >
             <div>{leftLabel}</div>
             <div>{rightLabel}</div>
           </div>
