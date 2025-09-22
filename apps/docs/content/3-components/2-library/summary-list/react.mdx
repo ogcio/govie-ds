@@ -1,0 +1,171 @@
+---
+title: 'Summary List'
+description: 'The Summary List component displays key-value pairs of information with optional actions, often used for review pages or displaying user details.'
+status: 'stable'
+component:
+  id: 'summary-list-react'
+  properties:
+    - name: SummaryListProps
+      fields:
+        - name: 'children'
+          ofType: 'node'
+          description: 'A list of SummaryListRow components that will be displayed in the summary list.'
+          required: true
+        - name: 'dataTestid'
+          ofType: 'string'
+          description: 'A string value for specifying the data-testid attribute for testing purposes.'
+          required: false
+    - name: SummaryListRowProps
+      fields:
+        - name: 'label'
+          ofType: 'string'
+          description: 'The label for the row, displayed as the key or title of the item.'
+          required: true
+        - name: 'withBorder'
+          ofType: 'boolean'
+          description: 'When true, adds a border to the summary list row.'
+          required: false
+        - name: 'children'
+          ofType: 'node'
+          description: 'A list of SummaryListValue or SummaryListAction components that will be rendered as the values or actions in the row.'
+          required: true
+    - name: SummaryListValueProps
+      fields:
+        - name: 'children'
+          ofType: 'node'
+          description: 'The content or value of the summary item. This can be any valid React node.'
+          required: true
+    - name: SummaryListActionProps
+      fields:
+        - name: 'children'
+          ofType: 'node'
+          description: 'The content or text for the action, typically displayed as a link.'
+          required: true
+        - name: 'href'
+          ofType: 'string'
+          description: 'The URL for the link, which will be used in the action.'
+          required: true
+        - name: 'asChild'
+          ofType: 'boolean'
+          description: 'When set to true, allows a custom link component (like NextLink) to be passed as a child.'
+          required: false
+  stories:
+    - name: 'default'
+      url: '/story/typography-summarylist--default'
+    - name: 'with-mixed-borders'
+      url: '/story/typography-summarylist--with-mixed-borders'
+    - name: 'with-mixed-actions'
+      url: '/story/typography-summarylist--with-mixed-actions'
+    - name: 'without-borders'
+      url: '/story/typography-summarylist--without-borders'
+    - name: 'with-custom-links'
+      url: '/story/typography-summarylist--with-custom-links'
+---
+
+# Summary List
+
+This React component displays structured information in rows of labels and values, and is typically used to present a user’s details for review before confirmation or submission.
+
+<Section current="react">
+<ComponentPreview>
+  <ComponentContainer>
+    <SummaryList>
+  <SummaryListRow
+    label="Name"
+    withBorder
+  >
+    <SummaryListValue>
+      John Smith
+    </SummaryListValue>
+    <SummaryListAction href="#">
+      Change
+    </SummaryListAction>
+  </SummaryListRow>
+  <SummaryListRow
+    label="Date of birth"
+    withBorder
+  >
+    <SummaryListValue>
+      8 November 1982
+    </SummaryListValue>
+    <SummaryListAction href="#">
+      Change
+    </SummaryListAction>
+  </SummaryListRow>
+  <SummaryListRow
+    label="Address"
+    withBorder
+  >
+    <SummaryListValue>
+      72 Guild Street
+      <br />
+      London
+      <br />
+      SE23 6FH
+    </SummaryListValue>
+    <SummaryListAction href="#">
+      Change
+    </SummaryListAction>
+  </SummaryListRow>
+  <SummaryListRow
+    label="Contact details"
+    withBorder
+  >
+    <SummaryListValue>
+      07700 864523
+      <br />
+      john.smith@example.com
+    </SummaryListValue>
+    <SummaryListAction href="#">
+      Change
+    </SummaryListAction>
+  </SummaryListRow>
+</SummaryList>
+  </ComponentContainer>
+</ComponentPreview>
+
+### Default
+
+<StorybookFrame
+  className="h-96"
+  componentId="summary-list-react"
+  story="default"
+/>
+
+### With Mixed Borders
+
+<StorybookFrame
+  className="h-96"
+  componentId="summary-list-react"
+  story="with-mixed-borders"
+/>
+
+### With Mixed Actions
+
+<StorybookFrame
+  className="h-96"
+  componentId="summary-list-react"
+  story="with-mixed-actions"
+/>
+
+### Without Borders
+
+<StorybookFrame
+  className="h-96"
+  componentId="summary-list-react"
+  story="without-borders"
+/>
+
+### With Custom Links
+
+<StorybookFrame
+  className="h-96"
+  componentId="summary-list-react"
+  story="with-custom-links"
+/>
+
+## Properties
+
+<ComponentPropertiesTable componentId="summary-list-react" />
+
+</Section>
