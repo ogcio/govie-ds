@@ -1,0 +1,81 @@
+---
+title: 'Summary List'
+description: 'The Summary List component displays key-value pairs of information with optional actions, often used for review pages or displaying user details.'
+status: 'stable'
+component:
+  id: 'summary-list'
+  link: ''
+  status: 'stable'
+---
+
+# Summary List
+
+This component provides a way to present structured information in rows of labels and values. It is commonly used for displaying a user’s details before confirmation or submission.
+
+<Section current="design">
+
+<ComponentPreview>
+  <ComponentContainer>
+    <SummaryList>
+      <SummaryListRow label="Name" withBorder>
+        <SummaryListValue>John Smith</SummaryListValue>
+        <SummaryListAction href="#">Change</SummaryListAction>
+      </SummaryListRow>
+      <SummaryListRow label="Date of birth" withBorder>
+        <SummaryListValue>8 November 1982</SummaryListValue>
+        <SummaryListAction href="#">Change</SummaryListAction>
+      </SummaryListRow>
+      <SummaryListRow label="Address" withBorder>
+        <SummaryListValue>
+          72 Guild Street
+          <br />
+          London
+          <br />
+          SE23 6FH
+        </SummaryListValue>
+        <SummaryListAction href="#">Change</SummaryListAction>
+      </SummaryListRow>
+      <SummaryListRow label="Contact details" withBorder>
+        <SummaryListValue>
+          07700 864523
+          <br />
+          john.smith@example.com
+        </SummaryListValue>
+        <SummaryListAction href="#">Change</SummaryListAction>
+      </SummaryListRow>
+    </SummaryList>
+  </ComponentContainer>
+</ComponentPreview>
+
+## Usage
+
+Use the summary list component to display structured information in a way
+that is easy to scan. Each piece of data is shown as a row with a label,
+value, and optional action.
+
+### Do
+
+- Use this component for presenting **reviewable information** (e.g., before submitting a form).
+- Keep labels short and descriptive.
+- Include actions only when users can take action on the item.
+- Use line breaks for multi-line content like addresses.
+
+### Don't
+
+- Don’t overload a row with too much information, split into multiple rows if needed.
+- Don’t use this component for tabular data, use a table instead.
+- Don’t include actions that don’t directly relate to the value.
+
+<ComponentContainer>
+  <SummaryList>
+    <SummaryListRow label="User details" withBorder>
+      <SummaryListValue>
+        John Smith, born 8 November 1982, lives at 72 Guild Street, London, SE23
+        6FH. Contact: 07700 864523, john.smith@example.com
+      </SummaryListValue>
+      <SummaryListAction href="#">Change</SummaryListAction>
+    </SummaryListRow>
+  </SummaryList>
+</ComponentContainer>
+
+</Section>

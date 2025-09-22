@@ -46,9 +46,7 @@ HeaderItem
 HeaderProps
 HeadingProps
 ICT
-IconButtonProps
 IconId
-IconProps
 Iframe
 InputCheckbox
 InputCheckboxProps
@@ -158,7 +156,6 @@ eGovernment
 emphasize
 fadeinup
 favicon
-favoriting
 feedback-cookiebanner
 fieldset
 flexbox-based
@@ -215,6 +212,7 @@ precompiled
 preflight
 preload
 programmatically
+reviewable
 scalable
 selectable
 sm

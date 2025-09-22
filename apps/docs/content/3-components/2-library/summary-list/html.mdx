@@ -1,0 +1,106 @@
+---
+title: 'Summary List'
+description: 'The Summary List component displays key-value pairs of information with optional actions, often used for review pages or displaying user details.'
+status: 'stable'
+component:
+  id: 'summary-list-html'
+  link: '/story/default'
+  status: 'stable'
+  stories:
+    - name: 'default'
+      url: '/story/typography-summarylist--default'
+    - name: 'with-mixed-borders'
+      url: '/story/typography-summarylist--with-mixed-borders'
+    - name: 'with-mixed-actions'
+      url: '/story/typography-summarylist--with-mixed-actions'
+    - name: 'without-borders'
+      url: '/story/typography-summarylist--without-borders'
+---
+
+# Summary List
+
+This HTML component displays structured information in rows of labels and values, and is typically used to present a user’s details for review before confirmation or submission.
+
+<Section current="html">
+<ComponentPreview>
+  <ComponentContainer>
+    <SummaryList>
+  <SummaryListRow
+    label="Name"
+    withBorder
+  >
+    <SummaryListValue>
+      John Smith
+    </SummaryListValue>
+    <SummaryListAction href="#">
+      Change
+    </SummaryListAction>
+  </SummaryListRow>
+  <SummaryListRow
+    label="Date of birth"
+    withBorder
+  >
+    <SummaryListValue>
+      8 November 1982
+    </SummaryListValue>
+    <SummaryListAction href="#">
+      Change
+    </SummaryListAction>
+  </SummaryListRow>
+  <SummaryListRow
+    label="Address"
+    withBorder
+  >
+    <SummaryListValue>
+      72 Guild Street
+      <br />
+      London
+      <br />
+      SE23 6FH
+    </SummaryListValue>
+    <SummaryListAction href="#">
+      Change
+    </SummaryListAction>
+  </SummaryListRow>
+  <SummaryListRow
+    label="Contact details"
+    withBorder
+  >
+    <SummaryListValue>
+      07700 864523
+      <br />
+      john.smith@example.com
+    </SummaryListValue>
+    <SummaryListAction href="#">
+      Change
+    </SummaryListAction>
+  </SummaryListRow>
+</SummaryList>
+  </ComponentContainer>
+</ComponentPreview>
+
+### Default
+
+<ComponentPreview>
+  <StorybookFrame componentId="summary-list-html" story="default" />
+</ComponentPreview>
+
+### With Mixed Borders
+
+<ComponentPreview>
+  <StorybookFrame componentId="summary-list-html" story="with-mixed-borders" />
+</ComponentPreview>
+
+### With Mixed Actions
+
+<ComponentPreview>
+  <StorybookFrame componentId="summary-list-html" story="with-mixed-actions" />
+</ComponentPreview>
+
+### Without Borders
+
+<ComponentPreview>
+  <StorybookFrame componentId="summary-list-html" story="without-borders" />
+</ComponentPreview>
+
+</Section>
