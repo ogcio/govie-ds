@@ -1,0 +1,97 @@
+---
+title: 'Data Table'
+description: 'Data tables are used to display and manage large sets of information in a structured format. They allow users to easily scan, filter, and manipulate data.'
+status: 'beta'
+component:
+  id: 'data-table'
+  link: 'https://www.figma.com/design/ZEqfpXhocdZs1K5YfsE5ws/Design-system?node-id=7649-344'
+  status: 'beta'
+---
+
+# Data Table
+
+Data tables are used to visually represent and manage large sets of information in a structured format. They allow users to easily scan, filter, and manipulate data.
+
+<Section current="design">
+
+<Image
+  src="/components/table/data-table.png"
+  alt="Data table example"
+  width={1200}
+  height={400}
+/>
+
+<FigmaPreviewButton href="https://www.figma.com/design/ZEqfpXhocdZs1K5YfsE5ws/Design-system?node-id=7649-344" />
+
+## Components
+
+### Header
+
+The header section includes an area for filtering options, a title, and action buttons relative to the whole table. 
+
+<Image
+  src="/components/table/data-table-filtering.png"
+  alt="Data table example"
+  width={1200}
+  height={400}
+/>
+
+Once the user applies a filter, a filter bar appears below the header, showing the active filters and providing options to clear them.
+
+<Image
+  src="/components/table/data-table-filtered.png"
+  alt="Data table example"
+  width={1200}
+  height={400}
+/>
+
+### Row action bar
+
+The row action bar appears when a user selects one or multiple rows and provides options for actions that can be performed on the selected row(s). This may include buttons for editing, deleting, or performing bulk actions.
+
+<Image
+  src="/components/table/data-table-row-actions.png"
+  alt="Data table example"
+  width={1200}
+  height={400}
+/>
+
+### Content
+
+The content section displays the main data in a tabular format, with each row representing a single record and each column representing a specific attribute of that record.
+Columns are sortable, allowing users to organize data based on their preferences. Additionally, rows can be selected for bulk actions or individual operations.
+The cell can be editable, enabling users to modify data directly within the table without navigating away.
+
+### Footer
+
+The footer section typically includes pagination controls, summary information, and additional actions related to the entire table.
+
+<Image
+  src="/components/table/data-table-footer.png"
+  alt="Data table example"
+  width={800}
+  height={400}
+/>
+
+## Usage
+
+Use the data table component to display and manage large sets of information in a structured format. Data tables are particularly useful for:
+- Displaying tabular data that requires sorting, filtering, and pagination.
+- Allowing users to edit data directly within the table.
+- Enabling bulk actions on selected rows.
+
+### Do
+
+- Use clear and descriptive column headers.
+- Provide filtering and sorting options for users.
+- Allow inline editing of table cells.
+- Include pagination controls in the footer.
+
+### Don’t
+
+- Overwhelm users with too much information at once.
+- Use non-standard table layouts that confuse users.
+- Disable keyboard navigation within the table.
+- Forget to provide feedback for user actions (e.g., saving edits).
+
+</Section>

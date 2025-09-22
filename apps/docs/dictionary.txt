@@ -112,6 +112,7 @@ TableHeaderProps
 TableProps
 TableRow
 TableRowProps
+Tankstack
 Tanstack
 TextAreaProps
 Textarea
@@ -144,6 +145,7 @@ combobox
 components-scoreselect
 customizable
 customization
+data-table-tanstack
 data-testid
 defaultValue
 digitalisation
@@ -216,6 +218,7 @@ reviewable
 scalable
 selectable
 sm
+sortable
 substeps
 summarisable
 summarizing

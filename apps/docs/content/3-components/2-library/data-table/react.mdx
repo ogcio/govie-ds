@@ -1,0 +1,43 @@
+---
+title: 'Data Table'
+description: 'Data Table React Component'
+status: 'beta'
+component:
+  id: 'data-table-react'
+  link: '/story/data-table-tanstack--with-react-hook-form'
+  status: 'beta'
+  properties:
+    - name: 'DataTableProps'
+      fields:
+        - name: 'data'
+          ofType: 'string'
+          description: 'The text displayed inside the tag. This typically represents a status or label.'
+          required: true
+        - name: 'type'
+          ofType: 'string'
+          description: 'Defines the visual style and color of the tag. Choose from predefined options like default, info, success, warning, error, counter, counterWarning.'
+          required: false
+  stories:
+    - name: 'tanstack'
+      url: '/story/data-table-tanstack--with-react-hook-form'
+  
+---
+
+# Data Table
+
+Design System component library provides a reusable Data Table component built with React. This component is designed to display and manage large sets of information in a structured format, allowing users to easily scan, filter, and manipulate data.
+In the page you can find an example on how to create a Data Table using React components with [Tanstack table library](https://www.figma.com/design/ZEqfpXhocdZs1K5YfsE5ws/Design-system?node-id=7649-344).
+
+<Section current="react">
+
+### Basic example with Tankstack table
+
+<ComponentPreview>
+  <StorybookFrame componentId="data-table-react" story="tanstack" />
+</ComponentPreview>
+
+## Properties
+
+<ComponentPropertiesTable componentId="data-table-react" />
+
+</Section>
