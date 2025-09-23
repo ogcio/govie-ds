@@ -1,6 +1,6 @@
 {
   "name": "@ogcio/theme-govie",
-  "version": "1.7.0",
+  "version": "1.7.1",
   "description": "The GOV IE design system theme.",
   "type": "module",
   "main": "dist/index.js",
