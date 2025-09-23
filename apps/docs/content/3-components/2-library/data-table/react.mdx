@@ -4,37 +4,107 @@ description: 'Data Table React Component'
 status: 'beta'
 component:
   id: 'data-table-react'
-  link: '/story/data-table-tanstack--with-react-hook-form'
+  link: '/story/data-table-tanstack--default'
   status: 'beta'
   properties:
-    - name: 'DataTableProps'
+    - name: 'DataTableHeaderProps'
       fields:
-        - name: 'data'
+        - name: 'showHeader'
+          ofType: 'boolean'
+          description: 'Controls the visibility of the header section.'
+          required: false
+        - name: 'showFilter'
+          ofType: 'boolean'
+          description: 'Controls the visibility of the filter section.'
+          required: false
+        - name: 'children'
+          ofType: 'DataTableHeaderSearch | DataTableHeaderFilter | DataTableHeaderFilterList | DataTableHeaderActions'
+          description: 'Elements to be rendered within the DataTableHeader component. Each child identifies a specific slot for content.'
+          required: false
+    - name: 'DataTableHeaderSearchProps'
+      fields:
+        - name: 'children'
+          ofType: 'ReactNode'
+          description: 'Content to be rendered within the search section of the DataTableHeader. Could e be a search input, autocomplete or similar component.'
+          required: true
+
+    - name: 'DataTableHeaderFilterProps'
+      fields:
+        - name: 'children'
+          ofType: 'ReactNode'
+          description: 'Content to be rendered within the filter section of the DataTableHeader. Could be a filter input, dropdown or similar component.'
+          required: true
+    - name: 'DataTableHeaderFilterListProps'
+      fields:
+        - name: 'children'
+          ofType: 'ReactNode'
+          description: "Content to be rendered within the filter list section of the DataTableHeader. It's a list of active filters represented as chips or tags."
+          required: true
+    - name: 'DataTableHeaderActionsProps'
+      fields:
+        - name: 'children'
+          ofType: 'ReactNode'
+          description: 'Content to be rendered within the actions section of the DataTableHeader. Could be action buttons like "Add", "Delete", or "Export".'
+          required: true
+    - name: 'DataTableFooterProps'
+      fields:
+        - name: 'children'
+          ofType: 'DataTableFooterStart | DataTableFooterCenter | DataTableFooterEnd'
+          description: 'Content to be rendered within the footer section of the DataTable. Each child identifies a specific slot for content.'
+          required: true
+    - name: 'EditorTableCellProps'
+      fields:
+        - name: 'value'
+          ofType: 'string | number | boolean'
+          description: 'The current value of the cell.'
+          required: true
+        - name: 'rowIndex'
+          ofType: 'number'
+          description: 'The index of the row in which the cell is located.'
+          required: true
+        - name: 'columnId'
           ofType: 'string'
-          description: 'The text displayed inside the tag. This typically represents a status or label.'
+          description: 'The identifier of the column in which the cell is located.'
+          required: true
+        - name: 'onChange'
+          ofType: '(value: string | number | boolean, rowIndex: number, columnId: string) => void'
+          description: 'Callback function to handle changes to the cell value.'
           required: true
         - name: 'type'
-          ofType: 'string'
-          description: 'Defines the visual style and color of the tag. Choose from predefined options like default, info, success, warning, error, counter, counterWarning.'
+          ofType: "EditorTableCellConfig"
+          description: 'The type of input to be rendered. Determines the kind of editor (e.g., text input, number input, checkbox).'
+          required: false
+    - name: 'EditorTableCellConfig'
+      fields:
+        - name: 'type'
+          ofType: "'text' | 'number' | 'boolean'"
+          description: 'The type of input to be rendered. Determines the kind of editor (e.g., text input, number input, checkbox).'
+          required: false
+        - name: 'props'
+          ofType: 'InputTextTableCellProps | InputNumberTableCellProps | InputCheckboxTableCellProps'
+          description: 'Props specific to the input type.'
           required: false
   stories:
-    - name: 'tanstack'
-      url: '/story/data-table-tanstack--with-react-hook-form'
+    - name: 'default'
+      url: '/story/data-table-tanstack--default'
   
 ---
 
 # Data Table
 
-Design System component library provides a reusable Data Table component built with React. This component is designed to display and manage large sets of information in a structured format, allowing users to easily scan, filter, and manipulate data.
-In the page you can find an example on how to create a Data Table using React components with [Tanstack table library](https://www.figma.com/design/ZEqfpXhocdZs1K5YfsE5ws/Design-system?node-id=7649-344).
+Data tables are used to visually represent and manage large sets of information in a structured format. They allow users to easily scan, filter, and manipulate data.
 
 <Section current="react">
 
 ### Basic example with Tankstack table
 
 <ComponentPreview>
-  <StorybookFrame componentId="data-table-react" story="tanstack" />
+  <StorybookFrame componentId="data-table-react" story="default" />
 </ComponentPreview>
+
+This example is based on the following [Tanstack Table example](https://github.com/tanstack/table/tree/main/examples/react/filters-fuzzy).<br />
+Follow this [guide](https://tanstack.com/table/latest/docs/installation) to set up the Tanstack Table library in your project.<br />
+It includes a data table with pagination, sorting, and filtering using the Design System components that the library provides.
 
 ## Properties
 

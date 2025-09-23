@@ -29,6 +29,11 @@ ContainerProps
 CookieBannerProps
 Customize
 DOM
+DataTableHeader
+DataTableHeaderActions
+DataTableHeaderFilter
+DataTableHeaderFilterList
+DataTableHeaderSearch
 Deque
 DetailsProps
 Dev
