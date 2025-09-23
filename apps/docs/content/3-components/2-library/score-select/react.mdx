@@ -45,6 +45,10 @@ component:
           ofType: 'string'
           description: "Layout direction of the score options. Options: 'horizontal' (default), 'vertical'."
           required: false
+        - name: 'wrapInMobile'
+          ofType: 'boolean'
+          description: 'Controls mobile behaviour. If true, options wrap into multiple lines on small screens. If false, layout switches to vertical on mobile. Default "true".'
+          required: false
   stories:
     - name: 'opinion-scale-1-5'
       url: '/story/components-scoreselect--opinion-scale-5'

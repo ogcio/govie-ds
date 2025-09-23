@@ -34,6 +34,11 @@ const meta = {
       options: ['horizontal', 'vertical'],
       description: 'Layout direction of the score buttons.',
     },
+    wrapInMobile: {
+      control: 'boolean',
+      description:
+        'Controls mobile behaviour. If true, options wrap into multiple lines on small screens. If false, layout switches to vertical on mobile. Default "true".',
+    },
   },
 } satisfies Meta<typeof ScoreSelect>;
 
