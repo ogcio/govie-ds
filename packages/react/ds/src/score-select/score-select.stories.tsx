@@ -52,6 +52,8 @@ export const OpinionScale5: Story = {
     label: 'How strongly do you agree with this statement?',
     size: 'large',
     type: '1-5',
+    leftLabel: 'Very Dissatisfied',
+    rightLabel: 'Very Satisfied',
     onChange(value) {
       console.log('Selected value:', value);
     },
