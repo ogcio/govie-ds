@@ -1,5 +1,20 @@
 # Changelog
 
+## [1.16.2](https://github.com/ogcio/govie-ds/compare/docs-v1.16.1...docs-v1.16.2) (2025-09-22)
+
+
+### Bug Fixes
+
+* ProgressStepper align stepStates naming and behaviour AB[#31191](https://github.com/ogcio/govie-ds/issues/31191) ([#726](https://github.com/ogcio/govie-ds/issues/726)) ([1fa31dc](https://github.com/ogcio/govie-ds/commit/1fa31dc86606a7ca448c19632b424b89113b4b4d))
+
+
+### Dependencies
+
+* The following workspace dependencies were updated
+  * dependencies
+    * @ogcio/design-system-react bumped to 1.17.2
+    * @ogcio/design-system-tailwind bumped to 1.14.3
+
 ## [1.16.1](https://github.com/ogcio/govie-ds/compare/docs-v1.16.0...docs-v1.16.1) (2025-09-15)
 
 
