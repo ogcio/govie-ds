@@ -32,8 +32,7 @@
 
 .gi-table-th-sm-fixed,
 .gi-table-td-sm-fixed {
-  /* TODO Usage of token, create 30 as 120 */
-  @apply gi-w-[120px] gi-max-w-[120px] gi-min-w-[120px];
+  @apply gi-w-30 gi-max-w-30 gi-min-w-30;
 }
 
 .gi-table-th-md-fixed,
@@ -48,8 +47,7 @@
 
 .gi-table-th-fluid,
 .gi-table-td-fluid {
-  /* TODO Usage of token, create 100 as 400px */
-  @apply gi-w-[400px] gi-min-w-[400px];
+  @apply gi-w-100 gi-min-w-100;
 }
 
 .gi-table-tr:last-child .gi-table-td {
