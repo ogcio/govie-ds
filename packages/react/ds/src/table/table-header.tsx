@@ -6,11 +6,19 @@ import { TableAlign, VerticalAlign } from './table.js';
 
 type SortedType = 'asc' | 'desc' | false;
 
+export type TableHeaderSize =
+  | 'xs-fixed'
+  | 'sm-fixed'
+  | 'md-fixed'
+  | 'lg-flex'
+  | 'fluid';
+
 interface TableHeaderProps extends ThHTMLAttributes<HTMLTableCellElement> {
   align?: TableAlign;
   valign?: VerticalAlign;
   sorted?: SortedType;
   onSort?: (event: React.MouseEvent) => void;
+  size?: TableHeaderSize;
 }
 
 const getSortedIcon = (isChildrenString: boolean, sorted: SortedType) => {
@@ -37,6 +45,7 @@ export function TableHeader({
   sorted = false,
   onSort,
   children,
+  size,
   ...props
 }: TableHeaderProps) {
   const isChildrenString = typeof children === 'string';
@@ -51,6 +60,8 @@ export function TableHeader({
     middle: 'gi-align-middle',
     bottom: 'gi-align-bottom',
   }[valign];
+
+  const sizeClass = size ? `gi-table-th-${size}` : undefined;
 
   const handleSort = (event: any) => {
     if (onSort && isChildrenString) {
@@ -79,6 +90,7 @@ export function TableHeader({
         alignmentClass,
         verticalAlignmentClass,
         'gi-table-th',
+        sizeClass,
         className,
         { 'gi-w-12': !isChildrenString },
       )}
