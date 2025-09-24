@@ -1,6 +1,9 @@
 1280px
+240px
 2xl
 2xs
+320px
+480px
 AccordionItem
 AccordionItemProps
 AccordionProps
@@ -21,6 +24,7 @@ ButtonGroupProps
 ButtonProps
 CardProps
 Center
+Checkboxes
 ChipProps
 Color
 Combobox
@@ -42,6 +46,7 @@ Dismissible
 DrawerBody
 DropdownItem
 DropdownItemProps
+Dropdowns
 Favicon
 Figma
 Frontend
