@@ -43,6 +43,8 @@ Favicon
 Figma
 Frontend
 GDPR
+gi-container
+gi-mx-auto
 GovTech
 hasDivider
 HeaderItem
