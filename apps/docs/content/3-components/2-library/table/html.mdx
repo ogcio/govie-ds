@@ -1,0 +1,81 @@
+---
+title: 'Table'
+description: 'Table HTML Component'
+status: 'stable'
+component:
+  id: 'table-html'
+  status: 'stable'
+  link: '/story/components-table--default'
+  stories:
+    - name: 'default'
+      url: '/story/components-table--default'
+    - name: 'with-no-borders'
+      url: '/story/components-table--basic-table-with-no-border'
+    - name: 'with-stripped'
+      url: '/story/components-table--with-stripped'
+    - name: 'with-footer'
+      url: '/story/components-table--table-with-footer'
+---
+
+# Table
+
+Table HTML components are used to display and organize data in rows and columns, making it easier for users to read and analyze information.
+
+<Section current="html">
+<ComponentPreview>
+  <ComponentContainer>
+    <Table>
+      <Caption>Table Caption</Caption>
+      <TableHead>
+        <TableRow>
+          <TableHeader>Name</TableHeader>
+          <TableHeader>Email</TableHeader>
+          <TableHeader>Role</TableHeader>
+        </TableRow>
+      </TableHead>
+      <TableBody>
+        <TableRow>
+          <TableData>John Doe</TableData>
+          <TableData>john.doe@example.com</TableData>
+          <TableData>Admin</TableData>
+        </TableRow>
+        <TableRow>
+          <TableData>Jane Smith</TableData>
+          <TableData>jane.smith@example.com</TableData>
+          <TableData>User</TableData>
+        </TableRow>
+        <TableRow>
+          <TableData>Sam Lee</TableData>
+          <TableData>sam.lee@example.com</TableData>
+          <TableData>Editor</TableData>
+        </TableRow>
+      </TableBody>
+    </Table>
+  </ComponentContainer>
+</ComponentPreview>
+
+### Default
+
+<StorybookFrame className="h-96" componentId="table-html" story="default" />
+
+### With No Borders
+
+<StorybookFrame
+  className="h-96"
+  componentId="table-html"
+  story="with-no-borders"
+/>
+
+### With Stripped
+
+<StorybookFrame
+  className="h-96"
+  componentId="table-html"
+  story="with-stripped"
+/>
+
+### With Footer
+
+<StorybookFrame className="h-96" componentId="table-html" story="with-footer" />
+
+</Section>

@@ -46,9 +46,7 @@ HeaderItem
 HeaderProps
 HeadingProps
 ICT
-IconButtonProps
 IconId
-IconProps
 Iframe
 InputCheckbox
 InputCheckboxProps
@@ -158,7 +156,6 @@ eGovernment
 emphasize
 fadeinup
 favicon
-favoriting
 feedback-cookiebanner
 fieldset
 flexbox-based
@@ -219,7 +216,6 @@ scalable
 selectable
 sm
 substeps
-summarisable
 summarizing
 textarea
 themeable
