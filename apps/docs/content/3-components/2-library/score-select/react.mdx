@@ -41,11 +41,21 @@ component:
           ofType: 'function'
           description: 'Callback function when the selected score changes.'
           required: false
+        - name: 'orientation'
+          ofType: 'string'
+          description: "Layout direction of the score options. Options: 'horizontal' (default), 'vertical'."
+          required: false
+        - name: 'wrapInMobile'
+          ofType: 'boolean'
+          description: 'Controls mobile behaviour. If true, options wrap into multiple lines on small screens. If false, layout switches to vertical on mobile. Default "true".'
+          required: false
   stories:
     - name: 'opinion-scale-1-5'
       url: '/story/components-scoreselect--opinion-scale-5'
     - name: 'net-promoter-score-0-10'
       url: '/story/components-scoreselect--nps'
+    - name: 'vertical'
+      url: '/story/components-scoreselect--vertical'
 ---
 
 # Score Select
@@ -79,6 +89,14 @@ Score Select is used to collect a rating score from users, typically in the form
   className="h-[200px] w-full"
   componentId="score-select-react"
   story="net-promoter-score-0-10"
+/>
+
+### Vertical
+
+<StorybookFrame
+  className="h-[900px] w-full"
+  componentId="score-select-react"
+  story="vertical"
 />
 
 ## Properties

@@ -1,5 +1,19 @@
 # Changelog
 
+## [1.7.1](https://github.com/ogcio/govie-ds/compare/design-theme-builder-v1.7.0...design-theme-builder-v1.7.1) (2025-09-23)
+
+
+### Bug Fixes
+
+* add data table column size for td and th AB[#30959](https://github.com/ogcio/govie-ds/issues/30959) ([#728](https://github.com/ogcio/govie-ds/issues/728)) ([5bd4374](https://github.com/ogcio/govie-ds/commit/5bd4374c7de3bcb9a5f68786e3b21eb03ad3ee7d))
+
+
+### Dependencies
+
+* The following workspace dependencies were updated
+  * dependencies
+    * @ogcio/design-system-tokens bumped to 1.7.1
+
 ## [1.7.0](https://github.com/ogcio/govie-ds/compare/design-theme-builder-v1.6.0...design-theme-builder-v1.7.0) (2025-08-06)
 
 
