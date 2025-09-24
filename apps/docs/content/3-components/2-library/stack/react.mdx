@@ -1,0 +1,154 @@
+---
+title: 'Stack'
+description: 'Stack Component React Component'
+status: 'stable'
+component:
+  id: 'stack-react'
+  link: '/story/layout-stack--default'
+  status: 'stable'
+  properties:
+    - name: 'StackProps'
+      fields:
+        - name: 'direction'
+          ofType: 'string | object'
+          description: 'Defines the direction of the stack. Options: column, row. Can also accept an object with responsive breakpoints (base, xs, sm, md, lg, xl, 2xl).'
+          required: false
+        - name: 'itemsAlignment'
+          ofType: 'string'
+          description: 'Aligns items along the cross-axis. Options: start, center, end, stretch.'
+          required: false
+        - name: 'itemsDistribution'
+          ofType: 'string'
+          description: 'Defines how items are distributed along the main axis. Options: start, center, end, between, around, evenly, stretch.'
+          required: false
+        - name: 'gap'
+          ofType: 'number | object'
+          description: 'Specifies the space between stack items. Can be a number or a responsive object with breakpoints.'
+          required: false
+        - name: 'hasDivider'
+          ofType: 'boolean'
+          description: 'If true, adds a divider between stack items.'
+          required: false
+        - name: 'wrap'
+          ofType: 'boolean'
+          description: 'If true, allows stack items to wrap onto the next line.'
+          required: false
+        - name: 'fixedHeight'
+          ofType: 'string'
+          description: 'Specifies a fixed height for the stack, typically used when you want the stack to have a consistent height.'
+          required: false
+        - name: 'className'
+          ofType: 'string'
+          description: 'Custom class name to apply to the stack container.'
+          required: false
+        - name: 'children'
+          ofType: 'node'
+          description: 'The items to be stacked.'
+          required: true
+  stories:
+    - name: 'default'
+      url: '/story/layout-stack--default'
+    - name: 'with-default-props'
+      url: '/story/layout-stack--with-default-props'
+    - name: 'responsive-direction-with-divider'
+      url: '/story/layout-stack--responsive-direction-with-divider'
+    - name: 'centered-items-with-gap'
+      url: '/story/layout-stack--centered-items-with-gap'
+    - name: 'around-distribution-with-divider'
+      url: '/story/layout-stack--around-distribution-with-divider'
+    - name: 'center-distribution'
+      url: '/story/layout-stack--center-distribution'
+    - name: 'with-components'
+      url: '/story/layout-stack--with-components'
+    - name: 'nested-stack'
+      url: '/story/layout-stack--nested-stack'
+    - name: 'test-items-render-correctly'
+      url: '/story/layout-stack--test-items-render-correctly'
+    - name: 'test-items-render-with-breakpoints'
+      url: '/story/layout-stack--test-items-render-with-breakpoints'
+---
+
+# Stack
+
+Use the Stack component to arrange items vertically or horizontally with consistent spacing, alignment, and responsive layout options. It’s ideal for stacking related elements, like buttons, cards, or form fields, in a flexible and organised way.
+
+<Section current="react">
+<ComponentPreview className="gi-not-prose w-full block">
+  <Stack
+    direction={{ base: 'column', sm: 'row', md: 'column' }}
+    itemsAlignment="center"
+    itemsDistribution="center"
+    gap={{ base: 5 }}
+    fixedHeight="200px"
+  >
+    <div className="gi-bg-gray-300 gi-p-2">Item 1</div>
+    <div className="gi-bg-gray-300 gi-p-2">Item 2</div>
+    <div className="gi-bg-gray-300 gi-p-2">Item 3</div>
+  </Stack>
+</ComponentPreview>
+
+### Default
+
+<StorybookFrame
+  className="h-[200px]"
+  componentId="stack-react"
+  story="default"
+/>
+
+### With Default Props
+
+<StorybookFrame componentId="stack-react" story="with-default-props" />
+
+### Responsive Direction With Divider
+
+<StorybookFrame
+  className="h-[200px]"
+  componentId="stack-react"
+  story="responsive-direction-with-divider"
+/>
+
+### Centered Items With Gap
+
+<StorybookFrame
+  className="h-[200px]"
+  componentId="stack-react"
+  story="centered-items-with-gap"
+/>
+
+### Around Distribution With Divider
+
+<StorybookFrame
+  className="h-[200px]"
+  componentId="stack-react"
+  story="around-distribution-with-divider"
+/>
+
+### Center Distribution
+
+<StorybookFrame
+  className="h-[200px]"
+  componentId="stack-react"
+  story="center-distribution"
+/>
+
+### With Components
+
+<StorybookFrame
+  className="h-[350px]"
+  componentId="stack-react"
+  story="with-components"
+/>
+
+### Nested Stack
+
+<StorybookFrame
+  className="h-[400px]"
+  componentId="stack-react"
+  story="nested-stack"
+/>
+
+## Properties
+
+<ComponentPropertiesTable componentId="stack-react" />
+
+</Section>
