@@ -1,5 +1,25 @@
 # Changelog
 
+## [1.18.0](https://github.com/ogcio/govie-ds/compare/react-lib-v1.17.2...react-lib-v1.18.0) (2025-09-23)
+
+
+### Features
+
+* Score Select sync with Figma AB[#30961](https://github.com/ogcio/govie-ds/issues/30961) ([#729](https://github.com/ogcio/govie-ds/issues/729)) ([15a9ca3](https://github.com/ogcio/govie-ds/commit/15a9ca33be9e6fba73aeb7043d06119e506e9757))
+
+
+### Bug Fixes
+
+* add data table column size for td and th AB[#30959](https://github.com/ogcio/govie-ds/issues/30959) ([#728](https://github.com/ogcio/govie-ds/issues/728)) ([5bd4374](https://github.com/ogcio/govie-ds/commit/5bd4374c7de3bcb9a5f68786e3b21eb03ad3ee7d))
+
+
+### Dependencies
+
+* The following workspace dependencies were updated
+  * devDependencies
+    * @ogcio/design-system-tailwind bumped to 1.15.0
+    * @ogcio/theme-govie bumped to 1.7.1
+
 ## [1.17.2](https://github.com/ogcio/govie-ds/compare/react-lib-v1.17.1...react-lib-v1.17.2) (2025-09-22)
 
 

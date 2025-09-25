@@ -1,6 +1,6 @@
 {
   "name": "@ogcio/theme-builder",
-  "version": "1.7.0",
+  "version": "1.7.1",
   "private": true,
   "main": "dist/index.js",
   "type": "module",
