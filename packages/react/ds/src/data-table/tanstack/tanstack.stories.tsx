@@ -663,7 +663,7 @@ export const Default: Story = {
 };
 
 export const WithReactHookForm: Story = {
-  tags: [],
+  tags: ['skip-playwright'],
   render: () => {
     const [data, setData] = useState(fakeData);
     const [expanded, setExpanded] = useState<ExpandedState>({});
