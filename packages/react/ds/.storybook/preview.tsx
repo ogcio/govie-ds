@@ -1,4 +1,4 @@
-/* eslint-disable import-x/order */
+ 
 import '@ogcio/theme-doete/light.css';
 import '@ogcio/theme-govie/theme.css';
 import {
@@ -16,6 +16,7 @@ import { INITIAL_VIEWPORTS, MINIMAL_VIEWPORTS } from 'storybook/viewport';
 import enTranslations from '../src/i18n/translations/en.json';
 import '../styles.css';
 import './global.css';
+import '../src/browser-support/runtime';
 
 i18n.init({
   lng: 'en',
