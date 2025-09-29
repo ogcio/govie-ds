@@ -283,3 +283,15 @@ a.gi-list-item:hover,
   gi-px-4  
   gi-order-3;
 }
+
+.gi-header-action-list {
+  @apply gi-flex gi-items-center gi-gap-2 md:gi-gap-4 gi-flex-none;
+}
+
+.gi-header-action-desktop-item {
+  @apply gi-hidden lg:gi-block;
+}
+
+.gi-header-action-mobile-item {
+  @apply gi-block lg:gi-hidden;
+}

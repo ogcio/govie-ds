@@ -284,16 +284,15 @@ export const createHeader = (arguments_: HeaderProps) => {
   }
 
   const wrapper2 = document.createElement('div');
-  wrapper2.className =
-    'gi-flex gi-items-center gi-gap-2 md:gi-gap-4 gi-flex-none';
+  wrapper2.className = 'gi-header-action-list';
 
   for (const [index, item] of items.entries()) {
     const menuItem = document.createElement('div');
     menuItem.className = 'gi-block';
     if (item.showItemMode === 'mobile-only') {
-      menuItem.className = 'gi-block lg:gi-hidden';
+      menuItem.className = 'gi-header-action-mobile-item';
     } else if (item.showItemMode === 'desktop-only') {
-      menuItem.className = 'gi-hidden lg:gi-block';
+      menuItem.className = 'gi-header-action-desktop-item';
     }
     wrapper2.append(menuItem);
 

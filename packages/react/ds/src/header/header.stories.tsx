@@ -2,6 +2,7 @@ import type { Meta, StoryObj } from '@storybook/react';
 import { within, expect, userEvent, screen } from 'storybook/test';
 import { Button } from '../button/button.js';
 import { Heading } from '../heading/heading.js';
+import { Icon } from '../icon/icon.js';
 import { Link } from '../link/link.js';
 import { List, ListTypeEnum } from '../list/list.js';
 import { Paragraph } from '../paragraph/paragraph.js';
@@ -106,6 +107,26 @@ const headerProps: HeaderProps = {
     },
   ],
 };
+
+const itemsWithRender: NonNullable<HeaderProps['items']> = [
+  ...(headerProps.items as any),
+  {
+    itemType: 'render',
+    label: 'Custom',
+    render: () => (
+      <div className="gi-flex gi-items-center gi-gap-2 gi-h-full gi-w-full">
+        <a
+          href="/custom"
+          className="gi-inline-flex gi-items-center focus:gi-bg-blue-500 gi-text-md gi-gap-1 gi-border gi-border-transparent
+  gi-border-solid gi-text-white gi-bg-blue-400 gi-rounded gi-p-2"
+          data-testid="RenderLink"
+        >
+          Login with my ID <Icon icon="login" />
+        </a>
+      </div>
+    ),
+  },
+];
 
 export const Default: Story = {
   argTypes: {
@@ -929,6 +950,36 @@ export const HideMenuLabel: Story = {
     const canvas = within(canvasElement);
     const menuLabel = canvas.queryByText('Menu');
     expect(menuLabel).not.toBeInTheDocument();
+  },
+};
+
+export const CustomActionItem: Story = {
+  args: {
+    logo: { href: '/link' },
+    items: itemsWithRender,
+    addDefaultMobileMenu: true,
+    mobileMenuLabel: 'Menu',
+    showMenuLabel: true,
+  },
+  play: async ({ canvasElement }) => {
+    const c = within(canvasElement);
+
+    const slot = c.queryByTestId('SlotContainer-5');
+    await expect(slot).not.toBeVisible();
+
+    const trigger = c.getByTestId('ItemActionTrigger-5');
+    await userEvent.click(trigger);
+
+    const opened = c.getByTestId('SlotContainer-5');
+    await expect(opened).toBeVisible();
+
+    const renderButton = c.getByTestId('RenderButton');
+    await expect(renderButton).toBeInTheDocument();
+
+    await userEvent.click(trigger);
+    await expect(slot).not.toBeVisible();
+
+    await userEvent.click(document.body);
   },
 };
 

@@ -183,6 +183,9 @@ export function Header({
           </Anchor>
         );
       }
+      case 'render': {
+        return item.render();
+      }
       default: {
         // Divider
         return <div className={headerDividerVariants({ appearance })}></div>;
@@ -199,7 +202,7 @@ export function Header({
     return addDefaultMobileMenu
       ? buildDefaultMobileMenu(headerMenuLabel, newItems, secondaryLinks || [])
       : newItems;
-  }, [addDefaultMobileMenu]);
+  }, [addDefaultMobileMenu, headerMenuLabel, items, secondaryLinks]);
 
   return (
     <header
@@ -236,7 +239,7 @@ export function Header({
           >
             {title}
           </div>
-          <div className="gi-flex gi-items-center gi-gap-2 md:gi-gap-4 gi-flex-none">
+          <div className="gi-header-action-list">
             {finalItems?.map((item, index) => {
               const { label, showItemMode = 'desktop-only' } = item;
               return (
@@ -245,8 +248,10 @@ export function Header({
                   data-testid={`header-item-${index}`}
                   className={cn({
                     'gi-block': showItemMode === 'always',
-                    'gi-block lg:gi-hidden': showItemMode === 'mobile-only',
-                    'gi-hidden lg:gi-block': showItemMode === 'desktop-only',
+                    'gi-header-action-mobile-item':
+                      showItemMode === 'mobile-only',
+                    'gi-header-action-desktop-item':
+                      showItemMode === 'desktop-only',
                   })}
                   key={`item-${label}-${index}`}
                 >

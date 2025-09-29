@@ -4,7 +4,12 @@ import { IconId } from '../icon/icon.js';
 
 export type HeaderItemMode = 'always' | 'mobile-only' | 'desktop-only';
 export type HeaderItemAppearance = 'dropdown' | 'drawer';
-export type HeaderItemType = 'slot' | 'divider' | 'link' | 'custom-link';
+export type HeaderItemType =
+  | 'slot'
+  | 'divider'
+  | 'link'
+  | 'custom-link'
+  | 'render';
 export type HeaderAppearance = 'default' | 'light';
 
 type CommonProps = { showItemMode?: HeaderItemMode };
@@ -57,6 +62,19 @@ type ConditionalProps =
       slotAppearance?: never;
       drawerPosition?: never;
       itemType: 'custom-link';
+    }
+  | {
+      label?: string;
+      ariaLabel?: string;
+      icon?: never;
+      component?: never;
+      href?: never;
+      external?: never;
+      onClick?: never;
+      slotAppearance?: never;
+      drawerPosition?: never;
+      render: () => React.ReactNode;
+      itemType: 'render';
     };
 
 export type HeaderItem = CommonProps & ConditionalProps;
