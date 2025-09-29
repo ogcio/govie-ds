@@ -41,3 +41,7 @@
 .gi-data-table-footer-base {
   @apply gi-grow gi-basis-0 gi-min-w-0;
 }
+
+.gi-data-table-footer-select {
+  @apply !gi-min-w-12 !gi-border-color-border-system-neutral-interactive-muted;
+}
