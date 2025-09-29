@@ -16,7 +16,7 @@ const baseTabs = [
     id: 'html',
     title: 'HTML',
     href: '../html/',
-    excludes: ['autocomplete'],
+    excludes: ['autocomplete', 'data-table'],
   },
   {
     id: 'react',

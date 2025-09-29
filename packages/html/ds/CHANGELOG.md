@@ -1,5 +1,29 @@
 # Changelog
 
+## [1.14.0](https://github.com/ogcio/govie-ds/compare/html-lib-v1.13.3...html-lib-v1.14.0) (2025-09-23)
+
+
+### Features
+
+* Score Select sync with Figma AB[#30961](https://github.com/ogcio/govie-ds/issues/30961) ([#729](https://github.com/ogcio/govie-ds/issues/729)) ([15a9ca3](https://github.com/ogcio/govie-ds/commit/15a9ca33be9e6fba73aeb7043d06119e506e9757))
+
+
+### Dependencies
+
+* The following workspace dependencies were updated
+  * devDependencies
+    * @ogcio/design-system-tailwind bumped to 1.15.0
+    * @ogcio/theme-govie bumped to 1.7.1
+
+## [1.13.3](https://github.com/ogcio/govie-ds/compare/html-lib-v1.13.2...html-lib-v1.13.3) (2025-09-22)
+
+
+### Dependencies
+
+* The following workspace dependencies were updated
+  * devDependencies
+    * @ogcio/design-system-tailwind bumped to 1.14.3
+
 ## [1.13.2](https://github.com/ogcio/govie-ds/compare/html-lib-v1.13.1...html-lib-v1.13.2) (2025-09-15)
 
 

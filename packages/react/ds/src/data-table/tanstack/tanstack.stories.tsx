@@ -146,6 +146,522 @@ const booleanTrueFilter: FilterFn<any> = (row, columnId, filterValue) => {
   return row.getValue<boolean>(columnId) === true;
 };
 
+export const Default: Story = {
+  tags: [],
+  render: () => {
+    const [data, setData] = useState(fakeData);
+    const [expanded, setExpanded] = useState<ExpandedState>({});
+    const [globalFilter, setGlobalFilter] = useState('');
+    const [inputGlobalFilter, setInputGlobalFilter] = useState('');
+    const [pagination, setPagination] = useState<PaginationState>({
+      pageIndex: 0,
+      pageSize: 10,
+    });
+    const [columnFilters, setColumnFilters] = useState<any>([]);
+    const [filterOpen, setFilterOpen] = useState(false);
+    const [appliedFilters, setAppliedFilters] = useState<string[]>([]);
+    const [temporarySelectedFilters, setTemporarySelectedFilters] = useState<
+      string[]
+    >([]);
+
+    const triggerRef = useRef<HTMLButtonElement>(null!);
+
+    const filterOptions = [
+      { id: 'pending', label: 'Pending Status', value: 'pending' },
+      { id: 'in-progress', label: 'In Progress Status', value: 'in progress' },
+      { id: 'accepted', label: 'Accepted Status', value: 'accepted' },
+      { id: 'declined', label: 'Declined Status', value: 'declined' },
+      { id: 'active-only', label: 'Active Users Only', value: 'active' },
+    ];
+
+    const debouncedUpdateData = useMemo(
+      () =>
+        debounce((value: string | number) => {
+          setGlobalFilter(String(value));
+        }, 500),
+      [],
+    );
+
+    const handleTemporaryCheckboxChange = (value: string) => {
+      setTemporarySelectedFilters((previous) => {
+        if (previous.includes(value)) {
+          return previous.filter((current) => current !== value);
+        }
+        return [...previous, value];
+      });
+    };
+
+    const columns = useMemo<ColumnDef<Person>[]>(() => {
+      return [
+        {
+          id: 'select',
+          header: ({ table }) => (
+            <InputCheckboxTableCell
+              id="all"
+              value="all"
+              aria-label="Select all rows"
+              checked={
+                table.getIsAllPageRowsSelected() ||
+                table.getIsSomePageRowsSelected()
+              }
+              onChange={table.getToggleAllPageRowsSelectedHandler()}
+              indeterminate={table.getIsSomePageRowsSelected()}
+            />
+          ),
+          cell: ({ row }) => (
+            <InputCheckboxTableCell
+              id={row.id}
+              value={row.id}
+              aria-label={`Select row ${row.id}`}
+              checked={row.getIsSelected()}
+              onChange={row.getToggleSelectedHandler()}
+            />
+          ),
+        },
+        {
+          id: 'expand',
+          enableSorting: false,
+          header: '',
+          cell: ({ row }) => (
+            <TableExpandIcon
+              expanded={(expanded as any)?.[row.id]}
+              onClick={row.toggleExpanded}
+            />
+          ),
+        },
+        {
+          accessorFn: (row) => `${row.firstName} ${row.lastName}`,
+          id: 'fullName',
+          header: 'Full Name',
+          cell: (info) => info.getValue(),
+          filterFn: 'fuzzy',
+        },
+        {
+          accessorKey: 'email',
+          header: 'Email',
+          cell: ({ row, column, getValue }) => (
+            <EditableTableCell
+              value={getValue()}
+              rowIndex={row.index}
+              columnId={column.id}
+              setData={setData}
+              editor={{
+                type: 'text',
+                props: {
+                  'aria-label': 'Email input',
+                  placeholder: 'Email',
+                },
+              }}
+            />
+          ),
+          filterFn: 'includesString',
+        },
+        {
+          accessorKey: 'age',
+          header: 'Age',
+          cell: ({ row, column, getValue }) => (
+            <EditableTableCell
+              value={getValue()}
+              rowIndex={row.index}
+              columnId={column.id}
+              setData={setData}
+              editor={{
+                type: 'text',
+                props: {
+                  'aria-label': 'Age input',
+                  type: 'number',
+                  placeholder: 'Age',
+                },
+              }}
+            />
+          ),
+        },
+        {
+          accessorKey: 'city',
+          header: 'City',
+          cell: ({ row, column, getValue }) => (
+            <EditableTableCell
+              value={getValue()}
+              rowIndex={row.index}
+              columnId={column.id}
+              setData={setData}
+              editor={{
+                type: 'text',
+                props: {
+                  'aria-label': 'City input',
+                  placeholder: 'City',
+                },
+              }}
+            />
+          ),
+          filterFn: 'includesString',
+        },
+        {
+          accessorKey: 'isActive',
+          header: 'Active',
+          cell: ({ row, column, getValue }) => (
+            <EditableTableCell
+              value={getValue()}
+              rowIndex={row.index}
+              columnId={column.id}
+              setData={setData}
+              editor={{
+                type: 'checkbox',
+                props: {
+                  'aria-label': 'Active status',
+                },
+              }}
+            />
+          ),
+          filterFn: booleanTrueFilter,
+        },
+        {
+          accessorKey: 'status',
+          header: 'Status',
+          cell: ({ row, column, getValue }) => (
+            <EditableTableCell
+              value={getValue()}
+              rowIndex={row.index}
+              columnId={column.id}
+              setData={setData}
+              editor={{
+                type: 'select',
+                props: {
+                  'aria-label': 'Select status',
+                  options: [
+                    { value: 'pending', label: 'Pending' },
+                    { value: 'in progress', label: 'In Progress' },
+                    { value: 'accepted', label: 'Accepted' },
+                    { value: 'declined', label: 'Declined' },
+                  ],
+                },
+              }}
+            />
+          ),
+          filterFn: statusInFilter,
+        },
+      ];
+    }, [setData, expanded]);
+
+    const table = useReactTable({
+      data,
+      columns,
+      getRowId: (row) => String(row.id),
+      filterFns: {
+        fuzzy: fuzzyFilter,
+      },
+      state: {
+        globalFilter,
+        columnFilters,
+        pagination,
+        expanded,
+      },
+      onGlobalFilterChange: setGlobalFilter,
+      onColumnFiltersChange: setColumnFilters,
+      globalFilterFn: 'fuzzy',
+      getCoreRowModel: getCoreRowModel(),
+      getFilteredRowModel: getFilteredRowModel(),
+      getSortedRowModel: getSortedRowModel(),
+      getPaginationRowModel: getPaginationRowModel(),
+      onPaginationChange: setPagination,
+      autoResetPageIndex: true,
+      getRowCanExpand: () => true,
+      onExpandedChange: setExpanded,
+    });
+
+    useEffect(() => {
+      return () => {
+        debouncedUpdateData.cancel();
+      };
+    }, [debouncedUpdateData]);
+
+    const statusTypeMap = {
+      pending: TagTypeEnum.Info,
+      accepted: TagTypeEnum.Success,
+      declined: TagTypeEnum.Error,
+      'in progress': TagTypeEnum.Warning,
+    };
+
+    const applyFiltersToTable = (selected: string[]) => {
+      const statusValues: string[] = [];
+      let activeSelected = false;
+
+      for (const value of selected) {
+        if (value === 'active') {
+          activeSelected = true;
+        }
+        if (
+          value === 'pending' ||
+          value === 'in progress' ||
+          value === 'accepted' ||
+          value === 'declined'
+        ) {
+          statusValues.push(value);
+        }
+      }
+
+      const statusColumn = table.getColumn('status');
+      if (statusColumn) {
+        statusColumn.setFilterValue(
+          statusValues.length > 0 ? statusValues : undefined,
+        );
+      }
+
+      const activeColumn = table.getColumn('isActive');
+      if (activeColumn) {
+        activeColumn.setFilterValue(activeSelected === true ? true : undefined);
+      }
+
+      table.setPageIndex(0);
+    };
+
+    const handleApplyFilter = () => {
+      setAppliedFilters([...temporarySelectedFilters]);
+      applyFiltersToTable(temporarySelectedFilters);
+      setFilterOpen(false);
+    };
+
+    const handleClearFilters = () => {
+      setTemporarySelectedFilters([]);
+      setAppliedFilters([]);
+
+      const statusColumn = table.getColumn('status');
+      if (statusColumn) {
+        statusColumn.setFilterValue(undefined);
+      }
+      const activeColumn = table.getColumn('isActive');
+      if (activeColumn) {
+        activeColumn.setFilterValue(undefined);
+      }
+
+      table.setPageIndex(0);
+      setFilterOpen(false);
+    };
+
+    const handleRemoveFilter = (id: string) => {
+      const newApplied = appliedFilters.filter((current) => current !== id);
+      setAppliedFilters(newApplied);
+      setTemporarySelectedFilters(newApplied);
+      applyFiltersToTable(newApplied);
+    };
+
+    const handleFilterOpen = () => {
+      setTemporarySelectedFilters([...appliedFilters]);
+      setFilterOpen(true);
+    };
+
+    const handlePopoverOpenChange = (open: boolean) => {
+      if (open) {
+        setTemporarySelectedFilters([...appliedFilters]);
+      }
+      setFilterOpen(open);
+    };
+
+    const selectedRows = table.getSelectedRowModel().rows;
+    const isSelectedRows = selectedRows.length > 0;
+
+    return (
+      <div className="gi-p-2">
+        {isSelectedRows && (
+          <DataTableSelectedRowsBanner
+            selectedCount={selectedRows.length}
+            actions={
+              <>
+                <Button appearance="light" size="medium" variant="flat">
+                  Delete
+                </Button>
+                <Button
+                  appearance="light"
+                  size="medium"
+                  variant="flat"
+                  onClick={() => table.resetRowSelection()}
+                >
+                  Clear Selection
+                </Button>
+              </>
+            }
+          />
+        )}
+        <DataTableHeader showHeader={!isSelectedRows}>
+          <DataTableHeaderSearch className="gi-max-w-52">
+            <InputText
+              value={inputGlobalFilter}
+              id="data-table-global-filter"
+              onChange={(event) => {
+                setInputGlobalFilter(event.target.value);
+                debouncedUpdateData(event.target.value);
+              }}
+              placeholder="Search all columns..."
+            />
+          </DataTableHeaderSearch>
+
+          <DataTableHeaderFilter>
+            <Button
+              ref={triggerRef}
+              onClick={handleFilterOpen}
+              variant="secondary"
+              appearance="dark"
+            >
+              Filters
+            </Button>
+            <Popover
+              triggerRef={triggerRef}
+              open={filterOpen}
+              onOpenChange={handlePopoverOpenChange}
+              className="!gi-bg-white"
+            >
+              <div className="gi-w-64">
+                <DataTableHeaderFilterTitle>Filters</DataTableHeaderFilterTitle>
+                <DataTableHeaderFilterContent>
+                  <DataTableHeaderFilterContentTitle>
+                    Status & Activity
+                  </DataTableHeaderFilterContentTitle>
+                  {filterOptions.map((option) => (
+                    <InputCheckbox
+                      key={option.id}
+                      id={`checkbox-${option.id}`}
+                      label={option.label}
+                      value={option.id}
+                      checked={temporarySelectedFilters.includes(option.value)}
+                      onChange={() =>
+                        handleTemporaryCheckboxChange(option.value)
+                      }
+                      size="sm"
+                    />
+                  ))}
+                </DataTableHeaderFilterContent>
+                <DataTableHeaderFilterActions>
+                  <Button
+                    onClick={handleClearFilters}
+                    variant="flat"
+                    appearance="dark"
+                  >
+                    Clear
+                  </Button>
+                  <Button
+                    onClick={handleApplyFilter}
+                    variant="secondary"
+                    appearance="dark"
+                  >
+                    Apply
+                  </Button>
+                </DataTableHeaderFilterActions>
+              </div>
+            </Popover>
+          </DataTableHeaderFilter>
+
+          <DataTableHeaderActions>
+            <Button onClick={() => null} variant="secondary">
+              Export table
+            </Button>
+            <Button onClick={() => null} variant="primary">
+              Create new
+            </Button>
+          </DataTableHeaderActions>
+
+          <DataTableHeaderFilterList
+            filters={filterOptions
+              .filter((option) => appliedFilters.includes(option.value))
+              .map((option) => ({ id: option.value, label: option.label }))}
+            onRemove={handleRemoveFilter}
+            onClear={handleClearFilters}
+          />
+        </DataTableHeader>
+
+        <Table
+          layout="auto"
+          rowSize="md"
+          stripped
+          className="gi-mt-4 gi-w-full"
+        >
+          <TableHead>
+            {table.getHeaderGroups().map((headerGroup) => (
+              <TableRow key={headerGroup.id}>
+                {headerGroup.headers.map((header) => (
+                  <TableHeader
+                    id={header.id}
+                    key={header.id}
+                    sorted={header.column.getIsSorted()}
+                    onSort={header.column.getToggleSortingHandler()}
+                  >
+                    {flexRender(
+                      header.column.columnDef.header,
+                      header.getContext(),
+                    )}
+                  </TableHeader>
+                ))}
+              </TableRow>
+            ))}
+          </TableHead>
+          <TableBody>
+            {table.getRowModel().rows.map((row) => (
+              <Fragment key={row.id}>
+                <TableRow>
+                  {row.getVisibleCells().map((cell) => (
+                    <TableData key={cell.id}>
+                      {flexRender(
+                        cell.column.columnDef.cell,
+                        cell.getContext(),
+                      )}
+                    </TableData>
+                  ))}
+                </TableRow>
+                {row.getIsExpanded() === true && (
+                  <TableRow>
+                    <TableDataSlot colSpan={columns.length + 1}>
+                      <div className="gi-text-sm gi-px-24">
+                        <Tag
+                          text={row.original.status?.toLocaleUpperCase()}
+                          type={
+                            statusTypeMap[row.original.status] ??
+                            TagTypeEnum.Info
+                          }
+                        />
+                        <Label size="sm">
+                          You can view additional information about this row.
+                        </Label>
+                        <Link href="#">View more details</Link>
+                      </div>
+                    </TableDataSlot>
+                  </TableRow>
+                )}
+              </Fragment>
+            ))}
+          </TableBody>
+        </Table>
+        <DataTableFooter>
+          <DataTableFooterStart className="gi-space-x-2">
+            <span className="gi-text-sm">Rows per page</span>
+            <SelectNative
+              id="data-table-rows-per-page"
+              aria-label="Select"
+              className="!gi-min-w-12"
+              value={pagination.pageSize}
+              onChange={(event) => {
+                const pageSize = Number(event.target.value);
+                const pageIndex = pagination.pageIndex;
+                setPagination({ pageIndex, pageSize });
+              }}
+            >
+              <SelectItem value="10">10</SelectItem>
+              <SelectItem value="20">20</SelectItem>
+              <SelectItem value="30">30</SelectItem>
+              <SelectItem value="40">40</SelectItem>
+            </SelectNative>
+          </DataTableFooterStart>
+          <DataTableFooterEnd className="gi-w-1/2 gi-text-right">
+            <TablePagination
+              currentPage={pagination.pageIndex + 1}
+              totalPages={table.getPageCount()}
+              onPageChange={(page) => table.setPageIndex(page - 1)}
+            />
+          </DataTableFooterEnd>
+        </DataTableFooter>
+      </div>
+    );
+  },
+};
+
 export const WithReactHookForm: Story = {
   tags: ['skip-playwright'],
   render: () => {
@@ -251,6 +767,9 @@ export const WithReactHookForm: Story = {
           header: 'Full Name',
           cell: (info) => info.getValue(),
           filterFn: 'fuzzy',
+          meta: {
+            size: 'md-fixed',
+          },
         },
         {
           accessorKey: 'email',
@@ -650,6 +1169,7 @@ export const WithReactHookForm: Story = {
               <TableRow key={headerGroup.id}>
                 {headerGroup.headers.map((header) => (
                   <TableHeader
+                    size={(header.column.columnDef.meta as any)?.size}
                     id={header.id}
                     key={header.id}
                     sorted={header.column.getIsSorted()}
@@ -680,7 +1200,7 @@ export const WithReactHookForm: Story = {
                 {row.getIsExpanded() === true && (
                   <TableRow>
                     <TableDataSlot colSpan={columns.length + 1}>
-                      <div className="gi-text-sm">
+                      <div className="gi-text-sm gi-px-24">
                         <Tag
                           text={row.original.status?.toLocaleUpperCase()}
                           type={
