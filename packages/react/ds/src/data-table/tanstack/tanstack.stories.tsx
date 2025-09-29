@@ -1219,35 +1219,35 @@ export const WithReactHookForm: Story = {
               </Fragment>
             ))}
           </TableBody>
+          <DataTableFooter>
+            <DataTableFooterStart>
+              <span className="gi-text-sm gi-pr-2">Rows per page</span>
+              <SelectNative
+                id="data-table-rows-per-page"
+                aria-label="Select"
+                className="!gi-min-w-12 !gi-border-color-border-system-neutral-interactive-muted"
+                value={pagination.pageSize}
+                onChange={(event) => {
+                  const pageSize = Number(event.target.value);
+                  const pageIndex = pagination.pageIndex;
+                  setPagination({ pageIndex, pageSize });
+                }}
+              >
+                <SelectItem value="10">10</SelectItem>
+                <SelectItem value="20">20</SelectItem>
+                <SelectItem value="30">30</SelectItem>
+                <SelectItem value="40">40</SelectItem>
+              </SelectNative>
+            </DataTableFooterStart>
+            <DataTableFooterEnd>
+              <TablePagination
+                currentPage={pagination.pageIndex + 1}
+                totalPages={table.getPageCount()}
+                onPageChange={(page) => table.setPageIndex(page - 1)}
+              />
+            </DataTableFooterEnd>
+          </DataTableFooter>
         </Table>
-        <DataTableFooter>
-          <DataTableFooterStart className="gi-space-x-2">
-            <span className="gi-text-sm">Rows per page</span>
-            <SelectNative
-              id="data-table-rows-per-page"
-              aria-label="Select"
-              className="!gi-min-w-12"
-              value={pagination.pageSize}
-              onChange={(event) => {
-                const pageSize = Number(event.target.value);
-                const pageIndex = pagination.pageIndex;
-                setPagination({ pageIndex, pageSize });
-              }}
-            >
-              <SelectItem value="10">10</SelectItem>
-              <SelectItem value="20">20</SelectItem>
-              <SelectItem value="30">30</SelectItem>
-              <SelectItem value="40">40</SelectItem>
-            </SelectNative>
-          </DataTableFooterStart>
-          <DataTableFooterEnd className="gi-w-1/2 gi-text-right">
-            <TablePagination
-              currentPage={pagination.pageIndex + 1}
-              totalPages={table.getPageCount()}
-              onPageChange={(page) => table.setPageIndex(page - 1)}
-            />
-          </DataTableFooterEnd>
-        </DataTableFooter>
       </div>
     );
   },
@@ -1395,20 +1395,30 @@ export const DataTableFooterBasic: Story = {
   parameters: {
     docs: {
       description: {
-        story:
-          'A basic footer for DataTable, demonstrating how to use the footer components with DataTableFooter, DataTableFooterStart, DataTableFooterCenter, and DataTableFooterEnd.',
+        story: `
+A basic footer for \`DataTable\`, demonstrating how to use the footer components 
+(\`DataTableFooter\`, \`DataTableFooterStart\`, \`DataTableFooterCenter\`, and \`DataTableFooterEnd\`).
+
+By default, \`DataTableFooter\` is meant to be placed **inside a \`<table>\`**, where it renders a semantic 
+\`<tfoot>\` row. This is useful when you want the footer to behave as part of the table structure.
+
+However, you can also render the footer in **standalone mode** by passing the \`standalone\` prop.  
+In standalone mode, the footer renders as a \`<div>\` with the same flexbox layout, which makes it 
+usable outside of tables (for example, in cards, dashboards, or when showcasing controls without 
+a full table context).
+        `,
       },
     },
   },
   render: () => (
-    <DataTableFooter>
+    <DataTableFooter standalone>
       <DataTableFooterStart className="gi-w-1/3">
         <span>Data Table Example</span>
       </DataTableFooterStart>
-      <DataTableFooterCenter className="gi-w-1/3 gi-space-x-2">
-        <span>Rows per page</span>
+      <DataTableFooterCenter>
+        <span className="gi-pr-2">Rows per page</span>
         <SelectNative
-          className="!gi-min-w-12"
+          className="!gi-min-w-12 !gi-border-color-border-system-neutral-interactive-muted"
           id="data-table-footer-rows-per-page"
           aria-label="Select"
         >
@@ -1418,7 +1428,7 @@ export const DataTableFooterBasic: Story = {
           <SelectItem value="40">40</SelectItem>
         </SelectNative>
       </DataTableFooterCenter>
-      <DataTableFooterEnd className="gi-w-1/2 gi-text-right">
+      <DataTableFooterEnd>
         <TablePagination
           currentPage={1}
           totalPages={10}
