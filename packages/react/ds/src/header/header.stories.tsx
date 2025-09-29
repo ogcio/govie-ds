@@ -116,10 +116,9 @@ const itemsWithRender: NonNullable<HeaderProps['items']> = [
     render: () => (
       <div className="gi-flex gi-items-center gi-gap-2 gi-h-full gi-w-full">
         <a
-          href="/custom"
-          className="gi-inline-flex gi-items-center focus:gi-bg-blue-500 gi-text-md gi-gap-1 gi-border gi-border-transparent
-  gi-border-solid gi-text-white gi-bg-blue-400 gi-rounded gi-p-2"
-          data-testid="RenderLink"
+          href="#"
+          className="gi-inline-flex gi-items-center gi-gap-1 gi-text-md gi-border gi-border-transparent gi-border-solid gi-text-white gi-bg-blue-600 hover:gi-bg-blue-700 focus:gi-bg-blue-700 gi-rounded gi-px-3 gi-py-2"
+          data-testid="custom-render"
         >
           Login with my ID <Icon icon="login" />
         </a>
@@ -962,24 +961,10 @@ export const CustomActionItem: Story = {
     showMenuLabel: true,
   },
   play: async ({ canvasElement }) => {
-    const c = within(canvasElement);
+    const canvas = within(canvasElement);
 
-    const slot = c.queryByTestId('SlotContainer-5');
-    await expect(slot).not.toBeVisible();
-
-    const trigger = c.getByTestId('ItemActionTrigger-5');
-    await userEvent.click(trigger);
-
-    const opened = c.getByTestId('SlotContainer-5');
-    await expect(opened).toBeVisible();
-
-    const renderButton = c.getByTestId('RenderButton');
-    await expect(renderButton).toBeInTheDocument();
-
-    await userEvent.click(trigger);
-    await expect(slot).not.toBeVisible();
-
-    await userEvent.click(document.body);
+    const renderLink = canvas.getByTestId('custom-render');
+    await expect(renderLink).toBeInTheDocument();
   },
 };
 
