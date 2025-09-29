@@ -1,6 +1,9 @@
 1280px
+240px
 2xl
 2xs
+320px
+480px
 AccordionItem
 AccordionItemProps
 AccordionProps
@@ -23,6 +26,7 @@ CardProps
 centered-items-with-gap
 center-distribution
 Center
+Checkboxes
 ChipProps
 Color
 Combobox
@@ -31,6 +35,11 @@ ContainerProps
 CookieBannerProps
 Customize
 DOM
+DataTableHeader
+DataTableHeaderActions
+DataTableHeaderFilter
+DataTableHeaderFilterList
+DataTableHeaderSearch
 Deque
 DetailsProps
 Dev
@@ -39,6 +48,7 @@ Dismissible
 DrawerBody
 DropdownItem
 DropdownItemProps
+Dropdowns
 Favicon
 Figma
 Frontend
@@ -117,6 +127,7 @@ TableHeaderProps
 TableProps
 TableRow
 TableRowProps
+Tankstack
 Tanstack
 TextAreaProps
 Textarea
@@ -150,6 +161,7 @@ combobox
 components-scoreselect
 customizable
 customization
+data-table-tanstack
 data-testid
 defaultValue
 digitalisation
@@ -222,6 +234,7 @@ reviewable
 scalable
 selectable
 sm
+sortable
 substeps
 summarisable
 summarizing

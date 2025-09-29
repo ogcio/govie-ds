@@ -214,6 +214,7 @@ export const InputTextTableCell = forwardRef<
       'data-table-cell': true,
       'data-table-cell-error-state': error?.toString(),
     }}
+    autoComplete="off"
     ref={ref}
     type={type}
   />

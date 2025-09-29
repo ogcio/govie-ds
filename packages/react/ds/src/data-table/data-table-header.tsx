@@ -1,16 +1,20 @@
-import React from 'react';
+import React, {
+  Children,
+  HTMLAttributes,
+  isValidElement,
+  useMemo,
+} from 'react';
 import { Button } from '../button/button.js';
 import { Chip } from '../chip/chip.js';
 import { cn } from '../cn.js';
 import { Heading } from '../heading/heading.js';
 import { translate as t } from '../i18n/utility.js';
 
-interface DataTableHeaderTypeProps
-  extends React.HTMLAttributes<HTMLDivElement> {
+interface DataTableHeaderTypeProps extends HTMLAttributes<HTMLDivElement> {
   children: React.ReactNode;
 }
 
-interface DataTableHeaderProps extends React.HTMLAttributes<HTMLDivElement> {
+interface DataTableHeaderProps extends HTMLAttributes<HTMLDivElement> {
   children?: React.ReactNode;
   showHeader?: boolean;
   showFilter?: boolean;
@@ -20,7 +24,7 @@ const isSection = <P,>(
   child: React.ReactNode,
   sectionType: React.ComponentType<P>,
 ): child is React.ReactElement<P> => {
-  return React.isValidElement(child) && child.type === sectionType;
+  return isValidElement(child) && child.type === sectionType;
 };
 
 export const DataTableHeader: React.FC<DataTableHeaderProps> = ({
@@ -30,14 +34,14 @@ export const DataTableHeader: React.FC<DataTableHeaderProps> = ({
   showFilter = true,
   ...props
 }) => {
-  const { search, filter, filterList, actions } = React.useMemo(() => {
+  const { search, filter, filterList, actions } = useMemo(() => {
     let search: React.ReactElement<DataTableHeaderTypeProps> | null = null;
     let filter: React.ReactElement<DataTableHeaderTypeProps> | null = null;
     let filterList: React.ReactElement<DataTableHeaderFilterListProps> | null =
       null;
     let actions: React.ReactElement<DataTableHeaderTypeProps> | null = null;
 
-    React.Children.forEach(children, (child) => {
+    Children.forEach(children, (child) => {
       if (isSection(child, DataTableHeaderSearch)) {
         search = child;
       } else if (isSection(child, DataTableHeaderFilter)) {
