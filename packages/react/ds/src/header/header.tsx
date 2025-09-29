@@ -183,7 +183,7 @@ export function Header({
           </Anchor>
         );
       }
-      case 'render': {
+      case 'custom': {
         return item.render();
       }
       default: {

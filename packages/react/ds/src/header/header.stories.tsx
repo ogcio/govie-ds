@@ -111,7 +111,7 @@ const headerProps: HeaderProps = {
 const itemsWithRender: NonNullable<HeaderProps['items']> = [
   ...(headerProps.items as any),
   {
-    itemType: 'render',
+    itemType: 'custom',
     label: 'Custom',
     render: () => (
       <div className="gi-flex gi-items-center gi-gap-2 gi-h-full gi-w-full">

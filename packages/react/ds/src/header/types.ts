@@ -74,7 +74,7 @@ type ConditionalProps =
       slotAppearance?: never;
       drawerPosition?: never;
       render: () => React.ReactNode;
-      itemType: 'render';
+      itemType: 'custom';
     };
 
 export type HeaderItem = CommonProps & ConditionalProps;
