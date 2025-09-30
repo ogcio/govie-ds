@@ -23,6 +23,8 @@ ButtonGroupItemProps
 ButtonGroupProps
 ButtonProps
 CardProps
+centered-items-with-gap
+center-distribution
 Center
 Checkboxes
 ChipProps
@@ -51,7 +53,10 @@ Favicon
 Figma
 Frontend
 GDPR
+gi-container
+gi-mx-auto
 GovTech
+hasDivider
 HeaderItem
 HeaderProps
 HeadingProps
@@ -147,6 +152,7 @@ blockquotes
 breakpoint
 center
 centered
+Centered
 centralized
 checkboxes
 color
