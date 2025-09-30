@@ -1,0 +1,47 @@
+.gi-data-table-header-filter-list {
+  @apply gi-flex gi-items-center gi-gap-2 gi-flex-wrap;
+}
+
+.gi-data-table-header-filter-actions {
+  @apply gi-flex gi-justify-end gi-gap-2 gi-p-6;
+}
+
+.gi-data-table-header-filter-content-title {
+  @apply gi-py-2 gi-font-medium;
+}
+
+.gi-data-table-header-filter-content {
+  @apply gi-flex gi-flex-col gi-gap-2 gi-px-6;
+}
+
+.gi-data-table-header-filter-title {
+  @apply gi-border-b gi-px-6 gi-py-4;
+}
+
+.gi-data-table-header-filter {
+  @apply gi-flex gi-items-center;
+}
+
+.gi-data-table-header-actions {
+  @apply gi-flex gi-items-center gi-ml-auto gi-gap-4;
+}
+
+.gi-data-table-header-search {
+  @apply gi-flex gi-flex-1;
+}
+
+.gi-data-table-header {
+  @apply gi-flex gi-flex-wrap gi-items-center gi-w-full gi-gap-4 gi-mb-2;
+}
+
+.gi-data-table-footer {
+  @apply gi-flex gi-flex-row gi-w-full gi-items-center;
+}
+
+.gi-data-table-footer-base {
+  @apply gi-grow gi-basis-0 gi-min-w-0;
+}
+
+.gi-data-table-footer-select {
+  @apply !gi-min-w-12 !gi-border-color-border-system-neutral-interactive-muted;
+}
