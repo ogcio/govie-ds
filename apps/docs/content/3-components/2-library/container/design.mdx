@@ -1,0 +1,111 @@
+---
+title: 'Container'
+description: 'Container HTML Component'
+status: 'stable'
+component:
+  id: 'container'
+  status: 'stable'
+---
+
+# Container
+
+Use the Container to center page content and keep readable line lengths across breakpoints. It enforces consistent horizontal alignment and optional vertical insets for sections.
+
+<Section current="design">
+
+<ComponentPreview className="gi-not-prose block w-full">
+  <Container>
+    <p>Container</p>
+  </Container>
+</ComponentPreview>
+
+## Anatomy & Classes
+
+- `gi-layout-container`: Default container with Tailwind’s container behaviour from the `md` breakpoint.
+- `gi-layout-container-max-xl`: Max-width capped at 1280px for optimal readability.
+- `gi-layout-container-full-width`: Full-width layout capped at 2xl (1536px).
+
+## Responsive Inset Values
+
+The Container supports vertical insets to create consistent spacing above and below content.
+
+<table>
+  <thead>
+    <tr>
+      <th>Inset value</th>
+      <th>Desktop</th>
+      <th>Tablet</th>
+      <th>Mobile</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>none</td>
+      <td>
+        <strong>0px</strong>
+      </td>
+      <td>
+        <strong>0px</strong>
+      </td>
+      <td>
+        <strong>0px</strong>
+      </td>
+    </tr>
+    <tr>
+      <td>md</td>
+      <td>
+        <strong>32px</strong>
+      </td>
+      <td>
+        <strong>24px</strong>
+      </td>
+      <td>
+        <strong>16px</strong>
+      </td>
+    </tr>
+    <tr>
+      <td>lg</td>
+      <td>
+        <strong>48px</strong>
+      </td>
+      <td>
+        <strong>36px</strong>
+      </td>
+      <td>
+        <strong>24px</strong>
+      </td>
+    </tr>
+    <tr>
+      <td>xl</td>
+      <td>
+        <strong>64px</strong>
+      </td>
+      <td>
+        <strong>48px</strong>
+      </td>
+      <td>
+        <strong>32px</strong>
+      </td>
+    </tr>
+  </tbody>
+</table>
+
+## Usage
+
+Use the Container when you need a centralized, consistent wrapper for page sections, ensuring content remains readable and aligned.
+
+### Do
+
+- Use it to provide a centralized, consistent layout wrapper for page content.
+- Keep content readable with a capped max-width via **gi-container**.
+- Center sections horizontally using **gi-mx-auto**.
+- Wrap main content areas or any section that should align to the center for a uniform look and feel.
+- Target it in automated tests with **data-testid="govie-container"** to reliably select wrapped content.
+
+### Don't
+
+- Avoid using the container component if you need a flexible or dynamic layout that requires complex positioning, such as grids or flexbox-based structures.
+- This component is not suitable for scenarios where you need to override the maximum width or margins frequently, or when the content needs to be fluid across the full width of the viewport.
+- If your content does not require centralised alignment or if the predefined styles conflict with the specific requirements of your design, consider using a custom container or a different layout component that offers greater flexibility.
+
+</Section>

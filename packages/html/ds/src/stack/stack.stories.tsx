@@ -4,7 +4,6 @@ import { createButton } from '../helpers/buttons';
 import { createLink } from '../helpers/links';
 import { createStack } from '../helpers/stack';
 import { StackProps } from './types';
-
 const meta: Meta<StackProps> = {
   title: 'layout/Stack',
 };
@@ -113,28 +112,70 @@ export const WithComponents: Story = {
 };
 
 export const NestedStack: Story = {
-  render: () =>
-    `
-    <div class="gi-flex gi-w-full gi-justify-start gi-items-start gi-flex-col gi-gap-5 gi-flex-nowrap" role="region" aria-label="stack1" style="height: 100%;">
-    <div class="gi-flex gi-w-full gi-justify-start gi-items-start gi-flex-row gi-flex-nowrap" role="region" aria-label="stack2" data-testid="govie-stack-item-0" style="height: 100%;">
-        <div class="gi-h-[80px] gi-w-full gi-bg-gray-200" data-testid="govie-stack-item-0"></div>
-    </div>
-    <div class="gi-flex gi-w-full gi-justify-start gi-items-start gi-flex-row gi-gap-5 gi-flex-nowrap" role="region" aria-label="stack3" data-testid="govie-stack-item-1" style="height: 100%;">
-        <div class="gi-flex gi-w-full gi-justify-start gi-items-start gi-flex-col gi-gap-5 gi-flex-nowrap" role="region" aria-label="stack31" data-testid="govie-stack-item-0" style="height: 100%;">
-          <div class="gi-h-[200px] gi-w-full gi-bg-gray-200" data-testid="govie-stack-item-0"></div>
-        </div>
-        <div class="gi-flex gi-w-full gi-justify-start gi-items-start gi-flex-row gi-gap-5 gi-flex-wrap" role="region" aria-label="stack32" data-testid="govie-stack-item-1" style="height: 100%;">
-          <div class="gi-h-[50px] gi-w-[100px] gi-bg-gray-200" data-testid="govie-stack-item-0"></div>
-          <div class="gi-h-[50px] gi-w-[100px] gi-bg-gray-200" data-testid="govie-stack-item-1"></div>
-          <div class="gi-h-[50px] gi-w-[100px] gi-bg-gray-200" data-testid="govie-stack-item-2"></div>
-          <div class="gi-h-[50px] gi-w-[100px] gi-bg-gray-200" data-testid="govie-stack-item-3"></div>
-          <div class="gi-h-[50px] gi-w-[100px] gi-bg-gray-200" data-testid="govie-stack-item-4"></div>
-          <div class="gi-h-[50px] gi-w-[100px] gi-bg-gray-200" data-testid="govie-stack-item-5"></div>
-          <div class="gi-h-[50px] gi-w-[100px] gi-bg-gray-200" data-testid="govie-stack-item-6"></div>
-          <div class="gi-h-[50px] gi-w-[100px] gi-bg-gray-200" data-testid="govie-stack-item-7"></div>
-          <div class="gi-h-[50px] gi-w-[100px] gi-bg-gray-200" data-testid="govie-stack-item-8"></div>
-        </div>
-    </div>
-  </div>
-  ` as unknown as React.ReactElement,
+  render: () => {
+    const stack1 = document.createElement('div');
+    stack1.className =
+      'gi-flex gi-w-full gi-justify-start gi-items-start gi-flex-col gi-gap-5 gi-flex-nowrap';
+    stack1.setAttribute('role', 'region');
+    stack1.setAttribute('aria-label', 'stack1');
+    stack1.style.height = '100%';
+
+    const stack2 = document.createElement('div');
+    stack2.className =
+      'gi-flex gi-w-full gi-justify-start gi-items-start gi-flex-row gi-flex-nowrap';
+    stack2.setAttribute('role', 'region');
+    stack2.setAttribute('aria-label', 'stack2');
+    stack2.dataset.testid = 'govie-stack-item-0';
+    stack2.style.height = '100%';
+
+    const item2 = document.createElement('div');
+    item2.className = 'gi-h-[80px] gi-w-full gi-bg-gray-200';
+    item2.dataset.testid = 'govie-stack-item-0';
+
+    stack2.append(item2);
+    stack1.append(stack2);
+
+    const stack3 = document.createElement('div');
+    stack3.className =
+      'gi-flex gi-w-full gi-justify-start gi-items-start gi-flex-row gi-gap-5 gi-flex-nowrap';
+    stack3.setAttribute('role', 'region');
+    stack3.setAttribute('aria-label', 'stack3');
+    stack3.dataset.testid = 'govie-stack-item-1';
+    stack3.style.height = '100%';
+
+    const stack31 = document.createElement('div');
+    stack31.className =
+      'gi-flex gi-w-full gi-justify-start gi-items-start gi-flex-col gi-gap-5 gi-flex-nowrap';
+    stack31.setAttribute('role', 'region');
+    stack31.setAttribute('aria-label', 'stack31');
+    stack31.dataset.testid = 'govie-stack-item-0';
+    stack31.style.height = '100%';
+
+    const item31 = document.createElement('div');
+    item31.className = 'gi-h-[200px] gi-w-full gi-bg-gray-200';
+    item31.dataset.testid = 'govie-stack-item-0';
+
+    stack31.append(item31);
+    stack3.append(stack31);
+
+    const stack32 = document.createElement('div');
+    stack32.className =
+      'gi-flex gi-w-full gi-justify-start gi-items-start gi-flex-row gi-gap-5 gi-flex-wrap';
+    stack32.setAttribute('role', 'region');
+    stack32.setAttribute('aria-label', 'stack32');
+    stack32.dataset.testid = 'govie-stack-item-1';
+    stack32.style.height = '100%';
+
+    for (let index = 0; index < 9; index++) {
+      const box = document.createElement('div');
+      box.className = 'gi-h-[50px] gi-w-[100px] gi-bg-gray-200';
+      box.dataset.testid = `govie-stack-item-${index}`;
+      stack32.append(box);
+    }
+
+    stack3.append(stack32);
+    stack1.append(stack3);
+
+    return parse(stack1.outerHTML) as React.ReactElement;
+  },
 };
