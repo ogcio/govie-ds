@@ -2,6 +2,12 @@ export type TableProps = {
   layout?: 'auto' | 'fixed';
 };
 
+export type TableHeader = {
+  content: string;
+  align?: 'left' | 'center' | 'right';
+  valign?: 'top' | 'middle' | 'bottom';
+};
+
 export type TableFootCell = {
   content: string;
   colSpan?: number;
@@ -12,7 +18,7 @@ export type TableFootCell = {
 
 export type TablePropsExtension = TableProps & {
   captionText?: string;
-  headers?: string[];
+  headers?: (string | TableHeader)[];
   rows?: string[][];
   foot?: TableFootCell[];
   stripped?: boolean;
