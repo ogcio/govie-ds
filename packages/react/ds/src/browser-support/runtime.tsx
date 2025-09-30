@@ -1,94 +1,488 @@
 'use client';
-export function createBrowserSupportAlert(
-  name: string,
-  version: string,
+
+type RenderingEngine = 'chromium' | 'gecko' | 'webkit' | 'unknown';
+
+type BrowserInfo = {
+  brand: string;
+  version: number;
+  engine: RenderingEngine;
+  isMobile: boolean;
+  isIOS: boolean;
+  isAndroid: boolean;
+  isAndroidWebView: boolean;
+  isSamsungInternet: boolean;
+};
+
+type SupportPolicy = {
+  desktop: { chromium: number; gecko: number; webkit: number };
+  mobile: { chromium: number; gecko: number; webkit: number };
+};
+
+type BannerStrings = {
+  title: string;
+  message: (browserName: string, versionText: string) => string;
+  linkText: string;
+  linkHref: string;
+};
+
+const SUPPORT_POLICY: SupportPolicy = {
+  desktop: { chromium: 109, gecko: 128, webkit: 16 },
+  mobile: { chromium: 114, gecko: 128, webkit: 16 },
+};
+
+const DEFAULT_STRINGS: BannerStrings = {
+  title: 'Limited browser support detected',
+  message: (browserName, versionText) =>
+    `${browserName}${versionText} is not officially supported. Please update or switch to a supported browser for the best experience.`,
+  linkText: 'View supported browsers',
+  linkHref:
+    'https://ds.services.gov.ie/get-started/developers/supported-browsers/',
+};
+
+function capitalizeFirst(text: string): string {
+  if (text.length === 0) {
+    return '';
+  }
+  return text.charAt(0).toUpperCase() + text.slice(1);
+}
+
+function getNumberFromMatch(match: RegExpMatchArray | null): number {
+  if (match !== null) {
+    return Number.parseInt(match[1], 10);
+  }
+  return 0;
+}
+
+function normalizeBrand(rawBrand: string): string {
+  if (rawBrand.length === 0) {
+    return 'chrome';
+  }
+  const lower = rawBrand.toLowerCase();
+
+  if (lower.includes('google chrome')) {
+    return 'chrome';
+  }
+  if (lower.includes('edge')) {
+    return 'edge';
+  }
+  if (lower.includes('opera')) {
+    return 'opera';
+  }
+  if (lower.includes('vivaldi')) {
+    return 'vivaldi';
+  }
+  if (lower.includes('brave')) {
+    return 'brave';
+  }
+  if (lower.includes('arc')) {
+    return 'arc';
+  }
+  if (lower.includes('samsung')) {
+    return 'samsung';
+  }
+  if (lower.includes('yabrowser')) {
+    return 'yandex';
+  }
+  if (lower.includes('whale')) {
+    return 'whale';
+  }
+  if (lower.includes('firefox')) {
+    return 'firefox';
+  }
+  if (lower.includes('safari')) {
+    return 'safari';
+  }
+  return lower;
+}
+
+function extractFirefoxMajorVersion(userAgentString: string): number {
+  const iosFirefoxMatch = /FxiOS\/(\d+)/.exec(userAgentString);
+  const desktopFirefoxMatch = /Firefox\/(\d+)/.exec(userAgentString);
+  const iosVersion = getNumberFromMatch(iosFirefoxMatch);
+  if (iosVersion) {
+    return iosVersion;
+  }
+  return getNumberFromMatch(desktopFirefoxMatch);
+}
+
+function extractSafariMajorVersion(
+  userAgentString: string,
+  isIOS: boolean,
+): number {
+  const versionMatch = /Version\/(\d+)/.exec(userAgentString);
+  if (versionMatch) {
+    return getNumberFromMatch(versionMatch);
+  }
+  if (isIOS) {
+    const iosMatch = /OS (\d+)_\d+(_\d+)? like Mac OS X/.exec(userAgentString);
+    const iosMajor = getNumberFromMatch(iosMatch);
+    if (iosMajor > 0) {
+      return iosMajor;
+    }
+  }
+  return 0;
+}
+
+function getChromiumBrandFromMatches(arguments_: any): string {
+  if (arguments_.edgeMatch) {
+    return 'edge';
+  }
+  if (arguments_.operaMatch) {
+    return 'opera';
+  }
+  if (arguments_.hasVivaldi) {
+    return 'vivaldi';
+  }
+  if (arguments_.yandexMatch) {
+    return 'yandex';
+  }
+  if (arguments_.whaleMatch) {
+    return 'whale';
+  }
+  if (arguments_.braveMatch) {
+    return 'brave';
+  }
+  if (arguments_.arcMatch) {
+    return 'arc';
+  }
+  if (arguments_.samsungMatch) {
+    return 'samsung';
+  }
+  return 'chrome';
+}
+
+async function getHighEntropy(
+  initialBrandEntries?: Array<{ brand: string; version: string }>,
+) {
+  try {
+    const navigatorAny = navigator as any;
+    if (
+      typeof navigatorAny.userAgentData?.getHighEntropyValues === 'function'
+    ) {
+      const highEntropyValues =
+        await navigatorAny.userAgentData.getHighEntropyValues([
+          'platform',
+          'platformVersion',
+          'fullVersionList',
+          'model',
+          'architecture',
+          'bitness',
+          'uaFullVersion',
+        ]);
+      const fullVersionList: Array<{ brand: string; version: string }> =
+        (highEntropyValues.fullVersionList as Array<{
+          brand: string;
+          version: string;
+        }>) ??
+        initialBrandEntries ??
+        [];
+      return { ok: true as const, ...highEntropyValues, fullVersionList };
+    }
+  } catch (error) {
+    console.error('[browser-check] failed to get user-agent info', error);
+  }
+  return { ok: false as const };
+}
+
+function getEngineInfoSync(): {
+  engine: RenderingEngine;
+  version: number;
+  brand: string;
+  isSamsung: boolean;
+} {
+  const navigatorAny = globalThis.navigator as any;
+  const userAgentString: string = navigatorAny?.userAgent ?? '';
+
+  const edgeMatch = userAgentString.match(/Edg\/(\d+)/);
+  const operaMatch = userAgentString.match(/OPR\/(\d+)/);
+  const hasVivaldi = /Vivaldi/i.test(userAgentString);
+  const yandexMatch = /YaBrowser\/(\d+)/i.exec(userAgentString);
+  const whaleMatch = /Whale\/(\d+)/i.exec(userAgentString);
+  const braveMatch = /Brave\/(\d+)/i.exec(userAgentString);
+  const arcMatch = /Arc\/(\d+)/i.exec(userAgentString);
+  const samsungMatch = /SamsungBrowser\/(\d+)/i.exec(userAgentString);
+  const chromeMatch = userAgentString.match(/Chrome\/(\d+)/);
+
+  if (
+    edgeMatch ||
+    operaMatch ||
+    hasVivaldi ||
+    yandexMatch ||
+    whaleMatch ||
+    braveMatch ||
+    arcMatch ||
+    samsungMatch ||
+    chromeMatch
+  ) {
+    const chromiumMajorVersion =
+      getNumberFromMatch(chromeMatch) ||
+      getNumberFromMatch(edgeMatch) ||
+      getNumberFromMatch(operaMatch) ||
+      getNumberFromMatch(yandexMatch) ||
+      getNumberFromMatch(whaleMatch) ||
+      getNumberFromMatch(braveMatch) ||
+      getNumberFromMatch(arcMatch) ||
+      0;
+
+    const normalizedBrand = getChromiumBrandFromMatches({
+      edgeMatch,
+      operaMatch,
+      hasVivaldi,
+      yandexMatch,
+      whaleMatch,
+      braveMatch,
+      arcMatch,
+      samsungMatch,
+    });
+
+    return {
+      engine: 'chromium',
+      version: chromiumMajorVersion,
+      brand: normalizedBrand,
+      isSamsung: Boolean(samsungMatch),
+    };
+  }
+
+  const firefoxMajorVersion = extractFirefoxMajorVersion(userAgentString);
+  if (firefoxMajorVersion > 0) {
+    return {
+      engine: 'gecko',
+      version: firefoxMajorVersion,
+      brand: 'firefox',
+      isSamsung: false,
+    };
+  }
+
+  const isSafariLike =
+    /Safari\//.test(userAgentString) &&
+    !/Chrome|Chromium|CriOS|Edg|OPR|SamsungBrowser/i.test(userAgentString);
+
+  if (isSafariLike) {
+    return { engine: 'webkit', version: 0, brand: 'safari', isSamsung: false };
+  }
+
+  return { engine: 'unknown', version: 0, brand: 'unknown', isSamsung: false };
+}
+
+async function getBrowserInfo(): Promise<BrowserInfo> {
+  const userAgentString = globalThis.navigator?.userAgent ?? '';
+  const isAndroid = /Android/i.test(userAgentString);
+  const isIOS = /iP(hone|ad|od)/i.test(userAgentString);
+  const isMobile = isAndroid || isIOS || /Mobile/i.test(userAgentString);
+
+  const syncInfo = getEngineInfoSync();
+  const engine: RenderingEngine = syncInfo.engine;
+  let version = syncInfo.version;
+  let brand = syncInfo.brand;
+
+  if (engine === 'webkit') {
+    version = extractSafariMajorVersion(userAgentString, isIOS);
+  }
+
+  if (engine === 'chromium') {
+    const navigatorAny = navigator as any;
+    const brandEntries: Array<{ brand: string; version: string }> | undefined =
+      navigatorAny.userAgentData?.brands;
+    const highEntropy = await getHighEntropy(brandEntries);
+
+    if (highEntropy.ok) {
+      const chromiumEntry = highEntropy.fullVersionList.find((entry: any) =>
+        /Chromium|Chrome/i.test(entry.brand),
+      );
+
+      if (chromiumEntry?.version) {
+        const major = Number.parseInt(
+          String(chromiumEntry.version).split('.')[0] ?? `${version}`,
+          10,
+        );
+
+        if (Number.isFinite(major)) {
+          version = major;
+        }
+      }
+
+      const nicerBrand = highEntropy.fullVersionList.find((entry: any) =>
+        /(edge|opera|vivaldi|brave|arc|samsung|yabrowser|whale|google chrome)/i.test(
+          entry.brand,
+        ),
+      )?.brand;
+      if (nicerBrand) {
+        brand = normalizeBrand(nicerBrand);
+      }
+    }
+  }
+
+  const isAndroidWebView =
+    isAndroid &&
+    (/; wv\)/i.test(userAgentString) ||
+      /Version\/\d+\.\d+ Chrome\/\d+\.\d+\.\d+\.\d+ Mobile Safari\/\d+\.\d+/i.test(
+        userAgentString,
+      )) &&
+    !/SamsungBrowser/i.test(userAgentString);
+
+  const isSamsungInternet =
+    /SamsungBrowser\/\d+/i.test(userAgentString) || syncInfo.isSamsung;
+
+  const effectiveEngine: RenderingEngine = isIOS ? 'webkit' : engine;
+
+  return {
+    brand,
+    version,
+    engine: effectiveEngine,
+    isMobile,
+    isIOS,
+    isAndroid,
+    isAndroidWebView,
+    isSamsungInternet,
+  };
+}
+
+function getBrowserDisplayName(browserInfo: BrowserInfo): string {
+  if (browserInfo.brand.length > 0 && browserInfo.brand !== 'unknown') {
+    return capitalizeFirst(browserInfo.brand);
+  }
+  if (browserInfo.engine === 'unknown') {
+    return 'Browser';
+  }
+  return capitalizeFirst(browserInfo.engine);
+}
+
+function isVersionSupported(
+  browserInfo: BrowserInfo,
+  policy: SupportPolicy,
+): boolean {
+  const versionTable = browserInfo.isMobile ? policy.mobile : policy.desktop;
+  if (browserInfo.engine === 'chromium') {
+    return browserInfo.version >= versionTable.chromium;
+  }
+  if (browserInfo.engine === 'gecko') {
+    return browserInfo.version >= versionTable.gecko;
+  }
+  if (browserInfo.engine === 'webkit') {
+    return browserInfo.version >= versionTable.webkit;
+  }
+  return false;
+}
+
+const CONTAINER_ELEMENT_ID = 'lib-browser-support-banner-root';
+
+function isBrowserSupported(
+  browserInfo: BrowserInfo,
+  policy: SupportPolicy,
+): boolean {
+  return isVersionSupported(browserInfo, policy);
+}
+
+function createBrowserSupportAlert(
+  browserDisplayName: string,
+  versionText: string,
+  strings: BannerStrings = DEFAULT_STRINGS,
 ): HTMLElement {
-  const root = document.createElement('div');
-  root.className =
+  const rootElement = document.createElement('div');
+  rootElement.className =
     'gi-alert-base-dismissible gi-alert-warning !gi-max-w-full gi-not-prose';
-  root.setAttribute('role', 'alert');
-  root.setAttribute('aria-live', 'assertive');
+  rootElement.setAttribute('role', 'alert');
+  rootElement.setAttribute('aria-live', 'assertive');
 
-  const icon = document.createElement('span');
-  icon.dataset.testid = 'govie-icon';
-  icon.dataset.variant = 'warning';
-  icon.setAttribute('aria-hidden', 'true');
-  icon.setAttribute('role', 'presentation');
-  icon.className = 'gi-block material-symbols-outlined gi-alert-icon';
-  (icon.style as CSSStyleDeclaration).fontSize = '24px';
-  icon.textContent = 'warning';
+  const iconElement = document.createElement('span');
+  iconElement.dataset.testid = 'govie-icon';
+  iconElement.dataset.variant = 'warning';
+  iconElement.setAttribute('aria-hidden', 'true');
+  iconElement.setAttribute('role', 'presentation');
+  iconElement.className = 'gi-block material-symbols-outlined gi-alert-icon';
+  (iconElement.style as CSSStyleDeclaration).fontSize = '24px';
+  iconElement.textContent = 'warning';
 
-  const container = document.createElement('div');
-  container.className = 'gi-alert-container';
+  const containerElement = document.createElement('div');
+  containerElement.className = 'gi-alert-container';
 
-  const title = document.createElement('p');
-  title.className = 'gi-alert-title';
-  title.textContent = 'Limited browser support detected';
+  const titleElement = document.createElement('p');
+  titleElement.className = 'gi-alert-title';
+  titleElement.textContent = strings.title;
 
-  const contentWrap = document.createElement('div');
+  const contentWrapperElement = document.createElement('div');
 
-  const message = document.createElement('div');
-  message.textContent = `${name}${version} is not officially supported. Please update or switch to a supported browser for the best experience.`;
+  const messageId = 'browser-support-message';
+  const messageElement = document.createElement('div');
+  messageElement.id = messageId;
+  messageElement.textContent = strings.message(browserDisplayName, versionText);
 
-  const link = document.createElement('a');
-  link.href =
-    'https://ds.services.gov.ie/get-started/developers/supported-browsers/';
-  link.target = '_blank';
-  link.rel = 'noreferrer';
-  link.className = 'gi-link';
-  link.textContent = 'View supported browsers';
+  const linkElement = document.createElement('a');
+  linkElement.href = strings.linkHref;
+  linkElement.target = '_blank';
+  linkElement.rel = 'noreferrer';
+  linkElement.className = 'gi-link';
+  linkElement.textContent = strings.linkText;
 
-  const dismissButton = document.createElement('button');
-  dismissButton.type = 'button';
-  dismissButton.setAttribute('role', 'button');
-  dismissButton.setAttribute('aria-label', 'Dismiss Alert');
-  dismissButton.className =
+  const dismissButtonElement = document.createElement('button');
+  dismissButtonElement.type = 'button';
+  dismissButtonElement.setAttribute('aria-label', 'Dismiss alert');
+  dismissButtonElement.className =
     'gi-btn gi-btn-flat-dark gi-icon-btn-small gi-alert-dismiss';
 
-  const dismissIcon = document.createElement('span');
-  dismissIcon.setAttribute('role', 'presentation');
-  dismissIcon.className = 'gi-block material-symbols-outlined';
-  (dismissIcon.style as CSSStyleDeclaration).fontSize = '16px';
-  dismissIcon.textContent = 'close';
+  const dismissIconElement = document.createElement('span');
+  dismissIconElement.setAttribute('role', 'presentation');
+  dismissIconElement.className = 'gi-block material-symbols-outlined';
+  (dismissIconElement.style as CSSStyleDeclaration).fontSize = '16px';
+  dismissIconElement.textContent = 'close';
 
-  dismissButton.append(dismissIcon);
+  dismissButtonElement.append(dismissIconElement);
+  contentWrapperElement.append(messageElement);
+  contentWrapperElement.append(linkElement);
+  containerElement.append(titleElement);
+  containerElement.append(contentWrapperElement);
+  rootElement.append(iconElement);
+  rootElement.append(containerElement);
+  rootElement.append(dismissButtonElement);
 
-  contentWrap.append(message);
-  contentWrap.append(link);
-
-  container.append(title);
-  container.append(contentWrap);
-
-  root.append(icon);
-  root.append(container);
-  root.append(dismissButton);
-
-  dismissButton.addEventListener(
+  dismissButtonElement.addEventListener(
     'click',
     () => {
-      const p = root.parentElement;
-      if (p) {
-        p.remove();
-      }
+      const mainContainerElement = document.querySelector(
+        `#${CONTAINER_ELEMENT_ID}`,
+      );
+      mainContainerElement?.remove();
+      rootElement.remove();
+
+      bannerIsMounted = false;
     },
     { once: true },
   );
 
-  return root;
+  rootElement.setAttribute('aria-describedby', messageId);
+  return rootElement;
 }
-type BrowserInfo = {
-  name: string;
-  version: number;
-  os: string;
-  isMobile: boolean;
-};
-
-const minimumVersions = {
-  desktop: { chrome: 109, firefox: 128, safari: 18, edge: 136 },
-  mobile: { chrome: 138, safari: 18, firefox: 140, samsung: 27 },
-};
 
 let bannerIsMounted = false;
+
+function ensureContainerElement(): HTMLElement | null {
+  if (typeof document === 'undefined') {
+    return null;
+  }
+
+  const existingContainerElement = document.querySelector(
+    `#${CONTAINER_ELEMENT_ID}`,
+  ) as HTMLElement | null;
+  if (existingContainerElement !== null) {
+    return existingContainerElement;
+  }
+
+  if (!document.body) {
+    return null;
+  }
+
+  const element = document.createElement('div');
+  element.id = CONTAINER_ELEMENT_ID;
+  element.className = 'gi-w-full gi-p-1 gi-block';
+
+  if (document.body.firstChild) {
+    document.body.insertBefore(element, document.body.firstChild);
+  } else {
+    document.body.append(element);
+  }
+
+  return element;
+}
 
 function onBodyReady(callback: () => void): void {
   if (document.body) {
@@ -99,7 +493,7 @@ function onBodyReady(callback: () => void): void {
   if (document.readyState === 'loading') {
     document.addEventListener(
       'DOMContentLoaded',
-      (): void => {
+      () => {
         callback();
       },
       { once: true },
@@ -120,113 +514,92 @@ function onBodyReady(callback: () => void): void {
   });
 }
 
-function ensureContainerElement(): HTMLElement | null {
-  if (typeof document === 'undefined') {
-    return null;
-  }
-
-  const containerId = '#lib-browser-support-banner-root';
-  const existingContainerElement = document.querySelector(
-    containerId,
-  ) as HTMLElement | null;
-
-  if (existingContainerElement) {
-    return existingContainerElement;
-  }
-
-  if (!document.body) {
-    return null;
-  }
-
-  const containerElement = document.createElement('div');
-  containerElement.id = containerId;
-  containerElement.className = 'gi-w-full gi-p-1 gi-block';
-
-  if (document.body.firstChild) {
-    document.body.insertBefore(containerElement, document.body.firstChild);
-  } else {
-    document.body.append(containerElement);
-  }
-
-  return containerElement;
-}
-
 function renderAlert(browserInfo: BrowserInfo): void {
   const containerElement = ensureContainerElement();
 
+  const tryRender = (): void => {
+    const readyContainerElement = ensureContainerElement();
+    if (!readyContainerElement) {
+      return;
+    }
+
+    const existingAlertElement =
+      readyContainerElement.querySelector('[role="alert"]');
+    if (existingAlertElement) {
+      existingAlertElement.remove();
+    }
+
+    const browserDisplayName = getBrowserDisplayName(browserInfo);
+    const versionText =
+      browserInfo.version > 0 ? ` ${browserInfo.version}` : '';
+
+    const alertElement = createBrowserSupportAlert(
+      browserDisplayName,
+      versionText,
+      DEFAULT_STRINGS,
+    );
+    readyContainerElement.prepend(alertElement);
+    bannerIsMounted = true;
+  };
+
   if (!containerElement) {
     onBodyReady((): void => {
-      const readyContainerElement = ensureContainerElement();
-      if (!readyContainerElement) {
-        return;
-      }
-      renderAlert(browserInfo);
+      tryRender();
     });
     return;
   }
 
-  const browserName = browserInfo.name
-    ? browserInfo.name.charAt(0).toUpperCase() + browserInfo.name.slice(1)
-    : 'Browser';
-
-  const versionText = browserInfo.version > 0 ? ` ${browserInfo.version}` : '';
-
-  const existingAlertElement = containerElement.querySelector('[role="alert"]');
-  if (
-    existingAlertElement &&
-    existingAlertElement.parentElement === containerElement
-  ) {
-    containerElement.remove();
-  }
-
-  const alertElement = createBrowserSupportAlert(browserName, versionText);
-  containerElement.append(alertElement);
+  tryRender();
 }
 
-function showUnsupportedBrowserBanner(browserInfo?: BrowserInfo): void {
+async function showUnsupportedBrowserBanner(
+  optionalBrowserInfo?: BrowserInfo,
+): Promise<void> {
   if (bannerIsMounted) {
     return;
   }
 
-  const resolvedBrowserInfo = browserInfo ?? getBrowserInfo();
-
+  const resolvedBrowserInfo = optionalBrowserInfo ?? (await getBrowserInfo());
   renderAlert(resolvedBrowserInfo);
-  bannerIsMounted = true;
 }
 
-function autoRun(): void {
+function scheduleRender(scheduledFunction: () => void): void {
+  requestAnimationFrame((): void => {
+    scheduledFunction();
+  });
+}
+
+async function autoRun(): Promise<void> {
   if (typeof document === 'undefined') {
     return;
   }
 
-  const browserInfo = getBrowserInfo();
-  const isSupported = isBrowserSupported(browserInfo);
+  const browserInfo = await getBrowserInfo();
+  const isSupported = isBrowserSupported(browserInfo, SUPPORT_POLICY);
 
   if (!isSupported) {
-    const scheduleRender = (): void => {
-      requestAnimationFrame((): void => {
-        showUnsupportedBrowserBanner(browserInfo);
-      });
+    const task = (): void => {
+      void showUnsupportedBrowserBanner(browserInfo);
     };
 
     if (document.readyState === 'complete') {
-      scheduleRender();
+      scheduleRender(task);
     } else if (document.readyState === 'interactive') {
       window.addEventListener(
         'load',
-        (): void => {
-          scheduleRender();
+        () => {
+          scheduleRender(task);
         },
         { once: true },
       );
     } else {
       document.addEventListener(
         'DOMContentLoaded',
-        (): void => {
+        () => {
           window.addEventListener(
             'load',
-            (): void => {
-              scheduleRender();
+            () => {
+              scheduleRender(task);
             },
             { once: true },
           );
@@ -239,141 +612,20 @@ function autoRun(): void {
 
 if (typeof document !== 'undefined') {
   queueMicrotask((): void => {
-    try {
-      autoRun();
-    } catch (error) {
+    autoRun().catch((error: unknown): void => {
       console.error('[browser-check] failed to run', error);
-    }
+    });
   });
 }
 
-function detectOperatingSystem(): string {
-  const userAgent = globalThis.navigator?.userAgent ?? '';
-  if (/Windows/i.test(userAgent)) {
-    return 'Windows';
-  }
-  if (/Mac OS X/i.test(userAgent) && !/iP(hone|ad|od)/i.test(userAgent)) {
-    return 'macOS';
-  }
-  if (/Android/i.test(userAgent)) {
-    return 'Android';
-  }
-  if (/iP(hone|ad|od)/i.test(userAgent)) {
-    return 'iOS';
-  }
-  if (/Linux/i.test(userAgent)) {
-    return 'Linux';
-  }
-  return 'Unknown';
-}
-
-function getBrowserInfo(): BrowserInfo {
-  const userAgent = globalThis.navigator?.userAgent ?? '';
-  const isAndroid = /Android/i.test(userAgent);
-  const isIOS = /iP(hone|ad|od)/i.test(userAgent);
-  const isMobile = isAndroid || isIOS || /Mobile/i.test(userAgent);
-  const edgeMatch = userAgent.match(/Edg\/(\d+)/);
-  if (edgeMatch) {
-    return {
-      name: 'edge',
-      version: Number.parseInt(edgeMatch[1], 10),
-      os: detectOperatingSystem(),
-      isMobile,
-    };
-  }
-  const samsungMatch = userAgent.match(/SamsungBrowser\/(\d+)/);
-  if (samsungMatch) {
-    return {
-      name: 'samsung',
-      version: Number.parseInt(samsungMatch[1], 10),
-      os: detectOperatingSystem(),
-      isMobile: true,
-    };
-  }
-  const chromeIOSMatch = userAgent.match(/CriOS\/(\d+)/);
-  if (chromeIOSMatch) {
-    return {
-      name: 'chrome',
-      version: Number.parseInt(chromeIOSMatch[1], 10),
-      os: 'iOS',
-      isMobile: true,
-    };
-  }
-  const firefoxIOSMatch = userAgent.match(/FxiOS\/(\d+)/);
-  if (firefoxIOSMatch) {
-    return {
-      name: 'firefox',
-      version: Number.parseInt(firefoxIOSMatch[1], 10),
-      os: 'iOS',
-      isMobile: true,
-    };
-  }
-  const isSafari =
-    /Safari\//.test(userAgent) &&
-    !/Chrome|Chromium|CriOS|Edg|OPR|SamsungBrowser/i.test(userAgent);
-  if (isSafari) {
-    const versionMatch = userAgent.match(/Version\/(\d+)/);
-    const version = versionMatch ? Number.parseInt(versionMatch[1], 10) : 0;
-    return {
-      name: 'safari',
-      version,
-      os: isIOS ? 'iOS' : detectOperatingSystem(),
-      isMobile,
-    };
-  }
-  const firefoxMatch = userAgent.match(/Firefox\/(\d+)/);
-  if (firefoxMatch) {
-    return {
-      name: 'firefox',
-      version: Number.parseInt(firefoxMatch[1], 10),
-      os: detectOperatingSystem(),
-      isMobile,
-    };
-  }
-  const chromeMatch = userAgent.match(/Chrome\/(\d+)/);
-  if (chromeMatch) {
-    return {
-      name: 'chrome',
-      version: Number.parseInt(chromeMatch[1], 10),
-      os: detectOperatingSystem(),
-      isMobile,
-    };
-  }
-  return { name: 'unknown', version: 0, os: detectOperatingSystem(), isMobile };
-}
-
-function isBrowserSupported(info?: BrowserInfo): boolean {
-  const browserInfo = info ?? getBrowserInfo();
-  const isMobile = browserInfo.isMobile === true;
-  if (browserInfo.name === 'chrome') {
-    if (isMobile) {
-      return browserInfo.version >= minimumVersions.mobile.chrome;
-    }
-    return browserInfo.version >= minimumVersions.desktop.chrome;
-  }
-  if (browserInfo.name === 'firefox') {
-    if (isMobile) {
-      if (browserInfo.os === 'Android') {
-        return browserInfo.version >= minimumVersions.mobile.firefox;
-      }
-      return browserInfo.version >= minimumVersions.mobile.chrome;
-    }
-    return browserInfo.version >= minimumVersions.desktop.firefox;
-  }
-  if (browserInfo.name === 'safari') {
-    if (isMobile) {
-      return browserInfo.version >= minimumVersions.mobile.safari;
-    }
-    return browserInfo.version >= minimumVersions.desktop.safari;
-  }
-  if (browserInfo.name === 'edge') {
-    if (isMobile) {
-      return false;
-    }
-    return browserInfo.version >= minimumVersions.desktop.edge;
-  }
-  if (browserInfo.name === 'samsung') {
-    return browserInfo.version >= minimumVersions.mobile.samsung;
-  }
-  return false;
-}
+export const __test = {
+  extractFirefoxMajorVersion,
+  extractSafariMajorVersion,
+  normalizeBrand,
+  getEngineInfoSync,
+  getBrowserInfo,
+  isBrowserSupported: (browserInfo: BrowserInfo) => {
+    return isBrowserSupported(browserInfo, SUPPORT_POLICY);
+  },
+  SUPPORT_POLICY,
+};
