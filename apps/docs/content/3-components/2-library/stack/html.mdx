@@ -1,0 +1,110 @@
+---
+title: 'Stack'
+description: 'Stack Component HTML Component'
+status: 'stable'
+component:
+  id: 'stack-html'
+  link: '/story/layout-stack--default'
+  status: 'stable'
+  stories:
+    - name: 'default'
+      url: '/story/layout-stack--default'
+    - name: 'with-default-props'
+      url: '/story/layout-stack--with-default-props'
+    - name: 'responsive-direction-with-divider'
+      url: '/story/layout-stack--responsive-direction-with-divider'
+    - name: 'centered-items-with-gap'
+      url: '/story/layout-stack--centered-items-with-gap'
+    - name: 'around-distribution-with-divider'
+      url: '/story/layout-stack--around-distribution-with-divider'
+    - name: 'center-distribution'
+      url: '/story/layout-stack--center-distribution'
+    - name: 'with-components'
+      url: '/story/layout-stack--with-components'
+    - name: 'nested-stack'
+      url: '/story/layout-stack--nested-stack'
+    - name: 'test-items-render-correctly'
+      url: '/story/layout-stack--test-items-render-correctly'
+    - name: 'test-items-render-with-breakpoints'
+      url: '/story/layout-stack--test-items-render-with-breakpoints'
+---
+
+# Stack
+
+Use the Stack component to arrange items vertically or horizontally with consistent spacing, alignment, and responsive layout options. It’s ideal for stacking related elements, like buttons, cards, or form fields, in a flexible and organised way.
+
+<Section current="html">
+<ComponentPreview className="gi-not-prose w-full block">
+  <Stack
+    direction={{ base: 'column', sm: 'row', md: 'column' }}
+    itemsAlignment="center"
+    itemsDistribution="center"
+    gap={{ base: 5 }}
+    fixedHeight="200px"
+  >
+    <div className="gi-bg-gray-300 gi-p-2">Item 1</div>
+    <div className="gi-bg-gray-300 gi-p-2">Item 2</div>
+    <div className="gi-bg-gray-300 gi-p-2">Item 3</div>
+  </Stack>
+</ComponentPreview>
+
+### Default
+
+<StorybookFrame
+  className="h-[200px]"
+  componentId="stack-html"
+  story="default"
+/>
+
+### With Default Props
+
+<StorybookFrame componentId="stack-html" story="with-default-props" />
+
+### Responsive Direction With Divider
+
+<StorybookFrame
+  className="h-[200px]"
+  componentId="stack-html"
+  story="responsive-direction-with-divider"
+/>
+
+### Centered Items With Gap
+
+<StorybookFrame
+  className="h-[200px]"
+  componentId="stack-html"
+  story="centered-items-with-gap"
+/>
+
+### Around Distribution With Divider
+
+<StorybookFrame
+  className="h-[200px]"
+  componentId="stack-html"
+  story="around-distribution-with-divider"
+/>
+
+### Center Distribution
+
+<StorybookFrame
+  className="h-[200px]"
+  componentId="stack-html"
+  story="center-distribution"
+/>
+
+### With Components
+
+<StorybookFrame
+  className="h-[350px]"
+  componentId="stack-html"
+  story="with-components"
+/>
+
+### Nested Stack
+
+<StorybookFrame
+  className="h-[400px]"
+  componentId="stack-html"
+  story="nested-stack"
+/>
+</Section>
