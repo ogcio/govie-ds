@@ -1,0 +1,92 @@
+---
+title: 'Stack'
+description: 'Stack Component'
+status: 'stable'
+component:
+  id: 'stack'
+  status: 'stable'
+---
+
+# Stack
+
+Use the Stack component to arrange items vertically or horizontally with consistent spacing, alignment, and responsive layout options. It's ideal for stacking related elements, like buttons, cards, or form fields, in a flexible and organised way.
+
+<Section current="design">
+<ComponentPreview className="gi-not-prose w-full block">
+  <Stack
+    direction={{ base: 'column' }}
+    itemsAlignment="center"
+    itemsDistribution="center"
+    gap={{ base: 5 }}
+    fixedHeight="200px"
+  >
+    <div className="gi-bg-gray-300 gi-p-2">Item 1</div>
+    <div className="gi-bg-gray-300 gi-p-2">Item 2</div>
+    <div className="gi-bg-gray-300 gi-p-2">Item 3</div>
+  </Stack>
+</ComponentPreview>
+
+## Variants
+
+### Column
+
+<ComponentPreviewLayout>
+  <ComponentPreviewItem className="h-auto w-full">
+    <Stack
+      direction={{ base: 'column' }}
+      itemsAlignment="center"
+      itemsDistribution="center"
+      gap={{ base: 1 }}
+      fixedHeight="200px"
+    >
+      <div className="gi-bg-gray-300 gi-p-2">Item 1</div>
+      <div className="gi-bg-gray-300 gi-p-2">Item 2</div>
+      <div className="gi-bg-gray-300 gi-p-2">Item 3</div>
+    </Stack>
+  </ComponentPreviewItem>
+</ComponentPreviewLayout>
+
+### Row
+
+<ComponentPreviewLayout>
+  <ComponentPreviewItem className="h-auto w-full">
+    <Stack
+      direction={{ base: 'row' }}
+      itemsAlignment="center"
+      itemsDistribution="center"
+      gap={{ base: 5 }}
+      fixedHeight="200px"
+    >
+      <div className="gi-bg-gray-300 gi-p-2">Item 1</div>
+      <div className="gi-bg-gray-300 gi-p-2">Item 2</div>
+      <div className="gi-bg-gray-300 gi-p-2">Item 3</div>
+    </Stack>
+  </ComponentPreviewItem>
+</ComponentPreviewLayout>
+
+## Usage
+
+Use the Stack component to arrange items in a vertical or horizontal flow with consistent spacing and alignment. It’s best suited for grouping related elements, adapting responsively across breakpoints, while keeping layouts clean and readable.
+
+### Do
+
+- Do keep spacing consistent by using the `gap` prop instead of ad-hoc margins.
+- Do use responsive objects (e.g., `{ base: 'column', md: 'row' }`) for layout changes.
+- Do align and distribute items using `itemsAlignment` and `itemsDistribution` for clarity.
+
+### Don't
+
+- Don't mix manual margins and `gap` for the same items—pick one spacing system.
+- Don't force Stack to behave like a grid when a Grid layout is more appropriate.
+- Avoid adding dividers everywhere; use hasDivider only when it genuinely helps readability.
+
+<ComponentContainer>
+  <Stack direction="row" gap={2} wrap>
+    <div className="gi-w-1/2 gi-bg-gray-200 gi-p-2 gi-mr-4">Card A</div>
+    <div className="gi-w-1/2 gi-bg-gray-200 gi-p-2">Card B</div>
+    <div className="gi-w-1/2 gi-bg-gray-200 gi-p-2 gi-mt-4 gi-mr-4">Card C</div>
+    <div className="gi-w-1/2 gi-bg-gray-200 gi-p-2 gi-mt-4">Card D</div>
+  </Stack>
+</ComponentContainer>
+
+</Section>
