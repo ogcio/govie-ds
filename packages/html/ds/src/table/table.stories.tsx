@@ -33,7 +33,7 @@ const meta: Meta<TablePropsExtension> = {
     docs: {
       description: {
         component:
-          'A flexible table component that supports dynamic rows, headers, and custom captions. Each cell can include various interactive elements like checkboxes, buttons, and tags.',
+          'A flexible table component that supports dynamic rows, headers, and captions. Each cell can include various interactive elements like checkboxes, buttons, and tags.',
       },
     },
   },
