@@ -1,4 +1,4 @@
-import { cloneElement } from 'react';
+import { cloneElement, isValidElement, ReactNode } from 'react';
 import { Breakpoint, BreakpointType } from '../hooks/use-breakpoint.js';
 
 type DisplayPage = number | -1 | -2;
@@ -105,3 +105,20 @@ export const splitAriaProps = (props: any = {}) => {
   }
   return [aria, rest] as const;
 };
+
+export function getSpecialComponentType(child: ReactNode): string | null {
+  if (!isValidElement(child)) {
+    return null;
+  }
+
+  return (
+    (child.type as any)?.componentType || (child.props as any)?.__type || null
+  );
+}
+
+export function isSpecialComponent(
+  child: ReactNode,
+  componentList: Array<string> = [],
+): boolean {
+  return componentList.includes(getSpecialComponentType(child) ?? '');
+}

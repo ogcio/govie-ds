@@ -1,3 +1,4 @@
+import { ButtonHTMLAttributes, PropsWithChildren } from 'react';
 import { LogoProps } from '../common/types.js';
 import { DrawerPosition } from '../drawer/drawer.js';
 import { IconId } from '../icon/icon.js';
@@ -74,15 +75,51 @@ export type SecondaryLink =
     };
 
 export type HeaderProps = {
-  title?: string;
-  logo?: LogoProps;
-  addDefaultMobileMenu?: boolean;
-  mobileMenuLabel?: string;
-  showMenuLabel?: boolean;
-  items?: HeaderItem[];
-  secondaryLinks?: SecondaryLink[];
-  fullWidth?: boolean;
-  showTitleOnMobile?: boolean;
   dataTestid?: string;
   appearance?: HeaderAppearance;
+  fullWidth?: boolean;
+  children?: any;
+
+  /** @deprecated Use <HeaderTitle> instead */
+  title?: string;
+  /** @deprecated Use <HeaderLogo> instead */
+  logo?: LogoProps;
+  /** @deprecated  */
+  addDefaultMobileMenu?: boolean;
+  /** @deprecated */
+  mobileMenuLabel?: string;
+  /** @deprecated */
+  showMenuLabel?: boolean;
+  /** @deprecated Use <HeaderPrimaryMenuItems> with nested Header components instead */
+  items?: HeaderItem[];
+  /** @deprecated Use <HeaderSecondaryMenuItems> instead */
+  secondaryLinks?: SecondaryLink[];
+  /** @deprecated */
+  showTitleOnMobile?: boolean;
+  /** @deprecated */
 };
+
+/* HeaderNext */
+
+export type HeaderLogoProps = PropsWithChildren;
+export type HeaderVariant = 'default' | 'light';
+export type HeaderMenuItemLinkProps = {
+  asChild?: boolean;
+  showItemMode?: HeaderItemMode;
+  icon?: IconId;
+  href?: string;
+  external?: boolean;
+  children: any;
+};
+
+export type HeaderMenuItemButtonProps = PropsWithChildren<
+  Omit<ButtonHTMLAttributes<HTMLButtonElement>, 'children'> & {
+    asChild?: boolean;
+    showItemMode?: HeaderItemMode;
+    icon?: IconId;
+  }
+>;
+
+export type HeaderMenuItemSlotProps = PropsWithChildren;
+export type HeaderMenuSectionContextProps = 'primary' | 'secondary';
+export type HeaderPrimaryMenuProps = PropsWithChildren;

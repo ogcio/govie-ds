@@ -283,3 +283,7 @@ a.gi-list-item:hover,
   gi-px-4  
   gi-order-3;
 }
+
+.gi-header-primary-menu {
+  @apply gi-flex gi-items-center gi-gap-2 md:gi-gap-4 gi-flex-none;
+}
