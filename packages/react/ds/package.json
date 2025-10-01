@@ -1,6 +1,6 @@
 {
   "name": "@ogcio/design-system-react",
-  "version": "1.18.0",
+  "version": "1.18.1",
   "description": "The GOV IE design system React components.",
   "type": "module",
   "main": "dist/index.js",
