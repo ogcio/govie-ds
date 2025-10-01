@@ -236,7 +236,6 @@ selectable
 sm
 sortable
 substeps
-summarisable
 summarizing
 textarea
 themeable

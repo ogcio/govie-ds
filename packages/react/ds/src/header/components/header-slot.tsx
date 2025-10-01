@@ -42,7 +42,7 @@ export const SlotContainer = ({
 
 const DrawerTrigger = ({
   index,
-  item: { component, drawerPosition, icon, label, ariaLabel },
+  item: { component, drawerPosition, icon, label, ariaLabel, closeLabel },
   appearance,
 }: HeaderSlotProps) => {
   const [isOpen, setIsOpen] = useState(false);
@@ -98,7 +98,7 @@ const DrawerTrigger = ({
         onClose={() => setIsOpen(false)}
         position={drawerPosition || 'right'}
         closeButtonLabel={t('header.drawer.close', {
-          defaultValue: 'Close',
+          defaultValue: closeLabel || 'Close',
         })}
         closeButtonSize="large"
       >

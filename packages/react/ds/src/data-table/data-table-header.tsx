@@ -57,13 +57,7 @@ export const DataTableHeader: React.FC<DataTableHeaderProps> = ({
   }, [children]);
 
   return (
-    <div
-      {...props}
-      className={cn(
-        'gi-flex gi-flex-wrap gi-items-center gi-w-full gi-gap-4 gi-mb-2',
-        className,
-      )}
-    >
+    <div {...props} className={cn('gi-data-table-header', className)}>
       {showHeader && (
         <div className="gi-flex gi-flex-1 gi-gap-4 gi-items-center">
           {search}
@@ -85,7 +79,7 @@ export const DataTableHeaderSearch: React.FC<DataTableHeaderTypeProps> = ({
   ...props
 }) => {
   return (
-    <div className={cn('gi-flex gi-flex-1', className)} {...props}>
+    <div className={cn('gi-data-table-header-search', className)} {...props}>
       {children}
     </div>
   );
@@ -97,10 +91,7 @@ export const DataTableHeaderActions: React.FC<DataTableHeaderTypeProps> = ({
   ...props
 }) => {
   return (
-    <div
-      className={cn('gi-flex gi-items-center gi-ml-auto gi-gap-4', className)}
-      {...props}
-    >
+    <div className={cn('gi-data-table-header-actions', className)} {...props}>
       {children}
     </div>
   );
@@ -112,7 +103,7 @@ export const DataTableHeaderFilter: React.FC<DataTableHeaderTypeProps> = ({
   ...props
 }) => {
   return (
-    <div className={cn('gi-flex gi-items-center', className)} {...props}>
+    <div className={cn('gi-data-table-header-filter', className)} {...props}>
       {children}
     </div>
   );
@@ -124,7 +115,10 @@ export const DataTableHeaderFilterTitle: React.FC<DataTableHeaderTypeProps> = ({
   ...props
 }) => {
   return (
-    <div className={cn('gi-border-b gi-px-6 gi-py-4', className)} {...props}>
+    <div
+      className={cn('gi-data-table-header-filter-title', className)}
+      {...props}
+    >
       <Heading as="h6">{children}</Heading>
     </div>
   );
@@ -135,7 +129,7 @@ export const DataTableHeaderFilterContent: React.FC<
 > = ({ children, className, ...props }) => {
   return (
     <div
-      className={cn('gi-flex gi-flex-col gi-gap-2 gi-px-6', className)}
+      className={cn('gi-data-table-header-filter-content', className)}
       {...props}
     >
       {children}
@@ -147,7 +141,10 @@ export const DataTableHeaderFilterContentTitle: React.FC<
   DataTableHeaderTypeProps
 > = ({ children, className, ...props }) => {
   return (
-    <div className={cn('gi-py-2 gi-font-medium', className)} {...props}>
+    <div
+      className={cn('gi-data-table-header-filter-content-title', className)}
+      {...props}
+    >
       {children}
     </div>
   );
@@ -158,7 +155,7 @@ export const DataTableHeaderFilterActions: React.FC<
 > = ({ children, className, ...props }) => {
   return (
     <div
-      className={cn('gi-flex gi-justify-end gi-gap-2 gi-p-6', className)}
+      className={cn('gi-data-table-header-filter-actions', className)}
       {...props}
     >
       {children}
@@ -182,7 +179,7 @@ export const DataTableHeaderFilterList: React.FC<
 
   return (
     <div
-      className={cn('gi-flex gi-items-center gi-gap-2 gi-flex-wrap', className)}
+      className={cn('gi-data-table-header-filter-list', className)}
       {...props}
     >
       <span className="gi-text-sm">

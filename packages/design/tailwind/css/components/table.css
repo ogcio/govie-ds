@@ -50,8 +50,12 @@
   @apply gi-w-100 gi-min-w-100;
 }
 
-.gi-table-tr:last-child .gi-table-td {
+.gi-table tbody tr:last-child .gi-table-td {
   @apply gi-border-b-0;
+}
+
+.gi-table:has(tfoot) tbody tr:last-child .gi-table-td {
+  @apply gi-border-b;
 }
 
 .gi-table-caption-text {
