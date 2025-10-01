@@ -33,12 +33,15 @@ export const createTable = (arguments_: TablePropsExtension) => {
         th.className = 'gi-table-th gi-text-left gi-align-middle';
       } else {
         th.textContent = header.content;
-        const alignClass =
-          header.align === 'center'
-            ? 'gi-text-center'
-            : header.align === 'right'
-              ? 'gi-text-right'
-              : 'gi-text-left';
+        const alignMap = {
+          center: 'gi-text-center',
+          right: 'gi-text-right',
+          left: 'gi-text-left',
+        };
+
+        const alignClass = header.align
+          ? alignMap[header.align]
+          : 'gi-text-left';
         th.className = `gi-table-th ${alignClass} gi-align-middle`;
       }
 
@@ -61,14 +64,18 @@ export const createTable = (arguments_: TablePropsExtension) => {
         const temporaryDiv = document.createElement('div');
         temporaryDiv.innerHTML = cell;
         const dataCell = temporaryDiv.querySelector('.gi-table-data-cell');
-        const align = dataCell?.getAttribute('data-align');
+        const align = dataCell?.getAttribute('data-align') as
+          | 'center'
+          | 'right'
+          | 'left'
+          | null;
+        const alignMap = {
+          center: 'gi-text-center',
+          right: 'gi-text-right',
+          left: 'gi-text-left',
+        };
 
-        const alignClass =
-          align === 'center'
-            ? 'gi-text-center'
-            : align === 'right'
-              ? 'gi-text-right'
-              : 'gi-text-left';
+        const alignClass = alignMap[align ?? 'left'];
         td.className = `gi-table-td ${alignClass} gi-align-middle`;
         tr.append(td);
       }
