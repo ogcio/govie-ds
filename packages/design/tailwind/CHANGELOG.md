@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.15.1](https://github.com/ogcio/govie-ds/compare/design-tailwind-v1.15.0...design-tailwind-v1.15.1) (2025-10-01)
+
+
+### Bug Fixes
+
+* update data table footer and header with styling improvements AB[#31357](https://github.com/ogcio/govie-ds/issues/31357) ([#738](https://github.com/ogcio/govie-ds/issues/738)) ([5af5050](https://github.com/ogcio/govie-ds/commit/5af5050c39836a72f8ffdc481553b60711e4eebb))
+
 ## [1.15.0](https://github.com/ogcio/govie-ds/compare/design-tailwind-v1.14.3...design-tailwind-v1.15.0) (2025-09-23)
 
 
