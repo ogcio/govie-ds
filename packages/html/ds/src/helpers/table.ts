@@ -36,9 +36,9 @@ export const createTable = (arguments_: TablePropsExtension) => {
         const alignClass =
           header.align === 'center'
             ? 'gi-text-center'
-            : (header.align === 'right'
+            : header.align === 'right'
               ? 'gi-text-right'
-              : 'gi-text-left');
+              : 'gi-text-left';
         th.className = `gi-table-th ${alignClass} gi-align-middle`;
       }
 
@@ -66,9 +66,9 @@ export const createTable = (arguments_: TablePropsExtension) => {
         const alignClass =
           align === 'center'
             ? 'gi-text-center'
-            : (align === 'right'
+            : align === 'right'
               ? 'gi-text-right'
-              : 'gi-text-left');
+              : 'gi-text-left';
         td.className = `gi-table-td ${alignClass} gi-align-middle`;
         tr.append(td);
       }
