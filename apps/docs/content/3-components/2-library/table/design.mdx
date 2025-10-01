@@ -1,0 +1,121 @@
+---
+title: 'Table'
+description: 'Table Design Guidelines'
+status: 'stable'
+component:
+  id: 'table-design'
+  status: 'stable'
+---
+
+# Table
+
+This section provides guidelines and best practices for using the Table component effectively, including usage examples, dos and don'ts, and accessibility considerations.
+
+<Section current="design">
+
+<ComponentPreview>
+  <ComponentContainer>
+    <Table>
+      <Caption>Table Caption</Caption>
+      <TableHead>
+        <TableRow>
+          <TableHeader>Name</TableHeader>
+          <TableHeader>Email</TableHeader>
+          <TableHeader>Role</TableHeader>
+        </TableRow>
+      </TableHead>
+      <TableBody>
+        <TableRow>
+          <TableData>John Doe</TableData>
+          <TableData>john.doe@example.com</TableData>
+          <TableData>Admin</TableData>
+        </TableRow>
+        <TableRow>
+          <TableData>Jane Smith</TableData>
+          <TableData>jane.smith@example.com</TableData>
+          <TableData>User</TableData>
+        </TableRow>
+        <TableRow>
+          <TableData>Sam Lee</TableData>
+          <TableData>sam.lee@example.com</TableData>
+          <TableData>Editor</TableData>
+        </TableRow>
+      </TableBody>
+    </Table>
+  </ComponentContainer>
+</ComponentPreview>
+
+## Usage
+
+<ComponentContainer>
+  <Table>
+    <TableHead>
+      <TableRow>
+        <TableHeader>Product</TableHeader>
+        <TableHeader>Price</TableHeader>
+        <TableHeader>Status</TableHeader>
+      </TableRow>
+    </TableHead>
+    <TableBody>
+      <TableRow>
+        <TableData>Laptop</TableData>
+        <TableData>$1200</TableData>
+        <TableData>In Stock</TableData>
+      </TableRow>
+      <TableRow>
+        <TableData>Headphones</TableData>
+        <TableData>$150</TableData>
+        <TableData>Backorder</TableData>
+      </TableRow>
+    </TableBody>
+  </Table>
+</ComponentContainer>
+
+### Do
+
+- Use clear, concise headers that describe the column content.
+- Align numeric data to the right for readability.
+- Keep table content consistent in format (e.g., same date or currency style).
+- Provide captions for accessibility and context.
+
+### Don’t
+
+- Don’t use tables for layout purposes.
+- Don’t mix unrelated data types in the same column.
+- Don’t leave columns or rows empty for spacing purposes.
+- Don’t use overly long text without wrapping; it can break the table layout.
+- Don’t use very small font sizes to fit data—maintain readability.
+- Don’t overload a table with too many columns.
+
+<ComponentContainer>
+  <Table>
+    <TableHead>
+      <TableRow>
+        <TableHeader>Product Name</TableHeader>
+        <TableHeader>SKU Number</TableHeader>
+        <TableHeader>Supplier</TableHeader>
+        <TableHeader>
+          <></>
+        </TableHeader>
+        <TableHeader>Warehouse Location</TableHeader>
+        <TableHeader>Restock Date</TableHeader>
+        <TableHeader>Notes</TableHeader>
+      </TableRow>
+    </TableHead>
+    <TableBody>
+      <TableRow>
+        <TableData>Laptop X1000</TableData>
+        <TableData>SKU-12345</TableData>
+        <TableData>Supplier A</TableData>
+        <TableData>
+          <></>
+        </TableData>
+        <TableData>Warehouse 7</TableData>
+        <TableData>2025-10-01</TableData>
+        <TableData>Urgent restock</TableData>
+      </TableRow>
+    </TableBody>
+  </Table>
+</ComponentContainer>
+
+</Section>

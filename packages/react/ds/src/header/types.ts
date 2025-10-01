@@ -18,6 +18,7 @@ type ConditionalProps =
   | {
       label?: string;
       ariaLabel?: string;
+      closeLabel?: string;
       icon?: IconId;
       component: React.ReactNode;
       href?: never;
@@ -30,6 +31,7 @@ type ConditionalProps =
   | {
       label?: never;
       ariaLabel?: string;
+      closeLabel?: string;
       icon?: never;
       component?: never;
       href?: never;
@@ -42,6 +44,7 @@ type ConditionalProps =
   | {
       label?: string;
       ariaLabel?: string;
+      closeLabel?: string;
       icon?: IconId;
       component?: never;
       href?: string;
@@ -54,6 +57,7 @@ type ConditionalProps =
   | {
       label?: never;
       ariaLabel?: string;
+      closeLabel?: string;
       icon?: never;
       component: React.ReactNode;
       href?: never;

@@ -1,0 +1,144 @@
+---
+title: 'Table'
+description: 'Table React Component'
+status: 'stable'
+component:
+  id: 'table-react'
+  link: '/story/components-table--default'
+  status: 'stable'
+  properties:
+    - name: TableProps
+      fields:
+        - name: 'children'
+          ofType: 'node'
+          description: 'Nodes representing the full content of the table, including TableHead, TableBody, and optionally TableFoot.'
+          required: true
+    - name: TableHeadProps
+      fields:
+        - name: 'children'
+          ofType: 'node'
+          description: 'A set of TableRow components containing header cells (TableHeader).'
+          required: true
+    - name: TableBodyProps
+      fields:
+        - name: 'children'
+          ofType: 'node'
+          description: 'A set of TableRow components containing data cells (TableData).'
+          required: true
+    - name: TableFootProps
+      fields:
+        - name: 'children'
+          ofType: 'node'
+          description: 'A TableRow (or multiple) used for summarizing data or adding footer content.'
+          required: true
+    - name: TableRowProps
+      fields:
+        - name: 'children'
+          ofType: 'node'
+          description: 'A collection of TableHeader or TableData elements within a row.'
+          required: true
+    - name: TableHeaderProps
+      fields:
+        - name: 'children'
+          ofType: 'node'
+          description: 'Content of the table header cell.'
+          required: true
+        - name: 'align'
+          ofType: 'string'
+          description: 'Controls horizontal alignment. Accepts: left, center, right.'
+          required: false
+    - name: TableDataProps
+      fields:
+        - name: 'children'
+          ofType: 'node'
+          description: 'Content of the table data cell.'
+          required: true
+        - name: 'align'
+          ofType: 'string'
+          description: 'Controls horizontal alignment. Accepts: left, center, right.'
+          required: false
+        - name: 'colSpan'
+          ofType: 'number'
+          description: 'Number of columns the cell should span across.'
+          required: false
+  stories:
+    - name: 'default'
+      url: '/story/components-table--default'
+    - name: 'with-no-borders'
+      url: '/story/components-table--basic-table-with-no-border'
+    - name: 'with-stripped'
+      url: '/story/components-table--with-stripped'
+    - name: 'with-footer'
+      url: '/story/components-table--table-with-footer'
+---
+
+# Table
+
+Table React components are used to display and organize data in rows and columns, making it easier for users to read and analyze information.
+
+<Section current="react">
+<ComponentPreview>
+  <ComponentContainer>
+    <Table>
+    <Caption>Table Caption</Caption>
+    <TableHead>
+      <TableRow>
+        <TableHeader>Name</TableHeader>
+        <TableHeader>Email</TableHeader>
+        <TableHeader>Role</TableHeader>
+      </TableRow>
+    </TableHead>
+    <TableBody>
+      <TableRow>
+        <TableData>John Doe</TableData>
+        <TableData>john.doe@example.com</TableData>
+        <TableData>Admin</TableData>
+      </TableRow>
+      <TableRow>
+        <TableData>Jane Smith</TableData>
+        <TableData>jane.smith@example.com</TableData>
+        <TableData>User</TableData>
+      </TableRow>
+      <TableRow>
+        <TableData>Sam Lee</TableData>
+        <TableData>sam.lee@example.com</TableData>
+        <TableData>Editor</TableData>
+      </TableRow>
+    </TableBody>
+  </Table>
+  </ComponentContainer>
+</ComponentPreview>
+
+### Default
+
+<StorybookFrame className="h-96" componentId="table-react" story="default" />
+
+### With No Borders
+
+<StorybookFrame
+  className="h-96"
+  componentId="table-react"
+  story="with-no-borders"
+/>
+
+### With Stripped
+
+<StorybookFrame
+  className="h-96"
+  componentId="table-react"
+  story="with-stripped"
+/>
+
+### With Footer
+
+<StorybookFrame
+  className="h-96"
+  componentId="table-react"
+  story="with-footer"
+/>
+
+## Properties
+
+<ComponentPropertiesTable componentId="table-react" />
+
+</Section>
