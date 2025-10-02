@@ -10,7 +10,8 @@
   },
   "exports": {
     ".": "./dist/index.js",
-    "./styles.css": "./dist/styles.css"
+    "./styles.css": "./dist/styles.css",
+    "./browser-check": "./dist/browser-support/runtime.js"
   },
   "scripts": {
     "format": "prettier 'src/**/*.{ts,tsx}' --write",
@@ -31,7 +32,8 @@
   },
   "prettier": "@ogcio/design-system-prettier-config",
   "sideEffects": [
-    "**/*.css"
+    "**/*.css",
+    "./dist/browser-support/runtime.js"
   ],
   "files": [
     "dist",
