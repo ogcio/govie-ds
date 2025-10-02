@@ -18,24 +18,24 @@ export const createIcon = (iconProps: IconProps) => {
     (iconProps.size as IconSizeKey) ?? IconSize.MEDIUM;
 
   switch (iconSize) {
-  case 'sm': {
-    className.push(`gi-text-[${fontSize.sm}]`);
-  
-  break;
-  }
-  case 'lg': {
-    className.push(`gi-text-[${fontSize.lg}]`);
-  
-  break;
-  }
-  case 'xl': {
-    className.push(`gi-text-[${fontSize.xl}]`);
-  
-  break;
-  }
-  default: {
-    className.push(`gi-text-[${fontSize.md}]`);
-  }
+    case 'sm': {
+      className.push(`gi-text-[${fontSize.sm}]`);
+
+      break;
+    }
+    case 'lg': {
+      className.push(`gi-text-[${fontSize.lg}]`);
+
+      break;
+    }
+    case 'xl': {
+      className.push(`gi-text-[${fontSize.xl}]`);
+
+      break;
+    }
+    default: {
+      className.push(`gi-text-[${fontSize.md}]`);
+    }
   }
 
   if (!iconProps.inline) {
