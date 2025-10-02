@@ -23,5 +23,5 @@ export const Header = (props: HeaderProps) => {
     return <HeaderLegacy {...props} />;
   }
 
-  return <HeaderNext>{props.children}</HeaderNext>;
+  return <HeaderNext {...props} />;
 };
