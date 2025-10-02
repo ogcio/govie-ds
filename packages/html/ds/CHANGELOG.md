@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.14.2](https://github.com/ogcio/govie-ds/compare/html-lib-v1.14.1...html-lib-v1.14.2) (2025-10-02)
+
+
+### Bug Fixes
+
+* update align column story and table instance AB[#31503](https://github.com/ogcio/govie-ds/issues/31503) ([#744](https://github.com/ogcio/govie-ds/issues/744)) ([18a827c](https://github.com/ogcio/govie-ds/commit/18a827c445481350c9cccd8523702ebf19ae06f3))
+
 ## [1.14.1](https://github.com/ogcio/govie-ds/compare/html-lib-v1.14.0...html-lib-v1.14.1) (2025-10-01)
 
 

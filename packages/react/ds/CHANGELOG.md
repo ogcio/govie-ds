@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.19.0](https://github.com/ogcio/govie-ds/compare/react-lib-v1.18.1...react-lib-v1.19.0) (2025-10-02)
+
+
+### Features
+
+* Browser check AB[#29609](https://github.com/ogcio/govie-ds/issues/29609) ([#737](https://github.com/ogcio/govie-ds/issues/737)) ([11d8ae3](https://github.com/ogcio/govie-ds/commit/11d8ae3d2074357c014b1d64b2ba5b56df5a5cb6))
+
 ## [1.18.1](https://github.com/ogcio/govie-ds/compare/react-lib-v1.18.0...react-lib-v1.18.1) (2025-10-01)
 
 
