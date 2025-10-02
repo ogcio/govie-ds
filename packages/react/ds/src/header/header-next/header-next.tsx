@@ -1,10 +1,7 @@
-// path: src/components/header-next/header-next.tsx
 'use client';
 
-import React, {
+import {
   Children,
-  cloneElement,
-  isValidElement,
   forwardRef,
   type ComponentPropsWithoutRef,
   type ReactElement,
@@ -85,9 +82,7 @@ export const HeaderNext = forwardRef<HTMLElement, HeaderNextProps>(
               {headerPrimaryMenu}
             </div>
           </Container>
-
           {headerSecondaryMenu}
-
           {restChildren}
         </header>
       </HeaderProvider>
