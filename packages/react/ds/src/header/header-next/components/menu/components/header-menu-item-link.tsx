@@ -1,5 +1,6 @@
 import { Slot } from '@radix-ui/react-slot';
-import { Icon, IconId } from '../../../../../icon/icon.js';
+import { forwardRef } from 'react';
+import { Icon } from '../../../../../icon/icon.js';
 import Anchor from '../../../../../primitives/anchor.js';
 import { HeaderMenuItemLinkProps } from '../../../../types.js';
 import {
@@ -9,57 +10,80 @@ import {
 import { useHeaderContext } from '../../../header-context.js';
 import { useHeaderMenuSection } from '../header-menu-context.js';
 
-export const HeaderMenuItemLink = ({
-  asChild,
-  icon,
-  href,
-  external,
-  children,
-  ...props
-}: HeaderMenuItemLinkProps) => {
-  const context = useHeaderContext();
-  const section = useHeaderMenuSection();
+export const HeaderMenuItemLink = forwardRef<
+  HTMLAnchorElement,
+  HeaderMenuItemLinkProps
+>(
+  (
+    {
+      asChild,
+      icon,
+      href,
+      external,
+      children,
+      className,
+      target,
+      rel,
+      ...props
+    },
+    ref,
+  ) => {
+    const context = useHeaderContext();
+    const section = useHeaderMenuSection();
 
-  if (!section) {
-    throw new Error(
-      'HeaderMenuItemLink must be used within a HeaderSecondaryMenu or HeaderPrimaryMenu',
-    );
-  }
-  const appearance = context.variant;
-  const Component = asChild ? Slot : Anchor;
+    if (!section) {
+      throw new Error(
+        'HeaderMenuItemLink must be used within a HeaderSecondaryMenu or HeaderPrimaryMenu',
+      );
+    }
 
-  switch (section) {
-    case 'secondary': {
-      return (
-        <li>
-          <Component
+    const appearance = context.variant;
+    const AnchorComponent = asChild ? Slot : Anchor;
+    const finalTarget = target ?? (external ? '_blank' : undefined);
+
+    switch (section) {
+      case 'primary': {
+        return (
+          <AnchorComponent
+            ref={ref}
+            rel={rel}
             href={href}
-            className={headerSecondaryLinkItemVariants({ appearance })}
+            target={finalTarget}
+            className={headerToolItemVariants({ appearance, className })}
             {...props}
           >
             {children}
-          </Component>
-        </li>
-      );
+            {icon ? <Icon icon={icon} aria-hidden="true" /> : null}
+          </AnchorComponent>
+        );
+      }
+      case 'secondary': {
+        return (
+          <li>
+            <AnchorComponent
+              ref={ref}
+              rel={rel}
+              href={href}
+              target={finalTarget}
+              className={headerSecondaryLinkItemVariants({
+                appearance,
+                className,
+              })}
+              {...props}
+            >
+              {children}
+            </AnchorComponent>
+          </li>
+        );
+      }
+      default: {
+        return null;
+      }
     }
-    case 'primary': {
-      return (
-        <Component
-          className={headerToolItemVariants({ appearance })}
-          href={href}
-          /*onClick={item.onClick}*/
-          external={external}
-        >
-          {children}
-          {icon && <Icon icon={icon} />}
-        </Component>
-      );
-    }
-    default: {
-      return null;
-    }
-  }
-};
+  },
+);
+
+HeaderMenuItemLink.displayName = 'HeaderMenuItemLink';
 
 Object.defineProperty(HeaderMenuItemLink, 'componentType', {
   value: 'HeaderMenuItemLink',

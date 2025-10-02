@@ -12,7 +12,7 @@ import { Header } from './header.js';
 import { HeaderProps } from './types.js';
 
 const meta = {
-  title: 'layout/Header',
+  title: 'layout/Header/Deprecated',
   component: Header,
 } satisfies Meta<typeof Header>;
 

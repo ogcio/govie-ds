@@ -106,6 +106,7 @@
   gi-border-solid
   gi-border-transparent
   gi-flex gi-rounded-sm
+  focus:gi-shadow-none
   
   
   gi-p-2

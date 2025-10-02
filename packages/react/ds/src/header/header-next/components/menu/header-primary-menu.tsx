@@ -1,70 +1,89 @@
-import { Children } from 'react';
+import {
+  Children,
+  forwardRef,
+  PropsWithChildren,
+  type ComponentPropsWithoutRef,
+} from 'react';
 import { cn } from '../../../../cn.js';
 import { isSpecialComponent } from '../../../../utils/utilities.js';
-import { HeaderPrimaryMenuProps } from '../../../types.js';
+import { type HeaderItemMode } from '../../../types.js';
 import { useHeaderContext } from '../../header-context.js';
 import { HeaderMenuSectionProvider } from './header-menu-context.js';
 
-export const HeaderPrimaryMenu = ({
-  children,
-  ...props
-}: HeaderPrimaryMenuProps) => {
-  const headerContext = useHeaderContext();
+export type HeaderPrimaryMenuProps = PropsWithChildren<
+  ComponentPropsWithoutRef<'nav'>
+>;
 
-  if (!headerContext) {
-    throw new Error('HeaderPrimaryMenu must be used within a Header');
-  }
+export const HeaderPrimaryMenu = forwardRef<
+  HTMLElement,
+  HeaderPrimaryMenuProps
+>(
+  (
+    {
+      children,
+      className,
+      'aria-label': ariaLabel = 'Primary navigation',
+      ...rest
+    },
+    ref,
+  ) => {
+    const headerContext = useHeaderContext();
 
-  const allChildren = Children.toArray(children);
-  const allowedComponents = allChildren.filter((child) =>
-    isSpecialComponent(child, [
-      'HeaderMenuItemLink',
-      'HeaderMenuItemButton',
-      'HeaderMenuItemSeparator',
-    ]),
-  );
+    if (!headerContext) {
+      throw new Error('HeaderPrimaryMenu must be used within a Header');
+    }
 
-  return (
-    <HeaderMenuSectionProvider section="primary">
-      <div className="gi-header-primary-menu">
-        {allowedComponents.map((component: any, index) => {
-          const { showItemMode = 'desktop-only' } = component?.props || {};
-          return (
-            <div
-              className={cn({
-                'gi-block': showItemMode === 'always',
-                'gi-block lg:gi-hidden': showItemMode === 'mobile-only',
-                'gi-hidden lg:gi-block': showItemMode === 'desktop-only',
-              })}
-              key={`item-${index}`}
-              {...props}
-            >
-              {component}
-            </div>
-          );
-        })}
+    const allChildren = Children.toArray(children);
+    const allowedChildren = allChildren.filter((child) =>
+      isSpecialComponent(child, [
+        'HeaderMenuItemLink',
+        'HeaderMenuItemButton',
+        'HeaderMenuItemSeparator',
+      ]),
+    );
 
-        {/*finalItems?.map((item, index) => {
-          const { label, showItemMode = 'desktop-only' } = item;
-          return (
-            <div
-              aria-label={item.ariaLabel}
-              data-testid={`header-item-${index}`}
-              className={cn({
-                'gi-block': showItemMode === 'always',
-                'gi-block lg:gi-hidden': showItemMode === 'mobile-only',
-                'gi-hidden lg:gi-block': showItemMode === 'desktop-only',
-              })}
-              key={`item-${label}-${index}`}
-            >
-              <ItemTypeComponent item={item} index={index} />
-            </div>
-          );
-        })*/}
-      </div>
-    </HeaderMenuSectionProvider>
-  );
-};
+    if (allowedChildren.length === 0) {
+      return null;
+    }
+
+    return (
+      <HeaderMenuSectionProvider section="primary">
+        <nav
+          ref={ref}
+          role="navigation"
+          aria-label={ariaLabel}
+          data-section="primary"
+          className={cn('gi-header-primary-menu', className)}
+          {...rest}
+        >
+          <ul className="gi-flex gi-items-center gi-gap-2">
+            {allowedChildren.map((component, index) => {
+              const showItemMode: HeaderItemMode =
+                (component as any)?.props?.showItemMode ?? 'desktop-only';
+
+              return (
+                <li
+                  key={`primary-item-${index}`}
+                  className={cn({
+                    'gi-block': showItemMode === 'always',
+                    'gi-block lg:gi-hidden': showItemMode === 'mobile-only',
+                    'gi-hidden lg:gi-block': showItemMode === 'desktop-only',
+                  })}
+                  data-visibility={showItemMode}
+                >
+                  {component}
+                </li>
+              );
+            })}
+          </ul>
+        </nav>
+      </HeaderMenuSectionProvider>
+    );
+  },
+);
+
+HeaderPrimaryMenu.displayName = 'HeaderPrimaryMenu';
+
 Object.defineProperty(HeaderPrimaryMenu, 'componentType', {
   value: 'HeaderPrimaryMenu',
   writable: false,

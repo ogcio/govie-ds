@@ -1,22 +1,13 @@
 import { Slot } from '@radix-ui/react-slot';
-import { cn } from '../../../../../cn.js';
+import { Button } from '../../../../../button/button.js';
 import { Icon } from '../../../../../icon/icon.js';
-import { Link } from '../../../../../link/link.js';
 import { HeaderMenuItemButtonProps } from '../../../../types.js';
 import { headerToolItemVariants } from '../../../../variants.js';
 import { useHeaderContext } from '../../../header-context.js';
 import { useHeaderMenuSection } from '../header-menu-context.js';
 
-const MenuButton = ({ className, ...props }: any) => {
-  return (
-    <Link
-      tabIndex={1}
-      asButton
-      className={cn(className, 'focus:gi-shadow-none')}
-      variant="primary"
-      {...props}
-    />
-  );
+const MenuButton = ({ showItemMode, ...props }: any) => {
+  return <Button variant="primary" data-item-mode={showItemMode} {...props} />;
 };
 
 export const HeaderMenuItemButton = ({
@@ -28,7 +19,7 @@ export const HeaderMenuItemButton = ({
   const section = useHeaderMenuSection();
   const context = useHeaderContext();
 
-  if (!section) {
+  if (!section || section === 'secondary') {
     throw new Error(
       'HeaderMenuItemButton must be used within a HeaderPrimaryMenu',
     );

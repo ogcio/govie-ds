@@ -1,4 +1,9 @@
-import { ButtonHTMLAttributes, PropsWithChildren } from 'react';
+import {
+  AnchorHTMLAttributes,
+  ButtonHTMLAttributes,
+  PropsWithChildren,
+  ReactNode,
+} from 'react';
 import { LogoProps } from '../common/types.js';
 import { DrawerPosition } from '../drawer/drawer.js';
 import { IconId } from '../icon/icon.js';
@@ -103,14 +108,15 @@ export type HeaderProps = {
 
 export type HeaderLogoProps = PropsWithChildren;
 export type HeaderVariant = 'default' | 'light';
-export type HeaderMenuItemLinkProps = {
-  asChild?: boolean;
-  showItemMode?: HeaderItemMode;
-  icon?: IconId;
-  href?: string;
-  external?: boolean;
-  children: any;
-};
+export type HeaderMenuItemLinkProps =
+  AnchorHTMLAttributes<HTMLAnchorElement> & {
+    asChild?: boolean;
+    showItemMode?: HeaderItemMode;
+    icon?: IconId;
+    href?: string;
+    external?: boolean;
+    children: ReactNode;
+  };
 
 export type HeaderMenuItemButtonProps = PropsWithChildren<
   Omit<ButtonHTMLAttributes<HTMLButtonElement>, 'children'> & {
