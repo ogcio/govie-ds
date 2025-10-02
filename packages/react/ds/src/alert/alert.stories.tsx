@@ -103,6 +103,14 @@ export const IsDismissible: Story = {
   },
 };
 
+export const WithoutTitle: Story = {
+  args: {
+    variant: 'info',
+    dismissible: true,
+    children: <>Content</>,
+  },
+};
+
 export const TestRendersTitleAndMessage: Story = {
   tags: ['skip-playwright'],
   args: {

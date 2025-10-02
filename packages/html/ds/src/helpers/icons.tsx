@@ -37,9 +37,11 @@ export const createIcon = (iconProps: IconProps) => {
   icon.textContent = iconProps.icon || '';
   icon.role = 'alert';
 
-  icon.style = iconProps.filled
-    ? "font-variation-settings: 'FILL' 1, 'wght' 400, 'GRAD' 0, 'opsz' 24;"
-    : "font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;";
+  if (!iconProps.noFilledClass) {
+    icon.style = iconProps.filled
+      ? "font-variation-settings: 'FILL' 1, 'wght' 400, 'GRAD' 0, 'opsz' 24;"
+      : "font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;";
+  }
 
   return icon;
 };
