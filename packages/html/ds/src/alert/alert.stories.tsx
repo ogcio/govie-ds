@@ -71,7 +71,6 @@ const createAlert = (arguments_: AlertProps) => {
       appearance: 'dark',
       variant: 'flat',
       icon: {
-        noFilledClass: true,
         icon: 'close',
       },
     });

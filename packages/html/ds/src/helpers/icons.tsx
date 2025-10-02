@@ -1,18 +1,41 @@
-import { IconProps } from '../icon/icon.schema';
+import { IconProps, IconSize } from '../icon/icon.schema';
+
+type IconSizeKey = (typeof IconSize)[keyof typeof IconSize];
 
 export const createIcon = (iconProps: IconProps) => {
   const icon = document.createElement('span');
 
   const className = ['material-symbols-outlined'];
 
-  if (iconProps.size == 'sm') {
-    className.push('gi-text-[16px]');
-  } else if (iconProps.size == 'lg') {
-    className.push('gi-text-[32px]');
-  } else if (iconProps.size == 'xl') {
-    className.push('gi-text-[49px]');
-  } else {
-    className.push('gi-text-[24px]');
+  const fontSize: Record<IconSizeKey, string> = {
+    sm: '16px',
+    md: '24px',
+    lg: '32px',
+    xl: '49px',
+  };
+
+  const iconSize: IconSizeKey =
+    (iconProps.size as IconSizeKey) ?? IconSize.MEDIUM;
+
+  switch (iconSize) {
+  case 'sm': {
+    className.push(`gi-text-[${fontSize.sm}]`);
+  
+  break;
+  }
+  case 'lg': {
+    className.push(`gi-text-[${fontSize.lg}]`);
+  
+  break;
+  }
+  case 'xl': {
+    className.push(`gi-text-[${fontSize.xl}]`);
+  
+  break;
+  }
+  default: {
+    className.push(`gi-text-[${fontSize.md}]`);
+  }
   }
 
   if (!iconProps.inline) {
@@ -37,11 +60,9 @@ export const createIcon = (iconProps: IconProps) => {
   icon.textContent = iconProps.icon || '';
   icon.role = 'alert';
 
-  if (!iconProps.noFilledClass) {
-    icon.style = iconProps.filled
-      ? "font-variation-settings: 'FILL' 1, 'wght' 400, 'GRAD' 0, 'opsz' 24;"
-      : "font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;";
-  }
+  icon.style.cssText = iconProps.filled
+    ? `font-variation-settings: 'FILL' 1, 'wght' 400, 'GRAD' 0, 'opsz' ${fontSize[iconSize]};`
+    : `font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' ${fontSize[iconSize]};`;
 
   return icon;
 };

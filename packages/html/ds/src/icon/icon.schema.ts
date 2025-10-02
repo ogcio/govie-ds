@@ -96,11 +96,6 @@ export const iconSchema = zod.object({
       description: 'Define icon style filled',
     })
     .optional(),
-  noFilledClass: zod
-    .boolean({
-      description: 'Do not apply filled class',
-    })
-    .optional(),
   disabled: zod
     .boolean({
       description: 'Set disabled look&feel',
