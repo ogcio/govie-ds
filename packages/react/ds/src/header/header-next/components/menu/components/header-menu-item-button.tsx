@@ -1,13 +1,14 @@
 import { Slot } from '@radix-ui/react-slot';
-import { Button } from '../../../../../button/button.js';
+import { cn } from '../../../../../cn.js';
 import { Icon } from '../../../../../icon/icon.js';
+import { Button as PrimitiveButton } from '../../../../../primitives/button.js';
 import { HeaderMenuItemButtonProps } from '../../../../types.js';
 import { headerToolItemVariants } from '../../../../variants.js';
 import { useHeaderContext } from '../../../header-context.js';
 import { useHeaderMenuSection } from '../header-menu-context.js';
 
 const MenuButton = ({ showItemMode, ...props }: any) => {
-  return <Button variant="primary" data-item-mode={showItemMode} {...props} />;
+  return <PrimitiveButton data-item-mode={showItemMode} {...props} />;
 };
 
 export const HeaderMenuItemButton = ({
@@ -28,7 +29,10 @@ export const HeaderMenuItemButton = ({
   const Component = asChild ? Slot : MenuButton;
 
   return (
-    <Component className={headerToolItemVariants({ appearance })} {...props}>
+    <Component
+      className={cn(headerToolItemVariants({ appearance }))}
+      {...props}
+    >
       {children}
       {icon && <Icon icon={icon} ariaHidden={true} />}
     </Component>

@@ -680,13 +680,20 @@ export const WithUtilitySlot: Story = {
         label: 'Gaeilge',
       },
       {
-        slot: <a href="#">English</a>,
+        slot: (
+          <a href="#" className="gi-header-secondary-item">
+            English
+          </a>
+        ),
       },
       {
         slot: (
-          <Paragraph size="sm">
-            Hello John | <a href="#">Logout</a>
-          </Paragraph>
+          <>
+            <span>Hello John | </span>
+            <a href="#" className="gi-header-secondary-item">
+              Logout
+            </a>
+          </>
         ),
       },
     ],
@@ -736,13 +743,23 @@ export const WithCustomSecondaryLinks: Story = {
         label: 'Gaeilge',
       },
       {
-        slot: <a href="#">English</a>,
+        slot: (
+          <a href="#" className="gi-header-secondary-item">
+            English
+          </a>
+        ),
       },
       {
         slot: (
-          <Paragraph>
-            Hello John | <a href="#">Logout</a>
-          </Paragraph>
+          <>
+            <span>Hello John | </span>
+            <a
+              href="#"
+              className="gi-header-secondary-item  gi-header-secondary-item"
+            >
+              Logout
+            </a>
+          </>
         ),
       },
     ],
@@ -890,9 +907,15 @@ export const Light: Story = {
       },
       {
         slot: (
-          <Paragraph>
-            Hello John | <a href="#">Logout</a>
-          </Paragraph>
+          <>
+            <span>Hello John | </span>
+            <a
+              href="#"
+              className="gi-header-secondary-item gi-text-gray-950 gi-header-secondary-item-light"
+            >
+              Logout
+            </a>
+          </>
         ),
       },
     ],

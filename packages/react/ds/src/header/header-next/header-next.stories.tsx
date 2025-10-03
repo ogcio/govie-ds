@@ -1,5 +1,5 @@
 import type { Meta, StoryObj } from '@storybook/react';
-import { useMemo, useReducer } from 'react';
+import { useMemo, useReducer, useState } from 'react';
 import { Button } from '../../button/button.js';
 import { cn } from '../../cn.js';
 import { DrawerMenuExample } from '../../drawer/drawer.content.js';
@@ -16,7 +16,7 @@ import { Heading } from '../../heading/heading.js';
 import { IconId } from '../../icon/icon.js';
 import { Link } from '../../link/link.js';
 import { List, ListTypeEnum } from '../../list/list.js';
-import { Paragraph } from '../../paragraph/paragraph.js';
+import { ListItem } from '../../list-item/list-item.js';
 import { SelectItemNext, SelectNext } from '../../select/select-next.js';
 import { HeaderSearch } from '../components/header-search.js';
 import { headerSlotContainerVariants } from '../variants.js';
@@ -154,9 +154,7 @@ export const Default: StoryObj = {
           <HeaderLogo>
             <HeaderGovieLogoHarp />
           </HeaderLogo>
-
           <HeaderTitle>Title</HeaderTitle>
-
           <HeaderSecondaryMenu>
             <HeaderMenuItemLink href="#" aria-label="Switch to Gaeilge">
               Gaeilge
@@ -165,12 +163,17 @@ export const Default: StoryObj = {
               English
             </HeaderMenuItemLink>
             <HeaderMenuItemSlot>
-              <Paragraph size="sm">
-                Hello John | <a href="#">Logout</a>
-              </Paragraph>
+              <>
+                <span>Hello John | </span>
+                <a
+                  href="#"
+                  className="gi-header-secondary-item gi-header-secondary-item"
+                >
+                  Logout
+                </a>
+              </>
             </HeaderMenuItemSlot>
           </HeaderSecondaryMenu>
-
           <HeaderPrimaryMenu>
             <HeaderMenuItemLink href="#" showItemMode="desktop-only">
               Departments
@@ -178,9 +181,7 @@ export const Default: StoryObj = {
             <HeaderMenuItemLink href="#" showItemMode="desktop-only">
               Services
             </HeaderMenuItemLink>
-
             <HeaderMenuItemSeparator />
-
             <HeaderMenuItemButton
               showItemMode="desktop-only"
               icon={icons.faq}
@@ -226,7 +227,6 @@ export const Default: StoryObj = {
             </HeaderMenuItemButton>
           </HeaderPrimaryMenu>
         </Header>
-
         <DrawerWrapper
           id="MobileMenuDrawer"
           isOpen={state.drawer}
@@ -253,7 +253,6 @@ export const Default: StoryObj = {
             </Button>
           </DrawerFooter>
         </DrawerWrapper>
-
         <DrawerWrapper
           id="FaqDrawer"
           isOpen={state.faq}
@@ -261,11 +260,10 @@ export const Default: StoryObj = {
           position="right"
           closeButtonSize="large"
         >
-          <DrawerBody className="gi-border-t-xs gi-border-color-border-system-neutral-subtle">
+          <DrawerBody>
             <SlotExample1 />
           </DrawerBody>
         </DrawerWrapper>
-
         {state.search ? (
           <SlotContainer
             variant="default"
@@ -276,7 +274,6 @@ export const Default: StoryObj = {
             <HeaderSearch />
           </SlotContainer>
         ) : null}
-
         {state.language ? (
           <SlotContainer
             id="language-slot"
@@ -294,28 +291,230 @@ export const Default: StoryObj = {
 
 export const GovieHeader: StoryObj = {
   render: () => {
+    const [isMenuOpen, setIsMenuOpen] = useState(false);
+    const toggleMenu = () => setIsMenuOpen(!isMenuOpen);
     return (
-      <Header variant="default" aria-label="Site header">
-        <HeaderLogo>
-          <HeaderGovieLogoHarp
-            href="#"
-            imageLarge="https://raw.githubusercontent.com/ogcio/govie-ds/refs/heads/main/assets/logos/gov.ie/harp-gold-text-white.svg"
-            imageSmall="https://raw.githubusercontent.com/ogcio/govie-ds/refs/heads/main/assets/logos/gov.ie/harp-gold-text-white.svg"
-          />
-        </HeaderLogo>
-        <HeaderPrimaryMenu>
-          <HeaderMenuItemLink href="#" showItemMode="desktop-only">
-            Departments
-          </HeaderMenuItemLink>
-          <HeaderMenuItemLink href="#" showItemMode="desktop-only">
-            Services
-          </HeaderMenuItemLink>
-          <HeaderMenuItemSeparator />
-          <HeaderMenuItemLink href="#" showItemMode="desktop-only">
-            Gaelige
-          </HeaderMenuItemLink>
-        </HeaderPrimaryMenu>
-      </Header>
+      <>
+        <Header variant="default" aria-label="Site header">
+          <HeaderLogo>
+            <HeaderGovieLogoHarp
+              href="#"
+              imageLarge="https://raw.githubusercontent.com/ogcio/govie-ds/refs/heads/main/assets/logos/gov.ie/harp-gold-text-white.svg"
+              imageSmall="https://raw.githubusercontent.com/ogcio/govie-ds/refs/heads/main/assets/logos/gov.ie/harp-gold-text-white.svg"
+            />
+          </HeaderLogo>
+          <HeaderPrimaryMenu>
+            <HeaderMenuItemLink href="#" showItemMode="desktop-only">
+              News
+            </HeaderMenuItemLink>
+            <HeaderMenuItemLink href="#" showItemMode="desktop-only">
+              Departments
+            </HeaderMenuItemLink>
+            <HeaderMenuItemLink href="#" showItemMode="desktop-only">
+              Services
+            </HeaderMenuItemLink>
+            <HeaderMenuItemSeparator />
+            <HeaderMenuItemLink href="#" showItemMode="always">
+              Gaelige
+            </HeaderMenuItemLink>
+            <HeaderMenuItemButton
+              showItemMode="mobile-only"
+              icon="menu"
+              aria-label="Toggle main menu"
+              aria-expanded={isMenuOpen}
+              aria-controls="MobileMenuDrawer"
+              aria-haspopup="dialog"
+              onClick={toggleMenu}
+            />
+          </HeaderPrimaryMenu>
+        </Header>
+        <DrawerWrapper
+          id="MobileMenuDrawer"
+          isOpen={isMenuOpen}
+          onClose={toggleMenu}
+          position="right"
+          closeButtonSize="small"
+          aria-label="Main menu"
+        >
+          <DrawerBody>
+            <ul>
+              <li>
+                <ListItem href="#" label="News" />
+              </li>
+              <li>
+                <ListItem href="#" label="Departments" />
+              </li>
+              <li>
+                <ListItem href="#" label="Services" />
+              </li>
+            </ul>
+          </DrawerBody>
+        </DrawerWrapper>
+      </>
+    );
+  },
+};
+
+export const Light: StoryObj = {
+  decorators: (Story) => {
+    return (
+      <div className="gi-bg-black gi-p-4">
+        <Story />
+      </div>
+    );
+  },
+  render: () => {
+    const [state, dispatch] = useReducer(headerUiReducer, initialHeaderUiState);
+    const toggle = (key: string) => dispatch({ type: 'toggle', key });
+    const close = (key: string) => dispatch({ type: 'close', key });
+    const closeAll = () => dispatch({ type: 'closeAll' });
+
+    const icons = useMemo(() => {
+      return {
+        faq: state.faq ? 'close' : 'info',
+        language: state.language ? 'close' : 'mic',
+        drawer: state.drawer ? 'close' : 'menu',
+        search: state.search ? 'close' : 'search',
+      } as Record<string, IconId>;
+    }, [state.faq, state.language, state.drawer, state.search]);
+
+    return (
+      <>
+        <Header variant="light" aria-label="Site header">
+          <HeaderLogo>
+            <HeaderGovieLogoHarp />
+          </HeaderLogo>
+          <HeaderTitle>Title</HeaderTitle>
+          <HeaderSecondaryMenu>
+            <HeaderMenuItemLink href="#" aria-label="Switch to Gaeilge">
+              Gaeilge
+            </HeaderMenuItemLink>
+            <HeaderMenuItemLink href="#" aria-label="Switch to English">
+              English
+            </HeaderMenuItemLink>
+            <HeaderMenuItemSlot>
+              <>
+                <span>Hello John | </span>
+                <a
+                  href="#"
+                  className="gi-header-secondary-item gi-text-gray-950 gi-header-secondary-item-light"
+                >
+                  Logout
+                </a>
+              </>
+            </HeaderMenuItemSlot>
+          </HeaderSecondaryMenu>
+          <HeaderPrimaryMenu>
+            <HeaderMenuItemLink href="#" showItemMode="desktop-only">
+              Departments
+            </HeaderMenuItemLink>
+            <HeaderMenuItemLink href="#" showItemMode="desktop-only">
+              Services
+            </HeaderMenuItemLink>
+            <HeaderMenuItemSeparator />
+            <HeaderMenuItemButton
+              showItemMode="desktop-only"
+              icon={icons.faq}
+              aria-label="Toggle frequently asked questions"
+              aria-expanded={state.faq}
+              aria-controls="FaqDrawer"
+              onClick={() => toggle('faq')}
+            >
+              FAQ
+            </HeaderMenuItemButton>
+
+            <HeaderMenuItemButton
+              showItemMode="desktop-only"
+              icon={icons.search}
+              aria-label="Toggle site search"
+              aria-expanded={state.search}
+              onClick={() => toggle('search')}
+            >
+              Search
+            </HeaderMenuItemButton>
+
+            <HeaderMenuItemButton
+              showItemMode="desktop-only"
+              icon={icons.language}
+              aria-label="Toggle language selector"
+              aria-expanded={state.language}
+              aria-haspopup="listbox"
+              onClick={() => toggle('language')}
+            >
+              Language
+            </HeaderMenuItemButton>
+
+            <HeaderMenuItemButton
+              showItemMode="mobile-only"
+              icon={icons.drawer}
+              aria-label="Toggle main menu"
+              aria-expanded={state.drawer}
+              aria-controls="MobileMenuDrawer"
+              aria-haspopup="dialog"
+              onClick={() => toggle('drawer')}
+            >
+              Menu
+            </HeaderMenuItemButton>
+          </HeaderPrimaryMenu>
+        </Header>
+        <DrawerWrapper
+          id="MobileMenuDrawer"
+          isOpen={state.drawer}
+          onClose={() => close('drawer')}
+          position="right"
+          closeButtonSize="large"
+          aria-modal="true"
+          aria-label="Main menu"
+        >
+          <DrawerBody className="gi-border-t-xs gi-border-color-border-system-neutral-subtle">
+            <DrawerMenuExample />
+          </DrawerBody>
+          <DrawerFooter>
+            <Button
+              variant="secondary"
+              appearance="dark"
+              className="gi-justify-center xs:gi-justify-start"
+              onClick={() => closeAll()}
+            >
+              Cancel
+            </Button>
+            <Button className="gi-justify-center xs:gi-justify-start">
+              Primary
+            </Button>
+          </DrawerFooter>
+        </DrawerWrapper>
+        <DrawerWrapper
+          id="FaqDrawer"
+          isOpen={state.faq}
+          onClose={() => close('faq')}
+          position="right"
+          closeButtonSize="large"
+        >
+          <DrawerBody>
+            <SlotExample1 />
+          </DrawerBody>
+        </DrawerWrapper>
+        {state.search ? (
+          <SlotContainer
+            variant="light"
+            role="region"
+            aria-label="Site search"
+            aria-live="polite"
+          >
+            <HeaderSearch />
+          </SlotContainer>
+        ) : null}
+        {state.language ? (
+          <SlotContainer
+            id="language-slot"
+            variant="light"
+            role="region"
+            aria-label="Language selector"
+          >
+            <SlotExample2 />
+          </SlotContainer>
+        ) : null}
+      </>
     );
   },
 };
