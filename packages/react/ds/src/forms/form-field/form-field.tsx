@@ -3,7 +3,6 @@ import { Slottable } from '@radix-ui/react-slot';
 import {
   ReactNode,
   FieldsetHTMLAttributes,
-  isValidElement,
   Children,
   createContext,
   useContext,
@@ -15,6 +14,10 @@ import { HintText } from '../../hint-text/hint-text.js';
 import { HintTextProps } from '../../hint-text/types.js';
 import { Label } from '../../label/label.js';
 import { LabelTextProps } from '../../label/types.js';
+import {
+  getSpecialComponentType,
+  isSpecialComponent,
+} from '../../utils/utilities.js';
 import { FormFieldProps } from './types.js';
 
 type FormFieldBaseProps = Omit<
@@ -32,22 +35,6 @@ function useFormFieldContext(component: string) {
   if (!context) {
     console.error(`[${component}] must be used within a <FormField>.`);
   }
-}
-
-function getSpecialComponentType(child: ReactNode): string | null {
-  if (!isValidElement(child)) {
-    return null;
-  }
-
-  return (
-    (child.type as any)?.componentType || (child.props as any)?.__type || null
-  );
-}
-
-function isSpecialComponent(child: ReactNode): boolean {
-  return ['FormFieldLabel', 'FormFieldHint', 'FormFieldError'].includes(
-    getSpecialComponentType(child) ?? '',
-  );
 }
 
 const FormField = (props: FormFieldProps) => {
@@ -94,7 +81,14 @@ const FormFieldBase = ({
   const error = allChildren.find(
     (child) => getSpecialComponentType(child) === 'FormFieldError',
   );
-  const rest = allChildren.filter((child) => !isSpecialComponent(child));
+  const rest = allChildren.filter(
+    (child) =>
+      !isSpecialComponent(child, [
+        'FormFieldLabel',
+        'FormFieldHint',
+        'FormFieldError',
+      ]),
+  );
 
   return (
     <fieldset

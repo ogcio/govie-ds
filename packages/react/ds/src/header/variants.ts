@@ -25,7 +25,7 @@ export const headerMenuVariants = tv({
 });
 
 export const headerToolItemVariants = tv({
-  base: 'gi-header-tool-item ',
+  base: 'gi-header-tool-item',
   variants: {
     appearance: {
       default: `${AppearanceText.default} gi-header-tool-item-default`,
