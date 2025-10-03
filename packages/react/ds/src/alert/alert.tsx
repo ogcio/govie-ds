@@ -41,7 +41,7 @@ const alertVariants = tv({
 
 type AlertProps = {
   variant?: VariantProps<typeof alertVariants>['variant'];
-  title: string;
+  title?: string;
   children?: ReactNode;
   dismissible?: boolean;
   dataTestid?: string;
@@ -104,8 +104,12 @@ function Alert({
         className="gi-alert-icon"
         data-variant={variant}
       />
-      <div className={container()}>
-        <p className={heading()}>{title}</p>
+      <div
+        className={cn(container(), {
+          'gi-gap-1': title,
+        })}
+      >
+        {title && <p className={heading()}>{title}</p>}
         {children}
       </div>
       {dismissible && (

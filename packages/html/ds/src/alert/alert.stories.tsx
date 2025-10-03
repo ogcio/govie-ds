@@ -52,17 +52,22 @@ const createAlert = (arguments_: AlertProps) => {
 
   const container = document.createElement('div');
   container.className = 'gi-alert-container';
-  component.append(container);
 
-  const title = document.createElement('p');
-  title.className = 'gi-alert-title';
-  title.textContent = arguments_.title;
-  container.append(title);
+  if (arguments_.title) {
+    container.classList.add('gi-gap-1');
+    const title = document.createElement('p');
+    title.className = 'gi-alert-title';
+    title.textContent = arguments_.title;
+    container.append(title);
+  }
+
+  component.append(container);
   container.innerHTML += arguments_.children || '';
 
   if (arguments_.dismissible) {
     const icon = createIconButton({
       size: 'small',
+      className: 'gi-alert-dismiss',
       appearance: 'dark',
       variant: 'flat',
       icon: {
@@ -122,6 +127,15 @@ export const isDismissible: Story = {
     variant: AlertVariant.Info,
     dismissible: true,
     children: '<p>Content</p>',
+  },
+  render: (arguments_) => createElement(arguments_),
+};
+
+export const WithoutTitle: Story = {
+  args: {
+    children: 'Content',
+    variant: AlertVariant.Info,
+    dismissible: true,
   },
   render: (arguments_) => createElement(arguments_),
 };
