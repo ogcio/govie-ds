@@ -25,11 +25,26 @@ export const createTable = (arguments_: TablePropsExtension) => {
   if (arguments_.headers) {
     const thead = document.createElement('thead');
     const tr = document.createElement('tr');
-
     for (const header of arguments_.headers) {
       const th = document.createElement('th');
-      th.textContent = header;
-      th.className = 'gi-table-th gi-text-left gi-align-middle';
+
+      if (typeof header === 'string') {
+        th.textContent = header;
+        th.className = 'gi-table-th gi-text-left gi-align-middle';
+      } else {
+        th.textContent = header.content;
+        const alignMap = {
+          center: 'gi-text-center',
+          right: 'gi-text-right',
+          left: 'gi-text-left',
+        };
+
+        const alignClass = header.align
+          ? alignMap[header.align]
+          : 'gi-text-left';
+        th.className = `gi-table-th ${alignClass} gi-align-middle`;
+      }
+
       th.dataset.headerString = 'true';
       tr.append(th);
     }
@@ -39,19 +54,33 @@ export const createTable = (arguments_: TablePropsExtension) => {
 
   if (arguments_.rows && arguments_.rows.length > 0) {
     const tbody = document.createElement('tbody');
-
     for (const row of arguments_.rows) {
       const tr = document.createElement('tr');
       tr.className = 'gi-table-tr';
       for (const cell of row) {
         const td = document.createElement('td');
         td.innerHTML = cell;
-        td.className = 'gi-table-td gi-text-left gi-align-middle';
+
+        const temporaryDiv = document.createElement('div');
+        temporaryDiv.innerHTML = cell;
+        const dataCell = temporaryDiv.querySelector('.gi-table-data-cell');
+        const align = dataCell?.getAttribute('data-align') as
+          | 'center'
+          | 'right'
+          | 'left'
+          | null;
+        const alignMap = {
+          center: 'gi-text-center',
+          right: 'gi-text-right',
+          left: 'gi-text-left',
+        };
+
+        const alignClass = alignMap[align ?? 'left'];
+        td.className = `gi-table-td ${alignClass} gi-align-middle`;
         tr.append(td);
       }
       tbody.append(tr);
     }
-
     table.append(tbody);
   } else {
     const tbody = document.createElement('tbody');
@@ -107,11 +136,15 @@ export const createTable = (arguments_: TablePropsExtension) => {
   return table;
 };
 
-export const createTableCell = (value: any) => {
+export const createTableCell = (
+  value: any,
+  align?: 'left' | 'center' | 'right',
+) => {
   const div = document.createElement('div');
-
   div.className = 'gi-table-data-cell';
+  if (align) {
+    div.dataset.align = align;
+  }
   div.innerHTML = value;
-
   return div;
 };

@@ -1,12 +1,10 @@
-FROM docker.io/node:22-alpine as base
+FROM docker.io/node:22-alpine AS base
 
 # Build image (run from root)
 
-FROM base as builder
+FROM base AS builder
 
 ARG DEPLOY_ENV
-
-RUN apk add --no-cache libc6-compat zip
 
 WORKDIR /build
 
@@ -29,7 +27,7 @@ RUN pnpm react:storybook:build
 
 # Production image
 
-FROM ghcr.io/nginxinc/nginx-unprivileged:1.26.1-bookworm-perl
+FROM docker.io/nginxinc/nginx-unprivileged:1.29-alpine
 
 # Copy static assets from builder stage
 COPY --from=builder --chown=nginx /build/apps/docs/out /usr/share/nginx/html/doc

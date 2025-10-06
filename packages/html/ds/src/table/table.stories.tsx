@@ -32,8 +32,8 @@ const meta: Meta<TablePropsExtension> = {
   parameters: {
     docs: {
       description: {
-        component: `A flexible table component that supports dynamic rows, headers, and custom captions.
-        Each cell can include various interactive elements like checkboxes, buttons, and tags.`,
+        component:
+          'A flexible table component that supports dynamic rows, headers, and captions. Each cell can include various interactive elements like checkboxes, buttons, and tags.',
       },
     },
   },
@@ -592,66 +592,38 @@ export const TableWithFooter: Story = {
 };
 
 export const AlignedColumns: Story = {
-  render: () =>
-    `
-    <table class="gi-table gi-table-auto" data-row-size="md" role="table">
-      <caption class="gi-table-caption-text gi-text-lg">
-          Employee Salaries
-      </caption>
-      <thead>
-          <tr class="gi-table-tr">
-              <th class="gi-text-left gi-align-middle gi-table-th">
-                <div class="gi-table-data-cell">Name</div>
-              </th>
-              <th class="gi-text-center gi-align-middle gi-table-th">
-                <div class="gi-table-data-cell">Role</div>
-              </th>
-              <th class="gi-text-right gi-align-middle gi-table-th">
-                <div class="gi-table-data-cell">Salary</div>
-              </th>
-          </tr>
-      </thead>
-      <tbody>
-          <tr class="gi-table-tr">
-              <td class="gi-text-left gi-align-middle gi-table-td">
-                <div class="gi-table-data-cell">Alice Johnson</div>
-              </td>
-              <td class="gi-text-center gi-align-middle gi-table-td">
-                <div class="gi-table-data-cell">Manager</div>
-              </td>
-              <td class="gi-text-right gi-align-middle gi-table-td">
-                <div class="gi-table-data-cell">€80,000</div>
-              </td>
-          </tr>
-          <tr class="gi-table-tr">
-              <td class="gi-text-left gi-align-middle gi-table-td">
-                <div class="gi-table-data-cell">Bob Martin</div>
-              </td>
-              <td class="gi-text-center gi-align-middle gi-table-td">
-                <div class="gi-table-data-cell">Engineer</div></td>
-              <td class="gi-text-right gi-align-middle gi-table-td">
-                <div class="gi-table-data-cell">€65,000</div>
-              </td>
-          </tr>
-          <tr class="gi-table-tr">
-              <td class="gi-text-left gi-align-middle gi-table-td">
-                <div class="gi-table-data-cell">Carla Gomez</div></td>
-              <td class="gi-text-center gi-align-middle gi-table-td">
-                <div class="gi-table-data-cell">Designer</div>
-              </td>
-              <td class="gi-text-right gi-align-middle gi-table-td">
-                <div class="gi-table-data-cell">€70,000</div>
-              </td>
-          </tr>
-      </tbody>
-    </table>
-` as unknown as React.ReactElement,
+  args: {
+    captionText: 'Employee Salaries',
+    headers: [
+      { content: 'Name', align: 'left' },
+      { content: 'Role', align: 'center' },
+      { content: 'Salary', align: 'right' },
+    ],
+    rows: [
+      [
+        beautifyHtmlNode(createTableCell('Alice Johnson', 'left')),
+        beautifyHtmlNode(createTableCell('Manager', 'center')),
+        beautifyHtmlNode(createTableCell('€80,000', 'right')),
+      ],
+      [
+        beautifyHtmlNode(createTableCell('Bob Martin', 'left')),
+        beautifyHtmlNode(createTableCell('Engineer', 'center')),
+        beautifyHtmlNode(createTableCell('€65,000', 'right')),
+      ],
+      [
+        beautifyHtmlNode(createTableCell('Carla Gomez', 'left')),
+        beautifyHtmlNode(createTableCell('Designer', 'center')),
+        beautifyHtmlNode(createTableCell('€70,000', 'right')),
+      ],
+    ],
+  },
+  render: (arguments_) => createElement(arguments_),
   parameters: {
     docs: {
       description: {
         story:
-          'This story demonstrates how to align table cell content using the `align` prop on `TableHeader` and `TableData`. ' +
-          '`Name` is left-aligned, `Role` is center-aligned, and `Salary` is right-aligned, showcasing how alignment can be controlled per column.',
+          'This story demonstrates how to align table cell content.' +
+          'Name is left-aligned, Role is center-aligned, and Salary is right-aligned, showcasing how alignment can be controlled per column.',
       },
     },
   },
