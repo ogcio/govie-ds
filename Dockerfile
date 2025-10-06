@@ -27,7 +27,7 @@ RUN pnpm react:storybook:build
 
 # Production image
 
-FROM ghcr.io/nginxinc/nginx-unprivileged:1.27-alpine
+FROM docker.io/nginxinc/nginx-unprivileged:1.29-alpine
 
 # Copy static assets from builder stage
 COPY --from=builder --chown=nginx /build/apps/docs/out /usr/share/nginx/html/doc
