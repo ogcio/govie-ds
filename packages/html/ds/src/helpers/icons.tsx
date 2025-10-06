@@ -8,10 +8,10 @@ export const createIcon = (iconProps: IconProps) => {
   const className = ['material-symbols-outlined'];
 
   const fontSize: Record<IconSizeKey, string> = {
-    sm: '16px',
-    md: '24px',
-    lg: '32px',
-    xl: '49px',
+    sm: '16',
+    md: '24',
+    lg: '32',
+    xl: '49',
   };
 
   const iconSize: IconSizeKey =
@@ -19,22 +19,22 @@ export const createIcon = (iconProps: IconProps) => {
 
   switch (iconSize) {
     case 'sm': {
-      className.push(`gi-text-[${fontSize.sm}]`);
+      className.push(`gi-text-[${fontSize.sm}px]`);
 
       break;
     }
     case 'lg': {
-      className.push(`gi-text-[${fontSize.lg}]`);
+      className.push(`gi-text-[${fontSize.lg}px]`);
 
       break;
     }
     case 'xl': {
-      className.push(`gi-text-[${fontSize.xl}]`);
+      className.push(`gi-text-[${fontSize.xl}px]`);
 
       break;
     }
     default: {
-      className.push(`gi-text-[${fontSize.md}]`);
+      className.push(`gi-text-[${fontSize.md}px]`);
     }
   }
 
