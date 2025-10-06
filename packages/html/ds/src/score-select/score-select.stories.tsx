@@ -1,6 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/react';
 import parse from 'html-react-parser';
-import { within } from 'storybook/test';
+import { expect, within } from 'storybook/test';
 import { createScoreSelect } from './helper';
 import { ScoreSelectProps } from './types';
 

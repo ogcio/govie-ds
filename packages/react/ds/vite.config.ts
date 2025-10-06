@@ -6,8 +6,38 @@ import preserveDirectives from 'rollup-preserve-directives';
 import { defineConfig } from 'vite';
 import dts from 'vite-plugin-dts';
 import { libInjectCss } from 'vite-plugin-lib-inject-css';
+import package_ from './package.json';
 
-// https://vitejs.dev/config/
+function injectBrowserCheck(subpath = `${package_.name}/browser-check`) {
+  const IMPORT_LINE = `import '${subpath}';`;
+  return {
+    name: 'inject-browser-check-into-client-chunks',
+    enforce: 'post',
+    renderChunk(code, chunk) {
+      if (!/\.m?js$/.test(chunk.fileName)) {
+        return null;
+      }
+      if (
+        !code.startsWith(`'use client'`) &&
+        !code.startsWith(`"use client"`)
+      ) {
+        return null;
+      }
+      if (code.includes(IMPORT_LINE)) {
+        return null;
+      }
+      const nl = code.indexOf('\n');
+      if (nl === -1) {
+        return null;
+      }
+      return {
+        code: code.slice(0, nl + 1) + IMPORT_LINE + '\n' + code.slice(nl + 1),
+        map: null,
+      };
+    },
+  };
+}
+
 export default defineConfig({
   plugins: [
     react(),
@@ -39,7 +69,6 @@ export default defineConfig({
         );
       },
       input: Object.fromEntries(
-        // https://rollupjs.org/configuration-options/#input
         glob
           .sync('src/**/*.{ts,tsx}', {
             ignore: [
@@ -50,14 +79,10 @@ export default defineConfig({
             ],
           })
           .map((file: string) => [
-            // 1. The name of the entry point
-            // src/nested/foo.js becomes nested/foo
             path.relative(
               'src',
               file.slice(0, file.length - path.extname(file).length),
             ),
-            // 2. The absolute path to the entry file
-            // lib/nested/foo.ts becomes /project/lib/nested/foo.ts
             fileURLToPath(new URL(file, import.meta.url)),
           ]),
       ),
@@ -70,6 +95,7 @@ export default defineConfig({
           'react/jsx-runtime': 'jsxRuntime',
         },
       },
+      plugins: [injectBrowserCheck()],
     },
   },
 });

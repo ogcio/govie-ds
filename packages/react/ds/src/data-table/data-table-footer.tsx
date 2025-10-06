@@ -6,8 +6,10 @@ interface DataTableFooterTypeProps
   children: React.ReactNode;
 }
 
-interface DataTableFooterProps extends React.HTMLAttributes<HTMLDivElement> {
+interface DataTableFooterProps
+  extends React.HTMLAttributes<HTMLDivElement | HTMLTableSectionElement> {
   children?: React.ReactNode;
+  standalone?: boolean;
 }
 
 export type { DataTableFooterProps, DataTableFooterTypeProps };
@@ -63,6 +65,7 @@ DataTableFooterEnd.displayName = 'DataTableFooterEnd';
 export const DataTableFooter: React.FC<DataTableFooterProps> = ({
   children,
   className,
+  standalone = false,
   ...props
 }) => {
   const sections = React.useMemo(() => {
@@ -90,17 +93,16 @@ export const DataTableFooter: React.FC<DataTableFooterProps> = ({
   const hasEnd = Boolean(end);
   const onlyEnd = !hasStart && !hasCenter && hasEnd;
 
-  const baseSectionClasses = 'gi-grow gi-basis-0 gi-min-w-0';
+  const baseSectionClasses = 'gi-data-table-footer-base';
   const centerSectionClasses = `${baseSectionClasses} gi-text-center`;
   const endSectionClasses = cn('gi-min-w-0', {
     'gi-basis-1/2 gi-text-right': !onlyEnd,
   });
 
-  return (
+  const content = (
     <div
-      {...props}
       className={cn(
-        'gi-flex gi-flex-row gi-w-full gi-items-center gi-py-2',
+        'gi-data-table-footer',
         onlyEnd ? 'gi-justify-end' : 'gi-gap-2',
         className,
       )}
@@ -109,6 +111,24 @@ export const DataTableFooter: React.FC<DataTableFooterProps> = ({
       {renderFooterType(center, centerSectionClasses)}
       {renderFooterType(end, endSectionClasses)}
     </div>
+  );
+
+  if (standalone) {
+    return (
+      <div {...props} className={cn('gi-w-full gi-p-2', className)}>
+        {content}
+      </div>
+    );
+  }
+
+  return (
+    <tfoot {...props}>
+      <tr>
+        <td colSpan={999} className="gi-p-2">
+          {content}
+        </td>
+      </tr>
+    </tfoot>
   );
 };
 

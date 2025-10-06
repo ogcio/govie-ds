@@ -123,33 +123,33 @@ export const MobileHeaderMenuItems = ({
   );
 };
 
-// TODO: remove when stable. keeping this for now but is not used anymore.
-function HeaderMenu({ ...props }: MobileHeaderMenuProps) {
-  return (
-    <div
-      id="HeaderMenuContainer"
-      className="gi-header-menu-container lg:gi-hidden"
-      aria-label={t('header.mobileNavigationMenu', {
-        defaultValue: 'Mobile Navigation Menu',
-      })}
-    >
-      <div>
-        <div className="gi-flex gi-items-center">
-          <label
-            htmlFor="MobileMenuTrigger"
-            className="gi-header-menu-mobile-trigger"
-            aria-label={t('header.closeMobileMenu', {
-              defaultValue: 'Close Mobile Menu',
-            })}
-          >
-            <span>Close</span>
-            <Icon icon={'close'} />
-          </label>
-        </div>
-      </div>
-      <MobileHeaderMenuItems {...props} />
-    </div>
-  );
-}
+// // TODO: remove when stable. keeping this for now but is not used anymore.
+// function HeaderMenu({ ...props }: MobileHeaderMenuProps) {
+//   return (
+//     <div
+//       id="HeaderMenuContainer"
+//       className="gi-header-menu-container lg:gi-hidden"
+//       aria-label={t('header.mobileNavigationMenu', {
+//         defaultValue: 'Mobile Navigation Menu',
+//       })}
+//     >
+//       <div>
+//         <div className="gi-flex gi-items-center">
+//           <label
+//             htmlFor="MobileMenuTrigger"
+//             className="gi-header-menu-mobile-trigger"
+//             aria-label={t('header.closeMobileMenu', {
+//               defaultValue: 'Close Mobile Menu',
+//             })}
+//           >
+//             <span>Close</span>
+//             <Icon icon={'close'} />
+//           </label>
+//         </div>
+//       </div>
+//       <MobileHeaderMenuItems {...props} />
+//     </div>
+//   );
+// }
 
-export default HeaderMenu;
+// export default HeaderMenu;

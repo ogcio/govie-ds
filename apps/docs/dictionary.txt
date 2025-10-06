@@ -207,7 +207,6 @@ SSR
 StackProps
 StepItem
 substeps
-summarisable
 summarizing
 SummaryListAction
 SummaryListActionProps

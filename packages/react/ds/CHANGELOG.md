@@ -1,5 +1,20 @@
 # Changelog
 
+## [1.18.1](https://github.com/ogcio/govie-ds/compare/react-lib-v1.18.0...react-lib-v1.18.1) (2025-10-01)
+
+
+### Bug Fixes
+
+* add custom label to close button in menu item AB[#31528](https://github.com/ogcio/govie-ds/issues/31528) ([#741](https://github.com/ogcio/govie-ds/issues/741)) ([6af9260](https://github.com/ogcio/govie-ds/commit/6af92607c3b5d4db3f5bc9f240afa95e3f815c6d))
+* update data table footer and header with styling improvements AB[#31357](https://github.com/ogcio/govie-ds/issues/31357) ([#738](https://github.com/ogcio/govie-ds/issues/738)) ([5af5050](https://github.com/ogcio/govie-ds/commit/5af5050c39836a72f8ffdc481553b60711e4eebb))
+
+
+### Dependencies
+
+* The following workspace dependencies were updated
+  * devDependencies
+    * @ogcio/design-system-tailwind bumped to 1.15.1
+
 ## [1.18.0](https://github.com/ogcio/govie-ds/compare/react-lib-v1.17.2...react-lib-v1.18.0) (2025-09-23)
 
 

@@ -1,4 +1,7 @@
-.PHONY: build-visual-tests-image start-react-storybook stop-react-storybook tests update-screenshots	
+.PHONY: build-website-image start-react-storybook stop-react-storybook tests update-screenshots build-visual-tests-image
+
+build-website-image:
+	@docker build -t govie-website . -f Dockerfile --build-arg DEPLOY_ENV=development
 
 build-visual-tests-image:
 	@docker build -t playwright-screenshot-tests . -f Dockerfile.playwright
