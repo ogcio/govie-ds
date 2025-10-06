@@ -154,7 +154,11 @@ import { ZIndexTable } from '../z-index/z-index-table';
 import { DesignSystemBenefits } from './design-system-benefits';
 import { DocumentImage } from './document-image';
 import { LoadingPattern } from '../patterns/loading';
-
+import {
+  HeaderComposableSample,
+  HeaderComposableLightSample,
+  HeaderComposableDontSample,
+} from '../components/header-composable-sample';
 export type MdxProps = {
   code: string;
 };
@@ -363,6 +367,9 @@ const documentComponents: MDXComponents = {
   Vision,
   ZIndexTable,
   PopoverSample,
+  HeaderComposableLightSample,
+  HeaderComposableSample,
+  HeaderComposableDontSample,
 };
 
 export function Mdx({ code }: MdxProps) {

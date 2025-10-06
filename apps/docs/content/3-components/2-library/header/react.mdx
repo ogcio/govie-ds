@@ -7,87 +7,143 @@ component:
   link: '/docs/layout-header--docs'
   status: 'stable'
   stories:
-    - name: 'full-width'
-      url: '/story/layout-header--full-width'
-    - name: 'secondary-links'
-      url: '/story/layout-header--with-secondary-links'
-    - name: 'no-links'
-      url: '/story/layout-header--no-links'
-    - name: 'light-theme'
+    - name: 'default'
+      url: '/story/layout-header--default'
+    - name: 'govie'
+      url: '/story/layout-header--govie'
+    - name: 'light'
       url: '/story/layout-header--light'
   properties:
     - name: HeaderProps
       fields:
-        - name: 'title'
-          ofType: 'string'
-          description: 'The title of the header.'
-          required: false
-        - name: 'logo'
-          ofType: 'object'
-          description: 'An object defining logo properties including imageSmall, imageLarge, href, external, and alt text.'
-          required: false
-        - name: 'addDefaultMobileMenu'
-          ofType: 'boolean'
-          description: 'If true, the default mobile menu is included in the header.'
-          required: false
-        - name: 'mobileMenuLabel'
-          ofType: 'string'
-          description: 'The label for the mobile menu.'
-          required: false
-        - name: 'items'
-          ofType: 'array'
-          description: 'A list of HeaderItem objects to include in the header.'
-          required: false
-        - name: 'secondaryLinks'
-          ofType: 'array'
-          description: 'A list of secondary links for the header.'
-          required: false
         - name: 'fullWidth'
           ofType: 'boolean'
           description: 'If true, the header will span the full width of the container.'
           required: false
-        - name: 'showTitleOnMobile'
-          ofType: 'boolean'
-          description: 'If true, the header title will be shown on mobile.'
-          required: false
-        - name: 'dataTestid'
-          ofType: 'string'
-          description: 'Custom test ID for the header.'
-          required: false
-        - name: 'appearance'
+        - name: 'variant'
           ofType: 'string'
           description: 'Controls the visual style of the component ("default", "light").'
           required: false
+        - name: '[HTMLAttributes<header>]'
+          ofType: '…'
+          description: All native header props.
+          required: false
 
-    - name: HeaderItemProps
+    - name: HeaderLogoProps
       fields:
-        - name: 'itemType'
-          ofType: 'string'
-          description: 'The type of item. Options: slot, divider, link, custom-link.'
-          required: true
-        - name: 'showItemMode'
-          ofType: 'string'
-          description: 'Specifies when the header item should be displayed. Options: always, mobile-only, desktop-only.'
+        - name: 'children'
+          ofType: 'ReactNode'
+          description: Usually <HeaderGovieLogoHarp />.
           required: false
-        - name: 'label'
-          ofType: 'string'
-          description: 'The label for the item (used with link and slot types).'
-          required: false
-        - name: 'icon'
-          ofType: 'string'
-          description: 'An optional icon to display alongside the content.'
-          required: false
+    - name: HeaderGovieLogoHarpProps
+      description: Gov.ie harp logo with optional link.
+      fields:
         - name: 'href'
           ofType: 'string'
-          description: 'The URL for link items.'
+          description: When set, wraps the logo in a link (external-safe).
           required: false
-        - name: 'component'
-          ofType: 'node'
-          description: 'A React component to render (used with slot and custom-link types).'
+        - name: 'external'
+          ofType: 'boolean'
+          description: Forces external link behavior (adds target/rel).
           required: false
-        - name: 'slotAppearance'
+        - name: 'imageSmall'
           ofType: 'string'
-          description: 'The appearance of the slot. Options: dropdown, drawer.'
+          description: Override small/mobile logo source.
+          required: false
+        - name: 'imageLarge'
+          ofType: 'string'
+          description: Override large/desktop logo source.
+          required: false
+        - name: 'alt'
+          ofType: 'string'
+          description: Image alternative text.
+          required: false
+        - name: '[HTMLAttributes<div>]'
+          ofType: '…'
+          description: All native div props.
+          required: false
+
+    - name: HeaderTitleProps
+      fields:
+        - name: 'children'
+          ofType: 'ReactNode'
+          description: Title content.
+          required: true
+        - name: '[HTMLAttributes<div>]'
+          ofType: '…'
+          description: Native div props.
+          required: false
+    - name: HeaderSecondaryMenuProps
+      description: Secondary nav (top row). Renders a <nav>.
+      fields:
+        - name: 'children'
+          ofType: 'ReactNode'
+          description: Only HeaderMenuItemLink or HeaderMenuItemSlot.
+          required: false
+        - name: '[HTMLAttributes<nav>]'
+          ofType: '…'
+          description: All native nav props.
+          required: false
+    - name: HeaderPrimaryMenuProps
+      description: Primary nav (main actions). Renders a <nav>.
+      fields:
+        - name: 'children'
+          ofType: 'ReactNode'
+          description: HeaderMenuItemLink | HeaderMenuItemButton | HeaderMenuItemSeparator.
+          required: false
+        - name: '[HTMLAttributes<nav>]'
+          ofType: '…'
+          description: All native nav props.
+          required: false
+    - name: HeaderMenuItemLinkProps
+      fields:
+        - name: 'showItemMode'
+          ofType: '"always" | "mobile-only" | "desktop-only"'
+          description: Visibility breakpoint behavior.
+          required: false
+        - name: 'icon'
+          ofType: 'IconId'
+          description: Optional trailing icon (primary menu).
+          required: false
+        - name: 'external'
+          ofType: 'boolean'
+          description: Forces external link behavior (adds target/rel).
+          required: false
+        - name: '[AnchorHTMLAttributes<a>]'
+          ofType: '…'
+          description: All native anchor props.
+          required: false
+
+    - name: HeaderMenuItemButtonProps
+      fields:
+        - name: 'showItemMode'
+          ofType: '"always" | "mobile-only" | "desktop-only"'
+          description: Visibility breakpoint behavior.
+          required: false
+        - name: 'icon'
+          ofType: 'IconId'
+          description: Leading icon.
+          required: false
+        - name: '[ButtonHTMLAttributes<button>]'
+          ofType: '…'
+          description: All native button props.
+          required: false
+
+    - name: HeaderMenuItemSeparatorProps
+      fields:
+        - name: '[HTMLAttributes<div>]'
+          ofType: '…'
+          description: All native div props".
+          required: false
+    - name: HeaderMenuItemSlotProps
+      fields:
+        - name: 'children'
+          ofType: 'ReactNode'
+          description: Custom content.
+          required: true
+        - name: '[HTMLAttributes<div>]'
+          ofType: '…'
+          description: All native div props.
           required: false
 ---
 
@@ -96,67 +152,26 @@ component:
 <Section current="react" >
 
 <ComponentPreview className="block w-full gi-not-prose">
-  <Header
-    title="Application title"
-    addDefaultMobileMenu
-    items={[
-      { label: 'Departments', itemType: 'link', href: '#' },
-      { label: 'Services', itemType: 'link', href: '#' },
-      { itemType: 'divider' },
-      {
-        label: 'Search',
-        icon: 'search',
-        itemType: 'slot',
-        component: <HeaderSearch />,
-        slotAppearance: 'dropdown',
-      },
-    ]}
-    secondaryLinks={[
-      {
-        href: '#',
-        label: 'Gaeilge',
-      },
-      {
-        href: '#',
-        label: 'English',
-      },
-    ]}
-  />
+  <HeaderComposableSample />
 </ComponentPreview>
 
 ## Examples
 
-### Full Width
+### Default
 
 <StorybookFrame
   className="h-52 p-1"
   componentId="header-react"
-  story="full-width"
+  story="default"
 />
 
-### With Secondary Links
+### Govie
 
-<StorybookFrame
-  className="h-52 p-1"
-  componentId="header-react"
-  story="secondary-links"
-/>
+<StorybookFrame className="h-52 p-1" componentId="header-react" story="govie" />
 
-### With No Links
+### Light
 
-<StorybookFrame
-  className="h-auto p-1"
-  componentId="header-react"
-  story="no-links"
-/>
-
-### Light Theme
-
-<StorybookFrame
-  className="h-auto p-1"
-  componentId="header-react"
-  story="light-theme"
-/>
+<StorybookFrame className="h-52 p-1" componentId="header-react" story="light" />
 
 ## Properties
 

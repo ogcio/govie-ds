@@ -143,6 +143,7 @@ export function HeaderLegacy({
   showTitleOnMobile,
   dataTestid,
   appearance = 'default',
+  ...props
 }: HeaderProps) {
   useEffect(() => {
     attachEventsToItemActionTriggers();
@@ -207,6 +208,7 @@ export function HeaderLegacy({
       aria-label={t('header.siteHeader', { defaultValue: 'Site Header' })}
       className={headerVariants({ appearance })}
       data-testid={dataTestid}
+      {...props}
     >
       <Container
         id="HeaderContainer"

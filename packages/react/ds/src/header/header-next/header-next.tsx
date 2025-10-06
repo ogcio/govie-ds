@@ -1,27 +1,20 @@
 'use client';
 
-import {
-  Children,
-  forwardRef,
-  type ComponentPropsWithoutRef,
-  type ReactElement,
-  type ReactNode,
-} from 'react';
+import { Children, forwardRef, type ReactElement } from 'react';
+import { cn } from '../../cn.js';
 import { Container } from '../../container/container.js';
 import { translate as t } from '../../i18n/utility.js';
 import {
   getSpecialComponentType,
   isSpecialComponent,
 } from '../../utils/utilities.js';
-import type { HeaderVariant } from '../types.js';
-import { headerMenuVariants, headerVariants } from '../variants.js';
+import type { HeaderNextProps, HeaderSlotContainerProps } from '../types.js';
+import {
+  headerMenuVariants,
+  headerSlotContainerVariants,
+  headerVariants,
+} from '../variants.js';
 import { HeaderProvider } from './header-context.js';
-
-export type HeaderNextProps = ComponentPropsWithoutRef<'header'> & {
-  children?: ReactNode;
-  variant?: HeaderVariant;
-  fullWidth?: boolean;
-};
 
 export const HeaderNext = forwardRef<HTMLElement, HeaderNextProps>(
   (
@@ -60,6 +53,12 @@ export const HeaderNext = forwardRef<HTMLElement, HeaderNextProps>(
         ]),
     );
 
+    console.log({
+      allChildren,
+      headerLogo,
+      headerTitle,
+    });
+
     const ariaLabel =
       ariaLabelProp ?? t('header.siteHeader', { defaultValue: 'Site Header' });
 
@@ -88,6 +87,20 @@ export const HeaderNext = forwardRef<HTMLElement, HeaderNextProps>(
       </HeaderProvider>
     );
   },
+);
+
+export const HeaderSlotContainer = ({
+  variant,
+  className,
+  ...props
+}: HeaderSlotContainerProps) => (
+  <div
+    className={cn(
+      headerSlotContainerVariants({ appearance: variant }),
+      className,
+    )}
+    {...props}
+  />
 );
 
 HeaderNext.displayName = 'HeaderNext';

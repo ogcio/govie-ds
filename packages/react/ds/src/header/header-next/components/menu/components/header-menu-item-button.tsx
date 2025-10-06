@@ -1,3 +1,5 @@
+'use client';
+
 import { Slot } from '@radix-ui/react-slot';
 import { cn } from '../../../../../cn.js';
 import { Icon } from '../../../../../icon/icon.js';
@@ -7,13 +9,19 @@ import { headerToolItemVariants } from '../../../../variants.js';
 import { useHeaderContext } from '../../../header-context.js';
 import { useHeaderMenuSection } from '../header-menu-context.js';
 
-const MenuButton = ({ showItemMode, ...props }: any) => {
-  return <PrimitiveButton data-item-mode={showItemMode} {...props} />;
+const MenuButton = ({ showItemMode, children, icon, ...props }: any) => {
+  return (
+    <>
+      <PrimitiveButton data-item-mode={showItemMode} {...props}>
+        {children}
+        {icon && <Icon icon={icon} ariaHidden={true} />}
+      </PrimitiveButton>
+    </>
+  );
 };
 
 export const HeaderMenuItemButton = ({
   asChild,
-  icon,
   children,
   ...props
 }: HeaderMenuItemButtonProps) => {
@@ -34,7 +42,6 @@ export const HeaderMenuItemButton = ({
       {...props}
     >
       {children}
-      {icon && <Icon icon={icon} ariaHidden={true} />}
     </Component>
   );
 };

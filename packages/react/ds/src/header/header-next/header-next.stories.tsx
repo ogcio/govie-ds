@@ -1,7 +1,7 @@
 import type { Meta, StoryObj } from '@storybook/react';
-import { useMemo, useReducer, useState } from 'react';
+import { useMemo, useState } from 'react';
+import { within, expect, userEvent, screen } from 'storybook/test';
 import { Button } from '../../button/button.js';
-import { cn } from '../../cn.js';
 import { DrawerMenuExample } from '../../drawer/drawer.content.js';
 import {
   DrawerBody,
@@ -13,13 +13,13 @@ import {
   FormFieldLabel,
 } from '../../forms/form-field/form-field.js';
 import { Heading } from '../../heading/heading.js';
-import { IconId } from '../../icon/icon.js';
+import { useToggleMap } from '../../hooks/use-toggle-map.js';
+import { Icon, IconId } from '../../icon/icon.js';
 import { Link } from '../../link/link.js';
 import { List, ListTypeEnum } from '../../list/list.js';
 import { ListItem } from '../../list-item/list-item.js';
 import { SelectItemNext, SelectNext } from '../../select/select-next.js';
 import { HeaderSearch } from '../components/header-search.js';
-import { headerSlotContainerVariants } from '../variants.js';
 import { HeaderGovieLogoHarp, HeaderLogo } from './components/header-logo.js';
 import { HeaderTitle } from './components/header-title.js';
 import { HeaderMenuItemButton } from './components/menu/components/header-menu-item-button.js';
@@ -28,7 +28,7 @@ import { HeaderMenuItemSeparator } from './components/menu/components/header-men
 import { HeaderMenuItemSlot } from './components/menu/components/header-menu-item-slot.js';
 import { HeaderPrimaryMenu } from './components/menu/header-primary-menu.js';
 import { HeaderSecondaryMenu } from './components/menu/header-secondary-menu.js';
-import { HeaderNext as Header } from './header-next.js';
+import { HeaderNext as Header, HeaderSlotContainer } from './header-next.js';
 
 const meta = {
   title: 'layout/Header',
@@ -36,13 +36,6 @@ const meta = {
 } satisfies Meta<typeof Header>;
 
 export default meta;
-
-const SlotContainer = ({ variant, ...props }: any) => (
-  <div
-    className={cn(headerSlotContainerVariants({ appearance: variant }))}
-    {...props}
-  />
-);
 
 const SlotExample1 = () => (
   <div className="gi-pt-4 gi-flex gi-justify-between gi-flex-col gi-gap-6 gi-h-full">
@@ -90,54 +83,12 @@ const SlotExample2 = () => {
   );
 };
 
-type HeaderUiState = {
-  drawer: boolean;
-  search: boolean;
-  language: boolean;
-  faq: boolean;
-} & Record<string, boolean>;
-
-type HeaderUiAction =
-  | { type: 'toggle'; key: string }
-  | { type: 'open'; key: string }
-  | { type: 'close'; key: string }
-  | { type: 'closeAll' };
-
-const initialHeaderUiState: HeaderUiState = {
-  drawer: false,
-  search: false,
-  language: false,
-  faq: false,
-};
-
-function headerUiReducer(
-  state: HeaderUiState,
-  action: HeaderUiAction,
-): HeaderUiState {
-  if (action.type === 'toggle') {
-    const key = action.key;
-    return { ...initialHeaderUiState, [key]: !state[key] };
-  }
-  if (action.type === 'open') {
-    return { ...initialHeaderUiState, [action.key]: true };
-  }
-  if (action.type === 'close') {
-    return { ...initialHeaderUiState, [action.key]: false };
-  }
-  if (action.type === 'closeAll') {
-    return {
-      ...initialHeaderUiState,
-    };
-  }
-  return state;
-}
-
 export const Default: StoryObj = {
   render: () => {
-    const [state, dispatch] = useReducer(headerUiReducer, initialHeaderUiState);
-    const toggle = (key: string) => dispatch({ type: 'toggle', key });
-    const close = (key: string) => dispatch({ type: 'close', key });
-    const closeAll = () => dispatch({ type: 'closeAll' });
+    const [state, { toggle, close, closeAll }] = useToggleMap({
+      search: false,
+      drawer: false,
+    });
 
     const icons = useMemo(() => {
       return {
@@ -147,6 +98,14 @@ export const Default: StoryObj = {
         search: state.search ? 'close' : 'search',
       } as Record<string, IconId>;
     }, [state.faq, state.language, state.drawer, state.search]);
+
+    const handleMenuItemButton = (key: string) => () => {
+      const sections = ['faq', 'search', 'language'].filter(
+        (section) => section !== key,
+      );
+      toggle(key);
+      sections.map((section) => close(section));
+    };
 
     return (
       <>
@@ -162,16 +121,14 @@ export const Default: StoryObj = {
             <HeaderMenuItemLink href="#" aria-label="Switch to English">
               English
             </HeaderMenuItemLink>
-            <HeaderMenuItemSlot>
-              <>
-                <span>Hello John | </span>
-                <a
-                  href="#"
-                  className="gi-header-secondary-item gi-header-secondary-item"
-                >
-                  Logout
-                </a>
-              </>
+            <HeaderMenuItemSlot className="gi-flex gi-items-center">
+              <label>Hello John &nbsp;| </label>
+              <a
+                href="#"
+                className="gi-header-secondary-item gi-header-secondary-item-default"
+              >
+                <Icon icon="logout" size="sm" />
+              </a>
             </HeaderMenuItemSlot>
           </HeaderSecondaryMenu>
           <HeaderPrimaryMenu>
@@ -188,17 +145,16 @@ export const Default: StoryObj = {
               aria-label="Toggle frequently asked questions"
               aria-expanded={state.faq}
               aria-controls="FaqDrawer"
-              onClick={() => toggle('faq')}
+              onClick={handleMenuItemButton('faq')}
             >
               FAQ
             </HeaderMenuItemButton>
-
             <HeaderMenuItemButton
               showItemMode="desktop-only"
               icon={icons.search}
               aria-label="Toggle site search"
               aria-expanded={state.search}
-              onClick={() => toggle('search')}
+              onClick={handleMenuItemButton('search')}
             >
               Search
             </HeaderMenuItemButton>
@@ -209,7 +165,7 @@ export const Default: StoryObj = {
               aria-label="Toggle language selector"
               aria-expanded={state.language}
               aria-haspopup="listbox"
-              onClick={() => toggle('language')}
+              onClick={handleMenuItemButton('language')}
             >
               Language
             </HeaderMenuItemButton>
@@ -221,7 +177,7 @@ export const Default: StoryObj = {
               aria-expanded={state.drawer}
               aria-controls="MobileMenuDrawer"
               aria-haspopup="dialog"
-              onClick={() => toggle('drawer')}
+              onClick={handleMenuItemButton('drawer')}
             >
               Menu
             </HeaderMenuItemButton>
@@ -265,37 +221,110 @@ export const Default: StoryObj = {
           </DrawerBody>
         </DrawerWrapper>
         {state.search ? (
-          <SlotContainer
+          <HeaderSlotContainer
             variant="default"
             role="region"
             aria-label="Site search"
             aria-live="polite"
           >
             <HeaderSearch />
-          </SlotContainer>
+          </HeaderSlotContainer>
         ) : null}
         {state.language ? (
-          <SlotContainer
+          <HeaderSlotContainer
             id="language-slot"
             variant="default"
             role="region"
             aria-label="Language selector"
           >
             <SlotExample2 />
-          </SlotContainer>
+          </HeaderSlotContainer>
         ) : null}
       </>
     );
   },
+  play: async ({ canvasElement, step }) => {
+    const canvas = within(canvasElement);
+
+    await step('header + navs are present', async () => {
+      expect(
+        await canvas.findByRole('banner', { name: /site header/i }),
+      ).toBeInTheDocument();
+      expect(
+        await canvas.findByRole('navigation', { name: /primary navigation/i }),
+      ).toBeInTheDocument();
+      expect(
+        await screen.findByRole('navigation', {
+          name: /secondary navigation/i,
+        }),
+      ).toBeInTheDocument();
+    });
+
+    await step('FAQ drawer button updates aria + icon', async () => {
+      const faqButton = await canvas.findByRole('button', {
+        name: /toggle frequently asked questions/i,
+      });
+      expect(within(faqButton).getByText(/info/i)).toBeInTheDocument();
+
+      await userEvent.click(faqButton);
+      expect(within(faqButton).getByText(/close/i)).toBeInTheDocument();
+
+      const faqDrawer = document.querySelector('#FaqDrawer') as HTMLElement;
+      expect(faqDrawer).toBeTruthy();
+
+      const drawerScope = within(faqDrawer);
+      const drawerCloseButton = await drawerScope.findByRole('button', {
+        name: /close/i,
+      });
+      await userEvent.click(drawerCloseButton);
+      expect(within(faqButton).getByText(/info/i)).toBeInTheDocument();
+    });
+
+    await step('Search slot region appears and hides', async () => {
+      const searchButton = await canvas.findByRole('button', {
+        name: /toggle site search/i,
+      });
+      expect(searchButton).toHaveAttribute('aria-expanded', 'false');
+
+      await userEvent.click(searchButton);
+      expect(searchButton).toHaveAttribute('aria-expanded', 'true');
+      expect(
+        await screen.findByRole('region', { name: /site search/i }),
+      ).toBeInTheDocument();
+      expect(within(searchButton).getByText(/close/i)).toBeInTheDocument();
+
+      await userEvent.click(searchButton);
+      expect(searchButton).toHaveAttribute('aria-expanded', 'false');
+    });
+
+    await step('Language selector region appears and hides', async () => {
+      const langButton = await canvas.findByRole('button', {
+        name: /toggle language selector/i,
+      });
+      expect(langButton).toHaveAttribute('aria-haspopup', 'listbox');
+      expect(langButton).toHaveAttribute('aria-expanded', 'false');
+
+      await userEvent.click(langButton);
+      expect(langButton).toHaveAttribute('aria-expanded', 'true');
+      expect(
+        await screen.findByRole('region', { name: /language selector/i }),
+      ).toBeInTheDocument();
+      expect(within(langButton).getByText(/close/i)).toBeInTheDocument();
+
+      await userEvent.click(langButton);
+      expect(langButton).toHaveAttribute('aria-expanded', 'false');
+      expect(within(langButton).getByText(/mic/i)).toBeInTheDocument();
+    });
+  },
 };
 
-export const GovieHeader: StoryObj = {
+export const Govie: StoryObj = {
   render: () => {
     const [isMenuOpen, setIsMenuOpen] = useState(false);
     const toggleMenu = () => setIsMenuOpen(!isMenuOpen);
     return (
       <>
-        <Header variant="default" aria-label="Site header">
+        <Header variant="default" aria-label="Site header" id="govieHeader">
           <HeaderLogo>
             <HeaderGovieLogoHarp
               href="#"
@@ -353,6 +382,43 @@ export const GovieHeader: StoryObj = {
       </>
     );
   },
+
+  play: async ({ canvasElement, step }) => {
+    const canvas = within(canvasElement);
+
+    await step('header + primary nav present', async () => {
+      expect(
+        await canvas.findByRole('banner', { name: /site header/i }),
+      ).toBeInTheDocument();
+
+      expect(
+        await canvas.findByRole('navigation', { name: /primary navigation/i }),
+      ).toBeInTheDocument();
+
+      expect(
+        await canvas.findByRole('link', { name: /news/i }),
+      ).toBeInTheDocument();
+      expect(
+        await canvas.findByRole('link', { name: /departments/i }),
+      ).toBeInTheDocument();
+      expect(
+        await canvas.findByRole('link', { name: /services/i }),
+      ).toBeInTheDocument();
+
+      expect(
+        await canvas.findByRole('link', { name: /gaelige/i }),
+      ).toBeInTheDocument();
+    });
+
+    await step('logo link is present', async () => {
+      expect(
+        await canvas.findByRole('link', { name: /go to the home page/i }),
+      ).toBeInTheDocument();
+      expect(
+        await canvas.findByRole('img', { name: /gov\.ie logo/i }),
+      ).toBeInTheDocument();
+    });
+  },
 };
 
 export const Light: StoryObj = {
@@ -364,10 +430,10 @@ export const Light: StoryObj = {
     );
   },
   render: () => {
-    const [state, dispatch] = useReducer(headerUiReducer, initialHeaderUiState);
-    const toggle = (key: string) => dispatch({ type: 'toggle', key });
-    const close = (key: string) => dispatch({ type: 'close', key });
-    const closeAll = () => dispatch({ type: 'closeAll' });
+    const [state, { toggle, close, closeAll }] = useToggleMap({
+      search: false,
+      drawer: false,
+    });
 
     const icons = useMemo(() => {
       return {
@@ -377,6 +443,14 @@ export const Light: StoryObj = {
         search: state.search ? 'close' : 'search',
       } as Record<string, IconId>;
     }, [state.faq, state.language, state.drawer, state.search]);
+
+    const handleMenuItemButton = (key: string) => () => {
+      const sections = ['faq', 'search', 'language'].filter(
+        (section) => section !== key,
+      );
+      toggle(key);
+      sections.map((section) => close(section));
+    };
 
     return (
       <>
@@ -392,16 +466,14 @@ export const Light: StoryObj = {
             <HeaderMenuItemLink href="#" aria-label="Switch to English">
               English
             </HeaderMenuItemLink>
-            <HeaderMenuItemSlot>
-              <>
-                <span>Hello John | </span>
-                <a
-                  href="#"
-                  className="gi-header-secondary-item gi-text-gray-950 gi-header-secondary-item-light"
-                >
-                  Logout
-                </a>
-              </>
+            <HeaderMenuItemSlot className="gi-flex gi-items-center">
+              <label>Hello John &nbsp;| </label>
+              <a
+                href="#"
+                className="gi-header-secondary-item gi-header-secondary-item-light"
+              >
+                <Icon icon="logout" size="sm" />
+              </a>
             </HeaderMenuItemSlot>
           </HeaderSecondaryMenu>
           <HeaderPrimaryMenu>
@@ -418,7 +490,7 @@ export const Light: StoryObj = {
               aria-label="Toggle frequently asked questions"
               aria-expanded={state.faq}
               aria-controls="FaqDrawer"
-              onClick={() => toggle('faq')}
+              onClick={handleMenuItemButton('faq')}
             >
               FAQ
             </HeaderMenuItemButton>
@@ -428,7 +500,7 @@ export const Light: StoryObj = {
               icon={icons.search}
               aria-label="Toggle site search"
               aria-expanded={state.search}
-              onClick={() => toggle('search')}
+              onClick={handleMenuItemButton('search')}
             >
               Search
             </HeaderMenuItemButton>
@@ -439,7 +511,7 @@ export const Light: StoryObj = {
               aria-label="Toggle language selector"
               aria-expanded={state.language}
               aria-haspopup="listbox"
-              onClick={() => toggle('language')}
+              onClick={handleMenuItemButton('language')}
             >
               Language
             </HeaderMenuItemButton>
@@ -451,7 +523,7 @@ export const Light: StoryObj = {
               aria-expanded={state.drawer}
               aria-controls="MobileMenuDrawer"
               aria-haspopup="dialog"
-              onClick={() => toggle('drawer')}
+              onClick={handleMenuItemButton('drawer')}
             >
               Menu
             </HeaderMenuItemButton>
@@ -495,24 +567,24 @@ export const Light: StoryObj = {
           </DrawerBody>
         </DrawerWrapper>
         {state.search ? (
-          <SlotContainer
+          <HeaderSlotContainer
             variant="light"
             role="region"
             aria-label="Site search"
             aria-live="polite"
           >
             <HeaderSearch />
-          </SlotContainer>
+          </HeaderSlotContainer>
         ) : null}
         {state.language ? (
-          <SlotContainer
+          <HeaderSlotContainer
             id="language-slot"
             variant="light"
             role="region"
             aria-label="Language selector"
           >
             <SlotExample2 />
-          </SlotContainer>
+          </HeaderSlotContainer>
         ) : null}
       </>
     );

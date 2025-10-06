@@ -239,3 +239,4 @@ export type {
   EditorTableCellConfig,
   EditorTableCellProps,
 } from './data-table/types.js';
+export { useToggleMap } from './hooks/use-toggle-map.js';

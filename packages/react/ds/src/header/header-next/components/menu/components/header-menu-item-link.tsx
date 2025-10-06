@@ -1,3 +1,5 @@
+'use client';
+
 import { Slot } from '@radix-ui/react-slot';
 import { forwardRef } from 'react';
 import { Icon } from '../../../../../icon/icon.js';
@@ -10,22 +12,21 @@ import {
 import { useHeaderContext } from '../../../header-context.js';
 import { useHeaderMenuSection } from '../header-menu-context.js';
 
+const MenuAnchor = ({ icon, children, ...props }: any) => {
+  return (
+    <Anchor {...props}>
+      {children}
+      {icon ? <Icon icon={icon} aria-hidden="true" /> : null}
+    </Anchor>
+  );
+};
+
 export const HeaderMenuItemLink = forwardRef<
   HTMLAnchorElement,
   HeaderMenuItemLinkProps
 >(
   (
-    {
-      asChild,
-      icon,
-      href,
-      external,
-      children,
-      className,
-      target,
-      rel,
-      ...props
-    },
+    { asChild, href, external, children, className, target, rel, ...props },
     ref,
   ) => {
     const context = useHeaderContext();
@@ -38,8 +39,15 @@ export const HeaderMenuItemLink = forwardRef<
     }
 
     const appearance = context.variant;
-    const AnchorComponent = asChild ? Slot : Anchor;
+    const AnchorComponent = asChild ? Slot : MenuAnchor;
     const finalTarget = target ?? (external ? '_blank' : undefined);
+    const anchorProps = asChild
+      ? {}
+      : {
+          href,
+          target: finalTarget,
+          rel,
+        };
 
     switch (section) {
       case 'primary': {
@@ -50,10 +58,10 @@ export const HeaderMenuItemLink = forwardRef<
             href={href}
             target={finalTarget}
             className={headerToolItemVariants({ appearance, className })}
+            {...anchorProps}
             {...props}
           >
             {children}
-            {icon ? <Icon icon={icon} aria-hidden="true" /> : null}
           </AnchorComponent>
         );
       }
@@ -69,6 +77,7 @@ export const HeaderMenuItemLink = forwardRef<
                 appearance,
                 className,
               })}
+              {...anchorProps}
               {...props}
             >
               {children}

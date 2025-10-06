@@ -1,3 +1,5 @@
+'use client';
+
 import { forwardRef, type ComponentPropsWithoutRef } from 'react';
 import { headerDividerVariants } from '../../../../variants.js';
 import { useHeaderContext } from '../../../header-context.js';

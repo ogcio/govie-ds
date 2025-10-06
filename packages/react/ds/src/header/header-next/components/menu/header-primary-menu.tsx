@@ -1,18 +1,11 @@
-import {
-  Children,
-  forwardRef,
-  PropsWithChildren,
-  type ComponentPropsWithoutRef,
-} from 'react';
+'use client';
+
+import { Children, forwardRef } from 'react';
 import { cn } from '../../../../cn.js';
 import { isSpecialComponent } from '../../../../utils/utilities.js';
-import { type HeaderItemMode } from '../../../types.js';
+import { HeaderPrimaryMenuProps, type HeaderItemMode } from '../../../types.js';
 import { useHeaderContext } from '../../header-context.js';
 import { HeaderMenuSectionProvider } from './header-menu-context.js';
-
-export type HeaderPrimaryMenuProps = PropsWithChildren<
-  ComponentPropsWithoutRef<'nav'>
->;
 
 export const HeaderPrimaryMenu = forwardRef<
   HTMLElement,

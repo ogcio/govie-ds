@@ -81,54 +81,73 @@ import {
   ToastVariant,
   StepFillLevel,
   StepStatus,
+  HeaderLogo,
+  HeaderSlotContainer,
+  HeaderGovieLogoHarp,
+  HeaderTitle,
+  HeaderSecondaryMenu,
+  HeaderMenuItemLink,
+  HeaderPrimaryMenu,
+  HeaderMenuItemSeparator,
+  HeaderMenuItemButton,
 } from '@ogcio/design-system-react';
 import { useEffect, useState } from 'react';
 
-// Header Configuration
-const headerProps: HeaderProps = {
-  items: [
-    {
-      label: 'Departments',
-      itemType: 'link',
-      href: '#',
-      showItemMode: 'desktop-only',
-    },
-    {
-      label: 'Services',
-      itemType: 'link',
-      href: '#',
-      showItemMode: 'desktop-only',
-    },
-    {
-      itemType: 'divider',
-      showItemMode: 'desktop-only',
-    },
-    {
-      label: 'Home',
-      icon: 'home',
-      itemType: 'link',
-      href: '/item1',
-      showItemMode: 'desktop-only',
-    },
-    {
-      label: 'Search',
-      icon: 'search',
-      itemType: 'slot',
-      component: <HeaderSearch />,
-      slotAppearance: 'dropdown',
-      showItemMode: 'desktop-only',
-    },
-  ],
-  secondaryLinks: [
-    {
-      href: '#',
-      label: 'English',
-    },
-    {
-      href: '#',
-      label: 'Gaeilge',
-    },
-  ],
+const HeaderComposable = () => {
+  const [searchOpen, setSearchOpen] = useState(false);
+
+  return (
+    <>
+      <Header variant="default" aria-label="Site header" id="GovieHeader">
+        <HeaderLogo>
+          <HeaderGovieLogoHarp />
+        </HeaderLogo>
+        <HeaderTitle>Title</HeaderTitle>
+        <HeaderSecondaryMenu>
+          <HeaderMenuItemLink href="#" aria-label="Switch to English">
+            English
+          </HeaderMenuItemLink>
+          <HeaderMenuItemLink href="#" aria-label="Switch to Gaeilge">
+            Gaeilge
+          </HeaderMenuItemLink>
+        </HeaderSecondaryMenu>
+        <HeaderPrimaryMenu>
+          <HeaderMenuItemLink href="#" showItemMode="desktop-only">
+            Departments
+          </HeaderMenuItemLink>
+          <HeaderMenuItemLink href="#" showItemMode="desktop-only">
+            Services
+          </HeaderMenuItemLink>
+          <HeaderMenuItemSeparator />
+          <HeaderMenuItemLink href="/" showItemMode="desktop-only">
+            Home
+          </HeaderMenuItemLink>
+          <HeaderMenuItemButton
+            showItemMode="desktop-only"
+            icon={searchOpen ? 'close' : 'search'}
+            aria-label="Toggle site search"
+            aria-expanded={searchOpen}
+            aria-controls="HeaderSearchDropdown"
+            onClick={() => setSearchOpen((v) => !v)}
+          >
+            Search
+          </HeaderMenuItemButton>
+        </HeaderPrimaryMenu>
+      </Header>
+      {searchOpen ? (
+        <HeaderSlotContainer
+          id="HeaderSearchDropdown"
+          variant="default"
+          role="region"
+          aria-label="Site search"
+          aria-live="polite"
+          className="gi-mt-0"
+        >
+          <HeaderSearch />
+        </HeaderSlotContainer>
+      ) : null}
+    </>
+  );
 };
 
 // StepStates for ProgressStepper
@@ -615,12 +634,7 @@ const ValidationFormExample = () => {
 export default function Home() {
   return (
     <>
-      <Header
-        logo={{ href: '/' }}
-        items={headerProps.items}
-        addDefaultMobileMenu
-        secondaryLinks={headerProps.secondaryLinks}
-      />
+      <HeaderComposable />
       <CookieBanner {...CookieBannerProps} />
 
       <Container className="py-8">

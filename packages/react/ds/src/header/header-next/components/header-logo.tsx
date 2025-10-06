@@ -12,7 +12,17 @@ import { headerLogoVariants } from '../../variants.js';
 import { useHeaderContext } from '../header-context.js';
 
 export const HeaderLogo = ({ children }: HeaderLogoProps) => {
-  return children;
+  const context = useHeaderContext();
+
+  if (!context) {
+    throw new Error('HeaderLogo must be used within a Header');
+  }
+
+  return (
+    <div className={headerLogoVariants({ appearance: context?.variant })}>
+      {children}
+    </div>
+  );
 };
 
 Object.defineProperty(HeaderLogo, 'componentType', {
@@ -63,14 +73,13 @@ export const HeaderGovieLogoHarp = (logo: LogoProps) => {
   }
 
   return (
-    <div className={headerLogoVariants({ appearance: context?.variant })}>
+    <div>
       {logo?.href && (
         <Anchor
           href={logo.href}
           aria-label={t('header.goToHomePage', {
             defaultValue: 'Go to Home Page',
           })}
-          data-testid={`logo-link`}
           external={logo.external}
         >
           {getLogo({ logo, variant: context.variant })}

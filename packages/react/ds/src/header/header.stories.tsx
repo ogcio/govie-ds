@@ -4,7 +4,6 @@ import { Button } from '../button/button.js';
 import { Heading } from '../heading/heading.js';
 import { Link } from '../link/link.js';
 import { List, ListTypeEnum } from '../list/list.js';
-import { Paragraph } from '../paragraph/paragraph.js';
 import { Select, SelectItem } from '../select/select.js';
 import { MobileHeaderMenuItems } from './components/header-menu.js';
 import { HeaderSearch } from './components/header-search.js';

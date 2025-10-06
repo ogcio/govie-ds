@@ -1,19 +1,12 @@
-import {
-  Children,
-  ComponentPropsWithoutRef,
-  forwardRef,
-  ReactNode,
-} from 'react';
+'use client';
+
+import { Children, forwardRef } from 'react';
 import { Container } from '../../../../container/container.js';
 import { isSpecialComponent } from '../../../../utils/utilities.js';
+import { HeaderSecondaryMenuProps } from '../../../types.js';
 import { headerSecondaryLinksVariants } from '../../../variants.js';
 import { useHeaderContext } from '../../header-context.js';
 import { HeaderMenuSectionProvider } from './header-menu-context.js';
-
-export type HeaderSecondaryMenuProps = ComponentPropsWithoutRef<'nav'> & {
-  children?: ReactNode;
-  'aria-label'?: string;
-};
 
 export const HeaderSecondaryMenu = forwardRef<
   HTMLElement,
