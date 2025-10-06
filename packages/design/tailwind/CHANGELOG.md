@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.15.2](https://github.com/ogcio/govie-ds/compare/design-tailwind-v1.15.1...design-tailwind-v1.15.2) (2025-10-06)
+
+
+### Bug Fixes
+
+* update Alert classes without Title AB[#31522](https://github.com/ogcio/govie-ds/issues/31522) ([#745](https://github.com/ogcio/govie-ds/issues/745)) ([8eef8ad](https://github.com/ogcio/govie-ds/commit/8eef8adcd6df911b5fcb7db475a993fc21d7c754))
+
 ## [1.15.1](https://github.com/ogcio/govie-ds/compare/design-tailwind-v1.15.0...design-tailwind-v1.15.1) (2025-10-01)
 
 
