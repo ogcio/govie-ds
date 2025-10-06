@@ -22,32 +22,7 @@ component:
 <Section current="html">
 
 <ComponentPreview className="block w-full gi-not-prose">
-  <Header
-    title="Application title"
-    addDefaultMobileMenu
-    items={[
-      { label: 'Departments', itemType: 'link', href: '#' },
-      { label: 'Services', itemType: 'link', href: '#' },
-      { itemType: 'divider' },
-      {
-        label: 'Search',
-        icon: 'search',
-        itemType: 'slot',
-        component: <HeaderSearch />,
-        slotAppearance: 'dropdown',
-      },
-    ]}
-    secondaryLinks={[
-      {
-        href: '#',
-        label: 'Gaeilge',
-      },
-      {
-        href: '#',
-        label: 'English',
-      },
-    ]}
-  />
+  <HeaderComposableSample />
 </ComponentPreview>
 
 ## Examples
