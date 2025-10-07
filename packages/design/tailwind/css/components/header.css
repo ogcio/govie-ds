@@ -105,7 +105,6 @@ focus:gi-bg-black
   gi-h-auto
   !gi-leading-[24px]
   focus:gi-border-none
-  
   gi-p-2
   gi-items-center
   gi-gap-md
@@ -241,13 +240,13 @@ label.gi-header-tool-item-light {
 
 .gi-header-accordion-item-toggle {
   @apply hover:gi-no-underline
-   hover:gi-underline-offset-sm
-   hover:gi-cursor-pointer
-   gi-block
-   gi-py-4
-   gi-border-color-border-system-neutral-subtle
-   gi-border-b-xs
-   gi-border-solid
+  hover:gi-underline-offset-sm
+  hover:gi-cursor-pointer
+  gi-block
+  gi-py-4
+  gi-border-color-border-system-neutral-subtle
+  gi-border-b-xs
+  gi-border-solid
 
   gi-focus-state-outline
   gi-focus-visible-state-outline

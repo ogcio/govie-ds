@@ -85,29 +85,64 @@ export type SecondaryLink =
     };
 
 export type HeaderProps = ComponentPropsWithoutRef<'header'> & {
-  dataTestid?: string;
-  /** @deprecated Use "variant" instead */
-  appearance?: HeaderAppearance;
-  variant?: HeaderVariant;
+  dataTestid?: string; // legacy key kept for BC
   fullWidth?: boolean;
-  children?: any;
-  /** @deprecated Use <HeaderTitle> instead */
+  children?: ReactNode;
+  /**
+   * @deprecated Replaced by `variant` (new composable API).
+   * Use: `<Header variant="default" | "light">…</Header>`.
+   */
+  appearance?: HeaderAppearance;
+  /**
+   * @deprecated Use `<HeaderTitle>` child instead.
+   * Example: `<Header><HeaderTitle>My site</HeaderTitle></Header>`.
+   */
   title?: string;
-  /** @deprecated Use <HeaderLogo> instead */
+
+  /**
+   * @deprecated Use `<HeaderLogo>` + `<SomeLogo />` children.
+   * Example: `<Header><HeaderLogo><HeaderGovieLogoHarp href="/" /></HeaderLogo></Header>`.
+   */
   logo?: LogoProps;
-  /** @deprecated  */
+  /**
+   * @deprecated Mobile menu is now composed with `<HeaderPrimaryMenu>` and item buttons/links.
+   * Use: `<HeaderPrimaryMenu><HeaderMenuItemButton showItemMode="mobile-only" … /></HeaderPrimaryMenu>`.
+   */
   addDefaultMobileMenu?: boolean;
-  /** @deprecated */
+
+  /**
+   * @deprecated Provide your own button/label via `<HeaderPrimaryMenu>` children.
+   * Use: `<HeaderMenuItemButton aria-label="Open menu">Menu</HeaderMenuItemButton>`.
+   */
   mobileMenuLabel?: string;
-  /** @deprecated */
+  /**
+   * @deprecated Control visibility per item with `showItemMode`.
+   * Use: `<HeaderMenuItemButton showItemMode="desktop-only" />` (or `mobile-only`, `always`).
+   */
   showMenuLabel?: boolean;
-  /** @deprecated Use <HeaderPrimaryMenuItems> with nested Header components instead */
+  /**
+   * @deprecated Replace with composable menu children.
+   * Use:
+   * `<HeaderPrimaryMenu>
+   *    <HeaderMenuItemLink href="/departments">Departments</HeaderMenuItemLink>
+   *    <HeaderMenuItemButton icon="search" …>Search</HeaderMenuItemButton>
+   *  </HeaderPrimaryMenu>`
+   */
   items?: HeaderItem[];
-  /** @deprecated Use <HeaderSecondaryMenuItems> instead */
+  /**
+   * @deprecated Replace with `<HeaderSecondaryMenu>` + `<HeaderMenuItemLink|Slot>`.
+   * Use:
+   * `<HeaderSecondaryMenu>
+   *    <HeaderMenuItemLink href="/ga">Gaeilge</HeaderMenuItemLink>
+   *    <HeaderMenuItemSlot><UserChip/></HeaderMenuItemSlot>
+   *  </HeaderSecondaryMenu>`
+   */
   secondaryLinks?: SecondaryLink[];
-  /** @deprecated */
+  /**
+   * @deprecated The title’s responsive behavior is controlled by your child components and CSS.
+   * Use: media utilities (e.g., hide/show via classes) around `<HeaderTitle>`.
+   */
   showTitleOnMobile?: boolean;
-  /** @deprecated */
 };
 
 /* HeaderNext */
@@ -130,7 +165,8 @@ export type HeaderMenuItemLinkProps =
   };
 
 export type HeaderMenuItemButtonProps = PropsWithChildren<
-  Omit<ButtonHTMLAttributes<HTMLButtonElement>, 'children'> & {
+  ButtonHTMLAttributes<HTMLButtonElement> & {
+    className?: string;
     asChild?: boolean;
     showItemMode?: HeaderItemMode;
     icon?: IconId;

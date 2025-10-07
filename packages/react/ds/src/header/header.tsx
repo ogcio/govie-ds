@@ -1,10 +1,11 @@
 import { HeaderLegacy } from './header-legacy.js';
 import { HeaderNext } from './header-next/header-next.js';
-import { HeaderProps } from './types.js';
+import { HeaderNextProps, HeaderProps } from './types.js';
 
 const deprecatedKeys = [
   'title',
   'logo',
+  'appearance',
   'addDefaultMobileMenu',
   'mobileMenuLabel',
   'showMenuLabel',
@@ -13,7 +14,7 @@ const deprecatedKeys = [
   'showTitleOnMobile',
 ] as const;
 
-export const Header = (props: HeaderProps) => {
+export const Header = (props: HeaderProps | HeaderNextProps) => {
   const isLegacy = deprecatedKeys.some((key) => key in props);
 
   if (isLegacy) {

@@ -23,6 +23,7 @@ const MenuButton = ({ showItemMode, children, icon, ...props }: any) => {
 export const HeaderMenuItemButton = ({
   asChild,
   children,
+  className,
   ...props
 }: HeaderMenuItemButtonProps) => {
   const section = useHeaderMenuSection();
@@ -38,7 +39,7 @@ export const HeaderMenuItemButton = ({
 
   return (
     <Component
-      className={cn(headerToolItemVariants({ appearance }))}
+      className={cn(headerToolItemVariants({ appearance }), className)}
       {...props}
     >
       {children}

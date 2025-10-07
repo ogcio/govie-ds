@@ -1,6 +1,7 @@
 'use client';
 
 import { forwardRef, type ComponentPropsWithoutRef } from 'react';
+import { cn } from '../../../../../cn.js';
 import { headerDividerVariants } from '../../../../variants.js';
 import { useHeaderContext } from '../../../header-context.js';
 import { useHeaderMenuSection } from '../header-menu-context.js';
@@ -26,7 +27,7 @@ export const HeaderMenuItemSeparator = forwardRef<
     <div
       ref={ref}
       role="separator"
-      className={headerDividerVariants({ appearance, className })}
+      className={cn(headerDividerVariants({ appearance }), className)}
       {...props}
     />
   );

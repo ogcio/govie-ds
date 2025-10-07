@@ -314,6 +314,8 @@ export const Default: StoryObj = {
       await userEvent.click(langButton);
       expect(langButton).toHaveAttribute('aria-expanded', 'false');
       expect(within(langButton).getByText(/mic/i)).toBeInTheDocument();
+
+      await userEvent.click(canvasElement.ownerDocument.body);
     });
   },
 };

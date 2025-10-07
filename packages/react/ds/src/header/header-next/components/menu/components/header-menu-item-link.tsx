@@ -2,6 +2,7 @@
 
 import { Slot } from '@radix-ui/react-slot';
 import { forwardRef } from 'react';
+import { cn } from '../../../../../cn.js';
 import { Icon } from '../../../../../icon/icon.js';
 import Anchor from '../../../../../primitives/anchor.js';
 import { HeaderMenuItemLinkProps } from '../../../../types.js';
@@ -57,7 +58,7 @@ export const HeaderMenuItemLink = forwardRef<
             rel={rel}
             href={href}
             target={finalTarget}
-            className={headerToolItemVariants({ appearance, className })}
+            className={cn(headerToolItemVariants({ appearance }), className)}
             {...anchorProps}
             {...props}
           >

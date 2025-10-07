@@ -53,12 +53,6 @@ export const HeaderNext = forwardRef<HTMLElement, HeaderNextProps>(
         ]),
     );
 
-    console.log({
-      allChildren,
-      headerLogo,
-      headerTitle,
-    });
-
     const ariaLabel =
       ariaLabelProp ?? t('header.siteHeader', { defaultValue: 'Site Header' });
 
