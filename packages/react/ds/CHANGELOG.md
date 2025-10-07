@@ -1,5 +1,24 @@
 # Changelog
 
+## [1.19.0](https://github.com/ogcio/govie-ds/compare/react-lib-v1.18.1...react-lib-v1.19.0) (2025-10-06)
+
+
+### Features
+
+* Browser check AB[#29609](https://github.com/ogcio/govie-ds/issues/29609) ([#737](https://github.com/ogcio/govie-ds/issues/737)) ([11d8ae3](https://github.com/ogcio/govie-ds/commit/11d8ae3d2074357c014b1d64b2ba5b56df5a5cb6))
+
+
+### Bug Fixes
+
+* update Alert classes without Title AB[#31522](https://github.com/ogcio/govie-ds/issues/31522) ([#745](https://github.com/ogcio/govie-ds/issues/745)) ([8eef8ad](https://github.com/ogcio/govie-ds/commit/8eef8adcd6df911b5fcb7db475a993fc21d7c754))
+
+
+### Dependencies
+
+* The following workspace dependencies were updated
+  * devDependencies
+    * @ogcio/design-system-tailwind bumped to 1.15.2
+
 ## [1.18.1](https://github.com/ogcio/govie-ds/compare/react-lib-v1.18.0...react-lib-v1.18.1) (2025-10-01)
 
 
