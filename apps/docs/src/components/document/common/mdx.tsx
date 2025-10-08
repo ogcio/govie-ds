@@ -158,6 +158,7 @@ import {
   HeaderComposableSample,
   HeaderComposableLightSample,
   HeaderComposableDontSample,
+  HeaderComposableGovieSample,
 } from '../components/header-composable-sample';
 export type MdxProps = {
   code: string;
@@ -370,6 +371,7 @@ const documentComponents: MDXComponents = {
   HeaderComposableLightSample,
   HeaderComposableSample,
   HeaderComposableDontSample,
+  HeaderComposableGovieSample,
 };
 
 export function Mdx({ code }: MdxProps) {

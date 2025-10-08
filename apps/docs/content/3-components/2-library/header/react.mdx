@@ -33,36 +33,8 @@ component:
       fields:
         - name: 'children'
           ofType: 'ReactNode'
-          description: Usually <HeaderGovieLogoHarp />.
+          description: Usually <img />.
           required: false
-    - name: HeaderGovieLogoHarpProps
-      description: Gov.ie harp logo with optional link.
-      fields:
-        - name: 'href'
-          ofType: 'string'
-          description: When set, wraps the logo in a link (external-safe).
-          required: false
-        - name: 'external'
-          ofType: 'boolean'
-          description: Forces external link behavior (adds target/rel).
-          required: false
-        - name: 'imageSmall'
-          ofType: 'string'
-          description: Override small/mobile logo source.
-          required: false
-        - name: 'imageLarge'
-          ofType: 'string'
-          description: Override large/desktop logo source.
-          required: false
-        - name: 'alt'
-          ofType: 'string'
-          description: Image alternative text.
-          required: false
-        - name: '[HTMLAttributes<div>]'
-          ofType: '…'
-          description: All native div props.
-          required: false
-
     - name: HeaderTitleProps
       fields:
         - name: 'children'
@@ -149,11 +121,33 @@ component:
 
 # Header
 
+The Header component functions as a top-level navigation element for digital services across government departments and public sector organisations. It offers users a consistent and recognisable interface that builds trust, supports a unified brand identity, and delivers key navigation tools. Originally referred to as the GOV.IE masthead, this component is designed to signal to users that they are engaging with an official government service while providing easy access to essential site-wide features. It is adaptable for use beyond GOV.IE, supporting a broad range of departmental and agency websites.
+
 <Section current="react" >
 
 <ComponentPreview className="block w-full gi-not-prose">
   <HeaderComposableSample />
 </ComponentPreview>
+
+The Header now uses explicit primitives instead of the old single `<Header items secondaryLinks />` props API. Compose the layout with:
+
+- `HeaderLogo`, `HeaderTitle`
+- `HeaderPrimaryMenu`, `HeaderSecondaryMenu`
+- `HeaderMenuItemLink`, `HeaderMenuItemButton`, `HeaderMenuItemSeparator`
+- `HeaderSlotContainer` (for dropdown/inline regions), `DrawerWrapper`/`DrawerBody`/`DrawerFooter` (for dialogs/drawers)
+
+**Why this is better (vs. legacy `items/secondaryLinks`):**
+
+- Precise semantics & a11y: direct control over roles, labels, `aria-*`, and focus order.
+- Testability: deterministic targets (IDs, roles) for testing.
+- Layout flexibility: exact ordering and responsive visibility through `showItemMode`.
+
+**Quick migration map:**
+
+- `items[].itemType === 'link'` ⟶ `<HeaderMenuItemLink {...} />`
+- `items[].itemType === 'divider'` ⟶ `<HeaderMenuItemSeparator />`
+- `items[].itemType === 'slot'` (e.g. search) ⟶ `<HeaderMenuItemButton ... aria-controls="X" />` + `<HeaderSlotContainer id="X">…</HeaderSlotContainer>`
+- `secondaryLinks[]` ⟶ `<HeaderSecondaryMenu>` with `<HeaderMenuItemLink>` children
 
 ## Examples
 

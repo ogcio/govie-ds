@@ -101,7 +101,7 @@ export type HeaderProps = ComponentPropsWithoutRef<'header'> & {
 
   /**
    * @deprecated Use `<HeaderLogo>` + `<SomeLogo />` children.
-   * Example: `<Header><HeaderLogo><HeaderGovieLogoHarp href="/" /></HeaderLogo></Header>`.
+   * Example: `<Header><HeaderLogo><img src="..."/></HeaderLogo></Header>`.
    */
   logo?: LogoProps;
   /**

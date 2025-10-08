@@ -13,9 +13,9 @@ import {
 import { useHeaderContext } from '../../../header-context.js';
 import { useHeaderMenuSection } from '../header-menu-context.js';
 
-const MenuAnchor = ({ icon, children, ...props }: any) => {
+const MenuAnchor = ({ icon, children, showItemMode, ...props }: any) => {
   return (
-    <Anchor {...props}>
+    <Anchor {...props} data-item-mode={showItemMode}>
       {children}
       {icon ? <Icon icon={icon} aria-hidden="true" /> : null}
     </Anchor>

@@ -3,7 +3,6 @@ import {
   DrawerBody,
   DrawerWrapper,
   Header,
-  HeaderGovieLogoHarp,
   HeaderLogo,
   HeaderMenuItemButton,
   HeaderMenuItemLink,
@@ -12,6 +11,8 @@ import {
   ListItem,
   useToggleMap,
 } from '@ogcio/design-system-react';
+
+import Image from 'next/image';
 
 const links = [
   { label: 'Get Started', href: '/get-started/' },
@@ -34,7 +35,27 @@ export const DocsHeader = () => {
     <>
       <Header fullWidth variant="default" aria-label="Site header">
         <HeaderLogo>
-          <HeaderGovieLogoHarp href="/" />
+          <Image
+            alt="govie logo"
+            className="gi-block sm:gi-hidden"
+            decoding="async"
+            loading="eager"
+            fetchPriority="high"
+            width={25.45}
+            height={40}
+            src="/logos/general/harp-white.svg"
+          />
+          <Image
+            src="/logos/government-of-ireland/gov-white.svg"
+            alt="govie logo"
+            className="gi-hidden sm:gi-block"
+            decoding="async"
+            loading="eager"
+            fetchPriority="high"
+            width={136}
+            height={48}
+          />
+          <span className="gi-sr-only">Gov.ie logo</span>
         </HeaderLogo>
 
         <HeaderTitle id="site-title">Design System</HeaderTitle>

@@ -10,7 +10,6 @@ import {
   Form,
   FormFieldWithTag,
   Header,
-  HeaderGovieLogoHarp,
   HeaderLogo,
   HeaderMenuItemButton,
   HeaderMenuItemLink,
@@ -72,7 +71,16 @@ const HeaderComposable = () => {
     <>
       <Header variant="default" aria-label="Site header" id="GovieHeader">
         <HeaderLogo>
-          <HeaderGovieLogoHarp />
+          <img
+            src="https://raw.githubusercontent.com/ogcio/govie-ds/refs/heads/main/assets/logos/gov.ie/harp-gold-text-white.svg"
+            alt="govie logo"
+            decoding="async"
+            loading="eager"
+            fetchPriority="high"
+            width={136}
+            height={48}
+          />
+          <span className="gi-sr-only">Gov.ie logo</span>
         </HeaderLogo>
         <HeaderTitle>Title</HeaderTitle>
         <HeaderSecondaryMenu>

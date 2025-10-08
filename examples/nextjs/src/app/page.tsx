@@ -83,7 +83,6 @@ import {
   StepStatus,
   HeaderLogo,
   HeaderSlotContainer,
-  HeaderGovieLogoHarp,
   HeaderTitle,
   HeaderSecondaryMenu,
   HeaderMenuItemLink,
@@ -92,6 +91,7 @@ import {
   HeaderMenuItemButton,
 } from '@ogcio/design-system-react';
 import { useEffect, useState } from 'react';
+import Image from 'next/image';
 
 const HeaderComposable = () => {
   const [searchOpen, setSearchOpen] = useState(false);
@@ -100,7 +100,18 @@ const HeaderComposable = () => {
     <>
       <Header variant="default" aria-label="Site header" id="GovieHeader">
         <HeaderLogo>
-          <HeaderGovieLogoHarp />
+          <HeaderLogo>
+            <Image
+              src="https://raw.githubusercontent.com/ogcio/govie-ds/refs/heads/main/assets/logos/gov.ie/harp-gold-text-white.svg"
+              alt="govie logo"
+              decoding="async"
+              loading="eager"
+              fetchPriority="high"
+              width={136}
+              height={48}
+            />
+            <span className="gi-sr-only">Gov.ie logo</span>
+          </HeaderLogo>
         </HeaderLogo>
         <HeaderTitle>Title</HeaderTitle>
         <HeaderSecondaryMenu>
