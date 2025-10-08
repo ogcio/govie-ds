@@ -1,17 +1,11 @@
 'use client';
 
-import {
-  forwardRef,
-  type ComponentPropsWithoutRef,
-  type ReactNode,
-} from 'react';
+import { forwardRef } from 'react';
+import { cn } from '../../../../../cn.js';
+import { type HeaderMenuItemSlotProps } from '../../../../types.js';
 import { headerSecondaryLinkSlotItemVariants } from '../../../../variants.js';
 import { useHeaderContext } from '../../../header-context.js';
 import { useHeaderMenuSection } from '../header-menu-context.js';
-
-export type HeaderMenuItemSlotProps = ComponentPropsWithoutRef<'div'> & {
-  children?: ReactNode;
-};
 
 export const HeaderMenuItemSlot = forwardRef<
   HTMLDivElement,
@@ -35,10 +29,12 @@ export const HeaderMenuItemSlot = forwardRef<
     <li>
       <div
         ref={ref}
-        className={headerSecondaryLinkSlotItemVariants({
-          appearance,
+        className={cn(
+          headerSecondaryLinkSlotItemVariants({
+            appearance,
+          }),
           className,
-        })}
+        )}
         data-appearance={appearance}
         {...props}
       >

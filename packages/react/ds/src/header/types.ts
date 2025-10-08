@@ -175,7 +175,6 @@ export type HeaderMenuItemButtonProps = PropsWithChildren<
 export type HeaderPrimaryMenuProps = PropsWithChildren<
   ComponentPropsWithoutRef<'nav'>
 >;
-export type HeaderMenuItemSlotProps = PropsWithChildren;
 export type HeaderMenuSectionContextProps = 'primary' | 'secondary';
 export type HeaderSlotContainerProps = PropsWithChildren<
   {
@@ -190,4 +189,9 @@ export type HeaderTitleProps = PropsWithChildren<
 >;
 export type HeaderSecondaryMenuProps = PropsWithChildren<
   ComponentPropsWithoutRef<'nav'>
+>;
+export type HeaderMenuItemSlotProps = PropsWithChildren<
+  ComponentPropsWithoutRef<'div'> & {
+    children?: ReactNode;
+  }
 >;
