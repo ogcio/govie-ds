@@ -45,6 +45,11 @@
       "progressBar.progressBar": "Progress bar",
       "summaryList.linkAction": "Link action: {{children}}",
       "summaryList.summaryList": "Summary List",
+
+      "summaryList.col.value": "Value",
+      "summaryList.col.actions": "Actions",
+      "summaryList.caption": "Summary list",
+
       "sectionBreak.sectionBreak": "Section Break",
       "table.pagination.page": "Page",
       "table.pagination.ofTotal": "of {{totalPages}}",

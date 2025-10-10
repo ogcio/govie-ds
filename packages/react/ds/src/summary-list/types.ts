@@ -1,9 +1,5 @@
+import { ComponentPropsWithoutRef, ReactNode, TdHTMLAttributes } from 'react';
 import { LinkProps } from '../link/link.js';
-import {
-  SummaryListAction,
-  SummaryListRow,
-  SummaryListValue,
-} from './summary-list.js';
 
 export type SummaryListItem = {
   key: string;
@@ -11,26 +7,22 @@ export type SummaryListItem = {
   actionLink: LinkProps;
 };
 
-export type SummaryListValueProps = {
-  children: React.ReactNode;
+export type SummaryListValueProps = TdHTMLAttributes<HTMLTableCellElement>;
+
+export type SummaryListActionProps = LinkProps;
+
+export type SummaryListRowProps = ComponentPropsWithoutRef<'tr'> & {
+  label: ReactNode;
+  withBorder?: boolean;
 };
 
-export type SummaryListActionProps = Pick<
-  LinkProps,
-  'children' | 'href' | 'asChild'
->;
-
-export type SummaryListRowProps = {
-  label: string;
+export type SummaryListProps = ComponentPropsWithoutRef<'table'> & {
   withBorder?: boolean;
-  children:
-    | React.ReactElement<typeof SummaryListValue | typeof SummaryListAction>
-    | React.ReactElement<typeof SummaryListValue | typeof SummaryListAction>[];
-} & React.AriaAttributes;
+};
 
-export type SummaryListProps = {
-  children:
-    | React.ReactElement<typeof SummaryListRow>[]
-    | React.ReactElement<typeof SummaryListRow>;
-  dataTestid?: string;
+export type SummaryListHeaderProps = ComponentPropsWithoutRef<'tr'> & {
+  label?: string;
+};
+export type SummaryListActionListProps = ComponentPropsWithoutRef<'thead'> & {
+  label?: string;
 };
