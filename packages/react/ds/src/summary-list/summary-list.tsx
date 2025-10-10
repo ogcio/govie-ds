@@ -1,63 +1,41 @@
-import { translate as t } from '../i18n/utility.js';
-import { Link } from '../link/link.js';
+import { Children, ReactElement } from 'react';
+import { cn } from '../cn.js';
+import { getSpecialComponentType } from '../utilities.js';
+import { SummaryListProvider } from './summary-list-context.js';
 import type {
-  SummaryListActionProps,
+  SummaryListHeaderProps,
   SummaryListProps,
-  SummaryListValueProps,
   SummaryListRowProps,
 } from './types.js';
 
-export const SummaryListValue = ({ children }: SummaryListValueProps) => (
-  <dd className="gi-summary-list-value">{children}</dd>
-);
-
-export const SummaryListAction = ({
-  href,
+export const SummaryList = ({
   children,
-  asChild,
-}: SummaryListActionProps) => (
-  <dd className="gi-summary-list-actions">
-    <Link
-      href={href}
-      aria-label={t('summaryList.linkAction', {
-        children,
-        defaultValue: `Link action: ${children}`,
-      })}
-      asChild={asChild}
-    >
-      {children}
-    </Link>
-  </dd>
-);
-
-export const SummaryListRow = ({
-  children,
-  label,
+  className,
   withBorder,
   ...props
-}: SummaryListRowProps) => {
-  return (
-    <dl data-border={withBorder?.toString()} {...props}>
-      <dt>{label}</dt>
-      {children}
-    </dl>
-  );
-};
+}: SummaryListProps) => {
+  const allChildren = Children.toArray(children);
+  const header = allChildren.filter(
+    (child) => getSpecialComponentType(child) === 'SummaryListHeader',
+  ) as ReactElement<SummaryListHeaderProps>[];
+  const rows = allChildren.filter(
+    (child) => getSpecialComponentType(child) === 'SummaryListRow',
+  ) as ReactElement<SummaryListRowProps>[];
 
-export const SummaryList = ({ children, dataTestid }: SummaryListProps) => {
   return (
-    <div
-      className="gi-summary-list"
-      aria-label={t('summaryList.summaryList', {
-        defaultValue: 'Summary list',
-      })}
-      data-testid={dataTestid}
-    >
-      {children}
-    </div>
+    <SummaryListProvider>
+      <div
+        className={cn('gi-summary-list', {
+          'gi-border gi-border-color-border-system-neutral-muted': withBorder,
+        })}
+      >
+        <table className={className} role="table" {...props}>
+          {header ? <thead>{header}</thead> : null}
+          <tbody>{rows}</tbody>
+        </table>
+      </div>
+    </SummaryListProvider>
   );
 };
 
 SummaryList.displayName = 'SummaryList';
-SummaryListRow.displayName = 'SummaryRow';
-SummaryListAction.displayName = 'SummaryListAction';
