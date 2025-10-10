@@ -1,5 +1,4 @@
 import { MenuItemAccordion } from '../header/components/header-menu.js';
-import { HeaderSearch } from '../header/components/header-search.js';
 import { ListItem } from '../list-item/list-item.js';
 import { DrawerBody, DrawerFooter } from './drawer.js';
 

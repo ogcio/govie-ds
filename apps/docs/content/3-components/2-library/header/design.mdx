@@ -17,33 +17,9 @@ Originally referred to as the GOV.IE masthead, this component is designed to sig
 <Section current="design">
 
 <ComponentPreview className="gi-not-prose">
-  <Header
-    title="Application title"
-    addDefaultMobileMenu
-    items={[
-      { label: 'Departments', itemType: 'link', href: '#' },
-      { label: 'Services', itemType: 'link', href: '#' },
-      { itemType: 'divider' },
-      {
-        label: 'Search',
-        icon: 'search',
-        itemType: 'slot',
-        component: <HeaderSearch />,
-        slotAppearance: 'dropdown',
-      },
-    ]}
-    secondaryLinks={[
-      {
-        href: '#',
-        label: 'Gaeilge',
-      },
-      {
-        href: '#',
-        label: 'English',
-      },
-    ]}
-  />
+  <HeaderComposableSample />
 </ComponentPreview>
+
 <FigmaPreviewButton href="https://www.figma.com/design/ZEqfpXhocdZs1K5YfsE5ws/Design-system?node-id=258-2288" />
 
 ## Structure
@@ -59,62 +35,19 @@ The Header component accepts a variety of items including standard links, divide
 
 ## Variants
 
-<ComponentPreviewLayout className="flex-col gap-10">
+Use variants to support different contexts:
+
+- **Default** — Dark background with light text.
+
+<ComponentPreviewLayout>
   <ComponentPreviewItem className="block h-full w-full">
-    <Header />
+    <HeaderComposableSample />
   </ComponentPreviewItem>
+</ComponentPreviewLayout>
+- **Light** — Light background with dark text.
+<ComponentPreviewLayout className="gi-bg-black">
   <ComponentPreviewItem className="block h-full w-full">
-    <Header
-      items={[
-        {
-          href: '#',
-          itemType: 'link',
-          label: 'News',
-          showItemMode: 'desktop-only',
-        },
-        {
-          href: '#',
-          itemType: 'link',
-          label: 'Departments',
-          showItemMode: 'desktop-only',
-        },
-        {
-          href: '#',
-          itemType: 'link',
-          label: 'Services',
-          showItemMode: 'desktop-only',
-        },
-      ]}
-      logo={{
-        href: '/path',
-      }}
-    />
-  </ComponentPreviewItem>
-  <ComponentPreviewItem className="block h-full w-full">
-    <Header
-      items={[
-        {
-          component: <HeaderSearch />,
-          icon: 'search',
-          itemType: 'slot',
-          label: 'Search',
-          slotAppearance: 'dropdown',
-        },
-      ]}
-      logo={{
-        href: '/path',
-      }}
-      secondaryLinks={[
-        {
-          href: '#',
-          label: 'English',
-        },
-        {
-          href: '#',
-          label: 'Gaeilge',
-        },
-      ]}
-    />
+    <HeaderComposableLightSample />
   </ComponentPreviewItem>
 </ComponentPreviewLayout>
 
@@ -129,27 +62,8 @@ The GOV.IE header should appear at the top of every page on your service. It is 
 - Include meaningful top-level navigation or search where relevant.
 - Use slot support to include relevant tools or quick access features.
 
-**Example:**
-
 <ComponentContainer fullWidth>
-  <Header
-    title="Tax Services"
-    items={[
-      { label: 'Home', itemType: 'link', href: '/' },
-      { itemType: 'divider' },
-      {
-        label: 'Search',
-        itemType: 'slot',
-        icon: 'search',
-        component: <HeaderSearch />,
-        slotAppearance: 'dropdown',
-      },
-    ]}
-    secondaryLinks={[
-      { href: '#', label: 'English' },
-      { href: '#', label: 'Gaeilge' },
-    ]}
-  />
+  <HeaderComposableGovieSample />
 </ComponentContainer>
 
 ### Don't
@@ -160,16 +74,8 @@ The GOV.IE header should appear at the top of every page on your service. It is 
 - Overload the header with too many complex components.
 - Use more than one header on a single page — this creates confusion and breaks consistency.
 
-**Example:**
-
 <ComponentContainer fullWidth>
-  <Header
-    title="Private App"
-    items={[
-      { label: 'Everything', itemType: 'link', href: '#' },
-      { label: 'Contact', itemType: 'link', href: '#' },
-      { label: 'More', itemType: 'link', href: '#' },
-    ]}
-  />
+  <HeaderComposableDontSample />
 </ComponentContainer>
+
 </Section>
