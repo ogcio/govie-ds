@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.19.1](https://github.com/ogcio/govie-ds/compare/react-lib-v1.19.0...react-lib-v1.19.1) (2025-10-10)
+
+
+### Bug Fixes
+
+* add link icon AB[#31692](https://github.com/ogcio/govie-ds/issues/31692) ([#748](https://github.com/ogcio/govie-ds/issues/748)) ([9cf910a](https://github.com/ogcio/govie-ds/commit/9cf910a6d3de38079a40e4fec779102f7f71e8bd))
+
 ## [1.19.0](https://github.com/ogcio/govie-ds/compare/react-lib-v1.18.1...react-lib-v1.19.0) (2025-10-06)
 
 
