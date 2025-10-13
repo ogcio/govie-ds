@@ -21,7 +21,7 @@ export type SummaryListProps = ComponentPropsWithoutRef<'table'> & {
 };
 
 export type SummaryListHeaderProps = ComponentPropsWithoutRef<'tr'> & {
-  label?: string;
+  label?: ReactNode;
 };
 export type SummaryListActionListProps = ComponentPropsWithoutRef<'thead'> & {
   label?: string;

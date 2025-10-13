@@ -7,7 +7,7 @@ import { SummaryListValue } from './summary-list-value.js';
 import { SummaryList } from './summary-list.js';
 
 const meta = {
-  title: 'typography/SummaryListTable',
+  title: 'typography/SummaryList',
   component: SummaryList,
   parameters: {
     docs: {
@@ -20,7 +20,7 @@ const meta = {
   argTypes: {
     children: {
       description:
-        'An array of `SummaryListRow` components, each representing a row in the summary list. Each row includes `SummaryListValue`, and/or `SummaryListAction`.',
+        'An array of `SummaryListRow` components, each representing a row in the summary list. Each row includes `SummaryListValue`, and/or `SummaryListAction`. Also `SummaryListHeader` that represents the header with actions for the SummaryList',
     },
   },
 } satisfies Meta<typeof SummaryList>;
@@ -34,20 +34,20 @@ export const Default: StoryObj = {
         <SummaryListHeader label="Summary card heading">
           <SummaryListAction href="/action">Action 1</SummaryListAction>
         </SummaryListHeader>
-        <SummaryListRow key="1" withBorder label="Ac amet">
+        <SummaryListRow withBorder label="Ac amet">
           <SummaryListValue>
             Id euismod risus sit phasellus sit urna tincidunt laoreet. Elit
             volutpat sit facilisi.
           </SummaryListValue>
         </SummaryListRow>
-        <SummaryListRow key="1" withBorder label="Felis natoque">
+        <SummaryListRow withBorder label="Felis natoque">
           <SummaryListValue>
             Est senectus nisl vestibulum ipsum. Aliquet cursus orci.
           </SummaryListValue>
           <SummaryListAction href="/action">Action 1</SummaryListAction>
           <SummaryListAction href="/action">Action 2</SummaryListAction>
         </SummaryListRow>
-        <SummaryListRow key="1" label="Ac viverra">
+        <SummaryListRow label="Ac viverra">
           <SummaryListValue>
             In nulla id non sit commodo. Turpis duis netus leo sem.
           </SummaryListValue>
@@ -86,25 +86,24 @@ export const WithMixedActions: StoryObj = {
   render: () => {
     return (
       <SummaryList>
-        <SummaryListRow key="1" withBorder label="Ac amet">
+        <SummaryListRow withBorder label="Ac amet">
           <SummaryListValue>
             Id euismod risus sit phasellus sit urna tincidunt laoreet. Elit
             volutpat sit facilisi.
           </SummaryListValue>
         </SummaryListRow>
-        <SummaryListRow key="1" withBorder label="Felis natoque">
+        <SummaryListRow withBorder label="Felis natoque">
           <SummaryListValue>
             Est senectus nisl vestibulum ipsum. Aliquet cursus orci.
           </SummaryListValue>
           <SummaryListAction href="/action">Action 1</SummaryListAction>
           <SummaryListAction href="/action">Action 2</SummaryListAction>
         </SummaryListRow>
-        <SummaryListRow key="1" withBorder label="Ac viverra">
+        <SummaryListRow withBorder label="Ac viverra">
           <SummaryListValue>
             In nulla id non sit commodo. Turpis duis netus leo sem.
           </SummaryListValue>
           <SummaryListAction href="/action">Action 1</SummaryListAction>
-          <SummaryListAction href="/action">Action 2</SummaryListAction>
         </SummaryListRow>
       </SummaryList>
     );
@@ -116,18 +115,18 @@ export const WithNoActions: StoryObj = {
     return (
       <div className="">
         <SummaryList>
-          <SummaryListRow key="1" withBorder label="Ac amet">
+          <SummaryListRow withBorder label="Ac amet">
             <SummaryListValue>
               Id euismod risus sit phasellus sit urna tincidunt laoreet. Elit
               volutpat sit facilisi.
             </SummaryListValue>
           </SummaryListRow>
-          <SummaryListRow key="1" withBorder label="Felis natoque">
+          <SummaryListRow withBorder label="Felis natoque">
             <SummaryListValue>
               Est senectus nisl vestibulum ipsum. Aliquet cursus orci.
             </SummaryListValue>
           </SummaryListRow>
-          <SummaryListRow key="1" withBorder label="Ac viverra">
+          <SummaryListRow withBorder label="Ac viverra">
             <SummaryListValue>
               In nulla id non sit commodo. Turpis duis netus leo sem.
             </SummaryListValue>
@@ -143,18 +142,64 @@ export const WithMixedBorders: StoryObj = {
     return (
       <div className="">
         <SummaryList>
-          <SummaryListRow key="1" withBorder label="Ac amet">
+          <SummaryListRow withBorder label="Ac amet">
             <SummaryListValue>
               Id euismod risus sit phasellus sit urna tincidunt laoreet. Elit
               volutpat sit facilisi.
             </SummaryListValue>
           </SummaryListRow>
-          <SummaryListRow key="1" label="Felis natoque">
+          <SummaryListRow label="Felis natoque">
             <SummaryListValue>
               Est senectus nisl vestibulum ipsum. Aliquet cursus orci.
             </SummaryListValue>
           </SummaryListRow>
-          <SummaryListRow key="1" withBorder label="Ac viverra">
+          <SummaryListRow withBorder label="Ac viverra">
+            <SummaryListValue>
+              In nulla id non sit commodo. Turpis duis netus leo sem.
+            </SummaryListValue>
+          </SummaryListRow>
+        </SummaryList>
+      </div>
+    );
+  },
+};
+
+export const CustomClasses: StoryObj = {
+  render: () => {
+    return (
+      <div className="">
+        <SummaryList withBorder>
+          <SummaryListHeader
+            label={
+              <div
+                className="gi-flex gi-max-w-[18rem]"
+                title="This is a very, very long summary card heading that demonstrates clamping/ellipsis behavior in the header area so it doesn’t overflow columns"
+              >
+                <span className="gi-truncate">
+                  This is a very, very long summary card heading that
+                  demonstrates clamping/ellipsis behavior in the header area so
+                  it doesn’t overflow columns
+                </span>
+              </div>
+            }
+          >
+            <SummaryListAction href="#">Action 1</SummaryListAction>
+          </SummaryListHeader>
+
+          <SummaryListRow withBorder label="Ac amet">
+            <SummaryListValue>
+              Id euismod risus sit phasellus sit urna tincidunt laoreet. Elit
+              volutpat sit facilisi.
+            </SummaryListValue>
+          </SummaryListRow>
+
+          <SummaryListRow label="Felis natoque">
+            <SummaryListValue>
+              Est senectus nisl vestibulum ipsum. Aliquet cursus orci.
+            </SummaryListValue>
+          </SummaryListRow>
+
+          <SummaryListRow withBorder label="Ac viverra">
             <SummaryListValue>
               In nulla id non sit commodo. Turpis duis netus leo sem.
             </SummaryListValue>

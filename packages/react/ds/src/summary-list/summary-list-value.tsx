@@ -1,3 +1,4 @@
+'use client';
 import { useSummaryListContext } from './summary-list-context.js';
 import { SummaryListValueProps } from './types.js';
 

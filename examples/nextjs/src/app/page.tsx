@@ -81,6 +81,7 @@ import {
   ToastVariant,
   StepFillLevel,
   StepStatus,
+  SummaryListHeader,
 } from '@ogcio/design-system-react';
 import { useEffect, useState } from 'react';
 
@@ -1246,20 +1247,25 @@ export default function Home() {
 
                   <div>
                     <h5 className="font-semibold mb-2">Summary List</h5>
-                    <SummaryList>
-                      <SummaryListRow label="Name">
+                    <SummaryList withBorder>
+                      <SummaryListHeader label="Summary card heading">
+                        <SummaryListAction href="/action">
+                          Action 1
+                        </SummaryListAction>
+                      </SummaryListHeader>
+                      <SummaryListRow label="Name" withBorder>
                         <SummaryListValue>John Smith</SummaryListValue>
                         <SummaryListAction href="/change-name">
                           Change name
                         </SummaryListAction>
                       </SummaryListRow>
-                      <SummaryListRow label="Date of Birth">
+                      <SummaryListRow label="Date of Birth" withBorder>
                         <SummaryListValue>8 November 1982</SummaryListValue>
                         <SummaryListAction href="/change-dob">
                           Change date of birth
                         </SummaryListAction>
                       </SummaryListRow>
-                      <SummaryListRow label="Address">
+                      <SummaryListRow label="Address" withBorder>
                         <SummaryListValue>
                           72 Guild Street
                           <br />
@@ -1273,7 +1279,7 @@ export default function Home() {
                           </NextLink>
                         </SummaryListAction>
                       </SummaryListRow>
-                      <SummaryListRow label="Contact Number">
+                      <SummaryListRow label="Contact Number" withBorder>
                         <SummaryListValue>07700 900457</SummaryListValue>
                         <SummaryListAction href="/change-phone">
                           Change phone

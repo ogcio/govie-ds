@@ -13,6 +13,7 @@ export const SummaryListHeader = ({
   children,
   label,
   id,
+  className,
   ...props
 }: SummaryListHeaderProps) => {
   useSummaryListContext();
@@ -27,8 +28,8 @@ export const SummaryListHeader = ({
   const isMobile = width != null && width <= 765;
 
   return (
-    <tr {...props}>
-      <th scope="col">
+    <tr {...props} className={cn(className, 'gi-h-14')}>
+      <th scope="col" className="gi-text-center gi-align-middle">
         {!isMobile && label}{' '}
         {isMobile ? (
           <div className="gi-flex gi-justify-between">

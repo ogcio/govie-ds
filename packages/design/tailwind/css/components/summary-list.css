@@ -1,9 +1,8 @@
 .gi-summary-list {
   @apply gi-rounded-md
-   
    gi-overflow-hidden
    gi-antialiased
-   gi-text-sm gi-w-full;
+   gi-text-md gi-w-full;
 }
 
 .gi-summary-list > table {
@@ -11,11 +10,15 @@
 }
 
 .gi-summary-list > table > tbody tr {
-  @apply gi-flex gi-flex-col md:gi-table-row gi-align-top;
+  @apply gi-flex gi-flex-col md:gi-table-row gi-align-middle;
 }
 
 .gi-summary-list > table th {
   @apply gi-font-bold gi-align-top gi-text-left;
+}
+
+.gi-summary-list > table > thead th {
+  @apply gi-align-middle;
 }
 
 .gi-summary-list > table td {
@@ -23,9 +26,7 @@
 }
 
 .gi-summary-list > table th {
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
+  @apply gi-overflow-hidden gi-text-ellipsis gi-whitespace-nowrap;
 }
 
 .gi-summary-list > table tr > th,

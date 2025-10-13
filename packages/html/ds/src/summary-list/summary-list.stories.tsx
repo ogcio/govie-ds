@@ -1,10 +1,10 @@
 import type { Meta, StoryObj } from '@storybook/react';
 import parse from 'html-react-parser';
 import { createSummaryList } from '../helpers/summary-list';
-import { SummaryListProps } from './summary-list.schema';
+import type { SummaryListProps } from './summary-list.schema';
 
 const meta: Meta<SummaryListProps> = {
-  title: 'Typography/SummaryList',
+  title: 'typography/SummaryList',
   parameters: {
     docs: {
       description: {
@@ -14,48 +14,110 @@ const meta: Meta<SummaryListProps> = {
     },
   },
   argTypes: {
+    header: {
+      description:
+        'Optional header with label and actions rendered in the table head.',
+    },
     rows: {
       description:
-        'An array of row objects to render. Each row contains a label, value, optional action (e.g., change link), and an optional border toggle (`withBorder`).',
+        'Array of rows. Each row has a label, value (HTML allowed), optional actions, and optional `withBorder`.',
+    },
+    dataTestid: {
+      description: 'Test id forwarded to the wrapper.',
     },
   },
 };
-
 export default meta;
+
 type Story = StoryObj<SummaryListProps>;
 
-const createElement = (arguments_: SummaryListProps) => {
-  const component = createSummaryList(arguments_);
-
-  return parse(component.outerHTML) as React.ReactElement;
+const renderDom = (props: SummaryListProps) => {
+  const node = createSummaryList(props);
+  return parse(node.outerHTML) as React.ReactElement;
 };
 
 export const Default: Story = {
-  render: (arguments_) => createElement(arguments_),
+  render: (props) => renderDom(props),
+  args: {
+    header: {
+      label: 'Summary card heading',
+      actions: [{ href: '/action', label: 'Action 1' }],
+    },
+    rows: [
+      {
+        label: 'Ac amet',
+        value:
+          'Id euismod risus sit phasellus sit urna tincidunt laoreet. Elit volutpat sit facilisi.',
+        withBorder: true,
+      },
+      {
+        label: 'Felis natoque',
+        value: 'Est senectus nisl vestibulum ipsum. Aliquet cursus orci.',
+        actions: [
+          { href: '/action', label: 'Action 1' },
+          { href: '/action', label: 'Action 2' },
+        ],
+        withBorder: true,
+      },
+      {
+        label: 'Ac viverra',
+        value: 'In nulla id non sit commodo. Turpis duis netus leo sem.',
+        actions: [
+          { href: '/action', label: 'Action 1' },
+          { href: '/action', label: 'Action 2' },
+        ],
+      },
+    ],
+  },
+};
+
+export const WithMixedActions: Story = {
+  render: (props) => renderDom(props),
   args: {
     rows: [
       {
-        label: 'Name',
-        value: 'John Smith',
-        action: { href: '/change', label: 'Change' },
+        label: 'Ac amet',
+        value:
+          'Id euismod risus sit phasellus sit urna tincidunt laoreet. Elit volutpat sit facilisi.',
         withBorder: true,
       },
       {
-        label: 'Date of birth',
-        value: '8 November 1982',
-        action: { href: '/change', label: 'Change' },
+        label: 'Felis natoque',
+        value: 'Est senectus nisl vestibulum ipsum. Aliquet cursus orci.',
+        actions: [
+          { href: '/action', label: 'Action 1' },
+          { href: '/action', label: 'Action 2' },
+        ],
         withBorder: true,
       },
       {
-        label: 'Address',
-        value: '72 Guild Street <br/> London <br/> SE23 6FH',
-        action: { href: '/change', label: 'Change' },
+        label: 'Ac viverra',
+        value: 'In nulla id non sit commodo. Turpis duis netus leo sem.',
+        actions: [{ href: '/action', label: 'Action 1' }],
+        withBorder: true,
+      },
+    ],
+  },
+};
+
+export const WithNoActions: Story = {
+  render: (props) => renderDom(props),
+  args: {
+    rows: [
+      {
+        label: 'Ac amet',
+        value:
+          'Id euismod risus sit phasellus sit urna tincidunt laoreet. Elit volutpat sit facilisi.',
         withBorder: true,
       },
       {
-        label: 'Contact details',
-        value: '07700 864523 <br/> john.smith@example.com',
-        action: { href: '/change', label: 'Change' },
+        label: 'Felis natoque',
+        value: 'Est senectus nisl vestibulum ipsum. Aliquet cursus orci.',
+        withBorder: true,
+      },
+      {
+        label: 'Ac viverra',
+        value: 'In nulla id non sit commodo. Turpis duis netus leo sem.',
         withBorder: true,
       },
     ],
@@ -63,71 +125,24 @@ export const Default: Story = {
 };
 
 export const WithMixedBorders: Story = {
-  render: (arguments_) => createElement(arguments_),
+  render: (props) => renderDom(props),
   args: {
     rows: [
       {
-        label: 'Name',
-        value: 'John Smith',
-        action: { href: '/change', label: 'Change' },
+        label: 'Ac amet',
+        value:
+          'Id euismod risus sit phasellus sit urna tincidunt laoreet. Elit volutpat sit facilisi.',
         withBorder: true,
       },
       {
-        label: 'Date of birth',
-        value: '8 November 1982',
-        action: { href: '/change', label: 'Change' },
+        label: 'Felis natoque',
+        value: 'Est senectus nisl vestibulum ipsum. Aliquet cursus orci.',
         withBorder: false,
       },
       {
-        label: 'Address',
-        value: '72 Guild Street <br/> London <br/> SE23 6FH',
-        action: { href: '/change', label: 'Change' },
+        label: 'Ac viverra',
+        value: 'In nulla id non sit commodo. Turpis duis netus leo sem.',
         withBorder: true,
-      },
-    ],
-  },
-};
-
-export const WithMixedActions: Story = {
-  render: (arguments_) => createElement(arguments_),
-  args: {
-    rows: [
-      {
-        label: 'Name',
-        value: 'John Smith',
-        withBorder: true,
-      },
-      {
-        label: 'Date of birth',
-        value: '8 November 1982',
-        action: { href: '/change', label: 'Change' },
-        withBorder: true,
-      },
-      {
-        label: 'Address',
-        value: '72 Guild Street <br/> London <br/> SE23 6FH',
-        action: { href: '/change', label: 'Change' },
-        withBorder: true,
-      },
-    ],
-  },
-};
-
-export const WithoutBorders: Story = {
-  render: (arguments_) => createElement(arguments_),
-  args: {
-    rows: [
-      {
-        label: 'Name',
-        value: 'John Smith',
-      },
-      {
-        label: 'Date of birth',
-        value: '8 November 1982',
-      },
-      {
-        label: 'Address',
-        value: '72 Guild Street <br/> London <br/> SE23 6FH',
       },
     ],
   },

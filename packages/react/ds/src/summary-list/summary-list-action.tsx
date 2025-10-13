@@ -1,3 +1,4 @@
+'use client';
 import { Link } from '../link/link.js';
 import { useSummaryListContext } from './summary-list-context.js';
 import { SummaryListActionProps } from './types.js';

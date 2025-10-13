@@ -16,32 +16,29 @@ This component provides a way to present structured information in rows of label
 
 <ComponentPreview>
   <ComponentContainer>
-    <SummaryList>
-      <SummaryListRow label="Name" withBorder>
-        <SummaryListValue>John Smith</SummaryListValue>
-        <SummaryListAction href="#">Change</SummaryListAction>
-      </SummaryListRow>
-      <SummaryListRow label="Date of birth" withBorder>
-        <SummaryListValue>8 November 1982</SummaryListValue>
-        <SummaryListAction href="#">Change</SummaryListAction>
-      </SummaryListRow>
-      <SummaryListRow label="Address" withBorder>
+    <SummaryList withBorder>
+      <SummaryListHeader label="Summary card heading">
+        <SummaryListAction href="/action">Action 1</SummaryListAction>
+      </SummaryListHeader>
+      <SummaryListRow withBorder label="Ac amet">
         <SummaryListValue>
-          72 Guild Street
-          <br />
-          London
-          <br />
-          SE23 6FH
+          Id euismod risus sit phasellus sit urna tincidunt laoreet. Elit
+          volutpat sit facilisi.
         </SummaryListValue>
-        <SummaryListAction href="#">Change</SummaryListAction>
       </SummaryListRow>
-      <SummaryListRow label="Contact details" withBorder>
+      <SummaryListRow withBorder label="Felis natoque">
         <SummaryListValue>
-          07700 864523
-          <br />
-          john.smith@example.com
+          Est senectus nisl vestibulum ipsum. Aliquet cursus orci.
         </SummaryListValue>
-        <SummaryListAction href="#">Change</SummaryListAction>
+        <SummaryListAction href="/action">Action 1</SummaryListAction>
+        <SummaryListAction href="/action">Action 2</SummaryListAction>
+      </SummaryListRow>
+      <SummaryListRow label="Ac viverra">
+        <SummaryListValue>
+          In nulla id non sit commodo. Turpis duis netus leo sem.
+        </SummaryListValue>
+        <SummaryListAction href="/action">Action 1</SummaryListAction>
+        <SummaryListAction href="/action">Action 2</SummaryListAction>
       </SummaryListRow>
     </SummaryList>
   </ComponentContainer>
@@ -55,16 +52,58 @@ value, and optional action.
 
 ### Do
 
-- Use this component for presenting **reviewable information** (e.g., before submitting a form).
-- Keep labels short and descriptive.
+- Use for **reviewable information** (e.g., pre-submit summary).
+- Keep labels **short and descriptive**.
 - Include actions only when users can take action on the item.
-- Use line breaks for multi-line content like addresses.
+- Use **line breaks** for multi-line content (e.g., addresses).
+- Clamp **labels** when space is fixed (optional): `nowrap + ellipsis` with a sensible `max-width`.
+
+<SummaryList withBorder>
+  <SummaryListHeader
+      label={
+          <div
+            className="gi-flex gi-max-w-[18rem]"
+            title="This is a very, very long summary card heading that demonstrates clamping/ellipsis behavior in the header area so it doesn’t overflow columns"
+          >
+            <span className="gi-truncate">
+              This is a very, very long summary card heading that
+              demonstrates clamping/ellipsis behavior in the header area so
+              it doesn’t overflow columns
+            </span>
+          </div>
+      }
+>
+    <SummaryListAction href="/edit-all">Edit all</SummaryListAction>
+  </SummaryListHeader>
+
+<SummaryListRow withBorder label="Full name">
+  <SummaryListValue>John Smith</SummaryListValue>
+  <SummaryListAction href="/edit/name">Change</SummaryListAction>
+</SummaryListRow>
+
+<SummaryListRow withBorder label="Date of birth">
+  <SummaryListValue>8 November 1982</SummaryListValue>
+  <SummaryListAction href="/edit/dob">Change</SummaryListAction>
+</SummaryListRow>
+
+<SummaryListRow withBorder label="Address">
+  <SummaryListValue>72 Guild Street - London - SE23 6FH</SummaryListValue>
+  <SummaryListAction href="/edit/address">Change</SummaryListAction>
+</SummaryListRow>
+
+  <SummaryListRow label="Contact details">
+    <SummaryListValue>
+      07700 864523 - john.smith@example.com
+    </SummaryListValue>
+    <SummaryListAction href="/edit/contact">Change</SummaryListAction>
+  </SummaryListRow>
+</SummaryList>
 
 ### Don't
 
-- Don’t overload a row with too much information, split into multiple rows if needed.
-- Don’t use this component for tabular data, use a table instead.
-- Don’t include actions that don’t directly relate to the value.
+- Don't overload a row; **split** large content into multiple rows.
+- Don't include **irrelevant actions** or more than a few actions per row.
+- Don't truncate **critical data** (IDs, totals); avoid clamping where meaning may change.
 
 <ComponentContainer>
   <SummaryList>

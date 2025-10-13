@@ -1,3 +1,4 @@
+'use client';
 import { Children, ReactElement } from 'react';
 import { cn } from '../cn.js';
 import { getSpecialComponentType } from '../utilities.js';
@@ -31,7 +32,7 @@ export const SummaryList = ({
       >
         <table className={className} role="table" {...props}>
           {header ? <thead>{header}</thead> : null}
-          <tbody>{rows}</tbody>
+          {rows ? <tbody>{rows}</tbody> : null}
         </table>
       </div>
     </SummaryListProvider>
@@ -39,3 +40,8 @@ export const SummaryList = ({
 };
 
 SummaryList.displayName = 'SummaryList';
+Object.defineProperty(SummaryList, 'componentType', {
+  value: 'SummaryList',
+  writable: false,
+  enumerable: false,
+});
