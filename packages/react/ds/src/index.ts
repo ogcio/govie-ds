@@ -86,6 +86,7 @@ export {
   type HeaderSearchProps,
 } from './header/components/header-search.js';
 export { Header } from './header/header.js';
+export * from './header/header-next/index.js';
 export type { HeaderItem, HeaderProps } from './header/types.js';
 export { Heading, type HeadingProps } from './heading/heading.js';
 export type { HintTextProps } from './hint-text/types.js';
@@ -227,3 +228,4 @@ export type {
   EditorTableCellConfig,
   EditorTableCellProps,
 } from './data-table/types.js';
+export { useToggleMap } from './hooks/use-toggle-map.js';

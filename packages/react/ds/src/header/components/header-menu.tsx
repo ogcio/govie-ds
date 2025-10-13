@@ -12,7 +12,7 @@ export type MobileHeaderMenuProps = Pick<
   'items' | 'secondaryLinks'
 >;
 
-type MenuItemAccordionProps = {
+export type MenuItemAccordionProps = {
   index: number;
   item: { label?: string; slot: React.ReactNode };
 };
@@ -90,7 +90,7 @@ export const MobileHeaderMenuItems = ({
                 href={item?.href}
                 label={label}
                 external={item?.external}
-                slot={item?.component}
+                slot={item?.component as any}
               />
             </li>
           );
@@ -115,7 +115,7 @@ export const MobileHeaderMenuItems = ({
             href={link.href}
             label={link.label}
             bold={false}
-            slot={link.slot}
+            slot={link.slot as any}
           />
         </li>
       ))}

@@ -1,12 +1,13 @@
 import AnalyticsProvider from '@/components/analytics-provider';
 import { GovieLink } from '@/components/navigation/custom-link';
-import { Footer, Header, HeaderProps, Stack } from '@ogcio/design-system-react';
+import { Footer, HeaderProps, Stack } from '@ogcio/design-system-react';
 import '@ogcio/design-system-react/styles.css';
 import '@ogcio/theme-govie/theme.css';
 import type { Metadata } from 'next';
 import './globals.css';
 import CookieConsent from '@/components/cookies/cookie-consent';
 import { Suspense } from 'react';
+import { DocsHeader } from '@/components/navigation/header';
 
 export const metadata: Metadata = {
   title: 'Gov IE Design System',
@@ -97,7 +98,7 @@ export default function RootLayout({
             <a href="#main" className="sr-only">
               Skip to main content
             </a>
-            <Header {...headerProps} addDefaultMobileMenu />
+            <DocsHeader />
             {children}
             <Footer
               secondarySlot={
