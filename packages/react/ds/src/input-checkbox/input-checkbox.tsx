@@ -1,5 +1,5 @@
 'use client';
-import { useId, forwardRef } from 'react';
+import { useId, forwardRef, type ReactNode } from 'react';
 import { cn } from '../cn.js';
 import { HintText } from '../hint-text/hint-text.js';
 import { Input } from '../primitives/input.js';
@@ -26,22 +26,26 @@ const getSizeClass = (size: InputCheckboxSizeEnumType): string => {
 };
 
 export const getCheckboxWidth = (size?: InputCheckboxSizeEnumType) => {
-  let widthClass = 'gi-w-8';
   if (size === InputCheckboxSizeEnum.Large) {
-    widthClass = 'gi-w-11';
+    return 'gi-w-11';
   }
   if (size === InputCheckboxSizeEnum.Small) {
-    widthClass = 'gi-w-6';
+    return 'gi-w-6';
   }
-  return widthClass;
+  return 'gi-w-8';
 };
 
-export const InputCheckbox = forwardRef<HTMLInputElement, InputCheckboxProps>(
+// 👇 Updated InputCheckbox to support children
+export const InputCheckbox = forwardRef<
+  HTMLInputElement,
+  InputCheckboxProps & { children?: ReactNode }
+>(
   (
     {
       id,
       size = InputCheckboxSizeEnum.Medium,
       label,
+      children,
       hint,
       indeterminate = false,
       containerProps,
@@ -50,6 +54,8 @@ export const InputCheckbox = forwardRef<HTMLInputElement, InputCheckboxProps>(
     ref,
   ) => {
     const CheckboxId = id || useId();
+
+    const labelContent = children ?? label;
 
     return (
       <>
@@ -61,15 +67,16 @@ export const InputCheckbox = forwardRef<HTMLInputElement, InputCheckboxProps>(
             className={cn(getSizeClass(size), {
               'gi-checkbox-indeterminate': indeterminate,
             })}
-            aria-labelledby={label ? `${CheckboxId}-label` : undefined}
+            aria-labelledby={labelContent ? `${CheckboxId}-label` : undefined}
             {...props}
           />
-          {label && (
+          {labelContent && (
             <label id={`${CheckboxId}-label`} htmlFor={CheckboxId}>
-              {label}
+              {labelContent}
             </label>
           )}
         </div>
+
         {hint && (
           <div className="gi-input-checkbox-hint-container">
             <div>
@@ -96,5 +103,6 @@ export const InputCheckboxTableCell: React.FC<InputCheckboxTableCellProps> = ({
     }}
   />
 );
-InputCheckboxTableCell.displayName = 'InputCheckboxTableCell';
+
 InputCheckbox.displayName = 'InputCheckbox';
+InputCheckboxTableCell.displayName = 'InputCheckboxTableCell';
