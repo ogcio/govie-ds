@@ -113,26 +113,24 @@ export const WithMixedActions: StoryObj = {
 export const WithNoActions: StoryObj = {
   render: () => {
     return (
-      <div className="">
-        <SummaryList>
-          <SummaryListRow withBorder label="Ac amet">
-            <SummaryListValue>
-              Id euismod risus sit phasellus sit urna tincidunt laoreet. Elit
-              volutpat sit facilisi.
-            </SummaryListValue>
-          </SummaryListRow>
-          <SummaryListRow withBorder label="Felis natoque">
-            <SummaryListValue>
-              Est senectus nisl vestibulum ipsum. Aliquet cursus orci.
-            </SummaryListValue>
-          </SummaryListRow>
-          <SummaryListRow withBorder label="Ac viverra">
-            <SummaryListValue>
-              In nulla id non sit commodo. Turpis duis netus leo sem.
-            </SummaryListValue>
-          </SummaryListRow>
-        </SummaryList>
-      </div>
+      <SummaryList>
+        <SummaryListRow withBorder label="Ac amet">
+          <SummaryListValue>
+            Id euismod risus sit phasellus sit urna tincidunt laoreet. Elit
+            volutpat sit facilisi.
+          </SummaryListValue>
+        </SummaryListRow>
+        <SummaryListRow withBorder label="Felis natoque">
+          <SummaryListValue>
+            Est senectus nisl vestibulum ipsum. Aliquet cursus orci.
+          </SummaryListValue>
+        </SummaryListRow>
+        <SummaryListRow withBorder label="Ac viverra">
+          <SummaryListValue>
+            In nulla id non sit commodo. Turpis duis netus leo sem.
+          </SummaryListValue>
+        </SummaryListRow>
+      </SummaryList>
     );
   },
 };
@@ -140,72 +138,24 @@ export const WithNoActions: StoryObj = {
 export const WithMixedBorders: StoryObj = {
   render: () => {
     return (
-      <div className="">
-        <SummaryList>
-          <SummaryListRow withBorder label="Ac amet">
-            <SummaryListValue>
-              Id euismod risus sit phasellus sit urna tincidunt laoreet. Elit
-              volutpat sit facilisi.
-            </SummaryListValue>
-          </SummaryListRow>
-          <SummaryListRow label="Felis natoque">
-            <SummaryListValue>
-              Est senectus nisl vestibulum ipsum. Aliquet cursus orci.
-            </SummaryListValue>
-          </SummaryListRow>
-          <SummaryListRow withBorder label="Ac viverra">
-            <SummaryListValue>
-              In nulla id non sit commodo. Turpis duis netus leo sem.
-            </SummaryListValue>
-          </SummaryListRow>
-        </SummaryList>
-      </div>
-    );
-  },
-};
-
-export const CustomClasses: StoryObj = {
-  render: () => {
-    return (
-      <div className="">
-        <SummaryList withBorder>
-          <SummaryListHeader
-            label={
-              <div
-                className="gi-flex gi-max-w-[18rem]"
-                title="This is a very, very long summary card heading that demonstrates clamping/ellipsis behavior in the header area so it doesn’t overflow columns"
-              >
-                <span className="gi-truncate">
-                  This is a very, very long summary card heading that
-                  demonstrates clamping/ellipsis behavior in the header area so
-                  it doesn’t overflow columns
-                </span>
-              </div>
-            }
-          >
-            <SummaryListAction href="#">Action 1</SummaryListAction>
-          </SummaryListHeader>
-
-          <SummaryListRow withBorder label="Ac amet">
-            <SummaryListValue>
-              Id euismod risus sit phasellus sit urna tincidunt laoreet. Elit
-              volutpat sit facilisi.
-            </SummaryListValue>
-          </SummaryListRow>
-
-          <SummaryListRow label="Felis natoque">
-            <SummaryListValue>
-              Est senectus nisl vestibulum ipsum. Aliquet cursus orci.
-            </SummaryListValue>
-          </SummaryListRow>
-
-          <SummaryListRow withBorder label="Ac viverra">
-            <SummaryListValue>
-              In nulla id non sit commodo. Turpis duis netus leo sem.
-            </SummaryListValue>
-          </SummaryListRow>
-        </SummaryList>
-      </div>
+      <SummaryList>
+        <SummaryListRow withBorder label="Ac amet">
+          <SummaryListValue>
+            Id euismod risus sit phasellus sit urna tincidunt laoreet. Elit
+            volutpat sit facilisi.
+          </SummaryListValue>
+        </SummaryListRow>
+        <SummaryListRow label="Felis natoque">
+          <SummaryListValue>
+            Est senectus nisl vestibulum ipsum. Aliquet cursus orci.
+          </SummaryListValue>
+        </SummaryListRow>
+        <SummaryListRow withBorder label="Ac viverra">
+          <SummaryListValue>
+            In nulla id non sit commodo. Turpis duis netus leo sem.
+          </SummaryListValue>
+        </SummaryListRow>
+      </SummaryList>
     );
   },
 };
