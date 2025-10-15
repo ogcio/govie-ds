@@ -23,13 +23,15 @@ export const Card = (props: CardProps) => {
     return <CardLegacy {...props} />;
   }
 
+  const { inset, background, type, children, ...rest } = props;
+  const deprecatedSet = new Set(deprecatedKeys as readonly string[]);
+  const cleanRest = Object.fromEntries(
+    Object.entries(rest).filter(([key]) => !deprecatedSet.has(key)),
+  ) as typeof rest;
+
   return (
-    <CardNext
-      inset={props.inset}
-      type={props.type}
-      dataTestid={props.dataTestid}
-    >
-      {props.children}
+    <CardNext inset={inset} type={type} background={background} {...cleanRest}>
+      {children}
     </CardNext>
   );
 };

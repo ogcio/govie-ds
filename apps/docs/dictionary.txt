@@ -33,6 +33,8 @@ ButtonGroupItemProps
 ButtonGroupProps
 ButtonProps
 CardProps
+CardSubtitle
+CardTitle
 center
 Center
 center-distribution

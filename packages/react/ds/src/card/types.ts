@@ -1,19 +1,9 @@
-import { ReactElement } from 'react';
-import { Button } from '../button/button.js';
+import { ComponentPropsWithoutRef, ReactElement } from 'react';
 import { ButtonProps } from '../button/types.js';
 import { IconProps } from '../icon/icon.js';
-import { Link, LinkProps } from '../link/link.js';
+import { LinkProps } from '../link/link.js';
 import { TagProps } from '../tag/tag.js';
-import {
-  CardAction,
-  CardContainer,
-  CardDescription,
-  CardMedia,
-  CardHeader,
-  CardTitle,
-  CardSubtitle,
-  CardTag,
-} from './card-next.js';
+import { CardContainer, CardMedia } from './card-next.js';
 
 type CardNextChild =
   | ReactElement<typeof CardMedia>
@@ -21,18 +11,6 @@ type CardNextChild =
   | ReactElement
   | undefined
   | null;
-type CardContainerChild =
-  | ReactElement<typeof CardHeader>
-  | ReactElement<typeof CardDescription>
-  | ReactElement<typeof CardAction>
-  | undefined;
-type CardHeaderChild =
-  | ReactElement<typeof CardTitle>
-  | ReactElement<typeof CardSubtitle>
-  | ReactElement<typeof CardTag>
-  | undefined;
-type CardActionChild = ReactElement<typeof Button> | ReactElement<typeof Link>;
-type CardTitleChild = ReactElement<typeof Link> | string;
 
 type InsetProps = 'body' | 'full' | 'none';
 type TypeProps = 'vertical' | 'horizontal';
@@ -68,11 +46,11 @@ export type MediaContent =
       config: IframePropTypes;
     };
 
-export type CardProps = {
+export type CardProps = ComponentPropsWithoutRef<'div'> & {
   type?: TypeProps;
   inset?: InsetProps;
+  background?: 'grey' | 'white';
   children?: CardNextChild | CardNextChild[] | null;
-  dataTestid?: string;
 
   /** @deprecated Use <CardTitle> instead */
   title?: string;
@@ -92,34 +70,35 @@ export type CardProps = {
   titleAsChild?: boolean;
 };
 
-export type CardContainerProps = {
-  children: CardContainerChild | CardContainerChild[];
-  inset?: InsetProps;
-};
-export type CardDescriptionProps = {
+export type CardContainerProps = ComponentPropsWithoutRef<'div'>;
+export type CardDescriptionProps = ComponentPropsWithoutRef<'div'> & {
   children?: string;
 };
-export type CardActionProps = {
-  children: CardActionChild | CardActionChild[];
-};
-export type CardNextProps = {
-  children: CardNextChild | CardNextChild[];
+export type CardActionProps = ComponentPropsWithoutRef<'div'>;
+export type CardNextProps = ComponentPropsWithoutRef<'div'> & {
   inset?: InsetProps;
   type?: TypeProps;
-  dataTestid?: string;
+  background?: 'grey' | 'white';
 };
-export type CardHeaderProps = {
-  children: CardHeaderChild | CardHeaderChild[];
-};
-export type CardTitleProps = {
-  children: CardTitleChild;
+export type CardHeaderProps = ComponentPropsWithoutRef<'div'>;
+export type CardTitleProps = ComponentPropsWithoutRef<'div'> & {
+  wrapText?: boolean;
 };
 
-export type CardSubtitleProps = {
-  children?: string;
+export type CardSubtitleProps = ComponentPropsWithoutRef<'div'> & {
+  children: string;
+  wrapText?: boolean;
 };
 
-export type CardMediaProps = {
-  media: MediaContent;
-  href?: string;
-};
+export type CardMediaProps = Omit<
+  ComponentPropsWithoutRef<'div'> & {
+    media: MediaContent;
+    href?: string;
+  },
+  'children'
+>;
+
+export type CardTagProps = Omit<
+  ComponentPropsWithoutRef<'div'> & TagProps,
+  'children'
+>;

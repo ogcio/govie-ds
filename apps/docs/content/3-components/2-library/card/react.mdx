@@ -17,6 +17,14 @@ component:
           ofType: '"body" | "full" | "none"'
           description: 'Spacing inside the card. Options: none, body, or full.'
           required: false
+        - name: 'background'
+          ofType: '"white" | "grey"'
+          description: 'Background color of the card. Options: white or grey.'
+          required: false
+        - name: 'wrapText'
+          ofType: 'boolean'
+          description: 'Clamp CardTitle and CardSubtitle text to two lines when true.'
+          required: false
         - name: 'children'
           ofType: 'ReactNode'
           description: 'Card content composed of nested sub-components like <CardMedia>, <CardHeader>, <CardDescription>, <CardTag> and <CardAction>'
