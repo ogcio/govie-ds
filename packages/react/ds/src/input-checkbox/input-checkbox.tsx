@@ -59,7 +59,12 @@ export const InputCheckbox = forwardRef<
 
     return (
       <>
-        <div className="gi-input-checkbox-container" {...containerProps}>
+        <div
+          className={cn('gi-input-checkbox-container', {
+            '!gi-items-start': !!children,
+          })}
+          {...containerProps}
+        >
           <Input
             type="checkbox"
             ref={ref}
