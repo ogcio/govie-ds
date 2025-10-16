@@ -1,3 +1,4 @@
+'use client';
 import { CardLegacy } from './card-legacy.js';
 import { CardNext } from './card-next.js';
 import { CardProps } from './types.js';

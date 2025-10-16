@@ -1,5 +1,6 @@
 import { Meta, StoryObj } from '@storybook/react';
 import { expect, waitFor, within } from 'storybook/test';
+import { Button } from '../button/button.js';
 import { Link } from '../link/link.js';
 import {
   CardAction,
@@ -20,6 +21,7 @@ const meta: Meta = {
       include: [
         'type',
         'inset',
+        'insetSpace',
         'background',
         'wrapText',
         'title',
@@ -27,24 +29,23 @@ const meta: Meta = {
         'description',
         'tagText',
         'headerLinkHref',
-        'linkActionText',
+        'linkActionHref',
       ],
     },
   },
   args: {
     type: 'horizontal',
     inset: 'none',
+    insetSpace: 16,
     background: 'white',
     wrapText: false,
-    title:
-      'Lorem ipsum dolor sit consectetur adipiscing elit. Sed molestie massa est. In nec dui ',
-    subtitle:
-      'usce vitae rutrum odio. Suspendisse efficitur, velit a convallis dictum, turpis justo hendrerit ex, a pellentesque ',
+    title: 'Card Title',
+    subtitle: 'This is the subtitle',
     description:
-      'Lorem ipsum dolor sit amet consectetur. Lectus morbi purus ac. Sollicitudin.',
+      'Lorem ipsum dolor sit amet consectetur. Lectus aliquam morbi purus ac. Sollicitudin.',
     tagText: 'New',
-    headerLinkHref: '',
-    linkActionText: 'Link text',
+    headerLinkHref: '#',
+    linkActionHref: '',
   },
   argTypes: {
     type: {
@@ -58,6 +59,15 @@ const meta: Meta = {
       options: ['none', 'body', 'full'],
       description: 'Defines where the content is inset.',
       table: { category: 'Layout', type: { summary: 'none | body | full' } },
+    },
+    insetSpace: {
+      control: { type: 'number', min: 0, step: 1 },
+      description:
+        'Spacing scale in px units. Default: 16px. Used when inset is "body" or "full".',
+      table: {
+        category: 'Layout',
+        type: { summary: 'number (×4px units)' },
+      },
     },
     background: {
       control: { type: 'select' },
@@ -94,7 +104,7 @@ const meta: Meta = {
       table: { category: 'Content', type: { summary: 'string' } },
       description: 'Tag/badge text.',
     },
-    linkActionText: {
+    linkActionHref: {
       control: 'text',
       table: { category: 'Content', type: { summary: 'string' } },
       description: 'Link action text.',
@@ -129,7 +139,7 @@ export const Default: Story = {
     description,
     tagText,
     headerLinkHref,
-    linkActionText,
+    linkActionHref,
     ...props
   }: any) => (
     <Card {...props} data-testid="card">
@@ -170,14 +180,17 @@ export const Default: Story = {
           {description}
         </CardDescription>
         <CardAction>
-          <Link href="/action">{linkActionText}</Link>
+          {linkActionHref ? (
+            <Link href="/action">Action 1</Link>
+          ) : (
+            <Button variant="secondary">Action 1</Button>
+          )}
         </CardAction>
       </CardContainer>
     </Card>
   ),
-  play: async ({ canvasElement, step, args }) => {
+  play: async ({ canvasElement, step }) => {
     const canvas = within(canvasElement);
-    const { linkActionText } = args as any;
     const card = await canvas.findByTestId('card');
 
     await step('renders card with title and content', async () => {
@@ -219,9 +232,8 @@ export const Default: Story = {
     });
 
     await step('actions work (link)', async () => {
-      const link = await canvas.findByRole('link', { name: linkActionText });
-      await expect(link).toHaveAttribute('href', '/action');
-      await expect(link).toBeInTheDocument();
+      const button = await canvas.findByRole('button');
+      await expect(button).toBeInTheDocument();
     });
   },
 };

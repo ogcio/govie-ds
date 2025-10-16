@@ -77,6 +77,7 @@ export type CardDescriptionProps = ComponentPropsWithoutRef<'div'> & {
 export type CardActionProps = ComponentPropsWithoutRef<'div'>;
 export type CardNextProps = ComponentPropsWithoutRef<'div'> & {
   inset?: InsetProps;
+  insetSpace?: number;
   type?: TypeProps;
   background?: 'grey' | 'white';
 };

@@ -17,6 +17,10 @@ component:
           ofType: '"body" | "full" | "none"'
           description: 'Spacing inside the card. Options: none, body, or full.'
           required: false
+        - name: 'insetSpace'
+          ofType: 'number'
+          description: 'Inset size in pixels applied when inset is "body" or "full" (e.g., 16 ⇒ 16px).'
+          required: false
         - name: 'background'
           ofType: '"white" | "grey"'
           description: 'Background color of the card. Options: white or grey.'
@@ -32,24 +36,6 @@ component:
   stories:
     - name: 'default'
       url: '/story/components-card--default'
-    - name: 'vertical-without-image'
-      url: '/story/components-card--vertical-without-image'
-    - name: 'vertical-with-link'
-      url: '/story/components-card--vertical-with-link'
-    - name: 'vertical-with-button'
-      url: '/story/components-card--vertical-with-button'
-    - name: 'horizontal'
-      url: '/story/components-card--horizontal'
-    - name: 'horizontal-without-image'
-      url: '/story/components-card--horizontal-without-image'
-    - name: 'horizontal-with-icon'
-      url: '/story/components-card--horizontal-with-icon'
-    - name: 'with-iframe-embed'
-      url: '/story/components-card--with-iframe-embed'
-    - name: 'media-image-with-aspect-ratio'
-      url: '/story/components-card--media-image-with-aspect-ratio'
-    - name: 'without-title-link'
-      url: '/story/components-card--without-title-link'
 ---
 
 # Card
@@ -90,78 +76,6 @@ component:
   className="h-[356px]"
   componentId="card-react"
   story="default"
-/>
-
-### Vertical Without Image
-
-<StorybookFrame
-  className="h-[356px]"
-  componentId="card-react"
-  story="vertical-without-image"
-/>
-
-### Vertical With Link
-
-<StorybookFrame
-  className="h-[630px]"
-  componentId="card-react"
-  story="vertical-with-link"
-/>
-
-### Vertical With Button
-
-<StorybookFrame
-  className="h-[640px]"
-  componentId="card-react"
-  story="vertical-with-button"
-/>
-
-### Horizontal
-
-<StorybookFrame
-  className="h-[356px]"
-  componentId="card-react"
-  story="horizontal"
-/>
-
-### Horizontal Without Image
-
-<StorybookFrame
-  className="h-[356px]"
-  componentId="card-react"
-  story="horizontal-without-image"
-/>
-
-### Horizontal With Icon
-
-<StorybookFrame
-  className="h-[356px]"
-  componentId="card-react"
-  story="horizontal-with-icon"
-/>
-
-### With Iframe Embed
-
-<StorybookFrame
-  className="h-[400px]"
-  componentId="card-react"
-  story="with-iframe-embed"
-/>
-
-### Media Image with Aspect Ratio
-
-<StorybookFrame
-  className="h-[356px]"
-  componentId="card-react"
-  story="media-image-with-aspect-ratio"
-/>
-
-### Without Title Link
-
-<StorybookFrame
-  className="h-[356px]"
-  componentId="card-react"
-  story="without-title-link"
 />
 
 ## Properties

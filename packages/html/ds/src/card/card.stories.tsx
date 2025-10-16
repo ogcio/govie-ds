@@ -19,11 +19,55 @@ const createElement = (arguments_: CardProps) => {
 };
 
 export const Default: Story = {
+  argTypes: {
+    type: {
+      control: { type: 'select' },
+      options: ['horizontal', 'vertical'],
+      description: 'Controls the layout of the card.',
+      table: { category: 'Layout', type: { summary: 'horizontal | vertical' } },
+    },
+    inset: {
+      control: 'select',
+      options: ['none', 'body', 'full'],
+      description: 'Defines where the content is inset.',
+      table: { category: 'Layout', type: { summary: 'none | body | full' } },
+    },
+    background: {
+      control: { type: 'select' },
+      options: ['white', 'grey'],
+      description: 'Background color of the card.',
+      table: {
+        category: 'Layout',
+        type: { summary: 'white | grey' },
+        defaultValue: { summary: 'white' },
+      },
+    },
+    wrapText: {
+      control: 'boolean',
+      description: 'Clamp CardTitle and CardSubtitle to 2 lines.',
+      table: { category: 'Typography', type: { summary: 'boolean' } },
+    },
+    title: {
+      control: 'text',
+      table: { category: 'Content', type: { summary: 'string' } },
+      description: 'Card title text.',
+    },
+    subtitle: {
+      control: 'text',
+      table: { category: 'Content', type: { summary: 'string' } },
+      description: 'Card subtitle text.',
+    },
+    content: {
+      control: 'text',
+      table: { category: 'Content', type: { summary: 'string' } },
+      description: 'Card description text.',
+    },
+  },
   args: {
     type: 'horizontal',
     title: 'Card Title',
-    subTitle: 'This is the subtitle',
-    inset: 'none',
+    subtitle: 'This is the subtitle',
+    inset: 'full',
     href: '#',
     media: {
       type: 'image',
@@ -77,7 +121,7 @@ export const VerticalWithoutImage: Story = {
   args: {
     type: 'vertical',
     title: 'Vertical Card Without Image',
-    subTitle: 'Subtitle Here',
+    subtitle: 'Subtitle Here',
     content:
       'Lorem ipsum dolor sit amet consectetur. Lectus aliquam morbi purus ac. Sollicitudin.',
     action: {
@@ -102,7 +146,7 @@ export const VerticalWithLink: Story = {
         alt: '400x300',
       },
     },
-    subTitle: 'Subtitle Here',
+    subtitle: 'Subtitle Here',
     content:
       'Lorem ipsum dolor sit amet consectetur. Lectus aliquam morbi purus ac. Sollicitudin.',
     tag: { text: 'Featured', type: 'info' },
@@ -128,7 +172,7 @@ export const VerticalWithButton: Story = {
         alt: '400x300',
       },
     },
-    subTitle: 'Subtitle Here',
+    subtitle: 'Subtitle Here',
     content:
       'Lorem ipsum dolor sit amet consectetur. Lectus aliquam morbi purus ac. Sollicitudin.',
     tag: { text: 'Featured', type: 'info' },
@@ -145,7 +189,7 @@ export const Horizontal: Story = {
   args: {
     type: 'horizontal',
     title: 'Horizontal Card',
-    subTitle: 'Subtitle Here',
+    subtitle: 'Subtitle Here',
     href: '#',
     media: {
       type: 'image',
@@ -173,7 +217,7 @@ export const HorizontalWithoutImage: Story = {
   args: {
     type: 'horizontal',
     title: 'Horizontal Card Without Image',
-    subTitle: 'Subtitle Here',
+    subtitle: 'Subtitle Here',
     content:
       'Lorem ipsum dolor sit amet consectetur. Lectus aliquam morbi purus ac. Sollicitudin.',
     action: {
@@ -198,7 +242,7 @@ export const HorizontalWithIcon: Story = {
       },
     },
     title: 'Card With Icon',
-    subTitle: 'Subtitle Here',
+    subtitle: 'Subtitle Here',
     content:
       'Lorem ipsum dolor sit amet consectetur. Lectus aliquam morbi purus ac. Sollicitudin.',
     action: {
@@ -253,7 +297,7 @@ export const MediaImageWithAspectRatio: Story = {
   args: {
     type: 'horizontal',
     title: 'Card Title',
-    subTitle: 'Subheading',
+    subtitle: 'Subheading',
     href: '#',
     media: {
       type: 'image',
@@ -280,7 +324,7 @@ export const WithoutTitleLink: Story = {
     titleAsChild: true,
     type: 'horizontal',
     title: 'Card Title',
-    subTitle: 'Subheading',
+    subtitle: 'Subheading',
     media: {
       type: 'image',
       config: {

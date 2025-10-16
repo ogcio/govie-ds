@@ -8,6 +8,7 @@ import {
   isValidElement,
   ReactNode,
   useContext,
+  useEffect,
   useId,
   useMemo,
   useState,
@@ -33,6 +34,9 @@ import {
   CardTagProps,
 } from './types.js';
 
+const computeMediaLabel = (config: any) =>
+  config.ariaLabel ?? config.label ?? config.title ?? config.alt ?? '';
+
 const CardNextContext = createContext(false);
 const CardHeaderContext = createContext(false);
 const CardContainerContext = createContext(false);
@@ -50,8 +54,26 @@ export function useRequiredContext(
   return true;
 }
 
+const rootInsetStyle = (inset: 'none' | 'body' | 'full', px: number) =>
+  inset === 'full' ? { padding: px } : {};
+
+const contentInsetStyle = (
+  inset: 'none' | 'body' | 'full',
+  px: number,
+  orientation: 'horizontal' | 'vertical',
+) => {
+  if (inset !== 'body') {
+    return;
+  }
+
+  return orientation === 'horizontal'
+    ? { paddingBlock: px, paddingRight: px }
+    : { paddingInline: px, paddingBottom: px };
+};
+
 export const CardNext: FC<CardNextProps> = ({
   inset = 'none',
+  insetSpace = 16,
   type = 'vertical',
   background = 'white',
   className,
@@ -62,15 +84,7 @@ export const CardNext: FC<CardNextProps> = ({
   const { breakpoint } = useBreakpoint();
   const isMobile =
     breakpoint === Breakpoint.ExtraSmall || breakpoint === Breakpoint.Small;
-
-  const allChildren = Children.toArray(children);
-  const cardContainer = allChildren.find(
-    (child) => getSpecialComponentType(child) === 'CardContainer',
-  );
-  const cardMedia = allChildren.find(
-    (child) => getSpecialComponentType(child) === 'CardMedia',
-  );
-
+  const [orientation, setOrientation] = useState(type);
   const [labelId, setLabelId] = useState<string>();
   const [descIds, setDescIds] = useState<string[]>([]);
   const a11yValue: any = useMemo(
@@ -86,6 +100,23 @@ export const CardNext: FC<CardNextProps> = ({
     [labelId, descIds],
   );
 
+  const allChildren = Children.toArray(children);
+  const cardContainer = allChildren.find(
+    (child) => getSpecialComponentType(child) === 'CardContainer',
+  );
+  const cardMedia = allChildren.find(
+    (child) => getSpecialComponentType(child) === 'CardMedia',
+  );
+
+  useEffect(() => {
+    if (isMobile || type === 'vertical') {
+      setOrientation('vertical');
+      return;
+    }
+
+    setOrientation('horizontal');
+  }, [isMobile]);
+
   return (
     <CardNextContext.Provider value={true}>
       <CardA11yContext.Provider value={a11yValue}>
@@ -93,15 +124,15 @@ export const CardNext: FC<CardNextProps> = ({
           className={cn(
             'gi-card gi-not-prose',
             {
-              'gi-card-vertical': type === 'vertical' || isMobile,
-              'gi-card-horizontal': type === 'horizontal' && !isMobile,
+              'gi-card-vertical': orientation === 'vertical',
+              'gi-card-horizontal': orientation === 'horizontal',
               'gi-bg-white': background === 'white',
               'gi-bg-color-surface-system-neutral-layer1':
                 background === 'grey',
-              'gi-p-4': inset === 'full',
             },
             className,
           )}
+          style={rootInsetStyle(inset, insetSpace)}
           role={role ?? 'article'}
           aria-labelledby={labelId}
           aria-describedby={descIds?.length ? descIds.join(' ') : undefined}
@@ -110,12 +141,11 @@ export const CardNext: FC<CardNextProps> = ({
           {cardMedia}
           {cardContainer
             ? cloneElement(cardContainer as any, {
-                className: cn((cardContainer as any).props?.className, {
-                  'gi-py-4 gi-pr-4':
-                    inset === 'body' && type === 'horizontal' && !isMobile,
-                  'gi-px-4 gi-pb-4':
-                    inset === 'body' && (type === 'vertical' || isMobile),
-                }),
+                className: cn((cardContainer as any).props?.className),
+                style: {
+                  ...(cardContainer as any).props?.style,
+                  ...contentInsetStyle(inset, insetSpace, orientation),
+                },
               })
             : null}
         </div>
@@ -133,13 +163,15 @@ export const CardMedia: FC<CardMediaProps> = ({ media, href }) => {
 
   switch (media.type) {
     case 'image': {
-      const { src, alt, aspectRatio } = media.config;
+      const { src, alt, aspectRatio } = media.config ?? {};
+      const label = computeMediaLabel(media.config);
+
       return (
         <div className="gi-card-image">
-          <a href={href}>
+          <a href={href} aria-label={label} title={label}>
             <img
               src={src}
-              alt={alt}
+              alt={alt ?? ''}
               style={aspectRatio ? { aspectRatio } : undefined}
               className={aspectRatio ? 'gi-w-full' : undefined}
             />
@@ -148,18 +180,21 @@ export const CardMedia: FC<CardMediaProps> = ({ media, href }) => {
       );
     }
     case 'icon': {
+      const label = computeMediaLabel(media.config);
       return (
-        <div className="gi-card-icon" aria-hidden="true">
-          <a href={href}>
-            <Icon {...media.config} />
+        <div className="gi-card-icon">
+          <a href={href} aria-label={label} title={label}>
+            <Icon {...media.config} aria-hidden="true" />
           </a>
         </div>
       );
     }
     case 'iframe': {
+      const { title } = media.config ?? 'Embedded content';
+
       return (
         <div className="gi-card-iframe">
-          <iframe {...media.config} />
+          <iframe {...media.config} title={title} />
         </div>
       );
     }
