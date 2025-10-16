@@ -35,10 +35,7 @@ export const getCheckboxWidth = (size?: InputCheckboxSizeEnumType) => {
   return 'gi-w-8';
 };
 
-export const InputCheckbox = forwardRef<
-  HTMLInputElement,
-  InputCheckboxProps & { children?: ReactNode }
->(
+export const InputCheckbox = forwardRef<HTMLInputElement, InputCheckboxProps>(
   (
     {
       id,

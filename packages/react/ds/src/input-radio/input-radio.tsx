@@ -32,9 +32,7 @@ export const getRadioWidth = (size?: InputRadioSizeType) => {
   return 'gi-w-8';
 };
 
-export const InputRadio: React.FC<
-  InputRadioProps & { children?: ReactNode }
-> = ({
+export const InputRadio: React.FC<InputRadioProps> = ({
   label,
   children,
   hint,
