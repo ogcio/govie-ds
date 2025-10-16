@@ -35,7 +35,6 @@ export const getCheckboxWidth = (size?: InputCheckboxSizeEnumType) => {
   return 'gi-w-8';
 };
 
-// 👇 Updated InputCheckbox to support children
 export const InputCheckbox = forwardRef<
   HTMLInputElement,
   InputCheckboxProps & { children?: ReactNode }
@@ -54,14 +53,14 @@ export const InputCheckbox = forwardRef<
     ref,
   ) => {
     const CheckboxId = id || useId();
-
+    const hasRichContent = !!children;
     const labelContent = children ?? label;
 
     return (
       <>
         <div
           className={cn('gi-input-checkbox-container', {
-            '!gi-items-start': !!children,
+            '!gi-items-start': hasRichContent,
           })}
           {...containerProps}
         >
@@ -75,8 +74,15 @@ export const InputCheckbox = forwardRef<
             aria-labelledby={labelContent ? `${CheckboxId}-label` : undefined}
             {...props}
           />
+
           {labelContent && (
-            <label id={`${CheckboxId}-label`} htmlFor={CheckboxId}>
+            <label
+              id={`${CheckboxId}-label`}
+              htmlFor={hasRichContent ? undefined : CheckboxId}
+              className={cn({
+                'gi-rich-label': hasRichContent,
+              })}
+            >
               {labelContent}
             </label>
           )}

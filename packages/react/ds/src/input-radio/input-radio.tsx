@@ -46,6 +46,7 @@ export const InputRadio: React.FC<
 }) => {
   const radioId = id ?? useId();
   const labelContent = children ?? label;
+  const hasRichContent = !!children;
 
   return (
     <div className="gi-input-radio-container">
@@ -58,6 +59,7 @@ export const InputRadio: React.FC<
         className={getRadioSize(size)}
         aria-describedby={hint ? `${radioId}-hint` : undefined}
         aria-required={conditionalInput ? 'true' : 'false'}
+        aria-labelledby={labelContent ? `${radioId}-label` : undefined}
         {...props}
       />
 
@@ -68,7 +70,14 @@ export const InputRadio: React.FC<
         })}
       >
         {labelContent && (
-          <Label htmlFor={radioId} size={size}>
+          <Label
+            id={`${radioId}-label`}
+            htmlFor={hasRichContent ? undefined : radioId}
+            size={size}
+            className={cn({
+              'gi-rich-label': hasRichContent,
+            })}
+          >
             {labelContent}
           </Label>
         )}
