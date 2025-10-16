@@ -14,6 +14,8 @@ export const SummaryListHeader = ({
   label,
   id,
   className,
+  overflow = 'wrap',
+  maxWidth = 'gi-w-full',
   ...props
 }: SummaryListHeaderProps) => {
   useSummaryListContext();
@@ -26,14 +28,24 @@ export const SummaryListHeader = ({
   ) as ReactElement<SummaryListActionProps>[];
 
   const isMobile = width != null && width <= 765;
+  const style = maxWidth ? { maxWidth } : undefined;
+  const overflowClasses = {
+    'gi-truncate gi-block': overflow === 'truncate',
+  };
 
   return (
-    <tr {...props} className={cn(className, 'gi-h-14')}>
+    <tr {...props} className={cn('gi-h-14', className)}>
       <th scope="col" className="gi-text-center gi-align-middle">
-        {!isMobile && label}{' '}
-        {isMobile ? (
-          <div className="gi-flex gi-justify-between">
+        {!isMobile && (
+          <span className={cn(overflowClasses)} style={style}>
             {label}
+          </span>
+        )}
+        {isMobile ? (
+          <div className={cn('gi-flex gi-justify-between')}>
+            <span className={cn(overflowClasses)} style={style}>
+              {label}
+            </span>
             <span className="gi-sr-only">
               {t('header.actions', {
                 defaultValue: 'Actions',

@@ -20,7 +20,7 @@ const meta = {
   argTypes: {
     children: {
       description:
-        'An array of `SummaryListRow` components, each representing a row in the summary list. Each row includes `SummaryListValue`, and/or `SummaryListAction`. Also `SummaryListHeader` that represents the header with actions for the SummaryList',
+        'An array of `SummaryListRow` components, each representing a row in the summary list. Each row includes `SummaryListValue`, and/or `SummaryListAction`. Also `SummaryListHeader` that represents the header with actions for the `SummaryList`',
     },
   },
 } satisfies Meta<typeof SummaryList>;

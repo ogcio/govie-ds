@@ -60,18 +60,9 @@ value, and optional action.
 
 <SummaryList withBorder>
   <SummaryListHeader
-      label={
-          <div
-            className="gi-flex gi-max-w-[18rem]"
-            title="This is a very, very long summary card heading that demonstrates clamping/ellipsis behavior in the header area so it doesn’t overflow columns"
-          >
-            <span className="gi-truncate">
-              This is a very, very long summary card heading that
-              demonstrates clamping/ellipsis behavior in the header area so
-              it doesn’t overflow columns
-            </span>
-          </div>
-      }
+    overflow="truncate"
+    maxWidth="250px"
+    label="This is a very, very long summary card heading that demonstrates clamping/ellipsis behavior in the header area so it doesn’t overflow columns"
 >
     <SummaryListAction href="/edit-all">Edit all</SummaryListAction>
   </SummaryListHeader>

@@ -21,7 +21,9 @@ export type SummaryListProps = ComponentPropsWithoutRef<'table'> & {
 };
 
 export type SummaryListHeaderProps = ComponentPropsWithoutRef<'tr'> & {
-  label?: ReactNode;
+  label?: string;
+  overflow?: 'wrap' | 'truncate';
+  maxWidth?: string;
 };
 export type SummaryListActionListProps = ComponentPropsWithoutRef<'thead'> & {
   label?: string;

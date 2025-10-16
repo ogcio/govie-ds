@@ -25,6 +25,16 @@ component:
           ofType: 'node'
           description: 'Optional header actions. Typically one or more SummaryListAction elements rendered in the last header column.'
           required: false
+        - name: 'overflow'
+          ofType: '"wrap" | "truncate"'
+          description: 'Controls how the header label handles long text. "wrap" shows the full text; "truncate" keeps a single line with an ellipsis.'
+          required: false
+          default: 'wrap'
+        - name: 'maxWidth'
+          ofType: 'string'
+          description: 'Optional max width for the header label when overflow is "truncate". (e.g., "24ch", "16rem", "320px").'
+          required: false
+
     - name: SummaryListRowProps
       fields:
         - name: 'label'
