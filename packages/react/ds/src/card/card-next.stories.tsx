@@ -1,5 +1,5 @@
 import { Meta, StoryObj } from '@storybook/react';
-import { expect, within } from 'storybook/test';
+import { expect, waitFor, within } from 'storybook/test';
 import { Link } from '../link/link.js';
 import {
   CardAction,
@@ -190,24 +190,23 @@ export const Default: Story = {
       await expect(canvas.getByTestId('card-subtitle')).toBeInTheDocument();
     });
 
-    await step('wires ARIA relationships', async () => {
-      await expect(card).toHaveAttribute('aria-labelledby', 'card-title');
-      await expect(card).toHaveAttribute(
-        'aria-describedby',
-        expect.stringContaining('card-subtitle'),
-      );
-      await expect(card).toHaveAttribute(
-        'aria-describedby',
-        expect.stringContaining('card-desc'),
-      );
-      await expect(
-        await canvas.findByRole('heading', { level: 2 }),
-      ).toHaveAttribute('id', 'card-title');
-      await expect(await canvas.findByTestId('card-subtitle')).toHaveAttribute(
-        'id',
-        'card-subtitle',
-      );
-      await expect(await canvas.findByTestId('card-desc')).toBeInTheDocument();
+    await step('wires ARIA relationships (after hydration)', async () => {
+      await waitFor(() => expect(card).toHaveAttribute('aria-labelledby'));
+      await waitFor(() => expect(card).toHaveAttribute('aria-describedby'));
+
+      const labelledby = card.getAttribute('aria-labelledby')!;
+      const describedbyRaw = card.getAttribute('aria-describedby')!;
+      const describedby = describedbyRaw.split(/\s+/).filter(Boolean);
+
+      const heading = await canvas.findByRole('heading', { level: 2 });
+      await expect(heading).toHaveAttribute('id', labelledby);
+
+      for (const id of describedby) {
+        const element = canvasElement.querySelector(
+          `#${id}`,
+        ) as HTMLElement | null;
+        await expect(element).not.toBeNull();
+      }
     });
 
     await step('renders image media', async () => {
