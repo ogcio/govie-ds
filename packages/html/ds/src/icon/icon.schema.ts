@@ -39,6 +39,7 @@ export const IconId = {
   Info: 'info',
   Keyboard_Arrow_Down: 'keyboard_arrow_down',
   Keyboard_Arrow_Up: 'keyboard_arrow_up',
+  Link: 'link',
   Location: 'location_on',
   Login: 'login',
   Logout: 'logout',

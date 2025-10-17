@@ -15,47 +15,43 @@
 .gi-header-secondary-bar ul {
   @apply gi-flex gi-justify-end gi-items-center gi-gap-4;
 }
-.gi-header-secondary-item,
-.gi-header-secondary-item-slot a {
-  @apply gi-block
-  gi-px-2
+.gi-header-secondary-item {
+  @apply gi-px-2
   gi-py-1
-  gi-border-sm
-  gi-border-transparent  
-  gi-rounded-sm;
+  gi-border-0
+  gi-focus-within-state-outline-header
+  gi-focus-state-outline-header
+  gi-text-sm
+  !gi-leading-[24px]  
+  focus:gi-bg-black
+  focus-within:gi-bg-black
+  focus:gi-bg-opacity-20
+  focus-within:gi-bg-opacity-20
+  focus:gi-border-0;
 }
 
-.gi-header-secondary-item-default:not(
-  .gi-header-secondary-item-slot[data-appearance='default']
-),
-.gi-header-secondary-item-slot[data-appearance='default'] a {
-  @apply focus:gi-outline-offset-0
-    hover:gi-bg-color-surface-tone-primary-fill-hover
-    hover:gi-border-transparent
-    focus:gi-bg-color-surface-tone-primary-fill-hover
-    focus:gi-border-color-shadow-intent-focus-default
-    focus:gi-border-sm
-    focus-visible:gi-outline-none;
+.gi-header-secondary-item,
+.gi-header-tool-item {
+  @apply gi-rounded-sm focus:gi-border-0;
 }
 
-.gi-header-secondary-item-light:not(
-  .gi-header-secondary-item-slot[data-appearance='light']
-),
-.gi-header-secondary-item-slot[data-appearance='light'] a {
-  @apply gi-border-none
-  hover:gi-bg-color-surface-tone-light-fill-hover
-  focus:gi-bg-color-surface-tone-light-fill-hover
+.gi-header-secondary-item-default,
+.gi-header-secondary-item-light,
+.gi-header-tool-item-default {
+  @apply hover:gi-bg-black
+  hover:gi-bg-opacity-20
+  hover:gi-border-transparent
+
+focus:gi-bg-black
+  focus:gi-bg-opacity-20
+  focus:gi-border-transparent;
+}
+
+.gi-header-secondary-item-light {
+  @apply gi-focus-state-outline 
+  gi-border-none
   focus:gi-shadow-color-border-intent-focus-default
-  focus:gi-shadow-[inset_0_0_0_2px]
-  gi-focus-state-outline
-  focus:gi-border-none
-  hover:gi-border-none;
-}
-
-.gi-header-secondary-item-slot > :first-child {
-  @apply gi-flex
-  gi-items-center
-  !gi-text-sm;
+  focus:gi-shadow-[inset_0_0_0_2px];
 }
 
 .gi-header-menu {
@@ -77,14 +73,14 @@
 .gi-header-logo-default,
 .gi-header-logo-default a {
   @apply gi-focus-state-outline
-  gi-focus-within-state-outline
+  gi-focus-within-state-outline-header
   gi-focus-visible-state-outline;
 }
 
 .gi-header-logo-light,
 .gi-header-logo-light a {
   @apply gi-focus-state-outline
-  gi-focus-within-state-outline gi-focus-visible-state-outline
+  gi-focus-within-state-outline-header gi-focus-visible-state-outline
   focus-within:gi-outline-color-border-intent-focus-default
   focus:gi-outline-color-border-intent-focus-default;
 }
@@ -102,12 +98,13 @@
   gi-grow;
 }
 .gi-header-tool-item {
-  @apply gi-border 
-  gi-border-solid
+  @apply gi-border-solid
   gi-border-transparent
   gi-flex gi-rounded-sm
-  
-  
+  focus:gi-shadow-none
+  gi-h-auto
+  !gi-leading-[24px]
+  focus:gi-border-none
   gi-p-2
   gi-items-center
   gi-gap-md
@@ -137,16 +134,22 @@
   gi-appearance-none;
 }
 
-.gi-header-tool-item-default {
-  @apply hover:gi-bg-color-surface-tone-primary-fill-hover;
-}
-
 .gi-header-tool-item-light {
   @apply gi-btn-primary-light 
   focus-within:gi-shadow-color-border-intent-focus-default
   focus-within:gi-shadow-[inset_0_0_0_2px]
   focus-within:gi-bg-color-surface-tone-light-fill-hover
-  gi-focus-within-state-outline;
+
+  focus:gi-shadow-color-border-intent-focus-default
+  focus:gi-shadow-[inset_0_0_0_2px]
+
+
+  focus:gi-bg-black
+  focus:gi-bg-opacity-20
+  hover:gi-bg-black
+  hover:gi-bg-opacity-20
+  focus:gi-border-transparent
+  gi-focus-within-state-outline-header;
 }
 
 label.gi-header-tool-item-light {
@@ -156,16 +159,14 @@ label.gi-header-tool-item-light {
 /* Nav components focus state */
 .gi-header-tool-item-default,
 .gi-header-nav a {
-  @apply gi-focus-state-outline
-  gi-focus-within-state-outline
-   focus:gi-bg-black
-   focus-within:gi-bg-black 
-   focus:gi-bg-opacity-20
-   focus-within:gi-bg-opacity-20
-   focus:gi-border 
-   focus-within:gi-border
-   focus:gi-border-solid 
-   focus-within:gi-border-solid;
+  @apply gi-focus-within-state-outline-header
+  gi-focus-state-outline-header
+
+  focus:gi-bg-black
+  focus-within:gi-bg-black
+  focus:gi-bg-opacity-20
+  focus-within:gi-bg-opacity-20
+  focus:gi-border-0;
 }
 
 .gi-header-divider {
@@ -239,13 +240,13 @@ label.gi-header-tool-item-light {
 
 .gi-header-accordion-item-toggle {
   @apply hover:gi-no-underline
-   hover:gi-underline-offset-sm
-   hover:gi-cursor-pointer
-   gi-block
-   gi-py-4
-   gi-border-color-border-system-neutral-subtle
-   gi-border-b-xs
-   gi-border-solid
+  hover:gi-underline-offset-sm
+  hover:gi-cursor-pointer
+  gi-block
+  gi-py-4
+  gi-border-color-border-system-neutral-subtle
+  gi-border-b-xs
+  gi-border-solid
 
   gi-focus-state-outline
   gi-focus-visible-state-outline
@@ -282,4 +283,22 @@ a.gi-list-item:hover,
   gi-py-4
   gi-px-4  
   gi-order-3;
+}
+
+.gi-header-primary-menu {
+  @apply gi-flex gi-items-center gi-gap-2 md:gi-gap-4 gi-flex-none;
+}
+
+.gi-focus-within-state-outline-header {
+  @apply focus-within:gi-outline
+  focus-within:gi-outline-[2px]
+  focus-within:gi-outline-color-shadow-intent-focus-default
+  focus-within:gi-outline-offset-0;
+}
+
+.gi-focus-state-outline-header {
+  @apply focus:gi-outline
+  focus:gi-outline-[2px]
+  focus:gi-outline-color-shadow-intent-focus-default
+  focus:gi-outline-offset-0;
 }
