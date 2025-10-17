@@ -1,5 +1,25 @@
 # Changelog
 
+## [1.20.0](https://github.com/ogcio/govie-ds/compare/react-lib-v1.19.0...react-lib-v1.20.0) (2025-10-17)
+
+
+### Features
+
+* Header composable AB[#31481](https://github.com/ogcio/govie-ds/issues/31481) ([#747](https://github.com/ogcio/govie-ds/issues/747)) ([0603a3c](https://github.com/ogcio/govie-ds/commit/0603a3cadd0920ec2aa5a6cbe032bf591b7bafbb))
+
+
+### Bug Fixes
+
+* add input checkbox and radio label as children AB[#31859](https://github.com/ogcio/govie-ds/issues/31859) ([#751](https://github.com/ogcio/govie-ds/issues/751)) ([11e3fe7](https://github.com/ogcio/govie-ds/commit/11e3fe7bcee033accb303828023f4716216b2e29))
+* add link icon AB[#31692](https://github.com/ogcio/govie-ds/issues/31692) ([#748](https://github.com/ogcio/govie-ds/issues/748)) ([9cf910a](https://github.com/ogcio/govie-ds/commit/9cf910a6d3de38079a40e4fec779102f7f71e8bd))
+
+
+### Dependencies
+
+* The following workspace dependencies were updated
+  * devDependencies
+    * @ogcio/design-system-tailwind bumped to 1.16.0
+
 ## [1.19.0](https://github.com/ogcio/govie-ds/compare/react-lib-v1.18.1...react-lib-v1.19.0) (2025-10-06)
 
 
