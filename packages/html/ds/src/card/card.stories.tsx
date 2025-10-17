@@ -42,7 +42,7 @@ export const Default: Story = {
         defaultValue: { summary: 'white' },
       },
     },
-    wrapText: {
+    truncate: {
       control: 'boolean',
       description: 'Clamp CardTitle and CardSubtitle to 2 lines.',
       table: { category: 'Typography', type: { summary: 'boolean' } },

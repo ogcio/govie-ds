@@ -23,7 +23,7 @@ const meta: Meta = {
         'inset',
         'insetSpace',
         'background',
-        'wrapText',
+        'truncate',
         'title',
         'subtitle',
         'description',
@@ -38,7 +38,7 @@ const meta: Meta = {
     inset: 'none',
     insetSpace: 16,
     background: 'white',
-    wrapText: false,
+    truncate: false,
     title: 'Card Title',
     subtitle: 'This is the subtitle',
     description:
@@ -79,7 +79,7 @@ const meta: Meta = {
         defaultValue: { summary: 'white' },
       },
     },
-    wrapText: {
+    truncate: {
       control: 'boolean',
       description: 'Clamp CardTitle and CardSubtitle to 2 lines.',
       table: { category: 'Typography', type: { summary: 'boolean' } },
@@ -133,7 +133,7 @@ type Story = StoryObj<typeof Card>;
 
 export const Default: Story = {
   render: ({
-    wrapText,
+    truncate,
     title,
     subtitle,
     description,
@@ -156,7 +156,7 @@ export const Default: Story = {
       />
       <CardContainer>
         <CardHeader>
-          <CardTitle id="card-title" wrapText={wrapText}>
+          <CardTitle id="card-title" truncate={truncate}>
             {headerLinkHref ? (
               <Link href={headerLinkHref}>{title}</Link>
             ) : (
@@ -166,7 +166,7 @@ export const Default: Story = {
           <CardSubtitle
             id="card-subtitle"
             data-testid="card-subtitle"
-            wrapText={wrapText}
+            truncate={truncate}
           >
             {subtitle}
           </CardSubtitle>

@@ -235,29 +235,28 @@ Object.defineProperty(CardContainer, 'componentType', {
 export const CardTitle: FC<CardTitleProps> = ({
   children,
   className,
-  wrapText,
+  truncate,
   id,
   ['aria-level']: ariaLevel = 2,
   ...props
 }) => {
   useRequiredContext(CardHeaderContext, 'CardTitle', 'CardHeader');
   const isStringChild = typeof children === 'string';
-  const wrapOnWrapper = !!wrapText && isStringChild;
 
   const decorateChild = (node: ReactNode): ReactNode => {
-    if (!wrapText) {
+    if (!truncate) {
       return node;
     }
     if (isValidElement(node)) {
       return cloneElement(node as any, {
-        className: cn((node as any).props?.className, 'gi-card-wrap-text'),
+        className: cn((node as any).props?.className, 'gi-card-truncate-text'),
       });
     }
     return node;
   };
 
   const content =
-    wrapText && !isStringChild
+    truncate && !isStringChild
       ? Children.map(children as ReactNode, decorateChild)
       : children;
 
@@ -274,14 +273,14 @@ export const CardTitle: FC<CardTitleProps> = ({
       className={cn(
         'gi-card-title',
         {
-          'gi-card-wrap-text': wrapOnWrapper,
+          'gi-card-truncate-text': !!truncate && isStringChild,
         },
         className,
       )}
       id={titleId}
       role="heading"
       aria-level={ariaLevel}
-      title={isStringChild ? (children as string) : undefined}
+      title={isStringChild && truncate ? children.toString() : undefined}
       {...props}
     >
       {content}
@@ -292,12 +291,12 @@ export const CardTitle: FC<CardTitleProps> = ({
 export const CardSubtitle: FC<CardSubtitleProps> = ({
   children,
   className,
-  wrapText,
+  truncate,
   id,
   ...props
 }) => {
   useRequiredContext(CardHeaderContext, 'CardSubtitle', 'CardHeader');
-  const raw = typeof children === 'string' ? children : undefined;
+  const raw = typeof children === 'string' && truncate ? children : undefined;
 
   const autoId = useId();
   const subtitleId = id ?? `card-subtitle-${autoId}`;
@@ -312,7 +311,7 @@ export const CardSubtitle: FC<CardSubtitleProps> = ({
       className={cn(
         'gi-card-subheading',
         {
-          'gi-card-wrap-text': wrapText,
+          'gi-card-truncate-text': truncate,
         },
         className,
       )}

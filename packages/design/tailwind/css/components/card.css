@@ -35,9 +35,8 @@
   @apply gi-text-gray-600 gi-stroke-gray-600 gi-text-sm gi-max-w-[60ch];
 }
 
-.gi-card-wrap-text {
-  @apply gi-break-words gi-overflow-hidden gi-text-ellipsis
-    gi-line-clamp-2;
+.gi-card-truncate-text {
+  @apply gi-break-words gi-overflow-hidden gi-text-ellipsis gi-line-clamp-2;
   display: -webkit-box !important;
 }
 

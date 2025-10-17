@@ -83,12 +83,12 @@ export type CardNextProps = ComponentPropsWithoutRef<'div'> & {
 };
 export type CardHeaderProps = ComponentPropsWithoutRef<'div'>;
 export type CardTitleProps = ComponentPropsWithoutRef<'div'> & {
-  wrapText?: boolean;
+  truncate?: boolean;
 };
 
 export type CardSubtitleProps = ComponentPropsWithoutRef<'div'> & {
   children: string;
-  wrapText?: boolean;
+  truncate?: boolean;
 };
 
 export type CardMediaProps = Omit<

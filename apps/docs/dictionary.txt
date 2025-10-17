@@ -32,6 +32,7 @@ ButtonGroup
 ButtonGroupItemProps
 ButtonGroupProps
 ButtonProps
+CardContainerProp
 CardProps
 CardSubtitle
 CardTitle

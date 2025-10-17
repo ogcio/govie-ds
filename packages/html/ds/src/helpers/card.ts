@@ -9,7 +9,7 @@ export const createCard = (arguments_: CardProps) => {
   const inset = arguments_.inset ?? 'none';
   const background = arguments_.background ?? 'white';
   const href = arguments_.href ?? '';
-  const wrapText = !!arguments_.wrapText;
+  const truncate = !!arguments_.truncate;
 
   const isMobile = globalThis
     ? (globalThis.matchMedia?.('(max-width: 640px)').matches ?? false)
@@ -169,18 +169,18 @@ export const createCard = (arguments_: CardProps) => {
     if (href) {
       const titleLink = createLink({ href });
       titleLink.textContent = String(arguments_.title);
-      if (wrapText) {
-        titleLink.classList.add('gi-card-wrap-text');
+      if (truncate) {
+        titleLink.classList.add('gi-card-truncate-text');
       }
       title.append(titleLink);
     } else {
       title.textContent = String(arguments_.title);
-      if (wrapText) {
-        title.classList.add('gi-card-wrap-text');
+      if (truncate) {
+        title.classList.add('gi-card-truncate-text');
       }
     }
-  } else if (wrapText) {
-    title.classList.add('gi-card-wrap-text');
+  } else if (truncate) {
+    title.classList.add('gi-card-truncate-text');
   }
   heading.append(title);
 

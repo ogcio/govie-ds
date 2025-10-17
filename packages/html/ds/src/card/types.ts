@@ -42,7 +42,7 @@ export type CardProps = {
   type: 'vertical' | 'horizontal';
   inset?: 'body' | 'full' | 'none';
   background?: 'white' | 'grey';
-  wrapText?: boolean;
+  truncate?: boolean;
   title: string;
   subtitle?: string;
   href?: string;
