@@ -7,6 +7,7 @@ import {
   FormFieldError,
   FormFieldLabel,
 } from '../forms/form-field/form-field.js';
+import { Link } from '../link/link.js';
 import { InputRadio } from './input-radio.js';
 
 const meta = {
@@ -82,6 +83,20 @@ export const WithHint: Story = {
     value: 'radio-with-hint',
     label: 'With hint',
     hint: 'This is a hint',
+  },
+};
+
+export const WithLabelContent: Story = {
+  args: {
+    id: 'radio-terms',
+    name: 'terms',
+    value: 'agree',
+    hint: 'You must agree before continuing',
+    children: (
+      <>
+        I agree to the <Link href="#">Terms and Conditions</Link>.
+      </>
+    ),
   },
 };
 

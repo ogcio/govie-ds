@@ -8,6 +8,7 @@ import {
   FormFieldError,
   FormFieldLabel,
 } from '../forms/form-field/form-field.js';
+import { Link } from '../link/link.js';
 import { InputCheckbox } from './input-checkbox.js';
 import { InputCheckboxSizeEnum } from './types.js';
 
@@ -113,6 +114,19 @@ export const WithHint: Story = {
     value: 'value-1',
     label: 'Checkbox',
     hint: 'This is a hint',
+  },
+};
+
+export const WithLabelContent: Story = {
+  args: {
+    id: 'checkbox-terms',
+    value: 'accepted',
+    hint: 'You must agree before continuing',
+    children: (
+      <>
+        I agree to the <Link href="#">Terms and conditions</Link>.
+      </>
+    ),
   },
 };
 

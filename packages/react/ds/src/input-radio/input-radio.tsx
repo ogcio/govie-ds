@@ -1,6 +1,6 @@
 'use client';
 
-import { useId } from 'react';
+import { useId, type ReactNode } from 'react';
 import { cn } from '../cn.js';
 import { HintText } from '../hint-text/hint-text.js';
 import { InputText } from '../input-text/input-text.js';
@@ -13,29 +13,28 @@ import {
 } from './types.js';
 
 const getRadioSize = (size?: InputRadioSizeType) => {
-  let sizeClass = 'gi-input-radio-medium';
   if (size === InputRadioSizeEnum.Large) {
-    sizeClass = 'gi-input-radio-large';
+    return 'gi-input-radio-large';
   }
   if (size === InputRadioSizeEnum.Small) {
-    sizeClass = 'gi-input-radio-small';
+    return 'gi-input-radio-small';
   }
-  return sizeClass;
+  return 'gi-input-radio-medium';
 };
 
 export const getRadioWidth = (size?: InputRadioSizeType) => {
-  let widthClass = 'gi-w-8';
   if (size === InputRadioSizeEnum.Large) {
-    widthClass = 'gi-w-11';
+    return 'gi-w-11';
   }
   if (size === InputRadioSizeEnum.Small) {
-    widthClass = 'gi-w-6';
+    return 'gi-w-6';
   }
-  return widthClass;
+  return 'gi-w-8';
 };
 
 export const InputRadio: React.FC<InputRadioProps> = ({
   label,
+  children,
   hint,
   id,
   size = 'md',
@@ -44,45 +43,60 @@ export const InputRadio: React.FC<InputRadioProps> = ({
   ...props
 }) => {
   const radioId = id ?? useId();
+  const labelContent = children ?? label;
+  const hasRichContent = !!children;
+
   return (
-    <>
-      <div className="gi-input-radio-container">
-        <Input
-          type="radio"
-          id={radioId}
-          {...(checked === undefined
-            ? { defaultChecked: props.defaultChecked }
-            : { checked, onChange: props.onChange })}
-          className={getRadioSize(size)}
-          aria-describedby={hint ? `${radioId}-hint` : undefined}
-          aria-required={conditionalInput ? 'true' : 'false'}
-          {...props}
-        />
-        <div
-          className={cn({
-            'gi-mt-1': size === 'md',
-            'gi-mt-2': size === 'lg',
-          })}
-        >
-          <Label htmlFor={radioId} text={label || ''} size={size}></Label>
-          {(hint || conditionalInput) && (
-            <div className="gi-radio-conditional-divider-container">
-              <div>
-                {hint && <HintText text={hint} size={size} />}
-                {conditionalInput && (
-                  <div
-                    className={cn('gi-mt-3', {
-                      'gi-hidden': !checked,
-                    })}
-                  >
-                    <InputText {...conditionalInput} />
-                  </div>
-                )}
-              </div>
+    <div className="gi-input-radio-container">
+      <Input
+        type="radio"
+        id={radioId}
+        {...(checked === undefined
+          ? { defaultChecked: props.defaultChecked }
+          : { checked, onChange: props.onChange })}
+        className={getRadioSize(size)}
+        aria-describedby={hint ? `${radioId}-hint` : undefined}
+        aria-required={conditionalInput ? 'true' : 'false'}
+        aria-labelledby={labelContent ? `${radioId}-label` : undefined}
+        {...props}
+      />
+
+      <div
+        className={cn({
+          'gi-mt-1': size === 'md',
+          'gi-mt-2': size === 'lg',
+        })}
+      >
+        {labelContent && (
+          <Label
+            id={`${radioId}-label`}
+            htmlFor={hasRichContent ? undefined : radioId}
+            size={size}
+            className={cn({
+              'gi-rich-label': hasRichContent,
+            })}
+          >
+            {labelContent}
+          </Label>
+        )}
+
+        {(hint || conditionalInput) && (
+          <div className="gi-radio-conditional-divider-container">
+            <div>
+              {hint && <HintText text={hint} size={size} />}
+              {conditionalInput && (
+                <div
+                  className={cn('gi-mt-3', {
+                    'gi-hidden': !checked,
+                  })}
+                >
+                  <InputText {...conditionalInput} />
+                </div>
+              )}
             </div>
-          )}
-        </div>
+          </div>
+        )}
       </div>
-    </>
+    </div>
   );
 };
