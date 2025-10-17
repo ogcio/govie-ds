@@ -1,10 +1,11 @@
 import type { Meta, StoryObj } from '@storybook/react';
 import { useMemo, useState } from 'react';
+import { renderToStaticMarkup } from 'react-dom/server';
 import { within, expect, userEvent, screen } from 'storybook/test';
-import GovieLogoHarpBlackWithText from '../../../../../../assets/logos/gov-of-ireland/harp-black.svg';
-import GovieLogoHarpWithText from '../../../../../../assets/logos/gov-of-ireland/harp-white.svg';
-import GovieLogoHarpBlack from '../../../../../../assets/logos/harp/harp-black.svg';
-import GovieLogoHarp from '../../../../../../assets/logos/harp/harp-white.svg';
+import GovieLogoHarpBlackWithText from '../../assets/logos/gov-of-ireland/harp-black.js';
+import GovieLogoHarpWithText from '../../assets/logos/gov-of-ireland/harp-white.js';
+import GovieLogoHarpBlack from '../../assets/logos/harp/harp-black.js';
+import GovieLogoHarp from '../../assets/logos/harp/harp-white.js';
 
 import { Button } from '../../button/button.js';
 import { DrawerMenuExample } from '../../drawer/drawer.content.js';
@@ -42,6 +43,9 @@ const meta = {
 } satisfies Meta<typeof Header>;
 
 export default meta;
+
+const getLogo = (Logo: any) =>
+  `data:image/svg+xml;base64,${encodeURIComponent(btoa(renderToStaticMarkup(<Logo />)))}`;
 
 const SlotExample1 = () => (
   <div className="gi-pt-4 gi-flex gi-justify-between gi-flex-col gi-gap-6 gi-h-full">
@@ -118,7 +122,7 @@ export const Default: StoryObj = {
         <Header variant="default" aria-label="Site header">
           <HeaderLogo>
             <img
-              src={GovieLogoHarp.toString()}
+              src={getLogo(GovieLogoHarp)}
               alt="govie logo"
               className="gi-block gi-h-10 gi-w-auto sm:gi-hidden"
               decoding="async"
@@ -126,7 +130,7 @@ export const Default: StoryObj = {
               fetchPriority="high"
             />
             <img
-              src={GovieLogoHarpWithText.toString()}
+              src={getLogo(GovieLogoHarpWithText)}
               alt="govie logo"
               className="gi-hidden gi-h-12 gi-w-auto sm:gi-block"
               decoding="async"
@@ -495,7 +499,7 @@ export const Light: StoryObj = {
         <Header variant="light" aria-label="Site header">
           <HeaderLogo>
             <img
-              src={GovieLogoHarpBlack.toString()}
+              src={getLogo(GovieLogoHarpBlack)}
               alt="govie logo"
               className="gi-block gi-h-10 gi-w-auto sm:gi-hidden"
               decoding="async"
@@ -503,7 +507,7 @@ export const Light: StoryObj = {
               fetchPriority="high"
             />
             <img
-              src={GovieLogoHarpBlackWithText.toString()}
+              src={getLogo(GovieLogoHarpBlackWithText)}
               alt="govie logo"
               className="gi-hidden gi-h-12 gi-w-auto sm:gi-block"
               decoding="async"
