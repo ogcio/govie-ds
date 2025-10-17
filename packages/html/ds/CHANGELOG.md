@@ -1,5 +1,19 @@
 # Changelog
 
+## [1.14.3](https://github.com/ogcio/govie-ds/compare/html-lib-v1.14.2...html-lib-v1.14.3) (2025-10-17)
+
+
+### Bug Fixes
+
+* add link icon AB[#31692](https://github.com/ogcio/govie-ds/issues/31692) ([#748](https://github.com/ogcio/govie-ds/issues/748)) ([9cf910a](https://github.com/ogcio/govie-ds/commit/9cf910a6d3de38079a40e4fec779102f7f71e8bd))
+
+
+### Dependencies
+
+* The following workspace dependencies were updated
+  * devDependencies
+    * @ogcio/design-system-tailwind bumped to 1.16.0
+
 ## [1.14.2](https://github.com/ogcio/govie-ds/compare/html-lib-v1.14.1...html-lib-v1.14.2) (2025-10-06)
 
 

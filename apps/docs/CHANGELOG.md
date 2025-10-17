@@ -1,5 +1,20 @@
 # Changelog
 
+## [1.18.0](https://github.com/ogcio/govie-ds/compare/docs-v1.17.2...docs-v1.18.0) (2025-10-17)
+
+
+### Features
+
+* Header composable AB[#31481](https://github.com/ogcio/govie-ds/issues/31481) ([#747](https://github.com/ogcio/govie-ds/issues/747)) ([0603a3c](https://github.com/ogcio/govie-ds/commit/0603a3cadd0920ec2aa5a6cbe032bf591b7bafbb))
+
+
+### Dependencies
+
+* The following workspace dependencies were updated
+  * dependencies
+    * @ogcio/design-system-react bumped to 1.20.0
+    * @ogcio/design-system-tailwind bumped to 1.16.0
+
 ## [1.17.2](https://github.com/ogcio/govie-ds/compare/docs-v1.17.1...docs-v1.17.2) (2025-10-06)
 
 
