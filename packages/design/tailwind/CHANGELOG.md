@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.16.0](https://github.com/ogcio/govie-ds/compare/design-tailwind-v1.15.2...design-tailwind-v1.16.0) (2025-10-17)
+
+
+### Features
+
+* Header composable AB[#31481](https://github.com/ogcio/govie-ds/issues/31481) ([#747](https://github.com/ogcio/govie-ds/issues/747)) ([0603a3c](https://github.com/ogcio/govie-ds/commit/0603a3cadd0920ec2aa5a6cbe032bf591b7bafbb))
+
 ## [1.15.2](https://github.com/ogcio/govie-ds/compare/design-tailwind-v1.15.1...design-tailwind-v1.15.2) (2025-10-06)
 
 
