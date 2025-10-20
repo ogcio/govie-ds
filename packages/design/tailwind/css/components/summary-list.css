@@ -1,28 +1,43 @@
 .gi-summary-list {
-  @apply gi-text-sm md:gi-w-full md:gi-table-fixed gi-antialiased md:gi-table md:gi-border-collapse;
+  @apply gi-rounded-md
+   gi-overflow-hidden
+   gi-antialiased
+   gi-text-md gi-w-full;
 }
 
-.gi-summary-list > dl {
-  @apply gi-w-full gi-mb-7 gi-mb-4 md:gi-table-row md:gi-text-md md:gi-mb-1;
+.gi-summary-list > table {
+  @apply gi-w-full;
 }
 
-.gi-summary-list > dl[data-border='true'] {
-  @apply gi-border-b-gray-400 gi-border-b;
+.gi-summary-list > table > tbody tr {
+  @apply gi-flex gi-flex-col md:gi-table-row gi-align-middle;
 }
 
-.gi-summary-list > dl > dt {
-  @apply gi-py-2 gi-font-bold;
+.gi-summary-list > table th {
+  @apply gi-font-bold gi-align-top gi-text-left;
 }
 
-.gi-summary-list > dl > dd,
-.gi-summary-list > dl > dl {
-  @apply gi-block gi-mb-4 md:gi-pt-2 md:gi-pb-2 md:gi-m-0 md:gi-table-cell md:gi-text-md;
+.gi-summary-list > table > thead th {
+  @apply gi-align-middle;
 }
 
-.gi-summary-list-value {
-  @apply md:gi-break-words;
+.gi-summary-list > table td {
+  @apply gi-py-2 gi-align-top gi-px-3;
 }
 
-.gi-summary-list-actions {
-  @apply md:gi-text-right;
+.gi-summary-list > table th {
+  @apply gi-overflow-hidden gi-text-ellipsis gi-whitespace-nowrap;
+}
+
+.gi-summary-list > table tr > th,
+.gi-summary-list > table tr > td {
+  @apply gi-py-2 gi-px-3 md:gi-px-3 md:gi-py-2;
+}
+
+.gi-summary-list-action {
+  @apply gi-text-sm gi-font-normal gi-align-top md:gi-text-right gi-whitespace-nowrap;
+}
+
+.gi-summary-list > table thead {
+  @apply gi-bg-color-surface-system-neutral-layer1 gi-border-b gi-border-color-border-system-neutral-muted;
 }

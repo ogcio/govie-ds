@@ -15,6 +15,26 @@ component:
           ofType: 'string'
           description: 'A string value for specifying the data-testid attribute for testing purposes.'
           required: false
+    - name: SummaryListHeaderProps
+      fields:
+        - name: 'label'
+          ofType: 'string'
+          description: 'The table header label displayed in the first header column.'
+          required: true
+        - name: 'children'
+          ofType: 'node'
+          description: 'Optional header actions. Typically one or more SummaryListAction elements rendered in the last header column.'
+          required: false
+        - name: 'overflow'
+          ofType: '"wrap" | "truncate"'
+          description: 'Controls how the header label handles long text. "wrap" shows the full text; "truncate" keeps a single line with an ellipsis.'
+          required: false
+          default: 'wrap'
+        - name: 'maxWidth'
+          ofType: 'string'
+          description: 'Optional max width for the header label when overflow is "truncate". (e.g., "24ch", "16rem", "320px").'
+          required: false
+
     - name: SummaryListRowProps
       fields:
         - name: 'label'
@@ -67,62 +87,35 @@ component:
 This React component displays structured information in rows of labels and values, and is typically used to present a user’s details for review before confirmation or submission.
 
 <Section current="react">
-<ComponentPreview>
-  <ComponentContainer>
-    <SummaryList>
-  <SummaryListRow
-    label="Name"
-    withBorder
-  >
-    <SummaryListValue>
-      John Smith
-    </SummaryListValue>
-    <SummaryListAction href="#">
-      Change
-    </SummaryListAction>
-  </SummaryListRow>
-  <SummaryListRow
-    label="Date of birth"
-    withBorder
-  >
-    <SummaryListValue>
-      8 November 1982
-    </SummaryListValue>
-    <SummaryListAction href="#">
-      Change
-    </SummaryListAction>
-  </SummaryListRow>
-  <SummaryListRow
-    label="Address"
-    withBorder
-  >
-    <SummaryListValue>
-      72 Guild Street
-      <br />
-      London
-      <br />
-      SE23 6FH
-    </SummaryListValue>
-    <SummaryListAction href="#">
-      Change
-    </SummaryListAction>
-  </SummaryListRow>
-  <SummaryListRow
-    label="Contact details"
-    withBorder
-  >
-    <SummaryListValue>
-      07700 864523
-      <br />
-      john.smith@example.com
-    </SummaryListValue>
-    <SummaryListAction href="#">
-      Change
-    </SummaryListAction>
-  </SummaryListRow>
-</SummaryList>
-  </ComponentContainer>
-</ComponentPreview>
+  <ComponentPreview>
+    <ComponentContainer>
+       <SummaryList withBorder>
+        <SummaryListHeader label="Summary card heading">
+          <SummaryListAction href="/action">Action 1</SummaryListAction>
+        </SummaryListHeader>
+        <SummaryListRow withBorder label="Ac amet">
+          <SummaryListValue>
+            Id euismod risus sit phasellus sit urna tincidunt laoreet. Elit
+            volutpat sit facilisi.
+          </SummaryListValue>
+        </SummaryListRow>
+        <SummaryListRow withBorder label="Felis natoque">
+          <SummaryListValue>
+            Est senectus nisl vestibulum ipsum. Aliquet cursus orci.
+          </SummaryListValue>
+          <SummaryListAction href="/action">Action 1</SummaryListAction>
+          <SummaryListAction href="/action">Action 2</SummaryListAction>
+        </SummaryListRow>
+        <SummaryListRow label="Ac viverra">
+          <SummaryListValue>
+            In nulla id non sit commodo. Turpis duis netus leo sem.
+          </SummaryListValue>
+          <SummaryListAction href="/action">Action 1</SummaryListAction>
+          <SummaryListAction href="/action">Action 2</SummaryListAction>
+        </SummaryListRow>
+      </SummaryList>
+    </ComponentContainer>
+  </ComponentPreview>
 
 ### Default
 
@@ -146,22 +139,6 @@ This React component displays structured information in rows of labels and value
   className="h-96"
   componentId="summary-list-react"
   story="with-mixed-actions"
-/>
-
-### Without Borders
-
-<StorybookFrame
-  className="h-96"
-  componentId="summary-list-react"
-  story="without-borders"
-/>
-
-### With Custom Links
-
-<StorybookFrame
-  className="h-96"
-  componentId="summary-list-react"
-  story="with-custom-links"
 />
 
 ## Properties
