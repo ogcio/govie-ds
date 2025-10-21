@@ -1,3 +1,5 @@
+import { isValidElement, ReactNode } from 'react';
+
 /**
  * Returns a safe for url string representation.
  *
@@ -21,4 +23,21 @@ export function slugify(value?: string) {
 
 export function generateRandomId() {
   return Math.random().toString(36).slice(2, 11);
+}
+
+export function getSpecialComponentType(child: ReactNode): string | null {
+  if (!isValidElement(child)) {
+    return null;
+  }
+
+  return (
+    (child.type as any)?.componentType || (child.props as any)?.__type || null
+  );
+}
+
+export function isSpecialComponent(
+  child: ReactNode,
+  componentList: Array<string> = [],
+): boolean {
+  return componentList.includes(getSpecialComponentType(child) ?? '');
 }

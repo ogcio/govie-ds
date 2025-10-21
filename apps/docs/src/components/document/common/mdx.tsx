@@ -82,6 +82,7 @@ import {
   SummaryListAction,
   SummaryListRow,
   SummaryListValue,
+  SummaryListHeader,
   TabItem,
   Table,
   TableBody,
@@ -339,10 +340,47 @@ const documentComponents: MDXComponents = {
   Spinner,
   Stack,
   StepItem,
-  SummaryList,
-  SummaryListAction,
-  SummaryListRow,
-  SummaryListValue,
+  SummaryList: (props) => {
+    return (
+      <SummaryList {...props} className="gi-not-prose" __type="SummaryList" />
+    );
+  },
+  SummaryListAction: (props) => {
+    return (
+      <SummaryListAction
+        {...props}
+        className="gi-not-prose"
+        __type="SummaryListAction"
+      />
+    );
+  },
+  SummaryListRow: (props) => {
+    return (
+      <SummaryListRow
+        {...props}
+        className="gi-not-prose"
+        __type="SummaryListRow"
+      />
+    );
+  },
+  SummaryListValue: (props) => {
+    return (
+      <SummaryListValue
+        {...props}
+        className="gi-not-prose"
+        __type="SummaryListValue"
+      />
+    );
+  },
+  SummaryListHeader: (props) => {
+    return (
+      <SummaryListHeader
+        {...props}
+        className="gi-not-prose"
+        __type="SummaryListHeader"
+      />
+    );
+  },
   StorybookFrame,
   SystemElements,
   TabItem,
