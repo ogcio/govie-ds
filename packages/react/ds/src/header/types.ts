@@ -193,5 +193,6 @@ export type HeaderSecondaryMenuProps = PropsWithChildren<
 export type HeaderMenuItemSlotProps = PropsWithChildren<
   ComponentPropsWithoutRef<'div'> & {
     children?: ReactNode;
+    showItemMode?: HeaderItemMode;
   }
 >;

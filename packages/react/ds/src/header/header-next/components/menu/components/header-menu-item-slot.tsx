@@ -17,7 +17,7 @@ export const HeaderMenuItemSlot = forwardRef<
   if (!context) {
     throw new Error('HeaderMenuItemSlot must be used within a Header');
   }
-  if (section !== 'secondary') {
+  if (!section) {
     throw new Error(
       'HeaderMenuItemSlot must be used within a HeaderSecondaryMenu',
     );
