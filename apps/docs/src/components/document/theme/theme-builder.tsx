@@ -38,30 +38,24 @@ const SCALES = [50, 100, 200, 300, 400, 500, 600, 700, 800, 900, 950] as const;
 
 function extractShadesForKey(key: string, shades: any) {
   const map: any = {};
-  const nested = shades[key];
-  if (nested) {
+  const activeKey = shades[key];
+  if (activeKey) {
     for (const scale of SCALES) {
-      map[scale] = nested[scale];
+      map[scale] = activeKey[scale];
     }
     return map;
   }
   return {};
 }
 
-function ColorRamp({
-  activeKey,
-  shades,
-}: {
-  activeKey: ColorKey;
-  shades: any;
-}) {
-  const data = useMemo(
-    () => extractShadesForKey(activeKey, shades),
-    [activeKey, shades],
-  );
+function ColorRamp({ shades }: { shades: any }) {
+  const data = useMemo(() => extractShadesForKey('primary', shades), [shades]);
 
-  const hasAny = SCALES.some((s) => data?.[s]);
-  if (!hasAny) return null;
+  const hasAny = SCALES.some((scale) => data?.[scale]);
+
+  if (!hasAny) {
+    return null;
+  }
 
   return (
     <div className="mt-4">
@@ -184,7 +178,7 @@ export const ThemeBuilder = () => {
             ))}
           </div>
 
-          <ColorRamp activeKey={'primary'} shades={colorShades} />
+          <ColorRamp shades={colorShades} />
 
           <div className="flex flex-col gap-5 ">
             <Heading as="h3" className="mt-8 mb-0">
