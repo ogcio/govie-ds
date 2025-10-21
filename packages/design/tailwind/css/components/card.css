@@ -1,5 +1,5 @@
 .gi-card {
-  @apply gi-flex gi-items-start gi-w-full;
+  @apply gi-flex gi-items-start gi-w-full gi-gap-4;
 }
 
 .gi-card-vertical {
@@ -16,24 +16,28 @@
 
 .gi-card-heading,
 .gi-card-paragraph {
-  @apply gi-flex gi-flex-col gi-mb-2;
+  @apply gi-flex gi-flex-col;
+}
+
+.gi-card-heading {
+  @apply gi-gap-2;
 }
 
 .gi-card-paragraph {
-  @apply gi-mb-4;
+  @apply gi-py-4;
 }
 
 .gi-card-title {
-  @apply gi-text-md gi-font-bold gi-mb-2 gi-break-words gi-overflow-visible gi-text-ellipsis gi-line-clamp-2 gi-max-w-[60ch];
+  @apply gi-text-md gi-font-bold  gi-max-w-[60ch];
 }
 
 .gi-card-subheading {
-  @apply gi-text-gray-600 gi-stroke-gray-600 gi-text-sm gi-break-words gi-overflow-hidden gi-text-ellipsis gi-line-clamp-2 gi-max-w-[60ch];
+  @apply gi-text-gray-600 gi-stroke-gray-600 gi-text-sm gi-max-w-[60ch];
 }
 
-.gi-card-paragraph p {
-  @apply gi-break-words gi-overflow-hidden gi-text-ellipsis gi-line-clamp-2 gi-max-w-[60ch];
-  word-break: break-word;
+.gi-card-truncate-text {
+  @apply gi-break-words gi-overflow-hidden gi-text-ellipsis gi-line-clamp-2;
+  display: -webkit-box !important;
 }
 
 .gi-card-image {
@@ -72,19 +76,11 @@
   @apply gi-p-4;
 }
 
-.gi-card-vertical.gi-card-inset-full,
-.gi-card-horizontal.gi-card-inset-full,
-.gi-card-vertical.gi-card-inset-none,
-.gi-card-horizontal.gi-card-inset-none {
-  @apply gi-gap-4;
-}
-
 .gi-card-vertical.gi-card-inset-body,
 .gi-card-horizontal.gi-card-inset-body {
   @apply gi-p-0;
 }
 
-.gi-card-vertical.gi-card-inset-full,
-.gi-card-horizontal.gi-card-inset-full {
-  @apply gi-p-4;
+.gi-card-action {
+  @apply gi-text-md;
 }

@@ -11,6 +11,8 @@ type ImagePropTypes = {
   src: string;
   alt?: string;
   aspectRatio?: '4/3' | '1/1' | `${number}/${number}`;
+  ariaLabel?: string;
+  label?: string;
 };
 
 type IframePropTypes = {
@@ -18,6 +20,8 @@ type IframePropTypes = {
   title?: string;
   allowFullScreen?: boolean;
   allow?: string;
+  ariaLabel?: string;
+  label?: string;
 };
 
 type MediaContent =
@@ -37,8 +41,10 @@ type MediaContent =
 export type CardProps = {
   type: 'vertical' | 'horizontal';
   inset?: 'body' | 'full' | 'none';
+  background?: 'white' | 'grey';
+  truncate?: boolean;
   title: string;
-  subTitle?: string;
+  subtitle?: string;
   href?: string;
   media?: MediaContent;
   tag?: TagProps;

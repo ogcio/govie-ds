@@ -99,6 +99,13 @@ The Card component is a versatile container used to group related content and ac
   </Card>
 </ComponentContainer>
 
+## Content Guidelines
+
+- **Title**: up to 2 lines, target ≤ 60 characters.
+- **Subtitle**: up to 2 lines, target ≤ 60 characters.
+- **Description**: up to 3 lines, target ~140–160 characters.
+- Prefer concise, action-oriented language in titles; reserve details for the description.
+
 ## Usage
 
 Cards are ideal for displaying grouped content that needs to be visually separated, such as product information, articles, or user profiles.
@@ -139,11 +146,12 @@ Cards are ideal for displaying grouped content that needs to be visually separat
 - **Don’t overuse media**: Use visuals only when they enhance the card’s purpose.
 - **Don’t nest unrelated content**: Keep the card content focused.
 - **Don’t ignore accessibility**: Use appropriate labels and alt text for media.
+- **Don’t use** background="grey" together with inset="none". This combination reduces legibility and visual hierarchy.
 
-**Example:**
+  **Example:**
 
 <ComponentContainer>
-  <Card>
+  <Card background="grey">
     <CardContainer>
       <CardHeader>
         <CardTitle>Card Title</CardTitle>

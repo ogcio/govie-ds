@@ -17,31 +17,97 @@ component:
           ofType: '"body" | "full" | "none"'
           description: 'Spacing inside the card. Options: none, body, or full.'
           required: false
+        - name: 'insetSpace'
+          ofType: 'number'
+          description: 'Inset size in pixels applied when inset is "body" or "full" (e.g., 16 ⇒ 16px).'
+          required: false
+        - name: 'background'
+          ofType: '"white" | "grey"'
+          description: 'Background color of the card. Options: white or grey.'
+          required: false
         - name: 'children'
           ofType: 'ReactNode'
           description: 'Card content composed of nested sub-components like <CardMedia>, <CardHeader>, <CardDescription>, <CardTag> and <CardAction>'
           required: false
+    - name: CardContainerProp
+      fields:
+        - name: 'children'
+          ofType: 'ReactNode'
+          description: 'Typically <CardHeader>, <CardDescription>, <CardAction>.'
+          required: false
+
+    - name: CardHeaderProps
+      fields:
+        - name: 'children'
+          ofType: 'ReactNode'
+          description: 'Include <CardTitle>, <CardSubtitle>, and optional <CardTag>.'
+          required: false
+
+    - name: CardTitleProps
+      fields:
+        - name: 'truncate'
+          ofType: 'boolean'
+          description: 'Clamp to two lines; sets title attribute with full text if string.'
+          required: false
+        - name: 'children'
+          ofType: 'ReactNode'
+          description: 'Text or a <Link>.'
+          required: true
+
+    - name: CardSubtitleProps
+      fields:
+        - name: 'truncate'
+          ofType: 'boolean'
+          description: 'Clamp to two lines; sets title attribute when string.'
+          required: false
+        - name: 'children'
+          ofType: 'string'
+          description: 'Subtitle text.'
+          required: true
+
+    - name: CardDescriptionProps
+      fields:
+        - name: 'id'
+          ofType: 'string'
+          description: 'ID included in CardNext aria-describedby.'
+          required: false
+        - name: 'children'
+          ofType: 'string'
+          description: 'Body text (rendered via <Paragraph size="sm">).'
+          required: true
+
+    - name: CardActionProps
+      fields:
+        - name: 'children'
+          ofType: 'ReactNode'
+          description: 'Interactive controls (links, buttons).'
+          required: true
+
+    - name: CardTagProps
+      fields:
+        - name: 'text'
+          ofType: 'string'
+          description: 'Badge text; announced via role="note".'
+          required: true
+        - name: 'type'
+          ofType: 'TagProps["type"]'
+          description: 'Visual style of the tag.'
+          required: true
+
+    - name: CardMediaProps
+      fields:
+        - name: 'media'
+          ofType: 'MediaContent'
+          description: 'One of image | icon | iframe (see config below).'
+          required: true
+        - name: 'href'
+          ofType: 'string'
+          description: 'Wraps media in a link; the link is named for a11y.'
+          required: false
+
   stories:
     - name: 'default'
       url: '/story/components-card--default'
-    - name: 'vertical-without-image'
-      url: '/story/components-card--vertical-without-image'
-    - name: 'vertical-with-link'
-      url: '/story/components-card--vertical-with-link'
-    - name: 'vertical-with-button'
-      url: '/story/components-card--vertical-with-button'
-    - name: 'horizontal'
-      url: '/story/components-card--horizontal'
-    - name: 'horizontal-without-image'
-      url: '/story/components-card--horizontal-without-image'
-    - name: 'horizontal-with-icon'
-      url: '/story/components-card--horizontal-with-icon'
-    - name: 'with-iframe-embed'
-      url: '/story/components-card--with-iframe-embed'
-    - name: 'media-image-with-aspect-ratio'
-      url: '/story/components-card--media-image-with-aspect-ratio'
-    - name: 'without-title-link'
-      url: '/story/components-card--without-title-link'
 ---
 
 # Card
@@ -82,78 +148,6 @@ component:
   className="h-[356px]"
   componentId="card-react"
   story="default"
-/>
-
-### Vertical Without Image
-
-<StorybookFrame
-  className="h-[356px]"
-  componentId="card-react"
-  story="vertical-without-image"
-/>
-
-### Vertical With Link
-
-<StorybookFrame
-  className="h-[630px]"
-  componentId="card-react"
-  story="vertical-with-link"
-/>
-
-### Vertical With Button
-
-<StorybookFrame
-  className="h-[640px]"
-  componentId="card-react"
-  story="vertical-with-button"
-/>
-
-### Horizontal
-
-<StorybookFrame
-  className="h-[356px]"
-  componentId="card-react"
-  story="horizontal"
-/>
-
-### Horizontal Without Image
-
-<StorybookFrame
-  className="h-[356px]"
-  componentId="card-react"
-  story="horizontal-without-image"
-/>
-
-### Horizontal With Icon
-
-<StorybookFrame
-  className="h-[356px]"
-  componentId="card-react"
-  story="horizontal-with-icon"
-/>
-
-### With Iframe Embed
-
-<StorybookFrame
-  className="h-[400px]"
-  componentId="card-react"
-  story="with-iframe-embed"
-/>
-
-### Media Image with Aspect Ratio
-
-<StorybookFrame
-  className="h-[356px]"
-  componentId="card-react"
-  story="media-image-with-aspect-ratio"
-/>
-
-### Without Title Link
-
-<StorybookFrame
-  className="h-[356px]"
-  componentId="card-react"
-  story="without-title-link"
 />
 
 ## Properties
