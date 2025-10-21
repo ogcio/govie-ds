@@ -1,0 +1,26 @@
+{
+  "name": "@ogcio/design-system-assets-font-{{weight}}",
+  "version": "{{version}}",
+  "description": "Latest variable icon fonts with weight {{weight}} for Material Symbols.",
+  "main": "index.css",
+  "sass": "index.scss",
+  "types": "index.d.ts",
+  "files": [
+    "index.d.ts",
+    "*.{css,scss,woff2}"
+  ],
+  "license": "Apache-2.0",
+  "keywords": [
+    "material-symbols",
+    "material-icons",
+    "material-design-icons",
+    "material-design",
+    "material",
+    "symbols",
+    "icons",
+    "font"
+  ],
+  "publishConfig": {
+    "access": "public"
+  }
+}

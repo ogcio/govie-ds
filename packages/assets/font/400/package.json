@@ -1,0 +1,26 @@
+{
+  "name": "@ogcio/design-system-assets-font-400",
+  "version": "0.36.3",
+  "description": "Latest variable icon fonts with weight 400 for Material Symbols.",
+  "main": "index.css",
+  "sass": "index.scss",
+  "types": "index.d.ts",
+  "files": [
+    "index.d.ts",
+    "*.{css,scss,woff2}"
+  ],
+  "license": "Apache-2.0",
+  "keywords": [
+    "material-symbols",
+    "material-icons",
+    "material-design-icons",
+    "material-design",
+    "material",
+    "symbols",
+    "icons",
+    "font"
+  ],
+  "publishConfig": {
+    "access": "public"
+  }
+}

@@ -2,6 +2,7 @@ import { initI18n } from '@ogcio/design-system-react';
 import * as React from 'react';
 import * as ReactDOM from 'react-dom/client';
 import { App } from './application.tsx';
+import '@ogcio/design-system-assets-font-400';
 
 // Initialize i18next before rendering the app
 initI18n({

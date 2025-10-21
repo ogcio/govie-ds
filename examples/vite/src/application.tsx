@@ -136,6 +136,9 @@ export function App() {
     <>
       <HeaderComposable />
       <CookieBanner {...CookieBannerProps} />
+      <span className="material-symbols-outlined">123</span>
+      <span className="material-symbols-outlined">add</span>
+      <span className="material-symbols-outlined">face</span>
       <Container>
         <Heading>Design System </Heading>
         <Tabs id="tabs" ariaLabelledBy="">

@@ -1,0 +1,32 @@
+{
+  "name": "@ogcio/design-system-assets-material-symbols",
+  "version": "0.36.3",
+  "description": "Latest variable icon fonts and CSS for Material Symbols.",
+  "main": "index.css",
+  "sass": "index.scss",
+  "types": "index.d.ts",
+  "files": [
+    "index.d.ts",
+    "*.{css,scss,woff2}"
+  ],
+  "scripts": {
+    "build": "sass --no-source-map --no-error-css ."
+  },
+  "devDependencies": {
+    "sass": "1.56.1"
+  },
+  "license": "Apache-2.0",
+  "keywords": [
+    "material-symbols",
+    "material-icons",
+    "material-design-icons",
+    "material-design",
+    "material",
+    "symbols",
+    "icons",
+    "font"
+  ],
+  "publishConfig": {
+    "access": "public"
+  }
+}
