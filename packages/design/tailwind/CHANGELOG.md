@@ -1,5 +1,13 @@
 # Changelog
 
+## [1.17.0](https://github.com/ogcio/govie-ds/compare/design-tailwind-v1.16.0...design-tailwind-v1.17.0) (2025-10-21)
+
+
+### Features
+
+* Card new properties + storybook AB[#31688](https://github.com/ogcio/govie-ds/issues/31688) ([#752](https://github.com/ogcio/govie-ds/issues/752)) ([30817c2](https://github.com/ogcio/govie-ds/commit/30817c2f137ef920e49cea7891d1c3cd68944841))
+* SummaryList sync with figma AB[#31702](https://github.com/ogcio/govie-ds/issues/31702) ([#750](https://github.com/ogcio/govie-ds/issues/750)) ([6f48f03](https://github.com/ogcio/govie-ds/commit/6f48f0328826b04612c00f1f119f084f04990cff))
+
 ## [1.16.0](https://github.com/ogcio/govie-ds/compare/design-tailwind-v1.15.2...design-tailwind-v1.16.0) (2025-10-17)
 
 
