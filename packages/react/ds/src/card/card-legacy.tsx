@@ -24,9 +24,9 @@ export const CardLegacy = ({
   action,
   href,
   tag,
-  dataTestid,
   titleAsChild,
   children,
+  ...props
 }: CardProps) => {
   const renderTitle = () => {
     const isTitleOnly = !title || (!href && !titleAsChild);
@@ -74,12 +74,12 @@ export const CardLegacy = ({
   };
 
   return (
-    <CardNext inset={inset} type={type} dataTestid={dataTestid}>
+    <CardNext inset={inset} type={type} {...props}>
       {media && <CardMedia media={media} href={href} />}
-      <CardContainer inset={inset}>
+      <CardContainer>
         <CardHeader>
           <CardTitle>{renderTitle()}</CardTitle>
-          <CardSubtitle>{subTitle}</CardSubtitle>
+          {subTitle && <CardSubtitle>{subTitle}</CardSubtitle>}
           {tag && <CardTag text={tag.text} type={tag.type} />}
         </CardHeader>
         <CardDescription>{content}</CardDescription>

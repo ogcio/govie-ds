@@ -215,18 +215,17 @@ const documentComponents: MDXComponents = {
     </Button>
   ),
   Caption,
-  Card,
-  CardDescription,
-  CardTitle,
-  CardSubtitle,
-  CardTag: (props) => {
-    // Adding __type so we can detect this component in MDX, where real component types are lost.
-    return <CardTag {...props} __type="CardTag" />;
-  },
-  CardContainer,
-  CardAction,
-  CardHeader,
-  CardMedia,
+  Card: (props) => <Card {...props} __type="Card" />,
+  CardDescription: (props) => (
+    <CardDescription {...props} __type="CardDescription" />
+  ),
+  CardTitle: (props) => <CardTitle {...props} __type="CardTitle" />,
+  CardSubtitle: (props) => <CardSubtitle {...props} __type="CardSubtitle" />,
+  CardTag: (props) => <CardTag {...props} __type="CardTag" />,
+  CardContainer: (props) => <CardContainer {...props} __type="CardContainer" />,
+  CardAction: (props) => <CardAction {...props} __type="CardAction" />,
+  CardHeader: (props) => <CardHeader {...props} __type="CardHeader" />,
+  CardMedia: (props) => <CardMedia {...props} __type="CardMedia" />,
   Chip,
   ColorPrimitives,
   Combobox,
