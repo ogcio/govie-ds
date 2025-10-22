@@ -1,5 +1,5 @@
 import type { Meta, StoryObj } from '@storybook/react';
-import { CSSProperties, useMemo, useState } from 'react';
+import { useMemo, useState } from 'react';
 import { renderToStaticMarkup } from 'react-dom/server';
 import { within, expect, userEvent, screen } from 'storybook/test';
 import GovieLogoHarpBlackWithText from '../../assets/logos/gov-of-ireland/harp-black.js';
@@ -464,7 +464,7 @@ export const Govie: StoryObj = {
   },
 };
 
-export const MygovID: StoryObj = {
+export const MyGovID: StoryObj = {
   render: () => {
     const MyGovIdButtonMyGovId = ({ className = 'gi-inline-flex' }) => {
       return (
