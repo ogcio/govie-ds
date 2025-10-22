@@ -1,5 +1,5 @@
 import type { Meta, StoryObj } from '@storybook/react';
-import { useMemo, useState } from 'react';
+import { CSSProperties, useMemo, useState } from 'react';
 import { renderToStaticMarkup } from 'react-dom/server';
 import { within, expect, userEvent, screen } from 'storybook/test';
 import GovieLogoHarpBlackWithText from '../../assets/logos/gov-of-ireland/harp-black.js';
@@ -8,6 +8,7 @@ import GovieLogoHarpBlack from '../../assets/logos/harp/harp-black.js';
 import GovieLogoHarp from '../../assets/logos/harp/harp-white.js';
 
 import { Button } from '../../button/button.js';
+import { cn } from '../../cn.js';
 import { DrawerMenuExample } from '../../drawer/drawer.content.js';
 import {
   DrawerBody,
@@ -463,31 +464,55 @@ export const Govie: StoryObj = {
   },
 };
 
-const MyGovIDIcon = () => (
-  <svg
-    style={{
-      verticalAlign: 'middle',
-      marginLeft: '5px',
-    }}
-    height="1.2em"
-    width="1.2em"
-    viewBox="0 0 1024 1024"
-    fill="#fff"
-  >
-    <path d="M617.244 512c-48.356 0-71.111 31.289-71.111 96.711 0 31.289 5.689 56.889 19.911 73.956 14.222 19.911 34.133 28.444 62.578 28.444 8.533 0 17.067 0 22.756 0 8.533 0 17.067-2.844 17.067-2.844v-182.044c0-2.844-14.222-8.533-22.756-8.533-8.533-2.844-17.067-5.689-28.444-5.689zM512 14.222c-275.911 0-497.778 221.867-497.778 497.778s221.867 497.778 497.778 497.778 497.778-221.867 497.778-497.778-221.867-497.778-497.778-497.778zM315.733 247.467c34.133 0 62.578 28.444 62.578 62.578s-28.444 62.578-62.578 62.578-62.578-28.444-62.578-62.578 28.444-62.578 62.578-62.578zM406.756 640h-14.222c-11.378 0-19.911 8.533-19.911 22.756v125.156h-105.244v-125.156c0-11.378-8.533-22.756-22.756-22.756h-8.533v-184.889c0-22.756 19.911-39.822 42.667-39.822h85.333c22.756 0 42.667 14.222 42.667 36.978 0 0 0 187.733 0 187.733zM776.533 776.533c-8.533 2.844-22.756 5.689-34.133 8.533s-25.6 5.689-36.978 5.689c-14.222 2.844-25.6 2.844-39.822 2.844-11.378 2.844-25.6 2.844-36.978 2.844-28.444 0-54.044-2.844-76.8-14.222-22.756-8.533-42.667-19.911-56.889-36.978-14.222-14.222-28.444-34.133-36.978-56.889s-11.378-48.356-11.378-76.8c0-28.444 2.844-54.044 11.378-76.8s17.067-42.667 31.289-59.733c14.222-17.067 28.444-28.444 48.356-36.978s42.667-14.222 65.422-14.222c14.222 0 25.6 2.844 36.978 2.844s22.756 5.689 31.289 11.378v-184.889l108.089-17.067-2.844 540.444z"></path>
-  </svg>
-);
-
 export const MygovID: StoryObj = {
   render: () => {
-    const myGovidClass = `
-      gi-bg-[#007da6] 
-      hover:gi-opacity-[0.8]
-      hover:gi-bg-[#007da6]
-      focus:gi-bg-[#007da6]  
-      focus:gi-outline-[2px]
-      focus:gi-outline-[rgba(255,255,255,0.6)]
-      focus:gi-outline-offset-0`;
+    const MyGovIdButtonMyGovId = ({ className = 'gi-inline-flex' }) => {
+      return (
+        <button
+          id="HeaderButton-loginWithMyGovIdButton"
+          data-googletaglabel="Login With MyGovId"
+          className={cn('gi-myGovIdButton-myGgovId', className)}
+          style={{
+            fontFamily: 'Montserrat, sans-serif',
+          }}
+        >
+          Login with MyGovID
+          <img
+            id="loginButton-loginWithMyGovIdButton-image"
+            src="https://mygovidstatic.blob.core.windows.net/assets/images/mygovid_logo_white_button_icon.svg"
+            data-googletaglabel="Login With MyGovId"
+            aria-label="Decorative icon included within login button"
+          />
+        </button>
+      );
+    };
+
+    const MyGovIdButtonMyWelfare = ({ className = 'gi-inline-flex' }) => {
+      return (
+        <a
+          href="#"
+          style={{
+            fontFamily: "'Open Sans', sans-serif",
+            touchAction: 'manipulation',
+          }}
+          className={cn('gi-myGovIdButton-mywelfare', className)}
+        >
+          <span>Login with MyGovID</span>
+          <svg height="1.2em" width="1.2em" viewBox="0 0 1024 1024" fill="#fff">
+            <path d="M617.244 512c-48.356 0-71.111 31.289-71.111 96.711 0 31.289 5.689 56.889 19.911 73.956 14.222 19.911 34.133 28.444 62.578 28.444 8.533 0 17.067 0 22.756 0 8.533 0 17.067-2.844 17.067-2.844v-182.044c0-2.844-14.222-8.533-22.756-8.533-8.533-2.844-17.067-5.689-28.444-5.689zM512 14.222c-275.911 0-497.778 221.867-497.778 497.778s221.867 497.778 497.778 497.778 497.778-221.867 497.778-497.778-221.867-497.778-497.778-497.778zM315.733 247.467c34.133 0 62.578 28.444 62.578 62.578s-28.444 62.578-62.578 62.578-62.578-28.444-62.578-62.578 28.444-62.578 62.578-62.578zM406.756 640h-14.222c-11.378 0-19.911 8.533-19.911 22.756v125.156h-105.244v-125.156c0-11.378-8.533-22.756-22.756-22.756h-8.533v-184.889c0-22.756 19.911-39.822 42.667-39.822h85.333c22.756 0 42.667 14.222 42.667 36.978 0 0 0 187.733 0 187.733zM776.533 776.533c-8.533 2.844-22.756 5.689-34.133 8.533s-25.6 5.689-36.978 5.689c-14.222 2.844-25.6 2.844-39.822 2.844-11.378 2.844-25.6 2.844-36.978 2.844-28.444 0-54.044-2.844-76.8-14.222-22.756-8.533-42.667-19.911-56.889-36.978-14.222-14.222-28.444-34.133-36.978-56.889s-11.378-48.356-11.378-76.8c0-28.444 2.844-54.044 11.378-76.8s17.067-42.667 31.289-59.733c14.222-17.067 28.444-28.444 48.356-36.978s42.667-14.222 65.422-14.222c14.222 0 25.6 2.844 36.978 2.844s22.756 5.689 31.289 11.378v-184.889l108.089-17.067-2.844 540.444z"></path>
+          </svg>
+        </a>
+      );
+    };
+
+    const [state, { close, closeAll, toggle }] = useToggleMap({
+      drawer: false,
+    });
+    const icons = useMemo(() => {
+      return {
+        drawer: state.drawer ? 'close' : 'menu',
+      } as Record<string, IconId>;
+    }, [state.drawer]);
 
     return (
       <>
@@ -512,70 +537,54 @@ export const MygovID: StoryObj = {
             <span className="gi-sr-only">Gov.ie logo</span>
           </HeaderLogo>
           <HeaderPrimaryMenu>
-            <HeaderMenuItemLink href="#" showItemMode="desktop-only">
-              News
-            </HeaderMenuItemLink>
-            <HeaderMenuItemLink href="#" showItemMode="desktop-only">
-              Departments
-            </HeaderMenuItemLink>
-            <HeaderMenuItemLink href="#">Services</HeaderMenuItemLink>
-            <HeaderMenuItemSlot showItemMode="desktop-only">
-              <a
-                className={myGovidClass}
-                style={{
-                  color: '#ffffff',
-                  backgroundColor: '#007da6',
-                  borderRadius: '5px',
-                  fontSize: '16px',
-                  maxWidth: '240px',
-                  marginLeft: '16px',
-                  verticalAlign: 'middle',
-                  whiteSpace: 'nowrap',
-                  display: 'flex',
-                  alignItems: 'center',
-                  justifyContent: 'center',
-                  padding: '16px 24px',
-                  textAlign: 'center',
-                  touchAction: 'manipulation',
-                  cursor: 'pointer',
-                  border: '0 solid transparent',
-                  transition: 'opacity .3s',
-                  lineHeight: '18px',
-                  fontWeight: 'bold',
-                  textDecoration: 'none',
-                  marginBottom: '1em',
-                  fontFamily: `'Open Sans', sans-serif`,
-                  margin: '0',
-                }}
-              >
-                <span
-                  style={{
-                    verticalAlign: 'middle',
-                    marginLeft: '5px',
-                    fontSize: '16px',
-                    whiteSpace: 'nowrap',
-                    textAlign: 'center',
-                    cursor: 'pointer',
-                    fontFamily: `'Open Sans', sans-serif`,
-                    lineHeight: '18px',
-                    fontWeight: 'bold',
-                  }}
-                >
-                  Login with MyGovID
-                </span>
-                <MyGovIDIcon />
-              </a>
-            </HeaderMenuItemSlot>
             <HeaderMenuItemLink href="#" showItemMode="always">
               Login with MyGovID
             </HeaderMenuItemLink>
-
-            <HeaderMenuItemSeparator />
-            <HeaderMenuItemLink href="#" showItemMode="always">
-              Gaelige
-            </HeaderMenuItemLink>
+            <HeaderMenuItemSlot showItemMode="desktop-only">
+              <MyGovIdButtonMyWelfare />
+            </HeaderMenuItemSlot>
+            <HeaderMenuItemSlot showItemMode="desktop-only">
+              <MyGovIdButtonMyGovId />
+            </HeaderMenuItemSlot>
+            <HeaderMenuItemSlot showItemMode="desktop-only"></HeaderMenuItemSlot>
+            <HeaderMenuItemButton
+              showItemMode="mobile-only"
+              icon={icons.drawer}
+              aria-label="Toggle main menu"
+              aria-expanded={state.drawer}
+              aria-controls="MobileMenuDrawer"
+              aria-haspopup="dialog"
+              onClick={() => toggle('drawer')}
+            />
           </HeaderPrimaryMenu>
         </Header>
+        <DrawerWrapper
+          id="MobileMenuDrawer"
+          isOpen={state.drawer}
+          onClose={() => close('drawer')}
+          position="right"
+          closeButtonSize="large"
+          aria-modal="true"
+          aria-label="Main menu"
+        >
+          <DrawerBody className="gi-w-full">
+            <MyGovIdButtonMyWelfare className="gi-flex" />
+            <MyGovIdButtonMyGovId className="gi-flex" />
+          </DrawerBody>
+          <DrawerFooter>
+            <Button
+              variant="secondary"
+              appearance="dark"
+              className="gi-justify-center xs:gi-justify-start"
+              onClick={() => closeAll()}
+            >
+              Cancel
+            </Button>
+            <Button className="gi-justify-center xs:gi-justify-start">
+              Primary
+            </Button>
+          </DrawerFooter>
+        </DrawerWrapper>
       </>
     );
   },

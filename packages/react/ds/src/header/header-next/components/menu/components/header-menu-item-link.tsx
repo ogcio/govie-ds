@@ -68,22 +68,20 @@ export const HeaderMenuItemLink = forwardRef<
       }
       case 'secondary': {
         return (
-          <li>
-            <AnchorComponent
-              ref={ref}
-              rel={rel}
-              href={href}
-              target={finalTarget}
-              className={headerSecondaryLinkItemVariants({
-                appearance,
-                className,
-              })}
-              {...anchorProps}
-              {...props}
-            >
-              {children}
-            </AnchorComponent>
-          </li>
+          <AnchorComponent
+            ref={ref}
+            rel={rel}
+            href={href}
+            target={finalTarget}
+            className={headerSecondaryLinkItemVariants({
+              appearance,
+              className,
+            })}
+            {...anchorProps}
+            {...props}
+          >
+            {children}
+          </AnchorComponent>
         );
       }
       default: {

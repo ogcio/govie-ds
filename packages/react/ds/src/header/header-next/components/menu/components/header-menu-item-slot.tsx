@@ -26,21 +26,19 @@ export const HeaderMenuItemSlot = forwardRef<
   const appearance = context.variant;
 
   return (
-    <li>
-      <div
-        ref={ref}
-        className={cn(
-          headerSecondaryLinkSlotItemVariants({
-            appearance,
-          }),
-          className,
-        )}
-        data-appearance={appearance}
-        {...props}
-      >
-        {children}
-      </div>
-    </li>
+    <div
+      ref={ref}
+      className={cn(
+        headerSecondaryLinkSlotItemVariants({
+          appearance,
+        }),
+        className,
+      )}
+      data-appearance={appearance}
+      {...props}
+    >
+      {children}
+    </div>
   );
 });
 
