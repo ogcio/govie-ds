@@ -571,19 +571,6 @@ export const MyGovID: StoryObj = {
             <MyGovIdButtonMyWelfare className="gi-flex" />
             <MyGovIdButtonMyGovId className="gi-flex" />
           </DrawerBody>
-          <DrawerFooter>
-            <Button
-              variant="secondary"
-              appearance="dark"
-              className="gi-justify-center xs:gi-justify-start"
-              onClick={() => closeAll()}
-            >
-              Cancel
-            </Button>
-            <Button className="gi-justify-center xs:gi-justify-start">
-              Primary
-            </Button>
-          </DrawerFooter>
         </DrawerWrapper>
       </>
     );
