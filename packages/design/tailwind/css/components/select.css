@@ -77,12 +77,12 @@
 }
 
 .gi-select-option-item {
-  @apply gi-mx-1 
+  @apply gi-mx-1 gi-mb-2 last:gi-mb-0  
   gi-flex
   gi-items-center
   gi-justify-between 
   gi-cursor-pointer
-  gi-h-10
+  gi-min-h-10
    
   hover:gi-bg-color-surface-system-neutral-interactive-hover
   hover:gi-shadow-[0_0_0_4px_var(--gieds-color-surface-system-neutral-interactive-hover)] 
