@@ -4,7 +4,7 @@ import { useEffect, useMemo, useReducer, useRef, useState } from 'react';
 import { ChromePicker } from 'react-color';
 import { ClientOnly } from '../common/client-only';
 import { DownloadTheme } from './download-theme';
-import { Heading, Paragraph } from '@ogcio/design-system-react';
+import { Blockquote, Heading, Paragraph } from '@ogcio/design-system-react';
 import { ThemePreview } from './theme-preview';
 import {
   COLOR_GROUPS,
@@ -128,15 +128,18 @@ export const ThemeBuilder = () => {
   return (
     <ClientOnly onClientReady={setIsMounted}>
       <div className="flex gap-7 flex-col gi-not-prose text-black">
-        <Heading as="h5">How color shades work?</Heading>
-        <Paragraph className="text-md text-neutral-600 -mt-2">
-          The color you pick here is a <i>brand seed</i>. We use it to generate
-          a full ramp from <b>50</b> (lightest) to <b>950</b> (darkest) for the
-          selected group. Your pick does <u>not</u> automatically become{' '}
-          <code>primary-500</code> (or any fixed step); instead, it’s positioned
-          within the ramp and the named steps (e.g. <code>primary-500</code>)
-          come from the generated shades.
-        </Paragraph>
+        <Blockquote cite="https://example.com/source">
+          <b>How color shades work. </b> <br />
+          <Paragraph>
+            Your selected color is used as a brand seed to generate a full color
+            ramp (50 (lightest) to 950 (darkest). Component tokens pull from
+            defined steps in the generated ramp (e.g., primary-500 or
+            primary-700), so the color applied to components may differ from
+            your original seed. This ensures consistent contrast and
+            accessibility throughout the design system.
+          </Paragraph>
+        </Blockquote>
+
         <Heading as="h3">Choose the Brand color</Heading>
         <div className="flex flex-col mb-8">
           <div className="flex gap-4 flex-col">
