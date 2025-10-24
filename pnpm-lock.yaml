@@ -461,19 +461,7 @@ importers:
         specifier: 1.56.1
         version: 1.56.1
 
-  packages/assets/font/100: {}
-
-  packages/assets/font/200: {}
-
-  packages/assets/font/300: {}
-
   packages/assets/font/400: {}
-
-  packages/assets/font/500: {}
-
-  packages/assets/font/600: {}
-
-  packages/assets/font/700: {}
 
   packages/assets/font/_template: {}
 
@@ -482,8 +470,6 @@ importers:
       sass:
         specifier: 1.56.1
         version: 1.56.1
-
-  packages/assets/metadata: {}
 
   packages/assets/svg:
     devDependencies:
@@ -494,19 +480,7 @@ importers:
         specifier: 1.1.0
         version: 1.1.0
 
-  packages/assets/svg/100: {}
-
-  packages/assets/svg/200: {}
-
-  packages/assets/svg/300: {}
-
   packages/assets/svg/400: {}
-
-  packages/assets/svg/500: {}
-
-  packages/assets/svg/600: {}
-
-  packages/assets/svg/700: {}
 
   packages/assets/svg/_template: {}
 
