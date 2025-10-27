@@ -70,7 +70,6 @@ function Toast({
   showIcon = true,
   dismissible,
   onClose,
-  dataTestid,
   slotAction,
 }: ToastProps) {
   const { base, heading, container, innerContainer, dismiss, baseDismissible } =
@@ -81,14 +80,7 @@ function Toast({
   const baseVariant = dismissible ? baseDismissible : base;
 
   return (
-    <div
-      className={baseVariant()}
-      role="alert"
-      aria-live="assertive"
-      aria-atomic="true"
-      aria-label={title}
-      data-testid={dataTestid}
-    >
+    <div className={baseVariant()}>
       {showIcon ? (
         <Icon
           icon={icon({ variant })}

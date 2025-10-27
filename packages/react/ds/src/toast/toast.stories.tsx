@@ -6,7 +6,7 @@ import {
   Controls,
 } from '@storybook/addon-docs/blocks';
 import type { Meta, StoryObj } from '@storybook/react';
-import { expect, userEvent, waitFor, within } from 'storybook/test';
+import { expect, screen, userEvent, waitFor, within } from 'storybook/test';
 import { Button } from '../button/button.js';
 import { Stack } from '../stack/stack.js';
 import { Toast, toaster, ToastProvider } from './toast.js';
@@ -350,6 +350,21 @@ export const WithoutIcon: Story = {
       <Button onClick={() => toaster.create(props)}>Trigger Toast</Button>
     </>
   ),
+  play: async ({ step }) => {
+    await step('trigger and render toast', async () => {
+      await userEvent.click(
+        await screen.findByRole('button', { name: /trigger toast/i }),
+      );
+      const alert = await screen.findByRole('alert');
+      expect(alert).toBeInTheDocument();
+    });
+
+    await step('icon should NOT be rendered when showIcon=false', async () => {
+      const alert = await screen.findByRole('alert');
+      const iconElement = alert.querySelector('.gi-toast-icon');
+      expect(iconElement).toBeNull();
+    });
+  },
 };
 
 const variantList = ['info', 'success', 'warning', 'danger'] as const;

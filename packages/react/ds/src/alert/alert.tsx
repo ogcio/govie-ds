@@ -37,8 +37,8 @@ function Alert({
   showIcon = true,
   dismissible,
   onClose,
-  dataTestid,
   className,
+  ...props
 }: AlertProps) {
   const [isDismissed, setIsDismissed] = useState(false);
 
@@ -54,9 +54,9 @@ function Alert({
   return (
     <div
       className={cn(baseVariant(), className, 'gi-not-prose')}
-      data-testid={dataTestid}
       role="alert"
       aria-live="assertive"
+      {...props}
     >
       {showIcon ? (
         <Icon
