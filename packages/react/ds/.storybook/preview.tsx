@@ -1,8 +1,7 @@
 /**
- * Montserrat (weight 600) and Open Sans — used only by the MyGovID button in Header -> MyGovID story.
+ * Open Sans — used only by the MyGovID button in Header -> MyGovID story.
  * Lato is the app default.
  */
-import '@fontsource/montserrat/600.css';
 import '@fontsource/open-sans/700.css';
 import '@ogcio/theme-doete/light.css';
 import '@ogcio/theme-govie/theme.css';

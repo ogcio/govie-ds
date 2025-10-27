@@ -466,27 +466,6 @@ export const Govie: StoryObj = {
 
 export const MyGovID: StoryObj = {
   render: () => {
-    const MyGovIdButtonMyGovId = ({ className = 'gi-inline-flex' }) => {
-      return (
-        <button
-          id="HeaderButton-loginWithMyGovIdButton"
-          data-googletaglabel="Login With MyGovId"
-          className={cn('gi-myGovIdButton-myGgovId', className)}
-          style={{
-            fontFamily: 'Montserrat, sans-serif',
-          }}
-        >
-          Login with MyGovID
-          <img
-            id="loginButton-loginWithMyGovIdButton-image"
-            src="https://mygovidstatic.blob.core.windows.net/assets/images/mygovid_logo_white_button_icon.svg"
-            data-googletaglabel="Login With MyGovId"
-            aria-label="Decorative icon included within login button"
-          />
-        </button>
-      );
-    };
-
     const MyGovIdButtonMyWelfare = ({ className = 'gi-inline-flex' }) => {
       return (
         <a
@@ -505,7 +484,7 @@ export const MyGovID: StoryObj = {
       );
     };
 
-    const [state, { close, closeAll, toggle }] = useToggleMap({
+    const [state, { close, toggle }] = useToggleMap({
       drawer: false,
     });
     const icons = useMemo(() => {
@@ -537,14 +516,8 @@ export const MyGovID: StoryObj = {
             <span className="gi-sr-only">Gov.ie logo</span>
           </HeaderLogo>
           <HeaderPrimaryMenu>
-            <HeaderMenuItemLink href="#" showItemMode="always">
-              Login with MyGovID
-            </HeaderMenuItemLink>
             <HeaderMenuItemSlot showItemMode="desktop-only">
               <MyGovIdButtonMyWelfare />
-            </HeaderMenuItemSlot>
-            <HeaderMenuItemSlot showItemMode="desktop-only">
-              <MyGovIdButtonMyGovId />
             </HeaderMenuItemSlot>
             <HeaderMenuItemSlot showItemMode="desktop-only"></HeaderMenuItemSlot>
             <HeaderMenuItemButton
@@ -569,7 +542,6 @@ export const MyGovID: StoryObj = {
         >
           <DrawerBody className="gi-w-full">
             <MyGovIdButtonMyWelfare className="gi-flex" />
-            <MyGovIdButtonMyGovId className="gi-flex" />
           </DrawerBody>
         </DrawerWrapper>
       </>
