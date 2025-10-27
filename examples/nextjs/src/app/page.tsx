@@ -987,6 +987,13 @@ export default function Home() {
                         This is an informational alert message.
                       </Paragraph>
                     </Alert>
+                    <br />
+
+                    <Alert title="Info Alert" showIcon={false}>
+                      <Paragraph>
+                        This is an alert message without icon.
+                      </Paragraph>
+                    </Alert>
                   </div>
 
                   <div>
