@@ -24,4 +24,5 @@ export type ToastProps = {
   dataTestid?: string;
   triggerButtonLabel: string;
   id?: string;
+  showIcon?: boolean;
 };

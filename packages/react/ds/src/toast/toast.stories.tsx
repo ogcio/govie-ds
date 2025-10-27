@@ -35,6 +35,12 @@ const meta: Meta<typeof Toast> = {
       control: 'boolean',
       description: 'Specify if the toast is dismissible',
     },
+    showIcon: {
+      control: 'boolean',
+      description:
+        'Controls whether the icon is shown. Set to false to hide it.',
+      table: { defaultValue: { summary: 'true' } },
+    },
     description: {
       control: 'text',
       description: 'Specify the content in the toast component',
@@ -328,6 +334,22 @@ export const AllPositions: Story = {
       await userEvent.click(button);
     }
   },
+};
+
+export const WithoutIcon: Story = {
+  args: {
+    title: 'Info Alert',
+    variant: 'info',
+    dismissible: true,
+    showIcon: false,
+    description: 'This is some content',
+  },
+  render: (props) => (
+    <>
+      <ToastProvider />
+      <Button onClick={() => toaster.create(props)}>Trigger Toast</Button>
+    </>
+  ),
 };
 
 const variantList = ['info', 'success', 'warning', 'danger'] as const;

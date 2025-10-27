@@ -23,4 +23,5 @@ export type ToastProps = {
   position?: ToastPosition;
   dataTestid?: string;
   slotAction?: React.ReactNode;
+  showIcon?: boolean;
 };

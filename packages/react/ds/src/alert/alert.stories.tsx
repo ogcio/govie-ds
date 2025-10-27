@@ -28,6 +28,12 @@ const meta = {
       control: 'boolean',
       description: 'Specify if the alert is dismissible',
     },
+    showIcon: {
+      control: 'boolean',
+      description:
+        'Controls whether the icon is shown. Set to false to hide it.',
+      table: { defaultValue: { summary: 'true' } },
+    },
     children: {
       control: 'text',
       description: 'Specify the HTML for the content in the alert component',
@@ -108,6 +114,20 @@ export const WithoutTitle: Story = {
     variant: 'info',
     dismissible: true,
     children: <>Content</>,
+  },
+};
+
+export const WithoutIcon: Story = {
+  args: {
+    title: 'Info Alert',
+    variant: 'info',
+    dismissible: true,
+    showIcon: false,
+    children: (
+      <>
+        <Paragraph>Content</Paragraph>
+      </>
+    ),
   },
 };
 

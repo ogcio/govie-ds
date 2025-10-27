@@ -105,6 +105,7 @@ export const Toast = ({
   dismissible,
   duration = 5000,
   animation = 'fadeinup',
+  showIcon = true,
   slotAction,
 }: ToastProps) => {
   const [isOpen, setIsOpen] = useState(true);
@@ -148,6 +149,7 @@ export const Toast = ({
             description={description}
             dismissible={dismissible}
             slotAction={slotAction}
+            showIcon={showIcon}
           />
         </div>
       </div>

@@ -67,6 +67,7 @@ function Toast({
   description,
   action,
   variant = 'info',
+  showIcon = true,
   dismissible,
   onClose,
   dataTestid,
@@ -88,11 +89,14 @@ function Toast({
       aria-label={title}
       data-testid={dataTestid}
     >
-      <Icon
-        icon={icon({ variant })}
-        className="gi-toast-icon"
-        data-variant={variant}
-      />
+      {showIcon ? (
+        <Icon
+          icon={icon({ variant })}
+          className="gi-toast-icon"
+          data-variant={variant}
+        />
+      ) : null}
+
       <div className={container()}>
         <div className={innerContainer()}>
           <p className={heading()}>{title}</p>
