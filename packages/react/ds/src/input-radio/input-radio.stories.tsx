@@ -55,7 +55,7 @@ export const Default: Story = {
     },
     size: {
       control: 'radio',
-      options: ['lg', 'md', 'sm'],
+      options: ['md', 'sm'],
       description: 'The sizes for the Radio',
     },
     conditionalInput: {
