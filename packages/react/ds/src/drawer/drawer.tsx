@@ -17,7 +17,7 @@ export type DrawerProps = Omit<
   'closeOnClick' | 'closeOnOverlayClick' | 'size'
 > & {
   position?: DrawerPosition;
-  closeButtonSize?: ButtonSize;
+  closeButtonSize?: Exclude<ButtonSize, 'extraLarge'>;
   children: DrawerChildren;
 };
 

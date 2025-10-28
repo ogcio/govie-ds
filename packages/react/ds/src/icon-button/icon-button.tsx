@@ -7,7 +7,7 @@ import {
 } from '../button/helpers.js';
 import { ButtonProps } from '../button/types.js';
 import { cn } from '../cn.js';
-import { Icon, IconProps } from '../icon/icon.js';
+import { Icon, IconProps, IconSize } from '../icon/icon.js';
 
 export type IconButtonProps = Omit<ButtonProps, 'children'> & {
   icon: Omit<IconProps, 'size'>;
@@ -30,7 +30,22 @@ export const IconButton = forwardRef<HTMLButtonElement, IconButtonProps>(
     },
     ref,
   ) => {
-    const iconSize = size === 'small' ? 'sm' : 'md';
+    let iconSize: IconSize = 'md';
+
+    switch (size) {
+      case 'large': {
+        iconSize = 'lg';
+        break;
+      }
+      case 'small': {
+        iconSize = 'sm';
+        break;
+      }
+      default: {
+        iconSize = 'md';
+        break;
+      }
+    }
 
     return (
       <button

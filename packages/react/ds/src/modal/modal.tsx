@@ -60,8 +60,19 @@ const ModalCloseButton = ({
 }: ModalCloseButtonProps) => {
   let iconSize: IconSize = 'sm';
 
-  if (size === 'large' || size === 'medium') {
-    iconSize = 'md';
+  switch (size) {
+    case 'large': {
+      iconSize = 'lg';
+      break;
+    }
+    case 'medium': {
+      iconSize = 'md';
+      break;
+    }
+    case 'small': {
+      iconSize = 'sm';
+      break;
+    }
   }
 
   return label ? (
