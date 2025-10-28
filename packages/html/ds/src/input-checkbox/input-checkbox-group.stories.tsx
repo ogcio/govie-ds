@@ -21,7 +21,7 @@ const meta: Meta<CheckboxGroupProps> = {
     },
     size: {
       control: 'radio',
-      options: ['lg', 'md', 'sm'],
+      options: ['md', 'sm'],
       description: 'The sizes of the checkboxes',
     },
   },

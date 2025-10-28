@@ -1,7 +1,6 @@
 import { InputHTMLAttributes } from 'react';
 
 export const InputCheckboxSizeEnum = {
-  Large: 'lg',
   Medium: 'md',
   Small: 'sm',
 } as const;
