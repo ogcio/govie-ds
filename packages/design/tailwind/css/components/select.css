@@ -56,7 +56,6 @@
 .gi-select-menu-option-container {
   @apply gi-overflow-y-auto
   gi-overflow-x-hidden
-  gi-py-2
   gi-scroll-smooth;
 }
 
@@ -77,7 +76,7 @@
 }
 
 .gi-select-option-item {
-  @apply gi-mx-1 gi-mb-2 last:gi-mb-0  
+  @apply gi-my-2 gi-mx-1 gi-px-3 gi-py-2  
   gi-flex
   gi-items-center
   gi-justify-between 
