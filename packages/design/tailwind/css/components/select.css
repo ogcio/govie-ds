@@ -78,7 +78,7 @@
 .gi-select-option-item {
   @apply gi-my-2 gi-mx-1 gi-px-2 gi-py-1
   gi-flex
-  gi-items-center
+  gi-items-start
   gi-justify-between 
   gi-cursor-pointer
    
