@@ -30,22 +30,7 @@ export const IconButton = forwardRef<HTMLButtonElement, IconButtonProps>(
     },
     ref,
   ) => {
-    let iconSize: IconSize = 'md';
-
-    switch (size) {
-      case 'large': {
-        iconSize = 'lg';
-        break;
-      }
-      case 'small': {
-        iconSize = 'sm';
-        break;
-      }
-      default: {
-        iconSize = 'md';
-        break;
-      }
-    }
+    const iconSize = size === 'small' ? 'sm' : 'md';
 
     return (
       <button

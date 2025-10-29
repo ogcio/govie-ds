@@ -120,7 +120,7 @@ export const Large: Story = {
       const iconElement = canvas.getByTestId('govie-icon');
       const buttonElement = canvas.getByTestId('govieIconButton');
 
-      expect(iconElement).toHaveStyle('font-size: 32px');
+      expect(iconElement).toHaveStyle('font-size: 24px');
       expect(buttonElement.classList.contains('gi-icon-btn-large')).toBe(true);
     });
   },

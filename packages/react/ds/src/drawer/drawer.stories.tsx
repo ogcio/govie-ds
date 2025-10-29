@@ -41,15 +41,6 @@ export const Default: Story = {
         defaultValue: { summary: 'right' },
       },
     },
-    closeButtonSize: {
-      control: 'radio',
-      options: ['small', 'medium', 'large'],
-      description: 'Size of the close button.',
-      table: {
-        type: { summary: "'small' | 'medium' | 'large'" },
-        defaultValue: { summary: 'medium' },
-      },
-    },
     startsOpen: {
       control: 'boolean',
       description: 'If true, the drawer starts open.',
@@ -86,7 +77,6 @@ export const Default: Story = {
     },
   },
   args: {
-    closeButtonSize: 'medium',
     dataTestId: 'drawer',
     startsOpen: true,
     triggerButton: <Button>Open drawer</Button>,
@@ -293,7 +283,6 @@ export const DesktopButtonStacked: Story = {
   },
   args: {
     startsOpen: true,
-    closeButtonSize: 'large',
     triggerButton: <Button>Open drawer</Button>,
     closeButtonLabel: 'Close',
     children: [
