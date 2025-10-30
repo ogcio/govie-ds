@@ -4,7 +4,6 @@ import { TextInputProps } from '../input-text/types.js';
 import { LabelProps } from '../label/types.js';
 
 export const RadioSizeEnum = {
-  Large: 'lg',
   Medium: 'md',
   Small: 'sm',
 } as const;
