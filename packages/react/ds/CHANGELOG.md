@@ -1,5 +1,27 @@
 # Changelog
 
+## [1.21.0](https://github.com/ogcio/govie-ds/compare/react-lib-v1.20.0...react-lib-v1.21.0) (2025-10-30)
+
+
+### Features
+
+* Card new properties + storybook AB[#31688](https://github.com/ogcio/govie-ds/issues/31688) ([#752](https://github.com/ogcio/govie-ds/issues/752)) ([30817c2](https://github.com/ogcio/govie-ds/commit/30817c2f137ef920e49cea7891d1c3cd68944841))
+* SummaryList sync with figma AB[#31702](https://github.com/ogcio/govie-ds/issues/31702) ([#750](https://github.com/ogcio/govie-ds/issues/750)) ([6f48f03](https://github.com/ogcio/govie-ds/commit/6f48f0328826b04612c00f1f119f084f04990cff))
+
+
+### Bug Fixes
+
+* Header sotorybook fixes ([#753](https://github.com/ogcio/govie-ds/issues/753)) ([7f25841](https://github.com/ogcio/govie-ds/commit/7f25841386bd72f1c6bc85b7044fa79a6df4e975))
+* Remove large size for Input Radio AB[#31982](https://github.com/ogcio/govie-ds/issues/31982) ([#759](https://github.com/ogcio/govie-ds/issues/759)) ([23abeb0](https://github.com/ogcio/govie-ds/commit/23abeb03ffca2dc5fe454283d17727e6f6131529))
+* update select next styling AB[#32030](https://github.com/ogcio/govie-ds/issues/32030) ([#757](https://github.com/ogcio/govie-ds/issues/757)) ([cb1de1b](https://github.com/ogcio/govie-ds/commit/cb1de1ba4141344691a71b912058e3e237daffb2))
+
+
+### Dependencies
+
+* The following workspace dependencies were updated
+  * devDependencies
+    * @ogcio/design-system-tailwind bumped to 1.17.0
+
 ## [1.20.0](https://github.com/ogcio/govie-ds/compare/react-lib-v1.19.0...react-lib-v1.20.0) (2025-10-17)
 
 
