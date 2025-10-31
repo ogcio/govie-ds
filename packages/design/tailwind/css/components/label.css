@@ -1,3 +1,7 @@
 .gi-label {
   @apply gi-block gi-text-color-text-system-neutral-default;
 }
+
+.gi-secondary-label {
+  @apply gi-ml-1 gi-text-md gi-font-normal gi-text-color-text-system-neutral-muted;
+}

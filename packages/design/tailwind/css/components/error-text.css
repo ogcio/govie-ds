@@ -8,5 +8,5 @@
   @apply gi-text-lg;
 }
 .gi-error-text {
-  @apply gi-font-bold gi-text-color-text-intent-error-default;
+  @apply gi-font-normal gi-text-color-text-intent-error-default;
 }
