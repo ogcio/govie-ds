@@ -1,5 +1,5 @@
 'use client';
-import { useId, forwardRef, type ReactNode } from 'react';
+import { useId, forwardRef } from 'react';
 import { cn } from '../cn.js';
 import { HintText } from '../hint-text/hint-text.js';
 import { Input } from '../primitives/input.js';
@@ -13,9 +13,6 @@ import {
 
 const getSizeClass = (size: InputCheckboxSizeEnumType): string => {
   switch (size) {
-    case InputCheckboxSizeEnum.Large: {
-      return 'gi-input-checkbox-large';
-    }
     case InputCheckboxSizeEnum.Small: {
       return 'gi-input-checkbox-small';
     }
@@ -26,9 +23,6 @@ const getSizeClass = (size: InputCheckboxSizeEnumType): string => {
 };
 
 export const getCheckboxWidth = (size?: InputCheckboxSizeEnumType) => {
-  if (size === InputCheckboxSizeEnum.Large) {
-    return 'gi-w-11';
-  }
   if (size === InputCheckboxSizeEnum.Small) {
     return 'gi-w-6';
   }

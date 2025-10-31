@@ -107,10 +107,7 @@ export const createCheckbox = (arguments_: CheckboxProps) => {
   let widthClass = '';
   let sizeClass = '';
 
-  if (arguments_.size == 'lg') {
-    widthClass = 'gi-w-11 gi-h-11';
-    sizeClass = 'gi-input-checkbox-large';
-  } else if (arguments_.size == 'sm' || arguments_.dataTableCell) {
+  if (arguments_.size == 'sm' || arguments_.dataTableCell) {
     widthClass = 'gi-w-6 gi-h-6';
     sizeClass = 'gi-input-checkbox-small';
   } else {
