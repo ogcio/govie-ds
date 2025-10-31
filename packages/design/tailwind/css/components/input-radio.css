@@ -7,9 +7,6 @@
 .gi-input-radio-medium {
   @apply gi-input-radio-base gi-min-w-8 gi-min-h-8 gi-w-8 gi-h-8 checked:before:gi-border-[7px] checked:before:gi-translate-x-[7px] checked:before:gi-translate-y-[7px] focus:before:gi-translate-x-[5px] focus:before:gi-translate-y-[5px];
 }
-.gi-input-radio-large {
-  @apply gi-input-radio-base gi-min-w-11 gi-min-h-11 gi-w-11 gi-h-11 checked:before:gi-border-[10px] checked:before:gi-translate-x-[10px] checked:before:gi-translate-y-[10px] focus:before:gi-translate-x-[8px] focus:before:gi-translate-y-[8px];
-}
 
 .gi-input-radio-small ~ label {
   @apply gi-cursor-pointer gi-text-sm;
@@ -17,9 +14,7 @@
 .gi-input-radio-medium ~ label {
   @apply gi-cursor-pointer gi-text-md;
 }
-.gi-input-radio-large ~ label {
-  @apply gi-cursor-pointer gi-text-lg;
-}
+
 .gi-input-radio-container {
   @apply gi-gap-3 gi-flex gi-items-start;
 }

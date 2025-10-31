@@ -38,7 +38,7 @@ export const Default: Story = {
     },
     size: {
       control: 'radio',
-      options: ['lg', 'md', 'sm'],
+      options: ['md', 'sm'],
       description: 'The sizes for the Checkbox',
     },
     label: {
@@ -173,21 +173,6 @@ export const mediumCheckbox: Story = {
   },
 };
 
-export const largeCheckbox: Story = {
-  args: {
-    id: 'checkbox-id-1',
-    value: 'value-1',
-    label: 'Checkbox',
-    size: CheckboxSizeEnum.Large,
-  },
-  render: (arguments_) => createElement(arguments_),
-  play: async ({ canvasElement }) => {
-    const canvas = within(canvasElement);
-    const input = canvas.getByRole('checkbox');
-    expect(input).toHaveClass('gi-input-checkbox-large');
-  },
-};
-
 export const IndeterminateChecked: Story = {
   args: {
     indeterminate: true,
@@ -215,16 +200,6 @@ export const IndeterminateMedium: Story = {
     label: 'Checkbox',
     indeterminate: true,
     size: CheckboxSizeEnum.Medium,
-  },
-  render: (arguments_) => createElement(arguments_),
-};
-
-export const IndeterminateLarge: Story = {
-  args: {
-    value: 'value-1',
-    label: 'Checkbox',
-    indeterminate: true,
-    size: CheckboxSizeEnum.Large,
   },
   render: (arguments_) => createElement(arguments_),
 };
