@@ -259,7 +259,7 @@ export const InputLength: Story = {
 };
 
 export const DateInput: Story = {
-  args: { id: 'input-text-id', type: 'date' },
+  args: { id: 'input-text-id', type: 'date', value: '2023-01-01' },
   render: (props) => (
     <FormField>
       <FormFieldLabel htmlFor="input-text-id">Date input</FormFieldLabel>

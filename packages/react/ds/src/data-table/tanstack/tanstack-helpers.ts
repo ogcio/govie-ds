@@ -9,6 +9,7 @@ export type Person = {
   email: string;
   age: number;
   city: string;
+  dateOfBirth: string;
   isActive: boolean;
   status: 'pending' | 'in progress' | 'accepted' | 'declined';
   disabledFields?: string[];
@@ -36,6 +37,8 @@ const createRandomCitizen = (): Person => {
     lastName: faker.person.lastName(),
     email: faker.internet.email(),
     age: faker.number.int({ min: 18, max: 90 }),
+    dateOfBirth: faker.date.birthdate().toISOString().split('T')[0],
+
     city: faker.location.city(),
     isActive: !!faker.number.int({ min: 0, max: 1 }),
     status: faker.helpers.shuffle<Person['status']>([
