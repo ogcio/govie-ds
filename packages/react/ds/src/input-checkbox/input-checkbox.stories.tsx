@@ -166,15 +166,6 @@ export const MediumCheckbox: Story = {
   },
 };
 
-export const LargeCheckbox: Story = {
-  args: {
-    id: 'checkbox-id-1',
-    value: 'value-1',
-    label: 'Checkbox',
-    size: InputCheckboxSizeEnum.Large,
-  },
-};
-
 export const IndeterminateChecked: Story = {
   args: {
     indeterminate: true,
@@ -202,16 +193,6 @@ export const IndeterminateMedium: Story = {
     value: 'value-2',
     label: 'Checkbox',
     size: 'md',
-  },
-};
-
-export const IndeterminateLarge: Story = {
-  args: {
-    indeterminate: true,
-    id: 'checkbox-id-indeterminate',
-    value: 'value-2',
-    label: 'Checkbox',
-    size: 'lg',
   },
 };
 
@@ -247,7 +228,6 @@ export const WithReactHookForm: Story = {
                   id="checkbox-id-1"
                   value="accepted"
                   label="I accept"
-                  size={InputCheckboxSizeEnum.Large}
                   checked={field.value}
                   onChange={(event) => field.onChange(event.target.checked)}
                   data-testid="checkbox-id-1"

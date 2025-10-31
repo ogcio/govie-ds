@@ -3,7 +3,6 @@ import { HintTextProps } from '../hint-text/types';
 import { LabelProps } from '../label/types';
 
 export const CheckboxSizeEnum = {
-  Large: 'lg',
   Medium: 'md',
   Small: 'sm',
 } as const;
