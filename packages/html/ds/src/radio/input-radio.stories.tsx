@@ -122,18 +122,3 @@ export const mediumRadio: Story = {
     expect(input).toHaveClass('gi-w-8');
   },
 };
-
-export const largeRadio: Story = {
-  args: {
-    id: 'radio-id-1',
-    value: 'value-1',
-    label: 'Radio',
-    size: 'lg',
-  },
-  render: (arguments_) => createElement(arguments_),
-  play: async ({ canvasElement }) => {
-    const canvas = within(canvasElement);
-    const input = canvas.getByRole('radio');
-    expect(input).toHaveClass('gi-w-11');
-  },
-};

@@ -1,12 +1,12 @@
 {
-  "apps/docs": "1.18.0",
+  "apps/docs": "1.19.0",
   "packages/build/eslint-config": "1.2.6",
   "packages/build/prettier-config": "1.0.6",
   "packages/design/deepmerge": "1.0.7",
-  "packages/design/tailwind": "1.16.0",
+  "packages/design/tailwind": "1.17.0",
   "packages/design/theme-builder": "1.7.1",
-  "packages/html/ds": "1.14.3",
-  "packages/react/ds": "1.20.0",
+  "packages/html/ds": "1.15.0",
+  "packages/react/ds": "1.21.0",
   "packages/themes/govie": "1.7.1",
   "tokens": "1.7.1"
 }

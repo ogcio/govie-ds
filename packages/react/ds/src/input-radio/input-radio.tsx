@@ -1,6 +1,6 @@
 'use client';
 
-import { useId, type ReactNode } from 'react';
+import { useId } from 'react';
 import { cn } from '../cn.js';
 import { HintText } from '../hint-text/hint-text.js';
 import { InputText } from '../input-text/input-text.js';
@@ -13,9 +13,6 @@ import {
 } from './types.js';
 
 const getRadioSize = (size?: InputRadioSizeType) => {
-  if (size === InputRadioSizeEnum.Large) {
-    return 'gi-input-radio-large';
-  }
   if (size === InputRadioSizeEnum.Small) {
     return 'gi-input-radio-small';
   }
@@ -23,9 +20,6 @@ const getRadioSize = (size?: InputRadioSizeType) => {
 };
 
 export const getRadioWidth = (size?: InputRadioSizeType) => {
-  if (size === InputRadioSizeEnum.Large) {
-    return 'gi-w-11';
-  }
   if (size === InputRadioSizeEnum.Small) {
     return 'gi-w-6';
   }
@@ -64,7 +58,6 @@ export const InputRadio: React.FC<InputRadioProps> = ({
       <div
         className={cn({
           'gi-mt-1': size === 'md',
-          'gi-mt-2': size === 'lg',
         })}
       >
         {labelContent && (

@@ -56,7 +56,6 @@
 .gi-select-menu-option-container {
   @apply gi-overflow-y-auto
   gi-overflow-x-hidden
-  gi-py-2
   gi-scroll-smooth;
 }
 
@@ -77,12 +76,11 @@
 }
 
 .gi-select-option-item {
-  @apply gi-mx-1 
+  @apply gi-my-2 gi-mx-1 gi-px-2 gi-py-1
   gi-flex
-  gi-items-center
+  gi-items-start
   gi-justify-between 
   gi-cursor-pointer
-  gi-h-10
    
   hover:gi-bg-color-surface-system-neutral-interactive-hover
   hover:gi-shadow-[0_0_0_4px_var(--gieds-color-surface-system-neutral-interactive-hover)] 
@@ -111,10 +109,6 @@
 .gi-select-option-item-highlighted {
   @apply gi-bg-color-surface-system-neutral-interactive-hover
   gi-shadow-[0_0_0_4px_var(--gieds-color-surface-system-neutral-interactive-hover)];
-}
-
-.gi-select-option-item > span {
-  @apply gi-mx-2;
 }
 
 .gi-select-next {
