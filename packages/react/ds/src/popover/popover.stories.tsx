@@ -39,7 +39,7 @@ export const Default: Story = {
         </Button>
 
         <Popover triggerRef={triggerRef} open={open} onOpenChange={setOpen}>
-          <div className="gi-text-sm gi-text-gray-800 gi-p-4">
+          <div className="gi-text-sm gi-text-gray-800 gi-p-6">
             This is a popover content
           </div>
         </Popover>
@@ -135,7 +135,7 @@ export const Test: Story = {
         </Button>
 
         <Popover triggerRef={triggerRef} open={open} onOpenChange={setOpen}>
-          <div className="gi-text-sm gi-text-gray-800 gi-p-4">
+          <div className="gi-text-sm gi-text-gray-800 gi-p-6">
             This is a popover content
           </div>
         </Popover>
