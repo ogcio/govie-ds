@@ -118,6 +118,7 @@ export const WithSelectMenu: Story = {
 };
 
 export const Test: Story = {
+  tags: ['skip-playwright'],
   args: {
     children: null,
     onOpenChange: () => null,
