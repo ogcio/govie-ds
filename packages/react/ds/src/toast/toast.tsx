@@ -105,7 +105,9 @@ export const Toast = ({
   dismissible,
   duration = 5000,
   animation = 'fadeinup',
+  showIcon = true,
   slotAction,
+  ...props
 }: ToastProps) => {
   const [isOpen, setIsOpen] = useState(true);
   const [hide, setHide] = useState(false);
@@ -137,6 +139,11 @@ export const Toast = ({
       className={cn('gi-toast gi-toast-lower', {
         'gi-toast-disappear': !isOpen,
       })}
+      role="alert"
+      aria-live="assertive"
+      aria-atomic="true"
+      aria-label={title}
+      {...props}
     >
       <div className="gi-wrapper">
         <div className={'gi-message'}>
@@ -148,6 +155,7 @@ export const Toast = ({
             description={description}
             dismissible={dismissible}
             slotAction={slotAction}
+            showIcon={showIcon}
           />
         </div>
       </div>

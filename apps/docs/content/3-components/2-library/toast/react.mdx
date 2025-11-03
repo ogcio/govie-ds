@@ -25,6 +25,10 @@ component:
           ofType: 'boolean'
           description: 'Specify if the toast is dismissible.'
           required: false
+        - name: 'showIcon'
+          ofType: 'boolean'
+          description: 'Controls whether the icon is shown. Set to false to hide it.'
+          required: false
         - name: 'description'
           ofType: 'string'
           description: 'Specify the content in the toast component.'
@@ -64,12 +68,6 @@ component:
       url: '/story/application-toast--with-longer-duration'
     - name: 'with-position-change'
       url: '/story/application-toast--with-position-change'
-    - name: 'tablet-view'
-      url: '/story/application-toast--tablet-view'
-    - name: 'mobile-view'
-      url: '/story/application-toast--mobile-view'
-    - name: 'all-variants'
-      url: '/story/application-toast--all-variants'
 ---
 
 # Toast
@@ -135,36 +133,6 @@ Toasts are brief, non-blocking notifications that inform users about the outcome
     className="h-[268px] w-[440px] pb-10"
     componentId="toast-react"
     story="with-position-change"
-  />
-</ComponentPreview>
-
-### Tablet View
-
-<ComponentPreview>
-  <StorybookFrame
-    className="h-[268px] w-[440px] pb-10"
-    componentId="toast-react"
-    story="tablet-view"
-  />
-</ComponentPreview>
-
-### Mobile View
-
-<ComponentPreview>
-  <StorybookFrame
-    className="h-[268px] w-[440px] pb-10"
-    componentId="toast-react"
-    story="mobile-view"
-  />
-</ComponentPreview>
-
-### All Variants
-
-<ComponentPreview>
-  <StorybookFrame
-    className="h-[268px] w-[440px] pb-10"
-    componentId="toast-react"
-    story="all-variants"
   />
 </ComponentPreview>
 

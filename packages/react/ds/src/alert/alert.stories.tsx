@@ -1,5 +1,5 @@
 import type { Meta, StoryObj } from '@storybook/react';
-import { expect } from 'storybook/test';
+import { expect, within } from 'storybook/test';
 import { Paragraph } from '../paragraph/paragraph.js';
 import { Alert } from './alert.js';
 
@@ -27,6 +27,12 @@ const meta = {
     dismissible: {
       control: 'boolean',
       description: 'Specify if the alert is dismissible',
+    },
+    showIcon: {
+      control: 'boolean',
+      description:
+        'Controls whether the icon is shown. Set to false to hide it.',
+      table: { defaultValue: { summary: 'true' } },
     },
     children: {
       control: 'text',
@@ -111,13 +117,47 @@ export const WithoutTitle: Story = {
   },
 };
 
-export const TestRendersTitleAndMessage: Story = {
+export const WithoutIcon: Story = {
+  args: {
+    'aria-describedby': 'alert-content',
+    'aria-atomic': true,
+    title: 'Info Alert',
+    variant: 'info',
+    dismissible: true,
+    showIcon: false,
+    children: (
+      <>
+        <Paragraph>Content</Paragraph>
+      </>
+    ),
+  },
+  play: async ({ canvasElement, step }) => {
+    const canvas = within(canvasElement);
+
+    await step('icon should not be rendered', async () => {
+      const iconElement = canvasElement.querySelector('.gi-alert-icon');
+      expect(iconElement).toBeNull();
+    });
+
+    await step('title and content should be visible', async () => {
+      expect(await canvas.findByText('Info Alert')).toBeInTheDocument();
+      expect(await canvas.findByText('Content')).toBeInTheDocument();
+    });
+
+    await step('does NOT render the icon when showIcon=false', () => {
+      const iconElement = canvasElement.querySelector('.gi-alert-icon');
+      expect(iconElement).toBeNull();
+    });
+  },
+};
+
+export const TestRendersTitleAndMessage: StoryObj = {
   tags: ['skip-playwright'],
   args: {
     variant: 'info',
     title: 'Information',
     children: 'This is an info alert',
-    dataTestid: 'alert',
+    'data-testid': 'alert',
   },
   play: async ({ canvasElement, step }) => {
     await step('renders title and message', async () => {
@@ -135,16 +175,24 @@ export const TestVariantsHaveCorrectClass: StoryObj = {
   tags: ['skip-playwright'],
   render: () => (
     <div>
-      <Alert variant="info" title="info alert" dataTestid="alert-info">
+      <Alert variant="info" title="info alert" data-testid="alert-info">
         This is a info alert
       </Alert>
-      <Alert variant="success" title="success alert" dataTestid="alert-success">
+      <Alert
+        variant="success"
+        title="success alert"
+        data-testid="alert-success"
+      >
         This is a success alert
       </Alert>
-      <Alert variant="warning" title="warning alert" dataTestid="alert-warning">
+      <Alert
+        variant="warning"
+        title="warning alert"
+        data-testid="alert-warning"
+      >
         This is a warning alert
       </Alert>
-      <Alert variant="danger" title="danger alert" dataTestid="alert-danger">
+      <Alert variant="danger" title="danger alert" data-testid="alert-danger">
         This is a danger alert
       </Alert>
     </div>

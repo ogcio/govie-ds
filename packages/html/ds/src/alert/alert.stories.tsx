@@ -11,7 +11,7 @@ const meta: Meta<AlertProps> = {
 export default meta;
 type Story = StoryObj<AlertProps>;
 
-const createAlert = (arguments_: AlertProps) => {
+const createAlert = ({ showIcon, ...arguments_ }: AlertProps) => {
   const className = [];
 
   if (arguments_.variant == 'danger') {
@@ -46,9 +46,11 @@ const createAlert = (arguments_: AlertProps) => {
     iconId = 'info';
   }
 
-  const icon = createIcon({ icon: iconId, className: 'gi-alert-icon' });
-  icon.dataset.variant = arguments_.variant;
-  component.append(icon);
+  if (showIcon) {
+    const icon = createIcon({ icon: iconId, className: 'gi-alert-icon' });
+    icon.dataset.variant = arguments_.variant;
+    component.append(icon);
+  }
 
   const container = document.createElement('div');
   container.className = 'gi-alert-container';
