@@ -239,6 +239,14 @@ export const SelectNext = forwardRef<HTMLInputElement, SelectNextProps>(
           onOpenChange={handleOnOpenChange}
           open={isOpen}
           maxHeight={304}
+          options={{
+            placement: 'bottom-start',
+            strategy: 'absolute',
+            modifiers: [
+              { name: 'offset', options: { offset: [0, 4] } },
+              { name: 'flip', options: { fallbackPlacements: ['top'] } },
+            ],
+          }}
         >
           <SelectMenu
             ref={listRef as any}
