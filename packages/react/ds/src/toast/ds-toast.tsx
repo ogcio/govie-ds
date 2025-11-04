@@ -67,9 +67,9 @@ function Toast({
   description,
   action,
   variant = 'info',
+  showIcon = true,
   dismissible,
   onClose,
-  dataTestid,
   slotAction,
 }: ToastProps) {
   const { base, heading, container, innerContainer, dismiss, baseDismissible } =
@@ -80,19 +80,15 @@ function Toast({
   const baseVariant = dismissible ? baseDismissible : base;
 
   return (
-    <div
-      className={baseVariant()}
-      role="alert"
-      aria-live="assertive"
-      aria-atomic="true"
-      aria-label={title}
-      data-testid={dataTestid}
-    >
-      <Icon
-        icon={icon({ variant })}
-        className="gi-toast-icon"
-        data-variant={variant}
-      />
+    <div className={baseVariant()}>
+      {showIcon ? (
+        <Icon
+          icon={icon({ variant })}
+          className="gi-toast-icon"
+          data-variant={variant}
+        />
+      ) : null}
+
       <div className={container()}>
         <div className={innerContainer()}>
           <p className={heading()}>{title}</p>

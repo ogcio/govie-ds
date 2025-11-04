@@ -3,7 +3,9 @@ export {
   type AccordionItemProps,
 } from './accordion/accordion-item.js';
 export { Accordion, type AccordionProps } from './accordion/accordion.js';
-export { Alert, type AlertProps } from './alert/alert.js';
+export { Alert } from './alert/alert.js';
+export { type AlertProps } from './alert/types.js';
+export { alertVariants } from './alert/variants.js';
 export { Autocomplete, AutocompleteItem } from './autocomplete/autocomplete.js';
 export type {
   AutocompleteItemProps,

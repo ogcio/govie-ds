@@ -1,3 +1,5 @@
+import { ComponentPropsWithoutRef } from 'react';
+
 export type ToastHorizontalPosition = 'left' | 'center' | 'right';
 export type ToastVerticalPosition = 'top' | 'center' | 'bottom';
 export type ToastVariant = 'success' | 'info' | 'warning' | 'danger';
@@ -8,7 +10,7 @@ export type ToastPosition = {
   y: ToastVerticalPosition;
 };
 
-export type ToastProps = {
+export type ToastProps = ComponentPropsWithoutRef<'div'> & {
   title: string;
   variant?: ToastVariant;
   animation?: ToastAnimation;
@@ -21,6 +23,6 @@ export type ToastProps = {
   onClose?: (event: React.MouseEvent<HTMLButtonElement>) => void;
   duration?: number;
   position?: ToastPosition;
-  dataTestid?: string;
   slotAction?: React.ReactNode;
+  showIcon?: boolean;
 };
