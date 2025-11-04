@@ -21,6 +21,12 @@ export const alertSchema = zod.object({
   dismissible: zod
     .boolean({ description: 'Specify if the alert is dismissible' })
     .optional(),
+  showIcon: zod
+    .boolean({
+      description:
+        'Controls whether the icon is shown. Set to false to hide it.',
+    })
+    .default(true),
 });
 
 export type AlertProps = zod.infer<typeof alertSchema>;

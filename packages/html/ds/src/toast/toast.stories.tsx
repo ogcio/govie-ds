@@ -28,6 +28,12 @@ const meta: Meta<ToastProps> = {
       control: 'boolean',
       description: 'Specify if the toast is dismissible',
     },
+    showIcon: {
+      control: 'boolean',
+      description:
+        'Controls whether the icon is shown. Set to false to hide it.',
+      table: { defaultValue: { summary: 'true' } },
+    },
     description: {
       control: 'text',
       description: 'Specify the content in the toast component',
@@ -55,7 +61,7 @@ const meta: Meta<ToastProps> = {
 export default meta;
 type Story = StoryObj<ToastProps>;
 
-const createToast = (arguments_: ToastProps) => {
+const createToast = ({ showIcon = true, ...arguments_ }: ToastProps) => {
   let iconId = 'info';
   if (arguments_.variant == 'warning') {
     iconId = 'warning';
@@ -92,9 +98,11 @@ const createToast = (arguments_: ToastProps) => {
   dsToast.dataset.module = 'gieds-dsToast';
   dsToast.className = `${variantClass} ${baseToastClass}`;
 
-  const icon = createIcon({ icon: iconId, className: 'gi-toast-icon' });
-  icon.dataset.variant = arguments_.variant;
-  dsToast.append(icon);
+  if (showIcon) {
+    const icon = createIcon({ icon: iconId, className: 'gi-toast-icon' });
+    icon.dataset.variant = arguments_.variant;
+    dsToast.append(icon);
+  }
 
   const container = document.createElement('div');
   container.className = 'gi-toast-container';

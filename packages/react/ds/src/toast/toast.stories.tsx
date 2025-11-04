@@ -6,7 +6,7 @@ import {
   Controls,
 } from '@storybook/addon-docs/blocks';
 import type { Meta, StoryObj } from '@storybook/react';
-import { expect, userEvent, waitFor, within } from 'storybook/test';
+import { expect, screen, userEvent, waitFor, within } from 'storybook/test';
 import { Button } from '../button/button.js';
 import { Stack } from '../stack/stack.js';
 import { Toast, toaster, ToastProvider } from './toast.js';
@@ -34,6 +34,12 @@ const meta: Meta<typeof Toast> = {
     dismissible: {
       control: 'boolean',
       description: 'Specify if the toast is dismissible',
+    },
+    showIcon: {
+      control: 'boolean',
+      description:
+        'Controls whether the icon is shown. Set to false to hide it.',
+      table: { defaultValue: { summary: 'true' } },
     },
     description: {
       control: 'text',
@@ -327,6 +333,37 @@ export const AllPositions: Story = {
       const button = await canvas.findByText(`Trigger ${pos.x}-${pos.y}`);
       await userEvent.click(button);
     }
+  },
+};
+
+export const WithoutIcon: Story = {
+  args: {
+    title: 'Info Alert',
+    variant: 'info',
+    dismissible: true,
+    showIcon: false,
+    description: 'This is some content',
+  },
+  render: (props) => (
+    <>
+      <ToastProvider />
+      <Button onClick={() => toaster.create(props)}>Trigger Toast</Button>
+    </>
+  ),
+  play: async ({ step }) => {
+    await step('trigger and render toast', async () => {
+      await userEvent.click(
+        await screen.findByRole('button', { name: /trigger toast/i }),
+      );
+      const alert = await screen.findByRole('alert');
+      expect(alert).toBeInTheDocument();
+    });
+
+    await step('icon should NOT be rendered when showIcon=false', async () => {
+      const alert = await screen.findByRole('alert');
+      const iconElement = alert.querySelector('.gi-toast-icon');
+      expect(iconElement).toBeNull();
+    });
   },
 };
 
