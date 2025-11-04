@@ -7,7 +7,7 @@ import {
 } from '../button/helpers.js';
 import { ButtonProps } from '../button/types.js';
 import { cn } from '../cn.js';
-import { Icon, IconProps } from '../icon/icon.js';
+import { Icon, IconProps, IconSize } from '../icon/icon.js';
 
 export type IconButtonProps = Omit<ButtonProps, 'children'> & {
   icon: Omit<IconProps, 'size'>;
