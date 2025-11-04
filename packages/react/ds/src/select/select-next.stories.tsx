@@ -117,10 +117,18 @@ export const Default: StoryObj = {
     await waitFor(() => {
       expect(input).toHaveValue('Select Option');
     });
+    await waitFor(() => {
+      expect(canvas.getByText('keyboard_arrow_down')).toBeInTheDocument();
+    });
+
     await userEvent.click(input);
     await waitFor(() => {
       expect(canvas.getByRole('listbox')).toBeInTheDocument();
     });
+    await waitFor(() => {
+      expect(canvas.getByText('keyboard_arrow_up')).toBeInTheDocument();
+    });
+
     const list = await canvas.findByRole('listbox');
     const options = within(list).getAllByRole('option');
     expect(options.map((opt) => opt.textContent)).toEqual([
@@ -128,6 +136,14 @@ export const Default: StoryObj = {
       'Option 2',
       'Option 3',
     ]);
+
+    await userEvent.click(within(list).getByText('Option 2'));
+    await waitFor(() => {
+      expect(canvas.queryByRole('listbox')).not.toBeInTheDocument();
+    });
+    await waitFor(() => {
+      expect(canvas.getByText('keyboard_arrow_down')).toBeInTheDocument();
+    });
   },
 };
 
