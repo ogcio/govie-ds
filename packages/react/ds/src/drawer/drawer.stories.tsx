@@ -31,8 +31,52 @@ export const Default: Story = {
   parameters: {
     layout: 'fullscreen',
   },
+  argTypes: {
+    position: {
+      control: 'radio',
+      options: ['left', 'right', 'bottom'],
+      description: 'Where the drawer slides in from.',
+      table: {
+        type: { summary: "'left' | 'right' | 'bottom'" },
+        defaultValue: { summary: 'right' },
+      },
+    },
+    startsOpen: {
+      control: 'boolean',
+      description: 'If true, the drawer starts open.',
+      table: {
+        type: { summary: 'boolean' },
+        defaultValue: { summary: 'false' },
+      },
+    },
+    closeButtonLabel: {
+      control: 'text',
+      description: 'Accessible label for the close button.',
+      table: {
+        type: { summary: 'string' },
+        defaultValue: { summary: 'Close' },
+      },
+    },
+    triggerButton: {
+      control: false,
+      description:
+        'Trigger element used to open the drawer. It is cloned to inject an onClick.',
+      table: { type: { summary: 'ReactElement' } },
+    },
+    children: {
+      control: false,
+      description:
+        'An ordered set of `DrawerBody` and/or `DrawerFooter` components that compose the drawer content.\n' +
+        '- `DrawerBody`: main scrollable content area.\n' +
+        '- `DrawerFooter`: action area (buttons/links); supports `stacked` layout.\n',
+      table: {
+        type: {
+          summary: 'DrawerBody | DrawerFooter',
+        },
+      },
+    },
+  },
   args: {
-    closeButtonSize: 'large',
     dataTestId: 'drawer',
     startsOpen: true,
     triggerButton: <Button>Open drawer</Button>,
@@ -239,7 +283,6 @@ export const DesktopButtonStacked: Story = {
   },
   args: {
     startsOpen: true,
-    closeButtonSize: 'large',
     triggerButton: <Button>Open drawer</Button>,
     closeButtonLabel: 'Close',
     children: [
@@ -274,9 +317,6 @@ export const TestOpenCloseInteractions: Story = {
       <DrawerBody key="body">
         <Paragraph>Here is the body content of the drawer.</Paragraph>
       </DrawerBody>,
-      <DrawerFooter key="footer">
-        <Button>Close Drawer</Button>
-      </DrawerFooter>,
     ],
   },
   play: async ({ canvasElement, step }) => {

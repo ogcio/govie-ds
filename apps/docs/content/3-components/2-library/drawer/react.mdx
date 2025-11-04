@@ -9,10 +9,6 @@ component:
   properties:
     - name: 'DrawerProps'
       fields:
-        - name: 'closeButtonSize'
-          ofType: 'string'
-          description: 'Specifies the size of the close button. Default: large.'
-          required: false
         - name: 'triggerButton'
           ofType: 'ReactElement'
           description: 'Button element that opens the drawer.'
@@ -54,8 +50,6 @@ component:
       url: '/story/application-drawer--drawer-left'
     - name: 'drawer-bottom'
       url: '/story/application-drawer--drawer-bottom'
-    - name: 'drawer-open'
-      url: '/story/application-drawer--drawer-open'
     - name: 'drawer-menu-tablet'
       url: '/story/application-drawer--drawer-menu-tablet'
     - name: 'drawer-menu-mobile'
@@ -105,16 +99,6 @@ A Drawer is a temporary panel that slides in from the page edge to reveal supple
     className="h-[248px] w-[504px]"
     componentId="drawer-react"
     story="drawer-bottom"
-  />
-</ComponentPreview>
-
-### Drawer Open
-
-<ComponentPreview>
-  <StorybookFrame
-    className="h-[248px] w-[504px]"
-    componentId="drawer-react"
-    story="drawer-open"
   />
 </ComponentPreview>
 
