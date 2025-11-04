@@ -113,6 +113,7 @@ export const Default: StoryObj = {
   },
   play: async ({ canvasElement }) => {
     const canvas = within(canvasElement);
+    const body = within(document.body);
     const input = canvas.getByRole('textbox');
     await waitFor(() => {
       expect(input).toHaveValue('Select Option');
@@ -144,6 +145,11 @@ export const Default: StoryObj = {
     await waitFor(() => {
       expect(canvas.getByText('keyboard_arrow_down')).toBeInTheDocument();
     });
+
+    await userEvent.click(input);
+    const option = await body.findByRole('option', { name: 'Option 1' });
+    const style = globalThis.getComputedStyle(option as HTMLElement);
+    expect(style.fontSize).toBe('16px');
   },
 };
 
