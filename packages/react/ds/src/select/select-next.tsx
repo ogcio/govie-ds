@@ -223,7 +223,7 @@ export const SelectNext = forwardRef<HTMLInputElement, SelectNextProps>(
             'gi-cursor-not-allowed': disabled,
             'gi-pointer-events-none': disabled,
           })}
-          iconEnd="keyboard_arrow_down"
+          iconEnd={isOpen ? 'keyboard_arrow_up' : 'keyboard_arrow_down'}
           onIconEndClick={handleOnClick}
           ref={inputRef}
           iconEndRef={iconEndRef}
@@ -239,14 +239,6 @@ export const SelectNext = forwardRef<HTMLInputElement, SelectNextProps>(
           onOpenChange={handleOnOpenChange}
           open={isOpen}
           maxHeight={304}
-          options={{
-            placement: 'bottom-start',
-            strategy: 'absolute',
-            modifiers: [
-              { name: 'offset', options: { offset: [0, 4] } },
-              { name: 'flip', options: { fallbackPlacements: ['top'] } },
-            ],
-          }}
         >
           <SelectMenu
             ref={listRef as any}
