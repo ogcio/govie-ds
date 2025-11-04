@@ -14,12 +14,16 @@ import {
 import { createPortal } from 'react-dom';
 import { Button } from '../button/button.js';
 import { cn } from '../cn.js';
-import { Heading, HeadingProps } from '../heading/heading.js';
+import { Heading, type HeadingProps } from '../heading/heading.js';
 import { useAriaHider } from '../hooks/use-aria-hider.js';
 import { useFocusTrap } from '../hooks/use-focus-trap.js';
-import { Icon, IconSize } from '../icon/icon.js';
+import { Icon, type IconSize } from '../icon/icon.js';
 import { IconButton } from '../icon-button/icon-button.js';
-import { splitAriaProps } from '../utils/utilities.js';
+import {
+  splitAriaProps,
+  getSpecialComponentType,
+  isSpecialComponent,
+} from '../utils/utilities.js';
 
 import type {
   ModalCloseButtonProps,
@@ -29,23 +33,6 @@ import type {
   ModalWrapperProps,
   ModalHeaderProps,
 } from './types.js';
-
-const isModalComponent = (
-  modalComponent: React.ElementType,
-  componentName: string,
-  child: ReactNode,
-): boolean => {
-  if (!isValidElement(child)) {
-    return false;
-  }
-  const childType = child.type;
-  return (
-    childType === modalComponent ||
-    // @ts-expect-error The TS error says there is no _owner but there is
-    child?._owner?.name === componentName ||
-    (childType as any).componentType === componentName
-  );
-};
 
 const VARIANT_ORDER: Record<ModalFooterButton['variant'], number> = {
   flat: 0,
@@ -59,7 +46,6 @@ const ModalCloseButton = ({
   ...props
 }: ModalCloseButtonProps) => {
   let iconSize: IconSize = 'sm';
-
   if (size === 'large' || size === 'medium') {
     iconSize = 'md';
   }
@@ -82,9 +68,7 @@ const ModalCloseButton = ({
   ) : (
     <IconButton
       className="gi-modal-icon"
-      icon={{
-        icon: 'close',
-      }}
+      icon={{ icon: 'close' }}
       aria-label="Close modal"
       onClick={props.onClick}
       variant="flat"
@@ -102,12 +86,7 @@ const ModalHeader = ({
   onClose,
   closeButtonSize,
 }: ModalHeaderProps) => (
-  <div
-    className={cn({
-      'gi-py-4 xs:gi-py-6': !closeButtonLabel,
-      'gi-py-2 xs:gi-py-4': !!closeButtonLabel,
-    })}
-  >
+  <div className="gi-py-2  xs:gi-py-4">
     {modalTitle}
     {closeOnClick && (
       <ModalCloseButton
@@ -141,15 +120,17 @@ export const ModalWrapper = ({
     [props],
   );
 
-  const childrenArray = Children.toArray(children);
+  const allChildren = Children.toArray(children);
 
-  const modalTitle = childrenArray.find((child) =>
-    isModalComponent(ModalTitle, 'ModalTitle', child),
-  );
+  const getChildrenByComponentType = (componentType: string) =>
+    allChildren.find(
+      (child) => getSpecialComponentType(child) === componentType,
+    ) as ReactElement | undefined;
 
-  const modalFooter = childrenArray.find((child) =>
-    isModalComponent(ModalFooter, 'ModalFooter', child),
-  );
+  const modalTitle = getChildrenByComponentType('ModalTitle');
+  const modalFooter =
+    getChildrenByComponentType('ModalFooter') ||
+    getChildrenByComponentType('DrawerFooter');
 
   const titleUid = useId();
   const computedTitleId =
@@ -168,11 +149,9 @@ export const ModalWrapper = ({
       })
     : null;
 
-  // Get all children that are NOT title or footer
-  const contentChildren = childrenArray.filter(
+  const contentChildren = allChildren.filter(
     (child) =>
-      !isModalComponent(ModalTitle, 'ModalTitle', child) &&
-      !isModalComponent(ModalFooter, 'ModalFooter', child),
+      !isSpecialComponent(child, ['ModalTitle', 'ModalFooter', 'DrawerFooter']),
   );
 
   useEffect(() => {

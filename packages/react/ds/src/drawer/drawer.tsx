@@ -1,7 +1,7 @@
 'use client';
 
 import { cloneElement, Fragment, ReactElement, useState } from 'react';
-import { ButtonProps, ButtonSize } from '../button/types.js';
+import { ButtonProps } from '../button/types.js';
 import { cn } from '../cn.js';
 import { ModalWrapper, ModalBody, ModalFooter } from '../modal/modal.js';
 import { ModalProps, ModalWrapperProps } from '../modal/types.js';
@@ -17,7 +17,6 @@ export type DrawerProps = Omit<
   'closeOnClick' | 'closeOnOverlayClick' | 'size'
 > & {
   position?: DrawerPosition;
-  closeButtonSize?: ButtonSize;
   children: DrawerChildren;
 };
 
@@ -42,7 +41,11 @@ export const DrawerWrapper = ({
   ...props
 }: DrawerWrapperProps) => {
   return (
-    <ModalWrapper className={cn('gi-drawer-container', className)} {...props}>
+    <ModalWrapper
+      className={cn('gi-drawer-container', className)}
+      closeButtonSize="large"
+      {...props}
+    >
       {children}
     </ModalWrapper>
   );
@@ -55,7 +58,6 @@ export const Drawer = ({
   closeButtonLabel,
   position = 'right',
   className,
-  closeButtonSize,
 }: DrawerProps) => {
   const [isOpen, setIsOpen] = useState(!!startsOpen);
 
@@ -88,11 +90,16 @@ export const Drawer = ({
         className={className}
         isOpen={isOpen}
         onClose={handleClose}
-        closeButtonSize={closeButtonSize}
       />
     </>
   );
 };
+
+Object.defineProperty(Drawer, 'componentType', {
+  value: 'Drawer',
+  writable: false,
+  enumerable: false,
+});
 
 export const DrawerBody = ({ children, className }: DrawerBodySectionProps) => (
   <ModalBody
@@ -103,6 +110,12 @@ export const DrawerBody = ({ children, className }: DrawerBodySectionProps) => (
   </ModalBody>
 );
 
+Object.defineProperty(DrawerBody, 'componentType', {
+  value: 'DrawerBody',
+  writable: false,
+  enumerable: false,
+});
+
 export const DrawerFooter = ({
   children,
   className,
@@ -112,3 +125,9 @@ export const DrawerFooter = ({
     {children}
   </ModalFooter>
 );
+
+Object.defineProperty(DrawerFooter, 'componentType', {
+  value: 'DrawerFooter',
+  writable: false,
+  enumerable: false,
+});
