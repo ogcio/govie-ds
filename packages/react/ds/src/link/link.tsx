@@ -18,7 +18,7 @@ export type LinkProps = AnchorProps & {
   noUnderline?: boolean;
   noColor?: boolean;
   external?: boolean;
-  size?: 'sm' | 'md' | 'lg';
+  size?: 'sm' | 'md';
   dataTestid?: string;
   asButton?: {
     variant?: ButtonVariant;
@@ -129,7 +129,6 @@ export const Link = forwardRef<HTMLElement, LinkProps>(
               !disabled,
             'gi-text-sm': size === 'sm',
             'gi-text-md': size === 'md',
-            'gi-text-lg': size === 'lg',
           },
           buttonVariant,
           buttonSize,

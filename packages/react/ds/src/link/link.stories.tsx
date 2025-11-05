@@ -38,7 +38,7 @@ const meta = {
     },
     size: {
       control: { type: 'radio' },
-      options: ['sm', 'md', 'lg'],
+      options: ['sm', 'md'],
       type: { name: 'string', required: false },
       description: 'Controls the link size',
     },
