@@ -10,6 +10,7 @@ import {
   useState,
 } from 'react';
 import { cn } from '../cn.js';
+import { useDomId } from '../hooks/use-dom-id.js';
 import { translate as t } from '../i18n/utility.js';
 import { InputText } from '../input-text/input-text.js';
 import { Popover } from '../popover/popover.js';
@@ -161,7 +162,6 @@ export const SelectNext = forwardRef<HTMLInputElement, SelectNextProps>(
     const handleBlur = (event: React.FocusEvent<HTMLInputElement>) => {
       const relatedTarget = event.relatedTarget as Node | null;
 
-      // Ignore blur if focus moves into the popover menu or the chevron icon.
       if (
         (relatedTarget &&
           (listRef.current?.contains(relatedTarget) ||
@@ -184,20 +184,36 @@ export const SelectNext = forwardRef<HTMLInputElement, SelectNextProps>(
       }
     };
 
+    const srOnlyLabelId = useDomId();
+    useEffect(() => {
+      if (enableSearch && inputRef.current) {
+        inputRef.current.setAttribute('aria-labelledby', srOnlyLabelId);
+      }
+    }, [enableSearch, srOnlyLabelId]);
+
     if (enableSearch) {
+      const labelText =
+        (props as any)['aria-label'] ?? (props as any)['ariaLabel'] ?? 'Select';
+
       return (
-        <SelectSearch
-          {...props}
-          value={internalValue}
-          onChange={onSelectNextChange}
-          disabled={disabled}
-          ref={inputRef}
-          onBlur={onBlur}
-          name={name}
-          placeholder={placeholder}
-        >
-          {children}
-        </SelectSearch>
+        <div className={cn('gi-select-next', props.className)}>
+          <span id={srOnlyLabelId} className="gi-sr-only">
+            {labelText}
+          </span>
+
+          <SelectSearch
+            {...props}
+            value={internalValue}
+            onChange={onSelectNextChange}
+            disabled={disabled}
+            ref={inputRef}
+            onBlur={onBlur}
+            name={name}
+            placeholder={placeholder}
+          >
+            {children}
+          </SelectSearch>
+        </div>
       );
     }
 
@@ -209,7 +225,10 @@ export const SelectNext = forwardRef<HTMLInputElement, SelectNextProps>(
         <InputText
           {...props}
           autoComplete="off"
-          aria-label="Select an option"
+          aria-label={
+            placeholder ??
+            t('select.next.placeholder', { defaultValue: 'Search' })
+          }
           aria-disabled={disabled}
           disabled={disabled}
           placeholder={

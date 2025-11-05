@@ -533,3 +533,126 @@ export const WithReactHookForm: StoryObj = {
     await userEvent.click(document.body);
   },
 };
+
+export const Test_ShouldNotSubmitOnEnterAfterSearch: StoryObj = {
+  tags: ['skip-playwright'],
+  render: () => {
+    const [submitCount, setSubmitCount] = useState(0);
+    const { control } = useForm({
+      defaultValues: { topic: '' },
+      mode: 'onBlur',
+    });
+
+    const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
+      event.preventDefault();
+      setSubmitCount((c) => c + 1);
+    };
+
+    return (
+      <form
+        onSubmit={handleSubmit}
+        data-testid="form"
+        className="gi-flex gi-flex-col gi-gap-4 gi-w-72"
+      >
+        <FormField className="gi-w-56">
+          <FormFieldLabel>Label</FormFieldLabel>
+
+          <Controller
+            control={control}
+            name="topic"
+            render={({ field }) => {
+              return (
+                <SelectNext
+                  id="repro-select"
+                  name={field.name}
+                  enableSearch
+                  aria-label="Select"
+                  value={field.value ?? ''}
+                  onChange={field.onChange}
+                  onBlur={field.onBlur}
+                  ref={field.ref as any}
+                >
+                  <SelectItemNext value="value-1">Option 1</SelectItemNext>
+                  <SelectItemNext value="value-2">Option 2</SelectItemNext>
+                  <SelectItemNext value="value-3">Option 3</SelectItemNext>
+                </SelectNext>
+              );
+            }}
+          />
+        </FormField>
+        <div data-testid="submit-count" className="gi-invisible">
+          {submitCount}
+        </div>
+      </form>
+    );
+  },
+
+  play: async ({ canvasElement, step }) => {
+    const canvas = within(canvasElement);
+
+    const form = await canvas.findByTestId('form');
+    const submitCount = await canvas.findByTestId('submit-count');
+    const input = await canvas.findByRole('textbox', { name: /select/i });
+
+    await step(
+      'keyboard: Enter on focused select opens popover without submitting',
+      async () => {
+        await userEvent.tab();
+        await expect(input).toHaveFocus();
+
+        await userEvent.keyboard('{Enter}');
+        await expect(submitCount).toHaveTextContent('0');
+        await expect(form).toBeInTheDocument();
+
+        await userEvent.keyboard('{Esc}');
+        await waitFor(() => {
+          expect(canvas.queryByRole('dialog', { name: /popover/i })).toBeNull();
+        });
+      },
+    );
+
+    await step(
+      'mouse: Enter after clicking select does not submit the form',
+      async () => {
+        await userEvent.click(input);
+
+        await waitFor(() => {
+          expect(
+            canvas.getByRole('dialog', { name: /popover/i }),
+          ).toBeInTheDocument();
+        });
+
+        await userEvent.keyboard('{Enter}');
+        await expect(submitCount).toHaveTextContent('0');
+        await expect(form).toBeInTheDocument();
+
+        await userEvent.keyboard('{Esc}');
+        await waitFor(() => {
+          expect(canvas.queryByRole('dialog', { name: /popover/i })).toBeNull();
+        });
+      },
+    );
+
+    await step(
+      'keyboard: type filter then ArrowDown + Enter selects without submitting',
+      async () => {
+        await userEvent.click(input);
+        await waitFor(() => {
+          expect(
+            canvas.getByRole('dialog', { name: /popover/i }),
+          ).toBeInTheDocument();
+        });
+
+        await userEvent.type(input, 'Option 1');
+        await userEvent.keyboard('{ArrowDown}{Enter}');
+
+        await expect(submitCount).toHaveTextContent('0');
+
+        await userEvent.keyboard('{Esc}');
+        await waitFor(() => {
+          expect(canvas.queryByRole('dialog', { name: /popover/i })).toBeNull();
+        });
+      },
+    );
+  },
+};
