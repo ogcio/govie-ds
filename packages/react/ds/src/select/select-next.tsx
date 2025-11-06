@@ -154,8 +154,11 @@ export const SelectNext = forwardRef<HTMLInputElement, SelectNextProps>(
     };
 
     const handleKeyDown = (event: React.KeyboardEvent) => {
-      if (event.key === 'Enter' && !disabled) {
+      if (!disabled && (event.key === 'Enter' || event.key === 'NumpadEnter')) {
+        event.preventDefault();
         handleOnClick();
+      } else if (event.key === 'Escape') {
+        setIsOpen(false);
       }
     };
 
@@ -185,16 +188,17 @@ export const SelectNext = forwardRef<HTMLInputElement, SelectNextProps>(
     };
 
     const srOnlyLabelId = useDomId();
+    const labelText =
+      (props as any)['aria-label'] ??
+      t('select.next.placeholder', { defaultValue: 'Select' });
+
     useEffect(() => {
-      if (enableSearch && inputRef.current) {
+      if (inputRef.current) {
         inputRef.current.setAttribute('aria-labelledby', srOnlyLabelId);
       }
-    }, [enableSearch, srOnlyLabelId]);
+    }, [srOnlyLabelId, enableSearch]);
 
     if (enableSearch) {
-      const labelText =
-        (props as any)['aria-label'] ?? (props as any)['ariaLabel'] ?? 'Select';
-
       return (
         <div className={cn('gi-select-next', props.className)}>
           <span id={srOnlyLabelId} className="gi-sr-only">
@@ -222,13 +226,14 @@ export const SelectNext = forwardRef<HTMLInputElement, SelectNextProps>(
         aria-disabled={disabled}
         className={cn('gi-select-next', props.className)}
       >
+        <span id={srOnlyLabelId} className="gi-sr-only">
+          {labelText}
+        </span>
+
         <InputText
           {...props}
           autoComplete="off"
-          aria-label={
-            placeholder ??
-            t('select.next.placeholder', { defaultValue: 'Search' })
-          }
+          aria-label={labelText}
           aria-disabled={disabled}
           disabled={disabled}
           placeholder={

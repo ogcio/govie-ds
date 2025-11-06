@@ -526,36 +526,45 @@ export const WithReactHookForm: StoryObj = {
   },
 };
 
-export const Test_ShouldNotSubmitOnEnterAfterSearch: StoryObj = {
+export const TestNoSubmitOnEnter: StoryObj<typeof SelectNext> = {
   tags: ['skip-playwright'],
   render: () => {
-    const [submitCount, setSubmitCount] = useState(0);
-    const { control } = useForm({
+    const [submitCountOn, setSubmitCountOn] = useState(0);
+    const [submitCountOff, setSubmitCountOff] = useState(0);
+
+    const { control: controlOn } = useForm({
+      defaultValues: { topic: '' },
+      mode: 'onBlur',
+    });
+    const { control: controlOff } = useForm({
       defaultValues: { topic: '' },
       mode: 'onBlur',
     });
 
-    const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
+    const handleSubmitOn = (event: React.FormEvent<HTMLFormElement>) => {
       event.preventDefault();
-      setSubmitCount((c) => c + 1);
+      setSubmitCountOn((c) => c + 1);
+    };
+    const handleSubmitOff = (event: React.FormEvent<HTMLFormElement>) => {
+      event.preventDefault();
+      setSubmitCountOff((c) => c + 1);
     };
 
     return (
-      <form
-        onSubmit={handleSubmit}
-        data-testid="form"
-        className="gi-flex gi-flex-col gi-gap-4 gi-w-72"
-      >
-        <FormField className="gi-w-56">
-          <FormFieldLabel>Label</FormFieldLabel>
-
-          <Controller
-            control={control}
-            name="topic"
-            render={({ field }) => {
-              return (
+      <div className="gi-flex gi-gap-12">
+        <form
+          onSubmit={handleSubmitOn}
+          data-testid="form-search-on"
+          className="gi-flex gi-flex-col gi-gap-4 gi-w-72"
+        >
+          <FormField className="gi-w-56">
+            <FormFieldLabel>Label (Search ON)</FormFieldLabel>
+            <Controller
+              control={controlOn}
+              name="topic"
+              render={({ field }) => (
                 <SelectNext
-                  id="repro-select"
+                  id="repro-select-on"
                   name={field.name}
                   enableSearch
                   aria-label="Select"
@@ -568,34 +577,68 @@ export const Test_ShouldNotSubmitOnEnterAfterSearch: StoryObj = {
                   <SelectItemNext value="value-2">Option 2</SelectItemNext>
                   <SelectItemNext value="value-3">Option 3</SelectItemNext>
                 </SelectNext>
-              );
-            }}
-          />
-        </FormField>
-        <div data-testid="submit-count" className="gi-invisible">
-          {submitCount}
-        </div>
-      </form>
+              )}
+            />
+          </FormField>
+          <div data-testid="submit-count-on" className="gi-invisible">
+            {submitCountOn}
+          </div>
+        </form>
+
+        <form
+          onSubmit={handleSubmitOff}
+          data-testid="form-search-off"
+          className="gi-flex gi-flex-col gi-gap-4 gi-w-72"
+        >
+          <FormField className="gi-w-56">
+            <FormFieldLabel>Label (Search OFF)</FormFieldLabel>
+            <Controller
+              control={controlOff}
+              name="topic"
+              render={({ field }) => (
+                <SelectNext
+                  id="repro-select-off"
+                  name={field.name}
+                  aria-label="Select"
+                  value={field.value ?? ''}
+                  onChange={field.onChange}
+                  onBlur={field.onBlur}
+                  ref={field.ref as any}
+                >
+                  <SelectItemNext value="value-1">Option 1</SelectItemNext>
+                  <SelectItemNext value="value-2">Option 2</SelectItemNext>
+                  <SelectItemNext value="value-3">Option 3</SelectItemNext>
+                </SelectNext>
+              )}
+            />
+          </FormField>
+          <div data-testid="submit-count-off" className="gi-invisible">
+            {submitCountOff}
+          </div>
+        </form>
+      </div>
     );
   },
 
   play: async ({ canvasElement, step }) => {
     const canvas = within(canvasElement);
+    const formOn = await canvas.findByTestId('form-search-on');
+    const formOff = await canvas.findByTestId('form-search-off');
+    const on = within(formOn);
+    const off = within(formOff);
 
-    const form = await canvas.findByTestId('form');
-    const submitCount = await canvas.findByTestId('submit-count');
-    const input = await canvas.findByRole('textbox', { name: /select/i });
+    const submitCountOn = await on.findByTestId('submit-count-on');
+    const submitCountOff = await off.findByTestId('submit-count-off');
+    const inputOn = await on.findByRole('textbox', { name: /select/i });
+    const inputOff = await off.findByRole('textbox', { name: /select/i });
 
     await step(
-      'keyboard: Enter on focused select opens popover without submitting',
+      '[Search ON] keyboard: Enter on focused select opens popover without submitting',
       async () => {
         await userEvent.tab();
-        await expect(input).toHaveFocus();
-
+        await expect(inputOn).toHaveFocus();
         await userEvent.keyboard('{Enter}');
-        await expect(submitCount).toHaveTextContent('0');
-        await expect(form).toBeInTheDocument();
-
+        await expect(submitCountOn).toHaveTextContent('0');
         await userEvent.keyboard('{Esc}');
         await waitFor(() => {
           expect(canvas.queryByRole('dialog', { name: /popover/i })).toBeNull();
@@ -604,20 +647,16 @@ export const Test_ShouldNotSubmitOnEnterAfterSearch: StoryObj = {
     );
 
     await step(
-      'mouse: Enter after clicking select does not submit the form',
+      '[Search ON] mouse: Enter after clicking select does not submit the form',
       async () => {
-        await userEvent.click(input);
-
+        await userEvent.click(inputOn);
         await waitFor(() => {
           expect(
             canvas.getByRole('dialog', { name: /popover/i }),
           ).toBeInTheDocument();
         });
-
         await userEvent.keyboard('{Enter}');
-        await expect(submitCount).toHaveTextContent('0');
-        await expect(form).toBeInTheDocument();
-
+        await expect(submitCountOn).toHaveTextContent('0');
         await userEvent.keyboard('{Esc}');
         await waitFor(() => {
           expect(canvas.queryByRole('dialog', { name: /popover/i })).toBeNull();
@@ -626,20 +665,69 @@ export const Test_ShouldNotSubmitOnEnterAfterSearch: StoryObj = {
     );
 
     await step(
-      'keyboard: type filter then ArrowDown + Enter selects without submitting',
+      '[Search ON] keyboard: type filter then ArrowDown + Enter selects without submitting',
       async () => {
-        await userEvent.click(input);
+        await userEvent.click(inputOn);
         await waitFor(() => {
           expect(
             canvas.getByRole('dialog', { name: /popover/i }),
           ).toBeInTheDocument();
         });
-
-        await userEvent.type(input, 'Option 1');
+        await userEvent.type(inputOn, 'Option 1');
         await userEvent.keyboard('{ArrowDown}{Enter}');
+        await expect(submitCountOn).toHaveTextContent('0');
+        await userEvent.keyboard('{Esc}');
+        await waitFor(() => {
+          expect(canvas.queryByRole('dialog', { name: /popover/i })).toBeNull();
+        });
+      },
+    );
 
-        await expect(submitCount).toHaveTextContent('0');
+    await step(
+      '[Search OFF] keyboard: Enter on focused select opens popover without submitting',
+      async () => {
+        await userEvent.tab();
+        await userEvent.tab();
+        await userEvent.tab();
+        await expect(inputOff).toHaveFocus();
+        await userEvent.keyboard('{Enter}');
+        await expect(submitCountOff).toHaveTextContent('0');
+        await userEvent.keyboard('{Esc}');
+        await waitFor(() => {
+          expect(canvas.queryByRole('dialog', { name: /popover/i })).toBeNull();
+        });
+      },
+    );
 
+    await step(
+      '[Search OFF] mouse: Enter after clicking select does not submit the form',
+      async () => {
+        await userEvent.click(inputOff);
+        await waitFor(() => {
+          expect(
+            canvas.getByRole('dialog', { name: /popover/i }),
+          ).toBeInTheDocument();
+        });
+        await userEvent.keyboard('{Enter}');
+        await expect(submitCountOff).toHaveTextContent('0');
+        await userEvent.keyboard('{Esc}');
+        await waitFor(() => {
+          expect(canvas.queryByRole('dialog', { name: /popover/i })).toBeNull();
+        });
+      },
+    );
+
+    await step(
+      '[Search OFF] keyboard: ArrowDown + Enter selects without submitting',
+      async () => {
+        await userEvent.click(inputOff);
+        await waitFor(() => {
+          expect(
+            canvas.getByRole('dialog', { name: /popover/i }),
+          ).toBeInTheDocument();
+        });
+        await userEvent.keyboard('{ArrowDown}{Enter}');
+        await expect(submitCountOff).toHaveTextContent('0');
         await userEvent.keyboard('{Esc}');
         await waitFor(() => {
           expect(canvas.queryByRole('dialog', { name: /popover/i })).toBeNull();
