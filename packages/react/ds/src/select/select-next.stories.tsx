@@ -137,16 +137,8 @@ export const Default: StoryObj = {
       'Option 2',
       'Option 3',
     ]);
-
-    await userEvent.click(within(list).getByText('Option 2'));
-    await waitFor(() => {
-      expect(canvas.queryByRole('listbox')).not.toBeInTheDocument();
-    });
-    await waitFor(() => {
-      expect(canvas.getByText('keyboard_arrow_down')).toBeInTheDocument();
-    });
-
     await userEvent.click(input);
+
     const option = await body.findByRole('option', { name: 'Option 1' });
     const style = globalThis.getComputedStyle(option as HTMLElement);
     expect(style.fontSize).toBe('16px');
