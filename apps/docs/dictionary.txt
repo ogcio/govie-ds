@@ -261,6 +261,7 @@ Roadmap
 scalable
 ScoreSelectProps
 ScoreSelectProps
+secondaryLabel
 SectionBreakProps
 SectionBreakProps
 selectable
