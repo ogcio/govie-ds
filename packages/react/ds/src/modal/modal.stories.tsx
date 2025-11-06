@@ -124,7 +124,11 @@ export const StateControlledModal: Story = {
 
 export const WithoutFooter: Story = {
   render: (arguments_) => (
-    <Modal {...arguments_} startsOpen={shouldStartOpen()} className="gi-w-[600px]">
+    <Modal
+      {...arguments_}
+      startsOpen={shouldStartOpen()}
+      className="gi-w-[600px]"
+    >
       <ModalTitle key="title">Modal Title</ModalTitle>
       <ModalBody key="body">
         <Paragraph>
@@ -140,7 +144,11 @@ export const WithoutFooter: Story = {
 
 export const WithLongContent: Story = {
   render: (arguments_) => (
-    <Modal {...arguments_} startsOpen={shouldStartOpen()} className="gi-w-[600px]">
+    <Modal
+      {...arguments_}
+      startsOpen={shouldStartOpen()}
+      className="gi-w-[600px]"
+    >
       <ModalTitle key="title">Modal Title</ModalTitle>
       <ModalBody key="body">
         <Paragraph>
@@ -219,7 +227,11 @@ export const ModalNotCloseOnClick: Story = {
 
 export const ModalNotCloseOnOverlayClick: Story = {
   render: (arguments_) => (
-    <Modal {...arguments_} startsOpen={shouldStartOpen()} closeOnOverlayClick={false}>
+    <Modal
+      {...arguments_}
+      startsOpen={shouldStartOpen()}
+      closeOnOverlayClick={false}
+    >
       <ModalTitle key="title">Modal Title</ModalTitle>
       <ModalBody key="body">
         <Paragraph>
@@ -395,7 +407,11 @@ export const TestCloseOnOverlayClick: Story = {
 export const TestFooterButtonsOrder: Story = {
   tags: ['skip-playwright'],
   render: (arguments_) => (
-    <Modal {...arguments_} dataTestId="modal-footer" startsOpen={shouldStartOpen()}>
+    <Modal
+      {...arguments_}
+      dataTestId="modal-footer"
+      startsOpen={shouldStartOpen()}
+    >
       <ModalTitle key="title">Modal Title</ModalTitle>
       <ModalBody key="body">
         <Paragraph>Body</Paragraph>
