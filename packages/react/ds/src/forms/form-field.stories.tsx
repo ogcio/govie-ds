@@ -1,4 +1,5 @@
 import type { Meta, StoryObj } from '@storybook/react';
+import { within, expect } from 'storybook/test';
 import { InputText } from '../input-text/input-text.js';
 import { TextArea } from '../textarea/textarea.js';
 import {
@@ -128,5 +129,31 @@ export const WithHintAndError: Story = {
           'Shows how you can combine both `FormFieldHint` and `FormFieldError` within the same field.',
       },
     },
+  },
+};
+
+export const WithSubLabel: Story = {
+  render: () => (
+    <FormField data-testid="form-field-default">
+      <FormFieldLabel htmlFor="input-text-id" secondaryLabel="(optional)">
+        Label
+      </FormFieldLabel>
+      <InputText data-testid="input-text-id" id="input-text-id" />
+    </FormField>
+  ),
+  play: async ({ canvasElement }) => {
+    const canvas = within(canvasElement);
+
+    const optional = await canvas.findByText('(optional)');
+    const labelTextNode = await canvas.findByText('Label');
+
+    const labelElement = labelTextNode.closest(
+      'label',
+    ) as HTMLLabelElement | null;
+    expect(labelElement).toBeTruthy();
+
+    expect(optional).toBeInTheDocument();
+    expect(optional).toHaveClass('gi-secondary-label');
+    expect(labelElement).toContainElement(optional);
   },
 };

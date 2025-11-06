@@ -82,6 +82,7 @@ Input fields are used to capture user data like text, email, numbers, and more.
 - **Support clearing input**: When applicable, allow users to reset input with a clear button.
 - **Include icons when helpful**: Use iconStart or iconEnd for visual hints (e.g., search, calendar).
 - **Use prefix/suffix for formatting**: Display currency, units, etc., clearly.
+- **Use a secondaryLabel property for secondary inline context**: Add brief, non-essential hints like “(optional)” or “(beta)” with `secondaryLabel`. Keep it short.
 
 <ComponentContainer>
   <div className="flex flex-col gap-4">
@@ -98,6 +99,12 @@ Input fields are used to capture user data like text, email, numbers, and more.
       <FormFieldLabel htmlFor="input-search">Search</FormFieldLabel>
       <InputText id="input-search" iconStart="search" placeholder="Search..." />
     </FormField>
+
+     <FormField>
+      <FormFieldLabel htmlFor="label" secondaryLabel="(optional)">Label</FormFieldLabel>
+      <InputText id="label" iconStart="search" placeholder="Search..." />
+    </FormField>
+
   </div>
 </ComponentContainer>
 
