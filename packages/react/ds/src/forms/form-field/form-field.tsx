@@ -13,12 +13,11 @@ import { ErrorTextProps } from '../../error-text/types.js';
 import { HintText } from '../../hint-text/hint-text.js';
 import { HintTextProps } from '../../hint-text/types.js';
 import { Label } from '../../label/label.js';
-import { LabelTextProps } from '../../label/types.js';
 import {
   getSpecialComponentType,
   isSpecialComponent,
 } from '../../utils/utilities.js';
-import { FormFieldProps } from './types.js';
+import { FormFieldProps, FormFiledLabelProps } from './types.js';
 
 type FormFieldBaseProps = Omit<
   FieldsetHTMLAttributes<HTMLFieldSetElement>,
@@ -114,19 +113,32 @@ const FormFieldLabel = ({
   size,
   htmlFor,
   className,
-}: LabelTextProps) => {
+  secondaryLabel,
+  ...props
+}: FormFiledLabelProps) => {
   useFormFieldContext('FormFieldLabel');
+
+  const content = (
+    <>
+      {text ?? children}
+      {secondaryLabel ? (
+        <span className="gi-secondary-label">{secondaryLabel}</span>
+      ) : null}
+    </>
+  );
+
   return (
     <Label
-      text={text}
       size={size}
       htmlFor={htmlFor}
       className={cn('gi-font-bold', className)}
+      {...props}
     >
-      {children}
+      {content}
     </Label>
   );
 };
+
 Object.defineProperty(FormFieldLabel, 'componentType', {
   value: 'FormFieldLabel',
   writable: false,
