@@ -963,7 +963,7 @@ export const DataTableHeaderBasic: Story = {
                 <DataTableHeaderFilterContentTitle>
                   Tags
                 </DataTableHeaderFilterContentTitle>
-                <SelectNext aria-label="Select" defaultValue="all">
+                <SelectNext aria-label="Select" defaultValue="all" enableSearch>
                   <SelectItemNext value="all" hidden>
                     All
                   </SelectItemNext>
