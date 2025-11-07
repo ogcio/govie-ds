@@ -701,7 +701,7 @@ export const WithReactHookForm: Story = {
               onOpenChange={handlePopoverOpenChange}
               className="!gi-bg-white"
             >
-              <div className="gi-flex gi-flex-col gi-max-h-100">
+              <div className="gi-flex gi-flex-col gi-max-h-100 gi-max-w-100">
                 <DataTableHeaderFilterContent>
                   <DataTableHeaderFilterContentTitle>
                     Date Range
@@ -948,7 +948,7 @@ export const DataTableHeaderBasic: Story = {
               }
               setOpen(open);
             }}
-            className="!gi-bg-white"
+            className="!gi-bg-white gi-max-w-100"
           >
             <div>
               <DataTableHeaderFilterContent>
