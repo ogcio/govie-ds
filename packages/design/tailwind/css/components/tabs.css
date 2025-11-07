@@ -3,11 +3,10 @@
 }
 
 .gi-tab-item {
-  @apply gi-inline-block
-  gi-cursor-pointer
+  @apply gi-cursor-pointer
   gi-relative
   gi-text-color-text-system-neutral-interactive-muted
-  gi-px-[3px]
+  gi-px-1
   gi-leading-6
 
   hover:gi-text-color-icon-system-neutral-interactive-hover
@@ -20,7 +19,10 @@
   focus:gi-bg-color-surface-system-neutral-interactive-hover
   focus:gi-text-color-text-system-neutral-interactive-default
   focus:gi-rounded-sm
-  focus:gi-z-1;
+  focus:gi-z-1
+  
+  gi-flex
+  gi-gap-2;
 }
 
 .gi-tab-item-checked {

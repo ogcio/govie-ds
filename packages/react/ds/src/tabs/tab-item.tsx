@@ -3,6 +3,7 @@
 import { useEffect, useRef, forwardRef, FC } from 'react';
 import { tv } from 'tailwind-variants';
 import { cn } from '../cn.js';
+import { Icon } from '../icon/icon.js';
 import { Button as PrimitiveButton } from '../primitives/button.js';
 import { slugify } from '../utilities.js';
 import { InternalTabItemProps, TabItemProps } from './types.js';
@@ -49,6 +50,7 @@ export const InternalTabItem = forwardRef<
       appearance = 'default',
       labelAlignment = 'center',
       stretch,
+      icon,
       ...props
     },
     ref,
@@ -99,6 +101,7 @@ export const InternalTabItem = forwardRef<
           </a>
         ) : (
           <>
+            {icon && <Icon icon={icon} />}
             {children}
             <div
               className={cn('gi-tab-item-border', {

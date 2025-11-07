@@ -1,4 +1,5 @@
 import { ReactNode } from 'react';
+import { IconId } from '../icon/icon.js';
 
 type TabAppearanceType = 'default' | 'dark';
 type TabLabelAlignmentType = 'start' | 'end' | 'center';
@@ -39,6 +40,7 @@ export type TabItemProps = {
   children: string;
   /** Optional click event handler for the tab */
   onTabClick?: (event: React.MouseEvent<HTMLButtonElement, MouseEvent>) => void;
+  icon?: IconId;
 };
 
 export type TabPanelProps = {
