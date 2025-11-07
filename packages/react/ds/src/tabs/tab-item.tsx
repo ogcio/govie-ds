@@ -51,68 +51,98 @@ export const InternalTabItem = forwardRef<
       labelAlignment = 'center',
       stretch,
       icon,
+      className,
       ...props
     },
     ref,
   ) => {
     const valueSlug = slugify(value);
-    const buttonRef = useRef<HTMLButtonElement>(null);
+    const internalRef = useRef<HTMLButtonElement>(null);
     const clickButtonRef = useRef(false);
 
     useEffect(() => {
       if (checked && !clickButtonRef.current) {
-        buttonRef.current?.click();
+        internalRef.current?.click();
       }
     }, [checked]);
 
+    const sharedA11y = {
+      role: 'tab',
+      'aria-selected': checked,
+      'aria-controls': `tab-panel-${valueSlug}`,
+      id: `tab-${valueSlug}`,
+      tabIndex: checked ? 0 : -1,
+    } as const;
+
+    const classes = tabItemVariants({ size, checked, stretch, labelAlignment });
+
+    const Border = (
+      <div
+        className={cn('gi-tab-item-border', {
+          'gi-bg-color-text-system-neutral-interactive-default':
+            checked && appearance === 'dark',
+          'gi-bg-color-border-tone-primary-accent-selected':
+            checked && appearance === 'default',
+        })}
+        aria-hidden="true"
+      />
+    );
+
+    const Content = (
+      <>
+        {icon && <Icon icon={icon} />}
+        {children}
+        {Border}
+      </>
+    );
+
+    if (href) {
+      return (
+        <a
+          href={href}
+          {...sharedA11y}
+          className={cn(
+            classes,
+            'gi-inline-flex gi-items-center gi-gap-2 gi-decoration-xs',
+            className,
+          )}
+          onClick={
+            onTabClick as unknown as React.MouseEventHandler<HTMLAnchorElement>
+          }
+          onKeyDown={
+            onTabKeyDown as unknown as React.KeyboardEventHandler<HTMLAnchorElement>
+          }
+        >
+          {Content}
+        </a>
+      );
+    }
+
     return (
       <PrimitiveButton
-        id={`tab-${valueSlug}`}
+        {...sharedA11y}
         ref={(element) => {
-          buttonRef.current = element;
+          internalRef.current = element;
           if (typeof ref === 'function') {
             ref(element);
           } else if (ref) {
             ref.current = element;
           }
         }}
-        {...props}
-        role="tab"
-        aria-roledescription="tab"
-        aria-selected={checked ? 'true' : 'false'}
-        aria-controls={`tab-panel-${valueSlug}`}
-        className={tabItemVariants({ size, checked, stretch, labelAlignment })}
+        className={cn(
+          classes,
+          'gi-inline-flex gi-items-center gi-gap-2',
+          className,
+        )}
         onClick={(event) => {
-          clickButtonRef.current = true;
-          if (onTabClick) {
-            onTabClick(event);
-          }
-          buttonRef.current?.blur();
+          onTabClick?.(event);
         }}
         onKeyDown={(event) => {
-          if (onTabKeyDown) {
-            onTabKeyDown(event);
-          }
+          onTabKeyDown?.(event);
         }}
+        {...props}
       >
-        {href ? (
-          <a href={href} className="gi-decoration-xs">
-            {children}
-          </a>
-        ) : (
-          <>
-            {icon && <Icon icon={icon} />}
-            {children}
-            <div
-              className={cn('gi-tab-item-border', {
-                'gi-bg-color-text-system-neutral-interactive-default':
-                  checked && appearance === 'dark',
-                'gi-bg-color-border-tone-primary-accent-selected':
-                  checked && appearance === 'default',
-              })}
-            ></div>
-          </>
-        )}
+        {Content}
       </PrimitiveButton>
     );
   },

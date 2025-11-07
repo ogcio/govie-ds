@@ -352,7 +352,7 @@ export const TestTabs: Story = {
   tags: ['skip-playwright'],
   args: {
     ariaLabelledBy: 'tabs',
-    id: 'tab-1',
+    id: 'tab-test-1',
     children: null,
   },
   render: (props) => (
@@ -401,15 +401,15 @@ export const TestTabsWithIcon: Story = {
   render: (props) => (
     <Tabs {...props}>
       <TabList>
-        <TabItem value="tab1" icon="placeholder">
+        <TabItem value="tabTest1" icon="placeholder">
           Tab 1
         </TabItem>
-        <TabItem value="tab2" icon="accessibility_new">
+        <TabItem value="tabTest2" icon="accessibility_new">
           Tab 2
         </TabItem>
       </TabList>
-      <TabPanel value="tab1">Tab 1 Content</TabPanel>
-      <TabPanel value="tab2">Tab 2 Content</TabPanel>
+      <TabPanel value="tabTest1">Tab 1 Content</TabPanel>
+      <TabPanel value="tabTest2">Tab 2 Content</TabPanel>
     </Tabs>
   ),
   play: async ({ canvasElement, step }) => {

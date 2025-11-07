@@ -68,4 +68,5 @@ export type InternalTabItemProps = TabItemProps & {
   size?: 'md' | 'sm';
   stretch?: boolean;
   labelAlignment?: TabLabelAlignmentType;
+  className?: string;
 };
