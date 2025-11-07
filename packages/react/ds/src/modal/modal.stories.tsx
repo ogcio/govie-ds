@@ -33,24 +33,41 @@ const meta = {
 export default meta;
 type Story = StoryObj<typeof meta>;
 
+// Utility: evaluate viewMode at render time
+const shouldStartOpen = () => {
+  try {
+    const parameters = new URLSearchParams(globalThis.location.search);
+    const viewMode = parameters.get('viewMode');
+    const path = parameters.get('path') || '';
+    return viewMode === 'story' || (!viewMode && !path.includes('--docs'));
+  } catch {
+    return true;
+  }
+};
+
 export const Default: Story = {
+  render: (arguments_) => {
+    const startsOpen = shouldStartOpen();
+    return (
+      <Modal {...arguments_} startsOpen={startsOpen}>
+        <ModalTitle key="title">Modal Title</ModalTitle>
+        <ModalBody key="body">
+          <Paragraph>
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Incidunt
+            esse magnam quis sit soluta cupiditate at deserunt exercitationem
+            voluptas doloribus asperiores.
+          </Paragraph>
+        </ModalBody>
+        <ModalFooter key="footer">
+          <Button variant="secondary">Cancel</Button>
+          <Button variant="primary">Submit</Button>
+        </ModalFooter>
+      </Modal>
+    );
+  },
   args: {
     triggerButton: <Button>Open modal</Button>,
-    startsOpen: true,
-    children: [
-      <ModalTitle key="title">Modal Title</ModalTitle>,
-      <ModalBody key="body">
-        <Paragraph>
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Incidunt esse
-          magnam quis sit soluta cupiditate at deserunt exercitationem voluptas
-          doloribus asperiores.
-        </Paragraph>
-      </ModalBody>,
-      <ModalFooter key="footer">
-        <Button variant="secondary">Cancel</Button>
-        <Button variant="primary">Submit</Button>
-      </ModalFooter>,
-    ],
+    children: <></>,
   },
   play: async ({ step }) => {
     await step(
@@ -69,8 +86,8 @@ export const Default: Story = {
 export const StateControlledModal: Story = {
   tags: ['skip-playwright'],
   args: {
-    children: <></>,
     triggerButton: <></>,
+    children: <></>,
   },
   render: () => {
     const [isOpen, setIsOpen] = useState(false);
@@ -81,7 +98,7 @@ export const StateControlledModal: Story = {
       <>
         <Button onClick={handleOpen}>Open Modal</Button>
         <ModalWrapper
-          dataTestId={'test-id'}
+          dataTestId="test-id"
           isOpen={isOpen}
           onClose={handleClose}
         >
@@ -106,30 +123,33 @@ export const StateControlledModal: Story = {
 };
 
 export const WithoutFooter: Story = {
-  args: {
-    triggerButton: <Button>Open modal</Button>,
-    startsOpen: true,
-    className: 'gi-w-[600px]',
-    children: [
-      <ModalTitle key="title">Modal Title</ModalTitle>,
+  render: (arguments_) => (
+    <Modal
+      {...arguments_}
+      startsOpen={shouldStartOpen()}
+      className="gi-w-[600px]"
+    >
+      <ModalTitle key="title">Modal Title</ModalTitle>
       <ModalBody key="body">
         <Paragraph>
           Lorem ipsum dolor sit amet consectetur adipisicing elit. Incidunt esse
           magnam quis sit soluta cupiditate at deserunt exercitationem voluptas
           doloribus asperiores.
         </Paragraph>
-      </ModalBody>,
-    ],
-  },
+      </ModalBody>
+    </Modal>
+  ),
+  args: { triggerButton: <Button>Open modal</Button>, children: <></> },
 };
 
 export const WithLongContent: Story = {
-  args: {
-    triggerButton: <Button>Open modal</Button>,
-    startsOpen: true,
-    className: 'gi-w-[600px]',
-    children: [
-      <ModalTitle key="title">Modal Title</ModalTitle>,
+  render: (arguments_) => (
+    <Modal
+      {...arguments_}
+      startsOpen={shouldStartOpen()}
+      className="gi-w-[600px]"
+    >
+      <ModalTitle key="title">Modal Title</ModalTitle>
       <ModalBody key="body">
         <Paragraph>
           Lorem ipsum dolor sit amet consectetur adipisicing elit. Incidunt esse
@@ -158,142 +178,136 @@ export const WithLongContent: Story = {
           Incidunt esse magnam quis sit soluta cupiditate at deserunt
           exercitationem voluptas doloribus asperiores.
         </Paragraph>
-      </ModalBody>,
+      </ModalBody>
       <ModalFooter key="footer">
         <Button variant="secondary">Cancel</Button>
         <Button variant="primary">Submit</Button>
-      </ModalFooter>,
-    ],
-  },
+      </ModalFooter>
+    </Modal>
+  ),
+  args: { triggerButton: <Button>Open modal</Button>, children: <></> },
 };
 
 export const WithAllFooterButtonVariants: Story = {
-  args: {
-    triggerButton: <Button>Open modal</Button>,
-    startsOpen: true,
-    children: [
-      <ModalTitle key="title">Modal Title</ModalTitle>,
+  render: (arguments_) => (
+    <Modal {...arguments_} startsOpen={shouldStartOpen()}>
+      <ModalTitle key="title">Modal Title</ModalTitle>
       <ModalBody key="body">
         <Paragraph>
           Lorem ipsum dolor sit amet consectetur adipisicing elit. Incidunt esse
           magnam quis sit soluta cupiditate at deserunt exercitationem voluptas
           doloribus asperiores.
         </Paragraph>
-      </ModalBody>,
+      </ModalBody>
       <ModalFooter key="footer">
         <Button variant="flat">Flat</Button>
         <Button variant="secondary">Secondary</Button>
         <Button variant="primary">Primary</Button>
-      </ModalFooter>,
-    ],
-  },
+      </ModalFooter>
+    </Modal>
+  ),
+  args: { triggerButton: <Button>Open modal</Button>, children: <></> },
 };
 
 export const ModalNotCloseOnClick: Story = {
-  args: {
-    triggerButton: <Button>Open modal</Button>,
-    startsOpen: true,
-    closeOnClick: false,
-    children: [
-      <ModalTitle key="title">Modal Title</ModalTitle>,
+  render: (arguments_) => (
+    <Modal {...arguments_} startsOpen={shouldStartOpen()} closeOnClick={false}>
+      <ModalTitle key="title">Modal Title</ModalTitle>
       <ModalBody key="body">
         <Paragraph>
           Lorem ipsum dolor sit amet consectetur adipisicing elit. Incidunt esse
           magnam quis sit soluta cupiditate at deserunt exercitationem voluptas
           doloribus asperiores.
         </Paragraph>
-      </ModalBody>,
-    ],
-  },
+      </ModalBody>
+    </Modal>
+  ),
+  args: { triggerButton: <Button>Open modal</Button>, children: <></> },
 };
 
 export const ModalNotCloseOnOverlayClick: Story = {
-  args: {
-    triggerButton: <Button>Open modal</Button>,
-    startsOpen: true,
-    closeOnOverlayClick: false,
-    children: [
-      <ModalTitle key="title">Modal Title</ModalTitle>,
+  render: (arguments_) => (
+    <Modal
+      {...arguments_}
+      startsOpen={shouldStartOpen()}
+      closeOnOverlayClick={false}
+    >
+      <ModalTitle key="title">Modal Title</ModalTitle>
       <ModalBody key="body">
         <Paragraph>
           Lorem ipsum dolor sit amet consectetur adipisicing elit. Incidunt esse
           magnam quis sit soluta cupiditate at deserunt exercitationem voluptas
           doloribus asperiores.
         </Paragraph>
-      </ModalBody>,
+      </ModalBody>
       <ModalFooter key="footer">
         <Button variant="primary" appearance="dark">
           Primary
         </Button>
-      </ModalFooter>,
-    ],
-  },
+      </ModalFooter>
+    </Modal>
+  ),
+  args: { triggerButton: <Button>Open modal</Button>, children: <></> },
 };
 
 export const WithCenterLarge: Story = {
-  args: {
-    size: 'lg',
-    triggerButton: <Button>Open modal</Button>,
-    startsOpen: true,
-    children: [
-      <ModalTitle key="title">Modal Title</ModalTitle>,
+  render: (arguments_) => (
+    <Modal {...arguments_} startsOpen={shouldStartOpen()} size="lg">
+      <ModalTitle key="title">Modal Title</ModalTitle>
       <ModalBody key="body">
         <Paragraph>
           Lorem ipsum dolor sit amet consectetur adipisicing elit. Incidunt esse
           magnam quis sit soluta cupiditate at deserunt exercitationem voluptas
           doloribus asperiores.
         </Paragraph>
-      </ModalBody>,
+      </ModalBody>
       <ModalFooter key="footer">
         <Button variant="secondary">Cancel</Button>
         <Button variant="primary">Submit</Button>
-      </ModalFooter>,
-    ],
-  },
+      </ModalFooter>
+    </Modal>
+  ),
+  args: { triggerButton: <Button>Open modal</Button>, children: <></> },
 };
 
 export const WithCenterMedium: Story = {
-  args: {
-    size: 'md',
-    triggerButton: <Button>Open modal</Button>,
-    startsOpen: true,
-    children: [
-      <ModalTitle key="title">Modal Title</ModalTitle>,
+  render: (arguments_) => (
+    <Modal {...arguments_} startsOpen={shouldStartOpen()} size="md">
+      <ModalTitle key="title">Modal Title</ModalTitle>
       <ModalBody key="body">
         <Paragraph>
           Lorem ipsum dolor sit amet consectetur adipisicing elit. Incidunt esse
           magnam quis sit soluta cupiditate at deserunt exercitationem voluptas
           doloribus asperiores.
         </Paragraph>
-      </ModalBody>,
+      </ModalBody>
       <ModalFooter key="footer">
         <Button variant="secondary">Cancel</Button>
         <Button variant="primary">Submit</Button>
-      </ModalFooter>,
-    ],
-  },
+      </ModalFooter>
+    </Modal>
+  ),
+  args: { triggerButton: <Button>Open modal</Button>, children: <></> },
 };
 
 export const WithCenterSmall: Story = {
-  args: {
-    size: 'sm',
-    triggerButton: <Button>Open modal</Button>,
-    startsOpen: true,
-    children: [
-      <ModalTitle key="title">Modal Title</ModalTitle>,
+  render: (arguments_) => (
+    <Modal {...arguments_} startsOpen={shouldStartOpen()} size="sm">
+      <ModalTitle key="title">Modal Title</ModalTitle>
       <ModalBody key="body">
         <Paragraph>
           Lorem ipsum dolor sit amet consectetur adipisicing elit. Incidunt esse
           magnam quis sit soluta cupiditate at deserunt exercitationem voluptas
           doloribus asperiores.
         </Paragraph>
-      </ModalBody>,
+      </ModalBody>
       <ModalFooter key="footer">
         <Button variant="secondary">Cancel</Button>
         <Button variant="primary">Submit</Button>
-      </ModalFooter>,
-    ],
-  },
+      </ModalFooter>
+    </Modal>
+  ),
+  args: { triggerButton: <Button>Open modal</Button>, children: <></> },
 };
 
 export const TestOpenOnTriggerAndCloseOnIcon: Story = {
@@ -317,9 +331,7 @@ export const TestOpenOnTriggerAndCloseOnIcon: Story = {
       );
       triggerButtonElement.click();
       await waitFor(() => {
-        const modalElement = document.querySelector(
-          '[data-testid="modal"]',
-        ) as HTMLElement | null;
+        const modalElement = document.querySelector('[data-testid="modal"]');
         expect(Boolean(modalElement)).toBe(true);
         if (modalElement) {
           expect(modalElement.classList.contains('gi-modal-open')).toBe(true);
@@ -348,9 +360,7 @@ export const TestOpenOnTriggerAndCloseOnIcon: Story = {
       const iconElement = modalContainerElement.querySelector(
         '.gi-modal-icon',
       ) as HTMLElement;
-
       expect(iconElement).toBeVisible();
-
       iconElement.click();
     });
   },
@@ -396,21 +406,26 @@ export const TestCloseOnOverlayClick: Story = {
 
 export const TestFooterButtonsOrder: Story = {
   tags: ['skip-playwright'],
-  args: {
-    dataTestId: 'modal-footer',
-    startsOpen: true,
-    triggerButton: <Button>Open modal</Button>,
-    children: [
-      <ModalTitle key="title">Modal Title</ModalTitle>,
+  render: (arguments_) => (
+    <Modal
+      {...arguments_}
+      dataTestId="modal-footer"
+      startsOpen={shouldStartOpen()}
+    >
+      <ModalTitle key="title">Modal Title</ModalTitle>
       <ModalBody key="body">
         <Paragraph>Body</Paragraph>
-      </ModalBody>,
+      </ModalBody>
       <ModalFooter key="footer">
         <Button variant="flat">Help</Button>
         <Button variant="secondary">Cancel</Button>
         <Button variant="primary">Save</Button>
-      </ModalFooter>,
-    ],
+      </ModalFooter>
+    </Modal>
+  ),
+  args: {
+    triggerButton: <Button>Open modal</Button>,
+    children: <></>,
   },
   play: async ({ canvasElement, step }) => {
     const canvas = within(canvasElement);
