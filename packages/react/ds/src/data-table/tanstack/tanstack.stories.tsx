@@ -150,33 +150,46 @@ const booleanTrueFilter: FilterFn<any> = (row, columnId, filterValue) => {
   return row.getValue<boolean>(columnId) === true;
 };
 
-const dateRangeFilter: FilterFn<any> = (row, columnId, filterValue) => {
-  if (!filterValue || (!filterValue.from && !filterValue.to)) {
+type DateRangeFilterValue = {
+  from?: string;
+  to?: string;
+};
+
+const dateRangeFilter: FilterFn<Person> = (row, columnId, filterValue) => {
+  const { from, to } = (filterValue ?? {}) as DateRangeFilterValue;
+
+  if (!from && !to) {
     return true;
   }
 
-  const cellValue = row.getValue<string>(columnId);
+  const cellValue = row.getValue<string | undefined>(columnId);
   if (!cellValue) {
     return false;
   }
 
   const cellDate = new Date(cellValue);
+  if (Number.isNaN(cellDate.getTime())) {
+    return false;
+  }
 
-  if (filterValue.from && filterValue.to) {
-    const fromDate = new Date(filterValue.from);
-    const toDate = new Date(filterValue.to);
+  if (from && to) {
+    const fromDate = new Date(from);
+    const toDate = new Date(to);
     return cellDate >= fromDate && cellDate <= toDate;
-  } else if (filterValue.from) {
-    const fromDate = new Date(filterValue.from);
+  }
+
+  if (from) {
+    const fromDate = new Date(from);
     return cellDate >= fromDate;
-  } else if (filterValue.to) {
-    const toDate = new Date(filterValue.to);
+  }
+
+  if (to) {
+    const toDate = new Date(to);
     return cellDate <= toDate;
   }
 
   return true;
 };
-
 export const WithReactHookForm: Story = {
   tags: ['skip-playwright'],
   render: () => {
@@ -244,7 +257,10 @@ export const WithReactHookForm: Story = {
       }));
     };
 
-    const handleTemporaryDateChange = (field: 'from' | 'to', value: string) => {
+    const handleTemporaryDateChange = (
+      field: keyof FilterState['dateRange'],
+      value: string,
+    ) => {
       setTemporaryFilters((previous) => ({
         ...previous,
         dateRange: {
@@ -390,8 +406,7 @@ export const WithReactHookForm: Story = {
                   }),
                   error: !!getFieldError(errors, row.original.id, column.id),
                   disabled:
-                    row.original?.disabledFields?.includes('dateOfBirth') ===
-                    true,
+                    !!row.original?.disabledFields?.includes('dateOfBirth'),
                   placeholder: 'YYYY-MM-DD',
                 },
               }}
