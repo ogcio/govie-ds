@@ -1,5 +1,29 @@
 # Changelog
 
+## [1.20.0](https://github.com/ogcio/govie-ds/compare/docs-v1.19.0...docs-v1.20.0) (2025-11-10)
+
+
+### Features
+
+* Add "showIcon" prop on Alert and Toast components AB[#31979](https://github.com/ogcio/govie-ds/issues/31979) ([#760](https://github.com/ogcio/govie-ds/issues/760)) ([9b8b4d3](https://github.com/ogcio/govie-ds/commit/9b8b4d3591abbb9d87d1bb35503c55f308b147e8))
+
+
+### Bug Fixes
+
+* Drawer close button size + padding AB[#31980](https://github.com/ogcio/govie-ds/issues/31980) ([#761](https://github.com/ogcio/govie-ds/issues/761)) ([843eb61](https://github.com/ogcio/govie-ds/commit/843eb61e700999103863b8222c9e0499fcf7d89d))
+* FormField fixes AB[#31983](https://github.com/ogcio/govie-ds/issues/31983) ([#764](https://github.com/ogcio/govie-ds/issues/764)) ([84aafa6](https://github.com/ogcio/govie-ds/commit/84aafa665a2072c9cba7ba07a90dad0220ada1ce))
+* Popover padding AB[#31991](https://github.com/ogcio/govie-ds/issues/31991) ([#767](https://github.com/ogcio/govie-ds/issues/767)) ([1b9cf6d](https://github.com/ogcio/govie-ds/commit/1b9cf6da9c2162e70b416c876867b1819f7a9153))
+* Remove large link size AB[#31984](https://github.com/ogcio/govie-ds/issues/31984) ([#766](https://github.com/ogcio/govie-ds/issues/766)) ([f3cc31d](https://github.com/ogcio/govie-ds/commit/f3cc31df5af9a3ae439bcf92348f3c943b4dde89))
+* Remove large size for checkbox AB[#31981](https://github.com/ogcio/govie-ds/issues/31981) ([#762](https://github.com/ogcio/govie-ds/issues/762)) ([c0eea04](https://github.com/ogcio/govie-ds/commit/c0eea04dcf8fa1a40379660e71b39478657adc64))
+
+
+### Dependencies
+
+* The following workspace dependencies were updated
+  * dependencies
+    * @ogcio/design-system-react bumped to 1.22.0
+    * @ogcio/design-system-tailwind bumped to 1.17.1
+
 ## [1.19.0](https://github.com/ogcio/govie-ds/compare/docs-v1.18.0...docs-v1.19.0) (2025-10-30)
 
 

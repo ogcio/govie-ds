@@ -1,5 +1,14 @@
 # Changelog
 
+## [1.17.1](https://github.com/ogcio/govie-ds/compare/design-tailwind-v1.17.0...design-tailwind-v1.17.1) (2025-11-10)
+
+
+### Bug Fixes
+
+* Drawer close button size + padding AB[#31980](https://github.com/ogcio/govie-ds/issues/31980) ([#761](https://github.com/ogcio/govie-ds/issues/761)) ([843eb61](https://github.com/ogcio/govie-ds/commit/843eb61e700999103863b8222c9e0499fcf7d89d))
+* FormField fixes AB[#31983](https://github.com/ogcio/govie-ds/issues/31983) ([#764](https://github.com/ogcio/govie-ds/issues/764)) ([84aafa6](https://github.com/ogcio/govie-ds/commit/84aafa665a2072c9cba7ba07a90dad0220ada1ce))
+* Sync SelectNext with Figma  + Form submit fix AB[#31987](https://github.com/ogcio/govie-ds/issues/31987) ([#769](https://github.com/ogcio/govie-ds/issues/769)) ([8b6fd69](https://github.com/ogcio/govie-ds/commit/8b6fd69eab10f67dfd5424228a0c3aa795b1355b))
+
 ## [1.17.0](https://github.com/ogcio/govie-ds/compare/design-tailwind-v1.16.0...design-tailwind-v1.17.0) (2025-10-30)
 
 

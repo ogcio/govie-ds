@@ -10,6 +10,7 @@ import {
   useState,
 } from 'react';
 import { cn } from '../cn.js';
+import { useDomId } from '../hooks/use-dom-id.js';
 import { translate as t } from '../i18n/utility.js';
 import { InputText } from '../input-text/input-text.js';
 import { Popover } from '../popover/popover.js';
@@ -153,15 +154,17 @@ export const SelectNext = forwardRef<HTMLInputElement, SelectNextProps>(
     };
 
     const handleKeyDown = (event: React.KeyboardEvent) => {
-      if (event.key === 'Enter' && !disabled) {
+      if (!disabled && (event.key === 'Enter' || event.key === 'NumpadEnter')) {
+        event.preventDefault();
         handleOnClick();
+      } else if (event.key === 'Escape') {
+        setIsOpen(false);
       }
     };
 
     const handleBlur = (event: React.FocusEvent<HTMLInputElement>) => {
       const relatedTarget = event.relatedTarget as Node | null;
 
-      // Ignore blur if focus moves into the popover menu or the chevron icon.
       if (
         (relatedTarget &&
           (listRef.current?.contains(relatedTarget) ||
@@ -184,20 +187,37 @@ export const SelectNext = forwardRef<HTMLInputElement, SelectNextProps>(
       }
     };
 
+    const srOnlyLabelId = useDomId();
+    const labelText =
+      (props as any)['aria-label'] ??
+      t('select.next.placeholder', { defaultValue: 'Select' });
+
+    useEffect(() => {
+      if (inputRef.current) {
+        inputRef.current.setAttribute('aria-labelledby', srOnlyLabelId);
+      }
+    }, [srOnlyLabelId, enableSearch]);
+
     if (enableSearch) {
       return (
-        <SelectSearch
-          {...props}
-          value={internalValue}
-          onChange={onSelectNextChange}
-          disabled={disabled}
-          ref={inputRef}
-          onBlur={onBlur}
-          name={name}
-          placeholder={placeholder}
-        >
-          {children}
-        </SelectSearch>
+        <div className={cn('gi-select-next', props.className)}>
+          <span id={srOnlyLabelId} className="gi-sr-only">
+            {labelText}
+          </span>
+
+          <SelectSearch
+            {...props}
+            value={internalValue}
+            onChange={onSelectNextChange}
+            disabled={disabled}
+            ref={inputRef}
+            onBlur={onBlur}
+            name={name}
+            placeholder={placeholder}
+          >
+            {children}
+          </SelectSearch>
+        </div>
       );
     }
 
@@ -206,10 +226,14 @@ export const SelectNext = forwardRef<HTMLInputElement, SelectNextProps>(
         aria-disabled={disabled}
         className={cn('gi-select-next', props.className)}
       >
+        <span id={srOnlyLabelId} className="gi-sr-only">
+          {labelText}
+        </span>
+
         <InputText
           {...props}
           autoComplete="off"
-          aria-label="Select an option"
+          aria-label={labelText}
           aria-disabled={disabled}
           disabled={disabled}
           placeholder={
@@ -223,7 +247,7 @@ export const SelectNext = forwardRef<HTMLInputElement, SelectNextProps>(
             'gi-cursor-not-allowed': disabled,
             'gi-pointer-events-none': disabled,
           })}
-          iconEnd="keyboard_arrow_down"
+          iconEnd={isOpen ? 'keyboard_arrow_up' : 'keyboard_arrow_down'}
           onIconEndClick={handleOnClick}
           ref={inputRef}
           iconEndRef={iconEndRef}

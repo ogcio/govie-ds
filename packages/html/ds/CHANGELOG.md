@@ -1,5 +1,24 @@
 # Changelog
 
+## [1.16.0](https://github.com/ogcio/govie-ds/compare/html-lib-v1.15.0...html-lib-v1.16.0) (2025-11-10)
+
+
+### Features
+
+* Add "showIcon" prop on Alert and Toast components AB[#31979](https://github.com/ogcio/govie-ds/issues/31979) ([#760](https://github.com/ogcio/govie-ds/issues/760)) ([9b8b4d3](https://github.com/ogcio/govie-ds/commit/9b8b4d3591abbb9d87d1bb35503c55f308b147e8))
+
+
+### Bug Fixes
+
+* Remove large size for checkbox AB[#31981](https://github.com/ogcio/govie-ds/issues/31981) ([#762](https://github.com/ogcio/govie-ds/issues/762)) ([c0eea04](https://github.com/ogcio/govie-ds/commit/c0eea04dcf8fa1a40379660e71b39478657adc64))
+
+
+### Dependencies
+
+* The following workspace dependencies were updated
+  * devDependencies
+    * @ogcio/design-system-tailwind bumped to 1.17.1
+
 ## [1.15.0](https://github.com/ogcio/govie-ds/compare/html-lib-v1.14.3...html-lib-v1.15.0) (2025-10-30)
 
 
