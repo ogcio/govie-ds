@@ -86,9 +86,7 @@ export const Default: Story = {
   render: (props) => (
     <Tabs {...props}>
       <TabList>
-        <TabItem value="tab1" href="#">
-          Tab 1
-        </TabItem>
+        <TabItem value="tab1">Tab 1</TabItem>
         <TabItem value="tab2">Tab 2</TabItem>
         <TabItem value="tab3">Tab 3</TabItem>
       </TabList>
@@ -358,11 +356,11 @@ export const TestTabs: Story = {
   render: (props) => (
     <Tabs {...props}>
       <TabList>
-        <TabItem value="tab1">Tab 1</TabItem>
-        <TabItem value="tab2">Tab 2</TabItem>
+        <TabItem value="tab-test-1">Tab 1</TabItem>
+        <TabItem value="tab-test-2">Tab 2</TabItem>
       </TabList>
-      <TabPanel value="tab1">Tab 1 Content</TabPanel>
-      <TabPanel value="tab2">Tab 2 Content</TabPanel>
+      <TabPanel value="tab-test-1">Tab 1 Content</TabPanel>
+      <TabPanel value="tab-test-2">Tab 2 Content</TabPanel>
     </Tabs>
   ),
   play: async ({ canvasElement, step }) => {

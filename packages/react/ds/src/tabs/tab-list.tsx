@@ -2,7 +2,12 @@
 import { useState, useEffect, Children, isValidElement } from 'react';
 import { cn } from '../cn.js';
 import { InternalTabItem } from './tab-item.js';
-import { TabItemProps, TabListProps } from './types.js';
+import {
+  TabItemProps,
+  TabKeyboardEvent,
+  TabListProps,
+  TabMouseClickEvent,
+} from './types.js';
 
 export const TabList = ({
   children,
@@ -41,13 +46,8 @@ export const TabList = ({
   }, []);
 
   const handleOnTabClick =
-    (
-      index: number,
-      originalHandler?: (
-        event: React.MouseEvent<HTMLButtonElement, MouseEvent>,
-      ) => void,
-    ) =>
-    (event: React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
+    (index: number, originalHandler?: (event: TabMouseClickEvent) => void) =>
+    (event: TabMouseClickEvent) => {
       setActiveTab(index);
 
       const tabs = document.querySelector(`#${tabName}`) as HTMLElement;
@@ -76,9 +76,7 @@ export const TabList = ({
       }
     };
 
-  const handleOnTabKeyDown = (
-    event: React.KeyboardEvent<HTMLButtonElement>,
-  ) => {
+  const handleOnTabKeyDown = (event: TabKeyboardEvent) => {
     let direction = 0;
 
     if (event.key === 'ArrowLeft') {
