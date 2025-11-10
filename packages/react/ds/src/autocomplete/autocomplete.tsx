@@ -48,14 +48,8 @@ const propagateOnChange =
   (inputValue: string) => {
     if (onChange) {
       const syntheticEvent = {
-        target: {
-          name,
-          value: inputValue,
-        },
-        currentTarget: {
-          name,
-          value: inputValue,
-        },
+        target: { name, value: inputValue },
+        currentTarget: { name, value: inputValue },
         type: 'change',
         bubbles: true,
         isTrusted: true,
@@ -228,7 +222,6 @@ export const Autocomplete = forwardRef<HTMLInputElement, AutocompleteProps>(
           const candidateOption = state.autocompleteOptions[
             index
           ] as AutocompleteOptionItemElement;
-          // it skips disabled items
           if (!candidateOption.props.disabled) {
             return index;
           }
@@ -236,28 +229,46 @@ export const Autocomplete = forwardRef<HTMLInputElement, AutocompleteProps>(
         return -1;
       };
 
-      if (event.key === 'ArrowDown') {
-        event.preventDefault();
-        dispatch({
-          type: SET_HIGHLIGHTED_INDEX,
-          payload: state.isOpen
-            ? findNextEnabledIndex(state.highlightedIndex, 1)
-            : 0,
-        });
-        dispatch({ type: SET_IS_OPEN, payload: true });
-      } else if (event.key === 'ArrowUp') {
-        event.preventDefault();
-        dispatch({
-          type: SET_HIGHLIGHTED_INDEX,
-          payload: findNextEnabledIndex(state.highlightedIndex, -1),
-        });
-        dispatch({ type: SET_IS_OPEN, payload: true });
-      } else if (event.key === 'Enter' && state.highlightedIndex >= 0) {
-        const selected = state.autocompleteOptions[
-          state.highlightedIndex
-        ] as AutocompleteOptionItemElement;
-        if (selected && selected.props.value && !selected.props.disabled) {
-          handleOnSelectItem(selected.props.value);
+      switch (event.key) {
+        case 'ArrowDown': {
+          event.preventDefault();
+          dispatch({
+            type: SET_HIGHLIGHTED_INDEX,
+            payload: state.isOpen
+              ? findNextEnabledIndex(state.highlightedIndex, 1)
+              : 0,
+          });
+          dispatch({ type: SET_IS_OPEN, payload: true });
+          break;
+        }
+        case 'ArrowUp': {
+          event.preventDefault();
+          dispatch({
+            type: SET_HIGHLIGHTED_INDEX,
+            payload: findNextEnabledIndex(state.highlightedIndex, -1),
+          });
+          dispatch({ type: SET_IS_OPEN, payload: true });
+          break;
+        }
+        case 'Enter':
+        case 'NumpadEnter': {
+          event.preventDefault();
+          if (state.highlightedIndex >= 0) {
+            const selected = state.autocompleteOptions[
+              state.highlightedIndex
+            ] as AutocompleteOptionItemElement;
+            if (selected && selected.props.value && !selected.props.disabled) {
+              handleOnSelectItem(selected.props.value);
+            }
+          }
+          break;
+        }
+        case 'Escape': {
+          dispatch({ type: SET_IS_OPEN, payload: false });
+          break;
+        }
+        default: {
+          break;
         }
       }
     };

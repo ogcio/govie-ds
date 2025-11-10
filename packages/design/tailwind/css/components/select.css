@@ -41,11 +41,8 @@
   @apply gi-flex
   gi-flex-col
   gi-px-0
-  gi-text-sm
   gi-leading-5
   
-
-  xs:gi-text-md
   xs:gi-leading-5;
 }
 
@@ -56,7 +53,8 @@
 .gi-select-menu-option-container {
   @apply gi-overflow-y-auto
   gi-overflow-x-hidden
-  gi-scroll-smooth;
+  gi-scroll-smooth
+  gi-py-2;
 }
 
 .gi-select-menu-loading {
@@ -76,7 +74,10 @@
 }
 
 .gi-select-option-item {
-  @apply gi-my-2 gi-mx-1 gi-px-2 gi-py-1
+  @apply gi-mx-1
+  gi-px-2
+  gi-my-1
+  gi-py-1
   gi-flex
   gi-items-start
   gi-justify-between 
