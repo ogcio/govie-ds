@@ -391,8 +391,7 @@ export const TestTabs: Story = {
   },
 };
 
-export const TestTabsWithIcon: Story = {
-  tags: ['skip-playwright'],
+export const TabsWithIcon: Story = {
   args: {
     ariaLabelledBy: 'tabs',
     id: 'tab-1',
