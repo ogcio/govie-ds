@@ -122,6 +122,7 @@ export const Default: Story = {
 
     expect(tab1).toHaveAttribute('aria-selected', 'false');
     expect(tab2).toHaveAttribute('aria-selected', 'true');
+    await userEvent.keyboard('{Tab}');
   },
 };
 
@@ -177,6 +178,7 @@ export const Dark: Story = {
     expect(tab3).toHaveAttribute('aria-selected', 'true');
 
     await userEvent.click(tab1);
+    await userEvent.keyboard('{Tab}');
   },
 };
 
