@@ -108,22 +108,6 @@ export const DataTableHeaderFilter: React.FC<DataTableHeaderTypeProps> = ({
     </div>
   );
 };
-
-export const DataTableHeaderFilterTitle: React.FC<DataTableHeaderTypeProps> = ({
-  children,
-  className,
-  ...props
-}) => {
-  return (
-    <div
-      className={cn('gi-data-table-header-filter-title', className)}
-      {...props}
-    >
-      <Heading as="h6">{children}</Heading>
-    </div>
-  );
-};
-
 export const DataTableHeaderFilterContent: React.FC<
   DataTableHeaderTypeProps
 > = ({ children, className, ...props }) => {
@@ -218,7 +202,6 @@ DataTableHeaderSearch.displayName = 'DataTableHeaderSearch';
 DataTableHeaderActions.displayName = 'DataTableHeaderActions';
 DataTableHeaderFilter.displayName = 'DataTableHeaderFilter';
 DataTableHeaderFilterList.displayName = 'DataTableHeaderFilterList';
-DataTableHeaderFilterTitle.displayName = 'DataTableHeaderFilterTitle';
 DataTableHeaderFilterContent.displayName = 'DataTableHeaderFilterContent';
 DataTableHeaderFilterContentTitle.displayName =
   'DataTableHeaderFilterContentTitle';
@@ -238,9 +221,6 @@ Object.defineProperty(DataTableHeaderFilter, 'componentType', {
 });
 Object.defineProperty(DataTableHeaderFilterList, 'componentType', {
   value: 'DataTableHeaderFilterList',
-});
-Object.defineProperty(DataTableHeaderFilterTitle, 'componentType', {
-  value: 'DataTableHeaderFilterTitle',
 });
 Object.defineProperty(DataTableHeaderFilterContent, 'componentType', {
   value: 'DataTableHeaderFilterContent',

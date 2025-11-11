@@ -11,11 +11,7 @@
 }
 
 .gi-data-table-header-filter-content {
-  @apply gi-flex gi-flex-col gi-gap-2 gi-px-6;
-}
-
-.gi-data-table-header-filter-title {
-  @apply gi-border-b gi-px-6 gi-py-4;
+  @apply gi-flex gi-flex-col gi-gap-2 gi-px-6 gi-py-4 gi-flex-1 gi-overflow-auto;
 }
 
 .gi-data-table-header-filter {
@@ -23,7 +19,7 @@
 }
 
 .gi-data-table-header-actions {
-  @apply gi-flex gi-items-center gi-ml-auto gi-gap-4;
+  @apply gi-flex gi-items-center gi-ml-auto gi-gap-4 gi-flex-shrink;
 }
 
 .gi-data-table-header-search {
