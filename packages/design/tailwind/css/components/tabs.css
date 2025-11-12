@@ -11,6 +11,7 @@
 
   hover:gi-text-color-icon-system-neutral-interactive-hover
   hover:gi-bg-color-surface-system-neutral-interactive-hover
+  hover:gi-fill-color-text-system-neutral-interactive-default
 
   gi-focus-state-outline
   focus:gi-shadow-[inset_0_0_0_2px]
