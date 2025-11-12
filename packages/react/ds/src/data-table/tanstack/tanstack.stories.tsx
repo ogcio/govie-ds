@@ -28,6 +28,7 @@ import { Label } from '../../label/label.js';
 import { Link } from '../../link/link.js';
 import { Popover } from '../../popover/popover.js';
 import { SelectItem, SelectNative } from '../../select/select-native.js';
+import { SelectItemNext, SelectNext } from '../../select/select-next.js';
 import {
   Table,
   TableHead,
@@ -53,7 +54,6 @@ import {
   DataTableHeaderFilterContent,
   DataTableHeaderFilterContentTitle,
   DataTableHeaderFilterList,
-  DataTableHeaderFilterTitle,
   DataTableHeaderSearch,
 } from '../data-table-header.js';
 import { DataTableSelectedRowsBanner } from '../data-table-selected-rows.js';
@@ -90,7 +90,6 @@ const meta = {
 } satisfies Meta<FC>;
 
 type Story = StoryObj<typeof meta>;
-
 export type Person = {
   id: string;
   firstName: string;
@@ -101,6 +100,11 @@ export type Person = {
   status: 'pending' | 'in progress' | 'accepted' | 'declined';
   isActive: boolean;
   disabledFields?: string[];
+};
+
+type FilterState = {
+  selectedFilters: string[];
+  dateRange: { from: string; to: string };
 };
 
 const getFieldError = (
@@ -146,6 +150,46 @@ const booleanTrueFilter: FilterFn<any> = (row, columnId, filterValue) => {
   return row.getValue<boolean>(columnId) === true;
 };
 
+type DateRangeFilterValue = {
+  from?: string;
+  to?: string;
+};
+
+const dateRangeFilter: FilterFn<Person> = (row, columnId, filterValue) => {
+  const { from, to } = (filterValue ?? {}) as DateRangeFilterValue;
+
+  if (!from && !to) {
+    return true;
+  }
+
+  const cellValue = row.getValue<string | undefined>(columnId);
+  if (!cellValue) {
+    return false;
+  }
+
+  const cellDate = new Date(cellValue);
+  if (Number.isNaN(cellDate.getTime())) {
+    return false;
+  }
+
+  if (from && to) {
+    const fromDate = new Date(from);
+    const toDate = new Date(to);
+    return cellDate >= fromDate && cellDate <= toDate;
+  }
+
+  if (from) {
+    const fromDate = new Date(from);
+    return cellDate >= fromDate;
+  }
+
+  if (to) {
+    const toDate = new Date(to);
+    return cellDate <= toDate;
+  }
+
+  return true;
+};
 export const WithReactHookForm: Story = {
   tags: ['skip-playwright'],
   render: () => {
@@ -159,10 +203,16 @@ export const WithReactHookForm: Story = {
     });
     const [columnFilters, setColumnFilters] = useState<any>([]);
     const [filterOpen, setFilterOpen] = useState(false);
-    const [appliedFilters, setAppliedFilters] = useState<string[]>([]);
-    const [temporarySelectedFilters, setTemporarySelectedFilters] = useState<
-      string[]
-    >([]);
+
+    // Unified filter state
+    const [appliedFilters, setAppliedFilters] = useState<FilterState>({
+      selectedFilters: [],
+      dateRange: { from: '', to: '' },
+    });
+    const [temporaryFilters, setTemporaryFilters] = useState<FilterState>({
+      selectedFilters: [],
+      dateRange: { from: '', to: '' },
+    });
 
     const triggerRef = useRef<HTMLButtonElement>(null!);
 
@@ -199,12 +249,25 @@ export const WithReactHookForm: Story = {
     );
 
     const handleTemporaryCheckboxChange = (value: string) => {
-      setTemporarySelectedFilters((previous) => {
-        if (previous.includes(value)) {
-          return previous.filter((current) => current !== value);
-        }
-        return [...previous, value];
-      });
+      setTemporaryFilters((previous) => ({
+        ...previous,
+        selectedFilters: previous.selectedFilters.includes(value)
+          ? previous.selectedFilters.filter((current) => current !== value)
+          : [...previous.selectedFilters, value],
+      }));
+    };
+
+    const handleTemporaryDateChange = (
+      field: keyof FilterState['dateRange'],
+      value: string,
+    ) => {
+      setTemporaryFilters((previous) => ({
+        ...previous,
+        dateRange: {
+          ...previous.dateRange,
+          [field]: value,
+        },
+      }));
     };
 
     const columns = useMemo<ColumnDef<Person>[]>(() => {
@@ -323,6 +386,33 @@ export const WithReactHookForm: Story = {
               }}
             />
           ),
+        },
+        {
+          accessorKey: 'dateOfBirth',
+          header: 'Date of Birth',
+          cell: ({ row, column, getValue }) => (
+            <EditableTableCell
+              value={getValue()}
+              rowIndex={row.index}
+              columnId={column.id}
+              setData={setData}
+              editor={{
+                type: 'text',
+                props: {
+                  'aria-label': 'Date of Birth input',
+                  type: 'date',
+                  ...register(`${row.original.id}.${column.id}` as never, {
+                    required: true,
+                  }),
+                  error: !!getFieldError(errors, row.original.id, column.id),
+                  disabled:
+                    !!row.original?.disabledFields?.includes('dateOfBirth'),
+                  placeholder: 'YYYY-MM-DD',
+                },
+              }}
+            />
+          ),
+          filterFn: dateRangeFilter,
         },
         {
           accessorKey: 'city',
@@ -456,11 +546,11 @@ export const WithReactHookForm: Story = {
       'in progress': TagTypeEnum.Warning,
     };
 
-    const applyFiltersToTable = (selected: string[]) => {
+    const applyFiltersToTable = (filters: FilterState) => {
       const statusValues: string[] = [];
       let activeSelected = false;
 
-      for (const value of selected) {
+      for (const value of filters.selectedFilters) {
         if (value === 'active') {
           activeSelected = true;
         }
@@ -486,18 +576,32 @@ export const WithReactHookForm: Story = {
         activeColumn.setFilterValue(activeSelected === true ? true : undefined);
       }
 
+      const dobColumn = table.getColumn('dateOfBirth');
+      if (dobColumn) {
+        dobColumn.setFilterValue(
+          filters.dateRange.from || filters.dateRange.to
+            ? filters.dateRange
+            : undefined,
+        );
+      }
+
       table.setPageIndex(0);
     };
 
     const handleApplyFilter = () => {
-      setAppliedFilters([...temporarySelectedFilters]);
-      applyFiltersToTable(temporarySelectedFilters);
+      setAppliedFilters({ ...temporaryFilters });
+      applyFiltersToTable(temporaryFilters);
       setFilterOpen(false);
     };
 
     const handleClearFilters = () => {
-      setTemporarySelectedFilters([]);
-      setAppliedFilters([]);
+      const emptyFilters: FilterState = {
+        selectedFilters: [],
+        dateRange: { from: '', to: '' },
+      };
+
+      setTemporaryFilters(emptyFilters);
+      setAppliedFilters(emptyFilters);
 
       const statusColumn = table.getColumn('status');
       if (statusColumn) {
@@ -507,32 +611,60 @@ export const WithReactHookForm: Story = {
       if (activeColumn) {
         activeColumn.setFilterValue(undefined);
       }
+      const dobColumn = table.getColumn('dateOfBirth');
+      if (dobColumn) {
+        dobColumn.setFilterValue(undefined);
+      }
 
       table.setPageIndex(0);
       setFilterOpen(false);
     };
 
     const handleRemoveFilter = (id: string) => {
-      const newApplied = appliedFilters.filter((current) => current !== id);
-      setAppliedFilters(newApplied);
-      setTemporarySelectedFilters(newApplied);
-      applyFiltersToTable(newApplied);
+      const newFilters: FilterState = {
+        selectedFilters: appliedFilters.selectedFilters.filter(
+          (current) => current !== id,
+        ),
+        dateRange:
+          id === 'dateRange' ? { from: '', to: '' } : appliedFilters.dateRange,
+      };
+
+      setAppliedFilters(newFilters);
+      setTemporaryFilters(newFilters);
+      applyFiltersToTable(newFilters);
     };
 
     const handleFilterOpen = () => {
-      setTemporarySelectedFilters([...appliedFilters]);
+      setTemporaryFilters({ ...appliedFilters });
       setFilterOpen(true);
     };
 
     const handlePopoverOpenChange = (open: boolean) => {
       if (open) {
-        setTemporarySelectedFilters([...appliedFilters]);
+        setTemporaryFilters({ ...appliedFilters });
       }
       setFilterOpen(open);
     };
 
     const selectedRows = table.getSelectedRowModel().rows;
     const isSelectedRows = selectedRows.length > 0;
+
+    // Build active filters list for display
+    const activeFiltersList = [
+      ...filterOptions
+        .filter((option) =>
+          appliedFilters.selectedFilters.includes(option.value),
+        )
+        .map((option) => ({ id: option.value, label: option.label })),
+      ...(appliedFilters.dateRange.from || appliedFilters.dateRange.to
+        ? [
+            {
+              id: 'dateRange',
+              label: `Date: ${appliedFilters.dateRange.from || 'Any'} - ${appliedFilters.dateRange.to || 'Any'}`,
+            },
+          ]
+        : []),
+    ];
 
     return (
       <div className="gi-p-2">
@@ -584,9 +716,31 @@ export const WithReactHookForm: Story = {
               onOpenChange={handlePopoverOpenChange}
               className="!gi-bg-white"
             >
-              <div className="gi-w-64">
-                <DataTableHeaderFilterTitle>Filters</DataTableHeaderFilterTitle>
+              <div className="gi-flex gi-flex-col gi-max-h-100 gi-max-w-100">
                 <DataTableHeaderFilterContent>
+                  <DataTableHeaderFilterContentTitle>
+                    Date Range
+                  </DataTableHeaderFilterContentTitle>
+                  <div className="gi-flex gi-gap-2">
+                    <InputText
+                      id="from-date"
+                      type="date"
+                      placeholder="From"
+                      value={temporaryFilters.dateRange.from}
+                      onChange={(event) =>
+                        handleTemporaryDateChange('from', event.target.value)
+                      }
+                    />
+                    <InputText
+                      id="to-date"
+                      type="date"
+                      placeholder="To"
+                      value={temporaryFilters.dateRange.to}
+                      onChange={(event) =>
+                        handleTemporaryDateChange('to', event.target.value)
+                      }
+                    />
+                  </div>
                   <DataTableHeaderFilterContentTitle>
                     Status & Activity
                   </DataTableHeaderFilterContentTitle>
@@ -596,7 +750,9 @@ export const WithReactHookForm: Story = {
                       id={`checkbox-${option.id}`}
                       label={option.label}
                       value={option.id}
-                      checked={temporarySelectedFilters.includes(option.value)}
+                      checked={temporaryFilters.selectedFilters.includes(
+                        option.value,
+                      )}
                       onChange={() =>
                         handleTemporaryCheckboxChange(option.value)
                       }
@@ -604,6 +760,7 @@ export const WithReactHookForm: Story = {
                     />
                   ))}
                 </DataTableHeaderFilterContent>
+
                 <DataTableHeaderFilterActions>
                   <Button
                     onClick={handleClearFilters}
@@ -634,9 +791,7 @@ export const WithReactHookForm: Story = {
           </DataTableHeaderActions>
 
           <DataTableHeaderFilterList
-            filters={filterOptions
-              .filter((option) => appliedFilters.includes(option.value))
-              .map((option) => ({ id: option.value, label: option.label }))}
+            filters={activeFiltersList}
             onRemove={handleRemoveFilter}
             onClear={handleClearFilters}
           />
@@ -736,7 +891,6 @@ export const WithReactHookForm: Story = {
     );
   },
 };
-
 export const DataTableHeaderBasic: Story = {
   parameters: {
     docs: {
@@ -757,14 +911,6 @@ export const DataTableHeaderBasic: Story = {
       { id: 'value-2', label: 'Option 2', value: 'value-2' },
       { id: 'value-3', label: 'Option 3', value: 'value-3' },
     ];
-
-    const handleCheckboxChange = (value: string) => {
-      setTemporaryFilters((previous) =>
-        previous.includes(value)
-          ? previous.filter((v) => v !== value)
-          : [...previous, value],
-      );
-    };
 
     const handleApply = () => {
       setAppliedFilters([...temporaryFilters]);
@@ -817,25 +963,29 @@ export const DataTableHeaderBasic: Story = {
               }
               setOpen(open);
             }}
-            className="!gi-bg-white"
+            className="!gi-bg-white gi-max-w-100"
           >
-            <div className="gi-w-64">
-              <DataTableHeaderFilterTitle>Filters</DataTableHeaderFilterTitle>
+            <div>
               <DataTableHeaderFilterContent>
                 <DataTableHeaderFilterContentTitle>
-                  Category
+                  Date Range
                 </DataTableHeaderFilterContentTitle>
-                {options.map((opt) => (
-                  <InputCheckbox
-                    key={opt.id}
-                    id={`checkbox-${opt.id}`}
-                    label={opt.label}
-                    value={opt.id}
-                    checked={temporaryFilters.includes(opt.value)}
-                    onChange={() => handleCheckboxChange(opt.value)}
-                    size="md"
-                  />
-                ))}
+                <div className="gi-flex gi-gap-2">
+                  <InputText id="from-date" type="date" placeholder="From" />
+                  <InputText id="to-date" type="date" placeholder="To" />
+                </div>
+
+                <DataTableHeaderFilterContentTitle>
+                  Tags
+                </DataTableHeaderFilterContentTitle>
+                <SelectNext aria-label="Select" defaultValue="all" enableSearch>
+                  <SelectItemNext value="all" hidden>
+                    All
+                  </SelectItemNext>
+                  <SelectItemNext value="value-1">Option 1</SelectItemNext>
+                  <SelectItemNext value="value-2">Option 2</SelectItemNext>
+                  <SelectItemNext value="value-3">Option 3</SelectItemNext>
+                </SelectNext>
               </DataTableHeaderFilterContent>
               <DataTableHeaderFilterActions>
                 <Button onClick={handleClear} variant="flat" appearance="dark">
