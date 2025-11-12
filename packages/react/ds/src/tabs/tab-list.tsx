@@ -45,32 +45,70 @@ export const TabList = ({
     setActiveTab(foundCheckedTab ? checkedIndex : 0);
   }, []);
 
+  const getTabSection = (): HTMLElement | null => {
+    const section = document.querySelector(`#${tabName}`);
+    if (!section) {
+      return null;
+    }
+    return section as HTMLElement;
+  };
+
+  const showPanelByTabIndex = (tabIndex: number): void => {
+    const tabSection = getTabSection();
+    if (!tabSection) {
+      return;
+    }
+
+    const tabPanels =
+      tabSection.querySelectorAll<HTMLElement>('[role="tabpanel"]');
+
+    for (const tabPanel of tabPanels) {
+      tabPanel.style.display = 'none';
+      tabPanel.setAttribute('aria-hidden', 'true');
+    }
+
+    const tabElements = [
+      ...tabSection.querySelectorAll<HTMLElement>('[role="tab"]'),
+    ];
+
+    const selectedTab = tabElements.find((tabElement) => {
+      const index =
+        tabElement.dataset.index ?? tabElement.getAttribute('index');
+
+      if (index === null) {
+        return;
+      }
+
+      return Number(index) === tabIndex;
+    });
+
+    if (!selectedTab) {
+      return;
+    }
+
+    const controlsId = selectedTab.getAttribute('aria-controls');
+    if (!controlsId) {
+      return;
+    }
+
+    const targetPanel = tabSection.querySelector<HTMLElement>(`#${controlsId}`);
+
+    if (!targetPanel) {
+      return;
+    }
+
+    targetPanel.style.display = 'block';
+    targetPanel.setAttribute('aria-hidden', 'false');
+  };
+
+  useEffect(() => {
+    showPanelByTabIndex(activeTab ?? 0);
+  }, [activeTab]);
+
   const handleOnTabClick =
     (index: number, originalHandler?: (event: TabMouseClickEvent) => void) =>
     (event: TabMouseClickEvent) => {
       setActiveTab(index);
-
-      const tabs = document.querySelector(`#${tabName}`) as HTMLElement;
-
-      const tabPanels: HTMLElement[] = [
-        ...tabs.querySelectorAll(`[role=tabpanel]`),
-      ] as HTMLElement[];
-
-      for (const tabPanel of tabPanels) {
-        tabPanel.style.display = 'none';
-      }
-      const ariaControlAttribute =
-        event.currentTarget.getAttribute('aria-controls');
-      if (!ariaControlAttribute) {
-        return;
-      }
-
-      const tabpanel = document.querySelector(
-        `#${ariaControlAttribute}`,
-      ) as HTMLElement;
-
-      tabpanel.style.display = 'block';
-
       if (originalHandler) {
         originalHandler(event);
       }

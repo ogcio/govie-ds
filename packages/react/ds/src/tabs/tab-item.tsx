@@ -1,6 +1,6 @@
 'use client';
 
-import { useEffect, useRef, forwardRef, FC } from 'react';
+import { forwardRef, FC, Ref } from 'react';
 import { tv } from 'tailwind-variants';
 import { cn } from '../cn.js';
 import { Icon } from '../icon/icon.js';
@@ -51,19 +51,10 @@ export const InternalTabItem = forwardRef<
     stretch,
     icon,
     className,
-
     ...rest
   } = props;
 
   const valueSlug = slugify(value);
-  const internalRef = useRef<HTMLButtonElement | HTMLAnchorElement>(null);
-  const clickButtonRef = useRef(false);
-
-  useEffect(() => {
-    if (checked && !clickButtonRef.current) {
-      internalRef.current?.click();
-    }
-  }, [checked]);
 
   const sharedA11y = {
     role: 'tab',
@@ -112,14 +103,7 @@ export const InternalTabItem = forwardRef<
         onKeyDown={(event) => {
           onTabKeyDown?.(event);
         }}
-        ref={(element) => {
-          internalRef.current = element;
-          if (typeof ref === 'function') {
-            ref(element);
-          } else if (ref) {
-            ref.current = element;
-          }
-        }}
+        ref={ref as Ref<HTMLAnchorElement>}
       >
         {Content}
       </a>
@@ -130,14 +114,7 @@ export const InternalTabItem = forwardRef<
     <PrimitiveButton
       {...sharedA11y}
       {...rest}
-      ref={(element) => {
-        internalRef.current = element;
-        if (typeof ref === 'function') {
-          ref(element);
-        } else if (ref) {
-          ref.current = element;
-        }
-      }}
+      ref={ref as Ref<HTMLButtonElement>}
       className={cn(
         classes,
         'gi-inline-flex gi-items-center gi-gap-2',
