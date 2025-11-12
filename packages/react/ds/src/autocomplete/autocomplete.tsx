@@ -265,7 +265,6 @@ export const Autocomplete = forwardRef<HTMLInputElement, AutocompleteProps>(
         }
         case 'Enter':
         case 'NumpadEnter': {
-          dispatch({ type: SET_IS_OPEN, payload: true });
           event.preventDefault();
           if (state.highlightedIndex >= 0) {
             const selected = state.autocompleteOptions[
