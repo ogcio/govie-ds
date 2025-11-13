@@ -127,7 +127,12 @@
     {
       "type": "linked-versions",
       "groupName": "tokens-group",
-      "components": ["tokens", "themes-govie", "design-theme-builder"]
+      "components": [
+        "tokens",
+        "themes-govie",
+        "design-theme-builder",
+        "design-tailwind"
+      ]
     }
   ],
   "$schema": "https://raw.githubusercontent.com/googleapis/release-please/main/schemas/config.json"
