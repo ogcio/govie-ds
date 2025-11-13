@@ -6,7 +6,6 @@ import {
   isValidElement,
   useEffect,
   useImperativeHandle,
-  useMemo,
   useRef,
   useState,
 } from 'react';
@@ -15,7 +14,7 @@ import { useDomId } from '../hooks/use-dom-id.js';
 import { translate as t } from '../i18n/utility.js';
 import { InputText } from '../input-text/input-text.js';
 import { Popover } from '../popover/popover.js';
-import { getSpecialComponentType } from '../utilities.js';
+import { cycleEnabledIndex } from '../utilities.js';
 import {
   SelectMenu,
   SelectMenuGroupItem,
@@ -58,75 +57,18 @@ export const SelectNext = forwardRef<HTMLInputElement, SelectNextProps>(
     );
     const [isOpen, setIsOpen] = useState(false);
     const [inputValue, setInputValue] = useState('');
-    const [activeIndex, setActiveIndex] = useState<number | null>(null);
+    const [highlightedIndex, setHighlightedIndex] = useState<number>(-1);
 
     useImperativeHandle(ref, () => inputRef.current as HTMLInputElement);
 
-    const validOptions = Children.toArray(children).filter((child) =>
+    const childrenElements = Children.toArray(children).filter((child) =>
       isValidElement(child),
     ) as React.ReactElement[];
-
-    const flatOptions = useMemo(() => {
-      const out = [];
-
-      for (const child of validOptions) {
-        const type = getSpecialComponentType(child);
-
-        if (type === 'SelectItemNext') {
-          const it = child as SelectNextOptionItemElement;
-          out.push({
-            value: String(it.props.value),
-            disabled: it.props.disabled,
-            label: String(it.props.children ?? ''),
-          });
-          continue;
-        }
-
-        if (type === 'SelectGroupItemNext') {
-          const grp = child as SelectNextGroupItemElement;
-          const groupChildren = Children.toArray(grp.props.children);
-
-          for (const subChild of groupChildren) {
-            const subType = getSpecialComponentType(subChild);
-            if (subType !== 'SelectItemNext') {
-              continue;
-            }
-
-            const it = subChild as SelectNextOptionItemElement;
-            out.push({
-              value: String(it.props.value),
-              disabled: it.props.disabled,
-              label: String(it.props.children ?? ''),
-            });
-          }
-        }
-      }
-
-      return out;
-    }, [validOptions]);
-
-    const findNextEnabledIndex = (
-      currentIndex: number,
-      direction: 1 | -1,
-    ): number => {
-      const total = flatOptions.length;
-      if (total === 0) {
-        return -1;
-      }
-      let index = currentIndex;
-      for (let step = 0; step < total; step += 1) {
-        index = (index + direction + total) % total;
-        if (!flatOptions[index]?.disabled) {
-          return index;
-        }
-      }
-      return -1;
-    };
 
     useEffect(() => {
       let found: SelectNextOptionItemElement | undefined;
 
-      for (const child of validOptions) {
+      for (const child of childrenElements) {
         const type = (child.type as any)?.componentType;
 
         if (type === 'SelectItemNext') {
@@ -167,11 +109,11 @@ export const SelectNext = forwardRef<HTMLInputElement, SelectNextProps>(
           inputRef.current.value = '';
         }
       }
-    }, [internalValue, validOptions]);
+    }, [internalValue, childrenElements]);
 
     useEffect(() => {
       if (!isOpen) {
-        setActiveIndex(-1);
+        setHighlightedIndex(-1);
       }
     }, [isOpen]);
 
@@ -222,83 +164,55 @@ export const SelectNext = forwardRef<HTMLInputElement, SelectNextProps>(
       }
     };
 
-    const currentIndex = useMemo(() => {
-      const value = internalValue ?? '';
-      return flatOptions.findIndex((option) => option.value === value);
-    }, [flatOptions, internalValue]);
-
-    const hasOptions = () => !!flatOptions?.length;
-
     const handleKeyDown = (event: React.KeyboardEvent) => {
       if (disabled) {
         return;
       }
 
       switch (event.key) {
-        case 'ArrowDown': {
-          event.preventDefault();
-          setIsOpen(true);
-
-          if (!hasOptions()) {
-            return;
-          }
-
-          setActiveIndex((index) => {
-            if (!isOpen) {
-              return 0;
-            }
-            const seed = index ?? (currentIndex >= 0 ? currentIndex : -1);
-            const next = findNextEnabledIndex(seed, 1);
-            return next < 0 ? (index ?? currentIndex ?? 0) : next;
-          });
-          return;
-        }
-
+        case 'ArrowDown':
         case 'ArrowUp': {
           event.preventDefault();
-          setIsOpen(true);
-
-          if (!hasOptions()) {
-            return;
-          }
-          setActiveIndex((index) => {
-            const seed = index ?? (currentIndex >= 0 ? currentIndex : -1);
-            const previous =
-              seed === -1
-                ? flatOptions.length - 1
-                : findNextEnabledIndex(seed, -1);
-            return previous < 0 ? (index ?? currentIndex ?? 0) : previous;
+          const direction = event.key === 'ArrowDown' ? 1 : -1;
+          setHighlightedIndex((previous) => {
+            if (previous === -1) {
+              return direction === 1
+                ? cycleEnabledIndex(childrenElements, previous, direction)
+                : childrenElements.length - 1;
+            }
+            return cycleEnabledIndex(childrenElements, previous, direction);
           });
-          return;
+          setIsOpen(true);
+          break;
         }
 
         case 'Enter':
         case 'NumpadEnter': {
           event.preventDefault();
-          if (isOpen && activeIndex != null && flatOptions[activeIndex]) {
-            const opt = flatOptions[activeIndex];
-            if (!opt.disabled) {
-              selectValue(opt.value);
+          if (
+            isOpen &&
+            highlightedIndex != -1 &&
+            childrenElements[highlightedIndex]
+          ) {
+            const opt = childrenElements[highlightedIndex];
+            if (!(opt.props as any)?.disabled) {
+              selectValue((opt.props as any).value);
             }
           } else {
             setIsOpen(true);
           }
-          return;
+          break;
         }
 
         case 'Tab': {
           setIsOpen(false);
-          return;
+          break;
         }
 
         case 'Escape': {
           event.preventDefault();
           setIsOpen(false);
-          return;
-        }
-
-        default: {
-          return;
+          break;
         }
       }
     };
@@ -416,22 +330,21 @@ export const SelectNext = forwardRef<HTMLInputElement, SelectNextProps>(
             }}
             enableSearch={enableSearch}
           >
-            {validOptions.map((child, optionIndex) => {
+            {childrenElements.map((child, optionIndex) => {
               const type = (child?.type as any)?.componentType;
 
               if (type === 'SelectItemNext') {
                 const typedChild = child as SelectNextOptionItemElement;
-                const isSelected =
-                  internalValue?.toString() ===
-                  typedChild.props.value.toString();
-                const isActive = activeIndex === optionIndex;
                 return (
                   <SelectMenuOption
                     key={`SelectItemNext-${typedChild.props.value.toString()}`}
                     {...typedChild.props}
-                    selected={isSelected}
+                    isHighlighted={highlightedIndex === optionIndex}
+                    selected={
+                      internalValue?.toString() ===
+                      typedChild.props.value.toString()
+                    }
                     index={optionIndex}
-                    isHighlighted={isActive}
                   />
                 );
               } else if (type === 'SelectGroupItemNext') {
@@ -443,21 +356,20 @@ export const SelectNext = forwardRef<HTMLInputElement, SelectNextProps>(
                     const optionProps = (
                       optionChild as SelectNextOptionItemElement
                     ).props;
-                    const isSelected =
-                      internalValue?.toString() ===
-                      optionProps.value.toString();
-                    const isActive = activeIndex === optionIndex;
                     return (
                       <SelectMenuOption
                         key={`SelectGroupItemNext-SelectItemNext-${optionProps.value.toString()}`}
                         {...optionProps}
-                        selected={isSelected}
+                        isHighlighted={highlightedIndex === optionIndex}
+                        selected={
+                          internalValue?.toString() ===
+                          optionProps.value.toString()
+                        }
                         onChange={(value) => {
                           setIsOpen(false);
                           selectValue(value);
                         }}
                         index={index}
-                        isHighlighted={isActive}
                       />
                     );
                   });

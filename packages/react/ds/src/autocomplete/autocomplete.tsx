@@ -23,6 +23,7 @@ import {
   SelectNextGroupItemElement,
   SelectNextOptionItemElement,
 } from '../select/types.js';
+import { cycleEnabledIndex } from '../utilities.js';
 import {
   AUTOCOMPLETE_ACTIONS,
   AutocompleteItemProps,
@@ -220,46 +221,30 @@ export const Autocomplete = forwardRef<HTMLInputElement, AutocompleteProps>(
       propagateOnBlur(onAutocompleteBlur, name)(current);
     };
 
-    const findNextEnabledIndex = (
-      currentIndex: number,
-      direction: 1 | -1,
-    ): number => {
-      const total = state.autocompleteOptions.length;
-      if (total === 0) {
-        return -1;
-      }
-      let index = currentIndex;
-      for (let step = 0; step < total; step += 1) {
-        index = (index + direction + total) % total;
-        if (!state.autocompleteOptions[index]?.disabled) {
-          return index;
-        }
-      }
-      return -1;
-    };
-
     const handleOnKeyDown = (event: React.KeyboardEvent<HTMLInputElement>) => {
       switch (event.key) {
-        case 'ArrowDown': {
-          event.preventDefault();
-          dispatch({
-            type: SET_HIGHLIGHTED_INDEX,
-            payload: state.isOpen
-              ? findNextEnabledIndex(state.highlightedIndex, 1)
-              : 0,
-          });
-          dispatch({ type: SET_IS_OPEN, payload: true });
-          break;
-        }
+        case 'ArrowDown':
         case 'ArrowUp': {
           event.preventDefault();
-          dispatch({
-            type: SET_HIGHLIGHTED_INDEX,
-            payload:
-              state.highlightedIndex === -1
-                ? state.autocompleteOptions.length - 1
-                : findNextEnabledIndex(state.highlightedIndex, -1),
-          });
+          let newIndex;
+          const direction = event.key === 'ArrowDown' ? 1 : -1;
+          if (state.highlightedIndex === -1) {
+            newIndex =
+              direction === 1
+                ? cycleEnabledIndex(
+                    state.autocompleteOptions,
+                    state.highlightedIndex,
+                    direction,
+                  )
+                : state.autocompleteOptions.length - 1;
+          } else {
+            newIndex = cycleEnabledIndex(
+              state.autocompleteOptions,
+              state.highlightedIndex,
+              direction,
+            );
+          }
+          dispatch({ type: SET_HIGHLIGHTED_INDEX, payload: newIndex });
           dispatch({ type: SET_IS_OPEN, payload: true });
           break;
         }
