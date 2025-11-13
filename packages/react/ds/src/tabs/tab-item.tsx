@@ -37,7 +37,7 @@ export const TabItem: FC<TabItemProps> = () => null;
 export const InternalTabItem = forwardRef<
   HTMLButtonElement | HTMLAnchorElement,
   InternalTabItemProps
->(function InternalTabItem(props, ref) {
+>((props, ref) => {
   const {
     value,
     href,
@@ -66,23 +66,19 @@ export const InternalTabItem = forwardRef<
 
   const classes = tabItemVariants({ size, checked, stretch, labelAlignment });
 
-  const Border = (
-    <div
-      className={cn('gi-tab-item-border', {
-        'gi-bg-color-text-system-neutral-interactive-default':
-          checked && appearance === 'dark',
-        'gi-bg-color-border-tone-primary-accent-selected':
-          checked && appearance === 'default',
-      })}
-      aria-hidden="true"
-    />
-  );
-
   const Content = (
     <>
       {icon && <Icon icon={icon} />}
       {children}
-      {Border}
+      <div
+        className={cn('gi-tab-item-border', {
+          'gi-bg-color-text-system-neutral-interactive-default':
+            checked && appearance === 'dark',
+          'gi-bg-color-border-tone-primary-accent-selected':
+            checked && appearance === 'default',
+        })}
+        aria-hidden="true"
+      />
     </>
   );
 
