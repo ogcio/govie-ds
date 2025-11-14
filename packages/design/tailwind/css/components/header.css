@@ -302,3 +302,56 @@ a.gi-list-item:hover,
   focus:gi-outline-color-shadow-intent-focus-default
   focus:gi-outline-offset-0;
 }
+.gi-myGovIdButton-mywelfare {
+  @apply gi-items-center
+  gi-justify-center
+  gi-min-w-[240px]
+  gi-text-white gi-bg-[#007da6]
+  gi-rounded-[5px] gi-mb-0
+  gi-py-4 gi-px-6
+  gi-text-center
+  gi-cursor-pointer
+  gi-border-0
+  gi-transition gi-duration-300
+  gi-font-bold gi-text-[16px]
+  hover:gi-no-underline hover:gi-opacity-80
+  focus:gi-outline focus:gi-outline-2
+  focus:gi-outline-[rgba(255,255,255,0.6)];
+}
+
+.gi-myGovIdButton-mywelfare > span {
+  @apply gi-align-middle gi-ml-[5px];
+}
+
+.gi-myGovIdButton-mywelfare > svg {
+  @apply gi-align-middle gi-ml-[5px];
+}
+
+.gi-myGovIdButton-myGgovId {
+  @apply gi-inline-flex
+  gi-items-center
+  gi-justify-center
+  gi-gap-2
+  gi-text-white
+  gi-bg-[#007da6]
+  gi-rounded-[4px]
+  gi-border-sm gi-border-white
+  gi-py-0
+  gi-cursor-pointer
+  gi-transition 
+  gi-duration-300
+  gi-no-underline
+  gi-font-semibold
+  gi-leading-[26px]
+  lg:gi-px-5
+  lg:gi-h-[46px]
+  lg:gi-text-[16px]
+  gi-w-full 
+  gi-px-[10px]
+  gi-h-[60px]
+  gi-text-[20px];
+}
+
+.gi-myGovIdButton-myGgovId > img {
+  @apply gi-w-8 gi-h-8 gi-align-middle gi-mb-[5px];
+}

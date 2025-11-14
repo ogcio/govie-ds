@@ -31,6 +31,7 @@ export const HeaderPrimaryMenu = forwardRef<
       isSpecialComponent(child, [
         'HeaderMenuItemLink',
         'HeaderMenuItemButton',
+        'HeaderMenuItemSlot',
         'HeaderMenuItemSeparator',
       ]),
     );
