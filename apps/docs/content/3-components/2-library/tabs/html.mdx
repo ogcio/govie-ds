@@ -26,7 +26,18 @@ component:
 The tabs component lets users navigate between related sections of content, displaying one section at a time.
 
 <Section current="html">
-
+<ComponentPreview>
+  <Tabs id="tab-container-1" ariaLabelledBy="tab-container-1">
+    <TabList>
+      <TabItem value="tab1">Tab 1</TabItem>
+      <TabItem value="tab2">Tab 2</TabItem>
+      <TabItem value="tab3">Tab 3</TabItem>
+    </TabList>
+    <TabPanel value="tab1">Tab 1 Content</TabPanel>
+    <TabPanel value="tab2">Tab 2 Content</TabPanel>
+    <TabPanel value="tab3">Tab 3 Content</TabPanel>
+  </Tabs>
+</ComponentPreview>
 ### Default
 
 <StorybookFrame componentId="tabs-html" story="default" className="h-[200px]" />

@@ -2,7 +2,12 @@
 import { useState, useEffect, Children, isValidElement } from 'react';
 import { cn } from '../cn.js';
 import { InternalTabItem } from './tab-item.js';
-import { TabItemProps, TabListProps } from './types.js';
+import {
+  TabItemProps,
+  TabKeyboardEvent,
+  TabListProps,
+  TabMouseClickEvent,
+} from './types.js';
 
 export const TabList = ({
   children,
@@ -40,45 +45,76 @@ export const TabList = ({
     setActiveTab(foundCheckedTab ? checkedIndex : 0);
   }, []);
 
-  const handleOnTabClick =
-    (
-      index: number,
-      originalHandler?: (
-        event: React.MouseEvent<HTMLButtonElement, MouseEvent>,
-      ) => void,
-    ) =>
-    (event: React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
-      setActiveTab(index);
+  const getTabSection = (): HTMLElement | null => {
+    const section = document.querySelector(`#${tabName}`);
+    if (!section) {
+      return null;
+    }
+    return section as HTMLElement;
+  };
 
-      const tabs = document.querySelector(`#${tabName}`) as HTMLElement;
+  const showPanelByTabIndex = (tabIndex: number): void => {
+    const tabSection = getTabSection();
+    if (!tabSection) {
+      return;
+    }
 
-      const tabPanels: HTMLElement[] = [
-        ...tabs.querySelectorAll(`[role=tabpanel]`),
-      ] as HTMLElement[];
+    const tabPanels =
+      tabSection.querySelectorAll<HTMLElement>('[role="tabpanel"]');
 
-      for (const tabPanel of tabPanels) {
-        tabPanel.style.display = 'none';
-      }
-      const ariaControlAttribute =
-        event.currentTarget.getAttribute('aria-controls');
-      if (!ariaControlAttribute) {
+    for (const tabPanel of tabPanels) {
+      tabPanel.style.display = 'none';
+      tabPanel.setAttribute('aria-hidden', 'true');
+    }
+
+    const tabElements = [
+      ...tabSection.querySelectorAll<HTMLElement>('[role="tab"]'),
+    ];
+
+    const selectedTab = tabElements.find((tabElement) => {
+      const index =
+        tabElement.dataset.index ?? tabElement.getAttribute('index');
+
+      if (index === null) {
         return;
       }
 
-      const tabpanel = document.querySelector(
-        `#${ariaControlAttribute}`,
-      ) as HTMLElement;
+      return Number(index) === tabIndex;
+    });
 
-      tabpanel.style.display = 'block';
+    if (!selectedTab) {
+      return;
+    }
 
+    const controlsId = selectedTab.getAttribute('aria-controls');
+    if (!controlsId) {
+      return;
+    }
+
+    const targetPanel = tabSection.querySelector<HTMLElement>(`#${controlsId}`);
+
+    if (!targetPanel) {
+      return;
+    }
+
+    targetPanel.style.display = 'block';
+    targetPanel.setAttribute('aria-hidden', 'false');
+  };
+
+  useEffect(() => {
+    showPanelByTabIndex(activeTab ?? 0);
+  }, [activeTab]);
+
+  const handleOnTabClick =
+    (index: number, originalHandler?: (event: TabMouseClickEvent) => void) =>
+    (event: TabMouseClickEvent) => {
+      setActiveTab(index);
       if (originalHandler) {
         originalHandler(event);
       }
     };
 
-  const handleOnTabKeyDown = (
-    event: React.KeyboardEvent<HTMLButtonElement>,
-  ) => {
+  const handleOnTabKeyDown = (event: TabKeyboardEvent) => {
     let direction = 0;
 
     if (event.key === 'ArrowLeft') {

@@ -37,23 +37,14 @@
   @apply gi-flex-none gi-input-checkbox gi-w-11 gi-h-11 checked:before:gi-w-7 checked:before:gi-h-3.5 checked:before:gi-left-1.5 checked:before:gi-top-2;
 }
 
-.gi-input-checkbox-small ~ label {
-  @apply gi-cursor-pointer gi-text-sm;
-}
-
-.gi-input-checkbox-medium ~ label {
-  @apply gi-cursor-pointer gi-text-md;
-}
-
-.gi-input-checkbox-large ~ label {
-  @apply gi-cursor-pointer gi-text-lg;
-}
 .gi-input-checkbox-container {
   @apply gi-gap-4 gi-flex gi-items-center;
 }
+
 .gi-input-checkbox-hint-container {
   @apply gi-flex gi-gap-4;
 }
+
 .gi-input-checkbox-hint-container > div {
   @apply gi-h-auto;
 }

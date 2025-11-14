@@ -45,6 +45,75 @@ component:
           ofType: 'React.ReactNode'
           description: 'TabList, TabItem, and TabPanel components'
           required: true
+
+    - name: 'TabItemProps'
+      fields:
+        - name: 'href'
+          ofType: 'string'
+          description: 'Optional href to render the tab as a link'
+          required: false
+        - name: 'checked'
+          ofType: 'boolean'
+          description: 'Whether the tab is currently selected'
+          required: false
+        - name: 'value'
+          ofType: 'string'
+          description: 'Unique identifier for the tab'
+          required: true
+        - name: 'children'
+          ofType: 'string'
+          description: 'Tab label text'
+          required: true
+        - name: 'onTabClick'
+          ofType: 'function'
+          description: 'Optional click event handler for the tab (MouseEvent<HTMLButtonElement, MouseEvent>)'
+          required: false
+        - name: 'icon'
+          ofType: 'IconId'
+          description: 'Optional icon to display in the tab'
+          required: false
+
+    - name: 'TabPanelProps'
+      fields:
+        - name: 'value'
+          ofType: 'string'
+          description: 'The value used to associate the panel with its corresponding tab'
+          required: true
+        - name: 'children'
+          ofType: 'React.ReactNode'
+          description: 'Content to be rendered inside the tab panel'
+          required: true
+
+    - name: 'TabListProps'
+      fields:
+        - name: 'tabName'
+          ofType: 'string'
+          description: 'Optional name for the tablist'
+          required: false
+        - name: 'appearance'
+          ofType: 'default | dark'
+          description: 'Visual appearance of the tabs'
+          required: false
+        - name: 'size'
+          ofType: 'sm | md'
+          description: 'Size of the tabs'
+          required: false
+        - name: 'stretch'
+          ofType: 'boolean'
+          description: 'If true all the tabs will space equally covering full available width'
+          required: false
+        - name: 'padding'
+          ofType: 'boolean'
+          description: 'If true, applies internal padding to the tab list'
+          required: false
+        - name: 'children'
+          ofType: 'ReactNode'
+          description: 'One or more TabItem elements'
+          required: true
+        - name: 'labelAlignment'
+          ofType: 'start | end | center'
+          description: 'Sets the label alignment'
+          required: false
   stories:
     - name: 'default'
       url: '/story/navigation-tabs--default'
@@ -64,6 +133,8 @@ component:
       url: '/story/navigation-tabs--with-stretch'
     - name: 'without-padding'
       url: '/story/navigation-tabs--without-padding'
+    - name: 'tabs-with-icon'
+      url: '/story/navigation-tabs--tabs-with-icon'
 ---
 
 # Tabs
@@ -71,7 +142,18 @@ component:
 The tabs component lets users navigate between related sections of content, displaying one section at a time.
 
 <Section current="react">
-
+<ComponentPreview>
+  <Tabs id="tab-container-1" ariaLabelledBy="tab-container-1">
+    <TabList>
+      <TabItem value="tab1">Tab 1</TabItem>
+      <TabItem value="tab2">Tab 2</TabItem>
+      <TabItem value="tab3">Tab 3</TabItem>
+    </TabList>
+    <TabPanel value="tab1">Tab 1 Content</TabPanel>
+    <TabPanel value="tab2">Tab 2 Content</TabPanel>
+    <TabPanel value="tab3">Tab 3 Content</TabPanel>
+  </Tabs>
+</ComponentPreview>
 ### Default
 
 <StorybookFrame
@@ -133,6 +215,14 @@ The tabs component lets users navigate between related sections of content, disp
 <StorybookFrame
   componentId="tabs-react"
   story="without-padding"
+  className="h-[200px]"
+/>
+
+### With Icon
+
+<StorybookFrame
+  componentId="tabs-react"
+  story="tabs-with-icon"
   className="h-[200px]"
 />
 
