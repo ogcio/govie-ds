@@ -131,7 +131,8 @@
         "tokens",
         "themes-govie",
         "design-theme-builder",
-        "design-tailwind"
+        "design-tailwind",
+        "design-tokens"
       ]
     }
   ],
