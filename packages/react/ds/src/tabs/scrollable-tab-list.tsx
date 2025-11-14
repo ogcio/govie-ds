@@ -12,7 +12,7 @@ import {
 } from 'react';
 import { cn } from '../cn.js';
 import { InternalTabItem } from './tab-item.js';
-import { TabItemProps } from './types.js';
+import { TabItemProps, TabKeyboardEvent, TabMouseClickEvent } from './types.js';
 
 type ScrollableTabsProps = {
   children: ReactNode;
@@ -72,11 +72,8 @@ export const ScrollableTabs: React.FC<ScrollableTabsProps> = ({
   }, [activeTab]);
 
   const handleClick =
-    (
-      index: number,
-      original?: (event: MouseEvent<HTMLButtonElement>) => void,
-    ) =>
-    (event: MouseEvent<HTMLButtonElement>) => {
+    (index: number, original?: (event: TabMouseClickEvent) => void) =>
+    (event: TabMouseClickEvent) => {
       setActiveTab(index);
 
       if (original) {
@@ -93,7 +90,7 @@ export const ScrollableTabs: React.FC<ScrollableTabsProps> = ({
       }
     };
 
-  const handleKeyDown = (event: KeyboardEvent<HTMLButtonElement>) => {
+  const handleKeyDown = (event: TabKeyboardEvent) => {
     if (event.key === 'ArrowLeft' || event.key === 'ArrowRight') {
       let next = activeTab + (event.key === 'ArrowRight' ? 1 : -1);
       if (next < 0) {

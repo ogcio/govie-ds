@@ -10,8 +10,8 @@ export function Tabs({
   labelAlignment = 'center',
   id = generateRandomId(),
   ariaLabelledBy,
-  dataTestid,
   children,
+  ...props
 }: TabsProps) {
   const childrenWithName = Children.map(children, (element) => {
     if (isValidElement(element)) {
@@ -28,7 +28,7 @@ export function Tabs({
     return element;
   });
   return (
-    <div className="gi-tabs" id={id} data-testid={dataTestid}>
+    <div className="gi-tabs" id={id} {...props}>
       {childrenWithName}
     </div>
   );

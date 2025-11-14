@@ -122,6 +122,7 @@ export const Default: Story = {
 
     expect(tab1).toHaveAttribute('aria-selected', 'false');
     expect(tab2).toHaveAttribute('aria-selected', 'true');
+    await userEvent.keyboard('{Tab}');
   },
 };
 
@@ -177,6 +178,7 @@ export const Dark: Story = {
     expect(tab3).toHaveAttribute('aria-selected', 'true');
 
     await userEvent.click(tab1);
+    await userEvent.keyboard('{Tab}');
   },
 };
 
@@ -350,17 +352,17 @@ export const TestTabs: Story = {
   tags: ['skip-playwright'],
   args: {
     ariaLabelledBy: 'tabs',
-    id: 'tab-1',
+    id: 'tab-test-1',
     children: null,
   },
   render: (props) => (
     <Tabs {...props}>
       <TabList>
-        <TabItem value="tab1">Tab 1</TabItem>
-        <TabItem value="tab2">Tab 2</TabItem>
+        <TabItem value="tab-test-1">Tab 1</TabItem>
+        <TabItem value="tab-test-2">Tab 2</TabItem>
       </TabList>
-      <TabPanel value="tab1">Tab 1 Content</TabPanel>
-      <TabPanel value="tab2">Tab 2 Content</TabPanel>
+      <TabPanel value="tab-test-1">Tab 1 Content</TabPanel>
+      <TabPanel value="tab-test-2">Tab 2 Content</TabPanel>
     </Tabs>
   ),
   play: async ({ canvasElement, step }) => {
@@ -385,6 +387,43 @@ export const TestTabs: Story = {
         expect(tabButtons[0]).toHaveAttribute('aria-selected', 'false');
         expect(canvas.getByText('Tab 2 Content')).toBeVisible();
       }
+    });
+  },
+};
+
+export const TabsWithIcon: Story = {
+  args: {
+    ariaLabelledBy: 'tabs',
+    id: 'tab-1',
+    children: null,
+  },
+  render: (props) => (
+    <Tabs {...props}>
+      <TabList>
+        <TabItem value="tabTest1" icon="placeholder">
+          Tab 1
+        </TabItem>
+        <TabItem value="tabTest2" icon="accessibility_new">
+          Tab 2
+        </TabItem>
+      </TabList>
+      <TabPanel value="tabTest1">Tab 1 Content</TabPanel>
+      <TabPanel value="tabTest2">Tab 2 Content</TabPanel>
+    </Tabs>
+  ),
+  play: async ({ canvasElement, step }) => {
+    const canvas = within(canvasElement);
+
+    await step('tabs rendered', async () => {
+      await expect(canvas.getByText('Tab 1')).toBeInTheDocument();
+      await expect(canvas.getByText('Tab 2')).toBeInTheDocument();
+    });
+
+    await step('renders two icons', async () => {
+      const icons = canvasElement.querySelectorAll(
+        'svg, .material-symbols-outlined, [data-testid="govie-icon"]',
+      );
+      expect(icons.length).toBe(2);
     });
   },
 };
