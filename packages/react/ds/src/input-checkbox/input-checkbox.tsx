@@ -2,6 +2,7 @@
 import { useId, forwardRef } from 'react';
 import { cn } from '../cn.js';
 import { HintText } from '../hint-text/hint-text.js';
+import { Label } from '../label/label.js';
 import { Input } from '../primitives/input.js';
 
 import {
@@ -67,15 +68,14 @@ export const InputCheckbox = forwardRef<HTMLInputElement, InputCheckboxProps>(
           />
 
           {labelContent && (
-            <label
+            <Label
               id={`${CheckboxId}-label`}
               htmlFor={hasRichContent ? undefined : CheckboxId}
-              className={cn({
-                'gi-rich-label': hasRichContent,
-              })}
+              size={size}
+              className={hasRichContent ? undefined : 'gi-cursor-pointer'}
             >
               {labelContent}
-            </label>
+            </Label>
           )}
         </div>
 

@@ -65,9 +65,7 @@ export const InputRadio: React.FC<InputRadioProps> = ({
             id={`${radioId}-label`}
             htmlFor={hasRichContent ? undefined : radioId}
             size={size}
-            className={cn({
-              'gi-rich-label': hasRichContent,
-            })}
+            className={hasRichContent ? undefined : 'gi-cursor-pointer'}
           >
             {labelContent}
           </Label>
