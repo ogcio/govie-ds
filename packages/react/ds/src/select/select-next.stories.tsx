@@ -688,7 +688,6 @@ export const TestNoSubmitOnEnter: StoryObj<typeof SelectNext> = {
       async () => {
         await userEvent.tab();
         await userEvent.tab();
-        await userEvent.tab();
         await expect(inputOff).toHaveFocus();
         await userEvent.keyboard('{Enter}');
         await expect(submitCountOff).toHaveTextContent('0');
@@ -734,5 +733,90 @@ export const TestNoSubmitOnEnter: StoryObj<typeof SelectNext> = {
         });
       },
     );
+  },
+};
+
+export const TestKeyboardEvents: StoryObj<typeof SelectNext> = {
+  tags: ['skip-playwright'],
+  render: () => {
+    const [value, setValue] = useState('');
+    return (
+      <FormField className="gi-w-56">
+        <FormFieldLabel>Label</FormFieldLabel>
+        <SelectNext
+          aria-label="Select"
+          value={value}
+          onChange={(event) => setValue(event.currentTarget.value)}
+        >
+          {Array.from({ length: 10 }, (_, index) => (
+            <SelectItemNext key={index} value={`value_${index}`}>
+              {`Option ${index}`}
+            </SelectItemNext>
+          ))}
+        </SelectNext>
+      </FormField>
+    );
+  },
+
+  play: async ({ canvasElement, step }) => {
+    const canvas = within(canvasElement);
+    const input = await canvas.findByRole('textbox', { name: /select/i });
+
+    const expectOpen = async () =>
+      waitFor(() => expect(canvas.getByRole('listbox')).toBeInTheDocument());
+    const expectClosed = async () =>
+      waitFor(() => expect(canvas.queryByRole('listbox')).toBeNull());
+
+    await step('ArrowDown opens and moves highlight', async () => {
+      input.focus();
+      await userEvent.keyboard('{ArrowDown}');
+      await expectOpen();
+      const highlighted = canvas
+        .getAllByRole('option')
+        .find((element) => element.dataset.highlighted === 'true');
+      await expect(highlighted).toBeTruthy();
+      await expect(highlighted).toHaveAttribute(
+        'data-testid',
+        'option-value_0',
+      );
+      await userEvent.keyboard('{Esc}');
+    });
+
+    await step('Enter opens menu', async () => {
+      input.focus();
+      await userEvent.keyboard('{Enter}');
+      await expectOpen();
+      await userEvent.keyboard('{Esc}');
+    });
+    await step('NumpadEnter opens menu', async () => {
+      input.focus();
+      await userEvent.keyboard('{NumpadEnter}');
+      await expectOpen();
+      await userEvent.keyboard('{Esc}');
+    });
+
+    await step('ArrowUp opens menu and moves highlight', async () => {
+      await userEvent.keyboard('{ArrowUp}');
+      await expectOpen();
+      const highlighted = canvas
+        .getAllByRole('option')
+        .find((element) => element.dataset.highlighted === 'true');
+      expect(highlighted).toBeTruthy();
+      expect(highlighted).toHaveAttribute('data-testid', 'option-value_9');
+    });
+
+    await step('Tab closes when open', async () => {
+      await userEvent.click(input);
+      await expectOpen();
+      await userEvent.tab();
+      await expectClosed();
+    });
+
+    await step('Escape closes when open', async () => {
+      await userEvent.click(input);
+      await expectOpen();
+      await userEvent.keyboard('{Escape}');
+      await expectClosed();
+    });
   },
 };
