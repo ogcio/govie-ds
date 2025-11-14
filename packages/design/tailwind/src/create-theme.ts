@@ -1,5 +1,5 @@
-import deepmergelib from 'deepmerge';
 import { variables } from '@ogcio/design-system-tokens';
+import deepmergelib from 'deepmerge';
 import tailwindTheme from 'tailwindcss/defaultTheme.js';
 import { CustomThemeConfig } from 'tailwindcss/types/config.js';
 import { convertColors, toFont } from './utilities.js';
