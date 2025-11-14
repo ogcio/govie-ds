@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.17.2](https://github.com/ogcio/govie-ds/compare/tokens-v1.7.1...tokens-v1.17.2) (2025-11-14)
+
+
+### Miscellaneous Chores
+
+* **tokens:** Synchronize tokens-group versions
+
 ## [1.7.1](https://github.com/ogcio/govie-ds/compare/tokens-v1.7.0...tokens-v1.7.1) (2025-09-23)
 
 
