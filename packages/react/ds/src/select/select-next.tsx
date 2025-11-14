@@ -11,6 +11,7 @@ import {
 } from 'react';
 import { cn } from '../cn.js';
 import { useDomId } from '../hooks/use-dom-id.js';
+import { useScrollHighlightedItem } from '../hooks/use-scroll-highlighted-item.js';
 import { translate as t } from '../i18n/utility.js';
 import { InputText } from '../input-text/input-text.js';
 import { Popover } from '../popover/popover.js';
@@ -60,6 +61,7 @@ export const SelectNext = forwardRef<HTMLInputElement, SelectNextProps>(
     const [highlightedIndex, setHighlightedIndex] = useState<number>(-1);
 
     useImperativeHandle(ref, () => inputRef.current as HTMLInputElement);
+    useScrollHighlightedItem(listRef, highlightedIndex);
 
     const childrenElements = Children.toArray(children).filter((child) =>
       isValidElement(child),
