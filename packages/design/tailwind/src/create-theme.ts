@@ -1,8 +1,12 @@
-import { deepmerge } from '@ogcio/design-system-deepmerge';
+import deepmergelib from 'deepmerge';
 import { variables } from '@ogcio/design-system-tokens';
 import tailwindTheme from 'tailwindcss/defaultTheme.js';
 import { CustomThemeConfig } from 'tailwindcss/types/config.js';
 import { convertColors, toFont } from './utilities.js';
+
+export function deepmerge<T>(...parameters: unknown[]): T {
+  return deepmergelib.all<T>(parameters.map((p) => p ?? {}));
+}
 
 export type CreateThemeOptions = {
   meta?: any;

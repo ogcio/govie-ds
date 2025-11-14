@@ -21,12 +21,15 @@
     "dist"
   ],
   "prettier": "@ogcio/design-system-prettier-config",
+  "peerDependencies": {
+    "tailwindcss": "3.4.14"
+  },
   "dependencies": {
-    "@ogcio/design-system-deepmerge": "workspace:*",
     "@ogcio/design-system-tokens": "workspace:*",
     "ts-extras": "^0.11.0"
   },
   "devDependencies": {
+    "deepmerge": "^4.3.1",
     "@ogcio/design-system-prettier-config": "workspace:*",
     "eslint": "^9.23.0"
   }
