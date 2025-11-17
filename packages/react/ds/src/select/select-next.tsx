@@ -176,13 +176,13 @@ export const SelectNext = forwardRef<HTMLInputElement, SelectNextProps>(
         case 'ArrowUp': {
           event.preventDefault();
           const direction = event.key === 'ArrowDown' ? 1 : -1;
+
           setHighlightedIndex((previous) => {
+            let start = previous;
             if (previous === -1) {
-              return direction === 1
-                ? cycleEnabledIndex(childrenElements, previous, direction)
-                : childrenElements.length - 1;
+              start = direction === -1 ? 0 : -1;
             }
-            return cycleEnabledIndex(childrenElements, previous, direction);
+            return cycleEnabledIndex(childrenElements, start, direction);
           });
           setIsOpen(true);
           break;

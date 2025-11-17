@@ -130,12 +130,6 @@ export const Autocomplete = forwardRef<HTMLInputElement, AutocompleteProps>(
       }
     };
 
-    useEffect(() => {
-      if (inputRef.current) {
-        inputRef.current.setAttribute('aria-labelledby', srOnlyLabelId);
-      }
-    }, [srOnlyLabelId]);
-
     const handleClearInput = () => {
       dispatch({ type: ON_RESET });
       dispatch({ type: SET_IS_OPEN, payload: false });
@@ -226,24 +220,19 @@ export const Autocomplete = forwardRef<HTMLInputElement, AutocompleteProps>(
         case 'ArrowDown':
         case 'ArrowUp': {
           event.preventDefault();
-          let newIndex;
+          const getStartingPoint = () => {
+            if (state.highlightedIndex === -1) {
+              return direction === -1 ? 0 : -1;
+            }
+            return state.highlightedIndex;
+          };
+
           const direction = event.key === 'ArrowDown' ? 1 : -1;
-          if (state.highlightedIndex === -1) {
-            newIndex =
-              direction === 1
-                ? cycleEnabledIndex(
-                    state.autocompleteOptions,
-                    state.highlightedIndex,
-                    direction,
-                  )
-                : state.autocompleteOptions.length - 1;
-          } else {
-            newIndex = cycleEnabledIndex(
-              state.autocompleteOptions,
-              state.highlightedIndex,
-              direction,
-            );
-          }
+          const newIndex = cycleEnabledIndex(
+            state.autocompleteOptions,
+            getStartingPoint(),
+            direction,
+          );
           dispatch({ type: SET_HIGHLIGHTED_INDEX, payload: newIndex });
           dispatch({ type: SET_IS_OPEN, payload: true });
           break;
@@ -296,6 +285,7 @@ export const Autocomplete = forwardRef<HTMLInputElement, AutocompleteProps>(
           clearButtonEnabled={state.isClearButtonEnabled}
           inputActionPosition="beforeSuffix"
           aria-label={labelText}
+          aria-labelledby={srOnlyLabelId}
           aria-disabled={disabled}
           disabled={disabled}
           placeholder={
