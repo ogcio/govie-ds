@@ -1,5 +1,6 @@
 'use client';
 import React, { useState, useEffect } from 'react';
+import { Trans } from 'react-i18next';
 import { Button } from '../button/button.js';
 import { Breakpoint, useBreakpoint } from '../hooks/use-breakpoint.js';
 import { translate as t } from '../i18n/utility.js';
@@ -72,13 +73,12 @@ export const Pagination: React.FC<PaginationProps> = ({
 
   const renderPaginationLabel = () => (
     <span className="gi-text-md" aria-live="polite">
-      <span className="gi-font-bold">
-        {t('pagination.page', {
-          currentPage,
-          totalPages,
-          defaultValue: `Page ${currentPage} of ${totalPages}`,
-        })}
-      </span>
+      <Trans
+        i18nKey="pagination.page"
+        values={{ currentPage, totalPages }}
+        components={{ bold: <span className="gi-font-bold" /> }}
+        defaults={`Page <bold>${currentPage}</bold> of ${totalPages}`}
+      />
     </span>
   );
 
