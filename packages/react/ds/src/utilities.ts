@@ -52,13 +52,14 @@ export const cycleEnabledIndex = (
     return -1;
   }
 
-  let index = ((currentIndex % total) + total) % total;
+  let index = (currentIndex + direction) % total;
 
   for (let step = 0; step < total; step += 1) {
-    index = (index + direction + total) % total;
-    if (!list[index]?.props?.hidden) {
-      return index;
+    const item = list.at(index);
+    if (!item?.props?.hidden) {
+      return (index + total) % total;
     }
+    index += direction;
   }
 
   return -1;
