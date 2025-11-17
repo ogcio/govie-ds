@@ -22,7 +22,7 @@
   ],
   "prettier": "@ogcio/design-system-prettier-config",
   "peerDependencies": {
-    "tailwindcss": "3.4.14"
+    "tailwindcss": ">=3.4.0"
   },
   "dependencies": {
     "@ogcio/design-system-tokens": "workspace:*",
