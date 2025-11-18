@@ -1,5 +1,22 @@
 # Changelog
 
+## [1.22.1](https://github.com/ogcio/govie-ds/compare/react-lib-v1.22.0...react-lib-v1.22.1) (2025-11-18)
+
+
+### Bug Fixes
+
+* **AB#31988:** Sync Tabs component with Figma + fixes ([#771](https://github.com/ogcio/govie-ds/issues/771)) ([dacd35e](https://github.com/ogcio/govie-ds/commit/dacd35eb934cca6c229108d6618f1a0e33d4fa23))
+* update cursor style for input radio and checkbox AB[#32553](https://github.com/ogcio/govie-ds/issues/32553) ([#774](https://github.com/ogcio/govie-ds/issues/774)) ([1609b4f](https://github.com/ogcio/govie-ds/commit/1609b4f1e150eea5247970124fbcfed192bb6847))
+* update data table filter with date range options AB[#32015](https://github.com/ogcio/govie-ds/issues/32015) ([#765](https://github.com/ogcio/govie-ds/issues/765)) ([d6454a1](https://github.com/ogcio/govie-ds/commit/d6454a131204d5cd966c3341f76e6b229e6ca46c))
+
+
+### Dependencies
+
+* The following workspace dependencies were updated
+  * devDependencies
+    * @ogcio/design-system-tailwind bumped to 1.18.0
+    * @ogcio/theme-govie bumped to 1.18.0
+
 ## [1.22.0](https://github.com/ogcio/govie-ds/compare/react-lib-v1.21.0...react-lib-v1.22.0) (2025-11-10)
 
 

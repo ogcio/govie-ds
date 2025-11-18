@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.18.0](https://github.com/ogcio/govie-ds/compare/tokens-v1.7.1...tokens-v1.18.0) (2025-11-18)
+
+
+### Features
+
+* **AB#32350:** update tailwindcss dependencies ([#776](https://github.com/ogcio/govie-ds/issues/776)) ([41d7c75](https://github.com/ogcio/govie-ds/commit/41d7c75316e3cd9baac7315657cbbe9cdeed2ac5))
+
 ## [1.7.1](https://github.com/ogcio/govie-ds/compare/tokens-v1.7.0...tokens-v1.7.1) (2025-09-23)
 
 
