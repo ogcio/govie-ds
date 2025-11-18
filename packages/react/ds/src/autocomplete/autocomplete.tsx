@@ -8,6 +8,7 @@ import React, {
   forwardRef,
   useImperativeHandle,
   useEffect,
+  useCallback,
 } from 'react';
 import { cn } from '../cn.js';
 import { useDomId } from '../hooks/use-dom-id.js';
@@ -215,54 +216,61 @@ export const Autocomplete = forwardRef<HTMLInputElement, AutocompleteProps>(
       propagateOnBlur(onAutocompleteBlur, name)(current);
     };
 
-    const handleOnKeyDown = (event: React.KeyboardEvent<HTMLInputElement>) => {
-      switch (event.key) {
-        case 'ArrowDown':
-        case 'ArrowUp': {
-          event.preventDefault();
-          const getStartingPoint = () => {
-            if (state.highlightedIndex === -1) {
-              return direction === -1 ? 0 : -1;
-            }
-            return state.highlightedIndex;
-          };
+    const handleOnKeyDown = useCallback(
+      (event: React.KeyboardEvent<HTMLInputElement>) => {
+        switch (event.key) {
+          case 'ArrowDown':
+          case 'ArrowUp': {
+            event.preventDefault();
+            const getStartingPoint = () => {
+              if (state.highlightedIndex === -1) {
+                return direction === -1 ? 0 : -1;
+              }
+              return state.highlightedIndex;
+            };
 
-          const direction = event.key === 'ArrowDown' ? 1 : -1;
-          const newIndex = cycleEnabledIndex(
-            state.autocompleteOptions,
-            getStartingPoint(),
-            direction,
-          );
-          dispatch({ type: SET_HIGHLIGHTED_INDEX, payload: newIndex });
-          dispatch({ type: SET_IS_OPEN, payload: true });
-          break;
-        }
-        case 'Enter':
-        case 'NumpadEnter': {
-          event.preventDefault();
-          if (state.highlightedIndex >= 0) {
-            const selected = state.autocompleteOptions[
-              state.highlightedIndex
-            ] as AutocompleteOptionItemElement;
-            if (selected && selected.props.value && !selected.props.disabled) {
-              handleOnSelectItem(selected.props.value);
-            }
+            const direction = event.key === 'ArrowDown' ? 1 : -1;
+            const newIndex = cycleEnabledIndex(
+              state.autocompleteOptions,
+              getStartingPoint(),
+              direction,
+            );
+            dispatch({ type: SET_HIGHLIGHTED_INDEX, payload: newIndex });
+            dispatch({ type: SET_IS_OPEN, payload: true });
+            break;
           }
-          break;
+          case 'Enter':
+          case 'NumpadEnter': {
+            event.preventDefault();
+            if (state.highlightedIndex >= 0) {
+              const selected = state.autocompleteOptions[
+                state.highlightedIndex
+              ] as AutocompleteOptionItemElement;
+              if (
+                selected &&
+                selected.props.value &&
+                !selected.props.disabled
+              ) {
+                handleOnSelectItem(selected.props.value);
+              }
+            }
+            break;
+          }
+          case 'Tab': {
+            dispatch({ type: SET_IS_OPEN, payload: false });
+            break;
+          }
+          case 'Escape': {
+            dispatch({ type: SET_IS_OPEN, payload: false });
+            break;
+          }
+          default: {
+            break;
+          }
         }
-        case 'Tab': {
-          dispatch({ type: SET_IS_OPEN, payload: false });
-          break;
-        }
-        case 'Escape': {
-          dispatch({ type: SET_IS_OPEN, payload: false });
-          break;
-        }
-        default: {
-          break;
-        }
-      }
-    };
+      },
+      [state.highlightedIndex],
+    );
 
     return (
       <div

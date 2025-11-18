@@ -43,7 +43,7 @@ export function isSpecialComponent(
 }
 
 export const cycleEnabledIndex = (
-  list: ReactElement<any>[],
+  list: ReactElement<{ hidden?: boolean }>[],
   currentIndex: number,
   direction: 1 | -1,
 ): number => {
@@ -52,14 +52,11 @@ export const cycleEnabledIndex = (
     return -1;
   }
 
-  let index = (currentIndex + direction) % total;
-
-  for (let step = 0; step < total; step += 1) {
-    const item = list.at(index);
-    if (!item?.props?.hidden) {
-      return (index + total) % total;
+  for (let step = 1; step <= total; step++) {
+    const next = (currentIndex + direction * step) % total;
+    if (!list?.at(next)?.props?.hidden) {
+      return (next + total) % total;
     }
-    index += direction;
   }
 
   return -1;

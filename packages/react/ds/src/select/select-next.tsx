@@ -4,6 +4,7 @@ import {
   FC,
   forwardRef,
   isValidElement,
+  useCallback,
   useEffect,
   useImperativeHandle,
   useRef,
@@ -65,7 +66,7 @@ export const SelectNext = forwardRef<HTMLInputElement, SelectNextProps>(
 
     const childrenElements = Children.toArray(children).filter((child) =>
       isValidElement(child),
-    ) as React.ReactElement[];
+    ) as React.ReactElement<{ hidden?: boolean }>[];
 
     useEffect(() => {
       let found: SelectNextOptionItemElement | undefined;
@@ -166,7 +167,7 @@ export const SelectNext = forwardRef<HTMLInputElement, SelectNextProps>(
       }
     };
 
-    const handleKeyDown = (event: React.KeyboardEvent) => {
+    const handleKeyDown = useCallback((event: React.KeyboardEvent) => {
       if (disabled) {
         return;
       }
@@ -178,10 +179,8 @@ export const SelectNext = forwardRef<HTMLInputElement, SelectNextProps>(
           const direction = event.key === 'ArrowDown' ? 1 : -1;
 
           setHighlightedIndex((previous) => {
-            let start = previous;
-            if (previous === -1) {
-              start = direction === -1 ? 0 : -1;
-            }
+            const start =
+              previous === -1 ? (direction === -1 ? 0 : -1) : previous;
             return cycleEnabledIndex(childrenElements, start, direction);
           });
           setIsOpen(true);
@@ -217,7 +216,7 @@ export const SelectNext = forwardRef<HTMLInputElement, SelectNextProps>(
           break;
         }
       }
-    };
+    }, []);
 
     const handleBlur = (event: React.FocusEvent<HTMLInputElement>) => {
       const relatedTarget = event.relatedTarget as Node | null;
@@ -367,10 +366,6 @@ export const SelectNext = forwardRef<HTMLInputElement, SelectNextProps>(
                           internalValue?.toString() ===
                           optionProps.value.toString()
                         }
-                        onChange={(value) => {
-                          setIsOpen(false);
-                          selectValue(value);
-                        }}
                         index={index}
                       />
                     );
