@@ -1,6 +1,6 @@
 {
   "name": "@ogcio/design-system-tokens",
-  "version": "1.7.1",
+  "version": "1.18.0",
   "description": "The GOV IE Design System tokens.",
   "type": "module",
   "main": "dist/index.js",
