@@ -1,5 +1,20 @@
 # Changelog
 
+## [1.18.0](https://github.com/ogcio/govie-ds/compare/themes-govie-v1.7.1...themes-govie-v1.18.0) (2025-11-18)
+
+
+### Miscellaneous Chores
+
+* **themes-govie:** Synchronize tokens-group versions
+
+
+### Dependencies
+
+* The following workspace dependencies were updated
+  * devDependencies
+    * @ogcio/theme-builder bumped to 1.18.0
+    * @ogcio/design-system-tokens bumped to 1.18.0
+
 ## [1.7.1](https://github.com/ogcio/govie-ds/compare/themes-govie-v1.7.0...themes-govie-v1.7.1) (2025-09-23)
 
 
