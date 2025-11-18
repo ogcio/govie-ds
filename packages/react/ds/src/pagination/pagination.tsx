@@ -72,7 +72,7 @@ export const Pagination: React.FC<PaginationProps> = ({
   };
 
   const renderPaginationLabel = () => (
-    <span className="gi-text-md" aria-live="polite">
+    <span className="gi-text-md gi-leading-6" aria-live="polite">
       <Trans
         i18nKey="pagination.page"
         values={{ currentPage, totalPages }}
