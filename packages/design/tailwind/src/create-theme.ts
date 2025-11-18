@@ -1,5 +1,5 @@
-import { deepmerge } from '@ogcio/design-system-deepmerge';
 import { variables } from '@ogcio/design-system-tokens';
+import merge from 'deepmerge';
 import tailwindTheme from 'tailwindcss/defaultTheme.js';
 import { CustomThemeConfig } from 'tailwindcss/types/config.js';
 import { convertColors, toFont } from './utilities.js';
@@ -553,5 +553,5 @@ export function createTheme(
     },
   };
 
-  return deepmerge<CustomThemeConfig>(defaultTheme, overrides);
+  return merge.all<CustomThemeConfig>([defaultTheme, overrides || {}]);
 }
