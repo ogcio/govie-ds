@@ -203,6 +203,7 @@ export const SelectMenuOption = ({
         },
         className,
       )}
+      data-highlighted={isHighlighted}
       data-search-enabled={enableSearch}
       data-testid={dataTestid || `option-${value}`}
       {...props}
