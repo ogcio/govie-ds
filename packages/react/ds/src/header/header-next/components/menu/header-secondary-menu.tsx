@@ -52,7 +52,11 @@ export const HeaderSecondaryMenu = forwardRef<
               className="gi-flex gi-justify-end gi-items-center gi-gap-2"
               data-orientation="horizontal"
             >
-              {allowedChildren}
+              {Children.toArray(allowedChildren).map((child, index) => (
+                <li key={`secondary-item-${index}`} role="listitem">
+                  {child}
+                </li>
+              ))}
             </ul>
           </Container>
         </nav>

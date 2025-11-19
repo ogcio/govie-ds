@@ -96,6 +96,8 @@
   },
   "dependencies": {
     "@faker-js/faker": "^9.6.0",
+    "@fontsource/montserrat": "^5.2.8",
+    "@fontsource/open-sans": "^5.2.7",
     "@popperjs/core": "^2.11.8",
     "@types/lodash": "^4.17.7",
     "focus-trap": "^7.6.5",

@@ -17,7 +17,7 @@ export const HeaderMenuItemSlot = forwardRef<
   if (!context) {
     throw new Error('HeaderMenuItemSlot must be used within a Header');
   }
-  if (section !== 'secondary') {
+  if (!section) {
     throw new Error(
       'HeaderMenuItemSlot must be used within a HeaderSecondaryMenu',
     );
@@ -26,21 +26,19 @@ export const HeaderMenuItemSlot = forwardRef<
   const appearance = context.variant;
 
   return (
-    <li>
-      <div
-        ref={ref}
-        className={cn(
-          headerSecondaryLinkSlotItemVariants({
-            appearance,
-          }),
-          className,
-        )}
-        data-appearance={appearance}
-        {...props}
-      >
-        {children}
-      </div>
-    </li>
+    <div
+      ref={ref}
+      className={cn(
+        headerSecondaryLinkSlotItemVariants({
+          appearance,
+        }),
+        className,
+      )}
+      data-appearance={appearance}
+      {...props}
+    >
+      {children}
+    </div>
   );
 });
 
