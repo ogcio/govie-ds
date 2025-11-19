@@ -1,4 +1,4 @@
-import { isValidElement, ReactNode } from 'react';
+import { isValidElement, ReactElement, ReactNode } from 'react';
 
 /**
  * Returns a safe for url string representation.
@@ -41,3 +41,23 @@ export function isSpecialComponent(
 ): boolean {
   return componentList.includes(getSpecialComponentType(child) ?? '');
 }
+
+export const cycleEnabledIndex = (
+  list: ReactElement<{ hidden?: boolean }>[],
+  currentIndex: number,
+  direction: 1 | -1,
+): number => {
+  const total = list.length;
+  if (total === 0) {
+    return -1;
+  }
+
+  for (let step = 1; step <= total; step++) {
+    const next = (currentIndex + direction * step) % total;
+    if (!list?.at(next)?.props?.hidden) {
+      return (next + total) % total;
+    }
+  }
+
+  return -1;
+};

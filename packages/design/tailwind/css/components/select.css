@@ -82,6 +82,7 @@
   gi-items-start
   gi-justify-between 
   gi-cursor-pointer
+  gi-relative
    
   hover:gi-bg-color-surface-system-neutral-interactive-hover
   hover:gi-shadow-[0_0_0_4px_var(--gieds-color-surface-system-neutral-interactive-hover)] 
@@ -90,6 +91,7 @@
   focus:gi-no-underline focus:gi-rounded-sm
   focus:gi-shadow-[0_0_0_2px_var(--gieds-color-gray-950),0_0_0_5px_var(--gieds-color-yellow-400)] 
   focus-visible:gi-shadow-[0_0_0_2px_var(--gieds-color-gray-950),0_0_0_5px_var(--gieds-color-yellow-400)] 
+  focus:gi-z-1
   focus-visible:gi-no-underline 
   focus-visible:gi-rounded-sm 
   focus-visible:gi-outline-none;

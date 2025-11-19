@@ -4,6 +4,7 @@ import {
   FC,
   forwardRef,
   isValidElement,
+  useCallback,
   useEffect,
   useImperativeHandle,
   useRef,
@@ -11,9 +12,11 @@ import {
 } from 'react';
 import { cn } from '../cn.js';
 import { useDomId } from '../hooks/use-dom-id.js';
+import { useScrollHighlightedItem } from '../hooks/use-scroll-highlighted-item.js';
 import { translate as t } from '../i18n/utility.js';
 import { InputText } from '../input-text/input-text.js';
 import { Popover } from '../popover/popover.js';
+import { cycleEnabledIndex } from '../utilities.js';
 import {
   SelectMenu,
   SelectMenuGroupItem,
@@ -56,17 +59,19 @@ export const SelectNext = forwardRef<HTMLInputElement, SelectNextProps>(
     );
     const [isOpen, setIsOpen] = useState(false);
     const [inputValue, setInputValue] = useState('');
+    const [highlightedIndex, setHighlightedIndex] = useState<number>(-1);
 
     useImperativeHandle(ref, () => inputRef.current as HTMLInputElement);
+    useScrollHighlightedItem(listRef, highlightedIndex);
 
-    const validOptions = Children.toArray(children).filter((child) =>
+    const childrenElements = Children.toArray(children).filter((child) =>
       isValidElement(child),
-    ) as React.ReactElement[];
+    ) as React.ReactElement<{ hidden?: boolean }>[];
 
     useEffect(() => {
       let found: SelectNextOptionItemElement | undefined;
 
-      for (const child of validOptions) {
+      for (const child of childrenElements) {
         const type = (child.type as any)?.componentType;
 
         if (type === 'SelectItemNext') {
@@ -107,7 +112,13 @@ export const SelectNext = forwardRef<HTMLInputElement, SelectNextProps>(
           inputRef.current.value = '';
         }
       }
-    }, [internalValue, validOptions]);
+    }, [internalValue, childrenElements]);
+
+    useEffect(() => {
+      if (!isOpen) {
+        setHighlightedIndex(-1);
+      }
+    }, [isOpen]);
 
     useEffect(() => {
       if (controlledValue !== undefined) {
@@ -116,18 +127,21 @@ export const SelectNext = forwardRef<HTMLInputElement, SelectNextProps>(
     }, [controlledValue]);
 
     const handleOnClick = () => {
+      if (disabled) {
+        return;
+      }
       setIsOpen(true);
       inputRef.current?.focus();
     };
 
     const handleOnOpenChange = (open: boolean) => {
       setIsOpen(open);
-      if (onMenuClose && !open) {
-        onMenuClose();
+      if (!open) {
+        onMenuClose?.();
       }
     };
 
-    const handleOnSelectItem = (value_: string) => {
+    const selectValue = (value_: string) => {
       setIsOpen(false);
       setInternalValue(value_);
 
@@ -153,14 +167,56 @@ export const SelectNext = forwardRef<HTMLInputElement, SelectNextProps>(
       }
     };
 
-    const handleKeyDown = (event: React.KeyboardEvent) => {
-      if (!disabled && (event.key === 'Enter' || event.key === 'NumpadEnter')) {
-        event.preventDefault();
-        handleOnClick();
-      } else if (event.key === 'Escape') {
-        setIsOpen(false);
+    const handleKeyDown = useCallback((event: React.KeyboardEvent) => {
+      if (disabled) {
+        return;
       }
-    };
+
+      switch (event.key) {
+        case 'ArrowDown':
+        case 'ArrowUp': {
+          event.preventDefault();
+          const direction = event.key === 'ArrowDown' ? 1 : -1;
+
+          setHighlightedIndex((previous) => {
+            const start =
+              previous === -1 ? (direction === -1 ? 0 : -1) : previous;
+            return cycleEnabledIndex(childrenElements, start, direction);
+          });
+          setIsOpen(true);
+          break;
+        }
+
+        case 'Enter':
+        case 'NumpadEnter': {
+          event.preventDefault();
+          if (
+            isOpen &&
+            highlightedIndex != -1 &&
+            childrenElements[highlightedIndex]
+          ) {
+            const opt = childrenElements[highlightedIndex];
+            if (!(opt.props as any)?.disabled) {
+              selectValue((opt.props as any).value);
+            }
+          } else {
+            setIsOpen(true);
+          }
+          break;
+        }
+
+        case 'Tab': {
+          setIsOpen(false);
+          break;
+        }
+
+        case 'Escape': {
+          event.preventDefault();
+          setIsOpen(false);
+          break;
+        }
+      }
+    }, []);
 
     const handleBlur = (event: React.FocusEvent<HTMLInputElement>) => {
       const relatedTarget = event.relatedTarget as Node | null;
@@ -201,10 +257,6 @@ export const SelectNext = forwardRef<HTMLInputElement, SelectNextProps>(
     if (enableSearch) {
       return (
         <div className={cn('gi-select-next', props.className)}>
-          <span id={srOnlyLabelId} className="gi-sr-only">
-            {labelText}
-          </span>
-
           <SelectSearch
             {...props}
             value={internalValue}
@@ -244,8 +296,7 @@ export const SelectNext = forwardRef<HTMLInputElement, SelectNextProps>(
           inputClassName="gi-cursor-pointer"
           iconEndClassName={cn({
             'gi-cursor-pointer': !disabled,
-            'gi-cursor-not-allowed': disabled,
-            'gi-pointer-events-none': disabled,
+            'gi-cursor-not-allowed gi-pointer-events-none': disabled,
           })}
           iconEnd={isOpen ? 'keyboard_arrow_up' : 'keyboard_arrow_down'}
           onIconEndClick={handleOnClick}
@@ -274,10 +325,13 @@ export const SelectNext = forwardRef<HTMLInputElement, SelectNextProps>(
         >
           <SelectMenu
             ref={listRef as any}
-            onChange={handleOnSelectItem}
+            onChange={(value) => {
+              setIsOpen(false);
+              selectValue(value);
+            }}
             enableSearch={enableSearch}
           >
-            {validOptions.map((child, optionIndex) => {
+            {childrenElements.map((child, optionIndex) => {
               const type = (child?.type as any)?.componentType;
 
               if (type === 'SelectItemNext') {
@@ -286,6 +340,7 @@ export const SelectNext = forwardRef<HTMLInputElement, SelectNextProps>(
                   <SelectMenuOption
                     key={`SelectItemNext-${typedChild.props.value.toString()}`}
                     {...typedChild.props}
+                    isHighlighted={highlightedIndex === optionIndex}
                     selected={
                       internalValue?.toString() ===
                       typedChild.props.value.toString()
@@ -306,11 +361,11 @@ export const SelectNext = forwardRef<HTMLInputElement, SelectNextProps>(
                       <SelectMenuOption
                         key={`SelectGroupItemNext-SelectItemNext-${optionProps.value.toString()}`}
                         {...optionProps}
+                        isHighlighted={highlightedIndex === optionIndex}
                         selected={
                           internalValue?.toString() ===
                           optionProps.value.toString()
                         }
-                        onChange={handleOnSelectItem}
                         index={index}
                       />
                     );

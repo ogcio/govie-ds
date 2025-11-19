@@ -8,8 +8,10 @@ import React, {
   forwardRef,
   useImperativeHandle,
   useEffect,
+  useCallback,
 } from 'react';
 import { cn } from '../cn.js';
+import { useDomId } from '../hooks/use-dom-id.js';
 import { translate as t } from '../i18n/utility.js';
 import { InputText } from '../input-text/input-text.js';
 import { Popover } from '../popover/popover.js';
@@ -22,6 +24,7 @@ import {
   SelectNextGroupItemElement,
   SelectNextOptionItemElement,
 } from '../select/types.js';
+import { cycleEnabledIndex } from '../utilities.js';
 import {
   AUTOCOMPLETE_ACTIONS,
   AutocompleteItemProps,
@@ -102,6 +105,7 @@ export const Autocomplete = forwardRef<HTMLInputElement, AutocompleteProps>(
       ...props,
       onChange: propagateOnChange(onAutocompleteChange, name),
     });
+    const srOnlyLabelId = useDomId();
 
     useImperativeHandle(ref, () => inputRef.current as HTMLInputElement);
 
@@ -115,6 +119,10 @@ export const Autocomplete = forwardRef<HTMLInputElement, AutocompleteProps>(
         dispatch({ type: TOGGLE_CLEAR_BUTTON });
       }
     }, [value]);
+
+    const labelText =
+      (props as any)['aria-label'] ??
+      t('autocomplete.placeholder', { defaultValue: 'Type to Search' });
 
     const handleOnOpenChange = (isOpen: boolean) => {
       dispatch({ type: SET_IS_OPEN, payload: isOpen });
@@ -183,8 +191,7 @@ export const Autocomplete = forwardRef<HTMLInputElement, AutocompleteProps>(
 
       propagateOnChange(onAutocompleteChange, name)(value);
       setTimeout(() => {
-        propagateOnBlur(onAutocompleteBlur, name)(value);
-        inputRef.current?.blur();
+        inputRef.current?.focus();
       }, 0);
       onSelectItem?.(value);
     };
@@ -209,75 +216,71 @@ export const Autocomplete = forwardRef<HTMLInputElement, AutocompleteProps>(
       propagateOnBlur(onAutocompleteBlur, name)(current);
     };
 
-    const handleOnKeyDown = (event: React.KeyboardEvent<HTMLInputElement>) => {
-      const total = state.autocompleteOptions.length;
+    const handleOnKeyDown = useCallback(
+      (event: React.KeyboardEvent<HTMLInputElement>) => {
+        switch (event.key) {
+          case 'ArrowDown':
+          case 'ArrowUp': {
+            event.preventDefault();
+            const getStartingPoint = () => {
+              if (state.highlightedIndex === -1) {
+                return direction === -1 ? 0 : -1;
+              }
+              return state.highlightedIndex;
+            };
 
-      const findNextEnabledIndex = (
-        currentIndex: number,
-        direction: 1 | -1,
-      ): number => {
-        let index = currentIndex;
-        for (let step = 0; step < total; step++) {
-          index = (index + direction + total) % total;
-          const candidateOption = state.autocompleteOptions[
-            index
-          ] as AutocompleteOptionItemElement;
-          if (!candidateOption.props.disabled) {
-            return index;
+            const direction = event.key === 'ArrowDown' ? 1 : -1;
+            const newIndex = cycleEnabledIndex(
+              state.autocompleteOptions,
+              getStartingPoint(),
+              direction,
+            );
+            dispatch({ type: SET_HIGHLIGHTED_INDEX, payload: newIndex });
+            dispatch({ type: SET_IS_OPEN, payload: true });
+            break;
           }
-        }
-        return -1;
-      };
-
-      switch (event.key) {
-        case 'ArrowDown': {
-          event.preventDefault();
-          dispatch({
-            type: SET_HIGHLIGHTED_INDEX,
-            payload: state.isOpen
-              ? findNextEnabledIndex(state.highlightedIndex, 1)
-              : 0,
-          });
-          dispatch({ type: SET_IS_OPEN, payload: true });
-          break;
-        }
-        case 'ArrowUp': {
-          event.preventDefault();
-          dispatch({
-            type: SET_HIGHLIGHTED_INDEX,
-            payload: findNextEnabledIndex(state.highlightedIndex, -1),
-          });
-          dispatch({ type: SET_IS_OPEN, payload: true });
-          break;
-        }
-        case 'Enter':
-        case 'NumpadEnter': {
-          event.preventDefault();
-          if (state.highlightedIndex >= 0) {
-            const selected = state.autocompleteOptions[
-              state.highlightedIndex
-            ] as AutocompleteOptionItemElement;
-            if (selected && selected.props.value && !selected.props.disabled) {
-              handleOnSelectItem(selected.props.value);
+          case 'Enter':
+          case 'NumpadEnter': {
+            event.preventDefault();
+            if (state.highlightedIndex >= 0) {
+              const selected = state.autocompleteOptions[
+                state.highlightedIndex
+              ] as AutocompleteOptionItemElement;
+              if (
+                selected &&
+                selected.props.value &&
+                !selected.props.disabled
+              ) {
+                handleOnSelectItem(selected.props.value);
+              }
             }
+            break;
           }
-          break;
+          case 'Tab': {
+            dispatch({ type: SET_IS_OPEN, payload: false });
+            break;
+          }
+          case 'Escape': {
+            dispatch({ type: SET_IS_OPEN, payload: false });
+            break;
+          }
+          default: {
+            break;
+          }
         }
-        case 'Escape': {
-          dispatch({ type: SET_IS_OPEN, payload: false });
-          break;
-        }
-        default: {
-          break;
-        }
-      }
-    };
+      },
+      [state.highlightedIndex],
+    );
 
     return (
       <div
         aria-disabled={disabled}
         className={cn('gi-autocomplete gi-not-prose', props.className)}
       >
+        <span id={srOnlyLabelId} className="gi-sr-only">
+          {labelText}
+        </span>
+
         <InputText
           autoComplete="off"
           id={id}
@@ -289,9 +292,8 @@ export const Autocomplete = forwardRef<HTMLInputElement, AutocompleteProps>(
           onBlur={handleOnBlur}
           clearButtonEnabled={state.isClearButtonEnabled}
           inputActionPosition="beforeSuffix"
-          aria-label={t('autocomplete.placeholder', {
-            defaultValue: 'Type to Search',
-          })}
+          aria-label={labelText}
+          aria-labelledby={srOnlyLabelId}
           aria-disabled={disabled}
           disabled={disabled}
           placeholder={
