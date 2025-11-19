@@ -1,5 +1,19 @@
 # Changelog
 
+## [1.18.1](https://github.com/ogcio/govie-ds/compare/design-tailwind-v1.18.0...design-tailwind-v1.18.1) (2025-11-19)
+
+
+### Bug Fixes
+
+* **AB#32631:** Select and Autocomplete Keyboard events ([#775](https://github.com/ogcio/govie-ds/issues/775)) ([55bcd21](https://github.com/ogcio/govie-ds/commit/55bcd2132c97451ba4177a65afcab59cb116621b))
+
+
+### Dependencies
+
+* The following workspace dependencies were updated
+  * dependencies
+    * @ogcio/design-system-tokens bumped to 1.18.1
+
 ## [1.18.0](https://github.com/ogcio/govie-ds/compare/design-tailwind-v1.17.1...design-tailwind-v1.18.0) (2025-11-18)
 
 
