@@ -1,5 +1,20 @@
 # Changelog
 
+## [1.22.2](https://github.com/ogcio/govie-ds/compare/react-lib-v1.22.1...react-lib-v1.22.2) (2025-11-19)
+
+
+### Bug Fixes
+
+* **AB#32631:** Select and Autocomplete Keyboard events ([#775](https://github.com/ogcio/govie-ds/issues/775)) ([55bcd21](https://github.com/ogcio/govie-ds/commit/55bcd2132c97451ba4177a65afcab59cb116621b))
+
+
+### Dependencies
+
+* The following workspace dependencies were updated
+  * devDependencies
+    * @ogcio/design-system-tailwind bumped to 1.18.1
+    * @ogcio/theme-govie bumped to 1.18.1
+
 ## [1.22.1](https://github.com/ogcio/govie-ds/compare/react-lib-v1.22.0...react-lib-v1.22.1) (2025-11-18)
 
 
