@@ -12,8 +12,9 @@
   },
   "prettier": "@ogcio/design-system-prettier-config",
   "dependencies": {
-    "@ogcio/theme-govie": "workspace:*",
     "@ogcio/design-system-react": "workspace:*",
+    "@ogcio/theme-govie": "workspace:*",
+    "@ogcio/design-system-assets-font-400": "workspace:*",
     "react": "19.0.0",
     "react-dom": "19.0.0"
   },
