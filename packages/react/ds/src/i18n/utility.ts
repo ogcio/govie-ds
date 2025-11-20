@@ -1,6 +1,6 @@
 import i18next, { t } from 'i18next';
 import { initI18n } from './config.js';
-import engResources from './translations/en.json' with { type: 'json' };
+import engResources from './translations/en.js';
 
 // Handle case for where the project has not initialised i18next.
 export const translate = (key: string, options?: Record<string, any>) => {
