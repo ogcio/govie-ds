@@ -35,7 +35,7 @@ Once you're done, you can run `make stop-react-storybook` to close the Storybook
 
 ## Build Figma tokens
 
-Make token changes in `tokens/tokens` or `packages/themes/<packagename>` in [Design Token Format Module](https://design-tokens.github.io/community-group/format/) format.
+Make token changes in `packages/design/tokens` or `packages/themes/<packagename>` in [Design Token Format Module](https://design-tokens.github.io/community-group/format/) format.
 
 ```bash
 pnpm figma:build

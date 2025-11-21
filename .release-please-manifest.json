@@ -8,5 +8,5 @@
   "packages/html/ds": "1.16.1",
   "packages/react/ds": "1.22.1",
   "packages/themes/govie": "1.18.0",
-  "tokens": "1.18.0"
+  "packages/design/tokens": "1.18.0"
 }
