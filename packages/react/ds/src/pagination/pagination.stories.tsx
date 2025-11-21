@@ -140,21 +140,23 @@ export const TestExtraSmallBreakpoint: Story = {
   play: async ({ canvasElement, step }) => {
     const canvas = within(canvasElement);
 
-    await canvas.findAllByText(/Page 5 of 10/);
+    await canvas.findByRole('navigation');
 
     await step(
       'should render pagination buttons and page numbers when not on XS breakpoint',
       async () => {
         const pageButtons = canvas.getAllByRole('button');
         expect(pageButtons.length).toBeGreaterThan(0);
-        expect(canvas.getByText('Page 5 of 10')).toBeInTheDocument();
+        expect(canvas.getByText(/Page 5/)).toBeInTheDocument();
+        expect(canvas.getByText(/of 10/)).toBeInTheDocument();
       },
     );
 
     await step('should hide pagination buttons on XS breakpoint', async () => {
       const pageButtons = canvas.queryAllByRole('button');
       expect(pageButtons.length).toBe(2);
-      expect(canvas.getByText('Page 5 of 10')).toBeInTheDocument();
+      expect(canvas.getByText(/Page 5/)).toBeInTheDocument();
+      expect(canvas.getByText(/of 10/)).toBeInTheDocument();
     });
   },
 };

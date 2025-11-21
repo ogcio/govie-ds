@@ -1,8 +1,8 @@
 'use client';
 import React, { useState, useEffect } from 'react';
+import { Trans, useTranslation } from 'react-i18next';
 import { Button } from '../button/button.js';
 import { Breakpoint, useBreakpoint } from '../hooks/use-breakpoint.js';
-import { translate as t } from '../i18n/utility.js';
 import { Icon } from '../icon/icon.js';
 import { getDisplayPages } from '../utils/utilities.js';
 
@@ -19,6 +19,8 @@ export const Pagination: React.FC<PaginationProps> = ({
   onPageChange,
   dataTestid,
 }) => {
+  const { t } = useTranslation();
+
   if (totalPages === 0) {
     return null;
   }
@@ -71,14 +73,14 @@ export const Pagination: React.FC<PaginationProps> = ({
   };
 
   const renderPaginationLabel = () => (
-    <span className="gi-text-md" aria-live="polite">
-      <span className="gi-font-bold">
-        {t('pagination.page', {
-          currentPage,
-          totalPages,
-          defaultValue: `Page ${currentPage} of ${totalPages}`,
-        })}
-      </span>
+    <span className="gi-text-md gi-leading-6" aria-live="polite">
+      <Trans
+        i18nKey="pagination.page"
+        values={{ currentPage, totalPages }}
+        components={{ bold: <span className="gi-font-bold" /> }}
+      >
+        <span className="gi-font-bold">Page {currentPage}</span> of {totalPages}
+      </Trans>
     </span>
   );
 
