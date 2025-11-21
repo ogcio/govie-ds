@@ -7,7 +7,6 @@ import React, {
 import { Button } from '../button/button.js';
 import { Chip } from '../chip/chip.js';
 import { cn } from '../cn.js';
-import { Heading } from '../heading/heading.js';
 import { translate as t } from '../i18n/utility.js';
 
 interface DataTableHeaderTypeProps extends HTMLAttributes<HTMLDivElement> {

@@ -203,16 +203,7 @@ export { TabList } from './tabs/tab-list.js';
 export { TabPanel } from './tabs/tab-panel.js';
 export { Tabs } from './tabs/tabs.js';
 export type { TabItemProps, TabsProps, TabPanelProps } from './tabs/types.js';
-export type {
-  DataTableFooterProps,
-  DataTableFooterTypeProps,
-} from './data-table/data-table-footer.js';
-export {
-  DataTableFooter,
-  DataTableFooterStart,
-  DataTableFooterCenter,
-  DataTableFooterEnd,
-} from './data-table/data-table-footer.js';
+export * from './data-table/index.js';
 export { Tag, TagTypeEnum, type TagProps, type TagType } from './tag/tag.js';
 export { TextInput, type TextInputProps } from './text-input/text-input.js';
 export { TextArea, type TextAreaProps } from './textarea/textarea.js';
@@ -225,9 +216,4 @@ export type {
   ToastVerticalPosition,
 } from './toast/types.js';
 export { Tooltip, type TooltipProps } from './tooltip/tooltip.js';
-export { EditableTableCell } from './data-table/editable-table-cell.js';
-export type {
-  EditorTableCellConfig,
-  EditorTableCellProps,
-} from './data-table/types.js';
 export { useToggleMap } from './hooks/use-toggle-map.js';
