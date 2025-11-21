@@ -17,6 +17,7 @@
   },
   "devDependencies": {
     "@ogcio/design-system-prettier-config": "workspace:*",
-    "@ogcio/design-system-tokens-builder": "workspace:*"
+    "@ogcio/design-system-tokens-builder": "workspace:*",
+    "tsup": "^8.4.0"
   }
 }

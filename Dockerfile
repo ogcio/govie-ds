@@ -11,7 +11,6 @@ WORKDIR /build
 COPY package.json pnpm-workspace.yaml pnpm-lock.yaml ./
 COPY apps/ ./apps
 COPY packages/ ./packages
-COPY tokens/ ./tokens
 COPY apps/docs/.env.${DEPLOY_ENV} ./apps/docs/.env.production
 
 ENV DEPLOY_ENV=${DEPLOY_ENV}
