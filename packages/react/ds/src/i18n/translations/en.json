@@ -55,7 +55,7 @@
       "textarea.remainingChars": "You have {{remainingChars}} characters remaining",
       "pagination.previous": "Previous",
       "pagination.next": "Next",
-      "pagination.page": "Page {{currentPage}} of {{totalPages}}",
+      "pagination.page": "<bold>Page {{currentPage}}</bold> of {{totalPages}}",
       "pagination.goToPage": "Go to page {{page}}",
       "pagination.goToPrevious": "Go to previous",
       "pagination.goToNext": "Go to next",
