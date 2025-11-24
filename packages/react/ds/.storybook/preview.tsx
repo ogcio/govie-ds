@@ -1,4 +1,3 @@
- 
 import '@ogcio/theme-doete/light.css';
 import '@ogcio/theme-govie/theme.css';
 import {
@@ -11,20 +10,19 @@ import {
 } from '@storybook/addon-docs/blocks';
 import { withThemeByDataAttribute } from '@storybook/addon-themes';
 import type { Preview } from '@storybook/react';
-import i18n from 'i18next';
 import { INITIAL_VIEWPORTS, MINIMAL_VIEWPORTS } from 'storybook/viewport';
-import enTranslations from '../src/i18n/translations/en.json';
 import '../styles.css';
 import './global.css';
 import '../src/browser-support/runtime';
+import { initI18n } from '../src/i18n/config';
+import enTranslations from '../src/i18n/translations/en.json';
 
-i18n.init({
+initI18n({
   lng: 'en',
   fallbackLng: 'en',
   resources: {
     ...enTranslations,
   },
-  interpolation: { escapeValue: false },
 });
 
 const preview: Preview = {
