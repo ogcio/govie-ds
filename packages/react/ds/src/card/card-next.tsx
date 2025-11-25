@@ -115,7 +115,7 @@ export const CardNext: FC<CardNextProps> = ({
     }
 
     setOrientation('horizontal');
-  }, [isMobile]);
+  }, [isMobile, type]);
 
   return (
     <CardNextContext.Provider value={true}>
@@ -264,9 +264,13 @@ export const CardTitle: FC<CardTitleProps> = ({
   const titleId = id ?? `card-title-${autoId}`;
 
   const a11y = useContext(CardA11yContext) as any;
-  if (a11y) {
+
+  useEffect(() => {
+    if (!a11y) {
+      return;
+    }
     a11y.setLabelId(titleId);
-  }
+  }, [a11y, titleId]);
 
   return (
     <div
@@ -302,9 +306,13 @@ export const CardSubtitle: FC<CardSubtitleProps> = ({
   const subtitleId = id ?? `card-subtitle-${autoId}`;
 
   const a11y = useContext(CardA11yContext) as any;
-  if (a11y) {
+
+  useEffect(() => {
+    if (!a11y) {
+      return;
+    }
     a11y.addDescId(subtitleId);
-  }
+  }, [a11y, subtitleId]);
 
   return (
     <div
@@ -396,9 +404,13 @@ export const CardDescription: FC<CardDescriptionProps> = ({
   const descId = id ?? `card-desc-${autoId}`;
 
   const a11y = useContext(CardA11yContext) as any;
-  if (a11y) {
+
+  useEffect(() => {
+    if (!a11y) {
+      return;
+    }
     a11y.addDescId(descId);
-  }
+  }, [a11y, descId]);
 
   return (
     <div className={cn('gi-card-paragraph', className)} id={descId} {...props}>
@@ -414,11 +426,7 @@ export const CardAction: FC<CardActionProps> = ({
 }: CardActionProps) => {
   useRequiredContext(CardContainerContext, 'CardAction', 'CardContainer');
   return (
-    <div
-      className={cn('gi-card-action', className)}
-      role="group" /* why: groups related interactive controls */
-      {...props}
-    >
+    <div className={cn('gi-card-action', className)} role="group" {...props}>
       {children}
     </div>
   );
