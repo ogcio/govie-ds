@@ -75,11 +75,6 @@
       "release-type": "node",
       "changelog-path": "CHANGELOG.md"
     },
-    "packages/design/deepmerge": {
-      "component": "design-deepmerge",
-      "release-type": "node",
-      "changelog-path": "CHANGELOG.md"
-    },
     "packages/design/tailwind": {
       "component": "design-tailwind",
       "release-type": "node",

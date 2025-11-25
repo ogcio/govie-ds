@@ -553,5 +553,5 @@ export function createTheme(
     },
   };
 
-  return merge.all<CustomThemeConfig>([defaultTheme, overrides || {}]);
+  return merge<CustomThemeConfig>(defaultTheme, overrides || {});
 }

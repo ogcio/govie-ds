@@ -2,7 +2,6 @@
   "apps/docs": "1.20.1",
   "packages/build/eslint-config": "1.2.6",
   "packages/build/prettier-config": "1.0.6",
-  "packages/design/deepmerge": "1.0.7",
   "packages/design/tailwind": "1.18.0",
   "packages/design/theme-builder": "1.18.0",
   "packages/html/ds": "1.16.1",

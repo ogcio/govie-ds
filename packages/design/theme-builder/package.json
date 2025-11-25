@@ -15,10 +15,10 @@
   "prettier": "@ogcio/design-system-prettier-config",
   "dependencies": {
     "@animaapp/design-tokens-validator": "^0.0.2",
-    "@ogcio/design-system-deepmerge": "workspace:*",
     "@ogcio/design-system-eslint-config": "workspace:*",
     "@ogcio/design-system-tokens": "workspace:*",
     "@ogcio/design-system-tokens-builder": "workspace:*",
+    "deepmerge": "^4.3.1",
     "fs-extra": "^11.2.0",
     "glob": "^11.0.1",
     "json-schema-to-typescript": "^14.1.0",
