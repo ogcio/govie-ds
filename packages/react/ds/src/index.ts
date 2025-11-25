@@ -209,7 +209,7 @@ export {
   TagTypeEnum,
   type TagProps,
   type TagType,
-  TagSize,
+  type TagSize,
 } from './tag/tag.js';
 export { TextInput, type TextInputProps } from './text-input/text-input.js';
 export { TextArea, type TextAreaProps } from './textarea/textarea.js';
