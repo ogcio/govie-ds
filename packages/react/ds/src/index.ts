@@ -204,7 +204,13 @@ export { TabPanel } from './tabs/tab-panel.js';
 export { Tabs } from './tabs/tabs.js';
 export type { TabItemProps, TabsProps, TabPanelProps } from './tabs/types.js';
 export * from './data-table/index.js';
-export { Tag, TagTypeEnum, type TagProps, type TagType } from './tag/tag.js';
+export {
+  Tag,
+  TagTypeEnum,
+  type TagProps,
+  type TagType,
+  TagSize,
+} from './tag/tag.js';
 export { TextInput, type TextInputProps } from './text-input/text-input.js';
 export { TextArea, type TextAreaProps } from './textarea/textarea.js';
 export { toaster, ToastProvider } from './toast/toast.js';
