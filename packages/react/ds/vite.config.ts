@@ -95,7 +95,10 @@ export default defineConfig({
           'react/jsx-runtime': 'jsxRuntime',
         },
       },
-      plugins: [injectBrowserCheck()],
+      /* 
+        Disabled browser-support banner - conflicts with JSDOM (Vitest).
+        plugins: [injectBrowserCheck()],
+      */
     },
   },
 });
