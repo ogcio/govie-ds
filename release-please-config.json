@@ -75,11 +75,6 @@
       "release-type": "node",
       "changelog-path": "CHANGELOG.md"
     },
-    "packages/design/deepmerge": {
-      "component": "design-deepmerge",
-      "release-type": "node",
-      "changelog-path": "CHANGELOG.md"
-    },
     "packages/design/tailwind": {
       "component": "design-tailwind",
       "release-type": "node",
@@ -105,18 +100,10 @@
       "release-type": "node",
       "changelog-path": "CHANGELOG.md"
     },
-    "tokens": {
+    "packages/design/tokens": {
       "component": "tokens",
       "release-type": "node",
-      "changelog-path": "CHANGELOG.md",
-      "extra-files": [
-        "tokens/light/brand/brand.json",
-        "tokens/light/primitive/color.json",
-        "tokens/light/semantic/color.json",
-        "tokens/light/semantic/heading.json",
-        "tokens/light/semantic/surface.json",
-        "tokens/light/semantic/text.json"
-      ]
+      "changelog-path": "CHANGELOG.md"
     }
   },
   "plugins": [

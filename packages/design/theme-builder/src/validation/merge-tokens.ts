@@ -1,5 +1,5 @@
 import { promises as fs } from 'node:fs';
-import { deepmerge } from '@ogcio/design-system-deepmerge';
+import deepmerge from 'deepmerge';
 import { glob } from 'glob';
 
 export async function mergeDesignTokens({
@@ -17,9 +17,9 @@ export async function mergeDesignTokens({
     for await (const file of files) {
       const fileContent = await fs.readFile(file, 'utf8');
       const fileTokens = JSON.parse(fileContent);
-      mergedTokens = deepmerge(mergedTokens, fileTokens);
+      mergedTokens = deepmerge(mergedTokens, fileTokens || {});
     }
   }
 
-  return deepmerge(mergedTokens, tokens);
+  return deepmerge(mergedTokens, tokens || {});
 }
