@@ -266,10 +266,7 @@ export const CardTitle: FC<CardTitleProps> = ({
   const a11y = useContext(CardA11yContext) as any;
 
   useEffect(() => {
-    if (!a11y) {
-      return;
-    }
-    a11y.setLabelId(titleId);
+    a11y?.setLabelId(titleId);
   }, [a11y, titleId]);
 
   return (
@@ -308,10 +305,7 @@ export const CardSubtitle: FC<CardSubtitleProps> = ({
   const a11y = useContext(CardA11yContext) as any;
 
   useEffect(() => {
-    if (!a11y) {
-      return;
-    }
-    a11y.addDescId(subtitleId);
+    a11y?.addDescId(subtitleId);
   }, [a11y, subtitleId]);
 
   return (
@@ -406,10 +400,7 @@ export const CardDescription: FC<CardDescriptionProps> = ({
   const a11y = useContext(CardA11yContext) as any;
 
   useEffect(() => {
-    if (!a11y) {
-      return;
-    }
-    a11y.addDescId(descId);
+    a11y?.addDescId(descId);
   }, [a11y, descId]);
 
   return (
