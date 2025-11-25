@@ -1,5 +1,22 @@
 # Changelog
 
+## [1.21.0](https://github.com/ogcio/govie-ds/compare/docs-v1.20.1...docs-v1.21.0) (2025-11-25)
+
+
+### Features
+
+* **AB#32947:** replace `@ogcio/design-system-deepmerge` with `deepmerge` ([4786018](https://github.com/ogcio/govie-ds/commit/478601801ec66b3d1315336fe797446de8be75b6))
+
+
+### Dependencies
+
+* The following workspace dependencies were updated
+  * dependencies
+    * @ogcio/design-system-react bumped to 1.23.0
+    * @ogcio/design-system-tailwind bumped to 1.19.0
+    * @ogcio/theme-govie bumped to 1.19.0
+    * @ogcio/design-system-tokens bumped to 1.19.0
+
 ## [1.20.1](https://github.com/ogcio/govie-ds/compare/docs-v1.20.0...docs-v1.20.1) (2025-11-18)
 
 
