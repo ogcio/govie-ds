@@ -167,56 +167,59 @@ export const SelectNext = forwardRef<HTMLInputElement, SelectNextProps>(
       }
     };
 
-    const handleKeyDown = useCallback((event: React.KeyboardEvent) => {
-      if (disabled) {
-        return;
-      }
-
-      switch (event.key) {
-        case 'ArrowDown':
-        case 'ArrowUp': {
-          event.preventDefault();
-          const direction = event.key === 'ArrowDown' ? 1 : -1;
-
-          setHighlightedIndex((previous) => {
-            const start =
-              previous === -1 ? (direction === -1 ? 0 : -1) : previous;
-            return cycleEnabledIndex(childrenElements, start, direction);
-          });
-          setIsOpen(true);
-          break;
+    const handleKeyDown = useCallback(
+      (event: React.KeyboardEvent) => {
+        if (disabled) {
+          return;
         }
 
-        case 'Enter':
-        case 'NumpadEnter': {
-          event.preventDefault();
-          if (
-            isOpen &&
-            highlightedIndex != -1 &&
-            childrenElements[highlightedIndex]
-          ) {
-            const opt = childrenElements[highlightedIndex];
-            if (!(opt.props as any)?.disabled) {
-              selectValue((opt.props as any).value);
-            }
-          } else {
+        switch (event.key) {
+          case 'ArrowDown':
+          case 'ArrowUp': {
+            event.preventDefault();
+            const direction = event.key === 'ArrowDown' ? 1 : -1;
+
+            setHighlightedIndex((previous) => {
+              const start =
+                previous === -1 ? (direction === -1 ? 0 : -1) : previous;
+              return cycleEnabledIndex(childrenElements, start, direction);
+            });
             setIsOpen(true);
+            break;
           }
-          break;
-        }
 
-        case 'Tab': {
-          setIsOpen(false);
-          break;
-        }
+          case 'Enter':
+          case 'NumpadEnter': {
+            event.preventDefault();
+            if (
+              isOpen &&
+              highlightedIndex != -1 &&
+              childrenElements[highlightedIndex]
+            ) {
+              const opt = childrenElements[highlightedIndex];
+              if (!(opt.props as any)?.disabled) {
+                selectValue((opt.props as any).value);
+              }
+            } else {
+              setIsOpen(true);
+            }
+            break;
+          }
 
-        case 'Escape': {
-          event.preventDefault();
-          setIsOpen(false);
-          break;
+          case 'Tab': {
+            setIsOpen(false);
+            break;
+          }
+
+          case 'Escape': {
+            event.preventDefault();
+            setIsOpen(false);
+            break;
+          }
         }
-      }
-    }, []);
+      },
+      [childrenElements, isOpen, highlightedIndex],
+    );
 
     const handleBlur = (event: React.FocusEvent<HTMLInputElement>) => {
       const relatedTarget = event.relatedTarget as Node | null;
