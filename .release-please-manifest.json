@@ -1,11 +1,11 @@
 {
-  "apps/docs": "1.20.1",
+  "apps/docs": "1.21.0",
   "packages/build/eslint-config": "1.2.6",
   "packages/build/prettier-config": "1.0.6",
-  "packages/design/tailwind": "1.18.0",
-  "packages/design/theme-builder": "1.18.0",
-  "packages/html/ds": "1.16.1",
-  "packages/react/ds": "1.22.1",
-  "packages/themes/govie": "1.18.0",
-  "packages/design/tokens": "1.18.0"
+  "packages/design/tailwind": "1.19.0",
+  "packages/design/theme-builder": "1.19.0",
+  "packages/html/ds": "1.16.2",
+  "packages/react/ds": "1.23.0",
+  "packages/themes/govie": "1.19.0",
+  "packages/design/tokens": "1.19.0"
 }

@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.19.0](https://github.com/ogcio/govie-ds/compare/tokens-v1.18.0...tokens-v1.19.0) (2025-11-25)
+
+
+### Features
+
+* **AB#32868:** move design tokens to `packages/design/` ([1ff1f64](https://github.com/ogcio/govie-ds/commit/1ff1f64a9dda8e39dbd69aee9c8ba9194113255e))
+
 ## [1.18.0](https://github.com/ogcio/govie-ds/compare/tokens-v1.7.1...tokens-v1.18.0) (2025-11-18)
 
 

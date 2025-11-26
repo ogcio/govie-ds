@@ -1,6 +1,6 @@
 {
   "name": "@ogcio/design-system-tailwind",
-  "version": "1.18.0",
+  "version": "1.19.0",
   "description": "The GOV IE design system Tailwind utilities.",
   "type": "module",
   "main": "dist/index.js",
