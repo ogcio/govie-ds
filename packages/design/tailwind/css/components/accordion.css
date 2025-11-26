@@ -3,7 +3,7 @@
 }
 
 .gi-accordion-header {
-  @apply gi-items-center;
+  @apply gi-items-start;
 }
 
 .gi-accordion[data-disabled='false'] {

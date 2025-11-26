@@ -2,7 +2,7 @@
 import React, { useState, useRef } from 'react';
 import { tv } from 'tailwind-variants';
 import { cn } from '../cn.js';
-import { Icon } from '../icon/icon.js';
+import { Icon, IconSize } from '../icon/icon.js';
 
 export type AccordionItemProps = {
   children: React.ReactNode;
@@ -36,6 +36,10 @@ export const AccordionItem = ({
   const ref = useRef<HTMLDivElement>(null);
   const buttonId = `${label}-button`;
   const panelId = `${label}-panel`;
+  const ICON_SIZE = {
+    small: 'sm',
+    default: 'md',
+  };
 
   const handleKeyDown = (event: React.KeyboardEvent) => {
     if (event.key === 'Enter' && !disabled) {
@@ -61,6 +65,7 @@ export const AccordionItem = ({
           {label}{' '}
           <Icon
             icon={isExpanded ? 'keyboard_arrow_up' : 'keyboard_arrow_down'}
+            size={(ICON_SIZE[variant] ?? 'md') as IconSize}
           />
         </div>
       </div>
