@@ -1,5 +1,28 @@
 # Changelog
 
+## [1.23.0](https://github.com/ogcio/govie-ds/compare/react-lib-v1.22.1...react-lib-v1.23.0) (2025-11-25)
+
+
+### Features
+
+* **AB#32875:** export all DataTable components for the public usage ([#779](https://github.com/ogcio/govie-ds/issues/779)) ([30f33d0](https://github.com/ogcio/govie-ds/commit/30f33d0ef808ad4c2708146b33912cc916985321))
+
+
+### Bug Fixes
+
+* **AB#31986:** Sync Pagination with Figma  ([#777](https://github.com/ogcio/govie-ds/issues/777)) ([997765f](https://github.com/ogcio/govie-ds/commit/997765f7349dba083795b824d1e723c9a8e642f9))
+* **AB#32631:** Select and Autocomplete Keyboard events ([#775](https://github.com/ogcio/govie-ds/issues/775)) ([55bcd21](https://github.com/ogcio/govie-ds/commit/55bcd2132c97451ba4177a65afcab59cb116621b))
+* **AB#32925:** disable browser-support banner plugin ([#781](https://github.com/ogcio/govie-ds/issues/781)) ([2561179](https://github.com/ogcio/govie-ds/commit/25611790a46223c45caa557ae7a96fee45d465cc))
+* **AB#32936:** Fix CardNext component to remove React render warning ([#783](https://github.com/ogcio/govie-ds/issues/783)) ([4be3a27](https://github.com/ogcio/govie-ds/commit/4be3a27045bc91f29f9c007f35e02c0a17b2c8f8))
+
+
+### Dependencies
+
+* The following workspace dependencies were updated
+  * devDependencies
+    * @ogcio/design-system-tailwind bumped to 1.19.0
+    * @ogcio/theme-govie bumped to 1.19.0
+
 ## [1.22.1](https://github.com/ogcio/govie-ds/compare/react-lib-v1.22.0...react-lib-v1.22.1) (2025-11-18)
 
 
