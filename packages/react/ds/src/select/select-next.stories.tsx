@@ -818,5 +818,17 @@ export const TestKeyboardEvents: StoryObj<typeof SelectNext> = {
       await userEvent.keyboard('{Escape}');
       await expectClosed();
     });
+
+    await step('Enter selects a value', async () => {
+      input.focus();
+      await userEvent.keyboard('{Enter}');
+      await expectOpen();
+      await userEvent.keyboard('{ArrowDown}');
+      await userEvent.keyboard('{ArrowDown}');
+      await userEvent.keyboard('{Enter}');
+      await waitFor(() => {
+        expect(input).toHaveValue('Option 1');
+      });
+    });
   },
 };
