@@ -1,3 +1,4 @@
+import clsx from 'clsx';
 import { ComponentPropsWithoutRef } from 'react';
 
 export const TagTypeEnum = {
@@ -44,16 +45,15 @@ export const Tag = ({
   text,
   type = TagTypeEnum.Default,
   size = TagSizeEnum.Default,
+  className,
   ...props
-}: TagProps) => {
-  return (
-    <strong
-      {...props}
-      className={`gi-tag ${tagClass[type]} ${tagSizeClass[size]}`}
-    >
-      {text}
-    </strong>
-  );
-};
+}: TagProps) => (
+  <strong
+    {...props}
+    className={clsx('gi-tag', tagClass[type], tagSizeClass[size], className)}
+  >
+    {text}
+  </strong>
+);
 
 Tag.displayName = 'Tag';
