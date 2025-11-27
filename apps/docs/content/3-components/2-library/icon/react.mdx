@@ -15,7 +15,7 @@ component:
           required: true
         - name: 'size'
           ofType: 'string'
-          description: 'Specifies the size of the icon. Options: xs, sm, md, lg, xl.'
+          description: 'Specifies the size of the icon. Options: sm, md, lg, xl.'
           required: false
         - name: 'filled'
           ofType: 'boolean'
@@ -40,10 +40,8 @@ component:
   stories:
     - name: 'default'
       url: '/story/components-icon--default'
-    - name: 'extra-small'
-      url: '/story/components-icon--extra-small'
-    - name: 'medium'
-      url: '/story/components-icon--medium'
+    - name: 'small'
+      url: '/story/components-icon--small'
     - name: 'large'
       url: '/story/components-icon--large'
     - name: 'extra-large'
@@ -62,22 +60,16 @@ Icons help users quickly recognise actions, states and categories. Use them to c
 </ComponentPreview>
 <FigmaPreviewButton href="https://www.figma.com/design/ZEqfpXhocdZs1K5YfsE5ws/Design-system?node-id=3166-3067&t=Re0xIRAmWNDNItHY-4" />
 
-### Extra Small
-
-<ComponentPreview>
-  <StorybookFrame componentId="icon-react" story="extra-small" />
-</ComponentPreview>
-
-### Small
+### Default
 
 <ComponentPreview>
   <StorybookFrame componentId="icon-react" story="default" />
 </ComponentPreview>
 
-### Medium
+### Small
 
 <ComponentPreview>
-  <StorybookFrame componentId="icon-react" story="medium" />
+  <StorybookFrame componentId="icon-react" story="small" />
 </ComponentPreview>
 
 ### Large

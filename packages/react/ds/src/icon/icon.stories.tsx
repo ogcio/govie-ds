@@ -18,7 +18,7 @@ export const Default: Story = {
     },
     size: {
       control: 'radio',
-      options: ['xs', 'sm', 'md', 'lg', 'xl'],
+      options: ['sm', 'md', 'lg', 'xl'],
       description: 'Specify the size of the icon',
     },
     filled: {
@@ -48,17 +48,10 @@ export const Default: Story = {
   },
 };
 
-export const ExtraSmall: Story = {
+export const Small: Story = {
   args: {
     icon: 'thumb_up',
-    size: 'xs',
-  },
-};
-
-export const Medium: Story = {
-  args: {
-    icon: 'thumb_up',
-    size: 'md',
+    size: 'sm',
   },
 };
 
@@ -134,7 +127,7 @@ export const TestThumbDownAria: Story = {
   args: {
     icon: 'thumb_down',
     size: 'md',
-    ariaHidden: true,
+    ariaHidden: false,
     ariaLabel: 'ARIA-LABEL',
   },
   play: async ({ canvasElement, step }) => {
@@ -142,7 +135,9 @@ export const TestThumbDownAria: Story = {
     await step('should render the ThumbDown with ARIA', async () => {
       const iconElement = canvas.getByTestId('govie-icon');
       expect(iconElement.textContent?.trim()).toBe('thumb_down');
-      expect(iconElement.hasAttribute('aria-hidden')).toBe(true);
+      expect(iconElement.hasAttribute('aria-hidden')).toBe(false);
+      expect(iconElement.hasAttribute('aria-label')).toBe(true);
+      expect(iconElement.getAttribute('aria-label')).toBe('ARIA-LABEL');
     });
   },
 };

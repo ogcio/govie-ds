@@ -19,7 +19,7 @@ import X from './svgs/x.js';
 import Youtube from './svgs/youtube.js';
 
 export type IconId = (typeof iconIds)[number];
-export type IconSize = 'xs' | 'sm' | 'md' | 'lg' | 'xl';
+export type IconSize = 'sm' | 'md' | 'lg' | 'xl';
 
 export type IconProps = HTMLAttributes<HTMLSpanElement> & {
   icon: IconId;
@@ -34,9 +34,8 @@ export type IconProps = HTMLAttributes<HTMLSpanElement> & {
 };
 
 const SIZE_MAP: Record<IconSize, string> = {
-  xs: '16px',
-  sm: '24px',
-  md: '27px',
+  sm: '16px',
+  md: '24px',
   lg: '32px',
   xl: '48px',
 };
@@ -79,9 +78,6 @@ const RawIcon = forwardRef<HTMLSpanElement, IconProps>(
     ref,
   ) => {
     const fontSize = SIZE_MAP[size] ?? SIZE_MAP.sm;
-    const isAriaHidden = ariaHidden ?? !ariaLabel;
-    const role = !isAriaHidden && ariaLabel ? 'img' : undefined;
-    const ariaLabelProp = isAriaHidden ? undefined : ariaLabel;
     const reg = ICON_REGISTRY[String(icon)];
 
     if (reg) {
@@ -103,9 +99,9 @@ const RawIcon = forwardRef<HTMLSpanElement, IconProps>(
         ref={ref}
         {...props}
         onClick={onClick}
-        aria-hidden={isAriaHidden || undefined}
-        aria-label={ariaLabelProp}
-        role={role}
+        aria-hidden={ariaHidden || undefined}
+        aria-label={ariaLabel}
+        role={ariaLabel ? 'img' : 'presentation'}
         className={cn(
           {
             'gi-block': !inline,
