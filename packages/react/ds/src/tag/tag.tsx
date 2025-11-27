@@ -48,8 +48,8 @@ export const Tag = ({
 }: TagProps) => {
   return (
     <strong
-      className={`gi-tag ${tagClass[type]} ${tagSizeClass[size]}`}
       {...props}
+      className={`gi-tag ${tagClass[type]} ${tagSizeClass[size]}`}
     >
       {text}
     </strong>
