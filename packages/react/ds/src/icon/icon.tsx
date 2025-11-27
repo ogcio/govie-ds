@@ -65,7 +65,7 @@ const RawIcon = forwardRef<HTMLSpanElement, IconProps>(
   (
     {
       icon,
-      size = 'sm',
+      size = 'md',
       filled,
       disabled,
       ariaHidden,
