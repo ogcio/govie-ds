@@ -61,7 +61,7 @@ export const AccordionItem = ({
           {label}
           <Icon
             icon={isExpanded ? 'keyboard_arrow_up' : 'keyboard_arrow_down'}
-            size="sm"
+            size="md"
             className={cn({
               'gi-pt-[1.5px]': variant === 'default',
             })}

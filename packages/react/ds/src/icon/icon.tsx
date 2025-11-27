@@ -1,9 +1,8 @@
 'use client';
 import {
+  ComponentPropsWithoutRef,
   ComponentType,
   forwardRef,
-  HTMLAttributes,
-  memo,
   MouseEventHandler,
 } from 'react';
 import { cn } from '../cn.js';
@@ -21,7 +20,7 @@ import Youtube from './svgs/youtube.js';
 export type IconId = (typeof iconIds)[number];
 export type IconSize = 'sm' | 'md' | 'lg' | 'xl';
 
-export type IconProps = HTMLAttributes<HTMLSpanElement> & {
+export type IconProps = {
   icon: IconId;
   size?: IconSize;
   filled?: boolean;
@@ -31,7 +30,7 @@ export type IconProps = HTMLAttributes<HTMLSpanElement> & {
   inline?: boolean;
   className?: string;
   onClick?: MouseEventHandler<HTMLSpanElement>;
-};
+} & Omit<ComponentPropsWithoutRef<'span'>, 'children'>;
 
 const SIZE_MAP: Record<IconSize, string> = {
   sm: '16px',
@@ -61,7 +60,7 @@ const ICON_REGISTRY: Record<
   placeholder: { Component: Placeholder, disabledClass: 'gi-fill-gray-700' },
 };
 
-const RawIcon = forwardRef<HTMLSpanElement, IconProps>(
+export const Icon = forwardRef<HTMLSpanElement, IconProps>(
   (
     {
       icon,
@@ -95,12 +94,12 @@ const RawIcon = forwardRef<HTMLSpanElement, IconProps>(
 
     return (
       <span
-        data-testid="govie-icon"
-        ref={ref}
-        {...props}
-        onClick={onClick}
         aria-hidden={ariaHidden || undefined}
         aria-label={ariaLabel}
+        data-testid={'govie-icon'}
+        {...props}
+        ref={ref}
+        onClick={onClick}
         role={ariaLabel ? 'img' : 'presentation'}
         className={cn(
           {
@@ -123,5 +122,4 @@ const RawIcon = forwardRef<HTMLSpanElement, IconProps>(
   },
 );
 
-export const Icon = memo(RawIcon);
 export default Icon;

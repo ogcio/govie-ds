@@ -236,6 +236,29 @@ export const WithIconStart: StoryObj = {
   },
 };
 
+export const WithLongTitle: StoryObj<AccordionProps> = {
+  render: (props: AccordionProps) => (
+    <Accordion {...props}>
+      <AccordionItem label="This is a very long accordion label designed to wrap across multiple lines to validate vertical alignment between the text block and the trailing chevron icon within the header area of the component">
+        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Maiores minus
+        eveniet ex officiis accusantium sint eius deleniti cumque? Iste
+        voluptatum omnis harum quaerat eius praesentium a at perferendis
+        quisquam hic.
+      </AccordionItem>
+
+      <AccordionItem
+        disabled
+        label="Disabled item with a label so long it must wrap at least twice to confirm that disabled styles don’t break the alignment and spacing behavior for the icon or the text"
+      >
+        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Maiores minus
+        eveniet ex officiis accusantium sint eius deleniti cumque? Iste
+        voluptatum omnis harum quaerat eius praesentium a at perferendis
+        quisquam hic.
+      </AccordionItem>
+    </Accordion>
+  ),
+};
+
 export const TestRenderBasic: StoryObj = {
   tags: ['skip-playwright'],
   render: () => (
