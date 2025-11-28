@@ -1,3 +1,6 @@
+import clsx from 'clsx';
+import { ComponentPropsWithoutRef } from 'react';
+
 export const TagTypeEnum = {
   Default: 'default',
   Info: 'info',
@@ -8,13 +11,20 @@ export const TagTypeEnum = {
   CounterWarning: 'counterWarning',
 } as const;
 
+export const TagSizeEnum = {
+  Default: 'default',
+  Small: 'small',
+} as const;
+
 export type TagType = (typeof TagTypeEnum)[keyof typeof TagTypeEnum];
+
+export type TagSize = (typeof TagSizeEnum)[keyof typeof TagSizeEnum];
 
 export type TagProps = {
   text: string;
   type?: TagType;
-  dataTestid?: string;
-};
+  size?: TagSize;
+} & Omit<ComponentPropsWithoutRef<'strong'>, 'children'>;
 
 const tagClass = {
   [TagTypeEnum.Default]: 'gi-tag-default',
@@ -26,16 +36,24 @@ const tagClass = {
   [TagTypeEnum.CounterWarning]: 'gi-tag-counter-warning',
 };
 
+const tagSizeClass = {
+  [TagSizeEnum.Default]: 'gi-tag-size-default',
+  [TagSizeEnum.Small]: 'gi-tag-size-small',
+};
+
 export const Tag = ({
   text,
   type = TagTypeEnum.Default,
-  dataTestid,
-}: TagProps) => {
-  return (
-    <strong className={`gi-tag ${tagClass[type]}`} data-testid={dataTestid}>
-      {text}
-    </strong>
-  );
-};
+  size = TagSizeEnum.Default,
+  className,
+  ...props
+}: TagProps) => (
+  <strong
+    {...props}
+    className={clsx('gi-tag', tagClass[type], tagSizeClass[size], className)}
+  >
+    {text}
+  </strong>
+);
 
 Tag.displayName = 'Tag';

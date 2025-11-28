@@ -1,6 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/react';
 import { within, expect } from 'storybook/test';
-import { Tag, TagTypeEnum } from './tag.js';
+import { Tag, TagSizeEnum, TagTypeEnum } from './tag.js';
 
 const meta = {
   title: 'Typography/Tag',
@@ -41,6 +41,19 @@ export const Default: Story = {
       table: {
         type: { summary: 'TagType' },
         defaultValue: { summary: 'blue' },
+        category: 'Appearance',
+      },
+    },
+    size: {
+      control: {
+        type: 'select',
+      },
+      options: Object.values(TagSizeEnum),
+      description:
+        'Controls the dimensions and spacing of the tag. Use "default" for regular tags and "small" for compact tags.',
+      table: {
+        type: { summary: 'TagSize' },
+        defaultValue: { summary: 'default' },
         category: 'Appearance',
       },
     },
@@ -116,6 +129,24 @@ export const Error: Story = {
     await step('should have the correct class for Error', async () => {
       const element = canvas.getByText('Error Tag');
       expect(element.classList.contains('gi-tag-error')).toBe(true);
+    });
+  },
+};
+
+export const Small: Story = {
+  args: {
+    text: 'Completed',
+    type: TagTypeEnum.Info,
+    size: TagSizeEnum.Small,
+  },
+  play: async ({ canvasElement, step }) => {
+    const canvas = within(canvasElement);
+
+    await step('should render a small Info tag', async () => {
+      const element = canvas.getByText('Completed');
+
+      expect(element.classList.contains('gi-tag-info')).toBe(true);
+      expect(element.classList.contains('gi-tag-size-small')).toBe(true);
     });
   },
 };
