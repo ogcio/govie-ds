@@ -1,5 +1,13 @@
 .gi-tag {
-  @apply gi-rounded-sm gi-border-xs gi-font-bold gi-leading-6 gi-py-0 gi-px-2 gi-inline-flex gi-justify-center gi-items-center;
+  @apply gi-rounded-sm gi-border-xs gi-font-bold gi-py-0 gi-px-2 gi-inline-flex gi-justify-center gi-items-center;
+}
+
+.gi-tag-size-default {
+  @apply gi-text-sm gi-leading-6;
+}
+
+.gi-tag-size-small {
+  @apply gi-text-xs gi-leading-5;
 }
 
 .gi-tag-default {
@@ -23,9 +31,9 @@
 }
 
 .gi-tag-counter {
-  @apply gi-bg-color-surface-system-neutral-layer11 gi-text-color-text-tone-light-default gi-stroke-color-text-tone-light-default;
+  @apply gi-border-0 gi-bg-color-surface-system-neutral-layer11 gi-text-color-text-tone-light-default gi-stroke-color-text-tone-light-default gi-min-w-6 gi-h-6 gi-text-xs gi-leading-5 gi-px-1 gi-py-[2px];
 }
 
 .gi-tag-counter-warning {
-  @apply gi-bg-red-600 gi-text-white gi-stroke-white gi-rounded-full;
+  @apply gi-border-0 gi-bg-red-600 gi-text-white gi-stroke-white gi-rounded-full gi-w-6 gi-h-6 gi-px-[2px] gi-py-1 gi-inline-flex gi-items-center gi-justify-center gi-text-xs gi-leading-5;
 }

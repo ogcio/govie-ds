@@ -17,6 +17,10 @@ component:
           ofType: 'string'
           description: 'Defines the visual style and color of the tag. Choose from predefined options like default, info, success, warning, error, counter, counterWarning.'
           required: false
+        - name: 'size'
+          ofType: 'string'
+          description: 'Controls the dimensions of the tag. Use "default" for regular tags and "small" for compact tags.'
+          required: false
   stories:
     - name: 'default'
       url: '/story/typography-tag--default'
@@ -28,6 +32,8 @@ component:
       url: '/story/typography-tag--warning'
     - name: 'error'
       url: '/story/typography-tag--error'
+    - name: 'small'
+      url: '/story/typography-tag--small'
     - name: 'counter'
       url: '/story/typography-tag--counter'
     - name: 'counter-warning'
@@ -68,6 +74,12 @@ Tags are used to visually categorise content. They can indicate the status of an
 
 <ComponentPreview>
   <StorybookFrame componentId="tag-react" story="error" />
+</ComponentPreview>
+
+### Small
+
+<ComponentPreview>
+  <StorybookFrame componentId="tag-react" story="small" />
 </ComponentPreview>
 
 ### Counter
