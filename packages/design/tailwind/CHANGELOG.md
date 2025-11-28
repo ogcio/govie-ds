@@ -1,5 +1,19 @@
 # Changelog
 
+## [1.20.0](https://github.com/ogcio/govie-ds/compare/design-tailwind-v1.19.0...design-tailwind-v1.20.0) (2025-11-28)
+
+
+### Features
+
+* **AB#31989:** Adding Tag small size + fixes ([#784](https://github.com/ogcio/govie-ds/issues/784)) ([37b3778](https://github.com/ogcio/govie-ds/commit/37b3778267813816a44de1d3b120902f9e31b60c))
+
+
+### Dependencies
+
+* The following workspace dependencies were updated
+  * dependencies
+    * @ogcio/design-system-tokens bumped to 1.20.0
+
 ## [1.19.0](https://github.com/ogcio/govie-ds/compare/design-tailwind-v1.18.0...design-tailwind-v1.19.0) (2025-11-25)
 
 
