@@ -69,8 +69,8 @@ export const Icon = forwardRef<HTMLSpanElement, IconProps>(
       disabled,
       ariaHidden,
       ariaLabel,
-      inline = false,
-      className = '',
+      inline,
+      className,
       onClick,
       ...props
     },
@@ -83,18 +83,16 @@ export const Icon = forwardRef<HTMLSpanElement, IconProps>(
       const { Component, disabledClass } = reg;
       const svgClass = cn(
         { 'gi-block': !inline, 'gi-inline-block': inline },
-        disabled ? disabledClass : undefined,
+        disabled && disabledClass,
         className,
       );
 
       return <Component size={fontSize} className={svgClass} />;
     }
 
-    const iconStyle = `'FILL' ${filled ? 1 : 0}, 'wght' 400, 'GRAD' 0, 'opsz' ${fontSize}`;
-
     return (
       <span
-        aria-hidden={ariaHidden || undefined}
+        aria-hidden={ariaHidden}
         aria-label={ariaLabel}
         data-testid={'govie-icon'}
         {...props}
@@ -112,7 +110,7 @@ export const Icon = forwardRef<HTMLSpanElement, IconProps>(
         )}
         style={{
           fontSize,
-          fontVariationSettings: iconStyle,
+          fontVariationSettings: `'FILL' ${filled ? 1 : 0}, 'wght' 400, 'GRAD' 0, 'opsz' ${fontSize}`,
           ...props?.style,
         }}
       >

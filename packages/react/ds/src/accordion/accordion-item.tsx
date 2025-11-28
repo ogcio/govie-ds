@@ -1,5 +1,5 @@
 'use client';
-import cn from 'clsx';
+import clsx from 'clsx';
 import React, { useState, useRef, ComponentPropsWithRef } from 'react';
 import { tv } from 'tailwind-variants';
 import { Icon } from '../icon/icon.js';
@@ -53,16 +53,19 @@ export const AccordionItem = ({
         onClick={() => !disabled && setIsExpanded(!isExpanded)}
         onKeyDown={handleKeyDown}
         tabIndex={0}
-        className={cn('gi-accordion', className)}
+        className={clsx('gi-accordion', className)}
       >
         <div
-          className={cn('gi-accordion-header', accordionVariants({ variant }))}
+          className={clsx(
+            'gi-accordion-header',
+            accordionVariants({ variant }),
+          )}
         >
           {label}
           <Icon
             icon={isExpanded ? 'keyboard_arrow_up' : 'keyboard_arrow_down'}
             size="md"
-            className={cn({
+            className={clsx({
               'gi-pt-[1.5px]': variant === 'default',
             })}
           />
@@ -72,7 +75,7 @@ export const AccordionItem = ({
         id={panelId}
         role="region"
         aria-labelledby={buttonId}
-        className={cn('gi-px-2 gi-pb-4 gi-pt-2 gi-font-normal', {
+        className={clsx('gi-px-2 gi-pb-4 gi-pt-2 gi-font-normal', {
           'gi-block': isExpanded,
           'gi-hidden': !isExpanded,
           'gi-text-md': variant === 'default',
