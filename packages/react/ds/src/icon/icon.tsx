@@ -76,7 +76,7 @@ export const Icon = forwardRef<HTMLSpanElement, IconProps>(
     },
     ref,
   ) => {
-    const fontSize = SIZE_MAP[size] ?? SIZE_MAP.sm;
+    const fontSize = SIZE_MAP[size] ?? SIZE_MAP.md;
     const reg = ICON_REGISTRY[String(icon)];
 
     if (reg) {
