@@ -45,15 +45,6 @@ export const Default = {
         type: { summary: 'React.ReactElement<typeof AccordionItem>[]' },
       },
     },
-    iconStart: {
-      control: 'boolean',
-      description:
-        'Indicates whether icons should appear on the left (true) or the right (false) of the accordion label.',
-    },
-    dataTestid: {
-      control: 'text',
-      description: 'Custom test id for the Accordion component.',
-    },
     variant: {
       control: 'radio',
       options: ['default', 'small'],
@@ -97,18 +88,6 @@ export const Default = {
       );
       if (!h1 || !h2) {
         throw new Error('Expected primary accordion headers not found');
-      }
-    });
-
-    await step('iconStart is NOT applied by default', async () => {
-      const firstHeader = headerByText(
-        canvasElement,
-        'What is the Citizens Information Service?',
-      );
-      const itemRoot = itemRootFromHeader(firstHeader);
-      const iconStart = itemRoot?.dataset.iconStart;
-      if (iconStart === 'true') {
-        throw new Error('iconStart should not be true by default');
       }
     });
 
@@ -188,52 +167,6 @@ export const SmallVariant = {
       </AccordionItem>
     </Accordion>
   ),
-};
-
-export const WithIconStart: StoryObj = {
-  render: () => (
-    <Accordion iconStart={true}>
-      <AccordionItem label="Label 1">
-        This is a content paragraph paragraph
-      </AccordionItem>
-      <AccordionItem label="Label 2">
-        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Maiores minus
-        eveniet ex officiis accusantium sint eius deleniti cumque? Iste
-        voluptatum omnis harum quaerat eius praesentium a at perferendis
-        quisquam hic.
-      </AccordionItem>
-      <AccordionItem label="Label 3">
-        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Maiores minus
-        eveniet ex officiis accusantium sint eius deleniti cumque? Iste
-        voluptatum omnis harum quaerat eius praesentium a at perferendis
-        quisquam hic.
-      </AccordionItem>
-      <AccordionItem disabled label="Label 4">
-        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Maiores minus
-        eveniet ex officiis accusantium sint eius deleniti cumque? Iste
-        voluptatum omnis harum quaerat eius praesentium a at perferendis
-        quisquam hic.
-      </AccordionItem>
-      <AccordionItem disabled label="Label 5">
-        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Maiores minus
-        eveniet ex officiis accusantium sint eius deleniti cumque? Iste
-        voluptatum omnis harum quaerat eius praesentium a at perferendis
-        quisquam hic.
-      </AccordionItem>
-    </Accordion>
-  ),
-  play: async ({ canvasElement, step }) => {
-    await step('iconStart is applied', async () => {
-      const firstHeader = headerByText(canvasElement, 'Label 1');
-      const itemRoot = itemRootFromHeader(firstHeader);
-      const iconStart = itemRoot?.dataset.iconStart;
-      if (iconStart !== 'true') {
-        throw new Error(
-          'Expected data-icon-start="true" when iconStart is enabled',
-        );
-      }
-    });
-  },
 };
 
 export const WithLongTitle: StoryObj<AccordionProps> = {

@@ -9,7 +9,6 @@ export type AccordionItemProps = {
   label: string;
   defaultExpanded?: boolean;
   disabled?: boolean;
-  iconStart?: boolean;
   variant?: 'default' | 'small';
 } & ComponentPropsWithRef<'div'>;
 
@@ -27,7 +26,6 @@ export const AccordionItem = ({
   children,
   label,
   disabled,
-  iconStart,
   className,
   variant = 'default',
   ...props
@@ -49,7 +47,6 @@ export const AccordionItem = ({
         {...props}
         ref={ref}
         data-disabled={!!disabled}
-        data-icon-start={!!iconStart}
         onClick={() => !disabled && setIsExpanded(!isExpanded)}
         onKeyDown={handleKeyDown}
         tabIndex={0}

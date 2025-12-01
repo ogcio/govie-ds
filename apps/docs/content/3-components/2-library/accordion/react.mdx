@@ -13,14 +13,6 @@ component:
           ofType: 'array'
           description: 'An array of AccordionItem components that represent the content of each accordion section.'
           required: true
-        - name: 'iconStart'
-          ofType: 'boolean'
-          description: 'A boolean indicating whether icons should appear on the left (true) or right (false) of the accordion label.'
-          required: false
-        - name: 'dataTestid'
-          ofType: 'string'
-          description: 'A string used to assign a custom test ID to the Accordion component for testing purposes.'
-          required: false
         - name: 'variant'
           ofType: 'string'
           description: 'A string that determines the style and padding of the Accordion. Can be either default or small.'
@@ -31,11 +23,11 @@ component:
           ofType: 'string'
           description: 'The content to display inside the accordion panel when expanded.'
           required: true
-        - name: 'label' 
+        - name: 'label'
           ofType: 'string'
           description: 'A string used as the title or header for the accordion item.'
           required: true
-        - name: 'defaultExpanded' 
+        - name: 'defaultExpanded'
           ofType: 'boolean'
           description: 'A boolean that, when true, expands the item by default on initial render.'
           required: false
@@ -47,10 +39,6 @@ component:
           ofType: 'string'
           description: 'A string used to assign a custom test ID to the individual accordion item for testing purposes.'
           required: false
-        - name: 'iconStart'
-          ofType: 'boolean'
-          description: 'A boolean indicating whether the icon should appear on the left (true) or right (false) of the label.'
-          required: false
         - name: 'variant'
           ofType: 'string'
           description: 'A string defining the style and padding of the item. Accepts default or small.'
@@ -60,8 +48,6 @@ component:
       url: '/story/layout-accordion--default'
     - name: 'small-variant'
       url: '/story/layout-accordion--small-variant'
-    - name: 'with-icon-start'
-      url: '/story/layout-accordion--with-icon-start'
 ---
 
 # Accordion
@@ -102,14 +88,6 @@ It extends the native HTML element while allowing customization and consistent s
   heightClassName="h-max"
   componentId="accordion-react"
   story="small-variant"
-/>
-
-### With Icon on the Left
-
-<StorybookFrame
-  heightClassName="h-max"
-  componentId="accordion-react"
-  story="with-icon-start"
 />
 
 ## Properties
