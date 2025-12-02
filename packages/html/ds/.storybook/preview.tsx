@@ -4,7 +4,6 @@ import { useEffect } from 'react';
 import { INITIAL_VIEWPORTS, MINIMAL_VIEWPORTS } from 'storybook/viewport';
 import '../styles.css';
 import './global.css';
-import { beautifyHtmlNode } from '../src/storybook/storybook';
 import { destroyGovIe, initGovIe } from '@ogcio/design-system-html';
 
 const decorators = [
