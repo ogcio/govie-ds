@@ -1,7 +1,5 @@
 import type { Meta, StoryObj } from '@storybook/react';
 import parse from 'html-react-parser';
-import parserHtml from 'prettier/plugins/html';
-import prettier from 'prettier/standalone';
 import { createIcon } from '../helpers/icons';
 import { AccordionProps } from './types';
 
@@ -22,20 +20,17 @@ const createAccordion = (arguments_: AccordionProps) => {
     arguments_.variant == 'small'
       ? 'gi-py-2 gi-px-2 gi-text-sm gi-font-bold'
       : 'gi-px-2 gi-py-4 gi-text-md gi-font-bold';
-
   const textSizeClass =
     arguments_.variant == 'small' ? 'gi-text-sm' : 'gi-text-md';
 
   for (let index = 0; index < arguments_.items.length; index++) {
     const item = arguments_.items[index];
-
     const defaultExpandedClass = item.defaultExpanded
       ? 'gi-block'
       : 'gi-hidden';
     const iconId = item.defaultExpanded
       ? 'keyboard_arrow_up'
       : 'keyboard_arrow_down';
-
     const borderClass =
       index === arguments_.items.length - 1
         ? 'gi-border-t gi-border-b'
@@ -57,6 +52,7 @@ const createAccordion = (arguments_: AccordionProps) => {
 
     const icon = createIcon({ icon: iconId });
     header.innerHTML = item.label + ' ' + icon.outerHTML;
+
     title.append(header);
 
     const content = document.createElement('div');
@@ -107,33 +103,14 @@ const items = [
   },
 ];
 
-const getParameters = () => {
-  return {
-    parameters: {
-      docs: {
-        source: {
-          transform: async (_: any, storyContext: { args: AccordionProps }) => {
-            const html = createAccordion(storyContext.args).outerHTML;
-
-            const pretty = await prettier.format(html, {
-              parser: 'html',
-              plugins: [parserHtml],
-            });
-
-            return pretty.trim();
-          },
-        },
-      },
-    },
-  };
-};
-
 export const Default: Story = {
   args: {
     items,
   },
   render: (arguments_) => createElement(arguments_),
-  ...getParameters(),
+  parameters: {
+    createComponent: createAccordion,
+  },
 };
 
 export const SmallVariant: Story = {
@@ -142,7 +119,9 @@ export const SmallVariant: Story = {
     items,
   },
   render: (arguments_) => createElement(arguments_),
-  ...getParameters(),
+  parameters: {
+    createComponent: createAccordion,
+  },
 };
 
 export const WithIconStart: Story = {
@@ -171,5 +150,7 @@ export const WithIconStart: Story = {
     ],
   },
   render: (arguments_) => createElement(arguments_),
-  ...getParameters(),
+  parameters: {
+    createComponent: createAccordion,
+  },
 };
