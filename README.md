@@ -2,6 +2,13 @@
 
 Gov IE Design System contains the code you need to start building a user interface for government platforms and services.
 
+## Documentation
+
+The documentation is located in the `docs/` folder:
+
+- [Project Overview](docs/overview.md)
+- [Technical Reference](docs/technical.md)
+
 ## Getting started
 
 ```bash
