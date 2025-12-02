@@ -3,7 +3,7 @@
 }
 
 .gi-accordion-header {
-  @apply gi-items-center;
+  @apply gi-items-start;
 }
 
 .gi-accordion[data-disabled='false'] {
@@ -18,10 +18,6 @@
   @apply gi-cursor-not-allowed gi-text-gray-600;
 }
 
-.gi-accordion[data-icon-start='false'] .gi-accordion-header {
+.gi-accordion .gi-accordion-header {
   @apply gi-flex gi-justify-between;
-}
-
-.gi-accordion[data-icon-start='true'] .gi-accordion-header {
-  @apply gi-flex gi-flex-row-reverse gi-justify-end gi-gap-2;
 }

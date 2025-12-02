@@ -1,7 +1,7 @@
 'use client';
-import React, { useState, useRef } from 'react';
+import clsx from 'clsx';
+import React, { useState, useRef, ComponentPropsWithRef } from 'react';
 import { tv } from 'tailwind-variants';
-import { cn } from '../cn.js';
 import { Icon } from '../icon/icon.js';
 
 export type AccordionItemProps = {
@@ -9,10 +9,8 @@ export type AccordionItemProps = {
   label: string;
   defaultExpanded?: boolean;
   disabled?: boolean;
-  dataTestid?: string;
-  iconStart?: boolean;
   variant?: 'default' | 'small';
-};
+} & ComponentPropsWithRef<'div'>;
 
 const accordionVariants = tv({
   variants: {
@@ -28,9 +26,9 @@ export const AccordionItem = ({
   children,
   label,
   disabled,
-  dataTestid,
-  iconStart,
+  className,
   variant = 'default',
+  ...props
 }: AccordionItemProps) => {
   const [isExpanded, setIsExpanded] = useState(defaultExpanded);
   const ref = useRef<HTMLDivElement>(null);
@@ -46,21 +44,27 @@ export const AccordionItem = ({
   return (
     <>
       <div
+        {...props}
         ref={ref}
-        data-testid={dataTestid}
         data-disabled={!!disabled}
-        data-icon-start={!!iconStart}
         onClick={() => !disabled && setIsExpanded(!isExpanded)}
         onKeyDown={handleKeyDown}
         tabIndex={0}
-        className="gi-accordion"
+        className={clsx('gi-accordion', className)}
       >
         <div
-          className={cn('gi-accordion-header', accordionVariants({ variant }))}
+          className={clsx(
+            'gi-accordion-header',
+            accordionVariants({ variant }),
+          )}
         >
-          {label}{' '}
+          {label}
           <Icon
             icon={isExpanded ? 'keyboard_arrow_up' : 'keyboard_arrow_down'}
+            size="md"
+            className={clsx({
+              'gi-pt-[1.5px]': variant === 'default',
+            })}
           />
         </div>
       </div>
@@ -68,7 +72,7 @@ export const AccordionItem = ({
         id={panelId}
         role="region"
         aria-labelledby={buttonId}
-        className={cn('gi-px-2 gi-pb-4 gi-pt-2 gi-font-normal', {
+        className={clsx('gi-px-2 gi-pb-4 gi-pt-2 gi-font-normal', {
           'gi-block': isExpanded,
           'gi-hidden': !isExpanded,
           'gi-text-md': variant === 'default',

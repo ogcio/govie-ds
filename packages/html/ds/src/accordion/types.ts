@@ -8,6 +8,5 @@ export type AccordionItemProps = {
 
 export type AccordionProps = {
   items: AccordionItemProps[];
-  iconStart?: boolean;
   variant?: 'default' | 'small';
 };
