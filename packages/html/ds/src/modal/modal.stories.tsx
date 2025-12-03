@@ -46,6 +46,9 @@ export const Default: Story = {
     position: 'center',
   },
   render: createElement,
+  parameters: {
+    createComponent: createModal,
+  },
 };
 
 export const WithoutFooter: Story = {
@@ -55,6 +58,9 @@ export const WithoutFooter: Story = {
     body: modalBody,
   },
   render: createElement,
+  parameters: {
+    createComponent: createModal,
+  },
 };
 
 export const WithLongContent: Story = {
@@ -96,6 +102,9 @@ export const WithLongContent: Story = {
     ),
   },
   render: createElement,
+  parameters: {
+    createComponent: createModal,
+  },
 };
 
 export const WithAllFooterButtonVariants: Story = {
@@ -127,6 +136,9 @@ export const WithAllFooterButtonVariants: Story = {
     `,
   },
   render: createElement,
+  parameters: {
+    createComponent: createModal,
+  },
 };
 
 export const ModalNotCloseOnClick: Story = {
@@ -137,6 +149,9 @@ export const ModalNotCloseOnClick: Story = {
     body: modalBody,
   },
   render: createElement,
+  parameters: {
+    createComponent: createModal,
+  },
 };
 
 export const ModalNotCloseOnOverlayClick: Story = {
@@ -147,6 +162,9 @@ export const ModalNotCloseOnOverlayClick: Story = {
     body: modalBody,
   },
   render: createElement,
+  parameters: {
+    createComponent: createModal,
+  },
 };
 
 export const WithCenterLarge: Story = {
@@ -159,6 +177,9 @@ export const WithCenterLarge: Story = {
     position: 'center',
   },
   render: createElement,
+  parameters: {
+    createComponent: createModal,
+  },
 };
 
 export const WithCenterMedium: Story = {
@@ -171,6 +192,9 @@ export const WithCenterMedium: Story = {
     position: 'center',
   },
   render: createElement,
+  parameters: {
+    createComponent: createModal,
+  },
 };
 
 export const WithCenterSmall: Story = {
@@ -183,6 +207,9 @@ export const WithCenterSmall: Story = {
     position: 'center',
   },
   render: createElement,
+  parameters: {
+    createComponent: createModal,
+  },
 };
 
 export const WithCloseAction: Story = {
@@ -195,6 +222,9 @@ export const WithCloseAction: Story = {
     triggerButton: { content: 'Open Modal' },
   },
   render: createElement,
+  parameters: {
+    createComponent: createModal,
+  },
 };
 
 export const Test: Story = {
@@ -208,6 +238,9 @@ export const Test: Story = {
     position: 'center',
   },
   render: createElement,
+  parameters: {
+    createComponent: createModal,
+  },
   play: async ({ canvasElement }) => {
     const canvas = within(canvasElement);
     const modalElement = canvas.getByTestId('modal');
