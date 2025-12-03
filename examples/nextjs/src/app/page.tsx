@@ -8,6 +8,8 @@ import {
   Alert,
   Autocomplete,
   AutocompleteItem,
+  BrowserSupportProvider,
+  BrowserSupport,
   BreadcrumbCurrentLink,
   BreadcrumbEllipsis,
   BreadcrumbLink,
@@ -645,7 +647,7 @@ const ValidationFormExample = () => {
 // Main Component
 export default function Home() {
   return (
-    <>
+    <BrowserSupportProvider>
       <HeaderComposable />
       <CookieBanner {...CookieBannerProps} />
 
@@ -981,6 +983,9 @@ export default function Home() {
 
                 <div className="space-y-6">
                   <div>
+                    <h5 className="font-semibold mb-2">Browser Support</h5>
+                    <BrowserSupport forceShow />
+
                     <h5 className="font-semibold mb-2">Alerts</h5>
                     <Alert title="Info Alert" dismissible>
                       <Paragraph>
@@ -1405,6 +1410,6 @@ export default function Home() {
 
       <Footer />
       <ToastProvider />
-    </>
+    </BrowserSupportProvider>
   );
 }

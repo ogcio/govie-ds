@@ -1,0 +1,68 @@
+---
+title: Browser Support
+description: React component that warns users when their browser version isn't officially supported.
+status: stable
+component:
+  id: 'browser-support-react'
+  link: '/docs/application-browsersupport--docs'
+  status: 'stable'
+  properties:
+    - name: BrowserSupportProps
+      fields:
+        - name: 'forceShow'
+          ofType: 'boolean'
+          description: 'Forces the banner to render even if the browser is supported. Useful for demos and visual tests.'
+          required: false
+        - name: 'onDismiss'
+          ofType: '() => void'
+          description: 'Optional callback invoked when the user dismisses the banner.'
+          required: false
+        - name: 'className'
+          ofType: 'string'
+          description: 'Optional class name applied to the root Alert element.'
+          required: false
+  stories:
+    - name: 'default'
+      url: '/story/application-browsersupport--default'
+---
+
+# Browser Support
+
+The BrowserSupport component detects the user's browser and shows a dismissible warning when it falls below the supported policy. It's silent on supported browsers and
+it uses a **single-owner pattern** so only one instance is ever visible across the app. It also surfaces a link to the official supported browsers page.
+
+<Section current="react">
+
+<ComponentPreview>
+  <BrowserSupportProvider>
+    <BrowserSupport forceShow />
+  </BrowserSupportProvider>
+</ComponentPreview>
+
+## How it works
+
+- Detects browser on mount.
+- Compares result against the internal policy
+- If **supported** and `forceShow` is `false`, renders nothing.
+- If **unsupported** or `forceShow` is `true`, renders a `warning` `<Alert>`.
+
+### Performance & UX
+
+- Detection runs **once** per owner instance mount.
+- No layout shift: banner appears in a reserved area of your layout (recommend placing near top).
+- Silent on supported browsers to reduce banner fatigue.
+
+### Server rendering
+
+- The component is **client-only**. It does not SSR render the alert; it evaluates on the client and renders only if needed.
+
+## Examples
+
+### Default
+
+<StorybookFrame story="default" componentId="browser-support-react" />
+
+## Properties
+
+<ComponentPropertiesTable componentId="browser-support-react" />
+</Section>
