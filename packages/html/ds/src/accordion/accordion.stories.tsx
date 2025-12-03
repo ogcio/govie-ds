@@ -123,34 +123,3 @@ export const SmallVariant: Story = {
     createComponent: createAccordion,
   },
 };
-
-export const WithIconStart: Story = {
-  args: {
-    iconStart: true,
-    items: [
-      {
-        label: 'Label 1',
-        content: `This is a content paragraph paragraph`,
-      },
-      {
-        label: 'Label 2',
-        content:
-          'Minus eveniet ex officiis accusantium sint eius deleniti cumque? Iste voluptatum omnis harum quaerat eius praesentium a at perferendis quisquam hic.',
-      },
-      {
-        label: 'Label 3',
-        content:
-          'Minus eveniet ex officiis accusantium sint eius deleniti cumque? Iste voluptatum omnis harum quaerat eius praesentium a at perferendis quisquam hic.',
-      },
-      {
-        disabled: true,
-        label: 'Label 4',
-        content: `<button data-testid="govieButton-default-primary-medium-notDisabled" data-element="button-container" data-module="gieds-button" class="gi-btn gi-btn-primary gi-btn-regular">Button</button>`,
-      },
-    ],
-  },
-  render: (arguments_) => createElement(arguments_),
-  parameters: {
-    createComponent: createAccordion,
-  },
-};
