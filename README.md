@@ -32,6 +32,25 @@ pnpm ds
 | `pnpm test`            | Run tests on all projects               |
 | `pnpm examples:vite`   | Run Vite example component usage        |
 | `pnpm examples:nextjs` | Run Next.js example component usage     |
+| `pnpm gen:licenses`    | Generate third‑party licenses report    |
+
+## Generate third-party licenses report
+
+This repository includes a helper script that produces a markdown report of all third‑party dependency licenses.
+
+Prerequisites:
+- jq (`brew install jq`)
+
+```bash
+pnpm gen:licences
+```
+
+You can also run the script directly:
+```bash
+sh ./scripts/licences.sh
+```
+
+This generates `LICENCES.md` with a table of package name, version, and license for all dependencies.
 
 ## Visual regression testing
 

@@ -1,5 +1,20 @@
 # Changelog
 
+## [1.16.3](https://github.com/ogcio/govie-ds/compare/html-lib-v1.16.2...html-lib-v1.16.3) (2025-12-02)
+
+
+### Bug Fixes
+
+* **AB#32351:** sync accordion with Figma + Icon refactoring ([#787](https://github.com/ogcio/govie-ds/issues/787)) ([674dd98](https://github.com/ogcio/govie-ds/commit/674dd9892c6de9af89775757a85ee7b560753670))
+
+
+### Dependencies
+
+* The following workspace dependencies were updated
+  * devDependencies
+    * @ogcio/design-system-tailwind bumped to 1.20.0
+    * @ogcio/theme-govie bumped to 1.20.0
+
 ## [1.16.2](https://github.com/ogcio/govie-ds/compare/html-lib-v1.16.1...html-lib-v1.16.2) (2025-11-25)
 
 
