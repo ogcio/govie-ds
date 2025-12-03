@@ -1,8 +1,10 @@
 import type { Meta, StoryObj } from '@storybook/react';
+import { create } from 'lodash';
 import React from 'react';
 import { expect, userEvent, within } from 'storybook/test';
 import {
   createElement,
+  createHeader,
   defaultHeaderItems,
   defaultHeaderProps,
   mobileHeaderMenuItems,
@@ -82,6 +84,9 @@ export const Default: Story = {
     mobileMenuLabel: 'Menu',
   },
   render: createElement,
+  parameters: {
+    createComponent: createHeader,
+  },
   play: async ({ canvasElement }) => {
     const canvas = within(canvasElement);
 
@@ -125,6 +130,9 @@ export const DesktopDrawerDefaultMenu: Story = {
     ],
   },
   render: createElement,
+  parameters: {
+    createComponent: createHeader,
+  },
 };
 
 export const DesktopDrawerCustom: Story = {
@@ -161,6 +169,9 @@ export const DesktopDrawerCustom: Story = {
     ],
   },
   render: createElement,
+  parameters: {
+    createComponent: createHeader,
+  },
 };
 
 export const WithSecondaryLinks: Story = {
@@ -189,6 +200,9 @@ export const WithSecondaryLinks: Story = {
     ],
   },
   render: createElement,
+  parameters: {
+    createComponent: createHeader,
+  },
 };
 
 export const NoLabelSearch: Story = {
@@ -237,6 +251,9 @@ export const NoLabelSearch: Story = {
     ],
   },
   render: createElement,
+  parameters: {
+    createComponent: createHeader,
+  },
 };
 
 export const TabletView: Story = {
@@ -245,6 +262,8 @@ export const TabletView: Story = {
     viewport: {
       defaultViewport: 'ipad',
     },
+
+    createComponent: createHeader,
   },
   args: {
     logo: {
@@ -261,6 +280,8 @@ export const MobileView: Story = {
     viewport: {
       defaultViewport: 'mobile2',
     },
+
+    createComponent: createHeader,
   },
   args: {
     logo: {
@@ -304,6 +325,9 @@ export const WithExtraButtons: Story = {
     ],
   },
   render: createElement,
+  parameters: {
+    createComponent: createHeader,
+  },
 };
 
 export const FullWidth: Story = {
@@ -315,11 +339,15 @@ export const FullWidth: Story = {
     ...defaultHeaderProps(),
   },
   render: createElement,
+  parameters: {
+    createComponent: createHeader,
+  },
 };
 
 export const WithExternalLinks: Story = {
   parameters: {
     layout: 'fullscreen',
+    createComponent: createHeader,
   },
   args: {
     logo: {
@@ -396,6 +424,7 @@ export const MobileWithExternalLinks: Story = {
     viewport: {
       defaultViewport: 'mobile2',
     },
+    createComponent: createHeader,
   },
   args: {
     logo: {
@@ -477,6 +506,7 @@ export const ShowTitleOnMobile: Story = {
     viewport: {
       defaultViewport: 'mobile2',
     },
+    createComponent: createHeader,
   },
   args: {
     title: 'Title on mobile',
@@ -534,6 +564,9 @@ export const GovieHeader: Story = {
     addDefaultMobileMenu: true,
   },
   render: createElement,
+  parameters: {
+    createComponent: createHeader,
+  },
 };
 
 export const WithUtilitySlot: Story = {
@@ -559,9 +592,10 @@ export const WithUtilitySlot: Story = {
     ],
   },
   render: createElement,
+  parameters: {
+    createComponent: createHeader,
+  },
 };
-
-/* New ones */
 
 export const NoLinks: Story = {
   args: {},
@@ -595,6 +629,9 @@ export const WithMainLinksDesktopOnly: Story = {
     ],
   },
   render: createElement,
+  parameters: {
+    createComponent: createHeader,
+  },
 };
 
 export const WithCustomSecondaryLinks: Story = {
@@ -620,6 +657,9 @@ export const WithCustomSecondaryLinks: Story = {
     items: [...(defaultHeaderItems() as any)],
   },
   render: createElement,
+  parameters: {
+    createComponent: createHeader,
+  },
 };
 
 export const WithMainAndSecondaryLinksDesktopOnly: Story = {
@@ -659,6 +699,9 @@ export const WithMainAndSecondaryLinksDesktopOnly: Story = {
     ],
   },
   render: createElement,
+  parameters: {
+    createComponent: createHeader,
+  },
 };
 
 export const WithTitle: Story = {
@@ -669,6 +712,9 @@ export const WithTitle: Story = {
     },
   },
   render: createElement,
+  parameters: {
+    createComponent: createHeader,
+  },
 };
 
 export const ShowMobileMenuForLanguages: Story = {
@@ -677,6 +723,7 @@ export const ShowMobileMenuForLanguages: Story = {
     viewport: {
       defaultViewport: 'mobile2',
     },
+    createComponent: createHeader,
   },
   args: {
     logo: {
@@ -730,6 +777,9 @@ export const Light: Story = {
     ],
   },
   render: createElement,
+  parameters: {
+    createComponent: createHeader,
+  },
 };
 
 export const LightWithTitle: Story = {
@@ -749,4 +799,7 @@ export const LightWithTitle: Story = {
     },
   },
   render: createElement,
+  parameters: {
+    createComponent: createHeader,
+  },
 };
