@@ -1,5 +1,4 @@
 import type { Meta, StoryObj } from '@storybook/react';
-import { create } from 'lodash';
 import React from 'react';
 import { expect, userEvent, within } from 'storybook/test';
 import {
