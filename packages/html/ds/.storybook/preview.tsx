@@ -43,20 +43,28 @@ const preview: Preview = {
          * If it exists and is a function, it creates an HTML element using the provided arguments, formats it using Prettier.
          * This is required so that source code in the docs returns correct HTML markup rather than HTML with react syntax e.g. className and style with object.
          */
-        transform: async (_: string, storyContext: any) => {
-          const createFunction = storyContext.parameters?.createComponent;
+        transform: async (original: string, storyContext: any) => {
+          try {
+            const createFunction = storyContext.parameters?.createComponent;
 
-          if (createFunction && typeof createFunction === 'function') {
+            if (typeof createFunction !== 'function') {
+              return original;
+            }
+
             const element = createFunction(storyContext.args);
-            const html = element.outerHTML;
-            const pretty = await prettier.format(html, {
+
+            if (!element?.outerHTML) {
+              return original;
+            }
+            const pretty = await prettier.format(element.outerHTML, {
               parser: 'html',
               plugins: [parserHtml],
             });
-            return pretty.trim();
-          }
 
-          return _;
+            return pretty.trim();
+          } catch {
+            return original;
+          }
         },
       },
     },
