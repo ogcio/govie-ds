@@ -56,9 +56,13 @@ const preview: Preview = {
             if (!element?.outerHTML) {
               return original;
             }
+
             const pretty = await prettier.format(element.outerHTML, {
               parser: 'html',
               plugins: [parserHtml],
+              bracketSameLine: true,
+              htmlWhitespaceSensitivity: 'ignore',
+              printWidth: 80,
             });
 
             return pretty.trim();
