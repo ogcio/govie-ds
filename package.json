@@ -30,7 +30,8 @@
     "clean": "rm -rf node_modules && pnpm -r exec rm -rf node_modules && pnpm -r exec rm -rf dist",
     "prepare": "husky",
     "typecheck": "pnpm -r typecheck",
-    "lint:staged": "lint-staged"
+    "lint:staged": "lint-staged",
+    "gen:licenses": "sh scripts/licenses.sh"
   },
   "lint-staged": {
     "packages/react/**/*.{js,ts,tsx}": [
