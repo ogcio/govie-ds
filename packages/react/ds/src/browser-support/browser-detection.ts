@@ -1,5 +1,4 @@
 'use client';
-import upperFirst from 'lodash/upperFirst.js';
 import type { BrowserInfo, RenderingEngine, SupportPolicy } from './types.js';
 
 export const getNumberFromMatch = (match: RegExpMatchArray | null) => {
@@ -7,48 +6,6 @@ export const getNumberFromMatch = (match: RegExpMatchArray | null) => {
     return Number.parseInt(match[1], 10);
   }
   return 0;
-};
-
-export const normalizeBrand = (rawBrand: string) => {
-  if (rawBrand.length === 0) {
-    return 'chrome';
-  }
-  const lower = rawBrand.toLowerCase();
-
-  if (lower.includes('google chrome')) {
-    return 'chrome';
-  }
-  if (lower.includes('edge')) {
-    return 'edge';
-  }
-  if (lower.includes('opera')) {
-    return 'opera';
-  }
-  if (lower.includes('vivaldi')) {
-    return 'vivaldi';
-  }
-  if (lower.includes('brave')) {
-    return 'brave';
-  }
-  if (lower.includes('arc')) {
-    return 'arc';
-  }
-  if (lower.includes('samsung')) {
-    return 'samsung';
-  }
-  if (lower.includes('yabrowser')) {
-    return 'yandex';
-  }
-  if (lower.includes('whale')) {
-    return 'whale';
-  }
-  if (lower.includes('firefox')) {
-    return 'firefox';
-  }
-  if (lower.includes('safari')) {
-    return 'safari';
-  }
-  return lower;
 };
 
 export const extractFirefoxMajorVersion = (userAgentString: string) => {
@@ -78,36 +35,6 @@ export const extractSafariMajorVersion = (
     }
   }
   return 0;
-};
-
-export const getChromiumBrandFromMatches = (flags: {
-  [key: string]: RegExpMatchArray | null;
-}) => {
-  if (flags.edgeMatch) {
-    return 'edge';
-  }
-  if (flags.operaMatch) {
-    return 'opera';
-  }
-  if (flags.hasVivaldi) {
-    return 'vivaldi';
-  }
-  if (flags.yandexMatch) {
-    return 'yandex';
-  }
-  if (flags.whaleMatch) {
-    return 'whale';
-  }
-  if (flags.braveMatch) {
-    return 'brave';
-  }
-  if (flags.arcMatch) {
-    return 'arc';
-  }
-  if (flags.samsungMatch) {
-    return 'samsung';
-  }
-  return 'chrome';
 };
 
 export const getHighEntropy = async (
@@ -142,15 +69,11 @@ export const getHighEntropy = async (
 export const getEngineInfoSync = (): {
   engine: RenderingEngine;
   version: number;
-  brand: string;
-  isSamsung: boolean;
 } => {
   if (typeof navigator === 'undefined') {
     return {
       engine: 'unknown',
       version: 0,
-      brand: 'unknown',
-      isSamsung: false,
     };
   }
 
@@ -202,22 +125,9 @@ export const getEngineInfoSync = (): {
       getNumberFromMatch(mArc) ||
       0;
 
-    const brand = getChromiumBrandFromMatches({
-      edgeMatch: mEdge,
-      operaMatch: mOpera,
-      hasVivaldi: mVivaldi,
-      yandexMatch: mYandex,
-      whaleMatch: mWhale,
-      braveMatch: mBrave,
-      arcMatch: mArc,
-      samsungMatch: mSamsung,
-    });
-
     return {
       engine: 'chromium',
       version,
-      brand,
-      isSamsung: !!mSamsung,
     };
   }
 
@@ -226,8 +136,6 @@ export const getEngineInfoSync = (): {
     return {
       engine: 'gecko',
       version: firefoxMajorVersion,
-      brand: 'firefox',
-      isSamsung: false,
     };
   }
 
@@ -236,35 +144,26 @@ export const getEngineInfoSync = (): {
   const isSafariLike = hasSafariToken && !hasChromiumTokens;
 
   if (isSafariLike) {
-    return { engine: 'webkit', version: 0, brand: 'safari', isSamsung: false };
+    return { engine: 'webkit', version: 0 };
   }
 
-  return { engine: 'unknown', version: 0, brand: 'unknown', isSamsung: false };
+  return { engine: 'unknown', version: 0 };
 };
 
 export const getBrowserInfo = async () => {
   if (globalThis.navigator === undefined) {
     return {
-      brand: 'unknown',
       version: 0,
       engine: 'unknown',
-      isMobile: false,
-      isIOS: false,
-      isAndroid: false,
-      isAndroidWebView: false,
-      isSamsungInternet: false,
     };
   }
 
   const userAgentString = globalThis.navigator?.userAgent ?? '';
-  const isAndroid = /Android/i.test(userAgentString);
   const isIOS = /iP(hone|ad|od)/i.test(userAgentString);
-  const isMobile = isAndroid || isIOS || /Mobile/i.test(userAgentString);
 
   const syncInfo = getEngineInfoSync();
   const engine: RenderingEngine = syncInfo.engine;
   let version = syncInfo.version;
-  let brand = syncInfo.brand;
 
   if (engine === 'webkit') {
     version = extractSafariMajorVersion(userAgentString, isIOS);
@@ -290,68 +189,29 @@ export const getBrowserInfo = async () => {
           version = major;
         }
       }
-
-      const nicerBrand = highEntropy.fullVersionList.find((entry: any) => {
-        return /(edge|opera|vivaldi|brave|arc|samsung|yabrowser|whale|google chrome)/i.test(
-          entry.brand,
-        );
-      })?.brand;
-
-      if (nicerBrand) {
-        brand = normalizeBrand(nicerBrand);
-      }
     }
   }
-
-  const isAndroidWebView =
-    isAndroid &&
-    (/; wv\)/i.test(userAgentString) ||
-      /Version\/\d+\.\d+ Chrome\/\d+\.\d+\.\d+\.\d+ Mobile Safari\/\d+\.\d+/i.test(
-        userAgentString,
-      )) &&
-    !/SamsungBrowser/i.test(userAgentString);
-
-  const isSamsungInternet =
-    /SamsungBrowser\/\d+/i.test(userAgentString) || Boolean(syncInfo.isSamsung);
 
   const effectiveEngine: RenderingEngine = isIOS ? 'webkit' : engine;
 
   return {
-    brand,
     version,
     engine: effectiveEngine,
-    isMobile,
-    isIOS,
-    isAndroid,
-    isAndroidWebView,
-    isSamsungInternet,
   };
-};
-
-export const getBrowserDisplayName = (browserInfo: BrowserInfo) => {
-  if (browserInfo.brand.length > 0 && browserInfo.brand !== 'unknown') {
-    return upperFirst(browserInfo.brand);
-  }
-  if (browserInfo.engine === 'unknown') {
-    return 'Browser';
-  }
-  return upperFirst(browserInfo.engine);
 };
 
 export const isBrowserSupported = (
   browserInfo: BrowserInfo,
   policy: SupportPolicy,
 ): boolean => {
-  const versionTable = browserInfo.isMobile ? policy.mobile : policy.desktop;
-
   if (browserInfo.engine === 'chromium') {
-    return browserInfo.version >= versionTable.chromium;
+    return browserInfo.version >= policy.chromium;
   }
   if (browserInfo.engine === 'gecko') {
-    return browserInfo.version >= versionTable.gecko;
+    return browserInfo.version >= policy.gecko;
   }
   if (browserInfo.engine === 'webkit') {
-    return browserInfo.version >= versionTable.webkit;
+    return browserInfo.version >= policy.webkit;
   }
 
   return false;
@@ -360,8 +220,6 @@ export const isBrowserSupported = (
 export const __test = {
   extractFirefoxMajorVersion,
   extractSafariMajorVersion,
-  normalizeBrand,
   getEngineInfoSync,
   getNumberFromMatch,
-  getChromiumBrandFromMatches,
 };

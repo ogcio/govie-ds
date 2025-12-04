@@ -28,15 +28,12 @@ component:
 
 # Browser Support
 
-The BrowserSupport component detects the user's browser and shows a dismissible warning when it falls below the supported policy. It's silent on supported browsers and
-it uses a **single-owner pattern** so only one instance is ever visible across the app. It also surfaces a link to the official supported browsers page.
+The BrowserSupport component detects the user's browser and shows a dismissible warning when it falls below the supported policy. It's silent on supported browsers and surfaces a link to the official supported browsers page.
 
 <Section current="react">
 
 <ComponentPreview>
-  <BrowserSupportProvider>
-    <BrowserSupport forceShow />
-  </BrowserSupportProvider>
+  <BrowserSupport forceShow />
 </ComponentPreview>
 
 ## How it works
@@ -48,7 +45,6 @@ it uses a **single-owner pattern** so only one instance is ever visible across t
 
 ### Performance & UX
 
-- Detection runs **once** per owner instance mount.
 - No layout shift: banner appears in a reserved area of your layout (recommend placing near top).
 - Silent on supported browsers to reduce banner fatigue.
 

@@ -9,15 +9,12 @@ component:
 
 # Browser Support
 
-The BrowserSupport component detects the user's browser and shows a dismissible warning when it falls below the supported policy. It's silent on supported browsers and
-it uses a **single-owner pattern** so only one instance is ever visible across the app. It also surfaces a link to the official supported browsers page.
+The BrowserSupport component detects the user's browser and shows a dismissible warning when it falls below the supported policy. It's silent on supported browsers and surfaces a link to the official supported browsers page.
 
 <Section current="design">
 
 <ComponentPreview>
-  <BrowserSupportProvider>
-    <BrowserSupport forceShow />
-  </BrowserSupportProvider>
+  <BrowserSupport forceShow />
 </ComponentPreview>
 
 ## When to use
@@ -30,7 +27,6 @@ it uses a **single-owner pattern** so only one instance is ever visible across t
 
 ### Do
 
-- **Wrap with context**: Wrap the component in `<BrowserSupportProvider>` at the app root; required for the single-owner behaviour and coordination across pages.
 - **Place at app-shell level**: mount once in app layout to cover all routes.
 - **Keep the message concise**: state the problem and action.
 - **Respect dismissal**: allow users to close the banner (don''t re-open immediately).

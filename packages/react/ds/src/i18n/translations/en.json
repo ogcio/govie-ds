@@ -61,7 +61,7 @@
       "pagination.goToNext": "Go to next",
       "select.next.placeholder": "Search",
       "Limited browser support detected": "Limited browser support detected",
-      "This browser is not officially supported. Please update or switch to a supported browser for the best experience.": "{{name}} {{version}} is not officially supported. Please update or switch to a supported browser for the best experience.",
+      "This browser is not officially supported. Please update or switch to a supported browser for the best experience.": "This browser is not officially supported. Please update or switch to a supported browser for the best experience.",
       "View supported browsers": "View supported browsers"
     }
   }
