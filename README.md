@@ -3,17 +3,6 @@
 Gov IE Design System contains the code you need to start building a user interface for government platforms and services.
 
 <div align="center">
-  <a href="https://github.com/City-of-Helsinki/helsinki-design-system/releases/latest">
-    <img src="https://img.shields.io/github/v/release/City-of-Helsinki/helsinki-design-system?label=version&style=flat-square"
-      alt="Version" />
-  </a>
-  <a href="https://github.com/City-of-Helsinki/helsinki-design-system/blob/master/LICENSE">
-    <img src="https://img.shields.io/github/license/City-of-Helsinki/helsinki-design-system?style=flat-square"
-      alt="Licence (MIT)" />
-  </a>
-</div>
-
-<div align="center">
   <h4>
     <a href="https://github.com/ogcio/govie-ds/blob/main/docs/overview.md">Project Overview</a>
     <span> | </span>
