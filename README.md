@@ -2,12 +2,39 @@
 
 Gov IE Design System contains the code you need to start building a user interface for government platforms and services.
 
-## Documentation
+<div align="center">
+  <a href="https://github.com/City-of-Helsinki/helsinki-design-system/releases/latest">
+    <img src="https://img.shields.io/github/v/release/City-of-Helsinki/helsinki-design-system?label=version&style=flat-square"
+      alt="Version" />
+  </a>
+  <a href="https://github.com/City-of-Helsinki/helsinki-design-system/blob/master/LICENSE">
+    <img src="https://img.shields.io/github/license/City-of-Helsinki/helsinki-design-system?style=flat-square"
+      alt="Licence (MIT)" />
+  </a>
+</div>
 
-The documentation is located in the `docs/` folder:
+<div align="center">
+  <h4>
+    <a href="https://github.com/ogcio/govie-ds/blob/main/docs/overview.md">Project Overview</a>
+    <span> | </span>
+    <a href="https://github.com/ogcio/govie-ds/blob/main/docs/technical.md">Technical Reference</a>
+    <span> | </span>
+    <a href="https://ds.services.gov.ie/storybook-react/?path=/docs/layout-accordion--docs">React Storybook</a>
+    <span> | </span>
+    <a href="https://ds.services.gov.ie/storybook-html/?path=/docs/layout-accordion--docs">HTML Storybook</a>
+    <span> | </span>
+    <a href="https://ds.services.gov.ie/components/">Available Components</a>
+  </h4>
+</div>
 
-- [Project Overview](docs/overview.md)
-- [Technical Reference](docs/technical.md)
+## Packages
+
+This project includes the following packages available to NPM:
+
+- [`@ogcio/design-system-react`](packages/react/ds) - A library of UI components for government platforms in React.
+- [`@ogcio/design-system-tokens`](packages/design/tokens) - A library of design tokens for consistent styling across government platforms.
+- [`@ogcio/design-system-tailwind`](packages/design/tailwind) - A Tailwind CSS integration for the Gov IE Design System, providing utility-first styling options for rapid UI development.
+- [`@ogcio/theme-govie`](packages/themes/govie) - A theme package for the Gov IE Design System, providing predefined styles and components tailored for the Govie platform.
 
 ## Getting started
 
@@ -39,6 +66,7 @@ pnpm ds
 This repository includes a helper script that produces a markdown report of all third‑party dependency licenses.
 
 Prerequisites:
+
 - jq (`brew install jq`)
 
 ```bash
@@ -46,6 +74,7 @@ pnpm gen:licences
 ```
 
 You can also run the script directly:
+
 ```bash
 sh ./scripts/licences.sh
 ```
