@@ -1,20 +1,19 @@
 # Gov IE Design System
 
-Gov IE Design System contains the code you need to start building a user interface for government platforms and services.
+Gov.ie Design System is an open-source design system developed by the Office of the Government Chief Information Officer (OGCIO). It provides tools for design and development, along with resources and guidelines to help teams create consistent, accessible, and user-centred digital services across government.
 
-<div align="center">
-  <h4>
-    <a href="https://github.com/ogcio/govie-ds/blob/main/docs/overview.md">Project Overview</a>
-    <span> | </span>
-    <a href="https://github.com/ogcio/govie-ds/blob/main/docs/technical.md">Technical Reference</a>
-    <span> | </span>
-    <a href="https://ds.services.gov.ie/storybook-react/?path=/docs/layout-accordion--docs">React Storybook</a>
-    <span> | </span>
-    <a href="https://ds.services.gov.ie/storybook-html/?path=/docs/layout-accordion--docs">HTML Storybook</a>
-    <span> | </span>
-    <a href="https://ds.services.gov.ie/components/">Available Components</a>
-  </h4>
-</div>
+- 📘 [Project Overview](https://github.com/ogcio/govie-ds/blob/main/docs/overview.md)
+- 🛠️ [Technical Reference](https://github.com/ogcio/govie-ds/blob/main/docs/technical.md)
+- ⚛️ [React Storybook](https://ds.services.gov.ie/storybook-react/?path=/docs/layout-accordion--docs)
+- 🧱 [HTML Storybook](https://ds.services.gov.ie/storybook-html/?path=/docs/layout-accordion--docs)
+- 🧩 [Available Components](https://ds.services.gov.ie/components/)
+
+## 🎨 Design
+
+The Gov IE Design System uses Figma as its core design foundation, ensuring visual consistency across all government platforms and services.
+Our design tokens and variables are managed centrally and can be imported directly into Figma for use by designers and product teams.
+
+- 👉 [Figma](packages/design/figma)
 
 ## Packages
 
