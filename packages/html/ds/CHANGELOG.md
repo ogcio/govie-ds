@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.16.4](https://github.com/ogcio/govie-ds/compare/html-lib-v1.16.3...html-lib-v1.16.4) (2025-12-08)
+
+
+### Bug Fixes
+
+* **AB#32507:** update stories source params ([#790](https://github.com/ogcio/govie-ds/issues/790)) ([0552a15](https://github.com/ogcio/govie-ds/commit/0552a153c31ec7f9ad88e2fe5324a1eba3ee6e90))
+
 ## [1.16.3](https://github.com/ogcio/govie-ds/compare/html-lib-v1.16.2...html-lib-v1.16.3) (2025-12-02)
 
 

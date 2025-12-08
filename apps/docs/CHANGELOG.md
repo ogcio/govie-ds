@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.23.0](https://github.com/ogcio/govie-ds/compare/docs-v1.22.0...docs-v1.23.0) (2025-12-08)
+
+
+### Features
+
+* **AB#33268:** docs app maintenance ([#793](https://github.com/ogcio/govie-ds/issues/793)) ([3610fcd](https://github.com/ogcio/govie-ds/commit/3610fcde8c626ce488696114d45d420906af1ae1))
+
 ## [1.22.0](https://github.com/ogcio/govie-ds/compare/docs-v1.21.0...docs-v1.22.0) (2025-12-02)
 
 
