@@ -1,6 +1,6 @@
-# Gov IE Design System
+# Government of Ireland Design System
 
-Gov.ie Design System is an open-source design system developed by the Office of the Government Chief Information Officer (OGCIO). It provides tools for design and development, along with resources and guidelines to help teams create consistent, accessible, and user-centred digital services across government.
+The Government of Ireland Design System is an open-source design system developed by the Office of the Government Chief Information Officer (OGCIO). It provides tools for design and development, along with resources and guidelines to help teams create consistent, accessible, and user-centred digital services across government.
 
 - 📘 [Project Overview](https://github.com/ogcio/govie-ds/blob/main/docs/overview.md)
 - 🛠️ [Technical Reference](https://github.com/ogcio/govie-ds/blob/main/docs/technical.md)
@@ -10,7 +10,7 @@ Gov.ie Design System is an open-source design system developed by the Office of 
 
 ## 🎨 Design
 
-The Gov IE Design System uses Figma as its core design foundation, ensuring visual consistency across all government platforms and services.
+The Government of Ireland Design System uses Figma as its core design foundation, ensuring visual consistency across all government platforms and services.
 Our design tokens and variables are managed centrally and can be imported directly into Figma for use by designers and product teams.
 
 - 👉 [Figma](packages/design/figma)
