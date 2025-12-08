@@ -13,7 +13,6 @@ import type { Preview } from '@storybook/react';
 import { INITIAL_VIEWPORTS, MINIMAL_VIEWPORTS } from 'storybook/viewport';
 import '../styles.css';
 import './global.css';
-import '../src/browser-support/runtime';
 import { initI18n } from '../src/i18n/config';
 import enTranslations from '../src/i18n/translations/en.json';
 
@@ -37,7 +36,6 @@ const preview: Preview = {
     }),
   ],
   parameters: {
-    chromatic: { delay: 200 },
     docs: {
       page: () => (
         <>
