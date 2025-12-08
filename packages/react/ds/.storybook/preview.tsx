@@ -25,7 +25,21 @@ initI18n({
   },
 });
 
+async function waitForDocumentReady(): Promise<void> {
+  if (document?.readyState === 'complete') {
+    return;
+  }
+  await new Promise<void>((resolve) =>
+    window.addEventListener('load', () => resolve(), { once: true }),
+  );
+}
+
 const preview: Preview = {
+  loaders: [
+    async () => {
+      await waitForDocumentReady();
+    },
+  ],
   decorators: [
     withThemeByDataAttribute({
       themes: {
