@@ -979,5 +979,13 @@ export const TestConditionallyRender: StoryObj = {
         );
       },
     );
+
+    await step('Leading space is ignored', async () => {
+      await userEvent.clear(externalInput);
+      await userEvent.type(externalInput, 'x');
+      await userEvent.keyboard('{Tab}');
+      await userEvent.type(selectInput, ' ', { delay: 10 });
+      await waitFor(() => expect(canvas.queryByRole('listbox')).toBeNull());
+    });
   },
 };

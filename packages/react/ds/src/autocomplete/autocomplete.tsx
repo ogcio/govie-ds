@@ -166,10 +166,13 @@ export const Autocomplete = forwardRef<HTMLInputElement, AutocompleteProps>(
 
       if (event.__origin === 'clear_button') {
         handleClearInput();
-      } else {
-        handleUpdateInput(value);
       }
 
+      if (/^\s/.test(value)) {
+        return;
+      }
+
+      handleUpdateInput(value);
       dispatch({ type: TOGGLE_CLEAR_BUTTON });
       setTimeout(() => inputRef.current?.focus());
     };
