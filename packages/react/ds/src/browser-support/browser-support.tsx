@@ -1,17 +1,77 @@
 'use client';
+import Bowser from 'bowser';
 import clsx from 'clsx';
-import { useEffect, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { Alert } from '../alert/alert.js';
 import { Link } from '../link/link.js';
-import { getBrowserInfo, isBrowserSupported } from './browser-detection.js';
-import type {
-  BrowserInfo,
-  BrowserSupportProps,
-  SupportPolicy,
-} from './types.js';
 
-const SUPPORT_POLICY: SupportPolicy = { chromium: 109, gecko: 128, webkit: 16 };
+export type BrowserSupportProps = {
+  onDismiss?: () => void;
+  forceShow?: boolean;
+  className?: string;
+};
+
+const POLICY = {
+  desktop: {
+    chrome: '>=109',
+    firefox: '>=128',
+    safari: '>=18',
+    'microsoft edge': '>=136',
+    opera: '>=109',
+    'opera gx': '>=109',
+    brave: '>=109',
+    vivaldi: '>=109',
+    'yandex browser': '>=109',
+    yandex: '>=109',
+    arc: '>=109',
+  },
+  mobile: {
+    chrome: '>=138',
+    firefox: '>=140',
+    safari: '>=18',
+    'mobile safari': '>=18',
+    'samsung internet for android': '>=27',
+    'microsoft edge': '>=138',
+    opera: '>=138',
+    'opera gx': '>=138',
+    brave: '>=138',
+    vivaldi: '>=138',
+    'yandex browser': '>=138',
+    yandex: '>=138',
+    duckduckgo: '>=138',
+    kiwi: '>=138',
+    'uc browser': '>=138',
+    ucbrowser: '>=138',
+    qqbrowser: '>=138',
+    qq: '>=138',
+    baidu: '>=138',
+    'coc coc': '>=138',
+    coccoc: '>=138',
+  },
+  tablet: {
+    chrome: '>=138',
+    firefox: '>=140',
+    safari: '>=18',
+    'mobile safari': '>=18',
+    'samsung internet for android': '>=27',
+    'microsoft edge': '>=138',
+    opera: '>=138',
+    'opera gx': '>=138',
+    brave: '>=138',
+    vivaldi: '>=138',
+    'yandex browser': '>=138',
+    yandex: '>=138',
+    duckduckgo: '>=138',
+    kiwi: '>=138',
+    'uc browser': '>=138',
+    ucbrowser: '>=138',
+    qqbrowser: '>=138',
+    qq: '>=138',
+    baidu: '>=138',
+    'coc coc': '>=138',
+    coccoc: '>=138',
+  },
+} as const;
 
 export const BrowserSupport = ({
   onDismiss,
@@ -20,39 +80,14 @@ export const BrowserSupport = ({
   ...props
 }: BrowserSupportProps) => {
   const { t } = useTranslation();
-  const [browserInfo, setBrowserInfo] = useState<BrowserInfo | null>(null);
-  const [isLoading, setIsLoading] = useState(true);
-  const [isDismissed, setIsDismissed] = useState(false);
+  const bowser = Bowser.getParser(navigator.userAgent);
+  const isSupported = bowser.satisfies(POLICY);
 
-  useEffect(() => {
-    if (isLoading) {
-      setIsLoading(false);
-      return;
-    }
-
-    getBrowserInfo()
-      .then((info) => {
-        setBrowserInfo(info as BrowserInfo);
-        setIsLoading(false);
-      })
-      .catch((error) => {
-        console.error('[BrowserSupport] Failed to detect browser:', error);
-        setIsLoading(false);
-      });
-  }, [isLoading]);
-
-  if (isLoading || !browserInfo || isDismissed) {
-    return null;
-  }
-
-  const supported = isBrowserSupported(browserInfo, SUPPORT_POLICY);
-
-  if (supported && !forceShow) {
+  if (isSupported && !forceShow) {
     return null;
   }
 
   const handleDismiss = () => {
-    setIsDismissed(true);
     onDismiss?.();
   };
 
