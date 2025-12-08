@@ -13,7 +13,8 @@ The Government of Ireland Design System is an open-source design system develope
 The Government of Ireland Design System uses Figma as its core design foundation, ensuring visual consistency across all government platforms and services.
 Our design tokens and variables are managed centrally and can be imported directly into Figma for use by designers and product teams.
 
-- 👉 [Figma](packages/design/README.md)
+- 👉 [Design](packages/design/README.md)
+- 👉 [Figma](packages/design/figma/README.md)
 
 ## Packages
 
