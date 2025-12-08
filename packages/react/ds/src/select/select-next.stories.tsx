@@ -832,3 +832,152 @@ export const TestKeyboardEvents: StoryObj<typeof SelectNext> = {
     });
   },
 };
+
+export const TestConditionallyRender: StoryObj = {
+  tags: ['skip-playwright'],
+  render: () => {
+    const [inputValue, setInputValue] = useState('');
+    const [selectedValue, setSelectedValue] = useState('');
+    const options1 = [
+      { value: 'value-1', label: 'Apple' },
+      { value: 'value-2', label: 'Carrot' },
+      { value: 'value-3', label: 'Orange' },
+    ];
+    const options = inputValue ? options1 : [];
+    return (
+      <>
+        <input
+          type="text"
+          placeholder="Type something..."
+          value={inputValue}
+          onChange={(event) => setInputValue(event.target.value)}
+        />
+
+        <Label>Selected Value: {selectedValue}</Label>
+
+        <FormField className="gi-w-56">
+          <FormFieldLabel>Select with search</FormFieldLabel>
+          <SelectNext
+            aria-label="Select"
+            enableSearch
+            onChange={(event) => {
+              setSelectedValue(event?.target?.value);
+            }}
+          >
+            <SelectItemNext value="select-option" hidden>
+              Please select
+            </SelectItemNext>
+            {options.map((option) => (
+              <SelectItemNext key={option.value} value={option.value}>
+                {option.label}
+              </SelectItemNext>
+            ))}
+          </SelectNext>
+        </FormField>
+      </>
+    );
+  },
+  play: async ({ canvasElement, step }) => {
+    const canvas = within(canvasElement);
+    const selectInput = await canvas.findByRole('textbox', { name: /select/i });
+    const externalInput =
+      await canvas.findByPlaceholderText('Type something...');
+
+    await step('Enter opens dropdown', async () => {
+      await userEvent.clear(externalInput);
+      await userEvent.type(externalInput, 'x');
+
+      await userEvent.keyboard('{Tab}');
+      await userEvent.keyboard('{Enter}');
+      await waitFor(() =>
+        expect(canvas.getByRole('listbox')).toBeInTheDocument(),
+      );
+      await userEvent.keyboard('{Escape}');
+      await waitFor(() => expect(canvas.queryByRole('listbox')).toBeNull());
+    });
+
+    await step('Arrows work after typing', async () => {
+      await userEvent.clear(externalInput);
+      await userEvent.type(externalInput, 'x');
+
+      await userEvent.keyboard('{Tab}');
+      await userEvent.keyboard('{Enter}');
+      await waitFor(() =>
+        expect(canvas.getByRole('listbox')).toBeInTheDocument(),
+      );
+      await userEvent.type(selectInput, 'or', { delay: 10 });
+      await waitFor(() => canvas.getByRole('option', { name: /orange/i }));
+      await waitFor(() => {
+        const options = canvas.getAllByRole('option');
+        expect(options).toHaveLength(1);
+        expect(options[0]).toHaveAccessibleName(/orange/i);
+      });
+
+      await userEvent.keyboard('{ArrowDown}');
+      await userEvent.keyboard('{Enter}');
+
+      await waitFor(() =>
+        expect(
+          canvas.getByText(/selected value:\s*value-3/i),
+        ).toBeInTheDocument(),
+      );
+      await userEvent.keyboard('{Enter}');
+      await waitFor(() =>
+        expect(canvas.getByRole('listbox')).toBeInTheDocument(),
+      );
+      const clearButton = await canvas.findByRole('button', { name: /close/i });
+      await userEvent.click(clearButton);
+      await userEvent.keyboard('{Enter}');
+      await waitFor(() => {
+        canvas.getByRole('option', { name: /apple/i });
+        canvas.getByRole('option', { name: /carrot/i });
+        canvas.getByRole('option', { name: /orange/i });
+      });
+      await waitFor(() => {
+        const options = canvas.getAllByRole('option');
+        expect(options).toHaveLength(3);
+      });
+
+      await userEvent.keyboard('{ArrowDown}');
+      await userEvent.keyboard('{ArrowDown}');
+
+      await userEvent.keyboard('{Enter}');
+      await waitFor(() =>
+        expect(
+          canvas.getByText(/selected value:\s*value-2/i),
+        ).toBeInTheDocument(),
+      );
+    });
+
+    await step(
+      'Arrows work across conditional children re-renders',
+      async () => {
+        await userEvent.clear(externalInput);
+        await userEvent.keyboard('{Tab}');
+        await userEvent.keyboard('{Enter}');
+        const notFound = await canvas.findByText(/no data found\./i);
+        expect(notFound).toBeInTheDocument();
+        await waitFor(() =>
+          expect(canvas.getByText(/selected value:/i)).toBeInTheDocument(),
+        );
+        await userEvent.type(externalInput, 'x'); // re-renders the options
+        await userEvent.keyboard('{Tab}');
+        await userEvent.keyboard('{Enter}');
+
+        await waitFor(() => {
+          canvas.getByRole('option', { name: /apple/i });
+          canvas.getByRole('option', { name: /carrot/i });
+          canvas.getByRole('option', { name: /orange/i });
+        });
+        await userEvent.keyboard('{ArrowDown}');
+        await userEvent.keyboard('{ArrowDown}');
+        await userEvent.keyboard('{Enter}');
+        await waitFor(() =>
+          expect(
+            canvas.getByText(/selected value:\s*value-2/i),
+          ).toBeInTheDocument(),
+        );
+      },
+    );
+  },
+};

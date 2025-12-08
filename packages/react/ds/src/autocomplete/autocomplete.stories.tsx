@@ -440,12 +440,12 @@ export const TestKeyboardEvents: StoryObj = {
       await userEvent.keyboard('{Esc}');
     });
 
-    await step('Enter does not open the menu', async () => {
+    await step('Enter opens the menu', async () => {
       input.focus();
       await userEvent.keyboard('{Enter}');
-      await expectClosed();
+      await expectOpen();
       await userEvent.keyboard('{NumpadEnter}');
-      await expectClosed();
+      await expectOpen();
     });
 
     await step('ArrowUp opens menu and moves highlight', async () => {

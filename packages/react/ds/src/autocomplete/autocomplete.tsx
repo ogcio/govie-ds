@@ -101,6 +101,7 @@ export const Autocomplete = forwardRef<HTMLInputElement, AutocompleteProps>(
       getOptionLabelByValue,
       listRef,
       debouncedFilter,
+      validChildren,
     } = useAutocompleteController({
       ...props,
       onChange: propagateOnChange(onAutocompleteChange, name),
@@ -119,6 +120,13 @@ export const Autocomplete = forwardRef<HTMLInputElement, AutocompleteProps>(
         dispatch({ type: TOGGLE_CLEAR_BUTTON });
       }
     }, [value]);
+
+    useEffect(() => {
+      if (state.inputValue && !validChildren?.length && !freeSolo) {
+        handleClearInput();
+        propagateOnChange(onAutocompleteChange, name)('');
+      }
+    }, [validChildren]);
 
     const labelText =
       (props as any)['aria-label'] ??
@@ -242,6 +250,7 @@ export const Autocomplete = forwardRef<HTMLInputElement, AutocompleteProps>(
           case 'Enter':
           case 'NumpadEnter': {
             event.preventDefault();
+            dispatch({ type: SET_IS_OPEN, payload: true });
             if (state.highlightedIndex >= 0) {
               const selected = state.autocompleteOptions[
                 state.highlightedIndex
@@ -269,7 +278,7 @@ export const Autocomplete = forwardRef<HTMLInputElement, AutocompleteProps>(
           }
         }
       },
-      [state.highlightedIndex],
+      [state.highlightedIndex, state.autocompleteOptions],
     );
 
     return (
