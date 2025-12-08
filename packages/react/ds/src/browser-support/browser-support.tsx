@@ -97,7 +97,7 @@ export const BrowserSupport = ({
       title={t('Limited browser support detected')}
       dismissible
       onClose={handleDismiss}
-      className={clsx('!gi-max-w-full', className)}
+      className={clsx('gi-min-w-full', className)}
       {...props}
     >
       {t(
