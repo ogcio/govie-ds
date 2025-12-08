@@ -13,16 +13,16 @@ The Government of Ireland Design System is an open-source design system develope
 The Government of Ireland Design System uses Figma as its core design foundation, ensuring visual consistency across all government platforms and services.
 Our design tokens and variables are managed centrally and can be imported directly into Figma for use by designers and product teams.
 
-- 👉 [Figma](packages/design/figma)
+- 👉 [Figma](packages/design/README.md)
 
 ## Packages
 
-This project includes the following packages available to NPM:
+This project includes the following packages that are publicly available on npm:
 
-- [`@ogcio/design-system-react`](packages/react/ds) - A library of UI components for government platforms in React.
-- [`@ogcio/design-system-tokens`](packages/design/tokens) - A library of design tokens for consistent styling across government platforms.
-- [`@ogcio/design-system-tailwind`](packages/design/tailwind) - A Tailwind CSS integration for the Gov IE Design System, providing utility-first styling options for rapid UI development.
-- [`@ogcio/theme-govie`](packages/themes/govie) - A theme package for the Gov IE Design System, providing predefined styles and components tailored for the Govie platform.
+- [`@ogcio/design-system-react`](packages/react/ds/README.md) - A library of UI components for government platforms in React.
+- [`@ogcio/design-system-tokens`](packages/design/tokens/README.md) - A library of design tokens for consistent styling across government platforms.
+- [`@ogcio/design-system-tailwind`](packages/design/tailwind/README.md) - A Tailwind CSS integration for the Gov IE Design System, providing utility-first styling options for rapid UI development.
+- [`@ogcio/theme-govie`](packages/themes/govie/README.md) - A theme package for the Gov IE Design System, providing predefined styles and components tailored for the Govie platform.
 
 ## Getting started
 
