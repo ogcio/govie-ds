@@ -6,7 +6,7 @@ import { Alert } from '../alert/alert.js';
 import { Link } from '../link/link.js';
 
 export type BrowserSupportProps = {
-  onDismiss?: () => void;
+  onClose?: () => void;
   forceShow?: boolean;
   className?: string;
 };
@@ -24,7 +24,6 @@ const POLICY = {
     uc: '>=109',
     qq: '>=109',
   },
-
   mobile: {
     chrome: '>=138',
     firefox: '>=140',
@@ -56,7 +55,6 @@ const POLICY = {
 } as const;
 
 export const BrowserSupport = ({
-  onDismiss,
   forceShow = false,
   className,
   ...props
@@ -69,16 +67,11 @@ export const BrowserSupport = ({
     return null;
   }
 
-  const handleDismiss = () => {
-    onDismiss?.();
-  };
-
   return (
     <Alert
       variant="warning"
       title={t('Limited browser support detected')}
       dismissible
-      onClose={handleDismiss}
       className={clsx('gi-min-w-full', className)}
       {...props}
     >

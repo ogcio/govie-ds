@@ -29,10 +29,10 @@ export const Default: Story = {
       control: 'text',
       description: 'Optional className applied to the root Alert element.',
     },
-    onDismiss: {
+    onClose: {
       table: { disable: true },
       description:
-        'Optional callback invoked when the banner is dismissed by the user.',
+        'Optional callback invoked when the banner is closed by the user.',
     },
   },
   args: {
