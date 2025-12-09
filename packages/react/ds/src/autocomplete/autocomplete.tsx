@@ -191,21 +191,26 @@ export const Autocomplete = forwardRef<HTMLInputElement, AutocompleteProps>(
       }
     };
 
-    const handleOnSelectItem = (value: string) => {
-      dispatch({
-        type: ON_SELECT_ITEM,
-        payload: {
-          inputValue: getOptionLabelByValue(children, value),
-          value,
-        },
-      });
+    const handleOnSelectItem = useCallback(
+      (value: string) => {
+        dispatch({
+          type: ON_SELECT_ITEM,
+          payload: {
+            inputValue: getOptionLabelByValue(children, value),
+            value,
+          },
+        });
 
-      propagateOnChange(onAutocompleteChange, name)(value);
-      setTimeout(() => {
-        inputRef.current?.focus();
-      }, 0);
-      onSelectItem?.(value);
-    };
+        propagateOnChange(onAutocompleteChange, name)(value);
+
+        setTimeout(() => {
+          inputRef.current?.focus();
+        }, 0);
+
+        onSelectItem?.(value);
+      },
+      [children, dispatch, inputRef, name, onAutocompleteChange, onSelectItem],
+    );
 
     const handleOnBlur = (event: any) => {
       const { relatedTarget } = event;
@@ -281,7 +286,7 @@ export const Autocomplete = forwardRef<HTMLInputElement, AutocompleteProps>(
           }
         }
       },
-      [state.highlightedIndex, state.autocompleteOptions],
+      [state.highlightedIndex, state.autocompleteOptions, handleOnSelectItem],
     );
 
     return (
