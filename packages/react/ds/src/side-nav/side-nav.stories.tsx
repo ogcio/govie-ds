@@ -1,5 +1,5 @@
 import { Meta } from '@storybook/react';
-import { SideNav, SideNavItem } from './side-nav.js';
+import { SideNav, SideNavHeading, SideNavItem } from './side-nav.js';
 
 const meta = {
   title: 'Navigation/SideNav',
@@ -62,9 +62,12 @@ export const ParentChild = {
 export const FullExample = {
   render: () => (
     <SideNav value="projects-active">
+      <SideNavHeading>Heading Label</SideNavHeading>
       <SideNavItem primary value="dashboard" label="Dashboard" />
+      <SideNavHeading>Heading Label</SideNavHeading>
       <SideNavItem primary expandable value="team" label="Team">
         <SideNavItem secondary value="team-members" label="Members" />
+        <SideNavHeading secondary>Heading Label Secondary</SideNavHeading>
         <SideNavItem secondary value="team-permissions" label="Permissions" />
       </SideNavItem>
       <SideNavItem
