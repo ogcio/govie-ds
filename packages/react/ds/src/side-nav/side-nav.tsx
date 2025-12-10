@@ -8,10 +8,15 @@ import React, {
 } from 'react';
 import { Button } from '../button/button.js';
 import { cn } from '../cn.js';
+import { Heading } from '../heading/heading.js';
 import { Icon, IconId } from '../icon/icon.js';
 import { Link } from '../link/link.js';
 import { Paragraph } from '../paragraph/paragraph.js';
-import { SideNavItemProps, SideNavProps } from './types.js';
+import {
+  SideNavHeadingProps,
+  SideNavItemProps,
+  SideNavProps,
+} from './types.js';
 
 type SideNavContextType = {
   openItemIds: string[];
@@ -250,5 +255,30 @@ export const SideNav: React.FC<PropsWithChildren<SideNavProps>> = memo(
   },
 );
 
+export const SideNavHeading: React.FC<SideNavHeadingProps> = memo(
+  ({ children, secondary, className, ...props }) => {
+    const context = React.useContext(SideNavContext);
+
+    if (!context) {
+      throw new Error('SideNavHeading must be used within a SideNav');
+    }
+
+    return (
+      <Heading
+        {...props}
+        as="h5"
+        className={cn(
+          'gi-side-nav-heading',
+          secondary ? 'gi-px-6' : 'gi-px-3',
+          className,
+        )}
+      >
+        {children}
+      </Heading>
+    );
+  },
+);
+
 SideNav.displayName = 'SideNav';
 SideNavItem.displayName = 'SideNavItem';
+SideNavHeading.displayName = 'SideNavHeading';
