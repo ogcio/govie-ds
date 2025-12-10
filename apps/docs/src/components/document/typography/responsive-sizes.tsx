@@ -1,6 +1,5 @@
 import { meta } from '@ogcio/design-system-tokens';
-import kebabCase from 'kebab-case';
-import { groupBy } from 'lodash';
+import { kebabCase, groupBy } from 'lodash';
 import { objectKeys } from 'ts-extras';
 import { SampleTable } from '../common/sample-table';
 import { SampleToken } from '../common/sample-token';

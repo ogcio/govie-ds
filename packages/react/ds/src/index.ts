@@ -182,8 +182,7 @@ export type {
   SelectNextOptionProps,
   SelectNextProps,
 } from './select/types.js';
-export { SideNav, SideNavItem } from './side-nav/side-nav.js';
-export type { SideNavItemProps, SideNavProps } from './side-nav/types.js';
+export * from './side-nav/index.js';
 export { Spinner, type SpinnerProps } from './spinner/spinner.js';
 export { Stack } from './stack/stack.js';
 export { type StackProps } from './stack/types.js';
