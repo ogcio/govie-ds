@@ -8,5 +8,3 @@ This folder contains the following design-related packages:
 - [Token Utils](token-utils/README.md): Utilities for managing design tokens.
 - [Tokens](tokens/README.md): Design tokens for consistent styling.
 - [Tokens Builder](tokens-builder/README.md): A tool for building and managing design tokens.
-
-Feel free to explore each package for more details and usage instructions.
