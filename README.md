@@ -1,13 +1,29 @@
-# Gov IE Design System
+# Government of Ireland Design System
 
-Gov IE Design System contains the code you need to start building a user interface for government platforms and services.
+The Government of Ireland Design System is an open-source design system developed by the Office of the Government Chief Information Officer (OGCIO). It provides tools for design and development, along with resources and guidelines to help teams create consistent, accessible, and user-centred digital services across government.
 
-## Documentation
+- 📘 [Project Overview](https://github.com/ogcio/govie-ds/blob/main/docs/overview.md)
+- 🛠️ [Technical Reference](https://github.com/ogcio/govie-ds/blob/main/docs/technical.md)
+- ⚛️ [React Storybook](https://ds.services.gov.ie/storybook-react/?path=/docs/layout-accordion--docs)
+- 🧱 [HTML Storybook](https://ds.services.gov.ie/storybook-html/?path=/docs/layout-accordion--docs)
+- 🧩 [Available Components](https://ds.services.gov.ie/components/)
 
-The documentation is located in the `docs/` folder:
+## 🎨 Design
 
-- [Project Overview](docs/overview.md)
-- [Technical Reference](docs/technical.md)
+The Government of Ireland Design System uses Figma as its core design foundation, ensuring visual consistency across all government platforms and services.
+Our design tokens and variables are managed centrally and can be imported directly into Figma for use by designers and product teams.
+
+- 👉 [Design](packages/design/README.md)
+- 👉 [Figma](packages/design/figma/README.md)
+
+## Packages
+
+This project includes the following packages that are publicly available on npm:
+
+- [`@ogcio/design-system-react`](packages/react/ds/README.md) - A library of UI components for government platforms in React.
+- [`@ogcio/design-system-tokens`](packages/design/tokens/README.md) - A library of design tokens for consistent styling across government platforms.
+- [`@ogcio/design-system-tailwind`](packages/design/tailwind/README.md) - A Tailwind CSS integration for the Gov IE Design System, providing utility-first styling options for rapid UI development.
+- [`@ogcio/theme-govie`](packages/themes/govie/README.md) - A theme package for the Gov IE Design System, providing predefined styles and components tailored for the Govie platform.
 
 ## Getting started
 
@@ -39,6 +55,7 @@ pnpm ds
 This repository includes a helper script that produces a markdown report of all third‑party dependency licenses.
 
 Prerequisites:
+
 - jq (`brew install jq`)
 
 ```bash
@@ -46,6 +63,7 @@ pnpm gen:licences
 ```
 
 You can also run the script directly:
+
 ```bash
 sh ./scripts/licences.sh
 ```
