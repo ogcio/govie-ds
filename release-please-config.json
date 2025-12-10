@@ -107,8 +107,7 @@
     },
     "packages/design/figma": {
       "component": "figma",
-      "release-type": "node",
-      "changelog-path": "CHANGELOG.md"
+      "release-type": "node"
     }
   },
   "plugins": [
@@ -123,8 +122,7 @@
         "tokens",
         "themes-govie",
         "design-theme-builder",
-        "design-tailwind",
-        "design-figma"
+        "design-tailwind"
       ]
     }
   ],
