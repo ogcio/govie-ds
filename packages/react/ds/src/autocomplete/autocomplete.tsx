@@ -121,13 +121,6 @@ export const Autocomplete = forwardRef<HTMLInputElement, AutocompleteProps>(
       }
     }, [value]);
 
-    useEffect(() => {
-      if (state.inputValue && !validChildren?.length && !freeSolo) {
-        handleClearInput();
-        propagateOnChange(onAutocompleteChange, name)('');
-      }
-    }, [validChildren]);
-
     const labelText =
       (props as any)['aria-label'] ??
       t('autocomplete.placeholder', { defaultValue: 'Type to Search' });
@@ -209,7 +202,7 @@ export const Autocomplete = forwardRef<HTMLInputElement, AutocompleteProps>(
 
         onSelectItem?.(value);
       },
-      [children, dispatch, inputRef, name, onAutocompleteChange, onSelectItem],
+      [children, dispatch, name, onAutocompleteChange, onSelectItem],
     );
 
     const handleOnBlur = (event: any) => {
