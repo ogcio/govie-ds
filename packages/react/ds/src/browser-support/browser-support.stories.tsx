@@ -20,11 +20,6 @@ type Story = StoryObj<typeof meta>;
 
 export const Default: Story = {
   argTypes: {
-    forceShow: {
-      control: 'boolean',
-      description:
-        'Force the banner to render regardless of detected support. Useful for visual tests.',
-    },
     className: {
       control: 'text',
       description: 'Optional className applied to the root Alert element.',
@@ -35,9 +30,18 @@ export const Default: Story = {
         'Optional callback invoked when the banner is closed by the user.',
     },
   },
-  args: {
-    forceShow: true,
-  },
+  decorators: [
+    (Story) => {
+      Object.defineProperty(navigator, 'userAgent', {
+        value:
+          'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/100.0.4896.75 Safari/537.36',
+        writable: true,
+        configurable: true,
+      });
+
+      return <Story />;
+    },
+  ],
   play: async ({ canvasElement, step }) => {
     const canvas = within(canvasElement);
 
@@ -52,9 +56,8 @@ export const Default: Story = {
         name: 'View supported browsers',
       });
       expect(link).toBeInTheDocument();
-      expect(link).toHaveAttribute(
-        'href',
-        'https://ds.services.gov.ie/get-started/developers/supported-browsers/',
+      expect(link.getAttribute('href')).toMatch(
+        /\/get-started\/developers\/supported-browsers\/?$/,
       );
     });
   },

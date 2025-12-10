@@ -9,10 +9,6 @@ component:
   properties:
     - name: BrowserSupportProps
       fields:
-        - name: 'forceShow'
-          ofType: 'boolean'
-          description: 'Forces the banner to render even if the browser is supported. Useful for demos and visual tests.'
-          required: false
         - name: 'onClose'
           ofType: '() => void'
           description: 'Optional callback invoked when the user closes the banner.'
@@ -32,16 +28,12 @@ The BrowserSupport component detects the user's browser and shows a dismissible 
 
 <Section current="react">
 
-<ComponentPreview>
-  <BrowserSupport forceShow />
-</ComponentPreview>
-
 ## How it works
 
 - Detects browser on mount.
 - Compares result against the internal policy
-- If **supported** and `forceShow` is `false`, renders nothing.
-- If **unsupported** or `forceShow` is `true`, renders a `warning` `<Alert>`.
+- If **supported**, renders nothing.
+- If **unsupported**, renders a `warning` `<Alert>`.
 
 ### Performance & UX
 
