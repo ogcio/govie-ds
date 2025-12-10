@@ -42,3 +42,7 @@
 .gi-side-nav-item-primary .gi-side-nav-item-label > p {
   @apply gi-font-bold;
 }
+
+.gi-side-nav-heading {
+  @apply gi-border-l-sm gi-text-md gi-font-bold gi-mt-2 gi-text-color-text-system-neutral-muted gi-py-2 gi-border-transparent;
+}

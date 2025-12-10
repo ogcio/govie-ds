@@ -55,6 +55,23 @@ component:
           ofType: 'boolean'
           description: 'Indicates this is a secondary navigation item.'
           required: false
+
+    - name: SideNavHeadingProps
+      description: Visual/semantic heading for grouping items inside the SideNav.
+      fields:
+        - name: 'children'
+          ofType: 'node'
+          description: 'Heading text.'
+          required: true
+        - name: 'secondary'
+          ofType: 'boolean'
+          description: 'Optional, style variant for secondary sections.'
+          required: false
+          default: false
+        - name: 'className'
+          ofType: 'string'
+          description: 'Additional class names.'
+          required: false
   stories:
     - name: 'default'
       url: '/story/navigation-sidenav--basic'
