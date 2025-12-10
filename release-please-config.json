@@ -104,6 +104,10 @@
       "component": "tokens",
       "release-type": "node",
       "changelog-path": "CHANGELOG.md"
+    },
+    "packages/design/figma": {
+      "component": "figma",
+      "release-type": "node"
     }
   },
   "plugins": [

@@ -1,3 +1,4 @@
+import { HeadingProps } from '../heading/heading.js';
 import { IconId } from '../icon/icon.js';
 
 export type SideNavItemProps = {
@@ -18,3 +19,7 @@ export type SideNavProps = {
   value?: string;
   onChange?: (value: string) => void;
 };
+
+export type SideNavHeadingProps = {
+  secondary?: boolean;
+} & HeadingProps;
