@@ -10,8 +10,7 @@
   },
   "exports": {
     ".": "./dist/index.js",
-    "./styles.css": "./dist/styles.css",
-    "./browser-check": "./dist/browser-support/runtime.js"
+    "./styles.css": "./dist/styles.css"
   },
   "scripts": {
     "format": "prettier 'src/**/*.{ts,tsx}' --write",
@@ -49,6 +48,7 @@
   "dependencies": {
     "@popperjs/core": "^2.11.8",
     "@radix-ui/react-slot": "^1.1.2",
+    "bowser": "^2.13.1",
     "clsx": "^2.1.1",
     "react-i18next": "^16.3.3",
     "rollup-preserve-directives": "^1.1.2"
