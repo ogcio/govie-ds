@@ -66,13 +66,17 @@ class Instances {
     options: TOptions;
   }) {
     if (!this._instances[component]) {
-      console.warn(`Gov IE component ${component} does not exist.`);
+      console.warn(
+        `Government of Ireland component ${component} does not exist.`,
+      );
       return false;
     }
 
     if (options.id) {
       if (this._instances[component][options.id] && !options.override) {
-        console.warn(`Gov IE instance with id '${options.id}' already exists.`);
+        console.warn(
+          `Government of Ireland instance with id '${options.id}' already exists.`,
+        );
         return;
       }
 
@@ -99,7 +103,9 @@ class Instances {
 
   getInstances({ component }: { component: ComponentRegistryKey }) {
     if (!this._instances[component]) {
-      console.warn(`Gov IE component '${component}' does not exist.`);
+      console.warn(
+        `Government of Ireland component '${component}' does not exist.`,
+      );
       return false;
     }
 
@@ -118,7 +124,9 @@ class Instances {
     }
 
     if (!this._instances[component][id]) {
-      console.warn(`Gov IE instance with id ${id} does not exist.`);
+      console.warn(
+        `Government of Ireland instance with id ${id} does not exist.`,
+      );
       return;
     }
 
@@ -205,12 +213,16 @@ class Instances {
     id: string;
   }) {
     if (!this._instances[component]) {
-      console.warn(`Gov IE component ${component} does not exist.`);
+      console.warn(
+        `Government of Ireland component ${component} does not exist.`,
+      );
       return false;
     }
 
     if (!this._instances[component][id]) {
-      console.warn(`Gov IE instance with identifier '${id}' does not exist.`);
+      console.warn(
+        `Government of Ireland instance with identifier '${id}' does not exist.`,
+      );
       return false;
     }
 
