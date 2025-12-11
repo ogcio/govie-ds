@@ -35,11 +35,6 @@ The BrowserSupport component detects the user's browser and shows a dismissible 
 - If **supported**, renders nothing.
 - If **unsupported**, renders a `warning` `<Alert>`.
 
-### Performance & UX
-
-- No layout shift: banner appears in a reserved area of your layout (recommend placing near top).
-- Silent on supported browsers to reduce banner fatigue.
-
 ### Server rendering
 
 - The component is **client-only**. It does not SSR render the alert; it evaluates on the client and renders only if needed.

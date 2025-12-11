@@ -13,6 +13,11 @@ The BrowserSupport component detects the user's browser and shows a dismissible 
 
 <Section current="design">
 
+## Performance & UX
+
+- No layout shift: banner appears in a reserved area of your layout.
+- Silent on supported browsers to reduce banner fatigue.
+
 ## When to use
 
 - Notify users on **outdated/unsupported** browsers.
@@ -23,9 +28,8 @@ The BrowserSupport component detects the user's browser and shows a dismissible 
 
 ### Do
 
-- **Place at app-shell level**: mount once in app layout to cover all routes.
-- **Keep the message concise**: state the problem and action.
-- **Respect dismissal**: allow users to close the banner (don''t re-open immediately).
+- **Mount at app-shell level**: place it in the root layout so it covers all routes.
+- **Place at the top of the page**: render the banner above the main content so users see it first.
 
 ### Don't
 

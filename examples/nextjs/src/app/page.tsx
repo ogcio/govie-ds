@@ -8,7 +8,6 @@ import {
   Alert,
   Autocomplete,
   AutocompleteItem,
-  BrowserSupport,
   BreadcrumbCurrentLink,
   BreadcrumbEllipsis,
   BreadcrumbLink,
@@ -982,9 +981,6 @@ export default function Home() {
 
                 <div className="space-y-6">
                   <div>
-                    <h5 className="font-semibold mb-2">Browser Support</h5>
-                    <BrowserSupport />
-
                     <h5 className="font-semibold mb-2">Alerts</h5>
                     <Alert title="Info Alert" dismissible>
                       <Paragraph>
