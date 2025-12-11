@@ -53,7 +53,7 @@ Once configured, you can use the design system tokens through Tailwind utility c
 ### Brand Colors
 
 ```jsx
-<div className="bg-brand-primary text-brand-on-primary">
+<div className="gi-bg-color-surface-system-primary-default text-red-950">
   Government of Ireland Brand Colors
 </div>
 ```
@@ -63,11 +63,11 @@ Once configured, you can use the design system tokens through Tailwind utility c
 ### Typography
 
 ```jsx
-<h1 className="text-4xl font-bold font-primary">
+<h1 className="text-sm font-bold font-primary">
   Heading using Design System Typography
 </h1>
 
-<p className="text-md font-normal">
+<p className="text-lg">
   Body text with consistent spacing and line height
 </p>
 ```
@@ -77,9 +77,11 @@ Once configured, you can use the design system tokens through Tailwind utility c
 ### Spacing
 
 ```jsx
-<div className="p-lg m-xl space-y-md">
+<div className="mt-2 mb-2">
   <p>Content with design system spacing tokens</p>
-  <button className="px-md py-sm">Button with semantic spacing</button>
+  <button className="gi-btn gi-btn-primary gi-btn-regular px-2 py-2">
+    Button with spacing
+  </button>
 </div>
 ```
 
@@ -98,7 +100,7 @@ Once configured, you can use the design system tokens through Tailwind utility c
 ### Border and Radius
 
 ```jsx
-<div className="border-md border-color-border rounded-lg">
+<div className="p-4 border border-gray-200 bg-white rounded-lg shadow-sm">
   Card with design system borders
 </div>
 ```
