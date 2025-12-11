@@ -153,29 +153,6 @@ variables.primitive.color.blue['500']
 
 This automatic transformation ensures that any updates to the design tokens are immediately reflected in your Tailwind utilities.
 
-## Available Utilities
-
-The theme provides extended Tailwind utilities for:
-
-- **Colors**: Primitive colors, semantic colors, brand colors, surface colors
-- **Typography**: Font families, sizes (3xs to 8xl), weights, prose styles
-- **Spacing**: Comprehensive spacing scale (none, 3xs-6xl, 0-240)
-- **Borders**: Width (xs-4xl) and radius (sm-full)
-- **Z-Index**: Layering system (1-1000)
-- **Opacity**: Fine-grained opacity scale (0-100, steps of 5)
-- **Screens**: Responsive breakpoints (xs, sm, md, lg, xl, 2xl)
-
-## Typography Plugin
-
-The package includes a typography plugin with responsive prose styles:
-
-```jsx
-<article className="prose prose-xs md:prose-md xl:prose-xl">
-  <h1>Heading</h1>
-  <p>Paragraph with design system typography automatically applied</p>
-</article>
-```
-
 ## Component Styles
 
 This package includes pre-built component styles that follow the Government of Ireland Design System specifications. These styles provide consistent, accessible UI components out of the box.
@@ -296,11 +273,6 @@ The tag component demonstrates the pattern used across all components:
 **Base Class**: `gi-tag`
 
 - Applies core styling (rounded corners, border, padding, flex layout)
-
-**Size Modifiers**:
-
-- `gi-tag-size-default` - Standard size (text-sm)
-- `gi-tag-size-small` - Compact size (text-xs)
 
 **Variant Modifiers**:
 
