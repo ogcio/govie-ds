@@ -22,8 +22,8 @@ This project includes the following packages that are publicly available on npm:
 
 - [`@ogcio/design-system-react`](packages/react/ds/README.md) - A library of UI components for government platforms in React.
 - [`@ogcio/design-system-tokens`](packages/design/tokens/README.md) - A library of design tokens for consistent styling across government platforms.
-- [`@ogcio/design-system-tailwind`](packages/design/tailwind/README.md) - A Tailwind CSS integration for the Gov IE Design System, providing utility-first styling options for rapid UI development.
-- [`@ogcio/theme-govie`](packages/themes/govie/README.md) - A theme package for the Gov IE Design System, providing predefined styles and components tailored for the Govie platform.
+- [`@ogcio/design-system-tailwind`](packages/design/tailwind/README.md) - A Tailwind CSS integration for the Government of Ireland Design System, providing utility-first styling options for rapid UI development.
+- [`@ogcio/theme-govie`](packages/themes/govie/README.md) - A theme package for the Government of Ireland Design System, providing predefined styles and components tailored for the Govie platform.
 
 ## Getting started
 

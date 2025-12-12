@@ -81,7 +81,7 @@ export default function HomePage() {
       <section className="flex flex-wrap lg:flex-nowrap gap-2xl pt-8">
         <Prose>
           <h1 className="leading-none sm:leading-normal">
-            Gov IE Design System
+            Government of Ireland Design System
           </h1>
           <p>
             The Design System Building Block ensures efficiency, quality and

@@ -1,7 +1,7 @@
 {
   "name": "@ogcio/design-system-tokens",
   "version": "1.20.0",
-  "description": "The GOV IE Design System tokens.",
+  "description": "The Government of Ireland Design System tokens.",
   "type": "module",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",

@@ -10,7 +10,7 @@ import { Suspense } from 'react';
 import { DocsHeader } from '@/components/navigation/header';
 
 export const metadata: Metadata = {
-  title: 'Gov IE Design System',
+  title: 'Government of Ireland Design System',
   description:
     'A design system for the GOV.IE. We make it easier to build accessible, mobile-friendly government websites.',
 };

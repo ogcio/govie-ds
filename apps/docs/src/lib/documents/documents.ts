@@ -31,7 +31,7 @@ export function getBySlug({ slug }: { slug: string[] }) {
 }
 
 export function getTitle(title: string) {
-  const SUFFIX = 'Gov IE Design System';
+  const SUFFIX = 'Government of Ireland Design System';
   return `${title} - ${SUFFIX}`;
 }
 

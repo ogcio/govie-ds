@@ -2,7 +2,7 @@
 
 **This library should only be imported for departments actively working with the core design system team during its development. Do not use this library if you are not part of this development process, and contact the design system team instead if you interested in its use.**
 
-Welcome to the GOV IE React component library, a collection of reusable React components designed to help you build modern React web applications utilising the GOV IE design system.
+Welcome to the Government of Ireland Design System React component library, a collection of reusable React components designed to help you build modern React web applications utilising the Government of Ireland Design System.
 
 ## Getting Started
 
@@ -14,7 +14,7 @@ npm install @ogcio/design-system-react @ogcio/theme-govie
 
 ### Pinning packages
 
-We **strongly recommend** that you pin the GOV IE design system packages, so that any regressions are not automatically introduced during development. Regressions that will only be discoverable at runtime.
+We **strongly recommend** that you pin the Government of Ireland Design System packages, so that any regressions are not automatically introduced during development. Regressions that will only be discoverable at runtime.
 
 **Upgrades should be explicit version updates** in the `package.json` and then your application should be regression tested:
 
@@ -28,7 +28,7 @@ We **strongly recommend** that you pin the GOV IE design system packages, so tha
 
 ### Usage
 
-Import the GOV IE `theme.css` from the `@ogcio/theme-govie` theme package at the entry point of your application, for example:
+Import the Government of Ireland `theme.css` from the `@ogcio/theme-govie` theme package at the entry point of your application, for example:
 
 ```diff
 +import '@ogcio/theme-govie/theme.css'
@@ -58,7 +58,7 @@ export function MyComponent() {
 
 ### Typography
 
-The `@ogcio/design-system-react` package contains `Heading` and `Paragraph` components that implement the GOV IE design system responsive text guidelines:
+The `@ogcio/design-system-react` package contains `Heading` and `Paragraph` components that implement the Government of Ireland Design System responsive text guidelines:
 
 ```jsx
 import { Heading, Paragraph } from '@ogcio/design-system-react';
@@ -73,7 +73,7 @@ function MyComponent() {
 }
 ```
 
-The GOV IE design system uses the [Lato](https://fonts.google.com/specimen/Lato) Google font. The font should be added to your application, e.g. via [next/font](https://nextjs.org/docs/app/building-your-application/optimizing/fonts), [Fontsource](https://fontsource.org/docs/getting-started/install) or embed code.
+The Government of Ireland Design System uses the [Lato](https://fonts.google.com/specimen/Lato) Google font. The font should be added to your application, e.g. via [next/font](https://nextjs.org/docs/app/building-your-application/optimizing/fonts), [Fontsource](https://fontsource.org/docs/getting-started/install) or embed code.
 
 ### Internationalization (i18n) Guidelines
 
