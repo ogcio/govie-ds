@@ -1,4 +1,4 @@
-# @ogcio/design-system-tailwind
+# Tailwind Package
 
 A Tailwind CSS theme package that implements the Government of Ireland Design System tokens, providing a consistent design language across your application.
 
@@ -8,10 +8,22 @@ This package provides Tailwind CSS utilities and configurations built directly f
 
 ## Installation / Setup
 
-Install the package in your project:
+Install the package in your project using npm (see [package details](https://www.npmjs.com/package/@ogcio/design-system-tailwind)), pnpm, or your preferred package manager:
 
 ```bash
-pnpm install @ogcio/design-system-tailwind --save-dev
+npm install @ogcio/design-system-tailwind
+```
+
+or
+
+```bash
+pnpm install @ogcio/design-system-tailwind
+```
+
+or
+
+```bash
+yarn add @ogcio/design-system-tailwind
 ```
 
 Then configure your `tailwind.config.js` to use the design system theme:
@@ -110,6 +122,8 @@ Once configured, you can use the design system tokens through Tailwind utility c
 ## Design Tokens
 
 The Tailwind theme is generated directly from the Government of Ireland Design System tokens, which are defined and documented in Figma. This ensures consistency between design and implementation.
+
+- [`@ogcio/design-system-tokens`](../tokens/README.md) - Core design tokens where values of CSS styles are generated.
 
 ### Figma Documentation
 
@@ -327,8 +341,3 @@ Or use Tailwind utilities alongside component classes:
 ## Requirements
 
 - **Tailwind CSS**: >=3.4.0
-- **@ogcio/design-system-tokens**: Latest version (included as dependency)
-
-## Related Packages
-
-- [`@ogcio/design-system-tokens`](../tokens/README.md) - Core design tokens
