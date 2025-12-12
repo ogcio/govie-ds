@@ -1,5 +1,20 @@
 # Changelog
 
+## [1.21.0](https://github.com/ogcio/govie-ds/compare/design-tailwind-v1.20.0...design-tailwind-v1.21.0) (2025-12-12)
+
+
+### Features
+
+* **AB#31990:** adding sidenav SideNavHeading component ([#797](https://github.com/ogcio/govie-ds/issues/797)) ([14821a7](https://github.com/ogcio/govie-ds/commit/14821a7d03fa285cc6da31c237ea79d5c902d04d))
+* **AB#33057:** Figma design ([#795](https://github.com/ogcio/govie-ds/issues/795)) ([775db0a](https://github.com/ogcio/govie-ds/commit/775db0a08dd39491117db24e0ff15a2af27b3ecd))
+
+
+### Dependencies
+
+* The following workspace dependencies were updated
+  * dependencies
+    * @ogcio/design-system-tokens bumped to 1.21.0
+
 ## [1.20.0](https://github.com/ogcio/govie-ds/compare/design-tailwind-v1.19.0...design-tailwind-v1.20.0) (2025-12-02)
 
 
