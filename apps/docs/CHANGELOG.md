@@ -1,5 +1,23 @@
 # Changelog
 
+## [1.24.0](https://github.com/ogcio/govie-ds/compare/docs-v1.23.0...docs-v1.24.0) (2025-12-12)
+
+
+### Features
+
+* **AB#31990:** adding sidenav SideNavHeading component ([#797](https://github.com/ogcio/govie-ds/issues/797)) ([14821a7](https://github.com/ogcio/govie-ds/commit/14821a7d03fa285cc6da31c237ea79d5c902d04d))
+* **AB#33003:** adding BrowserSupport component + docs ([#792](https://github.com/ogcio/govie-ds/issues/792)) ([abdeac9](https://github.com/ogcio/govie-ds/commit/abdeac9b7a488c4cf7f23b9c31237e86d4591e1a))
+
+
+### Dependencies
+
+* The following workspace dependencies were updated
+  * dependencies
+    * @ogcio/design-system-react bumped to 1.25.0
+    * @ogcio/design-system-tailwind bumped to 1.21.0
+    * @ogcio/design-system-tokens bumped to 1.21.0
+    * @ogcio/theme-govie bumped to 1.21.0
+
 ## [1.23.0](https://github.com/ogcio/govie-ds/compare/docs-v1.22.0...docs-v1.23.0) (2025-12-08)
 
 
