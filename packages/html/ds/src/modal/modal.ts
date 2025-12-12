@@ -53,6 +53,11 @@ export const hideAriaOutside = (refNode: HTMLElement) => {
   };
 };
 
+type DetachInfo = {
+  parent: ParentNode;
+  marker: Comment;
+} | null;
+
 export type ModalOptions = BaseComponentOptions;
 
 export class Modal extends BaseComponent<ModalOptions> {
@@ -69,11 +74,7 @@ export class Modal extends BaseComponent<ModalOptions> {
   modalBody: Element | null;
   ariaHiderCleanup: (() => void) | null = null;
   handleEscapeKey: (event: KeyboardEvent) => void;
-
-  private _detachInfo: {
-    parent: ParentNode;
-    nextSibling: ChildNode;
-  } | null = null;
+  private _detachInfo: DetachInfo = null;
 
   constructor(options: ModalOptions) {
     super(options);
@@ -109,32 +110,33 @@ export class Modal extends BaseComponent<ModalOptions> {
   }
 
   private transportToBody(document: Document): void {
-    const body = document.body;
-    if (!this.modal || this.modal.parentNode === body) {
+    if (!this.modal || this.modal.parentNode === document.body) {
       return;
     }
+    const marker = document.createComment('modal-portal-anchor');
+    const parent = this.modal.parentNode as ParentNode;
 
-    this._detachInfo = {
-      parent: this.modal.parentNode as ParentNode,
-      nextSibling: this.modal.nextSibling as ChildNode,
-    };
-    body.append(this.modal);
+    parent.insertBefore(marker, this.modal);
+    this._detachInfo = { parent, marker };
+
+    document.body.append(this.modal);
   }
-
   private restoreFromBody(): void {
     if (!this.modal || !this._detachInfo) {
       return;
     }
-    const { parent, nextSibling } = this._detachInfo;
 
-    if (nextSibling && nextSibling.parentNode === parent) {
-      parent.insertBefore(this.modal, nextSibling);
+    const { parent, marker } = this._detachInfo;
+
+    if (marker.parentNode) {
+      marker.before(this.modal);
+      marker.remove();
     } else {
-      parent.append(this.modal);
+      (parent.isConnected ? parent : document.body).append(this.modal);
     }
+
     this._detachInfo = null;
   }
-
   initModalState() {
     this.modal.classList.add('gi-modal-close');
     this.modal.classList.remove('gi-modal-open');
