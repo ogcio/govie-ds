@@ -222,3 +222,4 @@ export type {
 } from './toast/types.js';
 export { Tooltip, type TooltipProps } from './tooltip/tooltip.js';
 export { useToggleMap } from './hooks/use-toggle-map.js';
+export * from './browser-support/index.js';

@@ -1,0 +1,51 @@
+---
+title: Browser Support
+description: React component that warns users when their browser version isn't officially supported.
+status: stable
+component:
+  id: 'browser-support-react'
+  link: '/docs/application-browsersupport--docs'
+  status: 'stable'
+  properties:
+    - name: BrowserSupportProps
+      fields:
+        - name: 'onClose'
+          ofType: '() => void'
+          description: 'Optional callback invoked when the user closes the banner.'
+          required: false
+        - name: 'className'
+          ofType: 'string'
+          description: 'Optional class name applied to the root Alert element.'
+          required: false
+  stories:
+    - name: 'default'
+      url: '/story/application-browsersupport--default'
+---
+
+# Browser Support
+
+The BrowserSupport component detects the user's browser and shows a dismissible warning when it falls below the supported policy. It's silent on supported browsers and surfaces a link to the official supported browsers page.
+
+<Section current="react">
+
+## How it works
+
+- Detects browser on mount.
+- Compares result against the internal policy
+- If **supported**, renders nothing.
+- If **unsupported**, renders a `warning` `<Alert>`.
+
+### Server rendering
+
+- The component is **client-only**. It does not SSR render the alert; it evaluates on the client and renders only if needed.
+
+## Examples
+
+### Default
+
+<StorybookFrame story="default" componentId="browser-support-react" />
+
+## Properties
+
+<ComponentPropertiesTable componentId="browser-support-react" />
+</Section>

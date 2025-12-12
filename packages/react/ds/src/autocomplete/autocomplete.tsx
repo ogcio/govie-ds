@@ -101,6 +101,7 @@ export const Autocomplete = forwardRef<HTMLInputElement, AutocompleteProps>(
       getOptionLabelByValue,
       listRef,
       debouncedFilter,
+      validChildren,
     } = useAutocompleteController({
       ...props,
       onChange: propagateOnChange(onAutocompleteChange, name),
@@ -158,10 +159,13 @@ export const Autocomplete = forwardRef<HTMLInputElement, AutocompleteProps>(
 
       if (event.__origin === 'clear_button') {
         handleClearInput();
-      } else {
-        handleUpdateInput(value);
       }
 
+      if (/^\s/.test(value)) {
+        return;
+      }
+
+      handleUpdateInput(value);
       dispatch({ type: TOGGLE_CLEAR_BUTTON });
       setTimeout(() => inputRef.current?.focus());
     };
@@ -180,21 +184,26 @@ export const Autocomplete = forwardRef<HTMLInputElement, AutocompleteProps>(
       }
     };
 
-    const handleOnSelectItem = (value: string) => {
-      dispatch({
-        type: ON_SELECT_ITEM,
-        payload: {
-          inputValue: getOptionLabelByValue(children, value),
-          value,
-        },
-      });
+    const handleOnSelectItem = useCallback(
+      (value: string) => {
+        dispatch({
+          type: ON_SELECT_ITEM,
+          payload: {
+            inputValue: getOptionLabelByValue(children, value),
+            value,
+          },
+        });
 
-      propagateOnChange(onAutocompleteChange, name)(value);
-      setTimeout(() => {
-        inputRef.current?.focus();
-      }, 0);
-      onSelectItem?.(value);
-    };
+        propagateOnChange(onAutocompleteChange, name)(value);
+
+        setTimeout(() => {
+          inputRef.current?.focus();
+        }, 0);
+
+        onSelectItem?.(value);
+      },
+      [children, dispatch, name, onAutocompleteChange, onSelectItem],
+    );
 
     const handleOnBlur = (event: any) => {
       const { relatedTarget } = event;
@@ -242,6 +251,7 @@ export const Autocomplete = forwardRef<HTMLInputElement, AutocompleteProps>(
           case 'Enter':
           case 'NumpadEnter': {
             event.preventDefault();
+            dispatch({ type: SET_IS_OPEN, payload: true });
             if (state.highlightedIndex >= 0) {
               const selected = state.autocompleteOptions[
                 state.highlightedIndex
@@ -269,7 +279,7 @@ export const Autocomplete = forwardRef<HTMLInputElement, AutocompleteProps>(
           }
         }
       },
-      [state.highlightedIndex],
+      [state.highlightedIndex, state.autocompleteOptions, handleOnSelectItem],
     );
 
     return (

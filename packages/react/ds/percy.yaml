@@ -1,5 +1,0 @@
-version: 2
-snapshot:
-  widths: [375, 800, 1280]
-  min-height: 1024 # px
-  enable-javascript: true
