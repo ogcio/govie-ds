@@ -8,7 +8,7 @@ To regenerate this file, run: ./scripts/licenses.sh
 
 This file contains license information for all third-party dependencies used by this project.
 
-_Generated from `pnpm licenses list` on 2025-12-11._
+_Generated from `pnpm licenses list` on 2025-12-12._
 
 | Package | Version | License |
 |---------|---------|---------|
@@ -215,8 +215,9 @@ _Generated from `pnpm licenses list` on 2025-12-11._
 | @humanwhocodes/retry | 0.3.1 | Apache-2.0 |
 | @humanwhocodes/retry | 0.4.3 | Apache-2.0 |
 | @icons/material | 0.2.4 | MIT |
-| @img/sharp-darwin-arm64 | 0.34.3 | Apache-2.0 |
-| @img/sharp-libvips-darwin-arm64 | 1.2.0 | LGPL-3.0-or-later |
+| @img/colour | 1.0.0 | MIT |
+| @img/sharp-darwin-arm64 | 0.34.5 | Apache-2.0 |
+| @img/sharp-libvips-darwin-arm64 | 1.2.4 | LGPL-3.0-or-later |
 | @inquirer/checkbox | 4.1.9 | MIT |
 | @inquirer/confirm | 5.1.13 | MIT |
 | @inquirer/confirm | 5.1.6 | MIT |
@@ -267,9 +268,13 @@ _Generated from `pnpm licenses list` on 2025-12-11._
 | @napi-rs/nice-darwin-arm64 | 1.0.4 | MIT |
 | @neoconfetti/react | 1.0.0 | MIT |
 | @next/env | 15.5.7 | MIT |
+| @next/env | 15.5.9 | MIT |
+| @next/env | 16.0.10 | MIT |
 | @next/eslint-plugin-next | 15.4.3 | MIT |
 | @next/eslint-plugin-next | 15.5.7 | MIT |
+| @next/eslint-plugin-next | 15.5.9 | MIT |
 | @next/swc-darwin-arm64 | 15.5.7 | MIT |
+| @next/swc-darwin-arm64 | 16.0.10 | MIT |
 | @ngtools/webpack | 19.2.15 | MIT |
 | @nodelib/fs.scandir | 2.1.5 | MIT |
 | @nodelib/fs.stat | 2.0.5 | MIT |
@@ -305,24 +310,6 @@ _Generated from `pnpm licenses list` on 2025-12-11._
 | @opentelemetry/semantic-conventions | 1.34.0 | Apache-2.0 |
 | @parcel/watcher | 2.5.1 | MIT |
 | @parcel/watcher-darwin-arm64 | 2.5.1 | MIT |
-| @percy/cli | 1.31.0 | MIT |
-| @percy/cli-app | 1.31.0 | MIT |
-| @percy/cli-build | 1.31.0 | MIT |
-| @percy/cli-command | 1.31.0 | MIT |
-| @percy/cli-config | 1.31.0 | MIT |
-| @percy/cli-exec | 1.31.0 | MIT |
-| @percy/cli-snapshot | 1.31.0 | MIT |
-| @percy/cli-upload | 1.31.0 | MIT |
-| @percy/client | 1.31.0 | MIT |
-| @percy/config | 1.31.0 | MIT |
-| @percy/core | 1.31.0 | MIT |
-| @percy/dom | 1.31.0 | MIT |
-| @percy/env | 1.31.0 | MIT |
-| @percy/logger | 1.31.0 | MIT |
-| @percy/monitoring | 1.31.0 | MIT |
-| @percy/sdk-utils | 1.31.0 | MIT |
-| @percy/storybook | 6.0.4 | MIT |
-| @percy/webdriver-utils | 1.31.0 | MIT |
 | @pkgjs/parseargs | 0.11.0 | MIT |
 | @playwright/test | 1.55.0 | Apache-2.0 |
 | @pmmmwh/react-refresh-webpack-plugin | 0.5.17 | MIT |
@@ -388,7 +375,6 @@ _Generated from `pnpm licenses list` on 2025-12-11._
 | @testing-library/jest-dom | 6.6.3 | MIT |
 | @testing-library/react | 16.3.0 | MIT |
 | @testing-library/user-event | 14.6.1 | MIT |
-| @tootallnate/quickjs-emscripten | 0.23.0 | MIT |
 | @tsconfig/node22 | 22.0.2 | MIT |
 | @tufjs/canonical-json | 2.0.0 | MIT |
 | @tufjs/models | 3.0.1 | MIT |
@@ -446,8 +432,10 @@ _Generated from `pnpm licenses list` on 2025-12-11._
 | @types/qs | 6.14.0 | MIT |
 | @types/range-parser | 1.2.7 | MIT |
 | @types/react | 19.1.8 | MIT |
+| @types/react | 19.2.7 | MIT |
 | @types/react-color | 3.0.13 | MIT |
 | @types/react-dom | 19.1.6 | MIT |
+| @types/react-dom | 19.2.3 | MIT |
 | @types/react-syntax-highlighter | 15.5.13 | MIT |
 | @types/reactcss | 1.2.13 | MIT |
 | @types/resolve | 1.20.6 | MIT |
@@ -461,7 +449,6 @@ _Generated from `pnpm licenses list` on 2025-12-11._
 | @types/unist | 2.0.11 | MIT |
 | @types/unist | 3.0.3 | MIT |
 | @types/ws | 8.18.1 | MIT |
-| @types/yauzl | 2.10.3 | MIT |
 | @typescript-eslint/eslint-plugin | 8.36.0 | MIT |
 | @typescript-eslint/eslint-plugin | 8.48.1 | MIT |
 | @typescript-eslint/parser | 8.36.0 | MIT |
@@ -578,7 +565,6 @@ _Generated from `pnpm licenses list` on 2025-12-11._
 | asn1.js | 4.10.1 | MIT |
 | assert | 2.1.0 | MIT |
 | assertion-error | 2.0.1 | MIT |
-| ast-types | 0.13.4 | MIT |
 | ast-types | 0.16.1 | MIT |
 | ast-types-flow | 0.0.8 | MIT |
 | ast-v8-to-istanbul | 0.3.3 | MIT |
@@ -602,7 +588,6 @@ _Generated from `pnpm licenses list` on 2025-12-11._
 | base64-js | 1.5.1 | MIT |
 | base64id | 2.0.0 | MIT |
 | basic-auth | 2.0.1 | MIT |
-| basic-ftp | 5.0.5 | MIT |
 | batch | 0.6.1 | MIT |
 | beasties | 0.3.2 | Apache-2.0 |
 | better-opn | 3.0.2 | MIT |
@@ -628,7 +613,6 @@ _Generated from `pnpm licenses list` on 2025-12-11._
 | browserslist | 4.25.1 | MIT |
 | buffer | 5.7.1 | MIT |
 | buffer | 6.0.3 | MIT |
-| buffer-crc32 | 0.2.13 | MIT |
 | buffer-from | 1.1.2 | MIT |
 | buffer-xor | 1.0.3 | MIT |
 | builtin-modules | 5.0.0 | MIT |
@@ -692,12 +676,10 @@ _Generated from `pnpm licenses list` on 2025-12-11._
 | clone-deep | 4.0.1 | MIT |
 | clsx | 2.1.1 | MIT |
 | collapse-white-space | 2.1.0 | MIT |
-| color | 4.2.3 | MIT |
 | color-convert | 1.9.3 | MIT |
 | color-convert | 2.0.1 | MIT |
 | color-name | 1.1.3 | MIT |
 | color-name | 1.1.4 | MIT |
-| color-string | 1.9.1 | MIT |
 | colorette | 2.0.20 | MIT |
 | combined-stream | 1.0.8 | MIT |
 | comma-separated-tokens | 1.0.8 | MIT |
@@ -748,7 +730,6 @@ _Generated from `pnpm licenses list` on 2025-12-11._
 | cors | 2.8.5 | MIT |
 | corser | 2.0.1 | MIT |
 | cosmiconfig | 7.1.0 | MIT |
-| cosmiconfig | 8.3.6 | MIT |
 | cosmiconfig | 9.0.0 | MIT |
 | cosmiconfig-typescript-loader | 6.1.0 | MIT |
 | create-ecdh | 4.0.4 | MIT |
@@ -767,12 +748,12 @@ _Generated from `pnpm licenses list` on 2025-12-11._
 | cssesc | 3.0.0 | MIT |
 | cssstyle | 4.6.0 | MIT |
 | csstype | 3.1.3 | MIT |
+| csstype | 3.2.3 | MIT |
 | custom-event | 1.0.1 | MIT |
 | d | 1.0.2 | ISC |
 | damerau-levenshtein | 1.0.8 | BSD-2-Clause |
 | dargs | 8.1.0 | MIT |
 | data-uri-to-buffer | 4.0.1 | MIT |
-| data-uri-to-buffer | 6.0.2 | MIT |
 | data-urls | 5.0.0 | MIT |
 | data-view-buffer | 1.0.2 | MIT |
 | data-view-byte-length | 1.0.2 | MIT |
@@ -798,7 +779,6 @@ _Generated from `pnpm licenses list` on 2025-12-11._
 | define-lazy-prop | 2.0.0 | MIT |
 | define-lazy-prop | 3.0.0 | MIT |
 | define-properties | 1.2.1 | MIT |
-| degenerator | 5.0.1 | MIT |
 | delayed-stream | 1.0.0 | MIT |
 | depd | 1.1.2 | MIT |
 | depd | 2.0.0 | MIT |
@@ -806,7 +786,7 @@ _Generated from `pnpm licenses list` on 2025-12-11._
 | des.js | 1.1.0 | MIT |
 | destroy | 1.2.0 | MIT |
 | detect-libc | 1.0.3 | Apache-2.0 |
-| detect-libc | 2.0.4 | Apache-2.0 |
+| detect-libc | 2.1.2 | Apache-2.0 |
 | detect-node | 2.1.0 | MIT |
 | devlop | 1.1.0 | MIT |
 | di | 0.0.1 | MIT |
@@ -852,7 +832,6 @@ _Generated from `pnpm licenses list` on 2025-12-11._
 | encodeurl | 1.0.2 | MIT |
 | encodeurl | 2.0.0 | MIT |
 | encoding | 0.1.13 | MIT |
-| end-of-stream | 1.4.5 | MIT |
 | endent | 2.1.0 | MIT |
 | engine.io | 6.6.4 | MIT |
 | engine.io-parser | 5.2.3 | MIT |
@@ -891,10 +870,9 @@ _Generated from `pnpm licenses list` on 2025-12-11._
 | escape-string-regexp | 1.0.5 | MIT |
 | escape-string-regexp | 4.0.0 | MIT |
 | escape-string-regexp | 5.0.0 | MIT |
-| escodegen | 2.1.0 | BSD-2-Clause |
 | eslint | 9.30.1 | MIT |
 | eslint-config-next | 15.4.3 | MIT |
-| eslint-config-next | 15.5.7 | MIT |
+| eslint-config-next | 15.5.9 | MIT |
 | eslint-import-context | 0.1.9 | MIT |
 | eslint-import-resolver-node | 0.3.9 | MIT |
 | eslint-import-resolver-typescript | 3.10.1 | ISC |
@@ -944,7 +922,6 @@ _Generated from `pnpm licenses list` on 2025-12-11._
 | extend | 3.0.2 | MIT |
 | extend-shallow | 2.0.1 | MIT |
 | external-editor | 3.1.0 | MIT |
-| extract-zip | 2.0.1 | BSD-2-Clause |
 | fast-deep-equal | 3.1.3 | MIT |
 | fast-glob | 3.3.1 | MIT |
 | fast-glob | 3.3.3 | MIT |
@@ -957,7 +934,6 @@ _Generated from `pnpm licenses list` on 2025-12-11._
 | fault | 1.0.4 | MIT |
 | fault | 2.0.1 | MIT |
 | faye-websocket | 0.11.4 | Apache-2.0 |
-| fd-slicer | 1.1.0 | MIT |
 | fdir | 6.4.6 | MIT |
 | fdir | 6.5.0 | MIT |
 | fetch-blob | 3.2.0 | MIT |
@@ -1014,10 +990,8 @@ _Generated from `pnpm licenses list` on 2025-12-11._
 | get-intrinsic | 1.3.0 | MIT |
 | get-package-type | 0.1.0 | MIT |
 | get-proto | 1.0.1 | MIT |
-| get-stream | 5.2.0 | MIT |
 | get-symbol-description | 1.1.0 | MIT |
 | get-tsconfig | 4.10.1 | MIT |
-| get-uri | 6.0.5 | MIT |
 | git-raw-commits | 4.0.0 | MIT |
 | github-slugger | 2.0.0 | ISC |
 | glob | 10.4.5 | ISC |
@@ -1111,7 +1085,6 @@ _Generated from `pnpm licenses list` on 2025-12-11._
 | ignore | 7.0.5 | MIT |
 | ignore-walk | 7.0.0 | ISC |
 | image-size | 0.5.5 | MIT |
-| image-size | 1.2.1 | MIT |
 | image-size | 2.0.2 | MIT |
 | imagescript | 1.3.1 | (AGPL-3.0-or-later OR MIT) |
 | immutable | 5.1.3 | MIT |
@@ -1141,7 +1114,6 @@ _Generated from `pnpm licenses list` on 2025-12-11._
 | is-arguments | 1.2.0 | MIT |
 | is-array-buffer | 3.0.5 | MIT |
 | is-arrayish | 0.2.1 | MIT |
-| is-arrayish | 0.3.2 | MIT |
 | is-async-function | 2.1.1 | MIT |
 | is-bigint | 1.1.0 | MIT |
 | is-binary-path | 2.1.0 | MIT |
@@ -1456,8 +1428,9 @@ _Generated from `pnpm licenses list` on 2025-12-11._
 | negotiator | 0.6.4 | MIT |
 | negotiator | 1.0.0 | MIT |
 | neo-async | 2.6.2 | MIT |
-| netmask | 2.0.2 | MIT |
 | next | 15.5.7 | MIT |
+| next | 15.5.9 | MIT |
+| next | 16.0.10 | MIT |
 | next-contentlayer2 | 0.5.8 | MIT |
 | next-themes | 0.4.6 | MIT |
 | next-tick | 1.1.0 | ISC |
@@ -1534,12 +1507,9 @@ _Generated from `pnpm licenses list` on 2025-12-11._
 | p-map | 7.0.3 | MIT |
 | p-retry | 6.2.1 | MIT |
 | p-try | 2.2.0 | MIT |
-| pac-proxy-agent | 7.2.0 | MIT |
-| pac-resolver | 7.0.1 | MIT |
 | package-json-from-dist | 1.0.1 | BlueOak-1.0.0 |
 | pacote | 20.0.0 | ISC |
 | pako | 1.0.11 | (MIT AND Zlib) |
-| pako | 2.1.0 | (MIT AND Zlib) |
 | param-case | 3.0.4 | MIT |
 | parent-module | 1.0.1 | MIT |
 | parse-asn1 | 5.1.7 | ISC |
@@ -1567,14 +1537,12 @@ _Generated from `pnpm licenses list` on 2025-12-11._
 | path-scurry | 1.11.1 | BlueOak-1.0.0 |
 | path-scurry | 2.0.0 | BlueOak-1.0.0 |
 | path-to-regexp | 0.1.12 | MIT |
-| path-to-regexp | 6.3.0 | MIT |
 | path-type | 4.0.0 | MIT |
 | path-type | 6.0.0 | MIT |
 | path-unified | 0.2.0 | MIT |
 | pathe | 2.0.3 | MIT |
 | pathval | 2.0.1 | MIT |
 | pbkdf2 | 3.1.3 | MIT |
-| pend | 1.2.0 | MIT |
 | picocolors | 1.1.1 | ISC |
 | picomatch | 2.3.1 | MIT |
 | picomatch | 4.0.2 | MIT |
@@ -1632,7 +1600,6 @@ _Generated from `pnpm licenses list` on 2025-12-11._
 | proxy-addr | 2.0.7 | MIT |
 | prr | 1.0.1 | MIT |
 | public-encrypt | 4.0.3 | MIT |
-| pump | 3.0.3 | MIT |
 | punycode | 1.4.1 | MIT |
 | punycode | 2.3.1 | MIT |
 | qjobs | 1.2.0 | MIT |
@@ -1640,7 +1607,6 @@ _Generated from `pnpm licenses list` on 2025-12-11._
 | qs | 6.14.0 | BSD-3-Clause |
 | quansync | 0.2.10 | MIT |
 | querystring-es3 | 0.2.1 | MIT |
-| queue | 6.0.2 | MIT |
 | queue-microtask | 1.2.3 | MIT |
 | quotation | 2.0.3 | MIT |
 | randombytes | 2.1.0 | MIT |
@@ -1649,13 +1615,13 @@ _Generated from `pnpm licenses list` on 2025-12-11._
 | raw-body | 2.5.2 | MIT |
 | re-resizable | 6.11.2 | MIT |
 | react | 19.0.0 | MIT |
-| react | 19.2.1 | MIT |
+| react | 19.2.3 | MIT |
 | react-color | 2.19.3 | MIT |
 | react-docgen | 7.1.1 | MIT |
 | react-docgen | 8.0.0 | MIT |
 | react-docgen-typescript | 2.4.0 | MIT |
 | react-dom | 19.0.0 | MIT |
-| react-dom | 19.2.1 | MIT |
+| react-dom | 19.2.3 | MIT |
 | react-hook-form | 7.60.0 | MIT |
 | react-i18next | 16.3.3 | MIT |
 | react-is | 16.13.1 | MIT |
@@ -1775,6 +1741,7 @@ _Generated from `pnpm licenses list` on 2025-12-11._
 | semver | 7.5.4 | ISC |
 | semver | 7.7.1 | ISC |
 | semver | 7.7.2 | ISC |
+| semver | 7.7.3 | ISC |
 | send | 0.19.0 | MIT |
 | serialize-javascript | 6.0.2 | BSD-3-Clause |
 | serve-index | 1.9.1 | MIT |
@@ -1787,7 +1754,7 @@ _Generated from `pnpm licenses list` on 2025-12-11._
 | setprototypeof | 1.2.0 | ISC |
 | sha.js | 2.4.12 | (MIT AND BSD-3-Clause) |
 | shallow-clone | 3.0.1 | MIT |
-| sharp | 0.34.3 | Apache-2.0 |
+| sharp | 0.34.5 | Apache-2.0 |
 | shebang-command | 2.0.0 | MIT |
 | shebang-regex | 3.0.0 | MIT |
 | shell-quote | 1.8.3 | MIT |
@@ -1799,7 +1766,6 @@ _Generated from `pnpm licenses list` on 2025-12-11._
 | signal-exit | 3.0.7 | ISC |
 | signal-exit | 4.1.0 | ISC |
 | sigstore | 3.1.0 | Apache-2.0 |
-| simple-swizzle | 0.2.2 | MIT |
 | sirv | 3.0.1 | MIT |
 | sisteransi | 1.0.5 | MIT |
 | slash | 2.0.0 | MIT |
@@ -1883,7 +1849,6 @@ _Generated from `pnpm licenses list` on 2025-12-11._
 | supports-preserve-symlinks-flag | 1.0.0 | MIT |
 | symbol-observable | 4.0.0 | MIT |
 | symbol-tree | 3.2.4 | MIT |
-| systeminformation | 5.27.7 | MIT |
 | tabbable | 6.2.0 | MIT |
 | table-layout | 0.4.5 | MIT |
 | tailwind-merge | 2.6.0 | MIT |
@@ -2103,7 +2068,6 @@ _Generated from `pnpm licenses list` on 2025-12-11._
 | yargs | 17.7.2 | MIT |
 | yargs-parser | 20.2.9 | ISC |
 | yargs-parser | 21.1.1 | ISC |
-| yauzl | 2.10.0 | MIT |
 | yocto-queue | 0.1.0 | MIT |
 | yocto-queue | 1.2.1 | MIT |
 | yoctocolors-cjs | 2.1.2 | MIT |
