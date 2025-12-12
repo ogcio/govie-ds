@@ -13,6 +13,7 @@ analyze
 analyze
 anonymized
 anonymized
+application-browsersupport
 application-progressstepper
 application-progressstepper
 application-tooltip
@@ -38,6 +39,9 @@ BreadcrumbLinkProps
 BreadcrumbsProps
 breakpoint
 breakpoint
+browsersupport
+BrowserSupport
+BrowserSupportProps
 ButtonGroup
 ButtonGroupItemProps
 ButtonGroupProps
@@ -337,6 +341,7 @@ url
 USD
 USD
 user-centric
+UX
 viewport
 Vite
 Vite

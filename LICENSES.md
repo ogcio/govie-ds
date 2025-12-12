@@ -8,7 +8,7 @@ To regenerate this file, run: ./scripts/licenses.sh
 
 This file contains license information for all third-party dependencies used by this project.
 
-_Generated from `pnpm licenses list` on 2025-12-05._
+_Generated from `pnpm licenses list` on 2025-12-11._
 
 | Package | Version | License |
 |---------|---------|---------|
@@ -208,7 +208,7 @@ _Generated from `pnpm licenses list` on 2025-12-05._
 | @fal-works/esbuild-plugin-global-externals | 2.1.2 | MIT |
 | @grpc/grpc-js | 1.13.4 | Apache-2.0 |
 | @grpc/proto-loader | 0.7.15 | Apache-2.0 |
-| @hookform/resolvers | 5.2.1 | MIT |
+| @hookform/resolvers | 5.2.2 | MIT |
 | @humanfs/core | 0.19.1 | Apache-2.0 |
 | @humanfs/node | 0.16.6 | Apache-2.0 |
 | @humanwhocodes/module-importer | 1.0.1 | Apache-2.0 |
@@ -266,11 +266,9 @@ _Generated from `pnpm licenses list` on 2025-12-05._
 | @napi-rs/nice | 1.0.4 | MIT |
 | @napi-rs/nice-darwin-arm64 | 1.0.4 | MIT |
 | @neoconfetti/react | 1.0.0 | MIT |
-| @next/env | 15.4.3 | MIT |
 | @next/env | 15.5.7 | MIT |
 | @next/eslint-plugin-next | 15.4.3 | MIT |
 | @next/eslint-plugin-next | 15.5.7 | MIT |
-| @next/swc-darwin-arm64 | 15.4.3 | MIT |
 | @next/swc-darwin-arm64 | 15.5.7 | MIT |
 | @ngtools/webpack | 19.2.15 | MIT |
 | @nodelib/fs.scandir | 2.1.5 | MIT |
@@ -616,6 +614,7 @@ _Generated from `pnpm licenses list` on 2025-12-05._
 | body-parser | 1.20.3 | MIT |
 | bonjour-service | 1.3.0 | MIT |
 | boolbase | 1.0.0 | ISC |
+| bowser | 2.13.1 | MIT |
 | brace-expansion | 1.1.12 | MIT |
 | brace-expansion | 2.0.2 | MIT |
 | braces | 3.0.3 | MIT |
@@ -1458,7 +1457,6 @@ _Generated from `pnpm licenses list` on 2025-12-05._
 | negotiator | 1.0.0 | MIT |
 | neo-async | 2.6.2 | MIT |
 | netmask | 2.0.2 | MIT |
-| next | 15.4.3 | MIT |
 | next | 15.5.7 | MIT |
 | next-contentlayer2 | 0.5.8 | MIT |
 | next-themes | 0.4.6 | MIT |
@@ -2110,7 +2108,7 @@ _Generated from `pnpm licenses list` on 2025-12-05._
 | yocto-queue | 1.2.1 | MIT |
 | yoctocolors-cjs | 2.1.2 | MIT |
 | zod | 3.24.1 | MIT |
-| zod | 4.0.17 | MIT |
+| zod | 4.1.13 | MIT |
 | zod-to-json-schema | 3.24.6 | ISC |
 | zod-to-ts | 1.2.0 | MIT |
 | zone.js | 0.15.1 | MIT |
