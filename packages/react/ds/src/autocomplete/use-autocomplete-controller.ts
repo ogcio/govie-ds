@@ -71,6 +71,7 @@ const reducer = (
         value: action.payload.value,
         isOpen: false,
         isClearButtonEnabled: true,
+        highlightedIndex: -1,
       };
     }
     case SET_HIGHLIGHTED_INDEX: {
@@ -93,6 +94,7 @@ const isAutocompleteItem = (
 
   return (
     isValidElement(child) &&
+    !(child as AutocompleteOptionItemElement)?.props?.hidden &&
     (type === 'AutocompleteItem' || type === 'AutocompleteGroupItem')
   );
 };
@@ -209,7 +211,11 @@ export const useAutocompleteController = ({
       hasMountedRef.current = true;
       return;
     }
-    if (state.inputValue === '' && state.value === '') {
+    if (
+      state.inputValue === '' &&
+      state.value === '' &&
+      state.autocompleteOptions?.length
+    ) {
       focusInput();
     }
   }, [state.isClearButtonEnabled]);

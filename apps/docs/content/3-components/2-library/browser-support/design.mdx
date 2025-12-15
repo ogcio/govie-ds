@@ -1,0 +1,40 @@
+---
+title: Browser Support
+description: Warn users when their browser version isn't officially supported and guide them to upgrade.
+status: stable
+component:
+  id: 'browser-support'
+  status: 'stable'
+---
+
+# Browser Support
+
+The BrowserSupport component detects the user's browser and shows a dismissible warning when it falls below the supported policy. It's silent on supported browsers and surfaces a link to the official supported browsers page.
+
+<Section current="design">
+
+## Performance & UX
+
+- No layout shift: banner appears in a reserved area of your layout.
+- Silent on supported browsers to reduce banner fatigue.
+
+## When to use
+
+- Notify users on **outdated/unsupported** browsers.
+- Provide a **safe, actionable path** to update/switch browsers.
+- Keep supported users **uninterrupted** (no banner).
+
+## Usage
+
+### Do
+
+- **Mount at app-shell level**: place it in the root layout so it covers all routes.
+- **Place at the top of the page**: render the banner above the main content so users see it first.
+
+### Don't
+
+- **Don't block the UI**: this is a warning, not a hard stop.
+- **Don't stack multiple banners**: rely on the built-in owner control.
+- **Don't rely on color alone**: keep the textual message.
+
+</Section>

@@ -1,10 +1,10 @@
-# Gov IE Design System — Project Overview
+# Government of Ireland Design System — Project Overview
 
-This overview provides a concise description of the Gov IE Design System ("govie-ds"), how to run it locally, and where to find deeper technical details.
+This overview provides a concise description of the Government of Ireland Design System ("govie-ds"), how to run it locally, and where to find deeper technical details.
 
 ## What this project is
 
-Gov IE Design System provides code and assets to build consistent, accessible UIs for Irish government platforms and services. It includes:
+Government of Ireland Design System provides code and assets to build consistent, accessible UIs for Irish government platforms and services. It includes:
 
 - A documentation site (Next.js) with guidance and usage examples
 - Component libraries (HTML and, where applicable, React) and design tokens
@@ -22,7 +22,7 @@ Gov IE Design System provides code and assets to build consistent, accessible UI
     - [`eslint-config`](../packages/build/eslint-config/README.md) — Shared ESLint configuration for the monorepo
     - [`prettier-config`](../packages/build/prettier-config/README.md) — Shared Prettier configuration for the monorepo
   - `design/`
-    - `tokens` — Source design tokens for the Gov IE Design System (colors, spacing, typography, etc.)
+    - `tokens` — Source design tokens for the Government of Ireland Design System (colors, spacing, typography, etc.)
     - `tokens-builder` — Build tooling to transform tokens into distributable formats
     - `token-utils` — Utilities for working with tokens in build and runtime contexts
     - `tailwind` — Tailwind utilities and presets wired to the design tokens
@@ -31,7 +31,7 @@ Gov IE Design System provides code and assets to build consistent, accessible UI
   - [`html/ds`](../packages/html/ds/README.md) — HTML components and styles for the global components, plus Storybook for development
   - [`react/ds`](../packages/react/ds/README.md) — React component library implementing the design system components
   - `themes/`
-    - `govie` — GOV IE core theme package (exports `theme.css`, variables, and assets)
+    - `govie` — Government of Ireland core theme package (exports `theme.css`, variables, and assets)
     - `doete` — DOETE theme package aligning look-and-feel with that organisation’s branding
     - `hse` — HSE theme package aligning look-and-feel with that organisation’s branding
 
