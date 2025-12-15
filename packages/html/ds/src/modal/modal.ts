@@ -185,6 +185,7 @@ export class Modal extends BaseComponent<ModalOptions> {
 
       this.trap?.deactivate();
       this.ariaHiderCleanup?.();
+
       this.restoreFromBody();
 
       const bodyElement = newDocument.body as HTMLElement;
@@ -248,12 +249,8 @@ export class Modal extends BaseComponent<ModalOptions> {
       document.removeEventListener('keydown', this.handleEscapeKey);
     }
 
-    if (this.isOpen) {
-      this.toggleModalState(false, { forceClose: true });
-    } else {
-      this.restoreFromBody();
-      this.ariaHiderCleanup?.();
-    }
+    this.restoreFromBody();
+    this.ariaHiderCleanup?.();
   }
 }
 
