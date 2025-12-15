@@ -132,7 +132,10 @@ export class Modal extends BaseComponent<ModalOptions> {
       marker.before(this.modal);
       marker.remove();
     } else {
-      (parent.isConnected ? parent : document.body).append(this.modal);
+      (parent.isConnected
+        ? parent
+        : this.modal.ownerDocument && this.modal.ownerDocument.body
+      ).append(this.modal);
     }
 
     this._detachInfo = null;
@@ -182,7 +185,6 @@ export class Modal extends BaseComponent<ModalOptions> {
 
       this.trap?.deactivate();
       this.ariaHiderCleanup?.();
-
       this.restoreFromBody();
 
       const bodyElement = newDocument.body as HTMLElement;
@@ -246,8 +248,12 @@ export class Modal extends BaseComponent<ModalOptions> {
       document.removeEventListener('keydown', this.handleEscapeKey);
     }
 
-    this.restoreFromBody();
-    this.ariaHiderCleanup?.();
+    if (this.isOpen) {
+      this.toggleModalState(false, { forceClose: true });
+    } else {
+      this.restoreFromBody();
+      this.ariaHiderCleanup?.();
+    }
   }
 }
 
