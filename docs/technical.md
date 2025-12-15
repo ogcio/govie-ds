@@ -1,6 +1,6 @@
 # Technical documentation
 
-This document captures the minimum technical details needed to understand, build, test, and operate the Gov IE Design System ("govie-ds").
+This document captures the minimum technical details needed to understand, build, test, and operate the Government of Ireland Design System ("govie-ds").
 
 ## Architecture overview
 

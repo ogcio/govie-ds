@@ -1,7 +1,7 @@
 {
   "name": "@ogcio/design-system-react",
   "version": "1.24.0",
-  "description": "The GOV IE design system React components.",
+  "description": "The Government of Ireland Design System React components.",
   "type": "module",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
@@ -26,7 +26,6 @@
     "storybook:build": "storybook build --stats-json",
     "playwright:test": "playwright test",
     "playwright:update-snapshots": "playwright test --update-snapshots",
-    "percy": "pnpm storybook:build && percy storybook ./storybook-static --config percy.yaml",
     "typecheck": "tsc -p tsconfig.json --noEmit"
   },
   "prettier": "@ogcio/design-system-prettier-config",
@@ -59,8 +58,6 @@
     "@ogcio/design-system-tailwind": "workspace:*",
     "@ogcio/theme-doete": "workspace:*",
     "@ogcio/theme-govie": "workspace:*",
-    "@percy/cli": "^1.30.7",
-    "@percy/storybook": "^6.0.3",
     "@testing-library/jest-dom": "^6.4.8",
     "@testing-library/react": "^16.0.1",
     "@testing-library/user-event": "^14.5.2",
