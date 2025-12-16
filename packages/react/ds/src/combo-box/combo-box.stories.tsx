@@ -43,12 +43,6 @@ export const Default: StoryObj = {
       control: 'text',
       description: 'Custom test id for the Accordion component.',
     },
-    variant: {
-      control: 'radio',
-      options: ['default', 'small'],
-      description:
-        'Defines the padding and style for the Accordion (default or small)',
-    },
   },
   render: () => (
     <Form>
