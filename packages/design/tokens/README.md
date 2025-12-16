@@ -2,11 +2,19 @@
 
 This package exports design tokens as TypeScript constants and metadata objects, enabling type-safe styling and theming in your applications.
 
+## Figma Integration
+
+For a visual representation of the design tokens and their usage, you can access the Figma file where these tokens are implemented.
+
+- [Figma Design Tokens File](../figma/govie_design_system.fig)
+
 ## Installation / Setup
 
-[![npm version](https://img.shields.io/npm/v/%40ogcio%2Fdesign-system-tokens.svg)](https://www.npmjs.com/package/@ogcio/design-system-tokens)[![license](https://img.shields.io/badge/license-MIT-green.svg)](https://github.com/ogcio/govie-ds/blob/main/LICENSE)
+[![npm version](https://img.shields.io/npm/v/%40ogcio%2Fdesign-system-tokens.svg)](https://www.npmjs.com/package/@ogcio/design-system-tokens)
 
-Install the package in your project using npm (see [package details](https://www.npmjs.com/package/@ogcio/design-system-tokens)), pnpm, or your preferred package manager:
+[![license](https://img.shields.io/badge/license-MIT-green.svg)](https://github.com/ogcio/govie-ds/blob/main/LICENSE)
+
+Install the package in your project using npm, pnpm, or your preferred package manager:
 
 ```bash
 npm install @ogcio/design-system-tokens
@@ -77,29 +85,44 @@ The token system supports both light and dark themes. Each theme exports:
 
 ## Consuming Tokens
 
-Tokens are exported from this package as TypeScript objects and can be imported directly into your application code. Use `tokens.light` or `tokens.dark` for camelCase constant access, or `meta.light.resolved` / `meta.dark.resolved` for the complete token metadata. CSS variables are available via the `variables` export for stylesheet integration.
+Tokens are exported from this package as TypeScript objects and can be imported directly into your application code. Use:
 
-```typescript
-import { tokens, meta, variables } from "@ogcio/design-system-tokens";
+- `tokens` — resolved token values exposed as JS/TS constants. For example, in the light theme, colors are hex values like `#rrggbb`, sizes are numbers/strings, etc. These constants are convenient for compile-time usage (static values), such as building styles or performing calculations during bundling.
 
-// Using TypeScript constants
-const primaryColor = tokens.light.giedsColorBaseGray;
+- `variables` — references to CSS Custom Properties (`var(--...)`) for the same tokens. Use these for runtime theming: you reference `var(--gieds-...)` in CSS, and the actual value is applied in the browser depending on the active theme.
 
-// Using metadata objects
-const headingStyle = meta.light.resolved.semantic.typography.default.heading.xl;
+- `meta` — a token tree enriched with metadata (at least `$type` and `$value`) available in two variants:
+  - `meta.light.resolved` / `meta.dark.resolved` — values are fully resolved to primitives (e.g., a color like `#004d44`).
+  - `meta.light.unresolved` / `meta.dark.unresolved` — values remain as references (aliases) to other tokens, for example `$value: "{primitive.color.emerald.800}"`. This is useful in pipelines and tooling where you want to preserve semantic relationships and avoid flattening aliases too early.
 
-// Using CSS variables for direct styling
-const cssVars = variables; // Apply to :root or theme containers
-const buttonBackground = variables.semantic.surface.primary.default;
+### Example usages
 
-// Integration with Tailwind CSS
-// The variables object is consumed by @ogcio/design-system-tailwind
-// to create a complete Tailwind theme configuration
-import { createTheme } from "@ogcio/design-system-tailwind";
-const tailwindTheme = createTheme({ meta }); // Pass meta for resolved values
-```
+- Importing from the package:
 
-The `variables` export provides nested objects matching the token hierarchy, making it simple to access any token value. This structure is particularly useful for Tailwind CSS integration, where the entire token system is mapped to Tailwind's configuration format in the [`@ogcio/design-system-tailwind`](../tailwind/README.md) package.
+  ```typescript
+  import { tokens, variables, meta } from "@ogcio/design-system-tokens";
+  ```
+
+- CSS‑in‑JS with runtime theming (`variables`):
+
+  ```typescript
+  const Button = styled.button({
+    backgroundColor: variables.brand.color.primary[500], // → var(--gieds-color-primary-500)
+    color: variables.brand.color.neutral.white, // → var(--gieds-color-neutral-white)
+  });
+  ```
+
+- Static value composition at build time (`tokens`):
+
+  ```typescript
+  const border = `1px solid ${tokens.light.giedsColorNeutral300}`; // → 1px solid #babec4
+  ```
+
+- Tooling/Docs generation (`meta`):
+  ```typescript
+  const treeUnresolved = meta.light.unresolved; // has $type and alias references in $value
+  const treeResolved = meta.light.resolved; // has final primitive values
+  ```
 
 ## Build Process
 
