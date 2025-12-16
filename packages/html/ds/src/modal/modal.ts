@@ -53,6 +53,11 @@ export const hideAriaOutside = (refNode: HTMLElement) => {
   };
 };
 
+type DetachInfo = {
+  parent: ParentNode;
+  marker: Comment;
+} | null;
+
 export type ModalOptions = BaseComponentOptions;
 
 export class Modal extends BaseComponent<ModalOptions> {
@@ -66,9 +71,10 @@ export class Modal extends BaseComponent<ModalOptions> {
   closeOnEscape: boolean;
   trap: FocusTrap;
   modalControl: Element | null;
-  modalBody: any;
+  modalBody: Element | null;
   ariaHiderCleanup: (() => void) | null = null;
   handleEscapeKey: (event: KeyboardEvent) => void;
+  private _detachInfo: DetachInfo = null;
 
   constructor(options: ModalOptions) {
     super(options);
@@ -77,20 +83,11 @@ export class Modal extends BaseComponent<ModalOptions> {
     this.modalEventListener = this.modalEventListener.bind(this);
     this.closeButtonListener = this.closeButtonListener.bind(this);
 
-    this.triggerButton = this.query.getByElement({
-      name: 'trigger-button',
-    });
+    this.triggerButton = this.query.getByElement({ name: 'trigger-button' });
     this.modal = this.query.getByElement({ name: 'modal' });
-    this.closeIcon = this.query.getByElement({
-      name: 'modal-close-button',
-    });
-    this.modalControl = this.query.getByElement({
-      name: 'modal-container',
-    });
-
-    this.modalBody = this.query.getByElement({
-      name: 'modal-body',
-    });
+    this.closeIcon = this.query.getByElement({ name: 'modal-close-button' });
+    this.modalControl = this.query.getByElement({ name: 'modal-container' });
+    this.modalBody = this.query.getByElement({ name: 'modal-body' });
     this.handleEscapeKey = this.escapeKeyListener.bind(this);
 
     this.position = (this.modal as HTMLElement).dataset?.position || 'center';
@@ -112,11 +109,41 @@ export class Modal extends BaseComponent<ModalOptions> {
     });
   }
 
+  private transportToBody(document: Document): void {
+    if (!this.modal || this.modal.parentNode === document.body) {
+      return;
+    }
+    const marker = document.createComment('modal-portal-anchor');
+    const parent = this.modal.parentNode as ParentNode;
+
+    parent.insertBefore(marker, this.modal);
+    this._detachInfo = { parent, marker };
+
+    document.body.append(this.modal);
+  }
+  private restoreFromBody(): void {
+    if (!this.modal || !this._detachInfo) {
+      return;
+    }
+
+    const { parent, marker } = this._detachInfo;
+
+    if (marker.parentNode) {
+      marker.before(this.modal);
+      marker.remove();
+    } else {
+      (parent.isConnected
+        ? parent
+        : this.modal.ownerDocument && this.modal.ownerDocument.body
+      ).append(this.modal);
+    }
+
+    this._detachInfo = null;
+  }
   initModalState() {
     this.modal.classList.add('gi-modal-close');
     this.modal.classList.remove('gi-modal-open');
     this.modal.setAttribute('aria-hidden', 'true');
-
     this.toggleModalState(this.isOpen);
   }
 
@@ -140,22 +167,26 @@ export class Modal extends BaseComponent<ModalOptions> {
     this.isOpen = isOpen;
     (this.modal as HTMLElement).dataset.open = String(isOpen);
     if (isOpen) {
+      this.transportToBody(newDocument);
+
       this.modal.classList.add('gi-modal-open');
       this.modal.classList.remove('gi-modal-close');
       this.modal.setAttribute('aria-hidden', 'false');
 
       this.trap?.activate();
       this.ariaHiderCleanup = hideAriaOutside(this.modal as HTMLElement);
-    } else if (
-      (this.closeOnClick && this.closeOnOverlayClick) ||
-      props?.forceClose
-    ) {
+      return;
+    }
+
+    if ((this.closeOnClick && this.closeOnOverlayClick) || props?.forceClose) {
       this.modal.classList.add('gi-modal-close');
       this.modal.classList.remove('gi-modal-open');
       this.modal.setAttribute('aria-hidden', 'true');
 
       this.trap?.deactivate();
       this.ariaHiderCleanup?.();
+
+      this.restoreFromBody();
 
       const bodyElement = newDocument.body as HTMLElement;
       const hadTabIndex = bodyElement.hasAttribute('tabindex');
@@ -176,7 +207,6 @@ export class Modal extends BaseComponent<ModalOptions> {
 
   modalEventListener(event: Event) {
     const targetElement = event.target as HTMLElement;
-
     if (targetElement.dataset.element === 'modal') {
       this.toggleModalState(false);
     }
@@ -218,6 +248,9 @@ export class Modal extends BaseComponent<ModalOptions> {
     if (this.closeOnEscape) {
       document.removeEventListener('keydown', this.handleEscapeKey);
     }
+
+    this.restoreFromBody();
+    this.ariaHiderCleanup?.();
   }
 }
 
