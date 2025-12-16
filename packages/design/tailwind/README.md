@@ -9,7 +9,6 @@ This package provides Tailwind CSS utilities and configurations built directly f
 ## Installation / Setup
 
 [![npm version](https://img.shields.io/npm/v/%40ogcio%2Fdesign-system-tailwind.svg)](https://www.npmjs.com/package/@ogcio/design-system-tailwind)
-
 [![license](https://img.shields.io/badge/license-MIT-green.svg)](https://github.com/ogcio/govie-ds/blob/main/LICENSE)
 
 Install the package in your project using npm, pnpm, or your preferred package manager:
