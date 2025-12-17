@@ -132,7 +132,7 @@ The Tailwind theme is generated directly from the Government of Ireland Design S
 
 View the publicly available Figma file below:
 
-- **[Government of Ireland Design System Figma](../figma/govie_design_system.fig)**
+- **[Government of Ireland Design System Figma](../figma/GovIrelandDesignSystem.fig)**
 
 ### Token Categories
 
