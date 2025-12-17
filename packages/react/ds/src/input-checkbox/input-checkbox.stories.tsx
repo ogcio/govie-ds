@@ -216,7 +216,7 @@ export const WithReactHookForm: Story = {
                 {methods.formState.errors.terms.message}
               </FormFieldError>
             )}
-            <FormFieldLabel htmlFor="checkbox-id-1">
+            <FormFieldLabel htmlFor="checkbox-id-terms">
               Accept Terms
             </FormFieldLabel>
             <Controller
@@ -225,7 +225,7 @@ export const WithReactHookForm: Story = {
               rules={{ required: 'You must accept the terms' }}
               render={({ field }) => (
                 <InputCheckbox
-                  id="checkbox-id-1"
+                  id="checkbox-id-terms"
                   value="accepted"
                   label="I accept"
                   checked={field.value}
