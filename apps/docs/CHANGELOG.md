@@ -1,5 +1,31 @@
 # Changelog
 
+## [1.24.0](https://github.com/ogcio/govie-ds/compare/docs-v1.23.0...docs-v1.24.0) (2025-12-17)
+
+
+### Features
+
+* **AB#31990:** adding sidenav SideNavHeading component ([#797](https://github.com/ogcio/govie-ds/issues/797)) ([14821a7](https://github.com/ogcio/govie-ds/commit/14821a7d03fa285cc6da31c237ea79d5c902d04d))
+* **AB#33003:** adding BrowserSupport component + docs ([#792](https://github.com/ogcio/govie-ds/issues/792)) ([abdeac9](https://github.com/ogcio/govie-ds/commit/abdeac9b7a488c4cf7f23b9c31237e86d4591e1a))
+* **AB#33275:** updating product name to Government of Ireland ([#800](https://github.com/ogcio/govie-ds/issues/800)) ([a8cb21c](https://github.com/ogcio/govie-ds/commit/a8cb21c34d060b72bd778632d7d5caa0bd7efa45))
+
+
+### Miscellaneous Chores
+
+* **AB#33464:** Upgrade React to address security vulnerability: 55184, 55183, 67779 ([#803](https://github.com/ogcio/govie-ds/issues/803)) ([7ecf8f5](https://github.com/ogcio/govie-ds/commit/7ecf8f5156906bccaf840331b8fbc880d7ec6089))
+
+
+### Dependencies
+
+* The following workspace dependencies were updated
+  * dependencies
+    * @ogcio/design-system-react bumped to 1.25.0
+    * @ogcio/design-system-tailwind bumped to 1.21.0
+    * @ogcio/design-system-tokens bumped to 1.21.0
+    * @ogcio/theme-govie bumped to 1.21.0
+  * devDependencies
+    * @ogcio/design-system-prettier-config bumped to 1.1.0
+
 ## [1.23.0](https://github.com/ogcio/govie-ds/compare/docs-v1.22.0...docs-v1.23.0) (2025-12-08)
 
 

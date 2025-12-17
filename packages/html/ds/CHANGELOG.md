@@ -1,5 +1,26 @@
 # Changelog
 
+## [1.17.0](https://github.com/ogcio/govie-ds/compare/html-lib-v1.16.4...html-lib-v1.17.0) (2025-12-17)
+
+
+### Features
+
+* **AB#33275:** updating product name to Government of Ireland ([#800](https://github.com/ogcio/govie-ds/issues/800)) ([a8cb21c](https://github.com/ogcio/govie-ds/commit/a8cb21c34d060b72bd778632d7d5caa0bd7efa45))
+
+
+### Bug Fixes
+
+* **AB#33241:** sync Modal component behaviour ([#802](https://github.com/ogcio/govie-ds/issues/802)) ([5de5627](https://github.com/ogcio/govie-ds/commit/5de5627c1184dbf19cfb01e797cbc96def9b9e9d))
+
+
+### Dependencies
+
+* The following workspace dependencies were updated
+  * devDependencies
+    * @ogcio/design-system-prettier-config bumped to 1.1.0
+    * @ogcio/design-system-tailwind bumped to 1.21.0
+    * @ogcio/theme-govie bumped to 1.21.0
+
 ## [1.16.4](https://github.com/ogcio/govie-ds/compare/html-lib-v1.16.3...html-lib-v1.16.4) (2025-12-08)
 
 

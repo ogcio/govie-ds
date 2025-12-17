@@ -1,5 +1,21 @@
 # Changelog
 
+## [1.21.0](https://github.com/ogcio/govie-ds/compare/design-theme-builder-v1.20.0...design-theme-builder-v1.21.0) (2025-12-17)
+
+
+### Features
+
+* **AB#33057:** Figma design ([#795](https://github.com/ogcio/govie-ds/issues/795)) ([775db0a](https://github.com/ogcio/govie-ds/commit/775db0a08dd39491117db24e0ff15a2af27b3ecd))
+
+
+### Dependencies
+
+* The following workspace dependencies were updated
+  * dependencies
+    * @ogcio/design-system-tokens bumped to 1.21.0
+  * devDependencies
+    * @ogcio/design-system-prettier-config bumped to 1.1.0
+
 ## [1.20.0](https://github.com/ogcio/govie-ds/compare/design-theme-builder-v1.19.0...design-theme-builder-v1.20.0) (2025-12-02)
 
 
