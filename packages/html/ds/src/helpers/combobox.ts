@@ -93,6 +93,8 @@ export const createComboBox = (arguments_: ComboBoxProps) => {
     noResult.className = 'gi-combobox-checkbox-paragraph';
 
     for (let index = 0; index < item.options.length; index++) {
+      const checkboxWrapper = document.createElement('div');
+      checkboxWrapper.className = 'gi-combobox-checkbox';
       const option = item.options[index];
 
       const checkbox = createCheckbox({
@@ -103,8 +105,8 @@ export const createComboBox = (arguments_: ComboBoxProps) => {
         value: option.value,
         name: `${index}_${option.value}`,
       });
-      checkbox.className = 'gi-combobox-checkbox';
-      checkBoxContainer.append(checkbox);
+      checkboxWrapper.append(checkbox);
+      checkBoxContainer.append(checkboxWrapper);
     }
   }
 

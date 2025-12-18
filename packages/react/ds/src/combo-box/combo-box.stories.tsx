@@ -43,12 +43,6 @@ export const Default: StoryObj = {
       control: 'text',
       description: 'Custom test id for the Accordion component.',
     },
-    variant: {
-      control: 'radio',
-      options: ['default', 'small'],
-      description:
-        'Defines the padding and style for the Accordion (default or small)',
-    },
   },
   render: () => (
     <Form>
@@ -61,6 +55,35 @@ export const Default: StoryObj = {
       </Combobox>
     </Form>
   ),
+  play: async ({ canvasElement, step }) => {
+    const canvas = within(canvasElement);
+    const user = userEvent.setup();
+
+    await step('Open the "Organisations" dropdown', async () => {
+      const openButton = await canvas.findByRole('button', {
+        name: /organisations/i,
+      });
+      await user.click(openButton);
+      await canvas.findByRole('group', { name: /organisations dropdown/i });
+    });
+
+    await step('find and select the first option', async () => {
+      let firstOption: HTMLElement | null = null;
+
+      try {
+        firstOption = (await canvas.findByLabelText(/An Bord Pleanála/i, {
+          selector: 'input[type="checkbox"]',
+        })) as HTMLElement;
+      } catch {
+        const checkboxes = await canvas.findAllByRole('checkbox');
+        firstOption = checkboxes[0] as HTMLElement;
+      }
+
+      expect(firstOption).toBeVisible();
+      await user.click(firstOption);
+      expect(firstOption).toBeChecked();
+    });
+  },
 };
 
 export const ControlledAndUncontrolled = {

@@ -41,7 +41,7 @@ export const Default: Story = {
     },
     size: {
       control: 'radio',
-      options: ['lg', 'md', 'sm'],
+      options: ['md', 'sm'],
       description: 'The sizes for the Checkbox',
     },
     label: {
@@ -83,7 +83,7 @@ export const Default: Story = {
 
 export const Hover: Story = {
   args: {
-    id: 'checkbox-id-1',
+    id: 'checkbox-id-2',
     value: 'value-1',
     label: 'Checkbox',
   },
@@ -92,7 +92,7 @@ export const Hover: Story = {
 
 export const Focus: Story = {
   args: {
-    id: 'checkbox-id-1',
+    id: 'checkbox-id-3',
     value: 'value-1',
     label: 'Checkbox',
   },
@@ -101,7 +101,7 @@ export const Focus: Story = {
 
 export const Disabled: Story = {
   args: {
-    id: 'checkbox-id-1',
+    id: 'checkbox-id-4',
     value: 'value-1',
     label: 'Checkbox',
     disabled: true,
@@ -110,7 +110,7 @@ export const Disabled: Story = {
 
 export const WithHint: Story = {
   args: {
-    id: 'checkbox-id-1',
+    id: 'checkbox-id-5',
     value: 'value-1',
     label: 'Checkbox',
     hint: 'This is a hint',
@@ -132,7 +132,7 @@ export const WithLabelContent: Story = {
 
 export const WithDefaultChecked: Story = {
   args: {
-    id: 'checkbox-id-1',
+    id: 'checkbox-id-6',
     value: 'value-1',
     label: 'Checkbox',
     defaultChecked: true,
@@ -150,7 +150,7 @@ export const WithChecked: Story = {
 
 export const SmallCheckbox: Story = {
   args: {
-    id: 'checkbox-id-1',
+    id: 'checkbox-id-7',
     value: 'value-1',
     label: 'Checkbox',
     size: InputCheckboxSizeEnum.Small,
@@ -159,7 +159,7 @@ export const SmallCheckbox: Story = {
 
 export const MediumCheckbox: Story = {
   args: {
-    id: 'checkbox-id-1',
+    id: 'checkbox-id-8',
     value: 'value-1',
     label: 'Checkbox',
     size: InputCheckboxSizeEnum.Medium,
@@ -179,7 +179,7 @@ export const IndeterminateChecked: Story = {
 export const IndeterminateSmall: Story = {
   args: {
     indeterminate: true,
-    id: 'checkbox-id-indeterminate',
+    id: 'checkbox-id-indeterminate-sm',
     value: 'value-2',
     label: 'Checkbox',
     size: 'sm',
@@ -189,7 +189,7 @@ export const IndeterminateSmall: Story = {
 export const IndeterminateMedium: Story = {
   args: {
     indeterminate: true,
-    id: 'checkbox-id-indeterminate',
+    id: 'checkbox-id-indeterminate-md',
     value: 'value-2',
     label: 'Checkbox',
     size: 'md',
@@ -216,7 +216,7 @@ export const WithReactHookForm: Story = {
                 {methods.formState.errors.terms.message}
               </FormFieldError>
             )}
-            <FormFieldLabel htmlFor="checkbox-id-1">
+            <FormFieldLabel htmlFor="checkbox-id-terms">
               Accept Terms
             </FormFieldLabel>
             <Controller
@@ -225,7 +225,7 @@ export const WithReactHookForm: Story = {
               rules={{ required: 'You must accept the terms' }}
               render={({ field }) => (
                 <InputCheckbox
-                  id="checkbox-id-1"
+                  id="checkbox-id-terms"
                   value="accepted"
                   label="I accept"
                   checked={field.value}
