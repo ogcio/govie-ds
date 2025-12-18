@@ -1,5 +1,19 @@
 # Changelog
 
+## [1.21.1](https://github.com/ogcio/govie-ds/compare/design-tailwind-v1.21.0...design-tailwind-v1.21.1) (2025-12-18)
+
+
+### Bug Fixes
+
+* **AB#33529:** fixes styles for Checkbox and Combobox ([#807](https://github.com/ogcio/govie-ds/issues/807)) ([52186de](https://github.com/ogcio/govie-ds/commit/52186de2d56afb95b005bc41479f12f71af1ad84))
+
+
+### Dependencies
+
+* The following workspace dependencies were updated
+  * dependencies
+    * @ogcio/design-system-tokens bumped to 1.21.1
+
 ## [1.21.0](https://github.com/ogcio/govie-ds/compare/design-tailwind-v1.20.0...design-tailwind-v1.21.0) (2025-12-17)
 
 
