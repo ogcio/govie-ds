@@ -150,11 +150,14 @@ export const createCheckbox = (arguments_: CheckboxProps) => {
   inputContainer.append(input);
 
   if (arguments_.label) {
-    const label = document.createElement('label') as HTMLLabelElement;
-    label.htmlFor = input.id;
-    label.className = 'gi-checkbox-label';
-    label.textContent = arguments_.label;
-    inputContainer.append(label);
+    inputContainer.append(
+      createLabel({
+        size: arguments_.size,
+        htmlFor: input.id,
+        content: arguments_.label,
+        className: 'gi-cursor-pointer',
+      }),
+    );
   }
   if (arguments_.ariaLabel) {
     input.ariaLabel = arguments_.ariaLabel;
