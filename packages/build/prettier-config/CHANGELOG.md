@@ -1,6 +1,13 @@
 # Changelog
 
 
+## [1.1.0](https://github.com/ogcio/govie-ds/compare/prettier-config-v1.0.6...prettier-config-v1.1.0) (2025-12-17)
+
+
+### Features
+
+* **AB#33275:** updating product name to Government of Ireland ([#800](https://github.com/ogcio/govie-ds/issues/800)) ([a8cb21c](https://github.com/ogcio/govie-ds/commit/a8cb21c34d060b72bd778632d7d5caa0bd7efa45))
+
 ## [1.0.6](https://github.com/ogcio/govie-ds/compare/prettier-config-v1.0.5...prettier-config-v1.0.6) (2025-07-29)
 
 

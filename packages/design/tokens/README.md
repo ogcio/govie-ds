@@ -6,7 +6,7 @@ This package exports design tokens as TypeScript constants and metadata objects,
 
 For a visual representation of the design tokens and their usage, you can access the Figma file where these tokens are implemented.
 
-- [Figma Design Tokens File](../figma/govie_design_system.fig)
+- [Figma Design Tokens File](../figma/GovIrelandDesignSystem.fig)
 
 ## Installation / Setup
 

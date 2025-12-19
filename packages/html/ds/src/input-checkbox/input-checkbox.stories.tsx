@@ -71,7 +71,7 @@ export const Default: Story = {
 
 export const Hover: Story = {
   args: {
-    id: 'checkbox-id-1',
+    id: 'checkbox-id-2',
     value: 'value-1',
     label: 'Checkbox',
   },
@@ -81,7 +81,7 @@ export const Hover: Story = {
 
 export const Focus: Story = {
   args: {
-    id: 'checkbox-id-1',
+    id: 'checkbox-id-3',
     value: 'value-1',
     label: 'Checkbox',
   },
@@ -91,7 +91,7 @@ export const Focus: Story = {
 
 export const Disabled: Story = {
   args: {
-    id: 'checkbox-id-1',
+    id: 'checkbox-id-4',
     value: 'value-1',
     label: 'Checkbox',
     disabled: true,
@@ -101,7 +101,7 @@ export const Disabled: Story = {
 
 export const withHint: Story = {
   args: {
-    id: 'checkbox-id-1',
+    id: 'checkbox-id-5',
     value: 'value-1',
     label: 'Checkbox',
     hint: 'This is a hint',
@@ -115,7 +115,7 @@ export const withHint: Story = {
 };
 export const withDefaultChecked: Story = {
   args: {
-    id: 'checkbox-id-1',
+    id: 'checkbox-id-6',
     value: 'value-1',
     label: 'Checkbox',
     defaultChecked: true,
@@ -130,7 +130,7 @@ export const withDefaultChecked: Story = {
 
 export const withChecked: Story = {
   args: {
-    id: 'checkbox-id-1',
+    id: 'checkbox-id-7',
     value: 'value-1',
     label: 'Checkbox',
     checked: true,
@@ -145,7 +145,7 @@ export const withChecked: Story = {
 
 export const smallCheckbox: Story = {
   args: {
-    id: 'checkbox-id-1',
+    id: 'checkbox-id-8',
     value: 'value-1',
     label: 'Checkbox',
     size: CheckboxSizeEnum.Small,
@@ -160,7 +160,7 @@ export const smallCheckbox: Story = {
 
 export const mediumCheckbox: Story = {
   args: {
-    id: 'checkbox-id-1',
+    id: 'checkbox-id-9',
     value: 'value-1',
     label: 'Checkbox',
     size: CheckboxSizeEnum.Medium,

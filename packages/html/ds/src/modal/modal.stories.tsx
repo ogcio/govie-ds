@@ -147,6 +147,7 @@ export const ModalNotCloseOnClick: Story = {
     triggerButton: { content: 'Open Modal' },
     closeOnClick: false,
     body: modalBody,
+    size: 'md',
   },
   render: createElement,
   parameters: {
@@ -199,7 +200,7 @@ export const WithCenterMedium: Story = {
 
 export const WithCenterSmall: Story = {
   args: {
-    title: { content: modalTitle, as: 'h4' },
+    title: { content: modalTitle, as: 'h4', size: 'xs' },
     body: modalBody,
     footer: modalFooter,
     triggerButton: { content: 'Open Modal' },
@@ -214,7 +215,7 @@ export const WithCenterSmall: Story = {
 
 export const WithCloseAction: Story = {
   args: {
-    title: { content: modalTitle, as: 'h4' },
+    title: { content: modalTitle, as: 'h4', size: 'xs' },
     body: modalBody,
     footer: modalFooterWithCloseAction,
     size: 'sm',

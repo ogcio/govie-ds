@@ -6,11 +6,11 @@ Use this package to import or update the Design System library in Figma. It is n
 
 ## Figma file
 
-[`govie_design_system.fig`](govie_design_system.fig) - Design System library file.
+[`GovIrelandDesignSystem.fig`](/packages/design/figma/GovIrelandDesignSystem.fig) - Design System library file.
 
 How to open in Figma:
 - Download the file above.
-- In Figma, go to File → Import and select `govie_design_system.fig`.
+- In Figma, go to File → Import and select `GovIrelandDesignSystem.fig`.
 - Open the imported file to browse the design.
 
 ## Disclaimer / Status

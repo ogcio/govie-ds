@@ -38,11 +38,11 @@
 }
 
 .gi-input-checkbox-container {
-  @apply gi-gap-4 gi-flex gi-items-center;
+  @apply gi-gap-3 gi-flex gi-items-center;
 }
 
 .gi-input-checkbox-hint-container {
-  @apply gi-flex gi-gap-4;
+  @apply gi-flex gi-gap-3;
 }
 
 .gi-input-checkbox-hint-container > div {

@@ -159,6 +159,7 @@ export const DropdownItem = ({
                   label={checkbox.label}
                   name={`${index}_${checkbox.label}_${dropdownCustomClass}`}
                   value={checkbox.value}
+                  size="sm"
                 />
               </div>
             );

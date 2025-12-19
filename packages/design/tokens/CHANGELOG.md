@@ -1,5 +1,21 @@
 # Changelog
 
+## [1.21.0](https://github.com/ogcio/govie-ds/compare/tokens-v1.20.0...tokens-v1.21.0) (2025-12-17)
+
+
+### Features
+
+* **AB#33057:** Figma design ([#795](https://github.com/ogcio/govie-ds/issues/795)) ([775db0a](https://github.com/ogcio/govie-ds/commit/775db0a08dd39491117db24e0ff15a2af27b3ecd))
+* **AB#33060:** add Figma file with the Design Foundation ([#805](https://github.com/ogcio/govie-ds/issues/805)) ([ef72a1d](https://github.com/ogcio/govie-ds/commit/ef72a1dd023cee473774f269d0e42399691f2a48))
+* **AB#33275:** updating product name to Government of Ireland ([#800](https://github.com/ogcio/govie-ds/issues/800)) ([a8cb21c](https://github.com/ogcio/govie-ds/commit/a8cb21c34d060b72bd778632d7d5caa0bd7efa45))
+
+
+### Dependencies
+
+* The following workspace dependencies were updated
+  * devDependencies
+    * @ogcio/design-system-prettier-config bumped to 1.1.0
+
 ## [1.20.0](https://github.com/ogcio/govie-ds/compare/tokens-v1.19.0...tokens-v1.20.0) (2025-12-02)
 
 
