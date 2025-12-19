@@ -1,8 +1,16 @@
 import { objectKeys } from 'ts-extras';
 
-// TODO: type
-export function convertColors(colors: any) {
-  const convertedColorObject: Record<string, Record<string, string>> = {};
+type ColorTokenValue = {
+  $type: 'color';
+  $value: string;
+};
+
+type ColorShades = Record<string, ColorTokenValue>;
+type ColorInput = Record<string, ColorShades>;
+type ColorOutput = Record<string, Record<string, string>>;
+
+export function convertColors(colors: ColorInput): ColorOutput {
+  const convertedColorObject: ColorOutput = {};
 
   for (const colorKey of objectKeys(colors)) {
     const colorShades = colors[colorKey];
@@ -19,7 +27,6 @@ export function convertColors(colors: any) {
   return convertedColorObject;
 }
 
-// TODO: type
 export function toFont({
   valueResolver,
   fontSize,
