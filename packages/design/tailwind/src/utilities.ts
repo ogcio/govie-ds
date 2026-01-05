@@ -1,18 +1,15 @@
 import { objectKeys } from 'ts-extras';
 
+type ColorToken = {
+  $type: 'color';
+  $value: string;
+};
+
+type ColorShades = Record<string, ColorToken>;
 type ColorOutput = Record<string, Record<string, string>>;
 
 export function convertColors(
-  colors: Record<
-    string,
-    Record<
-      string,
-      {
-        $type: 'color';
-        $value: string;
-      }
-    >
-  >,
+  colors: Record<string, ColorShades>,
 ): ColorOutput {
   const convertedColorObject: ColorOutput = {};
 
