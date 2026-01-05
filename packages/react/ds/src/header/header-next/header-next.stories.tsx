@@ -24,7 +24,6 @@ import { Icon, IconId } from '../../icon/icon.js';
 import { Link } from '../../link/link.js';
 import { List, ListTypeEnum } from '../../list/list.js';
 import { ListItem } from '../../list-item/list-item.js';
-import Anchor from '../../primitives/anchor.js';
 import { SelectItemNext, SelectNext } from '../../select/select-next.js';
 import { HeaderSearch } from '../components/header-search.js';
 import { HeaderLogo } from './components/header-logo.js';
@@ -354,7 +353,7 @@ export const Govie: StoryObj = {
       <>
         <Header variant="default" aria-label="Site header" id="govieHeader">
           <HeaderLogo>
-            <Anchor href="/" aria-label="Go to Home Page">
+            <Link href="/" aria-label="Go to Home Page" noFocus>
               <img
                 src="https://raw.githubusercontent.com/ogcio/govie-ds/refs/heads/main/assets/logos/gov.ie/harp-gold-text-white.svg"
                 alt="govie logo"
@@ -372,7 +371,7 @@ export const Govie: StoryObj = {
                 fetchPriority="high"
               />
               <span className="gi-sr-only">Gov.ie logo</span>
-            </Anchor>
+            </Link>
           </HeaderLogo>
           <HeaderPrimaryMenu>
             <HeaderMenuItemLink href="#" showItemMode="desktop-only">

@@ -70,14 +70,12 @@ focus:gi-bg-black
   gi-rounded-sm;
 }
 
-.gi-header-logo-default,
 .gi-header-logo-default a {
   @apply gi-focus-state-outline
   gi-focus-within-state-outline-header
   gi-focus-visible-state-outline;
 }
 
-.gi-header-logo-light,
 .gi-header-logo-light a {
   @apply gi-focus-state-outline
   gi-focus-within-state-outline-header gi-focus-visible-state-outline

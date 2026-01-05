@@ -26,6 +26,11 @@ const meta = {
       type: { name: 'boolean' },
       description: 'Disables underline styling on the link',
     },
+    noFocus: {
+      control: 'boolean',
+      type: { name: 'boolean' },
+      description: 'Disables focus styling on the link',
+    },
     noColor: {
       control: 'boolean',
       type: { name: 'boolean' },

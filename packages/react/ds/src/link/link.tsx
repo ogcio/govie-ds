@@ -16,6 +16,7 @@ export type LinkProps = AnchorProps & {
   asChild?: boolean;
   noVisited?: boolean;
   noUnderline?: boolean;
+  noFocus?: boolean;
   noColor?: boolean;
   external?: boolean;
   size?: 'sm' | 'md';
@@ -85,6 +86,7 @@ export const Link = forwardRef<HTMLElement, LinkProps>(
       dataTestid,
       noVisited,
       noUnderline,
+      noFocus,
       noColor,
       external,
       asButton,
@@ -116,6 +118,7 @@ export const Link = forwardRef<HTMLElement, LinkProps>(
             'gi-link': !asButton,
             'gi-link-no-underline': !asButton && noUnderline,
             'gi-link-no-visited': !asButton && noVisited,
+            'gi-link-no-focus-state': !asButton && noFocus,
             'gi-link-inherit': !asButton && noColor,
             'gi-btn': asButton,
             '!gi-inline-flex': asButton,

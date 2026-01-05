@@ -2,7 +2,7 @@
   @apply gi-decoration-xs gi-inline-flex gi-underline gi-underline-offset-[0.2em] gi-text-color-text-tone-convention-default gi-relative gi-w-fit;
 }
 
-.gi-link:not([aria-current='page']) {
+.gi-link:not([aria-current='page']):not(.gi-link-no-focus-state) {
   @apply focus:gi-no-underline
     focus:gi-rounded-sm
     focus:gi-shadow-[0_0_0_2px_var(--gieds-color-gray-950),0_0_0_5px_var(--gieds-color-yellow-400)]
@@ -11,7 +11,9 @@
     focus-visible:gi-rounded-sm
     focus-visible:gi-outline-none;
 }
-.gi-link:not([aria-current='page']):not(.gi-link-disabled) {
+.gi-link:not([aria-current='page']):not(.gi-link-disabled):not(
+    .gi-link-no-focus-state
+  ) {
   @apply hover:gi-decoration-lg focus:gi-no-underline focus:gi-rounded-sm focus:gi-shadow-[0_0_0_2px_var(--gieds-color-gray-950),0_0_0_5px_var(--gieds-color-yellow-400)] focus-visible:gi-shadow-[0_0_0_2px_var(--gieds-color-gray-950),0_0_0_5px_var(--gieds-color-yellow-400)] focus-visible:gi-no-underline focus-visible:gi-rounded-sm focus-visible:gi-outline-none;
 }
 
@@ -19,7 +21,9 @@
   @apply gi-text-color-icon-tone-convention-disabled gi-pointer-events-none gi-no-underline focus-visible:gi-outline-none focus-visible:gi-shadow-none;
 }
 
-.gi-link:not(.gi-link-inherit):not(.gi-link-disabled):not(.gi-link-light) {
+.gi-link:not(.gi-link-inherit):not(.gi-link-disabled):not(.gi-link-light):not(
+    .gi-link-no-focus-state
+  ) {
   @apply hover:gi-text-color-text-tone-convention-hover focus:gi-text-color-text-tone-convention-hover focus-visible:gi-text-color-text-tone-convention-hover;
 }
 .gi-link:not(.gi-link-inherit):not(.gi-link-disabled):not(.gi-link-light) {
@@ -32,6 +36,10 @@
 
 .gi-link-no-underline {
   @apply hover:gi-underline gi-no-underline gi-underline-offset-[0.1em] focus:gi-no-underline;
+}
+
+.gi-link-no-focus-state {
+  @apply focus:gi-shadow-none focus-visible:gi-shadow-none focus:gi-outline-none focus-visible:gi-outline-none;
 }
 
 .gi-link-icon {
