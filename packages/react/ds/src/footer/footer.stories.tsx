@@ -264,9 +264,7 @@ export const CompleteFooter: Story = {
         <Link noColor href="/terms-of-use" aria-label="Terms of Use">
           Terms of Use
         </Link>
-        <div className="gi-text-sm">
-          © {new Date().getFullYear()} Government of Ireland.
-        </div>
+        <div className="gi-text-sm">© 2025 Government of Ireland.</div>
       </Stack>
     ),
   },
@@ -370,9 +368,7 @@ export const SimpleFooter: Story = {
         <Link noColor href="/accessibility" aria-label="Accessibility">
           Accessibility
         </Link>
-        <div className="gi-text-sm">
-          © {new Date().getFullYear()} Government of Ireland.
-        </div>
+        <div className="gi-text-sm">© 2025 Government of Ireland.</div>
       </Stack>
     ),
   },
@@ -392,9 +388,7 @@ export const MinimalFooter: Story = {
         <Link noColor href="/accessibility" aria-label="Accessibility">
           Accessibility
         </Link>
-        <div className="gi-text-sm">
-          © {new Date().getFullYear()} Government of Ireland.
-        </div>
+        <div className="gi-text-sm">© 2025 Government of Ireland.</div>
       </Stack>
     ),
   },

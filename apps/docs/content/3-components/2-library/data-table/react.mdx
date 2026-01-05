@@ -71,7 +71,7 @@ component:
           description: 'Callback function to handle changes to the cell value.'
           required: true
         - name: 'type'
-          ofType: "EditorTableCellConfig"
+          ofType: 'EditorTableCellConfig'
           description: 'The type of input to be rendered. Determines the kind of editor (e.g., text input, number input, checkbox).'
           required: false
     - name: 'EditorTableCellConfig'
@@ -86,8 +86,7 @@ component:
           required: false
   stories:
     - name: 'default'
-      url: '/story/data-table-tanstack--default'
-  
+      url: '/story/data-table-tanstack--with-react-hook-form'
 ---
 
 # Data Table
@@ -98,9 +97,11 @@ Data tables are used to visually represent and manage large sets of information 
 
 ### Basic example with Tankstack table
 
-<ComponentPreview>
-  <StorybookFrame componentId="data-table-react" story="default" />
-</ComponentPreview>
+<StorybookFrame
+  componentId="data-table-react"
+  story="default"
+  className="w-full h-[780px]"
+/>
 
 This example is based on the following [Tanstack Table example](https://github.com/tanstack/table/tree/main/examples/react/filters-fuzzy).<br />
 Follow this [guide](https://tanstack.com/table/latest/docs/installation) to set up the Tanstack Table library in your project.<br />
