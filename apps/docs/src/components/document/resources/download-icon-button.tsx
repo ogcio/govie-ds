@@ -4,9 +4,19 @@ import { useEffect, useState } from 'react';
 import { cn } from '@/lib/cn';
 import analytics from '@/lib/analytics';
 
-type DownloadIconButtonProps =
-  | { name: string; text: string; fetchPath?: never }
-  | { name: string; fetchPath: string; text?: never };
+type SvgIcon = {
+  name: string;
+  text: string;
+  fetchPath?: never;
+};
+
+type TextIcon = {
+  name: string;
+  fetchPath: string;
+  text?: never;
+};
+
+type DownloadIconButtonProps = SvgIcon | TextIcon;
 
 export function DownloadIconButton({
   text,
