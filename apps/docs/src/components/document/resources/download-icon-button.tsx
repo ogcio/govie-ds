@@ -6,23 +6,17 @@ import analytics from '@/lib/analytics';
 
 type SvgIcon = {
   name: string;
-  text: string;
-  fetchPath?: never;
+  href: string;
+  text?: never;
 };
 
 type TextIcon = {
   name: string;
-  fetchPath: string;
-  text?: never;
+  text: string;
+  href?: never;
 };
 
-type DownloadIconButtonProps = SvgIcon | TextIcon;
-
-export function DownloadIconButton({
-  text,
-  name,
-  fetchPath,
-}: DownloadIconButtonProps) {
+export function DownloadIconButton({ name, href, text }: SvgIcon | TextIcon) {
   const [downloaded, setDownloaded] = useState(false);
 
   useEffect(() => {
@@ -47,7 +41,7 @@ export function DownloadIconButton({
 
   const downloadHref = text
     ? `data:image/svg+xml;charset=utf-8,${encodeURIComponent(text)}`
-    : fetchPath || '';
+    : href || '';
 
   return (
     <a href={downloadHref} download={`${safeName}.svg`} onClick={handleClick}>

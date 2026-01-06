@@ -24,7 +24,7 @@ export function IconGridLayout() {
               <div className="absolute bottom-1 right-10">
                 <DownloadIconButton
                   name={icon}
-                  fetchPath={`/icons/${safeName}.svg`}
+                  href={`/icons/${safeName}.svg`}
                 />
               </div>
             </div>
