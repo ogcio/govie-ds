@@ -1,0 +1,98 @@
+<!-- public/paragraph-demo.html -->
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>gi-paragraph demo</title>
+
+    <!-- Stencil loader + app bundle (adjust paths to your build output) -->
+    <script type="module" src="/build/govie-ds.esm.js"></script>
+    <script nomodule src="/build/govie-ds.js"></script>
+
+    <!-- If your Tailwind is compiled as globalStyle it will be emitted into /build/*.css.
+         If needed, include it explicitly (adjust filename to your build output). -->
+    <link rel="stylesheet" href="/build/govie-ds.css" />
+  </head>
+
+  <body class="p-6 space-y-6">
+    <h1 class="text-xl font-semibold">gi-paragraph demo</h1>
+
+    <section class="space-y-3">
+      <h2 class="text-lg font-medium">Default</h2>
+      <gi-paragraph>
+        This is the default paragraph (as="p", size="md", align="start",
+        whitespace="normal").
+      </gi-paragraph>
+    </section>
+
+    <section class="space-y-3">
+      <h2 class="text-lg font-medium">Size</h2>
+      <gi-paragraph size="lg">Large paragraph (size="lg")</gi-paragraph>
+      <gi-paragraph size="md">Medium paragraph (size="md")</gi-paragraph>
+      <gi-paragraph size="sm">Small paragraph (size="sm")</gi-paragraph>
+    </section>
+
+    <section class="space-y-3">
+      <h2 class="text-lg font-medium">Alignment</h2>
+      <gi-paragraph align="start">Start aligned</gi-paragraph>
+      <gi-paragraph align="center">Center aligned</gi-paragraph>
+      <gi-paragraph align="end">End aligned</gi-paragraph>
+      <gi-paragraph align="justify">
+        Justified text: Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+        Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut
+        enim ad minim veniam, quis nostrud exercitation ullamco laboris.
+      </gi-paragraph>
+    </section>
+
+    <section class="space-y-3">
+      <h2 class="text-lg font-medium">Whitespace</h2>
+
+      <gi-paragraph whitespace="normal">
+        normal: line breaks collapse and extra spaces collapse too.
+      </gi-paragraph>
+
+      <gi-paragraph whitespace="pre">
+        pre: spaces preserved line breaks preserved
+      </gi-paragraph>
+
+      <gi-paragraph whitespace="pre-wrap">
+        pre-wrap: spaces preserved line breaks preserved and wraps long lines
+        long lines long lines long lines long lines long lines long lines
+      </gi-paragraph>
+
+      <gi-paragraph whitespace="break-spaces">
+        break-spaces: spaces preserved and can wrap at spaces line breaks
+        preserved and wraps more aggressively for long long long long long long
+        lines
+      </gi-paragraph>
+    </section>
+
+    <section class="space-y-3">
+      <h2 class="text-lg font-medium">Span mode</h2>
+      <div class="space-x-2">
+        <gi-paragraph as="span" size="sm">Inline span A</gi-paragraph>
+        <gi-paragraph as="span" size="sm" align="center"
+          >Inline span B</gi-paragraph
+        >
+        <gi-paragraph as="span" size="sm" whitespace="pre"
+          >Inline span C</gi-paragraph
+        >
+      </div>
+    </section>
+
+    <section class="space-y-3">
+      <h2 class="text-lg font-medium">ARIA + test id</h2>
+      <gi-paragraph aria-label="Status message" data-testid="para-status">
+        Status: Ready
+      </gi-paragraph>
+    </section>
+
+    <section class="space-y-3">
+      <h2 class="text-lg font-medium">Host inline style</h2>
+      <gi-paragraph style="margin-top: 8px; color: #0f766e">
+        Styled via standard host <code>style=""</code> attribute.
+      </gi-paragraph>
+    </section>
+  </body>
+</html>
