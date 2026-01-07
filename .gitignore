@@ -19,3 +19,9 @@ test-results
 playwright-report
 blob-report
 playwright/.cache
+
+.stencil
+www
+hydrate
+loader
+packages/govie-component-library/ds/components
