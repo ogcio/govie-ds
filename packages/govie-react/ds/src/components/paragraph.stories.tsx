@@ -1,6 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/react';
 import { expect, within } from 'storybook/test';
-import { GovieParagraph as Paragraph } from './components.js';
+import { Paragraph } from '.';
 
 const meta = {
   title: 'typography/Paragraph',

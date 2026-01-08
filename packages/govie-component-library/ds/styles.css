@@ -5,9 +5,9 @@
 @import 'node_modules/@ogcio/design-system-tailwind/css/components.css';
 @import 'node_modules/@ogcio/design-system-tailwind/css/typography.css';
 
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+@import 'tailwindcss/base';
+@import 'tailwindcss/components';
+@import 'tailwindcss/utilities';
 
 /* Reminder: Ensure that `icon_names` are organized in order when adding icons */
 

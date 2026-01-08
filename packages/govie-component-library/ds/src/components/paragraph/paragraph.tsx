@@ -56,9 +56,6 @@ export class Paragraph {
   @Prop({ reflect: true }) align: ParagraphAlign = 'start';
   @Prop({ reflect: true }) whitespace: ParagraphWhitespace = 'normal';
 
-  @Prop({ attribute: 'aria-label', reflect: true }) ariaLabel?: string;
-  @Prop({ attribute: 'data-testid', reflect: true }) dataTestid?: string;
-
   render() {
     const common = {
       class: clsx(
@@ -66,8 +63,6 @@ export class Paragraph {
         getAlignClass(this.align),
         getWhitespaceClass(this.whitespace),
       ),
-      'aria-label': this.ariaLabel,
-      'data-testid': this.dataTestid,
     };
 
     return (

@@ -11,7 +11,7 @@ export const config: Config = {
   enableCache: true,
   sourceMap: true,
 
-  globalStyle: 'tailwind.css',
+  //globalStyle: 'tailwind.css',
 
   plugins: [
     postcss({
@@ -23,8 +23,8 @@ export const config: Config = {
   outputTargets: [
     reactOutputTarget({
       outDir: '../../govie-react/ds/src/components',
-      hydrateModule: '@ogcio/govie-component-library/hydrate',
-      clientModule: '',
+      //hydrateModule: '@ogcio/govie-component-library/hydrate',
+      //clientModule: '',
     }),
     // Hydrate script for SSR
     {

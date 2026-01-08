@@ -1,6 +1,6 @@
 import '@ogcio/theme-doete/light.css';
 import '@ogcio/theme-govie/theme.css';
-import '@ogcio/govie-component-library/styles.css';
+import '../styles.css';
 
 import {
   Controls,

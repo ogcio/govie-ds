@@ -99,6 +99,7 @@ import {
   TextArea,
   Tooltip,
 } from '@ogcio/design-system-react';
+import { Paragraph as GovieParagraph } from '@ogcio/govie-react';
 import { MDXComponents } from 'mdx/types';
 import { useMDXComponent } from 'next-contentlayer2/hooks';
 import NextLink from 'next/link';
@@ -322,6 +323,7 @@ const documentComponents: MDXComponents = {
   PageNotFound,
   Pagination,
   Paragraph,
+  GovieParagraph,
   PhaseBanner,
   Popover,
   ProgressBar,

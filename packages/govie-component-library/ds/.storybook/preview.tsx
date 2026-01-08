@@ -1,6 +1,7 @@
 import './global.css';
+import '@ogcio/theme-doete/light.css';
 import '@ogcio/theme-govie/theme.css';
-import '../tailwind.css';
+import '../dist/styles.css';
 
 import { defineCustomElements } from '../loader/index.js';
 import {

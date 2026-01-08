@@ -1,26 +1,44 @@
 {
-  "name": "ds",
+  "name": "@ogcio/govie-react",
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
   "scripts": {
-    "storybook": "storybook dev -p 6006"
+    "storybook": "storybook dev -p 6006",
+    "build": "pnpm build:ts && node ./scripts/copy-styles.mjs",
+    "build:ts": "pnpm exec tsc -p tsconfig.json "
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.js",
+      "default": "./dist/index.js"
+    },
+    "./styles.css": "./dist/styles.css"
+  },
+  "files": [
+    "dist/",
+    "src/",
+    "package.json"
+  ],
   "dependencies": {
     "@ogcio/govie-component-library": "workspace:*",
     "@stencil/react-output-target": "^1.2.0",
+    "glob": "^11.0.1",
     "i18next": "^25.6.2",
     "react": "^19.2.3",
-    "react-i18next": "^16.3.3"
+    "react-i18next": "^16.3.3",
+    "rollup-preserve-directives": "^1.1.2"
   },
   "devDependencies": {
     "@ogcio/design-system-eslint-config": "workspace:*",
     "@ogcio/design-system-prettier-config": "workspace:*",
     "@ogcio/design-system-tailwind": "workspace:*",
     "@ogcio/theme-doete": "workspace:*",
-    "@ogcio/theme-govie": "workspace:*"
+    "@ogcio/theme-govie": "workspace:*",
+    "typescript": "^5.9.3"
   }
 }
