@@ -1,5 +1,7 @@
 import '@ogcio/theme-doete/light.css';
 import '@ogcio/theme-govie/theme.css';
+import '../styles.css';
+
 import {
   Controls,
   Description,
@@ -11,7 +13,6 @@ import {
 import { withThemeByDataAttribute } from '@storybook/addon-themes';
 import type { Preview } from '@storybook/react';
 import { INITIAL_VIEWPORTS, MINIMAL_VIEWPORTS } from 'storybook/viewport';
-import '../styles.css';
 import './global.css';
 import { initI18n } from '../src/i18n/config';
 import enTranslations from '../src/i18n/translations/en.json';

@@ -52,6 +52,7 @@
   },
   "devDependencies": {
     "@next/eslint-plugin-next": "^15.5.9",
+    "@ogcio/govie-react": "workspace:*",
     "@ogcio/design-system-eslint-config": "workspace:*",
     "@ogcio/design-system-prettier-config": "workspace:*",
     "@types/color-convert": "^2.0.3",

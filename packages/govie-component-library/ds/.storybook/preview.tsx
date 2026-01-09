@@ -1,5 +1,9 @@
+import './global.css';
 import '@ogcio/theme-doete/light.css';
 import '@ogcio/theme-govie/theme.css';
+import '../dist/govie-component-library/govie-component-library.css';
+
+import { defineCustomElements } from '../loader/index.js';
 import {
   Controls,
   Description,
@@ -9,22 +13,12 @@ import {
   Title,
 } from '@storybook/addon-docs/blocks';
 import { withThemeByDataAttribute } from '@storybook/addon-themes';
-import type { Preview } from '@storybook/react';
 import { INITIAL_VIEWPORTS, MINIMAL_VIEWPORTS } from 'storybook/viewport';
-import '../styles.css';
-import './global.css';
-import { initI18n } from '../src/i18n/config';
-import enTranslations from '../src/i18n/translations/en.json';
+import { createElement, Fragment } from 'react';
 
-initI18n({
-  lng: 'en',
-  fallbackLng: 'en',
-  resources: {
-    ...enTranslations,
-  },
-});
+defineCustomElements();
 
-const preview: Preview = {
+const preview = {
   decorators: [
     withThemeByDataAttribute({
       themes: {
@@ -36,18 +30,18 @@ const preview: Preview = {
     }),
   ],
   parameters: {
-    layout: 'fullscreen',
     docs: {
-      page: () => (
-        <>
-          <Title />
-          <Subtitle />
-          <Description />
-          <Primary />
-          <Controls />
-          <Stories includePrimary={false} />
-        </>
-      ),
+      page: () =>
+        createElement(
+          Fragment,
+          null,
+          createElement(Title, null),
+          createElement(Subtitle, null),
+          createElement(Description, null),
+          createElement(Primary, null),
+          createElement(Controls, null),
+          createElement(Stories, { includePrimary: false }),
+        ),
     },
     a11y: { test: 'error' },
     controls: {
