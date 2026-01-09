@@ -7,10 +7,22 @@
 
 /* eslint-disable */
 
+import { GovieButton as GovieButtonElement, defineCustomElement as defineGovieButton } from "@ogcio/govie-component-library/components/govie-button.js";
 import { GovieParagraph as GovieParagraphElement, defineCustomElement as defineGovieParagraph } from "@ogcio/govie-component-library/components/govie-paragraph.js";
 import type { StencilReactComponent } from '@stencil/react-output-target/runtime';
 import { createComponent } from '@stencil/react-output-target/runtime';
 import React from 'react';
+
+export type GovieButtonEvents = NonNullable<unknown>;
+
+export const GovieButton: StencilReactComponent<GovieButtonElement, GovieButtonEvents> = /*@__PURE__*/ createComponent<GovieButtonElement, GovieButtonEvents>({
+    tagName: 'govie-button',
+    elementClass: GovieButtonElement,
+    // @ts-ignore - ignore potential React type mismatches between the Stencil Output Target and your project.
+    react: React,
+    events: {} as GovieButtonEvents,
+    defineCustomElement: defineGovieButton
+});
 
 export type GovieParagraphEvents = NonNullable<unknown>;
 

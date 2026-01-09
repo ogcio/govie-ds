@@ -5,9 +5,21 @@
  * It contains typing information for all components that exist in this project.
  */
 import { HTMLStencilElement, JSXBase } from "@stencil/core/internal";
+import { ButtonProps } from "./components/button/types.js";
 import { ParagraphAlign, ParagraphAs, ParagraphSize, ParagraphWhitespace } from "./components/paragraph/paragraph";
+export { ButtonProps } from "./components/button/types.js";
 export { ParagraphAlign, ParagraphAs, ParagraphSize, ParagraphWhitespace } from "./components/paragraph/paragraph";
 export namespace Components {
+    interface GovieButton {
+        "appearance"?: ButtonProps['appearance'];
+        "class"?: string;
+        /**
+          * @default false
+         */
+        "disabled": boolean;
+        "size"?: ButtonProps['size'];
+        "variant"?: ButtonProps['variant'];
+    }
     interface GovieParagraph {
         /**
           * @default 'start'
@@ -28,6 +40,12 @@ export namespace Components {
     }
 }
 declare global {
+    interface HTMLGovieButtonElement extends Components.GovieButton, HTMLStencilElement {
+    }
+    var HTMLGovieButtonElement: {
+        prototype: HTMLGovieButtonElement;
+        new (): HTMLGovieButtonElement;
+    };
     interface HTMLGovieParagraphElement extends Components.GovieParagraph, HTMLStencilElement {
     }
     var HTMLGovieParagraphElement: {
@@ -35,10 +53,21 @@ declare global {
         new (): HTMLGovieParagraphElement;
     };
     interface HTMLElementTagNameMap {
+        "govie-button": HTMLGovieButtonElement;
         "govie-paragraph": HTMLGovieParagraphElement;
     }
 }
 declare namespace LocalJSX {
+    interface GovieButton {
+        "appearance"?: ButtonProps['appearance'];
+        "class"?: string;
+        /**
+          * @default false
+         */
+        "disabled"?: boolean;
+        "size"?: ButtonProps['size'];
+        "variant"?: ButtonProps['variant'];
+    }
     interface GovieParagraph {
         /**
           * @default 'start'
@@ -58,6 +87,7 @@ declare namespace LocalJSX {
         "whitespace"?: ParagraphWhitespace;
     }
     interface IntrinsicElements {
+        "govie-button": GovieButton;
         "govie-paragraph": GovieParagraph;
     }
 }
@@ -65,6 +95,7 @@ export { LocalJSX as JSX };
 declare module "@stencil/core" {
     export namespace JSX {
         interface IntrinsicElements {
+            "govie-button": LocalJSX.GovieButton & JSXBase.HTMLAttributes<HTMLGovieButtonElement>;
             "govie-paragraph": LocalJSX.GovieParagraph & JSXBase.HTMLAttributes<HTMLGovieParagraphElement>;
         }
     }

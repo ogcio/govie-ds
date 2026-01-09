@@ -91,7 +91,10 @@ import {
   HeaderMenuItemSeparator,
   HeaderMenuItemButton,
 } from '@ogcio/design-system-react';
-import { Paragraph as GovieParagraph } from '@ogcio/govie-react';
+import {
+  Paragraph as GovieParagraph,
+  Button as GovieButton,
+} from '@ogcio/govie-react';
 import { useEffect, useState } from 'react';
 import Image from 'next/image';
 
@@ -1406,6 +1409,10 @@ export default function Home() {
           </Heading>
           Paragraph:
           <GovieParagraph>Here is a paragraph</GovieParagraph>
+          Button:
+          <GovieButton>Button</GovieButton>
+          <GovieButton variant="flat">Button</GovieButton>
+          <GovieButton variant="secondary">Button</GovieButton>
         </Container>
       </Container>
 

@@ -20,7 +20,6 @@
     "example": "pnpm dev && open-cli http://localhost:3333/index.html",
     "build:prod": "stencil build --prod",
     "clean": "rm -rf dist www .stencil hydrate loader components",
-    "test": "stencil test --spec",
     "storybook": "pnpm clean && pnpm build && storybook dev -p 6006"
   },
   "exports": {

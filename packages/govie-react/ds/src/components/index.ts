@@ -1,1 +1,4 @@
-export { GovieParagraph as Paragraph } from './components.js';
+export {
+  GovieParagraph as Paragraph,
+  GovieButton as Button,
+} from './components.js';

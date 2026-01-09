@@ -51,7 +51,6 @@ export const Default: Story = {
     },
   },
   args: {
-    dataTestid: 'paragraph',
     children: 'This is a paragraph.',
     as: 'p',
     size: 'md',
@@ -78,7 +77,6 @@ export const Default: Story = {
 
 export const RightAlignment: Story = {
   args: {
-    dataTestid: 'paragraph',
     children: 'This is a paragraph.',
     as: 'p',
     size: 'md',
@@ -95,7 +93,6 @@ export const RightAlignment: Story = {
 
 export const WhitespacePre: Story = {
   args: {
-    dataTestid: 'paragraph',
     children: `Hey everyone!
 
 It's almost 2022       and we still don't know if there       is aliens living among us, or do we? Maybe the person writing this is an alien.
@@ -113,7 +110,6 @@ You will never know.`,
 
 export const WhitespacePreWrap: Story = {
   args: {
-    dataTestid: 'paragraph',
     children: `Hey everyone!
 
 It's almost 2022       and we still don't know if there       is aliens living among us, or do we? Maybe the person writing this is an alien.
@@ -131,7 +127,6 @@ You will never know.`,
 
 export const WhitespaceBreakSpaces: Story = {
   args: {
-    dataTestid: 'paragraph',
     children: `Hey everyone!
 
 It's almost 2022       and we still don't know if there       is aliens living among us, or do we? Maybe the person writing this is an alien.
@@ -149,7 +144,6 @@ You will never know.`,
 
 export const AsSpan: Story = {
   args: {
-    dataTestid: 'paragraph',
     as: 'span',
     children: 'This is a paragraph',
     size: 'md',
