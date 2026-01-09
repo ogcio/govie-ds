@@ -1,5 +1,21 @@
 # Changelog
 
+## [1.17.1](https://github.com/ogcio/govie-ds/compare/html-lib-v1.17.0...html-lib-v1.17.1) (2026-01-09)
+
+
+### Bug Fixes
+
+* **AB#33243:** sync html modal stories with react ones ([#806](https://github.com/ogcio/govie-ds/issues/806)) ([cc29552](https://github.com/ogcio/govie-ds/commit/cc295529381286731e09dad30629234c58a987b4))
+* **AB#33529:** fixes styles for Checkbox and Combobox ([#807](https://github.com/ogcio/govie-ds/issues/807)) ([52186de](https://github.com/ogcio/govie-ds/commit/52186de2d56afb95b005bc41479f12f71af1ad84))
+
+
+### Dependencies
+
+* The following workspace dependencies were updated
+  * devDependencies
+    * @ogcio/design-system-tailwind bumped to 1.21.1
+    * @ogcio/theme-govie bumped to 1.21.1
+
 ## [1.17.0](https://github.com/ogcio/govie-ds/compare/html-lib-v1.16.4...html-lib-v1.17.0) (2025-12-17)
 
 
