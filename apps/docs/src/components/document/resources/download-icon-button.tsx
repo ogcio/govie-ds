@@ -4,13 +4,19 @@ import { useEffect, useState } from 'react';
 import { cn } from '@/lib/cn';
 import analytics from '@/lib/analytics';
 
-export function DownloadIconButton({
-  text,
-  name,
-}: {
+type SvgIcon = {
+  name: string;
+  href: string;
+  text?: never;
+};
+
+type TextIcon = {
   name: string;
   text: string;
-}) {
+  href?: never;
+};
+
+export function DownloadIconButton({ name, href, text }: SvgIcon | TextIcon) {
   const [downloaded, setDownloaded] = useState(false);
 
   useEffect(() => {
@@ -19,41 +25,35 @@ export function DownloadIconButton({
         setDownloaded(false);
       }
     }, 500);
-
     return () => clearTimeout(timeout);
   }, [downloaded]);
 
-  const handleDownload = () => {
-    const safeName = name.toLowerCase().trim().replace(/\s+/g, '_');
+  const safeName = name.toLowerCase().trim().replace(/\s+/g, '_');
 
+  const handleClick = () => {
     analytics.trackEvent({
       category: 'download content',
       action: 'click',
       name,
     });
-
-    const blob = new Blob([text], { type: 'image/svg+xml;charset=utf-8' });
-    const url = URL.createObjectURL(blob);
-
-    const link = document.createElement('a');
-    link.href = url;
-    link.download = `${safeName}.svg`;
-    link.click();
-
-    URL.revokeObjectURL(url);
     setDownloaded(true);
   };
 
+  const downloadHref = text
+    ? `data:image/svg+xml;charset=utf-8,${encodeURIComponent(text)}`
+    : href || '';
+
   return (
-    <IconButton
-      onClick={handleDownload}
-      icon={{ icon: downloaded ? 'check' : 'download' }}
-      size="small"
-      appearance="light"
-      className={cn({
-        'text-green-600': downloaded,
-        'text-gray-600': !downloaded,
-      })}
-    />
+    <a href={downloadHref} download={`${safeName}.svg`} onClick={handleClick}>
+      <IconButton
+        icon={{ icon: downloaded ? 'check' : 'download' }}
+        size="small"
+        appearance="light"
+        className={cn({
+          'text-green-600': downloaded,
+          'text-gray-600': !downloaded,
+        })}
+      />
+    </a>
   );
 }
