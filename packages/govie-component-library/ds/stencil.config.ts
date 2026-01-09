@@ -22,8 +22,8 @@ export const config: Config = {
   outputTargets: [
     reactOutputTarget({
       outDir: '../../govie-react/ds/src/components',
-      //hydrateModule: '@ogcio/govie-component-library/hydrate',
-      //clientModule: '',
+      hydrateModule: '@ogcio/govie-component-library/hydrate',
+      clientModule: '@ogcio/govie-react',
     }),
     {
       type: 'dist-hydrate-script',

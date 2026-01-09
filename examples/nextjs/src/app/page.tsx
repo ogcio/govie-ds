@@ -91,10 +91,7 @@ import {
   HeaderMenuItemSeparator,
   HeaderMenuItemButton,
 } from '@ogcio/design-system-react';
-import {
-  Paragraph as GovieParagraph,
-  Button as GovieButton,
-} from '@ogcio/govie-react';
+import { GovieParagraph, GovieButton } from '@ogcio/govie-react';
 import { useEffect, useState } from 'react';
 import Image from 'next/image';
 

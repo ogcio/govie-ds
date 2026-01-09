@@ -2,6 +2,7 @@
   "extends": "@tsconfig/node22/tsconfig.json",
   "compilerOptions": {
     "module": "esnext",
+    "rootDir": "./src",
     "moduleResolution": "bundler",
     "allowUnreachableCode": false,
     "sourceMap": true,
@@ -13,5 +14,5 @@
     "types": ["node", "react", "react-dom"]
   },
   "include": ["src/**/*.ts"],
-  "exclude": ["src/**/*.stories.tsx", "src/**/*.test.*"]
+  "exclude": ["src/**/*.stories.tsx", "src/**/*.test.*", "dist", "node_modules"]
 }
