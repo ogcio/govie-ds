@@ -11,7 +11,7 @@ export const config: Config = {
   enableCache: true,
   sourceMap: true,
 
-  //globalStyle: 'tailwind.css',
+  globalStyle: 'styles.css',
 
   plugins: [
     postcss({
@@ -26,7 +26,6 @@ export const config: Config = {
       //hydrateModule: '@ogcio/govie-component-library/hydrate',
       //clientModule: '',
     }),
-    // Hydrate script for SSR
     {
       type: 'dist-hydrate-script',
     },
@@ -37,7 +36,6 @@ export const config: Config = {
       customElementsExportBehavior: 'auto-define-custom-elements',
       externalRuntime: false,
     },
-    //{ type: 'docs-readme' },
     { type: 'www', serviceWorker: null },
   ],
 };

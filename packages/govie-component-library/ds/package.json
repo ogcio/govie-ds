@@ -15,18 +15,16 @@
     "package.json"
   ],
   "scripts": {
-    "build": "pnpm build:stencil && pnpm build:styles",
-    "build:stencil": "stencil build",
-    "build:styles": "tailwindcss -i ./styles.css -o ./dist/styles.css --minify",
+    "build": "stencil build",
     "dev": "stencil build --dev --watch --serve",
-    "example": "concurrently -k -s first \"pnpm build\" && pnpm dev && \"open-cli http://localhost:3333/index.html\"",
+    "example": "pnpm dev && open-cli http://localhost:3333/index.html",
     "build:prod": "stencil build --prod",
     "clean": "rm -rf dist www .stencil hydrate loader components",
     "test": "stencil test --spec",
     "storybook": "pnpm clean && pnpm build && storybook dev -p 6006"
   },
   "exports": {
-    "./styles.css": "./dist/styles.css",
+    "./styles.css": "./dist/govie-component-library/govie-component-library.css",
     ".": {
       "types": "./dist/types/index.d.ts",
       "import": "./dist/index.mjs",

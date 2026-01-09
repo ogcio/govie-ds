@@ -1,7 +1,7 @@
 import './global.css';
 import '@ogcio/theme-doete/light.css';
 import '@ogcio/theme-govie/theme.css';
-import '../dist/styles.css';
+import '../dist/govie-component-library/govie-component-library.css';
 
 import { defineCustomElements } from '../loader/index.js';
 import {
