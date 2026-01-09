@@ -67,16 +67,17 @@ focus:gi-bg-black
 
 .gi-header-logo {
   @apply gi-flex-none
+  gi-flex
   gi-rounded-sm;
 }
 
-.gi-header-logo-default a {
+.gi-header-logo-default {
   @apply gi-focus-state-outline
   gi-focus-within-state-outline-header
   gi-focus-visible-state-outline;
 }
 
-.gi-header-logo-light a {
+.gi-header-logo-light {
   @apply gi-focus-state-outline
   gi-focus-within-state-outline-header gi-focus-visible-state-outline
   focus-within:gi-outline-color-border-intent-focus-default
