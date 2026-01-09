@@ -1,4 +1,3 @@
-// stencil.config.ts
 import { Config } from '@stencil/core';
 import { postcss } from '@stencil-community/postcss';
 import tailwindcss from 'tailwindcss';
