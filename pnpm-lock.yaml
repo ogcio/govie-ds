@@ -368,6 +368,9 @@ importers:
       '@ogcio/design-system-react':
         specifier: workspace:*
         version: link:../../packages/react/ds
+      '@ogcio/govie-component-library':
+        specifier: workspace:*
+        version: link:../../packages/govie-component-library/ds
       '@ogcio/govie-react':
         specifier: workspace:*
         version: link:../../packages/govie-react/ds

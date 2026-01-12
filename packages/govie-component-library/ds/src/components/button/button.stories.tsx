@@ -80,28 +80,6 @@ export const Primary: Story = {
   render: renderButton,
 };
 
-export const PrimaryHover: Story = {
-  args: {
-    children: 'Primary Button (Hover)',
-    variant: 'primary',
-    appearance: 'default',
-    size: 'medium',
-  },
-  parameters: { pseudo: { hover: true } },
-  render: renderButton,
-};
-
-export const PrimaryFocus: Story = {
-  args: {
-    children: 'Primary Button (Focused)',
-    variant: 'primary',
-    appearance: 'default',
-    size: 'medium',
-  },
-  parameters: { pseudo: { focus: true } },
-  render: renderButton,
-};
-
 export const PrimaryDisabled: Story = {
   args: {
     children: 'Primary Button (Disabled)',
@@ -120,28 +98,6 @@ export const PrimaryLight: Story = {
     appearance: 'light',
     size: 'medium',
   },
-  render: renderButton,
-};
-
-export const PrimaryLightHover: Story = {
-  args: {
-    children: 'Primary Light Button (Hover)',
-    variant: 'primary',
-    appearance: 'light',
-    size: 'medium',
-  },
-  parameters: { pseudo: { hover: true } },
-  render: renderButton,
-};
-
-export const PrimaryLightFocus: Story = {
-  args: {
-    children: 'Primary Light Button (Focused)',
-    variant: 'primary',
-    appearance: 'light',
-    size: 'medium',
-  },
-  parameters: { pseudo: { focus: true } },
   render: renderButton,
 };
 
@@ -166,28 +122,6 @@ export const PrimaryDark: Story = {
   render: renderButton,
 };
 
-export const PrimaryDarkHover: Story = {
-  args: {
-    children: 'Primary Dark Button (Hover)',
-    variant: 'primary',
-    appearance: 'dark',
-    size: 'medium',
-  },
-  parameters: { pseudo: { hover: true } },
-  render: renderButton,
-};
-
-export const PrimaryDarkFocus: Story = {
-  args: {
-    children: 'Primary Dark Button (Focused)',
-    variant: 'primary',
-    appearance: 'dark',
-    size: 'medium',
-  },
-  parameters: { pseudo: { focus: true } },
-  render: renderButton,
-};
-
 export const PrimaryDarkDisabled: Story = {
   args: {
     children: 'Primary Dark Button (Disabled)',
@@ -209,13 +143,118 @@ export const Secondary: Story = {
   render: renderButton,
 };
 
-export const SecondaryHover: Story = {
+export const SecondaryDisabled: Story = {
   args: {
-    children: 'Secondary Button (Hover)',
+    children: 'Secondary Button (Disabled)',
     variant: 'secondary',
     appearance: 'default',
     size: 'medium',
+    disabled: true,
   },
-  parameters: { pseudo: { hover: true } },
+  render: renderButton,
+};
+
+export const SecondaryLight: Story = {
+  args: {
+    children: 'Secondary Light Button',
+    variant: 'secondary',
+    appearance: 'light',
+    size: 'medium',
+  },
+  render: renderButton,
+};
+
+export const SecondaryLightDisabled: Story = {
+  args: {
+    children: 'Secondary Light Button (Disabled)',
+    variant: 'secondary',
+    appearance: 'light',
+    size: 'medium',
+    disabled: true,
+  },
+  render: renderButton,
+};
+
+export const SecondaryDark: Story = {
+  args: {
+    children: 'Secondary Dark Button',
+    variant: 'secondary',
+    appearance: 'dark',
+    size: 'medium',
+  },
+  render: renderButton,
+};
+
+export const SecondaryDarkDisabled: Story = {
+  args: {
+    children: 'Secondary Dark Button (Disabled)',
+    variant: 'secondary',
+    appearance: 'dark',
+    size: 'medium',
+    disabled: true,
+  },
+  render: renderButton,
+};
+
+export const Flat: Story = {
+  args: {
+    children: 'Flat Button',
+    variant: 'flat',
+    appearance: 'default',
+    size: 'medium',
+  },
+  render: renderButton,
+};
+
+export const FlatDisabled: Story = {
+  args: {
+    children: 'Flat Button (Disabled)',
+    variant: 'flat',
+    appearance: 'default',
+    size: 'medium',
+    disabled: true,
+  },
+  render: renderButton,
+};
+
+export const FlatLight: Story = {
+  args: {
+    children: 'Flat Light Button',
+    variant: 'flat',
+    appearance: 'light',
+    size: 'medium',
+  },
+  render: renderButton,
+};
+
+export const FlatLightDisabled: Story = {
+  args: {
+    children: 'Flat Light Button (Disabled)',
+    variant: 'flat',
+    appearance: 'light',
+    size: 'medium',
+    disabled: true,
+  },
+  render: renderButton,
+};
+
+export const FlatDark: Story = {
+  args: {
+    children: 'Flat Dark Button',
+    variant: 'flat',
+    appearance: 'dark',
+    size: 'medium',
+  },
+  render: renderButton,
+};
+
+export const FlatDarkDisabled: Story = {
+  args: {
+    children: 'Flat Dark Button (Disabled)',
+    variant: 'flat',
+    appearance: 'dark',
+    size: 'medium',
+    disabled: true,
+  },
   render: renderButton,
 };
