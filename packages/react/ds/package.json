@@ -10,7 +10,8 @@
   },
   "exports": {
     ".": "./dist/index.js",
-    "./styles.css": "./dist/styles.css"
+    "./styles.css": "./dist/styles.css",
+    "./fonts/*": "./dist/fonts/*"
   },
   "scripts": {
     "format": "prettier 'src/**/*.{ts,tsx}' --write",
@@ -19,9 +20,10 @@
     "test": "vitest run",
     "test:watch": "vitest",
     "coverage": "vitest run --coverage",
-    "build": "pnpm build:ts && pnpm build:styles",
+    "build": "pnpm build:ts && pnpm build:styles && pnpm copy:fonts",
     "build:styles": "tailwindcss -i ./styles.css -o ./dist/styles.css --minify",
     "build:ts": "vite build",
+    "copy:fonts": "mkdir -p dist/fonts && cp -r node_modules/@ogcio/design-system-tailwind/css/fonts/* dist/fonts/",
     "storybook:dev": "storybook dev -p 6006",
     "storybook:build": "storybook build --stats-json",
     "playwright:test": "playwright test",

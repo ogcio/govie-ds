@@ -7,7 +7,8 @@
   "types": "dist/index.d.ts",
   "exports": {
     ".": "./dist/index.js",
-    "./components.css": "./css/components.css"
+    "./components.css": "./css/components.css",
+    "./fonts.css": "./css/fonts.css"
   },
   "scripts": {
     "format": "prettier 'src/**/*.ts' --write",
@@ -18,7 +19,8 @@
     "test:watch": "vitest"
   },
   "files": [
-    "dist"
+    "dist",
+    "css"
   ],
   "prettier": "@ogcio/design-system-prettier-config",
   "peerDependencies": {
