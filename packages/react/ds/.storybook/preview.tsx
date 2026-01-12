@@ -36,7 +36,6 @@ const preview: Preview = {
     }),
   ],
   parameters: {
-    layout: 'fullscreen',
     docs: {
       page: () => (
         <>
