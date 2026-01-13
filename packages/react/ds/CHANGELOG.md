@@ -1,5 +1,22 @@
 # Changelog
 
+## [1.25.1](https://github.com/ogcio/govie-ds/compare/react-lib-v1.25.0...react-lib-v1.25.1) (2026-01-09)
+
+
+### Bug Fixes
+
+* **AB#32926:** fixing data-table story iframe example ([#809](https://github.com/ogcio/govie-ds/issues/809)) ([c03af98](https://github.com/ogcio/govie-ds/commit/c03af9838021acd46609183d56e51978218fb958))
+* **AB#33525:** Remove Anchor component usage in header ([#813](https://github.com/ogcio/govie-ds/issues/813)) ([ed26de9](https://github.com/ogcio/govie-ds/commit/ed26de99fa777b38f025f0e92b3b1b1fecd8fe29))
+* **AB#33529:** fixes styles for Checkbox and Combobox ([#807](https://github.com/ogcio/govie-ds/issues/807)) ([52186de](https://github.com/ogcio/govie-ds/commit/52186de2d56afb95b005bc41479f12f71af1ad84))
+
+
+### Dependencies
+
+* The following workspace dependencies were updated
+  * devDependencies
+    * @ogcio/design-system-tailwind bumped to 1.21.1
+    * @ogcio/theme-govie bumped to 1.21.1
+
 ## [1.25.0](https://github.com/ogcio/govie-ds/compare/react-lib-v1.24.0...react-lib-v1.25.0) (2025-12-17)
 
 

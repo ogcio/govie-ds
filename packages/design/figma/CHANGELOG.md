@@ -1,5 +1,14 @@
 # Changelog
 
+## [1.0.1](https://github.com/ogcio/govie-ds/compare/figma-v1.0.0...figma-v1.0.1) (2026-01-09)
+
+
+### Dependencies
+
+* The following workspace dependencies were updated
+  * dependencies
+    * @ogcio/theme-govie bumped to 1.21.1
+
 ## 1.0.0 (2025-12-17)
 
 
