@@ -1,8 +1,7 @@
 /* Lato Font Family - Self-hosted */
 @font-face {
   font-family: 'Lato';
-  src: url('@ogcio/design-system-react/fonts/lato/Lato-Thin.ttf')
-    format('truetype');
+  src: url('./fonts/lato/Lato-Thin.ttf') format('truetype');
   font-weight: 100;
   font-style: normal;
   font-display: swap;
@@ -10,8 +9,7 @@
 
 @font-face {
   font-family: 'Lato';
-  src: url('@ogcio/design-system-react/fonts/lato/Lato-ThinItalic.ttf')
-    format('truetype');
+  src: url('./fonts/lato/Lato-ThinItalic.ttf') format('truetype');
   font-weight: 100;
   font-style: italic;
   font-display: swap;
@@ -19,8 +17,7 @@
 
 @font-face {
   font-family: 'Lato';
-  src: url('@ogcio/design-system-react/fonts/lato/Lato-Light.ttf')
-    format('truetype');
+  src: url('./fonts/lato/Lato-Light.ttf') format('truetype');
   font-weight: 300;
   font-style: normal;
   font-display: swap;
@@ -28,8 +25,7 @@
 
 @font-face {
   font-family: 'Lato';
-  src: url('@ogcio/design-system-react/fonts/lato/Lato-LightItalic.ttf')
-    format('truetype');
+  src: url('./fonts/lato/Lato-LightItalic.ttf') format('truetype');
   font-weight: 300;
   font-style: italic;
   font-display: swap;
@@ -37,8 +33,7 @@
 
 @font-face {
   font-family: 'Lato';
-  src: url('@ogcio/design-system-react/fonts/lato/Lato-Regular.ttf')
-    format('truetype');
+  src: url('./fonts/lato/Lato-Regular.ttf') format('truetype');
   font-weight: 400;
   font-style: normal;
   font-display: swap;
@@ -46,8 +41,7 @@
 
 @font-face {
   font-family: 'Lato';
-  src: url('@ogcio/design-system-react/fonts/lato/Lato-Italic.ttf')
-    format('truetype');
+  src: url('./fonts/lato/Lato-Italic.ttf') format('truetype');
   font-weight: 400;
   font-style: italic;
   font-display: swap;
@@ -55,8 +49,7 @@
 
 @font-face {
   font-family: 'Lato';
-  src: url('@ogcio/design-system-react/fonts/lato/Lato-Bold.ttf')
-    format('truetype');
+  src: url('./fonts/lato/Lato-Bold.ttf') format('truetype');
   font-weight: 700;
   font-style: normal;
   font-display: swap;
@@ -64,8 +57,7 @@
 
 @font-face {
   font-family: 'Lato';
-  src: url('@ogcio/design-system-react/fonts/lato/Lato-BoldItalic.ttf')
-    format('truetype');
+  src: url('./fonts/lato/Lato-BoldItalic.ttf') format('truetype');
   font-weight: 700;
   font-style: italic;
   font-display: swap;
@@ -73,8 +65,7 @@
 
 @font-face {
   font-family: 'Lato';
-  src: url('@ogcio/design-system-react/fonts/lato/Lato-Black.ttf')
-    format('truetype');
+  src: url('./fonts/lato/Lato-Black.ttf') format('truetype');
   font-weight: 900;
   font-style: normal;
   font-display: swap;
@@ -82,8 +73,7 @@
 
 @font-face {
   font-family: 'Lato';
-  src: url('@ogcio/design-system-react/fonts/lato/Lato-BlackItalic.ttf')
-    format('truetype');
+  src: url('./fonts/lato/Lato-BlackItalic.ttf') format('truetype');
   font-weight: 900;
   font-style: italic;
   font-display: swap;
@@ -93,8 +83,7 @@
   font-family: 'Material Symbols Outlined';
   font-style: normal;
   font-weight: 100 700;
-  src: url('@ogcio/design-system-react/fonts/MaterialSymbolsOutlined.woff2')
-    format('woff2');
+  src: url('./fonts/MaterialSymbolsOutlined.woff2') format('woff2');
   font-display: block;
 }
 
