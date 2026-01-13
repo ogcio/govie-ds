@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { LoadFonts } from "@ogcio/design-system-react";
 import "./globals.css";
 import "@ogcio/design-system-react/styles.css";
 import "@ogcio/theme-govie/theme.css";
@@ -15,6 +16,9 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" className="h-full">
+      <head>
+        <LoadFonts />
+      </head>
       <body className="h-full">{children}</body>
     </html>
   );
