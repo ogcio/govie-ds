@@ -1,24 +1,85 @@
-# Design System — Figma
 
-This package ships the canonical Figma source for the Government of Ireland Design System. It includes the versioned `.fig` library file, supporting design assets/screenshots, and scripts/tooling used to generate and keep design tokens in sync between Figma and code.
+# Government of Ireland Design System — Figma
 
-Use this package to import or update the Design System library in Figma. It is not intended to be consumed by application or component code.
+The official Figma design system file for the Government of Ireland.
+
+This repository provides the versioned `.fig` file used to build and maintain the design system. It is intended for designers and teams working with the Design System in Figma.
+
+![Foundations cover image for the Government of Ireland Design System](./src/foundations_cover.png)
+
+<br />
+
+## Status
+
+> ⚠️ **Beta**
+>
+> This release currently includes **Foundations only**.  
+> Naming, structure, and design tokens may change as components are finalised and approved.
+
+<br />
+
 
 ## Figma file
 
-[`GovIrelandDesignSystem.fig`](/packages/design/figma/GovIrelandDesignSystem.fig) - Design System library file.
+- **[`GovIrelandDesignSystem.fig`](./GovIrelandDesignSystem.fig)** — Design System library file
 
-How to open in Figma:
-- Download the file above.
-- In Figma, go to File → Import and select `GovIrelandDesignSystem.fig`.
-- Open the imported file to browse the design.
+<img
+  src="./src/fig_cover.png"
+  alt="Figma library file thumbnail for the Government of Ireland Design System"
+  width="300"
+/>
 
-## Disclaimer / Status
+<br />
 
-> Beta — The first version of the file includes only the Foundations of the Design System. It will be updated with all stable components and guidelines as they are released. Expect changes while naming, structure, and token coverage are validated.
 
-Foundations currently covered:
-- Colour — core palette and semantic roles; state variants; accessibility contrast targets
-- Icons — icon set and logos; consistent style; recommended sizes; stroke/fill; pixel‑grid alignment;
-- Layout — spacing scale; grid and container sizing; baseline page patterns;
-- Typography — approved fonts; type scale with weights; line‑height; letter‑spacing;
+## Using the Design System in Figma
+
+### Import the library file
+
+1. Download `GovIrelandDesignSystem.fig` from this repository  
+2. In Figma, go to **File → Import**  
+3. Select the `.fig` file  
+4. Open the imported file in your Figma workspace
+
+This creates a local copy of the Design System file in your space. **It will not update automatically when new versions are released.**
+
+
+
+
+### Enable and use as a library
+
+1. Open the imported Design System file  
+2. Go to **Assets → Libraries**  
+3. Enable the Design System library  
+4. Open your own design file  
+5. Insert components from the **Assets** panel
+
+
+
+### Recommended usage
+
+- Use components and styles directly from the Design System library  
+- Keep components linked to the library to receive future updates within your file  
+- When a new version is released, download and import the latest `.fig` file to update your local copy  
+
+This helps keep designs consistent and makes updates easy to apply across teams.
+
+<br />
+
+
+## What’s included
+
+### Foundations
+
+- **Colour** — primitive and semantic colours
+- **Icons** — icon set and logos
+- **Layout** — spacing scale, grids, container sizes
+- **Typography** — fonts, type scale, weights, line height, and letter spacing
+
+<br />
+
+## Versioning and updates
+
+- Each GitHub release includes a versioned `.fig` file  
+- Updates are published when foundations or components are ready for release  
+- See **Releases** for details on what has changed
