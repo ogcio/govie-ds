@@ -76,14 +76,14 @@ function MyComponent() {
 The Government of Ireland Design System uses the [Lato](https://fonts.google.com/specimen/Lato) Google font. The font should be added to your application, e.g. via [next/font](https://nextjs.org/docs/app/building-your-application/optimizing/fonts), [Fontsource](https://fontsource.org/docs/getting-started/install) or embed code.
 
 > **Next.js 16+ users:** Use the `LoadFonts` component in your root layout to load fonts from Google CDN:
+>
 > ```tsx
 > import { LoadFonts } from '@ogcio/design-system-react';
 >
 > <head>
 >   <LoadFonts />
-> </head>
+> </head>;
 > ```
-> See [FONTS.md](./FONTS.md) for detailed usage instructions.
 
 ### Internationalization (i18n) Guidelines
 
