@@ -1,13 +1,13 @@
 import React from 'react';
 import { cn } from '../cn.js';
 
-interface DataTableFooterTypeProps
-  extends React.HTMLAttributes<HTMLDivElement> {
+interface DataTableFooterTypeProps extends React.HTMLAttributes<HTMLDivElement> {
   children: React.ReactNode;
 }
 
-interface DataTableFooterProps
-  extends React.HTMLAttributes<HTMLDivElement | HTMLTableSectionElement> {
+interface DataTableFooterProps extends React.HTMLAttributes<
+  HTMLDivElement | HTMLTableSectionElement
+> {
   children?: React.ReactNode;
   standalone?: boolean;
 }

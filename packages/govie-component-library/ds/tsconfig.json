@@ -1,0 +1,22 @@
+{
+  "extends": "@tsconfig/node22/tsconfig.json",
+  "compilerOptions": {
+    "sourceMap": false,
+    "inlineSourceMap": false,
+    "esModuleInterop": true,
+
+    "experimentalDecorators": true,
+    "useDefineForClassFields": false,
+
+    "jsx": "react",
+    "jsxFactory": "h",
+    "jsxFragmentFactory": "Fragment",
+
+    "module": "esnext",
+    "moduleResolution": "node",
+
+    "lib": ["DOM", "DOM.Iterable", "ES2021"],
+    "types": ["@stencil/core"]
+  },
+  "include": ["src"]
+}

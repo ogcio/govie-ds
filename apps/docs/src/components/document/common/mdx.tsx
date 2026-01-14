@@ -99,6 +99,7 @@ import {
   TextArea,
   Tooltip,
 } from '@ogcio/design-system-react';
+import { GovieParagraph, GovieButton } from '@ogcio/govie-react';
 import { MDXComponents } from 'mdx/types';
 import { useMDXComponent } from 'next-contentlayer2/hooks';
 import NextLink from 'next/link';
@@ -302,6 +303,8 @@ const documentComponents: MDXComponents = {
   InputRadio,
   InputRadioGroup,
   InputText,
+  GovieParagraph,
+  GovieButton,
   LetterSpacingTable,
   LineHeightTable,
   Link: (props) => <GovieLink {...props}>{props.children}</GovieLink>,
