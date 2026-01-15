@@ -1,5 +1,27 @@
 # Changelog
 
+## [1.25.0](https://github.com/ogcio/govie-ds/compare/docs-v1.24.0...docs-v1.25.0) (2026-01-09)
+
+
+### Features
+
+* **AB#33374:** Add a new button to download SVG icons ([#811](https://github.com/ogcio/govie-ds/issues/811)) ([968da9c](https://github.com/ogcio/govie-ds/commit/968da9c2173dcaf6fd1582511289689e2c8c916c))
+
+
+### Bug Fixes
+
+* **AB#32926:** fixing data-table story iframe example ([#809](https://github.com/ogcio/govie-ds/issues/809)) ([c03af98](https://github.com/ogcio/govie-ds/commit/c03af9838021acd46609183d56e51978218fb958))
+
+
+### Dependencies
+
+* The following workspace dependencies were updated
+  * dependencies
+    * @ogcio/design-system-react bumped to 1.25.1
+    * @ogcio/design-system-tailwind bumped to 1.21.1
+    * @ogcio/design-system-tokens bumped to 1.21.1
+    * @ogcio/theme-govie bumped to 1.21.1
+
 ## [1.24.0](https://github.com/ogcio/govie-ds/compare/docs-v1.23.0...docs-v1.24.0) (2025-12-17)
 
 

@@ -1,6 +1,6 @@
 {
   "name": "@ogcio/design-system-docs",
-  "version": "1.24.0",
+  "version": "1.25.0",
   "private": true,
   "type": "module",
   "scripts": {
@@ -39,7 +39,7 @@
     "contentlayer2": "^0.5.8",
     "copy-text-to-clipboard": "^3.2.0",
     "lodash": "^4.17.21",
-    "next": "^15.5.9",
+    "next": "^16.1.1",
     "next-contentlayer2": "^0.5.8",
     "next-themes": "^0.4.4",
     "re-resizable": "^6.9.17",
