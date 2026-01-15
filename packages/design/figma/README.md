@@ -4,7 +4,7 @@ The official Figma design system file for the Government of Ireland.
 
 This repository provides the versioned `.fig` file used to build and maintain the design system, and scripts/tooling used to generate and keep design tokens in sync between Figma and code. It is intended for designers and teams working with the Design System in Figma.
 
-![Foundations cover image for the Government of Ireland Design System](/assets/docs/foundations_cover.png)
+![Foundations cover](/assets/docs/foundations_cover.png)
 
 <br />
 
@@ -23,7 +23,7 @@ This repository provides the versioned `.fig` file used to build and maintain th
 
 <img
   src="/assets/docs/fig_cover.png"
-  alt="Figma library file thumbnail for the Government of Ireland Design System"
+  alt="Figma library file thumbnail"
   width="300"
 />
 
