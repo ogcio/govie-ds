@@ -6,6 +6,7 @@
   "keywords": [],
   "author": "",
   "license": "ISC",
+  "types": "dist/types/index.d.ts",
   "files": [
     "components/",
     "dist/",
@@ -60,6 +61,7 @@
   },
   "dependencies": {
     "@stencil-community/postcss": "^2.2.0",
+    "@stencil/angular-output-target": "^1.1.1",
     "@stencil/core": "^4.41.0",
     "@stencil/react-output-target": "^1.2.0",
     "@stencil/storybook-plugin": "^0.5.6",

@@ -1,4 +1,5 @@
-<header id="GovieHeader" class="gi-header" data-module="gieds-header">
+<!-- 
+ <header id="GovieHeader" class="gi-header" data-module="gieds-header">
   <div class="gi-layout-container gi-order-2">
     <div class="gi-header-menu">
       <div>
@@ -325,5 +326,26 @@
     </div>
   </div>
 </footer>
+-->
+<main style="padding: 24px; display: grid; gap: 16px">
+  <govie-paragraph
+    as="p"
+    size="md"
+    align="start"
+    whitespace="normal"
+    data-testid="paragraph"
+  >
+    This is a paragraph (Stencil → Angular).
+  </govie-paragraph>
+
+  <govie-button
+    variant="primary"
+    appearance="default"
+    size="medium"
+    data-testid="button"
+  >
+    This is a button (Stencil → Angular)
+  </govie-button>
+</main>
 
 <router-outlet></router-outlet>
