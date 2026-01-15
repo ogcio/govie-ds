@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.26.0](https://github.com/ogcio/govie-ds/compare/react-lib-v1.25.1...react-lib-v1.26.0) (2026-01-15)
+
+
+### Features
+
+* **AB#33495:** Next 16 upgrade with support ([#817](https://github.com/ogcio/govie-ds/issues/817)) ([1dfe66b](https://github.com/ogcio/govie-ds/commit/1dfe66ba926aeb927ac7746048bc927ea90d77ba))
+
 ## [1.25.1](https://github.com/ogcio/govie-ds/compare/react-lib-v1.25.0...react-lib-v1.25.1) (2026-01-09)
 
 
