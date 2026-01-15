@@ -1,6 +1,11 @@
 import AnalyticsProvider from '@/components/analytics-provider';
 import { GovieLink } from '@/components/navigation/custom-link';
-import { Footer, HeaderProps, Stack } from '@ogcio/design-system-react';
+import {
+  Footer,
+  HeaderProps,
+  LoadFonts,
+  Stack,
+} from '@ogcio/design-system-react';
 import '@ogcio/design-system-react/styles.css';
 import '@ogcio/theme-govie/theme.css';
 import type { Metadata } from 'next';
@@ -89,6 +94,9 @@ export default function RootLayout({
 
   return (
     <html lang="en" suppressHydrationWarning>
+      <head>
+        <LoadFonts />
+      </head>
       <body
         className={`transition duration-500 h-screen flex flex-col bg-white`}
       >

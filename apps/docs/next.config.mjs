@@ -10,6 +10,7 @@ const nextConfig = {
   images: {
     unoptimized: true, // TODO: review image optimisation
   },
+  turbopack: {},
 };
 
 export default withContentlayer(nextConfig);

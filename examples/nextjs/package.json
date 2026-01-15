@@ -6,16 +6,16 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint",
+    "lint": "eslint",
     "typecheck": "tsc -p tsconfig.json --noEmit"
   },
   "dependencies": {
     "@hookform/resolvers": "^5.2.2",
     "@ogcio/design-system-react": "workspace:*",
     "@ogcio/theme-govie": "workspace:*",
-    "next": "^15.5.7",
-    "react": "^19.2.1",
-    "react-dom": "^19.2.1",
+    "next": "^16.1.1",
+    "react": "^19.2.3",
+    "react-dom": "^19.2.3",
     "zod": "^4.1.13"
   },
   "devDependencies": {
