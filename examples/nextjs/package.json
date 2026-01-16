@@ -6,11 +6,13 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "eslint",
+    "lint": "eslint --ignore-pattern '**/.next/**' --ignore-pattern '**/dist/**'",
     "typecheck": "tsc -p tsconfig.json --noEmit"
   },
   "dependencies": {
     "@hookform/resolvers": "^5.2.2",
+    "@ogcio/govie-react": "workspace:*",
+    "@ogcio/govie-component-library": "workspace:*",
     "@ogcio/design-system-react": "workspace:*",
     "@ogcio/theme-govie": "workspace:*",
     "next": "^16.1.1",
