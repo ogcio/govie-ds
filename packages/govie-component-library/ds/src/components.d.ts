@@ -25,12 +25,10 @@ export namespace Components {
           * @default 'start'
          */
         "align": ParagraphAlign;
-        "ariaLabel"?: string;
         /**
           * @default 'p'
          */
         "as": ParagraphAs;
-        "dataTestid"?: string;
         /**
           * @default 'md'
          */
@@ -75,12 +73,10 @@ declare namespace LocalJSX {
           * @default 'start'
          */
         "align"?: ParagraphAlign;
-        "ariaLabel"?: string;
         /**
           * @default 'p'
          */
         "as"?: ParagraphAs;
-        "dataTestid"?: string;
         /**
           * @default 'md'
          */
