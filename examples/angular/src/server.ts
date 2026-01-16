@@ -1,7 +1,5 @@
-// src/server.ts
 import express from 'express';
 import { join } from 'node:path';
-import { existsSync } from 'node:fs';
 
 import { CommonEngine } from '@angular/ssr/node';
 import bootstrap from './main.server';
@@ -10,10 +8,8 @@ import { renderToString } from '@ogcio/govie-component-library/hydrate';
 
 export function app(): express.Express {
   const server = express();
-  const distFolder = join(process.cwd(), 'dist/ogcio-demo/browser'); // <-- adjust app name
-  const indexHtml = existsSync(join(distFolder, 'index.original.html'))
-    ? join(distFolder, 'index.original.html')
-    : join(distFolder, 'index.html');
+  const distFolder = join(process.cwd(), 'dist/ogcio-demo/browser');
+  const indexHtml = join(distFolder, 'index.html');
 
   const commonEngine = new CommonEngine();
 
