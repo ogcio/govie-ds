@@ -1,0 +1,18 @@
+{
+  "extends": "@tsconfig/node22/tsconfig.json",
+  "compilerOptions": {
+    "module": "esnext",
+    "rootDir": "./src",
+    "moduleResolution": "bundler",
+    "allowUnreachableCode": false,
+    "sourceMap": true,
+    "inlineSourceMap": false,
+    "esModuleInterop": true,
+    "outDir": "dist",
+    "jsx": "react-jsx",
+    "lib": ["DOM", "DOM.Iterable", "ES2021"],
+    "types": ["node", "react", "react-dom"]
+  },
+  "include": ["src/**/*.ts"],
+  "exclude": ["dist", "node_modules"]
+}
