@@ -1,0 +1,95 @@
+import { useStore } from '@builder.io/mitosis'
+
+export const Variant = {
+  PRIMARY: 'primary',
+  SECONDARY: 'secondary',
+  FLAT: 'flat',
+} as const
+
+export const Appearance = {
+  DARK: 'dark',
+  LIGHT: 'light',
+  DEFAULT: 'default',
+} as const
+
+export const Size = {
+  REGULAR: 'regular',
+  SMALL: 'small',
+  MEDIUM: 'medium',
+  LARGE: 'large',
+  EXTRA_LARGE: 'extraLarge',
+} as const
+
+type Props = {
+  variant?: (typeof Variant)[keyof typeof Variant];
+  appearance?: (typeof Appearance)[keyof typeof Appearance];
+  size?: (typeof Size)[keyof typeof Size];
+  children?: any;
+  disabled?: boolean;
+  className?: string;
+
+  /** Handlers */
+  onClick?: (event: any) => void;
+  onFocus?: (event: any) => void;
+  onBlur?: (event: any) => void;
+  onKeyDown?: (event: any) => void;
+  onKeyUp?: (event: any) => void;
+
+  /** A11y */
+  ariaLabel?: string;
+  ariaLabelledBy?: string;
+  ariaDescribedBy?: string;
+  ariaPressed?: boolean | 'mixed';
+  ariaExpanded?: boolean;
+  ariaControls?: string;
+  ariaHasPopup?: 'menu' | 'listbox' | 'dialog' | 'grid' | 'tree' | boolean;
+
+  type?: 'button' | 'submit' | 'reset';
+  tabIndex?: number;
+  dataTestId?: string;
+  dataTestid?: string; // backwards compatibility
+};
+
+export default function DsButton (props: Props) {
+  const state = useStore({
+    // TODO WC: move styles here rather than storing in a separate project
+    get variantClass () {
+      return ['gi-btn', getVariant(props.variant), getAppearance(props.appearance), props.disabled && 'disabled']
+        .filter(Boolean)
+        .join('-')
+    },
+  })
+
+  return (
+    <button
+      class={`gi-btn ${state.variantClass} gi-btn-${getSize(props.size)} ${props.className || ''}`}
+      disabled={props.disabled}
+
+      onClick={(e) => props.onClick?.(e)}
+      onFocus={(e) => props.onFocus?.(e)}
+      onBlur={(e) => props.onBlur?.(e)}
+      onKeyDown={(e) => props.onKeyDown?.(e)}
+      onKeyUp={(e) => props.onKeyUp?.(e)}
+
+      aria-label={props.ariaLabel}
+      aria-labelledby={props.ariaLabelledBy}
+      aria-describedby={props.ariaDescribedBy}
+      aria-pressed={props.ariaPressed}
+      aria-expanded={props.ariaExpanded}
+      aria-controls={props.ariaControls}
+      aria-haspopup={props.ariaHasPopup}
+
+      type={props.type || 'button'}
+      tabIndex={props.tabIndex}
+      data-testid={props.dataTestId || props.dataTestid}
+    >
+      {props.children}
+    </button>
+  )
+}
+
+const getVariant = (x: Props['variant'] = Variant.PRIMARY) => Object.values(Variant).includes(x) ? x : Variant.PRIMARY
+const getAppearance = (x: Props['appearance']) => x === Appearance.LIGHT || x === Appearance.DARK ? x : ''
+// TODO: compatibility issue to fix: replace regular with medium for consistency
+const getSize = (x: Props['size']) => x === Size.SMALL || x === Size.LARGE || x === Size.EXTRA_LARGE ? x : Size.REGULAR
+// const getSize = (x: Props['size'] = Size.REGULAR) => Object.values(Size).includes(x) ? x : Size.REGULAR
