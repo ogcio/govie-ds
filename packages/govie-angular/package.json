@@ -1,0 +1,33 @@
+{
+  "name": "@ogcio/govie-angular",
+  "version": "0.0.0",
+  "private": true,
+  "packageManager": "pnpm@9.12.3",
+  "scripts": {
+    "ng": "ng",
+    "build": "ng build component-library",
+    "watch": "ng build component-library --watch --configuration development",
+    "test": "ng test component-library"
+  },
+  "dependencies": {
+    "tslib": "^2.3.0"
+  },
+  "peerDependencies": {
+    "@angular/common": "^19.2.0",
+    "@angular/core": "^19.2.0",
+    "@angular/forms": "^19.2.0",
+    "rxjs": "^7.8.0"
+  },
+  "devDependencies": {
+    "@angular/cli": "^19.2.0",
+    "@angular/build": "^19.2.0",
+    "@angular/compiler": "^19.2.0",
+    "@angular/compiler-cli": "^19.2.0",
+    "@angular/common": "^19.2.0",
+    "@angular/core": "^19.2.0",
+    "@angular/forms": "^19.2.0",
+    "@angular/platform-browser": "^19.2.0",
+    "@angular/router": "^19.2.0",
+    "ng-packagr": "19.2.0"
+  }
+}

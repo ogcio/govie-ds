@@ -35,7 +35,6 @@
     "@ogcio/design-system-prettier-config": "workspace:*",
     "@ogcio/design-system-tailwind": "workspace:*",
     "@ogcio/theme-doete": "workspace:*",
-    "@ogcio/theme-govie": "workspace:*",
-    "typescript": "^5.9.3"
+    "@ogcio/theme-govie": "workspace:*"
   }
 }

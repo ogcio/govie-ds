@@ -6,6 +6,7 @@
   "keywords": [],
   "author": "",
   "license": "ISC",
+  "types": "dist/types/index.d.ts",
   "files": [
     "components/",
     "dist/",
@@ -40,6 +41,10 @@
       "import": "./hydrate/index.js",
       "require": "./hydrate/index.cjs.js",
       "default": "./hydrate/index.js"
+    },
+    "./components/*.js": {
+      "types": "./dist/types/components/*.d.ts",
+      "import": "./components/*.js"
     },
     "./components/*": {
       "types": "./dist/types/components/*.d.ts",
