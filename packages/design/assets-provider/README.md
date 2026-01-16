@@ -40,7 +40,7 @@ Consider loading fonts via `<link>` tags where possible and provide a custom loa
 
 **Workaround Added:** `LoadFonts` component (`packages/react/ds/src/load-fonts/load-fonts.tsx`) that injects `<link>` tags for Next.js 16+ applications.
 
-### Current User Experience
+### Current Developer Experience
 
 **For most frameworks:**
 
@@ -167,7 +167,7 @@ packages/design/fonts/
 }
 ```
 
-**User Experience:**
+**Developer Experience:**
 
 **Option 1: CSS Import (Recommended for most frameworks)**
 
@@ -300,7 +300,7 @@ if (typeof window !== "undefined") {
 }
 ```
 
-**User Experience:**
+**Developer Experience:**
 
 **Option 1: Automatic (Import triggers loading)**
 
@@ -353,31 +353,13 @@ function App() {
 
 ---
 
-### Solution 4: Framework Detection with Automatic Loader
-
-**Implementation:** Smart loader that detects framework and applies optimal strategy.
-
-**Pros:**
-
-- ✅ Zero configuration
-
-**Cons:**
-
-- ❌ Complex implementation and maintenance
-- ❌ Runtime detection overhead
-- ❌ Difficult to test across environments
-- ❌ Black box behavior
-- ❌ May not handle future framework changes
-
----
-
 ## 5. Recommendation
 
 ### My Recommended Solution: Solution 1 (Separate Font Package)
 
 Create `@ogcio/design-system-fonts` package with self-hosted fonts, CSS file with `@font-face` declarations, and optional React `LoadFonts` component for edge cases.
 
-### Why This is the Best Choice
+### Why?
 
 1. **Performance**: No `@import` delays, bundlers can optimize
 2. **Flexibility**: Optional dependency, users control installation
