@@ -91,6 +91,7 @@ import {
   HeaderMenuItemSeparator,
   HeaderMenuItemButton,
 } from '@ogcio/design-system-react';
+import { BoxButton, DsButton } from '@ogcio/design-system-react';
 import { useEffect, useState } from 'react';
 import Image from 'next/image';
 
@@ -653,6 +654,22 @@ export default function Home() {
         <Heading as="h1" className="mb-8">
           Design System Showcase
         </Heading>
+
+        <div style={{ padding: '20px', border: '1px solid #ccc', marginBottom: '20px', borderRadius: '8px' }}>
+          <h3 style={{ fontSize: '1.5rem', fontWeight: 'bold', paddingBottom: '15px' }}>Mitosis Components React</h3>
+          <div style={{ display: 'flex', gap: '10px', alignItems: 'center', marginBottom: '10px' }}>
+            <strong>DsButton:</strong>
+            <DsButton variant="primary" onClick={() => alert('Primary button clicked')}>Primary</DsButton>
+            <DsButton variant="secondary" onClick={() => alert('Secondary button clicked')}>Secondary</DsButton>
+            <DsButton variant="flat" onClick={() => alert('Flat button clicked')}>Flat</DsButton>
+          </div>
+        </div>
+
+        <div></div>
+        <DsButton variant="primary" className="m-10" onClick={() => console.log('Ds clicked!')}>DsButton</DsButton>
+        <Button variant="primary" className="m-1" onClick={() => console.log('Regular clicked!')}>Regular Button </Button>
+
+        <BoxButton variant="secondary" className="m-1" onClick={() => console.log('Box clicked!')}>Box Button</BoxButton>
 
         <Tabs ariaLabelledBy="next-tabs-example" id="tab-example" size="md">
           <TabList>
