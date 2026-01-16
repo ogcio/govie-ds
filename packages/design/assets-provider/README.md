@@ -74,48 +74,6 @@ export default function RootLayout({ children }) {
 
 ---
 
-## 3. Research Findings
-
-### Font Loading Performance Hierarchy
-
-Based on industry research and performance audits:
-
-1. **Inline `@font-face` declarations in HTML head** - Fastest (immediate discovery)
-2. **`<link>` tags in HTML head** - Fast (parallel loading)
-3. **`@import` in CSS** - Slowest (sequential loading, blocks rendering)
-
-### Key Findings
-
-#### Performance (Source: [Jono Alderson](https://www.jonoalderson.com/performance/youre-loading-fonts-wrong/))
-
-> Most sites would strongly benefit from inlining font declarations in the `<head>` rather than including them in an external stylesheet, allowing the browser to discover font declarations sooner.
-
-#### `@import` Issues (Source: [DEV.to](https://dev.to/alteca/vs-import-which-should-you-use-to-get-fonts-296l))
-
-> Using `@import` is the worst way to import fonts because it delays font loading - the CSS file must be downloaded and parsed before fonts can start loading.
-
-#### Framework-Agnostic Patterns (Source: [Next.js Docs](https://nextjs.org/docs/app/getting-started/fonts))
-
-> Next.js automatically self-hosts Google Fonts, with fonts stored as static assets. However, the Design System React library should be agnostic to avoid specific binding to a framework.
-
-#### Web Components & Shadow DOM (Source: [MDN](https://developer.mozilla.org/en-US/docs/Web/API/Web_components/Using_shadow_DOM))
-
-> CSS variables cascade into Shadow DOM, making them ideal for design tokens. `@font-face` declarations are global and work across Shadow boundaries.
-
-### Industry Standards: Manual Font Setup is Normal
-
-Major design systems **require manual font configuration:**
-
-- **Material UI**: Users must install Roboto font separately
-- **Chakra UI**: Does not include fonts, users import via CSS
-- **Carbon Design System**: Provides fonts in separate `@carbon/type` package
-- **GOV.UK Design System**: Provides font files in separate package
-- **Ant Design**: Uses system fonts, custom fonts configured manually
-
-**Conclusion:** Manual font setup is industry standard. The key is making it as simple and consistent as possible.
-
----
-
 ## 4. Proposed Solutions
 
 ### Solution 1: Separate Font Package
