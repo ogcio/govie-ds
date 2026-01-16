@@ -5,12 +5,11 @@
   "packageManager": "pnpm@9.12.3",
   "scripts": {
     "ng": "ng",
-    "build": "ng build component-library",
-    "watch": "ng build component-library --watch --configuration development",
-    "test": "ng test component-library"
+    "build": "ng build component-library"
   },
   "dependencies": {
-    "tslib": "^2.3.0"
+    "tslib": "^2.3.0",
+    "@ogcio/govie-component-library": "workspace:*"
   },
   "peerDependencies": {
     "@angular/common": "^19.2.0",
