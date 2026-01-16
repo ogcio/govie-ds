@@ -1,7 +1,7 @@
 import type { Meta, StoryObj } from '@storybook/react';
 import { expect, within } from 'storybook/test';
+import Button from '../atoms/DsButton';
 import { Icon } from '../icon/icon.js';
-import { Button } from './button.js';
 
 const meta = {
   title: 'Form/Button',
@@ -14,6 +14,16 @@ const meta = {
     );
   },
   parameters: {
+    controls: {
+      include: [
+        'variant',
+        'appearance',
+        'size',
+        'children',
+        'dataTestid',
+        'disabled',
+      ],
+    },
     docs: {
       description: {
         component:
