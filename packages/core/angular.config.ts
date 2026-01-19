@@ -3,7 +3,7 @@ import annotation from './plugins/annotation'
 
 export default {
   files: 'atoms/**/*',
-  dest: '../../examples/angular/src/app/components', // internal example
+  dest: '../angular/src',
   targets: ['angular'],
   getTargetPath: () => '.',
   commonOptions: {

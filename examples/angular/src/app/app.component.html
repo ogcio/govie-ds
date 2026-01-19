@@ -126,7 +126,19 @@
   <div class="gi-layout-container">
     <div class="gi-layout-container-3-column">
       <div class="gi-layout-column-2-3">
-        <h1>Basic Page Template</h1>
+        <h1>Basic Angular Template</h1>
+
+        <div style="padding: 20px; border: 1px solid #ccc; margin-bottom: 20px; border-radius: 8px;">
+          <h3>Mitosis Components Angular</h3>
+          <div style="display: flex; gap: 10px; align-items: center; margin-bottom: 10px;">
+              <strong>DsButton:</strong>
+              <ds-button variant="primary" (click)="handleButtonClick('Primary')">Primary</ds-button>
+              <ds-button variant="secondary" [onClick]="handleButtonClick.bind(this, 'Secondary')">Secondary</ds-button>
+              <ds-button [className]="'ds-button'" variant="flat" (click)="handleButtonClick('Flat')">Flat</ds-button>
+          </div>
+        </div>
+
+          <box-button [class]="'box-button'" [onClick]="handleButtonClick.bind(this, 'Box')">Box</box-button>
         <p>
           Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris
           erat nisl, imperdiet a finibus vitae, iaculis quis mauris.

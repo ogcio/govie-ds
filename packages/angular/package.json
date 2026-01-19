@@ -1,0 +1,25 @@
+{
+  "name": "@ogcio/design-system-angular",
+  "version": "0.1.0",
+  "description": "The Government of Ireland Design System Angular components.",
+  "type": "module",
+  "scripts": {
+    "build": "ng-packagr -p ng-package.json",
+    "typecheck": "tsc -p tsconfig.json --noEmit"
+  },
+  "peerDependencies": {
+    "@angular/common": "^21.1.0",
+    "@angular/core": "^21.1.0"
+  },
+  "dependencies": {
+    "tslib": "^2.3.0"
+  },
+  "devDependencies": {
+    "ng-packagr": "^21.1.0",
+    "typescript": "^5.9.3",
+    "@angular/compiler-cli": "^21.1.0",
+    "@angular/compiler": "^21.1.0",
+    "@angular/core": "^21.1.0",
+    "@angular/common": "^21.1.0"
+  }
+}
