@@ -1,5 +1,7 @@
 This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
 
+This example demonstrates how to use the Government of Ireland Design System with Next.js.
+
 ## Getting Started
 
 First, run the development server:
@@ -18,7 +20,24 @@ Open [http://localhost:3000](http://localhost:3000) with your browser to see the
 
 You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
+## Font Loading
+
+This project uses [`next/font/google`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load the Lato font, which is the primary font for the Government of Ireland Design System.
+
+The font is configured in `app/layout.tsx`:
+
+```tsx
+import { Lato } from "next/font/google";
+
+const lato = Lato({
+  subsets: ["latin"],
+  weight: ["100", "300", "400", "700", "900"],
+  style: ["normal", "italic"],
+  display: "swap",
+});
+```
+
+The `LoadMaterialSymbols` component is used to load Material Symbols icons required by the design system.
 
 ## Learn More
 

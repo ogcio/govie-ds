@@ -7,6 +7,9 @@ const compat = new FlatCompat({
 });
 
 const eslintNextConfig = [
+  {
+    ignores: [".next/**", ".next/*"],
+  },
   ...compat.config({
     extends: ["next"],
   }),
