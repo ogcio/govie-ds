@@ -1,5 +1,20 @@
 # Changelog
 
+## [1.26.0](https://github.com/ogcio/govie-ds/compare/docs-v1.25.0...docs-v1.26.0) (2026-01-20)
+
+
+### Features
+
+* **AB#33495:** Next 16 upgrade with support ([#817](https://github.com/ogcio/govie-ds/issues/817)) ([1dfe66b](https://github.com/ogcio/govie-ds/commit/1dfe66ba926aeb927ac7746048bc927ea90d77ba))
+
+
+### Dependencies
+
+* The following workspace dependencies were updated
+  * dependencies
+    * @ogcio/design-system-react bumped to 1.26.0
+    * @ogcio/design-system-tailwind bumped to 1.21.2
+
 ## [1.25.0](https://github.com/ogcio/govie-ds/compare/docs-v1.24.0...docs-v1.25.0) (2026-01-09)
 
 

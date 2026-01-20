@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.21.2](https://github.com/ogcio/govie-ds/compare/design-tailwind-v1.21.1...design-tailwind-v1.21.2) (2026-01-20)
+
+
+### Bug Fixes
+
+* **AB#33098:** Fix for Header Title ([#823](https://github.com/ogcio/govie-ds/issues/823)) ([cc91d48](https://github.com/ogcio/govie-ds/commit/cc91d488cd4c39a358424b65c55a00b9bbd6469b))
+
 ## [1.21.1](https://github.com/ogcio/govie-ds/compare/design-tailwind-v1.21.0...design-tailwind-v1.21.1) (2026-01-09)
 
 
