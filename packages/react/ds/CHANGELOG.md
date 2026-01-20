@@ -1,5 +1,24 @@
 # Changelog
 
+## [1.26.0](https://github.com/ogcio/govie-ds/compare/react-lib-v1.25.1...react-lib-v1.26.0) (2026-01-20)
+
+
+### Features
+
+* **AB#33495:** Next 16 upgrade with support ([#817](https://github.com/ogcio/govie-ds/issues/817)) ([1dfe66b](https://github.com/ogcio/govie-ds/commit/1dfe66ba926aeb927ac7746048bc927ea90d77ba))
+
+
+### Bug Fixes
+
+* **AB#33098:** Fix for Header Title ([#823](https://github.com/ogcio/govie-ds/issues/823)) ([cc91d48](https://github.com/ogcio/govie-ds/commit/cc91d488cd4c39a358424b65c55a00b9bbd6469b))
+
+
+### Dependencies
+
+* The following workspace dependencies were updated
+  * devDependencies
+    * @ogcio/design-system-tailwind bumped to 1.21.2
+
 ## [1.25.1](https://github.com/ogcio/govie-ds/compare/react-lib-v1.25.0...react-lib-v1.25.1) (2026-01-09)
 
 
