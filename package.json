@@ -41,7 +41,7 @@
       "pnpm -F @ogcio/design-system-html run lint --fix"
     ],
     "examples/*/**/*.{js,ts,tsx}": [
-      "pnpm -F @ogcio/examples-nextjs run lint --dir"
+      "pnpm -F @ogcio/examples-nextjs run lint --fix"
     ],
     "apps/docs/**/*.{ts,tsx}": [
       "pnpm -F @ogcio/design-system-docs run lint:code"
