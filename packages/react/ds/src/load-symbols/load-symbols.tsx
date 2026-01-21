@@ -20,4 +20,4 @@ export const LoadMaterialSymbols = () => {
   );
 };
 
-export const LoadFonts = LoadMaterialSymbols;
+export default LoadMaterialSymbols;

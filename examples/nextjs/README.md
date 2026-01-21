@@ -37,8 +37,6 @@ const lato = Lato({
 });
 ```
 
-The `LoadMaterialSymbols` component is used to load Material Symbols icons required by the design system.
-
 ## Learn More
 
 To learn more about Next.js, take a look at the following resources:

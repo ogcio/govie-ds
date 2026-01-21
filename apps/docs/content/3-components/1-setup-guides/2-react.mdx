@@ -100,7 +100,7 @@ function MyComponent() {
 The Government of Ireland Design System uses the [Lato](https://fonts.google.com/specimen/Lato) Google font.
 
 The design system includes font loading through `styles.css`. In Next.js 16 applications, CSS `@import` statements do not load fonts properly.
-Therefore, we strongly recommend using [`next/font/google`](https://nextjs.org/docs/app/getting-started/fonts)\*\* as it provides optimal font loading with automatic optimisation.
+Therefore, we strongly recommend using [`next/font/google`](https://nextjs.org/docs/app/getting-started/fonts) as it provides optimal font loading with automatic optimisation.
 
 #### Next.js App Router
 
@@ -128,8 +128,6 @@ export default function RootLayout({ children }) {
 
 ```tsx
 // pages/_app.tsx
-import type { AppProps } from 'next/app';
-import Head from 'next/head';
 import { Lato } from 'next/font/google';
 
 const lato = Lato({
@@ -151,10 +149,26 @@ export default function App({ Component, pageProps }: AppProps) {
 #### Load Material Symbols Icons in Next.js 16
 
 <Blockquote>
-  **Note:** The `LoadMaterialSymbols` component is a workaround solution to
-  loads Material Symbols icons only in Next 16. It does NOT load the Lato font,
-  you must load fonts using `next/font/google` as shown above.
+  **Note:** Due to a breaking change in Next 16 (Turbopack), Material Symbols
+  icons are not loaded automatically anymore. To make the icons work, you must
+  explicitly load them using the `LoadMaterialSymbols` component.
 </Blockquote>
+
+```tsx
+// app/layout.tsx
+import { LoadMaterialSymbols } from '@ogcio/design-system-react';
+
+export default function RootLayout({ children }) {
+  return (
+    <html lang="en">
+      <body>
+        <LoadMaterialSymbols />
+        {children}
+      </body>
+    </html>
+  );
+}
+```
 
 ### Internationalisation (i18n) Guidelines
 

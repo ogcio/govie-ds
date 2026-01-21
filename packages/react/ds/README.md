@@ -84,8 +84,6 @@ For Next.js applications, we strongly recommend using [`next/font/google`](https
 ```tsx
 // app/layout.tsx (App Router)
 import { Lato } from 'next/font/google';
-import '@ogcio/design-system-react/styles.css';
-import '@ogcio/theme-govie/theme.css';
 
 const lato = Lato({
   subsets: ['latin'],
