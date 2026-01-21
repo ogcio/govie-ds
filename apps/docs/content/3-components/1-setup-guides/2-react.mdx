@@ -97,90 +97,64 @@ function MyComponent() {
 
 ### Font Loading
 
-The Government of Ireland Design System uses the [Lato](https://fonts.google.com/specimen/Lato) Google font. **Font loading is explicit and controlled by your application**, the design system does not automatically load fonts.
+The Government of Ireland Design System uses the [Lato](https://fonts.google.com/specimen/Lato) Google font.
 
-<Tabs id="fontLoadingTabs">
-  <TabList>
-    <TabItem value="nextjs" checked>Next.js (Recommended)</TabItem>
-    <TabItem value="other">Other Frameworks</TabItem>
-  </TabList>
-  <TabPanel value="nextjs">
-    **For Next.js applications, we strongly recommend using [`next/font/google`](https://nextjs.org/docs/app/getting-started/fonts)** as it provides optimal font loading with automatic optimization.
+The design system includes font loading through `styles.css`. In Next.js 16 applications, CSS `@import` statements do not load fonts properly.
+Therefore, we strongly recommend using [`next/font/google`](https://nextjs.org/docs/app/getting-started/fonts)\*\* as it provides optimal font loading with automatic optimisation.
 
-    #### Next.js App Router
+#### Next.js App Router
 
-    ```tsx
-    // app/layout.tsx
-    import { Lato } from 'next/font/google';
-    import { LoadMaterialSymbols } from '@ogcio/design-system-react';
-    import '@ogcio/design-system-react/styles.css';
-    import '@ogcio/theme-govie/theme.css';
+```tsx
+// app/layout.tsx
+import { Lato } from 'next/font/google';
 
-    const lato = Lato({
-      subsets: ['latin'],
-      weight: ['100', '300', '400', '700', '900'],
-      style: ['normal', 'italic'],
-      display: 'swap',
-    });
+const lato = Lato({
+  subsets: ['latin'],
+  weight: ['100', '300', '400', '700', '900'],
+  style: ['normal', 'italic'],
+  display: 'swap',
+});
 
-    export default function RootLayout({ children }) {
-      return (
-        <html lang="en" className={lato.className}>
-          <head>
-            <LoadMaterialSymbols />
-          </head>
-          <body>{children}</body>
-        </html>
-      );
-    }
-    ```
+export default function RootLayout({ children }) {
+  return (
+    <html lang="en" className={lato.className}>
+      <body>{children}</body>
+    </html>
+  );
+}
+```
 
-    #### Next.js Pages Router
+#### Next.js Pages Router
 
-    ```tsx
-    // pages/_app.tsx
-    import type { AppProps } from 'next/app';
-    import Head from 'next/head';
-    import { Lato } from 'next/font/google';
-    import { LoadMaterialSymbols } from '@ogcio/design-system-react';
-    import '@ogcio/design-system-react/styles.css';
-    import '@ogcio/theme-govie/theme.css';
+```tsx
+// pages/_app.tsx
+import type { AppProps } from 'next/app';
+import Head from 'next/head';
+import { Lato } from 'next/font/google';
 
-    const lato = Lato({
-      subsets: ['latin'],
-      weight: ['100', '300', '400', '700', '900'],
-      style: ['normal', 'italic'],
-      display: 'swap',
-    });
+const lato = Lato({
+  subsets: ['latin'],
+  weight: ['100', '300', '400', '700', '900'],
+  style: ['normal', 'italic'],
+  display: 'swap',
+});
 
-    export default function App({ Component, pageProps }: AppProps) {
-      return (
-        <div className={lato.className}>
-          <Head>
-            <LoadMaterialSymbols />
-          </Head>
-          <Component {...pageProps} />
-        </div>
-      );
-    }
-    ```
+export default function App({ Component, pageProps }: AppProps) {
+  return (
+    <div className={lato.className}>
+      <Component {...pageProps} />
+    </div>
+  );
+}
+```
 
-    <Blockquote>
-      **Note:** The `LoadMaterialSymbols` component loads Material Symbols icons only. It does NOT load the Lato font, you must load fonts using `next/font/google` as shown above.
-    </Blockquote>
+#### Load Material Symbols Icons in Next.js 16
 
-  </TabPanel>
-  <TabPanel value="other">
-    For non-Next.js applications, you can load fonts using Google Fonts CDN (not recommended for production due to performance implications):
-
-    ```html
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link href="https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&display=swap" rel="stylesheet" />
-    ```
-
-  </TabPanel>
-</Tabs>
+<Blockquote>
+  **Note:** The `LoadMaterialSymbols` component is a workaround solution to
+  loads Material Symbols icons only in Next 16. It does NOT load the Lato font,
+  you must load fonts using `next/font/google` as shown above.
+</Blockquote>
 
 ### Internationalisation (i18n) Guidelines
 
