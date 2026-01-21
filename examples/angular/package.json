@@ -6,8 +6,10 @@
     "start": "pnpm copy:assets && ng serve",
     "build": "pnpm copy:assets && ng build",
     "watch": "pnpm copy:assets && ng build --watch --configuration development",
-    "test": "pnpm copy:assets && ng test"
+    "test": "pnpm copy:assets && ng test",
+    "lint": "ng lint ogcio-demo"
   },
+  "prettier": "@ogcio/design-system-prettier-config",
   "private": true,
   "dependencies": {
     "@angular/common": "~21.1.0",
@@ -23,8 +25,13 @@
   },
   "devDependencies": {
     "@angular-devkit/build-angular": "~21.1.0",
+    "@angular-eslint/builder": "^21.1.0",
+    "@angular-eslint/eslint-plugin-template": "21.1.0",
+    "@angular-eslint/template-parser": "21.1.0",
     "@angular/cli": "~21.1.0",
     "@angular/compiler-cli": "~21.1.0",
+    "@ogcio/design-system-eslint-config": "workspace:*",
+    "@ogcio/design-system-prettier-config": "workspace:*",
     "@types/jasmine": "~5.1.0",
     "jasmine-core": "~5.6.0",
     "karma": "~6.4.0",
