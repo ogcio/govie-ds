@@ -1,7 +1,7 @@
 /**
  * LoadMaterialSymbols Component
  *
- * This component is a workaround solution, responsible for loading the Material Symbols font from Google Fonts specifically for Next 16 users.
+ * This component is a workaround solution, responsible for loading the Material Symbols font from Google Fonts specifically for Next.js 16 users.
  */
 export const LoadMaterialSymbols = () => {
   return (
