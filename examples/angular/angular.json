@@ -20,27 +20,18 @@
             "outputPath": "dist/ogcio-demo",
             "index": "src/index.html",
             "browser": "src/main.ts",
-            "polyfills": [
-              "zone.js"
-            ],
+            "polyfills": ["zone.js"],
             "tsConfig": "tsconfig.app.json",
             "inlineStyleLanguage": "scss",
             "assets": [
-              "src/assets",
               {
                 "glob": "**/*",
                 "input": "public"
               }
             ],
             "styles": [
-              "src/styles.scss",
-              "src/app/assets/global/styles.css",
-              "src/app/assets/global/theme.css",
-              "src/app/assets/local/ogcio-ds-0.4.4.min.css"
-            ],
-            "scripts": [
-              "src/app/assets/global/govie-frontend.umd.js",
-              "src/app/assets/local/ogcio-ds-0.4.4.min.js"
+              "@ogcio/design-system-react/styles.css",
+              "@ogcio/theme-govie/theme.css"
             ]
           },
           "configurations": {
@@ -48,7 +39,7 @@
               "budgets": [
                 {
                   "type": "initial",
-                  "maximumWarning": "500kB",
+                  "maximumWarning": "600kB",
                   "maximumError": "1MB"
                 },
                 {
@@ -85,10 +76,7 @@
         "test": {
           "builder": "@angular-devkit/build-angular:karma",
           "options": {
-            "polyfills": [
-              "zone.js",
-              "zone.js/testing"
-            ],
+            "polyfills": ["zone.js", "zone.js/testing"],
             "tsConfig": "tsconfig.spec.json",
             "inlineStyleLanguage": "scss",
             "assets": [
@@ -98,7 +86,8 @@
               }
             ],
             "styles": [
-              "src/styles.scss"
+              "@ogcio/design-system-react/styles.css",
+              "@ogcio/theme-govie/theme.css"
             ],
             "scripts": []
           }

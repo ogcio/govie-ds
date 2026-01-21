@@ -1,12 +1,11 @@
 {
   "name": "@ogcio/examples-angular",
   "scripts": {
-    "copy:assets": "node ./build-scripts/copy-html-ds.js",
-    "ng": "pnpm copy:assets && ng",
-    "start": "pnpm copy:assets && ng serve",
-    "build": "pnpm copy:assets && ng build",
-    "watch": "pnpm copy:assets && ng build --watch --configuration development",
-    "test": "pnpm copy:assets && ng test"
+    "ng": "ng",
+    "start": "ng serve",
+    "build": "ng build",
+    "watch": "ng build --watch --configuration development",
+    "test": "ng test"
   },
   "private": true,
   "dependencies": {
@@ -19,7 +18,9 @@
     "@angular/router": "^19.2.0",
     "rxjs": "~7.8.0",
     "tslib": "^2.3.0",
-    "zone.js": "~0.15.0"
+    "zone.js": "~0.15.0",
+    "@ogcio/design-system-react": "workspace:*",
+    "@ogcio/theme-govie": "workspace:*"
   },
   "devDependencies": {
     "@angular-devkit/build-angular": "^19.2.4",
@@ -32,6 +33,7 @@
     "karma-coverage": "~2.2.0",
     "karma-jasmine": "~5.1.0",
     "karma-jasmine-html-reporter": "~2.1.0",
-    "typescript": "~5.7.2"
+    "typescript": "~5.7.2",
+    "@ogcio/design-system-eslint-config": "workspace:*"
   }
 }
