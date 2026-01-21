@@ -103,10 +103,6 @@ export default function RootLayout({ children }) {
 }
 ```
 
-**Alternative approaches:**
-
-For non-Next.js applications, you can use Google Fonts embed code for direct CDN loading (not recommended for production).
-
 ### Internationalization (i18n) Guidelines
 
 To support multiple languages across your application, we use the `initI18n` utility provided by `@ogcio/design-system-react`. This ensures consistency, accessibility, and localization across all components.
