@@ -86,7 +86,8 @@ focus:gi-bg-black
 }
 
 .gi-header-title {
-  @apply gi-min-w-0 gi-heading-sm gi-tracking-wider
+  @apply gi-min-w-0
+  gi-heading-sm
   gi-truncate
   gi-overflow-hidden
   gi-text-ellipsis
