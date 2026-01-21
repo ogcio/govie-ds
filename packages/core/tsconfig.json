@@ -1,0 +1,14 @@
+{
+  "compilerOptions": {
+    "target": "ESNext",
+    "module": "ESNext",
+    "moduleResolution": "bundler",
+    "strict": true,
+    "skipLibCheck": true,
+    "jsx": "preserve",
+    "jsxImportSource": "@builder.io/mitosis",
+    "types": ["node"],
+    "noEmit": true
+  },
+  "include": ["atoms", "*.config.ts", "plugins"]
+}
