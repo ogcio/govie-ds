@@ -75,6 +75,13 @@ export const LoadMaterialSymbols = () => {
 };
 
 /**
- * @deprecated Use LoadMaterialSymbols instead. LoadFonts has been renamed to LoadMaterialSymbols for clarity.
+ * @deprecated Use {@link LoadMaterialSymbols} instead.
+ *
+ * This alias is kept for backward compatibility but has been renamed to
+ * `LoadMaterialSymbols` for clarity. Note that this component no longer
+ * loads the Lato font family; it only injects Google Fonts link tags for
+ * Material Symbols icons. Load the Lato font separately (for example, using
+ * `next/font/google`) as shown in the design system documentation.
+ *
  */
 export const LoadFonts = LoadMaterialSymbols;
