@@ -79,7 +79,7 @@ The Government of Ireland Design System uses the [Lato](https://fonts.google.com
 
 **Recommended approach for Next.js (Primary):**
 
-For Next.js applications, we strongly recommend using `next/font/google` as it provides optimal font loading with automatic optimization.
+For Next.js applications, we strongly recommend using [`next/font/google`](https://nextjs.org/docs/app/getting-started/fonts) as it provides optimal font loading with automatic optimization.
 
 ```tsx
 // app/layout.tsx (App Router)
