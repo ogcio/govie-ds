@@ -20,10 +20,6 @@
     "clean": "rm -rf dist www .stencil hydrate loader components"
   },
   "exports": {
-    "./styles": {
-      "default": "./dist/govie-component-library/govie-component-library.css"
-    },
-    "./styles.css": "./dist/govie-component-library/govie-component-library.css",
     ".": {
       "types": "./dist/types/index.d.ts",
       "import": "./dist/index.mjs",
@@ -70,6 +66,7 @@
   "devDependencies": {
     "@ogcio/design-system-eslint-config": "workspace:*",
     "@ogcio/design-system-prettier-config": "workspace:*",
+    "@ogcio/design-system-react": "workspace:*",
     "@ogcio/design-system-tailwind": "workspace:*",
     "@ogcio/theme-doete": "workspace:*",
     "@ogcio/theme-govie": "workspace:*"

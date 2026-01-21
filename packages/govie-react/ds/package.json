@@ -4,8 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "build": "pnpm build:ts && node ./scripts/copy-styles.mjs",
-    "build:ts": "pnpm exec tsc -p tsconfig.json "
+    "build": "pnpm exec tsc -p tsconfig.json"
   },
   "keywords": [],
   "author": "",
@@ -15,8 +14,7 @@
       "types": "./dist/index.d.ts",
       "import": "./dist/index.js",
       "default": "./dist/index.js"
-    },
-    "./styles.css": "./dist/styles.css"
+    }
   },
   "files": [
     "dist/",

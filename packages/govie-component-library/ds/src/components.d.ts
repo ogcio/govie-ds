@@ -5,20 +5,20 @@
  * It contains typing information for all components that exist in this project.
  */
 import { HTMLStencilElement, JSXBase } from "@stencil/core/internal";
-import { ButtonProps } from "./components/button/types.js";
+import { ButtonAppearance, ButtonSize, ButtonVariant } from "./components/button/types.js";
 import { ParagraphAlign, ParagraphAs, ParagraphSize, ParagraphWhitespace } from "./components/paragraph/paragraph";
-export { ButtonProps } from "./components/button/types.js";
+export { ButtonAppearance, ButtonSize, ButtonVariant } from "./components/button/types.js";
 export { ParagraphAlign, ParagraphAs, ParagraphSize, ParagraphWhitespace } from "./components/paragraph/paragraph";
 export namespace Components {
     interface GovieButton {
-        "appearance"?: ButtonProps['appearance'];
+        "appearance"?: ButtonAppearance;
         "class"?: string;
         /**
           * @default false
          */
         "disabled": boolean;
-        "size"?: ButtonProps['size'];
-        "variant"?: ButtonProps['variant'];
+        "size"?: ButtonSize;
+        "variant"?: ButtonVariant;
     }
     interface GovieParagraph {
         /**
@@ -59,14 +59,14 @@ declare global {
 }
 declare namespace LocalJSX {
     interface GovieButton {
-        "appearance"?: ButtonProps['appearance'];
+        "appearance"?: ButtonAppearance;
         "class"?: string;
         /**
           * @default false
          */
         "disabled"?: boolean;
-        "size"?: ButtonProps['size'];
-        "variant"?: ButtonProps['variant'];
+        "size"?: ButtonSize;
+        "variant"?: ButtonVariant;
     }
     interface GovieParagraph {
         /**

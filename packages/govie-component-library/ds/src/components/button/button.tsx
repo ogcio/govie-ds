@@ -4,7 +4,7 @@ import {
   getSizeClass,
   getVariantAppearanceClass,
 } from './helpers.js';
-import { ButtonProps } from './types.js';
+import { ButtonAppearance, ButtonSize, ButtonVariant } from './types.js';
 import { Component, Prop, h, Element } from '@stencil/core';
 
 @Component({
@@ -14,9 +14,9 @@ import { Component, Prop, h, Element } from '@stencil/core';
 export class GovieButton {
   @Element() el!: HTMLElement;
 
-  @Prop() variant?: ButtonProps['variant'];
-  @Prop() appearance?: ButtonProps['appearance'];
-  @Prop() size?: ButtonProps['size'];
+  @Prop() variant?: ButtonVariant;
+  @Prop() appearance?: ButtonAppearance;
+  @Prop() size?: ButtonSize;
 
   @Prop({ reflect: true }) disabled = false;
 
