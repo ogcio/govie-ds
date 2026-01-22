@@ -3,16 +3,24 @@ import { GovieLink } from '@/components/navigation/custom-link';
 import {
   Footer,
   HeaderProps,
-  LoadFonts,
+  LoadMaterialSymbols,
   Stack,
 } from '@ogcio/design-system-react';
 import '@ogcio/design-system-react/styles.css';
 import '@ogcio/theme-govie/theme.css';
 import type { Metadata } from 'next';
+import { Lato } from 'next/font/google';
 import './globals.css';
 import CookieConsent from '@/components/cookies/cookie-consent';
 import { Suspense } from 'react';
 import { DocsHeader } from '@/components/navigation/header';
+
+const lato = Lato({
+  subsets: ['latin'],
+  weight: ['100', '300', '400', '700', '900'],
+  style: ['normal', 'italic'],
+  display: 'swap',
+});
 
 export const metadata: Metadata = {
   title: 'Government of Ireland Design System',
@@ -93,9 +101,9 @@ export default function RootLayout({
   ];
 
   return (
-    <html lang="en" suppressHydrationWarning>
+    <html lang="en" suppressHydrationWarning className={lato.className}>
       <head>
-        <LoadFonts />
+        <LoadMaterialSymbols />
       </head>
       <body
         className={`transition duration-500 h-screen flex flex-col bg-white`}

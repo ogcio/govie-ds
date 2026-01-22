@@ -223,4 +223,8 @@ export type {
 export { Tooltip, type TooltipProps } from './tooltip/tooltip.js';
 export { useToggleMap } from './hooks/use-toggle-map.js';
 export * from './browser-support/index.js';
-export { LoadFonts } from './load-fonts/load-fonts.js';
+export { LoadMaterialSymbols } from './load-symbols/load-symbols.js';
+/**
+ * @deprecated added for the backwards compatibility
+ */
+export { LoadMaterialSymbols as LoadFonts } from './load-symbols/load-symbols.js';

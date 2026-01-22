@@ -73,17 +73,33 @@ function MyComponent() {
 }
 ```
 
-The Government of Ireland Design System uses the [Lato](https://fonts.google.com/specimen/Lato) Google font. The font should be added to your application, e.g. via [next/font](https://nextjs.org/docs/app/building-your-application/optimizing/fonts), [Fontsource](https://fontsource.org/docs/getting-started/install) or embed code.
+#### Font Loading
 
-> **Next.js 16+ users:** Use the `LoadFonts` component in your root layout to load fonts from Google CDN:
->
-> ```tsx
-> import { LoadFonts } from '@ogcio/design-system-react';
->
-> <head>
->   <LoadFonts />
-> </head>;
-> ```
+The Government of Ireland Design System uses the [Lato](https://fonts.google.com/specimen/Lato) Google font. While the design system includes font loading through `styles.css`, **in Next.js 16 applications, CSS `@import` statements do not load fonts properly**. Therefore, you must explicitly load fonts using `next/font/google` for optimal font loading.
+
+**Recommended approach for Next.js (Primary):**
+
+For Next.js applications, we strongly recommend using [`next/font/google`](https://nextjs.org/docs/app/getting-started/fonts) as it provides optimal font loading with automatic optimisation.
+
+```tsx
+// app/layout.tsx (App Router)
+import { Lato } from 'next/font/google';
+
+const lato = Lato({
+  subsets: ['latin'],
+  weight: ['100', '300', '400', '700', '900'],
+  style: ['normal', 'italic'],
+  display: 'swap',
+});
+
+export default function RootLayout({ children }) {
+  return (
+    <html lang="en" className={lato.className}>
+      <body>{children}</body>
+    </html>
+  );
+}
+```
 
 ### Internationalization (i18n) Guidelines
 
