@@ -20,23 +20,6 @@ Open [http://localhost:3000](http://localhost:3000) with your browser to see the
 
 You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
 
-## Font Loading
-
-This project uses [`next/font/google`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load the Lato font, which is the primary font for the Government of Ireland Design System.
-
-The font is configured in `app/layout.tsx`:
-
-```tsx
-import { Lato } from "next/font/google";
-
-const lato = Lato({
-  subsets: ["latin"],
-  weight: ["100", "300", "400", "700", "900"],
-  style: ["normal", "italic"],
-  display: "swap",
-});
-```
-
 ## Learn More
 
 To learn more about Next.js, take a look at the following resources:

@@ -161,8 +161,10 @@ import { LoadMaterialSymbols } from '@ogcio/design-system-react';
 export default function RootLayout({ children }) {
   return (
     <html lang="en">
-      <body>
+      <head>
         <LoadMaterialSymbols />
+      </head>
+      <body>
         {children}
       </body>
     </html>
