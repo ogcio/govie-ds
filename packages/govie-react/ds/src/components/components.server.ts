@@ -9,14 +9,30 @@
 import * as clientComponents from '@ogcio/govie-react';
 import { getTagTransformer } from './tag-transformer.js';
 
+import { type GovieBoxButtonCustomEvent, type GovieButtonCustomEvent } from "@ogcio/govie-component-library";
+import { GovieBoxButton as GovieBoxButtonElement } from "@ogcio/govie-component-library/components/govie-box-button.js";
 import { GovieButton as GovieButtonElement } from "@ogcio/govie-component-library/components/govie-button.js";
 import { GovieParagraph as GovieParagraphElement } from "@ogcio/govie-component-library/components/govie-paragraph.js";
-import type { StencilReactComponent } from '@stencil/react-output-target/runtime';
+import type { EventName, StencilReactComponent } from '@stencil/react-output-target/runtime';
 import { createComponent, type HydrateModule, type ReactWebComponent, type SerializeShadowRootOptions } from '@stencil/react-output-target/ssr';
 
 export const serializeShadowRoot: SerializeShadowRootOptions = { default: "declarative-shadow-dom" };
 
-export type GovieButtonEvents = NonNullable<unknown>;
+export type GovieBoxButtonEvents = { onCustomClick: EventName<GovieBoxButtonCustomEvent<MouseEvent>> };
+
+export const GovieBoxButton: StencilReactComponent<GovieBoxButtonElement, GovieBoxButtonEvents> = /*@__PURE__*/ createComponent<GovieBoxButtonElement, GovieBoxButtonEvents>({
+    tagName: 'govie-box-button',
+    properties: {
+        class: 'class',
+        variant: 'variant'
+    },
+    hydrateModule: import('@ogcio/govie-component-library/hydrate') as Promise<HydrateModule>,
+    clientModule: clientComponents.GovieBoxButton as ReactWebComponent<GovieBoxButtonElement, GovieBoxButtonEvents>,
+    serializeShadowRoot,
+    getTagTransformer
+});
+
+export type GovieButtonEvents = { onCustomClick: EventName<GovieButtonCustomEvent<MouseEvent>> };
 
 export const GovieButton: StencilReactComponent<GovieButtonElement, GovieButtonEvents> = /*@__PURE__*/ createComponent<GovieButtonElement, GovieButtonEvents>({
     tagName: 'govie-button',

@@ -20,6 +20,10 @@
     "clean": "rm -rf dist www .stencil hydrate loader components"
   },
   "exports": {
+    "./styles": {
+      "default": "./dist/govie-component-library/govie-component-library.css"
+    },
+    "./styles.css": "./dist/govie-component-library/govie-component-library.css",
     ".": {
       "types": "./dist/types/index.d.ts",
       "import": "./dist/index.mjs",

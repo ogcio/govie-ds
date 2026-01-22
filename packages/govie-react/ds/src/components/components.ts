@@ -7,21 +7,35 @@
 
 /* eslint-disable */
 
+import { type GovieBoxButtonCustomEvent, type GovieButtonCustomEvent } from "@ogcio/govie-component-library";
+import { GovieBoxButton as GovieBoxButtonElement, defineCustomElement as defineGovieBoxButton } from "@ogcio/govie-component-library/components/govie-box-button.js";
 import { GovieButton as GovieButtonElement, defineCustomElement as defineGovieButton } from "@ogcio/govie-component-library/components/govie-button.js";
 import { GovieParagraph as GovieParagraphElement, defineCustomElement as defineGovieParagraph } from "@ogcio/govie-component-library/components/govie-paragraph.js";
-import type { StencilReactComponent } from '@stencil/react-output-target/runtime';
+import type { EventName, StencilReactComponent } from '@stencil/react-output-target/runtime';
 import { createComponent } from '@stencil/react-output-target/runtime';
 import React from 'react';
 import { transformTag } from './tag-transformer.js';
 
-export type GovieButtonEvents = NonNullable<unknown>;
+export type GovieBoxButtonEvents = { onCustomClick: EventName<GovieBoxButtonCustomEvent<MouseEvent>> };
+
+export const GovieBoxButton: StencilReactComponent<GovieBoxButtonElement, GovieBoxButtonEvents> = /*@__PURE__*/ createComponent<GovieBoxButtonElement, GovieBoxButtonEvents>({
+    tagName: 'govie-box-button',
+    elementClass: GovieBoxButtonElement,
+    // @ts-ignore - ignore potential React type mismatches between the Stencil Output Target and your project.
+    react: React,
+    events: { onCustomClick: 'customClick' } as GovieBoxButtonEvents,
+    defineCustomElement: defineGovieBoxButton,
+    transformTag
+});
+
+export type GovieButtonEvents = { onCustomClick: EventName<GovieButtonCustomEvent<MouseEvent>> };
 
 export const GovieButton: StencilReactComponent<GovieButtonElement, GovieButtonEvents> = /*@__PURE__*/ createComponent<GovieButtonElement, GovieButtonEvents>({
     tagName: 'govie-button',
     elementClass: GovieButtonElement,
     // @ts-ignore - ignore potential React type mismatches between the Stencil Output Target and your project.
     react: React,
-    events: {} as GovieButtonEvents,
+    events: { onCustomClick: 'customClick' } as GovieButtonEvents,
     defineCustomElement: defineGovieButton,
     transformTag
 });

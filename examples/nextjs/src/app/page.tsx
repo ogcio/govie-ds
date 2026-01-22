@@ -2,7 +2,11 @@
 import NextLink from 'next/link';
 import { ComboBoxProps, CookieBannerProps } from '@/props';
 import { useForm, Controller, FormProvider } from 'react-hook-form';
-import { GovieParagraph, GovieButton } from '@ogcio/govie-react';
+import {
+  GovieParagraph,
+  GovieButton,
+  GovieBoxButton,
+} from '@ogcio/govie-react';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { z } from 'zod';
 import {
@@ -1409,9 +1413,30 @@ export default function Home() {
           Paragraph:
           <GovieParagraph>Here is a paragraph</GovieParagraph>
           Button:
-          <GovieButton>Button</GovieButton>
-          <GovieButton variant="flat">Button</GovieButton>
-          <GovieButton variant="secondary">Button</GovieButton>
+          {/* as an example here, onClick listens to events emitted by the inner <button> and it will try to bubbling to the top,
+              it will stop propagation and the alert will not work properly. 
+            */}
+          <GovieButton onClick={() => alert('Primary')}>Button</GovieButton>
+          {/* 
+            onCustomClick is dispatched by the inner <button> and it will bubbling up, so calling stopPropagation() there prevents the click event from reaching <govie-button> and others.
+            As normally we need to listen to events at the <button> level, it is better create and expose our own custom events.
+          */}
+          <GovieButton variant="flat" onCustomClick={() => alert('Flat')}>
+            Button
+          </GovieButton>
+          <GovieButton
+            variant="secondary"
+            onCustomClick={() => alert('Secondary')}
+          >
+            Button
+          </GovieButton>
+          {/* Here we expose onCustomClick inside on GovieBoxButton but the <button> will dispatches it*/}
+          <GovieBoxButton
+            variant="flat"
+            onCustomClick={() => alert('Box button')}
+          >
+            Box button
+          </GovieBoxButton>
         </Container>
       </Container>
 

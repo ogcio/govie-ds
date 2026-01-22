@@ -10,6 +10,10 @@ import { ParagraphAlign, ParagraphAs, ParagraphSize, ParagraphWhitespace } from 
 export { ButtonAppearance, ButtonSize, ButtonVariant } from "./components/button/types.js";
 export { ParagraphAlign, ParagraphAs, ParagraphSize, ParagraphWhitespace } from "./components/paragraph/paragraph";
 export namespace Components {
+    interface GovieBoxButton {
+        "class"?: string;
+        "variant"?: ButtonVariant;
+    }
     interface GovieButton {
         "appearance"?: ButtonAppearance;
         "class"?: string;
@@ -39,8 +43,44 @@ export namespace Components {
         "whitespace": ParagraphWhitespace;
     }
 }
+export interface GovieBoxButtonCustomEvent<T> extends CustomEvent<T> {
+    detail: T;
+    target: HTMLGovieBoxButtonElement;
+}
+export interface GovieButtonCustomEvent<T> extends CustomEvent<T> {
+    detail: T;
+    target: HTMLGovieButtonElement;
+}
 declare global {
+    interface HTMLGovieBoxButtonElementEventMap {
+        "customClick": MouseEvent;
+    }
+    interface HTMLGovieBoxButtonElement extends Components.GovieBoxButton, HTMLStencilElement {
+        addEventListener<K extends keyof HTMLGovieBoxButtonElementEventMap>(type: K, listener: (this: HTMLGovieBoxButtonElement, ev: GovieBoxButtonCustomEvent<HTMLGovieBoxButtonElementEventMap[K]>) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
+        removeEventListener<K extends keyof HTMLGovieBoxButtonElementEventMap>(type: K, listener: (this: HTMLGovieBoxButtonElement, ev: GovieBoxButtonCustomEvent<HTMLGovieBoxButtonElementEventMap[K]>) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void;
+    }
+    var HTMLGovieBoxButtonElement: {
+        prototype: HTMLGovieBoxButtonElement;
+        new (): HTMLGovieBoxButtonElement;
+    };
+    interface HTMLGovieButtonElementEventMap {
+        "customClick": MouseEvent;
+    }
     interface HTMLGovieButtonElement extends Components.GovieButton, HTMLStencilElement {
+        addEventListener<K extends keyof HTMLGovieButtonElementEventMap>(type: K, listener: (this: HTMLGovieButtonElement, ev: GovieButtonCustomEvent<HTMLGovieButtonElementEventMap[K]>) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
+        removeEventListener<K extends keyof HTMLGovieButtonElementEventMap>(type: K, listener: (this: HTMLGovieButtonElement, ev: GovieButtonCustomEvent<HTMLGovieButtonElementEventMap[K]>) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void;
     }
     var HTMLGovieButtonElement: {
         prototype: HTMLGovieButtonElement;
@@ -53,11 +93,17 @@ declare global {
         new (): HTMLGovieParagraphElement;
     };
     interface HTMLElementTagNameMap {
+        "govie-box-button": HTMLGovieBoxButtonElement;
         "govie-button": HTMLGovieButtonElement;
         "govie-paragraph": HTMLGovieParagraphElement;
     }
 }
 declare namespace LocalJSX {
+    interface GovieBoxButton {
+        "class"?: string;
+        "onCustomClick"?: (event: GovieBoxButtonCustomEvent<MouseEvent>) => void;
+        "variant"?: ButtonVariant;
+    }
     interface GovieButton {
         "appearance"?: ButtonAppearance;
         "class"?: string;
@@ -65,6 +111,7 @@ declare namespace LocalJSX {
           * @default false
          */
         "disabled"?: boolean;
+        "onCustomClick"?: (event: GovieButtonCustomEvent<MouseEvent>) => void;
         "size"?: ButtonSize;
         "variant"?: ButtonVariant;
     }
@@ -87,6 +134,7 @@ declare namespace LocalJSX {
         "whitespace"?: ParagraphWhitespace;
     }
     interface IntrinsicElements {
+        "govie-box-button": GovieBoxButton;
         "govie-button": GovieButton;
         "govie-paragraph": GovieParagraph;
     }
@@ -95,6 +143,7 @@ export { LocalJSX as JSX };
 declare module "@stencil/core" {
     export namespace JSX {
         interface IntrinsicElements {
+            "govie-box-button": LocalJSX.GovieBoxButton & JSXBase.HTMLAttributes<HTMLGovieBoxButtonElement>;
             "govie-button": LocalJSX.GovieButton & JSXBase.HTMLAttributes<HTMLGovieButtonElement>;
             "govie-paragraph": LocalJSX.GovieParagraph & JSXBase.HTMLAttributes<HTMLGovieParagraphElement>;
         }

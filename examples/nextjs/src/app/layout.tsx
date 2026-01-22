@@ -2,7 +2,7 @@ import type { Metadata } from 'next';
 import { LoadFonts } from '@ogcio/design-system-react';
 import './globals.css';
 import '@ogcio/design-system-react/styles.css';
-//import '@ogcio/govie-react/styles.css';
+import '@ogcio/govie-component-library/styles.css';
 import '@ogcio/theme-govie/theme.css';
 
 export const metadata: Metadata = {

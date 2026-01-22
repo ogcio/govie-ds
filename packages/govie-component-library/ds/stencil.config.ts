@@ -5,6 +5,7 @@ import { angularOutputTarget } from '@stencil/angular-output-target';
 export const config: Config = {
   namespace: 'govie-component-library',
   sourceMap: true,
+  globalStyle: 'styles.css',
   outputTargets: [
     reactOutputTarget({
       outDir: '../../govie-react/ds/src/components',

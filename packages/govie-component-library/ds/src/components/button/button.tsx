@@ -5,7 +5,14 @@ import {
   getVariantAppearanceClass,
 } from './helpers.js';
 import { ButtonAppearance, ButtonSize, ButtonVariant } from './types.js';
-import { Component, Prop, h, Element } from '@stencil/core';
+import {
+  Component,
+  Prop,
+  h,
+  Element,
+  Event,
+  EventEmitter,
+} from '@stencil/core';
 
 @Component({
   tag: 'govie-button',
@@ -21,6 +28,15 @@ export class GovieButton {
   @Prop({ reflect: true }) disabled = false;
 
   @Prop({ attribute: 'class' }) class?: string;
+
+  @Event({ bubbles: true })
+  customClick!: EventEmitter<MouseEvent>;
+
+  private handleNativeClick = (event: MouseEvent) => {
+    console.log('handle native button click');
+    this.customClick.emit(event);
+    event.stopPropagation();
+  };
 
   private getForwardedAttrs() {
     const excluded = new Set([
@@ -44,6 +60,7 @@ export class GovieButton {
     return (
       <button
         {...forwarded}
+        onClick={this.handleNativeClick}
         aria-disabled={this.disabled ? 'true' : null}
         disabled={this.disabled}
         class={clsx(

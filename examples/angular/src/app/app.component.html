@@ -335,7 +335,7 @@
     whitespace="normal"
     data-testid="paragraph"
   >
-    This is a paragraph (Stencil → Angular).
+    Paragraph
   </govie-paragraph>
 
   <govie-button
@@ -343,9 +343,38 @@
     appearance="default"
     size="medium"
     data-testid="button"
+    (customClick)="handleButtonClick('Primary')"
   >
-    This is a button (Stencil → Angular)
+    Primary
   </govie-button>
+  <govie-button
+    variant="secondary"
+    appearance="default"
+    size="medium"
+    data-testid="button"
+    (customClick)="handleButtonClick('Secondary')"
+  >
+    Primary
+  </govie-button>
+  <govie-button
+    appearance="default"
+    size="medium"
+    data-testid="button"
+    [className]="'ds-button'"
+    variant="flat"
+  >
+    Flat
+  </govie-button>
+
+  <!-- It fires button children click - event bubbling -->
+  <govie-box-button variant="flat" (click)="handleButtonClick('Box')">
+    Box
+  </govie-box-button>
+
+  <!-- It fires button children click - button prevent event bubbling -->
+  <govie-box-button variant="flat" (customClick)="handleButtonClick('Box')">
+    Box 2
+  </govie-box-button>
 </main>
 
 <router-outlet></router-outlet>
