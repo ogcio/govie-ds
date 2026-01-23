@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.27.0](https://github.com/ogcio/govie-ds/compare/react-lib-v1.26.0...react-lib-v1.27.0) (2026-01-23)
+
+
+### Features
+
+* **AB#34131:** add font loading using next js and update documentation ([#824](https://github.com/ogcio/govie-ds/issues/824)) ([e557b99](https://github.com/ogcio/govie-ds/commit/e557b996fc5eb0bcc7a09108d96731ef77318ce9))
+
 ## [1.26.0](https://github.com/ogcio/govie-ds/compare/react-lib-v1.25.1...react-lib-v1.26.0) (2026-01-20)
 
 
