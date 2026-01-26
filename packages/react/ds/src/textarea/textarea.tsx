@@ -3,8 +3,8 @@ import React, {
   ChangeEvent,
   forwardRef,
   TextareaHTMLAttributes,
-  useEffect,
   useImperativeHandle,
+  useLayoutEffect,
   useRef,
   useState,
 } from 'react';
@@ -52,21 +52,24 @@ export const TextArea = forwardRef<HTMLTextAreaElement, TextAreaProps>(
 
     useImperativeHandle(externalRef, () => inputRef.current!);
 
-    // Only use internal state when component is uncontrolled
-    const [internalValue, setInternalValue] = useState<string>('');
     const isControlled = value !== undefined;
-    const currentValue: string = isControlled ? String(value) : internalValue;
 
-    useEffect(() => {
-      if (maxChars !== undefined) {
-        setRemainingChars(maxChars - currentValue.length);
+    // Sync remainingChars with actual DOM value on every render
+    // This catches programmatic value changes (e.g., RHF reset())
+    useLayoutEffect(() => {
+      if (maxChars === undefined || !inputRef.current) {
+        return;
       }
-    }, [currentValue, maxChars]);
+      const currentLength = inputRef.current.value.length;
+      const newRemaining = maxChars - currentLength;
+      if (newRemaining !== remainingChars) {
+        setRemainingChars(newRemaining);
+      }
+    });
 
     const handleOnChange = (event: ChangeEvent<HTMLTextAreaElement>) => {
-      const newValue = event.target.value;
-      if (!isControlled) {
-        setInternalValue(newValue);
+      if (maxChars !== undefined) {
+        setRemainingChars(maxChars - event.target.value.length);
       }
       if (onChange) {
         onChange(event);
@@ -75,16 +78,18 @@ export const TextArea = forwardRef<HTMLTextAreaElement, TextAreaProps>(
 
     const handleOnResetClick = () => {
       if (inputRef.current) {
-        if (!isControlled) {
-          setInternalValue('');
+        inputRef.current.value = '';
+
+        if (maxChars !== undefined) {
+          setRemainingChars(maxChars);
         }
 
         const event = {
-          target: { name, value: '' },
-          currentTarget: { name, value: '' },
+          target: inputRef.current,
+          currentTarget: inputRef.current,
           type: 'change',
           bubbles: true,
-        } as React.ChangeEvent<HTMLTextAreaElement>;
+        } as unknown as React.ChangeEvent<HTMLTextAreaElement>;
 
         if (onChange) {
           onChange(event);
@@ -117,7 +122,7 @@ export const TextArea = forwardRef<HTMLTextAreaElement, TextAreaProps>(
               data-icon-start={!!iconStart}
               data-clear-enabled={clearButtonEnabled}
               maxLength={maxChars}
-              value={currentValue}
+              {...(isControlled ? { value: String(value) } : {})}
               onChange={handleOnChange}
               {...props}
             />
