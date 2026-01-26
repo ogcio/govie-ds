@@ -1,16 +1,18 @@
 import type { Metadata } from "next";
 import { LoadMaterialSymbols } from "@ogcio/design-system-react";
-import { Lato } from "next/font/google";
+// Testing @govie-ds/fonts - comment out next/font/google
+// import { Lato } from "next/font/google";
+import "@ogcio/design-system-fonts/fonts.css";
 import "./globals.css";
 import "@ogcio/design-system-react/styles.css";
 import "@ogcio/theme-govie/theme.css";
 
-const lato = Lato({
-  subsets: ["latin"],
-  weight: ["100", "300", "400", "700", "900"],
-  style: ["normal", "italic"],
-  display: "swap",
-});
+// const lato = Lato({
+//   subsets: ["latin"],
+//   weight: ["100", "300", "400", "700", "900"],
+//   style: ["normal", "italic"],
+//   display: "swap",
+// });
 
 export const metadata: Metadata = {
   title: "Create Next App",
@@ -23,7 +25,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className={`h-full ${lato.className}`}>
+    <html lang="en" className="h-full">
       <head>
         <LoadMaterialSymbols />
       </head>

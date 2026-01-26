@@ -28,7 +28,10 @@ CardContainerProp
 CardProps
 Center
 Centered
+<<<<<<< HEAD
 CharacterCount
+=======
+>>>>>>> 5dc7b8420 (feat(AB#34132): add fonts provider using fontsource)
 Checkboxes
 ChipProps
 Color
@@ -124,11 +127,18 @@ TableRow
 TableRowProps
 Tankstack
 Tanstack
+<<<<<<< HEAD
 TextArea
+=======
+>>>>>>> 5dc7b8420 (feat(AB#34132): add fonts provider using fontsource)
 TextAreaProps
 Textarea
 Theming
 Tooltip
+<<<<<<< HEAD
+=======
+Turbopack
+>>>>>>> 5dc7b8420 (feat(AB#34132): add fonts provider using fontsource)
 UI
 USD
 UX
@@ -221,6 +231,10 @@ noColor
 noUnderline
 noopener
 noreferrer
+<<<<<<< HEAD
+=======
+npm
+>>>>>>> 5dc7b8420 (feat(AB#34132): add fonts provider using fontsource)
 nps
 ofType
 onboarding
@@ -241,6 +255,10 @@ secondaryLabel
 selectable
 sm
 sortable
+<<<<<<< HEAD
+=======
+stylesheets
+>>>>>>> 5dc7b8420 (feat(AB#34132): add fonts provider using fontsource)
 substeps
 summarizing
 textarea

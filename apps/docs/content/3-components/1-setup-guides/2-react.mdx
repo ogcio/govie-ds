@@ -97,10 +97,27 @@ function MyComponent() {
 
 ### Font Loading
 
-The Government of Ireland Design System uses the [Lato](https://fonts.google.com/specimen/Lato) Google font.
+The Government of Ireland Design System uses the [Lato](https://fonts.google.com/specimen/Lato) font family.
 
-The design system includes font loading through `styles.css`. In Next.js 16 applications, CSS `@import` statements do not load fonts properly.
-Therefore, we strongly recommend using [next/font/google](https://nextjs.org/docs/app/getting-started/fonts) as it provides optimal font loading with automatic optimisation.
+#### Framework-Agnostic Font Loading
+
+For applications that need explicit control over font loading, a standalone `@govie-ds/fonts` package is available. This provides a `fonts.css` file with `@font-face` declarations that work across any framework (React, Angular, plain HTML, etc.).
+
+```bash
+npm install @govie-ds/fonts
+```
+
+Import at your application entry point:
+
+```jsx
+import '@govie-ds/fonts/fonts.css';
+```
+
+#### Next.js Font Loading
+
+For Next.js applications, we recommend using [`next/font/google`](https://nextjs.org/docs/app/getting-started/fonts) as it provides optimal font loading with automatic optimisation.
+
+In Next.js 16 applications, CSS `@import` statements do not load fonts properly due to Turbopack changes.
 
 #### Next.js App Router
 
@@ -164,9 +181,7 @@ export default function RootLayout({ children }) {
       <head>
         <LoadMaterialSymbols />
       </head>
-      <body>
-        {children}
-      </body>
+      <body>{children}</body>
     </html>
   );
 }
