@@ -6,6 +6,7 @@ package-lock.json
 storybook-static
 theme.zip
 govie-frontend.zip
+fonts.zip
 /packages/html/ds/static/
 coverage
 accessibility-audit.html

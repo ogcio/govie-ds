@@ -1,0 +1,33 @@
+{
+  "name": "@ogcio/design-system-fonts",
+  "version": "0.0.1",
+  "description": "Font loading for GovIE Design System",
+  "type": "module",
+  "exports": {
+    "./fonts.css": "./dist/fonts.css"
+  },
+  "publishConfig": {
+    "access": "public"
+  },
+  "files": [
+    "dist"
+  ],
+  "scripts": {
+    "build": "node scripts/build.js",
+    "dist": "zip -r fonts.zip dist"
+  },
+  "sideEffects": [
+    "**/*.css"
+  ],
+  "keywords": [
+    "govie",
+    "design-system",
+    "fonts",
+    "lato"
+  ],
+  "author": "",
+  "license": "MIT",
+  "dependencies": {
+    "@fontsource/lato": "^5.1.1"
+  }
+}

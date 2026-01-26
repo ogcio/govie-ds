@@ -53,6 +53,28 @@ This is the recommended way to use the Government of Ireland Frontend HTML compo
 </html>
 ```
 
+## Font Loading
+
+The `styles.css` file includes font loading via CSS `@import`. For explicit font loading control, a standalone `@govie-ds/fonts` package is also available.
+
+### Using npm
+
+```bash
+npm install @govie-ds/fonts
+```
+
+Then include `fonts.css` before other stylesheets:
+
+```html
+<link rel="stylesheet" href="path/to/node_modules/@govie-ds/fonts/dist/fonts.css" />
+<link rel="stylesheet" href="/static/css/theme.css" />
+<link rel="stylesheet" href="/static/css/styles.css" />
+```
+
+### Without npm
+
+Download `fonts.zip` from the [latest release](https://github.com/ogcio/govie-ds/releases) of `@govie-ds/fonts` and copy `fonts.css` along with the `files/` directory to your static assets folder.
+
 ## Notes
 
 Pay attention when components contain the `data-module` attribute.
