@@ -95,6 +95,83 @@ function MyComponent() {
 }
 ```
 
+### Font Loading
+
+The Government of Ireland Design System uses the [Lato](https://fonts.google.com/specimen/Lato) Google font.
+
+The design system includes font loading through `styles.css`. In Next.js 16 applications, CSS `@import` statements do not load fonts properly.
+Therefore, we strongly recommend using [next/font/google](https://nextjs.org/docs/app/getting-started/fonts) as it provides optimal font loading with automatic optimisation.
+
+#### Next.js App Router
+
+```tsx
+// app/layout.tsx
+import { Lato } from 'next/font/google';
+
+const lato = Lato({
+  subsets: ['latin'],
+  weight: ['100', '300', '400', '700', '900'],
+  style: ['normal', 'italic'],
+  display: 'swap',
+});
+
+export default function RootLayout({ children }) {
+  return (
+    <html lang="en" className={lato.className}>
+      <body>{children}</body>
+    </html>
+  );
+}
+```
+
+#### Next.js Pages Router
+
+```tsx
+// pages/_app.tsx
+import { Lato } from 'next/font/google';
+
+const lato = Lato({
+  subsets: ['latin'],
+  weight: ['100', '300', '400', '700', '900'],
+  style: ['normal', 'italic'],
+  display: 'swap',
+});
+
+export default function App({ Component, pageProps }: AppProps) {
+  return (
+    <div className={lato.className}>
+      <Component {...pageProps} />
+    </div>
+  );
+}
+```
+
+#### Load Material Symbols Icons in Next.js 16
+
+<Blockquote>
+  **Note:** Due to a breaking change in Next.js 16 (Turbopack), Material Symbols
+  icons are not loaded automatically anymore. To make the icons work, you must
+  explicitly load them using the `LoadMaterialSymbols` component.
+</Blockquote>
+
+```tsx
+// app/layout.tsx
+import { LoadMaterialSymbols } from '@ogcio/design-system-react';
+
+export default function RootLayout({ children }) {
+  return (
+    <html lang="en">
+      <head>
+        <LoadMaterialSymbols />
+      </head>
+      <body>
+        {children}
+      </body>
+    </html>
+  );
+}
+```
+
 ### Internationalisation (i18n) Guidelines
 
 To support multiple languages across your application, we use the `initI18n` utility provided by `@ogcio/design-system-react`. This ensures consistency, accessibility, and localisation across all components.
