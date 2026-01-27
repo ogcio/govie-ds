@@ -365,8 +365,8 @@ const ReactHookFormControllerExample = () => {
     },
   });
 
-  const { handleSubmit, control, reset, watch } = methods;
-  const textAreaValue = watch('textArea');
+  const { handleSubmit, control, reset  } = methods;
+  const [charCount, setCharCount] = useState(0);
   const maxComprehensiveChars = 100;
 
   const onSubmit = (data: any) => {
@@ -376,6 +376,7 @@ const ReactHookFormControllerExample = () => {
 
   const handleClear = () => {
     reset();
+    setCharCount(0);
     console.log('Form cleared');
   };
 
@@ -431,12 +432,16 @@ const ReactHookFormControllerExample = () => {
                     rows={4}
                     className="w-full"
                     maxLength={maxComprehensiveChars}
+                    onChange={(event) => {
+                      setCharCount(event.target.value.length);
+                      field.onChange(event);
+                    }}
                     clearButtonEnabled
                   />
                 )}
               />
               <HintText
-                text={`You have ${maxComprehensiveChars - (textAreaValue?.length || 0)} characters remaining`}
+                text={`You have ${maxComprehensiveChars - (charCount || 0)} characters remaining`}
               />
             </FormField>
 
