@@ -236,7 +236,6 @@ export const WithMaxLength: Story = {
     );
     expect(remainingElement).toBeInTheDocument();
 
-    // Type some text and verify counter updates
     await userEvent.type(textarea, 'Hello');
     const updatedRemaining = canvas.getByText(
       /You have 25 characters remaining/,
