@@ -9,6 +9,7 @@ import {
   FormFieldHint,
   FormFieldLabel,
 } from '../forms/form-field/form-field.js';
+import { HintText } from '../hint-text/hint-text.js';
 import { TextArea } from './textarea.js';
 
 const meta = {
@@ -92,9 +93,6 @@ export const Default: Story = {
     expect(textarea.tagName).toBe('TEXTAREA');
     expect(textarea.cols).toBe(100);
     expect(textarea.rows).toBe(4);
-
-    const remainingElement = canvas.queryByText(/^You have/);
-    expect(remainingElement).not.toBeInTheDocument();
   },
 };
 
@@ -194,18 +192,38 @@ export const WithLabelHintAndError: Story = {
   },
 };
 
-export const WithMaxChars: Story = {
+export const WithMaxLength: Story = {
   args: {
     id: 'textarea-id-5',
-    maxChars: 30,
+    maxLength: 30,
   },
-  render: (props) => (
-    <FormField>
-      <FormFieldLabel htmlFor="textarea-id-5">Label</FormFieldLabel>
-      <FormFieldHint>Hint: This is a helpful hint.</FormFieldHint>
-      <TextArea {...props} data-testid="textarea-id-5" />
-    </FormField>
-  ),
+  tags: ['skip-playwright'],
+  parameters: {
+    docs: {
+      description: {
+        story:
+          'This example shows how to use maxLength with a custom HintText component to display remaining characters. The character count is managed externally using React state.',
+      },
+    },
+  },
+  render: (props) => {
+    const maxLength = props.maxLength ?? 30;
+    const [charCount, setCharCount] = useState(0);
+    const remaining = maxLength - charCount;
+
+    return (
+      <FormField>
+        <FormFieldLabel htmlFor="textarea-id-5">Label</FormFieldLabel>
+        <FormFieldHint>Hint: This is a helpful hint.</FormFieldHint>
+        <TextArea
+          {...props}
+          data-testid="textarea-id-5"
+          onChange={(event) => setCharCount(event.target.value.length)}
+        />
+        <HintText text={`You have ${remaining} characters remaining`} />
+      </FormField>
+    );
+  },
   play: async ({ canvasElement }) => {
     const canvas = within(canvasElement);
 
@@ -217,6 +235,13 @@ export const WithMaxChars: Story = {
       /You have 30 characters remaining/,
     );
     expect(remainingElement).toBeInTheDocument();
+
+    // Type some text and verify counter updates
+    await userEvent.type(textarea, 'Hello');
+    const updatedRemaining = canvas.getByText(
+      /You have 25 characters remaining/,
+    );
+    expect(updatedRemaining).toBeInTheDocument();
   },
 };
 
@@ -432,6 +457,14 @@ export const Uncontrolled: Story = {
 
 export const WithReactHookForm: Story = {
   tags: ['skip-playwright'],
+  parameters: {
+    docs: {
+      description: {
+        story:
+          'This example demonstrates using TextArea with React Hook Form Controller pattern.',
+      },
+    },
+  },
   render: () => {
     const methods = useForm<{ message: string }>({
       defaultValues: { message: '' },
@@ -461,7 +494,7 @@ export const WithReactHookForm: Story = {
                   id="textarea-id-0"
                   rows={4}
                   cols={100}
-                  maxChars={20}
+                  maxLength={100}
                   clearButtonEnabled
                   data-testid="textarea-id-0"
                   {...field}
@@ -503,17 +536,86 @@ export const WithReactHookForm: Story = {
     await userEvent.click(submitButton);
     expect(canvas.queryByTestId('error-msg')).toBeNull();
 
-    const remainingBeforeReset = canvas.getByText(
-      /^You have \d+ characters remaining$/,
+    await userEvent.click(resetButton);
+    expect(textAreaElement.value).toBe('');
+  },
+};
+
+export const WithReactHookFormRegister: Story = {
+  tags: ['skip-playwright'],
+  parameters: {
+    docs: {
+      description: {
+        story:
+          'This example demonstrates using TextArea with React Hook Form register method (uncontrolled pattern).',
+      },
+    },
+  },
+  render: () => {
+    const { register, handleSubmit, reset, formState } = useForm<{
+      message: string;
+    }>({
+      defaultValues: { message: '' },
+    });
+
+    const onSubmit = handleSubmit((data) => {
+      console.log('Form submitted:', data);
+      reset();
+    });
+
+    return (
+      <form onSubmit={onSubmit}>
+        <FormField data-testid="form-field-register">
+          {formState.errors.message && (
+            <FormFieldError data-testid="error-msg-register">
+              {formState.errors.message.message}
+            </FormFieldError>
+          )}
+          <FormFieldLabel htmlFor="textarea-register">Message</FormFieldLabel>
+          <FormFieldHint>Enter your message (required)</FormFieldHint>
+
+          <TextArea
+            id="textarea-register"
+            rows={4}
+            cols={100}
+            data-testid="textarea-register"
+            {...register('message', { required: 'Message is required' })}
+          />
+        </FormField>
+
+        <div className="gi-flex gi-flex-cols gi-gap-2 gi-pt-4">
+          <Button type="submit" data-testid="submit-btn-register">
+            Submit
+          </Button>
+          <Button
+            type="button"
+            onClick={() => reset()}
+            data-testid="reset-btn-register"
+          >
+            Reset
+          </Button>
+        </div>
+      </form>
     );
-    expect(remainingBeforeReset).toBeTruthy();
+  },
+
+  play: async ({ canvasElement }) => {
+    const canvas = within(canvasElement);
+
+    const textAreaElement = canvas.getByTestId(
+      'textarea-register',
+    ) as HTMLTextAreaElement;
+    const submitButton = canvas.getByTestId('submit-btn-register');
+    const resetButton = canvas.getByTestId('reset-btn-register');
+
+    await userEvent.click(submitButton);
+    expect(canvas.getByTestId('error-msg-register')).toBeDefined();
+
+    await userEvent.type(textAreaElement, 'Hello from register');
+    await userEvent.click(submitButton);
+    expect(canvas.queryByTestId('error-msg-register')).toBeNull();
 
     await userEvent.click(resetButton);
     expect(textAreaElement.value).toBe('');
-
-    const remainingAfterReset = canvas.getByText(
-      /^You have 20 characters remaining$/,
-    );
-    expect(remainingAfterReset).toBeTruthy();
   },
 };

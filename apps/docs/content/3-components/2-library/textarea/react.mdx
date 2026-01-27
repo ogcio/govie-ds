@@ -27,7 +27,7 @@ component:
           required: false
         - name: 'maxChars'
           ofType: 'number'
-          description: 'The maximum number of characters allowed in the text area.'
+          description: '**Deprecated.** Use `maxLength` instead. Previously rendered a remaining character count hint.'
           required: false
         - name: 'halfFluid'
           ofType: 'boolean'
@@ -54,8 +54,8 @@ component:
       url: '/story/form-textarea--with-label-and-error'
     - name: 'with-label-hint-and-error'
       url: '/story/form-textarea--with-label-hint-and-error'
-    - name: 'with-max-chars'
-      url: '/story/form-textarea--with-max-chars'
+    - name: 'with-max-length'
+      url: '/story/form-textarea--with-max-length'
     - name: 'disabled'
       url: '/story/form-textarea--disabled'
     - name: 'with-half-width'
@@ -66,7 +66,7 @@ component:
 
 # Textarea
 
-The Textarea component allows users to input multi-line text. It's ideal for longer content such as messages, feedback, or descriptions. It supports customizable dimensions with `rows` and `cols`, and character limits using `maxChars`.
+The Textarea component allows users to input multi-line text. It's ideal for longer content such as messages, feedback, or descriptions. It supports customizable dimensions with `rows` and `cols`, and character limits using `maxLength`.
 
 <Section current="react">
 
@@ -118,12 +118,12 @@ The Textarea component allows users to input multi-line text. It's ideal for lon
   story="with-label-hint-and-error"
 />
 
-### With Max Chars
+### With Max Length
 
 <StorybookFrame
   className="h-[268px]"
   componentId="textarea-react"
-  story="with-max-chars"
+  story="with-max-length"
 />
 
 ### Disabled
@@ -155,19 +155,5 @@ The Textarea component allows users to input multi-line text. It's ideal for lon
 This component supports all native HTML `<textarea>` attributes via standard HTML props.
 
 <ComponentPropertiesTable componentId="textarea-react" />
-
-## i18n Keys
-
-The Textarea component supports localisation through i18n keys in React, [find i18n setup here](/components/setup-guides/react/#internationalisation-i18n-guidelines). Below is the list of keys and their default text:
-
-```json
-{
-  "textarea.remainingChars": "You have {{remainingChars}} characters remaining"
-}
-```
-
-These keys represent visible text elements. You can customise their translations for each locale to enable multilingual support.
-
-- Ensure placeholders like `{{ remainingChars }}` is preserved when translating.
 
 </Section>

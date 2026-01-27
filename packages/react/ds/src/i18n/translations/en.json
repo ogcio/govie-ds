@@ -52,7 +52,6 @@
       "table.pagination.page": "Page",
       "table.pagination.ofTotal": "of {{totalPages}}",
       "toast.position": "Toasts-{{x}}-{{y}}",
-      "textarea.remainingChars": "You have {{remainingChars}} characters remaining",
       "pagination.previous": "Previous",
       "pagination.next": "Next",
       "pagination.page": "<bold>Page {{currentPage}}</bold> of {{totalPages}}",

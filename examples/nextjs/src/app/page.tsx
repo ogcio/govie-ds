@@ -32,14 +32,13 @@ import {
   FormFieldHint,
   FormFieldLabel,
   Header,
-  HeaderProps,
   HeaderSearch,
   Heading,
+  HintText,
   Icon,
   IconButton,
   InputCheckbox,
   InputCheckboxGroup,
-  InputFile,
   InputPassword,
   InputRadio,
   InputRadioGroup,
@@ -91,7 +90,7 @@ import {
   HeaderMenuItemSeparator,
   HeaderMenuItemButton,
 } from '@ogcio/design-system-react';
-import { useEffect, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import Image from 'next/image';
 
 const HeaderComposable = () => {
@@ -194,42 +193,163 @@ const handleCreateToast = (
   });
 
 // Form Components
-const BasicFormExample = () => {
-  const { register, handleSubmit } = useForm();
-  const onSubmit = (data: any) => {
-    console.log(data);
-  };
+const basicFormDefaultValues = {
+  inputText: '',
+  textArea: '',
+};
 
+const NativeFormExample = () => {
+  const formRef = useRef<HTMLFormElement>(null);
+  const [submittedData, setSubmittedData] = useState<string | null>(null);
+  const [nativeCharCount, setNativeCharCount] = useState(0);
+  const maxNativeChars = 150;
+
+  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    const formData = new FormData(e.currentTarget);
+    const data = Object.fromEntries(formData.entries());
+    setSubmittedData(JSON.stringify(data, null, 2));
+    console.log('Form Data:', data);
+  };
+  const handleClear = () => {
+    formRef.current?.reset();
+    setSubmittedData(null);
+    setNativeCharCount(0);
+  };
   return (
     <Container className="p-4 border border-gray-200 bg-white rounded-lg shadow-sm">
-      <form onSubmit={handleSubmit(onSubmit)}>
+      <form ref={formRef} onSubmit={handleSubmit}>
         <Heading as="h4" className="mb-4">
-          With React Hook Form (Register Method)
+          Native Form (No Form Library)
         </Heading>
+        <Paragraph className="mb-4 text-gray-600">
+          This example uses native HTML form handling without React Hook Form or
+          any other form library.
+        </Paragraph>
         <div className="space-y-4">
-          <TextArea
-            {...register('description')}
-            maxChars={200}
-            clearButtonEnabled
-          />
-          <InputText
-            {...register('inputtext')}
-            className="w-full"
-            inputActionButton={{
-              icon: 'info',
-              onClick: () => alert('Action button clicked'),
-            }}
-            type="text"
-            placeholder="Placeholder"
-          />
-          <Button type="submit">Submit</Button>
+          <FormField>
+            <FormFieldLabel htmlFor="native-name">Name</FormFieldLabel>
+            <FormFieldHint>Enter your full name</FormFieldHint>
+            <InputText
+              id="native-name"
+              name="name"
+              className="w-full"
+              placeholder="John Doe"
+            />
+          </FormField>
+          <FormField>
+            <FormFieldLabel htmlFor="native-email">Email</FormFieldLabel>
+            <InputText
+              id="native-email"
+              name="email"
+              type="email"
+              className="w-full"
+              placeholder="john@example.com"
+            />
+          </FormField>
+          <FormField>
+            <FormFieldLabel htmlFor="native-select">Topic</FormFieldLabel>
+            <Select id="native-select" name="topic" aria-label="Select topic">
+              <SelectItem value="" hidden>
+                Select a topic
+              </SelectItem>
+              <SelectItem value="general">General Inquiry</SelectItem>
+              <SelectItem value="support">Support</SelectItem>
+              <SelectItem value="feedback">Feedback</SelectItem>
+            </Select>
+          </FormField>
+          <FormField>
+            <FormFieldLabel htmlFor="native-textarea">Message</FormFieldLabel>
+            <TextArea
+              id="native-textarea"
+              name="message"
+              rows={4}
+              maxLength={maxNativeChars}
+              placeholder="Enter your message..."
+              onChange={(e) => setNativeCharCount(e.target.value.length)}
+            />
+            <HintText
+              text={`You have ${maxNativeChars - nativeCharCount} characters remaining`}
+            />
+          </FormField>
+          <div className="flex gap-2">
+            <Button type="submit">Submit</Button>
+            <Button type="button" variant="secondary" onClick={handleClear}>
+              Clear
+            </Button>
+          </div>
+          {submittedData && (
+            <div className="mt-4 p-3 bg-gray-50 rounded">
+              <strong>Submitted Data:</strong>
+              <pre className="mt-1 text-sm overflow-auto">{submittedData}</pre>
+            </div>
+          )}
         </div>
       </form>
     </Container>
   );
 };
 
-const ComprehensiveFormExample = () => {
+const ReactHookFormRegisterExample = () => {
+  const formMethods = useForm({
+    defaultValues: basicFormDefaultValues,
+  });
+
+  const { register, handleSubmit, reset, watch } = formMethods;
+  const textAreaValue = watch('textArea');
+  const maxBasicChars = 200;
+
+  const onSubmit = (data: any) => {
+    console.log('Form Data:', JSON.stringify(data));
+    reset(basicFormDefaultValues);
+  };
+
+  return (
+    <Container className="p-4 border border-gray-200 bg-white rounded-lg shadow-sm">
+      <FormProvider {...formMethods}>
+        <form onSubmit={handleSubmit(onSubmit)}>
+          <Heading as="h4" className="mb-4">
+            With React Hook Form (Register Method)
+          </Heading>
+          <div className="space-y-4">
+            <FormField>
+              <FormFieldLabel htmlFor="input-text-id">InputText</FormFieldLabel>
+              <InputText
+                id="input-text-id"
+                {...register('inputText')}
+                className="w-full"
+                placeholder="Enter text..."
+              />
+            </FormField>
+
+            <FormField>
+              <FormFieldLabel htmlFor="textarea-id">TextArea</FormFieldLabel>
+              <TextArea
+                id="textarea-id"
+                cols={100}
+                rows={4}
+                maxLength={maxBasicChars}
+                {...register('textArea')}
+              />
+              <HintText
+                text={`You have ${maxBasicChars - (textAreaValue?.length || 0)} characters remaining`}
+              />
+            </FormField>
+
+            <div className="flex gap-2">
+              <Button type="submit">Submit</Button>
+              <Button type="button" onClick={() => reset(basicFormDefaultValues)}>
+                Clear
+              </Button>
+            </div>
+          </div>
+        </form>
+      </FormProvider>
+    </Container>
+  );
+};
+
+const ReactHookFormControllerExample = () => {
   const methods = useForm({
     defaultValues: {
       myText: '',
@@ -245,7 +365,9 @@ const ComprehensiveFormExample = () => {
     },
   });
 
-  const { handleSubmit, control, reset } = methods;
+  const { handleSubmit, control, reset, watch } = methods;
+  const textAreaValue = watch('textArea');
+  const maxComprehensiveChars = 100;
 
   const onSubmit = (data: any) => {
     console.log('Form submitted successfully');
@@ -308,10 +430,13 @@ const ComprehensiveFormExample = () => {
                     cols={100}
                     rows={4}
                     className="w-full"
-                    maxChars={100}
+                    maxLength={maxComprehensiveChars}
                     clearButtonEnabled
                   />
                 )}
+              />
+              <HintText
+                text={`You have ${maxComprehensiveChars - (textAreaValue?.length || 0)} characters remaining`}
               />
             </FormField>
 
@@ -642,6 +767,24 @@ const ValidationFormExample = () => {
   );
 };
 
+const StandaloneTextAreaExample = () => {
+  const [charCount, setCharCount] = useState(0);
+  const maxChars = 50;
+
+  return (
+    <FormField>
+      <FormFieldLabel htmlFor="textarea-standalone">Comments</FormFieldLabel>
+      <FormFieldHint>This is a helpful hint.</FormFieldHint>
+      <TextArea
+        id="textarea-standalone"
+        maxLength={maxChars}
+        onChange={(e) => setCharCount(e.target.value.length)}
+      />
+      <HintText text={`You have ${maxChars - charCount} characters remaining`} />
+    </FormField>
+  );
+};
+
 // Main Component
 export default function Home() {
   return (
@@ -719,19 +862,14 @@ export default function Home() {
 
                   <div>
                     <h5 className="font-semibold mb-2">Text Area</h5>
-                    <FormField>
-                      <FormFieldLabel htmlFor="textarea-standalone">
-                        Comments
-                      </FormFieldLabel>
-                      <FormFieldHint>This is a helpful hint.</FormFieldHint>
-                      <TextArea id="textarea-standalone" maxChars={50} />
-                    </FormField>
+                    <StandaloneTextAreaExample />
                   </div>
                 </div>
               </Container>
 
-              <BasicFormExample />
-              <ComprehensiveFormExample />
+              <NativeFormExample />
+              <ReactHookFormRegisterExample />
+              <ReactHookFormControllerExample />
               <ValidationFormExample />
             </div>
           </TabPanel>
