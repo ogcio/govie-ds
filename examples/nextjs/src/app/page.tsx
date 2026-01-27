@@ -284,7 +284,7 @@ const NativeFormExample = () => {
   );
 };
 
-const BasicFormExample = () => {
+const ReachHookFormWithRegister = () => {
   const formMethods = useForm({
     defaultValues: basicFormDefaultValues,
   });
@@ -338,7 +338,7 @@ const BasicFormExample = () => {
   );
 };
 
-const ComprehensiveFormExample = () => {
+const ReachHookFormWithController = () => {
   const methods = useForm({
     defaultValues: {
       myText: '',
@@ -840,8 +840,8 @@ export default function Home() {
               </Container>
 
               <NativeFormExample />
-              <BasicFormExample />
-              <ComprehensiveFormExample />
+              <ReachHookFormWithRegister />
+              <ReachHookFormWithController />
               <ValidationFormExample />
             </div>
           </TabPanel>
