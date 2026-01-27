@@ -29,10 +29,7 @@
                 "input": "public"
               }
             ],
-            "styles": [
-              "@ogcio/design-system-react/styles.css",
-              "@ogcio/theme-govie/theme.css"
-            ]
+            "styles": ["src/app/app.component.scss"]
           },
           "configurations": {
             "production": {
@@ -85,10 +82,7 @@
                 "input": "public"
               }
             ],
-            "styles": [
-              "@ogcio/design-system-react/styles.css",
-              "@ogcio/theme-govie/theme.css"
-            ],
+            "styles": ["src/app/app.component.scss"],
             "scripts": []
           }
         },
