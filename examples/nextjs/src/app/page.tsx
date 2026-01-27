@@ -91,7 +91,7 @@ import {
   HeaderMenuItemSeparator,
   HeaderMenuItemButton,
 } from '@ogcio/design-system-react';
-import { useEffect, useMemo, useState } from 'react';
+import { useEffect, useState } from 'react';
 import Image from 'next/image';
 
 const HeaderComposable = () => {
@@ -194,24 +194,21 @@ const handleCreateToast = (
   });
 
 // Form Components
-const BasicFormExample = () => {
-  const defaultValues = useMemo(
-    () => ({
-      inputText: '',
-      textArea: '',
-    }),
-    [],
-  );
+const basicFormDefaultValues = {
+  inputText: '',
+  textArea: '',
+};
 
+const BasicFormExample = () => {
   const formMethods = useForm({
-    defaultValues: defaultValues,
+    defaultValues: basicFormDefaultValues,
   });
 
   const { register, handleSubmit, reset } = formMethods;
 
   const onSubmit = (data: any) => {
     console.log('Form Data:', JSON.stringify(data));
-    reset(defaultValues);
+    reset(basicFormDefaultValues);
   };
 
   return (
@@ -245,7 +242,7 @@ const BasicFormExample = () => {
 
             <div className="flex gap-2">
               <Button type="submit">Submit</Button>
-              <Button type="button" onClick={() => reset(defaultValues)}>
+              <Button type="button" onClick={() => reset(basicFormDefaultValues)}>
                 Clear
               </Button>
             </div>
