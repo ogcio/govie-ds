@@ -91,7 +91,7 @@ import {
   HeaderMenuItemSeparator,
   HeaderMenuItemButton,
 } from '@ogcio/design-system-react';
-import { useEffect, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import Image from 'next/image';
 
 const HeaderComposable = () => {
@@ -197,6 +197,91 @@ const handleCreateToast = (
 const basicFormDefaultValues = {
   inputText: '',
   textArea: '',
+};
+
+const NativeFormExample = () => {
+  const formRef = useRef<HTMLFormElement>(null);
+  const [submittedData, setSubmittedData] = useState<string | null>(null);
+  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    const formData = new FormData(e.currentTarget);
+    const data = Object.fromEntries(formData.entries());
+    setSubmittedData(JSON.stringify(data, null, 2));
+    console.log("Form Data:", data);
+  };
+  const handleClear = () => {
+    formRef.current?.reset();
+    setSubmittedData(null);
+  };
+  return (
+    <Container className="p-4 border border-gray-200 bg-white rounded-lg shadow-sm">
+      <form ref={formRef} onSubmit={handleSubmit}>
+        <Heading as="h4" className="mb-4">
+          Native Form (No Form Library)
+        </Heading>
+        <Paragraph className="mb-4 text-gray-600">
+          This example uses native HTML form handling without React Hook Form or
+          any other form library.
+        </Paragraph>
+        <div className="space-y-4">
+          <FormField>
+            <FormFieldLabel htmlFor="native-name">Name</FormFieldLabel>
+            <FormFieldHint>Enter your full name</FormFieldHint>
+            <InputText
+              id="native-name"
+              name="name"
+              className="w-full"
+              placeholder="John Doe"
+            />
+          </FormField>
+          <FormField>
+            <FormFieldLabel htmlFor="native-email">Email</FormFieldLabel>
+            <InputText
+              id="native-email"
+              name="email"
+              type="email"
+              className="w-full"
+              placeholder="john@example.com"
+            />
+          </FormField>
+          <FormField>
+            <FormFieldLabel htmlFor="native-select">Topic</FormFieldLabel>
+            <Select id="native-select" name="topic" aria-label="Select topic">
+              <SelectItem value="" hidden>
+                Select a topic
+              </SelectItem>
+              <SelectItem value="general">General Inquiry</SelectItem>
+              <SelectItem value="support">Support</SelectItem>
+              <SelectItem value="feedback">Feedback</SelectItem>
+            </Select>
+          </FormField>
+          <FormField>
+            <FormFieldLabel htmlFor="native-textarea">Message</FormFieldLabel>
+            <FormFieldHint>Maximum 150 characters</FormFieldHint>
+            <TextArea
+              id="native-textarea"
+              name="message"
+              rows={4}
+              maxChars={150}
+              placeholder="Enter your message..."
+            />
+          </FormField>
+          <div className="flex gap-2">
+            <Button type="submit">Submit</Button>
+            <Button type="button" variant="secondary" onClick={handleClear}>
+              Clear
+            </Button>
+          </div>
+          {submittedData && (
+            <div className="mt-4 p-3 bg-gray-50 rounded">
+              <strong>Submitted Data:</strong>
+              <pre className="mt-1 text-sm overflow-auto">{submittedData}</pre>
+            </div>
+          )}
+        </div>
+      </form>
+    </Container>
+  );
 };
 
 const BasicFormExample = () => {
@@ -754,6 +839,7 @@ export default function Home() {
                 </div>
               </Container>
 
+              <NativeFormExample />
               <BasicFormExample />
               <ComprehensiveFormExample />
               <ValidationFormExample />
