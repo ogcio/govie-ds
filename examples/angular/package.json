@@ -6,8 +6,9 @@
     "build": "pnpm build:styles && ng build",
     "build:styles": "tailwindcss -i ./styles.css -o ./dist/styles.css",
     "watch": "pnpm build --watch --configuration development",
-    "test": "ng test",
-    "lint": "ng lint ogcio-demo"
+    "test": "pnpm build:styles && ng test",
+    "lint": "ng lint ogcio-demo",
+    "format": "prettier 'src/**/*.{ts,html}' --write"
   },
   "prettier": "@ogcio/design-system-prettier-config",
   "private": true,
