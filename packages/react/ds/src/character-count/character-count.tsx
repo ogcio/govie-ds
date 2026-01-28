@@ -6,17 +6,6 @@ import type { CharacterCountProps } from './types.js';
 /**
  * CharacterCount displays the remaining character count for form inputs
  * like TextArea or InputText.
- *
- * This component is designed to be fully decoupled from the input,
- * making it work correctly with both controlled and uncontrolled components,
- * including React Hook Form integration.
- *
- * @example
- * // Controlled usage
- * const [value, setValue] = useState('');
- * <TextArea value={value} onChange={(e) => setValue(e.target.value)} maxLength={100} />
- * <CharacterCount maxChars={100} currentLength={value.length} />
- *
  */
 export const CharacterCount: React.FC<CharacterCountProps> = ({
   maxChars,
