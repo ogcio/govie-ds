@@ -1,3 +1,369 @@
-<h1 class="mx-9">Design System Showcase</h1>
+<header
+  id="GovieHeader"
+  class="gi-header gi-bg-color-surface-system-primary-default"
+  data-module="gieds-header"
+>
+  <div class="gi-layout-container gi-order-2">
+    <div class="gi-header-menu gi-bg-color-surface-system-primary-default">
+      <div class="gi-header-logo gi-header-logo-default">
+        <a data-testid="logo-link" href="#">
+          <picture>
+            <source
+              srcset="
+                https://raw.githubusercontent.com/ogcio/govie-ds/refs/heads/main/assets/logos/gov.ie/harp-gold-text-white.svg
+              "
+              media="(min-width: 640px)"
+            />
+            <img
+              src="https://raw.githubusercontent.com/ogcio/govie-ds/refs/heads/main/assets/logos/gov.ie/harp-gold-text-white.svg"
+              alt="Gov.ie logo"
+              class="gi-h-10 sm:gi-h-14"
+            />
+          </picture>
+        </a>
+      </div>
+      <div
+        class="gi-header-title gi-text-white gi-stroke-white gi-hidden"
+      ></div>
+      <div class="gi-flex gi-items-center gi-gap-2 md:gi-gap-4 gi-flex-none">
+        <div class="gi-hidden lg:gi-block">
+          <a
+            class="gi-header-tool-item gi-text-white gi-stroke-white gi-header-tool-item-default"
+            href="#"
+          >
+            Departments
+          </a>
+        </div>
+        <div class="gi-hidden lg:gi-block">
+          <a
+            class="gi-header-tool-item gi-text-white gi-stroke-white gi-header-tool-item-default"
+            href="#"
+          >
+            Services
+          </a>
+        </div>
+        <div class="gi-hidden lg:gi-block">
+          <div class="gi-header-divider gi-border-white"></div>
+        </div>
+        <div class="gi-block">
+          <a
+            class="gi-header-tool-item gi-text-white gi-stroke-white gi-header-tool-item-default"
+            href="#"
+          >
+            Gaelige
+          </a>
+        </div>
+        <div class="gi-block lg:gi-hidden">
+          <label
+            class="gi-header-tool-item gi-text-white gi-stroke-white gi-header-tool-item-default"
+            for="ItemActionTrigger-4"
+            aria-label="menu"
+            id="ItemActionLabel-4"
+          >
+            <input
+              class="gi-header-tool-item-input"
+              id="ItemActionTrigger-4"
+              data-testid="ItemActionTrigger-4"
+              type="button"
+              data-index="4"
+            />
+            <span
+              class="material-symbols-outlined gi-text-[24px] gi-block"
+              role="alert"
+              id="ItemIconActionTrigger-4"
+              data-testid="ItemIconActionTrigger-4"
+              aria-hidden="true"
+              style="
+                font-variation-settings:
+                  'FILL' 0,
+                  'wght' 400,
+                  'GRAD' 0,
+                  'opsz' 24;
+              "
+            >
+              menu
+            </span>
+            <span
+              class="material-symbols-outlined gi-text-[24px] gi-block gi-hidden close-icon"
+              role="alert"
+              id="ItemCloseTrigger-4"
+              data-testid="ItemCloseTrigger-4"
+              aria-hidden="true"
+              style="
+                font-variation-settings:
+                  'FILL' 0,
+                  'wght' 400,
+                  'GRAD' 0,
+                  'opsz' 24;
+              "
+            >
+              close
+            </span>
+          </label>
+        </div>
+      </div>
+    </div>
+  </div>
+</header>
+
+<main class="gi-prose gi-max-w-none">
+  <div class="gi-layout-container">
+    <div class="gi-layout-container-3-column">
+      <div class="gi-layout-column-2-3">
+        <h1>Basic Page Template</h1>
+        <p>
+          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris erat
+          nisl, imperdiet a finibus vitae, iaculis quis mauris. Curabitur
+          feugiat augue eu dui eleifend egestas. Quisque gravida nisl ut arcu
+          efficitur, nec feugiat lacus posuere. Quisque convallis, tellus sit
+          amet sodales sagittis, tellus metus venenatis eros, in vulputate velit
+          dui ac nunc. Sed imperdiet ultrices sem at ultrices. Vestibulum leo
+          neque, fringilla nec quam nec, sollicitudin gravida odio. Vestibulum
+          lobortis risus metus, vel fringilla massa accumsan eget. Nunc gravida
+          et metus non gravida. Morbi ipsum purus, interdum nec ornare eget,
+          rhoncus ac turpis. Donec lectus nibh, venenatis ac lectus non,
+          scelerisque ullamcorper velit. Integer nec rutrum purus. Nullam semper
+          imperdiet bibendum. Nulla facilisi. Suspendisse vestibulum, nisi ac
+          ornare sodales, arcu justo ultricies arcu, quis ultricies massa metus
+          vel enim. Proin finibus justo sed lacus congue, vel auctor elit
+          pellentesque.
+        </p>
+
+        <div>
+          <fieldset class="">
+            <div class="gi-pb-3 gi-flex gi-flex-col gi-gap-1">
+              <div>
+                <label class="gi-text-md gi-label gi-font-bold">
+                  Where do you live?
+                </label>
+              </div>
+            </div>
+            <div class="gi-input-group-container" data-module="gieds-radios">
+              <div class="gi-input-group-options-container">
+                <div
+                  class="gi-input-group-options-stacked"
+                  data-element="radio-container"
+                >
+                  <div class="gi-input-radio-container">
+                    <input
+                      aria-checked="false"
+                      class="gi-w-8 gi-input-radio-medium"
+                      data-element="radio0"
+                      data-primary="true"
+                      defaultValue="england"
+                      id="england"
+                      name="UniqueId1"
+                      type="radio"
+                    />
+                    <div class="gi-mt-1">
+                      <label class="gi-text-md gi-label" htmlFor="england">
+                        England
+                      </label>
+                    </div>
+                  </div>
+                  <div class="gi-input-radio-container">
+                    <input
+                      aria-checked="false"
+                      class="gi-w-8 gi-input-radio-medium"
+                      data-element="radio1"
+                      data-primary="true"
+                      defaultValue="scotland"
+                      id="scotland"
+                      name="UniqueId1"
+                      type="radio"
+                    />
+                    <div class="gi-mt-1">
+                      <label class="gi-text-md gi-label" htmlFor="scotland">
+                        Scotland
+                      </label>
+                    </div>
+                  </div>
+                  <div class="gi-input-radio-container">
+                    <input
+                      aria-checked="false"
+                      class="gi-w-8 gi-input-radio-medium"
+                      data-element="radio2"
+                      data-primary="true"
+                      defaultValue="ireland"
+                      id="ireland"
+                      name="UniqueId1"
+                      type="radio"
+                    />
+                    <div class="gi-mt-1">
+                      <label class="gi-text-md gi-label" htmlFor="ireland">
+                        Ireland
+                      </label>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </fieldset>
+        </div>
+      </div>
+      <div class="gi-layout-column-1-3">
+        <h3>On this page</h3>
+        <ul class="gi-list gi-list-spaced">
+          <li class="gi-span-xs">
+            <a href="#" class="gi-link">Link 1</a>
+          </li>
+          <li class="gi-span-xs">
+            <a href="#" class="gi-link">Link 2</a>
+          </li>
+          <li class="gi-span-xs">
+            <a href="#" class="gi-link">Link 3</a>
+          </li>
+          <li class="gi-span-xs">
+            <a href="#" class="gi-link">Link 4</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</main>
+
+<footer class="gi-footer">
+  <div
+    class="gi-footer-container gi-layout-container custom-footer"
+    data-testid="footer-complete"
+  >
+    <div>
+      <div class="gi-grid-responsive !gi-ml-0 !gi-mr-0">
+        <div class="gi-col-span-4 md:gi-col-span-4 lg:gi-col-span-3">
+          <h3 class="gi-heading-sm gi-mb-4">Services</h3>
+          <hr class="gi-section-break-md gi-border-gray-100" role="separator" />
+          <ul class="gi-space-y-2">
+            <li>
+              <a href="#" class="gi-link gi-link-inherit">Public Services</a>
+            </li>
+            <li>
+              <a href="#" class="gi-link gi-link-inherit">Business Services</a>
+            </li>
+            <li>
+              <a href="#" class="gi-link gi-link-inherit">Online Services</a>
+            </li>
+          </ul>
+        </div>
+        <div class="gi-col-span-4 md:gi-col-span-4 lg:gi-col-span-3">
+          <h3 class="gi-heading-sm gi-mb-4">Departments</h3>
+          <hr class="gi-section-break-md gi-border-gray-100" role="separator" />
+          <ul class="gi-space-y-2">
+            <li>
+              <a href="#" class="gi-link gi-link-inherit"
+                >Department of Health</a
+              >
+            </li>
+            <li>
+              <a href="#" class="gi-link gi-link-inherit"
+                >Department of Education</a
+              >
+            </li>
+            <li>
+              <a href="#" class="gi-link gi-link-inherit"
+                >Department of Finance</a
+              >
+            </li>
+          </ul>
+        </div>
+        <div class="gi-col-span-4 md:gi-col-span-4 lg:gi-col-span-3">
+          <h3 class="gi-heading-sm gi-mb-4">Publications</h3>
+          <hr class="gi-section-break-md gi-border-gray-100" role="separator" />
+          <ul class="gi-space-y-2">
+            <li>
+              <a href="#" class="gi-link gi-link-inherit">Reports</a>
+            </li>
+            <li>
+              <a href="#" class="gi-link gi-link-inherit">Statistics</a>
+            </li>
+            <li>
+              <a href="#" class="gi-link gi-link-inherit">Legislation</a>
+            </li>
+          </ul>
+        </div>
+        <div class="gi-col-span-4 md:gi-col-span-4 lg:gi-col-span-3">
+          <h3 class="gi-heading-sm gi-mb-4">Contact</h3>
+          <hr class="gi-section-break-md gi-border-gray-100" role="separator" />
+          <ul class="gi-space-y-2">
+            <li>
+              <a href="#" class="gi-link gi-link-inherit">Find an Office</a>
+            </li>
+            <li>
+              <a href="#" class="gi-link gi-link-inherit">Phone Directory</a>
+            </li>
+            <li>
+              <a href="#" class="gi-link gi-link-inherit">Feedback</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    <hr class="gi-section-break-lg gi-border-gray-100" role="separator" />
+    <div class="gi-footer-secondary-slot">
+      <div class="gi-footer-logo">
+        <img
+          class="gi-h-16"
+          src="https://raw.githubusercontent.com/ogcio/govie-ds/refs/heads/main/assets/logos/gov-of-ireland/harp-gold-text-green.svg"
+          alt="Footer logo"
+        />
+      </div>
+      <div class="gi-footer-secondary-slot-content">
+        <div
+          class="gi-flex gi-w-full gi-justify-start gi-items-start gi-flex-col gi-gap-4 gi-flex-nowrap"
+        >
+          <div
+            class="gi-flex gi-w-full gi-justify-start gi-items-start gi-flex-row gi-gap-4 gi-flex-wrap"
+          >
+            <a href="#" class="gi-link gi-link-inherit">About Us</a>
+            <a href="#" class="gi-link gi-link-inherit">Contact</a>
+            <a href="#" class="gi-link gi-link-inherit">Sitemap</a>
+            <a href="#" class="gi-link gi-link-inherit">Privacy Policy</a>
+            <a href="#" class="gi-link gi-link-inherit">Terms of Service</a>
+            <a href="#" class="gi-link gi-link-inherit">Careers</a>
+            <a href="#" class="gi-link gi-link-inherit">Blog</a>
+            <a href="#" class="gi-link gi-link-inherit">FAQ</a>
+            <a href="#" class="gi-link gi-link-inherit">Support</a>
+            <a href="#" class="gi-link gi-link-inherit">Press</a>
+            <a href="#" class="gi-link gi-link-inherit">Partners</a>
+            <a href="#" class="gi-link gi-link-inherit">Investors</a>
+            <a href="#" class="gi-link gi-link-inherit">Events</a>
+          </div>
+          <div
+            class="gi-flex gi-w-full gi-justify-start gi-items-start gi-flex-row gi-gap-4 gi-flex-wrap"
+          >
+            <img
+              alt="X logo"
+              src="https://raw.githubusercontent.com/ogcio/govie-ds/refs/heads/main/assets/logos/social/X.svg"
+            />
+            <img
+              alt="Facebook logo"
+              src="https://raw.githubusercontent.com/ogcio/govie-ds/refs/heads/main/assets/logos/social/Facebook.svg"
+            />
+            <img
+              alt="Bluesky logo"
+              src="https://raw.githubusercontent.com/ogcio/govie-ds/refs/heads/main/assets/logos/social/Bluesky.svg"
+            />
+            <img
+              alt="Linkedin logo"
+              src="https://raw.githubusercontent.com/ogcio/govie-ds/refs/heads/main/assets/logos/social/Linkedin.svg"
+            />
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="gi-footer-utility">
+    <div
+      class="gi-flex gi-w-full gi-justify-center gi-items-center gi-flex-col xs:gi-flex-col md:gi-flex-row gi-gap-4 gi-flex-nowrap"
+    >
+      <a href="#" data-testid="" class="gi-link gi-link-inherit"
+        >Privacy Policy</a
+      >
+      <a href="#" data-testid="" class="gi-link gi-link-inherit"
+        >Accessibility</a
+      >
+      <div class="gi-text-sm">© 2025 Government of Ireland.</div>
+    </div>
+  </div>
+</footer>
 
 <router-outlet></router-outlet>
