@@ -117,7 +117,7 @@ export const TextArea = forwardRef<HTMLTextAreaElement, TextAreaProps>(
               data-icon-start={!!iconStart}
               data-clear-enabled={clearButtonEnabled}
               maxLength={maxChars}
-              value={currentValue}
+              {...(isControlled ? { value: String(value) } : {})}
               onChange={handleOnChange}
               {...props}
             />
