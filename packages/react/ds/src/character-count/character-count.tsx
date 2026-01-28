@@ -17,12 +17,6 @@ import type { CharacterCountProps } from './types.js';
  * <TextArea value={value} onChange={(e) => setValue(e.target.value)} maxLength={100} />
  * <CharacterCount maxChars={100} currentLength={value.length} />
  *
- * @example
- * // Uncontrolled with React Hook Form
- * const { register, watch } = useForm();
- * const message = watch('message');
- * <TextArea {...register('message')} maxLength={100} />
- * <CharacterCount maxChars={100} currentLength={message?.length ?? 0} />
  */
 export const CharacterCount: React.FC<CharacterCountProps> = ({
   maxChars,

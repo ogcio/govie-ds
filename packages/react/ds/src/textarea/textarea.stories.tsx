@@ -208,7 +208,7 @@ export const WithMaxChars: Story = {
     docs: {
       description: {
         story:
-          '**Deprecated:** The `maxChars` prop is deprecated. Use the `CharacterCount` component instead for better support with uncontrolled forms and React Hook Form. See the `WithReactHookForm` story for the recommended approach.',
+          '**Deprecated:** The `maxChars` prop is deprecated. Use the `CharacterCount` component instead for better support with uncontrolled forms and React Hook Form.',
       },
     },
   },

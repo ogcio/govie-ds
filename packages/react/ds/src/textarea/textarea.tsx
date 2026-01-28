@@ -26,13 +26,6 @@ export type TextAreaProps = React.DetailedHTMLProps<
    * This prop works correctly in controlled mode (when passing `value`), but in uncontrolled mode
    * (e.g., with React Hook Form), the character count may not update correctly after `reset()`.
    * For uncontrolled usage, use `CharacterCount` with `watch()` to track the current value length.
-   *
-   * @example
-   * // Recommended approach with CharacterCount
-   * const { register, watch } = useForm();
-   * const message = watch('message');
-   * <TextArea {...register('message')} maxLength={100} />
-   * <CharacterCount maxChars={100} currentLength={message?.length ?? 0} />
    */
   maxChars?: number;
   halfFluid?: boolean;
