@@ -76,6 +76,7 @@ import {
   TabItem,
   TabPanel,
   TextArea,
+  CharacterCount,
   toaster,
   ToastProvider,
   ToastVariant,
@@ -199,19 +200,41 @@ const basicFormDefaultValues = {
   textArea: '',
 };
 
+const StandaloneTextAreaExample = () => {
+  const [length, setLength] = useState(0);
+  const maxChars = 50;
+
+  return (
+    <FormField>
+      <FormFieldLabel htmlFor="textarea-standalone">Comments</FormFieldLabel>
+      <FormFieldHint>This is a helpful hint.</FormFieldHint>
+      <TextArea
+        id="textarea-standalone"
+        maxLength={maxChars}
+        onChange={(e) => setLength(e.target.value.length)}
+      />
+      <CharacterCount maxChars={maxChars} currentLength={length} />
+    </FormField>
+  );
+};
+
 const NativeFormExample = () => {
   const formRef = useRef<HTMLFormElement>(null);
   const [submittedData, setSubmittedData] = useState<string | null>(null);
+  const [messageLength, setMessageLength] = useState(0);
+  const maxChars = 150;
+
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     const formData = new FormData(e.currentTarget);
     const data = Object.fromEntries(formData.entries());
     setSubmittedData(JSON.stringify(data, null, 2));
-    console.log("Form Data:", data);
+    console.log('Form Data:', data);
   };
   const handleClear = () => {
     formRef.current?.reset();
     setSubmittedData(null);
+    setMessageLength(0);
   };
   return (
     <Container className="p-4 border border-gray-200 bg-white rounded-lg shadow-sm">
@@ -257,14 +280,16 @@ const NativeFormExample = () => {
           </FormField>
           <FormField>
             <FormFieldLabel htmlFor="native-textarea">Message</FormFieldLabel>
-            <FormFieldHint>Maximum 150 characters</FormFieldHint>
+            <FormFieldHint>Maximum {maxChars} characters</FormFieldHint>
             <TextArea
               id="native-textarea"
               name="message"
               rows={4}
-              maxChars={150}
+              maxLength={maxChars}
               placeholder="Enter your message..."
+              onChange={(e) => setMessageLength(e.target.value.length)}
             />
+            <CharacterCount maxChars={maxChars} currentLength={messageLength} />
           </FormField>
           <div className="flex gap-2">
             <Button type="submit">Submit</Button>
@@ -288,6 +313,8 @@ const ReachHookFormWithRegister = () => {
   const formMethods = useForm({
     defaultValues: basicFormDefaultValues,
   });
+  const maxChars = 200;
+  const textAreaValue = formMethods.watch('textArea');
 
   const { register, handleSubmit, reset } = formMethods;
 
@@ -320,8 +347,12 @@ const ReachHookFormWithRegister = () => {
                 id="textarea-id"
                 cols={100}
                 rows={4}
-                maxChars={200}
+                maxLength={maxChars}
                 {...register('textArea')}
+              />
+              <CharacterCount
+                maxChars={maxChars}
+                currentLength={textAreaValue?.length ?? 0}
               />
             </FormField>
 
@@ -353,6 +384,7 @@ const ReachHookFormWithController = () => {
       autocomplete: '',
     },
   });
+  const [textAreaLength, setTextAreaLength] = useState(0);
 
   const { handleSubmit, control, reset } = methods;
 
@@ -363,6 +395,7 @@ const ReachHookFormWithController = () => {
 
   const handleClear = () => {
     reset();
+    setTextAreaLength(0);
     console.log('Form cleared');
   };
 
@@ -417,11 +450,16 @@ const ReachHookFormWithController = () => {
                     cols={100}
                     rows={4}
                     className="w-full"
-                    maxChars={100}
+                    maxLength={100}
                     clearButtonEnabled
+                    onChange={(e) => {
+                      field.onChange(e);
+                      setTextAreaLength(e.target.value.length);
+                    }}
                   />
                 )}
               />
+              <CharacterCount maxChars={100} currentLength={textAreaLength} />
             </FormField>
 
             <FormField label={{ text: 'Select (New)' }} className="w-full">
@@ -828,13 +866,7 @@ export default function Home() {
 
                   <div>
                     <h5 className="font-semibold mb-2">Text Area</h5>
-                    <FormField>
-                      <FormFieldLabel htmlFor="textarea-standalone">
-                        Comments
-                      </FormFieldLabel>
-                      <FormFieldHint>This is a helpful hint.</FormFieldHint>
-                      <TextArea id="textarea-standalone" maxChars={50} />
-                    </FormField>
+                    <StandaloneTextAreaExample />
                   </div>
                 </div>
               </Container>

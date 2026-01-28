@@ -3,6 +3,7 @@ import { useRef, useState } from 'react';
 import { Controller, FormProvider, useForm } from 'react-hook-form';
 import { expect, userEvent, within } from 'storybook/test';
 import { Button } from '../button/button.js';
+import { CharacterCount } from '../character-count/character-count.js';
 import {
   FormField,
   FormFieldError,
@@ -194,10 +195,22 @@ export const WithLabelHintAndError: Story = {
   },
 };
 
+/**
+ * @deprecated The `maxChars` prop is deprecated. Use the `CharacterCount` component instead.
+ * This story is kept for backwards compatibility demonstration only.
+ */
 export const WithMaxChars: Story = {
   args: {
     id: 'textarea-id-5',
     maxChars: 30,
+  },
+  parameters: {
+    docs: {
+      description: {
+        story:
+          '**Deprecated:** The `maxChars` prop is deprecated. Use the `CharacterCount` component instead for better support with uncontrolled forms and React Hook Form. See the `WithReactHookForm` story for the recommended approach.',
+      },
+    },
   },
   render: (props) => (
     <FormField>
@@ -436,8 +449,10 @@ export const WithReactHookForm: Story = {
     const methods = useForm<{ message: string }>({
       defaultValues: { message: '' },
     });
+    const maxChars = 20;
+    const message = methods.watch('message');
 
-    const onSubmit = methods.handleSubmit((_) => {
+    const onSubmit = methods.handleSubmit(() => {
       methods.reset();
     });
 
@@ -461,12 +476,16 @@ export const WithReactHookForm: Story = {
                   id="textarea-id-0"
                   rows={4}
                   cols={100}
-                  maxChars={20}
+                  maxLength={maxChars}
                   clearButtonEnabled
                   data-testid="textarea-id-0"
                   {...field}
                 />
               )}
+            />
+            <CharacterCount
+              maxChars={maxChars}
+              currentLength={message?.length ?? 0}
             />
           </FormField>
 
