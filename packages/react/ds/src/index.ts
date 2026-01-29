@@ -45,6 +45,8 @@ export type {
   CardMediaProps,
   CardProps,
 } from './card/types.js';
+export { CharacterCount } from './character-count/character-count.js';
+export type { CharacterCountProps } from './character-count/types.js';
 export { CheckboxGroup } from './checkbox/checkbox-group.js';
 export { Checkbox } from './checkbox/checkbox.js';
 export {
