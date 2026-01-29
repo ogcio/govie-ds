@@ -26,12 +26,12 @@ const meta = {
         type: { summary: 'number' },
       },
     },
-    currentLength: {
-      description: 'The current length of the text.',
-      control: 'number',
+    value: {
+      description: 'The current text value.',
+      control: 'text',
       table: {
         category: 'Props',
-        type: { summary: 'number' },
+        type: { summary: 'string' },
       },
     },
   },
@@ -43,7 +43,7 @@ type Story = StoryObj<typeof meta>;
 export const WithTextArea: Story = {
   args: {
     maxChars: 30,
-    currentLength: 0,
+    value: '',
   },
   parameters: {
     docs: {
@@ -75,10 +75,7 @@ export const WithTextArea: Story = {
               data-testid="textarea-id"
               {...methods.register('message')}
             />
-            <CharacterCount
-              maxChars={maxChars}
-              currentLength={message?.length ?? 0}
-            />
+            <CharacterCount maxChars={maxChars} value={message ?? ''} />
           </FormField>
 
           <div className="gi-flex gi-flex-cols gi-gap-2 gi-pt-4">

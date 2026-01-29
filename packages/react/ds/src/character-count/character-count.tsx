@@ -4,14 +4,14 @@ import { translate as t } from '../i18n/utility.js';
 import type { CharacterCountProps } from './types.js';
 
 /**
- * CharacterCount displays the remaining character count for form inputs
- * like TextArea or InputText.
+ * CharacterCount displays the remaining character count for textarea-based
+ * inputs, such as the TextArea component.
  */
 export const CharacterCount: React.FC<CharacterCountProps> = ({
   maxChars,
-  currentLength,
+  value,
 }) => {
-  const remainingChars = maxChars - currentLength;
+  const remainingChars = Math.max(0, maxChars - value.length);
 
   return (
     <div className="gi-textarea-remaining-chars">

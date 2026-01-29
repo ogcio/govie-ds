@@ -196,8 +196,8 @@ export const WithLabelHintAndError: Story = {
 };
 
 /**
- * @deprecated The `maxChars` prop is deprecated. Use the `CharacterCount` component instead.
- * This story is kept for backwards compatibility demonstration only.
+ * @deprecated The `maxChars` prop is deprecated. Use `maxLength` + `CharacterCount` component instead.
+ * This story demonstrates the deprecated behavior for backwards compatibility.
  */
 export const WithMaxChars: Story = {
   args: {
@@ -208,7 +208,7 @@ export const WithMaxChars: Story = {
     docs: {
       description: {
         story:
-          '**Deprecated:** The `maxChars` prop is deprecated. Use the `CharacterCount` component instead for better support with uncontrolled forms and React Hook Form.',
+          '**Deprecated:** The `maxChars` prop is deprecated. Use `maxLength` to limit input and the `CharacterCount` component for the visual hint.',
       },
     },
   },
@@ -483,10 +483,7 @@ export const WithReactHookForm: Story = {
                 />
               )}
             />
-            <CharacterCount
-              maxChars={maxChars}
-              currentLength={message?.length ?? 0}
-            />
+            <CharacterCount maxChars={maxChars} value={message ?? ''} />
           </FormField>
 
           <div className="gi-flex gi-flex-cols gi-gap-2 gi-pt-4">

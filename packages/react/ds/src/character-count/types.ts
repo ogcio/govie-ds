@@ -4,9 +4,7 @@ export type CharacterCountProps = {
    */
   maxChars: number;
   /**
-   * The current length of the text.
-   * For controlled components, pass `value.length`.
-   * For uncontrolled components with React Hook Form, use `watch('fieldName')?.length ?? 0`.
+   * The current text value.
    */
-  currentLength: number;
+  value: string;
 };

@@ -201,7 +201,7 @@ const basicFormDefaultValues = {
 };
 
 const StandaloneTextAreaExample = () => {
-  const [length, setLength] = useState(0);
+  const [value, setValue] = useState('');
   const maxChars = 50;
 
   return (
@@ -211,9 +211,9 @@ const StandaloneTextAreaExample = () => {
       <TextArea
         id="textarea-standalone"
         maxLength={maxChars}
-        onChange={(e) => setLength(e.target.value.length)}
+        onChange={(event) => setValue(event.target.value)}
       />
-      <CharacterCount maxChars={maxChars} currentLength={length} />
+      <CharacterCount maxChars={maxChars} value={value} />
     </FormField>
   );
 };
@@ -221,12 +221,12 @@ const StandaloneTextAreaExample = () => {
 const NativeFormExample = () => {
   const formRef = useRef<HTMLFormElement>(null);
   const [submittedData, setSubmittedData] = useState<string | null>(null);
-  const [messageLength, setMessageLength] = useState(0);
+  const [message, setMessage] = useState('');
   const maxChars = 150;
 
-  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
-    e.preventDefault();
-    const formData = new FormData(e.currentTarget);
+  const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
+    event.preventDefault();
+    const formData = new FormData(event.currentTarget);
     const data = Object.fromEntries(formData.entries());
     setSubmittedData(JSON.stringify(data, null, 2));
     console.log('Form Data:', data);
@@ -234,7 +234,7 @@ const NativeFormExample = () => {
   const handleClear = () => {
     formRef.current?.reset();
     setSubmittedData(null);
-    setMessageLength(0);
+    setMessage('');
   };
   return (
     <Container className="p-4 border border-gray-200 bg-white rounded-lg shadow-sm">
@@ -287,9 +287,9 @@ const NativeFormExample = () => {
               rows={4}
               maxLength={maxChars}
               placeholder="Enter your message..."
-              onChange={(e) => setMessageLength(e.target.value.length)}
+              onChange={(event) => setMessage(event.target.value)}
             />
-            <CharacterCount maxChars={maxChars} currentLength={messageLength} />
+            <CharacterCount maxChars={maxChars} value={message} />
           </FormField>
           <div className="flex gap-2">
             <Button type="submit">Submit</Button>
@@ -350,10 +350,7 @@ const ReachHookFormWithRegister = () => {
                 maxLength={maxChars}
                 {...register('textArea')}
               />
-              <CharacterCount
-                maxChars={maxChars}
-                currentLength={textAreaValue?.length ?? 0}
-              />
+              <CharacterCount maxChars={maxChars} value={textAreaValue ?? ''} />
             </FormField>
 
             <div className="flex gap-2">
@@ -384,7 +381,7 @@ const ReachHookFormWithController = () => {
       autocomplete: '',
     },
   });
-  const [textAreaLength, setTextAreaLength] = useState(0);
+  const [textAreaVal, setTextAreaVal] = useState('');
 
   const { handleSubmit, control, reset } = methods;
 
@@ -395,7 +392,7 @@ const ReachHookFormWithController = () => {
 
   const handleClear = () => {
     reset();
-    setTextAreaLength(0);
+    setTextAreaVal('');
     console.log('Form cleared');
   };
 
@@ -452,14 +449,14 @@ const ReachHookFormWithController = () => {
                     className="w-full"
                     maxLength={100}
                     clearButtonEnabled
-                    onChange={(e) => {
-                      field.onChange(e);
-                      setTextAreaLength(e.target.value.length);
+                    onChange={(event) => {
+                      field.onChange(event);
+                      setTextAreaVal(event.target.value);
                     }}
                   />
                 )}
               />
-              <CharacterCount maxChars={100} currentLength={textAreaLength} />
+              <CharacterCount maxChars={100} value={textAreaVal} />
             </FormField>
 
             <FormField label={{ text: 'Select (New)' }} className="w-full">

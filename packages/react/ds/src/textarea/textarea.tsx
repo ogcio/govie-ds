@@ -22,10 +22,10 @@ export type TextAreaProps = React.DetailedHTMLProps<
   cols?: number;
   autoComplete?: string;
   /**
-   * @deprecated Use the `CharacterCount` component instead for displaying remaining characters.
-   * This prop works correctly in controlled mode (when passing `value`), but in uncontrolled mode
+   * @deprecated Use the `maxLength` + `CharacterCount` component instead for displaying remaining characters.
+   * `maxChars` works correctly in controlled mode (when passing `value`), but in uncontrolled mode
    * (e.g., with React Hook Form), the character count may not update correctly after `reset()`.
-   * For uncontrolled usage, use `CharacterCount` with `watch()` to track the current value length.
+   * For uncontrolled usage, use `CharacterCount` with `watch()` or state to track the current value length.
    */
   maxChars?: number;
   halfFluid?: boolean;
