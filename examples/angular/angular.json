@@ -24,29 +24,19 @@
             "tsConfig": "tsconfig.app.json",
             "inlineStyleLanguage": "scss",
             "assets": [
-              "src/assets",
               {
                 "glob": "**/*",
                 "input": "public"
               }
             ],
-            "styles": [
-              "src/styles.scss",
-              "src/app/assets/global/styles.css",
-              "src/app/assets/global/theme.css",
-              "src/app/assets/local/ogcio-ds-0.4.4.min.css"
-            ],
-            "scripts": [
-              "src/app/assets/global/govie-frontend.umd.js",
-              "src/app/assets/local/ogcio-ds-0.4.4.min.js"
-            ]
+            "styles": ["dist/styles.css", "@ogcio/theme-govie/theme.css"]
           },
           "configurations": {
             "production": {
               "budgets": [
                 {
                   "type": "initial",
-                  "maximumWarning": "500kB",
+                  "maximumWarning": "600kB",
                   "maximumError": "1MB"
                 },
                 {
@@ -92,7 +82,7 @@
                 "input": "public"
               }
             ],
-            "styles": ["src/styles.scss"],
+            "styles": ["dist/styles.css", "@ogcio/theme-govie/theme.css"],
             "scripts": []
           }
         },
