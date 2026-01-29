@@ -450,7 +450,6 @@ export const WithReactHookForm: Story = {
       defaultValues: { message: '' },
     });
     const maxChars = 20;
-    const message = methods.watch('message');
 
     const onSubmit = methods.handleSubmit(() => {
       methods.reset();
@@ -476,14 +475,13 @@ export const WithReactHookForm: Story = {
                   id="textarea-id-0"
                   rows={4}
                   cols={100}
-                  maxLength={maxChars}
+                  maxChars={maxChars}
                   clearButtonEnabled
                   data-testid="textarea-id-0"
                   {...field}
                 />
               )}
             />
-            <CharacterCount maxChars={maxChars} value={message ?? ''} />
           </FormField>
 
           <div className="gi-flex gi-flex-cols gi-gap-2 gi-pt-4">
