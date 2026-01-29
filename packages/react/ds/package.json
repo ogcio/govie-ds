@@ -10,7 +10,7 @@
   },
   "exports": {
     ".": "./dist/index.js",
-    "./styles.css": "./dist/styles.css"
+    "./styles.css": "./dist/index.css"
   },
   "scripts": {
     "format": "prettier 'src/**/*.{ts,tsx}' --write",
@@ -19,8 +19,8 @@
     "test": "vitest run",
     "test:watch": "vitest",
     "coverage": "vitest run --coverage",
-    "build": "pnpm build:ts && pnpm build:styles",
-    "build:styles": "tailwindcss -i ./styles.css -o ./dist/styles.css --minify",
+    "build": "pnpm build:ts",
+    "build:styles": "pnpm dlx @tailwindcss/cli -i ./styles.css -o ./dist/styles.css --minify",
     "build:ts": "vite build",
     "storybook:dev": "storybook dev -p 6006",
     "storybook:build": "storybook build --stats-json",
@@ -58,6 +58,8 @@
     "@ogcio/design-system-tailwind": "workspace:*",
     "@ogcio/theme-doete": "workspace:*",
     "@ogcio/theme-govie": "workspace:*",
+    "@tailwindcss/vite": "^4.1.18",
+    "@tailwindcss/cli": "^4.1.18",
     "@testing-library/jest-dom": "^6.4.8",
     "@testing-library/react": "^16.0.1",
     "@testing-library/user-event": "^14.5.2",
@@ -71,6 +73,8 @@
     "postcss": "^8.4.40",
     "postcss-import": "^16.1.0",
     "react": "19.0.0",
-    "react-dom": "19.0.0"
+    "react-dom": "19.0.0",
+    "tailwindcss": "^4.1.18",
+    "vite": "^6.2.4"
   }
 }

@@ -1,9 +1,9 @@
 input::placeholder,
 textarea::placeholder {
-  @apply gi-text-gray-600 gi-stroke-gray-600;
+  @apply gi:text-gray-600 gi:stroke-gray-600;
 }
 
 input:disabled::placeholder,
 textarea:disabled::placeholder {
-  @apply gi-text-gray-700 gi-stroke-gray-700;
+  @apply gi:text-gray-700 gi:stroke-gray-700;
 }

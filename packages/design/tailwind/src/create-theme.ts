@@ -1,17 +1,17 @@
 import { variables } from '@ogcio/design-system-tokens';
 import merge from 'deepmerge';
+import type { Config } from 'tailwindcss';
 import tailwindTheme from 'tailwindcss/defaultTheme.js';
-import { CustomThemeConfig } from 'tailwindcss/types/config.js';
 import { convertColors, toFont } from './utilities.js';
 
 export type CreateThemeOptions = {
   meta?: any;
-  overrides?: Partial<CustomThemeConfig>;
+  overrides?: Partial<Config['theme']>;
 };
 
 export function createTheme(
   options?: CreateThemeOptions,
-): Partial<CustomThemeConfig> {
+): Partial<Config['theme']> {
   const { meta, overrides } = options ?? {};
 
   // TODO: type variables and meta
@@ -27,7 +27,7 @@ export function createTheme(
       : (variables.primitive.font as any)[property][index];
   };
 
-  const defaultTheme: Partial<CustomThemeConfig> = {
+  const defaultTheme: Partial<Config['theme']> = {
     ...tailwindTheme,
     container: {
       padding: {
@@ -553,5 +553,5 @@ export function createTheme(
     },
   };
 
-  return merge<CustomThemeConfig>(defaultTheme, overrides || {});
+  return merge<Config['theme']>(defaultTheme, overrides || {});
 }

@@ -1,67 +1,67 @@
-/* General focus classes */
-.gi-focus-state-outline {
-  @apply focus:gi-outline
-  focus:gi-outline-sm
-  focus:gi-outline-color-shadow-intent-focus-default
-  focus:gi-outline-offset-0;
+/* General focus utilities classes */
+@utility focus-state-outline {
+  @apply gi:focus:outline
+    gi:focus:outline-sm
+    gi:focus:outline-color-shadow-intent-focus-default
+    gi:focus:outline-offset-0;
 }
 
-.gi-focus-visible-state-outline {
-  @apply focus-visible:gi-outline
-  focus-visible:gi-outline-sm
-  focus-visible:gi-outline-color-shadow-intent-focus-default
-  focus-visible:gi-outline-offset-0;
+@utility focus-visible-state-outline {
+  @apply gi:focus-visible:outline
+    gi:focus-visible:outline-sm
+    gi:focus-visible:outline-color-shadow-intent-focus-default
+    gi:focus-visible:outline-offset-0;
 }
 
-.gi-focus-within-state-outline {
-  @apply focus-within:gi-outline
-  focus-within:gi-outline-sm
-  focus-within:gi-outline-color-shadow-intent-focus-default
-  focus-within:gi-outline-offset-0;
+@utility focus-within-state-outline {
+  @apply gi:focus-within:outline
+    gi:focus-within:outline-sm
+    gi:focus-within:outline-color-shadow-intent-focus-default
+    gi:focus-within:outline-offset-0;
 }
 
-.gi-focus-visible-state-outline-inner-shadow-sm {
-  @apply gi-focus-visible-state-outline focus-visible:gi-shadow-[inset_0_0_0_2px] focus-visible:gi-shadow-gray-950 focus-visible:gi-rounded-sm focus-visible:gi-bg-gray-200;
+@utility focus-visible-state-outline-inner-shadow-sm {
+  @apply gi:focus-visible-state-outline
+    gi:focus-visible:shadow-[inset_0_0_0_2px]
+    gi:focus-visible:shadow-gray-950
+    gi:focus-visible:rounded-sm
+    gi:focus-visible:bg-gray-200;
 }
 
-.gi-focus-state-outline-inner-shadow-sm {
-  @apply focus:gi-bg-gray-200 gi-focus-state-outline focus:gi-shadow-[inset_0_0_0_2px] focus:gi-shadow-gray-950 focus:gi-rounded-sm;
+@utility focus-state-outline-inner-shadow-sm {
+  @apply gi:focus:bg-gray-200 gi:focus-state-outline gi:focus:shadow-[inset_0_0_0_2px] gi:focus:shadow-gray-950 gi:focus:rounded-sm;
 }
 
-.gi-focus-state-border {
-  @apply focus:gi-border-solid focus:gi-border-color-border-intent-focus-default focus:gi-border-md;
+@utility focus-state-border {
+  @apply gi:focus:border-solid gi:focus:border-color-border-intent-focus-default gi:focus:border-md;
 }
 
-.gi-focus-visible-state-border {
-  @apply focus-visible:gi-border-solid focus-visible:gi-border-color-border-intent-focus-default focus-visible:gi-border-md;
+@utility focus-visible-state-border {
+  @apply gi:focus-visible:border-solid gi:focus-visible:border-color-border-intent-focus-default gi:focus-visible:border-md;
 }
 
-.gi-focus-state-border-sm {
-  @apply gi-focus-state-border focus:gi-border-sm;
+@utility focus-state-border-sm {
+  @apply gi:focus-state-border gi:focus:border-sm;
 }
 
-.gi-focus-state-border-sm-rounded {
-  @apply gi-focus-state-border-sm focus:gi-rounded-sm;
+@utility focus-state-border-sm-rounded {
+  @apply gi:focus-state-border-sm gi:focus:rounded-sm;
 }
 
-.gi-focus-visible-state-border-sm {
-  @apply gi-focus-visible-state-border focus-visible:gi-border-sm;
+@utility focus-visible-state-border-sm {
+  @apply gi:focus-visible-state-border gi:focus-visible:border-sm;
 }
 
-.gi-focus-visible-state-border-sm-rounded {
-  @apply gi-focus-visible-state-border-sm focus-visible:gi-rounded-sm;
+@utility focus-visible-state-border-sm-rounded {
+  @apply gi:focus-visible-state-border-sm gi:focus-visible:rounded-sm;
 }
-/* General focus classes */
 
-/* Inputs focus state */
 input[type='text'] {
-  @apply gi-focus-state-outline gi-focus-state-border focus:gi-rounded-md;
+  @apply gi:focus-state-outline gi:focus-state-border gi:focus:rounded-md;
 }
-/* Inputs focus state*/
 
-/* Error state */
 .gi-error-state {
-  @apply gi-pl-4 gi-border-solid gi-border-l-lg gi-border-color-border-intent-error-default;
+  @apply gi:pl-4 gi:border-solid gi:border-l-lg gi:border-color-border-intent-error-default;
 }
 
 .gi-error-state input[type='text'],
@@ -78,34 +78,23 @@ input[type='text'] {
 .gi-error-state input[type='range'],
 .gi-error-state select,
 .gi-error-state textarea {
-  @apply gi-border-color-border-intent-error-default gi-focus-visible-state-border;
+  @apply gi:border-color-border-intent-error-default gi:focus-visible-state-border;
 }
 
-/* End of Error state */
-
-/* General Input disable state */
 .gi-input-disabled-state {
-  @apply disabled:gi-bg-color-surface-system-neutral-interactive-disabled disabled:gi-border-color-border-system-neutral-interactive-disabled disabled:gi-text-color-text-system-neutral-interactive-disabled-surface disabled:gi-cursor-not-allowed;
+  @apply gi:disabled:bg-color-surface-system-neutral-interactive-disabled gi:disabled:border-color-border-system-neutral-interactive-disabled gi:disabled:text-color-text-system-neutral-interactive-disabled-surface gi:disabled:cursor-not-allowed;
 }
-/* General Input disable state */
 
-/* Remove default X icon */
-
-/* WebKit (Chrome, Safari) */
 input[type='search']::-webkit-search-cancel-button {
   -webkit-appearance: none;
   appearance: none;
   display: none;
 }
 
-/* Firefox (fallback, no cancel button shown by default) */
 input[type='search']::-moz-search-clear-button {
   display: none;
 }
 
-/* Optional: Edge (legacy) */
 input[type='search']::-ms-clear {
   display: none;
 }
-
-/* Remove default X icon */

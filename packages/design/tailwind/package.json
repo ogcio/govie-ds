@@ -7,7 +7,9 @@
   "types": "dist/index.d.ts",
   "exports": {
     ".": "./dist/index.js",
-    "./components.css": "./css/components.css"
+    "./components.css": "./css/components.css",
+    "./layout.css": "./css/layout.css",
+    "./typography.css": "./css/typography.css"
   },
   "scripts": {
     "format": "prettier 'src/**/*.ts' --write",
@@ -22,7 +24,7 @@
   ],
   "prettier": "@ogcio/design-system-prettier-config",
   "peerDependencies": {
-    "tailwindcss": ">=3.4.0"
+    "tailwindcss": "^4.1.18"
   },
   "dependencies": {
     "@ogcio/design-system-tokens": "workspace:*",

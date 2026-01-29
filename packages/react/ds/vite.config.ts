@@ -1,5 +1,6 @@
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
+import tailwindcss from '@tailwindcss/vite';
 import react from '@vitejs/plugin-react';
 import { glob } from 'glob';
 import preserveDirectives from 'rollup-preserve-directives';
@@ -9,6 +10,7 @@ import { libInjectCss } from 'vite-plugin-lib-inject-css';
 
 export default defineConfig({
   plugins: [
+    tailwindcss(),
     react(),
     libInjectCss(),
     dts({
@@ -56,7 +58,10 @@ export default defineConfig({
           ]),
       ),
       output: {
-        assetFileNames: 'assets/[name][extname]',
+        assetFileNames: (assetInfo) => {
+          if (assetInfo.name?.endsWith('.css')) {return '[name][extname]';}
+          return 'assets/[name][extname]';
+        },
         entryFileNames: '[name].js',
         globals: {
           react: 'React',
