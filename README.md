@@ -2,19 +2,75 @@
 
 The Government of Ireland Design System is an open-source design system developed by the Office of the Government Chief Information Officer (OGCIO). It provides tools for design and development, along with resources and guidelines to help teams create consistent, accessible, and user-centred digital services across government.
 
-- 📘 [Project Overview](https://github.com/ogcio/govie-ds/blob/main/docs/overview.md)
-- 🛠️ [Technical Reference](https://github.com/ogcio/govie-ds/blob/main/docs/technical.md)
-- ⚛️ [React Storybook](https://ds.services.gov.ie/storybook-react/?path=/docs/layout-accordion--docs)
-- 🧱 [HTML Storybook](https://ds.services.gov.ie/storybook-html/?path=/docs/layout-accordion--docs)
-- 🧩 [Available Components](https://ds.services.gov.ie/components/)
+<br />
 
-## 🎨 Design
+<table cellspacing="8" cellpadding="24" border="0" width="100%" style="table-layout:fixed;">
+<tr>
+<td align="center" width="200" style="border:1px solid #e5e7eb;border-radius:2px;">
+<a href="https://github.com/ogcio/govie-ds/blob/main/docs/overview.md">
+<img src="./assets/docs/icon_project_overview.png" width="64" height="64" alt="Project overview" />
+<br><br>
+<strong>Project Overview</strong>
+</a>
+</td>
+<td align="center" width="200" style="border:1px solid #e5e7eb;border-radius:2px;">
+<a href="https://github.com/ogcio/govie-ds/blob/main/docs/technical.md">
+<img src="./assets/docs/icon_technical_reference.png" width="64" height="64" alt="Technical reference" />
+<br><br>
+<strong>Technical Reference</strong>
+</a>
+</td>
+<td align="center" width="200" style="border:1px solid #e5e7eb;border-radius:2px;">
+<a href="https://ds.services.gov.ie/storybook-react/?path=/docs/layout-accordion--docs">
+<img src="./assets/docs/icon_react.png" width="64" height="64" alt="React Storybook" />
+<br><br>
+<strong>React Storybook</strong>
+</a>
+</td>
+<td align="center" width="200" style="border:1px solid #e5e7eb;border-radius:2px;">
+<a href="https://ds.services.gov.ie/storybook-html/?path=/docs/layout-accordion--docs">
+<img src="./assets/docs/icon_html.png" width="64" height="64" alt="HTML Storybook" />
+<br><br>
+<strong>HTML Storybook</strong>
+</a>
+</td>
+<td align="center" width="200" style="border:1px solid #e5e7eb;border-radius:2px;">
+<a href="https://ds.services.gov.ie/components/">
+<img src="./assets/docs/icon_components.png" width="64" height="64" alt="Available components" />
+<br><br>
+<strong>Available Components</strong>
+</a>
+</td>
+</tr>
+</table>
 
-The Government of Ireland Design System uses Figma as its core design foundation, ensuring visual consistency across all government platforms and services.
-Our design tokens and variables are managed centrally and can be imported directly into Figma for use by designers and product teams.
+<br />
 
-- 👉 [Design](packages/design/README.md)
-- 👉 [Figma](packages/design/figma/README.md)
+## Design
+
+The Government of Ireland Design System uses Figma as its primary design tool, helping teams maintain consistency across government platforms and services. Design tokens and variables are centrally managed and available for direct use in Figma.
+
+<br />
+<table cellspacing="8" cellpadding="24" border="0" width="100%" style="table-layout:fixed;">
+<tr>
+<td align="center" width="200" style="border:1px solid #e5e7eb;border-radius:2px;">
+<a href="packages/design/README.md">
+<img src="./assets/docs/icon_design.png" width="64" height="64" alt="Design" />
+<br><br>
+<strong>Design</strong>
+</a>
+</td>
+<td align="center" width="220" style="border:1px solid #e5e7eb;border-radius:2px;">
+<a href="packages/design/figma/README.md">
+<img src="./assets/docs/icon_figma.png" width="64" height="64" alt="Figma" />
+<br><br>
+<strong>Figma</strong>
+</a>
+</td>
+</tr>
+</table>
+
+<br />
 
 ## Packages
 
@@ -25,6 +81,8 @@ This project includes the following packages that are publicly available on npm:
 - [`@ogcio/design-system-tailwind`](packages/design/tailwind/README.md) - A Tailwind CSS integration for the Government of Ireland Design System, providing utility-first styling options for rapid UI development.
 - [`@ogcio/theme-govie`](packages/themes/govie/README.md) - A theme package for the Government of Ireland Design System, providing predefined styles and components tailored for the Govie platform.
 
+<br />
+
 ## Getting started
 
 ```bash
@@ -32,6 +90,8 @@ corepack enable
 pnpm install
 pnpm ds
 ```
+
+<br />
 
 ## Scripts
 
@@ -49,6 +109,8 @@ pnpm ds
 | `pnpm examples:vite`   | Run Vite example component usage        |
 | `pnpm examples:nextjs` | Run Next.js example component usage     |
 | `pnpm gen:licenses`    | Generate third‑party licenses report    |
+
+<br />
 
 ## Generate third-party licenses report
 
@@ -70,12 +132,16 @@ sh ./scripts/licences.sh
 
 This generates `LICENCES.md` with a table of package name, version, and license for all dependencies.
 
+<br />
+
 ## Visual regression testing
 
 To run Visual regression testing locally you need to create a Docker image in your local machine running the command `make build-visual-tests-image`.
 Once the image has been created, you can run the tests with the command `make tests`.
 If you are developing a new feature or making some adjustment to the style of existing components, you might need to update the snapshots to the latest version; to do so, you just have to run `make update-screenshots` to refresh all the screenshot in the repository.
 Once you're done, you can run `make stop-react-storybook` to close the Storybook instance that is running in the background.
+
+<br />
 
 ## Build Figma tokens
 
@@ -88,10 +154,14 @@ pnpm figma:build
 Figma tokens are outputted to `packages/design/figma/dist/tokens`
 The entire folder can be uploaded as one with the [figma-variables-import](https://github.com/microsoft/figma-variables-import) plugin.
 
+<br />
+
 ### Known Issues
 
 - Figma does not support composite variables (e.g. typography, shadows etc), so they are converted to nested variable groups
 - Figma [does not support percentage variables for line height](https://forum.figma.com/t/allow-percentages-for-line-height/69692) so line height percentages must be entered manually for Figma text styles
+
+<br />
 
 ## Thanks
 
