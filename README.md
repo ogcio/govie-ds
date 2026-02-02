@@ -4,45 +4,30 @@ The Government of Ireland Design System is an open-source design system develope
 
 <br />
 
-<table cellspacing="8" cellpadding="24" border="0" width="100%" style="table-layout:fixed;">
-<tr>
-<td align="center" width="200" style="border:1px solid #e5e7eb;border-radius:2px;">
-<a href="https://github.com/ogcio/govie-ds/blob/main/docs/overview.md">
-<img src="./assets/docs/icon_project_overview.png" width="64" height="64" alt="Project overview" />
-<br><br>
-<strong>Project Overview</strong>
-</a>
-</td>
-<td align="center" width="200" style="border:1px solid #e5e7eb;border-radius:2px;">
-<a href="https://github.com/ogcio/govie-ds/blob/main/docs/technical.md">
-<img src="./assets/docs/icon_technical_reference.png" width="64" height="64" alt="Technical reference" />
-<br><br>
-<strong>Technical Reference</strong>
-</a>
-</td>
-<td align="center" width="200" style="border:1px solid #e5e7eb;border-radius:2px;">
-<a href="https://ds.services.gov.ie/storybook-react/?path=/docs/layout-accordion--docs">
-<img src="./assets/docs/icon_react.png" width="64" height="64" alt="React Storybook" />
-<br><br>
-<strong>React Storybook</strong>
-</a>
-</td>
-<td align="center" width="200" style="border:1px solid #e5e7eb;border-radius:2px;">
-<a href="https://ds.services.gov.ie/storybook-html/?path=/docs/layout-accordion--docs">
-<img src="./assets/docs/icon_html.png" width="64" height="64" alt="HTML Storybook" />
-<br><br>
-<strong>HTML Storybook</strong>
-</a>
-</td>
-<td align="center" width="200" style="border:1px solid #e5e7eb;border-radius:2px;">
-<a href="https://ds.services.gov.ie/components/">
-<img src="./assets/docs/icon_components.png" width="64" height="64" alt="Available components" />
-<br><br>
-<strong>Available Components</strong>
-</a>
-</td>
-</tr>
-</table>
+<p>
+  <img src="./assets/docs/icon_project_overview.png" width="48" height="48" alt="" hspace="10" />
+  <img src="./assets/docs/icon_technical_reference.png" width="48" height="48" alt="" hspace="10" />
+  <img src="./assets/docs/icon_react.png" width="48" height="48" alt="" hspace="10" />
+  <img src="./assets/docs/icon_html.png" width="48" height="48" alt="" hspace="10" />
+  <img src="./assets/docs/icon_components.png" width="48" height="48" alt="" hspace="10" />
+</p>
+
+<br />
+
+**[Project Overview](https://github.com/ogcio/govie-ds/blob/main/docs/overview.md)**  
+Introduction to the Government of Ireland Design System, its goals, and scope.
+
+**[Technical Reference](https://github.com/ogcio/govie-ds/blob/main/docs/technical.md)**  
+Technical setup, architecture, and implementation details.
+
+**[React Storybook](https://ds.services.gov.ie/storybook-react/?path=/docs/layout-accordion--docs)**  
+Interactive documentation for React components.
+
+**[HTML Storybook](https://ds.services.gov.ie/storybook-html/?path=/docs/layout-accordion--docs)**  
+Interactive documentation for HTML components.
+
+**[Available Components](https://ds.services.gov.ie/components/)**  
+Complete catalogue of available components.
 
 <br />
 
@@ -51,24 +36,19 @@ The Government of Ireland Design System is an open-source design system develope
 The Government of Ireland Design System uses Figma as its primary design tool, helping teams maintain consistency across government platforms and services. Design tokens and variables are centrally managed and available for direct use in Figma.
 
 <br />
-<table cellspacing="8" cellpadding="24" border="0" width="100%" style="table-layout:fixed;">
-<tr>
-<td align="center" width="200" style="border:1px solid #e5e7eb;border-radius:2px;">
-<a href="packages/design/README.md">
-<img src="./assets/docs/icon_design.png" width="64" height="64" alt="Design" />
-<br><br>
-<strong>Design</strong>
-</a>
-</td>
-<td align="center" width="220" style="border:1px solid #e5e7eb;border-radius:2px;">
-<a href="packages/design/figma/README.md">
-<img src="./assets/docs/icon_figma.png" width="64" height="64" alt="Figma" />
-<br><br>
-<strong>Figma</strong>
-</a>
-</td>
-</tr>
-</table>
+
+<p>
+  <img src="./assets/docs/icon_design.png" width="48" height="48" alt="" hspace="10" />
+  <img src="./assets/docs/icon_figma.png" width="48" height="48" alt="" hspace="10" />
+</p>
+
+<br />
+
+**[Design](packages/design/README.md)**  
+Design packages, tools, and tokens for building and theming the design system.
+
+**[Figma](packages/design/figma/README.md)**  
+Tools and resources for designing in Figma.
 
 <br />
 
