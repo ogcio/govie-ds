@@ -1,0 +1,24 @@
+.gi-list {
+  @apply gi-list-none;
+}
+
+.gi-list-bullet {
+  @apply gi-pl-5 gi-list-disc;
+}
+
+.gi-list-number {
+  @apply gi-pl-4 gi-list-decimal;
+}
+
+.gi-list > li {
+  @apply gi-mb-1;
+}
+
+.gi-list-bullet > li,
+.gi-list-number > li {
+  @apply gi-mb-0;
+}
+
+.gi-list-spaced > li {
+  @apply gi-mb-4;
+}

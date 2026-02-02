@@ -1,0 +1,23 @@
+.gi-breadcrumbs {
+  @apply gi-flex gi-items-center gi-gap-1;
+}
+
+.gi-breadcrumbs > ol {
+  @apply gi-flex gi-list-none gi-flex-wrap;
+}
+
+.gi-breadcrumbs > ol > :not([hidden]) ~ :not([hidden]) {
+  @apply gi-mx-0;
+}
+
+.gi-breadcrumbs > ol > li {
+  @apply gi-flex gi-items-center;
+}
+
+.gi-breadcrumbs-link {
+  @apply gi-text-ellipsis gi-whitespace-nowrap gi-line-clamp-1;
+}
+
+.gi-breadcrumbs-separator {
+  @apply gi-px-3 gi-text-gray-500;
+}

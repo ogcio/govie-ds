@@ -3,9 +3,9 @@
 
 @config "./tailwind.config.ts";
 @import 'tailwindcss' prefix(gi);
-@import '@ogcio/design-system-tailwind/layout.css';
-@import '@ogcio/design-system-tailwind/components.css';
-@import '@ogcio/design-system-tailwind/typography.css';
+@import './css/layout.css';
+@import './css/components.css';
+@import './css/typography.css';
 
 .gieds-js .js\:gi-hidden {
   display: none;

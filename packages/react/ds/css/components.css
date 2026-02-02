@@ -1,5 +1,7 @@
 @import './components/placeholder.css';
+@import './components/common.css';
 @import './components/accordion.css';
+/*
 @import './components/alert.css';
 @import './components/autocomplete.css';
 @import './components/blockquote.css';
@@ -9,7 +11,6 @@
 @import './components/input-checkbox.css';
 @import './components/chip.css';
 @import './components/combo-box.css';
-@import './components/common.css';
 @import './components/cookie-banner.css';
 @import './components/data-table.css';
 @import './components/details.css';
@@ -43,10 +44,10 @@
 @import './components/text-area.css';
 @import './components/input-text.css';
 @import './components/toast.css';
-@import './components/tootlip.css';
+@import './components/tootlip.css';*/
 
 @layer base {
   body {
-    @apply gi-font-primary;
+    @apply gi:font-primary;
   }
 }

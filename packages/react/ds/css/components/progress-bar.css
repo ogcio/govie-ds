@@ -1,0 +1,38 @@
+.gi-progress-bar-container {
+  @apply gi-flex gi-items-center gi-flex-col;
+}
+
+.gi-progress-bar-container > span {
+  @apply gi-mt-2 gi-text-sm gi-text-gray-950;
+}
+
+.gi-progress-bar {
+  @apply gi-w-full gi-bg-gray-400 gi-overflow-hidden gi-rounded-sm gi-h-1;
+}
+
+.gi-progress-bar > div {
+  @apply gi-transition-all gi-bg-gray-950 gi-h-1 gi-rounded-sm;
+}
+
+.gi-progress-bar-indeterminate {
+  @apply gi-relative gi-overflow-hidden gi-w-[25%];
+  animation: gi-indeterminate-progress 1s linear infinite;
+}
+
+@keyframes gi-indeterminate-progress {
+  0% {
+    left: -100%;
+  }
+  25% {
+    left: 0%;
+  }
+  50% {
+    left: 25%;
+  }
+  75% {
+    left: 50%;
+  }
+  100% {
+    left: 100%;
+  }
+}

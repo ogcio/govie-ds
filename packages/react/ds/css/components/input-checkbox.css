@@ -1,0 +1,80 @@
+.gi-input-checkbox {
+  @apply gi-rounded-sm 
+  hover:gi-outline
+  hover:gi-outline-sm
+  hover:gi-outline-gray-200
+  hover:gi-outline-offset-0 
+  
+  focus:gi-shadow-[inset_0_0_0_1px] 
+  focus:gi-shadow-color-border-system-neutral-interactive-hover
+
+  gi-focus-state-outline gi-cursor-pointer 
+  gi-appearance-none gi-border-sm gi-border-solid 
+  gi-border-color-border-system-neutral-default 
+  
+  checked:before:gi-block 
+  checked:before:gi--rotate-45 
+  checked:before:gi-relative 
+  checked:before:gi-border-l-lg 
+  checked:before:gi-border-b-lg 
+  checked:before:gi-border-color-border-system-neutral-default
+
+  gi-input-disabled-state 
+  disabled:hover:gi-outline-none 
+  disabled:before:gi-border-color-border-system-neutral-interactive-disabled-surface
+  disabled:gi-border-color-border-system-neutral-interactive-disabled-surface;
+}
+
+.gi-input-checkbox-small {
+  @apply gi-flex-none gi-input-checkbox gi-w-6 gi-h-6 checked:before:gi-w-4 checked:before:gi-h-2 checked:before:gi-left-0.5 checked:before:gi-top-1;
+}
+
+.gi-input-checkbox-medium {
+  @apply gi-flex-none gi-input-checkbox gi-w-8 gi-h-8 checked:before:gi-w-5 checked:before:gi-h-2.5 checked:before:gi-left-1 checked:before:gi-top-1.5;
+}
+
+.gi-input-checkbox-large {
+  @apply gi-flex-none gi-input-checkbox gi-w-11 gi-h-11 checked:before:gi-w-7 checked:before:gi-h-3.5 checked:before:gi-left-1.5 checked:before:gi-top-2;
+}
+
+.gi-input-checkbox-container {
+  @apply gi-gap-3 gi-flex gi-items-center;
+}
+
+.gi-input-checkbox-hint-container {
+  @apply gi-flex gi-gap-3;
+}
+
+.gi-input-checkbox-hint-container > div {
+  @apply gi-h-auto;
+}
+
+.gi-input-checkbox.gi-checkbox-indeterminate:checked:before {
+  @apply gi-translate-y-0 gi-rotate-0;
+}
+
+.gi-input-checkbox-small.gi-checkbox-indeterminate:checked:before {
+  @apply gi-w-3 gi-h-[1px] gi-left-1 gi-top-[9px] gi-border-b-sm;
+}
+
+.gi-input-checkbox-medium.gi-checkbox-indeterminate:checked:before {
+  @apply gi-left-1.5 gi-w-4 gi-h-[1px] gi-top-[13px] gi-border-b-md;
+}
+
+.gi-input-checkbox-large.gi-checkbox-indeterminate:checked:before {
+  @apply gi-left-2 gi-w-6 gi-h-[1px] gi-top-[18px] gi-border-b-lg;
+}
+
+.gi-input-checkbox-container[data-table-cell='true'] {
+  @apply gi-gap-0 gi-justify-center;
+}
+
+.gi-input-checkbox-container[data-table-cell-error-state='true']
+  .gi-input-checkbox:not(:disabled) {
+  @apply gi-border-sm
+    gi-border-color-border-intent-error-default
+    gi-focus-state-outline
+    focus:gi-shadow-[inset_0_0_0_1px]
+    focus:gi-shadow-color-border-system-neutral-interactive-hover
+    focus:gi-border-color-border-system-neutral-default;
+}

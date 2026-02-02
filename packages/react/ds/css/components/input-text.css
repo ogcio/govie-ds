@@ -1,0 +1,139 @@
+.gi-input-text-inner {
+  @apply gi-w-full gi-flex gi-items-center gi-relative gi-text-color-text-system-neutral-default;
+}
+
+.gi-input-text-container {
+  @apply gi-w-full gi-flex gi-items-center gi-relative;
+}
+
+.gi-input-text-prefix {
+  @apply gi-rounded-l-sm xs:gi-text-md gi-text-sm gi-grid gi-place-content-center gi-bg-color-surface-system-neutral-layer2 gi-inline-block gi-flex-[0_0_auto] gi-text-center gi-whitespace-nowrap gi-cursor-default gi-px-2 gi-py-2 gi-border-l-sm gi-border-t-sm gi-border-b-sm gi-border-solid gi-border-color-border-intent-focus-default gi-min-w-10 gi-h-10;
+}
+.gi-input-text-prefix[data-disabled='true'] {
+  @apply gi-border-color-border-system-neutral-interactive-disabled gi-text-color-text-system-neutral-interactive-disabled-surface gi-cursor-not-allowed;
+}
+
+.gi-input-text-suffix {
+  @apply gi-rounded-r-sm xs:gi-text-md gi-text-sm gi-grid gi-place-content-center gi-bg-color-surface-system-neutral-layer2 gi-inline-block gi-flex-[0_0_auto] gi-text-center gi-whitespace-nowrap gi-cursor-default gi-px-2 gi-py-2 gi-border-r-sm gi-border-t-sm gi-border-b-sm gi-border-solid gi-border-color-border-intent-focus-default gi-min-w-10 gi-h-10;
+}
+.gi-input-text-suffix[data-disabled='true'] {
+  @apply gi-border-color-border-system-neutral-interactive-disabled gi-text-color-text-system-neutral-interactive-disabled-surface gi-cursor-not-allowed;
+}
+
+.gi-input-text {
+  @apply gi-w-full gi-rounded-sm gi-focus-state-outline gi-focus-state-border gi-flex-initial gi-border-sm gi-border-solid gi-box-border gi-h-10 gi-mt-0 gi-p-2 gi-z-1 xs:gi-text-md gi-text-sm gi-leading-10 xs:gi-leading-5 gi-input-disabled-state gi-border-color-border-intent-focus-default;
+}
+.gi-input-text[data-icon-start='true'][data-prefix='true'] {
+  @apply gi-pl-9;
+}
+
+.gi-input-text[data-icon-start='true'] {
+  @apply gi-pl-9;
+}
+
+.gi-input-text[data-icon-end='false'][data-end-element='true'] {
+  @apply gi-pr-10;
+}
+.gi-input-text[data-icon-end='true'][data-end-element='true'] {
+  @apply gi-pr-18;
+}
+.gi-input-text[data-icon-end='true'][data-end-element='false'] {
+  @apply gi-pr-8;
+}
+
+.gi-input-text-icon-end {
+  @apply gi-absolute gi-z-200 gi-right-2;
+}
+
+.gi-input-text-icon-end[data-end-element='true'] {
+  @apply gi-right-11;
+}
+.gi-input-text-icon-end[data-end-element='true'][data-suffix='true'] {
+  @apply gi-right-10;
+}
+
+.gi-input-text-icon-start {
+  @apply gi-absolute gi-z-200 gi-left-2;
+}
+
+.gi-input-text-end-element {
+  @apply gi-flex gi-absolute gi-z-200 gi-right-1;
+}
+
+.gi-input-text-action-before-suffix {
+  @apply gi-absolute gi-z-1;
+}
+
+.gi-input-text-action-before-suffix[data-has-icon-end='true'] {
+  @apply gi-right-7;
+}
+.gi-input-text-action-before-suffix[data-has-icon-end='false'] {
+  @apply gi-right-1;
+}
+
+.gi-input-half-width {
+  @apply !gi-w-1/2;
+}
+
+.gi-input-text-container[data-table-cell='true'],
+.gi-input-text-container[data-table-cell='true'] .gi-input-text-inner {
+  @apply gi-h-full;
+}
+
+.gi-input-text-container[data-table-cell='true'] .gi-input-text {
+  @apply gi-relative
+    gi-h-full
+    gi-py-0
+    gi-text-sm
+    gi-leading-6
+    gi-truncate
+    gi-overflow-hidden
+    gi-whitespace-nowrap
+    gi-border-[3px]
+    gi-border-transparent
+    gi-rounded-[0px]
+    gi-cursor-pointer
+
+    disabled:gi-cursor-not-allowed
+
+    focus:gi-z-[3]
+    focus:gi-border-[3px]
+    focus:gi-border-solid
+    focus:gi-border-color-border-intent-focus-default
+    focus:gi-rounded-[0px]
+    focus:gi-outline
+    focus:gi-outline-sm
+    focus:gi-outline-color-shadow-intent-focus-default
+    focus:gi-outline-offset-0;
+}
+
+.gi-input-text-container[data-table-cell='true']
+  .gi-input-text:not([data-icon-start='true']) {
+  @apply gi-pl-3;
+}
+.gi-input-text-container[data-table-cell='true']
+  .gi-input-text:not([data-icon-end='true']) {
+  @apply gi-pr-3;
+}
+
+.gi-input-text-container[data-table-cell='true'] .gi-input-text:disabled {
+  @apply gi-outline
+  gi-outline-[2px]
+  gi-outline-color-surface-system-neutral-interactive-disabled
+  gi-outline-offset-[-1px]
+  gi-border-[0px];
+}
+
+.gi-input-text-container[data-table-cell-error-state='true']
+  .gi-input-text:not(:disabled) {
+  @apply gi-outline
+  gi-z-[2]
+  gi-outline-[2px]
+  gi-outline-color-border-intent-error-default
+  gi-outline-offset-0
+  
+  focus:gi-outline
+  focus:gi-outline-sm
+  focus:gi-outline-color-shadow-intent-focus-default
+  focus:gi-outline-offset-0;
+}

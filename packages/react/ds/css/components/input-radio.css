@@ -1,0 +1,29 @@
+.gi-input-radio-base {
+  @apply gi-cursor-pointer gi-appearance-none gi-border-solid gi-border-[2px] gi-rounded-[50%] gi-border-black checked:before:gi-border-solid checked:before:gi-rounded-[50%] checked:before:gi-border-black checked:before:gi-block checked:before:gi-w-0 focus:gi-border-[4px] gi-focus-state-outline hover:gi-shadow-[0_0_0_4px_#d8dadf] hover:focus:gi-shadow-[0_0_0_6px_#d8dadf];
+}
+.gi-input-radio-small {
+  @apply gi-input-radio-base gi-min-w-6 gi-min-h-6 gi-w-6 gi-h-6 checked:before:gi-border-[5px] checked:before:gi-translate-x-[5px] checked:before:gi-translate-y-[5px] focus:before:gi-translate-x-[3px] focus:before:gi-translate-y-[3px];
+}
+.gi-input-radio-medium {
+  @apply gi-input-radio-base gi-min-w-8 gi-min-h-8 gi-w-8 gi-h-8 checked:before:gi-border-[7px] checked:before:gi-translate-x-[7px] checked:before:gi-translate-y-[7px] focus:before:gi-translate-x-[5px] focus:before:gi-translate-y-[5px];
+}
+
+.gi-input-radio-small ~ label {
+  @apply gi-cursor-pointer gi-text-sm;
+}
+.gi-input-radio-medium ~ label {
+  @apply gi-cursor-pointer gi-text-md;
+}
+
+.gi-input-radio-container {
+  @apply gi-gap-3 gi-flex gi-items-start;
+}
+.gi-input-radio-conditional-divider-container {
+  @apply gi-flex gi-gap-4;
+}
+.gi-input-radio-conditional-divider-border-container {
+  @apply gi-h-full gi-flex gi-justify-center gi-mt-1.5;
+}
+.gi-input-radio-conditional-divider-border {
+  @apply gi-h-full gi-w-1 gi-bg-gray-300;
+}

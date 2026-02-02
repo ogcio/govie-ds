@@ -1,0 +1,100 @@
+/* General focus utilities classes */
+@utility focus-state-outline {
+  @apply gi:focus:outline
+    gi:focus:outline-sm
+    gi:focus:outline-color-shadow-intent-focus-default
+    gi:focus:outline-offset-0;
+}
+
+@utility focus-visible-state-outline {
+  @apply gi:focus-visible:outline
+    gi:focus-visible:outline-sm
+    gi:focus-visible:outline-color-shadow-intent-focus-default
+    gi:focus-visible:outline-offset-0;
+}
+
+@utility focus-within-state-outline {
+  @apply gi:focus-within:outline
+    gi:focus-within:outline-sm
+    gi:focus-within:outline-color-shadow-intent-focus-default
+    gi:focus-within:outline-offset-0;
+}
+
+@utility focus-visible-state-outline-inner-shadow-sm {
+  @apply gi:focus-visible-state-outline
+    gi:focus-visible:shadow-[inset_0_0_0_2px]
+    gi:focus-visible:shadow-gray-950
+    gi:focus-visible:rounded-sm
+    gi:focus-visible:bg-gray-200;
+}
+
+@utility focus-state-outline-inner-shadow-sm {
+  @apply gi:focus:bg-gray-200 gi:focus-state-outline gi:focus:shadow-[inset_0_0_0_2px] gi:focus:shadow-gray-950 gi:focus:rounded-sm;
+}
+
+@utility focus-state-border {
+  @apply gi:focus:border-solid gi:focus:border-color-border-intent-focus-default gi:focus:border-md;
+}
+
+@utility focus-visible-state-border {
+  @apply gi:focus-visible:border-solid gi:focus-visible:border-color-border-intent-focus-default gi:focus-visible:border-md;
+}
+
+@utility focus-state-border-sm {
+  @apply gi:focus-state-border gi:focus:border-sm;
+}
+
+@utility focus-state-border-sm-rounded {
+  @apply gi:focus-state-border-sm gi:focus:rounded-sm;
+}
+
+@utility focus-visible-state-border-sm {
+  @apply gi:focus-visible-state-border gi:focus-visible:border-sm;
+}
+
+@utility focus-visible-state-border-sm-rounded {
+  @apply gi:focus-visible-state-border-sm gi:focus-visible:rounded-sm;
+}
+
+input[type='text'] {
+  @apply gi:focus-state-outline gi:focus-state-border gi:focus:rounded-md;
+}
+
+.gi-error-state {
+  @apply gi:pl-4 gi:border-solid gi:border-l-lg gi:border-color-border-intent-error-default;
+}
+
+.gi-error-state input[type='text'],
+.gi-error-state input[type='password'],
+.gi-error-state input[type='email'],
+.gi-error-state input[type='number'],
+.gi-error-state input[type='tel'],
+.gi-error-state input[type='url'],
+.gi-error-state input[type='search'],
+.gi-error-state input[type='date'],
+.gi-error-state input[type='datetime-local'],
+.gi-error-state input[type='color'],
+.gi-error-state input[type='file'],
+.gi-error-state input[type='range'],
+.gi-error-state select,
+.gi-error-state textarea {
+  @apply gi:border-color-border-intent-error-default gi:focus-visible-state-border;
+}
+
+.gi-input-disabled-state {
+  @apply gi:disabled:bg-color-surface-system-neutral-interactive-disabled gi:disabled:border-color-border-system-neutral-interactive-disabled gi:disabled:text-color-text-system-neutral-interactive-disabled-surface gi:disabled:cursor-not-allowed;
+}
+
+input[type='search']::-webkit-search-cancel-button {
+  -webkit-appearance: none;
+  appearance: none;
+  display: none;
+}
+
+input[type='search']::-moz-search-clear-button {
+  display: none;
+}
+
+input[type='search']::-ms-clear {
+  display: none;
+}

@@ -1,0 +1,12 @@
+.gi-error-text-md {
+  @apply gi-text-md;
+}
+.gi-error-text-sm {
+  @apply gi-text-sm;
+}
+.gi-error-text-lg {
+  @apply gi-text-lg;
+}
+.gi-error-text {
+  @apply gi-font-normal gi-text-color-text-intent-error-default;
+}

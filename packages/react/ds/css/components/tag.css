@@ -1,0 +1,39 @@
+.gi-tag {
+  @apply gi-rounded-sm gi-border-xs gi-font-bold gi-py-0 gi-px-2 gi-inline-flex gi-justify-center gi-items-center;
+}
+
+.gi-tag-size-default {
+  @apply gi-text-sm;
+}
+
+.gi-tag-size-small {
+  @apply gi-text-xs;
+}
+
+.gi-tag-default {
+  @apply gi-bg-color-surface-system-neutral-layer1 gi-border-color-border-system-neutral-muted gi-text-color-text-system-neutral-muted gi-stroke-color-text-system-neutral-muted;
+}
+
+.gi-tag-info {
+  @apply gi-bg-color-surface-intent-info-default gi-border-color-border-intent-info-subtle gi-text-color-text-intent-info-default gi-stroke-color-text-intent-info-default;
+}
+
+.gi-tag-success {
+  @apply gi-bg-color-surface-intent-success-default gi-border-color-border-intent-success-subtle gi-text-color-text-intent-success-default gi-stroke-color-text-intent-success-default;
+}
+
+.gi-tag-warning {
+  @apply gi-bg-color-surface-intent-warning-default gi-border-color-border-intent-warning-subtle gi-text-color-text-intent-warning-default gi-stroke-color-text-intent-warning-default;
+}
+
+.gi-tag-error {
+  @apply gi-bg-color-surface-intent-error-default gi-border-color-border-intent-error-subtle gi-text-color-text-intent-error-default gi-stroke-color-text-intent-error-default;
+}
+
+.gi-tag-counter {
+  @apply gi-border-0 gi-bg-color-surface-system-neutral-layer11 gi-text-color-text-tone-light-default gi-stroke-color-text-tone-light-default gi-min-w-6 gi-h-6 gi-text-xs gi-px-1 gi-py-[2px];
+}
+
+.gi-tag-counter-warning {
+  @apply gi-border-0 gi-bg-red-600 gi-text-white gi-stroke-white gi-rounded-full gi-min-w-7 gi-min-h-7 gi-px-[2px] gi-py-1 gi-inline-flex gi-items-center gi-justify-center gi-text-xs;
+}

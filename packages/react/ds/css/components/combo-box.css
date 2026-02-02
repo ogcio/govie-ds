@@ -1,0 +1,70 @@
+.gi-combobox-container {
+  @apply gi-max-w-[400px];
+}
+
+.gi-combobox-dropdown-item {
+  @apply gi-border-b first:gi-border-t;
+}
+
+.gi-combobox-toggle {
+  @apply gi-flex gi-px-2 gi-py-4 gi-relative gi-z-1 !gi-h-[unset] gi-justify-between gi-cursor-pointer gi-w-full
+    gi-border-t-transparent gi-border-t-sm
+    hover:gi-bg-color-surface-system-neutral-interactive-hover
+    focus:gi-bg-color-surface-system-neutral-interactive-hover gi-focus-state-outline gi-focus-state-border-sm-rounded;
+}
+
+.gi-combobox-toggle-content {
+  @apply gi-flex gi-gap-2;
+}
+
+.gi-combobox-toggle-content > p {
+  @apply gi-mb-0;
+}
+
+.gi-combobox-dropdown-container-open {
+  @apply gi-bg-color-surface-system-neutral-layer1 gi-relative gi-block;
+}
+
+.gi-combobox-dropdown-container-close {
+  @apply gi-bg-color-surface-system-neutral-layer1 gi-relative gi-hidden;
+}
+
+.gi-combobox-search {
+  @apply gi-py-4 gi-px-3 gi-relative;
+}
+
+.gi-combobox-search-input {
+  @apply gi-pt-0 gi-pb-0 gi-mb-0;
+}
+
+.gi-combobox-search-input input {
+  @apply gi-pl-3;
+}
+
+.gi-combobox-search-icon {
+  @apply gi-absolute gi-right-4 gi-top-5 gi-z-100 gi-cursor-pointer;
+}
+
+.gi-combobox-checkbox-container {
+  @apply gi-max-h-64 gi-overflow-y-auto gi-overflow-x-hidden gi-pt-2;
+}
+
+.gi-combobox-checkbox-container .gi-input-checkbox-container {
+  @apply gi-items-center;
+}
+
+.gi-combobox-checkbox-paragraph {
+  @apply gi-text-center gi-w-full;
+}
+
+.gi-combobox-checkbox {
+  @apply gi-px-3 hover:gi-bg-color-surface-system-neutral-interactive-hover;
+}
+
+.gi-combobox-checkbox input {
+  @apply gi-min-w-6;
+}
+
+.gi-combobox-checkbox label {
+  @apply gi-w-full gi-py-2;
+}

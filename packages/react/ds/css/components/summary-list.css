@@ -1,0 +1,43 @@
+.gi-summary-list {
+  @apply gi-rounded-md
+   gi-overflow-hidden
+   gi-antialiased
+   gi-text-md gi-w-full;
+}
+
+.gi-summary-list > table {
+  @apply gi-w-full;
+}
+
+.gi-summary-list > table > tbody tr {
+  @apply gi-flex gi-flex-col md:gi-table-row gi-align-middle gi-py-2 md:gi-py-none;
+}
+
+.gi-summary-list > table th {
+  @apply gi-font-bold gi-align-top gi-text-left;
+}
+
+.gi-summary-list > table > thead th {
+  @apply gi-align-middle;
+}
+
+.gi-summary-list > table td {
+  @apply gi-py-2 gi-align-top gi-px-3;
+}
+
+.gi-summary-list > table th {
+  @apply gi-overflow-hidden gi-text-ellipsis gi-whitespace-nowrap;
+}
+
+.gi-summary-list > table tr > th,
+.gi-summary-list > table tr > td {
+  @apply gi-py-2 gi-px-3 md:gi-px-3 md:gi-py-2 gi-min-h-12;
+}
+
+.gi-summary-list-action {
+  @apply gi-text-sm gi-font-normal gi-align-top md:gi-text-right gi-whitespace-nowrap;
+}
+
+.gi-summary-list > table thead {
+  @apply gi-bg-color-surface-system-neutral-layer1 gi-border-b gi-border-color-border-system-neutral-muted;
+}

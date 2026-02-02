@@ -1,0 +1,27 @@
+.gi-score-select-labels {
+  @apply sm:gi-flex gi-justify-between gi-hidden gi-text-sm;
+}
+
+.gi-score-select-labels-vertical {
+  @apply gi-flex gi-flex-col gi-gap-3;
+}
+
+.gi-score-select-labels-responsive {
+  @apply gi-flex sm:gi-hidden gi-text-sm gi-flex-col gi-gap-3;
+}
+
+.gi-score-select-button-group {
+  @apply gi-w-fit gi-flex;
+}
+
+.gi-score-select-button-group-vertical {
+  @apply gi-flex-col-reverse gi-gap-3;
+}
+
+.gi-score-select-button-group-horizontal {
+  @apply gi-flex-col gi-gap-3 sm:gi-gap-1;
+}
+
+.gi-score-select-button-group > .gi-btn-group .gi-btn-large {
+  @apply gi-px-0;
+}

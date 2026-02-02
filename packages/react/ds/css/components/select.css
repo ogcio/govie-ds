@@ -1,0 +1,171 @@
+.gi-select {
+  @apply gi-rounded-sm 
+  gi-p-2
+  gi-pr-8
+  gi-border-color-border-system-neutral-default
+  gi-border-sm
+  gi-border-solid
+  gi-min-w-56
+  gi-text-sm
+  gi-leading-5
+
+  xs:gi-text-md
+  xs:gi-leading-5
+
+  gi-appearance-none
+  gi-relative
+  gi-bg-no-repeat
+  gi-bg-right
+
+  disabled:gi-border-color-border-system-neutral-interactive-disabled
+  disabled:gi-bg-color-surface-system-neutral-interactive-disabled
+  disabled:gi-text-color-text-system-neutral-interactive-disabled-surface
+  disabled:gi-opacity-[1]
+  
+  gi-focus-state-outline;
+}
+
+.gi-select-container {
+  @apply gi-relative gi-inline gi-w-full;
+}
+
+.gi-select-icon {
+  @apply gi-pointer-events-none gi-absolute gi-right-2 gi-top-1/2 gi--translate-y-1/2 gi-z-[3];
+}
+
+.gi-select-icon[data-disabled='true'] {
+  @apply gi-text-color-icon-system-neutral-interactive-disabled;
+}
+
+.gi-select-menu-container {
+  @apply gi-flex
+  gi-flex-col
+  gi-px-0
+  gi-leading-5
+  
+  xs:gi-leading-5;
+}
+
+.gi-select-menu-input-container {
+  @apply gi-px-3 gi-pb-2 gi-pt-4 gi-relative;
+}
+
+.gi-select-menu-option-container {
+  @apply gi-overflow-y-auto
+  gi-overflow-x-hidden
+  gi-scroll-smooth
+  gi-py-2;
+}
+
+.gi-select-menu-loading {
+  @apply gi-flex gi-items-center gi-justify-center;
+}
+
+.gi-select-menu-option-container ul > div > li:not(:first-child) {
+  @apply gi-mt-1;
+}
+
+.gi-select-menu-option-container ul > div > li:last-child {
+  @apply gi-mb-2;
+}
+
+.gi-select-menu-option-not-found {
+  @apply gi-px-3 gi-text-sm gi-text-gray-500;
+}
+
+.gi-select-option-item {
+  @apply gi-mx-1
+  gi-px-2
+  gi-my-1
+  gi-py-1
+  gi-flex
+  gi-items-start
+  gi-justify-between 
+  gi-cursor-pointer
+  gi-relative
+   
+  hover:gi-bg-color-surface-system-neutral-interactive-hover
+  hover:gi-shadow-[0_0_0_4px_var(--gieds-color-surface-system-neutral-interactive-hover)] 
+   
+  focus:gi-bg-color-surface-system-neutral-interactive-hover
+  focus:gi-no-underline focus:gi-rounded-sm
+  focus:gi-shadow-[0_0_0_2px_var(--gieds-color-gray-950),0_0_0_5px_var(--gieds-color-yellow-400)] 
+  focus-visible:gi-shadow-[0_0_0_2px_var(--gieds-color-gray-950),0_0_0_5px_var(--gieds-color-yellow-400)] 
+  focus:gi-z-1
+  focus-visible:gi-no-underline 
+  focus-visible:gi-rounded-sm 
+  focus-visible:gi-outline-none;
+}
+
+.gi-select-option-item[data-search-enabled='true'] {
+  @apply gi-pl-5 gi-pr-4;
+}
+
+.gi-select-option-item-disabled {
+  @apply gi-cursor-not-allowed 
+  gi-pointer-events-none
+  gi-bg-color-surface-system-neutral-interactive-disabled
+  gi-text-color-text-system-neutral-interactive-disabled-surface
+  gi-shadow-[0_0_0_4px_var(--gieds-color-surface-system-neutral-interactive-hover)];
+}
+
+.gi-select-option-item-highlighted {
+  @apply gi-bg-color-surface-system-neutral-interactive-hover
+  gi-shadow-[0_0_0_4px_var(--gieds-color-surface-system-neutral-interactive-hover)];
+}
+
+.gi-select-next {
+  @apply gi-relative gi-w-full;
+}
+
+.gi-select-container[data-table-cell='true'] {
+  @apply gi-h-full gi-block;
+}
+
+.gi-select-container[data-table-cell='true'] .gi-select {
+  @apply gi-h-full
+    gi-py-0
+    gi-w-full
+    gi-pl-3
+    gi-truncate
+    gi-overflow-hidden
+    gi-whitespace-nowrap
+    gi-text-sm
+    gi-leading-6
+    gi-border-[3px]
+    gi-border-transparent
+    gi-rounded-[0px]
+    gi-cursor-pointer
+    gi-min-w-0
+    gi-min-w-none
+
+    focus:gi-z-[3]
+    focus:gi-border-[3px]
+    focus:gi-border-solid
+    focus:gi-border-color-border-intent-focus-default
+    focus:gi-outline
+    focus:gi-outline-sm
+    focus:gi-outline-color-shadow-intent-focus-default
+    focus:gi-outline-offset-0
+   
+    disabled:gi-cursor-not-allowed
+    disabled:gi-outline
+    disabled:gi-outline-[1px]
+    disabled:gi-outline-color-surface-system-neutral-interactive-disabled
+    disabled:gi-outline-offset-0
+    disabled:gi-border-[0px];
+}
+
+.gi-select-container[data-table-cell-error-state='true']
+  .gi-select:not(:disabled) {
+  @apply gi-outline
+  gi-z-[2]
+  gi-outline-[2px]
+  gi-outline-color-border-intent-error-default
+  gi-outline-offset-0
+  
+  focus:gi-outline
+  focus:gi-outline-sm
+  focus:gi-outline-color-shadow-intent-focus-default
+  focus:gi-outline-offset-0;
+}

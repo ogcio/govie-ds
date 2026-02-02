@@ -1,0 +1,305 @@
+.gi-header {
+  @apply gi-grid gi-relative 
+  gi-overflow-x-clip
+  gi-w-full gi-font-primary;
+}
+
+.gi-header-secondary-bar {
+  @apply gi-hidden 
+  gi-h-10
+  gi-items-center
+  
+  lg:gi-flex;
+}
+
+.gi-header-secondary-bar ul {
+  @apply gi-flex gi-justify-end gi-items-center gi-gap-4;
+}
+.gi-header-secondary-item {
+  @apply gi-px-2
+  gi-py-1
+  gi-border-0
+  gi-focus-within-state-outline-header
+  gi-focus-state-outline-header
+  gi-text-sm
+  !gi-leading-[24px]  
+  focus:gi-bg-black
+  focus-within:gi-bg-black
+  focus:gi-bg-opacity-20
+  focus-within:gi-bg-opacity-20
+  focus:gi-border-0;
+}
+
+.gi-header-secondary-item,
+.gi-header-tool-item {
+  @apply gi-rounded-sm focus:gi-border-0;
+}
+
+.gi-header-secondary-item-default,
+.gi-header-secondary-item-light,
+.gi-header-tool-item-default {
+  @apply hover:gi-bg-black
+  hover:gi-bg-opacity-20
+  hover:gi-border-transparent
+
+focus:gi-bg-black
+  focus:gi-bg-opacity-20
+  focus:gi-border-transparent;
+}
+
+.gi-header-secondary-item-light {
+  @apply gi-focus-state-outline 
+  gi-border-none
+  focus:gi-shadow-color-border-intent-focus-default
+  focus:gi-shadow-[inset_0_0_0_2px];
+}
+
+.gi-header-menu {
+  @apply gi-h-20 gi-items-center 
+  gi-justify-between
+  gi-flex
+  gi-flex-row
+  gi-flex-nowrap
+  gi-py-3
+  
+  sm:gi-py-4;
+}
+
+.gi-header-logo {
+  @apply gi-flex-none
+  gi-rounded-sm;
+}
+
+.gi-header-logo-default,
+.gi-header-logo-default a {
+  @apply gi-focus-state-outline
+  gi-focus-within-state-outline-header
+  gi-focus-visible-state-outline;
+}
+
+.gi-header-logo-light,
+.gi-header-logo-light a {
+  @apply gi-focus-state-outline
+  gi-focus-within-state-outline-header gi-focus-visible-state-outline
+  focus-within:gi-outline-color-border-intent-focus-default
+  focus:gi-outline-color-border-intent-focus-default;
+}
+
+.gi-header-title {
+  @apply gi-min-w-0
+  gi-heading-sm
+  gi-truncate
+  gi-overflow-hidden
+  gi-text-ellipsis
+  gi-ml-4 
+  
+  md:gi-ml-6
+  lg:gi-ml-12
+  lg:gi-block
+  gi-grow;
+}
+.gi-header-tool-item {
+  @apply gi-border-solid
+  gi-border-transparent
+  gi-flex gi-rounded-sm
+  focus:gi-shadow-none
+  gi-h-auto
+  !gi-leading-[24px]
+  focus:gi-border-none
+  gi-p-2
+  gi-items-center
+  gi-gap-md
+  gi-cursor-pointer
+  gi-whitespace-nowrap
+  gi-overflow-hidden
+  gi-text-ellipsis;
+}
+.gi-header-tool-item:first-child {
+  @apply lg:gi-flex
+  gi-text-md
+  gi-font-bold;
+}
+.gi-header-nav {
+  @apply gi-hidden lg:gi-flex gi-gap-4 gi-text-white gi-stroke-white;
+}
+.gi-header-nav a {
+  @apply gi-border gi-border-solid gi-border-transparent gi-text-2md gi-font-bold gi-rounded-sm active:gi-underline active:gi-underline-offset-sm hover:gi-bg-black hover:gi-bg-opacity-20 gi-p-2;
+}
+
+.gi-header-tool-item-input {
+  @apply gi-block 
+  gi-w-0
+  gi-absolute
+  gi-h-0
+  gi-opacity-0
+  gi-appearance-none;
+}
+
+.gi-header-tool-item-light {
+  @apply gi-btn-primary-light 
+  focus-within:gi-shadow-color-border-intent-focus-default
+  focus-within:gi-shadow-[inset_0_0_0_2px]
+  focus-within:gi-bg-color-surface-tone-light-fill-hover
+
+  focus:gi-shadow-color-border-intent-focus-default
+  focus:gi-shadow-[inset_0_0_0_2px]
+
+
+  focus:gi-bg-black
+  focus:gi-bg-opacity-20
+  hover:gi-bg-black
+  hover:gi-bg-opacity-20
+  focus:gi-border-transparent
+  gi-focus-within-state-outline-header;
+}
+
+label.gi-header-tool-item-light {
+  @apply gi-focus-state-border-sm-rounded;
+}
+
+/* Nav components focus state */
+.gi-header-tool-item-default,
+.gi-header-nav a {
+  @apply gi-focus-within-state-outline-header
+  gi-focus-state-outline-header
+
+  focus:gi-bg-black
+  focus-within:gi-bg-black
+  focus:gi-bg-opacity-20
+  focus-within:gi-bg-opacity-20
+  focus:gi-border-0;
+}
+
+.gi-header-divider {
+  @apply gi-border-l-xs 
+  gi-border-solid    
+   gi-h-8 
+   gi-mx-2;
+}
+.gi-header-overlay {
+  @apply gi-top-0 gi-z-900 gi-pointer-events-none gi-hidden gi-w-full gi-h-full gi-bg-black gi-opacity-20;
+}
+
+#HeaderContainer:has(#SearchTrigger:checked) ~ #SearchContainer {
+  @apply gi-block;
+}
+
+#SearchTrigger:checked ~ .search-icon {
+  @apply gi-hidden;
+}
+
+#SearchTrigger:checked ~ .close-icon {
+  @apply gi-block;
+}
+
+#HeaderContainer:has(#MobileMenuTrigger:checked) ~ #HeaderMenuContainer {
+  transform: translateX(0);
+  display: block;
+}
+
+#HeaderContainer:has(#MobileMenuTrigger:checked) ~ #HeaderOverlayContainer {
+  display: block;
+  position: fixed;
+}
+
+.gi-header-mobile-menu-trigger {
+  @apply gi-block gi-w-0 gi-absolute gi-h-0;
+}
+
+.gi-header-menu-container {
+  @apply gi-z-1000 gi-bg-white gi-absolute gi-h-full gi-w-full xs:gi-w-3/5 gi-translate-x-full gi-top-0 gi-right-0 gi-min-h-screen;
+}
+
+.gi-header-menu-container > div {
+  @apply gi-border-color-border-system-neutral-subtle gi-border-b-xs gi-border-solid gi-h-20 gi-justify-end gi-items-center gi-flex gi-relative gi-py-3 gi-px-4 sm:gi-px-8 sm:gi-py-4;
+}
+
+.gi-header-menu-container > ul {
+  @apply gi-bg-white gi-px-4 sm:gi-px-8;
+}
+
+.gi-header-menu-mobile-trigger {
+  @apply gi-border gi-border-solid gi-border-transparent lg:gi-hidden gi-rounded-sm hover:gi-bg-black hover:gi-bg-opacity-20 gi-p-2 gi-flex gi-items-center gi-gap-md gi-cursor-pointer;
+}
+
+.gi-header-menu-mobile-trigger > span {
+  @apply gi-text-2md gi-font-bold;
+}
+
+#HeaderContainer > ul > li > a {
+  @apply gi-focus-state-outline focus:gi-shadow-[inset_0_0_0_2px] focus:gi-shadow-gray-950 focus:gi-rounded-sm;
+}
+
+/* TODO rename the following classes specific to header accordion */
+.gi-accordion-item-container[data-open='false'] .gi-accordion-item-icon {
+  transform: rotate(0deg);
+}
+
+.gi-accordion-item-container[data-open='true'] .gi-accordion-item-icon {
+  transform: rotate(90deg);
+}
+
+.gi-header-accordion-item-toggle {
+  @apply hover:gi-no-underline
+  hover:gi-underline-offset-sm
+  hover:gi-cursor-pointer
+  gi-block
+  gi-py-4
+  gi-border-color-border-system-neutral-subtle
+  gi-border-b-xs
+  gi-border-solid
+
+  gi-focus-state-outline
+  gi-focus-visible-state-outline
+  
+  focus:gi-shadow-[inset_0_0_0_2px]
+  focus:gi-shadow-gray-950
+  focus:gi-rounded-sm
+
+  focus-visible:gi-shadow-[inset_0_0_0_2px]
+  focus-visible:gi-shadow-gray-950
+  focus-visible:gi-rounded-sm;
+}
+
+.gi-header-accordion-item-toggle > div {
+  @apply gi-w-full gi-flex gi-justify-between;
+}
+
+.gi-accordion-item-slot {
+  @apply gi-bg-gray-50 gi-p-4;
+}
+
+.gi-list-item {
+  @apply gi-block gi-py-4 gi-border-color-border-system-neutral-subtle gi-border-b-xs gi-border-solid focus:gi-no-underline focus:gi-rounded-sm focus:gi-shadow-[0_0_0_2px_var(--gieds-color-gray-950),0_0_0_5px_var(--gieds-color-yellow-400)] focus-visible:gi-shadow-[0_0_0_2px_var(--gieds-color-gray-950),0_0_0_5px_var(--gieds-color-yellow-400)] focus-visible:gi-no-underline focus-visible:gi-rounded-sm focus-visible:gi-outline-none !gi-text-sm;
+}
+
+a.gi-list-item:hover,
+.gi-list-item > a:hover {
+  @apply hover:gi-underline hover:gi-underline-offset-sm;
+}
+
+.gi-header-slot-container {
+  @apply gi-border-b-2xl
+  gi-bg-gray-50
+  gi-py-4
+  gi-px-4  
+  gi-order-3;
+}
+
+.gi-header-primary-menu {
+  @apply gi-flex gi-items-center gi-gap-2 md:gi-gap-4 gi-flex-none;
+}
+
+.gi-focus-within-state-outline-header {
+  @apply focus-within:gi-outline
+  focus-within:gi-outline-[2px]
+  focus-within:gi-outline-color-shadow-intent-focus-default
+  focus-within:gi-outline-offset-0;
+}
+
+.gi-focus-state-outline-header {
+  @apply focus:gi-outline
+  focus:gi-outline-[2px]
+  focus:gi-outline-color-shadow-intent-focus-default
+  focus:gi-outline-offset-0;
+}

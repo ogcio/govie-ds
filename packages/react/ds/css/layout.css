@@ -1,0 +1,95 @@
+/* GOV.IE Layout Stylesheets */
+
+/* Layout */
+
+.gi-layout-container {
+  @apply gi:w-full gi:max-w-[100vw] gi:px-4 gi:md:container gi:md:mx-auto;
+}
+
+.gi-layout-container-inset {
+  @apply gi:w-full gi:max-w-[100vw] gi:container gi:mx-auto;
+}
+
+.gi-layout-container-inset[data-inset-top='none'] {
+  @apply gi:pt-0;
+}
+.gi-layout-container-inset[data-inset-bottom='none'] {
+  @apply gi:pt-0;
+}
+
+.gi-layout-container-inset[data-inset-top='md'] {
+  @apply gi:lg:pt-8 gi:md:pt-6 gi:pt-4;
+}
+.gi-layout-container-inset[data-inset-bottom='md'] {
+  @apply gi:lg:pb-8 gi:md:pb-6 gi:pb-4;
+}
+
+.gi-layout-container-inset[data-inset-top='lg'] {
+  @apply gi:lg:pt-12 gi:md:pt-9 gi:pt-6;
+}
+.gi-layout-container-inset[data-inset-bottom='lg'] {
+  @apply gi:lg:pb-12 gi:md:pb-9 gi:pb-6;
+}
+
+.gi-layout-container-inset[data-inset-top='xl'] {
+  @apply gi:lg:pt-16 gi:md:pt-12 gi:pt-8;
+}
+.gi-layout-container-inset[data-inset-bottom='xl'] {
+  @apply gi:lg:pb-16 gi:md:pb-12 gi:pb-8;
+}
+
+/* Similar to gi-container class but limited to max-width to 1280px */
+.gi-layout-container-max-xl {
+  @apply gi:w-full gi:max-w-[100vw] gi:px-6 gi:lg:px-8 gi:mx-auto gi:sm:max-w-[640px] gi:md:max-w-[768px] gi:lg:max-w-[1024px] gi:xl:max-w-[1280px] gi:md:mx-auto;
+}
+
+/* Similar to gi-container class but limited to max-width to 1024px */
+.gi-layout-container-max-lg {
+  @apply gi:w-full gi:max-w-[100vw] gi:px-6 gi:lg:px-8 gi:mx-auto gi:sm:max-w-[640px] gi:md:max-w-[768px] gi:lg:max-w-[1024px] gi:md:mx-auto;
+}
+
+.gi-layout-container-full-width {
+  @apply gi:w-full gi:max-w-[100vw] gi:px-6 gi:lg:px-8 gi:2xl:max-w-screen-2xl gi:2xl:mx-auto;
+}
+
+.gi-layout-container-3-column {
+  @apply gi:grid gi:grid-cols-1 gi:md:grid-cols-3 gi:gap-4;
+}
+
+.gi-layout-column-2-3 {
+  @apply gi:w-full gi:md:col-span-2;
+}
+
+.gi-layout-column-1-3 {
+  @apply gi:w-full;
+}
+
+.gi-layout-container-2-column {
+  @apply gi:grid gi:grid-cols-1 gi:md:grid-cols-2 gi:gap-4;
+}
+
+.gi-layout-column-1-2 {
+  @apply gi:w-full gi:md:col-span-1;
+}
+
+/* End Layout */
+
+/* Column Grid */
+
+.gi-grid-12-column {
+  @apply gi:mx-8 gi:lg:mx-8 gi:grid gi:grid-cols-12 gi:gap-6;
+}
+
+.gi-grid-8-column {
+  @apply gi:mx-6 gi:grid gi:grid-cols-8 gi:gap-6;
+}
+
+.gi-grid-4-column {
+  @apply gi:mx-4 gi:grid gi:grid-cols-4 gi:gap-4;
+}
+
+.gi-grid-responsive {
+  @apply gi:mx-4 gi:md:mx-6 gi:lg:mx-8 gi:grid gi:grid-cols-4 gi:md:grid-cols-8 gi:lg:grid-cols-12 gi:gap-4 gi:md:gap-6 gi:lg:gap-6;
+}
+
+/* End of Column Grid */

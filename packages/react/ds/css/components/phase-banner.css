@@ -1,0 +1,13 @@
+.gi-phase-banner-container {
+  @apply gi-flex 
+  gi-gap-3
+  gi-py-2
+  gi-items-center
+  gi-border-b-xs
+  gi-border-color-border-system-neutral-muted;
+}
+
+.gi-phase-banner-content {
+  @apply gi-text-sm 
+  gi-text-color-text-system-neutral-default;
+}

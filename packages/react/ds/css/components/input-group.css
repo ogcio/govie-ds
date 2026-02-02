@@ -1,0 +1,16 @@
+.gi-input-group-container {
+  @apply gi-flex;
+}
+.gi-input-group-error {
+  @apply gi-w-4 gi-border-l-lg gi-border-l-red-600 gi-border-solid;
+}
+.gi-input-group-options-container {
+  @apply gi-flex gi-flex-col gi-gap-2.5;
+}
+.gi-input-group-options-inline {
+  @apply gi-flex gi-flex-row gi-gap-4;
+}
+
+.gi-input-group-options-stacked {
+  @apply gi-flex gi-flex-col gi-gap-2.5;
+}

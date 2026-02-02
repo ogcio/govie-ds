@@ -1,0 +1,12 @@
+.gi-hint-text-md {
+  @apply gi-text-md;
+}
+.gi-hint-text-sm {
+  @apply gi-text-sm;
+}
+.gi-hint-text-lg {
+  @apply gi-text-lg;
+}
+.gi-hint-text {
+  @apply gi-font-normal gi-text-color-text-system-neutral-muted gi-stroke-color-text-system-neutral-muted gi-mb-0;
+}

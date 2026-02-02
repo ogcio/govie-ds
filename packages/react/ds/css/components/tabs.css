@@ -1,0 +1,81 @@
+.gi-tabs {
+  @apply gi-flex gi-flex-wrap gi-w-full;
+}
+
+.gi-tab-item {
+  @apply gi-cursor-pointer
+  gi-relative
+  gi-text-color-text-system-neutral-interactive-muted
+  gi-px-1
+  gi-leading-6
+
+  hover:gi-text-color-icon-system-neutral-interactive-hover
+  hover:gi-bg-color-surface-system-neutral-interactive-hover
+  hover:gi-fill-color-text-system-neutral-interactive-default
+
+  gi-focus-state-outline
+  focus:gi-shadow-[inset_0_0_0_2px]
+  focus:gi-border-transparent
+  focus:gi-border-none
+  focus:gi-bg-color-surface-system-neutral-interactive-hover
+  focus:gi-text-color-text-system-neutral-interactive-default
+  focus:gi-rounded-sm
+  focus:gi-z-1
+  
+  gi-flex
+  gi-gap-2
+  gi-fill-color-text-system-neutral-interactive-muted;
+}
+
+.gi-tab-item-checked {
+  @apply gi-bg-white
+  gi-no-underline
+  gi-font-bold
+  gi-text-color-text-system-neutral-interactive-default
+  gi-fill-color-text-system-neutral-interactive-default;
+}
+
+.gi-tab-item-border {
+  @apply gi-h-[2px]
+  gi-absolute
+  gi-bottom-0
+  gi-left-0
+  gi-w-full;
+}
+
+.gi-tab-item:focus .gi-tab-item-border {
+  @apply !gi-bg-transparent;
+}
+
+.gi-tab-item:hover
+  .gi-tab-item-border:not(.gi-bg-color-border-tone-primary-accent-selected):not(
+    .gi-bg-color-text-system-neutral-interactive-default
+  ) {
+  @apply gi-bg-color-surface-system-neutral-interactive-hover;
+}
+
+.gi-tab-panel {
+  @apply gi-hidden gi-basis-full gi-pt-2 focus-visible:gi-outline-none;
+}
+
+.gi-tab-list {
+  @apply gi-flex
+  gi-items-center
+  gi-overflow-visible
+  gi-whitespace-nowrap gi-relative
+  gi-shadow-[inset_0_-1px_0_0_var(--gieds-color-border-system-neutral-muted)];
+}
+
+.gi-tab-list-stretch {
+  @apply gi-w-full
+  gi-justify-start;
+}
+
+.gi-tab-list .gi-tab-indicator {
+  @apply gi-absolute 
+  gi-bottom-0
+  gi-transition-all
+  gi-duration-300
+  gi-w-full
+  gi-h-[2px];
+}

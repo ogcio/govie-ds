@@ -1,0 +1,11 @@
+.gi-cookie-banner-container {
+  @apply gi-bg-gray-100;
+}
+
+.gi-cookie-banner-buttons {
+  @apply gi-flex gi-gap-4 gi-items-center gi-flex-col xs:gi-flex-row gi-my-4;
+}
+
+.gi-cookie-banner-buttons button {
+  @apply gi-w-full gi-justify-center xs:gi-w-auto;
+}

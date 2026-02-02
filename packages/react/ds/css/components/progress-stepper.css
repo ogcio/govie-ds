@@ -1,0 +1,151 @@
+.gi-progress-stepper {
+  @apply gi-w-full gi-flex gi-items-start gi-w-full gi-items-start;
+}
+
+.gi-progress-stepper[data-orientation='vertical'] {
+  @apply gi-flex-col gi-w-full;
+}
+
+.gi-progress-stepper > div:last-child {
+  @apply gi-basis-[content];
+}
+
+.gi-progress-stepper-step {
+  @apply gi-text-white gi-rounded-full gi-w-8 gi-h-8 gi-flex gi-flex-col gi-justify-center gi-items-center gi-relative gi-text-lg gi-z-1 gi-text-sm;
+}
+.gi-progress-stepper-step[data-indicator='number'] {
+  @apply gi-text-sm gi-font-bold;
+}
+
+.gi-progress-stepper-step-connector {
+  @apply gi-absolute gi-flex-1;
+}
+
+.gi-progress-stepper-step-connector > span {
+  @apply gi-w-full;
+}
+
+.gi-progress-stepper-step-connector[data-orientation='horizontal'] {
+  @apply gi-top-4 gi-w-[calc(100%_-_var(--gieds-space-10))] gi-left-9;
+}
+
+.gi-progress-stepper-step-connector[data-orientation='vertical'] {
+  @apply gi-w-[2px] gi-left-4;
+}
+
+.gi-progress-stepper-step-connector[data-next='true' i][data-orientation='vertical']
+  > span {
+  @apply gi-bg-gray-300;
+}
+
+.gi-progress-stepper-step-connector[data-current='true' i][data-orientation='vertical']
+  > span:first-child {
+  @apply gi-bg-gray-400 gi-absolute gi-h-full;
+}
+
+.gi-progress-stepper-step-connector[data-current='true' i][data-orientation='vertical']
+  > span:last-child {
+  @apply gi-absolute gi-block gi-bg-gray-950 gi-h-1/2;
+}
+
+.gi-progress-stepper-step-connector[data-completed='true' i][data-orientation='vertical']
+  > span {
+  @apply gi-bg-gray-950;
+}
+
+.gi-progress-stepper-step-connector[data-orientation='vertical'] > span {
+  @apply gi-block gi-rounded-sm gi-h-full;
+}
+
+.gi-progress-stepper-step-connector[data-next='true' i][data-orientation='horizontal']
+  > span {
+  @apply gi-border-t-gray-300;
+}
+
+.gi-progress-stepper-step-connector[data-current='true' i][data-orientation='horizontal']
+  > span:first-child {
+  @apply gi-border-t-gray-400 gi-absolute gi-w-full;
+}
+
+.gi-progress-stepper-step-connector[data-current='true' i][data-orientation='horizontal']
+  > span:last-child {
+  @apply gi-absolute gi-border-t-sm gi-block gi-border-t-gray-950 gi-w-1/2;
+}
+
+.gi-progress-stepper-step-connector[data-completed='true' i][data-orientation='horizontal']
+  > span {
+  @apply gi-border-t-gray-950;
+}
+
+.gi-progress-stepper-step-connector[data-orientation='horizontal'] > span {
+  @apply gi-border-t-sm gi-block gi-rounded-sm;
+}
+
+.gi-progress-stepper-step-container[data-completed='true' i]
+  > .gi-progress-stepper-step {
+  @apply gi-bg-gray-950;
+}
+
+.gi-progress-stepper-step-container[data-next='true' i]
+  > .gi-progress-stepper-step {
+  @apply gi-bg-gray-200 gi-text-gray-700;
+}
+
+.gi-progress-stepper-step-container[data-current='true' i]
+  > .gi-progress-stepper-step {
+  @apply gi-bg-white gi-text-gray-950 gi-border-sm gi-border-gray-950;
+}
+
+.gi-progress-stepper-step-container[data-orientation='horizontal'] {
+  @apply gi-flex-col;
+}
+
+.gi-progress-stepper-step-container[data-orientation='vertical'] {
+  @apply gi-h-9 gi-gap-2 gi-mt-1 gi-w-full;
+}
+
+.gi-progress-stepper-step-container {
+  @apply gi-gap-1 gi-flex gi-flex-1 gi-items-start gi-w-max;
+}
+
+.gi-progress-stepper-step-label {
+  @apply gi-flex-1 gi-text-left gi-overflow-hidden gi-text-sm gi-text-ellipsis gi-whitespace-normal gi-break-words gi-line-clamp-2 gi-max-w-[108px];
+}
+
+.gi-progress-stepper-step-label[data-orientation='vertical'] {
+  @apply gi-mt-1 gi-max-w-full;
+}
+
+.gi-progress-stepper-step-connector[data-use-fill='true' i][data-orientation='horizontal'][data-fill='empty' i]
+  > span {
+  @apply gi-border-t-gray-300;
+}
+.gi-progress-stepper-step-connector[data-use-fill='true' i][data-orientation='horizontal'][data-fill='half' i]
+  > span:first-child {
+  @apply gi-border-t-gray-400 gi-absolute gi-w-full;
+}
+.gi-progress-stepper-step-connector[data-use-fill='true' i][data-orientation='horizontal'][data-fill='half' i]
+  > span:last-child {
+  @apply gi-absolute gi-border-t-sm gi-block gi-border-t-gray-950 gi-w-1/2;
+}
+.gi-progress-stepper-step-connector[data-use-fill='true' i][data-orientation='horizontal'][data-fill='full' i]
+  > span {
+  @apply gi-border-t-gray-950;
+}
+
+.gi-progress-stepper-step-connector[data-use-fill='true' i][data-orientation='vertical'][data-fill='empty' i]
+  > span {
+  @apply gi-bg-gray-300;
+}
+.gi-progress-stepper-step-connector[data-use-fill='true' i][data-orientation='vertical'][data-fill='half' i]
+  > span:first-child {
+  @apply gi-bg-gray-400 gi-absolute gi-h-full;
+}
+.gi-progress-stepper-step-connector[data-use-fill='true' i][data-orientation='vertical'][data-fill='half' i]
+  > span:last-child {
+  @apply gi-absolute gi-block gi-bg-gray-950 gi-h-1/2;
+}
+.gi-progress-stepper-step-connector[data-use-fill='true' i][data-orientation='vertical'][data-fill='full' i]
+  > span {
+  @apply gi-bg-gray-950;
+}

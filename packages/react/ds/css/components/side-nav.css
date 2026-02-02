@@ -1,0 +1,48 @@
+.gi-side-nav-container {
+  @apply gi-max-w-[400px];
+}
+
+.gi-side-nav-item {
+  @apply gi-mt-1 !gi-h-[unset] gi-border-transparent gi-relative gi-z-1 gi-px-3 gi-py-2 gi-flex gi-cursor-pointer gi-rounded-[unset] 
+    gi-justify-between gi-w-full hover:gi-bg-gray-200;
+}
+
+.gi-side-nav-item-selected {
+  @apply !gi-shadow-[inset_4px_0_0_var(--gieds-color-border-tone-primary-accent-selected)] gi-bg-color-surface-system-neutral-interactive-selected-subtle;
+}
+
+.gi-side-nav-item-label {
+  @apply gi-flex gi-gap-2;
+}
+
+.gi-side-nav-item-label > p {
+  @apply gi-text-md;
+}
+
+.gi-side-nav-item-content {
+  @apply gi-relative gi-block;
+}
+
+.gi-side-nav-item-left {
+  @apply gi-flex gi-items-center gi-gap-2;
+}
+
+.gi-side-nav-item-icon {
+  @apply gi-flex gi-items-center;
+}
+
+.gi-side-nav-expandable-icon {
+  @apply gi-flex gi-items-center;
+}
+
+.gi-side-nav-item-secondary {
+  @apply gi-px-6;
+}
+
+.gi-side-nav-item-primary .gi-side-nav-item-label > p {
+  @apply gi-font-bold;
+}
+
+.gi-side-nav-heading {
+  @apply gi-border-l-sm gi-text-md gi-font-bold gi-mt-2 gi-text-color-text-system-neutral-muted gi-py-2 gi-border-transparent;
+}
