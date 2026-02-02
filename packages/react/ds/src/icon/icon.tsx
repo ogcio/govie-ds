@@ -46,18 +46,18 @@ const ICON_REGISTRY: Record<
     disabledClass: string;
   }
 > = {
-  social_bluesky: { Component: Bluesky, disabledClass: 'gi-stroke-gray-700' },
-  social_facebook: { Component: Facebook, disabledClass: 'gi-stroke-gray-700' },
+  social_bluesky: { Component: Bluesky, disabledClass: 'gi:stroke-gray-700' },
+  social_facebook: { Component: Facebook, disabledClass: 'gi:stroke-gray-700' },
   social_instagram: {
     Component: Instagram,
-    disabledClass: 'gi-stroke-gray-700',
+    disabledClass: 'gi:stroke-gray-700',
   },
-  social_linkedin: { Component: Linkedin, disabledClass: 'gi-stroke-gray-700' },
-  social_threads: { Component: Threads, disabledClass: 'gi-stroke-gray-700' },
-  social_tiktok: { Component: Tiktok, disabledClass: 'gi-stroke-gray-700' },
-  social_x: { Component: X, disabledClass: 'gi-stroke-gray-700' },
-  social_youtube: { Component: Youtube, disabledClass: 'gi-stroke-gray-700' },
-  placeholder: { Component: Placeholder, disabledClass: 'gi-fill-gray-700' },
+  social_linkedin: { Component: Linkedin, disabledClass: 'gi:stroke-gray-700' },
+  social_threads: { Component: Threads, disabledClass: 'gi:stroke-gray-700' },
+  social_tiktok: { Component: Tiktok, disabledClass: 'gi:stroke-gray-700' },
+  social_x: { Component: X, disabledClass: 'gi:stroke-gray-700' },
+  social_youtube: { Component: Youtube, disabledClass: 'gi:stroke-gray-700' },
+  placeholder: { Component: Placeholder, disabledClass: 'gi:fill-gray-700' },
 };
 
 export const Icon = forwardRef<HTMLSpanElement, IconProps>(
@@ -82,7 +82,7 @@ export const Icon = forwardRef<HTMLSpanElement, IconProps>(
     if (reg) {
       const { Component, disabledClass } = reg;
       const svgClass = cn(
-        { 'gi-block': !inline, 'gi-inline-block': inline },
+        { 'gi:block': !inline, 'gi:inline-block': inline },
         disabled && disabledClass,
         className,
       );
@@ -101,9 +101,9 @@ export const Icon = forwardRef<HTMLSpanElement, IconProps>(
         role={ariaLabel ? 'img' : 'presentation'}
         className={cn(
           {
-            'gi-block': !inline,
-            'gi-inline-block': inline,
-            'gi-text-gray-700': disabled,
+            'gi:block': !inline,
+            'gi:inline-block': inline,
+            'gi:text-gray-700': disabled,
           },
           'material-symbols-outlined',
           className,

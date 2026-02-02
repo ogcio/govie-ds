@@ -1,0 +1,84 @@
+.gi-link {
+  @apply gi:decoration-xs gi:inline-flex gi:underline gi:underline-offset-[0.2em] gi:text-color-text-tone-convention-default gi:relative gi:w-fit;
+}
+
+.gi-link:not([aria-current='page']) {
+  @apply gi:focus:no-underline
+    gi:focus:rounded-sm
+    gi:focus:shadow-[0_0_0_2px_var(--gieds-color-gray-950),0_0_0_5px_var(--gieds-color-yellow-400)]
+    gi:focus-visible:shadow-[0_0_0_2px_var(--gieds-color-gray-950),0_0_0_5px_var(--gieds-color-yellow-400)]
+    gi:focus-visible:no-underline
+    gi:focus-visible:rounded-sm
+    gi:focus-visible:outline-none;
+}
+
+.gi-link:not([aria-current='page']):not(.gi-link-disabled) {
+  @apply gi:hover:decoration-lg
+    gi:focus:no-underline
+    gi:focus:rounded-sm
+    gi:focus:shadow-[0_0_0_2px_var(--gieds-color-gray-950),0_0_0_5px_var(--gieds-color-yellow-400)]
+    gi:focus-visible:shadow-[0_0_0_2px_var(--gieds-color-gray-950),0_0_0_5px_var(--gieds-color-yellow-400)]
+    gi:focus-visible:no-underline
+    gi:focus-visible:rounded-sm
+    gi:focus-visible:outline-none;
+}
+
+.gi-link:not(.gi-link-disabled)[aria-current='page'] {
+  @apply gi:text-color-icon-tone-convention-disabled gi:pointer-events-none gi:no-underline gi:focus-visible:outline-none gi:focus-visible:shadow-none;
+}
+
+.gi-link:not(.gi-link-inherit):not(.gi-link-disabled):not(.gi-link-light) {
+  @apply gi:hover:text-color-text-tone-convention-hover gi:focus:text-color-text-tone-convention-hover gi:focus-visible:text-color-text-tone-convention-hover;
+}
+
+.gi-link:not(.gi-link-inherit):not(.gi-link-disabled):not(.gi-link-light) {
+  @apply gi:visited:text-color-icon-tone-convention-visited;
+}
+
+.gi-link-no-visited {
+  @apply gi:visited:text-color-text-tone-convention-default;
+}
+
+.gi-link-no-underline {
+  @apply gi:hover:underline gi:no-underline gi:underline-offset-[0.1em] gi:focus:no-underline;
+}
+
+.gi-link-icon {
+  @apply gi:absolute;
+}
+
+.gi-link-icon[data-size='sm'] {
+  @apply gi:top-1;
+}
+
+.gi-link-icon[data-size='md'] {
+  @apply gi:top-[5.5px];
+}
+
+.gi-link-icon[data-size='lg'] {
+  @apply gi:top-2;
+}
+
+.gi-link-icon-start {
+  @apply gi:left-0;
+}
+
+.gi-link-icon-end {
+  @apply gi:right-0;
+}
+
+.gi-link-inherit {
+  @apply gi:text-inherit gi:hover:text-inherit;
+}
+
+.gi-link-disabled {
+  @apply gi:text-color-icon-tone-convention-disabled gi:cursor-default gi:focus:text-color-icon-tone-convention-disabled gi:pointer-events-none;
+}
+
+.gi-link-disabled[data-appearance='light'] {
+  @apply gi:text-color-text-tone-light-disabled;
+}
+
+.gi-link-light {
+  @apply gi:focus:text-white gi:hover:text-white gi:text-white;
+}

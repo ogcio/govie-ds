@@ -43,8 +43,8 @@ const getDirectionBreakpointFlags = (direction: Direction) => {
 const getDirectionClasses = (direction: Direction) => {
   if (typeof direction === 'string') {
     return {
-      'gi-flex-row': direction === 'row',
-      'gi-flex-col': direction === 'column',
+      'gi:flex-row': direction === 'row',
+      'gi:flex-col': direction === 'column',
     };
   }
   const {
@@ -65,36 +65,36 @@ const getDirectionClasses = (direction: Direction) => {
   } = getDirectionBreakpointFlags(direction);
 
   return {
-    'gi-flex-row': isBaseRow,
-    'gi-flex-col': isBaseColumn,
+    'gi:flex-row': isBaseRow,
+    'gi:flex-col': isBaseColumn,
 
-    'xs:gi-flex-row': isXsRow,
-    'xs:gi-flex-col': isXsColumn,
+    'gi:xs:flex-row': isXsRow,
+    'gi:xs:flex-col': isXsColumn,
 
-    'sm:gi-flex-row': isSmRow,
-    'sm:gi-flex-col': isSmColumn,
+    'gi:sm:flex-row': isSmRow,
+    'gi:sm:flex-col': isSmColumn,
 
-    'md:gi-flex-row': isMdRow,
-    'md:gi-flex-col': isMdColumn,
+    'gi:md:flex-row': isMdRow,
+    'gi:md:flex-col': isMdColumn,
 
-    'lg:gi-flex-row': isLgRow,
-    'lg:gi-flex-col': isLgColumn,
+    'gi:lg:flex-row': isLgRow,
+    'gi:lg:flex-col': isLgColumn,
 
-    'xl:gi-flex-row': isXlRow,
-    'xl:gi-flex-col': isXlColumn,
+    'gi:xl:flex-row': isXlRow,
+    'gi:xl:flex-col': isXlColumn,
 
-    '2xl:gi-flex-row': is2xlRow,
-    '2xl:gi-flex-col': is2xlColumn,
+    'gi:2xl:flex-row': is2xlRow,
+    'gi:2xl:flex-col': is2xlColumn,
   };
 };
 
 const getDividerClasses = (direction: Direction) => {
   if (typeof direction === 'string') {
     return {
-      'gi-w-full': direction === 'column',
-      'gi-h-[1px]': direction === 'column',
-      'gi-h-full': direction === 'row',
-      'gi-w-[1px]': direction === 'row',
+      'gi:w-full': direction === 'column',
+      'gi:h-[1px]': direction === 'column',
+      'gi:h-full': direction === 'row',
+      'gi:w-[1px]': direction === 'row',
     };
   }
   const {
@@ -115,79 +115,79 @@ const getDividerClasses = (direction: Direction) => {
   } = getDirectionBreakpointFlags(direction);
 
   return {
-    'gi-w-full': isBaseColumn,
-    'gi-h-[1px]': isBaseColumn,
-    'gi-h-full': isBaseRow,
-    'gi-w-[1px]': isBaseRow,
+    'gi:w-full': isBaseColumn,
+    'gi:h-[1px]': isBaseColumn,
+    'gi:h-full': isBaseRow,
+    'gi:w-[1px]': isBaseRow,
 
-    'xs:gi-w-full': isXsColumn,
-    'xs:gi-h-[1px]': isXsColumn,
-    'xs:gi-h-full': isXsRow,
-    'xs:gi-w-[1px]': isXsRow,
+    'gi:xs:w-full': isXsColumn,
+    'gi:xs:h-[1px]': isXsColumn,
+    'gi:xs:h-full': isXsRow,
+    'gi:xs:w-[1px]': isXsRow,
 
-    'sm:gi-w-full': isSmColumn,
-    'sm:gi-h-[1px]': isSmColumn,
-    'sm:gi-h-full': isSmRow,
-    'sm:gi-w-[1px]': isSmRow,
+    'gi:sm:w-full': isSmColumn,
+    'gi:sm:h-[1px]': isSmColumn,
+    'gi:sm:h-full': isSmRow,
+    'gi:sm:w-[1px]': isSmRow,
 
-    'md:gi-w-full': isMdColumn,
-    'md:gi-h-[1px]': isMdColumn,
-    'md:gi-h-full': isMdRow,
-    'md:gi-w-[1px]': isMdRow,
+    'gi:md:w-full': isMdColumn,
+    'gi:md:h-[1px]': isMdColumn,
+    'gi:md:h-full': isMdRow,
+    'gi:md:w-[1px]': isMdRow,
 
-    'lg:gi-w-full': isLgColumn,
-    'lg:gi-h-[1px]': isLgColumn,
-    'lg:gi-h-full': isLgRow,
-    'lg:gi-w-[1px]': isLgRow,
+    'gi:lg:w-full': isLgColumn,
+    'gi:lg:h-[1px]': isLgColumn,
+    'gi:lg:h-full': isLgRow,
+    'gi:lg:w-[1px]': isLgRow,
 
-    'xl:gi-w-full': isXlColumn,
-    'xl:gi-h-[1px]': isXlColumn,
-    'xl:gi-h-full': isXlRow,
-    'xl:gi-w-[1px]': isXlRow,
+    'gi:xl:w-full': isXlColumn,
+    'gi:xl:h-[1px]': isXlColumn,
+    'gi:xl:h-full': isXlRow,
+    'gi:xl:w-[1px]': isXlRow,
 
-    '2xl:gi-w-full': is2xlColumn,
-    '2xl:gi-h-[1px]': is2xlColumn,
-    '2xl:gi-h-full': is2xlRow,
-    '2xl:gi-w-[1px]': is2xlRow,
+    'gi:2xl:w-full': is2xlColumn,
+    'gi:2xl:h-[1px]': is2xlColumn,
+    'gi:2xl:h-full': is2xlRow,
+    'gi:2xl:w-[1px]': is2xlRow,
   };
 };
 
 const getAlignmentClasses = (itemsAlignment: Alignment) => {
   return {
-    'gi-items-start': itemsAlignment === 'start',
-    'gi-items-center': itemsAlignment === 'center',
-    'gi-items-end': itemsAlignment === 'end',
-    'gi-items-stretch': itemsAlignment === 'stretch',
+    'gi:items-start': itemsAlignment === 'start',
+    'gi:items-center': itemsAlignment === 'center',
+    'gi:items-end': itemsAlignment === 'end',
+    'gi:items-stretch': itemsAlignment === 'stretch',
   };
 };
 
 const getDistributionClasses = (itemsDistribution: Distribution) => {
   return {
-    'gi-justify-start': itemsDistribution === 'start',
-    'gi-justify-center': itemsDistribution === 'center',
-    'gi-justify-end': itemsDistribution === 'end',
-    'gi-justify-between': itemsDistribution === 'between',
-    'gi-justify-around': itemsDistribution === 'around',
-    'gi-justify-evenly': itemsDistribution === 'evenly',
-    'gi-justify-stretch': itemsDistribution === 'stretch',
+    'gi:justify-start': itemsDistribution === 'start',
+    'gi:justify-center': itemsDistribution === 'center',
+    'gi:justify-end': itemsDistribution === 'end',
+    'gi:justify-between': itemsDistribution === 'between',
+    'gi:justify-around': itemsDistribution === 'around',
+    'gi:justify-evenly': itemsDistribution === 'evenly',
+    'gi:justify-stretch': itemsDistribution === 'stretch',
   };
 };
 
 const getWrapClass = (wrap: boolean) => ({
-  'gi-flex-wrap': wrap,
-  'gi-flex-nowrap': !wrap,
+  'gi:flex-wrap': wrap,
+  'gi:flex-nowrap': !wrap,
 });
 
 const getItemsGapClasses = (gap: Gap) => {
   if (typeof gap === 'number' && !!gap) {
-    return `gi-gap-${gap}`;
+    return `gi:gap-${gap}`;
   }
 
   const gapClasses = Object.entries(gap)
     .map(([breakpoint, value]) =>
       breakpoint === 'base'
-        ? `gi-gap-${value}`
-        : `${breakpoint}:gi-gap-${value}`,
+        ? `gi:gap-${value}`
+        : `${breakpoint}:gi:gap-${value}`,
     )
     .join(' ');
 
@@ -198,7 +198,7 @@ const Divider = ({ direction }: { direction: Direction }) => {
   const dividerClasses = getDividerClasses(direction);
   return (
     <div
-      className={`${cn(dividerClasses)} gi-bg-gray-400`}
+      className={`${cn(dividerClasses)} gi:bg-gray-400`}
       aria-hidden="true"
     />
   );
@@ -218,8 +218,8 @@ export const Stack: FC<StackProps> = ({
 }) => {
   const stackClasses = cn(
     className,
-    'gi-flex',
-    'gi-w-full',
+    'gi:flex',
+    'gi:w-full',
     getDistributionClasses(itemsDistribution),
     getAlignmentClasses(itemsAlignment),
     getDirectionClasses(direction),

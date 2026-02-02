@@ -1,20 +1,29 @@
 import { variables } from '@ogcio/design-system-tokens';
 import merge from 'deepmerge';
+import type { Config } from 'tailwindcss';
 import tailwindTheme from 'tailwindcss/defaultTheme.js';
-import { CustomThemeConfig } from 'tailwindcss/types/config.js';
-import { convertColors, toFont } from './utilities.js';
+import { convertColors, toFont } from './utilities';
 
 export type CreateThemeOptions = {
   meta?: any;
-  overrides?: Partial<CustomThemeConfig>;
+  overrides?: Partial<Config['theme']>;
+};
+
+type TokenValue = { $value: unknown };
+
+const unwrapTokenValue = (value: unknown): string => {
+  if (value && typeof value === 'object' && '$value' in (value as TokenValue)) {
+    return String((value as TokenValue).$value);
+  }
+
+  return String(value);
 };
 
 export function createTheme(
   options?: CreateThemeOptions,
-): Partial<CustomThemeConfig> {
+): Partial<Config['theme']> {
   const { meta, overrides } = options ?? {};
 
-  // TODO: type variables and meta
   const fontValueResolver = ({
     property,
     index,
@@ -27,11 +36,76 @@ export function createTheme(
       : (variables.primitive.font as any)[property][index];
   };
 
-  const defaultTheme: Partial<CustomThemeConfig> = {
+  const spacing = {
+    none: unwrapTokenValue(variables.primitive.space['0']),
+    '3xs': unwrapTokenValue(variables.primitive.space.px),
+    '2xs': unwrapTokenValue(variables.primitive.space['0-5']),
+    xs: unwrapTokenValue(variables.primitive.space['1']),
+    sm: unwrapTokenValue(variables.primitive.space['1-5']),
+    md: unwrapTokenValue(variables.primitive.space['2']),
+    lg: unwrapTokenValue(variables.primitive.space['3']),
+    xl: unwrapTokenValue(variables.primitive.space['5']),
+    '2xl': unwrapTokenValue(variables.primitive.space['8']),
+    '3xl': unwrapTokenValue(variables.primitive.space['10']),
+    '4xl': unwrapTokenValue(variables.primitive.space['12']),
+    '5xl': unwrapTokenValue(variables.primitive.space['16']),
+    '6xl': unwrapTokenValue(variables.primitive.space['20']),
+    '0': unwrapTokenValue(variables.primitive.space['0']),
+    px: unwrapTokenValue(variables.primitive.space['px']),
+    '0.5': unwrapTokenValue(variables.primitive.space['0-5']),
+    '1': unwrapTokenValue(variables.primitive.space['1']),
+    '1.5': unwrapTokenValue(variables.primitive.space['1-5']),
+    '2': unwrapTokenValue(variables.primitive.space['2']),
+    '2.5': unwrapTokenValue(variables.primitive.space['2-5']),
+    '3': unwrapTokenValue(variables.primitive.space['3']),
+    '3.5': unwrapTokenValue(variables.primitive.space['3-5']),
+    '4': unwrapTokenValue(variables.primitive.space['4']),
+    '5': unwrapTokenValue(variables.primitive.space['5']),
+    '6': unwrapTokenValue(variables.primitive.space['6']),
+    '7': unwrapTokenValue(variables.primitive.space['7']),
+    '8': unwrapTokenValue(variables.primitive.space['8']),
+    '9': unwrapTokenValue(variables.primitive.space['9']),
+    '10': unwrapTokenValue(variables.primitive.space['10']),
+    '11': unwrapTokenValue(variables.primitive.space['11']),
+    '12': unwrapTokenValue(variables.primitive.space['12']),
+    '13': unwrapTokenValue(variables.primitive.space['13']),
+    '14': unwrapTokenValue(variables.primitive.space['14']),
+    '16': unwrapTokenValue(variables.primitive.space['16']),
+    '18': unwrapTokenValue(variables.primitive.space['18']),
+    '19': unwrapTokenValue(variables.primitive.space['19']),
+    '20': unwrapTokenValue(variables.primitive.space['20']),
+    '24': unwrapTokenValue(variables.primitive.space['24']),
+    '28': unwrapTokenValue(variables.primitive.space['28']),
+    '30': unwrapTokenValue(variables.primitive.space['30']),
+    '32': unwrapTokenValue(variables.primitive.space['32']),
+    '36': unwrapTokenValue(variables.primitive.space['36']),
+    '40': unwrapTokenValue(variables.primitive.space['40']),
+    '44': unwrapTokenValue(variables.primitive.space['44']),
+    '48': unwrapTokenValue(variables.primitive.space['48']),
+    '52': unwrapTokenValue(variables.primitive.space['52']),
+    '56': unwrapTokenValue(variables.primitive.space['56']),
+    '60': unwrapTokenValue(variables.primitive.space['60']),
+    '64': unwrapTokenValue(variables.primitive.space['64']),
+    '70': unwrapTokenValue(variables.primitive.space['70']),
+    '72': unwrapTokenValue(variables.primitive.space['72']),
+    '80': unwrapTokenValue(variables.primitive.space['80']),
+    '86': unwrapTokenValue(variables.primitive.space['86']),
+    '94': unwrapTokenValue(variables.primitive.space['94']),
+    '96': unwrapTokenValue(variables.primitive.space['96']),
+    '100': unwrapTokenValue(variables.primitive.space['100']),
+    '105': unwrapTokenValue(variables.primitive.space['105']),
+    '120': unwrapTokenValue(variables.primitive.space['120']),
+    '135': unwrapTokenValue(variables.primitive.space['135']),
+    '160': unwrapTokenValue(variables.primitive.space['160']),
+    '192': unwrapTokenValue(variables.primitive.space['192']),
+    '240': unwrapTokenValue(variables.primitive.space['240']),
+  };
+
+  const defaultTheme: Partial<Config['theme']> = {
     ...tailwindTheme,
     container: {
       padding: {
-        DEFAULT: '16px', // TODO: use tokens
+        DEFAULT: '16px',
         md: '24px',
         lg: '32px',
       },
@@ -66,7 +140,6 @@ export function createTheme(
         fontSize: '200',
         lineHeight: '1000',
       }),
-      // Start of standard scale
       sm: toFont({
         valueResolver: fontValueResolver,
         fontSize: '300',
@@ -117,7 +190,6 @@ export function createTheme(
         fontSize: '1100',
         lineHeight: '400',
       }),
-      // End of standard scale
       '7xl': toFont({
         valueResolver: fontValueResolver,
         fontSize: '1200',
@@ -153,7 +225,6 @@ export function createTheme(
       DEFAULT: variables.primitive.border.width['100'],
     },
     borderRadius: {
-      // "none": tokens.goiveBorderRadiusNone,
       sm: variables.primitive.border.radius['100'],
       md: variables.primitive.border.radius['200'],
       lg: variables.primitive.border.radius['300'],
@@ -199,82 +270,15 @@ export function createTheme(
       '95': variables.primitive.opacity['95'],
       '100': variables.primitive.opacity['100'],
     },
-    // TODO: boxShadow, convert shadow object to string in tokens
-    // "boxShadow": {
-    //   "sm": "0 1px 2px 0 rgb(0 0 0 / 0.05)",
-    //   "default": "0 1px 3px 0 rgb(0 0 0 / 0.1), 0 1px 2px -1px rgb(0 0 0 / 0.1)",
-    //   "md": "0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1)",
-    //   "lg": "0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1)",
-    //   "xl": "0 20px 25px -5px rgb(0 0 0 / 0.1), 0 8px 10px -6px rgb(0 0 0 / 0.1)",
-    //   "2xl": "0 25px 50px -12px rgb(0 0 0 / 0.25)",
-    //   "inner": "inset 0 2px 4px 0 rgb(0 0 0 / 0.05)",
-    //   "none": "none"
-    // },
-    spacing: {
-      none: variables.primitive.space['0'],
-      '3xs': variables.primitive.space.px,
-      '2xs': variables.primitive.space['0-5'],
-      xs: variables.primitive.space['1'],
-      sm: variables.primitive.space['1-5'],
-      md: variables.primitive.space['2'],
-      lg: variables.primitive.space['3'],
-      xl: variables.primitive.space['5'],
-      '2xl': variables.primitive.space['8'],
-      '3xl': variables.primitive.space['10'],
-      '4xl': variables.primitive.space['12'],
-      '5xl': variables.primitive.space['16'],
-      '6xl': variables.primitive.space['20'],
-      // standard spacing
-      '0': variables.primitive.space['0'],
-      px: variables.primitive.space['px'],
-      '0.5': variables.primitive.space['0-5'],
-      '1': variables.primitive.space['1'],
-      '1.5': variables.primitive.space['1-5'],
-      '2': variables.primitive.space['2'],
-      '2.5': variables.primitive.space['2-5'],
-      '3': variables.primitive.space['3'],
-      '3.5': variables.primitive.space['3-5'],
-      '4': variables.primitive.space['4'],
-      '5': variables.primitive.space['5'],
-      '6': variables.primitive.space['6'],
-      '7': variables.primitive.space['7'],
-      '8': variables.primitive.space['8'],
-      '9': variables.primitive.space['9'],
-      '10': variables.primitive.space['10'],
-      '11': variables.primitive.space['11'],
-      '12': variables.primitive.space['12'],
-      '13': variables.primitive.space['13'],
-      '14': variables.primitive.space['14'],
-      '16': variables.primitive.space['16'],
-      '18': variables.primitive.space['18'],
-      '19': variables.primitive.space['19'],
-      '20': variables.primitive.space['20'],
-      '24': variables.primitive.space['24'],
-      '28': variables.primitive.space['28'],
-      '30': variables.primitive.space['30'],
-      '32': variables.primitive.space['32'],
-      '36': variables.primitive.space['36'],
-      '40': variables.primitive.space['40'],
-      '44': variables.primitive.space['44'],
-      '48': variables.primitive.space['48'],
-      '52': variables.primitive.space['52'],
-      '56': variables.primitive.space['56'],
-      '60': variables.primitive.space['60'],
-      '64': variables.primitive.space['64'],
-      '70': variables.primitive.space['70'],
-      '72': variables.primitive.space['72'],
-      '80': variables.primitive.space['80'],
-      '86': variables.primitive.space['86'],
-      '94': variables.primitive.space['94'],
-      '96': variables.primitive.space['96'],
-      '100': variables.primitive.space['100'],
-      '105': variables.primitive.space['105'],
-      '135': variables.primitive.space['135'],
-      '120': variables.primitive.space['120'],
-      '160': variables.primitive.space['160'],
-      '192': variables.primitive.space['192'],
-      '240': variables.primitive.space['240'],
-    },
+    spacing,
+    inset: spacing,
+    top: spacing,
+    right: spacing,
+    left: spacing,
+    bottom: spacing,
+    margin: spacing,
+    padding: spacing,
+    gap: spacing,
     screens: {
       xs: meta ? meta.light.resolved.primitive.screen.xs.$value : '480px',
       sm: meta ? meta.light.resolved.primitive.screen.sm.$value : '640px',
@@ -284,10 +288,8 @@ export function createTheme(
       '2xl': meta
         ? meta.light.resolved.primitive.screen['2xl'].$value
         : '1536px',
-      nojs: { raw: '(scripting: none)' },
     },
     textUnderlineOffset: {
-      // TODO: tokens
       '0': '0px',
       none: '0px',
       auto: 'auto',
@@ -299,7 +301,6 @@ export function createTheme(
       xl: '8px',
     },
     textDecorationThickness: {
-      // TODO: tokens
       0: '0px',
       none: '0px',
       auto: 'auto',
@@ -553,5 +554,5 @@ export function createTheme(
     },
   };
 
-  return merge<CustomThemeConfig>(defaultTheme, overrides || {});
+  return merge<Config['theme']>(defaultTheme, overrides || {});
 }

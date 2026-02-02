@@ -15,8 +15,8 @@ export type AccordionItemProps = {
 const accordionVariants = tv({
   variants: {
     variant: {
-      default: 'gi-px-2 gi-py-4 gi-text-md gi-font-bold',
-      small: 'gi-py-2 gi-px-2 gi-text-sm gi-font-bold',
+      default: 'gi:px-2 gi:py-4 gi:text-md gi:font-bold',
+      small: 'gi:py-2 gi:px-2 gi:text-sm gi:font-bold',
     },
   },
 });
@@ -63,7 +63,7 @@ export const AccordionItem = ({
             icon={isExpanded ? 'keyboard_arrow_up' : 'keyboard_arrow_down'}
             size="md"
             className={clsx({
-              'gi-pt-[1.5px]': variant === 'default',
+              'gi:pt-[1.5px]': variant === 'default',
             })}
           />
         </div>
@@ -72,11 +72,11 @@ export const AccordionItem = ({
         id={panelId}
         role="region"
         aria-labelledby={buttonId}
-        className={clsx('gi-px-2 gi-pb-4 gi-pt-2 gi-font-normal', {
-          'gi-block': isExpanded,
-          'gi-hidden': !isExpanded,
-          'gi-text-md': variant === 'default',
-          'gi-text-sm': variant === 'small',
+        className={clsx('gi:px-2 gi:pb-4 gi:pt-2 gi:font-normal', {
+          'gi:block': isExpanded,
+          'gi:hidden': !isExpanded,
+          'gi:text-md': variant === 'default',
+          'gi:text-sm': variant === 'small',
         })}
       >
         {children}

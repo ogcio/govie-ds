@@ -45,14 +45,14 @@ export const CompleteFooter: Story = {
   args: {
     dataTestid: 'gi-footer',
     primarySlot: (
-      <div className="gi-grid-responsive !gi-ml-0 !gi-mr-0">
-        <div className="gi-col-span-4 md:gi-col-span-4 lg:gi-col-span-3">
-          <h3 className="gi-heading-sm gi-mb-4">Services</h3>
+      <div className="gi-grid-responsive !gi:ml-0 !gi:mr-0">
+        <div className="gi:col-span-4 gi:md:col-span-4 gi:lg:col-span-3">
+          <h3 className="gi-heading-sm gi:mb-4">Services</h3>
           <SectionBreak
-            color="gi-border-color-border-system-neutral-subtle"
+            color="gi:border-color-border-system-neutral-subtle"
             size="md"
           />
-          <ul className="gi-space-y-2">
+          <ul className="gi:space-y-2">
             <li>
               <Link
                 noColor
@@ -82,13 +82,13 @@ export const CompleteFooter: Story = {
             </li>
           </ul>
         </div>
-        <div className="gi-col-span-4 md:gi-col-span-4 lg:gi-col-span-3">
-          <h3 className="gi-heading-sm gi-mb-4">Departments</h3>
+        <div className="gi:col-span-4 gi:md:col-span-4 gi:lg:col-span-3">
+          <h3 className="gi-heading-sm gi:mb-4">Departments</h3>
           <SectionBreak
-            color="gi-border-color-border-system-neutral-subtle"
+            color="gi:border-color-border-system-neutral-subtle"
             size="md"
           />
-          <ul className="gi-space-y-2">
+          <ul className="gi:space-y-2">
             <li>
               <Link
                 noColor
@@ -118,13 +118,13 @@ export const CompleteFooter: Story = {
             </li>
           </ul>
         </div>
-        <div className="gi-col-span-4 md:gi-col-span-4 lg:gi-col-span-3">
-          <h3 className="gi-heading-sm gi-mb-4">Publications</h3>
+        <div className="gi:col-span-4 gi:md:col-span-4 gi:lg:col-span-3">
+          <h3 className="gi-heading-sm gi:mb-4">Publications</h3>
           <SectionBreak
-            color="gi-border-color-border-system-neutral-subtle"
+            color="gi:border-color-border-system-neutral-subtle"
             size="md"
           />
-          <ul className="gi-space-y-2">
+          <ul className="gi:space-y-2">
             <li>
               <Link noColor href="/publications/reports" aria-label="Reports">
                 Reports
@@ -150,13 +150,13 @@ export const CompleteFooter: Story = {
             </li>
           </ul>
         </div>
-        <div className="gi-col-span-4 md:gi-col-span-4 lg:gi-col-span-3">
-          <h3 className="gi-heading-sm gi-mb-4">Contact</h3>
+        <div className="gi:col-span-4 gi:md:col-span-4 gi:lg:col-span-3">
+          <h3 className="gi-heading-sm gi:mb-4">Contact</h3>
           <SectionBreak
-            color="gi-border-color-border-system-neutral-subtle"
+            color="gi:border-color-border-system-neutral-subtle"
             size="md"
           />
-          <ul className="gi-space-y-2">
+          <ul className="gi:space-y-2">
             <li>
               <Link
                 noColor
@@ -264,7 +264,7 @@ export const CompleteFooter: Story = {
         <Link noColor href="/terms-of-use" aria-label="Terms of Use">
           Terms of Use
         </Link>
-        <div className="gi-text-sm">© 2025 Government of Ireland.</div>
+        <div className="gi:text-sm">© 2025 Government of Ireland.</div>
       </Stack>
     ),
   },
@@ -368,7 +368,7 @@ export const SimpleFooter: Story = {
         <Link noColor href="/accessibility" aria-label="Accessibility">
           Accessibility
         </Link>
-        <div className="gi-text-sm">© 2025 Government of Ireland.</div>
+        <div className="gi:text-sm">© 2025 Government of Ireland.</div>
       </Stack>
     ),
   },
@@ -388,7 +388,7 @@ export const MinimalFooter: Story = {
         <Link noColor href="/accessibility" aria-label="Accessibility">
           Accessibility
         </Link>
-        <div className="gi-text-sm">© 2025 Government of Ireland.</div>
+        <div className="gi:text-sm">© 2025 Government of Ireland.</div>
       </Stack>
     ),
   },
@@ -397,65 +397,65 @@ export const MinimalFooter: Story = {
 export const GovieFooter: Story = {
   args: {
     primarySlot: (
-      <div className="gi-grid-responsive !gi-ml-0 !gi-mr-0">
-        <div className="gi-col-span-6">
-          <ul className="gi-list gi-space-y-2">
+      <div className="gi-grid-responsive !gi:ml-0 !gi:mr-0">
+        <div className="gi:col-span-6">
+          <ul className="gi:list gi:space-y-2">
             <li>
-              <a href="#" className="gi-link gi-link-inherit">
+              <a href="#" className="gi:link gi:link-inherit">
                 Circulars
               </a>
             </li>
             <li>
-              <a href="#" className="gi-link gi-link-inherit">
+              <a href="#" className="gi:link gi:link-inherit">
                 Consultations
               </a>
             </li>
             <li>
-              <a href="#" className="gi-link gi-link-inherit">
+              <a href="#" className="gi:link gi:link-inherit">
                 Directory
               </a>
             </li>
             <li>
-              <a href="#" className="gi-link gi-link-inherit">
+              <a href="#" className="gi:link gi:link-inherit">
                 Policies
               </a>
             </li>
             <li>
-              <a href="#" className="gi-link gi-link-inherit">
+              <a href="#" className="gi:link gi:link-inherit">
                 Publications
               </a>
             </li>
           </ul>
         </div>
-        <div className="gi-col-span-6">
-          <ul className="gi-list gi-space-y-2">
+        <div className="gi:col-span-6">
+          <ul className="gi:list gi:space-y-2">
             <li>
-              <a href="#" className="gi-link gi-link-inherit">
+              <a href="#" className="gi:link gi:link-inherit">
                 About gov.ie
               </a>
             </li>
             <li>
-              <a href="#" className="gi-link gi-link-inherit">
+              <a href="#" className="gi:link gi:link-inherit">
                 Accessibility
               </a>
             </li>
             <li>
-              <a href="#" className="gi-link gi-link-inherit">
+              <a href="#" className="gi:link gi:link-inherit">
                 Latest financial accounts
               </a>
             </li>
             <li>
-              <a href="#" className="gi-link gi-link-inherit">
+              <a href="#" className="gi:link gi:link-inherit">
                 Privacy Policy
               </a>
             </li>
             <li>
-              <a href="#" className="gi-link gi-link-inherit">
+              <a href="#" className="gi:link gi:link-inherit">
                 Sell to Government
               </a>
             </li>
             <li>
-              <a href="#" className="gi-link gi-link-inherit">
+              <a href="#" className="gi:link gi:link-inherit">
                 Who Does What
               </a>
             </li>

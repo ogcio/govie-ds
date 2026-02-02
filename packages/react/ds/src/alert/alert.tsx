@@ -53,7 +53,7 @@ function Alert({
   }
   return (
     <div
-      className={cn(baseVariant(), className, 'gi-not-prose')}
+      className={cn(baseVariant(), className, 'gi:not-prose')}
       role="alert"
       aria-live="assertive"
       {...props}
@@ -69,7 +69,7 @@ function Alert({
 
       <div
         className={cn(container(), {
-          'gi-gap-1': title,
+          'gi:gap-1': title,
         })}
       >
         {title && <p className={heading()}>{title}</p>}

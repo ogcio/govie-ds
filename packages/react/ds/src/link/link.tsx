@@ -58,7 +58,7 @@ const LinkContainer = ({
         </span>
       )}
       {showIconEnd || showIconStart ? (
-        <span className="gi-pr-5 gi-pl-5">{children}</span>
+        <span className="gi:pr-5 gi:pl-5">{children}</span>
       ) : (
         children
       )}
@@ -127,8 +127,8 @@ export const Link = forwardRef<HTMLElement, LinkProps>(
               !noColor &&
               !noVisited &&
               !disabled,
-            'gi-text-sm': size === 'sm',
-            'gi-text-md': size === 'md',
+            'gi:text-sm': size === 'sm',
+            'gi:text-md': size === 'md',
           },
           buttonVariant,
           buttonSize,

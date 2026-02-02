@@ -31,7 +31,7 @@ function getLogo({ logo }: FooterProps) {
     <picture>
       <source srcSet={logo?.imageLarge || svgDataUriDesktop} />
       <img
-        className="gi-h-16"
+        className="gi:h-16"
         src={logo?.imageSmall || svgDataUriMobile}
         alt={logo?.alt || t('logo.govieLogo', { defaultValue: 'Gov.ie Logo' })}
       />
@@ -90,7 +90,7 @@ export function Footer({
 
           {primarySlot && secondarySlot && (
             <SectionBreak
-              color="gi-border-color-border-system-neutral-subtle"
+              color="gi:border-color-border-system-neutral-subtle"
               size="lg"
             />
           )}

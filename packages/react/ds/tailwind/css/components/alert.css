@@ -1,0 +1,61 @@
+.gi-alert-base {
+  @apply gi:relative gi:flex-row gi:flex gi:p-3 gi:border-xs gi:rounded-sm gi:gap-2 gi:max-w-[640px];
+  width: inherit;
+}
+
+.gi-alert-base-dismissible {
+  @apply gi:relative gi:flex-row gi:flex gi:p-3 gi:border-xs gi:rounded-sm gi:gap-2 gi:max-w-[640px];
+  width: inherit;
+}
+
+.gi-alert-title {
+  @apply gi:text-2md gi:font-bold;
+}
+
+.gi-alert-container {
+  @apply gi:flex gi:flex-col gi:items-start gi:grow gi:pr-2;
+}
+
+.gi-alert-dismiss {
+  @apply gi:absolute gi:top-2 gi:right-2;
+}
+
+.gi-alert-info {
+  @apply gi:bg-color-surface-intent-info-default
+  gi:border-color-border-intent-info-subtle
+  gi:text-color-text-intent-info-default;
+}
+
+.gi-alert-success {
+  @apply gi:bg-color-surface-intent-success-default
+  gi:border-color-border-intent-success-subtle
+  gi:text-color-text-intent-success-default;
+}
+
+.gi-alert-warning {
+  @apply gi:bg-color-surface-intent-warning-default
+  gi:border-color-border-intent-warning-subtle
+  gi:text-color-text-intent-warning-default;
+}
+
+.gi-alert-danger {
+  @apply gi:bg-color-surface-intent-error-default
+  gi:border-color-border-intent-error-subtle
+  gi:text-color-text-intent-error-default;
+}
+
+.gi-alert-icon[data-variant='info'] {
+  @apply gi:text-color-icon-intent-info-default;
+}
+
+.gi-alert-icon[data-variant='warning'] {
+  @apply gi:text-color-icon-intent-warning-default;
+}
+
+.gi-alert-icon[data-variant='danger'] {
+  @apply gi:text-color-icon-intent-error-default;
+}
+
+.gi-alert-icon[data-variant='success'] {
+  @apply gi:text-color-icon-intent-success-default;
+}

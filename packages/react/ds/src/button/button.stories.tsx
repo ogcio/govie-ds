@@ -6,9 +6,9 @@ import { Button } from './button.js';
 const meta = {
   title: 'Form/Button',
   decorators: (Story, context) => {
-    const isLight = context?.args?.appearance === 'light' ? 'gi-bg-black' : '';
+    const isLight = context?.args?.appearance === 'light' ? 'gi:bg-black' : '';
     return (
-      <div className={`gi-p-4 ${isLight} gi-w-fit`}>
+      <div className={`gi:p-4 ${isLight} gi:w-fit`}>
         <Story />
       </div>
     );
@@ -439,7 +439,7 @@ export const WithSpinner: Story = {
       <>
         Button{' '}
         <svg
-          className="gi-w-6 gi-h-6"
+          className="gi:w-6 gi:h-6"
           viewBox="0 0 24 24"
           xmlns="http://www.w3.org/2000/svg"
         >
@@ -488,7 +488,7 @@ export const WithSpinner: Story = {
 export const TestButtonAll: Story = {
   tags: ['skip-playwright'],
   render: () => (
-    <div className="gi-flex gi-flex-col gi-gap-2">
+    <div className="gi:flex gi:flex-col gi:gap-2">
       <Button dataTestid="govie-button-label" variant="primary">
         Button
       </Button>

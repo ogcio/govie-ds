@@ -59,7 +59,9 @@ export default defineConfig({
       ),
       output: {
         assetFileNames: (assetInfo) => {
-          if (assetInfo.name?.endsWith('.css')) {return '[name][extname]';}
+          if (assetInfo.name?.endsWith('.css')) {
+            return '[name][extname]';
+          }
           return 'assets/[name][extname]';
         },
         entryFileNames: '[name].js',

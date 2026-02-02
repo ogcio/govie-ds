@@ -1,12 +1,18 @@
 @import './components/placeholder.css';
 @import './components/common.css';
+
 @import './components/accordion.css';
-/*
 @import './components/alert.css';
+@import './components/icon-button.css';
+@import './components/button.css';
+@import './components/footer.css';
+@import './components/section-break.css';
+@import './components/link.css';
+
+/*
 @import './components/autocomplete.css';
 @import './components/blockquote.css';
 @import './components/breadcrumbs.css';
-@import './components/button.css';
 @import './components/card.css';
 @import './components/input-checkbox.css';
 @import './components/chip.css';
@@ -17,13 +23,10 @@
 @import './components/drawer.css';
 @import './components/error-text.css';
 @import './components/input-file.css';
-@import './components/footer.css';
 @import './components/header.css';
 @import './components/hint-text.css';
-@import './components/icon-button.css';
 @import './components/input-group.css';
 @import './components/label.css';
-@import './components/link.css';
 @import './components/list.css';
 @import './components/list-item.css';
 @import './components/modal.css';
@@ -33,7 +36,6 @@
 @import './components/progress-stepper.css';
 @import './components/popover.css';
 @import './components/input-radio.css';
-@import './components/section-break.css';
 @import './components/select.css';
 @import './components/score-select.css';
 @import './components/side-nav.css';
@@ -47,7 +49,23 @@
 @import './components/tootlip.css';*/
 
 @layer base {
-  body {
-    @apply gi:font-primary;
+  html {
+    @apply gi:text-gray-950 gi:font-primary;
+  }
+
+  *,
+  ::before,
+  ::after,
+  ::backdrop,
+  ::file-selector-button {
+    box-sizing: border-box;
+    border-width: 0;
+    border-style: solid;
+    border-color: var(--gieds-color-gray-200);
+  }
+
+  button:not(:disabled),
+  [role='button']:not(:disabled):not([aria-disabled='true']) {
+    cursor: pointer;
   }
 }

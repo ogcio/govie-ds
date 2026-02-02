@@ -115,7 +115,7 @@ const wrapInDarkBg = (story: Story): Story => {
   return {
     ...story,
     render: (props) => (
-      <div className="gi-bg-black gi-p-4 gi-w-fit">
+      <div className="gi:bg-black gi:p-4 gi:w-fit">
         <Link {...props} />
       </div>
     ),
@@ -144,7 +144,7 @@ export const Default: Story = {
     });
 
     await step('should have visited style', async () => {
-      expect(linkElement.classList.contains('visited:gi-text-blue-700')).toBe(
+      expect(linkElement.classList.contains('visited:gi:text-blue-700')).toBe(
         false,
       );
     });

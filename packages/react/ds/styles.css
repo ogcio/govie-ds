@@ -1,11 +1,18 @@
 @import url('https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,400,0..1,0&icon_names=accessibility_new,...,work');
+@import url('https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,400,0..1,0&icon_names=accessibility_new,add_circle,apps,arrow_back,arrow_downward,arrow_drop_down,arrow_drop_up,arrow_forward,arrow_left_alt,arrow_outward,arrow_right_alt,arrow_upward,attach_file,block,call,cancel,candlestick_chart,chat_bubble,check,check_circle,chevron_left,chevron_right,child_care,close,content_copy,credit_card,delete,directions_car,do_not_disturb_on,download,edit,error,event,filter_list,first_page,health_and_safety,home,info,keyboard_arrow_down,keyboard_arrow_up,last_page,link,location_on,login,logout,mail,menu,mic,more_horiz,more_vert,open_in_new,person,person_cancel,person_check,refresh,search,send,settings,sort,space_dashboard,swap_vert,sync,thumb_down,thumb_up,unfold_more,upload,visibility,visibility_off,warning,work');
+
+@import 'tailwindcss' prefix(gi);
+@import './tailwind/css/layout.css';
+@import './tailwind/css/components.css';
+@import './tailwind/css/typography.css';
 
 @config "./tailwind.config.ts";
-@import 'tailwindcss' prefix(gi);
-@import './css/layout.css';
-@import './css/components.css';
-@import './css/typography.css';
+
+@custom-variant nojs (@media (scripting: none));
+
+/* safe list, in v4 we need specify exactly the classes we have in safeList v3 */
+@source inline("gi:align-top gi:align-middle gi:align-bottom gi:align-baseline gi:align-text-top gi:align-text-bottom gi:align-sub gi:align-super gi:grid-cols-1 gi:grid-cols-2 gi:grid-cols-3 gi:grid-cols-4 gi:grid-cols-5 gi:grid-cols-6 gi:grid-cols-12 gi:grid-rows-1 gi:grid-rows-2 gi:grid-rows-3 gi:grid-rows-4 gi:grid-rows-6 gi:col-auto gi:col-span-1 gi:col-span-2 gi:col-span-3 gi:col-span-4 gi:col-span-5 gi:col-span-6 gi:col-span-12 gi:col-span-full gi:row-auto gi:row-span-1 gi:row-span-2 gi:row-span-3 gi:row-span-4 gi:row-span-6 gi:row-span-full  gi:gap-0 gi:gap-1 gi:gap-2 gi:gap-3 gi:gap-4 gi:gap-5 gi:gap-6 gi:gap-8 gi:gap-10 gi:gap-12 gi:gap-x-0 gi:gap-x-1 gi:gap-x-2 gi:gap-x-3 gi:gap-x-4 gi:gap-x-6 gi:gap-x-8 gi:gap-y-0 gi:gap-y-1 gi:gap-y-2 gi:gap-y-3 gi:gap-y-4 gi:gap-y-6 gi:gap-y-8");
+@source inline("gi:sm:block gi:md:block gi:lg:block gi:xl:block gi:2xl:block gi:sm:hidden gi:md:hidden gi:lg:hidden gi:xl:hidden gi:2xl:hidden gi:sm:gap-0 gi:md:gap-0 gi:lg:gap-0 gi:xl:gap-0 gi:2xl:gap-0 gi:sm:gap-1 gi:md:gap-1 gi:lg:gap-1 gi:xl:gap-1 gi:2xl:gap-1 gi:sm:gap-2 gi:md:gap-2 gi:lg:gap-2 gi:xl:gap-2 gi:2xl:gap-2 gi:sm:gap-3 gi:md:gap-3 gi:lg:gap-3 gi:xl:gap-3 gi:2xl:gap-3 gi:sm:gap-4 gi:md:gap-4 gi:lg:gap-4 gi:xl:gap-4 gi:2xl:gap-4 gi:sm:gap-6 gi:md:gap-6 gi:lg:gap-6 gi:xl:gap-6 gi:2xl:gap-6 gi:sm:gap-8 gi:md:gap-8 gi:lg:gap-8 gi:xl:gap-8 gi:2xl:gap-8");
 
 .gieds-js .js\:gi-hidden {
   display: none;
@@ -14,10 +21,4 @@
 .gieds-js .js\:gi-max-height {
   max-height: 0;
   opacity: 0;
-}
-
-@layer base {
-  html {
-    @apply gi:text-gray-950 gi:font-primary;
-  }
 }
