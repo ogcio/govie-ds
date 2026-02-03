@@ -1,5 +1,20 @@
 # Changelog
 
+## [1.28.0](https://github.com/ogcio/govie-ds/compare/docs-v1.27.0...docs-v1.28.0) (2026-02-03)
+
+
+### Features
+
+* **AB#34418:** add character count component to decouple hint text ([#831](https://github.com/ogcio/govie-ds/issues/831)) ([6ba5746](https://github.com/ogcio/govie-ds/commit/6ba57467a60075ba9f086d491e388580e5f86b89))
+
+
+### Dependencies
+
+* The following workspace dependencies were updated
+  * dependencies
+    * @ogcio/design-system-react bumped to 1.28.0
+    * @ogcio/theme-govie bumped to 1.21.2
+
 ## [1.27.0](https://github.com/ogcio/govie-ds/compare/docs-v1.26.0...docs-v1.27.0) (2026-01-23)
 
 
