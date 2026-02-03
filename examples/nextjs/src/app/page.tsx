@@ -76,6 +76,7 @@ import {
   TabItem,
   TabPanel,
   TextArea,
+  CharacterCount,
   toaster,
   ToastProvider,
   ToastVariant,
@@ -199,19 +200,41 @@ const basicFormDefaultValues = {
   textArea: '',
 };
 
+const StandaloneTextAreaExample = () => {
+  const [value, setValue] = useState('');
+  const maxChars = 50;
+
+  return (
+    <FormField>
+      <FormFieldLabel htmlFor="textarea-standalone">Comments</FormFieldLabel>
+      <FormFieldHint>This is a helpful hint.</FormFieldHint>
+      <TextArea
+        id="textarea-standalone"
+        maxLength={maxChars}
+        onChange={(event) => setValue(event.target.value)}
+      />
+      <CharacterCount maxChars={maxChars} value={value} />
+    </FormField>
+  );
+};
+
 const NativeFormExample = () => {
   const formRef = useRef<HTMLFormElement>(null);
   const [submittedData, setSubmittedData] = useState<string | null>(null);
-  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
-    e.preventDefault();
-    const formData = new FormData(e.currentTarget);
+  const [message, setMessage] = useState('');
+  const maxChars = 150;
+
+  const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
+    event.preventDefault();
+    const formData = new FormData(event.currentTarget);
     const data = Object.fromEntries(formData.entries());
     setSubmittedData(JSON.stringify(data, null, 2));
-    console.log("Form Data:", data);
+    console.log('Form Data:', data);
   };
   const handleClear = () => {
     formRef.current?.reset();
     setSubmittedData(null);
+    setMessage('');
   };
   return (
     <Container className="p-4 border border-gray-200 bg-white rounded-lg shadow-sm">
@@ -257,14 +280,16 @@ const NativeFormExample = () => {
           </FormField>
           <FormField>
             <FormFieldLabel htmlFor="native-textarea">Message</FormFieldLabel>
-            <FormFieldHint>Maximum 150 characters</FormFieldHint>
+            <FormFieldHint>Maximum {maxChars} characters</FormFieldHint>
             <TextArea
               id="native-textarea"
               name="message"
               rows={4}
-              maxChars={150}
+              maxLength={maxChars}
               placeholder="Enter your message..."
+              onChange={(event) => setMessage(event.target.value)}
             />
+            <CharacterCount maxChars={maxChars} value={message} />
           </FormField>
           <div className="flex gap-2">
             <Button type="submit">Submit</Button>
@@ -288,6 +313,8 @@ const ReachHookFormWithRegister = () => {
   const formMethods = useForm({
     defaultValues: basicFormDefaultValues,
   });
+  const maxChars = 200;
+  const textAreaValue = formMethods.watch('textArea');
 
   const { register, handleSubmit, reset } = formMethods;
 
@@ -320,9 +347,10 @@ const ReachHookFormWithRegister = () => {
                 id="textarea-id"
                 cols={100}
                 rows={4}
-                maxChars={200}
+                maxLength={maxChars}
                 {...register('textArea')}
               />
+              <CharacterCount maxChars={maxChars} value={textAreaValue ?? ''} />
             </FormField>
 
             <div className="flex gap-2">
@@ -412,14 +440,17 @@ const ReachHookFormWithController = () => {
                 control={control}
                 name="textArea"
                 render={({ field }) => (
-                  <TextArea
-                    {...field}
-                    cols={100}
-                    rows={4}
-                    className="w-full"
-                    maxChars={100}
-                    clearButtonEnabled
-                  />
+                  <>
+                    <TextArea
+                      {...field}
+                      cols={100}
+                      rows={4}
+                      className="w-full"
+                      maxLength={100}
+                      clearButtonEnabled
+                    />
+                    <CharacterCount maxChars={100} value={field.value ?? ''} />
+                  </>
                 )}
               />
             </FormField>
@@ -828,13 +859,7 @@ export default function Home() {
 
                   <div>
                     <h5 className="font-semibold mb-2">Text Area</h5>
-                    <FormField>
-                      <FormFieldLabel htmlFor="textarea-standalone">
-                        Comments
-                      </FormFieldLabel>
-                      <FormFieldHint>This is a helpful hint.</FormFieldHint>
-                      <TextArea id="textarea-standalone" maxChars={50} />
-                    </FormField>
+                    <StandaloneTextAreaExample />
                   </div>
                 </div>
               </Container>
