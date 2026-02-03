@@ -10,13 +10,18 @@ const baseTabs = [
     id: 'design',
     title: 'Design',
     href: '../design/',
-    excludes: [],
+    excludes: ['character-count'],
   },
   {
     id: 'html',
     title: 'HTML',
     href: '../html/',
-    excludes: ['autocomplete', 'data-table', 'browser-support'],
+    excludes: [
+      'autocomplete',
+      'data-table',
+      'browser-support',
+      'character-count',
+    ],
   },
   {
     id: 'react',

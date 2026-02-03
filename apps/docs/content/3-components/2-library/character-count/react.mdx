@@ -1,0 +1,43 @@
+---
+title: 'Character Count'
+description: 'Character Count React Component'
+status: 'stable'
+component:
+  id: 'character-count-react'
+  link: '/story/form-charactercount--with-text-area'
+  status: 'stable'
+  properties:
+    - name: 'CharacterCountProps'
+      fields:
+        - name: 'maxChars'
+          ofType: 'number'
+          description: 'The maximum number of characters allowed.'
+          required: true
+        - name: 'value'
+          ofType: 'string'
+          description: 'The current text value.'
+          required: true
+  stories:
+    - name: 'with-text-area'
+      url: '/story/form-charactercount--with-text-area'
+---
+
+# Character Count
+
+The CharacterCount component displays the remaining character count for form inputs. Use it alongside `maxLength` on TextArea or Input components to show users how many characters they have left.
+
+<Section current="react">
+
+### With TextArea
+
+<StorybookFrame
+  className="h-[350px]"
+  componentId="character-count-react"
+  story="with-text-area"
+/>
+
+## Properties
+
+<ComponentPropertiesTable componentId="character-count-react" />
+
+</Section>

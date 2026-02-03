@@ -41,6 +41,14 @@ const meta = {
         defaultValue: { summary: '100' },
       },
     },
+    maxLength: {
+      description: 'The maximum number of characters allowed in the textarea.',
+      control: 'number',
+      table: {
+        category: 'Behavior',
+        type: { summary: 'number' },
+      },
+    },
     autoComplete: {
       description:
         'Specifies whether the browser should provide auto-completion options for the textarea.',
@@ -194,10 +202,22 @@ export const WithLabelHintAndError: Story = {
   },
 };
 
+/**
+ * @deprecated The `maxChars` prop is deprecated. Use `maxLength` + `CharacterCount` component instead.
+ * This story demonstrates the deprecated behavior for backwards compatibility.
+ */
 export const WithMaxChars: Story = {
   args: {
     id: 'textarea-id-5',
     maxChars: 30,
+  },
+  parameters: {
+    docs: {
+      description: {
+        story:
+          '**Deprecated:** The `maxChars` prop is deprecated. Use `maxLength` to limit input and the `CharacterCount` component for the visual hint.',
+      },
+    },
   },
   render: (props) => (
     <FormField>
@@ -436,8 +456,9 @@ export const WithReactHookForm: Story = {
     const methods = useForm<{ message: string }>({
       defaultValues: { message: '' },
     });
+    const maxChars = 20;
 
-    const onSubmit = methods.handleSubmit((_) => {
+    const onSubmit = methods.handleSubmit(() => {
       methods.reset();
     });
 
@@ -461,7 +482,7 @@ export const WithReactHookForm: Story = {
                   id="textarea-id-0"
                   rows={4}
                   cols={100}
-                  maxChars={20}
+                  maxChars={maxChars}
                   clearButtonEnabled
                   data-testid="textarea-id-0"
                   {...field}
