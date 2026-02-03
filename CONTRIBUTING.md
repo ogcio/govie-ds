@@ -1,6 +1,6 @@
-# Contributing to the Ireland Government Design System
+# Contributing to the Government of Ireland Design System
 
-Thank you for your interest in contributing to the Ireland Government Design System.
+Thank you for your interest in contributing to the Government of Ireland Design System.
 
 This repository is publicly available, but it is governed and maintained by the **Government of Ireland**. Contributions are welcome, but acceptance is at the discretion of the maintainers.
 
@@ -85,10 +85,6 @@ If you would like to propose a design-related change, you can:
 - explore or modify existing components or patterns
 - share your proposed changes as part of a **[GitHub Discussion](https://github.com/ogcio/govie-ds/discussions)**
 
-Design proposals can include:
-- screenshots
-- uploaded Figma files demonstrating the proposed changes
-
 Design proposals can include screenshots, links, or uploaded Figma files demonstrating the proposed changes.
 Design discussions should focus on the problem being addressed and its context, rather than on visual preference alone.
 
@@ -129,7 +125,7 @@ Thank you for helping improve government services.
 
 ## Fraud, branding, and impersonation
 
-The Ireland Government Design System is open source, but:
+The Government of Ireland Design System is open source, but:
 
 - Only official Irish government services may use:
     - government logos, crests, or wordmarks
