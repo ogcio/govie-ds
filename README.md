@@ -100,3 +100,13 @@ The entire folder can be uploaded as one with the [figma-variables-import](https
 Thanks to [Chromatic](https://www.chromatic.com/) for providing the visual testing platform that helps us review UI changes and catch visual regressions.
 
 This project is tested with BrowserStack [BrowserStack](https://www.browserstack.com/)
+
+## Contributing
+
+Contributions are welcome within defined constraints.
+
+Before opening an issue or pull request, please read:
+- [CONTRIBUTING.md](./CONTRIBUTING.md) — contribution scope, criteria, and process
+- [GOVERNANCE.md](./GOVERNANCE.md) — decision-making authority and fraud safeguards
+
+Acceptance of contributions is at the discretion of the maintainers.
