@@ -1,12 +1,12 @@
 {
-  "apps/docs": "1.27.0",
+  "apps/docs": "1.28.0",
   "packages/build/eslint-config": "1.2.6",
   "packages/build/prettier-config": "1.1.0",
   "packages/design/tailwind": "1.21.2",
-  "packages/design/theme-builder": "1.21.1",
-  "packages/html/ds": "1.17.2",
-  "packages/react/ds": "1.27.0",
-  "packages/themes/govie": "1.21.1",
+  "packages/design/theme-builder": "1.22.0",
+  "packages/html/ds": "1.17.3",
+  "packages/react/ds": "1.28.0",
+  "packages/themes/govie": "1.21.2",
   "packages/design/tokens": "1.21.1",
-  "packages/design/figma": "1.0.1"
+  "packages/design/figma": "1.0.2"
 }

@@ -27,7 +27,7 @@ component:
           required: false
         - name: 'maxChars'
           ofType: 'number'
-          description: 'The maximum number of characters allowed in the text area.'
+          description: '**Deprecated:** Use the `CharacterCount` component instead. This prop works correctly in controlled mode but may not update correctly after `reset()` in uncontrolled mode (e.g., with React Hook Form).'
           required: false
         - name: 'halfFluid'
           ofType: 'boolean'
@@ -118,7 +118,9 @@ The Textarea component allows users to input multi-line text. It's ideal for lon
   story="with-label-hint-and-error"
 />
 
-### With Max Chars
+### With Max Chars (Deprecated)
+
+> **Note:** The `maxChars` prop is deprecated. Use the `CharacterCount` component instead for better support with uncontrolled forms and React Hook Form. The `maxChars` prop works correctly in controlled mode (when passing `value`), but in uncontrolled mode the character count may not update correctly after `reset()`.
 
 <StorybookFrame
   className="h-[268px]"
