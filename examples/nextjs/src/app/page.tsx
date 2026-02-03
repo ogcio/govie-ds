@@ -381,7 +381,6 @@ const ReachHookFormWithController = () => {
       autocomplete: '',
     },
   });
-  const [textAreaVal, setTextAreaVal] = useState('');
 
   const { handleSubmit, control, reset } = methods;
 
@@ -392,7 +391,6 @@ const ReachHookFormWithController = () => {
 
   const handleClear = () => {
     reset();
-    setTextAreaVal('');
     console.log('Form cleared');
   };
 
@@ -442,21 +440,19 @@ const ReachHookFormWithController = () => {
                 control={control}
                 name="textArea"
                 render={({ field }) => (
-                  <TextArea
-                    {...field}
-                    cols={100}
-                    rows={4}
-                    className="w-full"
-                    maxLength={100}
-                    clearButtonEnabled
-                    onChange={(event) => {
-                      field.onChange(event);
-                      setTextAreaVal(event.target.value);
-                    }}
-                  />
+                  <>
+                    <TextArea
+                      {...field}
+                      cols={100}
+                      rows={4}
+                      className="w-full"
+                      maxLength={100}
+                      clearButtonEnabled
+                    />
+                    <CharacterCount maxChars={100} value={field.value ?? ''} />
+                  </>
                 )}
               />
-              <CharacterCount maxChars={100} value={textAreaVal} />
             </FormField>
 
             <FormField label={{ text: 'Select (New)' }} className="w-full">

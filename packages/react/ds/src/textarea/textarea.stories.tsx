@@ -3,7 +3,6 @@ import { useRef, useState } from 'react';
 import { Controller, FormProvider, useForm } from 'react-hook-form';
 import { expect, userEvent, within } from 'storybook/test';
 import { Button } from '../button/button.js';
-import { CharacterCount } from '../character-count/character-count.js';
 import {
   FormField,
   FormFieldError,
