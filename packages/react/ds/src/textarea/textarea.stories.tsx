@@ -42,6 +42,14 @@ const meta = {
         defaultValue: { summary: '100' },
       },
     },
+    maxLength: {
+      description: 'The maximum number of characters allowed in the textarea.',
+      control: 'number',
+      table: {
+        category: 'Behavior',
+        type: { summary: 'number' },
+      },
+    },
     autoComplete: {
       description:
         'Specifies whether the browser should provide auto-completion options for the textarea.',

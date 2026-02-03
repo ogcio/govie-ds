@@ -11,7 +11,7 @@ export const CharacterCount: React.FC<CharacterCountProps> = ({
   maxChars,
   value,
 }) => {
-  const remainingChars = Math.max(0, maxChars - value.length);
+  const remainingChars = Math.max(0, maxChars - (value?.length ?? 0));
 
   return (
     <div className="gi-textarea-remaining-chars">
