@@ -1,5 +1,25 @@
 # Changelog
 
+## [1.28.0](https://github.com/ogcio/govie-ds/compare/react-lib-v1.27.0...react-lib-v1.28.0) (2026-02-03)
+
+
+### Features
+
+* **AB#34250:** Removing unnecessary bundles, styles and scripts in Angular example ([#826](https://github.com/ogcio/govie-ds/issues/826)) ([ee81570](https://github.com/ogcio/govie-ds/commit/ee8157052f1d2bc9bc120ef7a48c490b60ee42d5))
+* **AB#34418:** add character count component to decouple hint text ([#831](https://github.com/ogcio/govie-ds/issues/831)) ([6ba5746](https://github.com/ogcio/govie-ds/commit/6ba57467a60075ba9f086d491e388580e5f86b89))
+
+
+### Bug Fixes
+
+* **AB#34328:** update textarea and relevant examples to work with react hook form ([#828](https://github.com/ogcio/govie-ds/issues/828)) ([73c2997](https://github.com/ogcio/govie-ds/commit/73c2997a61b30da1fcafe49b67a73223cf07e871))
+
+
+### Dependencies
+
+* The following workspace dependencies were updated
+  * devDependencies
+    * @ogcio/theme-govie bumped to 1.21.2
+
 ## [1.27.0](https://github.com/ogcio/govie-ds/compare/react-lib-v1.26.0...react-lib-v1.27.0) (2026-01-23)
 
 

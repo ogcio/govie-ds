@@ -298,3 +298,57 @@ export const StateFocusWithIcons: Story = {
   }),
   render: createElement,
 };
+
+const paginationCss = `
+.gi-prev_pagination-link:hover .gi-prev_pagination-description,
+.gi-next_pagination-link:hover .gi-next_pagination-description {
+  text-decoration-line: underline;
+  text-decoration-thickness: 4px;
+  color: var(--gieds-color-text-tone-convention-hover);
+}
+`;
+
+const paginationHtml = `
+<div class="gi-flex gi-w-full gi-justify-between">
+  <a class="gi-grid gi-grid-cols-[auto_1fr] gi-w-fit gi-gap-x-1 gi-cursor-pointer gi-prev_pagination-link" href="#">
+    <span class="gi-flex gi-items-center">
+      <span data-testid="govie-icon" role="presentation" class="gi-text-sm gi-block material-symbols-outlined gi-text-black">
+        arrow_back
+      </span>
+    </span>
+    <span class="gi-text-md gi-text-black">Previous</span>
+    <span class="gi-col-start-2 gi-text-md gi-link gi-prev_pagination-description">
+      Name of the previous page
+    </span>
+  </a>
+
+  <a class="gi-grid gi-grid-cols-[auto_1fr] gi-w-fit gi-gap-x-1 gi-cursor-pointer gi-next_pagination-link" href="#">
+    <span class="gi-text-end gi-text-md gi-text-black gi-next_pagination-title">Next</span>
+    <span class="gi-flex gi-items-center">
+      <span data-testid="govie-icon" role="presentation" class="gi-text-sm gi-block material-symbols-outlined gi-text-black">
+        arrow_forward
+      </span>
+    </span>
+    <span class="gi-text-md gi-link gi-next_pagination-description">
+      Name of the next page
+    </span>
+  </a>
+</div>
+`;
+
+export const PaginationExample: Story = {
+  render: () => (
+    <>
+      <style>{paginationCss}</style>
+      <div dangerouslySetInnerHTML={{ __html: paginationHtml }} />
+    </>
+  ),
+  parameters: {
+    docs: {
+      source: {
+        code: `<style>\n${paginationCss.trim()}\n</style>\n\n${paginationHtml.trim()}`,
+        language: 'html',
+      },
+    },
+  },
+};

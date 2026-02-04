@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.22.0](https://github.com/ogcio/govie-ds/compare/design-theme-builder-v1.21.1...design-theme-builder-v1.22.0) (2026-02-03)
+
+
+### Features
+
+* **AB#34250:** Removing unnecessary bundles, styles and scripts in Angular example ([#826](https://github.com/ogcio/govie-ds/issues/826)) ([ee81570](https://github.com/ogcio/govie-ds/commit/ee8157052f1d2bc9bc120ef7a48c490b60ee42d5))
+
 ## [1.21.1](https://github.com/ogcio/govie-ds/compare/design-theme-builder-v1.21.0...design-theme-builder-v1.21.1) (2026-01-09)
 
 

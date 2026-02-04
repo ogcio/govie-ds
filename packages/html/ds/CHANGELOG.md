@@ -1,5 +1,21 @@
 # Changelog
 
+## [1.18.0](https://github.com/ogcio/govie-ds/compare/html-lib-v1.17.3...html-lib-v1.18.0) (2026-02-03)
+
+
+### Features
+
+* **AB#33720:** Link pagination example in html package ([#834](https://github.com/ogcio/govie-ds/issues/834)) ([9c6e238](https://github.com/ogcio/govie-ds/commit/9c6e238c0bace2a85d80348d2c6bac5cbecbd13f))
+
+## [1.17.3](https://github.com/ogcio/govie-ds/compare/html-lib-v1.17.2...html-lib-v1.17.3) (2026-02-03)
+
+
+### Dependencies
+
+* The following workspace dependencies were updated
+  * devDependencies
+    * @ogcio/theme-govie bumped to 1.21.2
+
 ## [1.17.2](https://github.com/ogcio/govie-ds/compare/html-lib-v1.17.1...html-lib-v1.17.2) (2026-01-20)
 
 
