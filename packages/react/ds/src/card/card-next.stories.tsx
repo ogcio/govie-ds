@@ -2,6 +2,7 @@ import { Meta, StoryObj } from '@storybook/react';
 import { expect, waitFor, within } from 'storybook/test';
 import { Button } from '../button/button.js';
 import { Link } from '../link/link.js';
+import { generateSvgPlaceholderDataUrl } from '../utils/placeholder.js';
 import {
   CardAction,
   CardContainer,
@@ -147,7 +148,7 @@ export const Default: Story = {
         media={{
           type: 'image',
           config: {
-            src: 'https://placeholderjs.com/400x300',
+            src: generateSvgPlaceholderDataUrl(400, 300),
             alt: title,
             aspectRatio: '4 / 3',
           },

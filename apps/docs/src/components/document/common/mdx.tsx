@@ -98,6 +98,7 @@ import {
   Tag,
   TextArea,
   Tooltip,
+  generateSvgPlaceholderDataUrl,
 } from '@ogcio/design-system-react';
 import { MDXComponents } from 'mdx/types';
 import { useMDXComponent } from 'next-contentlayer2/hooks';
@@ -229,6 +230,18 @@ const documentComponents: MDXComponents = {
   CardAction: (props) => <CardAction {...props} __type="CardAction" />,
   CardHeader: (props) => <CardHeader {...props} __type="CardHeader" />,
   CardMedia: (props) => <CardMedia {...props} __type="CardMedia" />,
+  CardMediaWithPlaceholder: ({width, height, ...props}) => (
+    <CardMedia
+      {...props}
+        media={{
+          type: 'image',
+          config: {
+            src: generateSvgPlaceholderDataUrl(width, height),
+          },
+        }}      
+        __type="CardMedia" 
+      />
+  ), 
   Chip,
   ColorPrimitives,
   Combobox,

@@ -230,3 +230,4 @@ export { LoadMaterialSymbols } from './load-symbols/load-symbols.js';
  * @deprecated added for the backwards compatibility
  */
 export { LoadMaterialSymbols as LoadFonts } from './load-symbols/load-symbols.js';
+export { generateSvgPlaceholderDataUrl } from './utils/placeholder.js';
