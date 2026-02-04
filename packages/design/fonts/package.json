@@ -1,6 +1,6 @@
 {
   "name": "@ogcio/design-system-fonts",
-  "version": "0.0.1",
+  "version": "1.0.0",
   "description": "Font loading for GovIE Design System",
   "type": "module",
   "exports": {

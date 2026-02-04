@@ -1,5 +1,5 @@
 /**
- * Build Script for @govie-ds/fonts
+ * Build Script for @ogcio/design-system-fonts
  *
  * PURPOSE:
  * This script creates a distributable fonts package that bundles the Lato font family
@@ -31,20 +31,26 @@
  *
  * USAGE:
  * After build, consumers can import the fonts via:
- *   - npm/bundler: import '@govie-ds/fonts/fonts.css'
+ *   - npm/bundler: import '@ogcio/design-system-fonts/fonts/fonts.css'
  *   - HTML: <link rel="stylesheet" href="path/to/fonts.css">
  */
 
-import { copyFileSync, mkdirSync, readdirSync, existsSync, rmSync } from 'node:fs';
-import { join, dirname } from 'node:path';
-import { fileURLToPath } from 'node:url';
+import { copyFileSync, mkdirSync, existsSync, rmSync } from "node:fs";
+import { join, dirname } from "node:path";
+import { fileURLToPath } from "node:url";
 
 const __dirname = dirname(fileURLToPath(import.meta.url));
-const rootDir = join(__dirname, '..');
-const distDir = join(rootDir, 'dist');
-const distFilesDir = join(distDir, 'files');
-const srcDir = join(rootDir, 'src');
-const fontsourceDir = join(rootDir, 'node_modules', '@fontsource', 'lato', 'files');
+const rootDir = join(__dirname, "..");
+const distDir = join(rootDir, "dist");
+const distFilesDir = join(distDir, "files");
+const srcDir = join(rootDir, "src");
+const fontsourceDir = join(
+  rootDir,
+  "node_modules",
+  "@fontsource",
+  "lato",
+  "files",
+);
 
 // Clean dist directory to ensure fresh build
 if (existsSync(distDir)) {
@@ -56,8 +62,8 @@ mkdirSync(distDir, { recursive: true });
 mkdirSync(distFilesDir, { recursive: true });
 
 // Copy fonts.css to dist
-copyFileSync(join(srcDir, 'fonts.css'), join(distDir, 'fonts.css'));
-console.log('✓ Copied fonts.css');
+copyFileSync(join(srcDir, "fonts.css"), join(distDir, "fonts.css"));
+console.log("✓ Copied fonts.css");
 
 // Copy font files from @fontsource/lato
 // We only copy the specific combinations we need to minimize bundle size:
@@ -65,10 +71,10 @@ console.log('✓ Copied fonts.css');
 // - Weights: 100, 300, 400, 700, 900 (matches design system requirements)
 // - Styles: normal, italic
 // - Formats: woff2 (modern browsers), woff (legacy fallback)
-const weights = ['100', '300', '400', '700', '900'];
-const styles = ['normal', 'italic'];
-const subsets = ['latin', 'latin-ext'];
-const formats = ['woff2', 'woff'];
+const weights = ["100", "300", "400", "700", "900"];
+const styles = ["normal", "italic"];
+const subsets = ["latin", "latin-ext"];
+const formats = ["woff2", "woff"];
 
 let copiedCount = 0;
 for (const subset of subsets) {
@@ -91,4 +97,4 @@ for (const subset of subsets) {
 }
 
 console.log(`✓ Copied ${copiedCount} font files`);
-console.log('✓ Build complete');
+console.log("✓ Build complete");

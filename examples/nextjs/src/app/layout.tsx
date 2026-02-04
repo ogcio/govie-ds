@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import { LoadMaterialSymbols } from "@ogcio/design-system-react";
-// Testing @govie-ds/fonts - comment out next/font/google
+// Testing @ogcio/design-system-fonts - comment out next/font/google
 // import { Lato } from "next/font/google";
 import "@ogcio/design-system-fonts/fonts.css";
 import "./globals.css";
