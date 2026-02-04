@@ -1,8 +1,8 @@
 import type { Meta, StoryObj } from '@storybook/react';
 import { useMemo, useState } from 'react';
-import { renderToStaticMarkup } from 'react-dom/server';
 import { within, expect, userEvent, screen } from 'storybook/test';
 import GovieLogoHarpBlackWithText from '../../assets/logos/gov-of-ireland/harp-black.js';
+import GovieLogoHarpBlackWithWhiteText from '../../assets/logos/gov-of-ireland/harp-gold-text-white.js';
 import GovieLogoHarpWithText from '../../assets/logos/gov-of-ireland/harp-white.js';
 import GovieLogoHarpBlack from '../../assets/logos/harp/harp-black.js';
 import GovieLogoHarp from '../../assets/logos/harp/harp-white.js';
@@ -42,9 +42,6 @@ const meta = {
 } satisfies Meta<typeof Header>;
 
 export default meta;
-
-const getLogo = (Logo: any) =>
-  `data:image/svg+xml;base64,${encodeURIComponent(btoa(renderToStaticMarkup(<Logo />)))}`;
 
 const SlotExample1 = () => (
   <div className="gi-pt-4 gi-flex gi-justify-between gi-flex-col gi-gap-6 gi-h-full">
@@ -120,23 +117,18 @@ export const Default: StoryObj = {
       <>
         <Header variant="default" aria-label="Site header">
           <HeaderLogo>
-            <img
-              src={getLogo(GovieLogoHarp)}
-              alt="govie logo"
+            <GovieLogoHarp
+              role="img"
+              aria-label="Gov.ie logo"
+              focusable="false"
               className="gi-block gi-h-10 gi-w-auto sm:gi-hidden"
-              decoding="async"
-              loading="eager"
-              fetchPriority="high"
             />
-            <img
-              src={getLogo(GovieLogoHarpWithText)}
-              alt="govie logo"
+            <GovieLogoHarpWithText
+              role="img"
+              aria-label="Gov.ie logo"
+              focusable="false"
               className="gi-hidden gi-h-12 gi-w-auto sm:gi-block"
-              decoding="async"
-              loading="eager"
-              fetchPriority="high"
             />
-            <span className="gi-sr-only">Gov.ie logo</span>
           </HeaderLogo>
           <HeaderTitle>Title</HeaderTitle>
           <HeaderSecondaryMenu>
@@ -353,24 +345,17 @@ export const Govie: StoryObj = {
       <>
         <Header variant="default" aria-label="Site header" id="govieHeader">
           <HeaderLogo>
-            <a href="/" aria-label="Go to Home Page">
-              <img
-                src="https://raw.githubusercontent.com/ogcio/govie-ds/refs/heads/main/assets/logos/gov.ie/harp-gold-text-white.svg"
-                alt="govie logo"
+            <a href="/" aria-label="Gov.ie home">
+              <GovieLogoHarpBlackWithWhiteText
+                aria-hidden="true"
+                focusable="false"
                 className="gi-block gi-h-10 gi-w-auto sm:gi-hidden"
-                decoding="async"
-                loading="eager"
-                fetchPriority="high"
               />
-              <img
-                src="https://raw.githubusercontent.com/ogcio/govie-ds/refs/heads/main/assets/logos/gov.ie/harp-gold-text-white.svg"
-                alt="govie logo"
+              <GovieLogoHarpBlackWithWhiteText
+                aria-hidden="true"
+                focusable="false"
                 className="gi-hidden gi-h-12 gi-w-auto sm:gi-block"
-                decoding="async"
-                loading="eager"
-                fetchPriority="high"
               />
-              <span className="gi-sr-only">Gov.ie logo</span>
             </a>
           </HeaderLogo>
           <HeaderPrimaryMenu>
@@ -453,10 +438,7 @@ export const Govie: StoryObj = {
 
     await step('logo link is present', async () => {
       expect(
-        await canvas.findByRole('link', { name: /go to home page/i }),
-      ).toBeInTheDocument();
-      expect(
-        await canvas.findByRole('img', { name: /govie logo/i }),
+        await canvas.findByRole('link', { name: /Gov.ie home/i }),
       ).toBeInTheDocument();
     });
   },
@@ -497,23 +479,18 @@ export const Light: StoryObj = {
       <>
         <Header variant="light" aria-label="Site header">
           <HeaderLogo>
-            <img
-              src={getLogo(GovieLogoHarpBlack)}
-              alt="govie logo"
+            <GovieLogoHarpBlack
+              aria-label="Gov.ie logo"
+              role="img"
+              focusable="false"
               className="gi-block gi-h-10 gi-w-auto sm:gi-hidden"
-              decoding="async"
-              loading="eager"
-              fetchPriority="high"
             />
-            <img
-              src={getLogo(GovieLogoHarpBlackWithText)}
-              alt="govie logo"
+            <GovieLogoHarpBlackWithText
+              aria-label="Gov.ie logo"
+              role="img"
+              focusable="false"
               className="gi-hidden gi-h-12 gi-w-auto sm:gi-block"
-              decoding="async"
-              loading="eager"
-              fetchPriority="high"
             />
-            <span className="gi-sr-only">Gov.ie logo</span>
           </HeaderLogo>
           <HeaderTitle>Title</HeaderTitle>
           <HeaderSecondaryMenu>

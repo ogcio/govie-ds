@@ -1,4 +1,6 @@
-function HarpGoldWithTextGreen() {
+import { SVGProps } from 'react';
+
+function HarpGoldWithTextGreen(props: SVGProps<SVGSVGElement>) {
   return (
     <svg
       width="136"
@@ -6,6 +8,7 @@ function HarpGoldWithTextGreen() {
       viewBox="0 0 136 48"
       fill="none"
       xmlns="http://www.w3.org/2000/svg"
+      {...props}
     >
       <g clipPath="url(#clip0_175_13114)">
         <path

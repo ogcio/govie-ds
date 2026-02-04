@@ -10,7 +10,10 @@
   },
   "exports": {
     ".": "./dist/index.js",
-    "./styles.css": "./dist/styles.css"
+    "./styles.css": "./dist/styles.css",
+    "./logos/*": {
+      "default": "./dist/assets/logos/*"
+    }
   },
   "scripts": {
     "format": "prettier 'src/**/*.{ts,tsx}' --write",

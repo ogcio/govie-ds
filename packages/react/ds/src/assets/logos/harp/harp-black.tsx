@@ -1,4 +1,6 @@
-function HarpBlack() {
+import { SVGProps } from 'react';
+
+function HarpBlack(props: SVGProps<SVGSVGElement>) {
   return (
     <svg
       width="56"
@@ -6,6 +8,7 @@ function HarpBlack() {
       viewBox="0 0 56 88"
       fill="none"
       xmlns="http://www.w3.org/2000/svg"
+      {...props}
     >
       <g clip-path="url(#clip0_212_1062)">
         <path

@@ -1,4 +1,6 @@
-function HarpWhite() {
+import { SVGProps } from 'react';
+
+function HarpWhite(props: SVGProps<SVGSVGElement>) {
   return (
     <svg
       width="56"
@@ -6,6 +8,7 @@ function HarpWhite() {
       viewBox="0 0 56 88"
       fill="none"
       xmlns="http://www.w3.org/2000/svg"
+      {...props}
     >
       <path
         d="M16.3935 18.5387C17.3014 18.5387 18.0376 17.8024 18.0376 16.8946C18.0376 15.9867 17.3014 15.2505 16.3935 15.2505C15.4857 15.2505 14.7495 15.9867 14.7495 16.8946C14.7503 17.802 15.4857 18.5378 16.3935 18.5387Z"
