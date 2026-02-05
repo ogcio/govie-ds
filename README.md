@@ -1,29 +1,61 @@
 # Government of Ireland Design System
 
-The Government of Ireland Design System is an open-source design system developed by the Office of the Government Chief Information Officer (OGCIO). It provides tools for design and development, along with resources and guidelines to help teams create consistent, accessible, and user-centred digital services across government.
+The Government of Ireland Design System is an open-source design system developed by the Office of the Government Chief Information
+Officer (OGCIO). It provides tools for design and development, along with resources and guidelines to help teams create consistent,
+accessible, and user-centred digital services across government.
 
-- 📘 [Project Overview](https://github.com/ogcio/govie-ds/blob/main/docs/overview.md)
-- 🛠️ [Technical Reference](https://github.com/ogcio/govie-ds/blob/main/docs/technical.md)
-- ⚛️ [React Storybook](https://ds.services.gov.ie/storybook-react/?path=/docs/layout-accordion--docs)
-- 🧱 [HTML Storybook](https://ds.services.gov.ie/storybook-html/?path=/docs/layout-accordion--docs)
-- 🧩 [Available Components](https://ds.services.gov.ie/components/)
+<br/>
+<a href="https://github.com/ogcio/govie-ds/blob/main/docs/overview.md"><img src="./assets/docs/icon_project_overview.png" width="48" height="48" alt="" hspace="10" /></a>
+<a href="https://github.com/ogcio/govie-ds/blob/main/docs/technical.md"><img src="./assets/docs/icon_technical_reference.png" width="48" height="48" alt="" hspace="10" /></a>
+<a href="https://ds.services.gov.ie/storybook-react"><img src="./assets/docs/icon_react.png" width="48" height="48" alt="" hspace="10"/></a>
+<a href="https://ds.services.gov.ie/storybook-html"><img src="./assets/docs/icon_html.png" width="48" height="48" alt="" hspace="10" /></a>
+<a href="https://ds.services.gov.ie/components/"><img src="./assets/docs/icon_components.png" width="48" height="48" alt="" hspace="10" /></a>
+<br/>
+<br/>
 
-## 🎨 Design
+**[Project Overview](https://github.com/ogcio/govie-ds/blob/main/docs/overview.md)**  
+Introduction to the Government of Ireland Design System, its goals, and scope.
 
-The Government of Ireland Design System uses Figma as its core design foundation, ensuring visual consistency across all government platforms and services.
-Our design tokens and variables are managed centrally and can be imported directly into Figma for use by designers and product teams.
+**[Technical Reference](https://github.com/ogcio/govie-ds/blob/main/docs/technical.md)**  
+Technical setup, architecture, and implementation details.
 
-- 👉 [Design](packages/design/README.md)
-- 👉 [Figma](packages/design/figma/README.md)
+**[React Storybook](https://ds.services.gov.ie/storybook-react)**  
+Interactive documentation for React components.
+
+**[HTML Storybook](https://ds.services.gov.ie/storybook-html)**  
+Interactive documentation for HTML components.
+
+**[Available Components](https://ds.services.gov.ie/components/)**  
+Complete catalogue of available components.
+
+## Design
+
+The Government of Ireland Design System uses Figma as its primary design tool, helping teams maintain consistency across government
+platforms and services. Design tokens and variables are centrally managed and available for direct use in Figma.
+
+<br/>
+<a href="packages/design/README.md"><img src="./assets/docs/icon_design.png" width="48" height="48" alt="" hspace="10" /></a>
+<a href="packages/design/figma/README.md"><img src="./assets/docs/icon_figma.png" width="48" height="48" alt="" hspace="10" /></a>
+<br/>
+<br/>
+
+**[Design](packages/design/README.md)**  
+Design packages, tools, and tokens for building and theming the design system.
+
+**[Figma](packages/design/figma/README.md)**  
+Tools and resources for designing in Figma.
 
 ## Packages
 
 This project includes the following packages that are publicly available on npm:
 
 - [`@ogcio/design-system-react`](packages/react/ds/README.md) - A library of UI components for government platforms in React.
-- [`@ogcio/design-system-tokens`](packages/design/tokens/README.md) - A library of design tokens for consistent styling across government platforms.
-- [`@ogcio/design-system-tailwind`](packages/design/tailwind/README.md) - A Tailwind CSS integration for the Government of Ireland Design System, providing utility-first styling options for rapid UI development.
-- [`@ogcio/theme-govie`](packages/themes/govie/README.md) - A theme package for the Government of Ireland Design System, providing predefined styles and components tailored for the Govie platform.
+- [`@ogcio/design-system-tokens`](packages/design/tokens/README.md) - A library of design tokens for consistent styling across government
+  platforms.
+- [`@ogcio/design-system-tailwind`](packages/design/tailwind/README.md) - A Tailwind CSS integration for the Government of Ireland Design
+  System, providing utility-first styling options for rapid UI development.
+- [`@ogcio/theme-govie`](packages/themes/govie/README.md) - A theme package for the Government of Ireland Design System, providing
+  predefined styles and components tailored for the Govie platform.
 
 ## Getting started
 
@@ -36,7 +68,7 @@ pnpm ds
 ## Scripts
 
 | Script                 | Description                             |
-| ---------------------- | --------------------------------------- |
+|------------------------|-----------------------------------------|
 | `pnpm ds`              | Launch documentation site (Next.js)     |
 | `pnpm html:storybook`  | Launch global HTML components Storybook |
 | `pnpm react:storybook` | Launch React components Storybook       |
@@ -72,14 +104,17 @@ This generates `LICENCES.md` with a table of package name, version, and license 
 
 ## Visual regression testing
 
-To run Visual regression testing locally you need to create a Docker image in your local machine running the command `make build-visual-tests-image`.
+To run Visual regression testing locally you need to create a Docker image in your local machine running the command
+`make build-visual-tests-image`.
 Once the image has been created, you can run the tests with the command `make tests`.
-If you are developing a new feature or making some adjustment to the style of existing components, you might need to update the snapshots to the latest version; to do so, you just have to run `make update-screenshots` to refresh all the screenshot in the repository.
+If you are developing a new feature or making some adjustment to the style of existing components, you might need to update the snapshots to
+the latest version; to do so, you just have to run `make update-screenshots` to refresh all the screenshot in the repository.
 Once you're done, you can run `make stop-react-storybook` to close the Storybook instance that is running in the background.
 
 ## Build Figma tokens
 
-Make token changes in `packages/design/tokens` or `packages/themes/<packagename>` in [Design Token Format Module](https://design-tokens.github.io/community-group/format/) format.
+Make token changes in `packages/design/tokens` or `packages/themes/<packagename>`
+in [Design Token Format Module](https://design-tokens.github.io/community-group/format/) format.
 
 ```bash
 pnpm figma:build
@@ -91,13 +126,15 @@ The entire folder can be uploaded as one with the [figma-variables-import](https
 ### Known Issues
 
 - Figma does not support composite variables (e.g. typography, shadows etc), so they are converted to nested variable groups
-- Figma [does not support percentage variables for line height](https://forum.figma.com/t/allow-percentages-for-line-height/69692) so line height percentages must be entered manually for Figma text styles
+- Figma [does not support percentage variables for line height](https://forum.figma.com/t/allow-percentages-for-line-height/69692) so line
+  height percentages must be entered manually for Figma text styles
 
 ## Thanks
 
 <a href="https://www.chromatic.com/"><img src="https://user-images.githubusercontent.com/321738/84662277-e3db4f80-af1b-11ea-88f5-91d67a5e59f6.png" width="153" height="30" alt="Chromatic" /></a>
 
-Thanks to [Chromatic](https://www.chromatic.com/) for providing the visual testing platform that helps us review UI changes and catch visual regressions.
+Thanks to [Chromatic](https://www.chromatic.com/) for providing the visual testing platform that helps us review UI changes and catch visual
+regressions.
 
 This project is tested with BrowserStack [BrowserStack](https://www.browserstack.com/)
 
