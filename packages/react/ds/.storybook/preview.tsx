@@ -11,6 +11,8 @@ import {
 import { withThemeByDataAttribute } from '@storybook/addon-themes';
 import type { Preview } from '@storybook/react';
 import { INITIAL_VIEWPORTS, MINIMAL_VIEWPORTS } from 'storybook/viewport';
+// Required for Storybook dev; fonts are bundled into styles.css during build
+import '../fonts.css';
 import '../styles.css';
 import './global.css';
 import { initI18n } from '../src/i18n/config';
