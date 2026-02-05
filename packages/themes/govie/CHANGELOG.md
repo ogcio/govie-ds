@@ -1,5 +1,14 @@
 # Changelog
 
+## [1.21.2](https://github.com/ogcio/govie-ds/compare/themes-govie-v1.21.1...themes-govie-v1.21.2) (2026-02-03)
+
+
+### Dependencies
+
+* The following workspace dependencies were updated
+  * devDependencies
+    * @ogcio/theme-builder bumped to 1.22.0
+
 ## [1.21.1](https://github.com/ogcio/govie-ds/compare/themes-govie-v1.21.0...themes-govie-v1.21.1) (2026-01-09)
 
 
