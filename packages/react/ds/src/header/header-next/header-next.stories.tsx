@@ -1,11 +1,13 @@
 import type { Meta, StoryObj } from '@storybook/react';
 import { useMemo, useState } from 'react';
 import { within, expect, userEvent, screen } from 'storybook/test';
-import GovieLogoHarpBlackWithText from '../../assets/logos/gov-of-ireland/harp-black.js';
-import GovieLogoHarpBlackWithWhiteText from '../../assets/logos/gov-of-ireland/harp-gold-text-white.js';
-import GovieLogoHarpWithText from '../../assets/logos/gov-of-ireland/harp-white.js';
-import GovieLogoHarpBlack from '../../assets/logos/harp/harp-black.js';
-import GovieLogoHarp from '../../assets/logos/harp/harp-white.js';
+import {
+  LogoBlack,
+  LogoGoldWhite,
+  LogoWhite,
+  LogoHarpBlack,
+  LogoHarpWhite,
+} from '../../assets/logos/index.js';
 
 import { Button } from '../../button/button.js';
 import { DrawerMenuExample } from '../../drawer/drawer.content.js';
@@ -117,13 +119,13 @@ export const Default: StoryObj = {
       <>
         <Header variant="default" aria-label="Site header">
           <HeaderLogo>
-            <GovieLogoHarp
+            <LogoHarpWhite
               role="img"
               aria-label="Gov.ie logo"
               focusable="false"
               className="gi-block gi-h-10 gi-w-auto sm:gi-hidden"
             />
-            <GovieLogoHarpWithText
+            <LogoWhite
               role="img"
               aria-label="Gov.ie logo"
               focusable="false"
@@ -346,12 +348,12 @@ export const Govie: StoryObj = {
         <Header variant="default" aria-label="Site header" id="govieHeader">
           <HeaderLogo>
             <a href="/" aria-label="Gov.ie home">
-              <GovieLogoHarpBlackWithWhiteText
+              <LogoGoldWhite
                 aria-hidden="true"
                 focusable="false"
                 className="gi-block gi-h-10 gi-w-auto sm:gi-hidden"
               />
-              <GovieLogoHarpBlackWithWhiteText
+              <LogoGoldWhite
                 aria-hidden="true"
                 focusable="false"
                 className="gi-hidden gi-h-12 gi-w-auto sm:gi-block"
@@ -479,13 +481,13 @@ export const Light: StoryObj = {
       <>
         <Header variant="light" aria-label="Site header">
           <HeaderLogo>
-            <GovieLogoHarpBlack
-              aria-label="Gov.ie logo"
+            <LogoHarpBlack
+              Logoaria-label="Gov.ie logo"
               role="img"
               focusable="false"
               className="gi-block gi-h-10 gi-w-auto sm:gi-hidden"
             />
-            <GovieLogoHarpBlackWithText
+            <LogoBlack
               aria-label="Gov.ie logo"
               role="img"
               focusable="false"

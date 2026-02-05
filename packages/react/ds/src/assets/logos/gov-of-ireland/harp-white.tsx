@@ -1,6 +1,6 @@
 import { SVGProps } from 'react';
 
-function HarpWhite(props: SVGProps<SVGSVGElement>) {
+export const LogoWhite = (props: SVGProps<SVGSVGElement>) => {
   return (
     <svg
       width="136"
@@ -191,6 +191,4 @@ function HarpWhite(props: SVGProps<SVGSVGElement>) {
       </defs>
     </svg>
   );
-}
-
-export default HarpWhite;
+};

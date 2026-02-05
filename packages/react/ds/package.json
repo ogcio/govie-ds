@@ -11,9 +11,7 @@
   "exports": {
     ".": "./dist/index.js",
     "./styles.css": "./dist/styles.css",
-    "./logos/*": {
-      "default": "./dist/assets/logos/*"
-    }
+    "./logos": "./dist/assets/logos/index.js"
   },
   "scripts": {
     "format": "prettier 'src/**/*.{ts,tsx}' --write",

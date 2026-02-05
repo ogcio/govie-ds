@@ -2,10 +2,12 @@
 import { useEffect, useMemo } from 'react';
 import { renderToStaticMarkup } from 'react-dom/server';
 
-import GovieLogoHarpBlackWithText from '../assets/logos/gov-of-ireland/harp-black.js';
-import GovieLogoHarpWithText from '../assets/logos/gov-of-ireland/harp-white.js';
-import GovieLogoHarpBlack from '../assets/logos/harp/harp-black.js';
-import GovieLogoHarp from '../assets/logos/harp/harp-white.js';
+import {
+  LogoBlack as GovieLogoHarpBlackWithText,
+  LogoWhite as GovieLogoHarpWithText,
+  LogoHarpBlack as GovieLogoHarpBlack,
+  LogoHarpWhite as GovieLogoHarp,
+} from '../assets/logos/index.js';
 import { cn } from '../cn.js';
 import { Container } from '../container/container.js';
 import { translate as t } from '../i18n/utility.js';

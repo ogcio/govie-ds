@@ -1,6 +1,6 @@
 import { SVGProps } from 'react';
 
-const HarpGoldWithWhiteText = (props: SVGProps<SVGSVGElement>) => (
+export const LogoGoldWhite = (props: SVGProps<SVGSVGElement>) => (
   <svg
     xmlns="http://www.w3.org/2000/svg"
     width="136"
@@ -51,5 +51,3 @@ const HarpGoldWithWhiteText = (props: SVGProps<SVGSVGElement>) => (
     />
   </svg>
 );
-
-export default HarpGoldWithWhiteText;
