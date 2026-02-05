@@ -15,8 +15,6 @@ npm install @ogcio/design-system-fonts
 ```js
 // Import at your application entry point
 import "@ogcio/design-system-fonts/fonts.css";
-import "@ogcio/design-system-react/styles.css";
-import "@ogcio/theme-govie/theme.css";
 ```
 
 ### Import in HTML
@@ -26,8 +24,6 @@ import "@ogcio/theme-govie/theme.css";
   rel="stylesheet"
   href="path/to/node_modules/@ogcio/design-system-fonts/fonts/dist/fonts.css"
 />
-<link rel="stylesheet" href="path/to/styles.css" />
-<link rel="stylesheet" href="path/to/theme.css" />
 ```
 
 ### Import in Angular

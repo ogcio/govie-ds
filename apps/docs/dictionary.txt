@@ -129,6 +129,7 @@ TextAreaProps
 Textarea
 Theming
 Tooltip
+Turbopack
 UI
 USD
 UX
