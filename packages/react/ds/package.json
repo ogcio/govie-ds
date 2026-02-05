@@ -11,6 +11,7 @@
   "exports": {
     ".": "./dist/index.js",
     "./styles.css": "./dist/styles.css",
+    "./fonts.css": "./fonts.css",
     "./logos": {
       "types": "./dist/assets/logos/index.d.ts",
       "import": "./dist/assets/logos/index.js"
@@ -28,7 +29,7 @@
     "test:watch": "vitest",
     "coverage": "vitest run --coverage",
     "build": "pnpm build:ts && pnpm build:styles",
-    "build:styles": "tailwindcss -i ./styles.css -o ./dist/styles.css --minify",
+    "build:styles": "tailwindcss -i ./styles.css -o ./dist/styles.css --minify && node scripts/build-styles.js",
     "build:ts": "vite build",
     "storybook:dev": "storybook dev -p 6006",
     "storybook:build": "storybook build --stats-json",
@@ -44,7 +45,8 @@
   ],
   "files": [
     "dist",
-    "styles"
+    "styles",
+    "fonts.css"
   ],
   "keywords": [],
   "author": "",
@@ -54,6 +56,7 @@
     "react-dom": "*"
   },
   "dependencies": {
+    "@fontsource/lato": "^5.1.1",
     "@popperjs/core": "^2.11.8",
     "@radix-ui/react-slot": "^1.1.2",
     "bowser": "^2.13.1",
