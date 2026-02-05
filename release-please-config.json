@@ -108,6 +108,11 @@
     "packages/design/figma": {
       "component": "figma",
       "release-type": "node"
+    },
+    "packages/design/fonts": {
+      "component": "design-fonts",
+      "release-type": "node",
+      "changelog-path": "CHANGELOG.md"
     }
   },
   "plugins": [

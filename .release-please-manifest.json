@@ -8,5 +8,6 @@
   "packages/react/ds": "1.28.0",
   "packages/themes/govie": "1.21.2",
   "packages/design/tokens": "1.21.1",
-  "packages/design/figma": "1.0.2"
+  "packages/design/figma": "1.0.2",
+  "packages/design/fonts": "1.0.0"
 }
