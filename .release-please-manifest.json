@@ -4,7 +4,7 @@
   "packages/build/prettier-config": "1.1.0",
   "packages/design/tailwind": "1.21.2",
   "packages/design/theme-builder": "1.22.0",
-  "packages/html/ds": "1.17.3",
+  "packages/html/ds": "1.18.0",
   "packages/react/ds": "1.28.0",
   "packages/themes/govie": "1.21.2",
   "packages/design/tokens": "1.21.1",
