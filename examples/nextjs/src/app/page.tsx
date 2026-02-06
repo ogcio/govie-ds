@@ -92,8 +92,8 @@ import {
   HeaderMenuItemSeparator,
   HeaderMenuItemButton,
 } from '@ogcio/design-system-react';
+import LogoBlack from '@ogcio/design-system-react/logos/LogoBlack';
 import { useEffect, useRef, useState } from 'react';
-import Image from 'next/image';
 
 const HeaderComposable = () => {
   const [searchOpen, setSearchOpen] = useState(false);
@@ -102,18 +102,18 @@ const HeaderComposable = () => {
     <>
       <Header variant="default" aria-label="Site header" id="GovieHeader">
         <HeaderLogo>
-          <HeaderLogo>
-            <Image
-              src="https://raw.githubusercontent.com/ogcio/govie-ds/refs/heads/main/assets/logos/gov.ie/harp-gold-text-white.svg"
-              alt="govie logo"
-              decoding="async"
-              loading="eager"
-              fetchPriority="high"
-              width={136}
-              height={48}
-            />
-            <span className="gi-sr-only">Gov.ie logo</span>
-          </HeaderLogo>
+          <LogoBlack
+            role="img"
+            aria-label="Gov.ie logo"
+            focusable="false"
+            className="gi-block gi-h-10 gi-w-auto sm:gi-hidden"
+          />
+          <LogoBlack
+            role="img"
+            aria-label="Gov.ie logo"
+            focusable="false"
+            className="gi-hidden gi-h-12 gi-w-auto sm:gi-block"
+          />
         </HeaderLogo>
         <HeaderTitle>Title</HeaderTitle>
         <HeaderSecondaryMenu>
@@ -355,7 +355,10 @@ const ReachHookFormWithRegister = () => {
 
             <div className="flex gap-2">
               <Button type="submit">Submit</Button>
-              <Button type="button" onClick={() => reset(basicFormDefaultValues)}>
+              <Button
+                type="button"
+                onClick={() => reset(basicFormDefaultValues)}
+              >
                 Clear
               </Button>
             </div>
