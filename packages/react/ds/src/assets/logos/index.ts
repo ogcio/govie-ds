@@ -1,6 +1,6 @@
-export { LogoGoldGreen } from './gov-of-ireland/harp-gold-text-green.js';
-export { LogoGoldWhite } from './gov-of-ireland/harp-gold-text-white.js';
-export { LogoWhite } from './gov-of-ireland/harp-white.js';
-export { LogoBlack } from './gov-of-ireland/harp-black.js';
-export { LogoHarpBlack } from './harp/harp-black.js';
-export { LogoHarpWhite } from './harp/harp-white.js';
+export * from './LogoGoldGreen.js';
+export * from './LogoGoldWhite.js';
+export * from './LogoWhite.js';
+export * from './LogoBlack.js';
+export * from './LogoHarpBlack.js';
+export * from './LogoHarpWhite.js';

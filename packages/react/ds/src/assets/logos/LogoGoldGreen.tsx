@@ -190,3 +190,5 @@ export const LogoGoldGreen = (props: SVGProps<SVGSVGElement>) => (
     </defs>
   </svg>
 );
+
+export default LogoGoldGreen;

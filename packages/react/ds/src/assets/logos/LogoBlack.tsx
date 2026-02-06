@@ -190,3 +190,5 @@ export const LogoBlack = (props: SVGProps<SVGSVGElement>) => (
     </defs>
   </svg>
 );
+
+export default LogoBlack;

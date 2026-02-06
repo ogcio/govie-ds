@@ -92,7 +92,7 @@ import {
   HeaderMenuItemSeparator,
   HeaderMenuItemButton,
 } from '@ogcio/design-system-react';
-import { LogoBlack } from '@ogcio/design-system-react/logos';
+import LogoBlack from '@ogcio/design-system-react/logos/LogoBlack';
 import { useEffect, useRef, useState } from 'react';
 
 const HeaderComposable = () => {

@@ -192,3 +192,5 @@ export const LogoWhite = (props: SVGProps<SVGSVGElement>) => {
     </svg>
   );
 };
+
+export default LogoWhite;

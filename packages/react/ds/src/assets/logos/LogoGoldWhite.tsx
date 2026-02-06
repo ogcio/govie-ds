@@ -51,3 +51,5 @@ export const LogoGoldWhite = (props: SVGProps<SVGSVGElement>) => (
     />
   </svg>
 );
+
+export default LogoGoldWhite;

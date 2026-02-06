@@ -42,3 +42,5 @@ export const LogoHarpBlack = (props: SVGProps<SVGSVGElement>) => (
     </defs>
   </svg>
 );
+
+export default LogoHarpBlack;

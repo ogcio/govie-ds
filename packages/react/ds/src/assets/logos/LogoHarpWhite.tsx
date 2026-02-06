@@ -35,3 +35,5 @@ export const LogoHarpWhite = (props: SVGProps<SVGSVGElement>) => (
     />
   </svg>
 );
+
+export default LogoHarpWhite;
