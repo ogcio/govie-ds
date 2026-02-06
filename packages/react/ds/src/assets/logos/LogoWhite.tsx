@@ -1,4 +1,6 @@
-function HarpWhite() {
+import { SVGProps } from 'react';
+
+export const LogoWhite = (props: SVGProps<SVGSVGElement>) => {
   return (
     <svg
       width="136"
@@ -6,6 +8,7 @@ function HarpWhite() {
       viewBox="0 0 136 48"
       fill="none"
       xmlns="http://www.w3.org/2000/svg"
+      {...props}
     >
       <g clipPath="url(#clip0_175_13118)">
         <path
@@ -188,6 +191,6 @@ function HarpWhite() {
       </defs>
     </svg>
   );
-}
+};
 
-export default HarpWhite;
+export default LogoWhite;

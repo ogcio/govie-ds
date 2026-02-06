@@ -15,4 +15,10 @@ export default defineConfig([
       'storybook/no-uninstalled-addons': 'off',
     },
   },
+  {
+    files: ['src/assets/logos/**/*.{ts,tsx}'],
+    rules: {
+      'unicorn/filename-case': 'off',
+    },
+  },
 ]);
