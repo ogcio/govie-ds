@@ -11,7 +11,7 @@
 @import 'node_modules/@ogcio/design-system-tailwind/css/components.css';
 @import 'node_modules/@ogcio/design-system-tailwind/css/typography.css';
 
-@import './src/toast/assets/notyf.min.css';
+@import './src/toast/assets/notyf.css';
 
 .gieds-js .js\:gi-hidden {
   display: none;
