@@ -1,5 +1,19 @@
 # Changelog
 
+## [1.29.0](https://github.com/ogcio/govie-ds/compare/docs-v1.28.0...docs-v1.29.0) (2026-02-09)
+
+
+### Features
+
+* **AB#34667:** Adding placeholder utility ([#840](https://github.com/ogcio/govie-ds/issues/840)) ([70974de](https://github.com/ogcio/govie-ds/commit/70974deca0b17543eca171b5937b753726da3f72))
+
+
+### Dependencies
+
+* The following workspace dependencies were updated
+  * dependencies
+    * @ogcio/design-system-react bumped to 1.29.0
+
 ## [1.28.0](https://github.com/ogcio/govie-ds/compare/docs-v1.27.0...docs-v1.28.0) (2026-02-03)
 
 
