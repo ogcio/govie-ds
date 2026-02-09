@@ -1,4 +1,5 @@
 import { Breakpoint } from '../hooks/use-breakpoint.js';
+import { generateSvgPlaceholderDataUrl } from './placeholder.js';
 import { getDisplayPages } from './utilities.js';
 
 describe('getDisplayPages', () => {
@@ -60,5 +61,33 @@ describe('getDisplayPages', () => {
     expect(getDisplayPages(50, 100, Breakpoint.Large)).toEqual([
       1, -1, 48, 49, 50, 51, 52, -2, 100,
     ]);
+  });
+
+  describe('generateSvgPlaceholderDataUrl', () => {
+    it('should generate a data url svg using default dimensions', () => {
+      const dataUrl = generateSvgPlaceholderDataUrl();
+
+      expect(dataUrl.startsWith('data:image/svg+xml,')).toBe(true);
+
+      const encodedSvg = dataUrl.replace('data:image/svg+xml,', '');
+      const svg = decodeURIComponent(encodedSvg);
+
+      expect(svg).toContain('width="300"');
+      expect(svg).toContain('height="400"');
+      expect(svg).toContain('>300x400<');
+      expect(svg).toContain('font-size="18"');
+    });
+
+    it('should generate a data url svg using custom dimensions and clamp font size', () => {
+      const dataUrl = generateSvgPlaceholderDataUrl(80, 60);
+
+      const encodedSvg = dataUrl.replace('data:image/svg+xml,', '');
+      const svg = decodeURIComponent(encodedSvg);
+
+      expect(svg).toContain('width="80"');
+      expect(svg).toContain('height="60"');
+      expect(svg).toContain('>80x60<');
+      expect(svg).toContain('font-size="12"');
+    });
   });
 });
