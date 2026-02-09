@@ -230,7 +230,7 @@ const documentComponents: MDXComponents = {
   CardAction: (props) => <CardAction {...props} __type="CardAction" />,
   CardHeader: (props) => <CardHeader {...props} __type="CardHeader" />,
   CardMedia: (props) => <CardMedia {...props} __type="CardMedia" />,
-  CardMediaWithPlaceholder: ({ width, height, ...props }) => (
+  CardPlaceholder: ({ width, height, ...props }) => (
     <CardMedia
       {...props}
       media={{
