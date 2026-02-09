@@ -1,7 +1,6 @@
 @import './components/placeholder.css';
 @import './components/accordion.css';
 @import './components/alert.css';
-@import './components/autocomplete.css';
 @import './components/blockquote.css';
 @import './components/breadcrumbs.css';
 @import './components/button.css';
@@ -11,7 +10,6 @@
 @import './components/combo-box.css';
 @import './components/common.css';
 @import './components/cookie-banner.css';
-@import './components/data-table.css';
 @import './components/details.css';
 @import './components/drawer.css';
 @import './components/error-text.css';
