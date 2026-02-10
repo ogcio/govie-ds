@@ -1,5 +1,13 @@
 # Changelog
 
+## [1.29.0](https://github.com/ogcio/govie-ds/compare/react-lib-v1.28.0...react-lib-v1.29.0) (2026-02-09)
+
+
+### Features
+
+* **AB#34350:** Exposing logo assets ([#839](https://github.com/ogcio/govie-ds/issues/839)) ([d01ba27](https://github.com/ogcio/govie-ds/commit/d01ba27847947121714597686be10d021f2461cb))
+* **AB#34667:** Adding placeholder utility ([#840](https://github.com/ogcio/govie-ds/issues/840)) ([70974de](https://github.com/ogcio/govie-ds/commit/70974deca0b17543eca171b5937b753726da3f72))
+
 ## [1.28.0](https://github.com/ogcio/govie-ds/compare/react-lib-v1.27.0...react-lib-v1.28.0) (2026-02-03)
 
 
