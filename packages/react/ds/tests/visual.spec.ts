@@ -23,9 +23,17 @@ for (const story of stories) {
     await page.goto(`/iframe.html?${parameters.toString()}`, {
       waitUntil: 'domcontentloaded',
     });
-    await page.waitForFunction(() => document.fonts.ready);
+    await Promise.race([
+      page.evaluate(() => document.fonts.ready),
+      page.waitForTimeout(5000),
+    ]);
     await page.waitForSelector('#storybook-root');
     await page.waitForLoadState('networkidle');
+
+    // Give the browser a couple of frames to apply styles/layout after fonts/assets
+    await page.evaluate(() => new Promise(
+      resolve => requestAnimationFrame(() => requestAnimationFrame(resolve))),
+    );
     await page.waitForTimeout(500);
 
     await expect(page).toHaveScreenshot(`${story.id}.png`, {
