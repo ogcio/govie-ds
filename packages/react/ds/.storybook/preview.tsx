@@ -11,7 +11,7 @@ import {
 import { withThemeByDataAttribute } from '@storybook/addon-themes';
 import type { Preview } from '@storybook/react';
 import { INITIAL_VIEWPORTS, MINIMAL_VIEWPORTS } from 'storybook/viewport';
-import '../styles.css';
+import '../styles/index.css';
 import './global.css';
 import { initI18n } from '../src/i18n/config';
 import enTranslations from '../src/i18n/translations/en.json';
