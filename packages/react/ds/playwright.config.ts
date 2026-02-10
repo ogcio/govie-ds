@@ -29,11 +29,11 @@ export default defineConfig({
     },
     {
       name: 'android',
-      use: { ...devices['Pixel 5'] },
+      use: { ...devices['Pixel 7'] },
     },
     {
       name: 'iphone',
-      use: { ...devices['iPhone 12'] },
+      use: { ...devices['iPhone 14'] },
     },
   ],
   webServer: {

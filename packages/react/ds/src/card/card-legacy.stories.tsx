@@ -1,5 +1,10 @@
 import type { Meta, StoryObj } from '@storybook/react';
+import { generateSvgPlaceholderDataUrl } from '../utils/placeholder.js';
 import { Card } from './card.js';
+
+const backgroundImageUrl400x300 = generateSvgPlaceholderDataUrl(400, 300);
+const backgroundImageUrl600x360 = generateSvgPlaceholderDataUrl(600, 360);
+const backgroundImageUrl600x400 = generateSvgPlaceholderDataUrl(600, 338);
 
 const meta = {
   title: 'Components/Card/Deprecated',
@@ -107,7 +112,7 @@ export const Default: Story = {
     media: {
       type: 'image',
       config: {
-        src: 'https://placeholderjs.com/400x300',
+        src: backgroundImageUrl400x300,
         alt: 'Card Title',
         aspectRatio: '4 / 3',
       },
@@ -151,7 +156,7 @@ export const VerticalWithLink: Story = {
     media: {
       type: 'image',
       config: {
-        src: 'https://placeholderjs.com/400x300',
+        src: backgroundImageUrl400x300,
         alt: 'Vertical Card',
       },
     },
@@ -178,7 +183,7 @@ export const VerticalWithButton: Story = {
     media: {
       type: 'image',
       config: {
-        src: 'https://placeholderjs.com/400x300',
+        src: backgroundImageUrl400x300,
         alt: 'Vertical Card',
       },
     },
@@ -200,7 +205,7 @@ export const Horizontal: Story = {
     media: {
       type: 'image',
       config: {
-        src: 'https://placeholderjs.com/600x360',
+        src: backgroundImageUrl600x360,
         alt: 'Horizontal Card',
       },
     },
@@ -292,7 +297,7 @@ export const MediaImageWithAspectRatio: Story = {
     media: {
       type: 'image',
       config: {
-        src: 'https://placeholderjs.com/600x400',
+        src: backgroundImageUrl600x400,
         alt: '16 / 9 aspect ratio image',
         aspectRatio: '16 / 9',
       },
@@ -320,7 +325,7 @@ export const WithCustomTitleLink: Story = {
     media: {
       type: 'image',
       config: {
-        src: 'https://placeholderjs.com/400x300',
+        src: backgroundImageUrl400x300,
         alt: 'Card Title',
         aspectRatio: '4 / 3',
       },
@@ -350,7 +355,7 @@ export const WithoutTitleLink: Story = {
     media: {
       type: 'image',
       config: {
-        src: 'https://placeholderjs.com/400x300',
+        src: backgroundImageUrl400x300,
         alt: 'Card Title',
         aspectRatio: '4 / 3',
       },
