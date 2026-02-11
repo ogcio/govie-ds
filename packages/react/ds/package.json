@@ -28,7 +28,7 @@
     "test:watch": "vitest",
     "coverage": "vitest run --coverage",
     "build": "pnpm build:ts && pnpm build:styles",
-    "build:styles": "tailwindcss -i ./styles/index.css -o ./dist/styles.css --minify",
+    "build:styles": "tailwindcss -i ./styles.css -o ./dist/styles.css --minify",
     "build:ts": "vite build",
     "storybook:dev": "storybook dev -p 6006",
     "storybook:build": "storybook build --stats-json",
