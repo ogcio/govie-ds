@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.18.1](https://github.com/ogcio/govie-ds/compare/html-lib-v1.18.0...html-lib-v1.18.1) (2026-02-11)
+
+
+### Bug Fixes
+
+* **AB#33720:** Adding focus and responsive styles to the pagination Link ([#846](https://github.com/ogcio/govie-ds/issues/846)) ([56565b7](https://github.com/ogcio/govie-ds/commit/56565b771ae3b0b5b5891d5159ec6a94abc29d1f))
+
 ## [1.18.0](https://github.com/ogcio/govie-ds/compare/html-lib-v1.17.3...html-lib-v1.18.0) (2026-02-03)
 
 
