@@ -306,10 +306,19 @@ const paginationCss = `
   text-decoration-thickness: 4px;
   color: var(--gieds-color-text-tone-convention-hover);
 }
+
+.gi-prev_pagination-link:focus,
+.gi-next_pagination-link:focus {
+  text-decoration: none;
+  border-radius: 0.125rem;
+  outline: none;
+  box-shadow: 0 0 0 2px var(--gieds-color-gray-950),
+    0 0 0 5px var(--gieds-color-yellow-400);
+}
 `;
 
 const paginationHtml = `
-<div class="gi-flex gi-w-full gi-justify-between">
+<div class="gi-flex gi-flex-col md:gi-flex-row gi-w-full gi-justify-between gi-gap-4 md:gi-gap-0">
   <a class="gi-grid gi-grid-cols-[auto_1fr] gi-w-fit gi-gap-x-1 gi-cursor-pointer gi-prev_pagination-link" href="#">
     <span class="gi-flex gi-items-center">
       <span data-testid="govie-icon" role="presentation" class="gi-text-sm gi-block material-symbols-outlined gi-text-black">
@@ -322,7 +331,9 @@ const paginationHtml = `
     </span>
   </a>
 
-  <a class="gi-grid gi-grid-cols-[auto_1fr] gi-w-fit gi-gap-x-1 gi-cursor-pointer gi-next_pagination-link" href="#">
+   <hr class="gi-border-gray-200 gi-w-full md:gi-hidden" />
+
+  <a class="gi-grid gi-grid-cols-[auto_1fr] gi-w-fit gi-gap-x-1 gi-cursor-pointer gi-next_pagination-link gi-ml-auto" href="#">
     <span class="gi-text-end gi-text-md gi-text-black gi-next_pagination-title">Next</span>
     <span class="gi-flex gi-items-center">
       <span data-testid="govie-icon" role="presentation" class="gi-text-sm gi-block material-symbols-outlined gi-text-black">
