@@ -285,7 +285,7 @@ export const Autocomplete = forwardRef<HTMLInputElement, AutocompleteProps>(
     return (
       <div
         aria-disabled={disabled}
-        className={cn('gi-autocomplete gi-not-prose', props.className)}
+        className={cn('gi-relative gi-w-full gi-not-prose', props.className)}
       >
         <span id={srOnlyLabelId} className="gi-sr-only">
           {labelText}
