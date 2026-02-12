@@ -31,6 +31,7 @@
     "dist": "zip -r govie-frontend.zip dist",
     "storybook:dev": "storybook dev -p 6006",
     "storybook:build": "STORYBOOK_ENV=prod storybook build --stats-json",
+    "storybook:serve": "http-server storybook-static -p 6006 -c-1",
     "typecheck": "tsc -p tsconfig.json --noEmit"
   },
   "files": [
@@ -55,6 +56,7 @@
     "eslint": "^9.23.0",
     "fs-extra": "^11.2.0",
     "glob": "^11.0.1",
+    "http-server": "^14.1.1",
     "js-beautify": "^1.15.4",
     "jsdom": "^25.0.1",
     "postcss": "^8.4.40",

@@ -37,8 +37,8 @@ export default defineConfig({
     },
   ],
   webServer: {
-    command: 'pnpm storybook:dev',
+    command: 'pnpm storybook:serve',
     url: BASE_URL,
-    reuseExistingServer: true,
+    reuseExistingServer: !process.env.CI,
   },
 });
