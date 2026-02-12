@@ -1,5 +1,15 @@
 # Changelog
 
+## [1.29.1](https://github.com/ogcio/govie-ds/compare/docs-v1.29.0...docs-v1.29.1) (2026-02-12)
+
+
+### Dependencies
+
+* The following workspace dependencies were updated
+  * dependencies
+    * @ogcio/design-system-react bumped to 1.29.1
+    * @ogcio/design-system-tailwind bumped to 1.21.3
+
 ## [1.29.0](https://github.com/ogcio/govie-ds/compare/docs-v1.28.0...docs-v1.29.0) (2026-02-09)
 
 
