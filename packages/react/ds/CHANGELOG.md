@@ -1,5 +1,19 @@
 # Changelog
 
+## [1.29.1](https://github.com/ogcio/govie-ds/compare/react-lib-v1.29.0...react-lib-v1.29.1) (2026-02-12)
+
+
+### Miscellaneous Chores
+
+* **AB#34666:** Refactor tailwind library ([#844](https://github.com/ogcio/govie-ds/issues/844)) ([b75c0ed](https://github.com/ogcio/govie-ds/commit/b75c0ed1bdd85c57d8ca317aebb672b9a19f3ca3))
+
+
+### Dependencies
+
+* The following workspace dependencies were updated
+  * devDependencies
+    * @ogcio/design-system-tailwind bumped to 1.21.3
+
 ## [1.29.0](https://github.com/ogcio/govie-ds/compare/react-lib-v1.28.0...react-lib-v1.29.0) (2026-02-09)
 
 
