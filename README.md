@@ -102,14 +102,14 @@ sh ./scripts/licences.sh
 
 This generates `LICENCES.md` with a table of package name, version, and license for all dependencies.
 
-## Visual regression testing
+## Testing
 
-To run Visual regression testing locally you need to create a Docker image in your local machine running the command
-`make build-visual-tests-image`.
-Once the image has been created, you can run the tests with the command `make tests`.
-If you are developing a new feature or making some adjustment to the style of existing components, you might need to update the snapshots to
-the latest version; to do so, you just have to run `make update-screenshots` to refresh all the screenshot in the repository.
-Once you're done, you can run `make stop-react-storybook` to close the Storybook instance that is running in the background.
+A comprehensive testing strategy is employed to ensure the stability and visual integrity of components:
+- **Unit Testing**: Verifying core logic and behaviours using Vitest.
+- **Interaction Testing**: Testing user interactions within Storybook using Play functions.
+- **Visual Regression**: Capturing and comparing snapshots via Chromatic and Playwright.
+
+For full guidance, including local execution instructions and CI/CD integration, see the [Testing Strategy](./docs/testing.md).
 
 ## Build Figma tokens
 
