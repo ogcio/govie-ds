@@ -10,6 +10,7 @@ import React, {
   useEffect,
   useCallback,
 } from 'react';
+import { tv } from 'tailwind-variants';
 import { cn } from '../cn.js';
 import { useDomId } from '../hooks/use-dom-id.js';
 import { translate as t } from '../i18n/utility.js';
@@ -32,6 +33,20 @@ import {
   AutocompleteProps,
 } from './types.js';
 import { useAutocompleteController } from './use-autocomplete-controller.js';
+
+const autocompleteStyles = tv({
+  slots: {
+    root: 'gi-relative gi-w-full gi-not-prose',
+    iconEnd: '',
+  },
+  variants: {
+    iconEndState: {
+      interactive: { iconEnd: 'gi-cursor-pointer' },
+      disabled: { iconEnd: 'gi-cursor-not-allowed gi-pointer-events-none' },
+      none: { iconEnd: '' },
+    },
+  },
+});
 
 const {
   ON_RESET,
@@ -78,6 +93,8 @@ const propagateOnBlur =
 
 export const Autocomplete = forwardRef<HTMLInputElement, AutocompleteProps>(
   (props, ref) => {
+    const styles = autocompleteStyles();
+
     const iconEndRef = useRef<HTMLDivElement>(null);
     const {
       disabled,
@@ -101,7 +118,6 @@ export const Autocomplete = forwardRef<HTMLInputElement, AutocompleteProps>(
       getOptionLabelByValue,
       listRef,
       debouncedFilter,
-      validChildren,
     } = useAutocompleteController({
       ...props,
       onChange: propagateOnChange(onAutocompleteChange, name),
@@ -282,10 +298,16 @@ export const Autocomplete = forwardRef<HTMLInputElement, AutocompleteProps>(
       [state.highlightedIndex, state.autocompleteOptions, handleOnSelectItem],
     );
 
+    const iconEndState = freeSolo
+      ? 'none'
+      : disabled
+        ? 'disabled'
+        : 'interactive';
+
     return (
       <div
         aria-disabled={disabled}
-        className={cn('gi-relative gi-w-full gi-not-prose', props.className)}
+        className={cn(styles.root(), props.className)}
       >
         <span id={srOnlyLabelId} className="gi-sr-only">
           {labelText}
@@ -310,11 +332,7 @@ export const Autocomplete = forwardRef<HTMLInputElement, AutocompleteProps>(
             placeholder ??
             t('autocomplete.placeholder', { defaultValue: 'Type to Search' })
           }
-          iconEndClassName={cn({
-            'gi-cursor-pointer': !disabled && !freeSolo,
-            'gi-cursor-not-allowed gi-pointer-events-none':
-              disabled && !freeSolo,
-          })}
+          iconEndClassName={styles.iconEnd({ iconEndState })}
           iconEnd={freeSolo ? undefined : getIconEnd(state.isOpen)}
           ref={inputRef}
           iconEndRef={iconEndRef}

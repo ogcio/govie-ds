@@ -1,5 +1,28 @@
 import React from 'react';
+import { tv } from 'tailwind-variants';
 import { cn } from '../cn.js';
+
+const dataTableFooterStyles = tv({
+  slots: {
+    footer: 'gi-flex gi-flex-row gi-w-full gi-items-center',
+    baseSection: 'gi-grow gi-basis-0 gi-min-w-0',
+    centerSection: 'gi-grow gi-basis-0 gi-min-w-0 gi-text-center',
+    endSection: 'gi-min-w-0',
+    standaloneWrapper: 'gi-w-full gi-p-2',
+    cell: 'gi-p-2',
+  },
+  variants: {
+    onlyEnd: {
+      true: {
+        footer: 'gi-justify-end',
+      },
+      false: {
+        footer: 'gi-gap-2',
+        endSection: 'gi-basis-1/2 gi-text-right',
+      },
+    },
+  },
+});
 
 interface DataTableFooterTypeProps extends React.HTMLAttributes<HTMLDivElement> {
   children: React.ReactNode;
@@ -19,29 +42,6 @@ const isDataTableFooterSection = (
   sectionType: React.ComponentType<DataTableFooterTypeProps>,
 ): child is React.ReactElement<DataTableFooterTypeProps> => {
   return React.isValidElement(child) && child.type === sectionType;
-};
-
-const renderFooterType = (
-  section: React.ReactElement<DataTableFooterTypeProps> | null,
-  baseClassName: string,
-  conditionalClassName?: string,
-): React.ReactNode => {
-  if (!section) {
-    return null;
-  }
-
-  return (
-    <div
-      className={cn(
-        baseClassName,
-        conditionalClassName,
-        section.props.className,
-      )}
-      style={section.props.style}
-    >
-      {section.props.children}
-    </div>
-  );
 };
 
 export const DataTableFooterStart: React.FC<DataTableFooterTypeProps> = ({
@@ -93,29 +93,37 @@ export const DataTableFooter: React.FC<DataTableFooterProps> = ({
   const hasEnd = Boolean(end);
   const onlyEnd = !hasStart && !hasCenter && hasEnd;
 
-  const baseSectionClasses = 'gi-data-table-footer-base';
-  const centerSectionClasses = `${baseSectionClasses} gi-text-center`;
-  const endSectionClasses = cn('gi-min-w-0', {
-    'gi-basis-1/2 gi-text-right': !onlyEnd,
-  });
+  const styles = dataTableFooterStyles({ onlyEnd });
+
+  const renderFooterSection = (
+    section: React.ReactElement<DataTableFooterTypeProps> | null,
+    slotClassName: string,
+  ): React.ReactNode => {
+    if (!section) {
+      return null;
+    }
+
+    return (
+      <div
+        className={cn(slotClassName, section.props.className)}
+        style={section.props.style}
+      >
+        {section.props.children}
+      </div>
+    );
+  };
 
   const content = (
-    <div
-      className={cn(
-        'gi-data-table-footer',
-        onlyEnd ? 'gi-justify-end' : 'gi-gap-2',
-        className,
-      )}
-    >
-      {renderFooterType(start, baseSectionClasses)}
-      {renderFooterType(center, centerSectionClasses)}
-      {renderFooterType(end, endSectionClasses)}
+    <div className={cn(styles.footer(), className)}>
+      {renderFooterSection(start, styles.baseSection())}
+      {renderFooterSection(center, styles.centerSection())}
+      {renderFooterSection(end, styles.endSection())}
     </div>
   );
 
   if (standalone) {
     return (
-      <div {...props} className={cn('gi-w-full gi-p-2', className)}>
+      <div {...props} className={cn(styles.standaloneWrapper(), className)}>
         {content}
       </div>
     );
@@ -124,7 +132,7 @@ export const DataTableFooter: React.FC<DataTableFooterProps> = ({
   return (
     <tfoot {...props}>
       <tr>
-        <td colSpan={999} className="gi-p-2">
+        <td colSpan={999} className={styles.cell()}>
           {content}
         </td>
       </tr>
