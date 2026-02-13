@@ -55,6 +55,7 @@ export default [
       ],
       'unicorn/no-null': 'off',
       'unicorn/no-array-reduce': 'warn',
+      'unicorn/no-nested-ternary': 'off',
       'unicorn/prevent-abbreviations': [
         'error',
         {
