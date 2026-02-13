@@ -34,20 +34,6 @@ import {
 } from './types.js';
 import { useAutocompleteController } from './use-autocomplete-controller.js';
 
-const autocompleteStyles = tv({
-  slots: {
-    root: 'gi-relative gi-w-full gi-not-prose',
-    iconEnd: '',
-  },
-  variants: {
-    iconEndState: {
-      interactive: { iconEnd: 'gi-cursor-pointer' },
-      disabled: { iconEnd: 'gi-cursor-not-allowed gi-pointer-events-none' },
-      none: { iconEnd: '' },
-    },
-  },
-});
-
 const {
   ON_RESET,
   ON_SELECT_ITEM,
@@ -58,46 +44,11 @@ const {
   SET_VALUE,
 } = AUTOCOMPLETE_ACTIONS;
 
-const getIconEnd = (isOpen: boolean) =>
-  isOpen ? 'keyboard_arrow_up' : 'keyboard_arrow_down';
-
-const propagateOnChange =
-  (onChange: AutocompleteProps['onChange'], name?: string) =>
-  (inputValue: string) => {
-    if (onChange) {
-      const syntheticEvent = {
-        target: { name, value: inputValue },
-        currentTarget: { name, value: inputValue },
-        type: 'change',
-        bubbles: true,
-        isTrusted: true,
-      } as ChangeEvent<HTMLInputElement>;
-      onChange(syntheticEvent);
-    }
-  };
-
-const propagateOnBlur =
-  (onBlur: AutocompleteProps['onBlur'], name?: string) =>
-  (inputValue: string) => {
-    if (onBlur) {
-      const syntheticEvent = {
-        target: { name, value: inputValue },
-        currentTarget: { name, value: inputValue },
-        type: 'blur',
-        bubbles: true,
-        isTrusted: true,
-      } as unknown as any;
-      onBlur(syntheticEvent);
-    }
-  };
-
 export const Autocomplete = forwardRef<HTMLInputElement, AutocompleteProps>(
   (props, ref) => {
-    const styles = autocompleteStyles();
-
     const iconEndRef = useRef<HTMLDivElement>(null);
     const {
-      disabled,
+      disabled = false,
       children,
       placeholder,
       onSelectItem,
@@ -110,6 +61,7 @@ export const Autocomplete = forwardRef<HTMLInputElement, AutocompleteProps>(
       id,
     } = props;
     const isPointerDownOnMenu = useRef(false);
+    const styles = autocompleteStyles({ freeSolo, disabled });
 
     const {
       state,
@@ -298,12 +250,6 @@ export const Autocomplete = forwardRef<HTMLInputElement, AutocompleteProps>(
       [state.highlightedIndex, state.autocompleteOptions, handleOnSelectItem],
     );
 
-    const iconEndState = freeSolo
-      ? 'none'
-      : disabled
-        ? 'disabled'
-        : 'interactive';
-
     return (
       <div
         aria-disabled={disabled}
@@ -332,7 +278,7 @@ export const Autocomplete = forwardRef<HTMLInputElement, AutocompleteProps>(
             placeholder ??
             t('autocomplete.placeholder', { defaultValue: 'Type to Search' })
           }
-          iconEndClassName={styles.iconEnd({ iconEndState })}
+          iconEndClassName={styles.iconEnd()}
           iconEnd={freeSolo ? undefined : getIconEnd(state.isOpen)}
           ref={inputRef}
           iconEndRef={iconEndRef}
@@ -440,3 +386,56 @@ Object.defineProperty(AutocompleteGroupItem, 'componentType', {
   writable: false,
   enumerable: false,
 });
+
+const autocompleteStyles = tv({
+  slots: {
+    root: 'gi-relative gi-w-full gi-not-prose',
+    iconEnd: '',
+  },
+  variants: {
+    freeSolo: {
+      true: {},
+      false: {
+        iconEnd: 'gi-cursor-pointer',
+      },
+    },
+    disabled: {
+      true: {
+        iconEnd: 'gi-cursor-not-allowed gi-pointer-events-none',
+      },
+    },
+  },
+});
+
+const getIconEnd = (isOpen: boolean) =>
+  isOpen ? 'keyboard_arrow_up' : 'keyboard_arrow_down';
+
+const propagateOnChange =
+  (onChange: AutocompleteProps['onChange'], name?: string) =>
+  (inputValue: string) => {
+    if (onChange) {
+      const syntheticEvent = {
+        target: { name, value: inputValue },
+        currentTarget: { name, value: inputValue },
+        type: 'change',
+        bubbles: true,
+        isTrusted: true,
+      } as ChangeEvent<HTMLInputElement>;
+      onChange(syntheticEvent);
+    }
+  };
+
+const propagateOnBlur =
+  (onBlur: AutocompleteProps['onBlur'], name?: string) =>
+  (inputValue: string) => {
+    if (onBlur) {
+      const syntheticEvent = {
+        target: { name, value: inputValue },
+        currentTarget: { name, value: inputValue },
+        type: 'blur',
+        bubbles: true,
+        isTrusted: true,
+      } as unknown as any;
+      onBlur(syntheticEvent);
+    }
+  };

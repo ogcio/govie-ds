@@ -27,29 +27,6 @@ type DataTableHeaderFilterListProps = {
   className?: string;
 };
 
-const dataTableHeaderStyles = tv({
-  slots: {
-    root: 'gi-flex gi-flex-wrap gi-items-center gi-w-full gi-gap-4 gi-mb-2',
-    headerRow: 'gi-flex gi-flex-1 gi-gap-4 gi-items-center',
-    search: 'gi-flex gi-flex-1',
-    filter: 'gi-flex gi-items-center',
-    actions: 'gi-flex gi-items-center gi-ml-auto gi-gap-4 gi-flex-shrink',
-    filterListWrapper: 'gi-w-full',
-    filterList: 'gi-flex gi-items-center gi-gap-2 gi-flex-wrap',
-    filterContentTitle: 'gi-py-2 gi-font-medium',
-    filterContent:
-      'gi-flex gi-flex-col gi-gap-2 gi-px-6 gi-py-4 gi-flex-1 gi-overflow-auto',
-    filterActions: 'gi-flex gi-justify-end gi-gap-2 gi-p-6',
-  },
-});
-
-const isSection = <P,>(
-  child: React.ReactNode,
-  sectionType: React.ComponentType<P>,
-): child is React.ReactElement<P> => {
-  return isValidElement(child) && child.type === sectionType;
-};
-
 export const DataTableHeader: React.FC<DataTableHeaderProps> = ({
   children,
   className,
@@ -254,3 +231,26 @@ Object.defineProperty(DataTableHeaderFilterContentTitle, 'componentType', {
 Object.defineProperty(DataTableHeaderFilterActions, 'componentType', {
   value: 'DataTableHeaderFilterActions',
 });
+
+const dataTableHeaderStyles = tv({
+  slots: {
+    root: 'gi-flex gi-flex-wrap gi-items-center gi-w-full gi-gap-4 gi-mb-2',
+    headerRow: 'gi-flex gi-flex-1 gi-gap-4 gi-items-center',
+    search: 'gi-flex gi-flex-1',
+    filter: 'gi-flex gi-items-center',
+    actions: 'gi-flex gi-items-center gi-ml-auto gi-gap-4 gi-flex-shrink',
+    filterListWrapper: 'gi-w-full',
+    filterList: 'gi-flex gi-items-center gi-gap-2 gi-flex-wrap',
+    filterContentTitle: 'gi-py-2 gi-font-medium',
+    filterContent:
+      'gi-flex gi-flex-col gi-gap-2 gi-px-6 gi-py-4 gi-flex-1 gi-overflow-auto',
+    filterActions: 'gi-flex gi-justify-end gi-gap-2 gi-p-6',
+  },
+});
+
+const isSection = <P,>(
+  child: React.ReactNode,
+  sectionType: React.ComponentType<P>,
+): child is React.ReactElement<P> => {
+  return isValidElement(child) && child.type === sectionType;
+};

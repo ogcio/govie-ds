@@ -2,28 +2,6 @@ import React from 'react';
 import { tv } from 'tailwind-variants';
 import { cn } from '../cn.js';
 
-const dataTableFooterStyles = tv({
-  slots: {
-    footer: 'gi-flex gi-flex-row gi-w-full gi-items-center',
-    baseSection: 'gi-grow gi-basis-0 gi-min-w-0',
-    centerSection: 'gi-grow gi-basis-0 gi-min-w-0 gi-text-center',
-    endSection: 'gi-min-w-0',
-    standaloneWrapper: 'gi-w-full gi-p-2',
-    cell: 'gi-p-2',
-  },
-  variants: {
-    onlyEnd: {
-      true: {
-        footer: 'gi-justify-end',
-      },
-      false: {
-        footer: 'gi-gap-2',
-        endSection: 'gi-basis-1/2 gi-text-right',
-      },
-    },
-  },
-});
-
 interface DataTableFooterTypeProps extends React.HTMLAttributes<HTMLDivElement> {
   children: React.ReactNode;
 }
@@ -36,13 +14,6 @@ interface DataTableFooterProps extends React.HTMLAttributes<
 }
 
 export type { DataTableFooterProps, DataTableFooterTypeProps };
-
-const isDataTableFooterSection = (
-  child: React.ReactNode,
-  sectionType: React.ComponentType<DataTableFooterTypeProps>,
-): child is React.ReactElement<DataTableFooterTypeProps> => {
-  return React.isValidElement(child) && child.type === sectionType;
-};
 
 export const DataTableFooterStart: React.FC<DataTableFooterTypeProps> = ({
   children,
@@ -123,7 +94,7 @@ export const DataTableFooter: React.FC<DataTableFooterProps> = ({
 
   if (standalone) {
     return (
-      <div {...props} className={cn(styles.standaloneWrapper(), className)}>
+      <div {...props} className={cn('gi-w-full gi-p-2', className)}>
         {content}
       </div>
     );
@@ -132,7 +103,7 @@ export const DataTableFooter: React.FC<DataTableFooterProps> = ({
   return (
     <tfoot {...props}>
       <tr>
-        <td colSpan={999} className={styles.cell()}>
+        <td colSpan={999} className="gi-p-2">
           {content}
         </td>
       </tr>
@@ -141,3 +112,30 @@ export const DataTableFooter: React.FC<DataTableFooterProps> = ({
 };
 
 DataTableFooter.displayName = 'DataTableFooter';
+
+const dataTableFooterStyles = tv({
+  slots: {
+    footer: 'gi-flex gi-flex-row gi-w-full gi-items-center',
+    baseSection: 'gi-grow gi-basis-0 gi-min-w-0',
+    centerSection: 'gi-grow gi-basis-0 gi-min-w-0 gi-text-center',
+    endSection: 'gi-min-w-0',
+  },
+  variants: {
+    onlyEnd: {
+      true: {
+        footer: 'gi-justify-end',
+      },
+      false: {
+        footer: 'gi-gap-2',
+        endSection: 'gi-basis-1/2 gi-text-right',
+      },
+    },
+  },
+});
+
+const isDataTableFooterSection = (
+  child: React.ReactNode,
+  sectionType: React.ComponentType<DataTableFooterTypeProps>,
+): child is React.ReactElement<DataTableFooterTypeProps> => {
+  return React.isValidElement(child) && child.type === sectionType;
+};
