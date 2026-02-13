@@ -1,0 +1,70 @@
+{
+  "name": "@ogcio/design-system-svgs",
+  "version": "1.0.0",
+  "description": "SVG icons, logos, and favicons for the Government of Ireland Design System",
+  "type": "module",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.js"
+    },
+    "./react": {
+      "types": "./dist/react/index.d.ts",
+      "import": "./dist/react/index.js"
+    },
+    "./react/icons": {
+      "types": "./dist/react/icons/index.d.ts",
+      "import": "./dist/react/icons/index.js"
+    },
+    "./react/logos": {
+      "types": "./dist/react/logos/index.d.ts",
+      "import": "./dist/react/logos/index.js"
+    },
+    "./react/favicons": {
+      "types": "./dist/react/favicons/index.d.ts",
+      "import": "./dist/react/favicons/index.js"
+    },
+    "./icons": {
+      "types": "./dist/icons/index.d.ts",
+      "import": "./dist/icons/index.js"
+    },
+    "./logos": {
+      "types": "./dist/logos/index.d.ts",
+      "import": "./dist/logos/index.js"
+    },
+    "./favicons": {
+      "types": "./dist/favicons/index.d.ts",
+      "import": "./dist/favicons/index.js"
+    }
+  },
+  "files": [
+    "dist"
+  ],
+  "scripts": {
+    "generate": "tsx scripts/generate.ts",
+    "build": "pnpm generate && tsup",
+    "format": "prettier 'src/**/*.{ts,tsx}' --write",
+    "format:check": "prettier 'src/**/*.{ts,tsx}' --check",
+    "lint": "eslint 'src/**/*.{ts,tsx}'"
+  },
+  "prettier": "@ogcio/design-system-prettier-config",
+  "peerDependencies": {
+    "react": ">=18.0.0"
+  },
+  "peerDependenciesMeta": {
+    "react": {
+      "optional": true
+    }
+  },
+  "devDependencies": {
+    "@ogcio/design-system-eslint-config": "workspace:*",
+    "@ogcio/design-system-prettier-config": "workspace:*",
+    "@types/node": "^22.0.0",
+    "@types/react": "^18.2.0",
+    "tsx": "^4.16.5",
+    "tsup": "^8.0.0",
+    "typescript": "^5.0.0"
+  }
+}
