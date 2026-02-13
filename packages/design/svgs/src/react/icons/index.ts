@@ -39,6 +39,7 @@ export { Info, type InfoProps } from './Info.js';
 export { KeyboardArrowDown, type KeyboardArrowDownProps } from './KeyboardArrowDown.js';
 export { KeyboardArrowUp, type KeyboardArrowUpProps } from './KeyboardArrowUp.js';
 export { LastPage, type LastPageProps } from './LastPage.js';
+export { Link, type LinkProps } from './Link.js';
 export { LocationOn, type LocationOnProps } from './LocationOn.js';
 export { Login, type LoginProps } from './Login.js';
 export { Logout, type LogoutProps } from './Logout.js';

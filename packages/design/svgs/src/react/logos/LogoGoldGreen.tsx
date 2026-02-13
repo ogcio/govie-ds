@@ -1,12 +1,12 @@
 import { forwardRef } from 'react';
 import type { SVGProps } from 'react';
 
-export interface GovernmentOfIrelandGovGreenProps extends SVGProps<SVGSVGElement> {
+export interface LogoGoldGreenProps extends SVGProps<SVGSVGElement> {
   size?: string | number;
   title?: string;
 }
 
-export const GovernmentOfIrelandGovGreen = forwardRef<SVGSVGElement, GovernmentOfIrelandGovGreenProps>(
+export const LogoGoldGreen = forwardRef<SVGSVGElement, LogoGoldGreenProps>(
   ({ size = 24, title, ...props }, ref) => (
     <svg
       ref={ref}
@@ -74,5 +74,5 @@ export const GovernmentOfIrelandGovGreen = forwardRef<SVGSVGElement, GovernmentO
   ),
 );
 
-GovernmentOfIrelandGovGreen.displayName = 'GovernmentOfIrelandGovGreen';
-export default GovernmentOfIrelandGovGreen;
+LogoGoldGreen.displayName = 'LogoGoldGreen';
+export default LogoGoldGreen;

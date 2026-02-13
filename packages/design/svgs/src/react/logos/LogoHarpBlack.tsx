@@ -1,12 +1,12 @@
 import { forwardRef } from 'react';
 import type { SVGProps } from 'react';
 
-export interface GeneralHarpBlackProps extends SVGProps<SVGSVGElement> {
+export interface LogoHarpBlackProps extends SVGProps<SVGSVGElement> {
   size?: string | number;
   title?: string;
 }
 
-export const GeneralHarpBlack = forwardRef<SVGSVGElement, GeneralHarpBlackProps>(
+export const LogoHarpBlack = forwardRef<SVGSVGElement, LogoHarpBlackProps>(
   ({ size = 24, title, ...props }, ref) => (
     <svg
       ref={ref}
@@ -37,5 +37,5 @@ export const GeneralHarpBlack = forwardRef<SVGSVGElement, GeneralHarpBlackProps>
   ),
 );
 
-GeneralHarpBlack.displayName = 'GeneralHarpBlack';
-export default GeneralHarpBlack;
+LogoHarpBlack.displayName = 'LogoHarpBlack';
+export default LogoHarpBlack;

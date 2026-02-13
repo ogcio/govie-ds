@@ -14,14 +14,15 @@ import {
   Info,
   Warning,
   Error,
+  Link,
   SocialLinkedin,
   SocialFacebook,
   SocialX,
 } from '@ogcio/design-system-svgs/react/icons';
 
 import {
-  GeneralHarp,
-  GovernmentOfIrelandGovStd,
+  LogoHarp,
+  LogoGoldWhite,
 } from '@ogcio/design-system-svgs/react/logos';
 
 import {
@@ -29,16 +30,14 @@ import {
   FaviconLight,
 } from '@ogcio/design-system-svgs/react/favicons';
 
-// Import HTML string utilities (framework-agnostic - works with Mitosis, Stencil, vanilla JS, etc.)
+// Import HTML string utilities (framework-agnostic - works with Mitosis, vanilla JS, etc.)
 import {
   getIconSvg,
   ICONS_MAP,
-  type IconName
 } from '@ogcio/design-system-svgs/icons';
 import {
   getLogoSvg,
-  LOGOS_MAP,
-  type LogoName
+  
 } from '@ogcio/design-system-svgs/logos';
 
 export default function SvgTestPage() {
@@ -92,6 +91,10 @@ export default function SvgTestPage() {
               <Error size={32} fill="#e00" />
               <div>Error (red)</div>
             </div>
+            <div style={{ textAlign: 'center' }}>
+              <Link size={32} />
+              <div>Link</div>
+            </div>
           </Stack>
         </section>
 
@@ -120,12 +123,12 @@ export default function SvgTestPage() {
           <Paragraph>These are imported from @ogcio/design-system-svgs/react/logos</Paragraph>
           <Stack direction="row" gap={8} style={{ marginTop: '1rem', alignItems: 'center' }}>
             <div style={{ textAlign: 'center' }}>
-              <GeneralHarp size={64} />
-              <div>GeneralHarp</div>
+              <LogoHarp size={64} />
+              <div>LogoHarp</div>
             </div>
             <div style={{ textAlign: 'center' }}>
-              <GovernmentOfIrelandGovStd size={120} />
-              <div>GovStd</div>
+              <LogoGoldWhite size={120} />
+              <div>LogoGoldWhite</div>
             </div>
           </Stack>
         </section>
@@ -145,11 +148,11 @@ export default function SvgTestPage() {
           </Stack>
         </section>
 
-        {/* HTML String Exports - for Mitosis, Stencil, HTML package */}
+        {/* HTML String Exports - for Mitosis, HTML package */}
         <section>
           <Heading as="h2">HTML String Exports (Framework-Agnostic)</Heading>
           <Paragraph>
-            These use getIconSvg() and getLogoSvg() - ideal for Mitosis, Stencil, or the HTML package
+            These use getIconSvg() and getLogoSvg() - ideal for Mitosis, or the HTML package
           </Paragraph>
 
           <Heading as="h3" style={{ marginTop: '1rem' }}>Icons via getIconSvg()</Heading>
@@ -185,19 +188,19 @@ export default function SvgTestPage() {
             <div
               style={{ textAlign: 'center' }}
               dangerouslySetInnerHTML={{
-                __html: getLogoSvg('general-harp' as LogoName, { size: 64 }),
+                __html: getLogoSvg('logo-harp', { size: 64 }),
               }}
             />
             <div
               style={{ textAlign: 'center' }}
               dangerouslySetInnerHTML={{
-                __html: getLogoSvg('government-of-ireland-gov-std' as LogoName, { size: 120 }),
+                __html: getLogoSvg('logo-gold-white', { size: 120 }),
               }}
             />
           </Stack>
 
           <Heading as="h3" style={{ marginTop: '1rem' }}>Raw SVG via ICONS_MAP / LOGOS_MAP</Heading>
-          <Paragraph>Direct access to raw SVG strings for maximum flexibility</Paragraph>
+          <Paragraph>Direct access to raw SVG strings (original size, no transformations)</Paragraph>
           <Stack direction="row" gap={4} style={{ marginTop: '0.5rem' }}>
             <div
               style={{ textAlign: 'center' }}
@@ -206,9 +209,9 @@ export default function SvgTestPage() {
               }}
             />
             <div
-              style={{ textAlign: 'center', maxWidth: '10px' }}
+              style={{ textAlign: 'center' }}
               dangerouslySetInnerHTML={{
-                __html: LOGOS_MAP['figma'],
+                __html: getLogoSvg('figma', { size: 120 }),
               }}
             />
           </Stack>
