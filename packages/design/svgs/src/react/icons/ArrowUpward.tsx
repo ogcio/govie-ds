@@ -1,0 +1,29 @@
+import { forwardRef } from 'react';
+import type { SVGProps } from 'react';
+
+export interface ArrowUpwardProps extends SVGProps<SVGSVGElement> {
+  size?: string | number;
+  title?: string;
+}
+
+export const ArrowUpward = forwardRef<SVGSVGElement, ArrowUpwardProps>(
+  ({ size = 24, title, ...props }, ref) => (
+    <svg
+      ref={ref}
+      width={size}
+      height={size}
+      viewBox="0 -960 960 960"
+      fill="currentColor"
+      xmlns="http://www.w3.org/2000/svg"
+      role={title ? 'img' : 'presentation'}
+      aria-label={title}
+      {...props}
+    >
+      {title && <title>{title}</title>}
+      <path d="M450-160v-526L202-438l-42-42 320-320 320 320-42 42-248-248v526h-60Z"/>
+    </svg>
+  ),
+);
+
+ArrowUpward.displayName = 'ArrowUpward';
+export default ArrowUpward;
