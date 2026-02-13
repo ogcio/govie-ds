@@ -13,7 +13,7 @@ pnpm add @ogcio/design-system-svgs
 This package provides SVG assets in two formats:
 
 1. **React Components** - For React, Next.js, and similar frameworks
-2. **HTML String Exports** - For Mitosis, Stencil, vanilla JS, and framework-agnostic usage
+2. **HTML String Exports** - For Mitosis, vanilla JS, and framework-agnostic usage
 
 ## Assets Included
 
@@ -29,7 +29,7 @@ Import and use SVG components directly in React/Next.js:
 
 ```tsx
 import { Check, ArrowBack, Search } from '@ogcio/design-system-svgs/react/icons';
-import { GeneralHarp, GovernmentOfIrelandGovStd } from '@ogcio/design-system-svgs/react/logos';
+import { LogoHarp, LogoGoldWhite } from '@ogcio/design-system-svgs/react/logos';
 import { FaviconDark, FaviconLight } from '@ogcio/design-system-svgs/react/favicons';
 
 function MyComponent() {
@@ -41,8 +41,8 @@ function MyComponent() {
       <ArrowBack size={16} className="my-custom-class" />
 
       {/* Logos */}
-      <GeneralHarp size={64} />
-      <GovernmentOfIrelandGovStd size={120} />
+      <LogoHarp size={64} />
+      <LogoGoldWhite size={120} />
 
       {/* Favicons */}
       <FaviconDark size={32} />
@@ -63,7 +63,7 @@ All React components accept:
 
 ### HTML String Exports (Framework-Agnostic)
 
-For Mitosis, Stencil, vanilla JS, or any framework:
+For Mitosis, vanilla JS, or any framework:
 
 ```typescript
 import { getIconSvg, ICONS_MAP, ICONS_NAMES, type IconName } from '@ogcio/design-system-svgs/icons';
@@ -77,7 +77,7 @@ const warningIcon = getIconSvg('warning', { size: 24, ariaLabel: 'Warning' });
 
 // Direct map access for raw SVG strings
 const rawCheckSvg = ICONS_MAP['check'];
-const rawLogoSvg = LOGOS_MAP['general-harp'];
+const rawLogoSvg = LOGOS_MAP['logo-harp'];
 
 // Type-safe icon names
 const iconName: IconName = 'check'; // TypeScript autocomplete
@@ -114,24 +114,6 @@ export default function Icon(props: Props) {
   });
 
   return <span innerHTML={svgHtml} />;
-}
-```
-
-### Stencil Example
-
-```tsx
-// icon.tsx
-import { Component, Prop, h } from '@stencil/core';
-import { getIconSvg, type IconName } from '@ogcio/design-system-svgs/icons';
-
-@Component({ tag: 'ds-icon' })
-export class Icon {
-  @Prop() icon: IconName;
-  @Prop() size: number = 24;
-
-  render() {
-    return <span innerHTML={getIconSvg(this.icon, { size: this.size })} />;
-  }
 }
 ```
 
@@ -201,10 +183,8 @@ social_threads, social_tiktok, social_x, social_youtube
 ### Logos (10)
 
 ```
-figma, storybook, general-harp, general-harp-black, general-harp-white,
-government-of-ireland-gov-black, government-of-ireland-gov-green,
-government-of-ireland-gov-std, government-of-ireland-gov-std-reverse,
-government-of-ireland-gov-white
+figma, storybook, logo-harp, logo-harp-black, logo-harp-white,
+logo-black, logo-gold-green, logo-gold-white, logo-std-reverse, logo-white
 ```
 
 ### Favicons (2)
@@ -224,7 +204,7 @@ pnpm build
 
 ### Regenerating Components
 
-If you add new SVG files to `svgs/` directory:
+If you add new SVG files to `assets/` directory:
 
 ```bash
 pnpm generate
@@ -234,9 +214,9 @@ pnpm build
 ### Adding New SVGs
 
 1. Add SVG files to the appropriate directory:
-   - `svgs/icons/` for icons
-   - `svgs/logos/` for logos
-   - `svgs/favicons/` for favicons
+   - `assets/icons/` for icons
+   - `assets/logos/` for logos
+   - `assets/favicons/` for favicons
 
 2. Run the generator:
    ```bash
@@ -248,6 +228,4 @@ pnpm build
    pnpm build
    ```
 
-## License
-
-MIT
+For more details about the generator script, see [scripts/README.md](./scripts/README.md).

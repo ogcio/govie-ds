@@ -40,6 +40,7 @@ export const ICONS_NAMES = [
   'keyboard_arrow_down',
   'keyboard_arrow_up',
   'last_page',
+  'link',
   'location_on',
   'login',
   'logout',

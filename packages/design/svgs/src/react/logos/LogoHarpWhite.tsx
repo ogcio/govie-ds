@@ -1,12 +1,12 @@
 import { forwardRef } from 'react';
 import type { SVGProps } from 'react';
 
-export interface GeneralHarpWhiteProps extends SVGProps<SVGSVGElement> {
+export interface LogoHarpWhiteProps extends SVGProps<SVGSVGElement> {
   size?: string | number;
   title?: string;
 }
 
-export const GeneralHarpWhite = forwardRef<SVGSVGElement, GeneralHarpWhiteProps>(
+export const LogoHarpWhite = forwardRef<SVGSVGElement, LogoHarpWhiteProps>(
   ({ size = 24, title, ...props }, ref) => (
     <svg
       ref={ref}
@@ -48,5 +48,5 @@ export const GeneralHarpWhite = forwardRef<SVGSVGElement, GeneralHarpWhiteProps>
   ),
 );
 
-GeneralHarpWhite.displayName = 'GeneralHarpWhite';
-export default GeneralHarpWhite;
+LogoHarpWhite.displayName = 'LogoHarpWhite';
+export default LogoHarpWhite;

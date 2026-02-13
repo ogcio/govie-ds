@@ -5,7 +5,7 @@ import { fileURLToPath } from 'url';
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = dirname(__filename);
 const ROOT_DIR = join(__dirname, '..');
-const SVG_DIR = join(ROOT_DIR, 'svgs');
+const SVG_DIR = join(ROOT_DIR, 'assets');
 const SRC_DIR = join(ROOT_DIR, 'src');
 
 // Convert file name to PascalCase component name
@@ -15,12 +15,6 @@ function toPascalCase(str: string): string {
     .split(/[-_]/)
     .map((part) => part.charAt(0).toUpperCase() + part.slice(1).toLowerCase())
     .join('');
-}
-
-// Convert file name to camelCase
-function toCamelCase(str: string): string {
-  const pascal = toPascalCase(str);
-  return pascal.charAt(0).toLowerCase() + pascal.slice(1);
 }
 
 // Get all SVG files from a directory (recursive)
