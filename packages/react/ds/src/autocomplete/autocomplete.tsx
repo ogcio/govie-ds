@@ -34,20 +34,6 @@ import {
 } from './types.js';
 import { useAutocompleteController } from './use-autocomplete-controller.js';
 
-const autocompleteStyles = tv({
-  slots: {
-    root: 'gi-relative gi-w-full gi-not-prose',
-    iconEnd: '',
-  },
-  variants: {
-    iconEndState: {
-      interactive: { iconEnd: 'gi-cursor-pointer' },
-      disabled: { iconEnd: 'gi-cursor-not-allowed gi-pointer-events-none' },
-      none: { iconEnd: '' },
-    },
-  },
-});
-
 const {
   ON_RESET,
   ON_SELECT_ITEM,
@@ -57,39 +43,6 @@ const {
   SET_HIGHLIGHTED_INDEX,
   SET_VALUE,
 } = AUTOCOMPLETE_ACTIONS;
-
-const getIconEnd = (isOpen: boolean) =>
-  isOpen ? 'keyboard_arrow_up' : 'keyboard_arrow_down';
-
-const propagateOnChange =
-  (onChange: AutocompleteProps['onChange'], name?: string) =>
-  (inputValue: string) => {
-    if (onChange) {
-      const syntheticEvent = {
-        target: { name, value: inputValue },
-        currentTarget: { name, value: inputValue },
-        type: 'change',
-        bubbles: true,
-        isTrusted: true,
-      } as ChangeEvent<HTMLInputElement>;
-      onChange(syntheticEvent);
-    }
-  };
-
-const propagateOnBlur =
-  (onBlur: AutocompleteProps['onBlur'], name?: string) =>
-  (inputValue: string) => {
-    if (onBlur) {
-      const syntheticEvent = {
-        target: { name, value: inputValue },
-        currentTarget: { name, value: inputValue },
-        type: 'blur',
-        bubbles: true,
-        isTrusted: true,
-      } as unknown as any;
-      onBlur(syntheticEvent);
-    }
-  };
 
 export const Autocomplete = forwardRef<HTMLInputElement, AutocompleteProps>(
   (props, ref) => {
@@ -440,3 +393,50 @@ Object.defineProperty(AutocompleteGroupItem, 'componentType', {
   writable: false,
   enumerable: false,
 });
+
+const autocompleteStyles = tv({
+  slots: {
+    root: 'gi-relative gi-w-full gi-not-prose',
+    iconEnd: '',
+  },
+  variants: {
+    iconEndState: {
+      interactive: { iconEnd: 'gi-cursor-pointer' },
+      disabled: { iconEnd: 'gi-cursor-not-allowed gi-pointer-events-none' },
+      none: { iconEnd: '' },
+    },
+  },
+});
+
+const getIconEnd = (isOpen: boolean) =>
+  isOpen ? 'keyboard_arrow_up' : 'keyboard_arrow_down';
+
+const propagateOnChange =
+  (onChange: AutocompleteProps['onChange'], name?: string) =>
+  (inputValue: string) => {
+    if (onChange) {
+      const syntheticEvent = {
+        target: { name, value: inputValue },
+        currentTarget: { name, value: inputValue },
+        type: 'change',
+        bubbles: true,
+        isTrusted: true,
+      } as ChangeEvent<HTMLInputElement>;
+      onChange(syntheticEvent);
+    }
+  };
+
+const propagateOnBlur =
+  (onBlur: AutocompleteProps['onBlur'], name?: string) =>
+  (inputValue: string) => {
+    if (onBlur) {
+      const syntheticEvent = {
+        target: { name, value: inputValue },
+        currentTarget: { name, value: inputValue },
+        type: 'blur',
+        bubbles: true,
+        isTrusted: true,
+      } as unknown as any;
+      onBlur(syntheticEvent);
+    }
+  };
