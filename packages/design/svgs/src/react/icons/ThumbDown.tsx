@@ -1,0 +1,29 @@
+import { forwardRef } from 'react';
+import type { SVGProps } from 'react';
+
+export interface ThumbDownProps extends SVGProps<SVGSVGElement> {
+  size?: string | number;
+  title?: string;
+}
+
+export const ThumbDown = forwardRef<SVGSVGElement, ThumbDownProps>(
+  ({ size = 24, title, ...props }, ref) => (
+    <svg
+      ref={ref}
+      width={size}
+      height={size}
+      viewBox="0 -960 960 960"
+      fill="currentColor"
+      xmlns="http://www.w3.org/2000/svg"
+      role={title ? 'img' : 'presentation'}
+      aria-label={title}
+      {...props}
+    >
+      {title && <title>{title}</title>}
+      <path d="M242-840h444v512L408-40l-39-31q-6-5-9-14t-3-22v-10l45-211H103q-24 0-42-18t-18-42v-81.84q0-7.16-1.5-14.66T43-499l126-290q8.88-21.25 29.59-36.13Q219.31-840 242-840Zm384 60H229L103-481v93h373l-53 249 203-214v-427Zm0 427v-427 427Zm60 25v-60h133v-392H686v-60h193v512H686Z"/>
+    </svg>
+  ),
+);
+
+ThumbDown.displayName = 'ThumbDown';
+export default ThumbDown;

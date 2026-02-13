@@ -1,0 +1,29 @@
+import { forwardRef } from 'react';
+import type { SVGProps } from 'react';
+
+export interface SwapVertProps extends SVGProps<SVGSVGElement> {
+  size?: string | number;
+  title?: string;
+}
+
+export const SwapVert = forwardRef<SVGSVGElement, SwapVertProps>(
+  ({ size = 24, title, ...props }, ref) => (
+    <svg
+      ref={ref}
+      width={size}
+      height={size}
+      viewBox="0 -960 960 960"
+      fill="currentColor"
+      xmlns="http://www.w3.org/2000/svg"
+      role={title ? 'img' : 'presentation'}
+      aria-label={title}
+      {...props}
+    >
+      {title && <title>{title}</title>}
+      <path d="M323-450v-316L202-645l-42-42 193-193 193 193-42 42-121-121v316h-60ZM607-80 414-273l42-42 121 121v-316h60v316l121-121 42 42L607-80Z"/>
+    </svg>
+  ),
+);
+
+SwapVert.displayName = 'SwapVert';
+export default SwapVert;

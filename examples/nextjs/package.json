@@ -12,6 +12,7 @@
   "dependencies": {
     "@hookform/resolvers": "^5.2.2",
     "@ogcio/design-system-react": "workspace:*",
+    "@ogcio/design-system-svgs": "workspace:*",
     "@ogcio/theme-govie": "workspace:*",
     "next": "^16.1.1",
     "react": "^19.2.3",
