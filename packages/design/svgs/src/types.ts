@@ -5,10 +5,8 @@ export type SvgComponentProps = SVGProps<SVGSVGElement> & {
   title?: string;
 };
 
-export interface GetSvgOptions {
+export interface SpriteUseOptions {
   size?: string | number;
   className?: string;
-  fill?: string;
   ariaLabel?: string;
-  ariaHidden?: boolean;
 }

@@ -5,6 +5,7 @@
   "type": "module",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
+  "private": true,
   "exports": {
     ".": {
       "types": "./dist/index.d.ts",
@@ -37,7 +38,10 @@
     "./favicons": {
       "types": "./dist/favicons/index.d.ts",
       "import": "./dist/favicons/index.js"
-    }
+    },
+    "./sprites/icons.svg": "./dist/sprites/icons.svg",
+    "./sprites/logos.svg": "./dist/sprites/logos.svg",
+    "./sprites/favicons.svg": "./dist/sprites/favicons.svg"
   },
   "files": [
     "dist"

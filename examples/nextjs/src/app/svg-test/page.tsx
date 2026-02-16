@@ -1,8 +1,8 @@
 'use client';
 
-import {  Container, Heading, Paragraph, Stack } from '@ogcio/design-system-react';
+import { Container, Heading, Paragraph, Stack } from '@ogcio/design-system-react';
 
-// Import React SVG components
+// Import React SVG components (still available for React apps)
 import {
   Check,
   ArrowBack,
@@ -30,14 +30,17 @@ import {
   FaviconLight,
 } from '@ogcio/design-system-svgs/react/favicons';
 
-// Import HTML string utilities (framework-agnostic - works with Mitosis, vanilla JS, etc.)
+// Import sprite utilities (framework-agnostic - works with HTML, Mitosis, vanilla JS, etc.)
 import {
-  getIconSvg,
-  ICONS_MAP,
+  getIconUse,
+  ICONS_NAMES,
+  ICONS_SPRITE,
+  type IconName,
 } from '@ogcio/design-system-svgs/icons';
+
 import {
-  getLogoSvg,
-  
+  getLogoUse,
+  LOGOS_SPRITE,
 } from '@ogcio/design-system-svgs/logos';
 
 export default function SvgTestPage() {
@@ -46,10 +49,148 @@ export default function SvgTestPage() {
       <Stack direction="column" gap={8}>
         <Heading as="h1">SVG Package Test</Heading>
 
+        {/* Inline the sprite SVGs - this only needs to be done once per page */}
+        <div dangerouslySetInnerHTML={{ __html: ICONS_SPRITE }} />
+        <div dangerouslySetInnerHTML={{ __html: LOGOS_SPRITE }} />
+
+        {/* Sprite-based Icons */}
+        <section>
+          <Heading as="h2">Sprite-based Icons (Recommended)</Heading>
+          <Paragraph>
+            These use SVG sprites with &lt;use href=&quot;#icon-name&quot;&gt;. No JS bundle bloat,
+            native browser rendering, excellent caching.
+          </Paragraph>
+
+          <Heading as="h3" style={{ marginTop: '1rem' }}>Using getIconUse() helper</Heading>
+          <Stack direction="row" gap={4} style={{ flexWrap: 'wrap', marginTop: '0.5rem' }}>
+            <div style={{ textAlign: 'center' }}>
+              <span dangerouslySetInnerHTML={{ __html: getIconUse('check', { size: 32 }) }} />
+              <div>check</div>
+            </div>
+            <div style={{ textAlign: 'center' }}>
+              <span dangerouslySetInnerHTML={{ __html: getIconUse('search', { size: 32 }) }} />
+              <div>search</div>
+            </div>
+            <div style={{ textAlign: 'center' }}>
+              <span dangerouslySetInnerHTML={{ __html: getIconUse('home', { size: 32 }) }} />
+              <div>home</div>
+            </div>
+            <div style={{ textAlign: 'center' }}>
+              <span dangerouslySetInnerHTML={{ __html: getIconUse('warning', { size: 32, ariaLabel: 'Warning' }) }} />
+              <div>warning</div>
+            </div>
+            <div style={{ textAlign: 'center' }}>
+              <span dangerouslySetInnerHTML={{ __html: getIconUse('error', { size: 32 }) }} />
+              <div>error</div>
+            </div>
+            <div style={{ textAlign: 'center' }}>
+              <span dangerouslySetInnerHTML={{ __html: getIconUse('info', { size: 32 }) }} />
+              <div>info</div>
+            </div>
+          </Stack>
+
+          <Heading as="h3" style={{ marginTop: '1rem' }}>Native SVG use (pure HTML)</Heading>
+          <Paragraph>Styling via CSS currentColor - inherits text color</Paragraph>
+          <Stack direction="row" gap={4} style={{ flexWrap: 'wrap', marginTop: '0.5rem' }}>
+            <div style={{ textAlign: 'center', color: '#0070f3' }}>
+              <svg className="gi-icon" width="32" height="32" aria-hidden="true" focusable="false">
+                <use href="#check" />
+              </svg>
+              <div>blue</div>
+            </div>
+            <div style={{ textAlign: 'center', color: '#e00' }}>
+              <svg className="gi-icon" width="32" height="32" aria-hidden="true" focusable="false">
+                <use href="#error" />
+              </svg>
+              <div>red</div>
+            </div>
+            <div style={{ textAlign: 'center', color: '#f5a623' }}>
+              <svg className="gi-icon" width="32" height="32" aria-hidden="true" focusable="false">
+                <use href="#warning" />
+              </svg>
+              <div>orange</div>
+            </div>
+            <div style={{ textAlign: 'center', color: '#22c55e' }}>
+              <svg className="gi-icon" width="32" height="32" aria-hidden="true" focusable="false">
+                <use href="#check_circle" />
+              </svg>
+              <div>green</div>
+            </div>
+          </Stack>
+
+          <Heading as="h3" style={{ marginTop: '1rem' }}>Different sizes</Heading>
+          <Stack direction="row" gap={4} style={{ alignItems: 'center', marginTop: '0.5rem' }}>
+            <svg className="gi-icon" width="16" height="16" aria-hidden="true" focusable="false">
+              <use href="#home" />
+            </svg>
+            <svg className="gi-icon" width="24" height="24" aria-hidden="true" focusable="false">
+              <use href="#home" />
+            </svg>
+            <svg className="gi-icon" width="32" height="32" aria-hidden="true" focusable="false">
+              <use href="#home" />
+            </svg>
+            <svg className="gi-icon" width="48" height="48" aria-hidden="true" focusable="false">
+              <use href="#home" />
+            </svg>
+            <svg className="gi-icon" width="64" height="64" aria-hidden="true" focusable="false">
+              <use href="#home" />
+            </svg>
+          </Stack>
+        </section>
+
+        {/* Social Icons via Sprite */}
+        <section>
+          <Heading as="h2">Social Icons (Sprite)</Heading>
+          <Stack direction="row" gap={4} style={{ marginTop: '1rem' }}>
+            <div style={{ textAlign: 'center' }}>
+              <svg className="gi-icon" width="32" height="32" aria-hidden="true" focusable="false">
+                <use href="#social_linkedin" />
+              </svg>
+              <div>LinkedIn</div>
+            </div>
+            <div style={{ textAlign: 'center' }}>
+              <svg className="gi-icon" width="32" height="32" aria-hidden="true" focusable="false">
+                <use href="#social_facebook" />
+              </svg>
+              <div>Facebook</div>
+            </div>
+            <div style={{ textAlign: 'center' }}>
+              <svg className="gi-icon" width="32" height="32" aria-hidden="true" focusable="false">
+                <use href="#social_x" />
+              </svg>
+              <div>X</div>
+            </div>
+            <div style={{ textAlign: 'center' }}>
+              <svg className="gi-icon" width="32" height="32" aria-hidden="true" focusable="false">
+                <use href="#social_youtube" />
+              </svg>
+              <div>YouTube</div>
+            </div>
+          </Stack>
+        </section>
+
+        {/* Logos via Sprite */}
+        <section>
+          <Heading as="h2">Logos (Sprite)</Heading>
+          <Stack direction="row" gap={8} style={{ marginTop: '1rem', alignItems: 'center' }}>
+            <div style={{ textAlign: 'center' }}>
+              <svg className="gi-logo" width="64" height="64" aria-hidden="true" focusable="false">
+                <use href="#logo-harp" />
+              </svg>
+              <div>logo-harp</div>
+            </div>
+            <div style={{ textAlign: 'center' }}>
+              <span dangerouslySetInnerHTML={{ __html: getLogoUse('logo-gold-white', { size: 120 }) }} />
+              <div>logo-gold-white</div>
+            </div>
+          </Stack>
+        </section>
+
+        <hr style={{ margin: '2rem 0', border: 'none', borderTop: '1px solid #ccc' }} />
+
         {/* React Icon Components */}
         <section>
           <Heading as="h2">React Icon Components</Heading>
-          <Paragraph>These are imported from @ogcio/design-system-svgs/react/icons</Paragraph>
           <Stack direction="row" gap={4} style={{ flexWrap: 'wrap', marginTop: '1rem' }}>
             <div style={{ textAlign: 'center' }}>
               <Check size={32} />
@@ -85,11 +226,11 @@ export default function SvgTestPage() {
             </div>
             <div style={{ textAlign: 'center' }}>
               <Warning size={32} fill="#f5a623" />
-              <div>Warning (yellow)</div>
+              <div>Warning</div>
             </div>
             <div style={{ textAlign: 'center' }}>
               <Error size={32} fill="#e00" />
-              <div>Error (red)</div>
+              <div>Error</div>
             </div>
             <div style={{ textAlign: 'center' }}>
               <Link size={32} />
@@ -98,9 +239,9 @@ export default function SvgTestPage() {
           </Stack>
         </section>
 
-        {/* Social Icons */}
+        {/* React Social Icons */}
         <section>
-          <Heading as="h2">Social Icon Components</Heading>
+          <Heading as="h2">Social Icon Components (Legacy)</Heading>
           <Stack direction="row" gap={4} style={{ marginTop: '1rem' }}>
             <div style={{ textAlign: 'center' }}>
               <SocialLinkedin size={32} />
@@ -119,8 +260,7 @@ export default function SvgTestPage() {
 
         {/* React Logo Components */}
         <section>
-          <Heading as="h2">React Logo Components</Heading>
-          <Paragraph>These are imported from @ogcio/design-system-svgs/react/logos</Paragraph>
+          <Heading as="h2">React Logo Components (Legacy)</Heading>
           <Stack direction="row" gap={8} style={{ marginTop: '1rem', alignItems: 'center' }}>
             <div style={{ textAlign: 'center' }}>
               <LogoHarp size={64} />
@@ -148,73 +288,24 @@ export default function SvgTestPage() {
           </Stack>
         </section>
 
-        {/* HTML String Exports - for Mitosis, HTML package */}
+        {/* Available Icons List */}
         <section>
-          <Heading as="h2">HTML String Exports (Framework-Agnostic)</Heading>
-          <Paragraph>
-            These use getIconSvg() and getLogoSvg() - ideal for Mitosis, or the HTML package
-          </Paragraph>
-
-          <Heading as="h3" style={{ marginTop: '1rem' }}>Icons via getIconSvg()</Heading>
-          <Stack direction="row" gap={4} style={{ marginTop: '0.5rem' }}>
-            <div
-              style={{ textAlign: 'center' }}
-              dangerouslySetInnerHTML={{
-                __html: getIconSvg('check', { size: 32 }),
-              }}
-            />
-            <div
-              style={{ textAlign: 'center' }}
-              dangerouslySetInnerHTML={{
-                __html: getIconSvg('search', { size: 32, fill: '#0070f3' }),
-              }}
-            />
-            <div
-              style={{ textAlign: 'center' }}
-              dangerouslySetInnerHTML={{
-                __html: getIconSvg('home', { size: 32, className: 'custom-icon' }),
-              }}
-            />
-            <div
-              style={{ textAlign: 'center' }}
-              dangerouslySetInnerHTML={{
-                __html: getIconSvg('warning', { size: 32, fill: '#f5a623', ariaLabel: 'Warning icon' }),
-              }}
-            />
-          </Stack>
-
-          <Heading as="h3" style={{ marginTop: '1rem' }}>Logos via getLogoSvg()</Heading>
-          <Stack direction="row" gap={4} style={{ marginTop: '0.5rem', alignItems: 'center' }}>
-            <div
-              style={{ textAlign: 'center' }}
-              dangerouslySetInnerHTML={{
-                __html: getLogoSvg('logo-harp', { size: 64 }),
-              }}
-            />
-            <div
-              style={{ textAlign: 'center' }}
-              dangerouslySetInnerHTML={{
-                __html: getLogoSvg('logo-gold-white', { size: 120 }),
-              }}
-            />
-          </Stack>
-
-          <Heading as="h3" style={{ marginTop: '1rem' }}>Raw SVG via ICONS_MAP / LOGOS_MAP</Heading>
-          <Paragraph>Direct access to raw SVG strings (original size, no transformations)</Paragraph>
-          <Stack direction="row" gap={4} style={{ marginTop: '0.5rem' }}>
-            <div
-              style={{ textAlign: 'center' }}
-              dangerouslySetInnerHTML={{
-                __html: ICONS_MAP['info'],
-              }}
-            />
-            <div
-              style={{ textAlign: 'center' }}
-              dangerouslySetInnerHTML={{
-                __html: getLogoSvg('figma', { size: 120 }),
-              }}
-            />
-          </Stack>
+          <Heading as="h2">All Available Icons ({ICONS_NAMES.length})</Heading>
+          <div style={{
+            display: 'grid',
+            gridTemplateColumns: 'repeat(auto-fill, minmax(100px, 1fr))',
+            gap: '1rem',
+            marginTop: '1rem'
+          }}>
+            {ICONS_NAMES.map((name: IconName) => (
+              <div key={name} style={{ fontSize: '0.75rem' }}>
+                <svg className="gi-icon" width="24" height="24" aria-hidden="true" focusable="false">
+                  <use href={`#${name}`} />
+                </svg>
+                <div style={{ wordBreak: 'break-all' }}>{name}</div>
+              </div>
+            ))}
+          </div>
         </section>
       </Stack>
     </Container>

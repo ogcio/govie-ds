@@ -12,20 +12,84 @@ pnpm add @ogcio/design-system-svgs
 
 This package provides SVG assets in two formats:
 
-1. **React Components** - For React, Next.js, and similar frameworks
-2. **HTML String Exports** - For Mitosis, vanilla JS, and framework-agnostic usage
+1. **SVG Sprites** - Inline sprite with `<use>` references for best performance
+2. **React Components** - For React, Next.js, and similar frameworks
 
 ## Assets Included
 
-- **Icons** (78) - Material Design icons + social media icons
+- **Icons** (79) - Material Design icons + social media icons
 - **Logos** (10) - Government of Ireland logos, harp variants
 - **Favicons** (2) - Light and dark theme favicons
 
 ## Usage
 
+### SVG Sprites
+
+The sprite-based approach provides no JS bundle bloat, native browser rendering, and excellent caching.
+
+#### Step 1: Inject the sprite once
+
+```tsx
+// React/Next.js
+import { ICONS_SPRITE } from '@ogcio/design-system-svgs/icons';
+import { LOGOS_SPRITE } from '@ogcio/design-system-svgs/logos';
+
+function Layout({ children }) {
+  return (
+    <html>
+      <body>
+        {/* Inject sprites once at the top of your app */}
+        <div dangerouslySetInnerHTML={{ __html: ICONS_SPRITE }} />
+        <div dangerouslySetInnerHTML={{ __html: LOGOS_SPRITE }} />
+        {children}
+      </body>
+    </html>
+  );
+}
+```
+
+```html
+<!-- Vanilla HTML - copy sprite content into your page -->
+<svg xmlns="http://www.w3.org/2000/svg" style="position:absolute;width:0;height:0;overflow:hidden" aria-hidden="true">
+  <!-- sprite symbols here -->
+</svg>
+```
+
+#### Step 2: Use icons via `<use href>`
+
+```tsx
+// Direct SVG usage (cleanest approach)
+<svg className="gi-icon" width="24" height="24" aria-hidden="true" focusable="false">
+  <use href="#check" />
+</svg>
+
+// With color inheritance (set color on parent)
+<span style={{ color: '#0070f3' }}>
+  <svg className="gi-icon" width="24" height="24" aria-hidden="true" focusable="false">
+    <use href="#info" />
+  </svg>
+</span>
+```
+
+#### Using the helper function
+
+```tsx
+import { getIconUse, type IconName } from '@ogcio/design-system-svgs/icons';
+
+// Returns SVG markup string
+const iconHtml = getIconUse('check', { size: 24 });
+// <svg class="gi-icon" width="24" height="24" aria-hidden="true" focusable="false"><use href="#check"></use></svg>
+
+// With accessibility label
+const warningHtml = getIconUse('warning', { size: 32, ariaLabel: 'Warning' });
+
+// In React
+<span dangerouslySetInnerHTML={{ __html: getIconUse('search', { size: 24 }) }} />
+```
+
 ### React Components
 
-Import and use SVG components directly in React/Next.js:
+For React apps that prefer component-based usage:
 
 ```tsx
 import { Check, ArrowBack, Search } from '@ogcio/design-system-svgs/react/icons';
@@ -61,101 +125,32 @@ All React components accept:
 - **className** (`string`) - CSS class name
 - **...props** (`SVGProps`) - Any valid SVG attribute
 
-### HTML String Exports (Framework-Agnostic)
-
-For Mitosis, vanilla JS, or any framework:
-
-```typescript
-import { getIconSvg, ICONS_MAP, ICONS_NAMES, type IconName } from '@ogcio/design-system-svgs/icons';
-import { getLogoSvg, LOGOS_MAP, LOGOS_NAMES, type LogoName } from '@ogcio/design-system-svgs/logos';
-import { getFaviconSvg, FAVICONS_MAP, type FaviconName } from '@ogcio/design-system-svgs/favicons';
-
-// Using helper functions
-const checkIcon = getIconSvg('check', { size: 24 });
-const searchIcon = getIconSvg('search', { size: 32, fill: '#0070f3', className: 'my-icon' });
-const warningIcon = getIconSvg('warning', { size: 24, ariaLabel: 'Warning' });
-
-// Direct map access for raw SVG strings
-const rawCheckSvg = ICONS_MAP['check'];
-const rawLogoSvg = LOGOS_MAP['logo-harp'];
-
-// Type-safe icon names
-const iconName: IconName = 'check'; // TypeScript autocomplete
-```
-
-#### Helper Function Options
-
-```typescript
-interface GetSvgOptions {
-  size?: string | number;    // Width and height
-  className?: string;        // CSS class
-  fill?: string;             // Fill color
-  ariaLabel?: string;        // Accessible label
-  ariaHidden?: boolean;      // Hide from screen readers
-}
-```
-
-### Mitosis Example
-
-```tsx
-// my-icon.lite.tsx
-import { getIconSvg, type IconName } from '@ogcio/design-system-svgs/icons';
-
-interface Props {
-  icon: IconName;
-  size?: number;
-  fill?: string;
-}
-
-export default function Icon(props: Props) {
-  const svgHtml = getIconSvg(props.icon, {
-    size: props.size || 24,
-    fill: props.fill
-  });
-
-  return <span innerHTML={svgHtml} />;
-}
-```
-
-### HTML Package Example
-
-```typescript
-// helpers/icons.ts
-import { getIconSvg, type IconName } from '@ogcio/design-system-svgs/icons';
-
-export function createIcon(icon: IconName, size = 24): HTMLElement {
-  const container = document.createElement('span');
-  container.innerHTML = getIconSvg(icon, { size });
-  return container;
-}
-```
-
 ## Available Exports
 
 ### Entry Points
 
-- `@ogcio/design-system-svgs` - Main entry (types + all HTML exports)
+- `@ogcio/design-system-svgs` - Main entry (types + all sprite exports)
+- `@ogcio/design-system-svgs/icons` - Icon sprite + helper + types
+- `@ogcio/design-system-svgs/logos` - Logo sprite + helper + types
+- `@ogcio/design-system-svgs/favicons` - Favicon sprite + helper + types
 - `@ogcio/design-system-svgs/react` - All React components
 - `@ogcio/design-system-svgs/react/icons` - React icon components
 - `@ogcio/design-system-svgs/react/logos` - React logo components
 - `@ogcio/design-system-svgs/react/favicons` - React favicon components
-- `@ogcio/design-system-svgs/icons` - Icon HTML exports + types
-- `@ogcio/design-system-svgs/logos` - Logo HTML exports + types
-- `@ogcio/design-system-svgs/favicons` - Favicon HTML exports + types
 
 ### Exported Items
 
-Each category exports:
+Each category (icons/logos/favicons) exports:
 
-- **React Components** - Named exports (e.g., `Check`, `ArrowBack`)
-- **HTML Helper** - `getIconSvg()`, `getLogoSvg()`, `getFaviconSvg()`
-- **Raw SVG Map** - `ICONS_MAP`, `LOGOS_MAP`, `FAVICONS_MAP`
-- **Names Array** - `ICONS_NAMES`, `LOGOS_NAMES`, `FAVICONS_NAMES`
-- **TypeScript Types** - `IconName`, `LogoName`, `FaviconName`
+- **ICONS_SPRITE** / **LOGOS_SPRITE** / **FAVICONS_SPRITE** - Inline SVG sprite content
+- **ICONS_SPRITE_PATH** / etc. - Path to sprite file (for static hosting)
+- **getIconUse()** / **getLogoUse()** / **getFaviconUse()** - Helper functions
+- **ICONS_NAMES** / etc. - Array of available names
+- **IconName** / etc. - TypeScript union type of valid names
 
 ## Icon Names
 
-### Material Design Icons (69)
+### Material Design Icons (70)
 
 ```
 accessibility_new, add_circle, apps, arrow_back, arrow_downward,
@@ -166,11 +161,11 @@ chevron_left, chevron_right, child_care, close, content_copy,
 credit_card, delete, directions_car, do_not_disturb_on, download,
 edit, error, event, filter_list, first_page, health_and_safety,
 home, info, keyboard_arrow_down, keyboard_arrow_up, last_page,
-location_on, login, logout, mail, menu, mic, more_horiz, more_vert,
-open_in_new, person, person_cancel, person_check, placeholder,
-refresh, search, send, settings, sort, space_dashboard, swap_vert,
-sync, thumb_down, thumb_up, unfold_more, upload, visibility,
-visibility_off, warning, work
+link, location_on, login, logout, mail, menu, mic, more_horiz,
+more_vert, open_in_new, person, person_cancel, person_check,
+placeholder, refresh, search, send, settings, sort, space_dashboard,
+swap_vert, sync, thumb_down, thumb_up, unfold_more, upload,
+visibility, visibility_off, warning, work
 ```
 
 ### Social Icons (9)
@@ -191,6 +186,22 @@ logo-black, logo-gold-green, logo-gold-white, logo-std-reverse, logo-white
 
 ```
 favicon-dark, favicon-light
+```
+
+## Styling
+
+Icons use `fill="currentColor"` by default, so they inherit the text color of their parent:
+
+```css
+/* Icons inherit color from parent */
+.my-icon-container {
+  color: #0070f3;
+}
+
+/* Or target the icon class directly */
+.gi-icon {
+  fill: currentColor;
+}
 ```
 
 ## Development
@@ -227,5 +238,3 @@ pnpm build
    ```bash
    pnpm build
    ```
-
-For more details about the generator script, see [scripts/README.md](./scripts/README.md).
