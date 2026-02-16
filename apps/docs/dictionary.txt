@@ -129,6 +129,7 @@ TextAreaProps
 Textarea
 Theming
 Tooltip
+Turbopack
 UI
 USD
 UX
@@ -149,6 +150,7 @@ autocomplete
 blockquote
 blockquotes
 breakpoint
+bundler
 center
 center-distribution
 centered-items-with-gap
