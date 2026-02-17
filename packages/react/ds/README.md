@@ -1,6 +1,4 @@
-# govie-react
-
-**This library should only be imported for departments actively working with the core design system team during its development. Do not use this library if you are not part of this development process, and contact the design system team instead if you interested in its use.**
+# Government of Ireland Design System – React
 
 Welcome to the Government of Ireland Design System React component library, a collection of reusable React components designed to help you build modern React web applications utilising the Government of Ireland Design System.
 
@@ -10,20 +8,6 @@ To install the library, use the following command:
 
 ```
 npm install @ogcio/design-system-react @ogcio/theme-govie
-```
-
-### Pinning packages
-
-We **strongly recommend** that you pin the Government of Ireland Design System packages, so that any regressions are not automatically introduced during development. Regressions that will only be discoverable at runtime.
-
-**Upgrades should be explicit version updates** in the `package.json` and then your application should be regression tested:
-
-```diff
-"dependencies": {
--  "@ogcio/theme-govie": "^1.4.1",
-+  "@ogcio/theme-govie": "1.4.1",
--  "@ogcio/design-system-react": "^1.10.0",
-+  "@ogcio/design-system-react": "1.10.0"
 ```
 
 ### Usage
@@ -85,7 +69,8 @@ A standalone `fonts.css` is also available if you need to import fonts separatel
 import '@ogcio/design-system-react/fonts.css';
 ```
 
-**Next.js:** We recommend using [`next/font/google`](https://nextjs.org/docs/app/getting-started/fonts) instead, as it provides optimal font loading with automatic optimisation.
+**Next.js:** We recommend using [`next/font/google`](https://nextjs.org/docs/app/getting-started/fonts) to load the Lato font family for optimal performance.
+
 
 ```tsx
 // app/layout.tsx (App Router)
@@ -173,16 +158,3 @@ resources: {
 
 Note: Each component in the design system documents its relevant i18n keys under an **i18n Keys** heading, if available, for example [Pagination i18n Keys](http://ds.blocks.gov.ie/components/library/pagination/#i18n-keys). Be sure to refer to this section when using or implementing a component to ensure all necessary translations are provided.
 
-## Contribution
-
-We welcome contributions! If you have suggestions for improvements, please feel free to open an issue or submit a pull request.
-
-## Feedback
-
-Your feedback is invaluable to us. Please share your thoughts and experiences to help us make this library better.
-
-## Roadmap
-
-- Alpha: Frequent updates with breaking changes.
-- Beta: Stabilizing the API and focusing on bug fixes.
-- 1.0: Stable release with a solid API.
