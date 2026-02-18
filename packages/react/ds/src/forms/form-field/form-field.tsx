@@ -12,12 +12,12 @@ import { ErrorText } from '../../error-text/error-text.js';
 import { ErrorTextProps } from '../../error-text/types.js';
 import { HintText } from '../../hint-text/hint-text.js';
 import { HintTextProps } from '../../hint-text/types.js';
-import { Label } from '../../label/label.js';
+import { Label, styles } from '../../label/label.js';
 import {
   getSpecialComponentType,
   isSpecialComponent,
 } from '../../utils/utilities.js';
-import { FormFieldProps, FormFiledLabelProps } from './types.js';
+import { FormFieldLabelProps, FormFieldProps } from './types.js';
 
 type FormFieldBaseProps = Omit<
   FieldsetHTMLAttributes<HTMLFieldSetElement>,
@@ -115,7 +115,7 @@ const FormFieldLabel = ({
   className,
   secondaryLabel,
   ...props
-}: FormFiledLabelProps) => {
+}: FormFieldLabelProps) => {
   useFormFieldContext('FormFieldLabel');
 
   const content = (
@@ -127,15 +127,29 @@ const FormFieldLabel = ({
     </>
   );
 
+  if (htmlFor) {
+    return (
+      <Label
+        size={size}
+        htmlFor={htmlFor}
+        className={cn('gi-font-bold', className)}
+        {...(props as React.LabelHTMLAttributes<HTMLLabelElement>)}
+      >
+        {content}
+      </Label>
+    );
+  }
+
   return (
-    <Label
-      size={size}
-      htmlFor={htmlFor}
-      className={cn('gi-font-bold', className)}
-      {...props}
+    <legend
+      className={styles({
+        size,
+        className: cn('gi-font-bold', className),
+      })}
+      {...(props as React.HTMLAttributes<HTMLLegendElement>)}
     >
       {content}
-    </Label>
+    </legend>
   );
 };
 
