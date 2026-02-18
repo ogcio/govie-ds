@@ -235,8 +235,12 @@ export const Controlled: Story = {
       </FormField>
     );
   },
-  play: async ({ args, canvasElement }) => {
+  play: async ({ canvasElement }) => {
     const canvas = within(canvasElement);
+    const legend = canvasElement.querySelector('legend');
+    expect(legend).toBeInTheDocument();
+    expect(legend).toHaveTextContent('Choose an option');
+
     const option1 = await canvas.getByLabelText('Option 1');
     const option2 = await canvas.getByLabelText('Option 2');
 

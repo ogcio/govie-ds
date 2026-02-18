@@ -26,14 +26,7 @@ RUN pnpm react:storybook:build
 
 # Production image
 
-FROM docker.io/nginxinc/nginx-unprivileged:1.29.3-alpine
-
-# Temporary fix for CVE-2025-15467, CVE-2025-69419, CVE-2025-69421, CVE-2026-24515
-USER root
-RUN apk update && \
-    apk add --no-cache libssl3=~3.5.5 libcrypto3=~3.5.5 libexpat=~2.7.4 && \
-    rm -rf /var/cache/apk/*
-# Remove this block after the image upgrade
+FROM docker.io/nginxinc/nginx-unprivileged:1.29.5-alpine
 
 # Copy static assets from builder stage
 COPY --from=builder --chown=nginx /build/apps/docs/out /usr/share/nginx/html/doc

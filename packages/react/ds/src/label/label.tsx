@@ -8,7 +8,7 @@ export const LabelSize = {
   Large: 'lg',
 } as const;
 
-const label = tv({
+export const styles = tv({
   base: 'gi-label',
   variants: {
     size: {
@@ -25,7 +25,7 @@ const label = tv({
 export const Label = forwardRef<HTMLLabelElement, LabelTextProps>(
   ({ text, size = LabelSize.Medium, className, children, ...props }, ref) => {
     return (
-      <label className={label({ size, className })} ref={ref} {...props}>
+      <label className={styles({ size, className })} ref={ref} {...props}>
         {children ?? text}
       </label>
     );
