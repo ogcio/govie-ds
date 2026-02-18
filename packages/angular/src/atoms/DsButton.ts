@@ -8,22 +8,22 @@ import { Component, Input } from "@angular/core";
 
 import { CommonModule } from "@angular/common";
 
-type Props = {
-  variant?: (typeof Variant)[keyof typeof Variant];
-  appearance?: (typeof Appearance)[keyof typeof Appearance];
-  size?: (typeof Size)[keyof typeof Size];
+export type ButtonVariant = (typeof Variant)[keyof typeof Variant];
+export type ButtonAppearance = (typeof Appearance)[keyof typeof Appearance];
+export type ButtonSize = (typeof Size)[keyof typeof Size];
+export type ButtonProps = {
+  id?: string;
+  variant?: ButtonVariant;
+  appearance?: ButtonAppearance;
+  size?: ButtonSize;
   children?: any;
   disabled?: boolean;
   className?: string;
-
-  /** Handlers */
   onClick?: (event: any) => void;
   onFocus?: (event: any) => void;
   onBlur?: (event: any) => void;
   onKeyDown?: (event: any) => void;
   onKeyUp?: (event: any) => void;
-
-  /** A11y */
   ariaLabel?: string;
   ariaLabelledBy?: string;
   ariaDescribedBy?: string;
@@ -31,46 +31,301 @@ type Props = {
   ariaExpanded?: boolean;
   ariaControls?: string;
   ariaHasPopup?: "menu" | "listbox" | "dialog" | "grid" | "tree" | boolean;
+  ariaBusy?: boolean;
+  role?: string;
   type?: "button" | "submit" | "reset";
+  form?: string;
+  value?: string;
   tabIndex?: number;
   dataTestId?: string;
-  dataTestid?: string; // backwards compatibility
+  dataTestid?: string;
+  ref?: any;
 };
 
-export const Variant = {
+import { tv } from "tailwind-variants";
+const Variant = {
   PRIMARY: "primary",
   SECONDARY: "secondary",
   FLAT: "flat",
 } as const;
-export const Appearance = {
+const Appearance = {
+  DEFAULT: "default",
   DARK: "dark",
   LIGHT: "light",
-  DEFAULT: "default",
 } as const;
-export const Size = {
-  REGULAR: "regular",
+const Size = {
   SMALL: "small",
   MEDIUM: "medium",
   LARGE: "large",
-  EXTRA_LARGE: "extraLarge",
 } as const;
-const getVariant = (x: Props["variant"] = Variant.PRIMARY) =>
-  Object.values(Variant).includes(x) ? x : Variant.PRIMARY;
-const getAppearance = (x: Props["appearance"]) =>
-  x === Appearance.LIGHT || x === Appearance.DARK ? x : "";
-// TODO: compatibility issue to fix: replace regular with medium for consistency
-// TODO: compatibility issue to fix: replace regular with medium for consistency
-const getSize = (x: Props["size"]) =>
-  x === Size.SMALL || x === Size.LARGE || x === Size.EXTRA_LARGE
-    ? x
-    : Size.REGULAR;
-// const getSize = (x: Props['size'] = Size.REGULAR) => Object.values(Size).includes(x) ? x : Size.REGULAR
+const styles = tv({
+  base: [
+    "gi-border-solid",
+    "gi-border-sm",
+    "gi-gap-2",
+    "gi-flex",
+    "gi-rounded-sm",
+    "gi-items-center",
+    //disabled
+    "disabled:gi-cursor-not-allowed",
+    "disabled:gi-pointer-events-none",
+    // focus
+    "focus:gi-outline",
+    "focus:gi-outline-sm",
+    "focus:gi-outline-color-shadow-intent-focus-default",
+    "focus:gi-outline-offset-0",
+    "focus:gi-border-solid",
+    "focus:gi-border-color-border-intent-focus-default",
+    "focus:gi-border-sm",
+    "focus:gi-rounded-sm",
+  ],
+  variants: {
+    variant: {
+      primary: [
+        "gi-border-transparent",
+        "focus:gi-shadow-color-border-intent-focus-light",
+        "focus:gi-shadow-[inset_0_0_0_2px]",
+      ],
+      secondary: [],
+      flat: ["gi-border-base-transparent"],
+    },
+    appearance: {
+      default: "",
+      light: "",
+      dark: "",
+    },
+    size: {
+      small: "gi-h-8 gi-px-2 gi-py-1.5 gi-text-xs",
+      medium: "gi-h-10 gi-px-3 gi-py-2 gi-text-sm",
+      large: "gi-h-12 gi-px-4 gi-py-3 gi-text-2md",
+    },
+    disabled: {
+      true: "",
+      false: "",
+    },
+  },
+  compoundVariants: [
+    {
+      variant: "primary",
+      appearance: "default",
+      disabled: false,
+      class: [
+        "gi-text-color-text-tone-primary-fill-default",
+        "gi-bg-color-surface-tone-primary-fill-default",
+        "gi-stroke-color-text-tone-primary-fill-default",
+        "hover:gi-bg-color-surface-tone-primary-fill-hover",
+        "focus:gi-bg-color-surface-tone-primary-fill-hover",
+      ],
+    },
+    {
+      variant: "primary",
+      appearance: "light",
+      disabled: false,
+      class: [
+        "gi-text-color-text-tone-light-fill-default",
+        "gi-stroke-color-text-tone-light-fill-default",
+        "gi-bg-color-surface-tone-light-fill-default",
+        "hover:gi-bg-color-surface-tone-light-fill-hover",
+        "focus:gi-bg-color-surface-tone-light-fill-hover",
+      ],
+    },
+    {
+      variant: "primary",
+      appearance: "dark",
+      disabled: false,
+      class: [
+        "gi-text-color-text-tone-dark-fill-default",
+        "gi-stroke-color-text-tone-dark-fill-default",
+        "gi-bg-color-surface-tone-dark-fill-default",
+        "hover:gi-bg-color-surface-tone-dark-fill-hover",
+        "focus:gi-bg-color-surface-tone-dark-fill-hover",
+      ],
+    },
+    {
+      variant: "primary",
+      appearance: "default",
+      disabled: true,
+      class: [
+        "gi-bg-color-surface-tone-primary-fill-disabled",
+        "gi-text-color-text-tone-primary-fill-disabled",
+        "gi-stroke-color-text-tone-primary-fill-disabled",
+      ],
+    },
+    {
+      variant: "primary",
+      appearance: "light",
+      disabled: true,
+      class: [
+        "gi-bg-color-surface-tone-light-fill-disabled",
+        "gi-text-color-text-tone-light-fill-disabled",
+        "gi-stroke-color-text-tone-light-fill-disabled",
+      ],
+    },
+    {
+      variant: "primary",
+      appearance: "dark",
+      disabled: true,
+      class: [
+        "gi-bg-color-surface-tone-dark-fill-disabled",
+        "gi-text-color-text-tone-dark-fill-disabled",
+        "gi-stroke-color-text-tone-dark-fill-disabled",
+      ],
+    },
+    {
+      variant: "secondary",
+      appearance: "default",
+      disabled: false,
+      class: [
+        "gi-border-color-border-tone-primary-outline-default",
+        "gi-text-color-text-tone-primary-outline-default",
+        "gi-stroke-color-text-tone-primary-outline-default",
+        "hover:gi-bg-color-surface-tone-primary-outline-hover",
+        "focus:gi-bg-color-surface-tone-primary-outline-hover",
+      ],
+    },
+    {
+      variant: "secondary",
+      appearance: "light",
+      disabled: false,
+      class: [
+        "gi-text-color-text-tone-light-outline-default",
+        "gi-stroke-color-text-tone-light-outline-default",
+        "gi-border-color-border-tone-light-outline-default",
+        "gi-bg-base-transparent",
+        "hover:gi-bg-color-surface-tone-light-outline-hover",
+        "focus:gi-bg-color-surface-tone-dark-fill-hover",
+      ],
+    },
+    {
+      variant: "secondary",
+      appearance: "dark",
+      disabled: false,
+      class: [
+        "gi-border-color-border-tone-dark-outline-default",
+        "gi-bg-color-surface-tone-dark-outline-default",
+        "hover:gi-bg-color-surface-tone-dark-outline-hover",
+        "focus:gi-bg-color-surface-tone-light-fill-hover",
+      ],
+    },
+    {
+      variant: "secondary",
+      appearance: "default",
+      disabled: true,
+      class: [
+        "gi-border-color-border-tone-primary-outline-disabled",
+        "gi-bg-color-surface-tone-primary-outline-disabled",
+        "gi-text-color-text-tone-primary-outline-disabled",
+        "gi-stroke-color-text-tone-primary-outline-disabled",
+      ],
+    },
+    {
+      variant: "secondary",
+      appearance: "light",
+      disabled: true,
+      class: [
+        "gi-bg-color-surface-tone-light-outline-disabled",
+        "gi-border-color-border-tone-light-outline-disabled",
+        "gi-text-color-text-tone-light-outline-disabled",
+        "gi-stroke-color-text-tone-light-outline-disabled",
+      ],
+    },
+    {
+      variant: "secondary",
+      appearance: "dark",
+      disabled: true,
+      class: [
+        "gi-border-color-border-tone-dark-outline-disabled",
+        "gi-bg-color-surface-tone-dark-fill-disabled",
+        "gi-text-color-text-tone-dark-outline-disabled",
+        "gi-stroke-color-text-tone-dark-outline-disabled",
+      ],
+    },
+    {
+      variant: "flat",
+      appearance: "default",
+      disabled: false,
+      class: [
+        "gi-text-color-text-tone-primary-flat-default",
+        "gi-stroke-color-text-tone-primary-flat-default",
+        "gi-bg-base-transparent",
+        "hover:gi-bg-color-surface-tone-primary-flat-hover",
+        "focus:gi-bg-color-surface-tone-primary-outline-hover",
+      ],
+    },
+    {
+      variant: "flat",
+      appearance: "light",
+      disabled: false,
+      class: [
+        "gi-bg-color-surface-tone-light-flat-default",
+        "gi-text-color-text-tone-light-flat-default",
+        "gi-stroke-color-text-tone-light-flat-default",
+        "hover:gi-bg-color-surface-tone-light-flat-hover",
+        "focus:gi-bg-color-surface-tone-dark-fill-hover",
+      ],
+    },
+    {
+      variant: "flat",
+      appearance: "dark",
+      disabled: false,
+      class: [
+        "gi-text-color-text-tone-dark-flat-default",
+        "gi-stroke-color-text-tone-dark-flat-default",
+        "hover:gi-bg-color-surface-tone-dark-flat-hover",
+        "focus:gi-bg-color-surface-tone-light-fill-hover",
+      ],
+    },
+    {
+      variant: "flat",
+      appearance: "default",
+      disabled: true,
+      class: [
+        "gi-text-color-text-tone-primary-flat-disabled",
+        "gi-stroke-color-text-tone-primary-flat-disabled",
+        "gi-bg-color-surface-tone-primary-flat-disabled",
+      ],
+    },
+    {
+      variant: "flat",
+      appearance: "light",
+      disabled: true,
+      class: [
+        "gi-bg-color-surface-tone-light-flat-disabled",
+        "gi-text-color-text-tone-light-flat-disabled",
+        "gi-stroke-color-text-tone-light-flat-disabled",
+      ],
+    },
+    {
+      variant: "flat",
+      appearance: "dark",
+      disabled: true,
+      class: [
+        "gi-bg-color-surface-tone-dark-flat-disabled",
+        "gi-text-color-text-tone-dark-flat-disabled",
+        "gi-stroke-color-text-tone-dark-flat-disabled",
+      ],
+    },
+  ],
+  defaultVariants: {
+    variant: "primary",
+    appearance: "default",
+    size: "medium",
+    disabled: false,
+  },
+});
 
 @Component({
   selector: "ds-button",
   template: `
     <button
-      [class]="\`gi-btn \${variantClass} gi-btn-\${getSize(size)} \${className || ''}\`"
+      [attr.id]="id"
+      [class]="styles({
+          variant: variant ?? Variant.PRIMARY,
+          appearance: appearance ?? Appearance.DEFAULT,
+          size: size ?? Size.MEDIUM,
+          disabled: disabled,
+          class: className
+        })"
       [attr.disabled]="disabled"
       (click)="onClick?.($event)"
       (focus)="onFocus?.($event)"
@@ -84,9 +339,13 @@ const getSize = (x: Props["size"]) =>
       [attr.aria-expanded]="ariaExpanded"
       [attr.aria-controls]="ariaControls"
       [attr.aria-haspopup]="ariaHasPopup"
-      [attr.type]="type || 'button'"
+      [attr.aria-busy]="ariaBusy"
+      [attr.role]="role"
+      [attr.type]="type ?? 'button'"
+      [attr.form]="form"
+      [attr.value]="value"
       [attr.tabIndex]="tabIndex"
-      [attr.data-testid]="dataTestId || dataTestid"
+      [attr.data-testid]="dataTestId ?? dataTestid"
     >
       <ng-content></ng-content>
     </button>
@@ -102,40 +361,36 @@ const getSize = (x: Props["size"]) =>
   imports: [CommonModule],
 })
 export default class DsButton {
-  getSize = getSize;
+  Variant = Variant;
+  Appearance = Appearance;
+  Size = Size;
+  styles = styles;
 
-  @Input() variant!: Props["variant"];
-  @Input() appearance!: Props["appearance"];
-  @Input() disabled!: Props["disabled"];
-  @Input() size!: Props["size"];
-  @Input() className!: Props["className"];
-  @Input() onClick!: Props["onClick"];
-  @Input() onFocus!: Props["onFocus"];
-  @Input() onBlur!: Props["onBlur"];
-  @Input() onKeyDown!: Props["onKeyDown"];
-  @Input() onKeyUp!: Props["onKeyUp"];
-  @Input() ariaLabel!: Props["ariaLabel"];
-  @Input() ariaLabelledBy!: Props["ariaLabelledBy"];
-  @Input() ariaDescribedBy!: Props["ariaDescribedBy"];
-  @Input() ariaPressed!: Props["ariaPressed"];
-  @Input() ariaExpanded!: Props["ariaExpanded"];
-  @Input() ariaControls!: Props["ariaControls"];
-  @Input() ariaHasPopup!: Props["ariaHasPopup"];
-  @Input() type!: Props["type"];
-  @Input() tabIndex!: Props["tabIndex"];
-  @Input() dataTestId!: Props["dataTestId"];
-  @Input() dataTestid!: Props["dataTestid"];
-
-  get variantClass() {
-    // TODO TW: replace by tailwind-variants usage
-    return [
-      "gi-btn",
-      getVariant(this.variant),
-      getAppearance(this.appearance),
-      this.disabled && "disabled",
-    ]
-      .filter(Boolean)
-      .join("-");
-  }
+  @Input() id!: ButtonProps["id"];
+  @Input() variant!: ButtonProps["variant"];
+  @Input() appearance!: ButtonProps["appearance"];
+  @Input() size!: ButtonProps["size"];
+  @Input() disabled!: ButtonProps["disabled"];
+  @Input() className!: ButtonProps["className"];
+  @Input() onClick!: ButtonProps["onClick"];
+  @Input() onFocus!: ButtonProps["onFocus"];
+  @Input() onBlur!: ButtonProps["onBlur"];
+  @Input() onKeyDown!: ButtonProps["onKeyDown"];
+  @Input() onKeyUp!: ButtonProps["onKeyUp"];
+  @Input() ariaLabel!: ButtonProps["ariaLabel"];
+  @Input() ariaLabelledBy!: ButtonProps["ariaLabelledBy"];
+  @Input() ariaDescribedBy!: ButtonProps["ariaDescribedBy"];
+  @Input() ariaPressed!: ButtonProps["ariaPressed"];
+  @Input() ariaExpanded!: ButtonProps["ariaExpanded"];
+  @Input() ariaControls!: ButtonProps["ariaControls"];
+  @Input() ariaHasPopup!: ButtonProps["ariaHasPopup"];
+  @Input() ariaBusy!: ButtonProps["ariaBusy"];
+  @Input() role!: ButtonProps["role"];
+  @Input() type!: ButtonProps["type"];
+  @Input() form!: ButtonProps["form"];
+  @Input() value!: ButtonProps["value"];
+  @Input() tabIndex!: ButtonProps["tabIndex"];
+  @Input() dataTestId!: ButtonProps["dataTestId"];
+  @Input() dataTestid!: ButtonProps["dataTestid"];
 }
 

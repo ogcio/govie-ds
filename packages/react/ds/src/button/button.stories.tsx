@@ -1,7 +1,7 @@
 import type { Meta, StoryObj } from '@storybook/react';
 import { expect, within } from 'storybook/test';
+import Button from '../atoms/DsButton.js';
 import { Icon } from '../icon/icon.js';
-import { Button } from './button.js';
 
 const meta = {
   title: 'Form/Button',
