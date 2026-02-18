@@ -64,7 +64,9 @@ export const DataTableFooter: React.FC<DataTableFooterProps> = ({
   const hasEnd = Boolean(end);
   const onlyEnd = !hasStart && !hasCenter && hasEnd;
 
-  const styles = dataTableFooterStyles({ onlyEnd });
+  const { footer, baseSection, centerSection, endSection } = styles({
+    onlyEnd,
+  });
 
   const renderFooterSection = (
     section: React.ReactElement<DataTableFooterTypeProps> | null,
@@ -85,10 +87,10 @@ export const DataTableFooter: React.FC<DataTableFooterProps> = ({
   };
 
   const content = (
-    <div className={cn(styles.footer(), className)}>
-      {renderFooterSection(start, styles.baseSection())}
-      {renderFooterSection(center, styles.centerSection())}
-      {renderFooterSection(end, styles.endSection())}
+    <div className={cn(footer(), className)}>
+      {renderFooterSection(start, baseSection())}
+      {renderFooterSection(center, centerSection())}
+      {renderFooterSection(end, endSection())}
     </div>
   );
 
@@ -113,7 +115,7 @@ export const DataTableFooter: React.FC<DataTableFooterProps> = ({
 
 DataTableFooter.displayName = 'DataTableFooter';
 
-const dataTableFooterStyles = tv({
+const styles = tv({
   slots: {
     footer: 'gi-flex gi-flex-row gi-w-full gi-items-center',
     baseSection: 'gi-grow gi-basis-0 gi-min-w-0',

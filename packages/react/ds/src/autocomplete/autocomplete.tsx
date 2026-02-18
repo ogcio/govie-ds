@@ -413,16 +413,13 @@ const getIconEnd = (isOpen: boolean) =>
 const propagateOnChange =
   (onChange: AutocompleteProps['onChange'], name?: string) =>
   (inputValue: string) => {
-    if (onChange) {
-      const syntheticEvent = {
-        target: { name, value: inputValue },
-        currentTarget: { name, value: inputValue },
-        type: 'change',
-        bubbles: true,
-        isTrusted: true,
-      } as ChangeEvent<HTMLInputElement>;
-      onChange(syntheticEvent);
-    }
+    onChange?.({
+      target: { name, value: inputValue },
+      currentTarget: { name, value: inputValue },
+      type: 'change',
+      bubbles: true,
+      isTrusted: true,
+    } as ChangeEvent<HTMLInputElement>);
   };
 
 const propagateOnBlur =

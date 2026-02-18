@@ -12,8 +12,6 @@ export type DataTableSelectedRowsBannerProps = {
 export const DataTableSelectedRowsBanner: React.FC<
   DataTableSelectedRowsBannerProps
 > = ({ selectedCount, actions, className, ...props }) => {
-  const styles = dataTableSelectedRowsBannerStyles();
-
   return (
     <div className={cn(styles.root(), className)} {...props}>
       <span className={styles.label()}>
@@ -28,9 +26,9 @@ export const DataTableSelectedRowsBanner: React.FC<
   );
 };
 
-const dataTableSelectedRowsBannerStyles = tv({
+const styles = tv({
   slots: {
     root: 'gi-w-full gi-flex gi-items-center gi-justify-between gi-px-3 gi-py-2 gi-bg-gray-900 gi-rounded-md',
     label: 'gi-text-sm gi-font-medium gi-text-white',
   },
-});
+})();
