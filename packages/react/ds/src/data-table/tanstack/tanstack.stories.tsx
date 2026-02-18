@@ -864,7 +864,7 @@ export const WithReactHookForm: Story = {
               <SelectNative
                 id="data-table-rows-per-page"
                 aria-label="Select"
-                className="gi-data-table-footer-select"
+                className="!gi-min-w-12 !gi-border-color-border-system-neutral-interactive-muted"
                 value={pagination.pageSize}
                 onChange={(event) => {
                   const pageSize = Number(event.target.value);
@@ -1052,7 +1052,7 @@ a full table context).
       <DataTableFooterCenter>
         <span className="gi-pr-2">Rows per page</span>
         <SelectNative
-          className="gi-data-table-footer-select"
+          className="!gi-min-w-12 !gi-border-color-border-system-neutral-interactive-muted"
           id="data-table-footer-rows-per-page"
           aria-label="Select"
         >

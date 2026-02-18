@@ -4,6 +4,7 @@ import React, {
   isValidElement,
   useMemo,
 } from 'react';
+import { tv } from 'tailwind-variants';
 import { Button } from '../button/button.js';
 import { Chip } from '../chip/chip.js';
 import { cn } from '../cn.js';
@@ -19,11 +20,11 @@ interface DataTableHeaderProps extends HTMLAttributes<HTMLDivElement> {
   showFilter?: boolean;
 }
 
-const isSection = <P,>(
-  child: React.ReactNode,
-  sectionType: React.ComponentType<P>,
-): child is React.ReactElement<P> => {
-  return isValidElement(child) && child.type === sectionType;
+type DataTableHeaderFilterListProps = {
+  filters: { id: string; label: string }[];
+  onRemove?: (id: string) => void;
+  onClear?: () => void;
+  className?: string;
 };
 
 export const DataTableHeader: React.FC<DataTableHeaderProps> = ({
@@ -56,9 +57,9 @@ export const DataTableHeader: React.FC<DataTableHeaderProps> = ({
   }, [children]);
 
   return (
-    <div {...props} className={cn('gi-data-table-header', className)}>
+    <div {...props} className={cn(styles.root(), className)}>
       {showHeader && (
-        <div className="gi-flex gi-flex-1 gi-gap-4 gi-items-center">
+        <div className={styles.headerRow()}>
           {search}
           {filter}
           {actions}
@@ -66,7 +67,7 @@ export const DataTableHeader: React.FC<DataTableHeaderProps> = ({
       )}
 
       {filterList && showFilter && (
-        <div className="gi-w-full">{filterList}</div>
+        <div className={styles.filterListWrapper()}>{filterList}</div>
       )}
     </div>
   );
@@ -78,7 +79,7 @@ export const DataTableHeaderSearch: React.FC<DataTableHeaderTypeProps> = ({
   ...props
 }) => {
   return (
-    <div className={cn('gi-data-table-header-search', className)} {...props}>
+    <div className={cn(styles.search(), className)} {...props}>
       {children}
     </div>
   );
@@ -90,7 +91,7 @@ export const DataTableHeaderActions: React.FC<DataTableHeaderTypeProps> = ({
   ...props
 }) => {
   return (
-    <div className={cn('gi-data-table-header-actions', className)} {...props}>
+    <div className={cn(styles.actions(), className)} {...props}>
       {children}
     </div>
   );
@@ -102,19 +103,17 @@ export const DataTableHeaderFilter: React.FC<DataTableHeaderTypeProps> = ({
   ...props
 }) => {
   return (
-    <div className={cn('gi-data-table-header-filter', className)} {...props}>
+    <div className={cn(styles.filter(), className)} {...props}>
       {children}
     </div>
   );
 };
+
 export const DataTableHeaderFilterContent: React.FC<
   DataTableHeaderTypeProps
 > = ({ children, className, ...props }) => {
   return (
-    <div
-      className={cn('gi-data-table-header-filter-content', className)}
-      {...props}
-    >
+    <div className={cn(styles.filterContent(), className)} {...props}>
       {children}
     </div>
   );
@@ -124,10 +123,7 @@ export const DataTableHeaderFilterContentTitle: React.FC<
   DataTableHeaderTypeProps
 > = ({ children, className, ...props }) => {
   return (
-    <div
-      className={cn('gi-data-table-header-filter-content-title', className)}
-      {...props}
-    >
+    <div className={cn(styles.filterContentTitle(), className)} {...props}>
       {children}
     </div>
   );
@@ -137,20 +133,10 @@ export const DataTableHeaderFilterActions: React.FC<
   DataTableHeaderTypeProps
 > = ({ children, className, ...props }) => {
   return (
-    <div
-      className={cn('gi-data-table-header-filter-actions', className)}
-      {...props}
-    >
+    <div className={cn(styles.filterActions(), className)} {...props}>
       {children}
     </div>
   );
-};
-
-type DataTableHeaderFilterListProps = {
-  filters: { id: string; label: string }[];
-  onRemove?: (id: string) => void;
-  onClear?: () => void;
-  className?: string;
 };
 
 export const DataTableHeaderFilterList: React.FC<
@@ -161,10 +147,7 @@ export const DataTableHeaderFilterList: React.FC<
   }
 
   return (
-    <div
-      className={cn('gi-data-table-header-filter-list', className)}
-      {...props}
-    >
+    <div className={cn(styles.filterList(), className)} {...props}>
       <span className="gi-text-sm">
         {t('dataTableHeader.filtersApplied', {
           length: filters.length,
@@ -230,3 +213,26 @@ Object.defineProperty(DataTableHeaderFilterContentTitle, 'componentType', {
 Object.defineProperty(DataTableHeaderFilterActions, 'componentType', {
   value: 'DataTableHeaderFilterActions',
 });
+
+const styles = tv({
+  slots: {
+    root: 'gi-flex gi-flex-wrap gi-items-center gi-w-full gi-gap-4 gi-mb-2',
+    headerRow: 'gi-flex gi-flex-1 gi-gap-4 gi-items-center',
+    search: 'gi-flex gi-flex-1',
+    filter: 'gi-flex gi-items-center',
+    actions: 'gi-flex gi-items-center gi-ml-auto gi-gap-4 gi-flex-shrink',
+    filterListWrapper: 'gi-w-full',
+    filterList: 'gi-flex gi-items-center gi-gap-2 gi-flex-wrap',
+    filterContentTitle: 'gi-py-2 gi-font-medium',
+    filterContent:
+      'gi-flex gi-flex-col gi-gap-2 gi-px-6 gi-py-4 gi-flex-1 gi-overflow-auto',
+    filterActions: 'gi-flex gi-justify-end gi-gap-2 gi-p-6',
+  },
+})();
+
+const isSection = <P,>(
+  child: React.ReactNode,
+  sectionType: React.ComponentType<P>,
+): child is React.ReactElement<P> => {
+  return isValidElement(child) && child.type === sectionType;
+};

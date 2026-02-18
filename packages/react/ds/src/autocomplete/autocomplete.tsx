@@ -10,6 +10,7 @@ import React, {
   useEffect,
   useCallback,
 } from 'react';
+import { tv } from 'tailwind-variants';
 import { cn } from '../cn.js';
 import { useDomId } from '../hooks/use-dom-id.js';
 import { translate as t } from '../i18n/utility.js';
@@ -43,44 +44,11 @@ const {
   SET_VALUE,
 } = AUTOCOMPLETE_ACTIONS;
 
-const getIconEnd = (isOpen: boolean) =>
-  isOpen ? 'keyboard_arrow_up' : 'keyboard_arrow_down';
-
-const propagateOnChange =
-  (onChange: AutocompleteProps['onChange'], name?: string) =>
-  (inputValue: string) => {
-    if (onChange) {
-      const syntheticEvent = {
-        target: { name, value: inputValue },
-        currentTarget: { name, value: inputValue },
-        type: 'change',
-        bubbles: true,
-        isTrusted: true,
-      } as ChangeEvent<HTMLInputElement>;
-      onChange(syntheticEvent);
-    }
-  };
-
-const propagateOnBlur =
-  (onBlur: AutocompleteProps['onBlur'], name?: string) =>
-  (inputValue: string) => {
-    if (onBlur) {
-      const syntheticEvent = {
-        target: { name, value: inputValue },
-        currentTarget: { name, value: inputValue },
-        type: 'blur',
-        bubbles: true,
-        isTrusted: true,
-      } as unknown as any;
-      onBlur(syntheticEvent);
-    }
-  };
-
 export const Autocomplete = forwardRef<HTMLInputElement, AutocompleteProps>(
   (props, ref) => {
     const iconEndRef = useRef<HTMLDivElement>(null);
     const {
-      disabled,
+      disabled = false,
       children,
       placeholder,
       onSelectItem,
@@ -93,6 +61,7 @@ export const Autocomplete = forwardRef<HTMLInputElement, AutocompleteProps>(
       id,
     } = props;
     const isPointerDownOnMenu = useRef(false);
+    const styles = autocompleteStyles({ freeSolo, disabled });
 
     const {
       state,
@@ -101,7 +70,6 @@ export const Autocomplete = forwardRef<HTMLInputElement, AutocompleteProps>(
       getOptionLabelByValue,
       listRef,
       debouncedFilter,
-      validChildren,
     } = useAutocompleteController({
       ...props,
       onChange: propagateOnChange(onAutocompleteChange, name),
@@ -285,7 +253,7 @@ export const Autocomplete = forwardRef<HTMLInputElement, AutocompleteProps>(
     return (
       <div
         aria-disabled={disabled}
-        className={cn('gi-relative gi-w-full gi-not-prose', props.className)}
+        className={cn(styles.root(), props.className)}
       >
         <span id={srOnlyLabelId} className="gi-sr-only">
           {labelText}
@@ -310,11 +278,7 @@ export const Autocomplete = forwardRef<HTMLInputElement, AutocompleteProps>(
             placeholder ??
             t('autocomplete.placeholder', { defaultValue: 'Type to Search' })
           }
-          iconEndClassName={cn({
-            'gi-cursor-pointer': !disabled && !freeSolo,
-            'gi-cursor-not-allowed gi-pointer-events-none':
-              disabled && !freeSolo,
-          })}
+          iconEndClassName={styles.iconEnd()}
           iconEnd={freeSolo ? undefined : getIconEnd(state.isOpen)}
           ref={inputRef}
           iconEndRef={iconEndRef}
@@ -422,3 +386,53 @@ Object.defineProperty(AutocompleteGroupItem, 'componentType', {
   writable: false,
   enumerable: false,
 });
+
+const autocompleteStyles = tv({
+  slots: {
+    root: 'gi-relative gi-w-full gi-not-prose',
+    iconEnd: '',
+  },
+  variants: {
+    freeSolo: {
+      true: {},
+      false: {
+        iconEnd: 'gi-cursor-pointer',
+      },
+    },
+    disabled: {
+      true: {
+        iconEnd: 'gi-cursor-not-allowed gi-pointer-events-none',
+      },
+    },
+  },
+});
+
+const getIconEnd = (isOpen: boolean) =>
+  isOpen ? 'keyboard_arrow_up' : 'keyboard_arrow_down';
+
+const propagateOnChange =
+  (onChange: AutocompleteProps['onChange'], name?: string) =>
+  (inputValue: string) => {
+    onChange?.({
+      target: { name, value: inputValue },
+      currentTarget: { name, value: inputValue },
+      type: 'change',
+      bubbles: true,
+      isTrusted: true,
+    } as ChangeEvent<HTMLInputElement>);
+  };
+
+const propagateOnBlur =
+  (onBlur: AutocompleteProps['onBlur'], name?: string) =>
+  (inputValue: string) => {
+    if (onBlur) {
+      const syntheticEvent = {
+        target: { name, value: inputValue },
+        currentTarget: { name, value: inputValue },
+        type: 'blur',
+        bubbles: true,
+        isTrusted: true,
+      } as unknown as any;
+      onBlur(syntheticEvent);
+    }
+  };
