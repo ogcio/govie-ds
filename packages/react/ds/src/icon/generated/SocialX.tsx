@@ -1,19 +1,16 @@
-import { forwardRef } from 'react';
 import type { SVGProps } from 'react';
 
 export interface SocialXProps extends SVGProps<SVGSVGElement> {
   size?: string | number;
 }
 
-export const SocialX = forwardRef<SVGSVGElement, SocialXProps>(
-  ({ size = 24, ...props }, ref) => (
+export function SocialX({ size = 24, ...props }: SocialXProps) {
+  return (
     <svg
-      ref={ref}
       width={size}
       height={size}
       viewBox="0 0 24 24"
       fill="currentColor"
-      xmlns="http://www.w3.org/2000/svg"
       role="presentation"
       aria-hidden="true"
       {...props}
@@ -23,8 +20,7 @@ export const SocialX = forwardRef<SVGSVGElement, SocialXProps>(
     fill="currentColor"
   />
     </svg>
-  ),
-);
+  );
+}
 
-SocialX.displayName = 'SocialX';
 export default SocialX;

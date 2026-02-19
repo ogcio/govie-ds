@@ -1,27 +1,23 @@
-import { forwardRef } from 'react';
 import type { SVGProps } from 'react';
 
 export interface MoreHorizProps extends SVGProps<SVGSVGElement> {
   size?: string | number;
 }
 
-export const MoreHoriz = forwardRef<SVGSVGElement, MoreHorizProps>(
-  ({ size = 24, ...props }, ref) => (
+export function MoreHoriz({ size = 24, ...props }: MoreHorizProps) {
+  return (
     <svg
-      ref={ref}
       width={size}
       height={size}
       viewBox="0 -960 960 960"
       fill="currentColor"
-      xmlns="http://www.w3.org/2000/svg"
       role="presentation"
       aria-hidden="true"
       {...props}
     >
       <path d="M207.86-432Q188-432 174-446.14t-14-34Q160-500 174.14-514t34-14Q228-528 242-513.86t14 34Q256-460 241.86-446t-34 14Zm272 0Q460-432 446-446.14t-14-34Q432-500 446.14-514t34-14Q500-528 514-513.86t14 34Q528-460 513.86-446t-34 14Zm272 0Q732-432 718-446.14t-14-34Q704-500 718.14-514t34-14Q772-528 786-513.86t14 34Q800-460 785.86-446t-34 14Z"/>
     </svg>
-  ),
-);
+  );
+}
 
-MoreHoriz.displayName = 'MoreHoriz';
 export default MoreHoriz;

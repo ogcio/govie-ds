@@ -1,19 +1,16 @@
-import { forwardRef } from 'react';
 import type { SVGProps } from 'react';
 
 export interface SocialYoutubeProps extends SVGProps<SVGSVGElement> {
   size?: string | number;
 }
 
-export const SocialYoutube = forwardRef<SVGSVGElement, SocialYoutubeProps>(
-  ({ size = 24, ...props }, ref) => (
+export function SocialYoutube({ size = 24, ...props }: SocialYoutubeProps) {
+  return (
     <svg
-      ref={ref}
       width={size}
       height={size}
       viewBox="0 0 24 24"
       fill="currentColor"
-      xmlns="http://www.w3.org/2000/svg"
       role="presentation"
       aria-hidden="true"
       {...props}
@@ -32,8 +29,7 @@ export const SocialYoutube = forwardRef<SVGSVGElement, SocialYoutubeProps>(
     </clipPath>
   </defs>
     </svg>
-  ),
-);
+  );
+}
 
-SocialYoutube.displayName = 'SocialYoutube';
 export default SocialYoutube;

@@ -1,19 +1,16 @@
-import { forwardRef } from 'react';
 import type { SVGProps } from 'react';
 
 export interface PlaceholderProps extends SVGProps<SVGSVGElement> {
   size?: string | number;
 }
 
-export const Placeholder = forwardRef<SVGSVGElement, PlaceholderProps>(
-  ({ size = 24, ...props }, ref) => (
+export function Placeholder({ size = 24, ...props }: PlaceholderProps) {
+  return (
     <svg
-      ref={ref}
       width={size}
       height={size}
       viewBox="0 0 24 24"
       fill="currentColor"
-      xmlns="http://www.w3.org/2000/svg"
       role="presentation"
       aria-hidden="true"
       {...props}
@@ -25,8 +22,7 @@ export const Placeholder = forwardRef<SVGSVGElement, PlaceholderProps>(
   />
   <path d="M14 12C14 13.1046 13.1046 14 12 14C10.8954 14 10 13.1046 10 12C10 10.8954 10.8954 10 12 10C13.1046 10 14 10.8954 14 12Z" />
     </svg>
-  ),
-);
+  );
+}
 
-Placeholder.displayName = 'Placeholder';
 export default Placeholder;

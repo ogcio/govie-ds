@@ -1,19 +1,16 @@
-import { forwardRef } from 'react';
 import type { SVGProps } from 'react';
 
 export interface SocialThreadsProps extends SVGProps<SVGSVGElement> {
   size?: string | number;
 }
 
-export const SocialThreads = forwardRef<SVGSVGElement, SocialThreadsProps>(
-  ({ size = 24, ...props }, ref) => (
+export function SocialThreads({ size = 24, ...props }: SocialThreadsProps) {
+  return (
     <svg
-      ref={ref}
       width={size}
       height={size}
       viewBox="0 0 24 24"
       fill="currentColor"
-      xmlns="http://www.w3.org/2000/svg"
       role="presentation"
       aria-hidden="true"
       {...props}
@@ -23,8 +20,7 @@ export const SocialThreads = forwardRef<SVGSVGElement, SocialThreadsProps>(
     fill="currentColor"
   />
     </svg>
-  ),
-);
+  );
+}
 
-SocialThreads.displayName = 'SocialThreads';
 export default SocialThreads;

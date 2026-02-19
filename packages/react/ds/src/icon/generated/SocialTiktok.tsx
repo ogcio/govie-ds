@@ -1,19 +1,16 @@
-import { forwardRef } from 'react';
 import type { SVGProps } from 'react';
 
 export interface SocialTiktokProps extends SVGProps<SVGSVGElement> {
   size?: string | number;
 }
 
-export const SocialTiktok = forwardRef<SVGSVGElement, SocialTiktokProps>(
-  ({ size = 24, ...props }, ref) => (
+export function SocialTiktok({ size = 24, ...props }: SocialTiktokProps) {
+  return (
     <svg
-      ref={ref}
       width={size}
       height={size}
       viewBox="0 0 24 24"
       fill="currentColor"
-      xmlns="http://www.w3.org/2000/svg"
       role="presentation"
       aria-hidden="true"
       {...props}
@@ -23,8 +20,7 @@ export const SocialTiktok = forwardRef<SVGSVGElement, SocialTiktokProps>(
     fill="currentColor"
   />
     </svg>
-  ),
-);
+  );
+}
 
-SocialTiktok.displayName = 'SocialTiktok';
 export default SocialTiktok;

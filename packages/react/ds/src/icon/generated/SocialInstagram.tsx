@@ -1,19 +1,16 @@
-import { forwardRef } from 'react';
 import type { SVGProps } from 'react';
 
 export interface SocialInstagramProps extends SVGProps<SVGSVGElement> {
   size?: string | number;
 }
 
-export const SocialInstagram = forwardRef<SVGSVGElement, SocialInstagramProps>(
-  ({ size = 24, ...props }, ref) => (
+export function SocialInstagram({ size = 24, ...props }: SocialInstagramProps) {
+  return (
     <svg
-      ref={ref}
       width={size}
       height={size}
       viewBox="0 0 24 24"
       fill="currentColor"
-      xmlns="http://www.w3.org/2000/svg"
       role="presentation"
       aria-hidden="true"
       {...props}
@@ -23,8 +20,7 @@ export const SocialInstagram = forwardRef<SVGSVGElement, SocialInstagramProps>(
     fill="currentColor"
   />
     </svg>
-  ),
-);
+  );
+}
 
-SocialInstagram.displayName = 'SocialInstagram';
 export default SocialInstagram;

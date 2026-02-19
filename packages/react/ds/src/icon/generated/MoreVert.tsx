@@ -1,27 +1,23 @@
-import { forwardRef } from 'react';
 import type { SVGProps } from 'react';
 
 export interface MoreVertProps extends SVGProps<SVGSVGElement> {
   size?: string | number;
 }
 
-export const MoreVert = forwardRef<SVGSVGElement, MoreVertProps>(
-  ({ size = 24, ...props }, ref) => (
+export function MoreVert({ size = 24, ...props }: MoreVertProps) {
+  return (
     <svg
-      ref={ref}
       width={size}
       height={size}
       viewBox="0 -960 960 960"
       fill="currentColor"
-      xmlns="http://www.w3.org/2000/svg"
       role="presentation"
       aria-hidden="true"
       {...props}
     >
       <path d="M479.86-160Q460-160 446-174.14t-14-34Q432-228 446.14-242t34-14Q500-256 514-241.86t14 34Q528-188 513.86-174t-34 14Zm0-272Q460-432 446-446.14t-14-34Q432-500 446.14-514t34-14Q500-528 514-513.86t14 34Q528-460 513.86-446t-34 14Zm0-272Q460-704 446-718.14t-14-34Q432-772 446.14-786t34-14Q500-800 514-785.86t14 34Q528-732 513.86-718t-34 14Z"/>
     </svg>
-  ),
-);
+  );
+}
 
-MoreVert.displayName = 'MoreVert';
 export default MoreVert;

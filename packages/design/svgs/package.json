@@ -1,6 +1,6 @@
 {
   "name": "@ogcio/design-system-svgs",
-  "version": "1.0.0",
+  "version": "0.1.0",
   "description": "SVG source assets for the Government of Ireland Design System",
   "private": true,
   "files": [

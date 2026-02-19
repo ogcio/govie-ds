@@ -14,8 +14,7 @@ This package contains the source SVG files used by other packages in the design 
 ```
 assets/
 ├── icons/     # Icon SVG files (79 icons)
-├── logos/     # Logo SVG files (10 logos)
-└── favicons/  # Favicon SVG files (2 favicons)
+├── logos/     # Logo SVG files (9 logos)
 ```
 
 ## Available Assets
@@ -45,7 +44,7 @@ social_threads, social_tiktok, social_x, social_youtube
 ### Logos (9)
 
 ```
-storybook, logo-harp, logo-harp-black, logo-harp-white,
+logo-harp, logo-harp-black, logo-harp-white,
 logo-black, logo-gold-green, logo-gold-white, logo-std-reverse, logo-white
 ```
 
@@ -66,8 +65,6 @@ favicon-dark, favicon-light
    ```bash
    pnpm build
    ```
-
-The React lib will automatically generate components for the new SVGs during its build process.
 
 ## SVG Guidelines
 

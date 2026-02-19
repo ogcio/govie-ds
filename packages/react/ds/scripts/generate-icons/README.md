@@ -1,5 +1,7 @@
 # Icon Generation Scripts
 
+> **Note:** This is a temporary solution for generating React icon components. These scripts will be replaced when we migrate to Mitosis for cross-framework component generation.
+
 Generates React icon components from SVG source files during build.
 
 ## Overview

@@ -29,7 +29,7 @@
     "test:watch": "vitest",
     "coverage": "vitest run --coverage",
     "generate:icons": "tsx scripts/generate-icons/index.ts",
-    "build": "pnpm generate:icons && pnpm build:ts && pnpm build:styles",
+    "build": "pnpm build:ts && pnpm build:styles",
     "build:styles": "tailwindcss -i ./styles.css -o ./dist/styles.css --minify && node scripts/build-styles.js",
     "build:ts": "vite build",
     "storybook:dev": "storybook dev -p 6006",

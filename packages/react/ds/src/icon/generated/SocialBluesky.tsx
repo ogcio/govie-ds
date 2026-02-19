@@ -1,19 +1,16 @@
-import { forwardRef } from 'react';
 import type { SVGProps } from 'react';
 
 export interface SocialBlueskyProps extends SVGProps<SVGSVGElement> {
   size?: string | number;
 }
 
-export const SocialBluesky = forwardRef<SVGSVGElement, SocialBlueskyProps>(
-  ({ size = 24, ...props }, ref) => (
+export function SocialBluesky({ size = 24, ...props }: SocialBlueskyProps) {
+  return (
     <svg
-      ref={ref}
       width={size}
       height={size}
       viewBox="0 0 24 24"
       fill="currentColor"
-      xmlns="http://www.w3.org/2000/svg"
       role="presentation"
       aria-hidden="true"
       {...props}
@@ -23,8 +20,7 @@ export const SocialBluesky = forwardRef<SVGSVGElement, SocialBlueskyProps>(
     fill="currentColor"
   />
     </svg>
-  ),
-);
+  );
+}
 
-SocialBluesky.displayName = 'SocialBluesky';
 export default SocialBluesky;
