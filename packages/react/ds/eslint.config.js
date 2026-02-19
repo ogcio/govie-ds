@@ -24,4 +24,10 @@ export default defineConfig([
       'unicorn/filename-case': 'off',
     },
   },
+  {
+    files: ['src/icon/generated/**/*.{ts,tsx}'],
+    rules: {
+      'unicorn/filename-case': 'off',
+    },
+  },
 ]);

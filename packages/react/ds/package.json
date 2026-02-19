@@ -28,7 +28,8 @@
     "test": "vitest run",
     "test:watch": "vitest",
     "coverage": "vitest run --coverage",
-    "build": "pnpm build:ts && pnpm build:styles",
+    "generate:icons": "tsx scripts/generate-icons/index.ts",
+    "build": "pnpm generate:icons && pnpm build:ts && pnpm build:styles",
     "build:styles": "tailwindcss -i ./styles.css -o ./dist/styles.css --minify && node scripts/build-styles.js",
     "build:ts": "vite build",
     "storybook:dev": "storybook dev -p 6006",
@@ -67,6 +68,7 @@
   "devDependencies": {
     "@ogcio/design-system-eslint-config": "workspace:*",
     "@ogcio/design-system-prettier-config": "workspace:*",
+    "@ogcio/design-system-svgs": "workspace:*",
     "@ogcio/design-system-tailwind": "workspace:*",
     "@ogcio/theme-doete": "workspace:*",
     "@ogcio/theme-govie": "workspace:*",

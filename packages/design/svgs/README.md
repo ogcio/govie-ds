@@ -1,156 +1,28 @@
 # @ogcio/design-system-svgs
 
-SVG icons, logos, and favicons for the Government of Ireland Design System.
-
-## Installation
-
-```bash
-pnpm add @ogcio/design-system-svgs
-```
+Internal SVG source assets for the Government of Ireland Design System.
 
 ## Overview
 
-This package provides SVG assets in two formats:
+This package contains the source SVG files used by other packages in the design system. It is **NOT published to npm** - it serves as a source of truth for:
 
-1. **SVG Sprites** - Inline sprite with `<use>` references for best performance
-2. **React Components** - For React, Next.js, and similar frameworks
+- `@ogcio/design-system-react` - Generates React icon components during build
+- `@ogcio/design-system-html` - Generates SVG sprites (future)
 
-## Assets Included
+## Structure
 
-- **Icons** (79) - Material Design icons + social media icons
-- **Logos** (10) - Government of Ireland logos, harp variants
-- **Favicons** (2) - Light and dark theme favicons
-
-## Usage
-
-### SVG Sprites
-
-The sprite-based approach provides no JS bundle bloat, native browser rendering, and excellent caching.
-
-#### Step 1: Inject the sprite once
-
-```tsx
-// React/Next.js
-import { ICONS_SPRITE } from '@ogcio/design-system-svgs/icons';
-import { LOGOS_SPRITE } from '@ogcio/design-system-svgs/logos';
-
-function Layout({ children }) {
-  return (
-    <html>
-      <body>
-        {/* Inject sprites once at the top of your app */}
-        <div dangerouslySetInnerHTML={{ __html: ICONS_SPRITE }} />
-        <div dangerouslySetInnerHTML={{ __html: LOGOS_SPRITE }} />
-        {children}
-      </body>
-    </html>
-  );
-}
+```
+assets/
+├── icons/     # Icon SVG files (79 icons)
+├── logos/     # Logo SVG files (10 logos)
+└── favicons/  # Favicon SVG files (2 favicons)
 ```
 
-```html
-<!-- Vanilla HTML - copy sprite content into your page -->
-<svg xmlns="http://www.w3.org/2000/svg" style="position:absolute;width:0;height:0;overflow:hidden" aria-hidden="true">
-  <!-- sprite symbols here -->
-</svg>
-```
+## Available Assets
 
-#### Step 2: Use icons via `<use href>`
+### Icons (79)
 
-```tsx
-// Direct SVG usage (cleanest approach)
-<svg className="gi-icon" width="24" height="24" aria-hidden="true" focusable="false">
-  <use href="#check" />
-</svg>
-
-// With color inheritance (set color on parent)
-<span style={{ color: '#0070f3' }}>
-  <svg className="gi-icon" width="24" height="24" aria-hidden="true" focusable="false">
-    <use href="#info" />
-  </svg>
-</span>
-```
-
-#### Using the helper function
-
-```tsx
-import { getIconUse, type IconName } from '@ogcio/design-system-svgs/icons';
-
-// Returns SVG markup string
-const iconHtml = getIconUse('check', { size: 24 });
-// <svg class="gi-icon" width="24" height="24" aria-hidden="true" focusable="false"><use href="#check"></use></svg>
-
-// With accessibility label
-const warningHtml = getIconUse('warning', { size: 32, ariaLabel: 'Warning' });
-
-// In React
-<span dangerouslySetInnerHTML={{ __html: getIconUse('search', { size: 24 }) }} />
-```
-
-### React Components
-
-For React apps that prefer component-based usage:
-
-```tsx
-import { Check, ArrowBack, Search } from '@ogcio/design-system-svgs/react/icons';
-import { LogoHarp, LogoGoldWhite } from '@ogcio/design-system-svgs/react/logos';
-import { FaviconDark, FaviconLight } from '@ogcio/design-system-svgs/react/favicons';
-
-function MyComponent() {
-  return (
-    <div>
-      {/* Icons with size and color */}
-      <Check size={24} />
-      <Search size={32} fill="#0070f3" />
-      <ArrowBack size={16} className="my-custom-class" />
-
-      {/* Logos */}
-      <LogoHarp size={64} />
-      <LogoGoldWhite size={120} />
-
-      {/* Favicons */}
-      <FaviconDark size={32} />
-    </div>
-  );
-}
-```
-
-#### React Component Props
-
-All React components accept:
-
-- **size** (`string | number`, default: `24`) - Width and height of the SVG
-- **title** (`string`) - Accessible title (adds `<title>` element)
-- **fill** (`string`, default: `currentColor`) - SVG fill color
-- **className** (`string`) - CSS class name
-- **...props** (`SVGProps`) - Any valid SVG attribute
-
-## Available Exports
-
-### Entry Points
-
-- `@ogcio/design-system-svgs` - Main entry (types + all sprite exports)
-- `@ogcio/design-system-svgs/icons` - Icon sprite + helper + types
-- `@ogcio/design-system-svgs/logos` - Logo sprite + helper + types
-- `@ogcio/design-system-svgs/favicons` - Favicon sprite + helper + types
-- `@ogcio/design-system-svgs/react` - All React components
-- `@ogcio/design-system-svgs/react/icons` - React icon components
-- `@ogcio/design-system-svgs/react/logos` - React logo components
-- `@ogcio/design-system-svgs/react/favicons` - React favicon components
-
-### Exported Items
-
-Each category (icons/logos/favicons) exports:
-
-- **ICONS_SPRITE** / **LOGOS_SPRITE** / **FAVICONS_SPRITE** - Inline SVG sprite content
-- **ICONS_SPRITE_PATH** / etc. - Path to sprite file (for static hosting)
-- **getIconUse()** / **getLogoUse()** / **getFaviconUse()** - Helper functions
-- **ICONS_NAMES** / etc. - Array of available names
-- **IconName** / etc. - TypeScript union type of valid names
-
-## Icon Names
-
-### Material Design Icons (70)
+Material Design icons + social media icons:
 
 ```
 accessibility_new, add_circle, apps, arrow_back, arrow_downward,
@@ -165,12 +37,7 @@ link, location_on, login, logout, mail, menu, mic, more_horiz,
 more_vert, open_in_new, person, person_cancel, person_check,
 placeholder, refresh, search, send, settings, sort, space_dashboard,
 swap_vert, sync, thumb_down, thumb_up, unfold_more, upload,
-visibility, visibility_off, warning, work
-```
-
-### Social Icons (9)
-
-```
+visibility, visibility_off, warning, work,
 social_bluesky, social_facebook, social_instagram, social_linkedin,
 social_threads, social_tiktok, social_x, social_youtube
 ```
@@ -188,53 +55,23 @@ logo-black, logo-gold-green, logo-gold-white, logo-std-reverse, logo-white
 favicon-dark, favicon-light
 ```
 
-## Styling
+## Adding New SVGs
 
-Icons use `fill="currentColor"` by default, so they inherit the text color of their parent:
-
-```css
-/* Icons inherit color from parent */
-.my-icon-container {
-  color: #0070f3;
-}
-
-/* Or target the icon class directly */
-.gi-icon {
-  fill: currentColor;
-}
-```
-
-## Development
-
-### Building
-
-```bash
-cd packages/design/svgs
-pnpm build
-```
-
-### Regenerating Components
-
-If you add new SVG files to `assets/` directory:
-
-```bash
-pnpm generate
-pnpm build
-```
-
-### Adding New SVGs
-
-1. Add SVG files to the appropriate directory:
+1. Add SVG file to the appropriate `assets/` subdirectory:
    - `assets/icons/` for icons
    - `assets/logos/` for logos
    - `assets/favicons/` for favicons
 
-2. Run the generator:
-   ```bash
-   pnpm generate
-   ```
-
-3. Build the package:
+2. Rebuild consumer packages:
    ```bash
    pnpm build
    ```
+
+The React lib will automatically generate components for the new SVGs during its build process.
+
+## SVG Guidelines
+
+- Use `fill="currentColor"` or hardcoded colors (they will be normalized to `currentColor` during generation)
+- Keep SVGs clean and optimized
+- Use kebab-case for file names (e.g., `arrow-back.svg`)
+- Ensure proper viewBox attribute
