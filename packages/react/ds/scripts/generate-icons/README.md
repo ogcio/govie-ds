@@ -33,13 +33,11 @@ packages/react/ds/src/icon/generated/
 
 ## Scripts
 
-| File                    | Purpose                                                |
-| ----------------------- | ------------------------------------------------------ |
-| `index.ts`              | Main entry point, orchestrates generation              |
-| `utils.ts`              | Shared utilities (toPascalCase, getSvgFiles)           |
-| `parse-svg.ts`          | SVG parsing, attribute extraction, color normalization |
-| `generate-component.ts` | React component template generation                    |
-| `generate-index.ts`     | Index and registry file generation                     |
+- `index.ts` - Main entry point, orchestrates generation
+- `utilities.ts` - Shared utilities (toPascalCase, getSvgFiles)
+- `parse-svg.ts` - SVG parsing, attribute extraction, color normalization
+- `generate-component.ts` - React component template generation
+- `generate-index.ts` - Index and registry file generation
 
 ## Generated Output
 

@@ -42,10 +42,10 @@ social_bluesky, social_facebook, social_instagram, social_linkedin,
 social_threads, social_tiktok, social_x, social_youtube
 ```
 
-### Logos (10)
+### Logos (9)
 
 ```
-figma, storybook, logo-harp, logo-harp-black, logo-harp-white,
+storybook, logo-harp, logo-harp-black, logo-harp-white,
 logo-black, logo-gold-green, logo-gold-white, logo-std-reverse, logo-white
 ```
 
