@@ -9,14 +9,11 @@ import * as React from 'react';
 
 import { forwardRef } from 'react';
 
-export type ButtonVariant = (typeof Variant)[keyof typeof Variant];
-export type ButtonAppearance = (typeof Appearance)[keyof typeof Appearance];
-export type ButtonSize = (typeof Size)[keyof typeof Size];
-export type ButtonProps = {
+type Props = {
   id?: string;
-  variant?: ButtonVariant;
-  appearance?: ButtonAppearance;
-  size?: ButtonSize;
+  variant?: (typeof Variant)[keyof typeof Variant];
+  appearance?: (typeof Appearance)[keyof typeof Appearance];
+  size?: (typeof Size)[keyof typeof Size];
   children?: any;
   disabled?: boolean;
   className?: string;
@@ -44,22 +41,22 @@ export type ButtonProps = {
 };
 
 import { tv } from 'tailwind-variants';
-const Variant = {
+export const Variant = {
   PRIMARY: 'primary',
   SECONDARY: 'secondary',
   FLAT: 'flat',
 } as const;
-const Appearance = {
+export const Appearance = {
   DEFAULT: 'default',
   DARK: 'dark',
   LIGHT: 'light',
 } as const;
-const Size = {
+export const Size = {
   SMALL: 'small',
   MEDIUM: 'medium',
   LARGE: 'large',
 } as const;
-const styles = tv({
+export const styles = tv({
   base: [
     'gi-border-solid',
     'gi-border-sm',
@@ -314,9 +311,15 @@ const styles = tv({
     disabled: false,
   },
 });
+const getVariant = (x: Props['variant'] = Variant.PRIMARY) =>
+  Object.values(Variant).includes(x) ? x : Variant.PRIMARY;
+const getAppearance = (x: Props['appearance']) =>
+  x === Appearance.LIGHT || x === Appearance.DARK ? x : Appearance.DEFAULT;
+const getSize = (x: Props['size']) =>
+  x === Size.SMALL || x === Size.LARGE ? x : Size.MEDIUM;
 
-const DsButton = forwardRef<any, ButtonProps>(function DsButton(
-  props: ButtonProps,
+const DsButton = forwardRef<Props['ref'], Props>(function DsButton(
+  props: Props,
   ref,
 ) {
   return (
@@ -324,9 +327,9 @@ const DsButton = forwardRef<any, ButtonProps>(function DsButton(
       ref={ref}
       id={props.id}
       className={styles({
-        variant: props.variant ?? Variant.PRIMARY,
-        appearance: props.appearance ?? Appearance.DEFAULT,
-        size: props.size ?? Size.MEDIUM,
+        variant: getVariant(props.variant),
+        appearance: getAppearance(props.appearance),
+        size: getSize(props.size),
         disabled: props.disabled,
         class: props.className,
       })}

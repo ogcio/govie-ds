@@ -7,7 +7,7 @@
     "build": "pnpm run build:react && pnpm run build:angular",
     "build:react": "NODE_OPTIONS='--import tsx' mitosis build --config react.config.ts",
     "build:angular": "NODE_OPTIONS='--import tsx' mitosis build --config angular.config.ts",
-    "build:watch:react": "chokidar \"./atoms/**/*.lite.tsx\" -c \"pnpm run build:react\" --initial"
+    "build:watch": "chokidar \"./atoms/**/*.lite.tsx\" -c \"pnpm run build\" --initial"
   },
   "devDependencies": {
     "@builder.io/mitosis": "^0.12.1",

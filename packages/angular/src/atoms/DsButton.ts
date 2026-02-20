@@ -8,14 +8,11 @@ import { Component, Input } from "@angular/core";
 
 import { CommonModule } from "@angular/common";
 
-export type ButtonVariant = (typeof Variant)[keyof typeof Variant];
-export type ButtonAppearance = (typeof Appearance)[keyof typeof Appearance];
-export type ButtonSize = (typeof Size)[keyof typeof Size];
-export type ButtonProps = {
+type Props = {
   id?: string;
-  variant?: ButtonVariant;
-  appearance?: ButtonAppearance;
-  size?: ButtonSize;
+  variant?: (typeof Variant)[keyof typeof Variant];
+  appearance?: (typeof Appearance)[keyof typeof Appearance];
+  size?: (typeof Size)[keyof typeof Size];
   children?: any;
   disabled?: boolean;
   className?: string;
@@ -43,22 +40,22 @@ export type ButtonProps = {
 };
 
 import { tv } from "tailwind-variants";
-const Variant = {
+export const Variant = {
   PRIMARY: "primary",
   SECONDARY: "secondary",
   FLAT: "flat",
 } as const;
-const Appearance = {
+export const Appearance = {
   DEFAULT: "default",
   DARK: "dark",
   LIGHT: "light",
 } as const;
-const Size = {
+export const Size = {
   SMALL: "small",
   MEDIUM: "medium",
   LARGE: "large",
 } as const;
-const styles = tv({
+export const styles = tv({
   base: [
     "gi-border-solid",
     "gi-border-sm",
@@ -313,6 +310,12 @@ const styles = tv({
     disabled: false,
   },
 });
+const getVariant = (x: Props["variant"] = Variant.PRIMARY) =>
+  Object.values(Variant).includes(x) ? x : Variant.PRIMARY;
+const getAppearance = (x: Props["appearance"]) =>
+  x === Appearance.LIGHT || x === Appearance.DARK ? x : Appearance.DEFAULT;
+const getSize = (x: Props["size"]) =>
+  x === Size.SMALL || x === Size.LARGE ? x : Size.MEDIUM;
 
 @Component({
   selector: "ds-button",
@@ -320,9 +323,9 @@ const styles = tv({
     <button
       [attr.id]="id"
       [class]="styles({
-          variant: variant ?? Variant.PRIMARY,
-          appearance: appearance ?? Appearance.DEFAULT,
-          size: size ?? Size.MEDIUM,
+          variant: getVariant(variant),
+          appearance: getAppearance(appearance),
+          size: getSize(size),
           disabled: disabled,
           class: className
         })"
@@ -361,36 +364,36 @@ const styles = tv({
   imports: [CommonModule],
 })
 export default class DsButton {
-  Variant = Variant;
-  Appearance = Appearance;
-  Size = Size;
   styles = styles;
+  getVariant = getVariant;
+  getAppearance = getAppearance;
+  getSize = getSize;
 
-  @Input() id!: ButtonProps["id"];
-  @Input() variant!: ButtonProps["variant"];
-  @Input() appearance!: ButtonProps["appearance"];
-  @Input() size!: ButtonProps["size"];
-  @Input() disabled!: ButtonProps["disabled"];
-  @Input() className!: ButtonProps["className"];
-  @Input() onClick!: ButtonProps["onClick"];
-  @Input() onFocus!: ButtonProps["onFocus"];
-  @Input() onBlur!: ButtonProps["onBlur"];
-  @Input() onKeyDown!: ButtonProps["onKeyDown"];
-  @Input() onKeyUp!: ButtonProps["onKeyUp"];
-  @Input() ariaLabel!: ButtonProps["ariaLabel"];
-  @Input() ariaLabelledBy!: ButtonProps["ariaLabelledBy"];
-  @Input() ariaDescribedBy!: ButtonProps["ariaDescribedBy"];
-  @Input() ariaPressed!: ButtonProps["ariaPressed"];
-  @Input() ariaExpanded!: ButtonProps["ariaExpanded"];
-  @Input() ariaControls!: ButtonProps["ariaControls"];
-  @Input() ariaHasPopup!: ButtonProps["ariaHasPopup"];
-  @Input() ariaBusy!: ButtonProps["ariaBusy"];
-  @Input() role!: ButtonProps["role"];
-  @Input() type!: ButtonProps["type"];
-  @Input() form!: ButtonProps["form"];
-  @Input() value!: ButtonProps["value"];
-  @Input() tabIndex!: ButtonProps["tabIndex"];
-  @Input() dataTestId!: ButtonProps["dataTestId"];
-  @Input() dataTestid!: ButtonProps["dataTestid"];
+  @Input() id!: Props["id"];
+  @Input() variant!: Props["variant"];
+  @Input() appearance!: Props["appearance"];
+  @Input() size!: Props["size"];
+  @Input() disabled!: Props["disabled"];
+  @Input() className!: Props["className"];
+  @Input() onClick!: Props["onClick"];
+  @Input() onFocus!: Props["onFocus"];
+  @Input() onBlur!: Props["onBlur"];
+  @Input() onKeyDown!: Props["onKeyDown"];
+  @Input() onKeyUp!: Props["onKeyUp"];
+  @Input() ariaLabel!: Props["ariaLabel"];
+  @Input() ariaLabelledBy!: Props["ariaLabelledBy"];
+  @Input() ariaDescribedBy!: Props["ariaDescribedBy"];
+  @Input() ariaPressed!: Props["ariaPressed"];
+  @Input() ariaExpanded!: Props["ariaExpanded"];
+  @Input() ariaControls!: Props["ariaControls"];
+  @Input() ariaHasPopup!: Props["ariaHasPopup"];
+  @Input() ariaBusy!: Props["ariaBusy"];
+  @Input() role!: Props["role"];
+  @Input() type!: Props["type"];
+  @Input() form!: Props["form"];
+  @Input() value!: Props["value"];
+  @Input() tabIndex!: Props["tabIndex"];
+  @Input() dataTestId!: Props["dataTestId"];
+  @Input() dataTestid!: Props["dataTestid"];
 }
 

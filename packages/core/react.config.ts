@@ -16,7 +16,7 @@ export default {
     react: {
       typescript: true,
       prettier: false,
-      plugins: [prettierFormat, fixForwardRef],
+      plugins: [fixForwardRef, prettierFormat],
     },
   },
 } satisfies MitosisConfig;
