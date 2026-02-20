@@ -10,7 +10,6 @@ export type IconSize = 'sm' | 'md' | 'lg' | 'xl';
 export type IconProps = {
   icon: IconId;
   size?: IconSize;
-  /** @deprecated SVG icons are outlined only. This prop is kept for backward compatibility. */
   filled?: boolean;
   disabled?: boolean;
   ariaHidden?: boolean;
@@ -32,7 +31,7 @@ export const Icon = forwardRef<HTMLSpanElement, IconProps>(
     {
       icon,
       size = 'md',
-      filled: _filled, // Deprecated: SVG icons are outlined only
+      filled,
       disabled,
       ariaHidden,
       ariaLabel,
@@ -49,34 +48,26 @@ export const Icon = forwardRef<HTMLSpanElement, IconProps>(
     if (Component) {
       const svgClass = cn(
         { 'gi-block': !inline, 'gi-inline-block': inline },
+        { 'gi-text-gray-700': disabled },
+        'gi-shrink-0',
         className,
       );
 
       return (
-        <span
-          ref={ref}
-          data-testid={'govie-icon'}
-          aria-hidden={ariaHidden}
-          aria-label={ariaLabel}
-          role={ariaLabel ? 'img' : 'presentation'}
-          onClick={onClick}
-          className={cn(
-            { 'gi-block': !inline, 'gi-inline-block': inline },
-            { 'gi-text-gray-700': disabled },
-          )}
-          {...props}
-        >
-          <Component size={fontSize} className={svgClass} />
-        </span>
+        <Component
+          size={fontSize}
+          className={svgClass}
+          data-testid="govie-icon"
+        />
       );
     }
 
-    // Fallback for icons not in the generated registry (e.g., Material Symbols)
+    // Fallback for icons not in the generated registry (e.g., Material Symbols font)
     return (
       <span
         aria-hidden={ariaHidden}
         aria-label={ariaLabel}
-        data-testid={'govie-icon'}
+        data-testid="govie-icon"
         {...props}
         ref={ref}
         onClick={onClick}
@@ -92,6 +83,7 @@ export const Icon = forwardRef<HTMLSpanElement, IconProps>(
         )}
         style={{
           fontSize,
+          fontVariationSettings: `'FILL' ${filled ? 1 : 0}, 'wght' 400, 'GRAD' 0, 'opsz' ${fontSize}`,
           ...props?.style,
         }}
       >
