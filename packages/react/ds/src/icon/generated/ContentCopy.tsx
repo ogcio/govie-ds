@@ -1,0 +1,23 @@
+import type { SVGProps } from 'react';
+
+export interface ContentCopyProps extends SVGProps<SVGSVGElement> {
+  size?: string | number;
+}
+
+export function ContentCopy({ size = 24, ...props }: ContentCopyProps) {
+  return (
+    <svg
+      width={size}
+      height={size}
+      viewBox="0 -960 960 960"
+      fill="currentColor"
+      role="presentation"
+      aria-hidden="true"
+      {...props}
+    >
+      <path d="M300-200q-24 0-42-18t-18-42v-560q0-24 18-42t42-18h440q24 0 42 18t18 42v560q0 24-18 42t-42 18H300Zm0-60h440v-560H300v560ZM180-80q-24 0-42-18t-18-42v-620h60v620h500v60H180Zm120-180v-560 560Z" />
+    </svg>
+  );
+}
+
+export default ContentCopy;

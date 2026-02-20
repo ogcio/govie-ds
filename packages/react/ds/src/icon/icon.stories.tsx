@@ -21,10 +21,6 @@ export const Default: Story = {
       options: ['sm', 'md', 'lg', 'xl'],
       description: 'Specify the size of the icon',
     },
-    filled: {
-      control: 'boolean',
-      description: 'Specify if the icon has a filled style',
-    },
     disabled: {
       control: 'boolean',
       description: 'Specify if the icon is disabled',

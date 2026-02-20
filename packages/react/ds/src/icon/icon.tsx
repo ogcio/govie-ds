@@ -1,21 +1,8 @@
 'use client';
-import {
-  ComponentPropsWithoutRef,
-  ComponentType,
-  forwardRef,
-  MouseEventHandler,
-} from 'react';
+import { ComponentPropsWithoutRef, forwardRef, MouseEventHandler } from 'react';
 import { cn } from '../cn.js';
+import { GENERATED_ICONS, type GeneratedIconId } from './generated/registry.js';
 import { iconIds } from './icons.js';
-import Bluesky from './svgs/bluesky.js';
-import Facebook from './svgs/facebook.js';
-import Instagram from './svgs/instagram.js';
-import Linkedin from './svgs/linkedin.js';
-import Placeholder from './svgs/placeholder.js';
-import Threads from './svgs/threads.js';
-import Tiktok from './svgs/tiktok.js';
-import X from './svgs/x.js';
-import Youtube from './svgs/youtube.js';
 
 export type IconId = (typeof iconIds)[number];
 export type IconSize = 'sm' | 'md' | 'lg' | 'xl';
@@ -39,27 +26,6 @@ const SIZE_MAP: Record<IconSize, string> = {
   xl: '48px',
 };
 
-const ICON_REGISTRY: Record<
-  string,
-  {
-    Component: ComponentType<{ size: string; className: string }>;
-    disabledClass: string;
-  }
-> = {
-  social_bluesky: { Component: Bluesky, disabledClass: 'gi-stroke-gray-700' },
-  social_facebook: { Component: Facebook, disabledClass: 'gi-stroke-gray-700' },
-  social_instagram: {
-    Component: Instagram,
-    disabledClass: 'gi-stroke-gray-700',
-  },
-  social_linkedin: { Component: Linkedin, disabledClass: 'gi-stroke-gray-700' },
-  social_threads: { Component: Threads, disabledClass: 'gi-stroke-gray-700' },
-  social_tiktok: { Component: Tiktok, disabledClass: 'gi-stroke-gray-700' },
-  social_x: { Component: X, disabledClass: 'gi-stroke-gray-700' },
-  social_youtube: { Component: Youtube, disabledClass: 'gi-stroke-gray-700' },
-  placeholder: { Component: Placeholder, disabledClass: 'gi-fill-gray-700' },
-};
-
 export const Icon = forwardRef<HTMLSpanElement, IconProps>(
   (
     {
@@ -77,24 +43,25 @@ export const Icon = forwardRef<HTMLSpanElement, IconProps>(
     ref,
   ) => {
     const fontSize = SIZE_MAP[size] ?? SIZE_MAP.md;
-    const reg = ICON_REGISTRY[String(icon)];
+    const Component = GENERATED_ICONS[icon as GeneratedIconId];
 
-    if (reg) {
-      const { Component, disabledClass } = reg;
+    if (Component) {
       const svgClass = cn(
         { 'gi-block': !inline, 'gi-inline-block': inline },
-        disabled && disabledClass,
+        { 'gi-text-gray-700': disabled },
+        'gi-shrink-0',
         className,
       );
 
       return <Component size={fontSize} className={svgClass} />;
     }
 
+    // Fallback for icons not in the generated registry (e.g., Material Symbols font)
     return (
       <span
         aria-hidden={ariaHidden}
         aria-label={ariaLabel}
-        data-testid={'govie-icon'}
+        data-testid="govie-icon"
         {...props}
         ref={ref}
         onClick={onClick}
