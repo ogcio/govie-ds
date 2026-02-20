@@ -53,13 +53,7 @@ export const Icon = forwardRef<HTMLSpanElement, IconProps>(
         className,
       );
 
-      return (
-        <Component
-          size={fontSize}
-          className={svgClass}
-          data-testid="govie-icon"
-        />
-      );
+      return <Component size={fontSize} className={svgClass} />;
     }
 
     // Fallback for icons not in the generated registry (e.g., Material Symbols font)
