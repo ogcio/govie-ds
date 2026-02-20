@@ -15,7 +15,7 @@ export function ChevronRight({ size = 24, ...props }: ChevronRightProps) {
       aria-hidden="true"
       {...props}
     >
-      <path d="M530-481 332-679l43-43 241 241-241 241-43-43 198-198Z"/>
+      <path d="M530-481 332-679l43-43 241 241-241 241-43-43 198-198Z" />
     </svg>
   );
 }

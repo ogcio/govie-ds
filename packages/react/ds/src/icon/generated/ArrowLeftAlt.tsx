@@ -15,7 +15,7 @@ export function ArrowLeftAlt({ size = 24, ...props }: ArrowLeftAltProps) {
       aria-hidden="true"
       {...props}
     >
-      <path d="M400-240 160-480l241-241 43 42-169 169h526v60H275l168 168-43 42Z"/>
+      <path d="M400-240 160-480l241-241 43 42-169 169h526v60H275l168 168-43 42Z" />
     </svg>
   );
 }

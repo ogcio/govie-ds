@@ -15,7 +15,7 @@ export function ArrowDropDown({ size = 24, ...props }: ArrowDropDownProps) {
       aria-hidden="true"
       {...props}
     >
-      <path d="M480-360 280-559h400L480-360Z"/>
+      <path d="M480-360 280-559h400L480-360Z" />
     </svg>
   );
 }

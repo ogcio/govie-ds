@@ -15,7 +15,7 @@ export function ArrowDropUp({ size = 24, ...props }: ArrowDropUpProps) {
       aria-hidden="true"
       {...props}
     >
-      <path d="m280-400 200-201 200 201H280Z"/>
+      <path d="m280-400 200-201 200 201H280Z" />
     </svg>
   );
 }

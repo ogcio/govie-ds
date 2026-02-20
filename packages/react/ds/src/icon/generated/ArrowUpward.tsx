@@ -15,7 +15,7 @@ export function ArrowUpward({ size = 24, ...props }: ArrowUpwardProps) {
       aria-hidden="true"
       {...props}
     >
-      <path d="M450-160v-526L202-438l-42-42 320-320 320 320-42 42-248-248v526h-60Z"/>
+      <path d="M450-160v-526L202-438l-42-42 320-320 320 320-42 42-248-248v526h-60Z" />
     </svg>
   );
 }

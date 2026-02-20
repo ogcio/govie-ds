@@ -15,7 +15,7 @@ export function ArrowRightAlt({ size = 24, ...props }: ArrowRightAltProps) {
       aria-hidden="true"
       {...props}
     >
-      <path d="m560-242-43-42 168-168H160v-60h525L516-681l43-42 241 241-240 240Z"/>
+      <path d="m560-242-43-42 168-168H160v-60h525L516-681l43-42 241 241-240 240Z" />
     </svg>
   );
 }

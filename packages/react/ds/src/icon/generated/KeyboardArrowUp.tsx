@@ -15,7 +15,7 @@ export function KeyboardArrowUp({ size = 24, ...props }: KeyboardArrowUpProps) {
       aria-hidden="true"
       {...props}
     >
-      <path d="M480-554 283-357l-43-43 240-240 240 240-43 43-197-197Z"/>
+      <path d="M480-554 283-357l-43-43 240-240 240 240-43 43-197-197Z" />
     </svg>
   );
 }

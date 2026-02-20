@@ -4,7 +4,10 @@ export interface KeyboardArrowDownProps extends SVGProps<SVGSVGElement> {
   size?: string | number;
 }
 
-export function KeyboardArrowDown({ size = 24, ...props }: KeyboardArrowDownProps) {
+export function KeyboardArrowDown({
+  size = 24,
+  ...props
+}: KeyboardArrowDownProps) {
   return (
     <svg
       width={size}
@@ -15,7 +18,7 @@ export function KeyboardArrowDown({ size = 24, ...props }: KeyboardArrowDownProp
       aria-hidden="true"
       {...props}
     >
-      <path d="M480-344 240-584l43-43 197 197 197-197 43 43-240 240Z"/>
+      <path d="M480-344 240-584l43-43 197 197 197-197 43 43-240 240Z" />
     </svg>
   );
 }

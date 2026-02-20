@@ -15,7 +15,7 @@ export function ArrowDownward({ size = 24, ...props }: ArrowDownwardProps) {
       aria-hidden="true"
       {...props}
     >
-      <path d="M450-800v526L202-522l-42 42 320 320 320-320-42-42-248 248v-526h-60Z"/>
+      <path d="M450-800v526L202-522l-42 42 320 320 320-320-42-42-248 248v-526h-60Z" />
     </svg>
   );
 }

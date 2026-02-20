@@ -1,4 +1,7 @@
-export { AccessibilityNew, type AccessibilityNewProps } from './AccessibilityNew.js';
+export {
+  AccessibilityNew,
+  type AccessibilityNewProps,
+} from './AccessibilityNew.js';
 export { AddCircle, type AddCircleProps } from './AddCircle.js';
 export { Apps, type AppsProps } from './Apps.js';
 export { ArrowBack, type ArrowBackProps } from './ArrowBack.js';
@@ -14,7 +17,10 @@ export { AttachFile, type AttachFileProps } from './AttachFile.js';
 export { Block, type BlockProps } from './Block.js';
 export { Call, type CallProps } from './Call.js';
 export { Cancel, type CancelProps } from './Cancel.js';
-export { CandlestickChart, type CandlestickChartProps } from './CandlestickChart.js';
+export {
+  CandlestickChart,
+  type CandlestickChartProps,
+} from './CandlestickChart.js';
 export { ChatBubble, type ChatBubbleProps } from './ChatBubble.js';
 export { Check, type CheckProps } from './Check.js';
 export { CheckCircle, type CheckCircleProps } from './CheckCircle.js';
@@ -33,11 +39,20 @@ export { Error, type ErrorProps } from './Error.js';
 export { Event, type EventProps } from './Event.js';
 export { FilterList, type FilterListProps } from './FilterList.js';
 export { FirstPage, type FirstPageProps } from './FirstPage.js';
-export { HealthAndSafety, type HealthAndSafetyProps } from './HealthAndSafety.js';
+export {
+  HealthAndSafety,
+  type HealthAndSafetyProps,
+} from './HealthAndSafety.js';
 export { Home, type HomeProps } from './Home.js';
 export { Info, type InfoProps } from './Info.js';
-export { KeyboardArrowDown, type KeyboardArrowDownProps } from './KeyboardArrowDown.js';
-export { KeyboardArrowUp, type KeyboardArrowUpProps } from './KeyboardArrowUp.js';
+export {
+  KeyboardArrowDown,
+  type KeyboardArrowDownProps,
+} from './KeyboardArrowDown.js';
+export {
+  KeyboardArrowUp,
+  type KeyboardArrowUpProps,
+} from './KeyboardArrowUp.js';
 export { LastPage, type LastPageProps } from './LastPage.js';
 export { Link, type LinkProps } from './Link.js';
 export { LocationOn, type LocationOnProps } from './LocationOn.js';
@@ -59,7 +74,10 @@ export { Send, type SendProps } from './Send.js';
 export { Settings, type SettingsProps } from './Settings.js';
 export { SocialBluesky, type SocialBlueskyProps } from './SocialBluesky.js';
 export { SocialFacebook, type SocialFacebookProps } from './SocialFacebook.js';
-export { SocialInstagram, type SocialInstagramProps } from './SocialInstagram.js';
+export {
+  SocialInstagram,
+  type SocialInstagramProps,
+} from './SocialInstagram.js';
 export { SocialLinkedin, type SocialLinkedinProps } from './SocialLinkedin.js';
 export { SocialThreads, type SocialThreadsProps } from './SocialThreads.js';
 export { SocialTiktok, type SocialTiktokProps } from './SocialTiktok.js';

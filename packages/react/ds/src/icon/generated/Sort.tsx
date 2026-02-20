@@ -15,7 +15,7 @@ export function Sort({ size = 24, ...props }: SortProps) {
       aria-hidden="true"
       {...props}
     >
-      <path d="M120-240v-60h240v60H120Zm0-210v-60h480v60H120Zm0-210v-60h720v60H120Z"/>
+      <path d="M120-240v-60h240v60H120Zm0-210v-60h480v60H120Zm0-210v-60h720v60H120Z" />
     </svg>
   );
 }

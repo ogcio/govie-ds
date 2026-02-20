@@ -15,7 +15,7 @@ export function Menu({ size = 24, ...props }: MenuProps) {
       aria-hidden="true"
       {...props}
     >
-      <path d="M120-240v-60h720v60H120Zm0-210v-60h720v60H120Zm0-210v-60h720v60H120Z"/>
+      <path d="M120-240v-60h720v60H120Zm0-210v-60h720v60H120Zm0-210v-60h720v60H120Z" />
     </svg>
   );
 }
