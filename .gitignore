@@ -19,3 +19,5 @@ test-results
 playwright-report
 blob-report
 playwright/.cache
+
+/packages/angular/.angular

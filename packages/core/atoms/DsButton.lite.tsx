@@ -61,10 +61,10 @@ export default function DsButton(props: Props) {
         variant: getVariant(props.variant),
         appearance: getAppearance(props.appearance),
         size: getSize(props.size),
-        disabled: props.disabled,
+        disabled: !!props.disabled,
         class: props.className,
       })}
-      disabled={props.disabled}
+      disabled={props.disabled || undefined}
       onClick={(event) => props.onClick?.(event)}
       onFocus={(event) => props.onFocus?.(event)}
       onBlur={(event) => props.onBlur?.(event)}

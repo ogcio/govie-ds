@@ -326,10 +326,10 @@ const getSize = (x: Props["size"]) =>
           variant: getVariant(variant),
           appearance: getAppearance(appearance),
           size: getSize(size),
-          disabled: disabled,
+          disabled: !!disabled,
           class: className
         })"
-      [attr.disabled]="disabled"
+      [attr.disabled]="disabled || undefined"
       (click)="onClick?.($event)"
       (focus)="onFocus?.($event)"
       (blur)="onBlur?.($event)"
