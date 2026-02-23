@@ -132,13 +132,13 @@ export const TextArea = forwardRef<HTMLTextAreaElement, TextAreaProps>(
                 <IconButton
                   type="button"
                   disabled={props.disabled}
-                  icon={{
-                    icon: 'close',
-                  }}
+                  icon={{ icon: 'close' }}
                   onClick={handleOnResetClick}
                   variant="flat"
                   size="small"
                   appearance="dark"
+                  // TODO I18N: translation
+                  aria-label="Clear input"
                 />
               </div>
             ) : null}

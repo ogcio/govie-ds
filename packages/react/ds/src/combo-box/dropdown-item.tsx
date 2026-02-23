@@ -123,9 +123,9 @@ export const DropdownItem = ({
                   onSearch?.('');
                   setSearchInput('');
                 }}
-                icon={{
-                  icon: 'close',
-                }}
+                icon={{ icon: 'close' }}
+                // TODO I18N: translation
+                aria-label="Clear input"
               />
             )}
           </div>

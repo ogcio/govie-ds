@@ -22,6 +22,7 @@ export const InputPassword = forwardRef<HTMLInputElement, InputPasswordProps>(
       });
     };
 
+    // TODO: i18n for the button aria-label
     return (
       <InputText
         {...props}
@@ -29,6 +30,7 @@ export const InputPassword = forwardRef<HTMLInputElement, InputPasswordProps>(
         inputActionButton={{
           icon: inputProps.icon,
           onClick: handleOnClickVisibility,
+          ariaLabel: inputProps.type === 'text' ? 'show' : 'hide',
         }}
         ref={ref}
       />

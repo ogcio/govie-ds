@@ -42,6 +42,7 @@ const InputTextWithClear = forwardRef<HTMLInputElement, InputTextProps>(
         inputActionButton={{
           icon: 'close',
           onClick: handleOnReset,
+          ariaLabel: 'Clear input', // TODO I18N: translation
         }}
       />
     );
