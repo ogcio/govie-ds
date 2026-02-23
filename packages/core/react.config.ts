@@ -1,6 +1,7 @@
-import { MitosisConfig } from '@builder.io/mitosis'
-import annotation from './plugins/annotation'
-import prettierFormat from './plugins/prettier-format'
+import { MitosisConfig } from '@builder.io/mitosis';
+import annotation from './plugins/annotation';
+import prettierFormat from './plugins/prettier-format';
+import fixForwardRef from './plugins/forward-ref';
 
 export default {
   files: 'atoms/**/*',
@@ -15,7 +16,7 @@ export default {
     react: {
       typescript: true,
       prettier: false,
-      plugins: [prettierFormat],
+      plugins: [fixForwardRef, prettierFormat],
     },
   },
-} satisfies MitosisConfig
+} satisfies MitosisConfig;
