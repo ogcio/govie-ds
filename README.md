@@ -19,10 +19,10 @@ Introduction to the Government of Ireland Design System, its goals, and scope.
 **[Technical Reference](https://github.com/ogcio/govie-ds/blob/main/docs/technical.md)**  
 Technical setup, architecture, and implementation details.
 
-**[React Storybook](https://ds.services.gov.ie/storybook-react)**  
+**[React Storybook](https://ds.services.gov.ie/storybook-react/)**  
 Interactive documentation for React components.
 
-**[HTML Storybook](https://ds.services.gov.ie/storybook-html)**  
+**[HTML Storybook](https://ds.services.gov.ie/storybook-html/)**  
 Interactive documentation for HTML components.
 
 **[Available Components](https://ds.services.gov.ie/components/)**  
