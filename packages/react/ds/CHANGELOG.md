@@ -1,5 +1,33 @@
 # Changelog
 
+## [1.30.0](https://github.com/ogcio/govie-ds/compare/react-lib-v1.29.0...react-lib-v1.30.0) (2026-02-24)
+
+
+### Features
+
+* **AB#34132:** add @fontsource/lato for self-hosted fonts in React package ([#841](https://github.com/ogcio/govie-ds/issues/841)) ([48c59cf](https://github.com/ogcio/govie-ds/commit/48c59cfd1e5beb097838dd312a26675262b6b533))
+* **AB#34132:** adjust Playwright workers to improve CI performance ([#841](https://github.com/ogcio/govie-ds/issues/841)) ([12d87b1](https://github.com/ogcio/govie-ds/commit/12d87b1c20a2ccaefb2a9434478384142a1acfa0))
+* **AB#34132:** update visual snapshots for Playwright tests ([#841](https://github.com/ogcio/govie-ds/issues/841)) ([1db0e85](https://github.com/ogcio/govie-ds/commit/1db0e8573023753b57b0eecbe1a30b84b9ebab3b))
+* **AB#34770:** Inline non-shared styles for React lib ([#850](https://github.com/ogcio/govie-ds/issues/850)) ([44738e7](https://github.com/ogcio/govie-ds/commit/44738e7511964a4a87dbda862c93e5bca884cdfc))
+* **AB#34774:** Mitosis setup ([#852](https://github.com/ogcio/govie-ds/issues/852)) ([0882f18](https://github.com/ogcio/govie-ds/commit/0882f188f6a793a668a6306c056fad6cb6e11b51))
+* **AB#34909:** Creating Button component in mitosis ([#854](https://github.com/ogcio/govie-ds/issues/854)) ([e7b4c0d](https://github.com/ogcio/govie-ds/commit/e7b4c0dca36e745764acf767a5e1aaa28a73455e))
+* **AB#35163:** Render legend instead of label when htmlFor is omitted ([#853](https://github.com/ogcio/govie-ds/issues/853)) ([d3e72fc](https://github.com/ogcio/govie-ds/commit/d3e72fc61887e42b12e646a0d676c480850e15da))
+* **AB#35300:** add Form Icons ([#856](https://github.com/ogcio/govie-ds/issues/856)) ([1ebc3c9](https://github.com/ogcio/govie-ds/commit/1ebc3c9d07bddcd4ffa328ff428a8e6ead2afe02))
+
+
+### Miscellaneous Chores
+
+* **AB#34666:** Refactor tailwind library ([#844](https://github.com/ogcio/govie-ds/issues/844)) ([b75c0ed](https://github.com/ogcio/govie-ds/commit/b75c0ed1bdd85c57d8ca317aebb672b9a19f3ca3))
+
+
+### Dependencies
+
+* The following workspace dependencies were updated
+  * devDependencies
+    * @ogcio/design-system-eslint-config bumped to 1.3.0
+    * @ogcio/design-system-tailwind bumped to 1.21.3
+    * @ogcio/theme-govie bumped to 1.21.3
+
 ## [1.29.0](https://github.com/ogcio/govie-ds/compare/react-lib-v1.28.0...react-lib-v1.29.0) (2026-02-09)
 
 
