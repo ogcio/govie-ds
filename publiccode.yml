@@ -2,7 +2,6 @@ publiccodeYmlVersion: 0.5.0
 name: Government of Ireland Design System
 applicationSuite: Government of Ireland Building Blocks
 url: https://github.com/ogcio/govie-ds
-isBasedOn: https://design-system.service.gov.uk/
 softwareVersion: 1.29.0
 releaseDate: 2026-02-11
 platforms:
@@ -34,12 +33,12 @@ description:
       Officer (OGCIO). It provides tools for design and development, along with
       resources and guidelines to help teams create consistent, accessible, and
       user-centred digital services across government.
-    documentation: https://ds.services.gov.ie/components/
+    documentation: https://ds.services.gov.ie/
     features:
       - React Library - @ogcio/design-system-react
       - HTML Library - @ogcio/design-system-html
       - Tailwind Styling and Theming - @ogcio/design-system-tailwind
-      - Figma Library (Beta)
+      - Figma Library (Beta) - https://github.com/ogcio/govie-ds/tree/main/packages/design/figma
       - Gov.ie Theme Package - @ogcio/theme-govie
 legal:
   license: EUPL-1.2
