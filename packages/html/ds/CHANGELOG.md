@@ -1,5 +1,21 @@
 # Changelog
 
+## [1.18.2](https://github.com/ogcio/govie-ds/compare/html-lib-v1.18.1...html-lib-v1.18.2) (2026-02-24)
+
+
+### Miscellaneous Chores
+
+* **AB#34666:** Refactor tailwind library ([#844](https://github.com/ogcio/govie-ds/issues/844)) ([b75c0ed](https://github.com/ogcio/govie-ds/commit/b75c0ed1bdd85c57d8ca317aebb672b9a19f3ca3))
+
+
+### Dependencies
+
+* The following workspace dependencies were updated
+  * devDependencies
+    * @ogcio/design-system-eslint-config bumped to 1.3.0
+    * @ogcio/design-system-tailwind bumped to 1.21.3
+    * @ogcio/theme-govie bumped to 1.21.3
+
 ## [1.18.1](https://github.com/ogcio/govie-ds/compare/html-lib-v1.18.0...html-lib-v1.18.1) (2026-02-11)
 
 

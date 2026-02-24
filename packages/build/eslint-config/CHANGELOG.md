@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.3.0](https://github.com/ogcio/govie-ds/compare/eslint-config-v1.2.6...eslint-config-v1.3.0) (2026-02-24)
+
+
+### Features
+
+* **AB#34770:** Inline non-shared styles for React lib ([#850](https://github.com/ogcio/govie-ds/issues/850)) ([44738e7](https://github.com/ogcio/govie-ds/commit/44738e7511964a4a87dbda862c93e5bca884cdfc))
+
 ## [1.2.6](https://github.com/ogcio/govie-ds/compare/eslint-config-v1.2.5...eslint-config-v1.2.6) (2025-07-29)
 
 
