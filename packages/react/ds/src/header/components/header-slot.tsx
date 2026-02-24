@@ -150,6 +150,8 @@ export const SlotItemAction = ({
         id={`ItemCloseTrigger-${index}`}
         icon="close"
         data-testid={`ItemCloseTrigger-${index}`}
+        // TODO: temporary fix of icons interaction
+        useFontIcon={true}
       />
     </label>
   );

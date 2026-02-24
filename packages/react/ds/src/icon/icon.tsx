@@ -5,6 +5,13 @@ import {
   forwardRef,
   MouseEventHandler,
 } from 'react';
+import {
+  KeyboardArrowDown,
+  KeyboardArrowUp,
+  Close,
+  Visibility,
+  VisibilityOff,
+} from '../atoms/icons';
 import { cn } from '../cn.js';
 import { iconIds } from './icons.js';
 import Bluesky from './svgs/bluesky.js';
@@ -30,6 +37,11 @@ export type IconProps = {
   inline?: boolean;
   className?: string;
   onClick?: MouseEventHandler<HTMLSpanElement>;
+  /**
+   * Use font icon instead of svg
+   * Used as a fallback for consistency during Mitosis migration.
+   */
+  useFontIcon?: boolean;
 } & Omit<ComponentPropsWithoutRef<'span'>, 'children'>;
 
 const SIZE_MAP: Record<IconSize, string> = {
@@ -43,7 +55,7 @@ const ICON_REGISTRY: Record<
   string,
   {
     Component: ComponentType<{ size: string; className: string }>;
-    disabledClass: string;
+    disabledClass?: string;
   }
 > = {
   social_bluesky: { Component: Bluesky, disabledClass: 'gi-stroke-gray-700' },
@@ -57,7 +69,12 @@ const ICON_REGISTRY: Record<
   social_tiktok: { Component: Tiktok, disabledClass: 'gi-stroke-gray-700' },
   social_x: { Component: X, disabledClass: 'gi-stroke-gray-700' },
   social_youtube: { Component: Youtube, disabledClass: 'gi-stroke-gray-700' },
-  placeholder: { Component: Placeholder, disabledClass: 'gi-fill-gray-700' },
+  placeholder: { Component: Placeholder },
+  keyboard_arrow_down: { Component: KeyboardArrowDown },
+  keyboard_arrow_up: { Component: KeyboardArrowUp },
+  close: { Component: Close },
+  visibility: { Component: Visibility },
+  visibility_off: { Component: VisibilityOff },
 };
 
 export const Icon = forwardRef<HTMLSpanElement, IconProps>(
@@ -72,6 +89,7 @@ export const Icon = forwardRef<HTMLSpanElement, IconProps>(
       inline,
       className,
       onClick,
+      useFontIcon,
       ...props
     },
     ref,
@@ -79,11 +97,12 @@ export const Icon = forwardRef<HTMLSpanElement, IconProps>(
     const fontSize = SIZE_MAP[size] ?? SIZE_MAP.md;
     const reg = ICON_REGISTRY[String(icon)];
 
-    if (reg) {
+    if (reg && !useFontIcon) {
       const { Component, disabledClass } = reg;
       const svgClass = cn(
         { 'gi-block': !inline, 'gi-inline-block': inline },
-        disabled && disabledClass,
+        'gi-shrink-0',
+        disabled && (disabledClass || 'gi-fill-gray-700'),
         className,
       );
 

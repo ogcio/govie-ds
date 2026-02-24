@@ -74,6 +74,7 @@ const ModalCloseButton = ({
       variant="flat"
       size={size}
       appearance="dark"
+      dataTestid="modal-close-button"
       {...props}
     />
   );
