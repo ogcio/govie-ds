@@ -286,7 +286,7 @@ export const Default: StoryObj = {
       expect(within(faqButton).getByText(/info/i)).toBeInTheDocument();
 
       await userEvent.click(faqButton);
-      expect(within(faqButton).getByText(/close/i)).toBeInTheDocument();
+      expect(within(faqButton).getByTestId('close')).toBeInTheDocument();
 
       const faqDrawer = document.querySelector('#FaqDrawer') as HTMLElement;
       expect(faqDrawer).toBeTruthy();
@@ -310,7 +310,7 @@ export const Default: StoryObj = {
       expect(
         await screen.findByRole('region', { name: /site search/i }),
       ).toBeInTheDocument();
-      expect(within(searchButton).getByText(/close/i)).toBeInTheDocument();
+      expect(within(searchButton).getByTestId('close')).toBeInTheDocument();
 
       await userEvent.click(searchButton);
       expect(searchButton).toHaveAttribute('aria-expanded', 'false');
@@ -328,7 +328,7 @@ export const Default: StoryObj = {
       expect(
         await screen.findByRole('region', { name: /language selector/i }),
       ).toBeInTheDocument();
-      expect(within(langButton).getByText(/close/i)).toBeInTheDocument();
+      expect(within(langButton).getByTestId('close')).toBeInTheDocument();
 
       await userEvent.click(langButton);
       expect(langButton).toHaveAttribute('aria-expanded', 'false');

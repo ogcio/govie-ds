@@ -39,7 +39,7 @@ export const Primary: Story = {
   },
   render: (args) => ({
     props: args,
-    template: `<ds-button [variant]="variant" [appearance]="appearance" [size]="size">Click me</ds-button>`,
+    template: `<ds-button [variant]="variant" [appearance]="appearance" [size]="size" [disabled]="disabled">Click me</ds-button>`,
   }),
 };
 export const Secondary: Story = {

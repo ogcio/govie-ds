@@ -444,7 +444,7 @@ export const TestFooterButtonsOrder: Story = {
             footerContainerElement.querySelectorAll('button');
           expect(footerButtonsNodeList).toHaveLength(4);
           const footerButtons = [...footerButtonsNodeList];
-          expect(footerButtons[0].textContent).toBe('close');
+          expect(footerButtons[0].dataset.testid).toBe('modal-close-button');
           expect(footerButtons[1].textContent).toBe('Help');
           expect(footerButtons[2].textContent).toBe('Cancel');
           expect(footerButtons[3].textContent).toBe('Save');

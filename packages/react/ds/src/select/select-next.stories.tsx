@@ -119,7 +119,7 @@ export const Default: StoryObj = {
       expect(input).toHaveValue('Select Option');
     });
     await waitFor(() => {
-      expect(canvas.getByText('keyboard_arrow_down')).toBeInTheDocument();
+      expect(canvas.getByTestId('keyboard_arrow_down')).toBeInTheDocument();
     });
 
     await userEvent.click(input);
@@ -127,7 +127,7 @@ export const Default: StoryObj = {
       expect(canvas.getByRole('listbox')).toBeInTheDocument();
     });
     await waitFor(() => {
-      expect(canvas.getByText('keyboard_arrow_up')).toBeInTheDocument();
+      expect(canvas.getByTestId('keyboard_arrow_up')).toBeInTheDocument();
     });
 
     const list = await canvas.findByRole('listbox');
@@ -925,8 +925,11 @@ export const TestConditionallyRender: StoryObj = {
       await waitFor(() =>
         expect(canvas.getByRole('listbox')).toBeInTheDocument(),
       );
-      const clearButton = await canvas.findByRole('button', { name: /close/i });
-      await userEvent.click(clearButton);
+
+      const closeIcon = await canvas.findByTestId('close');
+      const clearButton = closeIcon?.closest('button');
+      await expect(clearButton).toBeInTheDocument();
+      await userEvent.click(clearButton!);
       await userEvent.keyboard('{Enter}');
       await waitFor(() => {
         canvas.getByRole('option', { name: /apple/i });
