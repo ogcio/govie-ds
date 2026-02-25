@@ -114,12 +114,17 @@ export const ModalWrapper = ({
   dataTestId,
   ...props
 }: ModalWrapperProps) => {
-  const modalRef = useRef(null);
-  useAriaHider(modalRef.current, isOpen);
+  const modalRef = useRef<HTMLDivElement | null>(null);
+  useAriaHider(modalRef, isOpen);
   const [ariaProps, rest] = useMemo(
     () => splitAriaProps(props as Record<string, unknown>),
     [props],
   );
+  useEffect(() => {
+    if (isOpen) {
+      (modalRef.current as HTMLElement).focus()
+    }
+  }, [isOpen])
 
   const allChildren = Children.toArray(children);
 
@@ -139,15 +144,15 @@ export const ModalWrapper = ({
 
   const modalTitleClone = modalTitle
     ? cloneElement(modalTitle as ReactElement<HeadingProps>, {
-        as: size === 'sm' ? 'h5' : 'h4',
-        id: computedTitleId,
-      })
+      as: size === 'sm' ? 'h5' : 'h4',
+      id: computedTitleId,
+    })
     : null;
 
   const modalFooterClone = modalFooter
     ? cloneElement(modalFooter as ReactElement<ModalFooterProps>, {
-        dataModalSize: size,
-      })
+      dataModalSize: size,
+    })
     : null;
 
   const contentChildren = allChildren.filter(
@@ -364,7 +369,7 @@ const ModalPortal = ({
     setIsMounted(true);
   }, []);
 
-  useFocusTrap(modalRef?.current, isOpen && isMounted, {
+  useFocusTrap(modalRef, isOpen && isMounted, {
     initialFocus: modalRef?.current ?? true,
     fallbackFocus: () => modalRef?.current,
   });
