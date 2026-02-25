@@ -14,8 +14,8 @@ export const useFocusTrap = (
     if (!isActive) {
       return;
     }
-    // as useLayoutEffect runs after React commits - the ref is guaranteed to be present
-    const element = ref.current as HTMLElement
+    const element = ref.current
+    if (!element) {return}
 
     const trap: FocusTrap = createFocusTrap(element, {
       ...options,
