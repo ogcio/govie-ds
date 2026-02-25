@@ -22,6 +22,8 @@
     "html:test": "pnpm build:libs && pnpm --filter @ogcio/design-system-html test",
     "react:storybook": "pnpm build:libs && pnpm --filter @ogcio/design-system-react storybook:dev",
     "react:storybook:build": "pnpm build:libs && pnpm --filter @ogcio/design-system-react storybook:build",
+    "angular:storybook": "pnpm build:libs && pnpm --filter @ogcio/design-system-angular storybook:dev",
+    "angular:storybook:build": "pnpm build:libs && pnpm --filter @ogcio/design-system-angular storybook:build",
     "react:test": "pnpm build:libs && pnpm --filter @ogcio/design-system-react test",
     "examples:vite": "pnpm build:libs && pnpm --filter @ogcio/examples-vite dev",
     "examples:nextjs": "pnpm build:libs && pnpm --filter @ogcio/examples-nextjs dev",
