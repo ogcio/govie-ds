@@ -1,5 +1,14 @@
 # Changelog
 
+## [1.22.1](https://github.com/ogcio/govie-ds/compare/design-theme-builder-v1.22.0...design-theme-builder-v1.22.1) (2026-02-24)
+
+
+### Dependencies
+
+* The following workspace dependencies were updated
+  * dependencies
+    * @ogcio/design-system-eslint-config bumped to 1.3.0
+
 ## [1.22.0](https://github.com/ogcio/govie-ds/compare/design-theme-builder-v1.21.1...design-theme-builder-v1.22.0) (2026-02-03)
 
 

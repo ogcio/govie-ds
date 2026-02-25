@@ -1,6 +1,6 @@
 {
   "name": "@ogcio/design-system-tailwind",
-  "version": "1.21.2",
+  "version": "1.21.3",
   "description": "The Government of Ireland Design System Tailwind utilities.",
   "type": "module",
   "main": "dist/index.js",

@@ -767,13 +767,21 @@ export const TestKeyboardEvents: StoryObj<typeof SelectNext> = {
     const expectClosed = async () =>
       waitFor(() => expect(canvas.queryByRole('listbox')).toBeNull());
 
+    const getHighlightedOption = () =>
+      canvasElement.ownerDocument.querySelector(
+        '[role="option"].gi-select-option-item-highlighted',
+      );
+
     await step('ArrowDown opens and moves highlight', async () => {
       input.focus();
       await userEvent.keyboard('{ArrowDown}');
       await expectOpen();
-      const highlighted = canvas
-        .getAllByRole('option')
-        .find((element) => element.dataset.highlighted === 'true');
+
+      await waitFor(() => {
+        expect(getHighlightedOption()).not.toBeNull();
+      });
+
+      const highlighted = getHighlightedOption();
       await expect(highlighted).toBeTruthy();
       await expect(highlighted).toHaveAttribute(
         'data-testid',
@@ -798,9 +806,12 @@ export const TestKeyboardEvents: StoryObj<typeof SelectNext> = {
     await step('ArrowUp opens menu and moves highlight', async () => {
       await userEvent.keyboard('{ArrowUp}');
       await expectOpen();
-      const highlighted = canvas
-        .getAllByRole('option')
-        .find((element) => element.dataset.highlighted === 'true');
+
+      await waitFor(() => {
+        expect(getHighlightedOption()).not.toBeNull();
+      });
+
+      const highlighted = getHighlightedOption();
       expect(highlighted).toBeTruthy();
       expect(highlighted).toHaveAttribute('data-testid', 'option-value_9');
     });

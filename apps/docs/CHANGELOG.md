@@ -1,5 +1,23 @@
 # Changelog
 
+## [1.30.0](https://github.com/ogcio/govie-ds/compare/docs-v1.29.0...docs-v1.30.0) (2026-02-24)
+
+
+### Features
+
+* **AB#34132:** add @fontsource/lato for self-hosted fonts in React package ([#841](https://github.com/ogcio/govie-ds/issues/841)) ([48c59cf](https://github.com/ogcio/govie-ds/commit/48c59cfd1e5beb097838dd312a26675262b6b533))
+
+
+### Dependencies
+
+* The following workspace dependencies were updated
+  * dependencies
+    * @ogcio/design-system-react bumped to 1.30.0
+    * @ogcio/design-system-tailwind bumped to 1.21.3
+    * @ogcio/theme-govie bumped to 1.21.3
+  * devDependencies
+    * @ogcio/design-system-eslint-config bumped to 1.3.0
+
 ## [1.29.0](https://github.com/ogcio/govie-ds/compare/docs-v1.28.0...docs-v1.29.0) (2026-02-09)
 
 
