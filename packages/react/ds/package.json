@@ -13,12 +13,12 @@
     "./styles.css": "./dist/styles.css",
     "./fonts.css": "./fonts.css",
     "./logos": {
-      "types": "./dist/assets/logos/index.d.ts",
-      "import": "./dist/assets/logos/index.js"
+      "types": "./dist/atoms/icons/logos/index.d.ts",
+      "import": "./dist/atoms/icon/logos/index.js"
     },
     "./logos/*": {
-      "types": "./dist/assets/logos/*.d.ts",
-      "import": "./dist/assets/logos/*.js"
+      "types": "./dist/atoms/icons/logos/*.d.ts",
+      "import": "./dist/atoms/icons/logos/*.js"
     }
   },
   "scripts": {

@@ -7,7 +7,7 @@ import {
   LogoWhite,
   LogoHarpBlack,
   LogoHarpWhite,
-} from '../../assets/logos/index.js';
+} from '../../atoms/icons/logos';
 
 import { Button } from '../../button/button.js';
 import { DrawerMenuExample } from '../../drawer/drawer.content.js';
@@ -121,14 +121,12 @@ export const Default: StoryObj = {
           <HeaderLogo>
             <LogoHarpWhite
               role="img"
-              aria-label="Gov.ie logo"
-              focusable="false"
+              ariaLabel="Gov.ie logo"
               className="gi-block gi-h-10 gi-w-auto sm:gi-hidden"
             />
             <LogoWhite
               role="img"
-              aria-label="Gov.ie logo"
-              focusable="false"
+              ariaLabel="Gov.ie logo"
               className="gi-hidden gi-h-12 gi-w-auto sm:gi-block"
             />
           </HeaderLogo>
@@ -349,13 +347,11 @@ export const Govie: StoryObj = {
           <HeaderLogo>
             <a href="/" aria-label="Gov.ie home">
               <LogoGoldWhite
-                aria-hidden="true"
-                focusable="false"
+                ariaHidden
                 className="gi-block gi-h-10 gi-w-auto sm:gi-hidden"
               />
               <LogoGoldWhite
-                aria-hidden="true"
-                focusable="false"
+                ariaHidden
                 className="gi-hidden gi-h-12 gi-w-auto sm:gi-block"
               />
             </a>
@@ -482,15 +478,13 @@ export const Light: StoryObj = {
         <Header variant="light" aria-label="Site header">
           <HeaderLogo>
             <LogoHarpBlack
-              Logoaria-label="Gov.ie logo"
+              ariaLabel="Gov.ie logo"
               role="img"
-              focusable="false"
               className="gi-block gi-h-10 gi-w-auto sm:gi-hidden"
             />
             <LogoBlack
-              aria-label="Gov.ie logo"
+              ariaLabel="Gov.ie logo"
               role="img"
-              focusable="false"
               className="gi-hidden gi-h-12 gi-w-auto sm:gi-block"
             />
           </HeaderLogo>

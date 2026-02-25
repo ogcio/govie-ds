@@ -105,14 +105,12 @@ const HeaderComposable = () => {
         <HeaderLogo>
           <LogoHarpWhite
             role="img"
-            aria-label="Gov.ie logo"
-            focusable="false"
+            ariaLabel="Gov.ie logo"
             className="gi-block gi-h-10 gi-w-auto sm:gi-hidden"
           />
           <LogoWhite
             role="img"
-            aria-label="Gov.ie logo"
-            focusable="false"
+            ariaLabel="Gov.ie logo"
             className="gi-hidden gi-h-12 gi-w-auto sm:gi-block"
           />
         </HeaderLogo>

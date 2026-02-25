@@ -7,7 +7,7 @@ import {
   LogoWhite as GovieLogoHarpWithText,
   LogoHarpBlack as GovieLogoHarpBlack,
   LogoHarpWhite as GovieLogoHarp,
-} from '../assets/logos/index.js';
+} from '../atoms/icons/logos';
 import { cn } from '../cn.js';
 import { Container } from '../container/container.js';
 import { translate as t } from '../i18n/utility.js';
