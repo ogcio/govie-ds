@@ -121,7 +121,7 @@ export const ModalWrapper = ({
     [props],
   );
   useEffect(() => {
-    if (isOpen) {
+    if (isOpen && modalRef.current !== null) {
       (modalRef.current as HTMLElement).focus()
     }
   }, [isOpen])

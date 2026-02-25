@@ -8,8 +8,8 @@ export const useAriaHider = (
     if (shouldActivate !== true) {
       return;
     }
-    const element = ref.current as HTMLElement
-
+    const element = ref.current
+    if (!element) {return}
 
     const documentContext = element.ownerDocument ?? document;
     const bodyChildren = [...documentContext.body.children];
