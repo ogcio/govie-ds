@@ -17,8 +17,9 @@ ENV DEPLOY_ENV=${DEPLOY_ENV}
 ENV NEXT_EXPORT=true
 ENV NX_DAEMON=false
 
-RUN npm install -g corepack@latest
 RUN corepack enable pnpm
+# Ignore KICS warning. `--frozen-lockfile` ensures pinned versions from lockfile
+# kics-scan ignore-line
 RUN pnpm install --frozen-lockfile
 RUN pnpm build
 RUN pnpm html:storybook:build
