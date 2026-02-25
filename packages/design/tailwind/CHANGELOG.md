@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.21.3](https://github.com/ogcio/govie-ds/compare/design-tailwind-v1.21.2...design-tailwind-v1.21.3) (2026-02-24)
+
+
+### Miscellaneous Chores
+
+* **AB#34666:** Refactor tailwind library ([#844](https://github.com/ogcio/govie-ds/issues/844)) ([b75c0ed](https://github.com/ogcio/govie-ds/commit/b75c0ed1bdd85c57d8ca317aebb672b9a19f3ca3))
+
 ## [1.21.2](https://github.com/ogcio/govie-ds/compare/design-tailwind-v1.21.1...design-tailwind-v1.21.2) (2026-01-20)
 
 
