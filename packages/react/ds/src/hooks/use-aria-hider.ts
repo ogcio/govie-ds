@@ -5,11 +5,10 @@ export const useAriaHider = (
   shouldActivate: boolean,
 ): void => {
   useLayoutEffect(() => {
-    if (shouldActivate !== true) {
+    if (shouldActivate !== true || !ref.current) {
       return;
     }
-    const element = ref.current
-    if (!element) {return}
+    const element = ref.current;
 
     const documentContext = element.ownerDocument ?? document;
     const bodyChildren = [...documentContext.body.children];
@@ -30,5 +29,5 @@ export const useAriaHider = (
         element.removeAttribute('aria-hidden');
       }
     };
-  }, [shouldActivate, ref]);
+  }, [shouldActivate, ref.current]);
 };
