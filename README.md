@@ -7,8 +7,8 @@ accessible, and user-centred digital services across government.
 <br/>
 <a href="https://github.com/ogcio/govie-ds/blob/main/docs/overview.md"><img src="./assets/docs/icon_project_overview.png" width="48" height="48" alt="" hspace="10" /></a>
 <a href="https://github.com/ogcio/govie-ds/blob/main/docs/technical.md"><img src="./assets/docs/icon_technical_reference.png" width="48" height="48" alt="" hspace="10" /></a>
-<a href="https://ds.services.gov.ie/storybook-react"><img src="./assets/docs/icon_react.png" width="48" height="48" alt="" hspace="10"/></a>
-<a href="https://ds.services.gov.ie/storybook-html"><img src="./assets/docs/icon_html.png" width="48" height="48" alt="" hspace="10" /></a>
+<a href="https://ds.services.gov.ie/storybook-react/"><img src="./assets/docs/icon_react.png" width="48" height="48" alt="" hspace="10"/></a>
+<a href="https://ds.services.gov.ie/storybook-html/"><img src="./assets/docs/icon_html.png" width="48" height="48" alt="" hspace="10" /></a>
 <a href="https://ds.services.gov.ie/components/"><img src="./assets/docs/icon_components.png" width="48" height="48" alt="" hspace="10" /></a>
 <br/>
 <br/>
