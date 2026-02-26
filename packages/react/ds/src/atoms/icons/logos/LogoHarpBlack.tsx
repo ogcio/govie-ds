@@ -6,23 +6,20 @@
 
 import * as React from 'react';
 
-import { LogoProps } from './types';
+import { BaseSVGProps } from '../types';
 
-function LogoHarpBlack(props: LogoProps) {
+function LogoHarpBlack(props: BaseSVGProps) {
   return (
     <svg
       viewBox="0 0 56 88"
       fill="none"
       xmlns="http://www.w3.org/2000/svg"
-      width={props.width ?? '56'}
-      height={props.height ?? '88'}
+      width={props.size ?? '56'}
       className={props.className}
       id={props.id}
-      role={props.role ?? (props.ariaHidden ? 'presentation' : 'img')}
-      aria-hidden={props.ariaHidden}
-      aria-label={props.ariaHidden ? undefined : props.ariaLabel}
-      aria-labelledby={props.ariaHidden ? undefined : props.ariaLabelledBy}
-      aria-describedby={props.ariaDescribedBy}
+      role={props.label ? 'img' : undefined}
+      aria-hidden={!props.label}
+      aria-label={props.label}
       data-testid={props.dataTestId}
     >
       <g clip-path="url(#clip0_212_1062)">

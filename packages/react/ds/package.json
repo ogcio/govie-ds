@@ -12,9 +12,17 @@
     ".": "./dist/index.js",
     "./styles.css": "./dist/styles.css",
     "./fonts.css": "./fonts.css",
+    "./icons": {
+      "types": "./dist/atoms/icons/index.d.ts",
+      "import": "./dist/atoms/icons/index.js"
+    },
+    "./icons/*": {
+      "types": "./dist/atoms/icons/*.d.ts",
+      "import": "./dist/atoms/icons/*.js"
+    },
     "./logos": {
       "types": "./dist/atoms/icons/logos/index.d.ts",
-      "import": "./dist/atoms/icon/logos/index.js"
+      "import": "./dist/atoms/icons/logos/index.js"
     },
     "./logos/*": {
       "types": "./dist/atoms/icons/logos/*.d.ts",

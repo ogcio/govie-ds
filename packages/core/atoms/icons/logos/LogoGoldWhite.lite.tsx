@@ -1,21 +1,18 @@
-import { LogoProps } from './types';
+import { BaseSVGProps } from '../types';
 
-export default function LogoGoldWhite(props: LogoProps) {
+export default function LogoGoldWhite(props: BaseSVGProps) {
   return (
     <svg
-      width={props.width ?? '136'}
-      height={props.height ?? '48'}
+      width={props.size ?? '136'}
       class={props.className}
       id={props.id}
-      role={props.role ?? (props.ariaHidden ? 'presentation' : 'img')}
-      aria-hidden={props.ariaHidden}
-      aria-label={props.ariaHidden ? undefined : props.ariaLabel}
-      aria-labelledby={props.ariaHidden ? undefined : props.ariaLabelledBy}
-      aria-describedby={props.ariaDescribedBy}
+      role={props.label ? 'img' : undefined}
+      aria-hidden={!props.label}
+      aria-label={props.label}
       data-testid={props.dataTestId}
-      xmlns="http://www.w3.org/2000/svg"
       viewBox="0 0 136 48"
       fill="none"
+      xmlns="http://www.w3.org/2000/svg"
     >
       <path
         d="M35.9192 0.00145059C35.7678 7.79837 35.687 15.8129 35.687 24C35.687 32.1871 35.7678 40.2016 35.9192 47.9985C35.9844 47.9985 36.049 48 36.1143 48C36.1795 48 36.2441 47.9985 36.3094 47.9985C36.4607 40.2016 36.5415 32.1871 36.5415 24C36.5415 15.8129 36.4607 7.79837 36.3094 0.00145059C36.2441 0.00145059 36.1795 0 36.1143 0C36.049 0 35.9844 0.000725295 35.9192 0.00145059Z"

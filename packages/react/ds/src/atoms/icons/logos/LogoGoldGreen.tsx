@@ -6,23 +6,20 @@
 
 import * as React from 'react';
 
-import { LogoProps } from './types';
+import { BaseSVGProps } from '../types';
 
-function LogoGoldGreen(props: LogoProps) {
+function LogoGoldGreen(props: BaseSVGProps) {
   return (
     <svg
       viewBox="0 0 136 48"
       fill="none"
       xmlns="http://www.w3.org/2000/svg"
-      width={props.width ?? '136'}
-      height={props.height ?? '48'}
+      width={props.size ?? '136'}
       className={props.className}
       id={props.id}
-      role={props.role ?? (props.ariaHidden ? 'presentation' : 'img')}
-      aria-hidden={props.ariaHidden}
-      aria-label={props.ariaHidden ? undefined : props.ariaLabel}
-      aria-labelledby={props.ariaHidden ? undefined : props.ariaLabelledBy}
-      aria-describedby={props.ariaDescribedBy}
+      role={props.label ? 'img' : undefined}
+      aria-hidden={!props.label}
+      aria-label={props.label}
       data-testid={props.dataTestId}
     >
       <g clip-path="url(#clip0_175_13114)">

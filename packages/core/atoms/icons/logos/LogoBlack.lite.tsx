@@ -1,17 +1,14 @@
-import { LogoProps } from './types';
+import { BaseSVGProps } from '../types';
 
-export default function LogoBlack(props: LogoProps) {
+export default function LogoBlack(props: BaseSVGProps) {
   return (
     <svg
-      width={props.width ?? '181'}
-      height={props.height ?? '64'}
+      width={props.size ?? '181'}
       class={props.className}
       id={props.id}
-      role={props.role ?? (props.ariaHidden ? 'presentation' : 'img')}
-      aria-hidden={props.ariaHidden}
-      aria-label={props.ariaHidden ? undefined : props.ariaLabel}
-      aria-labelledby={props.ariaHidden ? undefined : props.ariaLabelledBy}
-      aria-describedby={props.ariaDescribedBy}
+      role={props.label ? 'img' : undefined}
+      aria-hidden={!props.label}
+      aria-label={props.label}
       data-testid={props.dataTestId}
       viewBox="0 0 181 64"
       fill="none"

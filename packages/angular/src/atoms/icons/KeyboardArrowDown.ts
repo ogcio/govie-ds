@@ -15,13 +15,14 @@ import { IconProps } from "./types";
   template: `
     <svg
       viewBox="0 -960 960 960"
+      xmlns="http://www.w3.org/2000/svg"
       [attr.width]="size ?? 24"
       [attr.height]="size ?? 24"
       [class]="className"
       [attr.id]="id"
-      [attr.role]="role"
-      [attr.aria-label]="ariaLabel"
-      [attr.aria-hidden]="ariaHidden ?? 'true'"
+      [attr.role]="label ? 'img' : undefined"
+      [attr.aria-label]="label"
+      [attr.aria-hidden]="!label"
       [attr.fill]="color ?? 'currentColor'"
       [attr.data-testid]="dataTestId ?? 'keyboard_arrow_down'"
     >
@@ -42,9 +43,7 @@ export default class KeyboardArrowDown {
   @Input() size!: IconProps["size"];
   @Input() className!: IconProps["className"];
   @Input() id!: IconProps["id"];
-  @Input() role!: IconProps["role"];
-  @Input() ariaLabel!: IconProps["ariaLabel"];
-  @Input() ariaHidden!: IconProps["ariaHidden"];
+  @Input() label!: IconProps["label"];
   @Input() color!: IconProps["color"];
   @Input() dataTestId!: IconProps["dataTestId"];
 }

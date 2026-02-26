@@ -120,13 +120,11 @@ export const Default: StoryObj = {
         <Header variant="default" aria-label="Site header">
           <HeaderLogo>
             <LogoHarpWhite
-              role="img"
-              ariaLabel="Gov.ie logo"
+              label="Gov.ie logo"
               className="gi-block gi-h-10 gi-w-auto sm:gi-hidden"
             />
             <LogoWhite
-              role="img"
-              ariaLabel="Gov.ie logo"
+              label="Gov.ie logo"
               className="gi-hidden gi-h-12 gi-w-auto sm:gi-block"
             />
           </HeaderLogo>
@@ -346,14 +344,8 @@ export const Govie: StoryObj = {
         <Header variant="default" aria-label="Site header" id="govieHeader">
           <HeaderLogo>
             <a href="/" aria-label="Gov.ie home">
-              <LogoGoldWhite
-                ariaHidden
-                className="gi-block gi-h-10 gi-w-auto sm:gi-hidden"
-              />
-              <LogoGoldWhite
-                ariaHidden
-                className="gi-hidden gi-h-12 gi-w-auto sm:gi-block"
-              />
+              <LogoGoldWhite className="gi-block gi-h-10 gi-w-auto sm:gi-hidden" />
+              <LogoGoldWhite className="gi-hidden gi-h-12 gi-w-auto sm:gi-block" />
             </a>
           </HeaderLogo>
           <HeaderPrimaryMenu>
@@ -478,13 +470,11 @@ export const Light: StoryObj = {
         <Header variant="light" aria-label="Site header">
           <HeaderLogo>
             <LogoHarpBlack
-              ariaLabel="Gov.ie logo"
-              role="img"
+              label="Gov.ie logo"
               className="gi-block gi-h-10 gi-w-auto sm:gi-hidden"
             />
             <LogoBlack
-              ariaLabel="Gov.ie logo"
-              role="img"
+              label="Gov.ie logo"
               className="gi-hidden gi-h-12 gi-w-auto sm:gi-block"
             />
           </HeaderLogo>

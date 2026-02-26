@@ -1,17 +1,14 @@
-import { LogoProps } from './types';
+import { BaseSVGProps } from '../types';
 
-export default function LogoGoldGreen(props: LogoProps) {
+export default function LogoGoldGreen(props: BaseSVGProps) {
   return (
     <svg
-      width={props.width ?? '136'}
-      height={props.height ?? '48'}
+      width={props.size ?? '136'}
       class={props.className}
       id={props.id}
-      role={props.role ?? (props.ariaHidden ? 'presentation' : 'img')}
-      aria-hidden={props.ariaHidden}
-      aria-label={props.ariaHidden ? undefined : props.ariaLabel}
-      aria-labelledby={props.ariaHidden ? undefined : props.ariaLabelledBy}
-      aria-describedby={props.ariaDescribedBy}
+      role={props.label ? 'img' : undefined}
+      aria-hidden={!props.label}
+      aria-label={props.label}
       data-testid={props.dataTestId}
       viewBox="0 0 136 48"
       fill="none"

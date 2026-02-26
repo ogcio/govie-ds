@@ -8,24 +8,21 @@ import { Component, Input } from "@angular/core";
 
 import { CommonModule } from "@angular/common";
 
-import { LogoProps } from "./types";
+import { BaseSVGProps } from "../types";
 
 @Component({
   selector: "logo-gold-white",
   template: `
     <svg
-      xmlns="http://www.w3.org/2000/svg"
       viewBox="0 0 136 48"
       fill="none"
-      [attr.width]="width ?? '136'"
-      [attr.height]="height ?? '48'"
+      xmlns="http://www.w3.org/2000/svg"
+      [attr.width]="size ?? '136'"
       [class]="className"
       [attr.id]="id"
-      [attr.role]="role ?? (ariaHidden ? 'presentation' : 'img')"
-      [attr.aria-hidden]="ariaHidden"
-      [attr.aria-label]="ariaHidden ? undefined : ariaLabel"
-      [attr.aria-labelledby]="ariaHidden ? undefined : ariaLabelledBy"
-      [attr.aria-describedby]="ariaDescribedBy"
+      [attr.role]="label ? 'img' : undefined"
+      [attr.aria-hidden]="!label"
+      [attr.aria-label]="label"
       [attr.data-testid]="dataTestId"
     >
       <path
@@ -81,15 +78,10 @@ import { LogoProps } from "./types";
   imports: [CommonModule],
 })
 export default class LogoGoldWhite {
-  @Input() width!: LogoProps["width"];
-  @Input() height!: LogoProps["height"];
-  @Input() className!: LogoProps["className"];
-  @Input() id!: LogoProps["id"];
-  @Input() role!: LogoProps["role"];
-  @Input() ariaHidden!: LogoProps["ariaHidden"];
-  @Input() ariaLabel!: LogoProps["ariaLabel"];
-  @Input() ariaLabelledBy!: LogoProps["ariaLabelledBy"];
-  @Input() ariaDescribedBy!: LogoProps["ariaDescribedBy"];
-  @Input() dataTestId!: LogoProps["dataTestId"];
+  @Input() size!: BaseSVGProps["size"];
+  @Input() className!: BaseSVGProps["className"];
+  @Input() id!: BaseSVGProps["id"];
+  @Input() label!: BaseSVGProps["label"];
+  @Input() dataTestId!: BaseSVGProps["dataTestId"];
 }
 

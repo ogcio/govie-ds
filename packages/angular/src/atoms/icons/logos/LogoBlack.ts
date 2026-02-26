@@ -8,7 +8,7 @@ import { Component, Input } from "@angular/core";
 
 import { CommonModule } from "@angular/common";
 
-import { LogoProps } from "./types";
+import { BaseSVGProps } from "../types";
 
 @Component({
   selector: "logo-black",
@@ -17,15 +17,12 @@ import { LogoProps } from "./types";
       viewBox="0 0 181 64"
       fill="none"
       xmlns="http://www.w3.org/2000/svg"
-      [attr.width]="width ?? '181'"
-      [attr.height]="height ?? '64'"
+      [attr.width]="size ?? '181'"
       [class]="className"
       [attr.id]="id"
-      [attr.role]="role ?? (ariaHidden ? 'presentation' : 'img')"
-      [attr.aria-hidden]="ariaHidden"
-      [attr.aria-label]="ariaHidden ? undefined : ariaLabel"
-      [attr.aria-labelledby]="ariaHidden ? undefined : ariaLabelledBy"
-      [attr.aria-describedby]="ariaDescribedBy"
+      [attr.role]="label ? 'img' : undefined"
+      [attr.aria-hidden]="!label"
+      [attr.aria-label]="label"
       [attr.data-testid]="dataTestId"
     >
       <g clip-path="url(#clip0_209_1004)">
@@ -220,15 +217,10 @@ import { LogoProps } from "./types";
   imports: [CommonModule],
 })
 export default class LogoBlack {
-  @Input() width!: LogoProps["width"];
-  @Input() height!: LogoProps["height"];
-  @Input() className!: LogoProps["className"];
-  @Input() id!: LogoProps["id"];
-  @Input() role!: LogoProps["role"];
-  @Input() ariaHidden!: LogoProps["ariaHidden"];
-  @Input() ariaLabel!: LogoProps["ariaLabel"];
-  @Input() ariaLabelledBy!: LogoProps["ariaLabelledBy"];
-  @Input() ariaDescribedBy!: LogoProps["ariaDescribedBy"];
-  @Input() dataTestId!: LogoProps["dataTestId"];
+  @Input() size!: BaseSVGProps["size"];
+  @Input() className!: BaseSVGProps["className"];
+  @Input() id!: BaseSVGProps["id"];
+  @Input() label!: BaseSVGProps["label"];
+  @Input() dataTestId!: BaseSVGProps["dataTestId"];
 }
 
