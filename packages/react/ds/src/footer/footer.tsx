@@ -4,7 +4,7 @@ import { renderToStaticMarkup } from 'react-dom/server';
 import {
   LogoGoldGreen as GovieLogoHarpWithText,
   LogoHarpWhite as GovieLogoHarp,
-} from '../assets/logos/index.js';
+} from '../atoms/icons/logos';
 import { cn } from '../cn.js';
 import { LogoProps } from '../common/types.js';
 import { Container } from '../container/container.js';
