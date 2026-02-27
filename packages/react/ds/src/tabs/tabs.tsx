@@ -28,7 +28,7 @@ export function Tabs({
     return element;
   });
   return (
-    <div className="gi-tabs" id={id} {...props}>
+    <div className="gi-flex gi-flex-wrap gi-w-full" id={id} {...props}>
       {childrenWithName}
     </div>
   );

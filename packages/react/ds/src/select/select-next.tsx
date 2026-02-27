@@ -259,7 +259,7 @@ export const SelectNext = forwardRef<HTMLInputElement, SelectNextProps>(
 
     if (enableSearch) {
       return (
-        <div className={cn('gi-select-next', props.className)}>
+        <div className={cn('gi-relative gi-w-full', props.className)}>
           <SelectSearch
             {...props}
             value={internalValue}
@@ -279,7 +279,7 @@ export const SelectNext = forwardRef<HTMLInputElement, SelectNextProps>(
     return (
       <div
         aria-disabled={disabled}
-        className={cn('gi-select-next', props.className)}
+        className={cn('gi-relative gi-w-full', props.className)}
       >
         <span id={srOnlyLabelId} className="gi-sr-only">
           {labelText}

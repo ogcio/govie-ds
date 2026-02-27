@@ -21,7 +21,7 @@ export const BreadcrumbLink = ({
     href={href}
     aria-label={`${children} page`}
     size="sm"
-    className="gi-breadcrumbs-link"
+    className="gi-text-ellipsis gi-whitespace-nowrap gi-line-clamp-1"
     {...ariaProps}
   >
     {children}
@@ -33,7 +33,7 @@ export const BreadcrumbCurrentLink = (props: BreadcrumbLinkProps) => (
 );
 
 const BreadcrumbSeparator = () => (
-  <span className="gi-breadcrumbs-separator">/</span>
+  <span className="gi-px-3 gi-text-gray-500">/</span>
 );
 
 export const Breadcrumbs = ({ children, iconStart }: BreadcrumbProps) => {
@@ -42,7 +42,7 @@ export const Breadcrumbs = ({ children, iconStart }: BreadcrumbProps) => {
   return (
     <nav
       aria-label={t('breadcrumbs.breadcrumbs', { defaultValue: 'Breadcrumbs' })}
-      className="gi-breadcrumbs"
+      className="gi-flex gi-items-center gi-gap-1 [&>ol]:gi-flex [&>ol]:gi-list-none [&>ol]:gi-flex-wrap [&>ol]:[&>li]:gi-flex [&>ol]:[&>li]:gi-items-center [&>ol>li:not(:first-child)]:gi-mx-0"
     >
       <ol role="list">
         {iconStart && (

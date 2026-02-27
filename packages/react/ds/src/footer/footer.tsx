@@ -71,14 +71,14 @@ export function Footer({
   };
   return (
     <footer
-      className={cn('gi-footer', className)}
+      className={cn('gi-bg-color-surface-system-neutral-layer1', className)}
       data-module="gieds-footer"
       role="contentinfo"
       aria-label={t('footer.footer', { defaultValue: 'Footer' })}
       data-testid={dataTestid}
       {...props}
     >
-      <div className="gi-footer-container">
+      <div className="gi-py-10">
         <Container>
           {primarySlot && (
             <div
@@ -98,14 +98,14 @@ export function Footer({
           )}
 
           <div
-            className="gi-footer-secondary-slot"
+            className="gi-flex gi-flex-row-reverse gi-flex-wrap-reverse gi-justify-between gi-justify-items-stretch"
             aria-label={t('footer.secondarySlot', {
               defaultValue: 'Footer Secondary Slot',
             })}
           >
-            <div className="gi-footer-logo">{renderLogo()}</div>
+            <div className="gi-w-fit gi-mt-8 md:gi-mt-0 lg:gi-ml-auto lg:gi-flex-none gi-rounded-sm gi-focus-state-outline gi-focus-within-state-outline gi-focus-visible-state-outline">{renderLogo()}</div>
             {secondarySlot && (
-              <div className="gi-footer-secondary-slot-content">
+              <div className="gi-grow md:gi-max-w-[calc(100%_-_var(--gieds-space-80))]">
                 {secondarySlot}
               </div>
             )}
@@ -115,7 +115,7 @@ export function Footer({
 
       {utilitySlot && (
         <div
-          className="gi-footer-utility"
+          className="gi-py-4 gi-px-8 gi-bg-color-surface-system-neutral-layer2"
           aria-label={t('footer.utilityLinks', {
             defaultValue: 'Footer Utility Links',
           })}

@@ -8,7 +8,7 @@ export const Combobox = ({
 }: ComboboxProps) => {
   return (
     <div
-      className={cn('gi-combobox-container', className)}
+      className={cn('gi-max-w-[400px]', className)}
       data-testid={dataTestid}
     >
       {children}

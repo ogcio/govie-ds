@@ -42,7 +42,7 @@ export const DrawerWrapper = ({
 }: DrawerWrapperProps) => {
   return (
     <ModalWrapper
-      className={cn('gi-drawer-container', className)}
+      className={cn('gi-flex gi-flex-col', className)}
       closeButtonSize="large"
       {...props}
     >
@@ -104,7 +104,7 @@ Object.defineProperty(Drawer, 'componentType', {
 export const DrawerBody = ({ children, className }: DrawerBodySectionProps) => (
   <ModalBody
     includeModalClass={false}
-    className={cn('gi-drawer-body', className)}
+    className={cn('gi-px-6 gi-pt-1 gi-flex-1 gi-border-t-xs gi-border-gray-100 gi-overflow-y-auto', className)}
   >
     {children}
   </ModalBody>

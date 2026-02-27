@@ -25,7 +25,7 @@ export const CookieBanner = ({
     <>
       {showConsent && (
         <div
-          className="gi-cookie-banner-container"
+          className="gi-bg-gray-100"
           role="dialog"
           aria-labelledby="cookie-banner-title"
           aria-describedby="cookie-banner-description"
@@ -34,7 +34,7 @@ export const CookieBanner = ({
           <div className="gi-py-5">
             <Container>
               <div id="cookie-banner-description">{children}</div>
-              <div className="gi-cookie-banner-buttons">
+              <div className="gi-flex gi-gap-4 gi-items-center gi-flex-col xs:gi-flex-row gi-my-4 [&_button]:gi-w-full [&_button]:gi-justify-center [&_button]:xs:gi-w-auto">
                 {accept && accept}
                 {reject && reject}
                 {cookieLink && cookieLink}

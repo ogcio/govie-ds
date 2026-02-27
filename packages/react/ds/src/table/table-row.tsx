@@ -6,7 +6,7 @@ export function TableRow({
   ...props
 }: React.TableHTMLAttributes<HTMLTableRowElement>) {
   return (
-    <tr className={cn(props.className, 'gi-table-tr')} {...props}>
+    <tr className={cn(props.className, 'gi-overflow-hidden gi-align-middle')} {...props}>
       {children}
     </tr>
   );
