@@ -92,8 +92,7 @@ import {
   HeaderMenuItemSeparator,
   HeaderMenuItemButton,
 } from '@ogcio/design-system-react';
-import { LogoWhite } from '@ogcio/design-system-react/logos';
-import { LogoHarpWhite } from '@ogcio/design-system-react/logos';
+import { LogoWhite, LogoHarpWhite } from '@ogcio/design-system-react/logos';
 import { useEffect, useRef, useState } from 'react';
 
 const HeaderComposable = () => {
