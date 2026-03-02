@@ -11,6 +11,7 @@ export const useAriaHider = (
     const element = ref.current;
 
     const documentContext = element.ownerDocument ?? document;
+    (documentContext.activeElement as HTMLElement).blur();
     const bodyChildren = [...documentContext.body.children];
 
     const elementsToHide: Element[] = bodyChildren.filter((child) => {

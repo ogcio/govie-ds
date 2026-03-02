@@ -121,11 +121,6 @@ export const ModalWrapper = ({
     () => splitAriaProps(props as Record<string, unknown>),
     [props],
   );
-  useLayoutEffect(() => {
-    if (isOpen && modalRef.current !== null) {
-      modalRef.current.focus();
-    }
-  }, [isOpen]);
 
   const allChildren = Children.toArray(children);
 
