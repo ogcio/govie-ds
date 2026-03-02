@@ -6,14 +6,15 @@ import {
 import { useLayoutEffect } from 'react';
 
 export const useFocusTrap = (
-  element: HTMLElement | null,
+  ref: React.RefObject<HTMLElement | null>,
   isActive: boolean,
   options?: FocusTrapOptions,
 ) => {
   useLayoutEffect(() => {
-    if (!element || !isActive) {
+    if (!isActive || !ref.current) {
       return;
     }
+    const element = ref.current;
 
     const trap: FocusTrap = createFocusTrap(element, {
       ...options,
@@ -27,5 +28,5 @@ export const useFocusTrap = (
     return () => {
       trap.deactivate();
     };
-  }, [element, isActive]);
+  }, [ref.current, isActive]);
 };

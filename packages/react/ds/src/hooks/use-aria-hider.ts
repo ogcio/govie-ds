@@ -1,21 +1,22 @@
 import { useLayoutEffect } from 'react';
 
 export const useAriaHider = (
-  refNode: HTMLElement | null,
+  ref: React.RefObject<HTMLElement | null>,
   shouldActivate: boolean,
 ): void => {
   useLayoutEffect(() => {
-    if (shouldActivate !== true || refNode === null) {
+    if (shouldActivate !== true || !ref.current) {
       return;
     }
+    const element = ref.current;
 
-    const documentContext = refNode.ownerDocument ?? document;
+    const documentContext = element.ownerDocument ?? document;
     const bodyChildren = [...documentContext.body.children];
 
-    const elementsToHide: Element[] = bodyChildren.filter((element) => {
-      const isSameElement: boolean = element === refNode;
+    const elementsToHide: Element[] = bodyChildren.filter((child) => {
+      const isSameElement: boolean = child === element;
       const alreadyHidden: boolean =
-        element.getAttribute('aria-hidden') === 'true';
+        child.getAttribute('aria-hidden') === 'true';
       return !isSameElement && !alreadyHidden;
     });
 
@@ -28,5 +29,5 @@ export const useAriaHider = (
         element.removeAttribute('aria-hidden');
       }
     };
-  }, [shouldActivate, refNode]);
+  }, [shouldActivate, ref.current]);
 };
