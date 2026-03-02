@@ -11,10 +11,11 @@ export const useFocusTrap = (
   options?: FocusTrapOptions,
 ) => {
   useLayoutEffect(() => {
-    if (!isActive || !ref.current) {
+    if (!isActive) {
       return;
     }
-    const element = ref.current;
+    const element = ref.current
+    if (!element) {return}
 
     const trap: FocusTrap = createFocusTrap(element, {
       ...options,
@@ -28,5 +29,5 @@ export const useFocusTrap = (
     return () => {
       trap.deactivate();
     };
-  }, [ref.current, isActive]);
+  }, [ref, isActive]);
 };
