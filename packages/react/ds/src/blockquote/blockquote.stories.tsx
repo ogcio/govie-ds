@@ -8,7 +8,7 @@ const meta = {
     docs: {
       description: {
         component:
-          'Inset text component to differentiate a block of text from the content that surrounds it.',
+          '**Deprecated:** `Blockquote` is an alias of `InsetText` and is kept for backwards compatibility. Use `InsetText` instead.',
       },
     },
   },
