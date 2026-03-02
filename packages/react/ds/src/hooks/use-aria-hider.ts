@@ -11,6 +11,7 @@ export const useAriaHider = (
     const element = ref.current;
 
     const documentContext = element.ownerDocument ?? document;
+    // blur the active element while aria-hiding the modal, before focus is restored
     (documentContext.activeElement as HTMLElement | null)?.blur?.();
     const bodyChildren = [...documentContext.body.children];
 
