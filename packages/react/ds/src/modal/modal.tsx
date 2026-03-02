@@ -8,6 +8,7 @@ import {
   useState,
   useRef,
   useEffect,
+  useLayoutEffect,
   useMemo,
   useId,
 } from 'react';
@@ -120,11 +121,11 @@ export const ModalWrapper = ({
     () => splitAriaProps(props as Record<string, unknown>),
     [props],
   );
-  useEffect(() => {
+  useLayoutEffect(() => {
     if (isOpen && modalRef.current !== null) {
-      modalRef.current.focus()
+      modalRef.current.focus();
     }
-  }, [isOpen])
+  }, [isOpen]);
 
   const allChildren = Children.toArray(children);
 
@@ -144,15 +145,15 @@ export const ModalWrapper = ({
 
   const modalTitleClone = modalTitle
     ? cloneElement(modalTitle as ReactElement<HeadingProps>, {
-      as: size === 'sm' ? 'h5' : 'h4',
-      id: computedTitleId,
-    })
+        as: size === 'sm' ? 'h5' : 'h4',
+        id: computedTitleId,
+      })
     : null;
 
   const modalFooterClone = modalFooter
     ? cloneElement(modalFooter as ReactElement<ModalFooterProps>, {
-      dataModalSize: size,
-    })
+        dataModalSize: size,
+      })
     : null;
 
   const contentChildren = allChildren.filter(
@@ -360,7 +361,7 @@ const ModalPortal = ({
   isOpen,
 }: {
   children: ReactNode;
-  modalRef: any;
+  modalRef: React.RefObject<HTMLElement | null>;
   isOpen: boolean;
 }) => {
   const [isMounted, setIsMounted] = useState(false);
@@ -369,10 +370,7 @@ const ModalPortal = ({
     setIsMounted(true);
   }, []);
 
-  useFocusTrap(modalRef, isOpen && isMounted, {
-    initialFocus: modalRef?.current ?? true,
-    fallbackFocus: () => modalRef?.current,
-  });
+  useFocusTrap(modalRef, isOpen && isMounted);
 
   if (!isMounted) {
     return null;
