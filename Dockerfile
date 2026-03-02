@@ -1,5 +1,4 @@
-ARG IMAGE=docker.io/node:24-alpine
-FROM ${IMAGE} AS base
+FROM docker.io/node:22-alpine AS base
 
 # Build image (run from root)
 
