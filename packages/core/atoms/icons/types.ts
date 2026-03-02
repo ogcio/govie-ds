@@ -1,10 +1,11 @@
-export type IconProps = {
+export type BaseSVGProps = {
   id?: string;
   className?: string;
+  label?: string;
   size?: string | number;
-  color?: string;
-  role?: string;
-  ariaLabel?: string;
-  ariaHidden?: boolean;
   dataTestId?: string;
+};
+
+export type IconProps = BaseSVGProps & {
+  color?: string;
 };
