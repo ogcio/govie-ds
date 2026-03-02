@@ -1,0 +1,61 @@
+---
+title: 'Inset Text'
+description: 'Inset Text Design Guidelines'
+status: 'stable'
+component:
+  id: 'inset-text'
+  link: 'https://www.figma.com/design/ZEqfpXhocdZs1K5YfsE5ws/Design-system--Master-?node-id=9298-6870'
+  status: 'stable'
+---
+
+# InsetText
+
+Use the inset text component to visually emphasise quoted or cited content, especially when referencing external sources or highlighting key statements.
+
+<Section current="design">
+
+<ComponentContainer>
+  <InsetText cite="https://example.com/source">
+    It can take up to 8 weeks to register a lasting power of attorney if there
+    are no mistakes in the application.
+  </InsetText>
+</ComponentContainer>
+
+## Variants
+
+<ComponentContainer>
+  <InsetText cite="https://example.com/source">
+    The source URL or description for the quotation.
+  </InsetText>
+</ComponentContainer>
+
+## Usage
+
+Inset text is used to display content quoted from another source. It helps draw attention to important excerpts or testimonials and should include a citation when referencing external content.
+
+### Do
+
+- Use inset text to highlight important or quoted content.
+- Always include a citation when quoting external sources.
+- Ensure accessibility by using semantic elements properly.
+- Keep the content concise and relevant to the surrounding text.
+
+<ComponentContainer>
+  <InsetText cite="https://gov.uk/lpa">
+    It can take up to 8 weeks to register a lasting power of attorney if there
+    are no mistakes in the application.
+  </InsetText>
+</ComponentContainer>
+
+### Don't
+
+- Don’t use inset text for styling non-quoted content.
+- Avoid overusing inset text; it should emphasise, not distract.
+- Don’t omit the citation when the quote is from an external source.
+- Avoid nesting inset text unless absolutely necessary.
+
+<ComponentContainer fullWidth>
+  <InsetText>Click below to continue</InsetText>
+</ComponentContainer>
+
+</Section>
