@@ -13,12 +13,12 @@
     "./styles.css": "./dist/styles.css",
     "./fonts.css": "./fonts.css",
     "./icons": {
-      "types": "./dist/exports/icons.d.ts",
-      "import": "./dist/exports/icons.js"
+      "types": "./dist/icons/index.d.ts",
+      "import": "./dist/icons/index.js"
     },
     "./logos": {
-      "types": "./dist/exports/logos.d.ts",
-      "import": "./dist/exports/logos.js"
+      "types": "./dist/logos/index.d.ts",
+      "import": "./dist/logos/index.js"
     }
   },
   "scripts": {
