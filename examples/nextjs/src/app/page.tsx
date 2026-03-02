@@ -92,8 +92,7 @@ import {
   HeaderMenuItemSeparator,
   HeaderMenuItemButton,
 } from '@ogcio/design-system-react';
-import LogoWhite from '@ogcio/design-system-react/logos/LogoWhite';
-import LogoHarpWhite from '@ogcio/design-system-react/logos/LogoHarpWhite';
+import { LogoWhite, LogoHarpWhite } from '@ogcio/design-system-react/logos';
 import { useEffect, useRef, useState } from 'react';
 
 const HeaderComposable = () => {
@@ -104,15 +103,11 @@ const HeaderComposable = () => {
       <Header variant="default" aria-label="Site header" id="GovieHeader">
         <HeaderLogo>
           <LogoHarpWhite
-            role="img"
-            aria-label="Gov.ie logo"
-            focusable="false"
+            label="Gov.ie logo"
             className="gi-block gi-h-10 gi-w-auto sm:gi-hidden"
           />
           <LogoWhite
-            role="img"
-            aria-label="Gov.ie logo"
-            focusable="false"
+            label="Gov.ie logo"
             className="gi-hidden gi-h-12 gi-w-auto sm:gi-block"
           />
         </HeaderLogo>

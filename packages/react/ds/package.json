@@ -12,13 +12,13 @@
     ".": "./dist/index.js",
     "./styles.css": "./dist/styles.css",
     "./fonts.css": "./fonts.css",
-    "./logos": {
-      "types": "./dist/assets/logos/index.d.ts",
-      "import": "./dist/assets/logos/index.js"
+    "./icons": {
+      "types": "./dist/icons/index.d.ts",
+      "import": "./dist/icons/index.js"
     },
-    "./logos/*": {
-      "types": "./dist/assets/logos/*.d.ts",
-      "import": "./dist/assets/logos/*.js"
+    "./logos": {
+      "types": "./dist/logos/index.d.ts",
+      "import": "./dist/logos/index.js"
     }
   },
   "scripts": {
