@@ -114,7 +114,7 @@ export const ButtonGroup: FC<ButtonGroupProps> = ({
     >
       <div
         className={cn(
-          'gi-flex gi-flex-wrap gi-gap-3 [&_button]:gi-min-w-12 [&_button]:gi-justify-center',
+          'gi-flex gi-flex-wrap gi-gap-3 [&_button]:gi-min-w-12 [&_button]:gi-justify-center [&_button]:gi-px-0',
           className,
         )}
         role={customRole || 'radiogroup'}

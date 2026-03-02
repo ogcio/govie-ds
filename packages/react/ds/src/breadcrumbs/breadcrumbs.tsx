@@ -42,7 +42,7 @@ export const Breadcrumbs = ({ children, iconStart }: BreadcrumbProps) => {
   return (
     <nav
       aria-label={t('breadcrumbs.breadcrumbs', { defaultValue: 'Breadcrumbs' })}
-      className="gi-flex gi-items-center gi-gap-1 [&>ol]:gi-flex [&>ol]:gi-list-none [&>ol]:gi-flex-wrap [&>ol]:[&>li]:gi-flex [&>ol]:[&>li]:gi-items-center [&>ol>li:not(:first-child)]:gi-mx-0"
+      className="gi-flex gi-items-center gi-gap-1 [&>ol]:gi-flex [&>ol]:gi-list-none [&>ol]:gi-flex-wrap [&>ol>li:not(:first-child)]:gi-mx-0 [&>ol>li]:gi-flex [&>ol>li]:gi-items-center"
     >
       <ol role="list">
         {iconStart && (
