@@ -1,8 +1,8 @@
-FROM docker.io/node:22-alpine AS base
+ARG NODE_IMAGE=docker.io/node:24-alpine
+ARG NGINX_IMAGE=docker.io/nginxinc/nginx-unprivileged:1-alpine3.23-slim
 
 # Build image (run from root)
-
-FROM base AS builder
+FROM ${NODE_IMAGE} AS builder
 
 ARG DEPLOY_ENV
 
@@ -27,13 +27,7 @@ RUN pnpm react:storybook:build
 
 # Production image
 
-FROM docker.io/nginxinc/nginx-unprivileged:1.29.5-alpine
-# Temporary fix for CVE-2026-25646
-USER root
-RUN apk update && \
-    apk add --no-cache libpng=~1.6.55 && \
-    rm -rf /var/cache/apk/*
-# Remove this block after the image upgrade
+FROM ${NGINX_IMAGE}
 
 # Copy static assets from builder stage
 COPY --from=builder --chown=nginx /build/apps/docs/out /usr/share/nginx/html/doc
