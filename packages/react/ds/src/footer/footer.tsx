@@ -103,7 +103,9 @@ export function Footer({
               defaultValue: 'Footer Secondary Slot',
             })}
           >
-            <div className="gi-w-fit gi-mt-8 md:gi-mt-0 lg:gi-ml-auto lg:gi-flex-none gi-rounded-sm gi-focus-state-outline gi-focus-within-state-outline gi-focus-visible-state-outline">{renderLogo()}</div>
+            <div className="gi-w-fit gi-mt-8 md:gi-mt-0 lg:gi-ml-auto lg:gi-flex-none gi-rounded-sm gi-focus-state-outline gi-focus-within-state-outline gi-focus-visible-state-outline">
+              {renderLogo()}
+            </div>
             {secondarySlot && (
               <div className="gi-grow md:gi-max-w-[calc(100%_-_var(--gieds-space-80))]">
                 {secondarySlot}

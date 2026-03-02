@@ -41,7 +41,9 @@ export const Details = ({ label, name, children, ...props }: DetailsProps) => {
         aria-expanded={isOpen ? 'true' : 'false'}
       >
         <Icon icon={isOpen ? 'keyboard_arrow_up' : 'keyboard_arrow_down'} />
-        <span className="gi-underline gi-underline-offset-[0.1rem]">{label}</span>
+        <span className="gi-underline gi-underline-offset-[0.1rem]">
+          {label}
+        </span>
       </summary>
       <div
         id="details-content"

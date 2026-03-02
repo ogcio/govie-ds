@@ -7,10 +7,7 @@ export const Combobox = ({
   dataTestid,
 }: ComboboxProps) => {
   return (
-    <div
-      className={cn('gi-max-w-[400px]', className)}
-      data-testid={dataTestid}
-    >
+    <div className={cn('gi-max-w-[400px]', className)} data-testid={dataTestid}>
       {children}
     </div>
   );

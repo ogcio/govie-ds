@@ -113,7 +113,10 @@ export const ButtonGroup: FC<ButtonGroupProps> = ({
       }}
     >
       <div
-        className={cn('gi-flex gi-flex-wrap gi-gap-3 [&_button]:gi-min-w-12 [&_button]:gi-justify-center', className)}
+        className={cn(
+          'gi-flex gi-flex-wrap gi-gap-3 [&_button]:gi-min-w-12 [&_button]:gi-justify-center',
+          className,
+        )}
         role={customRole || 'radiogroup'}
         aria-labelledby={ariaLabelledby}
         aria-describedby={ariaDescribedby}
