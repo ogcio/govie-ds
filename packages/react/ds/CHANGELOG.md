@@ -1,5 +1,17 @@
 # Changelog
 
+## [1.31.0](https://github.com/ogcio/govie-ds/compare/react-lib-v1.30.0...react-lib-v1.31.0) (2026-03-02)
+
+
+### Features
+
+* **AB#35161:** adding storybook into angular pkg ([#857](https://github.com/ogcio/govie-ds/issues/857)) ([e0b6b7f](https://github.com/ogcio/govie-ds/commit/e0b6b7fd9bdbb00628dacb76b6629db652d9fe9b))
+
+
+### Bug Fixes
+
+* **AB#33685:** Fixing SelectNext tests ([#858](https://github.com/ogcio/govie-ds/issues/858)) ([acc3ce4](https://github.com/ogcio/govie-ds/commit/acc3ce4cf18eb7d77b9daebed307f2e18bdc0851))
+
 ## [1.30.0](https://github.com/ogcio/govie-ds/compare/react-lib-v1.29.0...react-lib-v1.30.0) (2026-02-24)
 
 

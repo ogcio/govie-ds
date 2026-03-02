@@ -1,5 +1,14 @@
 # Changelog
 
+## [1.30.1](https://github.com/ogcio/govie-ds/compare/docs-v1.30.0...docs-v1.30.1) (2026-03-02)
+
+
+### Dependencies
+
+* The following workspace dependencies were updated
+  * dependencies
+    * @ogcio/design-system-react bumped to 1.31.0
+
 ## [1.30.0](https://github.com/ogcio/govie-ds/compare/docs-v1.29.0...docs-v1.30.0) (2026-02-24)
 
 
