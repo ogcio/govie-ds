@@ -8,6 +8,7 @@ import {
   useState,
   useRef,
   useEffect,
+  useLayoutEffect,
   useMemo,
   useId,
 } from 'react';
@@ -114,8 +115,8 @@ export const ModalWrapper = ({
   dataTestId,
   ...props
 }: ModalWrapperProps) => {
-  const modalRef = useRef(null);
-  useAriaHider(modalRef.current, isOpen);
+  const modalRef = useRef<HTMLDivElement | null>(null);
+  useAriaHider(modalRef, isOpen);
   const [ariaProps, rest] = useMemo(
     () => splitAriaProps(props as Record<string, unknown>),
     [props],
@@ -355,7 +356,7 @@ const ModalPortal = ({
   isOpen,
 }: {
   children: ReactNode;
-  modalRef: any;
+  modalRef: React.RefObject<HTMLElement | null>;
   isOpen: boolean;
 }) => {
   const [isMounted, setIsMounted] = useState(false);
@@ -364,10 +365,7 @@ const ModalPortal = ({
     setIsMounted(true);
   }, []);
 
-  useFocusTrap(modalRef?.current, isOpen && isMounted, {
-    initialFocus: modalRef?.current ?? true,
-    fallbackFocus: () => modalRef?.current,
-  });
+  useFocusTrap(modalRef, isOpen && isMounted);
 
   if (!isMounted) {
     return null;
