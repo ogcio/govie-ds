@@ -153,9 +153,8 @@ export const ScoreSelect: React.FC<ScoreSelectProps> = ({
           role="radiogroup"
           aria-labelledby={labelId}
           aria-describedby={hintId}
-          className={cn({
-            'gi-flex-col gi-items-start [&_button]:gi-px-0':
-              isVerticalOrientation,
+          className={cn('[&_button]:gi-px-0', {
+            'gi-flex-col gi-items-start': isVerticalOrientation,
           })}
         >
           {scoreOptions.map((option) => (
