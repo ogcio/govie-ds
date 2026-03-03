@@ -154,7 +154,8 @@ export const ScoreSelect: React.FC<ScoreSelectProps> = ({
           aria-labelledby={labelId}
           aria-describedby={hintId}
           className={cn({
-            'gi-flex-col gi-items-start': isVerticalOrientation,
+            'gi-flex-col gi-items-start [&_button]:gi-px-0':
+              isVerticalOrientation,
           })}
         >
           {scoreOptions.map((option) => (
