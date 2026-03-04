@@ -176,6 +176,15 @@ export const NoUnderline: Story = {
   },
 };
 
+export const NoUnderlineLinkHover: Story = {
+  args: {
+    ...baseProps,
+    children: 'Link ypj',
+    noUnderline: true,
+    className: 'link-hover',
+  },
+};
+
 export const NoUnderlineWithIcons: Story = {
   args: withIcons({
     ...baseProps,
