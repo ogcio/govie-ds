@@ -1,8 +1,29 @@
 'use client';
 
 import { useState, useRef, useEffect } from 'react';
+import { tv } from 'tailwind-variants';
 import { Icon } from '../icon/icon.js';
 
+const summaryVariants = tv({
+  base: [
+    'gi-flex',
+    'gi-items-center',
+    'gi-relative',
+    'gi-mb-1',
+    'gi-w-fit',
+    'gi-list-none',
+    'focus:gi-rounded-sm',
+    'focus-visible:gi-rounded-sm',
+    `focus:gi-shadow-[0_0_0_2px_var(--gieds-color-gray-950),0_0_0_5px_var(--gieds-color-yellow-400)]`,
+    `focus-visible:gi-shadow-[0_0_0_2px_var(--gieds-color-gray-950),0_0_0_5px_var(--gieds-color-yellow-400)]`,
+    'focus-visible:gi-outline-none',
+    '[&:focus>span]:gi-no-underline',
+    '[&:focus>span]:gi-select-none',
+    '[&:hover>span]:gi-underline-offset-[0.1rem]',
+    '[&:hover>span]:[text-decoration-thickness:max(3px)]',
+    '[&:hover>span]:[text-decoration-skip-ink:none]',
+  ],
+});
 export type DetailsProps = {
   label: string;
 } & React.DetailsHTMLAttributes<HTMLDetailsElement>;
@@ -34,8 +55,7 @@ export const Details = ({ label, name, children, ...props }: DetailsProps) => {
       {...props}
     >
       <summary
-        className="gi-flex gi-items-center gi-relative gi-mb-1 gi-cursor-pointer gi-text-gray-950 gi-w-fit gi-list-none hover:gi-text-gray-950 focus:gi-rounded-sm focus:gi-shadow-[0_0_0_2px_var(--gieds-color-gray-950),0_0_0_5px_var(--gieds-color-yellow-400)] focus-visible:gi-shadow-[0_0_0_2px_var(--gieds-color-gray-950),0_0_0_5px_var(--gieds-color-yellow-400)] focus-visible:gi-rounded-sm focus-visible:gi-outline-none [&:focus>span]:gi-no-underline [&:focus>span]:gi-select-none [&:hover>span]:gi-underline-offset-[0.1rem] [&:hover>span]:[text-decoration-thickness:max(3px)] [&:hover>span]:[text-decoration-skip-ink:none]"
-        data-testid="govie-details-summary"
+        className={summaryVariants()}
         role="button"
         aria-controls="details-content"
         aria-expanded={isOpen ? 'true' : 'false'}
