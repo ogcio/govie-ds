@@ -1,3 +1,3 @@
 export { default as DsButton } from './DsButton';
-export { default as InsetText } from './DsInsetText';
+export { default as InsetText } from './InsetText';
 export * from './icons'

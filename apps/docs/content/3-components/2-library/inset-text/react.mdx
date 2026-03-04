@@ -21,17 +21,13 @@ component:
           ofType: 'string'
           description: 'The source URL or description for the quotation.'
           required: false
-        - name: 'ariaDescribedBy'
+        - name: 'describedBy'
           ofType: 'string'
           description: 'Points to element id(s) whose content describes the inset text. Maps to `aria-describedby`.'
           required: false
-        - name: 'ariaLabelledBy'
+        - name: 'labelledBy'
           ofType: 'string'
-          description: 'Points to element id(s) whose content labels the inset text. Maps to `aria-labelledby`. If provided, `ariaLabel` is ignored.'
-          required: false
-        - name: 'ariaLabel'
-          ofType: 'string'
-          description: 'Accessible name when there is no visible label. Maps to `aria-label`. Ignored if `ariaLabelledBy` is provided.'
+          description: 'Points to element id(s) whose content labels the inset text. Maps to `aria-labelledby`.'
           required: false
   stories:
     - name: 'default'
@@ -46,9 +42,8 @@ Use the inset text component to visually emphasise quoted or cited content, espe
 
 <ComponentPreview>
   <InsetText cite="https://example.com/source">
-    {` 
-    It can take up to 8 weeks to register a lasting power of attorney if there are no mistakes in the application. 
-    `}
+    It can take up to 8 weeks to register a lasting power of attorney if there
+    are no mistakes in the application.
   </InsetText>
 </ComponentPreview>
 

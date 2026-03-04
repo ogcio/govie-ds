@@ -129,7 +129,7 @@ export type {
 export {
   default as InsetText,
   type Props as InsetTextProps,
-} from './atoms/DsInsetText.js';
+} from './atoms/InsetText.js';
 export type { LabelTextProps } from './label/types.js';
 export { Link, type LinkProps } from './link/link.js';
 export { ListItem, type ListItemProps } from './list-item/list-item.js';

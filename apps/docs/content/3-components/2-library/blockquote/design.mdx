@@ -1,23 +1,22 @@
 ---
 title: Blockquote
 description: Blockquote Design Guidelines
-status: stable
+status: deprecated
 component:
   id: 'blockquote'
-  status: 'stable'
+  status: 'deprecated'
 ---
 
 # Blockquote
 
-<Blockquote cite="https://example.com/source">
-  **Deprecated:** This component is deprecated and should be replaced by
-  `InsetText`.
-</Blockquote>
+<InsetText>
+  `Blockquote` is deprecated. Use `InsetText` instead. Blockquote will be
+  removed in version 2.
+</InsetText>
 
-Use the blockquote component to visually emphasise quoted or cited content, especially when referencing external sources or highlighting key statements.
+`Blockquote` is kept only for backward compatibility. New code should use `InsetText`.
 
 <Section current="design">
-
 <ComponentPreview>
   <Blockquote cite="https://example.com/source">
     It can take up to 8 weeks to register a lasting power of attorney if there
@@ -25,44 +24,16 @@ Use the blockquote component to visually emphasise quoted or cited content, espe
   </Blockquote>
 </ComponentPreview>
 
-## Variants
+## Use `InsetText` (recommended)
 
-<ComponentPreviewLayout className="flex-col">
-  <ComponentPreviewItem className="block h-auto w-max">
-    <Blockquote cite="https://example.com/source">
-      The source URL or description for the quotation.
-    </Blockquote>
-  </ComponentPreviewItem>
-</ComponentPreviewLayout>
-
-## Usage
-
-Blockquotes are used to display content quoted from another source. They help draw attention to important excerpts or testimonials and should include a citation when referencing external content.
-
-### Do
-
-- Use blockquotes to highlight important or quoted content.
-- Always include a citation when quoting external sources.
-- Ensure accessibility by using semantic elements properly.
-- Keep the content concise and relevant to the surrounding text.
-
-<ComponentContainer>
-  <Blockquote cite="https://gov.uk/lpa">
+<ComponentPreview>
+  <InsetText cite="https://example.com/source">
     It can take up to 8 weeks to register a lasting power of attorney if there
     are no mistakes in the application.
-  </Blockquote>
-</ComponentContainer>
+  </InsetText>
+</ComponentPreview>
 
-### Don't
+Use `InsetText` to visually differentiate a block of text from the content that surrounds it.
+If the content is a quote, you can still provide `cite`.
 
-- Don’t use blockquotes for styling non-quoted content.
-- Avoid overusing blockquotes; they should emphasise, not distract.
-- Don’t omit the citation when the quote is from an external source.
-- Avoid nesting blockquotes unless absolutely necessary.
-
-<ComponentContainer fullWidth>
-  <Blockquote>
-    Click below to continue
-  </Blockquote>
-</ComponentContainer>
 </Section>

@@ -1,5 +1,5 @@
 import type { Meta, StoryObj } from '@storybook/angular';
-import DsInsetText from '../../atoms/DsInsetText';
+import DsInsetText from '../../atoms/InsetText';
 
 const meta: Meta<DsInsetText> = {
   title: 'Typography/InsetText',
@@ -14,20 +14,15 @@ const meta: Meta<DsInsetText> = {
       control: 'text',
       description: 'The source URL or description for the quotation.',
     },
-    ariaDescribedBy: {
+    describedBy: {
       control: 'text',
       description:
         'Points to element id(s) whose content describes the inset text. Maps to `aria-describedby`.',
     },
-    ariaLabelledBy: {
+    labelledBy: {
       control: 'text',
       description:
-        'Points to element id(s) whose content labels the inset text. Maps to `aria-labelledby`. If provided, `ariaLabel` is ignored.',
-    },
-    ariaLabel: {
-      control: 'text',
-      description:
-        'Accessible name when there is no visible label. Maps to `aria-label`. Ignored if `ariaLabelledBy` is provided.',
+        'Points to element id(s) whose content labels the inset text. Maps to `aria-labelledby`.',
     },
   },
 };
@@ -39,22 +34,20 @@ export const Default: Story = {
   args: {
     id: 'inset-text-default',
     cite: 'https://example.com/source',
-    ariaDescribedBy: '',
-    ariaLabelledBy: '',
-    ariaLabel: '',
+    describedBy: '',
+    labelledBy: '',
   },
   render: (args) => ({
     props: args,
     template: `
-      <ds-inset-text
+      <inset-text
         [id]="id"
         [cite]="cite"
-        [ariaDescribedBy]="ariaDescribedBy"
-        [ariaLabelledBy]="ariaLabelledBy"
-        [ariaLabel]="ariaLabel"
+        [describedBy]="describedBy"
+        [labelledBy]="labelledBy"
       >
         It can take up to 8 weeks to register a lasting power of attorney if there are no mistakes in the application.
-      </ds-inset-text>
+      </inset-text>
     `,
   }),
 };
