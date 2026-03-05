@@ -99,7 +99,7 @@ export default meta;
 type Story = StoryObj<typeof meta>;
 
 const baseProps: LinkProps = {
-  children: 'Link text',
+  children: 'Example link',
   href: '#',
 };
 
@@ -179,7 +179,6 @@ export const NoUnderline: Story = {
 export const NoUnderlineLinkHover: Story = {
   args: {
     ...baseProps,
-    children: 'Link ypj',
     noUnderline: true,
     className: 'link-hover',
   },
