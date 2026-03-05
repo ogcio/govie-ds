@@ -35,8 +35,9 @@ export const CookieBanner = ({
             <Container>
               <div id="cookie-banner-description">{children}</div>
               <div
-                className="gi-flex gi-gap-4 gi-items-center gi-flex-col xs:gi-flex-row gi-my-4 
-                          [&_button]:gi-w-full [&_button]:gi-justify-center [&_button]:xs:gi-w-auto"
+                className="
+                  gi-flex gi-gap-4 gi-items-center gi-flex-col xs:gi-flex-row gi-my-4 
+                  [&_button]:gi-w-full [&_button]:gi-justify-center [&_button]:xs:gi-w-auto"
               >
                 {accept && accept}
                 {reject && reject}
