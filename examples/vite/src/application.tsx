@@ -1,31 +1,13 @@
 import {
   Alert,
-  BreadcrumbCurrentLink,
-  BreadcrumbLink,
-  Breadcrumbs,
   Button,
-  ButtonGroup,
-  ButtonGroupItem,
   Card,
-  CharacterCount,
-  Chip,
   Combobox,
   Container,
   CookieBanner,
-  DataTableFooter,
-  DataTableFooterCenter,
-  DataTableFooterStart,
-  DataTableHeader,
-  DataTableHeaderSearch,
-  Details,
-  Drawer,
-  DrawerBody,
-  DrawerFooter,
   DropdownItem,
   Footer,
   Form,
-  FormField,
-  FormFieldLabel,
   FormFieldWithTag,
   Header,
   HeaderLogo,
@@ -48,16 +30,12 @@ import {
   InputText,
   Link,
   Modal,
-  ModalTitle,
   Pagination,
   Paragraph,
   PhaseBanner,
-  Popover,
   ProgressStepper,
   Select,
   SelectItem,
-  SelectItemNext,
-  SelectNext,
   StepItem,
   TabItem,
   TabList,
@@ -71,7 +49,7 @@ import {
 } from '@ogcio/design-system-react';
 import '@ogcio/design-system-react/styles.css';
 import '@ogcio/theme-govie/theme.css';
-import { useRef, useState } from 'react';
+import { useState } from 'react';
 import { ComboBoxProps, CookieBannerProps } from './props';
 
 const toastProps: ToastProps = {
@@ -84,24 +62,6 @@ const toastProps: ToastProps = {
     x: 'right',
     y: 'bottom',
   },
-};
-
-const PopoverSection = () => {
-  const triggerRef = useRef<HTMLButtonElement>(null);
-  const [open, setOpen] = useState(false);
-
-  return (
-    <div className="gi-h-20">
-      <Button ref={triggerRef} onClick={() => setOpen(!open)}>
-        Open Popover
-      </Button>
-      <Popover triggerRef={triggerRef} open={open} onOpenChange={setOpen}>
-        <div className="gi-text-sm gi-text-gray-800 gi-p-6">
-          This is popover content. Click outside to close.
-        </div>
-      </Popover>
-    </div>
-  );
 };
 
 const HeaderComposable = () => {
@@ -172,7 +132,6 @@ const HeaderComposable = () => {
 
 export function App() {
   const [currentPage, setCurrentPage] = useState(5);
-  const [charCountValue, setCharCountValue] = useState('');
   return (
     <>
       <HeaderComposable />
@@ -336,129 +295,7 @@ export function App() {
         <Alert title="Info Alert" dismissible>
           <Paragraph>This is the content</Paragraph>
         </Alert>
-
-        <hr />
-        <h2>CharacterCount</h2>
-        <FormFieldWithTag label={{ text: 'With character count' }}>
-          <TextArea
-            id="char-count-demo"
-            maxChars={100}
-            value={charCountValue}
-            onChange={(event) => setCharCountValue(event.target.value)}
-          />
-          <CharacterCount maxChars={100} value={charCountValue} />
-        </FormFieldWithTag>
-
-        <hr />
-        <h2>Details</h2>
-        <Details label="Help with nationality">
-          <Paragraph>
-            If you&apos;re not sure about your nationality, try to find it on
-            your passport or national ID card.
-          </Paragraph>
-        </Details>
-
-        <hr />
-        <h2>InputFile</h2>
-        <InputFile id="file-upload-demo" />
-
-        <hr />
-        <h2>Popover</h2>
-        <PopoverSection />
-
-        <hr />
-        <h2>Chip</h2>
-        <div className="gi-flex gi-gap-2 gi-flex-wrap">
-          <Chip label="Chip one" onClose={() => null} />
-          <Chip label="Chip two" onClose={() => null} />
-        </div>
-
-        <hr />
-        <h2>Combobox</h2>
-        <Form>
-          <Combobox>
-            <DropdownItem options={ComboBoxProps.organisationOptions}>
-              Organisations
-            </DropdownItem>
-            <DropdownItem options={ComboBoxProps.categoryOptions}>
-              Category
-            </DropdownItem>
-            <DropdownItem options={ComboBoxProps.topicOptions}>
-              Topic
-            </DropdownItem>
-          </Combobox>
-        </Form>
-
-        <hr />
-        <h2>Breadcrumbs</h2>
-        <Breadcrumbs>
-          <BreadcrumbLink href="#">Home</BreadcrumbLink>
-          <BreadcrumbLink href="#">Section</BreadcrumbLink>
-          <BreadcrumbCurrentLink href="#">Current page</BreadcrumbCurrentLink>
-        </Breadcrumbs>
-
-        <hr />
-        <h2>SelectNext</h2>
-        <FormField>
-          <FormFieldLabel text="Select an option" />
-          <SelectNext id="select-next-demo" placeholder="Choose...">
-            <SelectItemNext value="a">Option A</SelectItemNext>
-            <SelectItemNext value="b">Option B</SelectItemNext>
-            <SelectItemNext value="c">Option C</SelectItemNext>
-          </SelectNext>
-        </FormField>
-
-        <hr />
-        <h2>DataTableHeader &amp; DataTableFooter</h2>
-        <div className="gi-flex gi-flex-col gi-gap-4">
-          <DataTableHeader>
-            <DataTableHeaderSearch className="gi-max-w-52">
-              <InputText
-                id="data-table-search-demo"
-                placeholder="Search..."
-              />
-            </DataTableHeaderSearch>
-          </DataTableHeader>
-          <DataTableFooter standalone>
-            <DataTableFooterStart>
-              <Paragraph className="gi-text-sm">Showing 1–10 of 50</Paragraph>
-            </DataTableFooterStart>
-            <DataTableFooterCenter>
-              <Pagination
-                currentPage={1}
-                onPageChange={() => null}
-                totalPages={5}
-              />
-            </DataTableFooterCenter>
-          </DataTableFooter>
-        </div>
-
-        <hr />
-        <h2>ButtonGroup</h2>
-        <ButtonGroup
-          name="alignment"
-          defaultValue="left"
-          onChange={(v) => console.log(v)}
-        >
-          <ButtonGroupItem value="left">Left</ButtonGroupItem>
-          <ButtonGroupItem value="center">Center</ButtonGroupItem>
-          <ButtonGroupItem value="right">Right</ButtonGroupItem>
-        </ButtonGroup>
-
-        <hr />
-        <h2>Drawer</h2>
-        <Drawer triggerButton={<Button>Open Drawer</Button>} position="right">
-          <ModalTitle>Drawer Title</ModalTitle>
-          <DrawerBody>
-            <Paragraph>
-              Drawer content goes here. Use for side panels and navigation.
-            </Paragraph>
-          </DrawerBody>
-          <DrawerFooter>
-            <Button variant="secondary">Cancel</Button>
-            <Button>Confirm</Button>
-          </DrawerFooter>
-        </Drawer>
+        {/* <List items={['Item 1', 'Item 2', 'Item 3']} type={TypeEnum.Bullet} /> */}
       </Container>
       <Footer
         utilitySlot={
