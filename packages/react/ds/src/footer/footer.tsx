@@ -104,8 +104,9 @@ export function Footer({
             })}
           >
             <div
-              className="gi-w-fit gi-mt-8 md:gi-mt-0 lg:gi-ml-autolg:gi-flex-none gi-rounded-sm 
-                         gi-focus-state-outline gi-focus-within-state-outline gi-focus-visible-state-outline"
+              className="
+                gi-w-fit gi-mt-8 md:gi-mt-0 lg:gi-ml-autolg:gi-flex-none gi-rounded-sm 
+                gi-focus-state-outline gi-focus-within-state-outline gi-focus-visible-state-outline"
             >
               {renderLogo()}
             </div>
