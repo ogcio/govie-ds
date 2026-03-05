@@ -132,7 +132,7 @@ export const Default: Story = {
 
     await step('should render link text', async () => {
       expect(linkElement).toBeInTheDocument();
-      expect(linkElement).toHaveTextContent('Link text');
+      expect(linkElement).toHaveTextContent('Example link');
     });
 
     await step('should have correct href', async () => {

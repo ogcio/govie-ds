@@ -31,7 +31,7 @@
 }
 
 .gi-link-no-underline {
-  @apply hover:gi-underline gi-no-underline gi-underline-offset-[0.2em] focus:gi-no-underline;
+  @apply hover:gi-underline gi-no-underline focus:gi-no-underline;
 }
 
 /* Firefox hides the underline for descending characters at 0.2em, so we need to increase it to 0.3em */
