@@ -33,7 +33,7 @@ export const Default: Story = {
     },
     size: {
       control: 'radio',
-      options: ['lg', 'md', 'sm'],
+      options: ['xl', 'lg', 'md', 'sm'],
       type: { name: 'string', required: false },
       description: 'Specifies the size of the paragraph.',
     },
@@ -167,6 +167,22 @@ export const AsSpan: Story = {
         expect(element.tagName).toBe('SPAN');
       },
     );
+  },
+};
+
+export const TestSizeXl: Story = {
+  tags: ['skip-playwright'],
+  args: {
+    as: 'p',
+    children: 'Extra large text',
+    size: 'xl',
+  },
+  play: async ({ canvasElement, step }) => {
+    const canvas = within(canvasElement);
+    await step('should have correct text size classes for "xl"', async () => {
+      const element = canvas.getByText('Extra large text');
+      expect(element.classList.contains('gi-paragraph-xl')).toBe(true);
+    });
   },
 };
 
