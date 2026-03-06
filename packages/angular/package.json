@@ -13,7 +13,7 @@
     "./styles.css": "./dist/styles.css"
   },
   "scripts": {
-    "build:styles": "tailwindcss -i ./styles.css -o ./dist/styles.css --minify && node scripts/build-styles.mjs",
+    "build:styles": "tailwindcss -i ./styles.css -o ./dist/styles.css --minify",
     "build": "ng-packagr -p ng-package.json && pnpm build:styles",
     "typecheck": "tsc -p tsconfig.json --noEmit",
     "storybook:dev": "ng run design-system-angular:storybook",
