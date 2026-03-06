@@ -37,7 +37,7 @@
 /* Firefox hides the underline for descending characters at 0.2em, so we need to increase it to 0.3em */
 @supports (-moz-appearance: none) {
   .gi-link {
-    @apply gi-underline-offset-[0.3em];
+    @apply gi-underline-offset-[0.23em];
   }
 }
 
