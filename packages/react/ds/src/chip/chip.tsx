@@ -4,6 +4,7 @@ import { tv } from 'tailwind-variants';
 import { cn } from '../cn.js';
 import { translate as t } from '../i18n/utility.js';
 import { Icon } from '../icon/icon.js';
+
 export type ChipProps = {
   label: string;
   onClose: (
