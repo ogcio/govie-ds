@@ -37,6 +37,7 @@ export const Details = ({ label, name, children, ...props }: DetailsProps) => {
       <summary
         className={summaryVariants()}
         role="button"
+        data-testid="govie-details-summary"
         aria-controls="details-content"
         aria-expanded={isOpen ? 'true' : 'false'}
       >
