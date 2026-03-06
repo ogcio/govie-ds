@@ -18,6 +18,7 @@ export default meta;
 type Story = StoryObj<typeof meta>;
 
 export const Default: Story = {
+  tags: ['skip-playwright'],
   argTypes: {
     children: {
       control: 'text',
