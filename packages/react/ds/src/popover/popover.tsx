@@ -169,7 +169,10 @@ export const Popover = ({
       ref={popoverRef}
       aria-label="popover"
       role="dialog"
-      className={cn('gi-popover', className)}
+      className={cn(
+        'gi-overflow-y-auto gi-bg-color-surface-system-neutral-layer1 gi-z-[1000] gi-rounded-sm gi-border-[1px] gi-border-color-border-system-neutral-muted [width:inherit]',
+        className,
+      )}
     >
       {children}
     </div>

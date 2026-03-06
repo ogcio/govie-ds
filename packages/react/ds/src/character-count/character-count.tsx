@@ -14,7 +14,7 @@ export const CharacterCount: React.FC<CharacterCountProps> = ({
   const remainingChars = Math.max(0, maxChars - (value?.length ?? 0));
 
   return (
-    <div className="gi-textarea-remaining-chars">
+    <div className="gi-mt-2">
       <HintText
         text={t('textarea.remainingChars', {
           remainingChars,

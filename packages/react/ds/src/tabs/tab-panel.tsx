@@ -9,7 +9,7 @@ export function TabPanel({ value, children }: TabPanelProps) {
       aria-labelledby={`tab-panel-${valueSlug}`}
       id={`tab-panel-${valueSlug}`}
       tabIndex={0}
-      className="gi-tab-panel"
+      className="gi-hidden gi-basis-full gi-pt-2 focus-visible:gi-outline-none"
     >
       {children}
     </div>

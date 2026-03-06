@@ -276,7 +276,6 @@ export const CompleteFooter: Story = {
       expect(footerElement).toBeInTheDocument();
       expect(footerElement).toHaveAttribute('aria-label', 'Footer');
       expect(footerElement).toHaveAttribute('data-testid', 'gi-footer');
-      expect(footerElement).toHaveClass('gi-footer');
     });
 
     await step(
