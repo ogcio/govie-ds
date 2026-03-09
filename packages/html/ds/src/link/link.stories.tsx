@@ -116,7 +116,7 @@ const withIcons = (props: LinkProps) => {
 
 const baseProps = {
   href: '#',
-  content: 'Link text',
+  content: 'Example link',
 };
 
 export const Default: Story = {
