@@ -10,12 +10,12 @@ A version of the design system implemented as React components is currently unde
 
 These are idiomatic components suitable for modern React applications, for example developed with Next.js or Vite.
 
-<Blockquote>
+<InsetText>
 Please check the [current status](/components/) of each React component for latest updates.
 
 If you are interested in the use of React components that implement the design system, please [contact the design system team](/contact/).
 
-</Blockquote>
+</InsetText>
 
 ## Install with Node.js package manager (npm)
 
@@ -153,11 +153,11 @@ export default function App({ Component, pageProps }: AppProps) {
 
 #### Load Material Symbols Icons in Next.js 16
 
-<Blockquote>
+<InsetText>
   **Note:** Due to a breaking change in Next.js 16 (Turbopack), Material Symbols
   icons are not loaded automatically anymore. To make the icons work, you must
   explicitly load them using the `LoadMaterialSymbols` component.
-</Blockquote>
+</InsetText>
 
 ```tsx
 // app/layout.tsx
@@ -169,9 +169,7 @@ export default function RootLayout({ children }) {
       <head>
         <LoadMaterialSymbols />
       </head>
-      <body>
-        {children}
-      </body>
+      <body>{children}</body>
     </html>
   );
 }

@@ -1,0 +1,62 @@
+---
+title: 'InsetText'
+description: 'Inset text component to differentiate a block of text from the content that surrounds it. React Component'
+status: 'stable'
+component:
+  id: 'inset-text-react'
+  link: '/story/typography-insettext--docs'
+  status: 'stable'
+  properties:
+    - name: 'InsetTextProps'
+      fields:
+        - name: 'children'
+          ofType: 'ReactNode'
+          description: 'Content of the inset text.'
+          required: true
+        - name: 'id'
+          ofType: 'string'
+          description: 'Optional id for linking/targeting and aria references.'
+          required: false
+        - name: 'cite'
+          ofType: 'string'
+          description: 'The source URL or description for the quotation.'
+          required: false
+        - name: 'describedBy'
+          ofType: 'string'
+          description: 'Points to element id(s) whose content describes the inset text. Maps to `aria-describedby`.'
+          required: false
+        - name: 'labelledBy'
+          ofType: 'string'
+          description: 'Points to element id(s) whose content labels the inset text. Maps to `aria-labelledby`.'
+          required: false
+  stories:
+    - name: 'default'
+      url: '/story/typography-insettext--default'
+---
+
+# InsetText
+
+Use the inset text component to visually emphasise quoted or cited content, especially when referencing external sources or highlighting key statements.
+
+<Section current="react">
+
+<ComponentPreview>
+  <InsetText cite="https://example.com/source">
+    It can take up to 8 weeks to register a lasting power of attorney if there
+    are no mistakes in the application.
+  </InsetText>
+</ComponentPreview>
+
+### Default
+
+<StorybookFrame
+  heightClassName="h-max"
+  componentId="inset-text-react"
+  story="default"
+/>
+
+## Properties
+
+<ComponentPropertiesTable componentId="inset-text-react" />
+
+</Section>
