@@ -40,6 +40,7 @@ import {
   InputCheckbox,
   InputCheckboxGroup,
   InputFile,
+  InsetText,
   InputPassword,
   InputRadio,
   InputRadioGroup,
@@ -1098,6 +1099,10 @@ export default function Home() {
                         demonstrate typography styles.
                       </Paragraph>
                       <Paragraph as="span">This is a span paragraph</Paragraph>
+                      <InsetText>
+                        It can take up to 8 weeks to register a lasting power of
+                        attorney if there are no mistakes in the application.
+                      </InsetText>
                     </div>
                   </div>
                 </div>
