@@ -271,25 +271,61 @@ const loremIpsum =
   'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.';
 
 export const SizeXl: Story = {
+  tags: ['skip-playwright'],
   args: {
     as: 'span',
     size: 'xl',
     children: loremIpsum,
   },
+  play: async ({ canvasElement }) => {
+    const canvas = within(canvasElement);
+    const element = canvas.getByText(loremIpsum);
+    const { fontSize } = globalThis.getComputedStyle(element);
+    expect(fontSize).toBe('24px');
+  },
 };
 
 export const SizeLg: Story = {
+  tags: ['skip-playwright'],
   args: {
     as: 'span',
     size: 'lg',
     children: loremIpsum,
   },
+  play: async ({ canvasElement }) => {
+    const canvas = within(canvasElement);
+    const element = canvas.getByText(loremIpsum);
+    const { fontSize } = globalThis.getComputedStyle(element);
+    expect(fontSize).toBe('20px');
+  },
+};
+
+export const SizeMd: Story = {
+  tags: ['skip-playwright'],
+  args: {
+    as: 'span',
+    size: 'md',
+    children: loremIpsum,
+  },
+  play: async ({ canvasElement }) => {
+    const canvas = within(canvasElement);
+    const element = canvas.getByText(loremIpsum);
+    const { fontSize } = globalThis.getComputedStyle(element);
+    expect(fontSize).toBe('18px');
+  },
 };
 
 export const SizeSm: Story = {
+  tags: ['skip-playwright'],
   args: {
     as: 'span',
     size: 'sm',
     children: loremIpsum,
+  },
+  play: async ({ canvasElement }) => {
+    const canvas = within(canvasElement);
+    const element = canvas.getByText(loremIpsum);
+    const { fontSize } = globalThis.getComputedStyle(element);
+    expect(fontSize).toBe('16px');
   },
 };
