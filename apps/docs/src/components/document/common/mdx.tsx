@@ -58,6 +58,7 @@ import {
   InputRadio,
   InputRadioGroup,
   InputText,
+  InsetText,
   List,
   Modal,
   ModalBody,
@@ -426,6 +427,7 @@ const documentComponents: MDXComponents = {
   HeaderComposableSample,
   HeaderComposableDontSample,
   HeaderComposableGovieSample,
+  InsetText,
 };
 
 export function Mdx({ code }: MdxProps) {
