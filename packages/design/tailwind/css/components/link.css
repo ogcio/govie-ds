@@ -34,7 +34,7 @@
   @apply hover:gi-underline gi-no-underline focus:gi-no-underline;
 }
 
-/* Firefox hides the underline for descending characters at 0.2em, so we need to increase it to 0.3em */
+/* Firefox skips the underline for descending characters at 0.2em for the given font Lato, so we need to increase it to 0.23em */
 @supports (-moz-appearance: none) {
   .gi-link {
     @apply gi-underline-offset-[0.23em];
