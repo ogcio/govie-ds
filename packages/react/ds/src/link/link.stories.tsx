@@ -99,7 +99,7 @@ export default meta;
 type Story = StoryObj<typeof meta>;
 
 const baseProps: LinkProps = {
-  children: 'Link text',
+  children: 'Example link',
   href: '#',
 };
 
@@ -132,7 +132,7 @@ export const Default: Story = {
 
     await step('should render link text', async () => {
       expect(linkElement).toBeInTheDocument();
-      expect(linkElement).toHaveTextContent('Link text');
+      expect(linkElement).toHaveTextContent('Example link');
     });
 
     await step('should have correct href', async () => {
@@ -173,6 +173,14 @@ export const NoUnderline: Story = {
   args: {
     ...baseProps,
     noUnderline: true,
+  },
+};
+
+export const NoUnderlineLinkHover: Story = {
+  args: {
+    ...baseProps,
+    noUnderline: true,
+    className: 'link-hover',
   },
 };
 
