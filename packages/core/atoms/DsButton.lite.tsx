@@ -92,6 +92,7 @@ export default function DsButton(props: Props) {
 
 export const styles = tv({
   base: [
+    'gi-font-primary',
     'gi-border-solid',
     'gi-border-sm',
     'gi-gap-2',

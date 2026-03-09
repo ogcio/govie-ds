@@ -23,7 +23,12 @@
             "tsConfig": ".storybook/tsconfig.json",
             "port": 6006,
             "compodoc": false,
-            "styles": ["styles.css", "@ogcio/theme-govie/theme.css"]
+            "styles": [
+              "fonts.css",
+              "styles.css",
+              ".storybook/global.css",
+              "@ogcio/theme-govie/theme.css"
+            ]
           }
         },
         "build-storybook": {
@@ -34,7 +39,12 @@
             "tsConfig": ".storybook/tsconfig.json",
             "outputDir": "dist/storybook",
             "compodoc": false,
-            "styles": ["styles.css", "@ogcio/theme-govie/theme.css"]
+            "styles": [
+              "styles.css",
+              "fonts.css",
+              ".storybook/global.css",
+              "@ogcio/theme-govie/theme.css"
+            ]
           }
         }
       }

@@ -4,8 +4,17 @@
   "version": "0.1.0",
   "description": "The Government of Ireland Design System Angular components.",
   "type": "module",
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "default": "./dist/index.js"
+    },
+    "./fonts.css": "./dist/fonts.css",
+    "./styles.css": "./dist/styles.css"
+  },
   "scripts": {
-    "build": "ng-packagr -p ng-package.json",
+    "build:styles": "tailwindcss -i ./styles.css -o ./dist/styles.css --minify",
+    "build": "ng-packagr -p ng-package.json && pnpm build:styles",
     "typecheck": "tsc -p tsconfig.json --noEmit",
     "storybook:dev": "ng run design-system-angular:storybook",
     "storybook:build": "ng run design-system-angular:build-storybook"
@@ -25,6 +34,7 @@
     "@angular/compiler-cli": "^21.1.0",
     "@angular/core": "^21.1.0",
     "@chromatic-com/storybook": "4.0.1",
+    "@fontsource/lato": "^5.1.1",
     "@ogcio/design-system-tailwind": "workspace:*",
     "@ogcio/theme-govie": "workspace:*",
     "@storybook/addon-a11y": "9.1.3",
