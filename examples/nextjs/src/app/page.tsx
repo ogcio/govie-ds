@@ -1,9 +1,9 @@
-'use client';
-import NextLink from 'next/link';
-import { ComboBoxProps, CookieBannerProps } from '@/props';
-import { useForm, Controller, FormProvider } from 'react-hook-form';
-import { zodResolver } from '@hookform/resolvers/zod';
-import { z } from 'zod';
+"use client";
+import NextLink from "next/link";
+import { ComboBoxProps, CookieBannerProps } from "@/props";
+import { useForm, Controller, FormProvider } from "react-hook-form";
+import { zodResolver } from "@hookform/resolvers/zod";
+import { z } from "zod";
 import {
   Alert,
   Autocomplete,
@@ -91,9 +91,9 @@ import {
   HeaderPrimaryMenu,
   HeaderMenuItemSeparator,
   HeaderMenuItemButton,
-} from '@ogcio/design-system-react';
-import { LogoWhite, LogoHarpWhite } from '@ogcio/design-system-react/logos';
-import { useEffect, useRef, useState } from 'react';
+} from "@ogcio/design-system-react";
+import { LogoWhite, LogoHarpWhite } from "@ogcio/design-system-react/logos";
+import { useEffect, useRef, useState } from "react";
 
 const HeaderComposable = () => {
   const [searchOpen, setSearchOpen] = useState(false);
@@ -133,7 +133,7 @@ const HeaderComposable = () => {
           </HeaderMenuItemLink>
           <HeaderMenuItemButton
             showItemMode="desktop-only"
-            icon={searchOpen ? 'close' : 'search'}
+            icon={searchOpen ? "close" : "search"}
             aria-label="Toggle site search"
             aria-expanded={searchOpen}
             aria-controls="HeaderSearchDropdown"
@@ -180,10 +180,10 @@ const handleCreateToast = (
   toaster.create({
     title,
     variant,
-    description: 'This is a toast notification.',
+    description: "This is a toast notification.",
     position: {
-      x: 'right',
-      y: 'bottom',
+      x: "right",
+      y: "bottom",
     },
     duration: 3000,
     dismissible: true,
@@ -192,12 +192,12 @@ const handleCreateToast = (
 
 // Form Components
 const basicFormDefaultValues = {
-  inputText: '',
-  textArea: '',
+  inputText: "",
+  textArea: "",
 };
 
 const StandaloneTextAreaExample = () => {
-  const [value, setValue] = useState('');
+  const [value, setValue] = useState("");
   const maxChars = 50;
 
   return (
@@ -217,7 +217,7 @@ const StandaloneTextAreaExample = () => {
 const NativeFormExample = () => {
   const formRef = useRef<HTMLFormElement>(null);
   const [submittedData, setSubmittedData] = useState<string | null>(null);
-  const [message, setMessage] = useState('');
+  const [message, setMessage] = useState("");
   const maxChars = 150;
 
   const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
@@ -225,12 +225,12 @@ const NativeFormExample = () => {
     const formData = new FormData(event.currentTarget);
     const data = Object.fromEntries(formData.entries());
     setSubmittedData(JSON.stringify(data, null, 2));
-    console.log('Form Data:', data);
+    console.log("Form Data:", data);
   };
   const handleClear = () => {
     formRef.current?.reset();
     setSubmittedData(null);
-    setMessage('');
+    setMessage("");
   };
   return (
     <Container className="p-4 border border-gray-200 bg-white rounded-lg shadow-sm">
@@ -310,12 +310,12 @@ const ReachHookFormWithRegister = () => {
     defaultValues: basicFormDefaultValues,
   });
   const maxChars = 200;
-  const textAreaValue = formMethods.watch('textArea');
+  const textAreaValue = formMethods.watch("textArea");
 
   const { register, handleSubmit, reset } = formMethods;
 
   const onSubmit = (data: any) => {
-    console.log('Form Data:', JSON.stringify(data));
+    console.log("Form Data:", JSON.stringify(data));
     reset(basicFormDefaultValues);
   };
 
@@ -331,7 +331,7 @@ const ReachHookFormWithRegister = () => {
               <FormFieldLabel htmlFor="input-text-id">InputText</FormFieldLabel>
               <InputText
                 id="input-text-id"
-                {...register('inputText')}
+                {...register("inputText")}
                 className="w-full"
                 placeholder="Enter text..."
               />
@@ -344,9 +344,9 @@ const ReachHookFormWithRegister = () => {
                 cols={100}
                 rows={4}
                 maxLength={maxChars}
-                {...register('textArea')}
+                {...register("textArea")}
               />
-              <CharacterCount maxChars={maxChars} value={textAreaValue ?? ''} />
+              <CharacterCount maxChars={maxChars} value={textAreaValue ?? ""} />
             </FormField>
 
             <div className="flex gap-2">
@@ -368,48 +368,48 @@ const ReachHookFormWithRegister = () => {
 const ReachHookFormWithController = () => {
   const methods = useForm({
     defaultValues: {
-      myText: '',
-      inputText: '',
-      textArea: '',
-      selectOption: '',
-      legacySelect: 'select-option',
-      password: '',
-      radioGroup: '',
-      buttonGroup: '',
+      myText: "",
+      inputText: "",
+      textArea: "",
+      selectOption: "",
+      legacySelect: "select-option",
+      password: "",
+      radioGroup: "",
+      buttonGroup: "",
       checkboxGroup: [],
-      autocomplete: '',
+      autocomplete: "",
     },
   });
 
   const { handleSubmit, control, reset } = methods;
 
   const onSubmit = (data: any) => {
-    console.log('Form submitted successfully');
-    console.log('Form Data:', data);
+    console.log("Form submitted successfully");
+    console.log("Form Data:", data);
   };
 
   const handleClear = () => {
     reset();
-    console.log('Form cleared');
+    console.log("Form cleared");
   };
 
   const selectOptions: string[] = [
-    'Topic 1',
-    'Topic 2',
-    'Topic 3',
-    'Topic 4',
-    'Topic 5',
+    "Topic 1",
+    "Topic 2",
+    "Topic 3",
+    "Topic 4",
+    "Topic 5",
   ];
 
   const autocompleteOptions = [
-    { value: 'frontend_dev', label: 'Frontend Dev.' },
-    { value: 'backend_dev', label: 'Backend Dev.' },
-    { value: 'fullstack_dev', label: 'Full Stack Dev.' },
-    { value: 'devops_engineer', label: 'DevOps Engineer' },
-    { value: 'qa_engineer', label: 'QA Engineer' },
-    { value: 'ui_ux_designer', label: 'UI/UX Designer' },
-    { value: 'product_manager', label: 'Product Manager' },
-    { value: 'data_scientist', label: 'Data Scientist' },
+    { value: "frontend_dev", label: "Frontend Dev." },
+    { value: "backend_dev", label: "Backend Dev." },
+    { value: "fullstack_dev", label: "Full Stack Dev." },
+    { value: "devops_engineer", label: "DevOps Engineer" },
+    { value: "qa_engineer", label: "QA Engineer" },
+    { value: "ui_ux_designer", label: "UI/UX Designer" },
+    { value: "product_manager", label: "Product Manager" },
+    { value: "data_scientist", label: "Data Scientist" },
   ];
 
   return (
@@ -424,7 +424,7 @@ const ReachHookFormWithController = () => {
           </Heading>
 
           <div className="flex flex-col gap-4 w-full max-w-lg mx-auto">
-            <FormField label={{ text: 'Input Text' }} className="w-full">
+            <FormField label={{ text: "Input Text" }} className="w-full">
               <Controller
                 control={control}
                 name="inputText"
@@ -434,7 +434,7 @@ const ReachHookFormWithController = () => {
               />
             </FormField>
 
-            <FormField label={{ text: 'Text Area' }} className="w-full">
+            <FormField label={{ text: "Text Area" }} className="w-full">
               <Controller
                 control={control}
                 name="textArea"
@@ -448,13 +448,13 @@ const ReachHookFormWithController = () => {
                       maxLength={100}
                       clearButtonEnabled
                     />
-                    <CharacterCount maxChars={100} value={field.value ?? ''} />
+                    <CharacterCount maxChars={100} value={field.value ?? ""} />
                   </>
                 )}
               />
             </FormField>
 
-            <FormField label={{ text: 'Select (New)' }} className="w-full">
+            <FormField label={{ text: "Select (New)" }} className="w-full">
               <Controller
                 control={control}
                 name="selectOption"
@@ -476,7 +476,7 @@ const ReachHookFormWithController = () => {
               />
             </FormField>
 
-            <FormField label={{ text: 'Select (Legacy)' }} className="w-full">
+            <FormField label={{ text: "Select (Legacy)" }} className="w-full">
               <Controller
                 control={control}
                 name="legacySelect"
@@ -493,7 +493,7 @@ const ReachHookFormWithController = () => {
               />
             </FormField>
 
-            <FormField label={{ text: 'Radio Group' }} className="w-full">
+            <FormField label={{ text: "Radio Group" }} className="w-full">
               <Controller
                 name="radioGroup"
                 control={control}
@@ -511,7 +511,7 @@ const ReachHookFormWithController = () => {
               />
             </FormField>
 
-            <FormField label={{ text: 'Button Group' }} className="w-full">
+            <FormField label={{ text: "Button Group" }} className="w-full">
               <FormFieldLabel>Are you currently a customer?</FormFieldLabel>
               <Controller
                 name="buttonGroup"
@@ -567,7 +567,7 @@ const ReachHookFormWithController = () => {
               />
             </FormField>
 
-            <FormField label={{ text: 'Password' }} className="w-full">
+            <FormField label={{ text: "Password" }} className="w-full">
               <Controller
                 control={control}
                 name="password"
@@ -611,35 +611,35 @@ const ReachHookFormWithController = () => {
 
 const ValidationFormExample = () => {
   const customerTypes: string[] = [
-    'Customer type 1',
-    'Customer type 2',
-    'Customer type 3',
+    "Customer type 1",
+    "Customer type 2",
+    "Customer type 3",
   ];
-  const categories: string[] = ['Category 1', 'Category 2', 'Category 3'];
+  const categories: string[] = ["Category 1", "Category 2", "Category 3"];
   const relatedTopics: string[] = [
-    'Related topic 1',
-    'Related topic 2',
-    'Related topic 3',
+    "Related topic 1",
+    "Related topic 2",
+    "Related topic 3",
   ];
 
   const schema = z.object({
-    customerType: z.string().nonempty('Customer type is required'),
-    category: z.string().nonempty('Category is required'),
-    relatedTopic: z.string().nonempty('Related topic'),
+    customerType: z.string().nonempty("Customer type is required"),
+    category: z.string().nonempty("Category is required"),
+    relatedTopic: z.string().nonempty("Related topic"),
   });
 
   const defaultValues = {
-    customerType: '',
-    category: '',
-    relatedTopic: '',
+    customerType: "",
+    category: "",
+    relatedTopic: "",
   };
 
-  const [formData, setFormData] = useState('');
+  const [formData, setFormData] = useState("");
 
   const methods = useForm({
     resolver: zodResolver(schema),
     defaultValues,
-    mode: 'onSubmit',
+    mode: "onSubmit",
   });
 
   const {
@@ -682,7 +682,7 @@ const ValidationFormExample = () => {
                   <SelectNext
                     id="customerType"
                     name={field.name}
-                    value={field.value ?? ''}
+                    value={field.value ?? ""}
                     onChange={field.onChange}
                     onBlur={field.onBlur}
                     ref={field.ref as any}
@@ -712,7 +712,7 @@ const ValidationFormExample = () => {
                   <SelectNext
                     id="category"
                     name={field.name}
-                    value={field.value ?? ''}
+                    value={field.value ?? ""}
                     onChange={field.onChange}
                     onBlur={field.onBlur}
                     ref={field.ref as any}
@@ -743,7 +743,7 @@ const ValidationFormExample = () => {
                     enableSearch={true}
                     id="relatedTopic"
                     name={field.name}
-                    value={field.value ?? ''}
+                    value={field.value ?? ""}
                     onChange={field.onChange}
                     onBlur={field.onBlur}
                     ref={field.ref as any}
@@ -1015,25 +1015,25 @@ export default function Home() {
                     <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                       <Card
                         action={{
-                          children: 'Button',
-                          type: 'button',
-                          variant: 'secondary',
+                          children: "Button",
+                          type: "button",
+                          variant: "secondary",
                         }}
                         content="Lorem ipsum dolor sit amet consectetur. Lectus aliquam morbi purus ac. Sollicitudin."
                         href="#"
                         inset="none"
                         media={{
                           config: {
-                            alt: 'Card Title',
-                            aspectRatio: '4 / 3',
-                            src: 'https://placeholderjs.com/400x300',
+                            alt: "Card Title",
+                            aspectRatio: "4 / 3",
+                            src: "https://placeholderjs.com/400x300",
                           },
-                          type: 'image',
+                          type: "image",
                         }}
                         subTitle="Subheading"
                         tag={{
-                          text: 'New',
-                          type: 'info',
+                          text: "New",
+                          type: "info",
                         }}
                         title="Horizontal Card"
                         type="horizontal"
@@ -1041,10 +1041,10 @@ export default function Home() {
 
                       <Card
                         action={{
-                          children: 'Learn More',
-                          href: '#',
-                          size: 'md',
-                          type: 'link',
+                          children: "Learn More",
+                          href: "#",
+                          size: "md",
+                          type: "link",
                         }}
                         content="Lorem ipsum dolor sit amet consectetur. Lectus aliquam morbi purus ac. Sollicitudin."
                         title="Vertical Card"
@@ -1060,7 +1060,7 @@ export default function Home() {
                     <h5 className="font-semibold mb-2">Stack Layout</h5>
                     <div className="h-[200px] bg-gray-50 overflow-auto p-2">
                       <Stack
-                        direction={{ sm: 'column', base: 'row' }}
+                        direction={{ sm: "column", base: "row" }}
                         itemsAlignment="start"
                         itemsDistribution="start"
                         gap={5}
@@ -1082,7 +1082,7 @@ export default function Home() {
                   <div>
                     <h5 className="font-semibold mb-2">Lists</h5>
                     <List
-                      items={['Item 1', 'Item 2', 'Item 3']}
+                      items={["Item 1", "Item 2", "Item 3"]}
                       type="bullet"
                     />
                   </div>
@@ -1093,8 +1093,20 @@ export default function Home() {
                       <Heading as="h2">Heading H2</Heading>
                       <Heading as="h3">Heading H3</Heading>
                       <Heading as="h4">Heading H4</Heading>
-                      <Paragraph>
-                        This is a regular paragraph with some sample text to
+                      <Paragraph size="xl">
+                        This is an extra-large paragraph with some sample text
+                        to demonstrate typography styles.
+                      </Paragraph>
+                      <Paragraph size="lg">
+                        This is a large paragraph with some sample text to
+                        demonstrate typography styles.
+                      </Paragraph>
+                      <Paragraph size="md">
+                        This is a medium paragraph with some sample text to
+                        demonstrate typography styles.
+                      </Paragraph>
+                      <Paragraph size="sm">
+                        This is a small paragraph with some sample text to
                         demonstrate typography styles.
                       </Paragraph>
                       <Paragraph as="span">This is a span paragraph</Paragraph>
@@ -1134,28 +1146,28 @@ export default function Home() {
                     <h5 className="font-semibold mb-2">Toast Notifications</h5>
                     <div className="flex flex-wrap gap-2">
                       <Button
-                        onClick={() => handleCreateToast('Success', 'success')}
+                        onClick={() => handleCreateToast("Success", "success")}
                       >
                         Success Toast
                       </Button>
                       <Button
-                        onClick={() => handleCreateToast('Error', 'danger')}
+                        onClick={() => handleCreateToast("Error", "danger")}
                       >
                         Error Toast
                       </Button>
-                      <Button onClick={() => handleCreateToast('Info', 'info')}>
+                      <Button onClick={() => handleCreateToast("Info", "info")}>
                         Info Toast
                       </Button>
                       <Button
-                        onClick={() => handleCreateToast('Warning', 'warning')}
+                        onClick={() => handleCreateToast("Warning", "warning")}
                       >
                         Warning Toast
                       </Button>
                       <Button
                         onClick={() =>
                           handleCreateToast(
-                            'Success',
-                            'success',
+                            "Success",
+                            "success",
                             <NextLink href="#">Custom Action</NextLink>,
                           )
                         }
@@ -1348,7 +1360,7 @@ export default function Home() {
                             <TableData>
                               <Chip
                                 label="Active"
-                                onClose={() => console.log('Chip closed')}
+                                onClose={() => console.log("Chip closed")}
                               />
                             </TableData>
                             <TableData>
@@ -1370,7 +1382,7 @@ export default function Home() {
                             <TableData>
                               <Chip
                                 label="Inactive"
-                                onClose={() => console.log('Chip closed')}
+                                onClose={() => console.log("Chip closed")}
                               />
                             </TableData>
                             <TableData>
@@ -1392,7 +1404,7 @@ export default function Home() {
                             <TableData>
                               <Chip
                                 label="Active"
-                                onClose={() => console.log('Chip closed')}
+                                onClose={() => console.log("Chip closed")}
                               />
                             </TableData>
                             <TableData>
@@ -1459,15 +1471,15 @@ export default function Home() {
                     <div className="flex flex-wrap gap-2">
                       <Chip
                         label="Default Chip"
-                        onClose={() => console.log('Chip closed')}
+                        onClose={() => console.log("Chip closed")}
                       />
                       <Chip
                         label="Closable Chip"
-                        onClose={() => console.log('Chip closed')}
+                        onClose={() => console.log("Chip closed")}
                       />
                       <Chip
                         label="Another Tag"
-                        onClose={() => console.log('Chip closed')}
+                        onClose={() => console.log("Chip closed")}
                       />
                     </div>
                   </div>
@@ -1521,14 +1533,14 @@ export default function Home() {
                 <Icon icon="search" />
                 <IconButton
                   icon={{
-                    icon: 'send',
-                    ariaLabel: 'Send',
+                    icon: "send",
+                    ariaLabel: "Send",
                   }}
                 />
                 <IconButton
                   icon={{
-                    icon: 'delete',
-                    ariaLabel: 'Delete',
+                    icon: "delete",
+                    ariaLabel: "Delete",
                   }}
                 />
               </div>
