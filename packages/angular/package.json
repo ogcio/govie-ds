@@ -9,7 +9,7 @@
       "types": "./dist/index.d.ts",
       "default": "./dist/index.js"
     },
-    "./fonts.css": "./fonts.css",
+    "./fonts.css": "./dist/fonts.css",
     "./styles.css": "./dist/styles.css"
   },
   "scripts": {
@@ -21,8 +21,7 @@
   },
   "peerDependencies": {
     "@angular/common": "^21.1.0",
-    "@angular/core": "^21.1.0",
-    "@fontsource/lato": "^5.1.1"
+    "@angular/core": "^21.1.0"
   },
   "dependencies": {
     "tslib": "^2.3.0"
