@@ -266,3 +266,30 @@ export const TestRenderHtmlChildren: StoryObj = {
     });
   },
 };
+
+const loremIpsum =
+  'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.';
+
+export const SizeXl: Story = {
+  args: {
+    as: 'span',
+    size: 'xl',
+    children: loremIpsum,
+  },
+};
+
+export const SizeLg: Story = {
+  args: {
+    as: 'span',
+    size: 'lg',
+    children: loremIpsum,
+  },
+};
+
+export const SizeSm: Story = {
+  args: {
+    as: 'span',
+    size: 'sm',
+    children: loremIpsum,
+  },
+};
