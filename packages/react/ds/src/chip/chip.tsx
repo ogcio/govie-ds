@@ -1,5 +1,6 @@
 'use client';
 import { useId } from 'react';
+import { tv } from 'tailwind-variants';
 import { cn } from '../cn.js';
 import { translate as t } from '../i18n/utility.js';
 import { Icon } from '../icon/icon.js';
@@ -28,7 +29,7 @@ export const Chip = ({ label, className, onClose = () => null }: ChipProps) => {
 
   return (
     <div
-      className={cn(className, 'gi-chip')}
+      className={cn(className, chipVariants())}
       aria-label={t('chip.label', { label, defaultValue: `chip: ${label}` })}
       aria-describedby={descriptionId}
       tabIndex={0}
@@ -47,3 +48,25 @@ export const Chip = ({ label, className, onClose = () => null }: ChipProps) => {
 };
 
 Chip.displayName = 'Chip';
+
+const chipVariants = tv({
+  base: [
+    'gi-flex',
+    'gi-items-center',
+    'gi-gap-1',
+    'gi-pl-1.5',
+    'gi-pr-1',
+    'gi-py-0.5',
+    'gi-bg-gray-100',
+    'gi-w-fit',
+    'gi-rounded-sm',
+    'gi-cursor-default',
+    'gi-text-xs',
+    'hover:gi-bg-gray-200',
+    'focus:gi-bg-gray-200',
+    'focus:gi-outline',
+    'focus:gi-outline-gray-950',
+    'focus:gi-outline-2',
+    'focus:gi-shadow-[inset_0_0_0_1px_white,0_0_0_5px_var(--gieds-color-yellow-400)]',
+  ],
+});

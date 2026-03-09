@@ -68,6 +68,7 @@ InputFile
 InputFileProps
 InputRadioProps
 InputText
+InsetText
 JSON
 JSX
 Lato
@@ -251,6 +252,7 @@ theming
 tooltip
 tooltips
 typography-blockquote
+typography-insettext
 typography-phasebanner
 typography-sectionbreak
 typography-summarylist
