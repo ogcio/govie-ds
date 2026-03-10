@@ -1,0 +1,3 @@
+# CVE-2026-22184: zlib contrib/untgz demo utility buffer overflow
+# Not exploitable - untgz is not installed or used in the container
+CVE-2026-22184
