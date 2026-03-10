@@ -1,5 +1,24 @@
 # Changelog
 
+## [1.19.0](https://github.com/ogcio/govie-ds/compare/html-lib-v1.18.2...html-lib-v1.19.0) (2026-03-10)
+
+
+### Features
+
+* **AB#35190:** Add InsetText to Mitosis ([#868](https://github.com/ogcio/govie-ds/issues/868)) ([b559aa0](https://github.com/ogcio/govie-ds/commit/b559aa053f98238e880b0b4bf9ff13a21a81d5b2))
+
+
+### Bug Fixes
+
+* **AB#35803:** Link underline does not render correctly with noUnderline for descending characters ([#871](https://github.com/ogcio/govie-ds/issues/871)) ([0ddf318](https://github.com/ogcio/govie-ds/commit/0ddf318c99f3026b18cb9b195641a8b84b5e06e8))
+
+
+### Dependencies
+
+* The following workspace dependencies were updated
+  * devDependencies
+    * @ogcio/design-system-tailwind bumped to 1.22.0
+
 ## [1.18.2](https://github.com/ogcio/govie-ds/compare/html-lib-v1.18.1...html-lib-v1.18.2) (2026-02-24)
 
 

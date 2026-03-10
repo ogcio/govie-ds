@@ -533,6 +533,9 @@ importers:
       '@angular/common':
         specifier: ^21.1.0
         version: 21.1.1(@angular/core@21.1.1(@angular/compiler@21.1.1)(rxjs@7.8.2)(zone.js@0.16.0))(rxjs@7.8.2)
+      '@angular/core':
+        specifier: ^21.1.0
+        version: 21.1.1(@angular/compiler@21.1.1)(rxjs@7.8.2)(zone.js@0.16.0)
       tslib:
         specifier: ^2.3.0
         version: 2.8.1
