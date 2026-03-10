@@ -1,5 +1,18 @@
 # Changelog
 
+## [1.22.0](https://github.com/ogcio/govie-ds/compare/design-tailwind-v1.21.3...design-tailwind-v1.22.0) (2026-03-10)
+
+
+### Features
+
+* **AB#35132:** Inline tailwind on static components ([#865](https://github.com/ogcio/govie-ds/issues/865)) ([effb0f3](https://github.com/ogcio/govie-ds/commit/effb0f33ec993a85af7f2a3b5cba5cbba1e141f9))
+
+
+### Bug Fixes
+
+* **AB#33493:** Blocked aria-hidden warning ([#862](https://github.com/ogcio/govie-ds/issues/862)) ([87ce0b9](https://github.com/ogcio/govie-ds/commit/87ce0b91b90c6de3930c15e3dfff96c23aabc192))
+* **AB#35803:** Link underline does not render correctly with noUnderline for descending characters ([#871](https://github.com/ogcio/govie-ds/issues/871)) ([0ddf318](https://github.com/ogcio/govie-ds/commit/0ddf318c99f3026b18cb9b195641a8b84b5e06e8))
+
 ## [1.21.3](https://github.com/ogcio/govie-ds/compare/design-tailwind-v1.21.2...design-tailwind-v1.21.3) (2026-02-24)
 
 
