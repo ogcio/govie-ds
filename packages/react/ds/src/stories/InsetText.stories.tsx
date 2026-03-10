@@ -1,15 +1,19 @@
 import type { Meta, StoryObj } from '@storybook/react';
 import { within, expect } from 'storybook/test';
 import InsetText from '../atoms/InsetText';
+import {
+  meta as insetTextMeta,
+  stories as insetTextStories,
+} from '../atoms/InsetText.meta';
 
 const meta = {
+  ...insetTextMeta,
   title: 'Typography/InsetText',
-  parameters: {
-    docs: {
-      description: {
-        component:
-          'Inset text component to differentiate a block of text from the content that surrounds it. Previously known as Blockquote — use InsetText going forward; Blockquote remains available for backward compatibility',
-      },
+  argTypes: {
+    ...insetTextMeta.argTypes,
+    children: {
+      control: 'text',
+      description: 'The inset text content.',
     },
   },
   component: InsetText,
@@ -20,33 +24,10 @@ export default meta;
 type Story = StoryObj<typeof meta>;
 
 export const Default: Story = {
-  argTypes: {
-    id: {
-      control: 'text',
-      description: 'Optional id for linking/targeting and aria references.',
-    },
-    cite: {
-      control: 'text',
-      description: 'The source URL or description for the quotation.',
-    },
-    describedBy: {
-      control: 'text',
-      description:
-        'Points to element id(s) whose content describes the inset text. Maps to `aria-describedby`.',
-    },
-    labelledBy: {
-      control: 'text',
-      description:
-        'Points to element id(s) whose content labels the inset text. Maps to `aria-labelledby`.',
-    },
-  },
   args: {
-    id: 'inset-text-default',
+    ...insetTextStories.default.args,
     children:
       'It can take up to 8 weeks to register a lasting power of attorney if there are no mistakes in the application.',
-    cite: 'https://example.com/source',
-    describedBy: '',
-    labelledBy: '',
   },
   play: async ({ canvasElement, step, args }) => {
     const canvas = within(canvasElement);
