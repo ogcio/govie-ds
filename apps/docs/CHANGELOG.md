@@ -1,5 +1,20 @@
 # Changelog
 
+## [1.31.0](https://github.com/ogcio/govie-ds/compare/docs-v1.30.0...docs-v1.31.0) (2026-03-10)
+
+
+### Features
+
+* **AB#35190:** Add InsetText to Mitosis ([#868](https://github.com/ogcio/govie-ds/issues/868)) ([b559aa0](https://github.com/ogcio/govie-ds/commit/b559aa053f98238e880b0b4bf9ff13a21a81d5b2))
+
+
+### Dependencies
+
+* The following workspace dependencies were updated
+  * dependencies
+    * @ogcio/design-system-react bumped to 1.31.0
+    * @ogcio/design-system-tailwind bumped to 1.22.0
+
 ## [1.30.0](https://github.com/ogcio/govie-ds/compare/docs-v1.29.0...docs-v1.30.0) (2026-02-24)
 
 

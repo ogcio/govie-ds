@@ -1,5 +1,30 @@
 # Changelog
 
+## [1.31.0](https://github.com/ogcio/govie-ds/compare/react-lib-v1.30.0...react-lib-v1.31.0) (2026-03-10)
+
+
+### Features
+
+* **AB#35132:** Inline tailwind on static components ([#865](https://github.com/ogcio/govie-ds/issues/865)) ([effb0f3](https://github.com/ogcio/govie-ds/commit/effb0f33ec993a85af7f2a3b5cba5cbba1e141f9))
+* **AB#35161:** adding storybook into angular pkg ([#857](https://github.com/ogcio/govie-ds/issues/857)) ([e0b6b7f](https://github.com/ogcio/govie-ds/commit/e0b6b7fd9bdbb00628dacb76b6629db652d9fe9b))
+* **AB#35190:** Add InsetText to Mitosis ([#868](https://github.com/ogcio/govie-ds/issues/868)) ([b559aa0](https://github.com/ogcio/govie-ds/commit/b559aa053f98238e880b0b4bf9ff13a21a81d5b2))
+* **AB#35201:** Generate logo components in Mitosis ([#863](https://github.com/ogcio/govie-ds/issues/863)) ([45e69ea](https://github.com/ogcio/govie-ds/commit/45e69eae943f0ccd774d2e65f41f14075a30d3d6))
+* **AB#35861:** Setting fonts loading in angular ([#873](https://github.com/ogcio/govie-ds/issues/873)) ([6db16c9](https://github.com/ogcio/govie-ds/commit/6db16c9d9482b7d64d814608f0bd4768d0ea60e1))
+
+
+### Bug Fixes
+
+* **AB#33493:** Blocked aria-hidden warning ([#862](https://github.com/ogcio/govie-ds/issues/862)) ([87ce0b9](https://github.com/ogcio/govie-ds/commit/87ce0b91b90c6de3930c15e3dfff96c23aabc192))
+* **AB#33685:** Fixing SelectNext tests ([#858](https://github.com/ogcio/govie-ds/issues/858)) ([acc3ce4](https://github.com/ogcio/govie-ds/commit/acc3ce4cf18eb7d77b9daebed307f2e18bdc0851))
+* **AB#35803:** Link underline does not render correctly with noUnderline for descending characters ([#871](https://github.com/ogcio/govie-ds/issues/871)) ([0ddf318](https://github.com/ogcio/govie-ds/commit/0ddf318c99f3026b18cb9b195641a8b84b5e06e8))
+
+
+### Dependencies
+
+* The following workspace dependencies were updated
+  * devDependencies
+    * @ogcio/design-system-tailwind bumped to 1.22.0
+
 ## [1.30.0](https://github.com/ogcio/govie-ds/compare/react-lib-v1.29.0...react-lib-v1.30.0) (2026-02-24)
 
 
