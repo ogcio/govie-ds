@@ -1,26 +1,31 @@
 import type { Meta, StoryObj } from '@storybook/angular';
 import { within, expect } from 'storybook/test';
-import InsetText from '../atoms/InsetText';
-import {
-  meta as insetTextMeta,
-  stories as insetTextStories,
-} from '../atoms/InsetText.meta';
+import { insetTextMeta, insetTextStories, InsetText } from '../atoms';
+
+type InsetTextWithContent = InsetText & { content: string };
 
 const meta = {
   ...insetTextMeta,
   title: 'Typography/InsetText',
+  argTypes: {
+    ...insetTextMeta.argTypes,
+    content: {
+      control: 'text',
+      description: 'The inset text content.',
+    },
+  },
   component: InsetText,
-} satisfies Meta<InsetText>;
+} satisfies Meta<InsetTextWithContent>;
 
 export default meta;
 
-type Story = StoryObj<InsetText>;
-
-const contentText =
-  'It can take up to 8 weeks to register a lasting power of attorney if there are no mistakes in the application.';
+type Story = StoryObj<InsetTextWithContent>;
 
 export const Default: Story = {
-  args: insetTextStories.default.args,
+  args: {
+    ...insetTextStories.default.args,
+    content: insetTextStories.default.content,
+  },
   render: (args) => ({
     props: args,
     template: `
@@ -30,12 +35,13 @@ export const Default: Story = {
         [describedBy]="describedBy"
         [labelledBy]="labelledBy"
       >
-        ${contentText}
+        {{ content }}
       </inset-text>
     `,
   }),
   play: async ({ canvasElement, step, args }) => {
     const canvas = within(canvasElement);
+    const contentText = args.content;
 
     await step('renders content and tag', async () => {
       const element = canvas.getByText(contentText);

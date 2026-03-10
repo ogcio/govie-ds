@@ -19,7 +19,7 @@ export default defineConfig([
     },
   },
   {
-    files: ['src/assets/logos/**/*.{ts,tsx}', 'src/stories/*.{ts,tsx}'],
+    files: ['src/assets/logos/**/*.{ts,tsx}', 'src/stories/**/*.{ts,tsx}'],
     rules: {
       'unicorn/filename-case': 'off',
     },

@@ -1,10 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/react';
 import { within, expect } from 'storybook/test';
-import InsetText from '../atoms/InsetText';
-import {
-  meta as insetTextMeta,
-  stories as insetTextStories,
-} from '../atoms/InsetText.meta';
+import { InsetText, insetTextStories, insetTextMeta } from '../atoms';
 
 const meta = {
   ...insetTextMeta,
@@ -26,8 +22,7 @@ type Story = StoryObj<typeof meta>;
 export const Default: Story = {
   args: {
     ...insetTextStories.default.args,
-    children:
-      'It can take up to 8 weeks to register a lasting power of attorney if there are no mistakes in the application.',
+    children: insetTextStories.default.content,
   },
   play: async ({ canvasElement, step, args }) => {
     const canvas = within(canvasElement);
