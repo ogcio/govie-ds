@@ -1,9 +1,9 @@
 import type { Meta, StoryObj } from '@storybook/angular';
-import DsButton from '../../atoms/DsButton';
+import CoreButton from '../../atoms/CoreButton';
 
-const meta: Meta<DsButton> = {
+const meta: Meta<CoreButton> = {
   title: 'Form/Button',
-  component: DsButton,
+  component: CoreButton,
   tags: ['autodocs'],
   argTypes: {
     variant: {
@@ -28,7 +28,7 @@ const meta: Meta<DsButton> = {
 };
 
 export default meta;
-type Story = StoryObj<DsButton>;
+type Story = StoryObj<CoreButton>;
 
 export const Primary: Story = {
   args: {
@@ -39,23 +39,23 @@ export const Primary: Story = {
   },
   render: (args) => ({
     props: args,
-    template: `<ds-button [variant]="variant" [appearance]="appearance" [size]="size" [disabled]="disabled">Click me</ds-button>`,
+    template: `<core-button [variant]="variant" [appearance]="appearance" [size]="size" [disabled]="disabled">Click me</core-button>`,
   }),
 };
 export const Secondary: Story = {
   render: () => ({
-    template: `<ds-button variant="secondary" appearance="default" size="medium">Click me</ds-button>`,
+    template: `<core-button variant="secondary" appearance="default" size="medium">Click me</core-button>`,
   }),
 };
 
 export const Flat: Story = {
   render: () => ({
-    template: `<ds-button variant="flat" appearance="default" size="medium">Click me</ds-button>`,
+    template: `<core-button variant="flat" appearance="default" size="medium">Click me</core-button>`,
   }),
 };
 
 export const Disabled: Story = {
   render: () => ({
-    template: `<ds-button variant="primary" appearance="default" size="medium" [disabled]="true">Click me</ds-button>`,
+    template: `<core-button variant="primary" appearance="default" size="medium" [disabled]="true">Click me</core-button>`,
   }),
 };

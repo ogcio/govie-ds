@@ -1,7 +1,7 @@
 'use client';
 
 import { createContext, FC, useContext, useState, useEffect } from 'react';
-import { Button } from '../button/button.js';
+import CoreButton from '../atoms/CoreButton.js';
 import { cn } from '../cn.js';
 import { useDomId } from '../hooks/use-dom-id.js';
 import type {
@@ -20,7 +20,6 @@ export const ButtonGroupItem: FC<ButtonGroupItemProps> = ({
   role: customRole,
   'aria-checked': ariaChecked,
   'aria-label': ariaLabel,
-  ...props
 }) => {
   const context = useContext(ButtonGroupContext);
 
@@ -46,20 +45,19 @@ export const ButtonGroupItem: FC<ButtonGroupItemProps> = ({
   const itemId = `${groupId}-${value}`;
 
   return (
-    <Button
+    <CoreButton
       variant={isSelected ? 'primary' : 'secondary'}
       size={size}
       appearance={appearance}
       onClick={handleClick}
       id={itemId}
       role={customRole || 'radio'}
-      aria-checked={ariaChecked === undefined ? isSelected : ariaChecked}
-      aria-label={ariaLabel}
+      ariaChecked={ariaChecked === undefined ? isSelected : ariaChecked}
+      ariaLabel={ariaLabel}
       type="button"
-      {...props}
     >
       {children}
-    </Button>
+    </CoreButton>
   );
 };
 

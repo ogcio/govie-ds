@@ -1,10 +1,10 @@
 import { PropsWithChildren } from 'react';
-import { ButtonAppearance, ButtonSize } from '../button/types.js';
+import { CoreButtonProps } from '../atoms/CoreButton';
 
 export type ButtonGroupProps = PropsWithChildren<{
   name: string;
-  size?: ButtonSize;
-  appearance?: ButtonAppearance;
+  size?: CoreButtonProps['size'];
+  appearance?: CoreButtonProps['appearance'];
   onChange?: (value: string) => void;
   defaultValue?: string;
   value?: string;
@@ -25,8 +25,8 @@ export type ButtonGroupContextType = {
   selectedValue?: string;
   setSelectedValue: (value: string) => void;
   name: string;
-  size: ButtonSize;
-  appearance?: ButtonAppearance;
+  size: CoreButtonProps['size'];
+  appearance?: CoreButtonProps['appearance'];
   onChange?: (value: string) => void;
   groupId: string;
 };

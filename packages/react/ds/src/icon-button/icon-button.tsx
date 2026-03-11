@@ -1,17 +1,32 @@
 'use client';
 import { forwardRef } from 'react';
+import type { CoreButtonProps } from '../atoms/CoreButton.js';
 import {
   isButtonDisabled,
   getVariantAppearanceClass,
   getButtonIconSizeClass,
 } from '../button/helpers.js';
-import { ButtonProps } from '../button/types.js';
 import { cn } from '../cn.js';
-import { Icon, IconProps, IconSize } from '../icon/icon.js';
+import { Icon, IconProps } from '../icon/icon.js';
 
-export type IconButtonProps = Omit<ButtonProps, 'children'> & {
+export type IconButtonProps = Omit<
+  CoreButtonProps,
+  | 'children'
+  | 'ariaLabel'
+  | 'ariaLabelledBy'
+  | 'ariaDescribedBy'
+  | 'ariaChecked'
+  | 'ariaPressed'
+  | 'ariaExpanded'
+  | 'ariaControls'
+  | 'ariaHasPopup'
+  | 'ariaBusy'
+  | 'size'
+> & {
   icon: Omit<IconProps, 'size'>;
   className?: string;
+  size?: 'small' | 'medium' | 'large' | 'extraLarge';
+  'aria-label'?: string;
 };
 
 export const IconButton = forwardRef<HTMLButtonElement, IconButtonProps>(
@@ -26,6 +41,7 @@ export const IconButton = forwardRef<HTMLButtonElement, IconButtonProps>(
       className = '',
       type = 'button',
       dataTestid,
+      'aria-label': ariaLabel,
       ...props
     },
     ref,
@@ -38,6 +54,7 @@ export const IconButton = forwardRef<HTMLButtonElement, IconButtonProps>(
         type={type}
         aria-disabled={disabled}
         disabled={disabled}
+        aria-label={ariaLabel}
         role="button"
         onClick={onClick}
         data-testid={dataTestid}

@@ -35,7 +35,10 @@ import type {
   ModalHeaderProps,
 } from './types.js';
 
-const VARIANT_ORDER: Record<ModalFooterButton['variant'], number> = {
+const VARIANT_ORDER: Record<
+  NonNullable<ModalFooterButton['variant']>,
+  number
+> = {
   flat: 0,
   secondary: 1,
   primary: 2,

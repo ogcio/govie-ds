@@ -1,4 +1,4 @@
-import { ButtonAppearance, ButtonVariant, ButtonSize } from './types.js';
+import { CoreButtonProps } from '../atoms/CoreButton';
 
 export const getVariantAppearanceClass = ({
   disabled,
@@ -6,8 +6,8 @@ export const getVariantAppearanceClass = ({
   appearance,
 }: {
   disabled?: boolean;
-  variant?: ButtonVariant;
-  appearance?: ButtonAppearance;
+  variant?: CoreButtonProps['variant'];
+  appearance?: CoreButtonProps['appearance'];
 }) => {
   let classes;
   if (!disabled) {
@@ -40,7 +40,7 @@ export const getVariantAppearanceClass = ({
   return classes;
 };
 
-export const getSizeClass = (size?: ButtonSize) => {
+export const getSizeClass = (size?: CoreButtonProps['size']) => {
   switch (size) {
     case 'small': {
       return 'gi-btn-small';
@@ -54,7 +54,9 @@ export const getSizeClass = (size?: ButtonSize) => {
   }
 };
 
-export const getButtonIconSizeClass = (size?: ButtonSize) => {
+export const getButtonIconSizeClass = (
+  size?: 'small' | 'medium' | 'large' | 'extraLarge',
+) => {
   switch (size) {
     case 'small': {
       return 'gi-icon-btn-small';
@@ -77,8 +79,8 @@ export const isButtonDisabled = ({
   appearance,
 }: {
   disabled?: boolean;
-  variant?: ButtonVariant;
-  appearance?: ButtonAppearance;
+  variant?: CoreButtonProps['variant'];
+  appearance?: CoreButtonProps['appearance'];
 }) => {
   let classes;
   if (disabled) {

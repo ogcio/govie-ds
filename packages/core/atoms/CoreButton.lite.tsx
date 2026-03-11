@@ -36,6 +36,7 @@ type Props = {
   ariaLabel?: string;
   ariaLabelledBy?: string;
   ariaDescribedBy?: string;
+  ariaChecked?: boolean;
   ariaPressed?: boolean | 'mixed';
   ariaExpanded?: boolean;
   ariaControls?: string;
@@ -52,7 +53,9 @@ type Props = {
   ref?: any;
 };
 
-export default function DsButton(props: Props) {
+export type CoreButtonProps = Props;
+
+export default function CoreButton(props: Props) {
   return (
     <button
       ref={props.ref}
@@ -73,6 +76,7 @@ export default function DsButton(props: Props) {
       aria-label={props.ariaLabel}
       aria-labelledby={props.ariaLabelledBy}
       aria-describedby={props.ariaDescribedBy}
+      aria-checked={props.ariaChecked}
       aria-pressed={props.ariaPressed}
       aria-expanded={props.ariaExpanded}
       aria-controls={props.ariaControls}
