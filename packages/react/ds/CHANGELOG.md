@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.31.1](https://github.com/ogcio/govie-ds/compare/react-lib-v1.31.0...react-lib-v1.31.1) (2026-03-12)
+
+
+### Bug Fixes
+
+* **AB#36028:** add the Mitosis plugin to normalise SVG attrs to camelCase in React output ([#878](https://github.com/ogcio/govie-ds/issues/878)) ([6ccd52d](https://github.com/ogcio/govie-ds/commit/6ccd52db4e0e4244dcf8aca6ae0c956376ef2333))
+
 ## [1.31.0](https://github.com/ogcio/govie-ds/compare/react-lib-v1.30.0...react-lib-v1.31.0) (2026-03-10)
 
 
