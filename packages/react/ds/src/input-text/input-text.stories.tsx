@@ -286,6 +286,7 @@ export const InputWithCustomActionButton: Story = {
       <InputText
         inputActionButton={{
           icon: 'info',
+          ariaLabel: 'More information',
           onClick: () => alert('Action button clicked'),
         }}
         type="text"
