@@ -22,7 +22,7 @@ function LogoHarpBlack(props: BaseSVGProps) {
       aria-label={props.label}
       data-testid={props.dataTestId}
     >
-      <g clip-path="url(#clip0_212_1062)">
+      <g clipPath="url(#clip0_212_1062)">
         <path
           d="M16.3935 18.5387C17.3014 18.5387 18.0376 17.8024 18.0376 16.8946C18.0376 15.9867 17.3014 15.2505 16.3935 15.2505C15.4857 15.2505 14.7495 15.9867 14.7495 16.8946C14.7503 17.802 15.4857 18.5378 16.3935 18.5387Z"
           fill="#0B0C0C"
