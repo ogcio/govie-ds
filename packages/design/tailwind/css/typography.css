@@ -27,7 +27,7 @@
 /* End Paragraph */
 
 /* Paragraph */
-
+.gi-paragraph-xl,
 .gi-paragraph-lg,
 .gi-paragraph-md,
 .gi-paragraph-xs {
@@ -39,6 +39,10 @@
   font: var(--gieds-typography-default-text-md);
 }
 
+.gi-paragraph-xl,
+.gi-span-xl {
+  font: var(--gieds-typography-default-text-xl);
+}
 .gi-paragraph-lg,
 .gi-span-lg {
   font: var(--gieds-typography-default-text-lg);
@@ -72,6 +76,11 @@
 
   .gi-heading-2xs {
     font: var(--gieds-typography-xs-heading-2xs);
+  }
+
+  .gi-paragraph-xl,
+  .gi-span-xl {
+    font: var(--gieds-typography-xs-text-xl);
   }
 
   .gi-paragraph-md,
@@ -126,6 +135,11 @@
     font: var(--gieds-typography-md-text-md);
   }
 
+  .gi-paragraph-xl,
+  .gi-span-xl {
+    font: var(--gieds-typography-md-text-xl);
+  }
+
   .gi-paragraph-lg,
   .gi-span-lg {
     font: var(--gieds-typography-md-text-lg);
@@ -171,6 +185,11 @@
   .gi-paragraph-md,
   .gi-span-md {
     font: var(--gieds-typography-xl-text-md);
+  }
+
+  .gi-paragraph-xl,
+  .gi-span-xl {
+    font: var(--gieds-typography-xl-text-xl);
   }
 
   .gi-paragraph-lg,

@@ -1,5 +1,5 @@
 export type ParagraphAs = 'p' | 'span';
-export type ParagraphSize = 'lg' | 'md' | 'sm';
+export type ParagraphSize = 'xl' | 'lg' | 'md' | 'sm';
 export type ParagraphAlign = 'start' | 'center' | 'end' | 'justify';
 export type ParagraphWhitespace =
   | 'normal'

@@ -1094,8 +1094,20 @@ export default function Home() {
                       <Heading as="h2">Heading H2</Heading>
                       <Heading as="h3">Heading H3</Heading>
                       <Heading as="h4">Heading H4</Heading>
-                      <Paragraph>
-                        This is a regular paragraph with some sample text to
+                      <Paragraph size="xl">
+                        This is an extra-large paragraph with some sample text
+                        to demonstrate typography styles.
+                      </Paragraph>
+                      <Paragraph size="lg">
+                        This is a large paragraph with some sample text to
+                        demonstrate typography styles.
+                      </Paragraph>
+                      <Paragraph size="md">
+                        This is a medium paragraph with some sample text to
+                        demonstrate typography styles.
+                      </Paragraph>
+                      <Paragraph size="sm">
+                        This is a small paragraph with some sample text to
                         demonstrate typography styles.
                       </Paragraph>
                       <Paragraph as="span">This is a span paragraph</Paragraph>

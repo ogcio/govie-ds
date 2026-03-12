@@ -3,6 +3,8 @@
   "private": true,
   "type": "module",
   "scripts": {
+    "format": "prettier 'src/**/*.{ts,tsx}' --write",
+    "format:check": "prettier 'src/**/*.{ts,tsx}' --check",
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
@@ -18,9 +20,11 @@
     "react-dom": "^19.2.3",
     "zod": "^4.1.13"
   },
+  "prettier": "@ogcio/design-system-prettier-config",
   "devDependencies": {
     "@next/eslint-plugin-next": "^15.5.7",
     "@ogcio/design-system-eslint-config": "workspace:*",
+    "@ogcio/design-system-prettier-config": "workspace:*",
     "eslint": "^9.23.0",
     "eslint-config-next": "^15.4.3",
     "postcss": "^8.4.40",

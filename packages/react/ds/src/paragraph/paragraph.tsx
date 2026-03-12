@@ -1,5 +1,5 @@
 export type ParagraphAs = 'p' | 'span';
-export type ParagraphSize = 'lg' | 'md' | 'sm';
+export type ParagraphSize = 'xl' | 'lg' | 'md' | 'sm';
 export type ParagraphAlign = 'start' | 'center' | 'end' | 'justify';
 export type ParagraphWhitespace =
   | 'normal'
@@ -34,6 +34,9 @@ export function Paragraph({
 }: ParagraphProps) {
   const sizeClass = (() => {
     switch (size) {
+      case 'xl': {
+        return As === 'p' ? 'gi-paragraph-xl' : 'gi-span-xl';
+      }
       case 'lg': {
         return As === 'p' ? 'gi-paragraph-lg' : 'gi-span-lg';
       }
