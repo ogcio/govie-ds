@@ -181,7 +181,7 @@ export const InputActionButton = ({
         icon,
       }}
       data-testid={dataTestId}
-      aria-label={ariaLabel || ''}
+      aria-label={ariaLabel || undefined}
       onClick={onClick}
       variant="flat"
       size="small"
