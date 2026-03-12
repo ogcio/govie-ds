@@ -37,11 +37,10 @@
             "configDir": ".storybook",
             "browserTarget": "design-system-angular:build",
             "tsConfig": ".storybook/tsconfig.json",
-            "outputDir": "dist/storybook",
             "compodoc": false,
             "styles": [
-              "styles.css",
               "fonts.css",
+              "styles.css",
               ".storybook/global.css",
               "@ogcio/theme-govie/theme.css"
             ]
