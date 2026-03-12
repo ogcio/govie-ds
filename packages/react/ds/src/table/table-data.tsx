@@ -110,7 +110,7 @@ export const TableExpandIcon = ({
   const sizeMap = {
     sm: 'medium',
     md: 'large',
-    lg: 'extraLarge',
+    lg: 'large',
   } as const;
 
   return (

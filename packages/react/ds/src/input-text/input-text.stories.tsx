@@ -1,7 +1,7 @@
 import type { Meta, StoryObj } from '@storybook/react';
 import { FormProvider, useForm } from 'react-hook-form';
 import { expect, userEvent, within } from 'storybook/test';
-import { Button } from '../button/button.js';
+import CoreButton from '../atoms/CoreButton.js';
 import {
   FormField,
   FormFieldError,
@@ -555,12 +555,12 @@ export const WithReactHookForm: Story = {
             />
           </FormField>
           <div className="gi-flex gi-flex-cols gi-gap-2 gi-pt-4">
-            <Button type="submit" dataTestid="submit-btn">
+            <CoreButton type="submit" dataTestid="submit-btn">
               Submit
-            </Button>
-            <Button onClick={() => methods.reset()} dataTestid="reset-btn">
+            </CoreButton>
+            <CoreButton onClick={() => methods.reset()} dataTestid="reset-btn">
               Reset
-            </Button>
+            </CoreButton>
           </div>
         </form>
       </FormProvider>

@@ -6,7 +6,7 @@ import React, {
   useCallback,
   memo,
 } from 'react';
-import { Button } from '../button/button.js';
+import CoreButton from '../atoms/CoreButton.js';
 import { cn } from '../cn.js';
 import { Heading } from '../heading/heading.js';
 import { Icon, IconId } from '../icon/icon.js';
@@ -186,7 +186,7 @@ export const SideNavItem: React.FC<
             )}
           </Link>
         ) : (
-          <Button
+          <CoreButton
             variant="flat"
             appearance="dark"
             size="medium"
@@ -200,7 +200,7 @@ export const SideNavItem: React.FC<
               showExpandableIcon={showExpandableIcon}
               isOpen={isOpen}
             />
-          </Button>
+          </CoreButton>
         )}
 
         {expandable && primary && (

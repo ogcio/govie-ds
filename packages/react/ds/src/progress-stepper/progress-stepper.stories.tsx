@@ -1,7 +1,7 @@
 import type { Meta, StoryObj } from '@storybook/react';
 import { useState } from 'react';
 import { within, expect } from 'storybook/test';
-import { Button } from '../button/button.js';
+import CoreButton from '../atoms/CoreButton.js';
 import {
   FormField,
   FormFieldHint,
@@ -291,11 +291,13 @@ export const WithStepContent: Story = {
           role="navigation"
         >
           {currentIndex > 0 && (
-            <Button variant="secondary" onClick={handlePreviousButton}>
+            <CoreButton variant="secondary" onClick={handlePreviousButton}>
               Previous
-            </Button>
+            </CoreButton>
           )}
-          {currentIndex < 5 && <Button onClick={handleNextButton}>Next</Button>}
+          {currentIndex < 5 && (
+            <CoreButton onClick={handleNextButton}>Next</CoreButton>
+          )}
         </Stack>
       </Stack>
     );
@@ -354,11 +356,13 @@ export const WithContentStepVertical: Story = {
         itemsDistribution="start"
       >
         {currentIndex > 0 && (
-          <Button variant="secondary" onClick={handlePreviousButton}>
+          <CoreButton variant="secondary" onClick={handlePreviousButton}>
             Previous
-          </Button>
+          </CoreButton>
         )}
-        {currentIndex < 5 && <Button onClick={handleNextButton}>Next</Button>}
+        {currentIndex < 5 && (
+          <CoreButton onClick={handleNextButton}>Next</CoreButton>
+        )}
       </Stack>
     );
 
@@ -406,11 +410,13 @@ export const WithFormContentStepVertical: Story = {
         itemsDistribution="start"
       >
         {currentIndex > 0 && (
-          <Button variant="secondary" onClick={handlePreviousButton}>
+          <CoreButton variant="secondary" onClick={handlePreviousButton}>
             Previous
-          </Button>
+          </CoreButton>
         )}
-        {currentIndex < 3 && <Button onClick={handleNextButton}>Next</Button>}
+        {currentIndex < 3 && (
+          <CoreButton onClick={handleNextButton}>Next</CoreButton>
+        )}
       </Stack>
     );
 

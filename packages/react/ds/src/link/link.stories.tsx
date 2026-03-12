@@ -101,6 +101,7 @@ type Story = StoryObj<typeof meta>;
 const baseProps: LinkProps = {
   children: 'Example link',
   href: '#',
+  asButton: undefined,
 };
 
 const withIcons = (props: LinkProps) => {

@@ -1,7 +1,7 @@
 'use client';
 import React, { useState, useEffect } from 'react';
 import { Trans, useTranslation } from 'react-i18next';
-import { Button } from '../button/button.js';
+import { CoreButton } from '../atoms/index.js';
 import { Breakpoint, useBreakpoint } from '../hooks/use-breakpoint.js';
 import { Icon } from '../icon/icon.js';
 import { getDisplayPages } from '../utils/utilities.js';
@@ -55,7 +55,7 @@ export const Pagination: React.FC<PaginationProps> = ({
           />
         </React.Fragment>
       ) : (
-        <Button
+        <CoreButton
           key={page}
           variant={page === currentPage ? 'primary' : 'flat'}
           size="large"
@@ -67,7 +67,7 @@ export const Pagination: React.FC<PaginationProps> = ({
           })}
         >
           {page}
-        </Button>
+        </CoreButton>
       ),
     );
   };
@@ -95,7 +95,7 @@ export const Pagination: React.FC<PaginationProps> = ({
       })}
       data-testid={dataTestid}
     >
-      <Button
+      <CoreButton
         variant="flat"
         size="large"
         appearance="dark"
@@ -111,11 +111,11 @@ export const Pagination: React.FC<PaginationProps> = ({
           <Icon icon="arrow_left_alt" />
         </React.Fragment>
         {!isSMWidth && t('pagination.previous', { defaultValue: 'Previous' })}
-      </Button>
+      </CoreButton>
 
       {isCompactView ? renderPaginationLabel() : renderPaginationBtns()}
 
-      <Button
+      <CoreButton
         disabled={currentPage === totalPages}
         variant="flat"
         size="large"
@@ -129,7 +129,7 @@ export const Pagination: React.FC<PaginationProps> = ({
         <React.Fragment key="next-btn-pagination">
           <Icon icon="arrow_right_alt" />
         </React.Fragment>
-      </Button>
+      </CoreButton>
     </div>
   );
 };

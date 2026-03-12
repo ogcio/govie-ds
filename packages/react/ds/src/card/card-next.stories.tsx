@@ -1,6 +1,6 @@
 import { Meta, StoryObj } from '@storybook/react';
 import { expect, waitFor, within } from 'storybook/test';
-import { Button } from '../button/button.js';
+import CoreButton from '../atoms/CoreButton.js';
 import { Link } from '../link/link.js';
 import { generateSvgPlaceholderDataUrl } from '../utils/placeholder.js';
 import {
@@ -184,7 +184,7 @@ export const Default: Story = {
           {linkActionHref ? (
             <Link href="/action">Action 1</Link>
           ) : (
-            <Button variant="secondary">Action 1</Button>
+            <CoreButton variant="secondary">Action 1</CoreButton>
           )}
         </CardAction>
       </CardContainer>

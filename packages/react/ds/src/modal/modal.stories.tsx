@@ -1,7 +1,7 @@
 import { Meta, StoryObj } from '@storybook/react';
 import { useState } from 'react';
 import { expect, within, waitFor, screen, userEvent } from 'storybook/test';
-import { Button } from '../button/button.js';
+import CoreButton from '../atoms/CoreButton.js';
 import { Paragraph } from '../paragraph/paragraph.js';
 import {
   ModalTitle,
@@ -59,14 +59,14 @@ export const Default: Story = {
           </Paragraph>
         </ModalBody>
         <ModalFooter key="footer">
-          <Button variant="secondary">Cancel</Button>
-          <Button variant="primary">Submit</Button>
+          <CoreButton variant="secondary">Cancel</CoreButton>
+          <CoreButton variant="primary">Submit</CoreButton>
         </ModalFooter>
       </Modal>
     );
   },
   args: {
-    triggerButton: <Button>Open modal</Button>,
+    triggerButton: <CoreButton>Open modal</CoreButton>,
     children: <></>,
   },
   play: async ({ step }) => {
@@ -96,7 +96,7 @@ export const StateControlledModal: Story = {
 
     return (
       <>
-        <Button onClick={handleOpen}>Open Modal</Button>
+        <CoreButton onClick={handleOpen}>Open Modal</CoreButton>
         <ModalWrapper
           dataTestId="test-id"
           isOpen={isOpen}
@@ -111,10 +111,10 @@ export const StateControlledModal: Story = {
             </Paragraph>
           </ModalBody>
           <ModalFooter key="footer">
-            <Button variant="secondary" onClick={handleClose}>
+            <CoreButton variant="secondary" onClick={handleClose}>
               Cancel
-            </Button>
-            <Button variant="primary">Save</Button>
+            </CoreButton>
+            <CoreButton variant="primary">Save</CoreButton>
           </ModalFooter>
         </ModalWrapper>
       </>
@@ -139,7 +139,7 @@ export const WithoutFooter: Story = {
       </ModalBody>
     </Modal>
   ),
-  args: { triggerButton: <Button>Open modal</Button>, children: <></> },
+  args: { triggerButton: <CoreButton>Open modal</CoreButton>, children: <></> },
 };
 
 export const WithLongContent: Story = {
@@ -180,12 +180,12 @@ export const WithLongContent: Story = {
         </Paragraph>
       </ModalBody>
       <ModalFooter key="footer">
-        <Button variant="secondary">Cancel</Button>
-        <Button variant="primary">Submit</Button>
+        <CoreButton variant="secondary">Cancel</CoreButton>
+        <CoreButton variant="primary">Submit</CoreButton>
       </ModalFooter>
     </Modal>
   ),
-  args: { triggerButton: <Button>Open modal</Button>, children: <></> },
+  args: { triggerButton: <CoreButton>Open modal</CoreButton>, children: <></> },
 };
 
 export const WithAllFooterButtonVariants: Story = {
@@ -200,13 +200,13 @@ export const WithAllFooterButtonVariants: Story = {
         </Paragraph>
       </ModalBody>
       <ModalFooter key="footer">
-        <Button variant="flat">Flat</Button>
-        <Button variant="secondary">Secondary</Button>
-        <Button variant="primary">Primary</Button>
+        <CoreButton variant="flat">Flat</CoreButton>
+        <CoreButton variant="secondary">Secondary</CoreButton>
+        <CoreButton variant="primary">Primary</CoreButton>
       </ModalFooter>
     </Modal>
   ),
-  args: { triggerButton: <Button>Open modal</Button>, children: <></> },
+  args: { triggerButton: <CoreButton>Open modal</CoreButton>, children: <></> },
 };
 
 export const ModalNotCloseOnClick: Story = {
@@ -222,7 +222,7 @@ export const ModalNotCloseOnClick: Story = {
       </ModalBody>
     </Modal>
   ),
-  args: { triggerButton: <Button>Open modal</Button>, children: <></> },
+  args: { triggerButton: <CoreButton>Open modal</CoreButton>, children: <></> },
 };
 
 export const ModalNotCloseOnOverlayClick: Story = {
@@ -241,13 +241,13 @@ export const ModalNotCloseOnOverlayClick: Story = {
         </Paragraph>
       </ModalBody>
       <ModalFooter key="footer">
-        <Button variant="primary" appearance="dark">
+        <CoreButton variant="primary" appearance="dark">
           Primary
-        </Button>
+        </CoreButton>
       </ModalFooter>
     </Modal>
   ),
-  args: { triggerButton: <Button>Open modal</Button>, children: <></> },
+  args: { triggerButton: <CoreButton>Open modal</CoreButton>, children: <></> },
 };
 
 export const WithCenterLarge: Story = {
@@ -262,12 +262,12 @@ export const WithCenterLarge: Story = {
         </Paragraph>
       </ModalBody>
       <ModalFooter key="footer">
-        <Button variant="secondary">Cancel</Button>
-        <Button variant="primary">Submit</Button>
+        <CoreButton variant="secondary">Cancel</CoreButton>
+        <CoreButton variant="primary">Submit</CoreButton>
       </ModalFooter>
     </Modal>
   ),
-  args: { triggerButton: <Button>Open modal</Button>, children: <></> },
+  args: { triggerButton: <CoreButton>Open modal</CoreButton>, children: <></> },
 };
 
 export const WithCenterMedium: Story = {
@@ -282,12 +282,12 @@ export const WithCenterMedium: Story = {
         </Paragraph>
       </ModalBody>
       <ModalFooter key="footer">
-        <Button variant="secondary">Cancel</Button>
-        <Button variant="primary">Submit</Button>
+        <CoreButton variant="secondary">Cancel</CoreButton>
+        <CoreButton variant="primary">Submit</CoreButton>
       </ModalFooter>
     </Modal>
   ),
-  args: { triggerButton: <Button>Open modal</Button>, children: <></> },
+  args: { triggerButton: <CoreButton>Open modal</CoreButton>, children: <></> },
 };
 
 export const WithCenterSmall: Story = {
@@ -302,19 +302,19 @@ export const WithCenterSmall: Story = {
         </Paragraph>
       </ModalBody>
       <ModalFooter key="footer">
-        <Button variant="secondary">Cancel</Button>
-        <Button variant="primary">Submit</Button>
+        <CoreButton variant="secondary">Cancel</CoreButton>
+        <CoreButton variant="primary">Submit</CoreButton>
       </ModalFooter>
     </Modal>
   ),
-  args: { triggerButton: <Button>Open modal</Button>, children: <></> },
+  args: { triggerButton: <CoreButton>Open modal</CoreButton>, children: <></> },
 };
 
 export const TestOpenOnTriggerAndCloseOnIcon: Story = {
   tags: ['skip-playwright'],
   args: {
     startsOpen: false,
-    triggerButton: <Button>Open modal</Button>,
+    triggerButton: <CoreButton>Open modal</CoreButton>,
     children: [
       <ModalTitle key="title">Modal Title</ModalTitle>,
       <ModalBody key="body">
@@ -370,7 +370,7 @@ export const TestCloseOnOverlayClick: Story = {
   tags: ['skip-playwright'],
   args: {
     startsOpen: false,
-    triggerButton: <Button>Open modal</Button>,
+    triggerButton: <CoreButton>Open modal</CoreButton>,
     children: [
       <ModalTitle key="title">Modal Title</ModalTitle>,
       <ModalBody key="body">
@@ -417,14 +417,14 @@ export const TestFooterButtonsOrder: Story = {
         <Paragraph>Body</Paragraph>
       </ModalBody>
       <ModalFooter key="footer">
-        <Button variant="flat">Help</Button>
-        <Button variant="secondary">Cancel</Button>
-        <Button variant="primary">Save</Button>
+        <CoreButton variant="flat">Help</CoreButton>
+        <CoreButton variant="secondary">Cancel</CoreButton>
+        <CoreButton variant="primary">Save</CoreButton>
       </ModalFooter>
     </Modal>
   ),
   args: {
-    triggerButton: <Button>Open modal</Button>,
+    triggerButton: <CoreButton>Open modal</CoreButton>,
     children: <></>,
   },
   play: async ({ canvasElement, step }) => {

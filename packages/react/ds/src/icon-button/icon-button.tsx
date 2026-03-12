@@ -1,32 +1,10 @@
 'use client';
 import { forwardRef } from 'react';
-import type { CoreButtonProps } from '../atoms/CoreButton.js';
-import {
-  isButtonDisabled,
-  getVariantAppearanceClass,
-  getButtonIconSizeClass,
-} from '../button/helpers.js';
-import { cn } from '../cn.js';
+import CoreButton, { type CoreButtonProps } from '../atoms/CoreButton.js';
 import { Icon, IconProps } from '../icon/icon.js';
 
-export type IconButtonProps = Omit<
-  CoreButtonProps,
-  | 'children'
-  | 'ariaLabel'
-  | 'ariaLabelledBy'
-  | 'ariaDescribedBy'
-  | 'ariaChecked'
-  | 'ariaPressed'
-  | 'ariaExpanded'
-  | 'ariaControls'
-  | 'ariaHasPopup'
-  | 'ariaBusy'
-  | 'size'
-> & {
+export type IconButtonProps = Omit<CoreButtonProps, 'children'> & {
   icon: Omit<IconProps, 'size'>;
-  className?: string;
-  size?: 'small' | 'medium' | 'large' | 'extraLarge';
-  'aria-label'?: string;
 };
 
 export const IconButton = forwardRef<HTMLButtonElement, IconButtonProps>(
@@ -38,10 +16,9 @@ export const IconButton = forwardRef<HTMLButtonElement, IconButtonProps>(
       size,
       disabled,
       onClick,
-      className = '',
       type = 'button',
       dataTestid,
-      'aria-label': ariaLabel,
+      ariaLabel,
       ...props
     },
     ref,
@@ -49,26 +26,21 @@ export const IconButton = forwardRef<HTMLButtonElement, IconButtonProps>(
     const iconSize = size === 'small' ? 'sm' : 'md';
 
     return (
-      <button
+      <CoreButton
         ref={ref}
         type={type}
         aria-disabled={disabled}
         disabled={disabled}
-        aria-label={ariaLabel}
         role="button"
         onClick={onClick}
         data-testid={dataTestid}
+        variant={variant}
+        appearance={appearance}
+        ariaLabel={ariaLabel}
         {...props}
-        className={cn(
-          'gi-btn',
-          getVariantAppearanceClass({ disabled, variant, appearance }),
-          getButtonIconSizeClass(size),
-          isButtonDisabled({ disabled, variant, appearance }),
-          className,
-        )}
       >
         <Icon size={iconSize} {...icon} />
-      </button>
+      </CoreButton>
     );
   },
 );

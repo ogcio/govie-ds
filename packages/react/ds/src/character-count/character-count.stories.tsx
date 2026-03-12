@@ -1,7 +1,7 @@
 import type { Meta, StoryObj } from '@storybook/react';
 import { FormProvider, useForm } from 'react-hook-form';
 import { expect, userEvent, within } from 'storybook/test';
-import { Button } from '../button/button.js';
+import CoreButton from '../atoms/CoreButton.js';
 import { FormField, FormFieldLabel } from '../forms/form-field/form-field.js';
 import { TextArea } from '../textarea/textarea.js';
 import { CharacterCount } from './character-count.js';
@@ -79,16 +79,16 @@ export const WithTextArea: Story = {
           </FormField>
 
           <div className="gi-flex gi-flex-cols gi-gap-2 gi-pt-4">
-            <Button type="submit" data-testid="submit-btn">
+            <CoreButton type="submit" data-testid="submit-btn">
               Submit
-            </Button>
-            <Button
+            </CoreButton>
+            <CoreButton
               type="button"
               onClick={() => methods.reset()}
               data-testid="reset-btn"
             >
               Reset
-            </Button>
+            </CoreButton>
           </div>
         </form>
       </FormProvider>

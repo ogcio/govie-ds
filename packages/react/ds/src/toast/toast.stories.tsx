@@ -7,7 +7,7 @@ import {
 } from '@storybook/addon-docs/blocks';
 import type { Meta, StoryObj } from '@storybook/react';
 import { expect, screen, userEvent, waitFor, within } from 'storybook/test';
-import { Button } from '../button/button.js';
+import CoreButton from '../atoms/CoreButton.js';
 import { Stack } from '../stack/stack.js';
 import { Toast, toaster, ToastProvider } from './toast.js';
 import { ToastPosition } from './types.js';
@@ -102,7 +102,9 @@ export const Default: Story = {
   render: (props) => (
     <>
       <ToastProvider />
-      <Button onClick={() => toaster.create(props)}>Trigger Toast</Button>
+      <CoreButton onClick={() => toaster.create(props)}>
+        Trigger Toast
+      </CoreButton>
     </>
   ),
   play: async ({ canvasElement }) => {
@@ -122,9 +124,9 @@ export const WithSlotAction: Story = {
   render: (props) => (
     <>
       <ToastProvider />
-      <Button onClick={() => toaster.create(props)}>
+      <CoreButton onClick={() => toaster.create(props)}>
         Show Toast with Action
-      </Button>
+      </CoreButton>
     </>
   ),
   play: async ({ canvasElement }) => {
@@ -146,9 +148,9 @@ export const WithAction: Story = {
   render: (props) => (
     <>
       <ToastProvider />
-      <Button onClick={() => toaster.create(props)}>
+      <CoreButton onClick={() => toaster.create(props)}>
         Show Toast with Action
-      </Button>
+      </CoreButton>
     </>
   ),
   play: async ({ canvasElement }) => {
@@ -169,9 +171,9 @@ export const Dismissible: Story = {
     return (
       <>
         <ToastProvider />
-        <Button onClick={() => toaster.create(props)}>
+        <CoreButton onClick={() => toaster.create(props)}>
           Show Dismissible Toast
-        </Button>
+        </CoreButton>
       </>
     );
   },
@@ -191,9 +193,9 @@ export const WithLongerDuration: Story = {
   render: (props) => (
     <>
       <ToastProvider />
-      <Button onClick={() => toaster.create(props)}>
+      <CoreButton onClick={() => toaster.create(props)}>
         Show Toast with Longer Duration
-      </Button>
+      </CoreButton>
     </>
   ),
   play: async ({ canvasElement }) => {
@@ -212,9 +214,9 @@ export const WithPositionChange: Story = {
   render: (props) => (
     <>
       <ToastProvider />
-      <Button onClick={() => toaster.create(props)}>
+      <CoreButton onClick={() => toaster.create(props)}>
         Show Toast at Bottom Left
-      </Button>
+      </CoreButton>
     </>
   ),
   play: async ({ canvasElement }) => {
@@ -237,7 +239,9 @@ export const Success: Story = {
   render: (props) => (
     <>
       <ToastProvider />
-      <Button onClick={() => toaster.create(props)}>Trigger Toast</Button>
+      <CoreButton onClick={() => toaster.create(props)}>
+        Trigger Toast
+      </CoreButton>
     </>
   ),
   play: async ({ canvasElement }) => {
@@ -260,7 +264,9 @@ export const Danger: Story = {
   render: (props) => (
     <>
       <ToastProvider />
-      <Button onClick={() => toaster.create(props)}>Trigger Toast</Button>
+      <CoreButton onClick={() => toaster.create(props)}>
+        Trigger Toast
+      </CoreButton>
     </>
   ),
   play: async ({ canvasElement }) => {
@@ -283,7 +289,9 @@ export const Warning: Story = {
   render: (props) => (
     <>
       <ToastProvider />
-      <Button onClick={() => toaster.create(props)}>Trigger Toast</Button>
+      <CoreButton onClick={() => toaster.create(props)}>
+        Trigger Toast
+      </CoreButton>
     </>
   ),
   play: async ({ canvasElement }) => {
@@ -308,7 +316,7 @@ export const AllPositions: Story = {
       <ToastProvider />
       <Stack gap={4} direction="column">
         {positions.map((pos, index) => (
-          <Button
+          <CoreButton
             key={index}
             onClick={() =>
               toaster.create({
@@ -322,7 +330,7 @@ export const AllPositions: Story = {
             }
           >
             Trigger {pos.x}-{pos.y}
-          </Button>
+          </CoreButton>
         ))}
       </Stack>
     </>
@@ -347,7 +355,9 @@ export const WithoutIcon: Story = {
   render: (props) => (
     <>
       <ToastProvider />
-      <Button onClick={() => toaster.create(props)}>Trigger Toast</Button>
+      <CoreButton onClick={() => toaster.create(props)}>
+        Trigger Toast
+      </CoreButton>
     </>
   ),
   play: async ({ step }) => {
@@ -378,9 +388,9 @@ export const TestRenderTitleAndMessage: Story = {
   render: (props) => (
     <>
       <ToastProvider />
-      <Button onClick={() => toaster.create(props)}>
+      <CoreButton onClick={() => toaster.create(props)}>
         Trigger Title And Message
-      </Button>
+      </CoreButton>
     </>
   ),
   play: async ({ canvasElement, step }) => {
@@ -409,7 +419,7 @@ export const TestRenderAllVariants: Story = {
         <ToastProvider />
         <Stack gap={2} direction="column">
           {[...variantList].map((variant) => (
-            <Button
+            <CoreButton
               key={variant}
               onClick={() =>
                 toaster.create({
@@ -420,7 +430,7 @@ export const TestRenderAllVariants: Story = {
               }
             >
               Trigger {variant}
-            </Button>
+            </CoreButton>
           ))}
         </Stack>
       </>

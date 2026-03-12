@@ -18,7 +18,7 @@ import { debounce } from 'lodash';
 import { FC, Fragment, useEffect, useMemo, useRef, useState } from 'react';
 import { useForm, FieldErrors, FieldError } from 'react-hook-form';
 
-import { Button } from '../../button/button.js';
+import CoreButton from '../../atoms/CoreButton.js';
 import {
   InputCheckbox,
   InputCheckboxTableCell,
@@ -673,17 +673,17 @@ export const WithReactHookForm: Story = {
             selectedCount={selectedRows.length}
             actions={
               <>
-                <Button appearance="light" size="medium" variant="flat">
+                <CoreButton appearance="light" size="medium" variant="flat">
                   Delete
-                </Button>
-                <Button
+                </CoreButton>
+                <CoreButton
                   appearance="light"
                   size="medium"
                   variant="flat"
                   onClick={() => table.resetRowSelection()}
                 >
                   Clear Selection
-                </Button>
+                </CoreButton>
               </>
             }
           />
@@ -702,14 +702,14 @@ export const WithReactHookForm: Story = {
           </DataTableHeaderSearch>
 
           <DataTableHeaderFilter>
-            <Button
+            <CoreButton
               ref={triggerRef}
               onClick={handleFilterOpen}
               variant="secondary"
               appearance="dark"
             >
               Filters
-            </Button>
+            </CoreButton>
             <Popover
               triggerRef={triggerRef}
               open={filterOpen}
@@ -762,32 +762,32 @@ export const WithReactHookForm: Story = {
                 </DataTableHeaderFilterContent>
 
                 <DataTableHeaderFilterActions>
-                  <Button
+                  <CoreButton
                     onClick={handleClearFilters}
                     variant="flat"
                     appearance="dark"
                   >
                     Clear
-                  </Button>
-                  <Button
+                  </CoreButton>
+                  <CoreButton
                     onClick={handleApplyFilter}
                     variant="secondary"
                     appearance="dark"
                   >
                     Apply
-                  </Button>
+                  </CoreButton>
                 </DataTableHeaderFilterActions>
               </div>
             </Popover>
           </DataTableHeaderFilter>
 
           <DataTableHeaderActions>
-            <Button onClick={() => null} variant="secondary">
+            <CoreButton onClick={() => null} variant="secondary">
               Export table
-            </Button>
-            <Button onClick={() => null} variant="primary">
+            </CoreButton>
+            <CoreButton onClick={() => null} variant="primary">
               Create new
-            </Button>
+            </CoreButton>
           </DataTableHeaderActions>
 
           <DataTableHeaderFilterList
@@ -946,14 +946,14 @@ export const DataTableHeaderBasic: Story = {
           />
         </DataTableHeaderSearch>
         <DataTableHeaderFilter>
-          <Button
+          <CoreButton
             ref={triggerRef}
             onClick={handleFilterToggle}
             variant="secondary"
             appearance="dark"
           >
             Filters
-          </Button>
+          </CoreButton>
           <Popover
             triggerRef={triggerRef}
             open={open}
@@ -988,27 +988,31 @@ export const DataTableHeaderBasic: Story = {
                 </SelectNext>
               </DataTableHeaderFilterContent>
               <DataTableHeaderFilterActions>
-                <Button onClick={handleClear} variant="flat" appearance="dark">
+                <CoreButton
+                  onClick={handleClear}
+                  variant="flat"
+                  appearance="dark"
+                >
                   Clear
-                </Button>
-                <Button
+                </CoreButton>
+                <CoreButton
                   onClick={handleApply}
                   variant="secondary"
                   appearance="dark"
                 >
                   Apply
-                </Button>
+                </CoreButton>
               </DataTableHeaderFilterActions>
             </div>
           </Popover>
         </DataTableHeaderFilter>
         <DataTableHeaderActions>
-          <Button onClick={() => null} variant="secondary">
+          <CoreButton onClick={() => null} variant="secondary">
             Export table
-          </Button>
-          <Button onClick={() => null} variant="primary">
+          </CoreButton>
+          <CoreButton onClick={() => null} variant="primary">
             Create new
-          </Button>
+          </CoreButton>
         </DataTableHeaderActions>
         <DataTableHeaderFilterList
           filters={options

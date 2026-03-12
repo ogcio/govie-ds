@@ -24,7 +24,10 @@ export {
 } from './breadcrumbs/types.js';
 export { ButtonGroup, ButtonGroupItem } from './button-group/button-group.js';
 export * from './button-group/types.js';
-export { default as Button, type CoreButtonProps as ButtonProps } from './atoms/CoreButton.js';
+export {
+  default as Button,
+  type CoreButtonProps as ButtonProps,
+} from './atoms/CoreButton.js';
 export {
   CardAction,
   CardContainer,

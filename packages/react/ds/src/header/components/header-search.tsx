@@ -1,4 +1,4 @@
-import { Button } from '../../button/button.js';
+import CoreButton from '../../atoms/CoreButton.js';
 import { Heading } from '../../heading/heading.js';
 import { translate as t } from '../../i18n/utility.js';
 import { IconId } from '../../icon/icon.js';
@@ -37,13 +37,13 @@ export function HeaderSearch({
           className="gi-flex-auto"
         />
         <div className="gi-ml-1 gi-flex-none gi-hidden md:gi-block">
-          <Button
-            aria-label={t('header.submitSearch', {
+          <CoreButton
+            ariaLabel={t('header.submitSearch', {
               defaultValue: 'Submit Search',
             })}
           >
             {t('header.search', { defaultValue: 'Search' })}
-          </Button>
+          </CoreButton>
         </div>
         <div className="gi-ml-1 gi-flex-none gi-block md:gi-hidden">
           <IconButton

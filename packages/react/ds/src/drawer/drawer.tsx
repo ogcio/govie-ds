@@ -1,7 +1,7 @@
 'use client';
 
 import { cloneElement, Fragment, ReactElement, useState } from 'react';
-import { ButtonProps } from '../button/types.js';
+import { type CoreButtonProps } from '../atoms/CoreButton.js';
 import { cn } from '../cn.js';
 import { ModalWrapper, ModalBody, ModalFooter } from '../modal/modal.js';
 import { ModalProps, ModalWrapperProps } from '../modal/types.js';
@@ -21,7 +21,9 @@ export type DrawerProps = Omit<
 };
 
 type DrawerSectionProps = {
-  children: React.ReactElement<ButtonProps> | React.ReactElement<ButtonProps>[];
+  children:
+    | React.ReactElement<CoreButtonProps>
+    | React.ReactElement<CoreButtonProps>[];
   className?: string;
   stacked?: boolean;
 };

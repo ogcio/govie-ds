@@ -1,4 +1,4 @@
-import { Button } from '../button/button.js';
+import CoreButton from '../atoms/CoreButton.js';
 import { ModalTitle, ModalBody, ModalFooter } from './modal.js';
 
 export const HtmlContent = (
@@ -13,7 +13,7 @@ export const HtmlContent = (
       </p>
     </ModalBody>
     <ModalFooter>
-      <Button>Primary</Button>
+      <CoreButton>Primary</CoreButton>
     </ModalFooter>
   </>
 );

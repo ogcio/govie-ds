@@ -8,12 +8,11 @@ import {
   useState,
   useRef,
   useEffect,
-  useLayoutEffect,
   useMemo,
   useId,
 } from 'react';
 import { createPortal } from 'react-dom';
-import { Button } from '../button/button.js';
+import CoreButton from '../atoms/CoreButton.js';
 import { cn } from '../cn.js';
 import { Heading, type HeadingProps } from '../heading/heading.js';
 import { useAriaHider } from '../hooks/use-aria-hider.js';
@@ -55,20 +54,20 @@ const ModalCloseButton = ({
   }
 
   return label ? (
-    <Button
+    <CoreButton
       onClick={props.onClick}
       variant="flat"
       size={size}
       appearance="dark"
       className="gi-modal-icon"
-      aria-label={label}
+      ariaLabel={label}
       {...props}
     >
       <>
         {label}
         <Icon icon="close" size={iconSize} />
       </>
-    </Button>
+    </CoreButton>
   ) : (
     <IconButton
       className="gi-modal-icon"
@@ -297,8 +296,8 @@ export const ModalFooter = ({
   const filteredButtons = actionButtons.filter((actionButton) => {
     return (
       isValidElement(actionButton) &&
-      (actionButton.type === Button ||
-        (actionButton.type as any)?.displayName === 'Button' ||
+      (actionButton.type === CoreButton ||
+        (actionButton.type as any)?.displayName === 'CoreButton' ||
         (actionButton.props as any)?.['data-button'])
     );
   });

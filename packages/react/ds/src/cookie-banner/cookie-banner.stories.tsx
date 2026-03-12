@@ -1,5 +1,5 @@
 import type { Meta, StoryObj } from '@storybook/react';
-import { Button } from '../button/button.js';
+import CoreButton from '../atoms/CoreButton.js';
 import { Heading } from '../heading/heading.js';
 import { Link } from '../link/link.js';
 import { Paragraph } from '../paragraph/paragraph.js';
@@ -49,8 +49,8 @@ export const Default: Story = {
         </Paragraph>
       </>
     ),
-    accept: <Button>Accept cookies</Button>,
-    reject: <Button>Reject cookies</Button>,
+    accept: <CoreButton>Accept cookies</CoreButton>,
+    reject: <CoreButton>Reject cookies</CoreButton>,
     cookieLink: <Link href="#">See Cookies</Link>,
   },
 };
