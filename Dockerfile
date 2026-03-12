@@ -42,4 +42,5 @@ USER nginx
 EXPOSE 8080
 
 # Start Nginx server
+ENTRYPOINT []
 CMD ["nginx", "-g", "daemon off;"]
