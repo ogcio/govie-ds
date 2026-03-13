@@ -1,29 +1,21 @@
 import type { Meta, StoryObj } from '@storybook/react';
 import { within, expect } from 'storybook/test';
-import { InsetText, insetTextStories, insetTextMeta } from '../atoms';
+import InsetText from '../atoms/InsetText';
+import {
+  insetTextMeta,
+  Default as insetTextDefault,
+} from '../atoms/storybook/inset-text.meta';
 
-const meta = {
+const meta: Meta<typeof InsetText> = {
   ...insetTextMeta,
   title: 'Typography/InsetText',
-  argTypes: {
-    ...insetTextMeta.argTypes,
-    children: {
-      control: 'text',
-      description: 'The inset text content.',
-    },
-  },
   component: InsetText,
-} satisfies Meta<typeof InsetText>;
+};
 
 export default meta;
 
-type Story = StoryObj<typeof meta>;
-
-export const Default: Story = {
-  args: {
-    ...insetTextStories.default.args,
-    children: insetTextStories.default.content,
-  },
+export const Default: StoryObj<typeof InsetText> = {
+  ...insetTextDefault,
   play: async ({ canvasElement, step, args }) => {
     const canvas = within(canvasElement);
     const contentText = typeof args.children === 'string' ? args.children : '';

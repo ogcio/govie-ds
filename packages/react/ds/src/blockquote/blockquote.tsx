@@ -1,5 +1,5 @@
 import React from 'react';
-import { InsetText, type InsetTextProps } from '../atoms/InsetText/index.js';
+import InsetText, { type Props as InsetTextProps } from '../atoms/InsetText.js';
 
 export type BlockquoteProps = React.QuoteHTMLAttributes<HTMLQuoteElement>;
 

@@ -1,30 +1,24 @@
 import type { Meta, StoryObj } from '@storybook/angular';
 import { within, expect } from 'storybook/test';
-import { insetTextMeta, insetTextStories, InsetText } from '../atoms';
+import InsetText from '../atoms/InsetText';
+import {
+  insetTextMeta,
+  Default as insetTextDefault,
+} from '../atoms/storybook/inset-text.meta';
 
-type InsetTextWithContent = InsetText & { content: string };
-
-const meta = {
+const meta: Meta<InsetText> = {
   ...insetTextMeta,
   title: 'Typography/InsetText',
-  argTypes: {
-    ...insetTextMeta.argTypes,
-    content: {
-      control: 'text',
-      description: 'The inset text content.',
-    },
-  },
   component: InsetText,
-} satisfies Meta<InsetTextWithContent>;
+};
 
 export default meta;
 
-type Story = StoryObj<InsetTextWithContent>;
-
-export const Default: Story = {
+export const Default: StoryObj<InsetText & { content: string }> = {
+  ...insetTextDefault,
   args: {
-    ...insetTextStories.default.args,
-    content: insetTextStories.default.content,
+    ...insetTextDefault.args,
+    content: String(insetTextDefault.args?.children),
   },
   render: (args) => ({
     props: args,
@@ -35,22 +29,21 @@ export const Default: Story = {
         [describedBy]="describedBy"
         [labelledBy]="labelledBy"
       >
-        {{ content }}
+        {{content}}
       </inset-text>
     `,
   }),
   play: async ({ canvasElement, step, args }) => {
     const canvas = within(canvasElement);
-    const contentText = args.content;
 
     await step('renders content and tag', async () => {
-      const element = canvas.getByText(contentText);
+      const element = canvas.getByText(String(args.content));
       expect(element).toBeInTheDocument();
       expect(element.tagName.toLowerCase()).toBe('blockquote');
     });
 
     await step('renders cite attribute when provided', async () => {
-      const element = canvas.getByText(contentText);
+      const element = canvas.getByText(String(args.content));
       if (args.cite) {
         expect(element).toHaveAttribute('cite', String(args.cite));
       } else {
@@ -59,7 +52,7 @@ export const Default: Story = {
     });
 
     await step('renders inset text styles', async () => {
-      const element = canvas.getByText(contentText);
+      const element = canvas.getByText(String(args.content));
       expect(element).toHaveClass('gi-p-4');
       expect(element).toHaveClass('gi-border-l-2xl');
       expect(element).toHaveClass('gi-border-gray-500');
