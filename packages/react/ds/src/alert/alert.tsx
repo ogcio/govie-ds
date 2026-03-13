@@ -19,7 +19,6 @@ function Alert({
   children,
   variant = 'info',
   showIcon = true,
-  iconProps,
   dismissible,
   onClose,
   className,
