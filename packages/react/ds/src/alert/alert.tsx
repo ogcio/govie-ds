@@ -26,7 +26,6 @@ function Alert({
   ...props
 }: AlertProps) {
   const [isDismissed, setIsDismissed] = useState(false);
-  const AlertIcon = ALERT_VARIANT_ICONS[variant ?? 'info'];
 
   const { base, heading, container, dismiss, baseDismissible } = alertVariants({
     variant,
@@ -37,6 +36,7 @@ function Alert({
   if (isDismissed) {
     return null;
   }
+  const AlertIcon = ALERT_VARIANT_ICONS[variant ?? 'info'];
   return (
     <div
       className={cn(baseVariant(), className, 'gi-not-prose')}
