@@ -171,6 +171,9 @@ importers:
       '@ogcio/analytics-sdk':
         specifier: ^0.2.6
         version: 0.2.6
+      '@ogcio/design-system-html':
+        specifier: workspace:^
+        version: link:../../packages/html/ds
       '@ogcio/design-system-react':
         specifier: workspace:*
         version: link:../../packages/react/ds

@@ -27,6 +27,7 @@
   "dependencies": {
     "@faker-js/faker": "^9.6.0",
     "@ogcio/analytics-sdk": "^0.2.6",
+    "@ogcio/design-system-html": "workspace:^",
     "@ogcio/design-system-react": "workspace:*",
     "@ogcio/design-system-tailwind": "workspace:*",
     "@ogcio/design-system-tokens": "workspace:*",
