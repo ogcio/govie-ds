@@ -31,6 +31,7 @@ function createResponsiveTextSchema() {
   return z
     .object(
       {
+        xl: createTypographySchema('xl'),
         lg: createTypographySchema('lg'),
         md: createTypographySchema('md'),
         sm: createTypographySchema('sm'),

@@ -67,20 +67,20 @@ pnpm ds
 
 ## Scripts
 
-| Script                 | Description                             |
-|------------------------|-----------------------------------------|
-| `pnpm ds`              | Launch documentation site (Next.js)     |
-| `pnpm html:storybook`  | Launch global HTML components Storybook |
-| `pnpm react:storybook` | Launch React components Storybook       |
-| `pnpm build`           | Build all libraries and applications    |
-| `pnpm build:libs`      | Build all libraries only                |
-| `pnpm figma:build`     | Build Figma token import files          |
-| `pnpm format:check`    | Check formatting on all projects        |
-| `pnpm lint`            | Check linting on all projects           |
-| `pnpm test`            | Run tests on all projects               |
-| `pnpm examples:vite`   | Run Vite example component usage        |
-| `pnpm examples:nextjs` | Run Next.js example component usage     |
-| `pnpm gen:licenses`    | Generate third‑party licenses report    |
+| Script                       | Description                             |
+|------------------------------|-----------------------------------------|
+| `pnpm docs`                  | Launch documentation site (Next.js)     |
+| `pnpm storybook:react`       | Launch React components Storybook       |
+| `pnpm storybook:html`        | Launch HTML components Storybook        |
+| `pnpm storybook:angular`     | Launch Angular components Storybook     |
+| `pnpm examples:vite`         | Run Vite example                        |
+| `pnpm examples:nextjs`       | Run Next.js example                     |
+| `pnpm examples:angular`      | Run Angular example                     |
+| `pnpm examples:html`         | Run HTML example                        |
+| `pnpm format:check`          | Check formatting on all projects        |
+| `pnpm lint`                  | Check linting on all projects           |
+| `pnpm test`                  | Run tests on all projects               |
+| `pnpm gen:licenses`          | Generate third-party licenses report    |
 
 ## Generate third-party licenses report
 

@@ -33,7 +33,7 @@ export const Default: Story = {
     },
     size: {
       control: 'radio',
-      options: ['lg', 'md', 'sm'],
+      options: ['xl', 'lg', 'md', 'sm'],
       type: { name: 'string', required: false },
       description: 'Specifies the size of the paragraph.',
     },
@@ -170,6 +170,22 @@ export const AsSpan: Story = {
   },
 };
 
+export const TestSizeXl: Story = {
+  tags: ['skip-playwright'],
+  args: {
+    as: 'p',
+    children: 'Extra large text',
+    size: 'xl',
+  },
+  play: async ({ canvasElement, step }) => {
+    const canvas = within(canvasElement);
+    await step('should have correct text size classes for "xl"', async () => {
+      const element = canvas.getByText('Extra large text');
+      expect(element.classList.contains('gi-paragraph-xl')).toBe(true);
+    });
+  },
+};
+
 export const TestSizeLg: Story = {
   tags: ['skip-playwright'],
   args: {
@@ -248,5 +264,68 @@ export const TestRenderHtmlChildren: StoryObj = {
       expect(element).toBeTruthy();
       expect(element.innerHTML).toContain('Anchor tag');
     });
+  },
+};
+
+const loremIpsum =
+  'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.';
+
+export const SizeXl: Story = {
+  tags: ['skip-playwright'],
+  args: {
+    as: 'span',
+    size: 'xl',
+    children: loremIpsum,
+  },
+  play: async ({ canvasElement }) => {
+    const canvas = within(canvasElement);
+    const element = canvas.getByText(loremIpsum);
+    const { fontSize } = globalThis.getComputedStyle(element);
+    expect(fontSize).toBe('24px');
+  },
+};
+
+export const SizeLg: Story = {
+  tags: ['skip-playwright'],
+  args: {
+    as: 'span',
+    size: 'lg',
+    children: loremIpsum,
+  },
+  play: async ({ canvasElement }) => {
+    const canvas = within(canvasElement);
+    const element = canvas.getByText(loremIpsum);
+    const { fontSize } = globalThis.getComputedStyle(element);
+    expect(fontSize).toBe('20px');
+  },
+};
+
+export const SizeMd: Story = {
+  tags: ['skip-playwright'],
+  args: {
+    as: 'span',
+    size: 'md',
+    children: loremIpsum,
+  },
+  play: async ({ canvasElement }) => {
+    const canvas = within(canvasElement);
+    const element = canvas.getByText(loremIpsum);
+    const { fontSize } = globalThis.getComputedStyle(element);
+    expect(fontSize).toBe('18px');
+  },
+};
+
+export const SizeSm: Story = {
+  tags: ['skip-playwright'],
+  args: {
+    as: 'span',
+    size: 'sm',
+    children: loremIpsum,
+  },
+  play: async ({ canvasElement }) => {
+    const canvas = within(canvasElement);
+    const element = canvas.getByText(loremIpsum);
+    const { fontSize } = globalThis.getComputedStyle(element);
+    expect(fontSize).toBe('16px');
   },
 };

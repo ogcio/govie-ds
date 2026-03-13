@@ -28,7 +28,7 @@ const meta: Meta<ParagraphProps> = {
     },
     size: {
       control: 'radio',
-      options: ['lg', 'md', 'sm'],
+      options: ['xl', 'lg', 'md', 'sm'],
       type: { name: 'string', required: false },
       description: 'Specifies the size of the paragraph.',
     },

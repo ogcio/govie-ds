@@ -82,7 +82,9 @@ export const createHeading = (arguments_: HeadingProps) => {
 
 export const createParagraph = (arguments_: ParagraphProps) => {
   let classSize = '';
-  if (arguments_.size == 'lg') {
+  if (arguments_.size == 'xl') {
+    classSize = arguments_.as == 'span' ? 'gi-span-xl' : 'gi-paragraph-xl';
+  } else if (arguments_.size == 'lg') {
     classSize = arguments_.as == 'span' ? 'gi-span-lg' : 'gi-paragraph-lg';
   } else if (arguments_.size == 'sm') {
     classSize = arguments_.as == 'span' ? 'gi-span-sm' : 'gi-paragraph-sm';
