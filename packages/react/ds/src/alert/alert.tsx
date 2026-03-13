@@ -34,7 +34,8 @@ const AlertIcon = ({
   disabled,
   inline,
   className,
-}: VariantProps<typeof alertVariants> & Omit<IconProps, 'icon'>): JSX.Element => {
+}: VariantProps<typeof alertVariants> &
+  Omit<IconProps, 'icon'>): JSX.Element => {
   const fontSize = SIZE_MAP[size ?? 'md'];
   const svgClass = cn(
     { 'gi-block': !inline, 'gi-inline-block': inline },
