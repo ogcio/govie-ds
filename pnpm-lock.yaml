@@ -172,7 +172,7 @@ importers:
         specifier: ^0.2.6
         version: 0.2.6
       '@ogcio/design-system-html':
-        specifier: workspace:^
+        specifier: workspace:*
         version: link:../../packages/html/ds
       '@ogcio/design-system-react':
         specifier: workspace:*
