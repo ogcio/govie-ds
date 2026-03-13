@@ -9,6 +9,7 @@ import { Component, Input } from "@angular/core";
 import { CommonModule } from "@angular/common";
 
 import { IconProps } from "./types";
+import { iconStyles } from "./styles";
 
 @Component({
   selector: "error",
@@ -18,7 +19,11 @@ import { IconProps } from "./types";
       xmlns="http://www.w3.org/2000/svg"
       [attr.width]="size ?? 24"
       [attr.height]="size ?? 24"
-      [class]="className"
+      [class]="iconStyles({
+          inline: inline,
+          disabled: disabled,
+          class: className
+        })"
       [attr.id]="id"
       [attr.role]="label ? 'img' : undefined"
       [attr.aria-label]="label"
@@ -42,7 +47,11 @@ import { IconProps } from "./types";
   imports: [CommonModule],
 })
 export default class Error {
+  iconStyles = iconStyles;
+
   @Input() size!: IconProps["size"];
+  @Input() inline!: IconProps["inline"];
+  @Input() disabled!: IconProps["disabled"];
   @Input() className!: IconProps["className"];
   @Input() id!: IconProps["id"];
   @Input() label!: IconProps["label"];

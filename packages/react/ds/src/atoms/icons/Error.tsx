@@ -7,6 +7,7 @@
 import * as React from 'react';
 
 import { IconProps } from './types';
+import { iconStyles } from './styles';
 
 function Error(props: IconProps) {
   return (
@@ -15,7 +16,11 @@ function Error(props: IconProps) {
       xmlns="http://www.w3.org/2000/svg"
       width={props.size ?? 24}
       height={props.size ?? 24}
-      className={props.className}
+      className={iconStyles({
+        inline: props.inline,
+        disabled: props.disabled,
+        class: props.className,
+      })}
       id={props.id}
       role={props.label ? 'img' : undefined}
       aria-label={props.label}
