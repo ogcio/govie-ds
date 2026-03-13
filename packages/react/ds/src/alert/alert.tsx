@@ -35,7 +35,6 @@ function Alert({
   if (isDismissed) {
     return null;
   }
-
   const AlertIcon = ALERT_VARIANT_ICONS[variant ?? 'info'];
   return (
     <div
