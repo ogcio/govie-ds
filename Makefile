@@ -7,7 +7,7 @@ build-visual-tests-image:
 	@docker build -t playwright-screenshot-tests . -f Dockerfile.playwright
 
 start-react-storybook:
-	pnpm react:storybook:build
+	pnpm storybook:build:react
 	cd packages/react/ds && pnpm storybook dev --ci -p 6006 &
 
 stop-react-storybook:
