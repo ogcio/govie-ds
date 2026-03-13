@@ -1,4 +1,3 @@
-/* eslint-disable storybook/no-uninstalled-addons */
 import type { StorybookConfig } from '@storybook/react-vite';
 
 const config: StorybookConfig = {

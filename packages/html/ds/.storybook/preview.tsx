@@ -1,5 +1,5 @@
 import '@ogcio/theme-govie/theme.css';
-import type { Preview } from '@storybook/react';
+import type { Preview } from '@storybook/react-vite';
 import parserHtml from 'prettier/plugins/html';
 import prettier from 'prettier/standalone';
 import { useEffect } from 'react';
