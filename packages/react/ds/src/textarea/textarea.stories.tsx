@@ -1,4 +1,4 @@
-import type { Meta, StoryObj } from '@storybook/react';
+import type { Meta, StoryObj } from '@storybook/react-vite';
 import { useRef, useState } from 'react';
 import { Controller, FormProvider, useForm } from 'react-hook-form';
 import { expect, userEvent, within } from 'storybook/test';
