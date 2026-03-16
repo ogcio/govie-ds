@@ -7,6 +7,4 @@ export type BaseSVGProps = {
 };
 export type IconProps = BaseSVGProps & {
   color?: string;
-  inline?: boolean;
-  disabled?: boolean;
 }

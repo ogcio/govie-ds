@@ -1,5 +1,4 @@
 import { IconProps } from './types';
-import { iconStyles } from './styles';
 
 export default function CheckCircle(props: IconProps) {
   return (
@@ -7,7 +6,7 @@ export default function CheckCircle(props: IconProps) {
       viewBox="0 -960 960 960"
       width={props.size ?? 24}
       height={props.size ?? 24}
-      class={iconStyles({ inline: props.inline, disabled: props.disabled, class: props.className })}
+      class={props.className}
       id={props.id}
       role={props.label ? 'img' : undefined}
       aria-label={props.label}
