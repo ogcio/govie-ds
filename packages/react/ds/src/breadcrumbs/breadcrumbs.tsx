@@ -1,8 +1,8 @@
+import { ChevronLeft, SIZE_MAP } from '../atoms/icons/index.js';
 import { translate as t } from '../i18n/utility.js';
 import { Icon } from '../icon/icon.js';
 import { Link } from '../link/link.js';
 import type { BreadcrumbLinkProps, BreadcrumbProps } from './types.js';
-
 export const BreadcrumbEllipsis = () => (
   <div aria-hidden="true">
     <Icon className="gi-text-gray-700" icon="more_horiz" />
@@ -56,7 +56,7 @@ export const Breadcrumbs = ({ children, iconStart }: BreadcrumbProps) => {
       >
         {iconStart && (
           <li role="listitem" className="gi-pr-1">
-            <Icon aria-label="chevron-left" icon="chevron_left" size="sm" />
+            <ChevronLeft className="gi-block gi-shrink-0" size={SIZE_MAP.sm} />
           </li>
         )}
         {items.map((component, index) => (

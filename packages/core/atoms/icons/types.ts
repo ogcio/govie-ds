@@ -9,3 +9,4 @@ export type BaseSVGProps = {
 export type IconProps = BaseSVGProps & {
   color?: string;
 };
+export type IconSize = 'sm' | 'md' | 'lg' | 'xl';

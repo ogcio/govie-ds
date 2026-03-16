@@ -15,6 +15,8 @@ import {
   Warning,
   Info,
   Error,
+  ChevronLeft,
+  ChevronRight,
 } from '../atoms/icons';
 import { cn } from '../cn.js';
 import { iconIds } from './icons.js';
@@ -83,6 +85,8 @@ const ICON_REGISTRY: Record<
   error: { Component: Error },
   warning: { Component: Warning },
   check_circle: { Component: CheckCircle },
+  chevron_left: { Component: ChevronLeft },
+  chevron_right: { Component: ChevronRight },
 };
 
 export const Icon = forwardRef<HTMLSpanElement, IconProps>(

@@ -78,7 +78,7 @@ export const WithSingleItemAndIconStart: Story = {
   play: async ({ canvasElement }) => {
     const canvas = within(canvasElement);
     const listItemElements = canvas.getAllByRole('listitem');
-    expect(listItemElements[0]).toHaveTextContent('chevron_left');
+    expect(listItemElements[0]).toHaveAttribute('data-testid', 'chevron_left');
   },
 };
 
