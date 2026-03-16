@@ -1,6 +1,5 @@
 'use client';
 import { ComponentType, useState } from 'react';
-import { tv } from 'tailwind-variants';
 import { CheckCircle, Info, Warning, Error, IconProps } from '../atoms/icons';
 import { cn } from '../cn.js';
 import { translate as t } from '../i18n/utility.js';
