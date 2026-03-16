@@ -45,13 +45,7 @@ function Alert({
       aria-live="assertive"
       {...props}
     >
-      {showIcon ? (
-        <AlertIcon
-          data-variant={variant}
-          //TODO: consider our .gi-alert-icon class name... do we need to keep it considering we default to currentColor?
-          className="gi-shrink-0 gi-block gi-alert-icon"
-        />
-      ) : null}
+      {showIcon ? <AlertIcon className="gi-shrink-0 gi-block" /> : null}
 
       <div
         className={cn(container(), {
