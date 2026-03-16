@@ -159,9 +159,12 @@ export const WithoutTitle: Story = {
 
 export const WithoutIcon: Story = {
   args: {
+    'aria-atomic': true,
+    'aria-describedby': 'alert-content',
     title: 'Info Alert',
     variant: 'info',
     showIcon: false,
+    dismissible: false,
     children: (
       <>
         <Paragraph>Content</Paragraph>
