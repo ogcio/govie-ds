@@ -1,5 +1,4 @@
 import type { Meta, StoryObj } from '@storybook/angular';
-import { within, expect } from 'storybook/test';
 import InsetText from '../atoms/InsetText';
 import {
   insetTextMeta,
@@ -33,29 +32,4 @@ export const Default: StoryObj<InsetText & { content: string }> = {
       </inset-text>
     `,
   }),
-  play: async ({ canvasElement, step, args }) => {
-    const canvas = within(canvasElement);
-
-    await step('renders content and tag', async () => {
-      const element = canvas.getByText(String(args.content));
-      expect(element).toBeInTheDocument();
-      expect(element.tagName.toLowerCase()).toBe('blockquote');
-    });
-
-    await step('renders cite attribute when provided', async () => {
-      const element = canvas.getByText(String(args.content));
-      if (args.cite) {
-        expect(element).toHaveAttribute('cite', String(args.cite));
-      } else {
-        expect(element).not.toHaveAttribute('cite');
-      }
-    });
-
-    await step('renders inset text styles', async () => {
-      const element = canvas.getByText(String(args.content));
-      expect(element).toHaveClass('gi-p-4');
-      expect(element).toHaveClass('gi-border-l-2xl');
-      expect(element).toHaveClass('gi-border-gray-500');
-    });
-  },
 };

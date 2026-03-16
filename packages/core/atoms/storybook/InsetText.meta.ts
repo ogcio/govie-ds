@@ -1,4 +1,5 @@
-import type { ArgTypes } from '@storybook/types';
+import type { ArgTypes, StoryContext, Renderer } from '@storybook/types';
+import { within, expect } from 'storybook/test';
 import { Props } from '../InsetText.lite';
 
 export const insetTextMeta = {
@@ -47,4 +48,26 @@ export const insetTextMeta = {
 
 export const Default = {
   args: insetTextMeta.args,
+  play: async ({ canvasElement, step }: StoryContext<Renderer>) => {
+    const canvas = within(canvasElement as HTMLElement);
+    const contentText = insetTextMeta.args.children;
+
+    await step('renders content and tag', async () => {
+      const element = canvas.getByText(contentText);
+      expect(element).toBeInTheDocument();
+      expect(element.tagName.toLowerCase()).toBe('blockquote');
+    });
+
+    await step('renders cite attribute when provided', async () => {
+      const element = canvas.getByText(contentText);
+      expect(element).toHaveAttribute('cite', insetTextMeta.args.cite);
+    });
+
+    await step('renders inset text styles', async () => {
+      const element = canvas.getByText(contentText);
+      expect(element).toHaveClass('gi-p-4');
+      expect(element).toHaveClass('gi-border-l-2xl');
+      expect(element).toHaveClass('gi-border-gray-500');
+    });
+  },
 };
