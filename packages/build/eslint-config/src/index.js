@@ -69,6 +69,7 @@ export default [
           ignore: ['generateStaticParams'],
         },
       ],
+      'unicorn/filename-case': 'off',
     },
   },
 ];

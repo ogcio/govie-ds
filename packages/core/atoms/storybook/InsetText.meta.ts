@@ -3,6 +3,7 @@ import { Props } from '../InsetText.lite';
 
 export const insetTextMeta = {
   tags: ['autodocs'] as string[],
+  title: 'Typography/InsetText',
   args: {
     id: 'inset-text-default',
     cite: 'https://example.com/source',

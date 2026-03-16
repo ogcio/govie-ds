@@ -2,6 +2,7 @@ import type { ArgTypes } from '@storybook/types';
 import { Props } from '../InsetText';
 export const insetTextMeta = {
   tags: ['autodocs'] as string[],
+  title: 'Typography/InsetText',
   args: {
     id: 'inset-text-default',
     cite: 'https://example.com/source',

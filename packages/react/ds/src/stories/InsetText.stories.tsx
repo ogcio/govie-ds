@@ -4,7 +4,7 @@ import InsetText from '../atoms/InsetText';
 import {
   insetTextMeta,
   Default as insetTextDefault,
-} from '../atoms/storybook/inset-text.meta';
+} from '../atoms/storybook/InsetText.meta';
 
 const meta: Meta<typeof InsetText> = {
   ...insetTextMeta,
