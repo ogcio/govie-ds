@@ -27,20 +27,17 @@ export const insetTextMeta = {
     },
     describedBy: {
       control: 'text',
-      description:
-        'Points to element id(s) whose content describes the inset text. Maps to `aria-describedby`.',
+      description: 'Points to element id(s) whose content describes the inset text. Maps to `aria-describedby`.',
     },
     labelledBy: {
       control: 'text',
-      description:
-        'Points to element id(s) whose content labels the inset text. Maps to `aria-labelledby`.',
+      description: 'Points to element id(s) whose content labels the inset text. Maps to `aria-labelledby`.',
     },
   } satisfies ArgTypes<Props>,
   parameters: {
     docs: {
       description: {
-        component:
-          'Inset text component to differentiate a block of text from the content that surrounds it.',
+        component: 'Inset text component to differentiate a block of text from the content that surrounds it.',
       },
     },
   },
