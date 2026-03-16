@@ -1,5 +1,5 @@
-import { MitosisConfig } from '@builder.io/mitosis'
-import annotation from './plugins/annotation'
+import { MitosisConfig } from '@builder.io/mitosis';
+import annotation from './plugins/annotation';
 
 export default {
   files: 'atoms/**/*',
@@ -17,4 +17,4 @@ export default {
       standalone: true,
     },
   },
-} satisfies MitosisConfig
+} satisfies MitosisConfig;
