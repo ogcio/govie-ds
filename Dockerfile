@@ -21,10 +21,10 @@ RUN corepack enable pnpm
 # Ignore KICS warning. `--frozen-lockfile` ensures pinned versions from lockfile
 # kics-scan ignore-line
 RUN pnpm install --frozen-lockfile
-RUN pnpm build
-RUN pnpm html:storybook:build
-RUN pnpm react:storybook:build
-RUN pnpm angular:storybook:build
+RUN pnpm docs:build
+RUN pnpm storybook:build:html
+RUN pnpm storybook:build:react
+RUN pnpm storybook:build:angular
 
 # Production image
 FROM ${NGINX_IMAGE}
