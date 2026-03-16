@@ -164,7 +164,7 @@ export const WithoutIcon: Story = {
     title: 'Info Alert',
     variant: 'info',
     showIcon: false,
-    dismissible: false,
+    dismissible: true,
     children: (
       <>
         <Paragraph>Content</Paragraph>
