@@ -1,6 +1,6 @@
 'use client';
 import { ComponentType, useState } from 'react';
-import { type VariantProps } from 'tailwind-variants';
+import { tv } from 'tailwind-variants';
 import { CheckCircle, Info, Warning, Error, IconProps } from '../atoms/icons';
 import { cn } from '../cn.js';
 import { translate as t } from '../i18n/utility.js';
@@ -8,11 +8,11 @@ import { IconButton } from '../icon-button/icon-button.js';
 import { type AlertProps } from './types.js';
 import { alertVariants } from './variants.js';
 
-const ALERT_VARIANT_ICONS: Record<string, ComponentType<IconProps>> = {
-  warning: Warning,
-  success: CheckCircle,
-  danger: Error,
-  info: Info,
+export const ALERT_VARIANT_ICONS: Record<string, ComponentType<IconProps>> = {
+  warning: ({ ...props }) => <Warning {...props} />,
+  success: ({ ...props }) => <CheckCircle {...props} />,
+  danger: ({ ...props }) => <Error {...props} />,
+  info: ({ ...props }) => <Info {...props} />,
 };
 
 function Alert({
@@ -36,6 +36,7 @@ function Alert({
   if (isDismissed) {
     return null;
   }
+
   const AlertIcon = ALERT_VARIANT_ICONS[variant ?? 'info'];
   return (
     <div
@@ -44,7 +45,13 @@ function Alert({
       aria-live="assertive"
       {...props}
     >
-      {showIcon ? <AlertIcon /> : null}
+      {showIcon ? (
+        <AlertIcon
+          data-variant={variant}
+          //TODO: consider our .gi-alert-icon class name... do we need to keep it considering we default to currentColor?
+          className="gi-shrink-0 gi-block gi-alert-icon"
+        />
+      ) : null}
 
       <div
         className={cn(container(), {
