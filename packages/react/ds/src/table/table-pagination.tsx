@@ -57,6 +57,7 @@ export const TablePagination: React.FC<TablePaginationProps> = ({
         className="gi-mr-2"
         icon={{
           icon: 'chevron_left',
+          useFontIcon: true,
         }}
       />
       <div
@@ -95,6 +96,7 @@ export const TablePagination: React.FC<TablePaginationProps> = ({
         className="gi-ml-2"
         icon={{
           icon: 'chevron_right',
+          useFontIcon: true,
         }}
       />
       <IconButton
