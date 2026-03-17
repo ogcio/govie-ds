@@ -12,14 +12,7 @@
         },
         "tertiary": {
           "$type": "fontFamily",
-          "$value": [
-            "ui-monospace",
-            "Cascadia Mono",
-            "Segoe UI Mono",
-            "consolas",
-            "Liberation Mono",
-            "monospace"
-          ]
+          "$value": ["ui-monospace", "Cascadia Mono", "Segoe UI Mono", "consolas", "Liberation Mono", "monospace"]
         }
       },
       "size": {
