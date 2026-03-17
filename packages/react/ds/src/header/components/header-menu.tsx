@@ -1,7 +1,7 @@
 'use client';
 
 import { useState } from 'react';
-import { ChevronRight } from '../../atoms/icons/index.js';
+import { KeyboardArrowRight } from '../../atoms/icons/index.js';
 import { cn } from '../../cn.js';
 import { translate as t } from '../../i18n/utility.js';
 import { ListItem } from '../../list-item/list-item.js';
@@ -51,7 +51,7 @@ export const MenuItemAccordion = ({ index, item }: MenuItemAccordionProps) => {
       >
         <div>
           <span className="gi-text-sm gi-font-bold gi-ml-1">{item.label}</span>
-          <ChevronRight className="gi-block gi-shrink-0 gi-accordion-item-icon" />
+          <KeyboardArrowRight className="gi-block gi-shrink-0 gi-accordion-item-icon" />
         </div>
       </div>
 

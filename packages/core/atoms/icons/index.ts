@@ -5,12 +5,8 @@ export { default as KeyboardArrowUp } from './KeyboardArrowUp.lite';
 export { default as Close } from './Close.lite';
 export { default as Visibility } from './Visibility.lite';
 export { default as VisibilityOff } from './VisibilityOff.lite';
-export { default as Warning } from './Warning.lite';
-export { default as CheckCircle } from './CheckCircle.lite';
-export { default as Error } from './Error.lite';
-export { default as Info } from './Info.lite';
-export { default as ChevronLeft } from './ChevronLeft.lite';
-export { default as ChevronRight } from './ChevronRight.lite';
+export { default as KeyboardArrowLeft } from './KeyboardArrowLeft.lite';
+export { default as KeyboardArrowRight } from './KeyboardArrowRight.lite';
 
 /** utilities for atomic icons */
 

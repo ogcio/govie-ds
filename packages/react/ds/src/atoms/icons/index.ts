@@ -8,8 +8,8 @@ export { default as Warning } from './Warning';
 export { default as CheckCircle } from './CheckCircle';
 export { default as Error } from './Error';
 export { default as Info } from './Info';
-export { default as ChevronLeft } from './ChevronLeft';
-export { default as ChevronRight } from './ChevronRight';
+export { default as KeyboardArrowLeft } from './KeyboardArrowLeft';
+export { default as KeyboardArrowRight } from './KeyboardArrowRight';
 
 /** utilities for atomic icons */
 

@@ -8,6 +8,8 @@ import {
 import {
   KeyboardArrowDown,
   KeyboardArrowUp,
+  KeyboardArrowRight,
+  KeyboardArrowLeft,
   Close,
   Visibility,
   VisibilityOff,
@@ -15,8 +17,6 @@ import {
   Warning,
   Info,
   Error,
-  ChevronLeft,
-  ChevronRight,
 } from '../atoms/icons';
 import { cn } from '../cn.js';
 import { iconIds } from './icons.js';
@@ -85,8 +85,10 @@ const ICON_REGISTRY: Record<
   error: { Component: Error },
   warning: { Component: Warning },
   check_circle: { Component: CheckCircle },
-  chevron_left: { Component: ChevronLeft },
-  chevron_right: { Component: ChevronRight },
+  keyboard_arrow_left: { Component: KeyboardArrowLeft },
+  keyboard_arrow_right: { Component: KeyboardArrowRight },
+  chevron_left: { Component: KeyboardArrowLeft },
+  chevron_right: { Component: KeyboardArrowRight },
 };
 
 export const Icon = forwardRef<HTMLSpanElement, IconProps>(

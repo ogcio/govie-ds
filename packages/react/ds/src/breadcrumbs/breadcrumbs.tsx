@@ -1,4 +1,4 @@
-import { ChevronLeft, SIZE_MAP } from '../atoms/icons/index.js';
+import { KeyboardArrowLeft, SIZE_MAP } from '../atoms/icons/index.js';
 import { translate as t } from '../i18n/utility.js';
 import { Icon } from '../icon/icon.js';
 import { Link } from '../link/link.js';
@@ -56,7 +56,10 @@ export const Breadcrumbs = ({ children, iconStart }: BreadcrumbProps) => {
       >
         {iconStart && (
           <li role="listitem" className="gi-pr-1">
-            <ChevronLeft className="gi-block gi-shrink-0" size={SIZE_MAP.sm} />
+            <KeyboardArrowLeft
+              className="gi-block gi-shrink-0"
+              size={SIZE_MAP.sm}
+            />
           </li>
         )}
         {items.map((component, index) => (
