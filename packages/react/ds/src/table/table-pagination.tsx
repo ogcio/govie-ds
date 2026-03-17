@@ -47,6 +47,7 @@ export const TablePagination: React.FC<TablePaginationProps> = ({
         className="gi-mr-2"
         icon={{
           icon: 'first_page',
+          useFontIcon: true,
         }}
       />
       <IconButton
@@ -107,6 +108,7 @@ export const TablePagination: React.FC<TablePaginationProps> = ({
         className="gi-ml-2"
         icon={{
           icon: 'last_page',
+          useFontIcon: true,
         }}
       />
     </div>
