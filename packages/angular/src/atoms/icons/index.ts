@@ -10,6 +10,8 @@ export { default as Error } from './Error';
 export { default as Info } from './Info';
 export { default as KeyboardArrowLeft } from './KeyboardArrowLeft';
 export { default as KeyboardArrowRight } from './KeyboardArrowRight';
+export { default as ArrowLeftAlt } from './ArrowLeftAlt';
+export { default as ArrowRightAlt } from './ArrowRightAlt';
 
 /** utilities for atomic icons */
 

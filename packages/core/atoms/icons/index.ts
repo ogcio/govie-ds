@@ -7,6 +7,8 @@ export { default as Visibility } from './Visibility.lite';
 export { default as VisibilityOff } from './VisibilityOff.lite';
 export { default as KeyboardArrowLeft } from './KeyboardArrowLeft.lite';
 export { default as KeyboardArrowRight } from './KeyboardArrowRight.lite';
+export { default as ArrowLeftAlt } from './ArrowLeftAlt.lite';
+export { default as ArrowRightAlt } from './ArrowRightAlt.lite';
 
 /** utilities for atomic icons */
 
