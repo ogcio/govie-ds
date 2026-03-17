@@ -54,7 +54,7 @@ export const Small: Story = {
   play: async ({ canvasElement }) => {
     const canvas = within(canvasElement);
     const hint = canvas.getByText('This is hint text');
-    expect(hint).toHaveClass('gi-hint-text-sm');
+    expect(hint).toHaveClass('gi-text-sm');
   },
 };
 
@@ -66,7 +66,7 @@ export const Medium: Story = {
   play: async ({ canvasElement }) => {
     const canvas = within(canvasElement);
     const hint = canvas.getByText('This is hint text');
-    expect(hint).toHaveClass('gi-hint-text-md');
+    expect(hint).toHaveClass('gi-text-md');
   },
 };
 export const Large: Story = {
@@ -77,7 +77,7 @@ export const Large: Story = {
   play: async ({ canvasElement }) => {
     const canvas = within(canvasElement);
     const hint = canvas.getByText('This is hint text');
-    expect(hint).toHaveClass('gi-hint-text-lg');
+    expect(hint).toHaveClass('gi-text-lg');
   },
 };
 
