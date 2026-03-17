@@ -7,12 +7,13 @@
     "build": "pnpm run build:react && pnpm run build:angular",
     "build:react": "NODE_OPTIONS='--import tsx' mitosis build --config react.config.ts",
     "build:angular": "NODE_OPTIONS='--import tsx' mitosis build --config angular.config.ts",
-    "build:watch": "chokidar \"./atoms/**/*.{ts,tsx}\" -c \"pnpm run build\" --initial"
+    "build:watch": "chokidar \"./atoms/**/*.{ts,tsx}\" -c \"pnpm run build\" --initial",
+    "format": "prettier --write .",
+    "format:check": "prettier --check ."
   },
   "devDependencies": {
     "@builder.io/mitosis": "^0.12.1",
     "@builder.io/mitosis-cli": "^0.12.1",
-    "@ogcio/design-system-prettier-config": "workspace:*",
     "@prettier/sync": "^0.6.1",
     "@storybook/types": "^8.6.14",
     "chokidar-cli": "^3.0.0",

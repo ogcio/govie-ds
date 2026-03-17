@@ -4,14 +4,14 @@
  * The file source is in `packages/core/atoms/KeyboardArrowUp.lite.tsx`
  */
 
-import { Component, Input } from "@angular/core";
+import { Component, Input } from '@angular/core';
 
-import { CommonModule } from "@angular/common";
+import { CommonModule } from '@angular/common';
 
-import { IconProps } from "./types";
+import { IconProps } from './types';
 
 @Component({
-  selector: "keyboard-arrow-up",
+  selector: 'keyboard-arrow-up',
   template: `
     <svg
       viewBox="0 -960 960 960"
@@ -40,11 +40,10 @@ import { IconProps } from "./types";
   imports: [CommonModule],
 })
 export default class KeyboardArrowUp {
-  @Input() size!: IconProps["size"];
-  @Input() className!: IconProps["className"];
-  @Input() id!: IconProps["id"];
-  @Input() label!: IconProps["label"];
-  @Input() color!: IconProps["color"];
-  @Input() dataTestId!: IconProps["dataTestId"];
+  @Input() size!: IconProps['size'];
+  @Input() className!: IconProps['className'];
+  @Input() id!: IconProps['id'];
+  @Input() label!: IconProps['label'];
+  @Input() color!: IconProps['color'];
+  @Input() dataTestId!: IconProps['dataTestId'];
 }
-

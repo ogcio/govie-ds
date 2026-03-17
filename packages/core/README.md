@@ -1,9 +1,9 @@
 # Government of Ireland Design System — Core (Mitosis)
 
-
 This package serves as the **Single Source of Truth** for the Government of Ireland Design System components. It uses [Mitosis](https://github.com/BuilderIO/mitosis) to maintain a single codebase for components that are automatically compiled into native, high-performance libraries for multiple frameworks (currently React and Angular).
 
 By using Mitosis, we ensure that:
+
 - **Consistency**: All framework-specific libraries share the exact same logic, structure, and behavior.
 - **Maintainability**: Bug fixes and features are implemented once in the core and propagated everywhere.
 - **Performance**: Components are compiled to native code for each framework, avoiding the overhead of "wrapper" solutions.

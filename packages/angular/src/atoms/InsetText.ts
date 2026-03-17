@@ -4,9 +4,9 @@
  * The file source is in `packages/core/atoms/InsetText.lite.tsx`
  */
 
-import { Component, Input } from "@angular/core";
+import { Component, Input } from '@angular/core';
 
-import { CommonModule } from "@angular/common";
+import { CommonModule } from '@angular/common';
 
 export type Props = {
   id?: string;
@@ -17,7 +17,7 @@ export type Props = {
 };
 
 @Component({
-  selector: "inset-text",
+  selector: 'inset-text',
   template: `
     <blockquote
       class="gi-font-primary gi-p-4 gi-border-l-2xl gi-border-gray-500 gi-text-sm md:gi-text-md gi-not-prose"
@@ -40,9 +40,8 @@ export type Props = {
   imports: [CommonModule],
 })
 export default class InsetText {
-  @Input() id!: Props["id"];
-  @Input() cite!: Props["cite"];
-  @Input() describedBy!: Props["describedBy"];
-  @Input() labelledBy!: Props["labelledBy"];
+  @Input() id!: Props['id'];
+  @Input() cite!: Props['cite'];
+  @Input() describedBy!: Props['describedBy'];
+  @Input() labelledBy!: Props['labelledBy'];
 }
-

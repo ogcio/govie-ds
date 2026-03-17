@@ -11,6 +11,10 @@ import {
   Close,
   Visibility,
   VisibilityOff,
+  CheckCircle,
+  Warning,
+  Info,
+  Error,
 } from '../atoms/icons';
 import { cn } from '../cn.js';
 import { iconIds } from './icons.js';
@@ -75,6 +79,10 @@ const ICON_REGISTRY: Record<
   close: { Component: Close },
   visibility: { Component: Visibility },
   visibility_off: { Component: VisibilityOff },
+  info: { Component: Info },
+  error: { Component: Error },
+  warning: { Component: Warning },
+  check_circle: { Component: CheckCircle },
 };
 
 export const Icon = forwardRef<HTMLSpanElement, IconProps>(
