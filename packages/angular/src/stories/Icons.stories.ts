@@ -1,15 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/angular';
-import {
-  Close,
-  KeyboardArrowDown,
-  KeyboardArrowUp,
-  Visibility,
-  VisibilityOff,
-} from '../atoms/icons';
-import {
-  iconsMeta,
-  Default as iconsDefault,
-} from '../atoms/storybook/Icons.meta';
+import { Close, KeyboardArrowDown, KeyboardArrowUp, Visibility, VisibilityOff } from '../atoms/icons';
+import { iconsMeta, Default as iconsDefault } from '../atoms/storybook/Icons.meta';
 
 const meta: Meta = {
   ...iconsMeta,
@@ -22,13 +13,7 @@ export const Default: StoryObj = {
   render: (args) => ({
     props: args,
     moduleMetadata: {
-      imports: [
-        Close,
-        KeyboardArrowDown,
-        KeyboardArrowUp,
-        Visibility,
-        VisibilityOff,
-      ],
+      imports: [Close, KeyboardArrowDown, KeyboardArrowUp, Visibility, VisibilityOff],
     },
     template: `
       <div class="gi-flex gi-flex-wrap gi-gap-8">

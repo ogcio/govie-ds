@@ -58,12 +58,8 @@ export const Default = {
     });
 
     await step('renders arrow icons', async () => {
-      expect(
-        canvas.getByText(/keyboard[\s-]?arrow[\s-]?down/i),
-      ).toBeInTheDocument();
-      expect(
-        canvas.getByText(/keyboard[\s-]?arrow[\s-]?up/i),
-      ).toBeInTheDocument();
+      expect(canvas.getByText(/keyboard[\s-]?arrow[\s-]?down/i)).toBeInTheDocument();
+      expect(canvas.getByText(/keyboard[\s-]?arrow[\s-]?up/i)).toBeInTheDocument();
     });
   },
 };
