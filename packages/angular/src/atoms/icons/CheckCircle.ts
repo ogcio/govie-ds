@@ -4,14 +4,14 @@
  * The file source is in `packages/core/atoms/CheckCircle.lite.tsx`
  */
 
-import { Component, Input } from "@angular/core";
+import { Component, Input } from '@angular/core';
 
-import { CommonModule } from "@angular/common";
+import { CommonModule } from '@angular/common';
 
-import { IconProps } from "./types";
+import { IconProps } from './types';
 
 @Component({
-  selector: "check-circle",
+  selector: 'check-circle',
   template: `
     <svg
       viewBox="0 -960 960 960"
@@ -42,11 +42,10 @@ import { IconProps } from "./types";
   imports: [CommonModule],
 })
 export default class CheckCircle {
-  @Input() size!: IconProps["size"];
-  @Input() className!: IconProps["className"];
-  @Input() id!: IconProps["id"];
-  @Input() label!: IconProps["label"];
-  @Input() color!: IconProps["color"];
-  @Input() dataTestId!: IconProps["dataTestId"];
+  @Input() size!: IconProps['size'];
+  @Input() className!: IconProps['className'];
+  @Input() id!: IconProps['id'];
+  @Input() label!: IconProps['label'];
+  @Input() color!: IconProps['color'];
+  @Input() dataTestId!: IconProps['dataTestId'];
 }
-
