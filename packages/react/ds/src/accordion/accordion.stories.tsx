@@ -21,13 +21,13 @@ export default meta;
 
 const headerByText = (root: HTMLElement, text: string) => {
   const headers = [
-    ...root.querySelectorAll<HTMLElement>('.gi-accordion-header'),
+    ...root.querySelectorAll<HTMLElement>('[data-element="accordion-header"]'),
   ];
   return headers.find((h) => h.textContent?.includes(text)) ?? null;
 };
 
 const itemRootFromHeader = (h: HTMLElement | null) =>
-  (h && h.closest<HTMLElement>('.gi-accordion')) || null;
+  (h && h.closest<HTMLElement>('[data-element="accordion-item"]')) || null;
 
 const panelFromItemRoot = (root: HTMLElement | null) =>
   (root?.nextElementSibling as HTMLElement | null) ?? null;

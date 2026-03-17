@@ -1,8 +1,8 @@
 'use client';
 import clsx from 'clsx';
 import React, { useState, useRef, ComponentPropsWithRef } from 'react';
-import { tv } from 'tailwind-variants';
 import { Icon } from '../icon/icon.js';
+import { accordionVariants } from './variants.js';
 
 export type AccordionItemProps = {
   children: React.ReactNode;
@@ -11,15 +11,6 @@ export type AccordionItemProps = {
   disabled?: boolean;
   variant?: 'default' | 'small';
 } & ComponentPropsWithRef<'div'>;
-
-const accordionVariants = tv({
-  variants: {
-    variant: {
-      default: 'gi-px-2 gi-py-4 gi-text-md gi-font-bold',
-      small: 'gi-py-2 gi-px-2 gi-text-sm gi-font-bold',
-    },
-  },
-});
 
 export const AccordionItem = ({
   defaultExpanded,
@@ -40,24 +31,20 @@ export const AccordionItem = ({
       setIsExpanded(!isExpanded);
     }
   };
-
+  const { base, header } = accordionVariants({ variant, disabled: !!disabled });
   return (
     <>
       <div
         {...props}
         ref={ref}
+        data-element="accordion-item"
         data-disabled={!!disabled}
         onClick={() => !disabled && setIsExpanded(!isExpanded)}
         onKeyDown={handleKeyDown}
         tabIndex={0}
-        className={clsx('gi-accordion', className)}
+        className={clsx(base(), className)}
       >
-        <div
-          className={clsx(
-            'gi-accordion-header',
-            accordionVariants({ variant }),
-          )}
-        >
+        <div data-element="accordion-header" className={header()}>
           {label}
           <Icon
             icon={isExpanded ? 'keyboard_arrow_up' : 'keyboard_arrow_down'}
