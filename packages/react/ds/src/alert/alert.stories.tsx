@@ -151,7 +151,9 @@ export const WithoutTitle: Story = {
   },
   play: async ({ canvasElement, step }) => {
     await step('does not render a title element when title is omitted', () => {
-      const title = canvasElement.querySelector('.gi-alert-title');
+      const title = canvasElement.querySelector(
+        '[data-element="alert-heading"]',
+      );
       expect(title).toBeNull();
     });
   },
@@ -238,7 +240,7 @@ export const TestRendersTitleAndMessage: StoryObj = {
     });
   },
 };
-export const TestVariantsHaveCorrectClass: StoryObj = {
+export const TestVariantsHaveCorrectUI: StoryObj = {
   tags: ['skip-playwright'],
   render: () => (
     <div>
@@ -265,21 +267,49 @@ export const TestVariantsHaveCorrectClass: StoryObj = {
     </div>
   ),
   play: async ({ canvasElement, step }) => {
-    const variants = ['info', 'success', 'warning', 'danger'] as const;
-    for (const variant of variants) {
-      await step(`applies class for ${variant}`, async () => {
+    const variantConfig = {
+      info: {
+        bg: 'gi-bg-color-surface-intent-info-default',
+        text: 'gi-text-color-text-intent-info-default',
+        iconTestId: 'info',
+      },
+      success: {
+        bg: 'gi-bg-color-surface-intent-success-default',
+        text: 'gi-text-color-text-intent-success-default',
+        iconTestId: 'check_circle',
+      },
+      warning: {
+        bg: 'gi-bg-color-surface-intent-warning-default',
+        text: 'gi-text-color-text-intent-warning-default',
+        iconTestId: 'warning',
+      },
+      danger: {
+        bg: 'gi-bg-color-surface-intent-error-default',
+        text: 'gi-text-color-text-intent-error-default',
+        iconTestId: 'error',
+      },
+    } as const;
+
+    for (const [variant, config] of Object.entries(variantConfig)) {
+      await step(`applies bg and text classes for ${variant}`, async () => {
         const element = canvasElement.querySelector(
           `[data-testid="alert-${variant}"]`,
         ) as HTMLElement | null;
 
         expect(element).not.toBeNull();
+        expect(element!.classList.contains(config.bg)).toBe(true);
+        expect(element!.classList.contains(config.text)).toBe(true);
+      });
 
-        const className = element?.className ?? '';
-        const hasClass =
-          className.includes(`gi-alert-${variant}`) ||
-          [...(element?.classList ?? [])].includes(`gi-alert-${variant}`);
+      await step(`renders correct icon for ${variant}`, async () => {
+        const element = canvasElement.querySelector(
+          `[data-testid="alert-${variant}"]`,
+        ) as HTMLElement | null;
 
-        expect(hasClass).toBe(true);
+        const icon = element?.querySelector(
+          `[data-testid="${config.iconTestId}"]`,
+        );
+        expect(icon).not.toBeNull();
       });
     }
   },
