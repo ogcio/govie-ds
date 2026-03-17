@@ -110,6 +110,21 @@ export const FirstPageSelected: Story = {
   },
 };
 
+export const FirstPageSelectedStyling: Story = {
+  tags: ['skip-playwright'],
+  args: {
+    totalPages: 10,
+    currentPage: 1,
+  },
+  play: async ({ canvasElement, step }) => {
+    const canvas = within(canvasElement);
+    await step('should disable previous button on the first page', async () => {
+      const previousButton = canvas.getByTestId('govie-pagination-prev-btn');
+      expect(previousButton).toHaveClass('gi-btn-flat-dark-disabled');
+    });
+  },
+};
+
 export const LastPageSelected: Story = {
   args: {
     totalPages: 10,
@@ -125,6 +140,21 @@ export const LastPageSelected: Story = {
 
       const nextButtonText = canvas.getByText('Next');
       expect(nextButtonText).toBeDisabled();
+    });
+  },
+};
+
+export const LastPageSelectedStyling: Story = {
+  tags: ['skip-playwright'],
+  args: {
+    totalPages: 10,
+    currentPage: 10,
+  },
+  play: async ({ canvasElement, step }) => {
+    const canvas = within(canvasElement);
+    await step('should disable next button on the last page', async () => {
+      const nextButton = canvas.getByTestId('govie-pagination-next-btn');
+      expect(nextButton).toHaveClass('gi-btn-flat-dark-disabled');
     });
   },
 };
