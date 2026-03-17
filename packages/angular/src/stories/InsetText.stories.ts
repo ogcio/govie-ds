@@ -1,9 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/angular';
 import InsetText from '../atoms/InsetText';
-import {
-  insetTextMeta,
-  Default as insetTextDefault,
-} from '../atoms/storybook/InsetText.meta';
+import { insetTextMeta, Default as insetTextDefault } from '../atoms/storybook/InsetText.meta';
 
 const meta: Meta<InsetText> = {
   ...insetTextMeta,
