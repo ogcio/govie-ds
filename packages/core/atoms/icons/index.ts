@@ -9,6 +9,8 @@ export { default as KeyboardArrowLeft } from './KeyboardArrowLeft.lite';
 export { default as KeyboardArrowRight } from './KeyboardArrowRight.lite';
 export { default as ArrowLeftAlt } from './ArrowLeftAlt.lite';
 export { default as ArrowRightAlt } from './ArrowRightAlt.lite';
+export { default as FirstPage } from './FirstPage.lite';
+export { default as LastPage } from './LastPage.lite';
 
 /** utilities for atomic icons */
 

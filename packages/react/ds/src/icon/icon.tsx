@@ -19,6 +19,8 @@ import {
   Error,
   ArrowLeftAlt,
   ArrowRightAlt,
+  FirstPage,
+  LastPage,
 } from '../atoms/icons';
 import { cn } from '../cn.js';
 import { iconIds } from './icons.js';
@@ -93,6 +95,8 @@ const ICON_REGISTRY: Record<
   chevron_right: { Component: KeyboardArrowRight },
   arrow_left_alt: { Component: ArrowLeftAlt },
   arrow_right_alt: { Component: ArrowRightAlt },
+  first_page: { Component: FirstPage },
+  last_page: { Component: LastPage },
 };
 
 export const Icon = forwardRef<HTMLSpanElement, IconProps>(
