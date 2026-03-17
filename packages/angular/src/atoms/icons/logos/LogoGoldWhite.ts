@@ -4,14 +4,14 @@
  * The file source is in `packages/core/atoms/LogoGoldWhite.lite.tsx`
  */
 
-import { Component, Input } from "@angular/core";
+import { Component, Input } from '@angular/core';
 
-import { CommonModule } from "@angular/common";
+import { CommonModule } from '@angular/common';
 
-import { BaseSVGProps } from "../types";
+import { BaseSVGProps } from '../types';
 
 @Component({
-  selector: "logo-gold-white",
+  selector: 'logo-gold-white',
   template: `
     <svg
       viewBox="0 0 136 48"
@@ -78,10 +78,9 @@ import { BaseSVGProps } from "../types";
   imports: [CommonModule],
 })
 export default class LogoGoldWhite {
-  @Input() size!: BaseSVGProps["size"];
-  @Input() className!: BaseSVGProps["className"];
-  @Input() id!: BaseSVGProps["id"];
-  @Input() label!: BaseSVGProps["label"];
-  @Input() dataTestId!: BaseSVGProps["dataTestId"];
+  @Input() size!: BaseSVGProps['size'];
+  @Input() className!: BaseSVGProps['className'];
+  @Input() id!: BaseSVGProps['id'];
+  @Input() label!: BaseSVGProps['label'];
+  @Input() dataTestId!: BaseSVGProps['dataTestId'];
 }
-
