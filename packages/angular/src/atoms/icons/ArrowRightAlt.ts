@@ -4,14 +4,14 @@
  * The file source is in `packages/core/atoms/ArrowRightAlt.lite.tsx`
  */
 
-import { Component, Input } from "@angular/core";
+import { Component, Input } from '@angular/core';
 
-import { CommonModule } from "@angular/common";
+import { CommonModule } from '@angular/common';
 
-import { IconProps } from "./types";
+import { IconProps } from './types';
 
 @Component({
-  selector: "arrow-right-alt",
+  selector: 'arrow-right-alt',
   template: `
     <svg
       viewBox="0 -960 960 960"
@@ -26,9 +26,7 @@ import { IconProps } from "./types";
       [attr.fill]="color ?? 'currentColor'"
       [attr.data-testid]="dataTestId ?? 'arrow_right_alt'"
     >
-      <path
-        d="m560-240-56-58 142-142H160v-80h486L504-662l56-58 240 240-240 240Z"
-      ></path>
+      <path d="m560-240-56-58 142-142H160v-80h486L504-662l56-58 240 240-240 240Z"></path>
     </svg>
   `,
   styles: [
@@ -42,11 +40,10 @@ import { IconProps } from "./types";
   imports: [CommonModule],
 })
 export default class ArrowRightAlt {
-  @Input() size!: IconProps["size"];
-  @Input() className!: IconProps["className"];
-  @Input() id!: IconProps["id"];
-  @Input() label!: IconProps["label"];
-  @Input() color!: IconProps["color"];
-  @Input() dataTestId!: IconProps["dataTestId"];
+  @Input() size!: IconProps['size'];
+  @Input() className!: IconProps['className'];
+  @Input() id!: IconProps['id'];
+  @Input() label!: IconProps['label'];
+  @Input() color!: IconProps['color'];
+  @Input() dataTestId!: IconProps['dataTestId'];
 }
-

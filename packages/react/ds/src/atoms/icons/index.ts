@@ -4,16 +4,20 @@ export { default as KeyboardArrowUp } from './KeyboardArrowUp';
 export { default as Close } from './Close';
 export { default as Visibility } from './Visibility';
 export { default as VisibilityOff } from './VisibilityOff';
-export { default as Warning } from './Warning';
-export { default as CheckCircle } from './CheckCircle';
-export { default as Error } from './Error';
-export { default as Info } from './Info';
+
+/** navigation icons */
 export { default as KeyboardArrowLeft } from './KeyboardArrowLeft';
 export { default as KeyboardArrowRight } from './KeyboardArrowRight';
 export { default as ArrowLeftAlt } from './ArrowLeftAlt';
 export { default as ArrowRightAlt } from './ArrowRightAlt';
 export { default as FirstPage } from './FirstPage';
 export { default as LastPage } from './LastPage';
+
+/** alert icons */
+export { default as Info } from './Info';
+export { default as Error } from './Error';
+export { default as Warning } from './Warning';
+export { default as CheckCircle } from './CheckCircle';
 
 /** utilities for atomic icons */
 

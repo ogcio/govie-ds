@@ -4,14 +4,14 @@
  * The file source is in `packages/core/atoms/LastPage.lite.tsx`
  */
 
-import { Component, Input } from "@angular/core";
+import { Component, Input } from '@angular/core';
 
-import { CommonModule } from "@angular/common";
+import { CommonModule } from '@angular/common';
 
-import { IconProps } from "./types";
+import { IconProps } from './types';
 
 @Component({
-  selector: "last-page",
+  selector: 'last-page',
   template: `
     <svg
       viewBox="0 -960 960 960"
@@ -26,9 +26,7 @@ import { IconProps } from "./types";
       [attr.fill]="color ?? 'currentColor'"
       [attr.data-testid]="dataTestId ?? 'last_page'"
     >
-      <path
-        d="m280-240-56-56 184-184-184-184 56-56 240 240-240 240Zm360 0v-480h80v480h-80Z"
-      ></path>
+      <path d="m280-240-56-56 184-184-184-184 56-56 240 240-240 240Zm360 0v-480h80v480h-80Z"></path>
     </svg>
   `,
   styles: [
@@ -42,11 +40,10 @@ import { IconProps } from "./types";
   imports: [CommonModule],
 })
 export default class LastPage {
-  @Input() size!: IconProps["size"];
-  @Input() className!: IconProps["className"];
-  @Input() id!: IconProps["id"];
-  @Input() label!: IconProps["label"];
-  @Input() color!: IconProps["color"];
-  @Input() dataTestId!: IconProps["dataTestId"];
+  @Input() size!: IconProps['size'];
+  @Input() className!: IconProps['className'];
+  @Input() id!: IconProps['id'];
+  @Input() label!: IconProps['label'];
+  @Input() color!: IconProps['color'];
+  @Input() dataTestId!: IconProps['dataTestId'];
 }
-
