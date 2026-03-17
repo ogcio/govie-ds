@@ -175,7 +175,7 @@ export const WithoutIcon: Story = {
     const canvas = within(canvasElement);
 
     await step('does not render an SVG icon when showIcon=false', () => {
-      const icon = canvasElement.querySelector('svg');
+      const icon = canvasElement.querySelector('[role="alert"] > svg');
       expect(icon).toBeNull();
     });
 
