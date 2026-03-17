@@ -8,10 +8,10 @@ import { type AlertProps } from './types.js';
 import { alertVariants } from './variants.js';
 
 export const ALERT_VARIANT_ICONS: Record<string, ComponentType<IconProps>> = {
-  warning: ({ ...props }) => <Warning {...props} />,
-  success: ({ ...props }) => <CheckCircle {...props} />,
-  danger: ({ ...props }) => <Error {...props} />,
-  info: ({ ...props }) => <Info {...props} />,
+  warning: (props) => <Warning {...props} />,
+  success: (props) => <CheckCircle {...props} />,
+  danger: (props) => <Error {...props} />,
+  info: (props) => <Info {...props} />,
 };
 
 function Alert({
