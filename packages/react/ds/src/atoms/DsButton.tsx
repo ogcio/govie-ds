@@ -316,13 +316,9 @@ const getVariant = (x: Props['variant'] = Variant.PRIMARY) =>
   Object.values(Variant).includes(x) ? x : Variant.PRIMARY;
 const getAppearance = (x: Props['appearance']) =>
   x === Appearance.LIGHT || x === Appearance.DARK ? x : Appearance.DEFAULT;
-const getSize = (x: Props['size']) =>
-  x === Size.SMALL || x === Size.LARGE ? x : Size.MEDIUM;
+const getSize = (x: Props['size']) => (x === Size.SMALL || x === Size.LARGE ? x : Size.MEDIUM);
 
-const DsButton = forwardRef<Props['ref'], Props>(function DsButton(
-  props: Props,
-  ref,
-) {
+const DsButton = forwardRef<Props['ref'], Props>(function DsButton(props: Props, ref) {
   return (
     <button
       ref={ref}
