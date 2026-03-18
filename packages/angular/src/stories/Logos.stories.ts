@@ -5,10 +5,7 @@ import LogoGoldWhite from '../atoms/icons/logos/LogoGoldWhite';
 import LogoHarpBlack from '../atoms/icons/logos/LogoHarpBlack';
 import LogoHarpWhite from '../atoms/icons/logos/LogoHarpWhite';
 import LogoWhite from '../atoms/icons/logos/LogoWhite';
-import {
-  logosMeta,
-  Default as logosDefault,
-} from '../atoms/storybook/Logos.meta';
+import { logosMeta, Default as logosDefault } from '../atoms/storybook/Logos.meta';
 
 const meta: Meta = {
   ...logosMeta,
@@ -22,14 +19,7 @@ export const Default: StoryObj = {
   render: (args) => ({
     props: args,
     moduleMetadata: {
-      imports: [
-        LogoBlack,
-        LogoGoldGreen,
-        LogoGoldWhite,
-        LogoHarpBlack,
-        LogoHarpWhite,
-        LogoWhite,
-      ],
+      imports: [LogoBlack, LogoGoldGreen, LogoGoldWhite, LogoHarpBlack, LogoHarpWhite, LogoWhite],
     },
     template: `
     <div class="gi-flex gi-flex-col gi-gap-10">

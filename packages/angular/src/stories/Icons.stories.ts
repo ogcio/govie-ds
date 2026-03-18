@@ -10,11 +10,7 @@ import {
   VisibilityOff,
   Warning,
 } from '../atoms/icons';
-import {
-  iconsMeta,
-  Default as iconsDefault,
-  iconList,
-} from '../atoms/storybook/Icons.meta';
+import { iconsMeta, Default as iconsDefault, iconList } from '../atoms/storybook/Icons.meta';
 
 const meta: Meta = {
   ...iconsMeta,

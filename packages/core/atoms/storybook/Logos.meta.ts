@@ -26,8 +26,7 @@ export const logosMeta = {
   parameters: {
     docs: {
       description: {
-        component:
-          'Use the logo component to display the Government of Ireland brand mark.',
+        component: 'Use the logo component to display the Government of Ireland brand mark.',
       },
     },
   },
