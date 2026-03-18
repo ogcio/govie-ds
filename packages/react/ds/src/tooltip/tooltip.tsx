@@ -1,6 +1,6 @@
 'use client';
 import { ReactNode, useState, useId, useEffect, useCallback } from 'react';
-import { tv } from 'tailwind-variants';
+import { tooltipVariants } from './variants.js';
 
 export const positionVariants = ['top', 'bottom', 'left', 'right'];
 export type Position = 'top' | 'bottom' | 'left' | 'right';
@@ -11,18 +11,6 @@ export type TooltipProps = {
   children: ReactNode;
   dataTestid?: string;
 };
-
-const tooltipTv = tv({
-  base: 'gi-tooltip',
-  variants: {
-    position: {
-      left: `gi-tooltip-left`,
-      right: `gi-tooltip-right`,
-      top: `gi-tooltip-top`,
-      bottom: `gi-tooltip-bottom`,
-    },
-  },
-});
 
 export const Tooltip = ({
   text,
@@ -56,9 +44,11 @@ export const Tooltip = ({
     };
   }, [handleEscapeKey]);
 
+  const { wrapper, tooltip } = tooltipVariants({ position });
+
   return (
     <span
-      className="gi-tooltip-wrapper"
+      className={wrapper()}
       onMouseEnter={showTooltip}
       onMouseLeave={() => {
         if (!isFocused) {
@@ -80,7 +70,7 @@ export const Tooltip = ({
         <span
           id={describedById}
           role="tooltip"
-          className={tooltipTv({ position })}
+          className={tooltip()}
           aria-hidden={!isVisible}
           data-testid={`dti-tooltip-content-${position}`}
         >
