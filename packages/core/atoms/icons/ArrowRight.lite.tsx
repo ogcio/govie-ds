@@ -1,6 +1,6 @@
 import { IconProps } from './types';
 
-export default function ArrowLeftAlt(props: IconProps) {
+export default function ArrowRight(props: IconProps) {
   return (
     <svg
       viewBox="0 -960 960 960"
@@ -12,10 +12,10 @@ export default function ArrowLeftAlt(props: IconProps) {
       aria-label={props.label}
       aria-hidden={!props.label}
       fill={props.color ?? 'currentColor'}
-      data-testid={props.dataTestId ?? 'arrow_left_alt'}
+      data-testid={props.dataTestId ?? 'arrow_right'}
       xmlns="http://www.w3.org/2000/svg"
     >
-      <path d="M400-240 160-480l240-240 56 58-142 142h486v80H314l142 142-56 58Z" />
+      <path d="m560-240-56-58 142-142H160v-80h486L504-662l56-58 240 240-240 240Z" />
     </svg>
   );
 }

@@ -17,8 +17,8 @@ import {
   Warning,
   Info,
   Error,
-  ArrowLeftAlt,
-  ArrowRightAlt,
+  ArrowLeft,
+  ArrowRight,
   FirstPage,
   LastPage,
 } from '../atoms/icons';
@@ -93,8 +93,8 @@ const ICON_REGISTRY: Record<
   keyboard_arrow_right: { Component: KeyboardArrowRight },
   chevron_left: { Component: KeyboardArrowLeft },
   chevron_right: { Component: KeyboardArrowRight },
-  arrow_left_alt: { Component: ArrowLeftAlt },
-  arrow_right_alt: { Component: ArrowRightAlt },
+  arrow_left_alt: { Component: ArrowLeft },
+  arrow_right_alt: { Component: ArrowRight },
   first_page: { Component: FirstPage },
   last_page: { Component: LastPage },
 };
