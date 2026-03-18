@@ -5,23 +5,25 @@ import { Props } from '../Heading.lite';
 export const headingMeta = {
   tags: ['autodocs'] as string[],
   title: 'Typography/Heading',
-  args: {
-    as: 'h1',
-    children: 'Heading',
-  },
   argTypes: {
-    as: {
-      control: { type: 'select' },
-      options: ['h1', 'h2', 'h3', 'h4', 'h5', 'h6'],
-    },
     size: {
       control: { type: 'select' },
       options: ['', 'xl', 'lg', 'md', 'sm', 'xs', '2xs'],
+      description: 'Font size of the heading. Defaults to the size mapped to the heading level.',
     },
-    children: {
-      table: { disable: true },
+    id: {
+      control: false,
+      description: 'Optional id for linking/targeting and aria references.',
     },
-  } satisfies ArgTypes<Props>,
+    className: {
+      control: false,
+      description: 'Additional CSS classes to apply to the heading element.',
+    },
+    dataTestId: {
+      control: false,
+      description: 'Test id for targeting the element in automated tests.',
+    },
+  } satisfies ArgTypes<Omit<Props, 'children' | 'text'>>,
   parameters: {
     docs: {
       description: {

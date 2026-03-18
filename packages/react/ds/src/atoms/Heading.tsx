@@ -10,7 +10,8 @@ export type Props = {
   id?: string;
   as?: (typeof As)[keyof typeof As];
   size?: (typeof Size)[keyof typeof Size];
-  children: any;
+  className?: string;
+  children: string;
   dataTestId?: string;
 };
 
@@ -68,6 +69,7 @@ function Heading(props: Props) {
           data-testid={props.dataTestId}
           className={styles({
             size: getSize(props.as, props.size),
+            class: props.className,
           })}
         >
           {props.children}
@@ -79,6 +81,7 @@ function Heading(props: Props) {
           data-testid={props.dataTestId}
           className={styles({
             size: getSize(props.as, props.size),
+            class: props.className,
           })}
         >
           {props.children}
@@ -90,6 +93,7 @@ function Heading(props: Props) {
           data-testid={props.dataTestId}
           className={styles({
             size: getSize(props.as, props.size),
+            class: props.className,
           })}
         >
           {props.children}
@@ -101,6 +105,7 @@ function Heading(props: Props) {
           data-testid={props.dataTestId}
           className={styles({
             size: getSize(props.as, props.size),
+            class: props.className,
           })}
         >
           {props.children}
@@ -112,6 +117,7 @@ function Heading(props: Props) {
           data-testid={props.dataTestId}
           className={styles({
             size: getSize(props.as, props.size),
+            class: props.className,
           })}
         >
           {props.children}
@@ -123,6 +129,7 @@ function Heading(props: Props) {
           data-testid={props.dataTestId}
           className={styles({
             size: getSize(props.as, props.size),
+            class: props.className,
           })}
         >
           {props.children}

@@ -1,6 +1,7 @@
 import type { Meta, StoryObj } from '@storybook/react';
 import { useMemo, useState } from 'react';
 import { within, expect, userEvent, screen } from 'storybook/test';
+import Heading from '../../atoms/Heading.js';
 import {
   LogoBlack,
   LogoGoldWhite,
@@ -8,7 +9,6 @@ import {
   LogoHarpBlack,
   LogoHarpWhite,
 } from '../../atoms/icons/logos';
-
 import { Button } from '../../button/button.js';
 import { DrawerMenuExample } from '../../drawer/drawer.content.js';
 import {
@@ -20,7 +20,6 @@ import {
   FormField,
   FormFieldLabel,
 } from '../../forms/form-field/form-field.js';
-import { Heading } from '../../heading/heading.js';
 import { useToggleMap } from '../../hooks/use-toggle-map.js';
 import { Icon, IconId } from '../../icon/icon.js';
 import { Link } from '../../link/link.js';

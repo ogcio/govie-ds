@@ -10,9 +10,10 @@ import { CommonModule } from '@angular/common';
 
 export type Props = {
   id?: string;
-  as?: (typeof As)[keyof typeof As];
+  tag?: (typeof As)[keyof typeof As];
   size?: (typeof Size)[keyof typeof Size];
-  children: any;
+  className?: string;
+  text: string;
   dataTestId?: string;
 };
 
@@ -57,74 +58,99 @@ const defaultSizeMap = {
   [As.H5]: Size.XS,
   [As.H6]: Size.XXS,
 } as const;
-const getAs = (x: Props['as'] = As.H1) => (Object.values(As).includes(x) ? x : As.H1);
-const getSize = (as: Props['as'], size: Props['size'] = defaultSizeMap[getAs(as)]) =>
+const getAs = (x: Props['tag'] = As.H1) => (Object.values(As).includes(x) ? x : As.H1);
+const getSize = (as: Props['tag'], size: Props['size'] = defaultSizeMap[getAs(as)]) =>
   Object.values(Size).includes(size) ? size : defaultSizeMap[getAs(as)];
 
 @Component({
   selector: 'heading',
   template: `
     <ng-container
-      ><ng-container *ngIf="!as || as === As.H1"
+      ><ng-container *ngIf="!tag || tag === As.H1"
         ><h1
           [attr.id]="id"
           [attr.data-testid]="dataTestId"
-          [class]="styles({
-          size: getSize(as, size)
-        })"
+          [class]="
+            styles({
+              size: getSize(tag, size),
+              class: className,
+            })
+          "
         >
-          <ng-content></ng-content></h1
-      ></ng-container>
-      <ng-container *ngIf="as === As.H2"
+          {{ text }}
+        </h1></ng-container
+      >
+      <ng-container *ngIf="tag === As.H2"
         ><h2
           [attr.id]="id"
           [attr.data-testid]="dataTestId"
-          [class]="styles({
-          size: getSize(as, size)
-        })"
+          [class]="
+            styles({
+              size: getSize(tag, size),
+              class: className,
+            })
+          "
         >
-          <ng-content></ng-content></h2
-      ></ng-container>
-      <ng-container *ngIf="as === As.H3"
+          {{ text }}
+        </h2></ng-container
+      >
+      <ng-container *ngIf="tag === As.H3"
         ><h3
           [attr.id]="id"
           [attr.data-testid]="dataTestId"
-          [class]="styles({
-          size: getSize(as, size)
-        })"
+          [class]="
+            styles({
+              size: getSize(tag, size),
+              class: className,
+            })
+          "
         >
-          <ng-content></ng-content></h3
-      ></ng-container>
-      <ng-container *ngIf="as === As.H4"
+          {{ text }}
+        </h3></ng-container
+      >
+      <ng-container *ngIf="tag === As.H4"
         ><h4
           [attr.id]="id"
           [attr.data-testid]="dataTestId"
-          [class]="styles({
-          size: getSize(as, size)
-        })"
+          [class]="
+            styles({
+              size: getSize(tag, size),
+              class: className,
+            })
+          "
         >
-          <ng-content></ng-content></h4
-      ></ng-container>
-      <ng-container *ngIf="as === As.H5"
+          {{ text }}
+        </h4></ng-container
+      >
+      <ng-container *ngIf="tag === As.H5"
         ><h5
           [attr.id]="id"
           [attr.data-testid]="dataTestId"
-          [class]="styles({
-          size: getSize(as, size)
-        })"
+          [class]="
+            styles({
+              size: getSize(tag, size),
+              class: className,
+            })
+          "
         >
-          <ng-content></ng-content></h5
-      ></ng-container>
-      <ng-container *ngIf="as === As.H6"
+          {{ text }}
+        </h5></ng-container
+      >
+      <ng-container *ngIf="tag === As.H6"
         ><h6
           [attr.id]="id"
           [attr.data-testid]="dataTestId"
-          [class]="styles({
-          size: getSize(as, size)
-        })"
+          [class]="
+            styles({
+              size: getSize(tag, size),
+              class: className,
+            })
+          "
         >
-          <ng-content></ng-content></h6></ng-container
-    ></ng-container>
+          {{ text }}
+        </h6></ng-container
+      ></ng-container
+    >
   `,
   styles: [
     `
@@ -141,8 +167,10 @@ export default class Heading {
   styles = styles;
   getSize = getSize;
 
-  @Input() as!: Props['as'];
+  @Input() tag!: Props['tag'];
   @Input() id!: Props['id'];
   @Input() dataTestId!: Props['dataTestId'];
   @Input() size!: Props['size'];
+  @Input() className!: Props['className'];
+  @Input() text!: Props['text'];
 }

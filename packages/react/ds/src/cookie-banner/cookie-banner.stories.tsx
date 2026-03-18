@@ -1,6 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/react';
+import Heading from '../atoms/Heading.js';
 import { Button } from '../button/button.js';
-import { Heading } from '../heading/heading.js';
 import { Link } from '../link/link.js';
 import { Paragraph } from '../paragraph/paragraph.js';
 import { CookieBanner } from './cookie-banner.js';

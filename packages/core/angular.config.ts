@@ -1,6 +1,7 @@
 import { MitosisConfig } from '@builder.io/mitosis';
 import annotation from './plugins/annotation';
 import prettierFormat from './plugins/prettier-format';
+import angularPropAlias from './plugins/angular-prop-alias';
 
 export default {
   files: 'atoms/**/*',
@@ -16,7 +17,7 @@ export default {
       typescript: true,
       standalone: true,
       prettier: false,
-      plugins: [prettierFormat],
+      plugins: [angularPropAlias, prettierFormat],
     },
   },
 } satisfies MitosisConfig;

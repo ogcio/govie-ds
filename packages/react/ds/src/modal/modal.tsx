@@ -8,14 +8,13 @@ import {
   useState,
   useRef,
   useEffect,
-  useLayoutEffect,
   useMemo,
   useId,
 } from 'react';
 import { createPortal } from 'react-dom';
+import Heading, { type Props as HeadingProps } from '../atoms/Heading.js';
 import { Button } from '../button/button.js';
 import { cn } from '../cn.js';
-import { Heading, type HeadingProps } from '../heading/heading.js';
 import { useAriaHider } from '../hooks/use-aria-hider.js';
 import { useFocusTrap } from '../hooks/use-focus-trap.js';
 import { Icon, type IconSize } from '../icon/icon.js';

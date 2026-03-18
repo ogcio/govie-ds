@@ -1,5 +1,7 @@
 import { tv } from 'tailwind-variants';
-import { Show } from '@builder.io/mitosis';
+import { Show, useMetadata } from '@builder.io/mitosis';
+
+useMetadata({ angularPropAlias: { as: 'tag', children: 'text' } });
 
 export const As = {
   H1: 'h1',
@@ -23,7 +25,8 @@ export type Props = {
   id?: string;
   as?: (typeof As)[keyof typeof As];
   size?: (typeof Size)[keyof typeof Size];
-  children: any;
+  className?: string;
+  children: string;
   dataTestId?: string;
 };
 
@@ -34,7 +37,10 @@ export default function Heading(props: Props) {
         <h1
           id={props.id}
           data-testid={props.dataTestId}
-          class={styles({ size: getSize(props.as, props.size) })}
+          class={styles({
+            size: getSize(props.as, props.size),
+            class: props.className,
+          })}
         >
           {props.children}
         </h1>
@@ -43,7 +49,10 @@ export default function Heading(props: Props) {
         <h2
           id={props.id}
           data-testid={props.dataTestId}
-          class={styles({ size: getSize(props.as, props.size) })}
+          class={styles({
+            size: getSize(props.as, props.size),
+            class: props.className,
+          })}
         >
           {props.children}
         </h2>
@@ -52,7 +61,10 @@ export default function Heading(props: Props) {
         <h3
           id={props.id}
           data-testid={props.dataTestId}
-          class={styles({ size: getSize(props.as, props.size) })}
+          class={styles({
+            size: getSize(props.as, props.size),
+            class: props.className,
+          })}
         >
           {props.children}
         </h3>
@@ -61,7 +73,10 @@ export default function Heading(props: Props) {
         <h4
           id={props.id}
           data-testid={props.dataTestId}
-          class={styles({ size: getSize(props.as, props.size) })}
+          class={styles({
+            size: getSize(props.as, props.size),
+            class: props.className,
+          })}
         >
           {props.children}
         </h4>
@@ -70,7 +85,10 @@ export default function Heading(props: Props) {
         <h5
           id={props.id}
           data-testid={props.dataTestId}
-          class={styles({ size: getSize(props.as, props.size) })}
+          class={styles({
+            size: getSize(props.as, props.size),
+            class: props.className,
+          })}
         >
           {props.children}
         </h5>
@@ -79,7 +97,10 @@ export default function Heading(props: Props) {
         <h6
           id={props.id}
           data-testid={props.dataTestId}
-          class={styles({ size: getSize(props.as, props.size) })}
+          class={styles({
+            size: getSize(props.as, props.size),
+            class: props.className,
+          })}
         >
           {props.children}
         </h6>
@@ -114,10 +135,7 @@ const defaultSizeMap = {
   [As.H6]: Size.XXS,
 } as const;
 
-const getAs = (x: Props['as'] = As.H1) =>
-  Object.values(As).includes(x) ? x : As.H1;
+const getAs = (x: Props['as'] = As.H1) => (Object.values(As).includes(x) ? x : As.H1);
 
-const getSize = (
-  as: Props['as'],
-  size: Props['size'] = defaultSizeMap[getAs(as)],
-) => (Object.values(Size).includes(size) ? size : defaultSizeMap[getAs(as)]);
+const getSize = (as: Props['as'], size: Props['size'] = defaultSizeMap[getAs(as)]) =>
+  Object.values(Size).includes(size) ? size : defaultSizeMap[getAs(as)];
