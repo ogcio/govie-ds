@@ -1,36 +1,12 @@
 'use client';
 
 import { forwardRef, FC, Ref } from 'react';
-import { tv } from 'tailwind-variants';
 import { cn } from '../cn.js';
 import { Icon } from '../icon/icon.js';
 import { Button as PrimitiveButton } from '../primitives/button.js';
 import { slugify } from '../utilities.js';
 import { InternalTabItemProps, TabItemProps } from './types.js';
-
-const tabItemVariants = tv({
-  base: 'gi-tab-item',
-  variants: {
-    size: {
-      md: 'gi-text-md gi-py-4',
-      sm: 'gi-text-sm gi-py-2',
-    },
-    checked: {
-      true: 'gi-tab-item-checked',
-    },
-    stretch: {
-      true: 'gi-flex-1',
-    },
-    labelAlignment: {
-      start: 'gi-justify-start',
-      center: 'gi-justify-center',
-      end: 'gi-justify-end',
-    },
-  },
-  defaultVariants: {
-    size: 'md',
-  },
-});
+import { tabItemVariants } from './variants.js';
 
 export const TabItem: FC<TabItemProps> = () => null;
 
@@ -71,12 +47,19 @@ export const InternalTabItem = forwardRef<
       {icon && <Icon icon={icon} />}
       {children}
       <div
-        className={cn('gi-tab-item-border', {
-          'gi-bg-color-text-system-neutral-interactive-default':
-            checked && appearance === 'dark',
-          'gi-bg-color-border-tone-primary-accent-selected':
-            checked && appearance === 'default',
-        })}
+        data-element="tab-item-border"
+        className={cn(
+          'gi-h-[2px] gi-absolute gi-bottom-0 gi-left-0 gi-w-full',
+          'group-focus:!gi-bg-transparent',
+          {
+            'gi-bg-color-text-system-neutral-interactive-default':
+              checked && appearance === 'dark',
+            'gi-bg-color-border-tone-primary-accent-selected':
+              checked && appearance === 'default',
+            'group-hover:gi-bg-color-surface-system-neutral-interactive-hover':
+              !checked,
+          },
+        )}
         aria-hidden="true"
       />
     </>
