@@ -8,24 +8,11 @@ export const LabelSize = {
   Large: 'lg',
 } as const;
 
-export const styles = tv({
-  base: 'gi-label',
-  variants: {
-    size: {
-      sm: 'gi-text-sm',
-      md: 'gi-text-md',
-      lg: 'gi-text-lg',
-    },
-  },
-  defaultVariants: {
-    size: 'md',
-  },
-});
-
 export const Label = forwardRef<HTMLLabelElement, LabelTextProps>(
   ({ text, size = LabelSize.Medium, className, children, ...props }, ref) => {
+    const { base } = styles({ size });
     return (
-      <label className={styles({ size, className })} ref={ref} {...props}>
+      <label className={base({ className })} ref={ref} {...props}>
         {children ?? text}
       </label>
     );
@@ -33,3 +20,21 @@ export const Label = forwardRef<HTMLLabelElement, LabelTextProps>(
 );
 
 Label.displayName = 'Label';
+
+export const styles = tv({
+  slots: {
+    base: 'gi-block gi-text-color-text-system-neutral-default',
+    secondary:
+      'gi-ml-1 gi-text-md gi-font-normal gi-text-color-text-system-neutral-muted',
+  },
+  variants: {
+    size: {
+      sm: { base: 'gi-text-sm' },
+      md: { base: 'gi-text-md' },
+      lg: { base: 'gi-text-lg' },
+    },
+  },
+  defaultVariants: {
+    size: 'md',
+  },
+});

@@ -142,8 +142,7 @@ const FormFieldLabel = ({
 
   return (
     <legend
-      className={styles({
-        size,
+      className={styles({ size }).base({
         className: cn('gi-font-bold', className),
       })}
       {...(props as React.HTMLAttributes<HTMLLegendElement>)}

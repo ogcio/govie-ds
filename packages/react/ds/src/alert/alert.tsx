@@ -47,7 +47,11 @@ function Alert({
           'gi-gap-1': title,
         })}
       >
-        {title && <p data-element="alert-heading" className={heading()}>{title}</p>}
+        {title && (
+          <p data-element="alert-heading" className={heading()}>
+            {title}
+          </p>
+        )}
         {children}
       </div>
       {dismissible && (
