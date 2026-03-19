@@ -12,7 +12,7 @@ import {
   useId,
 } from 'react';
 import { createPortal } from 'react-dom';
-import Heading, { type Props as HeadingProps } from '../atoms/Heading.js';
+import Heading, { type Props as HeadingProps } from '../Heading.js';
 import { Button } from '../button/button.js';
 import { cn } from '../cn.js';
 import { useAriaHider } from '../hooks/use-aria-hider.js';

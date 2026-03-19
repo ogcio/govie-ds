@@ -1,7 +1,7 @@
 import type { Meta, StoryObj } from '@storybook/react';
 import { useMemo, useState } from 'react';
 import { within, expect, userEvent, screen } from 'storybook/test';
-import Heading from '../../atoms/Heading.js';
+import Heading from '../../Heading.js';
 import {
   LogoBlack,
   LogoGoldWhite,

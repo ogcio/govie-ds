@@ -1,7 +1,7 @@
 import type { Meta, StoryObj } from '@storybook/react';
 import { useState } from 'react';
 import { within, expect } from 'storybook/test';
-import Heading from '../atoms/Heading.js';
+import Heading from '../Heading.js';
 import { Button } from '../button/button.js';
 import {
   FormField,

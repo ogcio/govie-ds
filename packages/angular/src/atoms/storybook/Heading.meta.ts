@@ -1,6 +1,5 @@
-import type { ArgTypes, StoryContext, Renderer } from '@storybook/types';
+import type { StoryContext, Renderer } from '@storybook/types';
 import { within, expect } from 'storybook/test';
-import { Props } from '../Heading';
 export const headingMeta = {
   tags: ['autodocs'] as string[],
   title: 'Typography/Heading',
@@ -10,7 +9,12 @@ export const headingMeta = {
         type: 'select'
       },
       options: ['', 'xl', 'lg', 'md', 'sm', 'xs', '2xs'],
-      description: 'Font size of the heading. Defaults to the size mapped to the heading level.'
+      description: 'Font size of the heading. Defaults to the size mapped to the heading level.',
+      table: {
+        type: {
+          summary: '"xl" | "lg" | "md" | "sm" | "xs" | "2xs"'
+        }
+      }
     },
     id: {
       control: false,
@@ -24,7 +28,7 @@ export const headingMeta = {
       control: false,
       description: 'Test id for targeting the element in automated tests.'
     }
-  } satisfies ArgTypes<Omit<Props, 'children' | 'text'>>,
+  } as const,
   parameters: {
     docs: {
       description: {

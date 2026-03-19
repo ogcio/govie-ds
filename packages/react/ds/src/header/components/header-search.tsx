@@ -1,4 +1,4 @@
-import Heading from '../../atoms/Heading.js';
+import Heading from '../../Heading.js';
 import { Button } from '../../button/button.js';
 import { translate as t } from '../../i18n/utility.js';
 import { IconId } from '../../icon/icon.js';

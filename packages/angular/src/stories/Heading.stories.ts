@@ -1,40 +1,36 @@
 import type { Meta, StoryObj } from '@storybook/angular';
-import Heading from '../atoms/Heading';
+import CoreH1 from '../atoms/heading/CoreH1';
+import CoreH2 from '../atoms/heading/CoreH2';
+import CoreH3 from '../atoms/heading/CoreH3';
+import CoreH4 from '../atoms/heading/CoreH4';
+import CoreH5 from '../atoms/heading/CoreH5';
+import CoreH6 from '../atoms/heading/CoreH6';
 import { headingMeta, Default as headingDefault } from '../atoms/storybook/Heading.meta';
 
-const meta: Meta<Heading> = {
+const meta: Meta = {
   ...headingMeta,
   title: 'Typography/Heading',
-  component: Heading,
   argTypes: {
     ...headingMeta.argTypes,
-    tag: {
-      control: false,
-      options: ['h1', 'h2', 'h3', 'h4', 'h5', 'h6'],
-      description: 'HTML heading element to render. Defaults to h1.',
-    },
-    text: {
-      table: { disable: true },
-    },
   },
 };
 
 export default meta;
 
-export const Default: StoryObj<Heading> = {
+export const Default: StoryObj = {
   ...headingDefault,
   render: (args) => ({
     props: args,
     moduleMetadata: {
-      imports: [Heading],
+      imports: [CoreH1, CoreH2, CoreH3, CoreH4, CoreH5, CoreH6],
     },
     template: `
-      <heading tag="h1" [size]="size" text="Heading 1"></heading>
-      <heading tag="h2" [size]="size" text="Heading 2"></heading>
-      <heading tag="h3" [size]="size" text="Heading 3"></heading>
-      <heading tag="h4" [size]="size" text="Heading 4"></heading>
-      <heading tag="h5" [size]="size" text="Heading 5"></heading>
-      <heading tag="h6" [size]="size" text="Heading 6"></heading>
+      <core-h1 [size]="size" [className]="className">Heading 1</core-h1>
+      <core-h2 [size]="size" [className]="className">Heading 2</core-h2>
+      <core-h3 [size]="size" [className]="className">Heading 3</core-h3>
+      <core-h4 [size]="size" [className]="className">Heading 4</core-h4>
+      <core-h5 [size]="size" [className]="className">Heading 5</core-h5>
+      <core-h6 [size]="size" [className]="className">Heading 6</core-h6>
     `,
   }),
 };
