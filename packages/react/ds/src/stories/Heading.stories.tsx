@@ -1,9 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/react';
 import Heading, { Props } from '../Heading';
-import {
-  headingMeta,
-  Default as headingDefault,
-} from '../atoms/storybook/Heading.meta';
+import { headingMeta, Default as headingDefault } from '../atoms/storybook/Heading.meta';
 
 const meta: Meta<typeof Heading> = {
   ...headingMeta,
@@ -13,7 +10,6 @@ const meta: Meta<typeof Heading> = {
     ...headingMeta.argTypes,
     as: {
       control: false,
-      options: ['h1', 'h2', 'h3', 'h4', 'h5', 'h6'],
       description: 'HTML heading element to render. Defaults to h1.',
     },
     children: {

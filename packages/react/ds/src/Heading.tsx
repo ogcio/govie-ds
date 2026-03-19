@@ -1,4 +1,4 @@
-import type { Props as CoreProps, As } from './atoms/heading';
+import type { Props as CoreProps } from './atoms/heading';
 import CoreH1 from './atoms/heading/CoreH1';
 import CoreH2 from './atoms/heading/CoreH2';
 import CoreH3 from './atoms/heading/CoreH3';
@@ -6,7 +6,9 @@ import CoreH4 from './atoms/heading/CoreH4';
 import CoreH5 from './atoms/heading/CoreH5';
 import CoreH6 from './atoms/heading/CoreH6';
 
-export type Props = CoreProps & { as?: As };
+export type Props = CoreProps & {
+  as?: 'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'h6';
+};
 
 const map = {
   h1: CoreH1,
