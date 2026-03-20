@@ -20,7 +20,7 @@ export const Default: StoryObj = {
     <div class="gi-flex gi-flex-wrap gi-gap-8">
       ${map(
         iconList,
-        ({ selector, Component }) => `
+        ({ selector }) => `
       <div class="gi-flex gi-w-32 gi-flex-col gi-items-center gi-gap-2">
         <${selector}
           [size]="size"
@@ -29,7 +29,7 @@ export const Default: StoryObj = {
           [className]="className"
           dataTestId="${selector}"
         ></${selector}>
-        <span class="gi-text-xs gi-text-center gi-whitespace-nowrap">${Component.name}</span>
+        <span class="gi-text-xs gi-text-center gi-whitespace-nowrap">${selector}</span>
       </div>`,
       ).join('')}
     </div>

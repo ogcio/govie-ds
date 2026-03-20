@@ -18,48 +18,63 @@ import VisibilityOff from '../icons/VisibilityOff';
 import Warning from '../icons/Warning';
 export const iconList = [{
   Component: ArrowLeft,
+  name: 'ArrowLeft',
   selector: 'arrow-left'
 }, {
   Component: ArrowRight,
+  name: 'ArrowRight',
   selector: 'arrow-right'
 }, {
   Component: CheckCircle,
+  name: 'CheckCircle',
   selector: 'check-circle'
 }, {
   Component: Close,
+  name: 'Close',
   selector: 'close'
 }, {
   Component: Error,
+  name: 'Error',
   selector: 'error'
 }, {
   Component: FirstPage,
+  name: 'FirstPage',
   selector: 'first-page'
 }, {
   Component: Info,
+  name: 'Info',
   selector: 'info'
 }, {
   Component: KeyboardArrowDown,
+  name: 'KeyboardArrowDown',
   selector: 'keyboard-arrow-down'
 }, {
   Component: KeyboardArrowLeft,
+  name: 'KeyboardArrowLeft',
   selector: 'keyboard-arrow-left'
 }, {
   Component: KeyboardArrowRight,
+  name: 'KeyboardArrowRight',
   selector: 'keyboard-arrow-right'
 }, {
   Component: KeyboardArrowUp,
+  name: 'KeyboardArrowUp',
   selector: 'keyboard-arrow-up'
 }, {
   Component: LastPage,
+  name: 'LastPage',
   selector: 'last-page'
 }, {
   Component: Visibility,
+  name: 'Visibility',
   selector: 'visibility'
 }, {
   Component: VisibilityOff,
+  name: 'VisibilityOff',
   selector: 'visibility-off'
 }, {
   Component: Warning,
+  name: 'Warning',
   selector: 'warning'
 }];
 export const iconsMeta = {
