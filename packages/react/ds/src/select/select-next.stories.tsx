@@ -3,7 +3,7 @@ import { useState } from 'react';
 import { Controller, useForm } from 'react-hook-form';
 
 import { expect, userEvent, waitFor, within } from 'storybook/test';
-import CoreButton from '../atoms/CoreButton.js';
+import Button from '../atoms/CoreButton.js';
 import {
   FormField,
   FormFieldError,
@@ -473,9 +473,9 @@ export const WithReactHookForm: StoryObj = {
         </Label>
         <Label>Validation included (topic_5 is not allowed)</Label>
 
-        <CoreButton type="button" onClick={() => reset()} className="gi-w-fit">
+        <Button type="button" onClick={() => reset()} className="gi-w-fit">
           Reset
-        </CoreButton>
+        </Button>
       </div>
     );
   },

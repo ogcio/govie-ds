@@ -1,6 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/react';
 import { expect, userEvent, within, waitFor } from 'storybook/test';
-import CoreButton from '../atoms/CoreButton.js';
+import Button from '../atoms/CoreButton.js';
 import { Tooltip } from './tooltip.js';
 
 const meta = {
@@ -58,9 +58,9 @@ export const Default: Story = {
     text: 'This is a tooltip.',
     position: 'top',
     children: (
-      <CoreButton variant="primary" dataTestid="tooltip-trigger">
+      <Button variant="primary" dataTestid="tooltip-trigger">
         Hover me (Top)
-      </CoreButton>
+      </Button>
     ),
   },
   play: async ({ canvasElement, step }) => {
@@ -106,9 +106,9 @@ export const TopPosition: Story = {
     text: 'This is a tooltip at the top.',
     position: 'top',
     children: (
-      <CoreButton variant="primary" dataTestid="tooltip-trigger">
+      <Button variant="primary" dataTestid="tooltip-trigger">
         Hover me (Top)
-      </CoreButton>
+      </Button>
     ),
   },
   play: async ({ canvasElement, step }) => {
@@ -131,9 +131,9 @@ export const BottomPosition: Story = {
     text: 'This is a tooltip at the bottom.',
     position: 'bottom',
     children: (
-      <CoreButton variant="primary" dataTestid="tooltip-trigger">
+      <Button variant="primary" dataTestid="tooltip-trigger">
         Hover me (Bottom)
-      </CoreButton>
+      </Button>
     ),
   },
   play: async ({ canvasElement, step }) => {
@@ -156,9 +156,9 @@ export const LeftPosition: Story = {
     text: 'This is a tooltip on the left.',
     position: 'left',
     children: (
-      <CoreButton variant="primary" dataTestid="tooltip-trigger">
+      <Button variant="primary" dataTestid="tooltip-trigger">
         Hover me (Left)
-      </CoreButton>
+      </Button>
     ),
   },
   play: async ({ canvasElement, step }) => {
@@ -181,9 +181,9 @@ export const RightPosition: Story = {
     text: 'This is a tooltip on the right.',
     position: 'right',
     children: (
-      <CoreButton variant="primary" dataTestid="tooltip-trigger">
+      <Button variant="primary" dataTestid="tooltip-trigger">
         Hover me (Right)
-      </CoreButton>
+      </Button>
     ),
   },
   play: async ({ canvasElement, step }) => {
@@ -206,9 +206,9 @@ export const WithLongText: Story = {
     text: 'This is a very long tooltip text that tests the tooltip display. This is a very long tooltip text that tests the tooltip display.',
     position: 'top',
     children: (
-      <CoreButton variant="primary" dataTestid="tooltip-trigger">
+      <Button variant="primary" dataTestid="tooltip-trigger">
         Hover me (Top)
-      </CoreButton>
+      </Button>
     ),
   },
   play: async ({ canvasElement }) => {

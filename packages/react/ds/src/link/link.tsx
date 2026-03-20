@@ -1,9 +1,11 @@
 import { Slot } from '@radix-ui/react-slot';
 import React, { forwardRef, PropsWithChildren } from 'react';
+import { getSizeClass, getVariantAppearanceClass } from '../button/helpers.js';
 import {
-  CoreButtonProps,
-  styles as coreButtonStyles,
-} from '../atoms/CoreButton.js';
+  ButtonAppearance,
+  ButtonSize,
+  ButtonVariant,
+} from '../button/types.js';
 import { cn } from '../cn.js';
 import { Icon, IconId } from '../icon/icon.js';
 import Anchor, { AnchorProps } from '../primitives/anchor.js';
@@ -19,14 +21,14 @@ export type LinkProps = AnchorProps & {
   size?: 'sm' | 'md';
   dataTestid?: string;
   asButton?: {
-    variant?: CoreButtonProps['variant'];
-    appearance?: CoreButtonProps['appearance'];
-    size?: CoreButtonProps['size'];
+    variant?: ButtonVariant;
+    appearance?: ButtonAppearance;
+    size?: ButtonSize;
   };
   iconStart?: IconId;
   iconEnd?: IconId;
   disabled?: boolean;
-  appearance?: Extract<CoreButtonProps['appearance'], 'default' | 'light'>;
+  appearance?: Extract<ButtonAppearance, 'default' | 'light'>;
 };
 
 type LinkContainerProps = PropsWithChildren<
@@ -94,43 +96,44 @@ export const Link = forwardRef<HTMLElement, LinkProps>(
     },
     ref,
   ) => {
+    const buttonVariant =
+      asButton &&
+      getVariantAppearanceClass({
+        disabled: false,
+        variant: asButton?.variant,
+        appearance: asButton?.appearance,
+      });
+    const buttonSize = asButton && getSizeClass(asButton?.size);
     const Component = asChild ? Slot : Anchor;
-    const buttonClassName = asButton
-      ? coreButtonStyles({
-          variant: asButton.variant,
-          appearance: asButton.appearance,
-          size: asButton.size,
-          disabled: !!disabled,
-          class: cn('!gi-inline-flex', className),
-        })
-      : undefined;
+
     return (
       <Component
         {...props}
         ref={ref}
         data-testid={dataTestid}
-        className={
-          asButton
-            ? buttonClassName
-            : cn(
-                {
-                  'gi-link': true,
-                  'gi-link-no-underline': noUnderline,
-                  'gi-link-no-visited': noVisited,
-                  'gi-link-inherit': noColor,
-                  'gi-link-disabled': disabled && !asChild,
-                  'gi-link-light':
-                    appearance === 'light' &&
-                    !asChild &&
-                    !noColor &&
-                    !noVisited &&
-                    !disabled,
-                  'gi-text-sm': size === 'sm',
-                  'gi-text-md': size === 'md',
-                },
-                className,
-              )
-        }
+        className={cn(
+          {
+            'gi-link': !asButton,
+            'gi-link-no-underline': !asButton && noUnderline,
+            'gi-link-no-visited': !asButton && noVisited,
+            'gi-link-inherit': !asButton && noColor,
+            'gi-btn': asButton,
+            '!gi-inline-flex': asButton,
+            'gi-link-disabled': disabled && !asButton && !asChild,
+            'gi-link-light':
+              appearance === 'light' &&
+              !asButton &&
+              !asChild &&
+              !noColor &&
+              !noVisited &&
+              !disabled,
+            'gi-text-sm': size === 'sm',
+            'gi-text-md': size === 'md',
+          },
+          buttonVariant,
+          buttonSize,
+          className,
+        )}
         data-appearance={appearance}
         external={external}
         href={disabled ? 'javascript:void(0)' : props.href}

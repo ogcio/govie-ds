@@ -1,6 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/react';
 import { expect, within } from 'storybook/test';
-import CoreButton from '../atoms/CoreButton.js';
+import Button from '../atoms/CoreButton.js';
 import { Link } from '../link/link.js';
 import { Stack } from './stack.js';
 
@@ -141,13 +141,13 @@ export const WithComponents: Story = {
     fixedHeight: '300px',
     children: [
       <div>
-        <CoreButton>Button 1</CoreButton>
+        <Button>Button 1</Button>
       </div>,
       <div>
         <Link href="#">Link 1</Link>
       </div>,
       <div>
-        <CoreButton>Button 2</CoreButton>
+        <Button>Button 2</Button>
       </div>,
     ],
   },

@@ -1,7 +1,7 @@
 import type { Meta, StoryObj } from '@storybook/react';
 import { useRef, useState } from 'react';
 import { expect, userEvent, within } from 'storybook/test';
-import CoreButton from '../atoms/CoreButton.js';
+import Button from '../atoms/CoreButton.js';
 import { SelectMenu, SelectMenuOption } from '../select/select-menu.js';
 import { Popover } from './popover.js';
 
@@ -34,9 +34,9 @@ export const Default: Story = {
 
     return (
       <div className="gi-h-20">
-        <CoreButton ref={triggerRef} onClick={() => setOpen(!open)}>
+        <Button ref={triggerRef} onClick={() => setOpen(!open)}>
           Open Popover
-        </CoreButton>
+        </Button>
 
         <Popover triggerRef={triggerRef} open={open} onOpenChange={setOpen}>
           <div className="gi-text-sm gi-text-gray-800 gi-p-6">
@@ -84,9 +84,9 @@ export const WithSelectMenu: Story = {
 
     return (
       <div className="gi-h-56">
-        <CoreButton ref={triggerRef} onClick={() => setOpen(!open)}>
+        <Button ref={triggerRef} onClick={() => setOpen(!open)}>
           Open Popover
-        </CoreButton>
+        </Button>
         <Popover triggerRef={triggerRef} open={open} onOpenChange={setOpen}>
           <SelectMenu onChange={setSelectedValue} enableSearch>
             {options.map(({ value, label }, index) => (
@@ -131,9 +131,9 @@ export const Test: Story = {
 
     return (
       <div className="gi-h-20">
-        <CoreButton ref={triggerRef} onClick={() => setOpen(!open)}>
+        <Button ref={triggerRef} onClick={() => setOpen(!open)}>
           Open Popover
-        </CoreButton>
+        </Button>
 
         <Popover triggerRef={triggerRef} open={open} onOpenChange={setOpen}>
           <div className="gi-text-sm gi-text-gray-800 gi-p-6">

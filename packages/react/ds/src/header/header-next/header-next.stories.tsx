@@ -1,7 +1,7 @@
 import type { Meta, StoryObj } from '@storybook/react';
 import { useMemo, useState } from 'react';
 import { within, expect, userEvent, screen } from 'storybook/test';
-import CoreButton from '../../atoms/CoreButton.js';
+import Button from '../../atoms/CoreButton.js';
 import {
   LogoBlack,
   LogoGoldWhite,
@@ -65,16 +65,14 @@ const SlotExample1 = () => (
       />
     </div>
     <div className="gi-flex gi-flex-col-reverse gi-gap-4 xs:gi-gap-6 xs:gi-justify-end xs:gi-flex-row gi-p-4 xs:gi-p-6">
-      <CoreButton
+      <Button
         variant="secondary"
         appearance="dark"
         className="gi-justify-center xs:gi-justify-start"
       >
         Cancel
-      </CoreButton>
-      <CoreButton className="gi-justify-center xs:gi-justify-start">
-        Primary
-      </CoreButton>
+      </Button>
+      <Button className="gi-justify-center xs:gi-justify-start">Primary</Button>
     </div>
   </div>
 );
@@ -213,17 +211,17 @@ export const Default: StoryObj = {
             <DrawerMenuExample />
           </DrawerBody>
           <DrawerFooter>
-            <CoreButton
+            <Button
               variant="secondary"
               appearance="dark"
               className="gi-justify-center xs:gi-justify-start"
               onClick={() => closeAll()}
             >
               Cancel
-            </CoreButton>
-            <CoreButton className="gi-justify-center xs:gi-justify-start">
+            </Button>
+            <Button className="gi-justify-center xs:gi-justify-start">
               Primary
-            </CoreButton>
+            </Button>
           </DrawerFooter>
         </DrawerWrapper>
         <DrawerWrapper
@@ -564,17 +562,17 @@ export const Light: StoryObj = {
             <DrawerMenuExample />
           </DrawerBody>
           <DrawerFooter>
-            <CoreButton
+            <Button
               variant="secondary"
               appearance="dark"
               className="gi-justify-center xs:gi-justify-start"
               onClick={() => closeAll()}
             >
               Cancel
-            </CoreButton>
-            <CoreButton className="gi-justify-center xs:gi-justify-start">
+            </Button>
+            <Button className="gi-justify-center xs:gi-justify-start">
               Primary
-            </CoreButton>
+            </Button>
           </DrawerFooter>
         </DrawerWrapper>
         <DrawerWrapper

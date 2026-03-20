@@ -1,6 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/react';
 import { waitFor } from 'storybook/test';
-import CoreButton from '../atoms/CoreButton.js';
+import Button from '../atoms/CoreButton.js';
 import { sleep } from '../test-utilities.js';
 import { AccordionItem } from './accordion-item.js';
 import { Accordion, AccordionProps } from './accordion.js';
@@ -72,7 +72,7 @@ export const Default = {
         disabled
         label="Can I get financial assistance during a crisis?"
       >
-        <CoreButton>Learn More About Financial Assistance</CoreButton>
+        <Button>Learn More About Financial Assistance</Button>
       </AccordionItem>
     </Accordion>
   ),
@@ -163,7 +163,7 @@ export const SmallVariant = {
         disabled
         label="Can I get financial assistance during a crisis?"
       >
-        <CoreButton>Learn More About Financial Assistance</CoreButton>
+        <Button>Learn More About Financial Assistance</Button>
       </AccordionItem>
     </Accordion>
   ),

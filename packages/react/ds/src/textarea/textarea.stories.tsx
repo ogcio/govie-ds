@@ -2,7 +2,7 @@ import type { Meta, StoryObj } from '@storybook/react';
 import { useRef, useState } from 'react';
 import { Controller, FormProvider, useForm } from 'react-hook-form';
 import { expect, userEvent, within } from 'storybook/test';
-import CoreButton from '../atoms/CoreButton.js';
+import Button from '../atoms/CoreButton.js';
 import {
   FormField,
   FormFieldError,
@@ -357,7 +357,7 @@ export const Uncontrolled: Story = {
             FormFieldLabel,
             FormFieldHint,
           } from '../forms/form-field/form-field';
-          import CoreButton from '../atoms/CoreButton';
+          import Button from '../atoms/CoreButton';
 
           export function Example() {
             const ref = useRef<HTMLTextAreaElement>(null);
@@ -382,13 +382,13 @@ export const Uncontrolled: Story = {
                   placeholder="Type something here..."
                   data-testid="textarea-uncontrolled"
                 />
-                <CoreButton
+                <Button
                   className="gi-mt-1"
                   data-testid="show-value-button"
                   onClick={handleShowValue}
                 >
                   Show Value
-                </CoreButton>
+                </Button>
                 <FormFieldHint data-testid="uncontrolled-output">
                   Value: {value}
                 </FormFieldHint>
@@ -420,13 +420,13 @@ export const Uncontrolled: Story = {
           clearButtonEnabled
           data-testid="textarea-uncontrolled"
         />
-        <CoreButton
+        <Button
           className="gi-mt-1"
           onClick={handleShowValue}
           dataTestid="show-value-button"
         >
           Show Value
-        </CoreButton>
+        </Button>
         <FormFieldHint data-testid="uncontrolled-output">
           Value: {value}
         </FormFieldHint>
@@ -492,16 +492,16 @@ export const WithReactHookForm: Story = {
           </FormField>
 
           <div className="gi-flex gi-flex-cols gi-gap-2 gi-pt-4">
-            <CoreButton type="submit" data-testid="submit-btn">
+            <Button type="submit" data-testid="submit-btn">
               Submit
-            </CoreButton>
-            <CoreButton
+            </Button>
+            <Button
               type="button"
               onClick={() => methods.reset()}
               data-testid="reset-btn"
             >
               Reset
-            </CoreButton>
+            </Button>
           </div>
         </form>
       </FormProvider>

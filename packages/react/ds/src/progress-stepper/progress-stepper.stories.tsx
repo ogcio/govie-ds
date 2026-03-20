@@ -1,7 +1,7 @@
 import type { Meta, StoryObj } from '@storybook/react';
 import { useState } from 'react';
 import { within, expect } from 'storybook/test';
-import CoreButton from '../atoms/CoreButton.js';
+import Button from '../atoms/CoreButton.js';
 import {
   FormField,
   FormFieldHint,
@@ -291,13 +291,11 @@ export const WithStepContent: Story = {
           role="navigation"
         >
           {currentIndex > 0 && (
-            <CoreButton variant="secondary" onClick={handlePreviousButton}>
+            <Button variant="secondary" onClick={handlePreviousButton}>
               Previous
-            </CoreButton>
+            </Button>
           )}
-          {currentIndex < 5 && (
-            <CoreButton onClick={handleNextButton}>Next</CoreButton>
-          )}
+          {currentIndex < 5 && <Button onClick={handleNextButton}>Next</Button>}
         </Stack>
       </Stack>
     );
@@ -356,13 +354,11 @@ export const WithContentStepVertical: Story = {
         itemsDistribution="start"
       >
         {currentIndex > 0 && (
-          <CoreButton variant="secondary" onClick={handlePreviousButton}>
+          <Button variant="secondary" onClick={handlePreviousButton}>
             Previous
-          </CoreButton>
+          </Button>
         )}
-        {currentIndex < 5 && (
-          <CoreButton onClick={handleNextButton}>Next</CoreButton>
-        )}
+        {currentIndex < 5 && <Button onClick={handleNextButton}>Next</Button>}
       </Stack>
     );
 
@@ -410,13 +406,11 @@ export const WithFormContentStepVertical: Story = {
         itemsDistribution="start"
       >
         {currentIndex > 0 && (
-          <CoreButton variant="secondary" onClick={handlePreviousButton}>
+          <Button variant="secondary" onClick={handlePreviousButton}>
             Previous
-          </CoreButton>
+          </Button>
         )}
-        {currentIndex < 3 && (
-          <CoreButton onClick={handleNextButton}>Next</CoreButton>
-        )}
+        {currentIndex < 3 && <Button onClick={handleNextButton}>Next</Button>}
       </Stack>
     );
 

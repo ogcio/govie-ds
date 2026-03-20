@@ -1,6 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/react';
 import { within, expect, userEvent, screen } from 'storybook/test';
-import CoreButton from '../atoms/CoreButton.js';
+import Button from '../atoms/CoreButton.js';
 import { Heading } from '../heading/heading.js';
 import { Link } from '../link/link.js';
 import { List, ListTypeEnum } from '../list/list.js';
@@ -38,16 +38,14 @@ const SlotExample1 = () => (
       />
     </div>
     <div className="gi-flex gi-flex-col-reverse gi-gap-4 xs:gi-gap-6 xs:gi-justify-end xs:gi-flex-row gi-p-4 xs:gi-p-6">
-      <CoreButton
+      <Button
         variant="secondary"
         appearance="dark"
         className="gi-justify-center xs:gi-justify-start"
       >
         Cancel
-      </CoreButton>
-      <CoreButton className="gi-justify-center xs:gi-justify-start">
-        Primary
-      </CoreButton>
+      </Button>
+      <Button className="gi-justify-center xs:gi-justify-start">Primary</Button>
     </div>
   </div>
 );

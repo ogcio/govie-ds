@@ -1,6 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/react';
 import { within, expect, waitFor, screen, userEvent } from 'storybook/test';
-import CoreButton from '../atoms/CoreButton.js';
+import Button from '../atoms/CoreButton.js';
 import { Paragraph } from '../paragraph/paragraph.js';
 import { DrawerMenuExample } from './drawer.content.js';
 import { Drawer, DrawerBody, DrawerFooter } from './drawer.js';
@@ -88,7 +88,7 @@ export const Default: Story = {
   },
   args: {
     dataTestId: 'drawer',
-    triggerButton: <CoreButton>Open drawer</CoreButton>,
+    triggerButton: <Button>Open drawer</Button>,
     closeButtonLabel: 'Close',
     children: <></>,
   },
@@ -103,16 +103,16 @@ export const Default: Story = {
           <DrawerMenuExample />
         </DrawerBody>
         <DrawerFooter key="footer">
-          <CoreButton
+          <Button
             variant="secondary"
             appearance="dark"
             className="gi-justify-center xs:gi-justify-start"
           >
             Cancel
-          </CoreButton>
-          <CoreButton className="gi-justify-center xs:gi-justify-start">
+          </Button>
+          <Button className="gi-justify-center xs:gi-justify-start">
             Primary
-          </CoreButton>
+          </Button>
         </DrawerFooter>
       </Drawer>
     );
@@ -137,7 +137,7 @@ export const Default: Story = {
 
 export const DrawerRight: Story = {
   args: {
-    triggerButton: <CoreButton>Open drawer</CoreButton>,
+    triggerButton: <Button>Open drawer</Button>,
     children: <></>,
   },
   render: (arguments_) => {
@@ -153,16 +153,16 @@ export const DrawerRight: Story = {
         </DrawerBody>
         <DrawerFooter key="footer">
           <div className="gi-flex gi-flex-col-reverse gi-gap-4 xs:gi-gap-6 xs:gi-justify-end xs:gi-flex-row">
-            <CoreButton
+            <Button
               variant="secondary"
               appearance="dark"
               className="gi-justify-center xs:gi-justify-start"
             >
               Cancel
-            </CoreButton>
-            <CoreButton className="gi-justify-center xs:gi-justify-start">
+            </Button>
+            <Button className="gi-justify-center xs:gi-justify-start">
               Primary
-            </CoreButton>
+            </Button>
           </div>
         </DrawerFooter>
       </Drawer>
@@ -173,7 +173,7 @@ export const DrawerRight: Story = {
 export const DrawerLeft: Story = {
   args: {
     position: 'left',
-    triggerButton: <CoreButton>Open drawer</CoreButton>,
+    triggerButton: <Button>Open drawer</Button>,
     children: <></>,
   },
   render: (arguments_) => {
@@ -189,16 +189,16 @@ export const DrawerLeft: Story = {
         </DrawerBody>
         <DrawerFooter key="footer">
           <div className="gi-flex gi-flex-col-reverse gi-gap-4 xs:gi-gap-6 xs:gi-justify-end xs:gi-flex-row">
-            <CoreButton
+            <Button
               variant="secondary"
               appearance="dark"
               className="gi-justify-center xs:gi-justify-start"
             >
               Cancel
-            </CoreButton>
-            <CoreButton className="gi-justify-center xs:gi-justify-start">
+            </Button>
+            <Button className="gi-justify-center xs:gi-justify-start">
               Primary
-            </CoreButton>
+            </Button>
           </div>
         </DrawerFooter>
       </Drawer>
@@ -209,7 +209,7 @@ export const DrawerLeft: Story = {
 export const DrawerBottom: Story = {
   args: {
     position: 'bottom',
-    triggerButton: <CoreButton>Open drawer</CoreButton>,
+    triggerButton: <Button>Open drawer</Button>,
     children: <></>,
   },
   render: (arguments_) => {
@@ -225,16 +225,16 @@ export const DrawerBottom: Story = {
         </DrawerBody>
         <DrawerFooter key="footer">
           <div className="gi-flex gi-flex-col-reverse gi-gap-4 xs:gi-gap-6 xs:gi-justify-end xs:gi-flex-row">
-            <CoreButton
+            <Button
               variant="secondary"
               appearance="dark"
               className="gi-justify-center xs:gi-justify-start"
             >
               Cancel
-            </CoreButton>
-            <CoreButton className="gi-justify-center xs:gi-justify-start">
+            </Button>
+            <Button className="gi-justify-center xs:gi-justify-start">
               Primary
-            </CoreButton>
+            </Button>
           </div>
         </DrawerFooter>
       </Drawer>
@@ -246,7 +246,7 @@ export const DrawerMenuTablet: Story = {
   parameters: { layout: 'fullscreen' },
   globals: { viewport: { value: 'tablet' } },
   args: {
-    triggerButton: <CoreButton>Open drawer</CoreButton>,
+    triggerButton: <Button>Open drawer</Button>,
     closeButtonLabel: 'Close',
     children: <></>,
   },
@@ -261,16 +261,16 @@ export const DrawerMenuTablet: Story = {
           <DrawerMenuExample />
         </DrawerBody>
         <DrawerFooter key="footer">
-          <CoreButton
+          <Button
             variant="secondary"
             appearance="dark"
             className="gi-justify-center xs:gi-justify-start"
           >
             Cancel
-          </CoreButton>
-          <CoreButton className="gi-justify-center xs:gi-justify-start">
+          </Button>
+          <Button className="gi-justify-center xs:gi-justify-start">
             Primary
-          </CoreButton>
+          </Button>
         </DrawerFooter>
       </Drawer>
     );
@@ -281,7 +281,7 @@ export const DrawerMenuMobile: Story = {
   parameters: { layout: 'fullscreen' },
   globals: { viewport: { value: 'mobile1' } },
   args: {
-    triggerButton: <CoreButton>Open drawer</CoreButton>,
+    triggerButton: <Button>Open drawer</Button>,
     closeButtonLabel: 'Close',
     children: <></>,
   },
@@ -296,16 +296,16 @@ export const DrawerMenuMobile: Story = {
           <DrawerMenuExample />
         </DrawerBody>
         <DrawerFooter key="footer">
-          <CoreButton
+          <Button
             variant="secondary"
             appearance="dark"
             className="gi-justify-center xs:gi-justify-start"
           >
             Cancel
-          </CoreButton>
-          <CoreButton className="gi-justify-center xs:gi-justify-start">
+          </Button>
+          <Button className="gi-justify-center xs:gi-justify-start">
             Primary
-          </CoreButton>
+          </Button>
         </DrawerFooter>
       </Drawer>
     );
@@ -315,7 +315,7 @@ export const DrawerMenuMobile: Story = {
 export const DesktopButtonStacked: Story = {
   parameters: { layout: 'fullscreen' },
   args: {
-    triggerButton: <CoreButton>Open drawer</CoreButton>,
+    triggerButton: <Button>Open drawer</Button>,
     closeButtonLabel: 'Close',
     children: <></>,
   },
@@ -330,16 +330,16 @@ export const DesktopButtonStacked: Story = {
           <DrawerMenuExample />
         </DrawerBody>
         <DrawerFooter stacked key="footer">
-          <CoreButton>Primary</CoreButton>
-          <CoreButton variant="secondary" appearance="dark">
+          <Button>Primary</Button>
+          <Button variant="secondary" appearance="dark">
             Cancel
-          </CoreButton>
-          <CoreButton variant="secondary" appearance="dark">
+          </Button>
+          <Button variant="secondary" appearance="dark">
             Cancel
-          </CoreButton>
-          <CoreButton variant="secondary" appearance="dark">
+          </Button>
+          <Button variant="secondary" appearance="dark">
             Cancel
-          </CoreButton>
+          </Button>
         </DrawerFooter>
       </Drawer>
     );
@@ -350,7 +350,7 @@ export const TestOpenCloseInteractions: Story = {
   tags: ['skip-playwright'],
   args: {
     startsOpen: false,
-    triggerButton: <CoreButton>Open drawer</CoreButton>,
+    triggerButton: <Button>Open drawer</Button>,
     children: <></>,
   },
   render: (arguments_) => (

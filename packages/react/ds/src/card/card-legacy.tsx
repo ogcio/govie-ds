@@ -1,4 +1,4 @@
-import CoreButton from '../atoms/CoreButton';
+import Button from '../atoms/CoreButton';
 import { translate as t } from '../i18n/utility.js';
 import { Link } from '../link/link.js';
 import {
@@ -61,7 +61,7 @@ export const CardLegacy = ({
       );
     }
     return (
-      <CoreButton
+      <Button
         {...action}
         aria-label={t('card.actionButton', {
           children: action.children,
@@ -69,7 +69,7 @@ export const CardLegacy = ({
         })}
       >
         {action.children}
-      </CoreButton>
+      </Button>
     );
   };
 

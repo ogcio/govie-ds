@@ -1,7 +1,7 @@
 'use client';
 
 import { createContext, FC, useContext, useState, useEffect } from 'react';
-import CoreButton from '../atoms/CoreButton.js';
+import Button from '../atoms/CoreButton.js';
 import { cn } from '../cn.js';
 import { useDomId } from '../hooks/use-dom-id.js';
 import type {
@@ -45,7 +45,7 @@ export const ButtonGroupItem: FC<ButtonGroupItemProps> = ({
   const itemId = `${groupId}-${value}`;
 
   return (
-    <CoreButton
+    <Button
       variant={isSelected ? 'primary' : 'secondary'}
       size={size}
       appearance={appearance}
@@ -57,7 +57,7 @@ export const ButtonGroupItem: FC<ButtonGroupItemProps> = ({
       type="button"
     >
       {children}
-    </CoreButton>
+    </Button>
   );
 };
 

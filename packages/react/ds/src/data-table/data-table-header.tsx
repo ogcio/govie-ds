@@ -5,7 +5,7 @@ import React, {
   useMemo,
 } from 'react';
 import { tv } from 'tailwind-variants';
-import CoreButton from '../atoms/CoreButton';
+import Button from '../atoms/CoreButton';
 import { Chip } from '../chip/chip.js';
 import { cn } from '../cn.js';
 import { translate as t } from '../i18n/utility.js';
@@ -163,7 +163,7 @@ export const DataTableHeaderFilterList: React.FC<
         />
       ))}
 
-      <CoreButton
+      <Button
         appearance="dark"
         size="medium"
         variant="flat"
@@ -174,7 +174,7 @@ export const DataTableHeaderFilterList: React.FC<
         {t('dataTableHeader.clearAllFilters', {
           defaultValue: 'Clear all filters',
         })}
-      </CoreButton>
+      </Button>
     </div>
   );
 };
