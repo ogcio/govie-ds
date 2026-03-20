@@ -3,6 +3,10 @@
     "typography": {
       "default": {
         "text": {
+          "xl": {
+            "$type": "typography",
+            "$value": "{primitive.typeScale.text.500}"
+          },
           "lg": {
             "$type": "typography",
             "$value": "{primitive.typeScale.text.400}"
@@ -19,6 +23,10 @@
       },
       "xs": {
         "text": {
+          "xl": {
+            "$type": "typography",
+            "$value": "{primitive.typeScale.text.500}"
+          },
           "lg": {
             "$type": "typography",
             "$value": "{primitive.typeScale.text.400}"
@@ -35,6 +43,10 @@
       },
       "md": {
         "text": {
+          "xl": {
+            "$type": "typography",
+            "$value": "{primitive.typeScale.text.500}"
+          },
           "lg": {
             "$type": "typography",
             "$value": "{primitive.typeScale.text.400}"
@@ -51,6 +63,10 @@
       },
       "xl": {
         "text": {
+          "xl": {
+            "$type": "typography",
+            "$value": "{primitive.typeScale.text.500}"
+          },
           "lg": {
             "$type": "typography",
             "$value": "{primitive.typeScale.text.400}"

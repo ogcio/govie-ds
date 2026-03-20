@@ -1,7 +1,7 @@
-import { MitosisPlugin } from '@builder.io/mitosis'
-import format from '@prettier/sync'
-import config from '@ogcio/design-system-prettier-config'
-import type { Options } from 'prettier'
+import { MitosisPlugin } from '@builder.io/mitosis';
+import prettier from '@prettier/sync';
+import type { Options } from 'prettier';
+import config from '../../../.prettierrc.json';
 
 /**
  * Custom Prettier formatter for Mitosis code generation.
@@ -9,11 +9,11 @@ import type { Options } from 'prettier'
 const prettierFormat: MitosisPlugin = () => ({
   code: {
     post: (code) =>
-      format.format(code, {
+      prettier.format(code, {
         parser: 'typescript',
         ...(config as Options),
       }),
   },
-})
+});
 
-export default prettierFormat
+export default prettierFormat;

@@ -281,7 +281,7 @@ export const Default: StoryObj = {
       const faqButton = await canvas.findByRole('button', {
         name: /toggle frequently asked questions/i,
       });
-      expect(within(faqButton).getByText(/info/i)).toBeInTheDocument();
+      expect(within(faqButton).getByTestId(/info/i)).toBeInTheDocument();
 
       await userEvent.click(faqButton);
       expect(within(faqButton).getByTestId('close')).toBeInTheDocument();
@@ -294,7 +294,7 @@ export const Default: StoryObj = {
         name: /close/i,
       });
       await userEvent.click(drawerCloseButton);
-      expect(within(faqButton).getByText(/info/i)).toBeInTheDocument();
+      expect(within(faqButton).getByTestId(/info/i)).toBeInTheDocument();
     });
 
     await step('Search slot region appears and hides', async () => {

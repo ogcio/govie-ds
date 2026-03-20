@@ -705,6 +705,7 @@ export const resolveCssVariables = (
       'var(--gieds-type-scale-heading-bold-200)',
     '--gieds-typography-default-heading-2xs':
       'var(--gieds-type-scale-heading-bold-100)',
+    '--gieds-typography-default-text-xl': 'var(--gieds-type-scale-text-500)',
     '--gieds-typography-default-text-lg': 'var(--gieds-type-scale-text-400)',
     '--gieds-typography-default-text-md': 'var(--gieds-type-scale-text-300)',
     '--gieds-typography-default-text-sm': 'var(--gieds-type-scale-text-200)',
@@ -720,6 +721,7 @@ export const resolveCssVariables = (
       'var(--gieds-type-scale-heading-bold-200)',
     '--gieds-typography-xs-heading-2xs':
       'var(--gieds-type-scale-heading-bold-100)',
+    '--gieds-typography-xs-text-xl': 'var(--gieds-type-scale-text-500)',
     '--gieds-typography-xs-text-lg': 'var(--gieds-type-scale-text-400)',
     '--gieds-typography-xs-text-md': 'var(--gieds-type-scale-text-300)',
     '--gieds-typography-xs-text-sm': 'var(--gieds-type-scale-text-200)',
@@ -735,6 +737,7 @@ export const resolveCssVariables = (
       'var(--gieds-type-scale-heading-bold-200)',
     '--gieds-typography-md-heading-2xs':
       'var(--gieds-type-scale-heading-bold-100)',
+    '--gieds-typography-md-text-xl': 'var(--gieds-type-scale-text-500)',
     '--gieds-typography-md-text-lg': 'var(--gieds-type-scale-text-400)',
     '--gieds-typography-md-text-md': 'var(--gieds-type-scale-text-300)',
     '--gieds-typography-md-text-sm': 'var(--gieds-type-scale-text-200)',
@@ -750,6 +753,7 @@ export const resolveCssVariables = (
       'var(--gieds-type-scale-heading-bold-200)',
     '--gieds-typography-xl-heading-2xs':
       'var(--gieds-type-scale-heading-bold-100)',
+    '--gieds-typography-xl-text-xl': 'var(--gieds-type-scale-text-500)',
     '--gieds-typography-xl-text-lg': 'var(--gieds-type-scale-text-400)',
     '--gieds-typography-xl-text-md': 'var(--gieds-type-scale-text-300)',
     '--gieds-typography-xl-text-sm': 'var(--gieds-type-scale-text-200)',

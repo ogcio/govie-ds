@@ -1,39 +1,22 @@
 import fs from 'node:fs';
 import path from 'node:path';
+import { createRequire } from 'node:module';
 import { fileURLToPath } from 'node:url';
 
-(function copyHtmlToTemplate() {
-  const currentPath = fileURLToPath(import.meta.url);
-  const currentDirectory = path.dirname(currentPath);
+const require = createRequire(import.meta.url);
 
-  const sourceJsPath = path.resolve(
-    currentDirectory,
-    '../../../packages/html/ds/dist/govie-frontend.umd.js',
-  );
-  const destinationJsPath = path.resolve(
-    currentDirectory,
-    '../public/templates/govie-frontend.umd.js',
-  );
+const docsDir = path.dirname(path.dirname(fileURLToPath(import.meta.url)));
+const destDir = path.join(docsDir, 'public/templates');
 
-  const sourceCssPath = path.resolve(
-    currentDirectory,
-    '../../../packages/html/ds/dist/styles.css',
-  );
-  const destinationCssPath = path.resolve(
-    currentDirectory,
-    '../public/templates/styles.css',
-  );
-
-  const sourceThemePath = path.resolve(
-    currentDirectory,
-    '../../../packages/themes/govie/dist/theme.css',
-  );
-  const destinationThemePath = path.resolve(
-    currentDirectory,
-    '../public/templates/theme.css',
-  );
-
-  fs.copyFileSync(sourceJsPath, destinationJsPath);
-  fs.copyFileSync(sourceCssPath, destinationCssPath);
-  fs.copyFileSync(sourceThemePath, destinationThemePath);
-})();
+fs.copyFileSync(
+  require.resolve('@ogcio/design-system-html'),
+  path.join(destDir, 'govie-frontend.umd.js'),
+);
+fs.copyFileSync(
+  require.resolve('@ogcio/design-system-html/styles.css'),
+  path.join(destDir, 'styles.css'),
+);
+fs.copyFileSync(
+  require.resolve('@ogcio/theme-govie/theme.css'),
+  path.join(destDir, 'theme.css'),
+);

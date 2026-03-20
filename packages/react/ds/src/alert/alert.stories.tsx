@@ -1,5 +1,5 @@
 import type { Meta, StoryObj } from '@storybook/react';
-import { expect, within } from 'storybook/test';
+import { expect, fn, userEvent, within } from 'storybook/test';
 import { Paragraph } from '../paragraph/paragraph.js';
 import { Alert } from './alert.js';
 
@@ -109,22 +109,62 @@ export const IsDismissible: Story = {
   },
 };
 
+export const TestDismissibleBehavior: Story = {
+  tags: ['skip-playwright'],
+  args: {
+    title: 'Info Alert',
+    variant: 'info',
+    dismissible: true,
+    onClose: fn(),
+    children: (
+      <>
+        <Paragraph>Content</Paragraph>
+      </>
+    ),
+  },
+  play: async ({ canvasElement, args, step }) => {
+    const canvas = within(canvasElement);
+
+    await step('alert is initially visible', async () => {
+      expect(canvas.getByRole('alert')).toBeInTheDocument();
+    });
+
+    await step('clicking dismiss hides the alert', async () => {
+      const dismissButton = canvas.getByRole('button', {
+        name: /dismiss alert/i,
+      });
+      await userEvent.click(dismissButton);
+      expect(canvas.queryByRole('alert')).toBeNull();
+    });
+
+    await step('onClose callback is fired', () => {
+      expect(args.onClose).toHaveBeenCalledTimes(1);
+    });
+  },
+};
+
 export const WithoutTitle: Story = {
   args: {
     variant: 'info',
     dismissible: true,
     children: <>Content</>,
   },
+  play: async ({ canvasElement, step }) => {
+    await step('does not render a title element when title is omitted', () => {
+      const title = canvasElement.querySelector('.gi-alert-title');
+      expect(title).toBeNull();
+    });
+  },
 };
 
 export const WithoutIcon: Story = {
   args: {
-    'aria-describedby': 'alert-content',
     'aria-atomic': true,
+    'aria-describedby': 'alert-content',
     title: 'Info Alert',
     variant: 'info',
-    dismissible: true,
     showIcon: false,
+    dismissible: true,
     children: (
       <>
         <Paragraph>Content</Paragraph>
@@ -134,19 +174,39 @@ export const WithoutIcon: Story = {
   play: async ({ canvasElement, step }) => {
     const canvas = within(canvasElement);
 
-    await step('icon should not be rendered', async () => {
-      const iconElement = canvasElement.querySelector('.gi-alert-icon');
-      expect(iconElement).toBeNull();
+    await step('does not render an SVG icon when showIcon=false', () => {
+      const icon = canvasElement.querySelector('[role="alert"] > svg');
+      expect(icon).toBeNull();
     });
 
-    await step('title and content should be visible', async () => {
+    await step('title and content are still visible', async () => {
       expect(await canvas.findByText('Info Alert')).toBeInTheDocument();
       expect(await canvas.findByText('Content')).toBeInTheDocument();
     });
+  },
+};
 
-    await step('does NOT render the icon when showIcon=false', () => {
-      const iconElement = canvasElement.querySelector('.gi-alert-icon');
-      expect(iconElement).toBeNull();
+export const TestAccessibilityAttributes: StoryObj = {
+  tags: ['skip-playwright'],
+  args: {
+    variant: 'info',
+    title: 'Information',
+    children: 'This is an info alert',
+  },
+  play: async ({ canvasElement, step }) => {
+    await step('has role="alert" on the container', () => {
+      const alert = canvasElement.querySelector('[role="alert"]');
+      expect(alert).not.toBeNull();
+    });
+
+    await step('has aria-live="assertive" on the container', () => {
+      const alert = canvasElement.querySelector('[role="alert"]');
+      expect(alert?.getAttribute('aria-live')).toBe('assertive');
+    });
+
+    await step('icon is hidden from assistive technology', () => {
+      const icon = canvasElement.querySelector('svg');
+      expect(icon?.getAttribute('aria-hidden')).toBe('true');
     });
   },
 };
@@ -157,20 +217,27 @@ export const TestRendersTitleAndMessage: StoryObj = {
     variant: 'info',
     title: 'Information',
     children: 'This is an info alert',
-    'data-testid': 'alert',
   },
   play: async ({ canvasElement, step }) => {
-    await step('renders title and message', async () => {
-      const element = canvasElement.querySelector('[data-testid="alert"]');
-      expect(element).not.toBeNull();
+    const canvas = within(canvasElement);
 
-      const text = canvasElement.textContent ?? '';
-      expect(text.includes('Information')).toBe(true);
-      expect(text.includes('This is an info alert')).toBe(true);
+    await step('renders title', async () => {
+      expect(await canvas.findByText('Information')).toBeInTheDocument();
+    });
+
+    await step('renders message', async () => {
+      expect(
+        await canvas.findByText('This is an info alert'),
+      ).toBeInTheDocument();
+    });
+
+    await step('icon renders by default and uses currentColor fill', () => {
+      const icon = canvasElement.querySelector('svg');
+      expect(icon).not.toBeNull();
+      expect(icon!.getAttribute('fill')).toBe('currentColor');
     });
   },
 };
-
 export const TestVariantsHaveCorrectClass: StoryObj = {
   tags: ['skip-playwright'],
   render: () => (
