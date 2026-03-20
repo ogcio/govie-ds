@@ -111,23 +111,16 @@ A comprehensive testing strategy is employed to ensure the stability and visual 
 
 For full guidance, including local execution instructions and CI/CD integration, see the [Testing Strategy](./docs/testing.md).
 
-## Build Figma tokens
+## Contributing
 
-Make token changes in `packages/design/tokens` or `packages/themes/<packagename>`
-in [Design Token Format Module](https://design-tokens.github.io/community-group/format/) format.
+Contributions are welcome within defined constraints.
 
-```bash
-pnpm figma:build
-```
+Before opening an issue or pull request, please read:
+- [CONTRIBUTING.md](./CONTRIBUTING.md) — contribution scope, criteria, and process
+- [GOVERNANCE.md](./GOVERNANCE.md) — decision-making authority and fraud safeguards
+- [SECURITY.md](./SECURITY.md) — reporting vulnerabilities
 
-Figma tokens are outputted to `packages/design/figma/dist/tokens`
-The entire folder can be uploaded as one with the [figma-variables-import](https://github.com/microsoft/figma-variables-import) plugin.
-
-### Known Issues
-
-- Figma does not support composite variables (e.g. typography, shadows etc), so they are converted to nested variable groups
-- Figma [does not support percentage variables for line height](https://forum.figma.com/t/allow-percentages-for-line-height/69692) so line
-  height percentages must be entered manually for Figma text styles
+Acceptance of contributions is at the discretion of the maintainers.
 
 ## Thanks
 
@@ -136,14 +129,4 @@ The entire folder can be uploaded as one with the [figma-variables-import](https
 Thanks to [Chromatic](https://www.chromatic.com/) for providing the visual testing platform that helps us review UI changes and catch visual
 regressions.
 
-This project is tested with BrowserStack [BrowserStack](https://www.browserstack.com/)
-
-## Contributing
-
-Contributions are welcome within defined constraints.
-
-Before opening an issue or pull request, please read:
-- [CONTRIBUTING.md](./CONTRIBUTING.md) — contribution scope, criteria, and process
-- [GOVERNANCE.md](./GOVERNANCE.md) — decision-making authority and fraud safeguards
-
-Acceptance of contributions is at the discretion of the maintainers.
+This project is tested with [BrowserStack](https://www.browserstack.com/).

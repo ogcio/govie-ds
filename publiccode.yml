@@ -1,0 +1,62 @@
+publiccodeYmlVersion: 0.5.0
+name: Government of Ireland Design System
+applicationSuite: Government of Ireland Building Blocks
+url: https://github.com/ogcio/govie-ds
+platforms:
+  - web
+categories:
+  - design-system
+  - it-development
+  - web-collaboration
+organisation:
+  name: Office of the Government Chief Information Officer
+  uri: https://www.ogcio.gov.ie
+usedBy:
+  - Office of Government's Chief Information Officer, Ireland
+  - Department of Education, Ireland
+developmentStatus: stable
+softwareType: library
+intendedAudience:
+  countries:
+    - IE
+  scope:
+    - local-authorities
+    - government
+description:
+  en:
+    localisedName: Government of Ireland Design System
+    shortDescription: An open-source design system providing tools and guidelines
+      to create consistent, accessible, and user-centred government digital
+      services.
+    longDescription: The Government of Ireland Design System is an open-source
+      design system developed by the Office of the Government Chief Information
+      Officer (OGCIO). It provides tools for design and development, along with
+      resources and guidelines to help teams create consistent, accessible, and
+      user-centred digital services across government.
+    documentation: https://ds.services.gov.ie/
+    screenshots:
+      - assets/docs/fig_cover.png
+    features:
+      - React component library
+      - HTML component library
+      - Angular component library (alpha)1
+      - Tailwind CSS styling and theming
+      - Design tokens for consistent styling
+      - Theme packages
+      - Figma design resources
+      - WCAG 2.1 AA accessible components
+logo: assets/logos/gov-of-ireland/harp-gold-text-green.svg
+landingURL: https://ds.services.gov.ie/
+legal:
+  license: MIT
+  mainCopyrightOwner: Office of the Government Chief Information Officer
+maintenance:
+  type: internal
+  contacts:
+    - name: Applications and Architecture Team
+      email: appsarchitecture@dsu.cloud.gov.ie
+      affiliation: Office of the Government Chief Information Officer
+localisation:
+  localisationReady: true
+  availableLanguages:
+    - en

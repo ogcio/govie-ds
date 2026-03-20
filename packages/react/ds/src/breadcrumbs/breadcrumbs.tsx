@@ -1,3 +1,4 @@
+import ArrowLeftIcon from '../atoms/icons/KeyboardArrowLeft';
 import { translate as t } from '../i18n/utility.js';
 import { Icon } from '../icon/icon.js';
 import { Link } from '../link/link.js';
@@ -56,7 +57,7 @@ export const Breadcrumbs = ({ children, iconStart }: BreadcrumbProps) => {
       >
         {iconStart && (
           <li role="listitem" className="gi-pr-1">
-            <Icon aria-label="chevron-left" icon="chevron_left" size="sm" />
+            <ArrowLeftIcon className="gi-block gi-shrink-0" size={16} />
           </li>
         )}
         {items.map((component, index) => (
