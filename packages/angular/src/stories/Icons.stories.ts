@@ -1,15 +1,5 @@
+import map from 'lodash/map';
 import type { Meta, StoryObj } from '@storybook/angular';
-import {
-  CheckCircle,
-  Close,
-  Error,
-  Info,
-  KeyboardArrowDown,
-  KeyboardArrowUp,
-  Visibility,
-  VisibilityOff,
-  Warning,
-} from '../atoms/icons';
 import { iconsMeta, Default as iconsDefault, iconList } from '../atoms/storybook/Icons.meta';
 
 const meta: Meta = {
@@ -24,35 +14,24 @@ export const Default: StoryObj = {
   render: (args) => ({
     props: args,
     moduleMetadata: {
-      imports: [
-        CheckCircle,
-        Close,
-        Error,
-        Info,
-        KeyboardArrowDown,
-        KeyboardArrowUp,
-        Visibility,
-        VisibilityOff,
-        Warning,
-      ],
+      imports: map(iconList, 'Component'),
     },
     template: `
     <div class="gi-flex gi-flex-wrap gi-gap-8">
-      ${iconList
-        .map(
-          ({ angularSelector, testId }) => `
+      ${map(
+        iconList,
+        ({ selector, Component }) => `
       <div class="gi-flex gi-w-32 gi-flex-col gi-items-center gi-gap-2">
-        <${angularSelector}
+        <${selector}
           [size]="size"
           [color]="color"
           [label]="label"
           [className]="className"
-          dataTestId="${testId}"
-        ></${angularSelector}>
-        <span class="gi-text-xs gi-text-center gi-whitespace-nowrap">${angularSelector}</span>
+          dataTestId="${selector}"
+        ></${selector}>
+        <span class="gi-text-xs gi-text-center gi-whitespace-nowrap">${Component.name}</span>
       </div>`,
-        )
-        .join('')}
+      ).join('')}
     </div>
     `,
   }),

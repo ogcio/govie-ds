@@ -1,53 +1,38 @@
 import type { ArgTypes, StoryContext, Renderer } from '@storybook/types';
 import { within, expect } from 'storybook/test';
 import type { IconProps } from '../icons/types';
+import ArrowLeft from '../icons/ArrowLeft.lite';
+import ArrowRight from '../icons/ArrowRight.lite';
+import CheckCircle from '../icons/CheckCircle.lite';
+import Close from '../icons/Close.lite';
+import Error from '../icons/Error.lite';
+import FirstPage from '../icons/FirstPage.lite';
+import Info from '../icons/Info.lite';
+import KeyboardArrowDown from '../icons/KeyboardArrowDown.lite';
+import KeyboardArrowLeft from '../icons/KeyboardArrowLeft.lite';
+import KeyboardArrowRight from '../icons/KeyboardArrowRight.lite';
+import KeyboardArrowUp from '../icons/KeyboardArrowUp.lite';
+import LastPage from '../icons/LastPage.lite';
+import Visibility from '../icons/Visibility.lite';
+import VisibilityOff from '../icons/VisibilityOff.lite';
+import Warning from '../icons/Warning.lite';
 
 export const iconList = [
-  {
-    reactComponentName: 'CheckCircle',
-    angularSelector: 'check-circle',
-    testId: 'check-circle',
-  },
-  {
-    reactComponentName: 'Close',
-    angularSelector: 'close',
-    testId: 'close',
-  },
-  {
-    reactComponentName: 'Error',
-    angularSelector: 'error',
-    testId: 'error',
-  },
-  {
-    reactComponentName: 'Info',
-    angularSelector: 'info',
-    testId: 'info',
-  },
-  {
-    reactComponentName: 'KeyboardArrowDown',
-    angularSelector: 'keyboard-arrow-down',
-    testId: 'keyboard-arrow-down',
-  },
-  {
-    reactComponentName: 'KeyboardArrowUp',
-    angularSelector: 'keyboard-arrow-up',
-    testId: 'keyboard-arrow-up',
-  },
-  {
-    reactComponentName: 'Visibility',
-    angularSelector: 'visibility',
-    testId: 'visibility',
-  },
-  {
-    reactComponentName: 'VisibilityOff',
-    angularSelector: 'visibility-off',
-    testId: 'visibility-off',
-  },
-  {
-    reactComponentName: 'Warning',
-    angularSelector: 'warning',
-    testId: 'warning',
-  },
+  { Component: ArrowLeft, selector: 'arrow-left' },
+  { Component: ArrowRight, selector: 'arrow-right' },
+  { Component: CheckCircle, selector: 'check-circle' },
+  { Component: Close, selector: 'close' },
+  { Component: Error, selector: 'error' },
+  { Component: FirstPage, selector: 'first-page' },
+  { Component: Info, selector: 'info' },
+  { Component: KeyboardArrowDown, selector: 'keyboard-arrow-down' },
+  { Component: KeyboardArrowLeft, selector: 'keyboard-arrow-left' },
+  { Component: KeyboardArrowRight, selector: 'keyboard-arrow-right' },
+  { Component: KeyboardArrowUp, selector: 'keyboard-arrow-up' },
+  { Component: LastPage, selector: 'last-page' },
+  { Component: Visibility, selector: 'visibility' },
+  { Component: VisibilityOff, selector: 'visibility-off' },
+  { Component: Warning, selector: 'warning' },
 ];
 
 export const iconsMeta = {
@@ -93,9 +78,9 @@ export const Default = {
   play: async ({ canvasElement, step }: StoryContext<Renderer>) => {
     const canvas = within(canvasElement as HTMLElement);
 
-    for (const { testId } of iconList) {
-      await step(`renders ${testId} icon`, async () => {
-        expect(canvas.getByTestId(testId)).toBeInTheDocument();
+    for (const { selector } of iconList) {
+      await step(`renders ${selector} icon`, async () => {
+        expect(canvas.getByTestId(selector)).toBeInTheDocument();
       });
     }
   },

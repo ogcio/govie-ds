@@ -1,42 +1,66 @@
 import type { ArgTypes, StoryContext, Renderer } from '@storybook/types';
 import { within, expect } from 'storybook/test';
 import type { IconProps } from '../icons/types';
+import ArrowLeft from '../icons/ArrowLeft';
+import ArrowRight from '../icons/ArrowRight';
+import CheckCircle from '../icons/CheckCircle';
+import Close from '../icons/Close';
+import Error from '../icons/Error';
+import FirstPage from '../icons/FirstPage';
+import Info from '../icons/Info';
+import KeyboardArrowDown from '../icons/KeyboardArrowDown';
+import KeyboardArrowLeft from '../icons/KeyboardArrowLeft';
+import KeyboardArrowRight from '../icons/KeyboardArrowRight';
+import KeyboardArrowUp from '../icons/KeyboardArrowUp';
+import LastPage from '../icons/LastPage';
+import Visibility from '../icons/Visibility';
+import VisibilityOff from '../icons/VisibilityOff';
+import Warning from '../icons/Warning';
 export const iconList = [{
-  reactComponentName: 'CheckCircle',
-  angularSelector: 'check-circle',
-  testId: 'check-circle'
+  Component: ArrowLeft,
+  selector: 'arrow-left'
 }, {
-  reactComponentName: 'Close',
-  angularSelector: 'close',
-  testId: 'close'
+  Component: ArrowRight,
+  selector: 'arrow-right'
 }, {
-  reactComponentName: 'Error',
-  angularSelector: 'error',
-  testId: 'error'
+  Component: CheckCircle,
+  selector: 'check-circle'
 }, {
-  reactComponentName: 'Info',
-  angularSelector: 'info',
-  testId: 'info'
+  Component: Close,
+  selector: 'close'
 }, {
-  reactComponentName: 'KeyboardArrowDown',
-  angularSelector: 'keyboard-arrow-down',
-  testId: 'keyboard-arrow-down'
+  Component: Error,
+  selector: 'error'
 }, {
-  reactComponentName: 'KeyboardArrowUp',
-  angularSelector: 'keyboard-arrow-up',
-  testId: 'keyboard-arrow-up'
+  Component: FirstPage,
+  selector: 'first-page'
 }, {
-  reactComponentName: 'Visibility',
-  angularSelector: 'visibility',
-  testId: 'visibility'
+  Component: Info,
+  selector: 'info'
 }, {
-  reactComponentName: 'VisibilityOff',
-  angularSelector: 'visibility-off',
-  testId: 'visibility-off'
+  Component: KeyboardArrowDown,
+  selector: 'keyboard-arrow-down'
 }, {
-  reactComponentName: 'Warning',
-  angularSelector: 'warning',
-  testId: 'warning'
+  Component: KeyboardArrowLeft,
+  selector: 'keyboard-arrow-left'
+}, {
+  Component: KeyboardArrowRight,
+  selector: 'keyboard-arrow-right'
+}, {
+  Component: KeyboardArrowUp,
+  selector: 'keyboard-arrow-up'
+}, {
+  Component: LastPage,
+  selector: 'last-page'
+}, {
+  Component: Visibility,
+  selector: 'visibility'
+}, {
+  Component: VisibilityOff,
+  selector: 'visibility-off'
+}, {
+  Component: Warning,
+  selector: 'warning'
 }];
 export const iconsMeta = {
   tags: ['autodocs'] as string[],
@@ -81,10 +105,10 @@ export const Default = {
   }: StoryContext<Renderer>) => {
     const canvas = within(canvasElement as HTMLElement);
     for (const {
-      testId
+      selector
     } of iconList) {
-      await step(`renders ${testId} icon`, async () => {
-        expect(canvas.getByTestId(testId)).toBeInTheDocument();
+      await step(`renders ${selector} icon`, async () => {
+        expect(canvas.getByTestId(selector)).toBeInTheDocument();
       });
     }
   }
