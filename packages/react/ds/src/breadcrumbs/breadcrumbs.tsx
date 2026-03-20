@@ -1,8 +1,9 @@
-import { KeyboardArrowLeft } from '../atoms/icons/index.js';
+import ArrowLeftIcon from '../atoms/icons/KeyboardArrowLeft';
 import { translate as t } from '../i18n/utility.js';
 import { Icon } from '../icon/icon.js';
 import { Link } from '../link/link.js';
 import type { BreadcrumbLinkProps, BreadcrumbProps } from './types.js';
+
 export const BreadcrumbEllipsis = () => (
   <div aria-hidden="true">
     <Icon className="gi-text-gray-700" icon="more_horiz" />
@@ -56,7 +57,7 @@ export const Breadcrumbs = ({ children, iconStart }: BreadcrumbProps) => {
       >
         {iconStart && (
           <li role="listitem" className="gi-pr-1">
-            <KeyboardArrowLeft className="gi-block gi-shrink-0" size={16} />
+            <ArrowLeftIcon className="gi-block gi-shrink-0" size={16} />
           </li>
         )}
         {items.map((component, index) => (
