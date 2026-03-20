@@ -1,6 +1,7 @@
 import { MitosisConfig } from '@builder.io/mitosis';
 import annotation from './plugins/annotation';
 import prettierFormat from './plugins/prettier-format';
+import { cleanPropsReact } from './plugins/clean-props';
 import fixForwardRef from './plugins/forward-ref';
 import normalizeReactSvgAttrs from './plugins/normalize-svg-attrs';
 
@@ -17,7 +18,7 @@ export default {
     react: {
       typescript: true,
       prettier: false,
-      plugins: [fixForwardRef, normalizeReactSvgAttrs, prettierFormat],
+      plugins: [fixForwardRef, normalizeReactSvgAttrs, cleanPropsReact, prettierFormat],
     },
   },
 } satisfies MitosisConfig;

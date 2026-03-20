@@ -1,4 +1,5 @@
 import { tv } from 'tailwind-variants';
+import { useMetadata, useTarget } from '@builder.io/mitosis';
 
 export const Variant = {
   PRIMARY: 'primary',
@@ -32,6 +33,11 @@ type Props = {
   onBlur?: (event: any) => void;
   onKeyDown?: (event: any) => void;
   onKeyUp?: (event: any) => void;
+  click: (event: any) => void;
+  focus: (event: any) => void;
+  blur: (event: any) => void;
+  keyDown: (event: any) => void;
+  keyUp: (event: any) => void;
 
   ariaLabel?: string;
   ariaLabelledBy?: string;
@@ -52,7 +58,9 @@ type Props = {
   ref?: any;
 };
 
-export default function DsButton(props: Props) {
+useMetadata({ angular: { selector: 'gi-button' } });
+
+export default function Button(props: Props) {
   return (
     <button
       ref={props.ref}
@@ -65,11 +73,36 @@ export default function DsButton(props: Props) {
         class: props.className,
       })}
       disabled={props.disabled || undefined}
-      onClick={(event) => props.onClick?.(event)}
-      onFocus={(event) => props.onFocus?.(event)}
-      onBlur={(event) => props.onBlur?.(event)}
-      onKeyDown={(event) => props.onKeyDown?.(event)}
-      onKeyUp={(event) => props.onKeyUp?.(event)}
+      onClick={(event) =>
+        useTarget({
+          react: props.onClick?.(event),
+          angular: props.click(event),
+        })
+      }
+      onFocus={(event) =>
+        useTarget({
+          react: props.onFocus?.(event),
+          angular: props.focus(event),
+        })
+      }
+      onBlur={(event) =>
+        useTarget({
+          react: props.onBlur?.(event),
+          angular: props.blur(event),
+        })
+      }
+      onKeyDown={(event) =>
+        useTarget({
+          react: props.onKeyDown?.(event),
+          angular: props.keyDown(event),
+        })
+      }
+      onKeyUp={(event) =>
+        useTarget({
+          react: props.onKeyUp?.(event),
+          angular: props.keyUp(event),
+        })
+      }
       aria-label={props.ariaLabel}
       aria-labelledby={props.ariaLabelledBy}
       aria-describedby={props.ariaDescribedBy}
