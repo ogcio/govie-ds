@@ -1,6 +1,9 @@
 import type { Meta, StoryObj } from '@storybook/react';
 import Heading, { Props } from '../Heading';
-import { headingMeta, Default as headingDefault } from '../atoms/storybook/Heading.meta';
+import {
+  headingMeta,
+  Default as headingDefault,
+} from '../atoms/storybook/Heading.meta';
 
 const meta: Meta<typeof Heading> = {
   ...headingMeta,
