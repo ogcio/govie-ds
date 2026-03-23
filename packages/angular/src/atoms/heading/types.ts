@@ -6,10 +6,9 @@ export const Size = {
   XS: 'xs',
   XXS: '2xs'
 } as const;
-export type Size = (typeof Size)[keyof typeof Size];
 export type Props = {
   id?: string;
-  size?: Size;
+  size?: (typeof Size)[keyof typeof Size];
   className?: string;
   children: any;
   dataTestId?: string;

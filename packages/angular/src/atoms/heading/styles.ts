@@ -1,5 +1,5 @@
 import { tv } from 'tailwind-variants';
-import type { Size } from './types';
+import type { Props } from './types';
 const styles = tv({
   base: 'gi-font-bold gi-font-primary',
   variants: {
@@ -10,7 +10,7 @@ const styles = tv({
       sm: 'gi-text-lg xl:gi-text-xl',
       xs: 'gi-text-md',
       '2xs': 'gi-text-sm'
-    } satisfies Record<Size, string>
+    } satisfies Record<NonNullable<Props['size']>, string>
   }
 });
 export default styles

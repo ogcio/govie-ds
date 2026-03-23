@@ -3,16 +3,16 @@ import styles from './styles';
 import { getSize } from './utils';
 import type { Props } from './types';
 
-useMetadata({ angular: { selector: 'core-h4' } });
+useMetadata({ angular: { selector: 'gi-h3' } });
 
-export default function CoreH4(props: Props) {
+export default function H3(props: Props) {
   return (
-    <h4
+    <h3
       id={props.id}
       data-testid={props.dataTestId}
-      class={styles({ size: getSize(props.size, 'sm'), class: props.className })}
+      class={styles({ size: getSize(props.size, 'md'), class: props.className })}
     >
       {props.children}
-    </h4>
+    </h3>
   );
 }
