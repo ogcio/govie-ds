@@ -162,7 +162,7 @@ FormFieldLabel.displayName = 'FormFieldLabel';
 const FormFieldHint = ({ children, text, size, className }: HintTextProps) => {
   useFormFieldContext('FormFieldHint');
   return (
-    <HintText text={text} size={size} className={cn('gi-mb-1', className)}>
+    <HintText text={text} size={size} className={className}>
       {children}
     </HintText>
   );
