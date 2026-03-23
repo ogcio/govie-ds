@@ -100,16 +100,16 @@ export const WithLabelHintAndError = {
 
     const label = canvas.getByText('Label');
     expect(label).toBeTruthy();
-    expect(label).toHaveClass('gi-label');
+    expect(label).toHaveAttribute('data-element', 'label');
     expect(label.getAttribute('for')).toBe(select.getAttribute('id'));
 
     const hint = canvas.getByText('This is a hint');
     expect(hint).toBeTruthy();
-    expect(hint).toHaveClass('gi-hint-text');
+    expect(hint).toHaveAttribute('data-element', 'hint-text');
 
     const error = canvas.getByText('This is an error');
     expect(error).toBeTruthy();
-    expect(error).toHaveClass('gi-error-text');
+    expect(error).toHaveAttribute('data-element', 'error-text');
   },
 };
 

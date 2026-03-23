@@ -14,7 +14,11 @@ export const HintText: React.FC<HintTextProps> = ({
   size = HintSize.Medium,
   ...props
 }) => (
-  <div className={hintText({ size, className })} {...props}>
+  <div
+    className={hintText({ size, className })}
+    {...props}
+    data-element="hint-text"
+  >
     {children ?? text}
   </div>
 );

@@ -190,13 +190,17 @@ export const WithLabelHintAndError: Story = {
     expect(globalThis.window.getComputedStyle(textInput).borderColor).toBe(
       'rgb(187, 37, 13)',
     );
-    expect(canvas.getByText('Label')).toHaveClass('gi-label');
-    expect(canvas.getByText('Hint: This is a helpful hint.')).toHaveClass(
-      'gi-hint-text',
+    expect(canvas.getByText('Label')).toHaveAttribute(
+      'data-element',
+      'label',
     );
-    expect(canvas.getByText('Error: Please correct this issue.')).toHaveClass(
-      'gi-error-text',
+    expect(canvas.getByText('Hint: This is a helpful hint.')).toHaveAttribute(
+      'data-element',
+      'hint-text',
     );
+    expect(
+      canvas.getByText('Error: Please correct this issue.'),
+    ).toHaveAttribute('data-element', 'error-text');
   },
 };
 
@@ -223,13 +227,17 @@ export const WithLabelHintAndErrorLegacy: Story = {
     expect(globalThis.window.getComputedStyle(textInput).borderColor).toBe(
       'rgb(187, 37, 13)',
     );
-    expect(canvas.getByText('Label')).toHaveClass('gi-label');
-    expect(canvas.getByText('Hint: This is a helpful hint.')).toHaveClass(
-      'gi-hint-text',
+    expect(canvas.getByText('Label')).toHaveAttribute(
+      'data-element',
+      'label',
     );
-    expect(canvas.getByText('Error: Please correct this issue.')).toHaveClass(
-      'gi-error-text',
+    expect(canvas.getByText('Hint: This is a helpful hint.')).toHaveAttribute(
+      'data-element',
+      'hint-text',
     );
+    expect(
+      canvas.getByText('Error: Please correct this issue.'),
+    ).toHaveAttribute('data-element', 'error-text');
   },
 };
 

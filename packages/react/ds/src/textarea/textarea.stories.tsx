@@ -189,16 +189,16 @@ export const WithLabelHintAndError: Story = {
 
     const label = canvas.getByText('Label');
     expect(label).toBeTruthy();
-    expect(label).toHaveClass('gi-label');
+    expect(label).toHaveAttribute('data-element', 'label');
     expect(label.getAttribute('for')).toBe(textarea.getAttribute('id'));
 
     const hint = canvas.getByText('Hint: This is a helpful hint.');
     expect(hint).toBeTruthy();
-    expect(hint).toHaveClass('gi-hint-text');
+    expect(hint).toHaveAttribute('data-element', 'hint-text');
 
     const error = canvas.getByText('Error: Please correct this issue.');
     expect(error).toBeTruthy();
-    expect(error).toHaveClass('gi-error-text');
+    expect(error).toHaveAttribute('data-element', 'error-text');
   },
 };
 

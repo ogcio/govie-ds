@@ -44,6 +44,13 @@ export const Default: Story = {
     text: 'Hint',
     size: HintSize.Medium,
   },
+  play: async ({ canvasElement }) => {
+    const canvas = within(canvasElement);
+    expect(canvas.getByText('Hint')).toHaveAttribute(
+      'data-element',
+      'hint-text',
+    );
+  },
 };
 
 export const Small: Story = {

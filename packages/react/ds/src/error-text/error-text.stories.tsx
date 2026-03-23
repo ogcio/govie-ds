@@ -52,6 +52,7 @@ export const Default: Story = {
         const errorElement = canvas.getByText('Error');
         expect(errorElement).toBeTruthy();
         expect(errorElement.tagName).toBe('DIV');
+        expect(errorElement).toHaveAttribute('data-element', 'error-text');
       },
     );
   },
