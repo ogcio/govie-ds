@@ -190,10 +190,7 @@ export const WithLabelHintAndError: Story = {
     expect(globalThis.window.getComputedStyle(textInput).borderColor).toBe(
       'rgb(187, 37, 13)',
     );
-    expect(canvas.getByText('Label')).toHaveAttribute(
-      'data-element',
-      'label',
-    );
+    expect(canvas.getByText('Label')).toHaveAttribute('data-element', 'label');
     expect(canvas.getByText('Hint: This is a helpful hint.')).toHaveAttribute(
       'data-element',
       'hint-text',
@@ -227,10 +224,7 @@ export const WithLabelHintAndErrorLegacy: Story = {
     expect(globalThis.window.getComputedStyle(textInput).borderColor).toBe(
       'rgb(187, 37, 13)',
     );
-    expect(canvas.getByText('Label')).toHaveAttribute(
-      'data-element',
-      'label',
-    );
+    expect(canvas.getByText('Label')).toHaveAttribute('data-element', 'label');
     expect(canvas.getByText('Hint: This is a helpful hint.')).toHaveAttribute(
       'data-element',
       'hint-text',
