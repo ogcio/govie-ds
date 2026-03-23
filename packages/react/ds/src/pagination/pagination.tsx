@@ -1,7 +1,7 @@
 'use client';
 import React, { useState, useEffect } from 'react';
 import { Trans, useTranslation } from 'react-i18next';
-import { CoreButton } from '../atoms/index.js';
+import { ArrowRight, ArrowLeft, CoreButton as Button } from '../atoms/index.js';
 import { Breakpoint, useBreakpoint } from '../hooks/use-breakpoint.js';
 import { Icon } from '../icon/icon.js';
 import { getDisplayPages } from '../utils/utilities.js';
@@ -55,7 +55,7 @@ export const Pagination: React.FC<PaginationProps> = ({
           />
         </React.Fragment>
       ) : (
-        <CoreButton
+        <Button
           key={page}
           variant={page === currentPage ? 'primary' : 'flat'}
           size="large"
@@ -67,7 +67,7 @@ export const Pagination: React.FC<PaginationProps> = ({
           })}
         >
           {page}
-        </CoreButton>
+        </Button>
       ),
     );
   };
@@ -95,7 +95,7 @@ export const Pagination: React.FC<PaginationProps> = ({
       })}
       data-testid={dataTestid}
     >
-      <CoreButton
+      <Button
         variant="flat"
         size="large"
         appearance="dark"
@@ -108,14 +108,14 @@ export const Pagination: React.FC<PaginationProps> = ({
         dataTestid="govie-pagination-prev-btn"
       >
         <React.Fragment key="previous-btn-pagination">
-          <Icon icon="arrow_left_alt" />
+          <ArrowLeft className="gi-block gi-shrink-0" />
         </React.Fragment>
         {!isSMWidth && t('pagination.previous', { defaultValue: 'Previous' })}
-      </CoreButton>
+      </Button>
 
       {isCompactView ? renderPaginationLabel() : renderPaginationBtns()}
 
-      <CoreButton
+      <Button
         disabled={currentPage === totalPages}
         variant="flat"
         size="large"
@@ -127,9 +127,9 @@ export const Pagination: React.FC<PaginationProps> = ({
       >
         {!isSMWidth && t('pagination.next', { defaultValue: 'Next' })}
         <React.Fragment key="next-btn-pagination">
-          <Icon icon="arrow_right_alt" />
+          <ArrowRight className="gi-block gi-shrink-0" />
         </React.Fragment>
-      </CoreButton>
+      </Button>
     </div>
   );
 };
