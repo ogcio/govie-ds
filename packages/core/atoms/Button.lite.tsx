@@ -1,5 +1,5 @@
 import { tv } from 'tailwind-variants';
-import { useMetadata, useTarget } from '@builder.io/mitosis';
+import { useMetadata } from '@builder.io/mitosis';
 
 export const Variant = {
   PRIMARY: 'primary',
@@ -33,11 +33,6 @@ type Props = {
   onBlur?: (event: any) => void;
   onKeyDown?: (event: any) => void;
   onKeyUp?: (event: any) => void;
-  click: (event: any) => void;
-  focus: (event: any) => void;
-  blur: (event: any) => void;
-  keyDown: (event: any) => void;
-  keyUp: (event: any) => void;
 
   ariaLabel?: string;
   ariaLabelledBy?: string;
@@ -73,36 +68,11 @@ export default function Button(props: Props) {
         class: props.className,
       })}
       disabled={props.disabled || undefined}
-      onClick={(event) =>
-        useTarget({
-          react: props.onClick?.(event),
-          angular: props.click(event),
-        })
-      }
-      onFocus={(event) =>
-        useTarget({
-          react: props.onFocus?.(event),
-          angular: props.focus(event),
-        })
-      }
-      onBlur={(event) =>
-        useTarget({
-          react: props.onBlur?.(event),
-          angular: props.blur(event),
-        })
-      }
-      onKeyDown={(event) =>
-        useTarget({
-          react: props.onKeyDown?.(event),
-          angular: props.keyDown(event),
-        })
-      }
-      onKeyUp={(event) =>
-        useTarget({
-          react: props.onKeyUp?.(event),
-          angular: props.keyUp(event),
-        })
-      }
+      onClick={(event) => props.onClick && props.onClick(event)}
+      onFocus={(event) => props.onFocus && props.onFocus(event)}
+      onBlur={(event) => props.onBlur && props.onBlur(event)}
+      onKeyDown={(event) => props.onKeyDown && props.onKeyDown(event)}
+      onKeyUp={(event) => props.onKeyUp && props.onKeyUp(event)}
       aria-label={props.ariaLabel}
       aria-labelledby={props.ariaLabelledBy}
       aria-describedby={props.ariaDescribedBy}

@@ -16,12 +16,11 @@ type Props = {
   children?: any;
   disabled?: boolean;
   className?: string;
-
-  click: (event: any) => void;
-  focus: (event: any) => void;
-  blur: (event: any) => void;
-  keyDown: (event: any) => void;
-  keyUp: (event: any) => void;
+  onClick?: (event: any) => void;
+  onFocus?: (event: any) => void;
+  onBlur?: (event: any) => void;
+  onKeyDown?: (event: any) => void;
+  onKeyUp?: (event: any) => void;
   ariaLabel?: string;
   ariaLabelledBy?: string;
   ariaDescribedBy?: string;
@@ -333,11 +332,11 @@ const getSize = (x: Props['size']) => (x === Size.SMALL || x === Size.LARGE ? x 
         })
       "
       [attr.disabled]="disabled || undefined"
-      (click)="this.click.emit($event)"
-      (focus)="this.focus.emit($event)"
-      (blur)="this.blur.emit($event)"
-      (keydown)="this.keyDown.emit($event)"
-      (keyup)="this.keyUp.emit($event)"
+      (click)="onClick && this.onClick.emit($event)"
+      (focus)="onFocus && this.onFocus.emit($event)"
+      (blur)="onBlur && this.onBlur.emit($event)"
+      (keydown)="onKeyDown && this.onKeyDown.emit($event)"
+      (keyup)="onKeyUp && this.onKeyUp.emit($event)"
       [attr.aria-label]="ariaLabel"
       [attr.aria-labelledby]="ariaLabelledBy"
       [attr.aria-describedby]="ariaDescribedBy"
@@ -393,9 +392,9 @@ export default class Button {
   @Input() tabIndex!: Props['tabIndex'];
   @Input() dataTestId!: Props['dataTestId'];
   @Input() dataTestid!: Props['dataTestid'];
-  @Output() click = new EventEmitter<any>();
-  @Output() focus = new EventEmitter<any>();
-  @Output() blur = new EventEmitter<any>();
-  @Output() keyDown = new EventEmitter<any>();
-  @Output() keyUp = new EventEmitter<any>();
+  @Output() onClick = new EventEmitter<any>();
+  @Output() onFocus = new EventEmitter<any>();
+  @Output() onBlur = new EventEmitter<any>();
+  @Output() onKeyDown = new EventEmitter<any>();
+  @Output() onKeyUp = new EventEmitter<any>();
 }

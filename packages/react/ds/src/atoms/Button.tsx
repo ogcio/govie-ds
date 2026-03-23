@@ -22,7 +22,6 @@ type Props = {
   onBlur?: (event: any) => void;
   onKeyDown?: (event: any) => void;
   onKeyUp?: (event: any) => void;
-
   ariaLabel?: string;
   ariaLabelledBy?: string;
   ariaDescribedBy?: string;
@@ -332,11 +331,11 @@ const Button = forwardRef<Props['ref'], Props>(function Button(props: Props, ref
         class: props.className,
       })}
       disabled={props.disabled || undefined}
-      onClick={(event) => props.onClick?.(event)}
-      onFocus={(event) => props.onFocus?.(event)}
-      onBlur={(event) => props.onBlur?.(event)}
-      onKeyDown={(event) => props.onKeyDown?.(event)}
-      onKeyUp={(event) => props.onKeyUp?.(event)}
+      onClick={(event) => props.onClick && props.onClick(event)}
+      onFocus={(event) => props.onFocus && props.onFocus(event)}
+      onBlur={(event) => props.onBlur && props.onBlur(event)}
+      onKeyDown={(event) => props.onKeyDown && props.onKeyDown(event)}
+      onKeyUp={(event) => props.onKeyUp && props.onKeyUp(event)}
       aria-label={props.ariaLabel}
       aria-labelledby={props.ariaLabelledBy}
       aria-describedby={props.ariaDescribedBy}
