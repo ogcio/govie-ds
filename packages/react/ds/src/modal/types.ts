@@ -1,5 +1,5 @@
 import { ComponentPropsWithoutRef, ReactElement } from 'react';
-import { CoreButtonProps } from '../atoms/CoreButton.js';
+import { Props as ButtonProps } from '../atoms/Button.js';
 import { IconButtonProps } from '../icon-button/icon-button.js';
 import { ModalBody, ModalFooter, ModalTitle } from './modal.js';
 
@@ -17,7 +17,7 @@ type ModalWrapperOwnProps = {
   isOpen: boolean;
   onClose: () => void;
   position?: ModalPositions;
-  closeButtonSize?: CoreButtonProps['size'];
+  closeButtonSize?: ButtonProps['size'];
 };
 
 export type ModalWrapperProps = ModalWrapperOwnProps &
@@ -39,7 +39,7 @@ export type ModalProps = React.AriaAttributes & {
 
 export type ModalCloseButtonProps = {
   label?: string;
-  size?: CoreButtonProps['size'];
+  size?: ButtonProps['size'];
 } & Omit<
   IconButtonProps,
   'className' | 'icon' | 'variant' | 'appearance' | 'size'
@@ -47,17 +47,15 @@ export type ModalCloseButtonProps = {
 
 export type ModalFooterButton = {
   label: string;
-  variant: CoreButtonProps['variant'];
-} & CoreButtonProps;
+  variant: ButtonProps['variant'];
+} & ButtonProps;
 
 export type ModalFooterProps = {
   className?: string;
   orientation?: ModalFooterOrientation;
   dataTestId?: string;
   dataModalSize?: ModalSize;
-  children:
-    | React.ReactElement<CoreButtonProps>
-    | React.ReactElement<CoreButtonProps>[];
+  children: React.ReactElement<ButtonProps> | React.ReactElement<ButtonProps>[];
   stacked?: boolean;
 };
 

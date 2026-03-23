@@ -3,7 +3,7 @@ import { useState } from 'react';
 import { Controller, useForm } from 'react-hook-form';
 
 import { expect, userEvent, waitFor, within } from 'storybook/test';
-import Button from '../atoms/CoreButton.js';
+import Button from '../atoms/Button.js';
 import {
   FormField,
   FormFieldError,

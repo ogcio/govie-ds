@@ -1,5 +1,5 @@
 import type { Meta, StoryObj } from '@storybook/react';
-import Button from '../atoms/CoreButton.js';
+import Button from '../atoms/Button.js';
 import { Heading } from '../heading/heading.js';
 import { Link } from '../link/link.js';
 import { Paragraph } from '../paragraph/paragraph.js';

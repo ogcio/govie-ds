@@ -12,7 +12,7 @@ import {
   useId,
 } from 'react';
 import { createPortal } from 'react-dom';
-import Button from '../atoms/CoreButton.js';
+import Button from '../atoms/Button.js';
 import { cn } from '../cn.js';
 import { Heading, type HeadingProps } from '../heading/heading.js';
 import { useAriaHider } from '../hooks/use-aria-hider.js';
@@ -297,7 +297,7 @@ export const ModalFooter = ({
     return (
       isValidElement(actionButton) &&
       (actionButton.type === Button ||
-        (actionButton.type as any)?.displayName === 'CoreButton' ||
+        (actionButton.type as any)?.displayName === 'Button' ||
         (actionButton.props as any)?.['data-button'])
     );
   });
@@ -387,7 +387,7 @@ export const Modal = ({
   const handleClose = () => setIsOpen(false);
 
   const renderCloneTrigger = cloneElement(triggerButton as ReactElement<any>, {
-    'data-testid': 'modal-trigger-button-container',
+    dataTestId: 'modal-trigger-button-container',
     'aria-haspopup': 'dialog',
     onClick: handleOpen,
   });

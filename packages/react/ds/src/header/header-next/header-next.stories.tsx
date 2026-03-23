@@ -1,7 +1,7 @@
 import type { Meta, StoryObj } from '@storybook/react';
 import { useMemo, useState } from 'react';
 import { within, expect, userEvent, screen } from 'storybook/test';
-import Button from '../../atoms/CoreButton.js';
+import Button from '../../atoms/Button.js';
 import {
   LogoBlack,
   LogoGoldWhite,

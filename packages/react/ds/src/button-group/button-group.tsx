@@ -1,7 +1,7 @@
 'use client';
 
 import { createContext, FC, useContext, useState, useEffect } from 'react';
-import Button from '../atoms/CoreButton.js';
+import Button from '../atoms/Button.js';
 import { cn } from '../cn.js';
 import { useDomId } from '../hooks/use-dom-id.js';
 import type {

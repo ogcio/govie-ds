@@ -1,4 +1,4 @@
-import Button from '../atoms/CoreButton.js';
+import Button from '../atoms/Button.js';
 import { ModalTitle, ModalBody, ModalFooter } from './modal.js';
 
 export const HtmlContent = (

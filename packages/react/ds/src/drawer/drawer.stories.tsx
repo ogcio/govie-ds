@@ -1,6 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/react';
 import { within, expect, waitFor, screen, userEvent } from 'storybook/test';
-import Button from '../atoms/CoreButton.js';
+import Button from '../atoms/Button.js';
 import { Paragraph } from '../paragraph/paragraph.js';
 import { DrawerMenuExample } from './drawer.content.js';
 import { Drawer, DrawerBody, DrawerFooter } from './drawer.js';

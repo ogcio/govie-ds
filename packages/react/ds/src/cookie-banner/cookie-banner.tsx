@@ -1,14 +1,14 @@
 'use client';
 import React from 'react';
-import { type CoreButtonProps } from '../atoms/CoreButton.js';
+import { type Props as ButtonProps } from '../atoms/Button.js';
 import { Container } from '../container/container.js';
 import { LinkProps } from '../link/link.js';
 
 export type CookieBannerProps = {
   showConsent: boolean;
   children: React.ReactNode;
-  accept: React.ReactElement<CoreButtonProps>;
-  reject: React.ReactElement<CoreButtonProps>;
+  accept: React.ReactElement<ButtonProps>;
+  reject: React.ReactElement<ButtonProps>;
   cookieLink?: React.ReactElement<LinkProps>;
   dataTestid?: string;
 };

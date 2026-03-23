@@ -1,9 +1,9 @@
 import type { Meta, StoryObj } from '@storybook/angular';
-import CoreButton from '../../atoms/CoreButton';
+import Button from '../../atoms/Button';
 
-const meta: Meta<CoreButton> = {
+const meta: Meta<Button> = {
   title: 'Form/Button',
-  component: CoreButton,
+  component: Button,
   tags: ['autodocs'],
   argTypes: {
     variant: {
@@ -21,14 +21,10 @@ const meta: Meta<CoreButton> = {
     disabled: {
       control: 'boolean',
     },
-    onClick: { action: 'clicked' },
-    onFocus: { action: 'focused' },
-    onBlur: { action: 'blurred' },
   },
 };
 
-export default meta;
-type Story = StoryObj<CoreButton>;
+type Story = StoryObj<Button>;
 
 export const Primary: Story = {
   args: {
@@ -39,23 +35,24 @@ export const Primary: Story = {
   },
   render: (args) => ({
     props: args,
-    template: `<core-button [variant]="variant" [appearance]="appearance" [size]="size" [disabled]="disabled">Click me</core-button>`,
+    template: `<gi-button [variant]="variant" [appearance]="appearance" [size]="size" [disabled]="disabled">Click me</gi-button>`,
   }),
 };
+
 export const Secondary: Story = {
   render: () => ({
-    template: `<core-button variant="secondary" appearance="default" size="medium">Click me</core-button>`,
+    template: `<gi-button variant="secondary" appearance="default" size="medium">Click me</gi-button>`,
   }),
 };
 
 export const Flat: Story = {
   render: () => ({
-    template: `<core-button variant="flat" appearance="default" size="medium">Click me</core-button>`,
+    template: `<gi-button variant="flat" appearance="default" size="medium">Click me</gi-button>`,
   }),
 };
 
 export const Disabled: Story = {
   render: () => ({
-    template: `<core-button variant="primary" appearance="default" size="medium" [disabled]="true">Click me</core-button>`,
+    template: `<gi-button variant="primary" appearance="default" size="medium" [disabled]="true">Click me</gi-button>`,
   }),
 };

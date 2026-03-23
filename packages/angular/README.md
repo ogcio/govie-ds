@@ -21,7 +21,7 @@ import { DsButton } from '@ogcio/design-system-angular';
 @Component({
   selector: 'app-root',
   imports: [DsButton],
-  template: '<ds-button>Click me</ds-button>',
+  template: '<gi-button>Click me</gi-button>',
 })
 export class AppComponent {}
 ```

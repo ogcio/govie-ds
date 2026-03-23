@@ -1,6 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/react';
 import { expect, within } from 'storybook/test';
-import { CoreButton as Button } from '../atoms/index.js';
+import { Button } from '../atoms/index.js';
 import { Icon } from '../icon/icon.js';
 
 const meta = {

@@ -1,5 +1,5 @@
 import { ComponentPropsWithoutRef, ReactElement } from 'react';
-import { CoreButtonProps } from '../atoms/CoreButton.js';
+import { Props as ButtonProps } from '../atoms/Button.js';
 import { IconProps } from '../icon/icon.js';
 import { LinkProps } from '../link/link.js';
 import { TagProps } from '../tag/tag.js';
@@ -16,7 +16,7 @@ type InsetProps = 'body' | 'full' | 'none';
 type TypeProps = 'vertical' | 'horizontal';
 
 export type Action =
-  | (CoreButtonProps & { type: 'button' })
+  | (ButtonProps & { type: 'button' })
   | (LinkProps & { type: 'link' });
 
 export type ImagePropTypes = {

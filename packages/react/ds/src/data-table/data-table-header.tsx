@@ -5,7 +5,7 @@ import React, {
   useMemo,
 } from 'react';
 import { tv } from 'tailwind-variants';
-import Button from '../atoms/CoreButton';
+import Button from '../atoms/Button';
 import { Chip } from '../chip/chip.js';
 import { cn } from '../cn.js';
 import { translate as t } from '../i18n/utility.js';
