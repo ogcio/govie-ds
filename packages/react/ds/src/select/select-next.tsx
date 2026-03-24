@@ -130,7 +130,7 @@ export const SelectNext = forwardRef<HTMLInputElement, SelectNextProps>(
       if (disabled) {
         return;
       }
-      setIsOpen(true);
+      handleOnOpenChange(!isOpen);
       inputRef.current?.focus();
     };
 
@@ -191,6 +191,7 @@ export const SelectNext = forwardRef<HTMLInputElement, SelectNextProps>(
           case 'Enter':
           case 'NumpadEnter': {
             event.preventDefault();
+            // if the menu is open and there is a highlighted index, select the value
             if (
               isOpen &&
               highlightedIndex != -1 &&
@@ -200,9 +201,8 @@ export const SelectNext = forwardRef<HTMLInputElement, SelectNextProps>(
               if (!(opt.props as any)?.disabled) {
                 selectValue((opt.props as any).value);
               }
-            } else {
-              setIsOpen(true);
             }
+            handleOnClick();
             break;
           }
 
