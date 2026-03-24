@@ -6,9 +6,9 @@ import React, {
   useCallback,
   memo,
 } from 'react';
+import Heading from '../Heading.js';
 import { Button } from '../button/button.js';
 import { cn } from '../cn.js';
-import { Heading } from '../heading/heading.js';
 import { Icon, IconId } from '../icon/icon.js';
 import { Link } from '../link/link.js';
 import { Paragraph } from '../paragraph/paragraph.js';
