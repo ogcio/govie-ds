@@ -180,7 +180,9 @@ export const WithLabelHintAndError: Story = {
     <FormField>
       <FormFieldLabel htmlFor="input-text-id">Label</FormFieldLabel>
       <FormFieldHint>Hint: This is a helpful hint.</FormFieldHint>
-      <FormFieldError>Error: Please correct this issue.</FormFieldError>
+      <FormFieldError dataTestid="error-text">
+        Error: Please correct this issue.
+      </FormFieldError>
       <InputText {...props} data-testid="input-text-id" />
     </FormField>
   ),
@@ -208,7 +210,10 @@ export const WithLabelHintAndErrorLegacy: Story = {
       data-testid="form-field-id"
       label={{ text: 'Label', htmlFor: 'input-text-id' }}
       hint={{ text: 'Hint: This is a helpful hint.' }}
-      error={{ text: 'Error: Please correct this issue.' }}
+      error={{
+        text: 'Error: Please correct this issue.',
+        dataTestid: 'error-text',
+      }}
     >
       <InputText {...props} data-testid="input-text-id" />
     </FormField>

@@ -104,7 +104,9 @@ export const WithLabelAndError: Story = {
     <FormField id="file-upload-id">
       <FormFieldLabel htmlFor="file-upload-id">Upload File</FormFieldLabel>
       <InputFile {...arguments_} />
-      <FormFieldError>Error: File must be smaller than 5MB.</FormFieldError>
+      <FormFieldError dataTestid="error-text">
+        Error: File must be smaller than 5MB.
+      </FormFieldError>
     </FormField>
   ),
   play: async ({ canvasElement }) => {
@@ -258,7 +260,7 @@ export const WithListOfUploadedFilesWithErrorState: Story = {
   render: (arguments_) => (
     <FormField id="file-upload-id" className="gi-block gi-min-w-0">
       <FormFieldLabel htmlFor="file-upload-id">Upload File</FormFieldLabel>
-      <FormFieldError>Error</FormFieldError>
+      <FormFieldError dataTestid="error-text">Error</FormFieldError>
       <InputFile {...arguments_} />
       <div className="gi-w-full gi-min-w-0 gi-overflow-x-auto">
         <Table layout="auto" noBorder>

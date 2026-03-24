@@ -175,7 +175,9 @@ export const WithLabelHintAndError: Story = {
     <FormField>
       <FormFieldLabel htmlFor="textarea-id-3">Label</FormFieldLabel>
       <FormFieldHint>Hint: This is a helpful hint.</FormFieldHint>
-      <FormFieldError>Error: Please correct this issue.</FormFieldError>
+      <FormFieldError dataTestid="error-text">
+        Error: Please correct this issue.
+      </FormFieldError>
       <TextArea {...props} data-testid="textarea-id-3" />
     </FormField>
   ),

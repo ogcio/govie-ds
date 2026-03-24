@@ -77,7 +77,7 @@ export const WithLabelHintAndError = {
     <FormField>
       <FormFieldLabel htmlFor="select">Label</FormFieldLabel>
       <FormFieldHint>This is a hint</FormFieldHint>
-      <FormFieldError>This is an error</FormFieldError>
+      <FormFieldError dataTestid="error-text">This is an error</FormFieldError>
       <Select
         aria-label="Select"
         data-testid="select"
