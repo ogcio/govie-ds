@@ -137,7 +137,6 @@ export const Default: StoryObj = {
       'Option 2',
       'Option 3',
     ]);
-    await userEvent.click(input);
 
     const option = await body.findByRole('option', { name: 'Option 1' });
     const style = globalThis.getComputedStyle(option as HTMLElement);
