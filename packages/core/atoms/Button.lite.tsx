@@ -1,4 +1,5 @@
 import { tv } from 'tailwind-variants';
+import { useMetadata } from '@builder.io/mitosis';
 
 export const Variant = {
   PRIMARY: 'primary',
@@ -52,7 +53,9 @@ type Props = {
   ref?: any;
 };
 
-export default function DsButton(props: Props) {
+useMetadata({ angular: { selector: 'gi-button' } });
+
+export default function Button(props: Props) {
   return (
     <button
       ref={props.ref}
@@ -65,11 +68,11 @@ export default function DsButton(props: Props) {
         class: props.className,
       })}
       disabled={props.disabled || undefined}
-      onClick={(event) => props.onClick?.(event)}
-      onFocus={(event) => props.onFocus?.(event)}
-      onBlur={(event) => props.onBlur?.(event)}
-      onKeyDown={(event) => props.onKeyDown?.(event)}
-      onKeyUp={(event) => props.onKeyUp?.(event)}
+      onClick={(event) => props.onClick && props.onClick(event)}
+      onFocus={(event) => props.onFocus && props.onFocus(event)}
+      onBlur={(event) => props.onBlur && props.onBlur(event)}
+      onKeyDown={(event) => props.onKeyDown && props.onKeyDown(event)}
+      onKeyUp={(event) => props.onKeyUp && props.onKeyUp(event)}
       aria-label={props.ariaLabel}
       aria-labelledby={props.ariaLabelledBy}
       aria-describedby={props.ariaDescribedBy}
