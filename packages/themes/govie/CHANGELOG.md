@@ -1,5 +1,16 @@
 # Changelog
 
+## [1.21.4](https://github.com/ogcio/govie-ds/compare/themes-govie-v1.21.3...themes-govie-v1.21.4) (2026-03-24)
+
+
+### Dependencies
+
+* The following workspace dependencies were updated
+  * devDependencies
+    * @ogcio/design-system-prettier-config bumped to 1.1.1
+    * @ogcio/theme-builder bumped to 1.23.0
+    * @ogcio/design-system-tokens bumped to 1.22.0
+
 ## [1.21.3](https://github.com/ogcio/govie-ds/compare/themes-govie-v1.21.2...themes-govie-v1.21.3) (2026-02-24)
 
 
