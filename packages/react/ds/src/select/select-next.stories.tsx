@@ -814,6 +814,7 @@ export const TestKeyboardEvents: StoryObj<typeof SelectNext> = {
       const highlighted = getHighlightedOption();
       expect(highlighted).toBeTruthy();
       expect(highlighted).toHaveAttribute('data-testid', 'option-value_9');
+      await userEvent.keyboard('{Esc}');
     });
 
     await step('Tab closes when open', async () => {
