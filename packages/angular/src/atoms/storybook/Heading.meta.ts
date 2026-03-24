@@ -4,6 +4,9 @@ import { Size } from '../heading/types';
 export const headingMeta = {
   tags: ['autodocs'] as string[],
   title: 'Typography/Heading',
+  args: {
+    id: 'heading-id'
+  },
   argTypes: {
     size: {
       control: {
@@ -23,11 +26,21 @@ export const headingMeta = {
     },
     className: {
       control: false,
-      description: 'Additional CSS classes to apply to the heading element.'
+      description: 'Additional CSS classes to apply to the heading element.',
+      table: {
+        type: {
+          summary: 'string'
+        }
+      }
     },
     dataTestId: {
       control: false,
-      description: 'Test id for targeting the element in automated tests.'
+      description: 'Test id for targeting the element in automated tests.',
+      table: {
+        type: {
+          summary: 'string'
+        }
+      }
     }
   } as const,
   parameters: {
@@ -39,50 +52,22 @@ export const headingMeta = {
   }
 };
 export const Default = {
+  tags: ['skip-playwright'],
+  args: headingMeta.args
+};
+export const AllHeadingLevels = {
   play: async ({
     canvasElement,
     step
   }: StoryContext<Renderer>) => {
     const canvas = within(canvasElement as HTMLElement);
-    await step('renders all 6 heading levels', async () => {
-      const headings = canvas.getAllByRole('heading');
-      expect(headings.length).toBeGreaterThanOrEqual(6);
-    });
-    await step('h1 renders the correct semantic element', async () => {
-      const h1 = canvas.getByRole('heading', {
-        level: 1
-      });
-      expect(h1.tagName.toLowerCase()).toBe('h1');
-    });
-    await step('h2 renders the correct semantic element', async () => {
-      const h2 = canvas.getByRole('heading', {
-        level: 2
-      });
-      expect(h2.tagName.toLowerCase()).toBe('h2');
-    });
-    await step('h3 renders the correct semantic element', async () => {
-      const h3 = canvas.getByRole('heading', {
-        level: 3
-      });
-      expect(h3.tagName.toLowerCase()).toBe('h3');
-    });
-    await step('h4 renders the correct semantic element', async () => {
-      const h4 = canvas.getByRole('heading', {
-        level: 4
-      });
-      expect(h4.tagName.toLowerCase()).toBe('h4');
-    });
-    await step('h5 renders the correct semantic element', async () => {
-      const h5 = canvas.getByRole('heading', {
-        level: 5
-      });
-      expect(h5.tagName.toLowerCase()).toBe('h5');
-    });
-    await step('h6 renders the correct semantic element', async () => {
-      const h6 = canvas.getByRole('heading', {
-        level: 6
-      });
-      expect(h6.tagName.toLowerCase()).toBe('h6');
+    await step('renders h1 to h6 with the correct semantic tags', async () => {
+      expect(canvas.getByTestId('heading-1').tagName).toBe('H1');
+      expect(canvas.getByTestId('heading-2').tagName).toBe('H2');
+      expect(canvas.getByTestId('heading-3').tagName).toBe('H3');
+      expect(canvas.getByTestId('heading-4').tagName).toBe('H4');
+      expect(canvas.getByTestId('heading-5').tagName).toBe('H5');
+      expect(canvas.getByTestId('heading-6').tagName).toBe('H6');
     });
   }
 }

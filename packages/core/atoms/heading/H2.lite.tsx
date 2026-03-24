@@ -9,8 +9,8 @@ export default function H2(props: Props) {
   return (
     <h2
       id={props.id}
-      data-testid={props.dataTestId}
       class={styles({ size: getSize(props.size, 'lg'), class: props.className })}
+      data-testid={props.dataTestId}
     >
       {props.children}
     </h2>

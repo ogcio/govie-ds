@@ -9,8 +9,8 @@ export default function H1(props: Props) {
   return (
     <h1
       id={props.id}
-      data-testid={props.dataTestId}
       class={styles({ size: getSize(props.size, 'xl'), class: props.className })}
+      data-testid={props.dataTestId}
     >
       {props.children}
     </h1>

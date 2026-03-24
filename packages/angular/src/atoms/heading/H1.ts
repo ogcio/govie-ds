@@ -17,13 +17,13 @@ import type { Props } from './types';
   template: `
     <h1
       [attr.id]="id"
-      [attr.data-testid]="dataTestId"
       [class]="
         styles({
           size: getSize(size, 'xl'),
           class: className,
         })
       "
+      [attr.data-testid]="dataTestId"
     >
       <ng-content></ng-content>
     </h1>
@@ -43,7 +43,7 @@ export default class H1 {
   getSize = getSize;
 
   @Input() id!: Props['id'];
-  @Input() dataTestId!: Props['dataTestId'];
   @Input() size!: Props['size'];
   @Input() className!: Props['className'];
+  @Input() dataTestId!: Props['dataTestId'];
 }

@@ -14,11 +14,11 @@ function H6(props: Props) {
   return (
     <h6
       id={props.id}
-      data-testid={props.dataTestId}
       className={styles({
         size: getSize(props.size, '2xs'),
         class: props.className,
       })}
+      data-testid={props.dataTestId}
     >
       {props.children}
     </h6>
