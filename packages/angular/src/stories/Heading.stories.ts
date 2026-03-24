@@ -22,6 +22,7 @@ const meta: Meta = {
 export default meta;
 
 export const Default: StoryObj = {
+  ...headingDefault,
   args: {
     ...headingDefault.args,
   },

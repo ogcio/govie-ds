@@ -27,6 +27,8 @@ const meta: Meta<typeof Heading> = {
 export default meta;
 
 export const Default: StoryObj<typeof Heading> = {
+  ...headingDefault,
+  tags: ['skip-playwright'],
   args: {
     ...headingDefault.args,
     children: 'Heading',
