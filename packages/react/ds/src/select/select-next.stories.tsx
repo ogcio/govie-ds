@@ -1003,3 +1003,41 @@ export const TestConditionallyRender: StoryObj = {
     });
   },
 };
+export const TestToggleDropdown: StoryObj = {
+  tags: ['skip-playwright'],
+  render: () => (
+    <FormField className="gi-w-56">
+      <FormFieldLabel>Label</FormFieldLabel>
+      <SelectNext aria-label="Select" defaultValue="select-option">
+        <SelectItemNext value="select-option" hidden>
+          Select Option
+        </SelectItemNext>
+        <SelectItemNext value="value-1">Option 1</SelectItemNext>
+        <SelectItemNext value="value-2">Option 2</SelectItemNext>
+      </SelectNext>
+    </FormField>
+  ),
+  play: async ({ canvasElement }) => {
+    const canvas = within(canvasElement);
+    const input = canvas.getByRole('textbox');
+
+    await userEvent.click(input);
+    await waitFor(() => {
+      expect(canvas.getByRole('listbox')).toBeInTheDocument();
+    });
+
+    await userEvent.click(input);
+    await waitFor(() => {
+      expect(canvas.queryByRole('listbox')).toBeNull();
+    });
+    input.focus();
+    await userEvent.keyboard('{Enter}');
+    await waitFor(() => {
+      expect(canvas.getByRole('listbox')).toBeInTheDocument();
+    });
+    await userEvent.keyboard('{Enter}');
+    await waitFor(() => {
+      expect(canvas.queryByRole('listbox')).toBeNull();
+    });
+  },
+};
