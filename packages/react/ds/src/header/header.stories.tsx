@@ -1,7 +1,7 @@
 import type { Meta, StoryObj } from '@storybook/react';
 import { within, expect, userEvent, screen } from 'storybook/test';
+import Heading from '../Heading.js';
 import Button from '../atoms/Button.js';
-import { Heading } from '../heading/heading.js';
 import { Link } from '../link/link.js';
 import { List, ListTypeEnum } from '../list/list.js';
 import { Select, SelectItem } from '../select/select.js';

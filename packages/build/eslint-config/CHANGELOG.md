@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.4.0](https://github.com/ogcio/govie-ds/compare/eslint-config-v1.3.0...eslint-config-v1.4.0) (2026-03-24)
+
+
+### Features
+
+* **AB#35879:** Add Storybook to Core ([#876](https://github.com/ogcio/govie-ds/issues/876)) ([89a448f](https://github.com/ogcio/govie-ds/commit/89a448f193d32a57feb8dbd58f2f2362d59b6072))
+
 ## [1.3.0](https://github.com/ogcio/govie-ds/compare/eslint-config-v1.2.6...eslint-config-v1.3.0) (2026-02-24)
 
 

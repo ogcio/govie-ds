@@ -1,5 +1,22 @@
 # Changelog
 
+## [1.20.0](https://github.com/ogcio/govie-ds/compare/html-lib-v1.19.0...html-lib-v1.20.0) (2026-03-24)
+
+
+### Features
+
+* **AB#33690:** add xl to tyopgraphy schema ([#874](https://github.com/ogcio/govie-ds/issues/874)) ([b6b01ad](https://github.com/ogcio/govie-ds/commit/b6b01ad95d08be0b034698e191045317112d4c60))
+
+
+### Dependencies
+
+* The following workspace dependencies were updated
+  * devDependencies
+    * @ogcio/design-system-eslint-config bumped to 1.4.0
+    * @ogcio/design-system-prettier-config bumped to 1.1.1
+    * @ogcio/design-system-tailwind bumped to 1.23.0
+    * @ogcio/theme-govie bumped to 1.21.4
+
 ## [1.19.0](https://github.com/ogcio/govie-ds/compare/html-lib-v1.18.2...html-lib-v1.19.0) (2026-03-10)
 
 

@@ -1,6 +1,7 @@
 import type { Meta, StoryObj } from '@storybook/react';
 import { useMemo, useState } from 'react';
 import { within, expect, userEvent, screen } from 'storybook/test';
+import Heading from '../../Heading.js';
 import Button from '../../atoms/Button.js';
 import {
   LogoBlack,
@@ -20,7 +21,6 @@ import {
   FormField,
   FormFieldLabel,
 } from '../../forms/form-field/form-field.js';
-import { Heading } from '../../heading/heading.js';
 import { useToggleMap } from '../../hooks/use-toggle-map.js';
 import { Icon, IconId } from '../../icon/icon.js';
 import { Link } from '../../link/link.js';

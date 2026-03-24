@@ -94,7 +94,7 @@ export {
 export { Header } from './header/header.js';
 export * from './header/header-next/index.js';
 export type { HeaderItem, HeaderProps } from './header/types.js';
-export { Heading, type HeadingProps } from './heading/heading.js';
+export { default as Heading, type Props as HeadingProps } from './Heading.js';
 export type { HintTextProps } from './hint-text/types.js';
 export * from './i18n/config.js';
 export { IconButton, type IconButtonProps } from './icon-button/icon-button.js';

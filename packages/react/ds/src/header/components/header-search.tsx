@@ -1,5 +1,5 @@
+import Heading from '../../Heading.js';
 import Button from '../../atoms/Button.js';
-import { Heading } from '../../heading/heading.js';
 import { translate as t } from '../../i18n/utility.js';
 import { IconId } from '../../icon/icon.js';
 import { IconButton } from '../../icon-button/icon-button.js';
