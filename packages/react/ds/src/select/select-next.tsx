@@ -191,7 +191,7 @@ export const SelectNext = forwardRef<HTMLInputElement, SelectNextProps>(
           case 'Enter':
           case 'NumpadEnter': {
             event.preventDefault();
-            // if the menu is open and there is a highlighted index, select the value
+            // if the menu is open and there is a valid highlighted option, select the value
             if (
               isOpen &&
               highlightedIndex != -1 &&
