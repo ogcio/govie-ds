@@ -34,7 +34,4 @@ const hintText = tv({
       lg: 'gi-text-lg',
     },
   },
-  defaultVariants: {
-    size: 'md',
-  },
 });

@@ -29,8 +29,6 @@ Label.displayName = 'Label';
 export const styles = tv({
   slots: {
     base: 'gi-block gi-text-color-text-system-neutral-default',
-    secondary:
-      'gi-ml-1 gi-text-md gi-font-normal gi-text-color-text-system-neutral-muted',
   },
   variants: {
     size: {

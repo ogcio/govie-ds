@@ -40,7 +40,13 @@ export const InternalTabItem = forwardRef<
     tabIndex: checked ? 0 : -1,
   } as const;
 
-  const classes = tabItemVariants({ size, checked, stretch, labelAlignment });
+  const { base, border } = tabItemVariants({
+    size,
+    checked,
+    stretch,
+    labelAlignment,
+    appearance,
+  });
 
   const Content = (
     <>
@@ -48,18 +54,7 @@ export const InternalTabItem = forwardRef<
       {children}
       <div
         data-element="tab-item-border"
-        className={cn(
-          'gi-h-[2px] gi-absolute gi-bottom-0 gi-left-0 gi-w-full',
-          'group-focus:!gi-bg-transparent',
-          {
-            'gi-bg-color-text-system-neutral-interactive-default':
-              checked && appearance === 'dark',
-            'gi-bg-color-border-tone-primary-accent-selected':
-              checked && appearance === 'default',
-            'group-hover:gi-bg-color-surface-system-neutral-interactive-hover':
-              !checked,
-          },
-        )}
+        className={border()}
         aria-hidden="true"
       />
     </>
@@ -72,7 +67,7 @@ export const InternalTabItem = forwardRef<
         {...sharedA11y}
         {...rest}
         className={cn(
-          classes,
+          base(),
           'gi-inline-flex gi-items-center gi-gap-2 gi-decoration-xs',
           className,
         )}
@@ -95,7 +90,7 @@ export const InternalTabItem = forwardRef<
       {...rest}
       ref={ref as Ref<HTMLButtonElement>}
       className={cn(
-        classes,
+        base(),
         'gi-inline-flex gi-items-center gi-gap-2',
         className,
       )}
