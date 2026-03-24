@@ -357,7 +357,7 @@ export const Uncontrolled: Story = {
             FormFieldLabel,
             FormFieldHint,
           } from '../forms/form-field/form-field';
-          import Button from '../atoms/Button';
+          import { Button } from '@ogcio/design-system-react'
 
           export function Example() {
             const ref = useRef<HTMLTextAreaElement>(null);

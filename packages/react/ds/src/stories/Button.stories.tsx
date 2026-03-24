@@ -4,7 +4,7 @@ import { Button } from '../atoms/index.js';
 import { Icon } from '../icon/icon.js';
 
 const meta = {
-  title: 'Form/Button',
+  title: 'Components/Button',
   decorators: (Story, context) => {
     const isLight = context?.args?.appearance === 'light' ? 'gi-bg-black' : '';
     return (
