@@ -48,7 +48,7 @@ function Alert({
         })}
       >
         {title && (
-          <p data-element="alert-heading" className={heading()}>
+          <p data-testid="alert-heading" className={heading()}>
             {title}
           </p>
         )}

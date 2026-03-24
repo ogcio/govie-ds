@@ -108,7 +108,7 @@ export const Default: Story = {
     const tab1 = canvas.getByRole('tab', { name: 'Tab 1' });
     const tab2 = canvas.getByRole('tab', { name: 'Tab 2' });
 
-    const itemBorder = tab1.querySelector('[data-element="tab-item-border"]');
+    const itemBorder = tab1.querySelector('[data-testid="tab-item-border"]');
 
     await waitFor(() =>
       expect(itemBorder?.classList).toContain(
@@ -158,7 +158,7 @@ export const Dark: Story = {
     expect(tab2).toHaveAttribute('aria-selected', 'false');
     expect(tab3).toHaveAttribute('aria-selected', 'false');
 
-    const itemBorder = tab1.querySelector('[data-element="tab-item-border"]');
+    const itemBorder = tab1.querySelector('[data-testid="tab-item-border"]');
 
     await waitFor(() =>
       expect(itemBorder?.classList).toContain(

@@ -150,11 +150,9 @@ export const WithoutTitle: Story = {
     children: <>Content</>,
   },
   play: async ({ canvasElement, step }) => {
+    const canvas = within(canvasElement as HTMLElement);
     await step('does not render a title element when title is omitted', () => {
-      const title = canvasElement.querySelector(
-        '[data-element="alert-heading"]',
-      );
-      expect(title).toBeNull();
+      expect(canvas.queryByTestId('alert-heading')).toBeNull();
     });
   },
 };

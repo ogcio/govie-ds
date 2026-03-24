@@ -17,7 +17,7 @@ export const HintText: React.FC<HintTextProps> = ({
   <div
     className={hintText({ size, className })}
     {...props}
-    data-element="hint-text"
+    data-testid="hint-text"
   >
     {children ?? text}
   </div>

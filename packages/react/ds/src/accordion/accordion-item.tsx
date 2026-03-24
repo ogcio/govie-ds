@@ -37,14 +37,14 @@ export const AccordionItem = ({
       <div
         {...props}
         ref={ref}
-        data-element="accordion-item"
+        data-testid="accordion-item"
         data-disabled={!!disabled}
         onClick={() => !disabled && setIsExpanded(!isExpanded)}
         onKeyDown={handleKeyDown}
         tabIndex={0}
         className={clsx(base(), className)}
       >
-        <div data-element="accordion-header" className={header()}>
+        <div data-testid="accordion-header" className={header()}>
           {label}
           <Icon
             icon={isExpanded ? 'keyboard_arrow_up' : 'keyboard_arrow_down'}

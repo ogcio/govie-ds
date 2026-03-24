@@ -67,7 +67,7 @@ export const Default: Story = {
     const canvas = within(canvasElement);
     const label = canvas.getByText('Upload File');
     expect(label).toBeTruthy();
-    expect(label).toHaveAttribute('data-element', 'label');
+    expect(label).toHaveAttribute('data-testid', 'label');
   },
 };
 
@@ -87,11 +87,11 @@ export const WithLabelAndHint: Story = {
     const canvas = within(canvasElement);
     const label = canvas.getByText('Upload File');
     expect(label).toBeTruthy();
-    expect(label).toHaveAttribute('data-element', 'label');
+    expect(label).toHaveAttribute('data-testid', 'label');
 
     const hint = canvas.getByText('Hint: This is a helpful hint.');
     expect(hint).toBeTruthy();
-    expect(hint).toHaveAttribute('data-element', 'hint-text');
+    expect(hint).toHaveAttribute('data-testid', 'hint-text');
   },
 };
 
@@ -111,11 +111,11 @@ export const WithLabelAndError: Story = {
     const canvas = within(canvasElement);
     const label = canvas.getByText('Upload File');
     expect(label).toBeTruthy();
-    expect(label).toHaveAttribute('data-element', 'label');
+    expect(label).toHaveAttribute('data-testid', 'label');
 
     const error = canvas.getByText('Error: File must be smaller than 5MB.');
     expect(error).toBeTruthy();
-    expect(error).toHaveAttribute('data-element', 'error-text');
+    expect(error).toHaveAttribute('data-testid', 'error-text');
   },
 };
 
@@ -246,7 +246,7 @@ export const WithListOfUploadedFiles: Story = {
     const canvas = within(canvasElement);
     const label = canvas.getByText('Upload File');
     expect(label).toBeTruthy();
-    expect(label).toHaveAttribute('data-element', 'label');
+    expect(label).toHaveAttribute('data-testid', 'label');
   },
 };
 
@@ -357,7 +357,7 @@ export const WithListOfUploadedFilesWithErrorState: Story = {
     const canvas = within(canvasElement);
     const label = canvas.getByText('Upload File');
     expect(label).toBeTruthy();
-    expect(label).toHaveAttribute('data-element', 'label');
+    expect(label).toHaveAttribute('data-testid', 'label');
   },
 };
 

@@ -16,7 +16,7 @@ export const Label = forwardRef<HTMLLabelElement, LabelTextProps>(
         className={base({ className })}
         ref={ref}
         {...props}
-        data-element="label"
+        data-testid="label"
       >
         {children ?? text}
       </label>

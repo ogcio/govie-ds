@@ -20,7 +20,6 @@ export const ErrorText: React.FC<ErrorTextProps> = ({
     className={errorText({ size, className })}
     data-testid={dataTestid}
     {...props}
-    data-element="error-text"
   >
     {children ?? text}
   </div>
