@@ -1,5 +1,16 @@
 /* GOV.IE Typography Stylesheets */
 
+@layer utilities {
+  :where(.gi-underline) {
+    text-underline-offset: 0.2em;
+  }
+  @supports (-moz-appearance: none) {
+    :where(.gi-underline) {
+      text-underline-offset: 0.23em;
+    }
+  }
+}
+
 .gi-heading-xl {
   font: var(--gieds-typography-default-heading-xl);
 }
