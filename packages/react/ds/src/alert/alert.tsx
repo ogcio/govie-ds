@@ -26,11 +26,7 @@ function Alert({
 }: AlertProps) {
   const [isDismissed, setIsDismissed] = useState(false);
 
-  const { base, heading, container, dismiss, baseDismissible } = alertVariants({
-    variant,
-  });
-
-  const baseVariant = dismissible ? baseDismissible : base;
+  const { base, heading, container, dismiss } = alertVariants({ variant });
 
   if (isDismissed) {
     return null;
@@ -39,7 +35,7 @@ function Alert({
   const AlertIcon = ALERT_VARIANT_ICONS[variant ?? 'info'];
   return (
     <div
-      className={cn(baseVariant(), className, 'gi-not-prose')}
+      className={cn(base(), className, 'gi-not-prose')}
       role="alert"
       aria-live="assertive"
       {...props}
@@ -51,7 +47,11 @@ function Alert({
           'gi-gap-1': title,
         })}
       >
-        {title && <p className={heading()}>{title}</p>}
+        {title && (
+          <p className={heading()} data-testid="alert-heading">
+            {title}
+          </p>
+        )}
         {children}
       </div>
       {dismissible && (

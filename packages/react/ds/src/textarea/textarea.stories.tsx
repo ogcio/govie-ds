@@ -175,7 +175,9 @@ export const WithLabelHintAndError: Story = {
     <FormField>
       <FormFieldLabel htmlFor="textarea-id-3">Label</FormFieldLabel>
       <FormFieldHint>Hint: This is a helpful hint.</FormFieldHint>
-      <FormFieldError>Error: Please correct this issue.</FormFieldError>
+      <FormFieldError dataTestid="error-text">
+        Error: Please correct this issue.
+      </FormFieldError>
       <TextArea {...props} data-testid="textarea-id-3" />
     </FormField>
   ),
@@ -189,16 +191,16 @@ export const WithLabelHintAndError: Story = {
 
     const label = canvas.getByText('Label');
     expect(label).toBeTruthy();
-    expect(label).toHaveClass('gi-label');
+    expect(label).toHaveAttribute('data-testid', 'label');
     expect(label.getAttribute('for')).toBe(textarea.getAttribute('id'));
 
     const hint = canvas.getByText('Hint: This is a helpful hint.');
     expect(hint).toBeTruthy();
-    expect(hint).toHaveClass('gi-hint-text');
+    expect(hint).toHaveAttribute('data-testid', 'hint-text');
 
     const error = canvas.getByText('Error: Please correct this issue.');
     expect(error).toBeTruthy();
-    expect(error).toHaveClass('gi-error-text');
+    expect(error).toHaveAttribute('data-testid', 'error-text');
   },
 };
 

@@ -42,6 +42,7 @@ export const Default: Story = {
   args: {
     text: 'Error',
     size: ErrorSize.Medium,
+    dataTestid: 'error-text',
   },
   play: async ({ canvasElement, step }) => {
     const canvas = within(canvasElement);
@@ -52,6 +53,7 @@ export const Default: Story = {
         const errorElement = canvas.getByText('Error');
         expect(errorElement).toBeTruthy();
         expect(errorElement.tagName).toBe('DIV');
+        expect(errorElement).toHaveAttribute('data-testid', 'error-text');
       },
     );
   },
@@ -67,7 +69,7 @@ export const Small: Story = {
 
     await step('should render error text with "sm" size', async () => {
       const errorElement = canvas.getByText('This is error text');
-      expect(errorElement).toHaveClass('gi-error-text-sm');
+      expect(errorElement).toHaveClass('gi-text-sm');
     });
   },
 };
@@ -80,9 +82,9 @@ export const Medium: Story = {
   play: async ({ canvasElement, step }) => {
     const canvas = within(canvasElement);
 
-    await step('should render error text with "sm" size', async () => {
+    await step('should render error text with "md" size', async () => {
       const errorElement = canvas.getByText('This is error text');
-      expect(errorElement).toHaveClass('gi-error-text-md');
+      expect(errorElement).toHaveClass('gi-text-md');
     });
   },
 };
@@ -95,9 +97,9 @@ export const Large: Story = {
   play: async ({ canvasElement, step }) => {
     const canvas = within(canvasElement);
 
-    await step('should render error text with "sm" size', async () => {
+    await step('should render error text with "lg" size', async () => {
       const errorElement = canvas.getByText('This is error text');
-      expect(errorElement).toHaveClass('gi-error-text-lg');
+      expect(errorElement).toHaveClass('gi-text-lg');
     });
   },
 };

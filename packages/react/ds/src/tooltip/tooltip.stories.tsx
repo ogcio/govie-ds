@@ -120,7 +120,7 @@ export const TopPosition: Story = {
         const tooltipElement = await canvas.findByText(
           'This is a tooltip at the top.',
         );
-        await expect(tooltipElement).toHaveClass('gi-tooltip-top');
+        await expect(tooltipElement).toHaveClass('gi-bottom-full');
       },
     );
   },
@@ -145,7 +145,7 @@ export const BottomPosition: Story = {
         const tooltipElement = await canvas.findByText(
           'This is a tooltip at the bottom.',
         );
-        await expect(tooltipElement).toHaveClass('gi-tooltip-bottom');
+        await expect(tooltipElement).toHaveClass('gi-top-full');
       },
     );
   },
@@ -170,7 +170,7 @@ export const LeftPosition: Story = {
         const tooltipElement = await canvas.findByText(
           'This is a tooltip on the left.',
         );
-        await expect(tooltipElement).toHaveClass('gi-tooltip-left');
+        await expect(tooltipElement).toHaveClass('gi-right-full');
       },
     );
   },
@@ -195,7 +195,7 @@ export const RightPosition: Story = {
         const tooltipElement = await canvas.findByText(
           'This is a tooltip on the right.',
         );
-        await expect(tooltipElement).toHaveClass('gi-tooltip-right');
+        await expect(tooltipElement).toHaveClass('gi-left-full');
       },
     );
   },
