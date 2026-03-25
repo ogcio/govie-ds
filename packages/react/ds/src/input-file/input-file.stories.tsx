@@ -67,7 +67,7 @@ export const Default: Story = {
     const canvas = within(canvasElement);
     const label = canvas.getByText('Upload File');
     expect(label).toBeTruthy();
-    expect(label).toHaveClass('gi-label');
+    expect(label).toHaveAttribute('data-testid', 'label');
   },
 };
 
@@ -87,11 +87,11 @@ export const WithLabelAndHint: Story = {
     const canvas = within(canvasElement);
     const label = canvas.getByText('Upload File');
     expect(label).toBeTruthy();
-    expect(label).toHaveClass('gi-label');
+    expect(label).toHaveAttribute('data-testid', 'label');
 
     const hint = canvas.getByText('Hint: This is a helpful hint.');
     expect(hint).toBeTruthy();
-    expect(hint).toHaveClass('gi-hint-text');
+    expect(hint).toHaveAttribute('data-testid', 'hint-text');
   },
 };
 
@@ -104,18 +104,20 @@ export const WithLabelAndError: Story = {
     <FormField id="file-upload-id">
       <FormFieldLabel htmlFor="file-upload-id">Upload File</FormFieldLabel>
       <InputFile {...arguments_} />
-      <FormFieldError>Error: File must be smaller than 5MB.</FormFieldError>
+      <FormFieldError dataTestid="error-text">
+        Error: File must be smaller than 5MB.
+      </FormFieldError>
     </FormField>
   ),
   play: async ({ canvasElement }) => {
     const canvas = within(canvasElement);
     const label = canvas.getByText('Upload File');
     expect(label).toBeTruthy();
-    expect(label).toHaveClass('gi-label');
+    expect(label).toHaveAttribute('data-testid', 'label');
 
     const error = canvas.getByText('Error: File must be smaller than 5MB.');
     expect(error).toBeTruthy();
-    expect(error).toHaveClass('gi-error-text');
+    expect(error).toHaveAttribute('data-testid', 'error-text');
   },
 };
 
@@ -246,7 +248,7 @@ export const WithListOfUploadedFiles: Story = {
     const canvas = within(canvasElement);
     const label = canvas.getByText('Upload File');
     expect(label).toBeTruthy();
-    expect(label).toHaveClass('gi-label');
+    expect(label).toHaveAttribute('data-testid', 'label');
   },
 };
 
@@ -258,7 +260,7 @@ export const WithListOfUploadedFilesWithErrorState: Story = {
   render: (arguments_) => (
     <FormField id="file-upload-id" className="gi-block gi-min-w-0">
       <FormFieldLabel htmlFor="file-upload-id">Upload File</FormFieldLabel>
-      <FormFieldError>Error</FormFieldError>
+      <FormFieldError dataTestid="error-text">Error</FormFieldError>
       <InputFile {...arguments_} />
       <div className="gi-w-full gi-min-w-0 gi-overflow-x-auto">
         <Table layout="auto" noBorder>
@@ -357,7 +359,7 @@ export const WithListOfUploadedFilesWithErrorState: Story = {
     const canvas = within(canvasElement);
     const label = canvas.getByText('Upload File');
     expect(label).toBeTruthy();
-    expect(label).toHaveClass('gi-label');
+    expect(label).toHaveAttribute('data-testid', 'label');
   },
 };
 

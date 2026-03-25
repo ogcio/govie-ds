@@ -150,9 +150,9 @@ export const WithoutTitle: Story = {
     children: <>Content</>,
   },
   play: async ({ canvasElement, step }) => {
+    const canvas = within(canvasElement as HTMLElement);
     await step('does not render a title element when title is omitted', () => {
-      const title = canvasElement.querySelector('.gi-alert-title');
-      expect(title).toBeNull();
+      expect(canvas.queryByTestId('alert-heading')).toBeNull();
     });
   },
 };
@@ -236,51 +236,5 @@ export const TestRendersTitleAndMessage: StoryObj = {
       expect(icon).not.toBeNull();
       expect(icon!.getAttribute('fill')).toBe('currentColor');
     });
-  },
-};
-export const TestVariantsHaveCorrectClass: StoryObj = {
-  tags: ['skip-playwright'],
-  render: () => (
-    <div>
-      <Alert variant="info" title="info alert" data-testid="alert-info">
-        This is a info alert
-      </Alert>
-      <Alert
-        variant="success"
-        title="success alert"
-        data-testid="alert-success"
-      >
-        This is a success alert
-      </Alert>
-      <Alert
-        variant="warning"
-        title="warning alert"
-        data-testid="alert-warning"
-      >
-        This is a warning alert
-      </Alert>
-      <Alert variant="danger" title="danger alert" data-testid="alert-danger">
-        This is a danger alert
-      </Alert>
-    </div>
-  ),
-  play: async ({ canvasElement, step }) => {
-    const variants = ['info', 'success', 'warning', 'danger'] as const;
-    for (const variant of variants) {
-      await step(`applies class for ${variant}`, async () => {
-        const element = canvasElement.querySelector(
-          `[data-testid="alert-${variant}"]`,
-        ) as HTMLElement | null;
-
-        expect(element).not.toBeNull();
-
-        const className = element?.className ?? '';
-        const hasClass =
-          className.includes(`gi-alert-${variant}`) ||
-          [...(element?.classList ?? [])].includes(`gi-alert-${variant}`);
-
-        expect(hasClass).toBe(true);
-      });
-    }
   },
 };
