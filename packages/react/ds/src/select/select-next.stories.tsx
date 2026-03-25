@@ -137,7 +137,6 @@ export const Default: StoryObj = {
       'Option 2',
       'Option 3',
     ]);
-    await userEvent.click(input);
 
     const option = await body.findByRole('option', { name: 'Option 1' });
     const style = globalThis.getComputedStyle(option as HTMLElement);
@@ -814,6 +813,7 @@ export const TestKeyboardEvents: StoryObj<typeof SelectNext> = {
       const highlighted = getHighlightedOption();
       expect(highlighted).toBeTruthy();
       expect(highlighted).toHaveAttribute('data-testid', 'option-value_9');
+      await userEvent.keyboard('{Esc}');
     });
 
     await step('Tab closes when open', async () => {
@@ -1000,6 +1000,44 @@ export const TestConditionallyRender: StoryObj = {
       await userEvent.keyboard('{Tab}');
       await userEvent.type(selectInput, ' ', { delay: 10 });
       await waitFor(() => expect(canvas.queryByRole('listbox')).toBeNull());
+    });
+  },
+};
+export const TestToggleDropdown: StoryObj = {
+  tags: ['skip-playwright'],
+  render: () => (
+    <FormField className="gi-w-56">
+      <FormFieldLabel>Label</FormFieldLabel>
+      <SelectNext aria-label="Select" defaultValue="select-option">
+        <SelectItemNext value="select-option" hidden>
+          Select Option
+        </SelectItemNext>
+        <SelectItemNext value="value-1">Option 1</SelectItemNext>
+        <SelectItemNext value="value-2">Option 2</SelectItemNext>
+      </SelectNext>
+    </FormField>
+  ),
+  play: async ({ canvasElement }) => {
+    const canvas = within(canvasElement);
+    const input = canvas.getByRole('textbox');
+
+    await userEvent.click(input);
+    await waitFor(() => {
+      expect(canvas.getByRole('listbox')).toBeInTheDocument();
+    });
+
+    await userEvent.click(input);
+    await waitFor(() => {
+      expect(canvas.queryByRole('listbox')).toBeNull();
+    });
+    input.focus();
+    await userEvent.keyboard('{Enter}');
+    await waitFor(() => {
+      expect(canvas.getByRole('listbox')).toBeInTheDocument();
+    });
+    await userEvent.keyboard('{Enter}');
+    await waitFor(() => {
+      expect(canvas.queryByRole('listbox')).toBeNull();
     });
   },
 };
