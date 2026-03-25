@@ -52,17 +52,9 @@
     ]
   },
   "devDependencies": {
-    "@chromatic-com/storybook": "5.0.1",
     "@commitlint/cli": "^19.8.1",
     "@commitlint/config-conventional": "^19.8.1",
     "@playwright/test": "^1.58.2",
-    "@storybook/addon-a11y": "10.2.19",
-    "@storybook/addon-coverage": "3.0.0",
-    "@storybook/addon-docs": "10.2.19",
-    "@storybook/addon-links": "10.2.19",
-    "@storybook/addon-themes": "10.2.19",
-    "@storybook/addon-vitest": "10.2.19",
-    "@storybook/react-vite": "10.2.19",
     "@tailwindcss/typography": "^0.5.16",
     "@tanstack/match-sorter-utils": "^8.19.4",
     "@tanstack/react-table": "8.21.2",
@@ -82,8 +74,6 @@
     "lint-staged": "^16.1.5",
     "playwright": "^1.58.2",
     "prettier": "^3.8.1",
-    "storybook": "10.2.19",
-    "storybook-addon-pseudo-states": "10.2.19",
     "tailwind-variants": "^0.2.1",
     "tailwindcss": "3.4.14",
     "tsup": "^8.4.0",
@@ -92,9 +82,7 @@
     "vite": "^6.2.4",
     "vite-plugin-dts": "^4.5.4",
     "vite-plugin-lib-inject-css": "^2.2.2",
-    "vitest": "3.2.4",
-    "@storybook/nextjs-vite": "10.2.19",
-    "@storybook/addon-onboarding": "10.2.19"
+    "vitest": "3.2.4"
   },
   "dependencies": {
     "@faker-js/faker": "^9.6.0",
