@@ -1,5 +1,36 @@
 # Changelog
 
+## [1.32.0](https://github.com/ogcio/govie-ds/compare/docs-v1.31.1...docs-v1.32.0) (2026-03-24)
+
+
+### Features
+
+* **AB#33690:** add xl to tyopgraphy schema ([#874](https://github.com/ogcio/govie-ds/issues/874)) ([b6b01ad](https://github.com/ogcio/govie-ds/commit/b6b01ad95d08be0b034698e191045317112d4c60))
+
+
+### Bug Fixes
+
+* **AB#36197:** add proper HTML dependencies to Docs website ([1b4bf50](https://github.com/ogcio/govie-ds/commit/1b4bf50364d6f8f2a11ae45762015d46297398a5))
+
+
+### Miscellaneous Chores
+
+* **AB#36197:** set fixed version of Docs dependencies ([5146d40](https://github.com/ogcio/govie-ds/commit/5146d405619d8b5f538112928c3322c71b180206))
+
+
+### Dependencies
+
+* The following workspace dependencies were updated
+  * dependencies
+    * @ogcio/design-system-html bumped to 1.20.0
+    * @ogcio/design-system-react bumped to 1.32.0
+    * @ogcio/design-system-tailwind bumped to 1.23.0
+    * @ogcio/design-system-tokens bumped to 1.22.0
+    * @ogcio/theme-govie bumped to 1.21.4
+  * devDependencies
+    * @ogcio/design-system-eslint-config bumped to 1.4.0
+    * @ogcio/design-system-prettier-config bumped to 1.1.1
+
 ## [1.31.1](https://github.com/ogcio/govie-ds/compare/docs-v1.31.0...docs-v1.31.1) (2026-03-12)
 
 

@@ -8,9 +8,19 @@ import {
 import {
   KeyboardArrowDown,
   KeyboardArrowUp,
+  KeyboardArrowRight,
+  KeyboardArrowLeft,
   Close,
   Visibility,
   VisibilityOff,
+  CheckCircle,
+  Warning,
+  Info,
+  Error,
+  ArrowLeft,
+  ArrowRight,
+  FirstPage,
+  LastPage,
 } from '../atoms/icons';
 import { cn } from '../cn.js';
 import { iconIds } from './icons.js';
@@ -75,6 +85,18 @@ const ICON_REGISTRY: Record<
   close: { Component: Close },
   visibility: { Component: Visibility },
   visibility_off: { Component: VisibilityOff },
+  info: { Component: Info },
+  error: { Component: Error },
+  warning: { Component: Warning },
+  check_circle: { Component: CheckCircle },
+  keyboard_arrow_left: { Component: KeyboardArrowLeft },
+  keyboard_arrow_right: { Component: KeyboardArrowRight },
+  chevron_left: { Component: KeyboardArrowLeft },
+  chevron_right: { Component: KeyboardArrowRight },
+  arrow_left_alt: { Component: ArrowLeft },
+  arrow_right_alt: { Component: ArrowRight },
+  first_page: { Component: FirstPage },
+  last_page: { Component: LastPage },
 };
 
 export const Icon = forwardRef<HTMLSpanElement, IconProps>(

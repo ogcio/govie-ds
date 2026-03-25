@@ -4,14 +4,14 @@
  * The file source is in `packages/core/atoms/LogoHarpWhite.lite.tsx`
  */
 
-import { Component, Input } from "@angular/core";
+import { Component, Input } from '@angular/core';
 
-import { CommonModule } from "@angular/common";
+import { CommonModule } from '@angular/common';
 
-import { BaseSVGProps } from "../types";
+import { BaseSVGProps } from '../types';
 
 @Component({
-  selector: "logo-harp-white",
+  selector: 'logo-harp-white',
   template: `
     <svg
       viewBox="0 0 56 88"
@@ -62,10 +62,9 @@ import { BaseSVGProps } from "../types";
   imports: [CommonModule],
 })
 export default class LogoHarpWhite {
-  @Input() size!: BaseSVGProps["size"];
-  @Input() className!: BaseSVGProps["className"];
-  @Input() id!: BaseSVGProps["id"];
-  @Input() label!: BaseSVGProps["label"];
-  @Input() dataTestId!: BaseSVGProps["dataTestId"];
+  @Input() size!: BaseSVGProps['size'];
+  @Input() className!: BaseSVGProps['className'];
+  @Input() id!: BaseSVGProps['id'];
+  @Input() label!: BaseSVGProps['label'];
+  @Input() dataTestId!: BaseSVGProps['dataTestId'];
 }
-

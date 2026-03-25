@@ -12,11 +12,7 @@
 
 const fixForwardRef = () => ({
   code: {
-    post: (code: string) =>
-      code.replace(
-        /forwardRef<([^[]+)\[['"]([^'"]+)['"]]>/g,
-        "forwardRef<$1['$2'], $1>",
-      ),
+    post: (code: string) => code.replace(/forwardRef<([^[]+)\[['"]([^'"]+)['"]]>/g, "forwardRef<$1['$2'], $1>"),
   },
 });
 

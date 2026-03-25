@@ -1,6 +1,13 @@
 # Changelog
 
 
+## [1.1.1](https://github.com/ogcio/govie-ds/compare/prettier-config-v1.1.0...prettier-config-v1.1.1) (2026-03-24)
+
+
+### Miscellaneous Chores
+
+* **AB#36297:** add centralised Prettier config ([af64e80](https://github.com/ogcio/govie-ds/commit/af64e803ed4b10f478bdb4584453d0ac60f978ca))
+
 ## [1.1.0](https://github.com/ogcio/govie-ds/compare/prettier-config-v1.0.6...prettier-config-v1.1.0) (2025-12-17)
 
 

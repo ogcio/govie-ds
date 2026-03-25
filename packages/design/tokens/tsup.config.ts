@@ -1,9 +1,9 @@
-import { defineConfig } from "tsup";
+import { defineConfig } from 'tsup';
 
 export default defineConfig({
-  entryPoints: ["src/index.ts"],
-  format: ["esm"],
-  outDir: "dist",
+  entryPoints: ['src/index.ts'],
+  format: ['esm'],
+  outDir: 'dist',
   sourcemap: true,
   minify: true,
   clean: true,

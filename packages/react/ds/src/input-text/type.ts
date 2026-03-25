@@ -5,7 +5,7 @@ export type InputActionButtonProps = {
   icon: IconId;
   onClick: (event: React.MouseEvent<HTMLButtonElement>) => void;
   disabled?: boolean;
-  ariaLabel?: string;
+  ariaLabel: string;
   dataTestId?: string;
   ref?: React.Ref<HTMLButtonElement>;
 };

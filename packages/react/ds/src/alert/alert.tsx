@@ -1,33 +1,17 @@
 'use client';
-import { useState } from 'react';
-import { type VariantProps } from 'tailwind-variants';
+import { ComponentType, useState } from 'react';
+import { CheckCircle, Info, Warning, Error, IconProps } from '../atoms/icons';
 import { cn } from '../cn.js';
 import { translate as t } from '../i18n/utility.js';
-import { Icon, IconId } from '../icon/icon.js';
 import { IconButton } from '../icon-button/icon-button.js';
 import { type AlertProps } from './types.js';
 import { alertVariants } from './variants.js';
 
-const icon = ({ variant }: VariantProps<typeof alertVariants>) => {
-  let icon;
-  switch (variant) {
-    case 'warning': {
-      icon = 'warning';
-      break;
-    }
-    case 'success': {
-      icon = 'check_circle';
-      break;
-    }
-    case 'danger': {
-      icon = 'error';
-      break;
-    }
-    default: {
-      icon = 'info';
-    }
-  }
-  return icon as IconId;
+export const ALERT_VARIANT_ICONS: Record<string, ComponentType<IconProps>> = {
+  warning: (props) => <Warning {...props} />,
+  success: (props) => <CheckCircle {...props} />,
+  danger: (props) => <Error {...props} />,
+  info: (props) => <Info {...props} />,
 };
 
 function Alert({
@@ -51,6 +35,8 @@ function Alert({
   if (isDismissed) {
     return null;
   }
+
+  const AlertIcon = ALERT_VARIANT_ICONS[variant ?? 'info'];
   return (
     <div
       className={cn(baseVariant(), className, 'gi-not-prose')}
@@ -58,14 +44,7 @@ function Alert({
       aria-live="assertive"
       {...props}
     >
-      {showIcon ? (
-        <Icon
-          icon={icon({ variant })}
-          ariaHidden
-          className="gi-alert-icon"
-          data-variant={variant}
-        />
-      ) : null}
+      {showIcon ? <AlertIcon className="gi-shrink-0 gi-block" /> : null}
 
       <div
         className={cn(container(), {

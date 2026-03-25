@@ -1,6 +1,7 @@
 import type { Meta, StoryObj } from '@storybook/react-vite';
 import { useMemo, useState } from 'react';
 import { within, expect, userEvent, screen } from 'storybook/test';
+import Heading from '../../Heading.js';
 import {
   LogoBlack,
   LogoGoldWhite,
@@ -8,7 +9,6 @@ import {
   LogoHarpBlack,
   LogoHarpWhite,
 } from '../../atoms/icons/logos';
-
 import { Button } from '../../button/button.js';
 import { DrawerMenuExample } from '../../drawer/drawer.content.js';
 import {
@@ -20,7 +20,6 @@ import {
   FormField,
   FormFieldLabel,
 } from '../../forms/form-field/form-field.js';
-import { Heading } from '../../heading/heading.js';
 import { useToggleMap } from '../../hooks/use-toggle-map.js';
 import { Icon, IconId } from '../../icon/icon.js';
 import { Link } from '../../link/link.js';
@@ -279,7 +278,7 @@ export const Default: StoryObj = {
       const faqButton = await canvas.findByRole('button', {
         name: /toggle frequently asked questions/i,
       });
-      expect(within(faqButton).getByText(/info/i)).toBeInTheDocument();
+      expect(within(faqButton).getByTestId(/info/i)).toBeInTheDocument();
 
       await userEvent.click(faqButton);
       expect(within(faqButton).getByTestId('close')).toBeInTheDocument();
@@ -292,7 +291,7 @@ export const Default: StoryObj = {
         name: /close/i,
       });
       await userEvent.click(drawerCloseButton);
-      expect(within(faqButton).getByText(/info/i)).toBeInTheDocument();
+      expect(within(faqButton).getByTestId(/info/i)).toBeInTheDocument();
     });
 
     await step('Search slot region appears and hides', async () => {

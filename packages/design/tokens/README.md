@@ -54,7 +54,7 @@ Tokens are exported from this package as TypeScript objects and can be imported 
 - Importing from the package:
 
   ```typescript
-  import { tokens, variables, meta } from "@ogcio/design-system-tokens";
+  import { tokens, variables, meta } from '@ogcio/design-system-tokens';
   ```
 
 - CSS‑in‑JS with runtime theming (`variables`):

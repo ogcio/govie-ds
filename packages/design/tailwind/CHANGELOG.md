@@ -1,5 +1,21 @@
 # Changelog
 
+## [1.23.0](https://github.com/ogcio/govie-ds/compare/design-tailwind-v1.22.0...design-tailwind-v1.23.0) (2026-03-24)
+
+
+### Features
+
+* **AB#33690:** add xl to tyopgraphy schema ([#874](https://github.com/ogcio/govie-ds/issues/874)) ([b6b01ad](https://github.com/ogcio/govie-ds/commit/b6b01ad95d08be0b034698e191045317112d4c60))
+
+
+### Dependencies
+
+* The following workspace dependencies were updated
+  * dependencies
+    * @ogcio/design-system-tokens bumped to 1.22.0
+  * devDependencies
+    * @ogcio/design-system-prettier-config bumped to 1.1.1
+
 ## [1.22.0](https://github.com/ogcio/govie-ds/compare/design-tailwind-v1.21.3...design-tailwind-v1.22.0) (2026-03-10)
 
 

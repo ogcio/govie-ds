@@ -1,5 +1,22 @@
 # Changelog
 
+## [1.23.0](https://github.com/ogcio/govie-ds/compare/design-theme-builder-v1.22.1...design-theme-builder-v1.23.0) (2026-03-24)
+
+
+### Features
+
+* **AB#33690:** add xl to tyopgraphy schema ([#874](https://github.com/ogcio/govie-ds/issues/874)) ([b6b01ad](https://github.com/ogcio/govie-ds/commit/b6b01ad95d08be0b034698e191045317112d4c60))
+
+
+### Dependencies
+
+* The following workspace dependencies were updated
+  * dependencies
+    * @ogcio/design-system-eslint-config bumped to 1.4.0
+    * @ogcio/design-system-tokens bumped to 1.22.0
+  * devDependencies
+    * @ogcio/design-system-prettier-config bumped to 1.1.1
+
 ## [1.22.1](https://github.com/ogcio/govie-ds/compare/design-theme-builder-v1.22.0...design-theme-builder-v1.22.1) (2026-02-24)
 
 

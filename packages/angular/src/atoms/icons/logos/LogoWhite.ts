@@ -4,14 +4,14 @@
  * The file source is in `packages/core/atoms/LogoWhite.lite.tsx`
  */
 
-import { Component, Input } from "@angular/core";
+import { Component, Input } from '@angular/core';
 
-import { CommonModule } from "@angular/common";
+import { CommonModule } from '@angular/common';
 
-import { BaseSVGProps } from "../types";
+import { BaseSVGProps } from '../types';
 
 @Component({
-  selector: "logo-white",
+  selector: 'logo-white',
   template: `
     <svg
       viewBox="0 0 136 48"
@@ -200,9 +200,7 @@ import { BaseSVGProps } from "../types";
         ></path>
       </g>
       <defs>
-        <clipPath id="clip0_175_13118">
-          <rect width="135.695" height="48" fill="white"></rect>
-        </clipPath>
+        <clipPath id="clip0_175_13118"><rect width="135.695" height="48" fill="white"></rect></clipPath>
       </defs>
     </svg>
   `,
@@ -217,10 +215,9 @@ import { BaseSVGProps } from "../types";
   imports: [CommonModule],
 })
 export default class LogoWhite {
-  @Input() size!: BaseSVGProps["size"];
-  @Input() className!: BaseSVGProps["className"];
-  @Input() id!: BaseSVGProps["id"];
-  @Input() label!: BaseSVGProps["label"];
-  @Input() dataTestId!: BaseSVGProps["dataTestId"];
+  @Input() size!: BaseSVGProps['size'];
+  @Input() className!: BaseSVGProps['className'];
+  @Input() id!: BaseSVGProps['id'];
+  @Input() label!: BaseSVGProps['label'];
+  @Input() dataTestId!: BaseSVGProps['dataTestId'];
 }
-

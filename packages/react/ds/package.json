@@ -1,6 +1,6 @@
 {
   "name": "@ogcio/design-system-react",
-  "version": "1.31.1",
+  "version": "1.32.0",
   "description": "The Government of Ireland Design System React components.",
   "type": "module",
   "main": "dist/index.js",
@@ -70,6 +70,7 @@
     "@ogcio/design-system-tailwind": "workspace:*",
     "@ogcio/theme-doete": "workspace:*",
     "@ogcio/theme-govie": "workspace:*",
+    "@storybook/types": "^8.6.14",
     "@testing-library/jest-dom": "^6.4.8",
     "@testing-library/react": "^16.0.1",
     "@testing-library/user-event": "^14.5.2",

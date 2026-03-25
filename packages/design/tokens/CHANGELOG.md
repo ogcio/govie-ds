@@ -1,5 +1,17 @@
 # Changelog
 
+## [1.22.0](https://github.com/ogcio/govie-ds/compare/tokens-v1.21.1...tokens-v1.22.0) (2026-03-24)
+
+
+### Features
+
+* **AB#33690:** add xl to tyopgraphy schema ([#874](https://github.com/ogcio/govie-ds/issues/874)) ([b6b01ad](https://github.com/ogcio/govie-ds/commit/b6b01ad95d08be0b034698e191045317112d4c60))
+
+
+### Miscellaneous Chores
+
+* **AB#36297:** apply Prettier formatting to the tokens package ([50fec71](https://github.com/ogcio/govie-ds/commit/50fec71d56fa801036f1e2271198c6533829c190))
+
 ## [1.21.1](https://github.com/ogcio/govie-ds/compare/tokens-v1.21.0...tokens-v1.21.1) (2026-01-09)
 
 

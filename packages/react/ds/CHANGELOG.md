@@ -1,5 +1,32 @@
 # Changelog
 
+## [1.32.0](https://github.com/ogcio/govie-ds/compare/react-lib-v1.31.1...react-lib-v1.32.0) (2026-03-24)
+
+
+### Features
+
+* **AB#33690:** add xl to tyopgraphy schema ([#874](https://github.com/ogcio/govie-ds/issues/874)) ([b6b01ad](https://github.com/ogcio/govie-ds/commit/b6b01ad95d08be0b034698e191045317112d4c60))
+* **AB#35609:** add proper EventEmitter to Core Button for Angular ([#894](https://github.com/ogcio/govie-ds/issues/894)) ([8227a73](https://github.com/ogcio/govie-ds/commit/8227a735b47870f96948e283ba6eb363eea182d5))
+* **AB#35879:** Add Storybook to Core ([#876](https://github.com/ogcio/govie-ds/issues/876)) ([89a448f](https://github.com/ogcio/govie-ds/commit/89a448f193d32a57feb8dbd58f2f2362d59b6072))
+* **AB#35883:** Heading mitosis components ([#893](https://github.com/ogcio/govie-ds/issues/893)) ([7091183](https://github.com/ogcio/govie-ds/commit/7091183dd7fba00cd9852df84472174837143b97))
+* **AB#35938:** Converts icons used for Alert to Icons used in Mitosis ([#879](https://github.com/ogcio/govie-ds/issues/879)) ([941a8bd](https://github.com/ogcio/govie-ds/commit/941a8bd02dbe244aba0ba7d02d75b1b8a4811ea1))
+* **AB#35948:** add Navigation Icons via Mitosis ([#890](https://github.com/ogcio/govie-ds/issues/890)) ([1cf2d42](https://github.com/ogcio/govie-ds/commit/1cf2d424ad0b87fc311b0662d42c0e3afda18103))
+
+
+### Miscellaneous Chores
+
+* **AB#36297:** apply Prettier to core generated Components ([1fd4cf2](https://github.com/ogcio/govie-ds/commit/1fd4cf2b87faa26f3522826e9dbee6a20de1bcf0))
+
+
+### Dependencies
+
+* The following workspace dependencies were updated
+  * devDependencies
+    * @ogcio/design-system-eslint-config bumped to 1.4.0
+    * @ogcio/design-system-prettier-config bumped to 1.1.1
+    * @ogcio/design-system-tailwind bumped to 1.23.0
+    * @ogcio/theme-govie bumped to 1.21.4
+
 ## [1.31.1](https://github.com/ogcio/govie-ds/compare/react-lib-v1.31.0...react-lib-v1.31.1) (2026-03-12)
 
 

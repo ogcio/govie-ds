@@ -1,6 +1,6 @@
 {
   "name": "@ogcio/design-system-tokens",
-  "version": "1.21.1",
+  "version": "1.22.0",
   "description": "The Government of Ireland Design System tokens.",
   "type": "module",
   "main": "dist/index.js",
@@ -9,14 +9,13 @@
     "dist"
   ],
   "scripts": {
-    "format": "prettier 'src/**/*.{ts,json}' --write",
-    "format:check": "prettier 'src/**/*.{ts,json}' --check",
     "build": "pnpm build:tokens && pnpm build:source",
     "build:tokens": "tsx scripts/build.ts",
-    "build:source": "tsup"
+    "build:source": "tsup",
+    "format": "prettier --write .",
+    "format:check": "prettier --check ."
   },
   "devDependencies": {
-    "@ogcio/design-system-prettier-config": "workspace:*",
     "@ogcio/design-system-tokens-builder": "workspace:*",
     "tsup": "^8.4.0"
   }

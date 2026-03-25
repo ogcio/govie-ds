@@ -1,0 +1,57 @@
+name: Bug Report
+description: Report an issue with an existing component or pattern
+labels: ["bug"]
+body:
+  - type: textarea
+    id: description
+    attributes:
+      label: Description
+      description: What went wrong and how should it work? You can include screenshots by pasting or dragging images here.
+      placeholder: |
+        What happens:
+        ...
+
+        What should happen:
+        ...
+    validations:
+      required: true
+
+  - type: textarea
+    id: steps
+    attributes:
+      label: Steps to reproduce
+      placeholder: |
+        1. Go to ...
+        2. Click on ...
+        3. See error ...
+    validations:
+      required: true
+
+  - type: dropdown
+    id: package
+    attributes:
+      label: Package
+      options:
+        - "@ogcio/design-system-react"
+        - "@ogcio/design-system-html"
+        - "@ogcio/design-system-angular"
+        - "@ogcio/design-system-tailwind"
+        - "Other"
+    validations:
+      required: true
+
+  - type: input
+    id: version
+    attributes:
+      label: Version
+      placeholder: e.g. 1.2.0
+    validations:
+      required: false
+
+  - type: textarea
+    id: additional
+    attributes:
+      label: Additional context
+      description: Browser, OS, assistive technology, or anything else relevant.
+    validations:
+      required: false
