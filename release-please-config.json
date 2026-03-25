@@ -16,22 +16,8 @@
       "section": "Performance Improvements"
     },
     {
-      "type": "revert",
-      "section": "Reverts",
-      "hidden": true
-    },
-    {
-      "type": "deprecate",
-      "section": "Deprecations"
-    },
-    {
       "type": "docs",
       "section": "Documentation",
-      "hidden": true
-    },
-    {
-      "type": "style",
-      "section": "Styles",
       "hidden": true
     },
     {
@@ -62,48 +48,39 @@
   "packages": {
     "apps/docs": {
       "component": "docs",
-      "release-type": "node",
-      "changelog-path": "CHANGELOG.md"
+      "release-type": "node"
     },
     "packages/build/eslint-config": {
       "component": "eslint-config",
-      "release-type": "node",
-      "changelog-path": "CHANGELOG.md"
+      "release-type": "node"
     },
     "packages/build/prettier-config": {
       "component": "prettier-config",
-      "release-type": "node",
-      "changelog-path": "CHANGELOG.md"
+      "release-type": "node"
     },
     "packages/design/tailwind": {
       "component": "design-tailwind",
-      "release-type": "node",
-      "changelog-path": "CHANGELOG.md"
+      "release-type": "node"
     },
     "packages/design/theme-builder": {
       "component": "design-theme-builder",
-      "release-type": "node",
-      "changelog-path": "CHANGELOG.md"
+      "release-type": "node"
     },
     "packages/html/ds": {
       "component": "html-lib",
-      "release-type": "node",
-      "changelog-path": "CHANGELOG.md"
+      "release-type": "node"
     },
     "packages/react/ds": {
       "component": "react-lib",
-      "release-type": "node",
-      "changelog-path": "CHANGELOG.md"
+      "release-type": "node"
     },
     "packages/themes/govie": {
       "component": "themes-govie",
-      "release-type": "node",
-      "changelog-path": "CHANGELOG.md"
+      "release-type": "node"
     },
     "packages/design/tokens": {
       "component": "tokens",
-      "release-type": "node",
-      "changelog-path": "CHANGELOG.md"
+      "release-type": "node"
     },
     "packages/design/figma": {
       "component": "figma",
