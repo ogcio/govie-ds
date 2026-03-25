@@ -53,9 +53,9 @@ export const InternalTabItem = forwardRef<
       {icon && <Icon icon={icon} />}
       {children}
       <div
-        data-testid="tab-item-border"
         className={border()}
         aria-hidden="true"
+        data-testid="tab-item-border"
       />
     </>
   );
