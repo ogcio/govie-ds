@@ -77,7 +77,7 @@ export const WithLabelHintAndError = {
     <FormField>
       <FormFieldLabel htmlFor="select">Label</FormFieldLabel>
       <FormFieldHint>This is a hint</FormFieldHint>
-      <FormFieldError>This is an error</FormFieldError>
+      <FormFieldError dataTestid="error-text">This is an error</FormFieldError>
       <Select
         aria-label="Select"
         data-testid="select"
@@ -100,16 +100,16 @@ export const WithLabelHintAndError = {
 
     const label = canvas.getByText('Label');
     expect(label).toBeTruthy();
-    expect(label).toHaveClass('gi-label');
+    expect(label).toHaveAttribute('data-testid', 'label');
     expect(label.getAttribute('for')).toBe(select.getAttribute('id'));
 
     const hint = canvas.getByText('This is a hint');
     expect(hint).toBeTruthy();
-    expect(hint).toHaveClass('gi-hint-text');
+    expect(hint).toHaveAttribute('data-testid', 'hint-text');
 
     const error = canvas.getByText('This is an error');
     expect(error).toBeTruthy();
-    expect(error).toHaveClass('gi-error-text');
+    expect(error).toHaveAttribute('data-testid', 'error-text');
   },
 };
 

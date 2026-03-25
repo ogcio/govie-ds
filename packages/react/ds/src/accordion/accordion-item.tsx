@@ -12,15 +12,6 @@ export type AccordionItemProps = {
   variant?: 'default' | 'small';
 } & ComponentPropsWithRef<'div'>;
 
-const accordionVariants = tv({
-  variants: {
-    variant: {
-      default: 'gi-px-2 gi-py-4 gi-text-md gi-font-bold',
-      small: 'gi-py-2 gi-px-2 gi-text-sm gi-font-bold',
-    },
-  },
-});
-
 export const AccordionItem = ({
   defaultExpanded,
   children,
@@ -40,24 +31,20 @@ export const AccordionItem = ({
       setIsExpanded(!isExpanded);
     }
   };
-
+  const { base, header } = accordionVariants({ variant, disabled: !!disabled });
   return (
     <>
       <div
         {...props}
         ref={ref}
+        data-testid="accordion-item"
         data-disabled={!!disabled}
         onClick={() => !disabled && setIsExpanded(!isExpanded)}
         onKeyDown={handleKeyDown}
         tabIndex={0}
-        className={clsx('gi-accordion', className)}
+        className={clsx(base(), className)}
       >
-        <div
-          className={clsx(
-            'gi-accordion-header',
-            accordionVariants({ variant }),
-          )}
-        >
+        <div data-testid="accordion-header" className={header()}>
           {label}
           <Icon
             icon={isExpanded ? 'keyboard_arrow_up' : 'keyboard_arrow_down'}
@@ -84,3 +71,25 @@ export const AccordionItem = ({
     </>
   );
 };
+
+const accordionVariants = tv({
+  slots: {
+    base: 'gi-focus-visible-state-outline-inner-shadow-sm',
+    header: ' gi-flex gi-items-start gi-justify-between',
+  },
+  variants: {
+    variant: {
+      default: { header: 'gi-px-2 gi-py-4 gi-text-md gi-font-bold' },
+      small: { header: 'gi-py-2 gi-px-2 gi-text-sm gi-font-bold' },
+    },
+    disabled: {
+      false: {
+        base: 'hover:gi-bg-gray-200 gi-focus-state-outline-inner-shadow-sm',
+        header: 'gi-cursor-pointer',
+      },
+      true: {
+        header: 'gi-cursor-not-allowed gi-text-gray-600',
+      },
+    },
+  },
+});

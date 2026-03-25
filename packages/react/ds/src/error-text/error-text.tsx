@@ -1,24 +1,11 @@
 import { tv } from 'tailwind-variants';
 import { type ErrorTextProps } from './types.js';
+
 export const ErrorSize = {
   Small: 'sm',
   Medium: 'md',
   Large: 'lg',
 } as const;
-
-const errorText = tv({
-  base: 'gi-error-text',
-  variants: {
-    size: {
-      sm: 'gi-error-text-sm',
-      md: 'gi-error-text-md',
-      lg: 'gi-error-text-lg',
-    },
-  },
-  defaultVariants: {
-    size: 'md',
-  },
-});
 
 export const ErrorText: React.FC<ErrorTextProps> = ({
   text,
@@ -39,3 +26,17 @@ export const ErrorText: React.FC<ErrorTextProps> = ({
 );
 
 ErrorText.displayName = 'ErrorText';
+
+const errorText = tv({
+  base: 'gi-font-normal gi-text-color-text-intent-error-default',
+  variants: {
+    size: {
+      sm: 'gi-text-sm',
+      md: 'gi-text-md',
+      lg: 'gi-text-lg',
+    },
+  },
+  defaultVariants: {
+    size: 'md',
+  },
+});
