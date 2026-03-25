@@ -292,11 +292,11 @@ export function createTheme(
       none: '0px',
       auto: 'auto',
       'from-font': 'from-font',
-      xs: '1px',
-      sm: '2px',
-      md: '3px',
-      lg: '4px',
-      xl: '8px',
+      xs: '0.15em',
+      sm: '0.2em',
+      md: '0.25em',
+      lg: '0.3em',
+      xl: '0.4em',
     },
     textDecorationThickness: {
       // TODO: tokens

@@ -1,5 +1,5 @@
 .gi-link {
-  @apply gi-decoration-xs gi-inline-flex gi-underline gi-underline-offset-[0.2em] gi-text-color-text-tone-convention-default gi-relative gi-w-fit;
+  @apply gi-decoration-xs gi-inline-flex gi-underline gi-text-color-text-tone-convention-default gi-relative gi-w-fit;
 }
 
 .gi-link:not([aria-current='page']) {
@@ -32,13 +32,6 @@
 
 .gi-link-no-underline {
   @apply hover:gi-underline gi-no-underline focus:gi-no-underline;
-}
-
-/* Firefox skips the underline for descending characters at 0.2em for the given font Lato, so we need to increase it to 0.23em */
-@supports (-moz-appearance: none) {
-  .gi-link {
-    @apply gi-underline-offset-[0.23em];
-  }
 }
 
 .gi-link-icon {

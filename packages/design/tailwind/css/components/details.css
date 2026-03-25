@@ -19,13 +19,12 @@
 }
 
 .gi-details-summary:hover > .gi-details-summary-text {
-  @apply gi-underline-offset-[0.2em];
   text-decoration-thickness: max(3px);
   text-decoration-skip-ink: none;
 }
 
 .gi-details-summary-text {
-  @apply gi-underline gi-underline-offset-[0.2em];
+  @apply gi-underline;
 }
 
 .gi-details-text {
