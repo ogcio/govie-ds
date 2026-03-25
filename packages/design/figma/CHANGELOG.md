@@ -1,5 +1,17 @@
 # Changelog
 
+## [1.0.4](https://github.com/ogcio/govie-ds/compare/figma-v1.0.3...figma-v1.0.4) (2026-03-24)
+
+
+### Dependencies
+
+* The following workspace dependencies were updated
+  * dependencies
+    * @ogcio/theme-govie bumped to 1.21.4
+  * devDependencies
+    * @ogcio/design-system-eslint-config bumped to 1.4.0
+    * @ogcio/design-system-prettier-config bumped to 1.1.1
+
 ## [1.0.3](https://github.com/ogcio/govie-ds/compare/figma-v1.0.2...figma-v1.0.3) (2026-02-24)
 
 

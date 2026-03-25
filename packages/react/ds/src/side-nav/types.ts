@@ -1,4 +1,4 @@
-import { HeadingProps } from '../heading/heading.js';
+import { type Props as HeadingProps } from '../Heading.js';
 import { IconId } from '../icon/icon.js';
 
 export type SideNavItemProps = {
