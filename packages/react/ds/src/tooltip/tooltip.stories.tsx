@@ -1,6 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/react';
 import { expect, userEvent, within, waitFor } from 'storybook/test';
-import Button from '../atoms/Button.js';
+import Button from '../atoms/Button';
 import { Tooltip } from './tooltip.js';
 
 const meta = {

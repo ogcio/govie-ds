@@ -1,5 +1,5 @@
 import { ComponentPropsWithoutRef, ReactElement } from 'react';
-import { Props as ButtonProps } from '../atoms/Button.js';
+import { Props as ButtonProps } from '../atoms/Button';
 import { IconProps } from '../icon/icon.js';
 import { LinkProps } from '../link/link.js';
 import { TagProps } from '../tag/tag.js';

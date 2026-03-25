@@ -1,6 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/react';
 import { waitFor } from 'storybook/test';
-import Button from '../atoms/Button.js';
+import Button from '../atoms/Button';
 import { sleep } from '../test-utilities.js';
 import { AccordionItem } from './accordion-item.js';
 import { Accordion, AccordionProps } from './accordion.js';

@@ -1,7 +1,7 @@
 import type { Meta, StoryObj } from '@storybook/react';
 import { Controller, FormProvider, useForm } from 'react-hook-form';
 import { userEvent, within, expect } from 'storybook/test';
-import Button from '../atoms/Button.js';
+import Button from '../atoms/Button';
 import {
   FormField,
   FormFieldError,

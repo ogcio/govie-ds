@@ -13,7 +13,7 @@ import {
 } from 'react';
 import { createPortal } from 'react-dom';
 import Heading, { type Props as HeadingProps } from '../Heading.js';
-import Button from '../atoms/Button.js';
+import Button from '../atoms/Button';
 import { cn } from '../cn.js';
 import { useAriaHider } from '../hooks/use-aria-hider.js';
 import { useFocusTrap } from '../hooks/use-focus-trap.js';
@@ -388,7 +388,7 @@ export const Modal = ({
 
   const renderCloneTrigger = cloneElement(triggerButton as ReactElement<any>, {
     dataTestId: 'modal-trigger-button-container',
-    'aria-haspopup': 'dialog',
+    ariaHasPopup: 'dialog',
     onClick: handleOpen,
   });
 

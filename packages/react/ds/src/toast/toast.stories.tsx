@@ -7,7 +7,7 @@ import {
 } from '@storybook/addon-docs/blocks';
 import type { Meta, StoryObj } from '@storybook/react';
 import { expect, screen, userEvent, waitFor, within } from 'storybook/test';
-import Button from '../atoms/Button.js';
+import Button from '../atoms/Button';
 import { Stack } from '../stack/stack.js';
 import { Toast, toaster, ToastProvider } from './toast.js';
 import { ToastPosition } from './types.js';

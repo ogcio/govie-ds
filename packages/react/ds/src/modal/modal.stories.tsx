@@ -1,7 +1,7 @@
 import { Meta, StoryObj } from '@storybook/react';
 import { useState } from 'react';
 import { expect, within, waitFor, screen, userEvent } from 'storybook/test';
-import Button from '../atoms/Button.js';
+import Button from '../atoms/Button';
 import { Paragraph } from '../paragraph/paragraph.js';
 import {
   ModalTitle,

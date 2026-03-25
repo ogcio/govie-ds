@@ -1,5 +1,5 @@
 import { ComponentPropsWithoutRef, ReactElement } from 'react';
-import { Props as ButtonProps } from '../atoms/Button.js';
+import { Props as ButtonProps } from '../atoms/Button';
 import { IconButtonProps } from '../icon-button/icon-button.js';
 import { ModalBody, ModalFooter, ModalTitle } from './modal.js';
 

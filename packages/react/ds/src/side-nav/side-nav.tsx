@@ -7,7 +7,7 @@ import React, {
   memo,
 } from 'react';
 import Heading from '../Heading.js';
-import Button from '../atoms/Button.js';
+import Button from '../atoms/Button';
 import { cn } from '../cn.js';
 import { Icon, IconId } from '../icon/icon.js';
 import { Link } from '../link/link.js';

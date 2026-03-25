@@ -1,6 +1,6 @@
 import { Meta, StoryObj } from '@storybook/react';
 import { expect, waitFor, within } from 'storybook/test';
-import Button from '../atoms/Button.js';
+import Button from '../atoms/Button';
 import { Link } from '../link/link.js';
 import { generateSvgPlaceholderDataUrl } from '../utils/placeholder.js';
 import {
