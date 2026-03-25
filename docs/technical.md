@@ -38,12 +38,8 @@ This document captures the minimum technical details needed to understand, build
   - Installs dependencies, builds, runs checks/tests
   - Extend to publish packages or deploy docs as needed
 
-## Release and versioning (high level)
+## Release and versioning
 
-- Strategy: packages are versioned per package (independent versions)
-- Tooling: `release-please` manages versions and changelogs based on Conventional Commits
-  - Config files (at repo root): `release-please-config.json`, `.release-please-manifest.json`
-- Workflow (typical):
-  1. Follow Conventional Commits in PR titles/commits (e.g. `feat: ...`, `fix: ...`).
-  2. `release-please` aggregate changes and open a Release PR per affected package with version bumps and CHANGELOG updates.
-  3. Merge the Release PR to cut tags and publish release notes (CI may also publish artifacts if configured).
+Packages are versioned independently using [Release Please](https://github.com/googleapis/release-please) and [Conventional Commits](https://www.conventionalcommits.org/).
+
+For details on commit conventions, the release process, and how they connect, see [Development guide](./development.md).
