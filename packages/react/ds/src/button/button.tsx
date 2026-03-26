@@ -3,12 +3,15 @@ import GiButton, { type Props as GiButtonProps } from '../atoms/Button';
 import type { ButtonProps } from './types';
 
 export const Button = forwardRef<HTMLButtonElement, ButtonProps>(
-  function Button(
+  (
     {
       variant,
       appearance,
       size,
+      disabled,
+      className,
       dataTestid,
+      children,
       'aria-label': ariaLabel,
       'aria-labelledby': ariaLabelledBy,
       'aria-describedby': ariaDescribedBy,
@@ -19,17 +22,17 @@ export const Button = forwardRef<HTMLButtonElement, ButtonProps>(
       'aria-haspopup': ariaHasPopup,
       'aria-busy': ariaBusy,
       'data-testid': dataTestId,
-      children,
     },
     ref,
-  ) {
+  ) => {
     return (
       <GiButton
         ref={ref}
+        disabled={disabled}
+        className={className}
         variant={variant}
         appearance={appearance}
         size={size}
-        dataTestId={dataTestId ?? dataTestid}
         ariaLabel={ariaLabel}
         ariaLabelledBy={ariaLabelledBy}
         ariaDescribedBy={ariaDescribedBy}
@@ -39,6 +42,7 @@ export const Button = forwardRef<HTMLButtonElement, ButtonProps>(
         ariaControls={ariaControls}
         ariaHasPopup={ariaHasPopup as GiButtonProps['ariaHasPopup']}
         ariaBusy={ariaBusy as boolean | undefined}
+        dataTestId={dataTestId ?? dataTestid}
       >
         {children}
       </GiButton>
