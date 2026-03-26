@@ -19,25 +19,25 @@ component:
           required: false
         - name: 'size'
           ofType: 'string'
-          description: 'Defines the size of the heading (small, medium, large).'
+          description: 'Defines the visual size of the heading. Accepted values: xl, lg, md, sm, xs, 2xs.'
           required: false
-        - name: 'caption'
+        - name: 'id'
           ofType: 'string'
-          description: 'A caption or additional text that will be displayed under the heading.'
+          description: 'Sets the id attribute on the heading element.'
+          required: false
+        - name: 'className'
+          ofType: 'string'
+          description: 'Additional CSS class names to apply to the heading element.'
+          required: false
+        - name: 'dataTestId'
+          ofType: 'string'
+          description: 'Test identifier for automated testing.'
           required: false
   stories:
     - name: 'default'
       url: '/story/typography-heading--default'
-    - name: 'small'
-      url: '/story/typography-heading--small'
-    - name: 'medium'
-      url: '/story/typography-heading--medium'
-    - name: 'large'
-      url: '/story/typography-heading--large'
-    - name: 'extra-large'
-      url: '/story/typography-heading--extra-large'
-    - name: 'caption'
-      url: '/story/typography-heading--caption'
+    - name: 'all-heading-levels'
+      url: '/story/typography-heading--all-heading-levels'
 ---
 
 # Heading
@@ -47,13 +47,13 @@ A Heading is a typographic element used to define the titles and subtitles of se
 <Section current="react">
 
 <ComponentPreview>
-  <div style={{ display: 'flex', flexDirection: 'column'}}>
-    <Heading as="h1">This is an h1</Heading>
-    <Heading as="h2">This is an h2</Heading>
-    <Heading as="h3">This is an h3</Heading>
-    <Heading as="h4">This is an h4</Heading>
-    <Heading as="h5">This is an h5</Heading>
-    <Heading as="h6">This is an h6</Heading>
+  <div style={{ display: 'flex', flexDirection: 'column' }}>
+    <Heading as="h1">Heading 1</Heading>
+    <Heading as="h2">Heading 2</Heading>
+    <Heading as="h3">Heading 3</Heading>
+    <Heading as="h4">Heading 4</Heading>
+    <Heading as="h5">Heading 5</Heading>
+    <Heading as="h6">Heading 6</Heading>
   </div>
 </ComponentPreview>
 
@@ -61,28 +61,10 @@ A Heading is a typographic element used to define the titles and subtitles of se
 
 <StorybookFrame componentId="heading-react" story="default" />
 
-### Small
+### All heading levels
 
-<StorybookFrame componentId="heading-react" story="small" />
-
-### Medium
-
-<StorybookFrame componentId="heading-react" story="medium" />
-
-### Large
-
-<StorybookFrame componentId="heading-react" story="large" />
-
-### Extra Large
-
-<StorybookFrame componentId="heading-react" story="extra-large" />
-
-### Caption
-
-<StorybookFrame componentId="heading-react" story="caption" />
-
+<StorybookFrame componentId="heading-react" story="all-heading-levels" />
 ## Properties
 
 <ComponentPropertiesTable componentId="heading-react" />
-
 </Section>
