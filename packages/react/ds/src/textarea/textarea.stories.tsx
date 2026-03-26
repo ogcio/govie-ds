@@ -425,7 +425,7 @@ export const Uncontrolled: Story = {
         <Button
           className="gi-mt-1"
           onClick={handleShowValue}
-          dataTestid="show-value-button"
+          dataTestId="show-value-button"
         >
           Show Value
         </Button>

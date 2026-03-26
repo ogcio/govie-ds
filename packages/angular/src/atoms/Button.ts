@@ -36,7 +36,6 @@ export type Props = {
   value?: string;
   tabIndex?: number;
   dataTestId?: string;
-  dataTestid?: string;
   ref?: any;
 };
 
@@ -352,7 +351,7 @@ const getSize = (x: Props['size']) => (x === Size.SMALL || x === Size.LARGE ? x 
       [attr.form]="form"
       [attr.value]="value"
       [attr.tabIndex]="tabIndex"
-      [attr.data-testid]="dataTestId ?? dataTestid"
+      [attr.data-testid]="dataTestId"
     >
       <ng-content></ng-content>
     </button>
@@ -394,7 +393,6 @@ export default class Button {
   @Input() value!: Props['value'];
   @Input() tabIndex!: Props['tabIndex'];
   @Input() dataTestId!: Props['dataTestId'];
-  @Input() dataTestid!: Props['dataTestid'];
   @Output() onClick = new EventEmitter<any>();
   @Output() onFocus = new EventEmitter<any>();
   @Output() onBlur = new EventEmitter<any>();

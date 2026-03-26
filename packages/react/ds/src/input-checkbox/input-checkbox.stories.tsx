@@ -237,13 +237,13 @@ export const WithReactHookForm: Story = {
           </FormField>
 
           <div className="gi-flex gi-flex-cols gi-gap-2 gi-pt-4">
-            <Button type="submit" dataTestid="submit-btn">
+            <Button type="submit" dataTestId="submit-btn">
               Submit
             </Button>
             <Button
               type="button"
               onClick={() => methods.reset()}
-              dataTestid="reset-btn"
+              dataTestId="reset-btn"
             >
               Reset
             </Button>

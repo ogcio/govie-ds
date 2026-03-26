@@ -50,7 +50,6 @@ export type Props = {
   value?: string;
   tabIndex?: number;
   dataTestId?: string;
-  dataTestid?: string;
   ref?: any;
 };
 
@@ -88,7 +87,7 @@ export default function Button(props: Props) {
       form={props.form}
       value={props.value}
       tabIndex={props.tabIndex}
-      data-testid={props.dataTestId ?? props.dataTestid}
+      data-testid={props.dataTestId}
     >
       {props.children}
     </button>

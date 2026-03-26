@@ -489,34 +489,34 @@ export const TestButtonAll: Story = {
   tags: ['skip-playwright'],
   render: () => (
     <div className="gi-flex gi-flex-col gi-gap-2">
-      <Button dataTestid="govie-button-label" variant="primary">
+      <Button dataTestId="govie-button-label" variant="primary">
         Button
       </Button>
-      <Button dataTestid="govie-button-secondary" variant="secondary">
+      <Button dataTestId="govie-button-secondary" variant="secondary">
         Button
       </Button>
-      <Button dataTestid="govie-button-flat" variant="flat">
+      <Button dataTestId="govie-button-flat" variant="flat">
         Button
       </Button>
-      <Button dataTestid="govie-button-appearance-default" appearance="default">
+      <Button dataTestId="govie-button-appearance-default" appearance="default">
         Button
       </Button>
-      <Button dataTestid="govie-button-appearance-light" appearance="light">
+      <Button dataTestId="govie-button-appearance-light" appearance="light">
         Button
       </Button>
-      <Button dataTestid="govie-button-appearance-dark" appearance="dark">
+      <Button dataTestId="govie-button-appearance-dark" appearance="dark">
         Button
       </Button>
-      <Button dataTestid="govie-button-small" size="small">
+      <Button dataTestId="govie-button-small" size="small">
         Button
       </Button>
-      <Button dataTestid="govie-button-large" size="large">
+      <Button dataTestId="govie-button-large" size="large">
         Button
       </Button>
-      <Button dataTestid="govie-button-disabled" disabled>
+      <Button dataTestId="govie-button-disabled" disabled>
         Button
       </Button>
-      <Button dataTestid="govie-button-icon">
+      <Button dataTestId="govie-button-icon">
         <Icon icon="thumb_up" />
       </Button>
     </div>

@@ -333,7 +333,7 @@ export const ModalFooter = ({
               key:
                 button.key ||
                 button.props.id ||
-                button.props['dataTestid'] ||
+                button.props['dataTestId'] ||
                 `modal-footer-button-${index}`,
               id: button.props.id || `modal-footer-button-${index}`,
               className: cn(button?.props?.className, buttonClassName),

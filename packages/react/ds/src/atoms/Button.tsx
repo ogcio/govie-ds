@@ -37,7 +37,6 @@ export type Props = {
   value?: string;
   tabIndex?: number;
   dataTestId?: string;
-  dataTestid?: string;
   ref?: any;
 };
 
@@ -351,7 +350,7 @@ const Button = forwardRef<Props['ref'], Props>(function Button(props: Props, ref
       form={props.form}
       value={props.value}
       tabIndex={props.tabIndex}
-      data-testid={props.dataTestId ?? props.dataTestid}
+      data-testid={props.dataTestId}
     >
       {props.children}
     </button>
