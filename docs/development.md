@@ -102,7 +102,7 @@ Release Please is configured through two files at the repo root:
 - `release-please-config.json` — defines which packages are tracked, their component names, commit type visibility, and PR title patterns.
 - `.release-please-manifest.json` — tracks the current version of each package.
 
-Packages are versioned independently. A commit affecting `packages/react/ds` does not bump the version of `packages/html/ds`.
+Packages are versioned independently. A commit affecting `packages/react` does not bump the version of `packages/html/ds`.
 
 ### What to do when a Release PR appears
 

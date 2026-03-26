@@ -8,7 +8,7 @@ This document captures the minimum technical details needed to understand, build
 - Packages grouped by purpose:
   - Build tooling and shared configs (`packages/build/*`)
   - Design tokens and tooling (`packages/design/*`)
-  - Component libraries (`packages/html/ds`, `packages/react/ds`)
+  - Component libraries (`packages/html/ds`, `packages/react`)
   - Themes (`packages/themes/*`)
   - Documentation site (`apps/docs`)
   - Examples (`examples/*`)

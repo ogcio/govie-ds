@@ -8,13 +8,13 @@ build-visual-tests-image:
 
 start-react-storybook:
 	pnpm storybook:build:react
-	cd packages/react/ds && pnpm storybook dev --ci -p 6006 &
+	cd packages/react && pnpm storybook dev --ci -p 6006 &
 
 stop-react-storybook:
 	npx -y kill-port 6006
 
 tests: start-react-storybook
-	cd packages/react/ds && ./visual-regression-tests.sh test
+	cd packages/react && ./visual-regression-tests.sh test
 
 update-screenshots: start-react-storybook
-	cd packages/react/ds && ./visual-regression-tests.sh test --update-snapshots
+	cd packages/react && ./visual-regression-tests.sh test --update-snapshots

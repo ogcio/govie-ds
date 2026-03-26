@@ -4,7 +4,7 @@
     "autoAcceptChanges": "main",
     "exitOnceUploaded": true,
     "onlyChanged": true,
-    "storybookBuildDir": "packages/react/ds/storybook-static",
-    "storybookBaseDir": "packages/react/ds",
+    "storybookBuildDir": "packages/react/storybook-static",
+    "storybookBaseDir": "packages/react",
     "zip": true
 }
