@@ -11,7 +11,6 @@ export const Button = forwardRef<HTMLButtonElement, ButtonProps>(
       disabled,
       className,
       dataTestid,
-      children,
       'aria-label': ariaLabel,
       'aria-labelledby': ariaLabelledBy,
       'aria-describedby': ariaDescribedBy,
@@ -22,6 +21,7 @@ export const Button = forwardRef<HTMLButtonElement, ButtonProps>(
       'aria-haspopup': ariaHasPopup,
       'aria-busy': ariaBusy,
       'data-testid': dataTestId,
+      ...props
     },
     ref,
   ) => {
@@ -43,9 +43,8 @@ export const Button = forwardRef<HTMLButtonElement, ButtonProps>(
         ariaHasPopup={ariaHasPopup as GiButtonProps['ariaHasPopup']}
         ariaBusy={ariaBusy as boolean | undefined}
         dataTestId={dataTestId ?? dataTestid}
-      >
-        {children}
-      </GiButton>
+        {...props}
+      />
     );
   },
 );
