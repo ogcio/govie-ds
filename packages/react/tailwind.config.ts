@@ -1,12 +1,12 @@
 import { createTheme } from '@ogcio/design-system-tailwind';
+import typography from '@tailwindcss/typography';
 import { Config } from 'tailwindcss';
 
 const config: Config = {
   prefix: 'gi-',
   content: ['./src/**/*.{ts,tsx}'],
   theme: createTheme(),
-  // eslint-disable-next-line unicorn/prefer-module
-  plugins: [require('@tailwindcss/typography')],
+  plugins: [typography],
   safelist: [
     'gi-prose',
     'gi-not-prose',

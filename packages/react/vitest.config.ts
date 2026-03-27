@@ -74,7 +74,7 @@ export default mergeConfig(
 
         return path.resolve(
           process.cwd(),
-          '../../../snapshots',
+          '../../snapshots',
           `${testFileName}${snapExtension}`,
         );
       },

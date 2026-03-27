@@ -6,7 +6,7 @@ import normalizeReactSvgAttrs from './plugins/normalize-svg-attrs';
 
 export default {
   files: 'atoms/**/*',
-  dest: '../react/ds/src',
+  dest: '../react/src',
   targets: ['react'],
   getTargetPath: () => '.',
   commonOptions: {

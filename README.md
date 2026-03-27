@@ -49,7 +49,7 @@ Tools and resources for designing in Figma.
 
 This project includes the following packages that are publicly available on npm:
 
-- [`@ogcio/design-system-react`](packages/react/ds/README.md) - A library of UI components for government platforms in React.
+- [`@ogcio/design-system-react`](packages/react/README.md) - A library of UI components for government platforms in React.
 - [`@ogcio/design-system-tokens`](packages/design/tokens/README.md) - A library of design tokens for consistent styling across government
   platforms.
 - [`@ogcio/design-system-tailwind`](packages/design/tailwind/README.md) - A Tailwind CSS integration for the Government of Ireland Design

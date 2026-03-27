@@ -5,7 +5,7 @@ import {
   categoryOptions,
   organisationOptions,
   topicOptions,
-} from '../../../../react/ds/src/combo-box/combo-box.content';
+} from '../../../../react/src/combo-box/combo-box.content';
 import { createComboBox } from '../helpers/combobox';
 import { ComboBoxProps } from './types';
 
