@@ -1,4 +1,6 @@
 export type ParagraphAs = 'p' | 'span';
+export type ParagraphAsNext = 'p';
+import Text from '../atoms/Text';
 export type ParagraphSize = 'xl' | 'lg' | 'md' | 'sm';
 export type ParagraphAlign = 'start' | 'center' | 'end' | 'justify';
 export type ParagraphWhitespace =
@@ -7,8 +9,7 @@ export type ParagraphWhitespace =
   | 'pre-wrap'
   | 'break-spaces';
 
-export type ParagraphProps = {
-  as?: ParagraphAs;
+type ParagraphPropsBase = {
   size?: ParagraphSize;
   align?: ParagraphAlign;
   whitespace?: ParagraphWhitespace;
@@ -19,6 +20,13 @@ export type ParagraphProps = {
   id?: string;
   dataTestid?: string;
 };
+
+export type ParagraphProps =
+  | (ParagraphPropsBase & { as?: 'p' })
+  | (ParagraphPropsBase & {
+      /** @deprecated Use `<Text />` instead of `<Paragraph as="span" />`. */
+      as: 'span';
+    });
 
 export function Paragraph({
   as: As = 'p',
@@ -82,9 +90,21 @@ export function Paragraph({
       }
     }
   })();
-
+  if (As === 'span') {
+    return (
+      <Text
+        size={size}
+        whitespace={whitespace}
+        className={className}
+        id={id}
+        dataTestid={dataTestid}
+      >
+        {children}
+      </Text>
+    );
+  }
   return (
-    <As
+    <p
       className={`${sizeClass} ${alignClass} ${whitespaceClass} ${className || ''}`}
       aria-label={ariaLabel}
       style={style}
@@ -92,6 +112,6 @@ export function Paragraph({
       data-testid={dataTestid}
     >
       {children}
-    </As>
+    </p>
   );
 }

@@ -29,7 +29,8 @@ export const Default: Story = {
       control: 'radio',
       options: ['p', 'span'],
       type: { name: 'string', required: false },
-      description: 'Specifies the HTML element to render the component as.',
+      description:
+        'Element to render as. **`span` is deprecated** — use `<Text />` for inline text.',
     },
     size: {
       control: 'radio',
