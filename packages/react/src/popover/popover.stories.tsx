@@ -1,7 +1,7 @@
 import type { Meta, StoryObj } from '@storybook/react';
 import { useRef, useState } from 'react';
 import { expect, userEvent, within } from 'storybook/test';
-import { Button } from '../button/button.js';
+import Button from '../atoms/Button';
 import { SelectMenu, SelectMenuOption } from '../select/select-menu.js';
 import { Popover } from './popover.js';
 

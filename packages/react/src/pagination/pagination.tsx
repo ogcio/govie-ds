@@ -1,8 +1,7 @@
 'use client';
 import React, { useState, useEffect } from 'react';
 import { Trans, useTranslation } from 'react-i18next';
-import { ArrowRight, ArrowLeft } from '../atoms/index.js';
-import { Button } from '../button/button.js';
+import { ArrowRight, ArrowLeft, Button } from '../atoms/index.js';
 import { Breakpoint, useBreakpoint } from '../hooks/use-breakpoint.js';
 import { Icon } from '../icon/icon.js';
 import { getDisplayPages } from '../utils/utilities.js';
@@ -62,7 +61,7 @@ export const Pagination: React.FC<PaginationProps> = ({
           size="large"
           appearance="dark"
           onClick={() => onPageChange(page)}
-          aria-label={t('pagination.goToPage', {
+          ariaLabel={t('pagination.goToPage', {
             page,
             defaultValue: `Go to page ${page}`,
           })}
@@ -102,11 +101,11 @@ export const Pagination: React.FC<PaginationProps> = ({
         appearance="dark"
         disabled={currentPage === 1}
         onClick={() => onPageChange(currentPage - 1)}
-        aria-label={t('pagination.goToPrevious', {
+        ariaLabel={t('pagination.goToPrevious', {
           defaultValue: 'Go to previous',
         })}
         className={isSMWidth ? 'gi-icon-btn-large' : ''}
-        dataTestid="govie-pagination-prev-btn"
+        dataTestId="govie-pagination-prev-btn"
       >
         <React.Fragment key="previous-btn-pagination">
           <ArrowLeft className="gi-block gi-shrink-0" />
@@ -122,9 +121,9 @@ export const Pagination: React.FC<PaginationProps> = ({
         size="large"
         appearance="dark"
         onClick={() => onPageChange(currentPage + 1)}
-        aria-label={t('pagination.goToNext', { defaultValue: 'Go to next' })}
+        ariaLabel={t('pagination.goToNext', { defaultValue: 'Go to next' })}
         className={isSMWidth ? 'gi-icon-btn-large' : ''}
-        dataTestid="govie-pagination-next-btn"
+        dataTestId="govie-pagination-next-btn"
       >
         {!isSMWidth && t('pagination.next', { defaultValue: 'Next' })}
         <React.Fragment key="next-btn-pagination">

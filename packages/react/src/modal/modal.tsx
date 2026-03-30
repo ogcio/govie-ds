@@ -13,7 +13,7 @@ import {
 } from 'react';
 import { createPortal } from 'react-dom';
 import Heading, { type Props as HeadingProps } from '../Heading.js';
-import { Button } from '../button/button.js';
+import Button from '../atoms/Button';
 import { cn } from '../cn.js';
 import { useAriaHider } from '../hooks/use-aria-hider.js';
 import { useFocusTrap } from '../hooks/use-focus-trap.js';
@@ -34,7 +34,10 @@ import type {
   ModalHeaderProps,
 } from './types.js';
 
-const VARIANT_ORDER: Record<ModalFooterButton['variant'], number> = {
+const VARIANT_ORDER: Record<
+  NonNullable<ModalFooterButton['variant']>,
+  number
+> = {
   flat: 0,
   secondary: 1,
   primary: 2,
@@ -57,7 +60,7 @@ const ModalCloseButton = ({
       size={size}
       appearance="dark"
       className="gi-modal-icon"
-      aria-label={label}
+      ariaLabel={label}
       {...props}
     >
       <>
@@ -330,7 +333,7 @@ export const ModalFooter = ({
               key:
                 button.key ||
                 button.props.id ||
-                button.props['dataTestid'] ||
+                button.props.dataTestId ||
                 `modal-footer-button-${index}`,
               id: button.props.id || `modal-footer-button-${index}`,
               className: cn(button?.props?.className, buttonClassName),
@@ -384,8 +387,8 @@ export const Modal = ({
   const handleClose = () => setIsOpen(false);
 
   const renderCloneTrigger = cloneElement(triggerButton as ReactElement<any>, {
-    'data-testid': 'modal-trigger-button-container',
-    'aria-haspopup': 'dialog',
+    dataTestId: 'modal-trigger-button-container',
+    ariaHasPopup: 'dialog',
     onClick: handleOpen,
   });
 

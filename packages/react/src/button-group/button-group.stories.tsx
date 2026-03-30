@@ -226,11 +226,15 @@ export const TestRenderDefaultSelection: StoryObj = {
       const buttonTwoElement = canvas.getByText('Button 2');
 
       expect(buttonOneElement).toBeInTheDocument();
-      expect(buttonOneElement).toHaveClass('gi-btn-primary-dark');
+      expect(buttonOneElement).toHaveClass(
+        'gi-bg-color-surface-tone-dark-fill-default',
+      );
       expect(buttonOneElement).toHaveAttribute('aria-checked', 'true');
 
       expect(buttonTwoElement).toBeInTheDocument();
-      expect(buttonTwoElement).not.toHaveClass('gi-btn-primary-dark');
+      expect(buttonTwoElement).not.toHaveClass(
+        'gi-bg-color-surface-tone-dark-fill-default',
+      );
       expect(buttonTwoElement).toHaveAttribute('aria-checked', 'false');
     });
   },
