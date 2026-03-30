@@ -1,6 +1,5 @@
 import type { Meta, StoryObj } from '@storybook/react-vite';
 import { within, expect } from 'storybook/test';
-import { ButtonSize } from '../button/types.js';
 import { ScoreSelect } from './score-select.js';
 
 const meta = {
@@ -18,7 +17,7 @@ const meta = {
     name: { control: 'text', type: { name: 'string', required: true } },
     size: {
       control: 'select',
-      options: ['small', 'medium', 'large'] as ButtonSize[],
+      options: ['small', 'medium', 'large'],
     },
     label: { control: 'text' },
     hint: { control: 'text' },

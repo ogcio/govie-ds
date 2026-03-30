@@ -1,6 +1,6 @@
 import { Meta, StoryObj } from '@storybook/react-vite';
 import { expect, waitFor, within } from 'storybook/test';
-import { Button } from '../button/button.js';
+import Button from '../atoms/Button';
 import { Link } from '../link/link.js';
 import { generateSvgPlaceholderDataUrl } from '../utils/placeholder.js';
 import {

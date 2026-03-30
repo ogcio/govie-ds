@@ -1,3 +1,4 @@
+import { IconButtonProps } from '../icon-button/icon-button.js';
 import { ButtonAppearance, ButtonVariant, ButtonSize } from './types.js';
 
 export const getVariantAppearanceClass = ({
@@ -54,7 +55,7 @@ export const getSizeClass = (size?: ButtonSize) => {
   }
 };
 
-export const getButtonIconSizeClass = (size?: ButtonSize) => {
+export const getButtonIconSizeClass = (size?: IconButtonProps['size']) => {
   switch (size) {
     case 'small': {
       return 'gi-icon-btn-small';

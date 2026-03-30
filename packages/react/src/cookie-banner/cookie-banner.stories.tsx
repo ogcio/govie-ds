@@ -1,6 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/react-vite';
 import Heading from '../Heading.js';
-import { Button } from '../button/button.js';
+import Button from '../atoms/Button';
 import { Link } from '../link/link.js';
 import { Paragraph } from '../paragraph/paragraph.js';
 import { CookieBanner } from './cookie-banner.js';

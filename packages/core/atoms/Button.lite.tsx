@@ -19,7 +19,7 @@ export const Size = {
   LARGE: 'large',
 } as const;
 
-type Props = {
+export type Props = {
   id?: string;
   variant?: (typeof Variant)[keyof typeof Variant];
   appearance?: (typeof Appearance)[keyof typeof Appearance];
@@ -37,6 +37,7 @@ type Props = {
   ariaLabel?: string;
   ariaLabelledBy?: string;
   ariaDescribedBy?: string;
+  ariaChecked?: boolean;
   ariaPressed?: boolean | 'mixed';
   ariaExpanded?: boolean;
   ariaControls?: string;
@@ -49,7 +50,6 @@ type Props = {
   value?: string;
   tabIndex?: number;
   dataTestId?: string;
-  dataTestid?: string;
   ref?: any;
 };
 
@@ -76,6 +76,7 @@ export default function Button(props: Props) {
       aria-label={props.ariaLabel}
       aria-labelledby={props.ariaLabelledBy}
       aria-describedby={props.ariaDescribedBy}
+      aria-checked={props.ariaChecked}
       aria-pressed={props.ariaPressed}
       aria-expanded={props.ariaExpanded}
       aria-controls={props.ariaControls}
@@ -86,7 +87,7 @@ export default function Button(props: Props) {
       form={props.form}
       value={props.value}
       tabIndex={props.tabIndex}
-      data-testid={props.dataTestId ?? props.dataTestid}
+      data-testid={props.dataTestId}
     >
       {props.children}
     </button>

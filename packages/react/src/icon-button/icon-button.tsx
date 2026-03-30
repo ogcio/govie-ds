@@ -9,9 +9,10 @@ import { ButtonProps } from '../button/types.js';
 import { cn } from '../cn.js';
 import { Icon, IconProps, IconSize } from '../icon/icon.js';
 
-export type IconButtonProps = Omit<ButtonProps, 'children'> & {
+export type IconButtonProps = Omit<ButtonProps, 'children' | 'size'> & {
   icon: Omit<IconProps, 'size'>;
   className?: string;
+  size?: 'medium' | 'small' | 'large' | 'extraLarge';
 };
 
 export const IconButton = forwardRef<HTMLButtonElement, IconButtonProps>(

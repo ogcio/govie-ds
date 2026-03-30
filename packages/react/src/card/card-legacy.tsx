@@ -1,4 +1,4 @@
-import { Button } from '../button/button.js';
+import Button from '../atoms/Button';
 import { translate as t } from '../i18n/utility.js';
 import { Link } from '../link/link.js';
 import {

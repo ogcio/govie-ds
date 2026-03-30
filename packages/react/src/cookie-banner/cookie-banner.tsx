@@ -1,6 +1,6 @@
 'use client';
 import React from 'react';
-import { ButtonProps } from '../button/types.js';
+import { type Props as ButtonProps } from '../atoms/Button';
 import { Container } from '../container/container.js';
 import { LinkProps } from '../link/link.js';
 

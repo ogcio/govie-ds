@@ -102,7 +102,9 @@ export const FirstPageSelected: Story = {
     await step('should disable previous button on the first page', async () => {
       const previousButton = canvas.getByTestId('govie-pagination-prev-btn');
       expect(previousButton).toBeInTheDocument();
-      expect(previousButton).toHaveClass('gi-btn-flat-dark-disabled');
+      expect(previousButton).toHaveClass(
+        'gi-text-color-text-tone-dark-flat-disabled',
+      );
 
       const previousButtonText = canvas.getByText('Previous');
       expect(previousButtonText).toBeDisabled();
@@ -120,7 +122,9 @@ export const FirstPageSelectedStyling: Story = {
     const canvas = within(canvasElement);
     await step('should disable previous button on the first page', async () => {
       const previousButton = canvas.getByTestId('govie-pagination-prev-btn');
-      expect(previousButton).toHaveClass('gi-btn-flat-dark-disabled');
+      expect(previousButton).toHaveClass(
+        'gi-text-color-text-tone-dark-flat-disabled',
+      );
     });
   },
 };
@@ -136,7 +140,9 @@ export const LastPageSelected: Story = {
     await step('should disable next button on the last page', async () => {
       const nextButton = canvas.getByTestId('govie-pagination-next-btn');
       expect(nextButton).toBeInTheDocument();
-      expect(nextButton).toHaveClass('gi-btn-flat-dark-disabled');
+      expect(nextButton).toHaveClass(
+        'gi-text-color-text-tone-dark-flat-disabled',
+      );
 
       const nextButtonText = canvas.getByText('Next');
       expect(nextButtonText).toBeDisabled();
@@ -154,7 +160,9 @@ export const LastPageSelectedStyling: Story = {
     const canvas = within(canvasElement);
     await step('should disable next button on the last page', async () => {
       const nextButton = canvas.getByTestId('govie-pagination-next-btn');
-      expect(nextButton).toHaveClass('gi-btn-flat-dark-disabled');
+      expect(nextButton).toHaveClass(
+        'gi-text-color-text-tone-dark-flat-disabled',
+      );
     });
   },
 };

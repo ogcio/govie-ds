@@ -18,7 +18,7 @@ import { debounce } from 'lodash';
 import { FC, Fragment, useEffect, useMemo, useRef, useState } from 'react';
 import { useForm, FieldErrors, FieldError } from 'react-hook-form';
 
-import { Button } from '../../button/button.js';
+import Button from '../../atoms/Button';
 import {
   InputCheckbox,
   InputCheckboxTableCell,

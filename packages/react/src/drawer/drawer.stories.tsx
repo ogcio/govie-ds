@@ -1,6 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/react-vite';
 import { within, expect, waitFor, screen, userEvent } from 'storybook/test';
-import { Button } from '../button/button.js';
+import Button from '../atoms/Button';
 import { Paragraph } from '../paragraph/paragraph.js';
 import { DrawerMenuExample } from './drawer.content.js';
 import { Drawer, DrawerBody, DrawerFooter } from './drawer.js';

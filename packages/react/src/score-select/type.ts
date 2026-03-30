@@ -1,11 +1,11 @@
-import { ButtonSize } from '../button/types.js';
+import { Props as ButtonProps } from '../atoms/Button';
 
 type ScoreSelectType = '1-5' | '1-7' | '0-10';
 
 export type ScoreSelectProps = {
   name: string;
   value?: string;
-  size?: ButtonSize;
+  size?: ButtonProps['size'];
   label: string;
   hint?: string;
   leftLabel?: string;

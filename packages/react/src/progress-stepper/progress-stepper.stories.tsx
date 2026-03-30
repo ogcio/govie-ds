@@ -2,7 +2,7 @@ import type { Meta, StoryObj } from '@storybook/react-vite';
 import { useState } from 'react';
 import { within, expect } from 'storybook/test';
 import Heading from '../Heading.js';
-import { Button } from '../button/button.js';
+import Button from '../atoms/Button';
 import {
   FormField,
   FormFieldHint,

@@ -8,7 +8,7 @@ import { Output, EventEmitter, Component, Input } from '@angular/core';
 
 import { CommonModule } from '@angular/common';
 
-type Props = {
+export type Props = {
   id?: string;
   variant?: (typeof Variant)[keyof typeof Variant];
   appearance?: (typeof Appearance)[keyof typeof Appearance];
@@ -24,6 +24,7 @@ type Props = {
   ariaLabel?: string;
   ariaLabelledBy?: string;
   ariaDescribedBy?: string;
+  ariaChecked?: boolean;
   ariaPressed?: boolean | 'mixed';
   ariaExpanded?: boolean;
   ariaControls?: string;
@@ -35,7 +36,6 @@ type Props = {
   value?: string;
   tabIndex?: number;
   dataTestId?: string;
-  dataTestid?: string;
   ref?: any;
 };
 
@@ -340,6 +340,7 @@ const getSize = (x: Props['size']) => (x === Size.SMALL || x === Size.LARGE ? x 
       [attr.aria-label]="ariaLabel"
       [attr.aria-labelledby]="ariaLabelledBy"
       [attr.aria-describedby]="ariaDescribedBy"
+      [attr.aria-checked]="ariaChecked"
       [attr.aria-pressed]="ariaPressed"
       [attr.aria-expanded]="ariaExpanded"
       [attr.aria-controls]="ariaControls"
@@ -350,7 +351,7 @@ const getSize = (x: Props['size']) => (x === Size.SMALL || x === Size.LARGE ? x 
       [attr.form]="form"
       [attr.value]="value"
       [attr.tabIndex]="tabIndex"
-      [attr.data-testid]="dataTestId ?? dataTestid"
+      [attr.data-testid]="dataTestId"
     >
       <ng-content></ng-content>
     </button>
@@ -380,6 +381,7 @@ export default class Button {
   @Input() ariaLabel!: Props['ariaLabel'];
   @Input() ariaLabelledBy!: Props['ariaLabelledBy'];
   @Input() ariaDescribedBy!: Props['ariaDescribedBy'];
+  @Input() ariaChecked!: Props['ariaChecked'];
   @Input() ariaPressed!: Props['ariaPressed'];
   @Input() ariaExpanded!: Props['ariaExpanded'];
   @Input() ariaControls!: Props['ariaControls'];
@@ -391,7 +393,6 @@ export default class Button {
   @Input() value!: Props['value'];
   @Input() tabIndex!: Props['tabIndex'];
   @Input() dataTestId!: Props['dataTestId'];
-  @Input() dataTestid!: Props['dataTestid'];
   @Output() onClick = new EventEmitter<any>();
   @Output() onFocus = new EventEmitter<any>();
   @Output() onBlur = new EventEmitter<any>();
