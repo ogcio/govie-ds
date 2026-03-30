@@ -1,5 +1,5 @@
 .gi-link {
-  @apply gi-decoration-xs gi-inline-flex gi-underline gi-text-color-text-tone-convention-default gi-relative gi-w-fit;
+  @apply gi-decoration-[1px] gi-inline-flex gi-underline gi-text-color-text-tone-convention-default gi-relative gi-w-fit;
 }
 
 .gi-link:not([aria-current='page']) {
@@ -12,7 +12,7 @@
     focus-visible:gi-outline-none;
 }
 .gi-link:not([aria-current='page']):not(.gi-link-disabled) {
-  @apply hover:gi-decoration-lg focus:gi-no-underline focus:gi-rounded-sm focus:gi-shadow-[0_0_0_2px_var(--gieds-color-gray-950),0_0_0_5px_var(--gieds-color-yellow-400)] focus-visible:gi-shadow-[0_0_0_2px_var(--gieds-color-gray-950),0_0_0_5px_var(--gieds-color-yellow-400)] focus-visible:gi-no-underline focus-visible:gi-rounded-sm focus-visible:gi-outline-none;
+  @apply hover:gi-decoration-[3px] focus:gi-no-underline focus:gi-rounded-sm focus:gi-shadow-[0_0_0_2px_var(--gieds-color-gray-950),0_0_0_5px_var(--gieds-color-yellow-400)] focus-visible:gi-shadow-[0_0_0_2px_var(--gieds-color-gray-950),0_0_0_5px_var(--gieds-color-yellow-400)] focus-visible:gi-no-underline focus-visible:gi-rounded-sm focus-visible:gi-outline-none;
 }
 
 .gi-link:not(.gi-link-disabled)[aria-current='page'] {
