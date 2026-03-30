@@ -31,7 +31,7 @@
     "@angular/compiler": "^21.1.0",
     "@angular/compiler-cli": "^21.1.0",
     "@angular/core": "^21.1.0",
-    "@chromatic-com/storybook": "5.0.1",
+    "@chromatic-com/storybook": "^5.1.1",
     "@fontsource/lato": "^5.1.1",
     "@ogcio/design-system-tailwind": "workspace:*",
     "@ogcio/theme-govie": "workspace:*",

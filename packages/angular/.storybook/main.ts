@@ -15,6 +15,7 @@ const config: StorybookConfig = {
     name: '@storybook/angular',
     options: {
       compodoc: false,
+      tsConfig: '.storybook/tsconfig.json',
     },
   },
 };

@@ -42,7 +42,7 @@
   "author": "",
   "license": "MIT",
   "devDependencies": {
-    "@chromatic-com/storybook": "5.0.1",
+    "@chromatic-com/storybook": "^5.1.1",
     "@ogcio/design-system-eslint-config": "workspace:*",
     "@ogcio/design-system-prettier-config": "workspace:*",
     "@ogcio/design-system-tailwind": "workspace:*",
