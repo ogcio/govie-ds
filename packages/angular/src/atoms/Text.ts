@@ -15,11 +15,12 @@ export type TextProps = {
   className?: string;
   id?: string;
   dataTestid?: string;
+  inlineStyle?: Record<string, any>;
 };
 
 import { tv } from 'tailwind-variants';
 const spanVariants = tv({
-  base: 'gi-text-sm md:gi-text-md gi-not-prose',
+  base: 'gi-span-md gi-not-prose',
   variants: {
     size: {
       sm: 'gi-span-sm',
@@ -41,6 +42,7 @@ const spanVariants = tv({
   template: `
     <span
       [attr.id]="id"
+      [ngStyle]="inlineStyle"
       [attr.data-testid]="dataTestid"
       [class]="
         spanVariants({
@@ -66,6 +68,7 @@ export default class Text {
   spanVariants = spanVariants;
 
   @Input() id!: TextProps['id'];
+  @Input() inlineStyle!: TextProps['inlineStyle'];
   @Input() dataTestid!: TextProps['dataTestid'];
   @Input() size!: TextProps['size'];
   @Input() whitespace!: TextProps['whitespace'];

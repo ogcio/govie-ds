@@ -10,12 +10,16 @@ export const textMeta = {
     children: 'Inline text using the Text component.',
     size: 'md' as const,
     whitespace: 'normal' as const,
-    className: ''
+    className: '',
+    inlineStyle: {}
   },
   argTypes: {
     children: {
       control: 'text',
-      type: { name: 'string', required: true },
+      type: {
+        name: 'string',
+        required: true
+      },
       description: 'The text content (required).'
     },
     id: {
@@ -39,6 +43,10 @@ export const textMeta = {
     className: {
       control: 'text',
       description: 'Additional class names.'
+    },
+    inlineStyle: {
+      control: 'object',
+      description: 'Inline CSS styles applied to the root `<span>`.'
     }
   } satisfies ArgTypes<TextProps & {
     children: string;

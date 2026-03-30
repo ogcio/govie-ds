@@ -13,11 +13,12 @@ export type TextProps = {
   className?: string;
   id?: string;
   dataTestid?: string;
+  inlineStyle?: Record<string, any>;
 };
 
 import { tv } from 'tailwind-variants';
 const spanVariants = tv({
-  base: 'gi-text-sm md:gi-text-md gi-not-prose',
+  base: 'gi-span-md gi-not-prose',
   variants: {
     size: {
       sm: 'gi-span-sm',
@@ -38,6 +39,7 @@ function Text(props: TextProps) {
   return (
     <span
       id={props.id}
+      style={props.inlineStyle}
       data-testid={props.dataTestid}
       className={spanVariants({
         size: props.size,

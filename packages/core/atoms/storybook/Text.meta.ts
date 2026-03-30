@@ -12,6 +12,7 @@ export const textMeta = {
     size: 'md' as const,
     whitespace: 'normal' as const,
     className: '',
+    inlineStyle: {},
   },
   argTypes: {
     children: {
@@ -40,6 +41,10 @@ export const textMeta = {
     className: {
       control: 'text',
       description: 'Additional class names.',
+    },
+    inlineStyle: {
+      control: 'object',
+      description: 'Inline CSS styles applied to the root `<span>`.',
     },
   } satisfies ArgTypes<TextProps & { children: string }>,
   parameters: {
