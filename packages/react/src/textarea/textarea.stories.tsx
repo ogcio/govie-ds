@@ -2,7 +2,7 @@ import type { Meta, StoryObj } from '@storybook/react';
 import { useRef, useState } from 'react';
 import { Controller, FormProvider, useForm } from 'react-hook-form';
 import { expect, userEvent, within } from 'storybook/test';
-import { Button } from '../button/button.js';
+import Button from '../atoms/Button';
 import {
   FormField,
   FormFieldError,
@@ -359,7 +359,7 @@ export const Uncontrolled: Story = {
             FormFieldLabel,
             FormFieldHint,
           } from '../forms/form-field/form-field';
-          import { Button } from '../button/button';
+          import { Button } from '@ogcio/design-system-react'
 
           export function Example() {
             const ref = useRef<HTMLTextAreaElement>(null);
@@ -386,7 +386,7 @@ export const Uncontrolled: Story = {
                 />
                 <Button
                   className="gi-mt-1"
-                  data-testid="show-value-button"
+                  dataTestId="show-value-button"
                   onClick={handleShowValue}
                 >
                   Show Value
@@ -425,7 +425,7 @@ export const Uncontrolled: Story = {
         <Button
           className="gi-mt-1"
           onClick={handleShowValue}
-          dataTestid="show-value-button"
+          dataTestId="show-value-button"
         >
           Show Value
         </Button>
@@ -494,13 +494,13 @@ export const WithReactHookForm: Story = {
           </FormField>
 
           <div className="gi-flex gi-flex-cols gi-gap-2 gi-pt-4">
-            <Button type="submit" data-testid="submit-btn">
+            <Button type="submit" dataTestId="submit-btn">
               Submit
             </Button>
             <Button
               type="button"
               onClick={() => methods.reset()}
-              data-testid="reset-btn"
+              dataTestId="reset-btn"
             >
               Reset
             </Button>

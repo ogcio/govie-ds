@@ -1,6 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/react';
 import { expect, userEvent, within, waitFor } from 'storybook/test';
-import { Button } from '../button/button.js';
+import Button from '../atoms/Button';
 import { Tooltip } from './tooltip.js';
 
 const meta = {
@@ -58,7 +58,7 @@ export const Default: Story = {
     text: 'This is a tooltip.',
     position: 'top',
     children: (
-      <Button variant="primary" dataTestid="tooltip-trigger">
+      <Button variant="primary" dataTestId="tooltip-trigger">
         Hover me (Top)
       </Button>
     ),
@@ -106,7 +106,7 @@ export const TopPosition: Story = {
     text: 'This is a tooltip at the top.',
     position: 'top',
     children: (
-      <Button variant="primary" dataTestid="tooltip-trigger">
+      <Button variant="primary" dataTestId="tooltip-trigger">
         Hover me (Top)
       </Button>
     ),
@@ -131,7 +131,7 @@ export const BottomPosition: Story = {
     text: 'This is a tooltip at the bottom.',
     position: 'bottom',
     children: (
-      <Button variant="primary" dataTestid="tooltip-trigger">
+      <Button variant="primary" dataTestId="tooltip-trigger">
         Hover me (Bottom)
       </Button>
     ),
@@ -156,7 +156,7 @@ export const LeftPosition: Story = {
     text: 'This is a tooltip on the left.',
     position: 'left',
     children: (
-      <Button variant="primary" dataTestid="tooltip-trigger">
+      <Button variant="primary" dataTestId="tooltip-trigger">
         Hover me (Left)
       </Button>
     ),
@@ -181,7 +181,7 @@ export const RightPosition: Story = {
     text: 'This is a tooltip on the right.',
     position: 'right',
     children: (
-      <Button variant="primary" dataTestid="tooltip-trigger">
+      <Button variant="primary" dataTestId="tooltip-trigger">
         Hover me (Right)
       </Button>
     ),
@@ -206,7 +206,7 @@ export const WithLongText: Story = {
     text: 'This is a very long tooltip text that tests the tooltip display. This is a very long tooltip text that tests the tooltip display.',
     position: 'top',
     children: (
-      <Button variant="primary" dataTestid="tooltip-trigger">
+      <Button variant="primary" dataTestId="tooltip-trigger">
         Hover me (Top)
       </Button>
     ),

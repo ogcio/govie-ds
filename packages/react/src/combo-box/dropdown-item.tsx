@@ -1,6 +1,6 @@
 'use client';
 import { useEffect, useId, useState } from 'react';
-import { Button } from '../button/button.js';
+import Button from '../atoms/Button';
 import { cn } from '../cn.js';
 import { translate as t } from '../i18n/utility.js';
 import { Icon } from '../icon/icon.js';

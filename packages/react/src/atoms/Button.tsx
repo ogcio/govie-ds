@@ -9,7 +9,7 @@ import * as React from 'react';
 
 import { forwardRef } from 'react';
 
-type Props = {
+export type Props = {
   id?: string;
   variant?: (typeof Variant)[keyof typeof Variant];
   appearance?: (typeof Appearance)[keyof typeof Appearance];
@@ -25,6 +25,7 @@ type Props = {
   ariaLabel?: string;
   ariaLabelledBy?: string;
   ariaDescribedBy?: string;
+  ariaChecked?: boolean;
   ariaPressed?: boolean | 'mixed';
   ariaExpanded?: boolean;
   ariaControls?: string;
@@ -36,7 +37,6 @@ type Props = {
   value?: string;
   tabIndex?: number;
   dataTestId?: string;
-  dataTestid?: string;
   ref?: any;
 };
 
@@ -339,6 +339,7 @@ const Button = forwardRef<Props['ref'], Props>(function Button(props: Props, ref
       aria-label={props.ariaLabel}
       aria-labelledby={props.ariaLabelledBy}
       aria-describedby={props.ariaDescribedBy}
+      aria-checked={props.ariaChecked}
       aria-pressed={props.ariaPressed}
       aria-expanded={props.ariaExpanded}
       aria-controls={props.ariaControls}
@@ -349,7 +350,7 @@ const Button = forwardRef<Props['ref'], Props>(function Button(props: Props, ref
       form={props.form}
       value={props.value}
       tabIndex={props.tabIndex}
-      data-testid={props.dataTestId ?? props.dataTestid}
+      data-testid={props.dataTestId}
     >
       {props.children}
     </button>

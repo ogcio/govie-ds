@@ -1,7 +1,7 @@
 'use client';
 
 import { cloneElement, Fragment, ReactElement, useState } from 'react';
-import { ButtonProps } from '../button/types.js';
+import { type Props as ButtonProps } from '../atoms/Button';
 import { cn } from '../cn.js';
 import { ModalWrapper, ModalBody, ModalFooter } from '../modal/modal.js';
 import { ModalProps, ModalWrapperProps } from '../modal/types.js';
@@ -65,7 +65,7 @@ export const Drawer = ({
   const handleClose = () => setIsOpen(false);
 
   const renderCloneTrigger = cloneElement(triggerButton as ReactElement<any>, {
-    'data-testid': 'drawer-trigger-button-container',
+    dataTestId: 'drawer-trigger-button-container',
     onClick: (event: React.MouseEvent) => {
       const existingOnClick =
         typeof (triggerButton as ReactElement<any>)?.props?.onClick ===

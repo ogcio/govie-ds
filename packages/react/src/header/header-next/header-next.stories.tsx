@@ -2,6 +2,7 @@ import type { Meta, StoryObj } from '@storybook/react';
 import { useMemo, useState } from 'react';
 import { within, expect, userEvent, screen } from 'storybook/test';
 import Heading from '../../Heading.js';
+import Button from '../../atoms/Button';
 import {
   LogoBlack,
   LogoGoldWhite,
@@ -9,7 +10,7 @@ import {
   LogoHarpBlack,
   LogoHarpWhite,
 } from '../../atoms/icons/logos';
-import { Button } from '../../button/button.js';
+
 import { DrawerMenuExample } from '../../drawer/drawer.content.js';
 import {
   DrawerBody,
