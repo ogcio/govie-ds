@@ -11,7 +11,7 @@
     "storybook:react": "pnpm --F '@ogcio/design-system-react^...' build && pnpm --F @ogcio/design-system-react storybook:dev",
     "storybook:angular": "pnpm --F '@ogcio/design-system-angular^...' build && pnpm --F @ogcio/design-system-angular storybook:dev",
     "storybook:html": "pnpm --F '@ogcio/design-system-html^...' build && pnpm --F @ogcio/design-system-html storybook:dev",
-    "storybook:build:react": "NODE_OPTIONS=--max-old-space-size=4096 pnpm --F '@ogcio/design-system-react^...' build && pnpm --F @ogcio/design-system-react storybook:build",
+    "storybook:build:react": "pnpm --F '@ogcio/design-system-react^...' build && pnpm --F @ogcio/design-system-react storybook:build",
     "storybook:build:angular": "pnpm --F '@ogcio/design-system-angular^...' build && pnpm --F @ogcio/design-system-angular storybook:build",
     "storybook:build:html": "pnpm --F '@ogcio/design-system-html...' build && pnpm --F @ogcio/design-system-html storybook:build",
     "examples:vite": "pnpm -F @ogcio/examples-vite^... build && pnpm --F @ogcio/examples-vite dev",

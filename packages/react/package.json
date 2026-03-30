@@ -32,7 +32,7 @@
     "build:styles": "tailwindcss -i ./styles.css -o ./dist/styles.css --minify && node scripts/build-styles.js",
     "build:ts": "vite build",
     "storybook:dev": "storybook dev -p 6006",
-    "storybook:build": "storybook build --stats-json",
+    "storybook:build": "NODE_OPTIONS=--max-old-space-size=4096 storybook build --stats-json",
     "storybook:serve": "http-server storybook-static -p 6006 -c-1",
     "playwright:test": "playwright test",
     "playwright:update-snapshots": "playwright test --update-snapshots",

@@ -348,7 +348,6 @@ export const TabletView: Story = {
   globals: {
     viewport: {
       value: 'ipad',
-      isRotated: false,
     },
   },
 };
