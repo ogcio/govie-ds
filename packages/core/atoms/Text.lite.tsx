@@ -7,10 +7,10 @@ export type TextProps = {
   className?: string;
   id?: string;
   dataTestid?: string;
-  inlineStyle?: Record<string, any>;
+  styles?: Record<string, any>;
 };
-const spanVariants = tv({
-  base: 'gi-span-md gi-not-prose',
+const textVariants = tv({
+  base: 'gi-font-primary gi-not-prose',
   variants: {
     size: {
       sm: 'gi-span-sm',
@@ -25,13 +25,17 @@ const spanVariants = tv({
       'break-spaces': 'gi-whitespace-break-spaces',
     },
   },
+  defaultVariants: {
+    size: 'xl',
+    whitespace: 'normal',
+  },
 });
 export default function Text(props: TextProps) {
   return (
     <span
-      className={spanVariants({ size: props.size, whitespace: props.whitespace, class: props.className })}
+      className={textVariants({ size: props.size, whitespace: props.whitespace, class: props.className })}
       id={props.id}
-      style={props.inlineStyle}
+      style={props.styles}
       data-testid={props.dataTestid}
     >
       {props.children}

@@ -96,7 +96,7 @@ export function Paragraph({
         size={size}
         whitespace={whitespace}
         className={className}
-        inlineStyle={style}
+        styles={style}
         id={id}
         dataTestid={dataTestid}
       >
