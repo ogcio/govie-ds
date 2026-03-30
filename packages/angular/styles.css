@@ -4,4 +4,4 @@
 
 @import 'node_modules/@ogcio/design-system-tailwind/css/layout.css';
 /* @import 'node_modules/@ogcio/design-system-tailwind/css/components.css'; <- this breaks the build.*/
-@import 'node_modules/@ogcio/design-system-tailwind/css/typography.css';
+/* @import 'node_modules/@ogcio/design-system-tailwind/css/typography.css'; */
