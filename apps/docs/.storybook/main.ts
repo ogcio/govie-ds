@@ -6,7 +6,7 @@ const __dirname = path.dirname(fileURLToPath(import.meta.url));
 
 const config: StorybookConfig = {
   stories: ['../src/**/*.mdx', '../src/**/*.stories.@(js|jsx|mjs|ts|tsx)'],
-  addons: ['@storybook/addon-docs', '@chromatic-com/storybook'],
+  addons: ['@storybook/addon-docs'],
   framework: {
     name: '@storybook/nextjs-vite',
     options: {},

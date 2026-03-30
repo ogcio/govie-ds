@@ -23,5 +23,4 @@ export class ConsoleLogger {
   error() {}
 }
 
-const mock = { Analytics, ConsoleLogger };
-export default mock;
+export default { Analytics, ConsoleLogger };
