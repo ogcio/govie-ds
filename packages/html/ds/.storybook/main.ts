@@ -47,7 +47,6 @@ const config: StorybookConfig = {
       resolve: {
         alias: {
           '@ogcio/design-system-html': path.resolve(
-             
             path.dirname(fileURLToPath(import.meta.url)),
             '../src/index.ts',
           ),
