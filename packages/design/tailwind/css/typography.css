@@ -4,21 +4,18 @@
   /*
     :where() keeps the class contribution at 0 specificity so a single extra class
     (e.g. gi-decoration-lg) on the same element can override thickness/offset.
-
     */
 
   :where(.gi-underline) {
-    text-decoration-thickness: max(1px);
     text-underline-offset: 0.2em;
   }
   /* required, as <a/> tag by default uses text-decoration: inherit */
-  a:where(.gi-underline) {
-    text-decoration-thickness: max(1px);
-    text-underline-offset: 0.2em;
+
+  a:where(.gi-underline:hover),
+  :where(.gi-underline:hover) {
+    text-decoration-thickness: max(2px, 0.125em);
   }
-  a:where(.gi-underline:hover) {
-    text-decoration-thickness: 2px;
-  }
+
   /* Firefox skips the underline for descending characters at 0.2em for the given font Lato, so we need to increase it to 0.23em */
   @supports (-moz-appearance: none) {
     :where(.gi-underline) {
