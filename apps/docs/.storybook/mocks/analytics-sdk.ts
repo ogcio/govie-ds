@@ -10,17 +10,15 @@
  */
 
 export class Analytics {
-  constructor(..._args: unknown[]) {}
-  trackEvent() {}
-  trackPageView() {}
-  init() {}
+  trackEvent = () => undefined;
+  trackPageView = () => undefined;
+  init = () => undefined;
 }
 
 export class ConsoleLogger {
-  constructor(..._args: unknown[]) {}
-  log() {}
-  warn() {}
-  error() {}
+  log = () => undefined;
+  warn = () => undefined;
+  error = () => undefined;
 }
 
 export default { Analytics, ConsoleLogger };

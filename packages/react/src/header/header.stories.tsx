@@ -371,7 +371,6 @@ export const MobileView: Story = {
   globals: {
     viewport: {
       value: 'mobile2',
-      isRotated: false,
     },
   },
 };
@@ -614,7 +613,6 @@ export const MobileWithExternalLinks: Story = {
   globals: {
     viewport: {
       value: 'mobile2',
-      isRotated: false,
     },
   },
 };
@@ -645,7 +643,6 @@ export const ShowTitleOnMobile: Story = {
   globals: {
     viewport: {
       value: 'mobile2',
-      isRotated: false,
     },
   },
 };
@@ -868,7 +865,6 @@ export const ShowMobileMenuForLanguages: Story = {
   globals: {
     viewport: {
       value: 'mobile2',
-      isRotated: false,
     },
   },
 };

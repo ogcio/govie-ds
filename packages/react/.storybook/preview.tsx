@@ -71,7 +71,6 @@ const preview: Preview = {
   initialGlobals: {
     viewport: {
       value: 'responsive',
-      isRotated: false,
     },
   },
 };
