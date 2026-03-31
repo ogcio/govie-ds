@@ -158,7 +158,7 @@ export const AsSpan: Story = {
   play: async ({ canvasElement, step }) => {
     const canvas = within(canvasElement);
     const paragraph = canvas.getByText('This is a paragraph');
-    expect(paragraph).toHaveClass('gi-span-md');
+    expect(paragraph).toHaveClass('gi-text-md');
 
     await step(
       'should render a span with the correct content when props.as is "span"',
@@ -214,7 +214,7 @@ export const TestSizeMdSpan: Story = {
     const canvas = within(canvasElement);
     await step('should have correct text size classes for "md"', async () => {
       const element = canvas.getByText('Medium text');
-      expect(element.classList.contains('gi-span-md')).toBe(true);
+      expect(element.classList.contains('gi-text-md')).toBe(true);
     });
   },
 };

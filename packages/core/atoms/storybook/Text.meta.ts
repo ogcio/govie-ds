@@ -2,6 +2,11 @@ import type { ArgTypes, StoryContext, Renderer } from '@storybook/types';
 import { within, expect } from 'storybook/test';
 import type { TextProps } from '../Text.lite';
 
+/** `primitive.font.size["400"]` — `gi-text-md` font size. */
+const TEXT_MD_FONT_REM = 1.125;
+/** `primitive.font.lineHeight["1000"]` — paired line height for `md` body text. */
+const TEXT_MD_LINE_HEIGHT_RATIO = 1.5;
+
 export const textMeta = {
   tags: ['autodocs'] as string[],
   title: 'Typography/Text',
@@ -67,10 +72,25 @@ export const Default = {
       const element = canvas.getByText(contentText);
       expect(element).toBeInTheDocument();
       expect(element.tagName.toLowerCase()).toBe('span');
-      expect(element.className).toContain('1.125rem');
       expect(element).toHaveClass('gi-whitespace-normal');
-      expect(element).toHaveClass('gi-font-normal');
+      expect(element).toHaveClass('gi-font-primary');
       expect(element).toHaveClass('gi-not-prose');
+    });
+
+    await step('computed font size and line-height match md body tokens', async () => {
+      const element = canvas.getByText(contentText) as HTMLElement;
+      const root = (canvasElement.ownerDocument ?? document).documentElement;
+      const rootFontPx = parseFloat(getComputedStyle(root).fontSize);
+      const computed = getComputedStyle(element);
+      const fontSizePx = parseFloat(computed.fontSize);
+      const lineHeightPx = parseFloat(computed.lineHeight);
+      const expectedFontPx = TEXT_MD_FONT_REM * rootFontPx;
+      const expectedLinePx = TEXT_MD_LINE_HEIGHT_RATIO * fontSizePx;
+
+      // Round so we use strict `toBe`: browsers can report fractional px; JS float math is inexact.
+      expect(Math.round(fontSizePx)).toBe(Math.round(expectedFontPx));
+      expect(Math.round(lineHeightPx)).toBe(Math.round(expectedLinePx));
+      expect(computed.whiteSpace).toBe('normal');
     });
   },
 };
