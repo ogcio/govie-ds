@@ -125,6 +125,7 @@ const wrapInDarkBg = (story: Story): Story => {
 export const Default: Story = {
   args: {
     ...baseProps,
+    className: 'gi-underline-offset-[0.5em]!important',
   },
   play: async ({ canvasElement, step }) => {
     const canvas = within(canvasElement);
