@@ -18,13 +18,13 @@ export type TextProps = {
 
 import { tv } from 'tailwind-variants';
 const textVariants = tv({
-  base: 'gi-font-primary gi-leading-[1.5] gi-not-prose',
+  base: 'gi-font-primary gi-not-prose',
   variants: {
     size: {
-      sm: 'gi-text-[1rem]',
-      md: 'gi-text-[1.125rem]',
-      lg: 'gi-text-[1.25rem]',
-      xl: 'gi-text-[1.5rem]',
+      sm: 'gi-text-sm',
+      md: 'gi-text-md',
+      lg: 'gi-text-lg',
+      xl: 'gi-text-lg xs:gi-text-xl',
     },
     whitespace: {
       normal: 'gi-whitespace-normal',
