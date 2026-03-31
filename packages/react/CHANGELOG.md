@@ -1,5 +1,18 @@
 # Changelog
 
+## [1.33.0](https://github.com/ogcio/govie-ds/compare/react-lib-v1.32.0...react-lib-v1.33.0) (2026-03-30)
+
+
+### Features
+
+* **AB#35134:** inline tailwind components  ([#895](https://github.com/ogcio/govie-ds/issues/895)) ([fbce8c7](https://github.com/ogcio/govie-ds/commit/fbce8c74c63738bb3730e447f3b274a4d3343da9))
+* **AB#35609:** Replace existing Button with GiButton ([#880](https://github.com/ogcio/govie-ds/issues/880)) ([c87864c](https://github.com/ogcio/govie-ds/commit/c87864c940d2af460aab572cbd0e7b5e0a030c3c))
+
+
+### Bug Fixes
+
+* **AB#34129:** select drop down toggle bug ([#896](https://github.com/ogcio/govie-ds/issues/896)) ([982e378](https://github.com/ogcio/govie-ds/commit/982e378edf41e85094cff58c3d7afa0f1d296e7f))
+
 ## [1.32.0](https://github.com/ogcio/govie-ds/compare/react-lib-v1.31.1...react-lib-v1.32.0) (2026-03-24)
 
 
