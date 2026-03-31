@@ -1,11 +1,11 @@
 {
-  "apps/docs": "1.32.0",
+  "apps/docs": "1.32.1",
   "packages/build/eslint-config": "1.4.0",
   "packages/build/prettier-config": "1.1.1",
   "packages/design/tailwind": "1.23.0",
   "packages/design/theme-builder": "1.23.0",
   "packages/html/ds": "1.20.0",
-  "packages/react": "1.32.0",
+  "packages/react": "1.33.0",
   "packages/themes/govie": "1.21.4",
   "packages/design/tokens": "1.22.0",
   "packages/design/figma": "1.0.4"
