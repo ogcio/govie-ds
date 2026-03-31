@@ -5,8 +5,8 @@ const styles = tv({
   base: 'gi-font-bold gi-font-primary',
   variants: {
     size: {
-      xl: 'gi-text-4xl md:gi-text-5xl xl:gi-text-6xl',
-      lg: 'gi-text-2xl md:gi-text-3xl xl:gi-text-4xl',
+      xl: 'gi-text-4xl md:gi-text-5xl xl:gi-text-6xl gi-decoration-md [&_.gi-underline]:gi-decoration-md [&_a:hover]:gi-decoration-lg',
+      lg: 'gi-text-2xl md:gi-text-3xl xl:gi-text-4xl gi-decoration-md [&_.gi-underline]:gi-decoration-md [&_a:hover]:gi-decoration-lg',
       md: 'gi-text-lg md:gi-text-xl xl:gi-text-2xl',
       sm: 'gi-text-lg xl:gi-text-xl',
       xs: 'gi-text-md',

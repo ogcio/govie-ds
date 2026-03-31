@@ -1,5 +1,13 @@
 import type { Meta, StoryObj } from '@storybook/react';
 import type { CSSProperties } from 'react';
+import {
+  H1 as GiH1,
+  H2 as GiH2,
+  H3 as GiH3,
+  H4 as GiH4,
+  H5 as GiH5,
+  H6 as GiH6,
+} from '../atoms/index.js';
 import { Link } from '../link/link.js';
 import { Paragraph } from '../paragraph/paragraph.js';
 
@@ -17,13 +25,16 @@ const meta = {
 
 export default meta;
 
-const UNDERLINE_PLAYGROUND_SCALE_ROWS = [
-  { label: 'Heading 1', fontClass: 'gi-heading-xl' },
-  { label: 'Heading 2', fontClass: 'gi-heading-lg' },
-  { label: 'Heading 3', fontClass: 'gi-heading-md' },
-  { label: 'Heading 4', fontClass: 'gi-heading-sm' },
-  { label: 'Heading 5', fontClass: 'gi-heading-xs' },
-  { label: 'Heading 6', fontClass: 'gi-heading-2xs' },
+const UNDERLINE_PLAYGROUND_HEADING_ROWS = [
+  { label: 'Heading 1', Heading: GiH1 },
+  { label: 'Heading 2', Heading: GiH2 },
+  { label: 'Heading 3', Heading: GiH3 },
+  { label: 'Heading 4', Heading: GiH4 },
+  { label: 'Heading 5', Heading: GiH5 },
+  { label: 'Heading 6', Heading: GiH6 },
+] as const;
+
+const UNDERLINE_PLAYGROUND_BODY_ROWS = [
   { label: 'Body XL', fontClass: 'gi-paragraph-xl' },
   { label: 'Body LG', fontClass: 'gi-paragraph-lg' },
   { label: 'Body MD', fontClass: 'gi-paragraph-md' },
@@ -152,7 +163,16 @@ export const Playground: StoryObj<UnderlinePlaygroundArguments> = {
           <section className="gi-flex gi-flex-col gi-gap-4">
             <h2 className="gi-heading-sm gi-text-black">Type scale</h2>
             <ul className="gi-m-0 gi-list-none gi-flex gi-flex-col gi-gap-4 gi-p-0">
-              {UNDERLINE_PLAYGROUND_SCALE_ROWS.map((row) => (
+              {UNDERLINE_PLAYGROUND_HEADING_ROWS.map(({ label, Heading }) => (
+                <li key={label}>
+                  <Heading className="gi-text-black">
+                    {label} with <Link href="#">jelly</Link>{' '}
+                    <Link href="#">foggy</Link>{' '}
+                    <Link href="#">Lorum Ipsum</Link>.
+                  </Heading>
+                </li>
+              ))}
+              {UNDERLINE_PLAYGROUND_BODY_ROWS.map((row) => (
                 <li key={row.label}>
                   <div className={`${row.fontClass} gi-text-black`}>
                     {row.label} with <Link href="#">jelly</Link>{' '}

@@ -5,30 +5,24 @@
     :where() keeps the class contribution at 0 specificity so a single extra class
     (e.g. gi-decoration-lg) on the same element can override thickness/offset.
 
-    Preflight uses `a { text-decoration: inherit }` at specificity (0,0,1). A plain
-    `:where(.gi-underline)` is (0,0,0), so `a` wins. Use `a:where(.gi-underline)`:
-    the type selector gives (0,0,1) while :where() adds 0 — tie with preflight `a`,
-    and our longhands win when this stylesheet is ordered after preflight. Still
-    overridable by any one utility class (0,1,0) on the anchor (e.g. gi-link’s
-    gi-decoration-*).
-  */
+    */
+
   :where(.gi-underline) {
-    text-underline-offset: 0.2em;
     text-decoration-thickness: max(1px);
-  }
-  :where(.gi-underline:hover) {
-    text-decoration-thickness: max(2px);
+    text-underline-offset: 0.2em;
   }
   /* required, as <a/> tag by default uses text-decoration: inherit */
   a:where(.gi-underline) {
     text-decoration-thickness: max(1px);
+    text-underline-offset: 0.2em;
   }
   a:where(.gi-underline:hover) {
-    text-decoration-thickness: max(2px);
+    text-decoration-thickness: 2px;
   }
   /* Firefox skips the underline for descending characters at 0.2em for the given font Lato, so we need to increase it to 0.23em */
   @supports (-moz-appearance: none) {
     :where(.gi-underline) {
+      text-decoration-thickness: max(1px);
       text-underline-offset: 0.23em;
     }
   }
@@ -40,26 +34,6 @@
 
 .gi-heading-lg {
   font: var(--gieds-typography-default-heading-lg);
-}
-
-/* Heading XL / LG: (0,1,0) — beats plain `a` (0,0,1); :where keeps .gi-underline at 0. */
-.gi-heading-xl:where(.gi-underline),
-.gi-heading-lg:where(.gi-underline) {
-  text-decoration-line: underline;
-  text-underline-offset: 0.2em;
-  text-decoration-thickness: max(3px);
-}
-
-.gi-heading-xl:where(.gi-underline:hover),
-.gi-heading-lg:where(.gi-underline:hover) {
-  text-decoration-thickness: max(4px);
-}
-
-@supports (-moz-appearance: none) {
-  .gi-heading-xl:where(.gi-underline),
-  .gi-heading-lg:where(.gi-underline) {
-    text-underline-offset: 0.23em;
-  }
 }
 
 .gi-heading-md {
