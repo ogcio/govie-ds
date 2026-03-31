@@ -31,7 +31,7 @@ export const textMeta = {
     size: {
       control: 'radio',
       options: ['xl', 'lg', 'md', 'sm'],
-      description: 'Type scale matching paragraph span sizes (`gi-span-*`).',
+      description: 'Text size: fixed rem scale with 1.5 line-height (body text scale).',
     },
     whitespace: {
       control: 'radio',
@@ -51,7 +51,7 @@ export const textMeta = {
     docs: {
       description: {
         component:
-          'Inline text rendered as a `<span>` with the same type scale as `<Paragraph as="span" />`. Use `<Paragraph />` for block body copy.',
+          'Inline text rendered as a `<span>` with a fixed rem type scale. Use `<Paragraph />` for block body copy.',
       },
     },
   },
@@ -67,10 +67,10 @@ export const Default = {
       const element = canvas.getByText(contentText);
       expect(element).toBeInTheDocument();
       expect(element.tagName.toLowerCase()).toBe('span');
-      expect(element).toHaveClass('gi-span-md');
+      expect(element.className).toContain('1.125rem');
       expect(element).toHaveClass('gi-whitespace-normal');
-      expect(element).toHaveClass('gi-text-sm');
-      expect(element).toHaveClass('md:gi-text-md');
+      expect(element).toHaveClass('gi-font-normal');
+      expect(element).toHaveClass('gi-not-prose');
     });
   },
 };
