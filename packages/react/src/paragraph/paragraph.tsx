@@ -1,6 +1,6 @@
 export type ParagraphAs = 'p' | 'span';
 export type ParagraphAsNext = 'p';
-import Text from '../atoms/Text';
+import { Text } from '../atoms';
 export type ParagraphSize = 'xl' | 'lg' | 'md' | 'sm';
 export type ParagraphAlign = 'start' | 'center' | 'end' | 'justify';
 export type ParagraphWhitespace =
