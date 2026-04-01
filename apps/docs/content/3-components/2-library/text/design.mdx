@@ -1,0 +1,78 @@
+---
+title: 'Text'
+description: 'Text Component'
+status: 'stable'
+component:
+  id: 'text'
+  link: 'https://www.figma.com/design/ZEqfpXhocdZs1K5YfsE5ws/Design-system?node-id=32-923&t=Re0xIRAmWNDNItHY-4'
+  status: 'stable'
+---
+
+# Text
+
+The Text component applies the design system’s body type scale to **inline** copy. It always renders a `<span>` with consistent font family, size, and line height. Use [`Paragraph`](/components/library/paragraph/design) for block body copy.
+
+<Section current="design">
+
+<ComponentPreview>
+  <Text>Inline text using the Text component</Text>
+</ComponentPreview>
+<FigmaPreviewButton href="https://www.figma.com/design/ZEqfpXhocdZs1K5YfsE5ws/Design-system?node-id=32-923&t=Re0xIRAmWNDNItHY-4" />
+
+## Variants
+
+### Sizes
+
+<ComponentContainer>
+  <Text size="sm">Small text</Text>
+</ComponentContainer>
+
+<ComponentContainer>
+  <Text size="md">Medium text (default)</Text>
+</ComponentContainer>
+
+<ComponentContainer>
+  <Text size="lg">Large text</Text>
+</ComponentContainer>
+
+<ComponentContainer>
+  <Text size="xl">Extra large text</Text>
+</ComponentContainer>
+
+### Whitespace
+
+Use the `whitespace` prop when you need to preserve line breaks or spaces (for example code snippets or preformatted strings). The default is normal wrapping.
+
+<ComponentContainer>
+  <Text whitespace="pre">{`Line one\nLine two`}</Text>
+</ComponentContainer>
+
+## Usage
+
+Use Text for labels, captions, table cells, and other inline runs that should match body typography without introducing a block-level paragraph. Pair it with headings, links, and other components inside sentences or UI chrome.
+
+### Do
+
+- Use Text for inline strings that should follow the text type scale (`sm`, `md`, `lg`, `xl`).
+- Use Paragraph when the content is a full sentence or paragraph of body copy.
+- Use `whitespace` when formatting must respect spaces or line breaks.
+
+<ComponentContainer>
+  <div className="gi-paragraph-md gi-text-start gi-whitespace-normal">
+    Status: <Text size="md">Published</Text>
+  </div>
+</ComponentContainer>
+
+### Don't
+
+- Don't use Text for page or section titles — use [`Heading`](/components/library/heading/design).
+- Don't wrap large blocks of prose only in Text; prefer Paragraph for readability and semantics.
+- Don't rely on Text for bespoke styling; extend with `className` only when necessary and consistent with tokens.
+
+<ComponentContainer>
+  <Text size="md">
+    {`For several sentences of body copy, use Paragraph instead of chaining Text nodes.`}
+  </Text>
+</ComponentContainer>
+
+</Section>
