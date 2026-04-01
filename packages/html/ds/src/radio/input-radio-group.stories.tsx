@@ -1,4 +1,4 @@
-import type { Meta, StoryObj } from '@storybook/react';
+import type { Meta, StoryObj } from '@storybook/react-vite';
 import parse from 'html-react-parser';
 import { createInputRadioGroup } from '../helpers/input-radio-group';
 import { createParagraph } from '../helpers/typography';

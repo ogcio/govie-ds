@@ -1,4 +1,4 @@
-import type { Meta, StoryObj } from '@storybook/react';
+import type { Meta, StoryObj } from '@storybook/react-vite';
 import { expect, within, userEvent, waitFor, fn } from 'storybook/test';
 import { Pagination } from './pagination.js';
 

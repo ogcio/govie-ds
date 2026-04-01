@@ -9,7 +9,7 @@ import {
   Title,
 } from '@storybook/addon-docs/blocks';
 import { withThemeByDataAttribute } from '@storybook/addon-themes';
-import type { Preview } from '@storybook/react';
+import type { Preview } from '@storybook/react-vite';
 import { INITIAL_VIEWPORTS, MINIMAL_VIEWPORTS } from 'storybook/viewport';
 // Required for Storybook dev; fonts are bundled into styles.css during build
 import '../fonts.css';
@@ -37,6 +37,7 @@ const preview: Preview = {
       attributeName: 'data-theme',
     }),
   ],
+
   parameters: {
     docs: {
       page: () => (
@@ -58,14 +59,20 @@ const preview: Preview = {
       },
     },
     viewport: {
-      viewports: {
+      options: {
         ...INITIAL_VIEWPORTS,
         ...MINIMAL_VIEWPORTS,
       },
-      defaultViewport: 'responsive',
     },
   },
+
   tags: ['autodocs'],
+
+  initialGlobals: {
+    viewport: {
+      value: 'responsive',
+    },
+  },
 };
 
 export default preview;

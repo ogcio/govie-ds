@@ -1,4 +1,5 @@
 import path from 'node:path';
+import { fileURLToPath } from 'node:url';
 import type { StorybookConfig } from '@storybook/react-vite';
 
 const config: StorybookConfig = {
@@ -46,8 +47,7 @@ const config: StorybookConfig = {
       resolve: {
         alias: {
           '@ogcio/design-system-html': path.resolve(
-            // eslint-disable-next-line unicorn/prefer-module
-            __dirname,
+            path.dirname(fileURLToPath(import.meta.url)),
             '../src/index.ts',
           ),
         },

@@ -1,4 +1,4 @@
-import type { Meta, StoryObj } from '@storybook/react';
+import type { Meta, StoryObj } from '@storybook/react-vite';
 import parse from 'html-react-parser';
 import { createProgressStepper } from '../helpers/progress-stepper';
 import { formSlot1, formSlot2, formSlot3 } from './progress-stepper.content';

@@ -4,5 +4,6 @@
     "rootDir": "..",
     "types": ["node"]
   },
-  "include": ["../src/**/*.ts", "./*.ts"]
+  "include": ["../src/**/*.ts", "./*.ts", "./*.mdx"],
+  "exclude": ["../src/**/index.ts", "./main.ts"]
 }

@@ -1,5 +1,5 @@
-import type { Preview } from '@storybook/react';
-import '@fontsource/lato';
+import type { Preview } from '@storybook/nextjs-vite';
+import '@ogcio/design-system-react/fonts.css';
 import '@ogcio/theme-govie/theme.css';
 import './global.css';
 
