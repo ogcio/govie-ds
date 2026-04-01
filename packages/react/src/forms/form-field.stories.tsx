@@ -1,4 +1,4 @@
-import type { Meta, StoryObj } from '@storybook/react';
+import type { Meta, StoryObj } from '@storybook/react-vite';
 import { within, expect } from 'storybook/test';
 import { InputText } from '../input-text/input-text.js';
 import { TextArea } from '../textarea/textarea.js';

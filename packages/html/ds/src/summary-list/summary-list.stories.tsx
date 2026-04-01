@@ -1,4 +1,4 @@
-import type { Meta, StoryObj } from '@storybook/react';
+import type { Meta, StoryObj } from '@storybook/react-vite';
 import parse from 'html-react-parser';
 import { createSummaryList } from '../helpers/summary-list';
 import type { SummaryListProps } from './summary-list.schema';

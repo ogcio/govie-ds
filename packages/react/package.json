@@ -32,7 +32,7 @@
     "build:styles": "tailwindcss -i ./styles.css -o ./dist/styles.css --minify && node scripts/build-styles.js",
     "build:ts": "vite build",
     "storybook:dev": "storybook dev -p 6006",
-    "storybook:build": "storybook build --stats-json",
+    "storybook:build": "NODE_OPTIONS=--max-old-space-size=4096 storybook build --stats-json",
     "storybook:serve": "http-server storybook-static -p 6006 -c-1",
     "playwright:test": "playwright test",
     "playwright:update-snapshots": "playwright test --update-snapshots",
@@ -65,12 +65,19 @@
     "rollup-preserve-directives": "^1.1.2"
   },
   "devDependencies": {
+    "@chromatic-com/storybook": "^5.1.1",
     "@ogcio/design-system-eslint-config": "workspace:*",
     "@ogcio/design-system-prettier-config": "workspace:*",
     "@ogcio/design-system-tailwind": "workspace:*",
     "@ogcio/theme-doete": "workspace:*",
     "@ogcio/theme-govie": "workspace:*",
-    "@storybook/types": "^8.6.14",
+    "@storybook/addon-a11y": "^10.3.3",
+    "@storybook/addon-coverage": "^3.0.1",
+    "@storybook/addon-docs": "^10.3.3",
+    "@storybook/addon-links": "^10.3.3",
+    "@storybook/addon-themes": "^10.3.3",
+    "@storybook/addon-vitest": "^10.3.3",
+    "@storybook/react-vite": "^10.3.3",
     "@testing-library/jest-dom": "^6.4.8",
     "@testing-library/react": "^16.0.1",
     "@testing-library/user-event": "^14.5.2",
@@ -78,13 +85,15 @@
     "autoprefixer": "^10.4.19",
     "axe-core": "^4.10.0",
     "eslint": "^9.23.0",
-    "eslint-plugin-storybook": "^0.12.0",
+    "eslint-plugin-storybook": "^10.2.19",
     "glob": "^11.0.1",
     "http-server": "^14.1.1",
     "i18next": "^25.6.2",
     "postcss": "^8.4.40",
     "postcss-import": "^16.1.0",
     "react": "19.0.0",
-    "react-dom": "19.0.0"
+    "react-dom": "19.0.0",
+    "storybook": "^10.3.3",
+    "storybook-addon-pseudo-states": "^10.3.3"
   }
 }

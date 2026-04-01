@@ -1,6 +1,6 @@
 'use client';
 
-import type { Meta, StoryObj } from '@storybook/react';
+import type { Meta, StoryObj } from '@storybook/react-vite';
 import { useState } from 'react';
 import { expect, within, userEvent, waitFor } from 'storybook/test';
 import { Paragraph } from '../paragraph/paragraph.js';
