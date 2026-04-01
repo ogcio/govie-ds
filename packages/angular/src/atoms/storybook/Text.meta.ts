@@ -1,6 +1,6 @@
 import type { ArgTypes, StoryContext, Renderer } from 'storybook/internal/types';
 import { within, expect } from 'storybook/test';
-import type { TextProps } from '../Text';
+import type { Props } from '../Text';
 
 /** `primitive.font.size["400"]` — `gi-text-md` font size. */
 const TEXT_MD_FONT_REM = 1.125;
@@ -53,7 +53,7 @@ export const textMeta = {
       control: 'object',
       description: 'Inline CSS styles applied to the root `<span>`.'
     }
-  } satisfies ArgTypes<TextProps & {
+  } satisfies ArgTypes<Props & {
     children: string;
   }>,
   parameters: {

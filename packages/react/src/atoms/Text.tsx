@@ -6,9 +6,9 @@
 
 import * as React from 'react';
 
-export type TextProps = {
+export type Props = {
   children: any;
-  size?: 'sm' | 'md' | 'lg' | 'xl';
+  size?: (typeof Size)[keyof typeof Size];
   whitespace?: 'normal' | 'pre' | 'pre-wrap' | 'break-spaces';
   className?: string;
   id?: string;
@@ -17,6 +17,18 @@ export type TextProps = {
 };
 
 import { tv } from 'tailwind-variants';
+export const Size = {
+  SM: 'sm',
+  MD: 'md',
+  LG: 'lg',
+  XL: 'xl',
+} as const;
+export const Whitespace = {
+  NORMAL: 'normal',
+  PRE: 'pre',
+  PRE_WRAP: 'pre-wrap',
+  BREAK_SPACES: 'break-spaces',
+} as const;
 const textVariants = tv({
   base: 'gi-font-primary gi-not-prose',
   variants: {
@@ -38,16 +50,19 @@ const textVariants = tv({
     whitespace: 'normal',
   },
 });
+const getSize = (x: Props['size'] = Size.MD) => (Object.values(Size).includes(x) ? x : Size.MD);
+const getWhitespace = (x: Props['whitespace'] = Whitespace.NORMAL) =>
+  Object.values(Whitespace).includes(x) ? x : Whitespace.NORMAL;
 
-function Text(props: TextProps) {
+function Text(props: Props) {
   return (
     <span
       id={props.id}
       style={props.styles}
       data-testid={props.dataTestid}
       className={textVariants({
-        size: props.size,
-        whitespace: props.whitespace,
+        size: getSize(props.size),
+        whitespace: getWhitespace(props.whitespace),
         class: props.className,
       })}
     >

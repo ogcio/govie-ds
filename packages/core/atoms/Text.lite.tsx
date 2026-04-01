@@ -1,14 +1,29 @@
+import { useMetadata } from '@builder.io/mitosis';
 import { tv } from 'tailwind-variants';
 
-export type TextProps = {
+export const Size = {
+  SM: 'sm',
+  MD: 'md',
+  LG: 'lg',
+  XL: 'xl',
+} as const;
+
+export type Props = {
   children: any;
-  size?: 'sm' | 'md' | 'lg' | 'xl';
+  size?: (typeof Size)[keyof typeof Size];
   whitespace?: 'normal' | 'pre' | 'pre-wrap' | 'break-spaces';
   className?: string;
   id?: string;
   dataTestid?: string;
   styles?: Record<string, any>;
 };
+
+export const Whitespace = {
+  NORMAL: 'normal',
+  PRE: 'pre',
+  PRE_WRAP: 'pre-wrap',
+  BREAK_SPACES: 'break-spaces',
+} as const;
 
 const textVariants = tv({
   base: 'gi-font-primary gi-not-prose',
@@ -31,10 +46,17 @@ const textVariants = tv({
     whitespace: 'normal',
   },
 });
-export default function Text(props: TextProps) {
+
+useMetadata({ angular: { selector: 'gi-text' } });
+
+export default function Text(props: Props) {
   return (
     <span
-      className={textVariants({ size: props.size, whitespace: props.whitespace, class: props.className })}
+      className={textVariants({
+        size: getSize(props.size),
+        whitespace: getWhitespace(props.whitespace),
+        class: props.className,
+      })}
       id={props.id}
       style={props.styles}
       data-testid={props.dataTestid}
@@ -43,3 +65,7 @@ export default function Text(props: TextProps) {
     </span>
   );
 }
+
+const getSize = (x: Props['size'] = Size.MD) => (Object.values(Size).includes(x) ? x : Size.MD);
+const getWhitespace = (x: Props['whitespace'] = Whitespace.NORMAL) =>
+  Object.values(Whitespace).includes(x) ? x : Whitespace.NORMAL;

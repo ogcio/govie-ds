@@ -8,9 +8,9 @@ import { Component, Input } from '@angular/core';
 
 import { CommonModule } from '@angular/common';
 
-export type TextProps = {
+export type Props = {
   children: any;
-  size?: 'sm' | 'md' | 'lg' | 'xl';
+  size?: (typeof Size)[keyof typeof Size];
   whitespace?: 'normal' | 'pre' | 'pre-wrap' | 'break-spaces';
   className?: string;
   id?: string;
@@ -19,6 +19,18 @@ export type TextProps = {
 };
 
 import { tv } from 'tailwind-variants';
+export const Size = {
+  SM: 'sm',
+  MD: 'md',
+  LG: 'lg',
+  XL: 'xl',
+} as const;
+export const Whitespace = {
+  NORMAL: 'normal',
+  PRE: 'pre',
+  PRE_WRAP: 'pre-wrap',
+  BREAK_SPACES: 'break-spaces',
+} as const;
 const textVariants = tv({
   base: 'gi-font-primary gi-not-prose',
   variants: {
@@ -40,9 +52,12 @@ const textVariants = tv({
     whitespace: 'normal',
   },
 });
+const getSize = (x: Props['size'] = Size.MD) => (Object.values(Size).includes(x) ? x : Size.MD);
+const getWhitespace = (x: Props['whitespace'] = Whitespace.NORMAL) =>
+  Object.values(Whitespace).includes(x) ? x : Whitespace.NORMAL;
 
 @Component({
-  selector: 'text',
+  selector: 'gi-text',
   template: `
     <span
       [attr.id]="id"
@@ -50,8 +65,8 @@ const textVariants = tv({
       [attr.data-testid]="dataTestid"
       [class]="
         textVariants({
-          size: size,
-          whitespace: whitespace,
+          size: getSize(size),
+          whitespace: getWhitespace(whitespace),
           class: className,
         })
       "
@@ -70,11 +85,13 @@ const textVariants = tv({
 })
 export default class Text {
   textVariants = textVariants;
+  getSize = getSize;
+  getWhitespace = getWhitespace;
 
-  @Input() id!: TextProps['id'];
-  @Input() styles!: TextProps['styles'];
-  @Input() dataTestid!: TextProps['dataTestid'];
-  @Input() size!: TextProps['size'];
-  @Input() whitespace!: TextProps['whitespace'];
-  @Input() className!: TextProps['className'];
+  @Input() id!: Props['id'];
+  @Input() styles!: Props['styles'];
+  @Input() dataTestid!: Props['dataTestid'];
+  @Input() size!: Props['size'];
+  @Input() whitespace!: Props['whitespace'];
+  @Input() className!: Props['className'];
 }
