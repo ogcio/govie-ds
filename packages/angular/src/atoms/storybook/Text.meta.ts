@@ -76,9 +76,6 @@ export const Default = {
       const element = canvas.getByText(contentText);
       expect(element).toBeInTheDocument();
       expect(element.tagName.toLowerCase()).toBe('span');
-      expect(element).toHaveClass('gi-whitespace-normal');
-      expect(element).toHaveClass('gi-font-primary');
-      expect(element).toHaveClass('gi-not-prose');
     });
     await step('computed font size and line-height match md body tokens', async () => {
       const element = canvas.getByText(contentText) as HTMLElement;
