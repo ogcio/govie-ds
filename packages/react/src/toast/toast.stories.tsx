@@ -5,7 +5,7 @@ import {
   Primary,
   Controls,
 } from '@storybook/addon-docs/blocks';
-import type { Meta, StoryObj } from '@storybook/react';
+import type { Meta, StoryObj } from '@storybook/react-vite';
 import { expect, screen, userEvent, waitFor, within } from 'storybook/test';
 import Button from '../atoms/Button';
 import { Stack } from '../stack/stack.js';

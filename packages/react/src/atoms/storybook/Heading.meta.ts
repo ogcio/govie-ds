@@ -1,4 +1,4 @@
-import type { StoryContext, Renderer } from '@storybook/types';
+import type { StoryContext, Renderer } from 'storybook/internal/types';
 import { within, expect } from 'storybook/test';
 import { Size } from '../heading/types';
 export const headingMeta = {
