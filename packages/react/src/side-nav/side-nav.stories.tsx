@@ -1,4 +1,4 @@
-import { Meta } from '@storybook/react';
+import { Meta } from '@storybook/react-vite';
 import { SideNav, SideNavHeading, SideNavItem } from './side-nav.js';
 
 const meta = {

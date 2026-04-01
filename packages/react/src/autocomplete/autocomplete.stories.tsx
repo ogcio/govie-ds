@@ -1,4 +1,4 @@
-import type { Meta, StoryObj } from '@storybook/react';
+import type { Meta, StoryObj } from '@storybook/react-vite';
 import { debounce } from 'lodash';
 import { useEffect, useMemo, useReducer, useState } from 'react';
 import { useForm } from 'react-hook-form';

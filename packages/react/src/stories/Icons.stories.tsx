@@ -1,4 +1,4 @@
-import type { Meta, StoryObj } from '@storybook/react';
+import type { Meta, StoryObj } from '@storybook/react-vite';
 import map from 'lodash/map';
 import type { IconProps } from '../atoms/icons';
 import {

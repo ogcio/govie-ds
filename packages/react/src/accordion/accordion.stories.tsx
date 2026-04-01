@@ -1,4 +1,4 @@
-import type { Meta, StoryObj } from '@storybook/react';
+import type { Meta, StoryObj } from '@storybook/react-vite';
 import { waitFor } from 'storybook/test';
 import Button from '../atoms/Button';
 import { sleep } from '../test-utilities.js';

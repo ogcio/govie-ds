@@ -1,4 +1,4 @@
-import type { Meta, StoryObj } from '@storybook/react';
+import type { Meta, StoryObj } from '@storybook/react-vite';
 import parse from 'html-react-parser';
 import { userEvent, within } from 'storybook/test';
 import { ButtonSize } from '../button/types';
