@@ -1,5 +1,5 @@
-ARG NODE_IMAGE=docker.io/node:24-alpine
-ARG NGINX_IMAGE=docker.io/nginxinc/nginx-unprivileged:1-alpine3.23-slim
+ARG NODE_IMAGE=docker.io/node:24.14.1-alpine3.23@sha256:01743339035a5c3c11a373cd7c83aeab6ed1457b55da6a69e014a95ac4e4700b
+ARG NGINX_IMAGE=docker.io/nginxinc/nginx-unprivileged:1-alpine3.23-slim@sha256:b5831ee7f7aa827cbae87df4a30a642f62c747d8525f5674365389f3adab278d
 
 # Build image (run from root)
 FROM ${NODE_IMAGE} AS builder
@@ -17,14 +17,14 @@ ENV DEPLOY_ENV=${DEPLOY_ENV}
 ENV NEXT_EXPORT=true
 ENV NX_DAEMON=false
 
-RUN corepack enable pnpm
 # Ignore KICS warning. `--frozen-lockfile` ensures pinned versions from lockfile
 # kics-scan ignore-line
-RUN pnpm install --frozen-lockfile
-RUN pnpm docs:build
-RUN pnpm storybook:build:html
-RUN pnpm storybook:build:react
-RUN pnpm storybook:build:angular
+RUN corepack enable pnpm && \
+    pnpm install --frozen-lockfile && \
+    pnpm docs:build && \
+    pnpm storybook:build:html && \
+    pnpm storybook:build:react && \
+    pnpm storybook:build:angular
 
 # Production image
 FROM ${NGINX_IMAGE}
