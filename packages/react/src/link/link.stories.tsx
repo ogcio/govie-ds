@@ -1,4 +1,4 @@
-import type { Meta, StoryObj } from '@storybook/react';
+import type { Meta, StoryObj } from '@storybook/react-vite';
 import { within, expect } from 'storybook/test';
 import { H1 } from '../atoms/index.js';
 import { Paragraph } from '../paragraph/paragraph.js';

@@ -1,4 +1,4 @@
-import type { Meta, StoryObj } from '@storybook/react';
+import type { Meta, StoryObj } from '@storybook/react-vite';
 import parse from 'html-react-parser';
 import { ErrorSize } from '../error-text/types';
 import { createInputPassword } from '../helpers/forms';

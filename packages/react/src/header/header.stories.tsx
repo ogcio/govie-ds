@@ -1,4 +1,4 @@
-import type { Meta, StoryObj } from '@storybook/react';
+import type { Meta, StoryObj } from '@storybook/react-vite';
 import { within, expect, userEvent, screen } from 'storybook/test';
 import Heading from '../Heading.js';
 import Button from '../atoms/Button';
@@ -335,10 +335,8 @@ export const NoLabelSearch: Story = {
 export const TabletView: Story = {
   parameters: {
     layout: 'fullscreen',
-    viewport: {
-      defaultViewport: 'ipad',
-    },
   },
+
   args: {
     logo: {
       href: 'path',
@@ -346,15 +344,19 @@ export const TabletView: Story = {
     items: headerProps.items,
     addDefaultMobileMenu: true,
   },
+
+  globals: {
+    viewport: {
+      value: 'ipad',
+    },
+  },
 };
 
 export const MobileView: Story = {
   parameters: {
     layout: 'fullscreen',
-    viewport: {
-      defaultViewport: 'mobile2',
-    },
   },
+
   args: {
     logo: {
       href: 'path',
@@ -364,6 +366,12 @@ export const MobileView: Story = {
     showTitleOnMobile: true,
     items: headerProps.items,
     addDefaultMobileMenu: true,
+  },
+
+  globals: {
+    viewport: {
+      value: 'mobile2',
+    },
   },
 };
 
@@ -432,6 +440,7 @@ const defaultHeaderProps = (external?: boolean) =>
   ({
     items: [...(defaultHeaderItems(external) as any)],
     addDefaultMobileMenu: true,
+
     secondaryLinks: [
       {
         href: '#',
@@ -529,10 +538,8 @@ export const WithExternalLinks: Story = {
 export const MobileWithExternalLinks: Story = {
   parameters: {
     layout: 'fullscreen',
-    viewport: {
-      defaultViewport: 'mobile2',
-    },
   },
+
   args: {
     logo: {
       href: 'path',
@@ -570,6 +577,7 @@ export const MobileWithExternalLinks: Story = {
     ],
     addDefaultMobileMenu: true,
   },
+
   play: async ({ canvasElement }) => {
     const canvas = within(canvasElement);
 
@@ -601,15 +609,19 @@ export const MobileWithExternalLinks: Story = {
       'noreferrer noopener',
     );
   },
+
+  globals: {
+    viewport: {
+      value: 'mobile2',
+    },
+  },
 };
 
 export const ShowTitleOnMobile: Story = {
   parameters: {
     layout: 'fullscreen',
-    viewport: {
-      defaultViewport: 'mobile2',
-    },
   },
+
   args: {
     title: 'Title on mobile',
     showTitleOnMobile: true,
@@ -626,6 +638,12 @@ export const ShowTitleOnMobile: Story = {
         label: 'English',
       },
     ],
+  },
+
+  globals: {
+    viewport: {
+      value: 'mobile2',
+    },
   },
 };
 
@@ -825,10 +843,8 @@ export const WithTitle: Story = {
 export const ShowMobileMenuForLanguages: Story = {
   parameters: {
     layout: 'fullscreen',
-    viewport: {
-      defaultViewport: 'mobile2',
-    },
   },
+
   args: {
     logo: {
       href: '/link',
@@ -844,6 +860,12 @@ export const ShowMobileMenuForLanguages: Story = {
       },
     ],
     addDefaultMobileMenu: true,
+  },
+
+  globals: {
+    viewport: {
+      value: 'mobile2',
+    },
   },
 };
 
