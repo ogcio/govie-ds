@@ -1,4 +1,4 @@
-import type { Meta, StoryObj } from '@storybook/react';
+import type { Meta, StoryObj } from '@storybook/react-vite';
 import Text from '../atoms/Text';
 import { textMeta, Default as textDefault } from '../atoms/storybook/Text.meta';
 

@@ -21,7 +21,7 @@ const baseTabs = [
       'data-table',
       'browser-support',
       'character-count',
-      'text',
+      'library/text',
     ],
   },
   {
