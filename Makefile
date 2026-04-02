@@ -8,7 +8,7 @@ build-visual-tests-image:
 
 start-react-storybook:
 	pnpm storybook:build:react
-	cd packages/react && pnpm storybook dev --ci -p 6006 &
+	cd packages/react && pnpm storybook dev --ci -p 6006 --host 0.0.0.0 &
 
 stop-react-storybook:
 	npx -y kill-port 6006

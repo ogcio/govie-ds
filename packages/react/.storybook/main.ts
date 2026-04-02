@@ -28,24 +28,6 @@ const config: StorybookConfig = {
     options: {},
   },
 
-  async viteFinal(config, { configType }) {
-    const { mergeConfig } = await import('vite');
-
-    if (configType === 'PRODUCTION') {
-      return config;
-    }
-
-    return mergeConfig(config, {
-      server: {
-        allowedHosts: true,
-        watch: {
-          usePolling: true,
-          interval: 1000,
-        },
-      },
-    });
-  },
-
   docs: {},
 
   typescript: {
