@@ -1111,7 +1111,9 @@ export default function Home() {
                         This is a small paragraph with some sample text to
                         demonstrate typography styles.
                       </Paragraph>
-                      <Text>This is a span paragraph</Text>
+                      <Text>
+                        This is an inline text using the Text component
+                      </Text>
                       <InsetText>
                         It can take up to 8 weeks to register a lasting power of
                         attorney if there are no mistakes in the application.
