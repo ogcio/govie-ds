@@ -42,9 +42,7 @@ export const Details = ({ label, name, children, ...props }: DetailsProps) => {
         aria-expanded={isOpen ? 'true' : 'false'}
       >
         <Icon icon={isOpen ? 'keyboard_arrow_up' : 'keyboard_arrow_down'} />
-        <span className="gi-underline gi-underline-offset-[0.1rem]">
-          {label}
-        </span>
+        <span className="gi-underline">{label}</span>
       </summary>
       <div
         id="details-content"
@@ -71,8 +69,5 @@ const summaryVariants = tv({
     'focus-visible:gi-outline-none',
     '[&:focus>span]:gi-no-underline',
     '[&:focus>span]:gi-select-none',
-    '[&:hover>span]:gi-underline-offset-[0.1rem]',
-    '[&:hover>span]:[text-decoration-thickness:max(3px)]',
-    '[&:hover>span]:[text-decoration-skip-ink:none]',
   ],
 });
