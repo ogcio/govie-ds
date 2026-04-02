@@ -2,11 +2,6 @@ import type { ArgTypes, StoryContext, Renderer } from 'storybook/internal/types'
 import { within, expect } from 'storybook/test';
 import type { Props } from '../Text.lite';
 
-/** `primitive.font.size["400"]` — `gi-text-md` font size. */
-const TEXT_MD_FONT_REM = 1.125;
-/** `primitive.font.lineHeight["1000"]` — paired line height for `md` body text. */
-const TEXT_MD_LINE_HEIGHT_RATIO = 1.5;
-
 /** Multiline copy with extra spaces and blank lines — used to exercise whitespace variants in snapshots. */
 const WHITESPACE_VRT_SAMPLE = `Hey everyone!
 
