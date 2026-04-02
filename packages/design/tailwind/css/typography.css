@@ -1,5 +1,32 @@
 /* GOV.IE Typography Stylesheets */
 
+@layer utilities {
+  /*
+    :where() keeps the class contribution at 0 specificity so a single extra class
+    (e.g. gi-decoration-lg) on the same element can override thickness/offset.
+    */
+
+  :where(.gi-underline),
+  a:where(.gi-underline) {
+    text-decoration-thickness: max(1px, 0.08em);
+    text-underline-offset: 0.2em;
+  }
+  /* required, as <a/> tag by default uses text-decoration: inherit */
+
+  :where(.gi-underline:hover),
+  a:where(.gi-underline:hover) {
+    text-decoration-thickness: max(2px, 0.12em);
+  }
+
+  /* Firefox skips the underline for descending characters at 0.2em for the given font Lato, so we need to increase it to 0.23em */
+  @supports (-moz-appearance: none) {
+    :where(.gi-underline) {
+      text-decoration-thickness: max(1px);
+      text-underline-offset: 0.23em;
+    }
+  }
+}
+
 .gi-heading-xl {
   font: var(--gieds-typography-default-heading-xl);
 }
