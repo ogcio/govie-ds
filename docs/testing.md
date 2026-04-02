@@ -63,17 +63,13 @@ Commands:
   ```bash
   make build-visual-tests-image
   ```
-- Run the visual regression tests (starts Storybook in the background and runs Playwright)
+- Run the visual regression tests (builds Storybook and runs Playwright in Docker)
   ```bash
-  make tests
+  make react-visual-tests
   ```
 - Update baseline screenshots after intentional visual changes
   ```bash
-  make update-screenshots
-  ```
-- Stop the background Storybook server
-  ```bash
-  make stop-react-storybook
+  make react-visual-update
   ```
 
 Reference: [Makefile](../Makefile)
