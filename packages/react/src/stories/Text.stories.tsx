@@ -23,4 +23,6 @@ export const SizeXL: Story = { ...TextStoryMeta.SizeXL };
 export const WhitespaceNormal: Story = { ...TextStoryMeta.WhitespaceNormal };
 export const WhitespacePre: Story = { ...TextStoryMeta.WhitespacePre };
 export const WhitespacePreWrap: Story = { ...TextStoryMeta.WhitespacePreWrap };
-export const WhitespaceBreakSpaces: Story = { ...TextStoryMeta.WhitespaceBreakSpaces };
+export const WhitespaceBreakSpaces: Story = {
+  ...TextStoryMeta.WhitespaceBreakSpaces,
+};
