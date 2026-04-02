@@ -11,26 +11,15 @@ import { CommonModule } from '@angular/common';
 export type Props = {
   children: any;
   size?: (typeof Size)[keyof typeof Size];
-  whitespace?: 'normal' | 'pre' | 'pre-wrap' | 'break-spaces';
+  whitespace?: (typeof Whitespace)[keyof typeof Whitespace];
   className?: string;
   id?: string;
-  dataTestid?: string;
-  styles?: Record<string, any>;
+  dataTestId?: string;
+  styles?: Record<string, string>;
 };
 
 import { tv } from 'tailwind-variants';
-export const Size = {
-  SM: 'sm',
-  MD: 'md',
-  LG: 'lg',
-  XL: 'xl',
-} as const;
-export const Whitespace = {
-  NORMAL: 'normal',
-  PRE: 'pre',
-  PRE_WRAP: 'pre-wrap',
-  BREAK_SPACES: 'break-spaces',
-} as const;
+import { Size, Whitespace } from './utilities';
 const textVariants = tv({
   base: 'gi-font-primary gi-not-prose',
   variants: {
@@ -62,7 +51,7 @@ const getWhitespace = (x: Props['whitespace'] = Whitespace.NORMAL) =>
     <span
       [attr.id]="id"
       [ngStyle]="styles"
-      [attr.data-testid]="dataTestid"
+      [attr.data-testid]="dataTestId"
       [class]="
         textVariants({
           size: getSize(size),
@@ -90,7 +79,7 @@ export default class Text {
 
   @Input() id!: Props['id'];
   @Input() styles!: Props['styles'];
-  @Input() dataTestid!: Props['dataTestid'];
+  @Input() dataTestId!: Props['dataTestId'];
   @Input() size!: Props['size'];
   @Input() whitespace!: Props['whitespace'];
   @Input() className!: Props['className'];

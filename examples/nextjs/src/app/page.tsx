@@ -76,6 +76,7 @@ import {
   TabList,
   TabItem,
   TabPanel,
+  Text,
   TextArea,
   CharacterCount,
   toaster,
@@ -1110,7 +1111,7 @@ export default function Home() {
                         This is a small paragraph with some sample text to
                         demonstrate typography styles.
                       </Paragraph>
-                      <Paragraph as="span">This is a span paragraph</Paragraph>
+                      <Text>This is a span paragraph</Text>
                       <InsetText>
                         It can take up to 8 weeks to register a lasting power of
                         attorney if there are no mistakes in the application.

@@ -127,7 +127,11 @@ export type {
   InputTextProps,
   InputTextTableCellProps,
 } from './input-text/type.js';
-export { InsetText, Text, type TextProps } from './atoms';
+export {
+  default as InsetText,
+  type Props as InsetTextProps,
+} from './atoms/InsetText.js';
+export { default as Text, type Props as TextProps } from './atoms/Text.js';
 export type { LabelTextProps } from './label/types.js';
 export { Link, type LinkProps } from './link/link.js';
 export { ListItem, type ListItemProps } from './list-item/list-item.js';

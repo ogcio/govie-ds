@@ -1,4 +1,4 @@
-import { Paragraph, Spinner } from '@ogcio/design-system-react';
+import { Paragraph, Spinner, Text } from '@ogcio/design-system-react';
 
 const LoadingComponent = ({
   label = 'We’re logging you out',
@@ -24,10 +24,10 @@ export function LoadingPattern() {
     <>
       <div className="flex flex-col items-center justify-center text-center gap-4">
         <LoadingComponent />
-        <Paragraph as="span">
+        <Text>
           Please don&rsquo;t close or refresh this page — you&rsquo;ll be
           redirected shortly.
-        </Paragraph>
+        </Text>
       </div>
     </>
   );

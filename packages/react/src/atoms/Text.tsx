@@ -9,26 +9,15 @@ import * as React from 'react';
 export type Props = {
   children: any;
   size?: (typeof Size)[keyof typeof Size];
-  whitespace?: 'normal' | 'pre' | 'pre-wrap' | 'break-spaces';
+  whitespace?: (typeof Whitespace)[keyof typeof Whitespace];
   className?: string;
   id?: string;
-  dataTestid?: string;
-  styles?: Record<string, any>;
+  dataTestId?: string;
+  styles?: Record<string, string>;
 };
 
 import { tv } from 'tailwind-variants';
-export const Size = {
-  SM: 'sm',
-  MD: 'md',
-  LG: 'lg',
-  XL: 'xl',
-} as const;
-export const Whitespace = {
-  NORMAL: 'normal',
-  PRE: 'pre',
-  PRE_WRAP: 'pre-wrap',
-  BREAK_SPACES: 'break-spaces',
-} as const;
+import { Size, Whitespace } from './utilities';
 const textVariants = tv({
   base: 'gi-font-primary gi-not-prose',
   variants: {
@@ -59,7 +48,7 @@ function Text(props: Props) {
     <span
       id={props.id}
       style={props.styles}
-      data-testid={props.dataTestid}
+      data-testid={props.dataTestId}
       className={textVariants({
         size: getSize(props.size),
         whitespace: getWhitespace(props.whitespace),

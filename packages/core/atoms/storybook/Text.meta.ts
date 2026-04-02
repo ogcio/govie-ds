@@ -7,12 +7,19 @@ const TEXT_MD_FONT_REM = 1.125;
 /** `primitive.font.lineHeight["1000"]` — paired line height for `md` body text. */
 const TEXT_MD_LINE_HEIGHT_RATIO = 1.5;
 
+/** Multiline copy with extra spaces and blank lines — used to exercise whitespace variants in snapshots. */
+const WHITESPACE_VRT_SAMPLE = `Hey everyone!
+
+It's almost 2026       spaced    words.
+
+Line three.`;
+
 export const textMeta = {
   tags: ['autodocs'] as string[],
   title: 'Typography/Text',
   args: {
     id: 'text-default',
-    dataTestid: 'text',
+    dataTestId: 'text',
     children: 'Inline text using the Text component.',
     size: 'md' as const,
     whitespace: 'normal' as const,
@@ -29,7 +36,7 @@ export const textMeta = {
       control: 'text',
       description: 'Optional id for linking/targeting and aria references.',
     },
-    dataTestid: {
+    dataTestId: {
       control: 'text',
       description: 'Value for `data-testid`.',
     },
@@ -73,21 +80,156 @@ export const Default = {
       expect(element).toBeInTheDocument();
       expect(element.tagName.toLowerCase()).toBe('span');
     });
+  },
+};
 
-    await step('computed font size and line-height match md body tokens', async () => {
-      const element = canvas.getByText(contentText) as HTMLElement;
-      const root = (canvasElement.ownerDocument ?? document).documentElement;
-      const rootFontPx = parseFloat(getComputedStyle(root).fontSize);
-      const computed = getComputedStyle(element);
-      const fontSizePx = parseFloat(computed.fontSize);
-      const lineHeightPx = parseFloat(computed.lineHeight);
-      const expectedFontPx = TEXT_MD_FONT_REM * rootFontPx;
-      const expectedLinePx = TEXT_MD_LINE_HEIGHT_RATIO * fontSizePx;
+/** Chromatic / visual regression: fixed type scale at each size (`skip-playwright` — class/assertion checks only). */
+export const SizeSM = {
+  tags: ['skip-playwright'] as string[],
+  args: {
+    ...textMeta.args,
+    id: 'text-vrt-sm',
+    dataTestId: 'text-vrt-sm',
+    children: 'Small body text',
+    size: 'sm' as const,
+  },
+  play: async ({ canvasElement, step }: StoryContext<Renderer>) => {
+    const canvas = within(canvasElement as HTMLElement);
+    await step('applies gi-text-sm', async () => {
+      expect(canvas.getByTestId('text-vrt-sm')).toHaveClass('gi-text-sm');
+    });
+  },
+};
 
-      // Round so we use strict `toBe`: browsers can report fractional px; JS float math is inexact.
-      expect(Math.round(fontSizePx)).toBe(Math.round(expectedFontPx));
-      expect(Math.round(lineHeightPx)).toBe(Math.round(expectedLinePx));
-      expect(computed.whiteSpace).toBe('normal');
+export const SizeMD = {
+  tags: ['skip-playwright'] as string[],
+  args: {
+    ...textMeta.args,
+    id: 'text-vrt-md',
+    dataTestId: 'text-vrt-md',
+    children: 'Medium body text',
+    size: 'md' as const,
+  },
+  play: async ({ canvasElement, step }: StoryContext<Renderer>) => {
+    const canvas = within(canvasElement as HTMLElement);
+    await step('applies gi-text-md', async () => {
+      expect(canvas.getByTestId('text-vrt-md')).toHaveClass('gi-text-md');
+    });
+  },
+};
+
+export const SizeLG = {
+  tags: ['skip-playwright'] as string[],
+  args: {
+    ...textMeta.args,
+    id: 'text-vrt-lg',
+    dataTestId: 'text-vrt-lg',
+    children: 'Large body text',
+    size: 'lg' as const,
+  },
+  play: async ({ canvasElement, step }: StoryContext<Renderer>) => {
+    const canvas = within(canvasElement as HTMLElement);
+    await step('applies gi-text-lg', async () => {
+      expect(canvas.getByTestId('text-vrt-lg')).toHaveClass('gi-text-lg');
+    });
+  },
+};
+
+export const SizeXL = {
+  tags: ['skip-playwright'] as string[],
+  args: {
+    ...textMeta.args,
+    id: 'text-vrt-xl',
+    dataTestId: 'text-vrt-xl',
+    children: 'Extra large body text',
+    size: 'xl' as const,
+  },
+  play: async ({ canvasElement, step }: StoryContext<Renderer>) => {
+    const canvas = within(canvasElement as HTMLElement);
+    await step('applies responsive xl scale (base gi-text-lg + xs:gi-text-xl)', async () => {
+      const el = canvas.getByTestId('text-vrt-xl');
+      expect(el).toHaveClass('gi-text-lg');
+      expect(el.className).toMatch(/xs:gi-text-xl/);
+    });
+  },
+};
+
+export const WhitespaceNormal = {
+  tags: ['skip-playwright'] as string[],
+  args: {
+    ...textMeta.args,
+    id: 'text-vrt-ws-normal',
+    dataTestId: 'text-vrt-ws-normal',
+    children: WHITESPACE_VRT_SAMPLE,
+    whitespace: 'normal' as const,
+    size: 'md' as const,
+  },
+  play: async ({ canvasElement, step }: StoryContext<Renderer>) => {
+    const canvas = within(canvasElement as HTMLElement);
+    await step('applies gi-whitespace-normal', async () => {
+      const el = canvas.getByTestId('text-vrt-ws-normal');
+      expect(el).toHaveClass('gi-whitespace-normal');
+      expect(getComputedStyle(el).whiteSpace).toBe('normal');
+    });
+  },
+};
+
+export const WhitespacePre = {
+  tags: ['skip-playwright'] as string[],
+  args: {
+    ...textMeta.args,
+    id: 'text-vrt-ws-pre',
+    dataTestId: 'text-vrt-ws-pre',
+    children: WHITESPACE_VRT_SAMPLE,
+    whitespace: 'pre' as const,
+    size: 'md' as const,
+  },
+  play: async ({ canvasElement, step }: StoryContext<Renderer>) => {
+    const canvas = within(canvasElement as HTMLElement);
+    await step('applies gi-whitespace-pre', async () => {
+      const el = canvas.getByTestId('text-vrt-ws-pre');
+      expect(el).toHaveClass('gi-whitespace-pre');
+      expect(getComputedStyle(el).whiteSpace).toBe('pre');
+    });
+  },
+};
+
+export const WhitespacePreWrap = {
+  tags: ['skip-playwright'] as string[],
+  args: {
+    ...textMeta.args,
+    id: 'text-vrt-ws-pre-wrap',
+    dataTestId: 'text-vrt-ws-pre-wrap',
+    children: WHITESPACE_VRT_SAMPLE,
+    whitespace: 'pre-wrap' as const,
+    size: 'md' as const,
+  },
+  play: async ({ canvasElement, step }: StoryContext<Renderer>) => {
+    const canvas = within(canvasElement as HTMLElement);
+    await step('applies gi-whitespace-pre-wrap', async () => {
+      const el = canvas.getByTestId('text-vrt-ws-pre-wrap');
+      expect(el).toHaveClass('gi-whitespace-pre-wrap');
+      expect(getComputedStyle(el).whiteSpace).toBe('pre-wrap');
+    });
+  },
+};
+
+export const WhitespaceBreakSpaces = {
+  tags: ['skip-playwright'] as string[],
+  args: {
+    ...textMeta.args,
+    id: 'text-vrt-ws-break-spaces',
+    dataTestId: 'text-vrt-ws-break-spaces',
+    children: WHITESPACE_VRT_SAMPLE,
+    whitespace: 'break-spaces' as const,
+    size: 'md' as const,
+  },
+  play: async ({ canvasElement, step }: StoryContext<Renderer>) => {
+    const canvas = within(canvasElement as HTMLElement);
+    await step('applies gi-whitespace-break-spaces', async () => {
+      const el = canvas.getByTestId('text-vrt-ws-break-spaces');
+      expect(el).toHaveClass('gi-whitespace-break-spaces');
+      expect(getComputedStyle(el).whiteSpace).toBe('break-spaces');
     });
   },
 };

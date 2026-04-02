@@ -254,7 +254,7 @@ export const TestAlignEnd: Story = {
 export const TestRenderHtmlChildren: StoryObj = {
   tags: ['skip-playwright'],
   render: () => (
-    <Paragraph as="p" size="sm">
+    <Paragraph size="sm">
       <a href="#">Anchor tag</a>
     </Paragraph>
   ),

@@ -1,32 +1,16 @@
 export type ParagraphAs = 'p' | 'span';
 export type ParagraphAsNext = 'p';
-import { Text } from '../atoms';
-export type ParagraphSize = 'xl' | 'lg' | 'md' | 'sm';
+import { Text, type TextProps } from '../atoms';
 export type ParagraphAlign = 'start' | 'center' | 'end' | 'justify';
-export type ParagraphWhitespace =
-  | 'normal'
-  | 'pre'
-  | 'pre-wrap'
-  | 'break-spaces';
 
-type ParagraphPropsBase = {
-  size?: ParagraphSize;
-  align?: ParagraphAlign;
-  whitespace?: ParagraphWhitespace;
-  children: React.ReactNode;
+export type ParagraphProps = Omit<TextProps, 'styles'> & {
   style?: React.CSSProperties;
-  className?: string;
-  ariaLabel?: string;
-  id?: string;
+  /** @deprecated Use `dataTestId` instead of `<Paragraph as="span" />`. */
   dataTestid?: string;
+  align?: ParagraphAlign;
+  /** @deprecated 'as' prop will now default to 'p', and should be omitted from Paragraph. When using as="span" prefer the use of <Text/> */
+  as?: ParagraphAs;
 };
-
-export type ParagraphProps =
-  | (ParagraphPropsBase & { as?: 'p' })
-  | (ParagraphPropsBase & {
-      /** @deprecated Use `<Text />` instead of `<Paragraph as="span" />`. */
-      as: 'span';
-    });
 
 export function Paragraph({
   as: As = 'p',
@@ -37,7 +21,7 @@ export function Paragraph({
   style,
   className,
   id,
-  ariaLabel,
+  dataTestId,
   dataTestid,
 }: ParagraphProps) {
   const sizeClass = (() => {
@@ -96,9 +80,9 @@ export function Paragraph({
         size={size}
         whitespace={whitespace}
         className={className}
-        styles={style}
+        styles={style as Record<string, string>}
         id={id}
-        dataTestid={dataTestid}
+        dataTestId={dataTestId || dataTestid}
       >
         {children}
       </Text>
@@ -107,7 +91,6 @@ export function Paragraph({
   return (
     <p
       className={`${sizeClass} ${alignClass} ${whitespaceClass} ${className || ''}`}
-      aria-label={ariaLabel}
       style={style}
       id={id}
       data-testid={dataTestid}
