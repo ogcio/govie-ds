@@ -52,6 +52,7 @@
     "ts-extras": "^0.11.0"
   },
   "devDependencies": {
+    "@eslint/eslintrc": "^3.3.1",
     "@next/eslint-plugin-next": "^15.5.9",
     "@ogcio/design-system-eslint-config": "workspace:*",
     "@ogcio/design-system-prettier-config": "workspace:*",

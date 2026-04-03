@@ -22,6 +22,7 @@
   },
   "prettier": "@ogcio/design-system-prettier-config",
   "devDependencies": {
+    "@eslint/eslintrc": "^3.3.1",
     "@next/eslint-plugin-next": "^15.5.7",
     "@ogcio/design-system-eslint-config": "workspace:*",
     "@ogcio/design-system-prettier-config": "workspace:*",
