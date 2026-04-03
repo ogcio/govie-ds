@@ -1,5 +1,26 @@
 # Changelog
 
+## [1.33.0](https://github.com/ogcio/govie-ds/compare/docs-v1.32.1...docs-v1.33.0) (2026-04-03)
+
+
+### Features
+
+* **AB#36252:** Upgrade Storybook 10 ([#887](https://github.com/ogcio/govie-ds/issues/887)) ([fa8ddc8](https://github.com/ogcio/govie-ds/commit/fa8ddc8ed4cacbcdf1621ac6349701146531d402))
+
+
+### Bug Fixes
+
+* **AB#36816:** Fix react button docs ([#910](https://github.com/ogcio/govie-ds/issues/910)) ([d2afee7](https://github.com/ogcio/govie-ds/commit/d2afee706e3c905aaf0344529aecbe879a32dc1f))
+
+
+### Dependencies
+
+* The following workspace dependencies were updated
+  * dependencies
+    * @ogcio/design-system-html bumped to 1.21.0
+    * @ogcio/design-system-react bumped to 1.34.0
+    * @ogcio/design-system-tailwind bumped to 1.24.0
+
 ## [1.32.1](https://github.com/ogcio/govie-ds/compare/docs-v1.32.0...docs-v1.32.1) (2026-03-30)
 
 

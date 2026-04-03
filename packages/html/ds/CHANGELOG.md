@@ -1,5 +1,24 @@
 # Changelog
 
+## [1.21.0](https://github.com/ogcio/govie-ds/compare/html-lib-v1.20.0...html-lib-v1.21.0) (2026-04-03)
+
+
+### Features
+
+* **AB#36252:** Upgrade Storybook 10 ([#887](https://github.com/ogcio/govie-ds/issues/887)) ([fa8ddc8](https://github.com/ogcio/govie-ds/commit/fa8ddc8ed4cacbcdf1621ac6349701146531d402))
+
+
+### Miscellaneous Chores
+
+* **AB#36896:** stabilize Visual Regression ([14fc162](https://github.com/ogcio/govie-ds/commit/14fc162772bd124366f6efbae0962e092f55085d))
+
+
+### Dependencies
+
+* The following workspace dependencies were updated
+  * devDependencies
+    * @ogcio/design-system-tailwind bumped to 1.24.0
+
 ## [1.20.0](https://github.com/ogcio/govie-ds/compare/html-lib-v1.19.0...html-lib-v1.20.0) (2026-03-24)
 
 
