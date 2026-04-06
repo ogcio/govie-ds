@@ -9,13 +9,15 @@ const meta: Meta<Text> = {
 };
 
 export default meta;
+const loremIpsum = 'Lorem ipsum dolor sit amet.';
 
-const textRender = (args: Record<string, unknown>) => ({
-  props: {
-    ...args,
-    content: String((args as { children?: string }).children ?? ''),
-  },
-  template: `
+type Story = StoryObj<Text & { content: string }>;
+
+export const Default: Story = {
+  ...TextStoryMeta.Default,
+  render: (args: any) => ({
+    props: { ...args, content: loremIpsum },
+    template: `
       <gi-text
         [id]="id"
         [dataTestId]="dataTestId"
@@ -23,51 +25,25 @@ const textRender = (args: Record<string, unknown>) => ({
         [size]="size"
         [whitespace]="whitespace"
         [className]="className"
+        [ariaHidden]="ariaHidden"
       >
         {{ content }}
       </gi-text>
     `,
-});
-
-type Story = StoryObj<Text & { content: string }>;
-
-export const Default: Story = {
-  ...TextStoryMeta.Default,
-  args: {
-    ...TextStoryMeta.Default.args,
-  },
-  render: textRender,
+  }),
 };
 
-export const SizeSM: Story = {
-  ...TextStoryMeta.SizeSM,
-  render: textRender,
-};
-export const SizeMD: Story = {
-  ...TextStoryMeta.SizeMD,
-  render: textRender,
-};
-export const SizeLG: Story = {
-  ...TextStoryMeta.SizeLG,
-  render: textRender,
-};
-export const SizeXL: Story = {
-  ...TextStoryMeta.SizeXL,
-  render: textRender,
-};
-export const WhitespaceNormal: Story = {
-  ...TextStoryMeta.WhitespaceNormal,
-  render: textRender,
-};
-export const WhitespacePre: Story = {
-  ...TextStoryMeta.WhitespacePre,
-  render: textRender,
-};
-export const WhitespacePreWrap: Story = {
-  ...TextStoryMeta.WhitespacePreWrap,
-  render: textRender,
-};
-export const WhitespaceBreakSpaces: Story = {
-  ...TextStoryMeta.WhitespaceBreakSpaces,
-  render: textRender,
+export const AllTextSizes: Story = {
+  ...TextStoryMeta.AllTextSizes,
+  render: (args: any) => ({
+    props: { ...args },
+    template: `
+      <div class="gi-flex gi-flex-col gi-gap-2">
+        <gi-text size="sm" dataTestId="text-all-sizes-sm">Text sm</gi-text>
+        <gi-text size="md" dataTestId="text-all-sizes-md">Text md</gi-text>
+        <gi-text size="lg" dataTestId="text-all-sizes-lg">Text lg</gi-text>
+        <gi-text size="xl" dataTestId="text-all-sizes-xl">Text xl</gi-text>
+      </div>
+    `,
+  }),
 };

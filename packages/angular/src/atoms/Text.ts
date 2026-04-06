@@ -16,6 +16,7 @@ export type Props = {
   id?: string;
   dataTestId?: string;
   styles?: Record<string, string>;
+  ariaHidden?: boolean;
 };
 
 import { tv } from 'tailwind-variants';
@@ -52,6 +53,7 @@ const getWhitespace = (x: Props['whitespace'] = Whitespace.NORMAL) =>
       [attr.id]="id"
       [ngStyle]="styles"
       [attr.data-testid]="dataTestId"
+      [attr.aria-hidden]="ariaHidden"
       [class]="
         textVariants({
           size: getSize(size),
@@ -80,6 +82,7 @@ export default class Text {
   @Input() id!: Props['id'];
   @Input() styles!: Props['styles'];
   @Input() dataTestId!: Props['dataTestId'];
+  @Input() ariaHidden!: Props['ariaHidden'];
   @Input() size!: Props['size'];
   @Input() whitespace!: Props['whitespace'];
   @Input() className!: Props['className'];

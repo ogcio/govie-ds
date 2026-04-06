@@ -8,6 +8,7 @@ export type ParagraphProps = Omit<TextProps, 'styles'> & {
   /** @deprecated Use `dataTestId` instead of `<Paragraph as="span" />`. */
   dataTestid?: string;
   align?: ParagraphAlign;
+  ariaHidden?: boolean;
   /** @deprecated 'as' prop will now default to 'p', and should be omitted from Paragraph. When using as="span" prefer the use of <Text/> */
   as?: ParagraphAs;
 };
@@ -23,6 +24,7 @@ export function Paragraph({
   id,
   dataTestId,
   dataTestid,
+  ariaHidden,
 }: ParagraphProps) {
   const sizeClass = (() => {
     switch (size) {
@@ -82,7 +84,8 @@ export function Paragraph({
         className={className}
         styles={style as Record<string, string>}
         id={id}
-        dataTestId={dataTestId || dataTestid}
+        dataTestId={dataTestid ?? dataTestId}
+        ariaHidden={ariaHidden}
       >
         {children}
       </Text>

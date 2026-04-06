@@ -14,6 +14,7 @@ export type Props = {
   id?: string;
   dataTestId?: string;
   styles?: Record<string, string>;
+  ariaHidden?: boolean;
 };
 
 import { tv } from 'tailwind-variants';
@@ -49,6 +50,7 @@ function Text(props: Props) {
       id={props.id}
       style={props.styles}
       data-testid={props.dataTestId}
+      aria-hidden={props.ariaHidden}
       className={textVariants({
         size: getSize(props.size),
         whitespace: getWhitespace(props.whitespace),

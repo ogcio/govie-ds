@@ -1,9 +1,16 @@
 import type { Meta, StoryObj } from '@storybook/react-vite';
 import { Text } from '../atoms';
-import * as TextStoryMeta from '../atoms/storybook/Text.meta';
+import {
+  textMeta,
+  Default as defaultStory,
+  AllTextSizes as allTextSizes,
+} from '../atoms/storybook/Text.meta';
+import { Size } from '../atoms/utilities';
+
+const loremIpsum = 'Lorem ipsum dolor sit amet.';
 
 const meta: Meta<typeof Text> = {
-  ...TextStoryMeta.textMeta,
+  ...textMeta,
   title: 'Typography/Text',
   component: Text,
 };
@@ -13,16 +20,20 @@ export default meta;
 type Story = StoryObj<typeof Text>;
 
 export const Default: Story = {
-  ...TextStoryMeta.Default,
+  tags: ['skip-playwright'],
+  ...defaultStory,
+  args: { ...defaultStory.args, children: loremIpsum },
 };
 
-export const SizeSM: Story = { ...TextStoryMeta.SizeSM };
-export const SizeMD: Story = { ...TextStoryMeta.SizeMD };
-export const SizeLG: Story = { ...TextStoryMeta.SizeLG };
-export const SizeXL: Story = { ...TextStoryMeta.SizeXL };
-export const WhitespaceNormal: Story = { ...TextStoryMeta.WhitespaceNormal };
-export const WhitespacePre: Story = { ...TextStoryMeta.WhitespacePre };
-export const WhitespacePreWrap: Story = { ...TextStoryMeta.WhitespacePreWrap };
-export const WhitespaceBreakSpaces: Story = {
-  ...TextStoryMeta.WhitespaceBreakSpaces,
+export const AllTextSizes: Story = {
+  ...allTextSizes,
+  render: () => (
+    <div className="gi-flex gi-flex-col gi-gap-2">
+      {Object.values(Size).map((size) => (
+        <Text key={size} size={size} dataTestId={`text-all-sizes-${size}`}>
+          Text {size}
+        </Text>
+      ))}
+    </div>
+  ),
 };

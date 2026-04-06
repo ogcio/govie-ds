@@ -10,6 +10,7 @@ export type Props = {
   id?: string;
   dataTestId?: string;
   styles?: Record<string, string>;
+  ariaHidden?: boolean;
 };
 
 useMetadata({ angular: { selector: 'gi-text' } });
@@ -25,6 +26,7 @@ export default function Text(props: Props) {
       id={props.id}
       style={props.styles}
       data-testid={props.dataTestId}
+      aria-hidden={props.ariaHidden}
     >
       {props.children}
     </span>

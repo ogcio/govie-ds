@@ -1,4 +1,4 @@
-import { Paragraph, Spinner, Text } from '@ogcio/design-system-react';
+import { Spinner, Text } from '@ogcio/design-system-react';
 
 const LoadingComponent = ({
   label = 'We’re logging you out',
@@ -10,11 +10,7 @@ const LoadingComponent = ({
   return (
     <div className="gi-flex gi-flex-col gi-items-center gi-justify-center gi-gap-2 gi-py-8">
       <Spinner size={size} />
-      {label && (
-        <Paragraph className="font-bold" as="span">
-          {label}
-        </Paragraph>
-      )}
+      {label && <Text className="font-bold">{label}</Text>}
     </div>
   );
 };
