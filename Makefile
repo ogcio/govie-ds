@@ -1,4 +1,4 @@
-.PHONY: build-website-image start-react-storybook stop-react-storybook tests update-screenshots build-visual-tests-image
+.PHONY: build-website-image build-visual-tests-image tests update-screenshots
 
 build-website-image:
 	@docker build -t govie-website . -f Dockerfile --build-arg DEPLOY_ENV=development
@@ -6,15 +6,19 @@ build-website-image:
 build-visual-tests-image:
 	@docker build -t playwright-screenshot-tests . -f Dockerfile.playwright
 
-start-react-storybook:
+react-visual-tests:
 	pnpm storybook:build:react
-	cd packages/react && pnpm storybook dev --ci -p 6006 --host 0.0.0.0 &
+	$(run-react-playwright) test
 
-stop-react-storybook:
-	npx -y kill-port 6006
+react-visual-update:
+	pnpm storybook:build:react
+	$(run-react-playwright) test --update-snapshots
 
-tests: start-react-storybook
-	cd packages/react && ./visual-regression-tests.sh test
 
-update-screenshots: start-react-storybook
-	cd packages/react && ./visual-regression-tests.sh test --update-snapshots
+run-react-playwright = docker run --rm \
+	-v "$(CURDIR)/packages/react/storybook-static:/app/storybook-static" \
+	-v "$(CURDIR)/packages/react/tests:/app/tests" \
+	-v "$(CURDIR)/packages/react/playwright.config.ts:/app/playwright.config.ts" \
+	-v "$(CURDIR)/packages/react/playwright-report:/app/playwright-report" \
+	-v "$(CURDIR)/packages/react/test-results:/app/test-results" \
+	playwright-screenshot-tests

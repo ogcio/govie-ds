@@ -30,6 +30,7 @@
     "ts-extras": "^0.11.0"
   },
   "devDependencies": {
+    "@ogcio/design-system-eslint-config": "workspace:*",
     "@ogcio/design-system-prettier-config": "workspace:*",
     "eslint": "^9.23.0"
   }

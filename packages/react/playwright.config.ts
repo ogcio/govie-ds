@@ -1,6 +1,6 @@
 import { defineConfig, devices } from '@playwright/test';
 
-const BASE_URL = process.env.TEST_BASE_URL || 'http://localhost:6006';
+const BASE_URL = 'http://localhost:6006';
 
 export default defineConfig({
   testDir: './tests',
@@ -37,7 +37,8 @@ export default defineConfig({
     },
   ],
   webServer: {
-    command: 'pnpm storybook:serve',
+    // http-server is installed via root package.json to use in Docker only
+    command: 'http-server storybook-static -p 6006 -c-1 -s',
     url: BASE_URL,
     reuseExistingServer: !process.env.CI,
   },

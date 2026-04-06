@@ -33,7 +33,6 @@
     "build:ts": "vite build",
     "storybook:dev": "storybook dev -p 6006",
     "storybook:build": "NODE_OPTIONS=--max-old-space-size=4096 storybook build --stats-json",
-    "storybook:serve": "http-server storybook-static -p 6006 -c-1",
     "playwright:test": "playwright test",
     "playwright:update-snapshots": "playwright test --update-snapshots",
     "typecheck": "tsc -p tsconfig.json --noEmit"
@@ -87,7 +86,6 @@
     "eslint": "^9.23.0",
     "eslint-plugin-storybook": "^10.2.19",
     "glob": "^11.0.1",
-    "http-server": "^14.1.1",
     "i18next": "^25.6.2",
     "postcss": "^8.4.40",
     "postcss-import": "^16.1.0",

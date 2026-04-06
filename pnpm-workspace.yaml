@@ -2,3 +2,19 @@ packages:
   - "apps/*"
   - "examples/*"
   - "packages/**"
+
+minimumReleaseAge: 1440 # 1 day — protect against supply chain attacks
+
+allowBuilds:
+  '@bundled-es-modules/glob': true
+  '@parcel/watcher': true
+  contentlayer2: true
+  es5-ext: false
+  esbuild: true
+  lmdb: true
+  msgpackr-extract: true
+  protobufjs: true
+  sharp: true
+  style-dictionary: true
+  svelte-preprocess: true
+  unrs-resolver: true

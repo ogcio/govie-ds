@@ -9,16 +9,15 @@
     "format:check": "prettier 'src/**/*.js' --check"
   },
   "prettier": "@ogcio/design-system-prettier-config",
-  "dependencies": {},
   "peerDependencies": {
     "eslint": ">= 9"
   },
-  "devDependencies": {
+  "dependencies": {
     "@eslint/js": "^9.23.0",
+    "@typescript-eslint/parser": "^8.31.1",
     "eslint": "^9.23.0",
     "eslint-import-resolver-typescript": "^4.3.1",
     "eslint-plugin-import-x": "^4.10.0",
-    "eslint-plugin-react": "^7.37.4",
     "eslint-plugin-unicorn": "^58.0.0",
     "globals": "^16.0.0",
     "typescript-eslint": "^8.31.1"
