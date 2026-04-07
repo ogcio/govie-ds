@@ -1,22 +1,25 @@
 'use client';
 
 import type { Meta, StoryObj } from '@storybook/react-vite';
-import { RankingInfo, rankItem } from '@tanstack/match-sorter-utils';
+import { type RankingInfo, rankItem } from '@tanstack/match-sorter-utils';
 import {
-  ColumnDef,
-  FilterFn,
   flexRender,
   getCoreRowModel,
   getFilteredRowModel,
   getPaginationRowModel,
   getSortedRowModel,
-  PaginationState,
   useReactTable,
 } from '@tanstack/react-table';
-import type { ExpandedState } from '@tanstack/react-table';
+import type {
+  ExpandedState,
+  ColumnDef,
+  FilterFn,
+  PaginationState,
+} from '@tanstack/react-table';
 import { debounce } from 'lodash';
-import { FC, Fragment, useEffect, useMemo, useRef, useState } from 'react';
-import { useForm, FieldErrors, FieldError } from 'react-hook-form';
+import { type FC, Fragment, useEffect, useMemo, useRef, useState } from 'react';
+import type { FieldErrors, FieldError } from 'react-hook-form';
+import { useForm } from 'react-hook-form';
 
 import Button from '../../atoms/Button';
 import {
@@ -333,7 +336,7 @@ export const WithReactHookForm: Story = {
                   'aria-label': 'Email input',
                   ...register(`${row.original.id}.${column.id}` as never, {
                     required: true,
-                    pattern: /.+@.+\..+/,
+                    pattern: /[^@]+@[^@.]+\.[^@.]+/,
                   }),
                   iconEnd:
                     row.original?.disabledFields?.includes('email') === true
