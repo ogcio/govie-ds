@@ -17,11 +17,6 @@ export const textMeta = {
     children: {
       table: { disable: true },
     },
-    id: { control: false, description: 'Optional id for linking/targeting and aria references.' },
-    dataTestId: {
-      control: false,
-      description: 'Value for the `data-testid` attribute, used for testing.',
-    },
     size: {
       control: { type: 'select' },
       options: ['', ...Object.values(Size)],
@@ -74,6 +69,11 @@ export const textMeta = {
           summary: 'boolean',
         },
       },
+    },
+    id: { control: false, description: 'Optional id for linking/targeting and aria references.' },
+    dataTestId: {
+      control: false,
+      description: 'Value for the `data-testid` attribute, used for testing.',
     },
   },
   parameters: {

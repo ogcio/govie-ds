@@ -5,7 +5,7 @@ export type ParagraphAlign = 'start' | 'center' | 'end' | 'justify';
 
 export type ParagraphProps = Omit<TextProps, 'styles'> & {
   style?: React.CSSProperties;
-  /** @deprecated Use `dataTestId` instead of `<Paragraph as="span" />`. */
+  /** @deprecated Use `dataTestId` */
   dataTestid?: string;
   align?: ParagraphAlign;
   ariaHidden?: boolean;
