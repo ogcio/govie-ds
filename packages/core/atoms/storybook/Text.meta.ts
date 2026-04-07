@@ -17,15 +17,10 @@ export const textMeta = {
     children: {
       table: { disable: true },
     },
-    id: { control: false, description: 'Optional id for linking/targeting and aria references.' },
-    dataTestId: {
-      control: false,
-      description: 'Value for the `data-testid` attribute, used for testing.',
-    },
     size: {
       control: { type: 'select' },
-      options: ['', ...Object.values(Size)],
-      description: 'Font size of the text.',
+      options: [...Object.values(Size)],
+      description: 'Font size of the Text',
       table: {
         type: {
           summary: Object.values(Size)
@@ -37,8 +32,8 @@ export const textMeta = {
     },
     whitespace: {
       control: { type: 'select' },
-      options: ['', ...Object.values(Whitespace)],
-      description: 'White-space handling for the text content.',
+      options: [...Object.values(Whitespace)],
+      description: 'Whitespace handling.',
       table: {
         type: {
           summary: Object.values(Whitespace)
@@ -74,6 +69,11 @@ export const textMeta = {
           summary: 'boolean',
         },
       },
+    },
+    id: { control: false, description: 'Optional id for linking/targeting and aria references.' },
+    dataTestId: {
+      control: false,
+      description: 'Value for the `data-testid` attribute, used for testing.',
     },
   },
   parameters: {

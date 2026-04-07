@@ -7,6 +7,12 @@ export type ParagraphAs = 'p' | 'span';
 
 export type ParagraphProps = GiParagraphProps & {
   style?: React.CSSProperties;
+  /** @deprecated Use `dataTestId` */
+  dataTestid?: string;
+  align?: ParagraphAlign;
+  /** @deprecated ariaLabel prop will be removed in the next major release. */
+  ariaLabel?: string;
+  ariaHidden?: boolean;
   /** @deprecated 'as' prop will now default to 'p', and should be omitted from Paragraph. When using as="span" prefer the use of <Text/> */
   as?: ParagraphAs;
   /** @deprecated Use `dataTestId` instead. */
