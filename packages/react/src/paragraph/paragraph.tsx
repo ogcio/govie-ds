@@ -8,6 +8,8 @@ export type ParagraphProps = Omit<TextProps, 'styles'> & {
   /** @deprecated Use `dataTestId` */
   dataTestid?: string;
   align?: ParagraphAlign;
+  /** @deprecated ariaLabel prop will be removed in the next major release. */
+  ariaLabel?: string;
   ariaHidden?: boolean;
   /** @deprecated 'as' prop will now default to 'p', and should be omitted from Paragraph. When using as="span" prefer the use of <Text/> */
   as?: ParagraphAs;
@@ -24,6 +26,7 @@ export function Paragraph({
   id,
   dataTestId,
   dataTestid,
+  ariaLabel,
   ariaHidden,
 }: ParagraphProps) {
   const sizeClass = (() => {
