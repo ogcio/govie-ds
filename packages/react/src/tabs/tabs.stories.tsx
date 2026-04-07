@@ -3,7 +3,7 @@
 import type { Meta, StoryObj } from '@storybook/react-vite';
 import { useState } from 'react';
 import { expect, within, userEvent, waitFor } from 'storybook/test';
-import { Paragraph } from '../paragraph/paragraph.js';
+import Paragraph from '../atoms/Paragraph';
 import { Stack } from '../stack/stack.js';
 import { TabItem } from './tab-item.js';
 import { TabList } from './tab-list.js';

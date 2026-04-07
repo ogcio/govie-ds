@@ -1,13 +1,13 @@
 'use client';
 import { useEffect, useId, useState } from 'react';
 import Button from '../atoms/Button';
+import Paragraph from '../atoms/Paragraph';
 import { cn } from '../cn.js';
 import { translate as t } from '../i18n/utility.js';
 import { Icon } from '../icon/icon.js';
 import { IconButton } from '../icon-button/icon-button.js';
 import { InputCheckbox } from '../input-checkbox/input-checkbox.js';
 import { InputText } from '../input-text/input-text.js';
-import { Paragraph } from '../paragraph/paragraph.js';
 import { Tag, TagTypeEnum } from '../tag/tag.js';
 import { slugify } from '../utilities.js';
 import { DropdownItemProps } from './types.js';

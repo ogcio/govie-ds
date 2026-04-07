@@ -1,5 +1,25 @@
 # Changelog
 
+## [1.34.0](https://github.com/ogcio/govie-ds/compare/react-lib-v1.33.0...react-lib-v1.34.0) (2026-04-03)
+
+
+### Features
+
+* **AB#36244:** update underline behaviour for all components ([#905](https://github.com/ogcio/govie-ds/issues/905)) ([12ebffb](https://github.com/ogcio/govie-ds/commit/12ebffb0125856cc9aa5b4e6f06fd9eb327cf355))
+* **AB#36252:** Upgrade Storybook 10 ([#887](https://github.com/ogcio/govie-ds/issues/887)) ([fa8ddc8](https://github.com/ogcio/govie-ds/commit/fa8ddc8ed4cacbcdf1621ac6349701146531d402))
+
+
+### Miscellaneous Chores
+
+* **AB#36896:** stabilize Visual Regression ([14fc162](https://github.com/ogcio/govie-ds/commit/14fc162772bd124366f6efbae0962e092f55085d))
+
+
+### Dependencies
+
+* The following workspace dependencies were updated
+  * devDependencies
+    * @ogcio/design-system-tailwind bumped to 1.24.0
+
 ## [1.33.0](https://github.com/ogcio/govie-ds/compare/react-lib-v1.32.0...react-lib-v1.33.0) (2026-03-30)
 
 

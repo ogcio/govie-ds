@@ -12,14 +12,14 @@ component:
         - name: 'children'
           ofType: 'node'
           description: 'The text content of the paragraph.'
-          required: true
+          required: false
         - name: 'as'
           ofType: 'string'
-          description: 'Specifies the HTML element to render the component as. Options: p, span.'
+          description: '@deprecated — Specifies the HTML element to render the component as. Options: p, span. Use `<Paragraph>` for block-level text and `<Text>` for inline text instead.'
           required: false
         - name: 'size'
           ofType: 'string'
-          description: 'Specifies the size of the paragraph. Options: lg, md, sm.'
+          description: 'Specifies the size of the paragraph. Options: xl, lg, md, sm.'
           required: false
         - name: 'align'
           ofType: 'string'
@@ -29,24 +29,40 @@ component:
           ofType: 'string'
           description: 'Specifies the whitespace property. Options: normal, pre, pre-wrap, break-spaces.'
           required: false
+        - name: 'id'
+          ofType: 'string'
+          description: 'Optional id for linking/targeting and aria references.'
+          required: false
+        - name: 'style'
+          ofType: 'object'
+          description: 'Inline CSS styles applied to the root `<p>` element.'
+          required: false
+        - name: 'styles'
+          ofType: 'object'
+          description: 'Alias for `style`.'
+          required: false
+        - name: 'className'
+          ofType: 'string'
+          description: 'Additional CSS classes applied to the paragraph element.'
+          required: false
+        - name: 'ariaHidden'
+          ofType: 'boolean'
+          description: 'When true, hides the paragraph from assistive technology. Use for decorative or redundant text only.'
+          required: false
+        - name: 'dataTestId'
+          ofType: 'string'
+          description: 'Test id for targeting the element in automated tests.'
+          required: false
   stories:
     - name: 'default'
       url: '/story/typography-paragraph--default'
-    - name: 'right-alignment'
-      url: '/story/typography-paragraph--right-alignment'
-    - name: 'whitespace-pre'
-      url: '/story/typography-paragraph--whitespace-pre'
-    - name: 'whitespace-pre-wrap'
-      url: '/story/typography-paragraph--whitespace-pre-wrap'
-    - name: 'whitespace-break-spaces'
-      url: '/story/typography-paragraph--whitespace-break-spaces'
-    - name: 'as-span'
-      url: '/story/typography-paragraph--as-span'
+    - name: 'all-paragraph-sizes'
+      url: '/story/typography-paragraph--all-paragraph-sizes'
 ---
 
 # Paragraph
 
-The Paragraph component provides consistent, responsive typography for body and inline text. It ensures readability and spacing across applications, with flexible size and element options (`p` or `span`).
+The Paragraph component provides consistent, responsive typography for body text. It renders a semantic `<p>` element with configurable size, alignment, and whitespace handling.
 
 <Section current="react">
 
@@ -57,61 +73,13 @@ The Paragraph component provides consistent, responsive typography for body and 
 ### Default
 
 <ComponentPreview>
-  <StorybookFrame
-    className="w-[640px]"
-    componentId="paragraph-react"
-    story="default"
-  />
+  <StorybookFrame className="w-[640px]" componentId="paragraph-react" story="default" />
 </ComponentPreview>
 
-### Right Alignment
+### All Paragraph Sizes
 
 <ComponentPreview>
-  <StorybookFrame
-    className="w-[640px]"
-    componentId="paragraph-react"
-    story="right-alignment"
-  />
-</ComponentPreview>
-
-### Whitespace Pre
-
-<ComponentPreview>
-  <StorybookFrame
-    className="w-[640px] h-[200px]"
-    componentId="paragraph-react"
-    story="whitespace-pre"
-  />
-</ComponentPreview>
-
-### Whitespace Pre Wrap
-
-<ComponentPreview>
-  <StorybookFrame
-    className="w-[640px] h-[200px]"
-    componentId="paragraph-react"
-    story="whitespace-pre-wrap"
-  />
-</ComponentPreview>
-
-### Whitespace Break Spaces
-
-<ComponentPreview>
-  <StorybookFrame
-    className="w-[640px] h-[200px]"
-    componentId="paragraph-react"
-    story="whitespace-break-spaces"
-  />
-</ComponentPreview>
-
-### As Span
-
-<ComponentPreview>
-  <StorybookFrame
-    className="w-[640px]"
-    componentId="paragraph-react"
-    story="as-span"
-  />
+  <StorybookFrame className="w-[640px]" componentId="paragraph-react" story="all-paragraph-sizes" />
 </ComponentPreview>
 
 ## Properties

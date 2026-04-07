@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.24.0](https://github.com/ogcio/govie-ds/compare/design-tailwind-v1.23.0...design-tailwind-v1.24.0) (2026-04-03)
+
+
+### Features
+
+* **AB#36244:** update underline behaviour for all components ([#905](https://github.com/ogcio/govie-ds/issues/905)) ([12ebffb](https://github.com/ogcio/govie-ds/commit/12ebffb0125856cc9aa5b4e6f06fd9eb327cf355))
+
 ## [1.23.0](https://github.com/ogcio/govie-ds/compare/design-tailwind-v1.22.0...design-tailwind-v1.23.0) (2026-03-24)
 
 

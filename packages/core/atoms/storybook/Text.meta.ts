@@ -25,7 +25,7 @@ export const textMeta = {
     size: {
       control: { type: 'select' },
       options: ['', ...Object.values(Size)],
-      description: 'Font size of the Text',
+      description: 'Font size of the text.',
       table: {
         type: {
           summary: Object.values(Size)
@@ -38,7 +38,7 @@ export const textMeta = {
     whitespace: {
       control: { type: 'select' },
       options: ['', ...Object.values(Whitespace)],
-      description: 'Whitespace handling.',
+      description: 'White-space handling for the text content.',
       table: {
         type: {
           summary: Object.values(Whitespace)

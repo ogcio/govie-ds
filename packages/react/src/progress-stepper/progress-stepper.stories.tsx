@@ -3,6 +3,7 @@ import { useState } from 'react';
 import { within, expect } from 'storybook/test';
 import Heading from '../Heading.js';
 import Button from '../atoms/Button';
+import Paragraph from '../atoms/Paragraph';
 import {
   FormField,
   FormFieldHint,
@@ -10,7 +11,6 @@ import {
 } from '../forms/form-field/form-field.js';
 import { InputFile } from '../input-file/input-file.js';
 import { InputText } from '../input-text/input-text.js';
-import { Paragraph } from '../paragraph/paragraph.js';
 import { Select, SelectItem } from '../select/select.js';
 import { Stack } from '../stack/stack.js';
 import { TextArea } from '../textarea/textarea.js';
