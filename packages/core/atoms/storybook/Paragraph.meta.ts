@@ -18,7 +18,7 @@ export const paragraphMeta = {
     size: {
       control: { type: 'select' },
       options: Object.values(Size),
-      description: 'Font size of the text.',
+      description: 'Font size of the Paragraph.',
       table: {
         type: {
           summary: Object.values(Size)
@@ -48,7 +48,7 @@ export const paragraphMeta = {
     whitespace: {
       control: { type: 'select' },
       options: Object.values(Whitespace),
-      description: 'White-space handling for the text content.',
+      description: 'Whitespace handling.',
       table: {
         type: {
           summary: Object.values(Whitespace)
@@ -60,10 +60,6 @@ export const paragraphMeta = {
         },
       },
     },
-    id: {
-      control: false,
-      description: 'Optional id for linking/targeting and aria references.',
-    },
     className: {
       control: false,
       description: 'Additional CSS classes applied to the paragraph element.',
@@ -73,10 +69,6 @@ export const paragraphMeta = {
         },
       },
     },
-    dataTestId: {
-      control: false,
-      description: 'Value for the `data-testid` attribute, used for testing.',
-    },
     styles: {
       control: false,
       description: 'Inline CSS styles applied to the root `<p>` element.',
@@ -85,6 +77,23 @@ export const paragraphMeta = {
           summary: 'Record<string, string>',
         },
       },
+    },
+    id: {
+      control: false,
+      description: 'Optional id for linking/targeting and aria references.',
+    },
+    ariaHidden: {
+      control: false,
+      description: 'When true, sets `aria-hidden` on the element to hide it from assistive technologies.',
+      table: {
+        type: {
+          summary: 'boolean',
+        },
+      },
+    },
+    dataTestId: {
+      control: false,
+      description: 'Value for the `data-testid` attribute, used for testing.',
     },
   } as const,
   parameters: {
