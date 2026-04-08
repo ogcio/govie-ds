@@ -329,12 +329,6 @@ importers:
       '@angular/compiler-cli':
         specifier: ~21.1.0
         version: 21.1.6(@angular/compiler@21.1.6)(typescript@5.9.3)
-      '@ogcio/design-system-eslint-config':
-        specifier: workspace:*
-        version: link:../../packages/build/eslint-config
-      '@ogcio/design-system-prettier-config':
-        specifier: workspace:*
-        version: link:../../packages/build/prettier-config
       '@ogcio/design-system-tailwind':
         specifier: workspace:*
         version: link:../../packages/design/tailwind
@@ -347,9 +341,6 @@ importers:
       '@types/jasmine':
         specifier: ~5.1.0
         version: 5.1.15
-      eslint:
-        specifier: ^9.23.0
-        version: 9.39.4(jiti@2.6.1)
       jasmine-core:
         specifier: ~5.6.0
         version: 5.6.0
@@ -408,24 +399,9 @@ importers:
         specifier: ^4.1.13
         version: 4.3.6
     devDependencies:
-      '@eslint/eslintrc':
-        specifier: ^3.3.1
-        version: 3.3.5
       '@next/eslint-plugin-next':
         specifier: ^15.5.7
         version: 15.5.14
-      '@ogcio/design-system-eslint-config':
-        specifier: workspace:*
-        version: link:../../packages/build/eslint-config
-      '@ogcio/design-system-prettier-config':
-        specifier: workspace:*
-        version: link:../../packages/build/prettier-config
-      eslint:
-        specifier: ^9.23.0
-        version: 9.39.4(jiti@2.6.1)
-      eslint-config-next:
-        specifier: ^15.4.3
-        version: 15.5.14(eslint-plugin-import-x@4.16.2(@typescript-eslint/utils@8.57.2(eslint@9.39.4(jiti@2.6.1))(typescript@5.9.3))(eslint-import-resolver-node@0.3.9)(eslint@9.39.4(jiti@2.6.1)))(eslint@9.39.4(jiti@2.6.1))(typescript@5.9.3)
       postcss:
         specifier: ^8.4.40
         version: 8.5.8
@@ -447,13 +423,6 @@ importers:
       react-dom:
         specifier: 19.0.0
         version: 19.0.0(react@19.0.0)
-    devDependencies:
-      '@ogcio/design-system-eslint-config':
-        specifier: workspace:*
-        version: link:../../packages/build/eslint-config
-      eslint:
-        specifier: ^9.23.0
-        version: 9.39.4(jiti@2.6.1)
 
   packages/angular:
     dependencies:
@@ -530,18 +499,6 @@ importers:
       typescript:
         specifier: ^5.9.3
         version: 5.9.3
-
-  packages/angular/dist:
-    dependencies:
-      '@angular/common':
-        specifier: ^21.1.0
-        version: 21.1.6(@angular/core@21.1.6(@angular/compiler@21.1.6)(rxjs@7.8.2)(zone.js@0.16.1))(rxjs@7.8.2)
-      '@angular/core':
-        specifier: ^21.1.0
-        version: 21.1.6(@angular/compiler@21.1.6)(rxjs@7.8.2)(zone.js@0.16.1)
-      tslib:
-        specifier: ^2.3.0
-        version: 2.8.1
 
   packages/build/eslint-config:
     dependencies:

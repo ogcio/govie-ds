@@ -8,8 +8,7 @@ export const CookieBannerProps = {
         We use some essential cookies to make this service work.
         <br />
         <br />
-        We’d also like to use analytics cookies so we can understand how you use
-        the service and make improvements.
+        We’d also like to use analytics cookies so we can understand how you use the service and make improvements.
       </Paragraph>
     </>
   ),

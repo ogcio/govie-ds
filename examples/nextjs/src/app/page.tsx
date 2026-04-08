@@ -32,14 +32,12 @@ import {
   FormFieldHint,
   FormFieldLabel,
   Header,
-  HeaderProps,
   HeaderSearch,
   Heading,
   Icon,
   IconButton,
   InputCheckbox,
   InputCheckboxGroup,
-  InputFile,
   InsetText,
   InputPassword,
   InputRadio,
@@ -81,7 +79,7 @@ import {
   CharacterCount,
   toaster,
   ToastProvider,
-  ToastVariant,
+  type ToastVariant,
   StepFillLevel,
   StepStatus,
   SummaryListHeader,
@@ -95,7 +93,7 @@ import {
   HeaderMenuItemButton,
 } from '@ogcio/design-system-react';
 import { LogoWhite, LogoHarpWhite } from '@ogcio/design-system-react/logos';
-import { useEffect, useRef, useState } from 'react';
+import { useCallback, useEffect, useRef, useState } from 'react';
 
 const HeaderComposable = () => {
   const [searchOpen, setSearchOpen] = useState(false);
@@ -104,14 +102,8 @@ const HeaderComposable = () => {
     <>
       <Header variant="default" aria-label="Site header" id="GovieHeader">
         <HeaderLogo>
-          <LogoHarpWhite
-            label="Gov.ie logo"
-            className="gi-block gi-h-10 gi-w-auto sm:gi-hidden"
-          />
-          <LogoWhite
-            label="Gov.ie logo"
-            className="gi-hidden gi-h-12 gi-w-auto sm:gi-block"
-          />
+          <LogoHarpWhite label="Gov.ie logo" className="gi-block gi-h-10 gi-w-auto sm:gi-hidden" />
+          <LogoWhite label="Gov.ie logo" className="gi-hidden gi-h-12 gi-w-auto sm:gi-block" />
         </HeaderLogo>
         <HeaderTitle>Title</HeaderTitle>
         <HeaderSecondaryMenu>
@@ -174,11 +166,7 @@ const stepStates = [
 ];
 
 // Toast Handler
-const handleCreateToast = (
-  title: string,
-  variant: ToastVariant,
-  slotAction?: any,
-) =>
+const handleCreateToast = (title: string, variant: ToastVariant, slotAction?: any) =>
   toaster.create({
     title,
     variant,
@@ -206,11 +194,7 @@ const StandaloneTextAreaExample = () => {
     <FormField>
       <FormFieldLabel htmlFor="textarea-standalone">Comments</FormFieldLabel>
       <FormFieldHint>This is a helpful hint.</FormFieldHint>
-      <TextArea
-        id="textarea-standalone"
-        maxLength={maxChars}
-        onChange={(event) => setValue(event.target.value)}
-      />
+      <TextArea id="textarea-standalone" maxLength={maxChars} onChange={(event) => setValue(event.target.value)} />
       <CharacterCount maxChars={maxChars} value={value} />
     </FormField>
   );
@@ -241,29 +225,17 @@ const NativeFormExample = () => {
           Native Form (No Form Library)
         </Heading>
         <Paragraph className="mb-4 text-gray-600">
-          This example uses native HTML form handling without React Hook Form or
-          any other form library.
+          This example uses native HTML form handling without React Hook Form or any other form library.
         </Paragraph>
         <div className="space-y-4">
           <FormField>
             <FormFieldLabel htmlFor="native-name">Name</FormFieldLabel>
             <FormFieldHint>Enter your full name</FormFieldHint>
-            <InputText
-              id="native-name"
-              name="name"
-              className="w-full"
-              placeholder="John Doe"
-            />
+            <InputText id="native-name" name="name" className="w-full" placeholder="John Doe" />
           </FormField>
           <FormField>
             <FormFieldLabel htmlFor="native-email">Email</FormFieldLabel>
-            <InputText
-              id="native-email"
-              name="email"
-              type="email"
-              className="w-full"
-              placeholder="john@example.com"
-            />
+            <InputText id="native-email" name="email" type="email" className="w-full" placeholder="john@example.com" />
           </FormField>
           <FormField>
             <FormFieldLabel htmlFor="native-select">Topic</FormFieldLabel>
@@ -331,32 +303,18 @@ const ReachHookFormWithRegister = () => {
           <div className="space-y-4">
             <FormField>
               <FormFieldLabel htmlFor="input-text-id">InputText</FormFieldLabel>
-              <InputText
-                id="input-text-id"
-                {...register('inputText')}
-                className="w-full"
-                placeholder="Enter text..."
-              />
+              <InputText id="input-text-id" {...register('inputText')} className="w-full" placeholder="Enter text..." />
             </FormField>
 
             <FormField>
               <FormFieldLabel htmlFor="textarea-id">TextArea</FormFieldLabel>
-              <TextArea
-                id="textarea-id"
-                cols={100}
-                rows={4}
-                maxLength={maxChars}
-                {...register('textArea')}
-              />
+              <TextArea id="textarea-id" cols={100} rows={4} maxLength={maxChars} {...register('textArea')} />
               <CharacterCount maxChars={maxChars} value={textAreaValue ?? ''} />
             </FormField>
 
             <div className="flex gap-2">
               <Button type="submit">Submit</Button>
-              <Button
-                type="button"
-                onClick={() => reset(basicFormDefaultValues)}
-              >
+              <Button type="button" onClick={() => reset(basicFormDefaultValues)}>
                 Clear
               </Button>
             </div>
@@ -385,23 +343,17 @@ const ReachHookFormWithController = () => {
 
   const { handleSubmit, control, reset } = methods;
 
-  const onSubmit = (data: any) => {
+  const onSubmit = useCallback((data: any) => {
     console.log('Form submitted successfully');
     console.log('Form Data:', data);
-  };
+  }, []);
 
   const handleClear = () => {
     reset();
     console.log('Form cleared');
   };
 
-  const selectOptions: string[] = [
-    'Topic 1',
-    'Topic 2',
-    'Topic 3',
-    'Topic 4',
-    'Topic 5',
-  ];
+  const selectOptions: string[] = ['Topic 1', 'Topic 2', 'Topic 3', 'Topic 4', 'Topic 5'];
 
   const autocompleteOptions = [
     { value: 'frontend_dev', label: 'Frontend Dev.' },
@@ -430,9 +382,7 @@ const ReachHookFormWithController = () => {
               <Controller
                 control={control}
                 name="inputText"
-                render={({ field }) => (
-                  <InputText {...field} className="w-full" />
-                )}
+                render={({ field }) => <InputText {...field} className="w-full" />}
               />
             </FormField>
 
@@ -442,14 +392,7 @@ const ReachHookFormWithController = () => {
                 name="textArea"
                 render={({ field }) => (
                   <>
-                    <TextArea
-                      {...field}
-                      cols={100}
-                      rows={4}
-                      className="w-full"
-                      maxLength={100}
-                      clearButtonEnabled
-                    />
+                    <TextArea {...field} cols={100} rows={4} className="w-full" maxLength={100} clearButtonEnabled />
                     <CharacterCount maxChars={100} value={field.value ?? ''} />
                   </>
                 )}
@@ -500,11 +443,7 @@ const ReachHookFormWithController = () => {
                 name="radioGroup"
                 control={control}
                 render={({ field }) => (
-                  <InputRadioGroup
-                    groupId="my-radio-group"
-                    value={field.value}
-                    onChange={field.onChange}
-                  >
+                  <InputRadioGroup groupId="my-radio-group" value={field.value} onChange={field.onChange}>
                     <InputRadio value="option1" label="Option 1" />
                     <InputRadio value="option2" label="Option 2" />
                     <InputRadio value="option3" label="Option 3" />
@@ -519,12 +458,7 @@ const ReachHookFormWithController = () => {
                 name="buttonGroup"
                 control={control}
                 render={({ field }) => (
-                  <ButtonGroup
-                    value={field.value}
-                    name="customer-status"
-                    size="medium"
-                    onChange={field.onChange}
-                  >
+                  <ButtonGroup value={field.value} name="customer-status" size="medium" onChange={field.onChange}>
                     <ButtonGroupItem value="yes">Yes</ButtonGroupItem>
                     <ButtonGroupItem value="no">No</ButtonGroupItem>
                   </ButtonGroup>
@@ -538,32 +472,15 @@ const ReachHookFormWithController = () => {
                 name="checkboxGroup"
                 control={control}
                 render={({ field }) => (
-                  <InputCheckboxGroup
-                    groupId="UniqueID"
-                    values={field.value}
-                    onChange={field.onChange}
-                  >
-                    <InputCheckbox
-                      id="UniqueID-check1"
-                      label="Employment Tribunal"
-                      value="employment-tribunal"
-                    />
-                    <InputCheckbox
-                      id="UniqueID-check2"
-                      label="Ministry of Defence"
-                      value="ministry-of-defence"
-                    />
+                  <InputCheckboxGroup groupId="UniqueID" values={field.value} onChange={field.onChange}>
+                    <InputCheckbox id="UniqueID-check1" label="Employment Tribunal" value="employment-tribunal" />
+                    <InputCheckbox id="UniqueID-check2" label="Ministry of Defence" value="ministry-of-defence" />
                     <InputCheckbox
                       id="UniqueID-check3"
                       label="Department for Transport"
                       value="department-for-transport"
                     />
-                    <InputCheckbox
-                      disabled
-                      id="UniqueID-check4"
-                      label="Others"
-                      value="others"
-                    />
+                    <InputCheckbox disabled id="UniqueID-check4" label="Others" value="others" />
                   </InputCheckboxGroup>
                 )}
               />
@@ -573,9 +490,7 @@ const ReachHookFormWithController = () => {
               <Controller
                 control={control}
                 name="password"
-                render={({ field }) => (
-                  <InputPassword {...field} placeholder="Placeholder" />
-                )}
+                render={({ field }) => <InputPassword {...field} placeholder="Placeholder" />}
               />
             </FormField>
 
@@ -612,17 +527,9 @@ const ReachHookFormWithController = () => {
 };
 
 const ValidationFormExample = () => {
-  const customerTypes: string[] = [
-    'Customer type 1',
-    'Customer type 2',
-    'Customer type 3',
-  ];
+  const customerTypes: string[] = ['Customer type 1', 'Customer type 2', 'Customer type 3'];
   const categories: string[] = ['Category 1', 'Category 2', 'Category 3'];
-  const relatedTopics: string[] = [
-    'Related topic 1',
-    'Related topic 2',
-    'Related topic 3',
-  ];
+  const relatedTopics: string[] = ['Related topic 1', 'Related topic 2', 'Related topic 3'];
 
   const schema = z.object({
     customerType: z.string().nonempty('Customer type is required'),
@@ -671,12 +578,8 @@ const ValidationFormExample = () => {
 
           <div className="space-y-4">
             <FormField>
-              <FormFieldLabel htmlFor="customerType">
-                Customer Type
-              </FormFieldLabel>
-              {errors.customerType?.message && (
-                <FormFieldError>{errors.customerType.message}</FormFieldError>
-              )}
+              <FormFieldLabel htmlFor="customerType">Customer Type</FormFieldLabel>
+              {errors.customerType?.message && <FormFieldError>{errors.customerType.message}</FormFieldError>}
               <Controller
                 control={control}
                 name="customerType"
@@ -689,9 +592,7 @@ const ValidationFormExample = () => {
                     onBlur={field.onBlur}
                     ref={field.ref as any}
                   >
-                    <SelectItemNext value="">
-                      Select a customer type
-                    </SelectItemNext>
+                    <SelectItemNext value="">Select a customer type</SelectItemNext>
                     {customerTypes.map((option) => (
                       <SelectItemNext key={option} value={option}>
                         {option}
@@ -704,9 +605,7 @@ const ValidationFormExample = () => {
 
             <FormField>
               <FormFieldLabel htmlFor="category">Category</FormFieldLabel>
-              {errors.category?.message && (
-                <FormFieldError>{errors.category.message}</FormFieldError>
-              )}
+              {errors.category?.message && <FormFieldError>{errors.category.message}</FormFieldError>}
               <Controller
                 control={control}
                 name="category"
@@ -731,12 +630,8 @@ const ValidationFormExample = () => {
             </FormField>
 
             <FormField>
-              <FormFieldLabel htmlFor="relatedTopic">
-                Related topic
-              </FormFieldLabel>
-              {errors.relatedTopic?.message && (
-                <FormFieldError>{errors.relatedTopic.message}</FormFieldError>
-              )}
+              <FormFieldLabel htmlFor="relatedTopic">Related topic</FormFieldLabel>
+              {errors.relatedTopic?.message && <FormFieldError>{errors.relatedTopic.message}</FormFieldError>}
               <Controller
                 control={control}
                 name="relatedTopic"
@@ -750,9 +645,7 @@ const ValidationFormExample = () => {
                     onBlur={field.onBlur}
                     ref={field.ref as any}
                   >
-                    <SelectItemNext value="">
-                      Select a related topic
-                    </SelectItemNext>
+                    <SelectItemNext value="">Select a related topic</SelectItemNext>
                     {relatedTopics.map((option) => (
                       <SelectItemNext key={option} value={option}>
                         {option}
@@ -832,10 +725,7 @@ export default function Home() {
                     <InputCheckboxGroup groupId="nationality">
                       <InputCheckbox value="irish" label="Irish" />
                       <InputCheckbox value="british" label="British" />
-                      <InputCheckbox
-                        value="citizen-of-another-country"
-                        label="Citizen of another country"
-                      />
+                      <InputCheckbox value="citizen-of-another-country" label="Citizen of another country" />
                     </InputCheckboxGroup>
                   </div>
 
@@ -843,17 +733,9 @@ export default function Home() {
                     <h5 className="font-semibold mb-2">Combobox</h5>
                     <Form>
                       <Combobox>
-                        <DropdownItem
-                          options={ComboBoxProps.organisationOptions}
-                        >
-                          Organisations
-                        </DropdownItem>
-                        <DropdownItem options={ComboBoxProps.categoryOptions}>
-                          Category
-                        </DropdownItem>
-                        <DropdownItem options={ComboBoxProps.topicOptions}>
-                          Topic
-                        </DropdownItem>
+                        <DropdownItem options={ComboBoxProps.organisationOptions}>Organisations</DropdownItem>
+                        <DropdownItem options={ComboBoxProps.categoryOptions}>Category</DropdownItem>
+                        <DropdownItem options={ComboBoxProps.topicOptions}>Topic</DropdownItem>
                       </Combobox>
                     </Form>
                   </div>
@@ -882,13 +764,8 @@ export default function Home() {
 
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                   <div>
-                    <h5 className="font-semibold mb-2">
-                      Text Input with Clear Button
-                    </h5>
-                    <InputText
-                      clearButtonEnabled
-                      placeholder="Type something..."
-                    />
+                    <h5 className="font-semibold mb-2">Text Input with Clear Button</h5>
+                    <InputText clearButtonEnabled placeholder="Type something..." />
                   </div>
 
                   <div>
@@ -899,15 +776,9 @@ export default function Home() {
                   <div>
                     <h5 className="font-semibold mb-2">Autocomplete</h5>
                     <Autocomplete>
-                      <AutocompleteItem value="option1">
-                        Option 1
-                      </AutocompleteItem>
-                      <AutocompleteItem value="option2">
-                        Option 2
-                      </AutocompleteItem>
-                      <AutocompleteItem value="option3">
-                        Option 3
-                      </AutocompleteItem>
+                      <AutocompleteItem value="option1">Option 1</AutocompleteItem>
+                      <AutocompleteItem value="option2">Option 2</AutocompleteItem>
+                      <AutocompleteItem value="option3">Option 3</AutocompleteItem>
                     </Autocomplete>
                   </div>
 
@@ -923,11 +794,7 @@ export default function Home() {
 
                   <div>
                     <h5 className="font-semibold mb-2">Single Checkbox</h5>
-                    <InputCheckbox
-                      id="single-checkbox"
-                      value="agree"
-                      label="I agree to the terms"
-                    />
+                    <InputCheckbox id="single-checkbox" value="agree" label="I agree to the terms" />
                   </div>
                 </div>
               </Container>
@@ -948,19 +815,13 @@ export default function Home() {
                     <Breadcrumbs>
                       <BreadcrumbLink href="/home">Home</BreadcrumbLink>
                       <BreadcrumbEllipsis />
-                      <BreadcrumbLink href="/documentation">
-                        Documentation
-                      </BreadcrumbLink>
-                      <BreadcrumbCurrentLink href="/travel">
-                        Travel
-                      </BreadcrumbCurrentLink>
+                      <BreadcrumbLink href="/documentation">Documentation</BreadcrumbLink>
+                      <BreadcrumbCurrentLink href="/travel">Travel</BreadcrumbCurrentLink>
                     </Breadcrumbs>
                   </div>
 
                   <div>
-                    <h5 className="font-semibold mb-2">
-                      Breadcrumbs with Next.js Links
-                    </h5>
+                    <h5 className="font-semibold mb-2">Breadcrumbs with Next.js Links</h5>
                     <Breadcrumbs>
                       <BreadcrumbLink asChild>
                         <NextLink href="/home">Home</NextLink>
@@ -969,9 +830,7 @@ export default function Home() {
                       <BreadcrumbLink asChild>
                         <NextLink href="/documentation">Documentation</NextLink>
                       </BreadcrumbLink>
-                      <BreadcrumbCurrentLink href="/travel">
-                        Travel
-                      </BreadcrumbCurrentLink>
+                      <BreadcrumbCurrentLink href="/travel">Travel</BreadcrumbCurrentLink>
                     </Breadcrumbs>
                   </div>
 
@@ -992,11 +851,7 @@ export default function Home() {
 
                   <div>
                     <h5 className="font-semibold mb-2">Pagination</h5>
-                    <Pagination
-                      currentPage={5}
-                      onPageChange={() => {}}
-                      totalPages={10}
-                    />
+                    <Pagination currentPage={5} onPageChange={() => {}} totalPages={10} />
                   </div>
                 </div>
               </Container>
@@ -1083,10 +938,7 @@ export default function Home() {
 
                   <div>
                     <h5 className="font-semibold mb-2">Lists</h5>
-                    <List
-                      items={['Item 1', 'Item 2', 'Item 3']}
-                      type="bullet"
-                    />
+                    <List items={['Item 1', 'Item 2', 'Item 3']} type="bullet" />
                   </div>
 
                   <div>
@@ -1096,27 +948,21 @@ export default function Home() {
                       <Heading as="h3">Heading H3</Heading>
                       <Heading as="h4">Heading H4</Heading>
                       <Paragraph size="xl">
-                        This is an extra-large paragraph with some sample text
-                        to demonstrate typography styles.
+                        This is an extra-large paragraph with some sample text to demonstrate typography styles.
                       </Paragraph>
                       <Paragraph size="lg">
-                        This is a large paragraph with some sample text to
-                        demonstrate typography styles.
+                        This is a large paragraph with some sample text to demonstrate typography styles.
                       </Paragraph>
                       <Paragraph size="md">
-                        This is a medium paragraph with some sample text to
-                        demonstrate typography styles.
+                        This is a medium paragraph with some sample text to demonstrate typography styles.
                       </Paragraph>
                       <Paragraph size="sm">
-                        This is a small paragraph with some sample text to
-                        demonstrate typography styles.
+                        This is a small paragraph with some sample text to demonstrate typography styles.
                       </Paragraph>
-                      <Text>
-                        This is an inline text using the Text component
-                      </Text>
+                      <Text>This is an inline text using the Text component</Text>
                       <InsetText>
-                        It can take up to 8 weeks to register a lasting power of
-                        attorney if there are no mistakes in the application.
+                        It can take up to 8 weeks to register a lasting power of attorney if there are no mistakes in
+                        the application.
                       </InsetText>
                     </div>
                   </div>
@@ -1137,47 +983,25 @@ export default function Home() {
                   <div>
                     <h5 className="font-semibold mb-2">Alerts</h5>
                     <Alert title="Info Alert" dismissible>
-                      <Paragraph>
-                        This is an informational alert message.
-                      </Paragraph>
+                      <Paragraph>This is an informational alert message.</Paragraph>
                     </Alert>
                     <br />
 
                     <Alert title="Info Alert" showIcon={false}>
-                      <Paragraph>
-                        This is an alert message without icon.
-                      </Paragraph>
+                      <Paragraph>This is an alert message without icon.</Paragraph>
                     </Alert>
                   </div>
 
                   <div>
                     <h5 className="font-semibold mb-2">Toast Notifications</h5>
                     <div className="flex flex-wrap gap-2">
-                      <Button
-                        onClick={() => handleCreateToast('Success', 'success')}
-                      >
-                        Success Toast
-                      </Button>
-                      <Button
-                        onClick={() => handleCreateToast('Error', 'danger')}
-                      >
-                        Error Toast
-                      </Button>
-                      <Button onClick={() => handleCreateToast('Info', 'info')}>
-                        Info Toast
-                      </Button>
-                      <Button
-                        onClick={() => handleCreateToast('Warning', 'warning')}
-                      >
-                        Warning Toast
-                      </Button>
+                      <Button onClick={() => handleCreateToast('Success', 'success')}>Success Toast</Button>
+                      <Button onClick={() => handleCreateToast('Error', 'danger')}>Error Toast</Button>
+                      <Button onClick={() => handleCreateToast('Info', 'info')}>Info Toast</Button>
+                      <Button onClick={() => handleCreateToast('Warning', 'warning')}>Warning Toast</Button>
                       <Button
                         onClick={() =>
-                          handleCreateToast(
-                            'Success',
-                            'success',
-                            <NextLink href="#">Custom Action</NextLink>,
-                          )
+                          handleCreateToast('Success', 'success', <NextLink href="#">Custom Action</NextLink>)
                         }
                       >
                         Toast with Action
@@ -1189,16 +1013,12 @@ export default function Home() {
                     <h5 className="font-semibold mb-2">Progress Indicators</h5>
                     <div className="space-y-4">
                       <div>
-                        <h6 className="text-sm font-medium mb-2">
-                          Progress Bar
-                        </h6>
+                        <h6 className="text-sm font-medium mb-2">Progress Bar</h6>
                         <ProgressBar value={50} label="Loading..." />
                       </div>
 
                       <div>
-                        <h6 className="text-sm font-medium mb-2">
-                          Progress Stepper (Horizontal)
-                        </h6>
+                        <h6 className="text-sm font-medium mb-2">Progress Stepper (Horizontal)</h6>
                         <ProgressStepper>
                           <StepItem label="Step 1">Step 1 Content</StepItem>
                           <StepItem label="Step 2">Step 2 Content</StepItem>
@@ -1208,13 +1028,8 @@ export default function Home() {
                       </div>
 
                       <div>
-                        <h6 className="text-sm font-medium mb-2">
-                          Progress Stepper (Numbers)
-                        </h6>
-                        <ProgressStepper
-                          indicator="number"
-                          currentStepIndex={2}
-                        >
+                        <h6 className="text-sm font-medium mb-2">Progress Stepper (Numbers)</h6>
+                        <ProgressStepper indicator="number" currentStepIndex={2}>
                           <StepItem label="Step 1" />
                           <StepItem label="Step 2" />
                           <StepItem label="Step 3" />
@@ -1223,14 +1038,8 @@ export default function Home() {
                       </div>
 
                       <div>
-                        <h6 className="text-sm font-medium mb-2">
-                          Progress Stepper (Vertical)
-                        </h6>
-                        <ProgressStepper
-                          indicator="number"
-                          orientation="vertical"
-                          currentStepIndex={1}
-                        >
+                        <h6 className="text-sm font-medium mb-2">Progress Stepper (Vertical)</h6>
+                        <ProgressStepper indicator="number" orientation="vertical" currentStepIndex={1}>
                           <StepItem label="Complete your application" />
                           <StepItem label="Review your information" />
                           <StepItem label="Submit for approval" />
@@ -1239,47 +1048,21 @@ export default function Home() {
                       </div>
 
                       <div>
-                        <h6 className="text-sm font-medium mb-2">
-                          Progress Stepper With `stepStates`
-                        </h6>
+                        <h6 className="text-sm font-medium mb-2">Progress Stepper With `stepStates`</h6>
 
                         <ProgressStepper
                           stepStates={stepStates}
                           orientation="vertical"
                           data-testid="progress-stepper-states"
                         >
-                          <StepItem
-                            key="with-step-states-step-1"
-                            label="Step 1"
-                          />
-                          <StepItem
-                            key="with-step-states-step-2"
-                            label="Step 2"
-                          />
-                          <StepItem
-                            key="with-step-states-step-3"
-                            label="Step 3"
-                          />
-                          <StepItem
-                            key="with-step-states-step-4"
-                            label="Step 4"
-                          />
-                          <StepItem
-                            key="with-step-states-step-5"
-                            label="Step 5"
-                          />
-                          <StepItem
-                            key="with-step-states-step-6"
-                            label="Step 6"
-                          />
-                          <StepItem
-                            key="with-step-states-step-7"
-                            label="Step 7"
-                          />
-                          <StepItem
-                            key="with-step-states-step-8"
-                            label="Step 8"
-                          />
+                          <StepItem key="with-step-states-step-1" label="Step 1" />
+                          <StepItem key="with-step-states-step-2" label="Step 2" />
+                          <StepItem key="with-step-states-step-3" label="Step 3" />
+                          <StepItem key="with-step-states-step-4" label="Step 4" />
+                          <StepItem key="with-step-states-step-5" label="Step 5" />
+                          <StepItem key="with-step-states-step-6" label="Step 6" />
+                          <StepItem key="with-step-states-step-7" label="Step 7" />
+                          <StepItem key="with-step-states-step-8" label="Step 8" />
                         </ProgressStepper>
                       </div>
                     </div>
@@ -1287,23 +1070,17 @@ export default function Home() {
 
                   <div>
                     <h5 className="font-semibold mb-2">Phase Banner </h5>
-                    <PhaseBanner level="Alpha">
-                      This is a pre-release version
-                    </PhaseBanner>
+                    <PhaseBanner level="Alpha">This is a pre-release version</PhaseBanner>
                   </div>
 
                   <div>
                     <h5 className="font-semibold mb-2">Modals and Drawers</h5>
                     <div className="flex gap-4">
-                      <Modal
-                        triggerButton={<Button>Open Modal</Button>}
-                        aria-describedby="Modal example"
-                      >
+                      <Modal triggerButton={<Button>Open Modal</Button>} aria-describedby="Modal example">
                         <ModalTitle>Modal Title</ModalTitle>
                         <ModalBody>
                           <Paragraph>
-                            This is the modal content. It can contain any
-                            components and information.
+                            This is the modal content. It can contain any components and information.
                           </Paragraph>
                         </ModalBody>
                         <ModalFooter>
@@ -1315,9 +1092,8 @@ export default function Home() {
                       <Drawer triggerButton={<Button>Open Drawer</Button>}>
                         <DrawerBody>
                           <Paragraph>
-                            This is the drawer content. Drawers slide in from
-                            the side and are great for forms or additional
-                            information.
+                            This is the drawer content. Drawers slide in from the side and are great for forms or
+                            additional information.
                           </Paragraph>
                         </DrawerBody>
                         <DrawerFooter>
@@ -1366,10 +1142,7 @@ export default function Home() {
                             <TableData>alice@example.com</TableData>
                             <TableData>Admin</TableData>
                             <TableData>
-                              <Chip
-                                label="Active"
-                                onClose={() => console.log('Chip closed')}
-                              />
+                              <Chip label="Active" onClose={() => console.log('Chip closed')} />
                             </TableData>
                             <TableData>
                               <div className="flex gap-2">
@@ -1388,10 +1161,7 @@ export default function Home() {
                             <TableData>bob@example.com</TableData>
                             <TableData>User</TableData>
                             <TableData>
-                              <Chip
-                                label="Inactive"
-                                onClose={() => console.log('Chip closed')}
-                              />
+                              <Chip label="Inactive" onClose={() => console.log('Chip closed')} />
                             </TableData>
                             <TableData>
                               <div className="flex gap-2">
@@ -1410,10 +1180,7 @@ export default function Home() {
                             <TableData>carol@example.com</TableData>
                             <TableData>Manager</TableData>
                             <TableData>
-                              <Chip
-                                label="Active"
-                                onClose={() => console.log('Chip closed')}
-                              />
+                              <Chip label="Active" onClose={() => console.log('Chip closed')} />
                             </TableData>
                             <TableData>
                               <div className="flex gap-2">
@@ -1435,21 +1202,15 @@ export default function Home() {
                     <h5 className="font-semibold mb-2">Summary List</h5>
                     <SummaryList withBorder>
                       <SummaryListHeader label="Summary card heading">
-                        <SummaryListAction href="/action">
-                          Action 1
-                        </SummaryListAction>
+                        <SummaryListAction href="/action">Action 1</SummaryListAction>
                       </SummaryListHeader>
                       <SummaryListRow label="Name" withBorder>
                         <SummaryListValue>John Smith</SummaryListValue>
-                        <SummaryListAction href="/change-name">
-                          Change name
-                        </SummaryListAction>
+                        <SummaryListAction href="/change-name">Change name</SummaryListAction>
                       </SummaryListRow>
                       <SummaryListRow label="Date of Birth" withBorder>
                         <SummaryListValue>8 November 1982</SummaryListValue>
-                        <SummaryListAction href="/change-dob">
-                          Change date of birth
-                        </SummaryListAction>
+                        <SummaryListAction href="/change-dob">Change date of birth</SummaryListAction>
                       </SummaryListRow>
                       <SummaryListRow label="Address" withBorder>
                         <SummaryListValue>
@@ -1460,16 +1221,12 @@ export default function Home() {
                           SE23 6FH
                         </SummaryListValue>
                         <SummaryListAction asChild>
-                          <NextLink href="/change-address">
-                            Change address
-                          </NextLink>
+                          <NextLink href="/change-address">Change address</NextLink>
                         </SummaryListAction>
                       </SummaryListRow>
                       <SummaryListRow label="Contact Number" withBorder>
                         <SummaryListValue>07700 900457</SummaryListValue>
-                        <SummaryListAction href="/change-phone">
-                          Change phone
-                        </SummaryListAction>
+                        <SummaryListAction href="/change-phone">Change phone</SummaryListAction>
                       </SummaryListRow>
                     </SummaryList>
                   </div>
@@ -1477,30 +1234,18 @@ export default function Home() {
                   <div>
                     <h5 className="font-semibold mb-2">Chips and Tags</h5>
                     <div className="flex flex-wrap gap-2">
-                      <Chip
-                        label="Default Chip"
-                        onClose={() => console.log('Chip closed')}
-                      />
-                      <Chip
-                        label="Closable Chip"
-                        onClose={() => console.log('Chip closed')}
-                      />
-                      <Chip
-                        label="Another Tag"
-                        onClose={() => console.log('Chip closed')}
-                      />
+                      <Chip label="Default Chip" onClose={() => console.log('Chip closed')} />
+                      <Chip label="Closable Chip" onClose={() => console.log('Chip closed')} />
+                      <Chip label="Another Tag" onClose={() => console.log('Chip closed')} />
                     </div>
                   </div>
 
                   <div>
-                    <h5 className="font-semibold mb-2">
-                      Details (Collapsible)
-                    </h5>
+                    <h5 className="font-semibold mb-2">Details (Collapsible)</h5>
                     <Details label="Help with Nationality">
-                      We need to know your nationality so we can work out which
-                      elections you&apos;re entitled to vote in. If you cannot
-                      provide your nationality, you&apos;ll have to send copies
-                      of identity documents through the post.
+                      We need to know your nationality so we can work out which elections you&apos;re entitled to vote
+                      in. If you cannot provide your nationality, you&apos;ll have to send copies of identity documents
+                      through the post.
                     </Details>
                   </div>
                 </div>

@@ -20,14 +20,8 @@
     "react-dom": "^19.2.3",
     "zod": "^4.1.13"
   },
-  "prettier": "@ogcio/design-system-prettier-config",
   "devDependencies": {
-    "@eslint/eslintrc": "^3.3.1",
     "@next/eslint-plugin-next": "^15.5.7",
-    "@ogcio/design-system-eslint-config": "workspace:*",
-    "@ogcio/design-system-prettier-config": "workspace:*",
-    "eslint": "^9.23.0",
-    "eslint-config-next": "^15.4.3",
     "postcss": "^8.4.40",
     "react-hook-form": "^7.58.1"
   }

@@ -5,20 +5,17 @@
   "scripts": {
     "dev": "vite",
     "build": "tsc -b && vite build",
-    "format": "prettier 'src/**/*.{ts,tsx}' --write",
-    "lint": "eslint . --ext ts,tsx --report-unused-disable-directives --max-warnings 0",
+    "lint": "eslint",
     "preview": "vite preview",
-    "typecheck": "tsc -p tsconfig.json --noEmit"
+    "typecheck": "tsc -p tsconfig.json --noEmit",
+    "format": "prettier 'src/**/*.{ts,tsx}' --write",
+    "format:check": "prettier 'src/**/*.{ts,tsx}' --check"
   },
-  "prettier": "@ogcio/design-system-prettier-config",
   "dependencies": {
     "@ogcio/theme-govie": "workspace:*",
     "@ogcio/design-system-react": "workspace:*",
     "react": "19.0.0",
     "react-dom": "19.0.0"
   },
-  "devDependencies": {
-    "@ogcio/design-system-eslint-config": "workspace:*",
-    "eslint": "^9.23.0"
-  }
+  "devDependencies": {}
 }

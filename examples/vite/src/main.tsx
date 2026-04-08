@@ -34,6 +34,7 @@ initI18n({
   lng: 'fr', // Toggle here for debugging.
 });
 
+// eslint-disable-next-line @typescript-eslint/no-non-null-assertion
 ReactDOM.createRoot(document.querySelector('#root')!).render(
   <React.StrictMode>
     <App />

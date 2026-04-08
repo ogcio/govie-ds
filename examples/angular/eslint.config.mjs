@@ -1,5 +1,5 @@
 import { defineConfig } from 'eslint/config';
-import eslintConfig from '@ogcio/design-system-eslint-config';
+import eslintConfig from '../../eslint.config.mjs';
 import angularTemplate from '@angular-eslint/eslint-plugin-template';
 import templateParser from '@angular-eslint/template-parser';
 
@@ -19,5 +19,10 @@ export default defineConfig([
   },
   {
     ignores: ['dist/**', 'out-tsc/**', '**/*.min.*'],
+  },
+  {
+    rules: {
+      'no-console': 'off',
+    },
   },
 ]);
