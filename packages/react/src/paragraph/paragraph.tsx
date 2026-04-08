@@ -34,6 +34,7 @@ export function Paragraph({
       <Text
         size={size}
         whitespace={whitespace}
+        align={align}
         className={className}
         styles={(style ?? styles) as Record<string, string>}
         id={id}
