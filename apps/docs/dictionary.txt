@@ -272,3 +272,5 @@ with-center-medium
 with-iframe-embed
 xl
 xs
+lg
+preformatted

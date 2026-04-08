@@ -1,23 +1,18 @@
 export type ParagraphAs = 'p' | 'span';
-export type ParagraphSize = 'xl' | 'lg' | 'md' | 'sm';
+export type ParagraphAsNext = 'p';
+import { Text, type TextProps } from '../atoms';
 export type ParagraphAlign = 'start' | 'center' | 'end' | 'justify';
-export type ParagraphWhitespace =
-  | 'normal'
-  | 'pre'
-  | 'pre-wrap'
-  | 'break-spaces';
 
-export type ParagraphProps = {
-  as?: ParagraphAs;
-  size?: ParagraphSize;
-  align?: ParagraphAlign;
-  whitespace?: ParagraphWhitespace;
-  children: React.ReactNode;
+export type ParagraphProps = Omit<TextProps, 'styles'> & {
   style?: React.CSSProperties;
-  className?: string;
-  ariaLabel?: string;
-  id?: string;
+  /** @deprecated Use `dataTestId` */
   dataTestid?: string;
+  align?: ParagraphAlign;
+  /** @deprecated ariaLabel prop will be removed in the next major release. */
+  ariaLabel?: string;
+  ariaHidden?: boolean;
+  /** @deprecated 'as' prop will now default to 'p', and should be omitted from Paragraph. When using as="span" prefer the use of <Text/> */
+  as?: ParagraphAs;
 };
 
 export function Paragraph({
@@ -29,8 +24,10 @@ export function Paragraph({
   style,
   className,
   id,
-  ariaLabel,
+  dataTestId,
   dataTestid,
+  ariaLabel,
+  ariaHidden,
 }: ParagraphProps) {
   const sizeClass = (() => {
     switch (size) {
@@ -82,16 +79,29 @@ export function Paragraph({
       }
     }
   })();
-
+  if (As === 'span') {
+    return (
+      <Text
+        size={size}
+        whitespace={whitespace}
+        className={className}
+        styles={style as Record<string, string>}
+        id={id}
+        dataTestId={dataTestid ?? dataTestId}
+        ariaHidden={ariaHidden}
+      >
+        {children}
+      </Text>
+    );
+  }
   return (
-    <As
+    <p
       className={`${sizeClass} ${alignClass} ${whitespaceClass} ${className || ''}`}
-      aria-label={ariaLabel}
       style={style}
       id={id}
       data-testid={dataTestid}
     >
       {children}
-    </As>
+    </p>
   );
 }

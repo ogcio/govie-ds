@@ -1,0 +1,65 @@
+---
+title: 'Text'
+description: 'Text Component React Component'
+status: 'stable'
+component:
+  id: 'text-react'
+  link: '/story/typography-text--default'
+  status: 'stable'
+  properties:
+    - name: 'TextProps'
+      fields:
+        - name: 'children'
+          ofType: 'node'
+          description: 'The text content (required).'
+          required: true
+        - name: 'size'
+          ofType: 'string'
+          description: 'Text size on the body scale. Options: sm, md, lg, xl.'
+          required: false
+        - name: 'whitespace'
+          ofType: 'string'
+          description: 'CSS whitespace handling. Options: normal, pre, pre-wrap, break-spaces.'
+          required: false
+        - name: 'className'
+          ofType: 'string'
+          description: 'Additional CSS class names for the root element.'
+          required: false
+        - name: 'id'
+          ofType: 'string'
+          description: 'Optional id for linking, targeting, or aria references.'
+          required: false
+        - name: 'dataTestId'
+          ofType: 'string'
+          description: 'Value for the data-testid attribute.'
+          required: false
+        - name: 'styles'
+          ofType: 'object'
+          description: 'Inline styles applied to the root span.'
+          required: false
+  stories:
+    - name: 'default'
+      url: '/story/typography-text--default'
+---
+
+# Text
+
+The Text component applies the design systems body type scale to **inline** copy. It always renders a `<span>` with consistent font family, size, and line height. Use [`Paragraph`](/components/library/paragraph/react) for block body text.
+
+<Section current="react">
+
+<ComponentPreview>
+  <Text>Inline text using the Text component</Text>
+</ComponentPreview>
+
+### Default
+
+<ComponentPreview>
+  <StorybookFrame className="w-[640px]" componentId="text-react" story="default" />
+</ComponentPreview>
+
+## Properties
+
+<ComponentPropertiesTable componentId="text-react" />
+
+</Section>

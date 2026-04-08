@@ -105,7 +105,7 @@ function Toast({
             </div>
           )}
         </div>
-        <Paragraph ariaLabel={description}>{description}</Paragraph>
+        <Paragraph>{description}</Paragraph>
         {(action || slotAction) && (
           <div className="gi-toast-action">
             <Link href={action?.href} noColor size="md" asChild={!!slotAction}>

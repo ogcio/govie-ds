@@ -42,6 +42,7 @@ import {
   TabPanel,
   Tabs,
   Tag,
+  Text,
   TextArea,
   toaster,
   ToastProps,
@@ -173,7 +174,7 @@ export function App() {
               sunt in culpa qui officia deserunt mollit anim id est laborum.
             </Paragraph>
             <hr />
-            <Paragraph as="span">Span paragraph</Paragraph>
+            <Text>Span paragraph</Text>
             <hr />
             <Tag text="Completed" type="info" />
             <FormFieldWithTag
