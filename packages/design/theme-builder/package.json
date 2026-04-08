@@ -7,7 +7,7 @@
   "scripts": {
     "format": "prettier 'src/**/*.ts' --write",
     "format:check": "prettier 'src/**/*.ts' --check",
-    "lint": "eslint 'src/**/*.ts'",
+    "lint": "eslint",
     "build": "tsup",
     "test": "vitest run",
     "test:watch": "vitest"
@@ -15,7 +15,6 @@
   "prettier": "@ogcio/design-system-prettier-config",
   "dependencies": {
     "@animaapp/design-tokens-validator": "^0.0.2",
-    "@ogcio/design-system-eslint-config": "workspace:*",
     "@ogcio/design-system-tokens": "workspace:*",
     "@ogcio/design-system-tokens-builder": "workspace:*",
     "deepmerge": "^4.3.1",
@@ -27,7 +26,6 @@
   "devDependencies": {
     "@ogcio/design-system-prettier-config": "workspace:*",
     "@types/fs-extra": "^11.0.4",
-    "eslint": "^9.23.0",
     "zod": "^3.23.8",
     "zod-to-ts": "^1.2.0"
   }

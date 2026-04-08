@@ -1,6 +1,5 @@
-// eslint.config.js
 import { defineConfig } from 'eslint/config';
-import eslintConfig from '@ogcio/design-system-eslint-config';
+import baseConfig from '../../eslint.config.mjs';
 import storybook from 'eslint-plugin-storybook';
 
 export default defineConfig([
@@ -8,10 +7,7 @@ export default defineConfig([
     ignores: ['src/atoms/**/*'],
   },
   ...storybook.configs['flat/recommended'],
-  {
-    files: ['**/*.ts', '**/*.tsx'],
-    extends: [eslintConfig],
-  },
+  ...baseConfig,
   {
     files: ['**/.storybook/main.ts'],
     rules: {

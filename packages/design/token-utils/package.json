@@ -8,7 +8,7 @@
   "scripts": {
     "format": "prettier 'src/**/*.ts' --write",
     "format:check": "prettier 'src/**/*.ts' --check",
-    "lint": "eslint 'src/**/*.ts'",
+    "lint": "eslint",
     "build": "tsup",
     "test": "vitest run",
     "test:watch": "vitest"
@@ -19,9 +19,7 @@
     "ts-extras": "^0.11.0"
   },
   "devDependencies": {
-    "@ogcio/design-system-eslint-config": "workspace:*",
     "@ogcio/design-system-prettier-config": "workspace:*",
-    "@types/lodash": "^4.17.7",
-    "eslint": "^9.23.0"
+    "@types/lodash": "^4.17.7"
   }
 }
