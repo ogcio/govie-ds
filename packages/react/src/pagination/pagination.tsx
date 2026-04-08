@@ -20,11 +20,6 @@ export const Pagination: React.FC<PaginationProps> = ({
   dataTestid,
 }) => {
   const { t } = useTranslation();
-
-  if (totalPages === 0) {
-    return null;
-  }
-
   const { breakpoint, width } = useBreakpoint();
 
   // SSR Safety
@@ -34,6 +29,10 @@ export const Pagination: React.FC<PaginationProps> = ({
   useEffect(() => {
     setIsClient(true);
   }, []);
+
+  if (totalPages === 0) {
+    return null;
+  }
 
   const isCompactView = isClient && breakpoint === Breakpoint.ExtraSmall;
   const isSMWidth = isClient && width !== null && width < 639;

@@ -211,7 +211,7 @@ export const Controlled: Story = {
       },
     },
   },
-  render: (arguments_) => {
+  render: function Render(arguments_) {
     const [selectedValue, setSelectedValue] = useState<string | undefined>();
 
     const handleChange = (event?: React.ChangeEvent<HTMLInputElement>) => {

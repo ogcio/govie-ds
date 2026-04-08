@@ -336,7 +336,7 @@ export const WithGroups = {
 
 export const Controlled: StoryObj = {
   tags: ['skip-playwright'],
-  render: () => {
+  render: function Render() {
     const [value, setValue] = useState('value-2');
 
     return (
@@ -418,7 +418,7 @@ export const WithLongListSearchEnabled: StoryObj = {
 
 export const WithReactHookForm: StoryObj = {
   tags: ['skip-playwright'],
-  render: () => {
+  render: function Render() {
     const { control, watch, reset } = useForm({
       defaultValues: { topic: '' },
       mode: 'onBlur',
@@ -527,7 +527,7 @@ export const WithReactHookForm: StoryObj = {
 
 export const TestNoSubmitOnEnter: StoryObj<typeof SelectNext> = {
   tags: ['skip-playwright'],
-  render: () => {
+  render: function Render() {
     const [submitCountOn, setSubmitCountOn] = useState(0);
     const [submitCountOff, setSubmitCountOff] = useState(0);
 
@@ -737,7 +737,7 @@ export const TestNoSubmitOnEnter: StoryObj<typeof SelectNext> = {
 
 export const TestKeyboardEvents: StoryObj<typeof SelectNext> = {
   tags: ['skip-playwright'],
-  render: () => {
+  render: function Render() {
     const [value, setValue] = useState('');
     return (
       <FormField className="gi-w-56">
@@ -846,7 +846,7 @@ export const TestKeyboardEvents: StoryObj<typeof SelectNext> = {
 
 export const TestConditionallyRender: StoryObj = {
   tags: ['skip-playwright'],
-  render: () => {
+  render: function Render() {
     const [inputValue, setInputValue] = useState('');
     const [selectedValue, setSelectedValue] = useState('');
     const options1 = [

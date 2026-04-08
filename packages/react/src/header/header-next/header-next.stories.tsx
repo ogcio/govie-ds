@@ -22,7 +22,8 @@ import {
   FormFieldLabel,
 } from '../../forms/form-field/form-field.js';
 import { useToggleMap } from '../../hooks/use-toggle-map.js';
-import { Icon, IconId } from '../../icon/icon.js';
+import type { IconId } from '../../icon/icon.js';
+import { Icon } from '../../icon/icon.js';
 import { Link } from '../../link/link.js';
 import { List, ListTypeEnum } from '../../list/list.js';
 import { ListItem } from '../../list-item/list-item.js';
@@ -92,7 +93,7 @@ const SlotExample2 = () => {
 };
 
 export const Default: StoryObj = {
-  render: () => {
+  render: function Render() {
     const [state, { toggle, close, closeAll }] = useToggleMap({
       search: false,
       drawer: false,
@@ -336,7 +337,7 @@ export const Default: StoryObj = {
 };
 
 export const Govie: StoryObj = {
-  render: () => {
+  render: function Render() {
     const [isMenuOpen, setIsMenuOpen] = useState(false);
     const toggleMenu = () => setIsMenuOpen(!isMenuOpen);
     return (
@@ -442,7 +443,7 @@ export const Light: StoryObj = {
       </div>
     );
   },
-  render: () => {
+  render: function Render() {
     const [state, { toggle, close, closeAll }] = useToggleMap({
       search: false,
       drawer: false,
