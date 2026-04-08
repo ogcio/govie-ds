@@ -14,4 +14,9 @@ export default defineConfig([
       'storybook/no-uninstalled-addons': 'off',
     },
   },
+  {
+    rules: {
+      'no-console': 'warn', // TODO: ESLINT remove this after error fixes
+    },
+  }
 ]);

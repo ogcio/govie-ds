@@ -1,18 +1,16 @@
-import { FlatCompat } from "@eslint/eslintrc";
-import eslintConfig from "@ogcio/design-system-eslint-config";
+import { defineConfig } from 'eslint/config';
+import baseConfig from '../../eslint.config.mjs';
+import nextPlugin from '@next/eslint-plugin-next';
 
-const compat = new FlatCompat({
-  baseDirectory: import.meta.dirname,
-  recommendedConfig: eslintConfig,
-});
-
-const eslintNextConfig = [
+export default defineConfig([
   {
-    ignores: [".next/**"],
+    ignores: ['.next'],
   },
-  ...compat.config({
-    extends: ["next"],
-  }),
-];
-
-export default eslintNextConfig;
+  ...baseConfig,
+  nextPlugin.flatConfig.recommended,
+  {
+    rules: {
+      'no-console': 'off',
+    },
+  },
+]);

@@ -31,7 +31,7 @@ export const colorSchema = z.any().superRefine((value, context) => {
   if (
     typeof value !== 'object' ||
     value === null ||
-    Object.keys(value)?.length == 0
+    Object.keys(value)?.length === 0
   ) {
     context.addIssue({
       code: z.ZodIssueCode.custom,

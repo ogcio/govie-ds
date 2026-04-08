@@ -1,7 +1,7 @@
 'use client';
 import {
   Children,
-  FC,
+  type FC,
   forwardRef,
   isValidElement,
   useCallback,
@@ -23,7 +23,7 @@ import {
   SelectMenuOption,
 } from './select-menu.js';
 import { SelectSearch } from './select-search.js';
-import {
+import type {
   SelectNextGroupItemElement,
   SelectNextGroupProps,
   SelectNextProps,
@@ -194,7 +194,7 @@ export const SelectNext = forwardRef<HTMLInputElement, SelectNextProps>(
             // if the menu is open and there is a valid highlighted option, select the value
             if (
               isOpen &&
-              highlightedIndex != -1 &&
+              highlightedIndex !== -1 &&
               childrenElements[highlightedIndex]
             ) {
               const opt = childrenElements[highlightedIndex];

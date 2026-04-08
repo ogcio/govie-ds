@@ -1,10 +1,11 @@
-// eslint.config.js
 import { defineConfig } from 'eslint/config';
-import eslintConfig from '@ogcio/design-system-eslint-config';
+import baseConfig from '../../eslint.config.mjs';
 
 export default defineConfig([
+  ...baseConfig,
   {
-    files: ['**/*.ts', '**/*.tsx'],
-    extends: [eslintConfig],
+    rules: {
+      'no-console': 'off',
+    },
   },
 ]);

@@ -45,7 +45,7 @@ import {
   Text,
   TextArea,
   toaster,
-  ToastProps,
+  type ToastProps,
   ToastProvider,
 } from '@ogcio/design-system-react';
 import '@ogcio/design-system-react/styles.css';
@@ -148,12 +148,7 @@ export function App() {
             <TabItem value="tab3">Form</TabItem>
           </TabList>
           <TabPanel value="tab1">
-            <Link
-              href="https://www.google.com"
-              external={true}
-              noUnderline={true}
-              noVisited={true}
-            >
+            <Link href="https://www.google.com" external={true} noUnderline={true} noVisited={true}>
               Link
             </Link>
             <Icon icon="thumb_up" />
@@ -165,13 +160,11 @@ export function App() {
               variant="flat"
             />
             <Paragraph>
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-              eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut
-              enim ad minim veniam, quis nostrud exercitation ullamco laboris
-              nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in
-              reprehenderit in voluptate velit esse cillum dolore eu fugiat
-              nulla pariatur. Excepteur sint occaecat cupidatat non proident,
-              sunt in culpa qui officia deserunt mollit anim id est laborum.
+              Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et
+              dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex
+              ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu
+              fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt
+              mollit anim id est laborum.
             </Paragraph>
             <hr />
             <Text>Span paragraph</Text>
@@ -193,9 +186,7 @@ export function App() {
             </FormFieldWithTag>
           </TabPanel>
           <TabPanel value="tab2">
-            <PhaseBanner level="Alpha">
-              This is a pre-release version
-            </PhaseBanner>
+            <PhaseBanner level="Alpha">This is a pre-release version</PhaseBanner>
             <span className="material-symbols-outlined">face</span>
             <Card
               action={{
@@ -224,32 +215,20 @@ export function App() {
             <TextArea id="textarea-id" maxChars={50} />
             <Form>
               <Combobox>
-                <DropdownItem options={ComboBoxProps.organisationOptions}>
-                  Organisations
-                </DropdownItem>
-                <DropdownItem options={ComboBoxProps.categoryOptions}>
-                  Category
-                </DropdownItem>
-                <DropdownItem options={ComboBoxProps.topicOptions}>
-                  Topic
-                </DropdownItem>
+                <DropdownItem options={ComboBoxProps.organisationOptions}>Organisations</DropdownItem>
+                <DropdownItem options={ComboBoxProps.categoryOptions}>Category</DropdownItem>
+                <DropdownItem options={ComboBoxProps.topicOptions}>Topic</DropdownItem>
               </Combobox>
             </Form>
             <ToastProvider />
-            <Button onClick={() => toaster.create(toastProps)}>
-              Trigger Toast
-            </Button>
+            <Button onClick={() => toaster.create(toastProps)}>Trigger Toast</Button>
             <Select id="unique-id">
               <SelectItem>Option 1</SelectItem>
               <SelectItem>Option 2</SelectItem>
             </Select>
             <hr />
             <InputFile id="file-upload-id" />
-            <Pagination
-              currentPage={currentPage}
-              onPageChange={setCurrentPage}
-              totalPages={10}
-            />
+            <Pagination currentPage={currentPage} onPageChange={setCurrentPage} totalPages={10} />
           </TabPanel>
         </Tabs>
         <h2>Checkboxes Group</h2>
@@ -260,11 +239,7 @@ export function App() {
         <br />
         <br />
         <h2>Progress Stepper</h2>
-        <ProgressStepper
-          indicator="number"
-          orientation="vertical"
-          currentStepIndex={1}
-        >
+        <ProgressStepper indicator="number" orientation="vertical" currentStepIndex={1}>
           <StepItem label="This step is for requesting information, this is the first step the user needs to finish." />
           <StepItem label="This step is for requesting information, this is the first step the user needs to finish." />
           <StepItem label="This step is for requesting information, this is the first step the user needs to finish." />
@@ -282,9 +257,8 @@ export function App() {
         <Modal triggerButton={<Button>Open Modal</Button>}>
           <Heading as="h2">Title</Heading>
           <Paragraph>
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Incidunt
-            esse magnam quis sit soluta cupiditate at deserunt exercitationem
-            voluptas doloribus asperiores
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Incidunt esse magnam quis sit soluta cupiditate at
+            deserunt exercitationem voluptas doloribus asperiores
           </Paragraph>
           <div className="gi-flex gi-gap-6 gi-justify-end">
             <Button variant="secondary" appearance="dark">
