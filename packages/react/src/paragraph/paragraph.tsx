@@ -1,91 +1,41 @@
+import {
+  Text,
+  Paragraph as GiParagraph,
+  type ParagraphProps as GiParagraphProps,
+} from '../atoms';
 export type ParagraphAs = 'p' | 'span';
-export type ParagraphAsNext = 'p';
-import { Text, type TextProps } from '../atoms';
-export type ParagraphAlign = 'start' | 'center' | 'end' | 'justify';
 
-export type ParagraphProps = Omit<TextProps, 'styles'> & {
+export type ParagraphProps = GiParagraphProps & {
   style?: React.CSSProperties;
-  /** @deprecated Use `dataTestId` */
-  dataTestid?: string;
-  align?: ParagraphAlign;
   /** @deprecated ariaLabel prop will be removed in the next major release. */
   ariaLabel?: string;
-  ariaHidden?: boolean;
   /** @deprecated 'as' prop will now default to 'p', and should be omitted from Paragraph. When using as="span" prefer the use of <Text/> */
   as?: ParagraphAs;
+  /** @deprecated Use `dataTestId` instead. */
+  dataTestid?: string;
 };
 
 export function Paragraph({
-  as: As = 'p',
+  id,
   size = 'md',
   align = 'start',
   whitespace = 'normal',
   children,
-  style,
   className,
-  id,
-  dataTestId,
+  as: As = 'p',
+  style,
+  styles,
   dataTestid,
-  ariaLabel,
+  dataTestId,
   ariaHidden,
 }: ParagraphProps) {
-  const sizeClass = (() => {
-    switch (size) {
-      case 'xl': {
-        return As === 'p' ? 'gi-paragraph-xl' : 'gi-span-xl';
-      }
-      case 'lg': {
-        return As === 'p' ? 'gi-paragraph-lg' : 'gi-span-lg';
-      }
-      case 'sm': {
-        return As === 'p' ? 'gi-paragraph-sm' : 'gi-span-sm';
-      }
-      default: {
-        return As === 'p' ? 'gi-paragraph-md' : 'gi-span-md';
-      }
-    }
-  })();
-
-  const alignClass = (() => {
-    switch (align) {
-      case 'center': {
-        return 'gi-text-center';
-      }
-      case 'end': {
-        return 'gi-text-end';
-      }
-      case 'justify': {
-        return 'gi-text-justify';
-      }
-      default: {
-        return 'gi-text-start';
-      }
-    }
-  })();
-
-  const whitespaceClass = (() => {
-    switch (whitespace) {
-      case 'pre': {
-        return 'gi-whitespace-pre';
-      }
-      case 'pre-wrap': {
-        return 'gi-whitespace-pre-wrap';
-      }
-      case 'break-spaces': {
-        return 'gi-whitespace-break-spaces';
-      }
-      default: {
-        return 'gi-whitespace-normal';
-      }
-    }
-  })();
   if (As === 'span') {
     return (
       <Text
         size={size}
         whitespace={whitespace}
         className={className}
-        styles={style as Record<string, string>}
+        styles={(style ?? styles) as Record<string, string>}
         id={id}
         dataTestId={dataTestid ?? dataTestId}
         ariaHidden={ariaHidden}
@@ -94,14 +44,18 @@ export function Paragraph({
       </Text>
     );
   }
+
   return (
-    <p
-      className={`${sizeClass} ${alignClass} ${whitespaceClass} ${className || ''}`}
-      style={style}
+    <GiParagraph
+      size={size}
+      align={align}
+      whitespace={whitespace}
+      className={className}
+      styles={(style ?? styles) as Record<string, string>}
       id={id}
-      data-testid={dataTestid}
+      dataTestId={dataTestid ?? dataTestId}
     >
       {children}
-    </p>
+    </GiParagraph>
   );
 }

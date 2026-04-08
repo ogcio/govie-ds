@@ -13,10 +13,10 @@ import {
   useMemo,
   useState,
 } from 'react';
+import Paragraph from '../atoms/Paragraph';
 import { cn } from '../cn.js';
 import { Breakpoint, useBreakpoint } from '../hooks/use-breakpoint.js';
 import { Icon } from '../icon/icon.js';
-import { Paragraph } from '../paragraph/paragraph.js';
 import { Tag } from '../tag/tag.js';
 import {
   getSpecialComponentType,

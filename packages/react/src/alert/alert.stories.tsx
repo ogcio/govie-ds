@@ -1,6 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/react-vite';
 import { expect, fn, userEvent, within } from 'storybook/test';
-import { Paragraph } from '../paragraph/paragraph.js';
+import Paragraph from '../atoms/Paragraph';
 import { Alert } from './alert.js';
 
 const meta = {

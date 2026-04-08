@@ -8,10 +8,10 @@ import React, {
 } from 'react';
 import Heading from '../Heading.js';
 import Button from '../atoms/Button';
+import Paragraph from '../atoms/Paragraph';
 import { cn } from '../cn.js';
 import { Icon, IconId } from '../icon/icon.js';
 import { Link } from '../link/link.js';
-import { Paragraph } from '../paragraph/paragraph.js';
 import {
   SideNavHeadingProps,
   SideNavItemProps,
