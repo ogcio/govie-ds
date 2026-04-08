@@ -22,7 +22,7 @@ export const textMeta = {
       control: {
         type: 'select'
       },
-      options: [...Object.values(Size)],
+      options: Object.values(Size),
       description: 'Font size of the Text',
       table: {
         type: {
@@ -37,7 +37,7 @@ export const textMeta = {
       control: {
         type: 'select'
       },
-      options: [...Object.values(Whitespace)],
+      options: Object.values(Whitespace),
       description: 'Whitespace handling.',
       table: {
         type: {
@@ -52,8 +52,8 @@ export const textMeta = {
       control: {
         type: 'select'
       },
-      options: [...Object.values(Align)],
-      description: 'Horizontal text alignment.',
+      options: Object.values(Align),
+      description: 'Horizontal text alignment. Only applies to fixed width elements.',
       table: {
         type: {
           summary: Object.values(Align).map(v => `"${v}"`).join(' | ')
@@ -113,9 +113,9 @@ export const Default = {
     canvasElement
   }: StoryContext<Renderer>) => {
     const canvas = within(canvasElement as HTMLElement);
-    const el = canvas.getByTestId('text-default');
-    expect(el).toBeInTheDocument();
-    expect(el.tagName).toBe('SPAN');
+    const element = canvas.getByTestId('text-default');
+    expect(element).toBeInTheDocument();
+    expect(element.tagName).toBe('SPAN');
   }
 };
 export const AllTextSizes = {
@@ -128,12 +128,17 @@ export const AllTextSizes = {
     canvasElement
   }: StoryContext<Renderer>) => {
     const canvas = within(canvasElement as HTMLElement);
-    const el = canvas.getByTestId(`text-all-sizes-${Object.values(Size)[0]}`);
-    expect(el).toBeInTheDocument();
-    expect(el.tagName).toBe('SPAN');
+    const element = canvas.getByTestId(`text-all-sizes-${Size.MD}`);
+    expect(element).toBeInTheDocument();
+    expect(element.tagName).toBe('SPAN');
   }
 };
-const alignCenterVisualRegressionCopy = 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore.';
+const alignClassByValue: Record<(typeof Align)[keyof typeof Align], string> = {
+  [Align.START]: 'gi-text-start',
+  [Align.CENTER]: 'gi-text-center',
+  [Align.END]: 'gi-text-end',
+  [Align.JUSTIFY]: 'gi-text-justify'
+};
 export const AlignCenterFixedWidth = {
   args: {
     ...textMeta.args,
@@ -141,16 +146,18 @@ export const AlignCenterFixedWidth = {
     dataTestId: 'text-align-center-fixed-width',
     className: 'gi-w-[200px]',
     align: Align.CENTER,
-    children: alignCenterVisualRegressionCopy
+    children: 'Text center'
   },
   play: async ({
     canvasElement
   }: StoryContext<Renderer>) => {
     const canvas = within(canvasElement as HTMLElement);
-    const el = canvas.getByTestId('text-align-center-fixed-width');
-    expect(el).toBeInTheDocument();
-    expect(el.tagName).toBe('SPAN');
-    expect(el).toHaveClass('gi-text-center');
-    expect(el).toHaveClass('gi-w-[200px]');
+    for (const align of Object.values(Align)) {
+      const element = canvas.getByTestId(`text-align-center-fixed-width-${align}`);
+      expect(element).toBeInTheDocument();
+      expect(element.tagName).toBe('SPAN');
+      expect(element).toHaveClass(alignClassByValue[align]);
+      expect(element).toHaveClass('gi-w-[200px]');
+    }
   }
 }

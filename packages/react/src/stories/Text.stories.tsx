@@ -6,7 +6,7 @@ import {
   AllTextSizes as allTextSizes,
   AlignCenterFixedWidth as alignCenterFixedWidthStory,
 } from '../atoms/storybook/Text.meta';
-import { Size } from '../atoms/utilities';
+import { Align, Size } from '../atoms/utilities';
 
 const loremIpsum = 'Lorem ipsum dolor sit amet.';
 
@@ -41,4 +41,19 @@ export const AllTextSizes: Story = {
 
 export const AlignCenterFixedWidth: Story = {
   ...alignCenterFixedWidthStory,
+  render: () => (
+    <div className="gi-flex gi-flex-col gi-gap-2">
+      {Object.values(Align).map((align) => (
+        <Text
+          key={align}
+          size="md"
+          dataTestId={`text-align-center-fixed-width-${align}`}
+          className="gi-w-[200px]"
+          align={align}
+        >
+          Text {align}
+        </Text>
+      ))}
+    </div>
+  ),
 };
