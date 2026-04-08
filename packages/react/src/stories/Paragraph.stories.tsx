@@ -11,9 +11,6 @@ import { Size, Whitespace } from '../atoms/utilities';
 
 const meta: Meta<typeof Paragraph> = {
   ...paragraphMeta,
-  argTypes: {
-    ...paragraphMeta.argTypes,
-  },
   title: 'Typography/Paragraph',
   component: Paragraph,
 };

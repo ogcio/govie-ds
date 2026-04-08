@@ -29,33 +29,33 @@ export function Paragraph({
   dataTestId,
   ariaHidden,
 }: ParagraphProps) {
-  if (As === 'p') {
+  if (As === 'span') {
     return (
-      <GiParagraph
+      <Text
         size={size}
-        align={align}
         whitespace={whitespace}
         className={className}
         styles={(style ?? styles) as Record<string, string>}
         id={id}
         dataTestId={dataTestid ?? dataTestId}
+        ariaHidden={ariaHidden}
       >
         {children}
-      </GiParagraph>
+      </Text>
     );
   }
 
   return (
-    <Text
+    <GiParagraph
       size={size}
+      align={align}
       whitespace={whitespace}
       className={className}
       styles={(style ?? styles) as Record<string, string>}
       id={id}
       dataTestId={dataTestid ?? dataTestId}
-      ariaHidden={ariaHidden}
     >
       {children}
-    </Text>
+    </GiParagraph>
   );
 }

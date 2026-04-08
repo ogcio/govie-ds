@@ -10,9 +10,6 @@ import {
 
 const meta = {
   ...paragraphMeta,
-  argTypes: {
-    ...paragraphMeta.argTypes,
-  },
   title: 'Typography/Paragraph',
 };
 
