@@ -19,13 +19,7 @@ export type Props = {
 };
 
 import { tv } from 'tailwind-variants';
-import { Size, Whitespace } from './utilities';
-export const Align = {
-  START: 'start',
-  CENTER: 'center',
-  END: 'end',
-  JUSTIFY: 'justify',
-} as const;
+import { Align, Size, Whitespace } from './utilities';
 export const paragraphStyles = tv({
   base: ['gi-font-primary', 'gi-max-w-prose'],
   variants: {

@@ -11,3 +11,10 @@ export const Whitespace = {
   PRE_WRAP: 'pre-wrap',
   BREAK_SPACES: 'break-spaces',
 } as const;
+
+export const Align = {
+  START: 'start',
+  CENTER: 'center',
+  END: 'end',
+  JUSTIFY: 'justify',
+} as const;

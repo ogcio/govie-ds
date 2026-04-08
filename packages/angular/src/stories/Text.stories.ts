@@ -47,3 +47,18 @@ export const AllTextSizes: Story = {
     `,
   }),
 };
+
+export const AlignCenterFixedWidth: Story = {
+  ...TextStoryMeta.AlignCenterFixedWidth,
+  render: (args: any) => ({
+    props: { ...args },
+    template: `
+      <div class="gi-flex gi-flex-col gi-gap-2">
+        <gi-text size="md" dataTestId="text-align-center-fixed-width-start" className="gi-w-[200px]" align="start">Text start</gi-text>
+        <gi-text size="md" dataTestId="text-align-center-fixed-width-center" className="gi-w-[200px]" align="center">Text center</gi-text>
+        <gi-text size="md" dataTestId="text-align-center-fixed-width-end" className="gi-w-[200px]" align="end">Text end</gi-text>
+        <gi-text size="md" dataTestId="text-align-center-fixed-width-justify" className="gi-w-[200px]" align="justify">Text justify</gi-text>
+      </div>
+    `,
+  }),
+};

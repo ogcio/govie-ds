@@ -1,13 +1,6 @@
 import { tv } from 'tailwind-variants';
 import { useMetadata } from '@builder.io/mitosis';
-import { Size, Whitespace } from './utilities';
-
-export const Align = {
-  START: 'start',
-  CENTER: 'center',
-  END: 'end',
-  JUSTIFY: 'justify',
-} as const;
+import { Align, Size, Whitespace } from './utilities';
 
 export type Props = {
   id?: string;

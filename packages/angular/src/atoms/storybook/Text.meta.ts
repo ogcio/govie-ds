@@ -1,6 +1,6 @@
 import type { StoryContext, Renderer } from 'storybook/internal/types';
 import { within, expect } from 'storybook/test';
-import { Size, Whitespace } from '../utilities';
+import { Align, Size, Whitespace } from '../utilities';
 const loremIpsum = 'Lorem ipsum dolor sit amet.';
 export const textMeta = {
   tags: ['autodocs'] as string[],
@@ -9,7 +9,8 @@ export const textMeta = {
     id: 'text-default',
     dataTestId: 'text-default',
     size: Size.MD,
-    whitespace: Whitespace.NORMAL
+    whitespace: Whitespace.NORMAL,
+    align: Align.START
   },
   argTypes: {
     children: {
@@ -44,6 +45,21 @@ export const textMeta = {
         },
         defaultValue: {
           summary: 'normal'
+        }
+      }
+    },
+    align: {
+      control: {
+        type: 'select'
+      },
+      options: [...Object.values(Align)],
+      description: 'Horizontal text alignment.',
+      table: {
+        type: {
+          summary: Object.values(Align).map(v => `"${v}"`).join(' | ')
+        },
+        defaultValue: {
+          summary: 'start'
         }
       }
     },
@@ -115,5 +131,26 @@ export const AllTextSizes = {
     const el = canvas.getByTestId(`text-all-sizes-${Object.values(Size)[0]}`);
     expect(el).toBeInTheDocument();
     expect(el.tagName).toBe('SPAN');
+  }
+};
+const alignCenterVisualRegressionCopy = 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore.';
+export const AlignCenterFixedWidth = {
+  args: {
+    ...textMeta.args,
+    id: 'text-align-center-fixed-width',
+    dataTestId: 'text-align-center-fixed-width',
+    className: 'gi-w-[200px]',
+    align: Align.CENTER,
+    children: alignCenterVisualRegressionCopy
+  },
+  play: async ({
+    canvasElement
+  }: StoryContext<Renderer>) => {
+    const canvas = within(canvasElement as HTMLElement);
+    const el = canvas.getByTestId('text-align-center-fixed-width');
+    expect(el).toBeInTheDocument();
+    expect(el.tagName).toBe('SPAN');
+    expect(el).toHaveClass('gi-text-center');
+    expect(el).toHaveClass('gi-w-[200px]');
   }
 }

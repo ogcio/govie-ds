@@ -12,6 +12,7 @@ export type Props = {
   children: any;
   size?: (typeof Size)[keyof typeof Size];
   whitespace?: (typeof Whitespace)[keyof typeof Whitespace];
+  align?: (typeof Align)[keyof typeof Align];
   className?: string;
   id?: string;
   dataTestId?: string;
@@ -20,7 +21,7 @@ export type Props = {
 };
 
 import { tv } from 'tailwind-variants';
-import { Size, Whitespace } from './utilities';
+import { Align, Size, Whitespace } from './utilities';
 const textVariants = tv({
   base: 'gi-font-primary gi-not-prose',
   variants: {
@@ -36,15 +37,23 @@ const textVariants = tv({
       'pre-wrap': 'gi-whitespace-pre-wrap',
       'break-spaces': 'gi-whitespace-break-spaces',
     },
+    align: {
+      start: 'gi-text-start',
+      center: 'gi-text-center',
+      end: 'gi-text-end',
+      justify: 'gi-text-justify',
+    },
   },
   defaultVariants: {
     size: 'md',
     whitespace: 'normal',
+    align: 'start',
   },
 });
 const getSize = (x: Props['size'] = Size.MD) => (Object.values(Size).includes(x) ? x : Size.MD);
 const getWhitespace = (x: Props['whitespace'] = Whitespace.NORMAL) =>
   Object.values(Whitespace).includes(x) ? x : Whitespace.NORMAL;
+const getAlign = (x: Props['align'] = Align.START) => (Object.values(Align).includes(x) ? x : Align.START);
 
 @Component({
   selector: 'gi-text',
@@ -58,6 +67,7 @@ const getWhitespace = (x: Props['whitespace'] = Whitespace.NORMAL) =>
         textVariants({
           size: getSize(size),
           whitespace: getWhitespace(whitespace),
+          align: getAlign(align),
           class: className,
         })
       "
@@ -78,6 +88,7 @@ export default class Text {
   textVariants = textVariants;
   getSize = getSize;
   getWhitespace = getWhitespace;
+  getAlign = getAlign;
 
   @Input() id!: Props['id'];
   @Input() styles!: Props['styles'];
@@ -85,5 +96,6 @@ export default class Text {
   @Input() ariaHidden!: Props['ariaHidden'];
   @Input() size!: Props['size'];
   @Input() whitespace!: Props['whitespace'];
+  @Input() align!: Props['align'];
   @Input() className!: Props['className'];
 }
