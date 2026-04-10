@@ -10,7 +10,7 @@ export default defineConfig([
   ...storybook.configs['flat/recommended'],
   ...baseConfig,
   {
-    files: ['**/*.tsx'],
+    files: ['src/**/*.{js,jsx,ts,tsx}'],
     plugins: {
       'react-hooks': reactHooks,
     },
@@ -29,5 +29,5 @@ export default defineConfig([
     rules: {
       'no-console': 'warn', // TODO: ESLINT remove this after error fixes
     },
-  }
+  },
 ]);
