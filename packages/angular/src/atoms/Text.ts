@@ -36,17 +36,10 @@ const textVariants = tv({
       'pre-wrap': 'gi-whitespace-pre-wrap',
       'break-spaces': 'gi-whitespace-break-spaces',
     },
-    align: {
-      start: 'gi-text-start',
-      center: 'gi-text-center',
-      end: 'gi-text-end',
-      justify: 'gi-text-justify',
-    },
   },
   defaultVariants: {
     size: 'md',
     whitespace: 'normal',
-    align: 'start',
   },
 });
 

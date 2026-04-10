@@ -4,7 +4,7 @@ import {
   type ParagraphProps as GiParagraphProps,
 } from '../atoms';
 import { cn } from '../cn';
-import { getAlign } from '../atoms/utilities';
+import type { Align } from '../atoms/utilities';
 export type ParagraphAs = 'p' | 'span';
 
 export type ParagraphProps = GiParagraphProps & {
@@ -32,7 +32,7 @@ export function Paragraph({
   ariaHidden,
 }: ParagraphProps) {
   if (As === 'span') {
-    const alignStyle = getAlign(align);
+    const alignStyle = getAlignStyle(align);
     return (
       <Text
         size={size}
@@ -62,3 +62,15 @@ export function Paragraph({
     </GiParagraph>
   );
 }
+
+const getAlignStyle = (align: (typeof Align)[keyof typeof Align]) => {
+  switch (align) {
+    case 'center':
+      return 'gi-text-center';
+    case 'end':
+      return 'gi-text-end';
+    case 'justify':
+      return 'gi-text-justify';
+  }
+  return 'gi-text-start';
+};
