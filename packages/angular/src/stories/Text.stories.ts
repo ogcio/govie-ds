@@ -15,8 +15,8 @@ type Story = StoryObj<Text & { content: string }>;
 
 export const Default: Story = {
   ...TextStoryMeta.Default,
-  render: (args: any) => ({
-    props: { ...args, content: loremIpsum },
+  render: (arguments_: any) => ({
+    props: { ...arguments_, content: loremIpsum },
     template: `
       <gi-text
         [id]="id"
@@ -35,29 +35,14 @@ export const Default: Story = {
 
 export const AllTextSizes: Story = {
   ...TextStoryMeta.AllTextSizes,
-  render: (args: any) => ({
-    props: { ...args },
+  render: (arguments_: any) => ({
+    props: { ...arguments_ },
     template: `
       <div class="gi-flex gi-flex-col gi-gap-2">
         <gi-text size="sm" dataTestId="text-all-sizes-sm">Text sm</gi-text>
         <gi-text size="md" dataTestId="text-all-sizes-md">Text md</gi-text>
         <gi-text size="lg" dataTestId="text-all-sizes-lg">Text lg</gi-text>
         <gi-text size="xl" dataTestId="text-all-sizes-xl">Text xl</gi-text>
-      </div>
-    `,
-  }),
-};
-
-export const AlignCenterFixedWidth: Story = {
-  ...TextStoryMeta.AlignCenterFixedWidth,
-  render: (args: any) => ({
-    props: { ...args },
-    template: `
-      <div class="gi-flex gi-flex-col gi-gap-2">
-        <gi-text size="md" dataTestId="text-align-center-fixed-width-start" className="gi-w-[200px]" align="start">Text start</gi-text>
-        <gi-text size="md" dataTestId="text-align-center-fixed-width-center" className="gi-w-[200px]" align="center">Text center</gi-text>
-        <gi-text size="md" dataTestId="text-align-center-fixed-width-end" className="gi-w-[200px]" align="end">Text end</gi-text>
-        <gi-text size="md" dataTestId="text-align-center-fixed-width-justify" className="gi-w-[200px]" align="justify">Text justify</gi-text>
       </div>
     `,
   }),

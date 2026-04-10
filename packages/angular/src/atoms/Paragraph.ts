@@ -21,7 +21,7 @@ export type Props = {
 };
 
 import { tv } from 'tailwind-variants';
-import { Align, Size, Whitespace } from './utilities';
+import { getSize, getAlign, getWhitespace, Align, Size, Whitespace } from './utilities';
 export const paragraphStyles = tv({
   base: ['gi-font-primary', 'gi-max-w-prose'],
   variants: {
@@ -50,10 +50,6 @@ export const paragraphStyles = tv({
     whitespace: 'normal',
   },
 });
-const getSize = (x: Props['size'] = Size.MD) => (Object.values(Size).includes(x) ? x : Size.MD);
-const getAlign = (x: Props['align'] = Align.START) => (Object.values(Align).includes(x) ? x : Align.START);
-const getWhitespace = (x: Props['whitespace'] = Whitespace.NORMAL) =>
-  Object.values(Whitespace).includes(x) ? x : Whitespace.NORMAL;
 
 @Component({
   selector: 'gi-paragraph',

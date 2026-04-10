@@ -3,6 +3,8 @@ import {
   Paragraph as GiParagraph,
   type ParagraphProps as GiParagraphProps,
 } from '../atoms';
+import { cn } from '../cn';
+import { getAlign } from '../atoms/utilities';
 export type ParagraphAs = 'p' | 'span';
 
 export type ParagraphProps = GiParagraphProps & {
@@ -30,12 +32,12 @@ export function Paragraph({
   ariaHidden,
 }: ParagraphProps) {
   if (As === 'span') {
+    const alignStyle = getAlign(align);
     return (
       <Text
         size={size}
         whitespace={whitespace}
-        align={align}
-        className={className}
+        className={cn(className, alignStyle)}
         styles={(style ?? styles) as Record<string, string>}
         id={id}
         dataTestId={dataTestid ?? dataTestId}

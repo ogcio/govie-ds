@@ -1,6 +1,6 @@
 import { tv } from 'tailwind-variants';
 import { useMetadata } from '@builder.io/mitosis';
-import { Align, Size, Whitespace } from './utilities';
+import { getSize, getAlign, getWhitespace, type Align, type Size, type Whitespace } from './utilities';
 
 export type Props = {
   id?: string;
@@ -63,10 +63,3 @@ export const paragraphStyles = tv({
     whitespace: 'normal',
   },
 });
-
-const getSize = (x: Props['size'] = Size.MD) => (Object.values(Size).includes(x) ? x : Size.MD);
-
-const getAlign = (x: Props['align'] = Align.START) => (Object.values(Align).includes(x) ? x : Align.START);
-
-const getWhitespace = (x: Props['whitespace'] = Whitespace.NORMAL) =>
-  Object.values(Whitespace).includes(x) ? x : Whitespace.NORMAL;

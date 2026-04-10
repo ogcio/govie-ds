@@ -10,7 +10,6 @@ export type Props = {
   children: any;
   size?: (typeof Size)[keyof typeof Size];
   whitespace?: (typeof Whitespace)[keyof typeof Whitespace];
-  align?: (typeof Align)[keyof typeof Align];
   className?: string;
   id?: string;
   dataTestId?: string;
@@ -19,7 +18,7 @@ export type Props = {
 };
 
 import { tv } from 'tailwind-variants';
-import { Align, Size, Whitespace } from './utilities';
+import { getSize, getWhitespace, Size, Whitespace } from './utilities';
 const textVariants = tv({
   base: 'gi-font-primary gi-not-prose',
   variants: {
@@ -48,10 +47,6 @@ const textVariants = tv({
     align: 'start',
   },
 });
-const getSize = (x: Props['size'] = Size.MD) => (Object.values(Size).includes(x) ? x : Size.MD);
-const getWhitespace = (x: Props['whitespace'] = Whitespace.NORMAL) =>
-  Object.values(Whitespace).includes(x) ? x : Whitespace.NORMAL;
-const getAlign = (x: Props['align'] = Align.START) => (Object.values(Align).includes(x) ? x : Align.START);
 
 function Text(props: Props) {
   return (
@@ -63,7 +58,6 @@ function Text(props: Props) {
       className={textVariants({
         size: getSize(props.size),
         whitespace: getWhitespace(props.whitespace),
-        align: getAlign(props.align),
         class: props.className,
       })}
     >

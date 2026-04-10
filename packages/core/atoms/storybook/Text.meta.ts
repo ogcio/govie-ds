@@ -44,19 +44,6 @@ export const textMeta = {
         defaultValue: { summary: 'normal' },
       },
     },
-    align: {
-      control: { type: 'select' },
-      options: Object.values(Align),
-      description: 'Horizontal text alignment. Only applies to fixed width elements.',
-      table: {
-        type: {
-          summary: Object.values(Align)
-            .map((v) => `"${v}"`)
-            .join(' | '),
-        },
-        defaultValue: { summary: 'start' },
-      },
-    },
     className: {
       control: false,
       description: 'Additional CSS classes applied to the paragraph element.',
@@ -121,33 +108,5 @@ export const AllTextSizes = {
     const element = canvas.getByTestId(`text-all-sizes-${Size.MD}`);
     expect(element).toBeInTheDocument();
     expect(element.tagName).toBe('SPAN');
-  },
-};
-
-const alignClassByValue: Record<(typeof Align)[keyof typeof Align], string> = {
-  [Align.START]: 'gi-text-start',
-  [Align.CENTER]: 'gi-text-center',
-  [Align.END]: 'gi-text-end',
-  [Align.JUSTIFY]: 'gi-text-justify',
-};
-
-export const AlignCenterFixedWidth = {
-  args: {
-    ...textMeta.args,
-    id: 'text-align-center-fixed-width',
-    dataTestId: 'text-align-center-fixed-width',
-    className: 'gi-w-[200px]',
-    align: Align.CENTER,
-    children: 'Text center',
-  },
-  play: async ({ canvasElement }: StoryContext<Renderer>) => {
-    const canvas = within(canvasElement as HTMLElement);
-    for (const align of Object.values(Align)) {
-      const element = canvas.getByTestId(`text-align-center-fixed-width-${align}`);
-      expect(element).toBeInTheDocument();
-      expect(element.tagName).toBe('SPAN');
-      expect(element).toHaveClass(alignClassByValue[align]);
-      expect(element).toHaveClass('gi-w-[200px]');
-    }
   },
 };
