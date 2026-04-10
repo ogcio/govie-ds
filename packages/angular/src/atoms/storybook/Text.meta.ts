@@ -1,6 +1,6 @@
 import type { StoryContext, Renderer } from 'storybook/internal/types';
 import { within, expect } from 'storybook/test';
-import { Align, Size, Whitespace } from '../utilities';
+import { Size, Whitespace } from '../utilities';
 const loremIpsum = 'Lorem ipsum dolor sit amet.';
 export const textMeta = {
   tags: ['autodocs'] as string[],
@@ -9,8 +9,7 @@ export const textMeta = {
     id: 'text-default',
     dataTestId: 'text-default',
     size: Size.MD,
-    whitespace: Whitespace.NORMAL,
-    align: Align.START
+    whitespace: Whitespace.NORMAL
   },
   argTypes: {
     children: {
