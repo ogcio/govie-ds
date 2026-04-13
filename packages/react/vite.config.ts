@@ -17,6 +17,7 @@ export default defineConfig({
         'src/**/*.stories.tsx',
         'src/**/*.test.*',
         'src/test-utilities.ts',
+        'src/atoms/storybook/**',
       ],
     }),
     preserveDirectives(),
@@ -45,6 +46,7 @@ export default defineConfig({
               'src/**/*.stories.tsx',
               'src/**/*.test.*',
               'src/test-utilities.ts',
+              'src/atoms/storybook/**',
             ],
           })
           .map((file: string) => [

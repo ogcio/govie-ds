@@ -1,5 +1,5 @@
-import clsx from 'clsx';
-import { ComponentPropsWithoutRef } from 'react';
+import { cn } from '../cn.js';
+import type { ComponentPropsWithoutRef } from 'react';
 
 export const TagTypeEnum = {
   Default: 'default',
@@ -50,7 +50,7 @@ export const Tag = ({
 }: TagProps) => (
   <strong
     {...props}
-    className={clsx('gi-tag', tagClass[type], tagSizeClass[size], className)}
+    className={cn('gi-tag', tagClass[type], tagSizeClass[size], className)}
   >
     {text}
   </strong>
