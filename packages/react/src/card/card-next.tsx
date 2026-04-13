@@ -2,16 +2,16 @@
 import {
   Children,
   cloneElement,
-  Context,
   createContext,
-  FC,
   isValidElement,
-  ReactNode,
   useContext,
   useEffect,
   useId,
   useMemo,
   useState,
+  type Context,
+  type FC,
+  type ReactNode,
 } from 'react';
 import Paragraph from '../atoms/Paragraph';
 import { cn } from '../cn.js';
@@ -22,7 +22,7 @@ import {
   getSpecialComponentType,
   isSpecialComponent,
 } from '../utils/utilities.js';
-import {
+import type {
   CardDescriptionProps,
   CardContainerProps,
   CardActionProps,
@@ -390,18 +390,20 @@ export const CardDescription: FC<CardDescriptionProps> = ({
   ...props
 }: CardDescriptionProps) => {
   useRequiredContext(CardContainerContext, 'CardDescription', 'CardContainer');
-  if (!children) {
-    return null;
-  }
-
   const autoId = useId();
   const descId = id ?? `card-desc-${autoId}`;
-
   const a11y = useContext(CardA11yContext) as any;
 
   useEffect(() => {
+    if (!children) {
+      return;
+    }
     a11y?.addDescId(descId);
-  }, [a11y, descId]);
+  }, [a11y, descId, children]);
+
+  if (!children) {
+    return null;
+  }
 
   return (
     <div className={cn('gi-card-paragraph', className)} id={descId} {...props}>

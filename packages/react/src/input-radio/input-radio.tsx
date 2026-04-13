@@ -7,8 +7,8 @@ import { InputText } from '../input-text/input-text.js';
 import { Label } from '../label/label.js';
 import { Input } from '../primitives/input.js';
 import {
-  InputRadioProps,
   InputRadioSizeEnum,
+  type InputRadioProps,
   type InputRadioSizeType,
 } from './types.js';
 
@@ -36,7 +36,8 @@ export const InputRadio: React.FC<InputRadioProps> = ({
   checked,
   ...props
 }) => {
-  const radioId = id ?? useId();
+  const generatedId = useId();
+  const radioId = id ?? generatedId;
   const labelContent = children ?? label;
   const hasRichContent = !!children;
 

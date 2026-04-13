@@ -110,7 +110,7 @@ export const WithDefaultChecked: Story = {
 
 export const WithReactHookForm: Story = {
   tags: ['skip-playwright'],
-  render: () => {
+  render: function Render() {
     const methods = useForm<{ contact: string }>({
       defaultValues: { contact: '' },
     });

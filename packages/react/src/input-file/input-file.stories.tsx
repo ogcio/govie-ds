@@ -365,7 +365,7 @@ export const WithListOfUploadedFilesWithErrorState: Story = {
 
 export const WithReactHookForm: Story = {
   tags: ['skip-playwright'],
-  render: () => {
+  render: function Render() {
     const methods = useForm<{ files: FileList | null }>({
       defaultValues: { files: null },
     });

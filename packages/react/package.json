@@ -82,6 +82,7 @@
     "@types/css-modules": "^1.0.5",
     "autoprefixer": "^10.4.19",
     "axe-core": "^4.10.0",
+    "eslint-plugin-react-hooks": "^7.0.1",
     "eslint-plugin-storybook": "^10.2.19",
     "glob": "^11.0.1",
     "i18next": "^25.6.2",

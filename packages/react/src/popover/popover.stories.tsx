@@ -28,7 +28,7 @@ export const Default: Story = {
     open: false,
     triggerRef: null,
   },
-  render: () => {
+  render: function Render() {
     const triggerRef = useRef<HTMLButtonElement>(null!);
     const [open, setOpen] = useState(false);
 
@@ -71,7 +71,7 @@ export const WithSelectMenu: Story = {
     open: false,
     triggerRef: null,
   },
-  render: () => {
+  render: function Render() {
     const triggerRef = useRef<HTMLButtonElement>(null!);
     const [open, setOpen] = useState(false);
     const [selectedValue, setSelectedValue] = useState('JP');
@@ -125,7 +125,7 @@ export const Test: Story = {
     open: false,
     triggerRef: null,
   },
-  render: () => {
+  render: function Render() {
     const triggerRef = useRef<HTMLButtonElement>(null!);
     const [open, setOpen] = useState(false);
 

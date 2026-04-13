@@ -53,7 +53,7 @@ export const WithTextArea: Story = {
       },
     },
   },
-  render: () => {
+  render: function Render() {
     const methods = useForm<{ message: string }>({
       defaultValues: { message: '' },
     });

@@ -1,4 +1,4 @@
-import i18next, { use, Resource } from 'i18next';
+import i18next, { type Resource } from 'i18next';
 import { initReactI18next } from 'react-i18next';
 
 export { default as i18next } from 'i18next';
@@ -8,7 +8,7 @@ export const initI18n = (config: {
   lng?: string;
   fallbackLng?: string;
 }) => {
-  use(initReactI18next).init({
+  i18next.use(initReactI18next).init({
     resources: config.resources,
     lng: config.lng || 'en',
     fallbackLng: config.fallbackLng || 'en',
