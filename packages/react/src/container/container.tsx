@@ -18,6 +18,7 @@ type ContainerProps = React.PropsWithChildren<{
   fullWidth?: boolean;
 }>;
 
+/** @deprecated Use the Container component from the core package instead. */
 export function Container({
   children,
   id,
