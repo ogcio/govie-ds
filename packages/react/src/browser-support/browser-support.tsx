@@ -1,7 +1,7 @@
 'use client';
 import Bowser from 'bowser';
 import { cn } from '../cn.js';
-import type { ComponentPropsWithoutRef} from 'react';
+import type { ComponentPropsWithoutRef } from 'react';
 import { useMemo } from 'react';
 import { useTranslation } from 'react-i18next';
 import { Alert } from '../alert/alert.js';
