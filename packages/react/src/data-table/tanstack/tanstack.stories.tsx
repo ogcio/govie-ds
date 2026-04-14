@@ -195,7 +195,7 @@ const dateRangeFilter: FilterFn<Person> = (row, columnId, filterValue) => {
 };
 export const WithReactHookForm: Story = {
   tags: ['skip-playwright'],
-  render: () => {
+  render: function Render() {
     const [data, setData] = useState(fakeData);
     const [expanded, setExpanded] = useState<ExpandedState>({});
     const [globalFilter, setGlobalFilter] = useState('');
@@ -894,6 +894,7 @@ export const WithReactHookForm: Story = {
     );
   },
 };
+
 export const DataTableHeaderBasic: Story = {
   parameters: {
     docs: {
@@ -903,7 +904,7 @@ export const DataTableHeaderBasic: Story = {
       },
     },
   },
-  render: () => {
+  render: function RenderDataTableHeader() {
     const triggerRef = useRef<HTMLButtonElement>(null!);
     const [open, setOpen] = useState(false);
     const [appliedFilters, setAppliedFilters] = useState<string[]>([]);

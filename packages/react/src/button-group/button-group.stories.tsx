@@ -150,7 +150,7 @@ export const ExplicitItems: Story = {
 
 export const Controlled: Story = {
   name: 'Yes/No Question (Controlled)',
-  render: (arguments_) => {
+  render: function Render(arguments_) {
     const [value, setValue] = useState(
       arguments_.value || arguments_.defaultValue,
     );
@@ -242,7 +242,7 @@ export const TestRenderDefaultSelection: StoryObj = {
 
 export const TestNoFormSubmitOnClick: StoryObj = {
   tags: ['skip-playwright'],
-  render: () => {
+  render: function Render() {
     const submissionProbeReference = useRef<HTMLSpanElement | null>(null);
 
     const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {

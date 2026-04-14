@@ -10,7 +10,7 @@ import { InputCheckbox } from '../input-checkbox/input-checkbox.js';
 import { InputText } from '../input-text/input-text.js';
 import { Tag, TagTypeEnum } from '../tag/tag.js';
 import { slugify } from '../utilities.js';
-import { DropdownItemProps } from './types.js';
+import type { DropdownItemProps } from './types.js';
 
 export const DropdownItem = ({
   children,
@@ -25,8 +25,9 @@ export const DropdownItem = ({
   const [searchInput, setSearchInput] = useState('');
   const [noResults, setNoResults] = useState(false);
   const [selectedValues, setSelectedValues] = useState<string[]>(defaultValue);
+  const generatedId = useId();
   const dropdownCustomClass = children
-    ? `${slugify(`${children}-${useId()}`)}`
+    ? `${slugify(`${children}-${generatedId}`)}`
     : '';
 
   const isControlled = value !== undefined;

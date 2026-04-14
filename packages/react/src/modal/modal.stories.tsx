@@ -1,4 +1,4 @@
-import { Meta, StoryObj } from '@storybook/react-vite';
+import type { Meta, StoryObj } from '@storybook/react-vite';
 import { useState } from 'react';
 import { expect, within, waitFor, screen, userEvent } from 'storybook/test';
 import Button from '../atoms/Button';
@@ -89,7 +89,7 @@ export const StateControlledModal: Story = {
     triggerButton: <></>,
     children: <></>,
   },
-  render: () => {
+  render: function Render() {
     const [isOpen, setIsOpen] = useState(false);
     const handleOpen = () => setIsOpen(true);
     const handleClose = () => setIsOpen(false);

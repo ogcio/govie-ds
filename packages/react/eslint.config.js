@@ -1,6 +1,7 @@
 import { defineConfig } from 'eslint/config';
 import baseConfig from '../../eslint.config.mjs';
 import storybook from 'eslint-plugin-storybook';
+import reactHooks from 'eslint-plugin-react-hooks';
 
 export default defineConfig([
   {
@@ -8,6 +9,16 @@ export default defineConfig([
   },
   ...storybook.configs['flat/recommended'],
   ...baseConfig,
+  {
+    files: ['src/**/*.{js,jsx,ts,tsx}'],
+    plugins: {
+      'react-hooks': reactHooks,
+    },
+    rules: {
+      'react-hooks/rules-of-hooks': 'error',
+      'react-hooks/exhaustive-deps': 'warn',
+    },
+  },
   {
     files: ['**/.storybook/main.ts'],
     rules: {
@@ -18,5 +29,5 @@ export default defineConfig([
     rules: {
       'no-console': 'warn', // TODO: ESLINT remove this after error fixes
     },
-  }
+  },
 ]);

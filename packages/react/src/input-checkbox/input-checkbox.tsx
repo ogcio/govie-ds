@@ -9,7 +9,7 @@ import {
   InputCheckboxSizeEnum,
   type InputCheckboxSizeEnumType,
   type InputCheckboxProps,
-  InputCheckboxTableCellProps,
+  type InputCheckboxTableCellProps,
 } from './types.js';
 
 const getSizeClass = (size: InputCheckboxSizeEnumType): string => {
@@ -44,7 +44,8 @@ export const InputCheckbox = forwardRef<HTMLInputElement, InputCheckboxProps>(
     },
     ref,
   ) => {
-    const CheckboxId = id || useId();
+    const generatedId = useId();
+    const CheckboxId = id || generatedId;
     const hasRichContent = !!children;
     const labelContent = children ?? label;
 

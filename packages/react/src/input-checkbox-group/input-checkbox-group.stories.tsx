@@ -117,7 +117,7 @@ export const Controlled: Story = {
       },
     },
   },
-  render: (props) => {
+  render: function Render(props) {
     const [selectedValues, setSelectedValues] = useState<string[]>([]);
 
     return (
