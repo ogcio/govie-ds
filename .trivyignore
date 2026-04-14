@@ -1,3 +1,5 @@
-# CVE-2026-22184: zlib contrib/untgz demo utility buffer overflow
-# Not exploitable - untgz is not installed or used in the container
-CVE-2026-22184
+# CVE-2026-28390: OpenSSL NULL dereference in CMS KeyTransportRecipientInfo processing
+# Not exploitable - nginx does not use OpenSSL CMS (S/MIME/PKCS#7) functions.
+# DHI marks it as not-affected via VEX, but Trivy does not consume the VEX feed.
+# Upstream fix: OpenSSL 3.0.13 / 3.1.5 / 3.4.5 (Alpine 3.23.3+).
+CVE-2026-28390
