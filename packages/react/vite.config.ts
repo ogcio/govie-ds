@@ -6,7 +6,7 @@ import preserveDirectives from 'rollup-preserve-directives';
 import { defineConfig } from 'vite';
 import dts from 'vite-plugin-dts';
 import { libInjectCss } from 'vite-plugin-lib-inject-css';
-
+import package_ from './package.json';
 export default defineConfig({
   plugins: [
     react(),
@@ -36,7 +36,8 @@ export default defineConfig({
           id === 'react' ||
           id === 'react-dom' ||
           id.startsWith('react/') ||
-          id.startsWith('react-dom/')
+          id.startsWith('react-dom/') ||
+          Object.keys(package_.dependencies).includes(id)
         );
       },
       input: Object.fromEntries(
