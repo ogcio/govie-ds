@@ -1,14 +1,8 @@
 {
-  "extends": "@tsconfig/node22/tsconfig.json",
+  "extends": "../../tsconfig.bundler.json",
   "compilerOptions": {
-    "module": "ESNext",
-    "moduleResolution": "bundler",
-    "sourceMap": false,
-    "inlineSourceMap": false,
-    "esModuleInterop": true,
     "jsx": "react-jsx",
-    "lib": ["DOM", "DOM.Iterable", "ES2021"],
     "types": ["vitest/globals", "@testing-library/jest-dom"]
   },
-  "include": ["src", "vitest-unit.setup.ts"]
+  "exclude": ["dist", "coverage", "storybook-static", "test-results", "playwright-report"]
 }

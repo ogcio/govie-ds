@@ -1,5 +1,5 @@
 {
-  "extends": "@tsconfig/node22/tsconfig.json",
+  "extends": "../../../tsconfig.node.json",
   "compilerOptions": {
     "types": ["vitest/globals"]
   }
