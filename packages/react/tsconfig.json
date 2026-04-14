@@ -4,5 +4,9 @@
     "jsx": "react-jsx",
     "types": ["vitest/globals", "@testing-library/jest-dom"]
   },
+<<<<<<< HEAD
   "include": ["src", "tests", "scripts", ".storybook/**/*", "*.ts"]
+=======
+  "exclude": ["dist", "coverage", "storybook-static", "test-results", "playwright-report"]
+>>>>>>> 79f89d41 (chore(AB#37185): standardize TypeScript configs)
 }
