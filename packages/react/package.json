@@ -24,7 +24,7 @@
   "scripts": {
     "format": "prettier 'src/**/*.{ts,tsx}' --write",
     "format:check": "prettier 'src/**/*.{ts,tsx}' --check",
-    "lint": "eslint 'src/**/*.{ts,tsx}'",
+    "lint": "eslint .",
     "test": "vitest run",
     "test:watch": "vitest",
     "coverage": "vitest run --coverage",

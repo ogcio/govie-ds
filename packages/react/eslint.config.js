@@ -5,15 +5,18 @@ import reactHooks from 'eslint-plugin-react-hooks';
 
 export default defineConfig([
   {
-    ignores: ['src/atoms/**/*'],
+    ignores: ['src/atoms/**/*', 'coverage/**', 'storybook-static/**', 'playwright-report/**', 'test-results/**'],
   },
   ...storybook.configs['flat/recommended'],
   ...baseConfig,
   {
+    files: ['src/**/*.{js,jsx,ts,tsx}'],
     ...reactHooks.configs.flat.recommended,
+  },
+  {
+    // TODO: ESLINT remove this after error fixes
     files: ['src/**/*.{js,jsx,ts,tsx}'],
     rules: {
-      ...reactHooks.configs.flat.recommended.rules,
       'react-hooks/set-state-in-effect': 'warn',
       'react-hooks/preserve-manual-memoization': 'warn',
       'react-hooks/refs': 'warn',
