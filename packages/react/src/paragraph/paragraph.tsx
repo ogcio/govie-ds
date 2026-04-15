@@ -5,6 +5,7 @@ import {
 } from '../atoms';
 import { cn } from '../cn';
 import type { Align } from '../atoms/utilities';
+import { tv } from 'tailwind-variants';
 export type ParagraphAs = 'p' | 'span';
 
 export type ParagraphProps = GiParagraphProps & {
@@ -32,12 +33,11 @@ export function Paragraph({
   ariaHidden,
 }: ParagraphProps) {
   if (As === 'span') {
-    const alignStyle = getAlignStyle(align);
     return (
       <Text
         size={size}
         whitespace={whitespace}
-        className={cn(className, alignStyle)}
+        className={legacyTextAlign({ align, class: className })}
         styles={(style ?? styles) as Record<string, string>}
         id={id}
         dataTestId={dataTestid ?? dataTestId}
@@ -63,14 +63,16 @@ export function Paragraph({
   );
 }
 
-const getAlignStyle = (align: (typeof Align)[keyof typeof Align]) => {
-  switch (align) {
-    case 'center':
-      return 'gi-text-center';
-    case 'end':
-      return 'gi-text-end';
-    case 'justify':
-      return 'gi-text-justify';
-  }
-  return 'gi-text-start';
-};
+const legacyTextAlign = tv({
+  variants: {
+    align: {
+      start: 'gi-text-start',
+      center: 'gi-text-center',
+      end: 'gi-text-end',
+      justify: 'gi-text-justify',
+    },
+  },
+  defaultVariants: {
+    align: 'start',
+  },
+});
