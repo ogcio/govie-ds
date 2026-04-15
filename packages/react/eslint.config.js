@@ -10,13 +10,15 @@ export default defineConfig([
   ...storybook.configs['flat/recommended'],
   ...baseConfig,
   {
+    ...reactHooks.configs.flat.recommended,
     files: ['src/**/*.{js,jsx,ts,tsx}'],
-    plugins: {
-      'react-hooks': reactHooks,
-    },
     rules: {
-      'react-hooks/rules-of-hooks': 'error',
-      'react-hooks/exhaustive-deps': 'warn',
+      ...reactHooks.configs.flat.recommended.rules,
+      'react-hooks/set-state-in-effect': 'warn',
+      'react-hooks/preserve-manual-memoization': 'warn',
+      'react-hooks/refs': 'warn',
+      'react-hooks/static-components': 'warn',
+      'react-hooks/immutability': 'warn',
     },
   },
   {
