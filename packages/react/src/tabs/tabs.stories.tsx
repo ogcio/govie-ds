@@ -277,7 +277,7 @@ export const WithHandler: Story = {
     ariaLabelledBy: 'tabs-with-handler',
     children: '',
   },
-  render: (props) => {
+  render: function Render(props) {
     const [tab, setTab] = useState('Tab 1');
     return (
       <Stack gap={6}>

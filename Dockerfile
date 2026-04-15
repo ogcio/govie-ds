@@ -9,6 +9,7 @@ ARG DEPLOY_ENV
 WORKDIR /build
 
 COPY package.json pnpm-workspace.yaml pnpm-lock.yaml ./
+COPY tsconfig.node.json tsconfig.bundler.json ./
 COPY apps/ ./apps
 COPY packages/ ./packages
 COPY apps/docs/.env.${DEPLOY_ENV} ./apps/docs/.env.production

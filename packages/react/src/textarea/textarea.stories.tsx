@@ -298,7 +298,7 @@ export const Controlled: Story = {
       },
     },
   },
-  render: (props) => {
+  render: function Render(props) {
     const [value, setValue] = useState('Initial value');
 
     return (
@@ -401,7 +401,7 @@ export const Uncontrolled: Story = {
       },
     },
   },
-  render: (props) => {
+  render: function Render(props) {
     const ref = useRef<HTMLTextAreaElement>(null);
     const [value, setValue] = useState('');
 
@@ -454,7 +454,7 @@ export const Uncontrolled: Story = {
 
 export const WithReactHookForm: Story = {
   tags: ['skip-playwright'],
-  render: () => {
+  render: function Render() {
     const methods = useForm<{ message: string }>({
       defaultValues: { message: '' },
     });

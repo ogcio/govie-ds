@@ -1,4 +1,4 @@
-import { Meta, StoryObj } from '@storybook/react-vite';
+import type { Meta, StoryObj } from '@storybook/react-vite';
 import { useState } from 'react';
 import { userEvent, within, expect } from 'storybook/test';
 import { Form } from '../forms/form.js';
@@ -106,7 +106,7 @@ export const ControlledAndUncontrolled = {
       },
     },
   },
-  render: () => {
+  render: function Render() {
     const [selectedCategories, setSelectedCategories] = useState<string[]>([]);
 
     const handleCategoryChange = (values: string[]) => {
@@ -116,7 +116,6 @@ export const ControlledAndUncontrolled = {
     return (
       <Form>
         <Combobox className="gi-mx-auto">
-          {/* Uncontrolled with default value */}
           <DropdownItem
             options={organisationOptions}
             defaultValue={['15431907-an-bord-pleanala']}
@@ -128,7 +127,6 @@ export const ControlledAndUncontrolled = {
             Organisations (defaultValue)
           </DropdownItem>
 
-          {/* Controlled */}
           <DropdownItem
             options={categoryOptions}
             value={selectedCategories}
@@ -181,7 +179,7 @@ export const TestDefaultSelectedValues: StoryObj = {
 
 export const TestUncontrolledOnChange: StoryObj = {
   tags: ['skip-playwright'],
-  render: () => {
+  render: function Render() {
     const [selectedValues, setSelectedValues] = useState<string[]>([]);
     return (
       <Form>
@@ -234,7 +232,7 @@ export const TestUncontrolledOnChange: StoryObj = {
 
 export const TestOnSearchCallback: StoryObj = {
   tags: ['skip-playwright'],
-  render: () => {
+  render: function Render() {
     const [searchValue, setSearchValue] = useState('');
     return (
       <Form>

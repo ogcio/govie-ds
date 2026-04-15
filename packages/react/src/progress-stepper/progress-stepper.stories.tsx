@@ -229,7 +229,7 @@ export const WithStepContent: Story = {
   args: {
     children: [],
   },
-  render: () => {
+  render: function Render() {
     const [currentIndex, setCurrentIndex] = useState(0);
     const handleNextButton = () => setCurrentIndex(() => currentIndex + 1);
     const handlePreviousButton = () => setCurrentIndex(() => currentIndex - 1);
@@ -342,25 +342,10 @@ export const WithContentStepVertical: Story = {
   args: {
     children: [],
   },
-  render: () => {
+  render: function Render() {
     const [currentIndex, setCurrentIndex] = useState(0);
     const handleNextButton = () => setCurrentIndex(() => currentIndex + 1);
     const handlePreviousButton = () => setCurrentIndex(() => currentIndex - 1);
-    const PreviousNextContainerVertical = () => (
-      <Stack
-        direction="row"
-        gap={3}
-        className="gi-pt-5"
-        itemsDistribution="start"
-      >
-        {currentIndex > 0 && (
-          <Button variant="secondary" onClick={handlePreviousButton}>
-            Previous
-          </Button>
-        )}
-        {currentIndex < 5 && <Button onClick={handleNextButton}>Next</Button>}
-      </Stack>
-    );
 
     return (
       <Stack aria-label="Progress Stepper with Vertical Content">
@@ -384,7 +369,19 @@ export const WithContentStepVertical: Story = {
             <Stack>Here are the content for Step 6</Stack>
           </StepItem>
         </ProgressStepper>
-        <PreviousNextContainerVertical />
+        <Stack
+          direction="row"
+          gap={3}
+          className="gi-pt-5"
+          itemsDistribution="start"
+        >
+          {currentIndex > 0 && (
+            <Button variant="secondary" onClick={handlePreviousButton}>
+              Previous
+            </Button>
+          )}
+          {currentIndex < 5 && <Button onClick={handleNextButton}>Next</Button>}
+        </Stack>
       </Stack>
     );
   },
@@ -394,25 +391,10 @@ export const WithFormContentStepVertical: Story = {
   args: {
     children: [],
   },
-  render: () => {
+  render: function Render() {
     const [currentIndex, setCurrentIndex] = useState(0);
     const handleNextButton = () => setCurrentIndex(() => currentIndex + 1);
     const handlePreviousButton = () => setCurrentIndex(() => currentIndex - 1);
-    const PreviousNextContainerVertical = () => (
-      <Stack
-        direction="row"
-        gap={3}
-        className="gi-pt-5"
-        itemsDistribution="start"
-      >
-        {currentIndex > 0 && (
-          <Button variant="secondary" onClick={handlePreviousButton}>
-            Previous
-          </Button>
-        )}
-        {currentIndex < 3 && <Button onClick={handleNextButton}>Next</Button>}
-      </Stack>
-    );
 
     return (
       <div
@@ -550,7 +532,21 @@ export const WithFormContentStepVertical: Story = {
               </Stack>
             </StepItem>
           </ProgressStepper>
-          <PreviousNextContainerVertical />
+          <Stack
+            direction="row"
+            gap={3}
+            className="gi-pt-5"
+            itemsDistribution="start"
+          >
+            {currentIndex > 0 && (
+              <Button variant="secondary" onClick={handlePreviousButton}>
+                Previous
+              </Button>
+            )}
+            {currentIndex < 3 && (
+              <Button onClick={handleNextButton}>Next</Button>
+            )}
+          </Stack>
         </Stack>
       </div>
     );

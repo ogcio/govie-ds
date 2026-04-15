@@ -6,7 +6,7 @@ import { expect, within, userEvent, waitFor } from 'storybook/test';
 import { FormField, FormFieldLabel } from '../forms/form-field/form-field.js';
 import { Label } from '../label/label.js';
 import { Autocomplete, AutocompleteItem } from './autocomplete.js';
-import { AutocompleteProps } from './types.js';
+import type { AutocompleteProps } from './types.js';
 
 const meta = {
   title: 'Form/Autocomplete',
@@ -324,7 +324,7 @@ export const WithLoading = () => {
 
 export const WithReactHookForm: StoryObj = {
   tags: ['skip-playwright'],
-  render: () => {
+  render: function Render() {
     const { register, watch } = useForm();
 
     const topicValue = watch('example');
@@ -396,7 +396,7 @@ export const Test: Story = {
 
 export const TestKeyboardEvents: StoryObj = {
   tags: ['skip-playwright'],
-  render: () => {
+  render: function Render() {
     const [value, setValue] = useState('');
     return (
       <FormField className="gi-w-56">
