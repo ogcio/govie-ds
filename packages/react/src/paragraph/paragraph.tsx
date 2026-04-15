@@ -3,8 +3,6 @@ import {
   Paragraph as GiParagraph,
   type ParagraphProps as GiParagraphProps,
 } from '../atoms';
-import { cn } from '../cn';
-import type { Align } from '../atoms/utilities';
 import { tv } from 'tailwind-variants';
 export type ParagraphAs = 'p' | 'span';
 
