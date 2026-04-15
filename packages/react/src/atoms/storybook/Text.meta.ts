@@ -97,9 +97,9 @@ export const Default = {
     canvasElement
   }: StoryContext<Renderer>) => {
     const canvas = within(canvasElement as HTMLElement);
-    const element = canvas.getByTestId('text-default');
-    expect(element).toBeInTheDocument();
-    expect(element.tagName).toBe('SPAN');
+    const textNode = canvas.getByTestId('text-default');
+    expect(textNode).toBeInTheDocument();
+    expect(textNode.tagName).toBe('SPAN');
   }
 };
 export const AllTextSizes = {
@@ -112,8 +112,8 @@ export const AllTextSizes = {
     canvasElement
   }: StoryContext<Renderer>) => {
     const canvas = within(canvasElement as HTMLElement);
-    const element = canvas.getByTestId(`text-all-sizes-${Size.MD}`);
-    expect(element).toBeInTheDocument();
-    expect(element.tagName).toBe('SPAN');
+    const textNode = canvas.getByTestId(`text-all-sizes-${Size.MD}`);
+    expect(textNode).toBeInTheDocument();
+    expect(textNode.tagName).toBe('SPAN');
   }
 }

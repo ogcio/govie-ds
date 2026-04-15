@@ -1,6 +1,7 @@
 import { tv } from 'tailwind-variants';
 import { useMetadata } from '@builder.io/mitosis';
 import { getSize, getAlign, getWhitespace, type Align, type Size, type Whitespace } from './utilities';
+import { textVariants } from './Text.lite';
 
 export type Props = {
   id?: string;
@@ -36,30 +37,17 @@ export default function Paragraph(props: Props) {
 }
 
 export const paragraphStyles = tv({
-  base: ['gi-font-primary', 'gi-max-w-prose'],
+  extend: textVariants,
+  base: ['gi-max-w-prose'],
   variants: {
-    size: {
-      sm: 'gi-text-sm',
-      md: 'gi-text-md',
-      lg: 'gi-text-lg',
-      xl: 'gi-text-lg xs:gi-text-xl',
-    },
     align: {
       start: 'gi-text-start',
       center: 'gi-text-center',
       end: 'gi-text-end',
       justify: 'gi-text-justify',
     },
-    whitespace: {
-      normal: 'gi-whitespace-normal',
-      pre: 'gi-whitespace-pre',
-      'pre-wrap': 'gi-whitespace-pre-wrap',
-      'break-spaces': 'gi-whitespace-break-spaces',
-    },
   },
   defaultVariants: {
-    size: 'md',
     align: 'start',
-    whitespace: 'normal',
   },
 });

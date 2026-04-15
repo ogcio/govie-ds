@@ -15,8 +15,8 @@ type Story = StoryObj<Text & { content: string }>;
 
 export const Default: Story = {
   ...TextStoryMeta.Default,
-  render: (arguments_: any) => ({
-    props: { ...arguments_, content: loremIpsum },
+  render: (props: any) => ({
+    props: { ...props, content: loremIpsum },
     template: `
       <gi-text
         [id]="id"
@@ -35,8 +35,8 @@ export const Default: Story = {
 
 export const AllTextSizes: Story = {
   ...TextStoryMeta.AllTextSizes,
-  render: (arguments_: any) => ({
-    props: { ...arguments_ },
+  render: (props: any) => ({
+    props: { ...props },
     template: `
       <div class="gi-flex gi-flex-col gi-gap-2">
         <gi-text size="sm" dataTestId="text-all-sizes-sm">Text sm</gi-text>

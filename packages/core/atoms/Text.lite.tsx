@@ -33,7 +33,7 @@ export default function Text(props: Props) {
   );
 }
 
-const textVariants = tv({
+export const textVariants = tv({
   base: 'gi-font-primary gi-not-prose',
   variants: {
     size: {
