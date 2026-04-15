@@ -36,7 +36,7 @@ export const Default: Story = {
 export const AllTextSizes: Story = {
   ...TextStoryMeta.AllTextSizes,
   render: (props: any) => ({
-    props: { ...props },
+    props,
     template: `
       <div class="gi-flex gi-flex-col gi-gap-2">
         <gi-text size="sm" dataTestId="text-all-sizes-sm">Text sm</gi-text>
