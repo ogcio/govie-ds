@@ -9,7 +9,7 @@
     "./styles.css": "./dist/styles.css"
   },
   "scripts": {
-    "build": "ng-packagr -p ng-package.json && pnpm build:styles",
+    "build": "ng-packagr -p ng-package.json -c tsconfig.lib.json && pnpm build:styles",
     "build:styles": "tailwindcss -i ./styles.css -o ./dist/styles.css --minify",
     "storybook:dev": "ng run design-system-angular:storybook",
     "storybook:build": "ng run design-system-angular:build-storybook",
