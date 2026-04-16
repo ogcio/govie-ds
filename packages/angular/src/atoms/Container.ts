@@ -18,6 +18,7 @@ export type Props = {
   fullWidth?: boolean;
 };
 
+import clsx from 'clsx';
 export const ContainerInsetSizeEnum = {
   None: 'none',
   Medium: 'md',
@@ -34,16 +35,10 @@ export const ContainerInsetSizeEnum = {
       [attr.data-inset-bottom]="insetBottom"
       [attr.id]="id"
       [class]="
-        [
-          className,
-          insetTop || insetBottom
-            ? 'gi-layout-container-inset'
-            : fullWidth
-              ? 'gi-layout-container-full-width'
-              : 'gi-layout-container',
-        ]
-          .filter(Boolean)
-          .join(' ')
+        clsx('gi-layout-container', className, {
+          'gi-layout-container-inset': insetTop || insetBottom,
+          'gi-layout-container-full-width': fullWidth,
+        })
       "
     >
       <ng-content></ng-content>
@@ -60,6 +55,8 @@ export const ContainerInsetSizeEnum = {
   imports: [CommonModule],
 })
 export default class Container {
+  clsx = clsx;
+
   @Input() insetTop!: Props['insetTop'];
   @Input() insetBottom!: Props['insetBottom'];
   @Input() id!: Props['id'];

@@ -22,6 +22,7 @@
     "@angular/core": "^21.1.0"
   },
   "dependencies": {
+    "clsx": "^2.1.1",
     "tslib": "^2.3.0"
   },
   "devDependencies": {

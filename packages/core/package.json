@@ -16,6 +16,7 @@
     "@builder.io/mitosis-cli": "^0.12.1",
     "@prettier/sync": "^0.6.1",
     "chokidar-cli": "^3.0.0",
+    "clsx": "^2.1.1",
     "storybook": "^10.3.3",
     "tsx": "^4.19.2",
     "typescript": "^5.4.5"

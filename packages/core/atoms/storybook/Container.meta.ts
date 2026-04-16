@@ -1,9 +1,33 @@
-import type { Meta, StoryObj } from '@storybook/react-vite';
+import type { StoryContext, Renderer } from 'storybook/internal/types';
+import { createElement } from 'react';
 import { within, expect } from 'storybook/test';
-import { Container, ContainerInsetSizeEnum } from './container.js';
+import { ContainerInsetSizeEnum } from '../Container.lite';
 
-const meta = {
+export const containerMeta = {
+  tags: ['autodocs'] as string[],
   title: 'Layout/Container',
+  args: {
+    children: 'Paragraph',
+  },
+  argTypes: {
+    children: {
+      control: 'text',
+      description:
+        'HTML content or other components to be rendered inside the container.',
+    },
+    insetTop: {
+      control: { type: 'select' },
+      options: Object.values(ContainerInsetSizeEnum),
+      description:
+        'Defines the top padding of the container. Options are `none`, `md`, `lg`, and `xl`.',
+    },
+    insetBottom: {
+      control: { type: 'select' },
+      options: Object.values(ContainerInsetSizeEnum),
+      description:
+        'Defines the bottom padding of the container. Options are `none`, `md`, `lg`, and `xl`.',
+    },
+  } as const,
   parameters: {
     docs: {
       description: {
@@ -12,37 +36,12 @@ const meta = {
       },
     },
   },
-  component: Container,
-} satisfies Meta<typeof Container>;
+};
 
-export default meta;
-type Story = StoryObj<typeof meta>;
-
-export const Default: Story = {
-  argTypes: {
-    children: {
-      control: 'text',
-      description:
-        'HTML content or other components to be rendered inside the container.',
-    },
-    insetTop: {
-      control: 'select',
-      options: Object.values(ContainerInsetSizeEnum),
-      description:
-        'Defines the top padding of the container. Options are `none`, `md`, `lg`, and `xl`.',
-    },
-    insetBottom: {
-      control: 'select',
-      options: Object.values(ContainerInsetSizeEnum),
-      description:
-        'Defines the bottom padding of the container. Options are `none`, `md`, `lg`, and `xl`.',
-    },
-  },
-  args: {
-    children: `Paragraph`,
-  },
-  play: async ({ canvasElement, step }) => {
-    const canvas = within(canvasElement);
+export const Default = {
+  args: containerMeta.args,
+  play: async ({ canvasElement, step }: StoryContext<Renderer>) => {
+    const canvas = within(canvasElement as HTMLElement);
 
     await step('should apply the correct container classes', async () => {
       const containerElement = canvas.getByTestId('govie-container');
@@ -54,7 +53,7 @@ export const Default: Story = {
   },
 };
 
-export const WithNoneInset: Story = {
+export const WithNoneInset = {
   args: {
     children: 'Paragraph',
     insetBottom: ContainerInsetSizeEnum.None,
@@ -62,7 +61,7 @@ export const WithNoneInset: Story = {
   },
 };
 
-export const WithMediumInset: Story = {
+export const WithMediumInset = {
   args: {
     children: 'Paragraph',
     insetTop: ContainerInsetSizeEnum.Medium,
@@ -70,7 +69,7 @@ export const WithMediumInset: Story = {
   },
 };
 
-export const WithLargeInset: Story = {
+export const WithLargeInset = {
   args: {
     children: 'Paragraph',
     insetTop: ContainerInsetSizeEnum.Large,
@@ -78,7 +77,7 @@ export const WithLargeInset: Story = {
   },
 };
 
-export const WithExtraLargeInset: Story = {
+export const WithExtraLargeInset = {
   args: {
     children: 'Paragraph',
     insetTop: ContainerInsetSizeEnum.ExtraLarge,
@@ -86,13 +85,13 @@ export const WithExtraLargeInset: Story = {
   },
 };
 
-export const TestRenderIndentedHTMLContent: Story = {
+export const TestRenderIndentedHTMLContent = {
   tags: ['skip-playwright'],
   args: {
-    children: <p>Indented content</p>,
+    children: createElement('p', null, 'Indented content'),
   },
-  play: async ({ canvasElement, step }) => {
-    const canvas = within(canvasElement);
+  play: async ({ canvasElement, step }: StoryContext<Renderer>) => {
+    const canvas = within(canvasElement as HTMLElement);
 
     await step(
       'should correctly handle and render indented HTML content',
@@ -107,17 +106,18 @@ export const TestRenderIndentedHTMLContent: Story = {
   },
 };
 
-export const TestSafelyRenderHTMLContent: Story = {
+export const TestSafelyRenderHTMLContent = {
   tags: ['skip-playwright'],
   args: {
-    children: (
-      <p>
-        <script>alert('XSS')</script>Safe content
-      </p>
+    children: createElement(
+      'p',
+      null,
+      createElement('script', null, "alert('XSS')"),
+      'Safe content',
     ),
   },
-  play: async ({ canvasElement, step }) => {
-    const canvas = within(canvasElement);
+  play: async ({ canvasElement, step }: StoryContext<Renderer>) => {
+    const canvas = within(canvasElement as HTMLElement);
 
     await step('should safely render HTML content', async () => {
       const containerElement = canvas.getByTestId('govie-container');
@@ -131,13 +131,13 @@ export const TestSafelyRenderHTMLContent: Story = {
   },
 };
 
-export const TestHandleEmptyContentGracefully: Story = {
+export const TestHandleEmptyContentGracefully = {
   tags: ['skip-playwright'],
   args: {
     children: '',
   },
-  play: async ({ canvasElement, step }) => {
-    const canvas = within(canvasElement);
+  play: async ({ canvasElement, step }: StoryContext<Renderer>) => {
+    const canvas = within(canvasElement as HTMLElement);
 
     await step('should handle empty content gracefully', async () => {
       const containerElement = canvas.getByTestId('govie-container');
