@@ -16,6 +16,7 @@ export type Props = {
   fullWidth?: boolean;
 };
 
+import clsx from 'clsx';
 export const ContainerInsetSizeEnum = {
   None: 'none',
   Medium: 'md',
@@ -30,16 +31,10 @@ function Container(props: Props) {
       data-inset-top={props.insetTop}
       data-inset-bottom={props.insetBottom}
       id={props.id}
-      className={[
-        props.className,
-        props.insetTop || props.insetBottom
-          ? 'gi-layout-container-inset'
-          : props.fullWidth
-            ? 'gi-layout-container-full-width'
-            : 'gi-layout-container',
-      ]
-        .filter(Boolean)
-        .join(' ')}
+      className={clsx('gi-layout-container', props.className, {
+        'gi-layout-container-inset': props.insetTop || props.insetBottom,
+        'gi-layout-container-full-width': props.fullWidth,
+      })}
     >
       {props.children}
     </div>

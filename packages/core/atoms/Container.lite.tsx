@@ -1,4 +1,5 @@
 import { useMetadata } from '@builder.io/mitosis';
+import clsx from 'clsx';
 
 export const ContainerInsetSizeEnum = {
   None: 'none',
@@ -37,16 +38,10 @@ export default function Container(props: Props) {
       data-testid="govie-container"
       data-inset-top={props.insetTop}
       data-inset-bottom={props.insetBottom}
-      className={[
-        props.className,
-        props.insetTop || props.insetBottom
-          ? 'gi-layout-container-inset'
-          : props.fullWidth
-            ? 'gi-layout-container-full-width'
-            : 'gi-layout-container',
-      ]
-        .filter(Boolean)
-        .join(' ')}
+      className={clsx('gi-layout-container', props.className, {
+        'gi-layout-container-inset': props.insetTop || props.insetBottom,
+        'gi-layout-container-full-width': props.fullWidth,
+      })}
       id={props.id}
     >
       {props.children}
