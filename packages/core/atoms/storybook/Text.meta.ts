@@ -19,7 +19,7 @@ export const textMeta = {
     },
     size: {
       control: { type: 'select' },
-      options: [...Object.values(Size)],
+      options: Object.values(Size),
       description: 'Font size of the Text',
       table: {
         type: {
@@ -32,7 +32,7 @@ export const textMeta = {
     },
     whitespace: {
       control: { type: 'select' },
-      options: [...Object.values(Whitespace)],
+      options: Object.values(Whitespace),
       description: 'Whitespace handling.',
       table: {
         type: {
@@ -90,9 +90,9 @@ export const Default = {
   args: textMeta.args,
   play: async ({ canvasElement }: StoryContext<Renderer>) => {
     const canvas = within(canvasElement as HTMLElement);
-    const el = canvas.getByTestId('text-default');
-    expect(el).toBeInTheDocument();
-    expect(el.tagName).toBe('SPAN');
+    const textNode = canvas.getByTestId('text-default');
+    expect(textNode).toBeInTheDocument();
+    expect(textNode.tagName).toBe('SPAN');
   },
 };
 
@@ -104,8 +104,8 @@ export const AllTextSizes = {
   },
   play: async ({ canvasElement }: StoryContext<Renderer>) => {
     const canvas = within(canvasElement as HTMLElement);
-    const el = canvas.getByTestId(`text-all-sizes-${Object.values(Size)[0]}`);
-    expect(el).toBeInTheDocument();
-    expect(el.tagName).toBe('SPAN');
+    const textNode = canvas.getByTestId(`text-all-sizes-${Size.MD}`);
+    expect(textNode).toBeInTheDocument();
+    expect(textNode.tagName).toBe('SPAN');
   },
 };
