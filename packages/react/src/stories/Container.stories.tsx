@@ -1,5 +1,5 @@
 import type { Meta, StoryObj } from '@storybook/react-vite';
-import { Container } from '../container/container';
+import Container from '../atoms/Container';
 import {
   containerMeta,
   Default as defaultStory,
