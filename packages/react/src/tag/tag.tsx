@@ -1,4 +1,4 @@
-import { cn } from '../cn.js';
+import clsx from 'clsx';
 import type { ComponentPropsWithoutRef } from 'react';
 
 export const TagTypeEnum = {
@@ -50,7 +50,7 @@ export const Tag = ({
 }: TagProps) => (
   <strong
     {...props}
-    className={cn('gi-tag', tagClass[type], tagSizeClass[size], className)}
+    className={clsx('gi-tag', tagClass[type], tagSizeClass[size], className)}
   >
     {text}
   </strong>

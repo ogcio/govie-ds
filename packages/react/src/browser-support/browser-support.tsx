@@ -1,6 +1,6 @@
 'use client';
 import Bowser from 'bowser';
-import { cn } from '../cn.js';
+import clsx from 'clsx';
 import type { ComponentPropsWithoutRef } from 'react';
 import { useMemo } from 'react';
 import { useTranslation } from 'react-i18next';
@@ -34,7 +34,7 @@ export const BrowserSupport = ({
       variant="warning"
       title={t('Limited browser support detected')}
       dismissible
-      className={cn('gi-min-w-full', className)}
+      className={clsx('gi-min-w-full', className)}
     >
       {t(
         'This browser is not officially supported. Please update or switch to a supported browser for the best experience.',
