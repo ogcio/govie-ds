@@ -1,4 +1,5 @@
 export { default as Button } from './Button';
+export { default as Container, type Props as ContainerProps } from './Container';
 export { default as InsetText } from './InsetText';
 export { default as Paragraph, type Props as ParagraphProps } from './Paragraph';
 export { default as Text, type Props as TextProps } from './Text';
