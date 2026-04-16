@@ -1,13 +1,7 @@
 import { tv } from 'tailwind-variants';
 import { useMetadata } from '@builder.io/mitosis';
-import { Size, Whitespace } from './utilities';
-
-export const Align = {
-  START: 'start',
-  CENTER: 'center',
-  END: 'end',
-  JUSTIFY: 'justify',
-} as const;
+import { getSize, getAlign, getWhitespace, type Align, type Size, type Whitespace } from './utilities';
+import { textVariants } from './Text.lite';
 
 export type Props = {
   id?: string;
@@ -43,37 +37,17 @@ export default function Paragraph(props: Props) {
 }
 
 export const paragraphStyles = tv({
-  base: ['gi-font-primary', 'gi-max-w-prose'],
+  extend: textVariants,
+  base: ['gi-max-w-prose'],
   variants: {
-    size: {
-      sm: 'gi-text-sm',
-      md: 'gi-text-md',
-      lg: 'gi-text-lg',
-      xl: 'gi-text-lg xs:gi-text-xl',
-    },
     align: {
       start: 'gi-text-start',
       center: 'gi-text-center',
       end: 'gi-text-end',
       justify: 'gi-text-justify',
     },
-    whitespace: {
-      normal: 'gi-whitespace-normal',
-      pre: 'gi-whitespace-pre',
-      'pre-wrap': 'gi-whitespace-pre-wrap',
-      'break-spaces': 'gi-whitespace-break-spaces',
-    },
   },
   defaultVariants: {
-    size: 'md',
     align: 'start',
-    whitespace: 'normal',
   },
 });
-
-const getSize = (x: Props['size'] = Size.MD) => (Object.values(Size).includes(x) ? x : Size.MD);
-
-const getAlign = (x: Props['align'] = Align.START) => (Object.values(Align).includes(x) ? x : Align.START);
-
-const getWhitespace = (x: Props['whitespace'] = Whitespace.NORMAL) =>
-  Object.values(Whitespace).includes(x) ? x : Whitespace.NORMAL;

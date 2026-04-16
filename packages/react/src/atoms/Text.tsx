@@ -18,8 +18,8 @@ export type Props = {
 };
 
 import { tv } from 'tailwind-variants';
-import { Size, Whitespace } from './utilities';
-const textVariants = tv({
+import { getSize, getWhitespace, Size, Whitespace } from './utilities';
+export const textVariants = tv({
   base: 'gi-font-primary gi-not-prose',
   variants: {
     size: {
@@ -40,9 +40,6 @@ const textVariants = tv({
     whitespace: 'normal',
   },
 });
-const getSize = (x: Props['size'] = Size.MD) => (Object.values(Size).includes(x) ? x : Size.MD);
-const getWhitespace = (x: Props['whitespace'] = Whitespace.NORMAL) =>
-  Object.values(Whitespace).includes(x) ? x : Whitespace.NORMAL;
 
 function Text(props: Props) {
   return (

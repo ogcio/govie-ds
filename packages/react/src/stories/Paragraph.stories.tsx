@@ -1,5 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/react-vite';
-import Paragraph, { Align } from '../atoms/Paragraph';
+import Paragraph from '../atoms/Paragraph';
+import { Align } from '../atoms/utilities';
 import {
   paragraphMeta,
   Default as defaultStory,

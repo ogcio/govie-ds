@@ -3,6 +3,7 @@ import {
   Paragraph as GiParagraph,
   type ParagraphProps as GiParagraphProps,
 } from '../atoms';
+import { tv } from 'tailwind-variants';
 export type ParagraphAs = 'p' | 'span';
 
 export type ParagraphProps = GiParagraphProps & {
@@ -34,7 +35,7 @@ export function Paragraph({
       <Text
         size={size}
         whitespace={whitespace}
-        className={className}
+        className={legacyTextAlign({ align, class: className })}
         styles={(style ?? styles) as Record<string, string>}
         id={id}
         dataTestId={dataTestid ?? dataTestId}
@@ -59,3 +60,17 @@ export function Paragraph({
     </GiParagraph>
   );
 }
+
+const legacyTextAlign = tv({
+  variants: {
+    align: {
+      start: 'gi-text-start',
+      center: 'gi-text-center',
+      end: 'gi-text-end',
+      justify: 'gi-text-justify',
+    },
+  },
+  defaultVariants: {
+    align: 'start',
+  },
+});
