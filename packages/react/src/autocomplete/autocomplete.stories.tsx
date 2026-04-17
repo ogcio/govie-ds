@@ -44,6 +44,7 @@ const options = [
 ];
 
 export const Default: Story = {
+  tags: ['slow'],
   render: (props: AutocompleteProps) => {
     return (
       <FormField className="gi-w-56">

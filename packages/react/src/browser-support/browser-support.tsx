@@ -1,7 +1,8 @@
 'use client';
 import Bowser from 'bowser';
 import clsx from 'clsx';
-import { ComponentPropsWithoutRef, useMemo } from 'react';
+import type { ComponentPropsWithoutRef } from 'react';
+import { useMemo } from 'react';
 import { useTranslation } from 'react-i18next';
 import { Alert } from '../alert/alert.js';
 import { BROWSER_POLICY, DS_HOST } from '../constants.js';

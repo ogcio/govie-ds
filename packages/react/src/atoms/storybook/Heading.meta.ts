@@ -1,6 +1,7 @@
 import type { StoryContext, Renderer } from 'storybook/internal/types';
 import { within, expect } from 'storybook/test';
 import { Size } from '../heading/types';
+import { enumType } from './utilities';
 export const headingMeta = {
   tags: ['autodocs'] as string[],
   title: 'Typography/Heading',
@@ -8,18 +9,9 @@ export const headingMeta = {
     id: 'heading-id'
   },
   argTypes: {
-    size: {
-      control: {
-        type: 'select'
-      },
-      options: ['', ...Object.values(Size)],
-      description: 'Font size of the heading. Defaults to the size mapped to the heading level.',
-      table: {
-        type: {
-          summary: Object.values(Size).map(v => `"${v}"`).join(' | ')
-        }
-      }
-    },
+    size: enumType(Size, {
+      description: 'Font size of the heading. Defaults to the size mapped to the heading level.'
+    }),
     id: {
       control: false,
       description: 'Optional id for linking/targeting and aria references.'

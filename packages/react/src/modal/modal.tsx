@@ -1,10 +1,9 @@
 'use client';
+import type { ReactNode, ReactElement } from 'react';
 import {
   cloneElement,
-  ReactNode,
   Children,
   isValidElement,
-  ReactElement,
   useState,
   useRef,
   useEffect,
@@ -14,10 +13,13 @@ import {
 import { createPortal } from 'react-dom';
 import Heading, { type Props as HeadingProps } from '../Heading.js';
 import Button from '../atoms/Button';
+import { normalizeSize } from '../utils/normalize-size.js';
+import type { ButtonSize } from '../button/types.js';
 import { cn } from '../cn.js';
 import { useAriaHider } from '../hooks/use-aria-hider.js';
 import { useFocusTrap } from '../hooks/use-focus-trap.js';
 import { Icon, type IconSize } from '../icon/icon.js';
+import type { IconButtonProps } from '../icon-button/icon-button.js';
 import { IconButton } from '../icon-button/icon-button.js';
 import {
   splitAriaProps,
@@ -43,13 +45,26 @@ const VARIANT_ORDER: Record<
   primary: 2,
 };
 
+// TODO: Remove SIZE_TO_ICON_BUTTON_SIZE and toIconButtonSize when IconButton is converted to an atom with sm/md/lg vocabulary
+const SIZE_TO_ICON_BUTTON_SIZE: Record<ButtonSize, IconButtonProps['size']> = {
+  sm: 'small',
+  md: 'medium',
+  lg: 'large',
+  small: 'small',
+  medium: 'medium',
+  large: 'large',
+};
+
+const toIconButtonSize = (size: ButtonSize = 'md'): IconButtonProps['size'] =>
+  SIZE_TO_ICON_BUTTON_SIZE[size];
+
 const ModalCloseButton = ({
   label,
   size = 'small',
   ...props
 }: ModalCloseButtonProps) => {
   let iconSize: IconSize = 'sm';
-  if (size === 'large' || size === 'medium') {
+  if (size === 'large' || size === 'medium' || size === 'lg' || size === 'md') {
     iconSize = 'md';
   }
 
@@ -57,7 +72,7 @@ const ModalCloseButton = ({
     <Button
       onClick={props.onClick}
       variant="flat"
-      size={size}
+      size={normalizeSize(size)}
       appearance="dark"
       className="gi-modal-icon"
       ariaLabel={label}
@@ -75,7 +90,7 @@ const ModalCloseButton = ({
       aria-label="Close modal"
       onClick={props.onClick}
       variant="flat"
-      size={size}
+      size={toIconButtonSize(size)}
       appearance="dark"
       dataTestid="modal-close-button"
       {...props}

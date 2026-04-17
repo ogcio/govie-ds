@@ -76,7 +76,7 @@ export const DropdownItem = ({
       <Button
         variant="flat"
         appearance="dark"
-        size="large"
+        size="lg"
         onClick={(event) => {
           event.preventDefault();
           setIsOpen(!isOpen);
