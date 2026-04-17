@@ -35,6 +35,11 @@ for (const story of stories) {
     );
     await page.waitForTimeout(500);
 
+    // Use `tags: ['slow']` on stories with play functions that need extra settle time
+    if (story.tags?.includes('slow')) {
+      await page.waitForTimeout(3000);
+    }
+
     await expect(page).toHaveScreenshot(`${story.id}.png`, {
       fullPage: true,
       animations: 'disabled',
