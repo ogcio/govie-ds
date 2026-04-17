@@ -1,15 +1,10 @@
 'use client';
 
-import {
-  TdHTMLAttributes,
-  ReactNode,
-  useRef,
-  useEffect,
-  useState,
-} from 'react';
+import type { TdHTMLAttributes, ReactNode } from 'react';
+import { useRef, useEffect, useState } from 'react';
 import { cn } from '../cn.js';
 import { IconButton } from '../icon-button/icon-button.js';
-import { TableAlign, VerticalAlign } from './table.js';
+import type { TableAlign, VerticalAlign } from './table.js';
 
 type TableDataSize = 'xs-fixed' | 'sm-fixed' | 'md-fixed' | 'lg-flex' | 'fluid';
 
@@ -108,9 +103,9 @@ export const TableExpandIcon = ({
   }, []);
 
   const sizeMap = {
-    sm: 'medium',
-    md: 'large',
-    lg: 'extraLarge',
+    sm: 'md',
+    md: 'lg',
+    lg: 'xl',
   } as const;
 
   return (

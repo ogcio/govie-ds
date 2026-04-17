@@ -1,7 +1,8 @@
 import type { Meta, StoryObj } from '@storybook/react-vite';
 import _ from 'lodash';
 import { Button } from '../atoms/index.js';
-import { Variant, Appearance, ButtonSize, type Props } from '../atoms/Button';
+import { ButtonSize, type Props } from '../atoms/Button';
+import { Variant, Appearance } from '../atoms/utilities.js';
 import {
   buttonMeta,
   Default as buttonDefault,

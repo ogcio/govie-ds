@@ -57,13 +57,13 @@ export const getSizeClass = (size?: ButtonSize) => {
 
 export const getButtonIconSizeClass = (size?: IconButtonProps['size']) => {
   switch (size) {
-    case 'small': {
+    case 'sm': {
       return 'gi-icon-btn-small';
     }
-    case 'large': {
+    case 'lg': {
       return 'gi-icon-btn-large';
     }
-    case 'extraLarge': {
+    case 'xl': {
       return 'gi-icon-btn-extra-large';
     }
     default: {

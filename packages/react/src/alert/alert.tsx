@@ -1,6 +1,8 @@
 'use client';
-import { ComponentType, useState } from 'react';
-import { CheckCircle, Info, Warning, Error, IconProps } from '../atoms/icons';
+import type { ComponentType } from 'react';
+import { useState } from 'react';
+import type { IconProps } from '../atoms/icons';
+import { CheckCircle, Info, Warning, Error } from '../atoms/icons';
 import { cn } from '../cn.js';
 import { translate as t } from '../i18n/utility.js';
 import { IconButton } from '../icon-button/icon-button.js';
@@ -61,7 +63,7 @@ function Alert({
             onClose?.(event);
           }}
           className={dismiss()}
-          size="small"
+          size="sm"
           appearance="dark"
           variant="flat"
           icon={{ icon: 'close' }}

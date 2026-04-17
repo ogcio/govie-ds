@@ -41,35 +41,22 @@ export type Props = {
 };
 
 import { tv } from 'tailwind-variants';
-import { Size } from './utilities';
-export const Variant = {
-  PRIMARY: 'primary',
-  SECONDARY: 'secondary',
-  FLAT: 'flat',
-} as const;
-export const Appearance = {
-  DEFAULT: 'default',
-  DARK: 'dark',
-  LIGHT: 'light',
-} as const;
+import { Variant, Appearance, Size } from './utilities';
 export const ButtonSize = {
   SM: Size.SM,
   MD: Size.MD,
   LG: Size.LG,
 } as const;
-export const styles = tv({
+export const buttonBaseStyles = tv({
   base: [
     'gi-font-primary',
     'gi-border-solid',
     'gi-border-sm',
-    'gi-gap-2',
     'gi-flex',
     'gi-rounded-sm',
     'gi-items-center',
-    //disabled
     'disabled:gi-cursor-not-allowed',
     'disabled:gi-pointer-events-none',
-    // focus
     'enabled:focus:gi-outline',
     'enabled:focus:gi-outline-sm',
     'enabled:focus:gi-outline-color-shadow-intent-focus-default',
@@ -93,11 +80,6 @@ export const styles = tv({
       default: '',
       light: '',
       dark: '',
-    },
-    size: {
-      sm: 'gi-h-8 gi-px-2 gi-py-1.5 gi-text-xs',
-      md: 'gi-h-10 gi-px-3 gi-py-2 gi-text-sm',
-      lg: 'gi-h-12 gi-px-4 gi-py-3 gi-text-2md',
     },
     disabled: {
       true: '',
@@ -309,8 +291,21 @@ export const styles = tv({
   defaultVariants: {
     variant: 'primary',
     appearance: 'default',
-    size: 'md',
     disabled: false,
+  },
+});
+export const styles = tv({
+  extend: buttonBaseStyles,
+  base: ['gi-gap-2'],
+  variants: {
+    size: {
+      sm: 'gi-h-8 gi-px-2 gi-py-1.5 gi-text-xs',
+      md: 'gi-h-10 gi-px-3 gi-py-2 gi-text-sm',
+      lg: 'gi-h-12 gi-px-4 gi-py-3 gi-text-2md',
+    },
+  },
+  defaultVariants: {
+    size: 'md',
   },
 });
 const getVariant = (x: Props['variant'] = Variant.PRIMARY) =>
