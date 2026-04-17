@@ -17,6 +17,8 @@ export default defineConfig({
         'src/**/*.stories.tsx',
         'src/**/*.test.*',
         'src/test-utilities.ts',
+        'src/atoms/storybook/**',
+        'src/data-table/tanstack/tanstack-helpers.ts',
       ],
     }),
     preserveDirectives(),
@@ -45,6 +47,8 @@ export default defineConfig({
               'src/**/*.stories.tsx',
               'src/**/*.test.*',
               'src/test-utilities.ts',
+              'src/atoms/storybook/**',
+              'src/data-table/tanstack/tanstack-helpers.ts',
             ],
           })
           .map((file: string) => [

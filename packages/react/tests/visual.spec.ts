@@ -5,11 +5,10 @@ import { expect, test } from '@playwright/test';
 import storybook from '../storybook-static/index.json' with { type: 'json' };
 
 // Only run tests on stories, not other documentation pages.
-const stories = Object.values(storybook.entries)
-  .filter((error) => error.type === 'story')
-  .filter((story) => story.tags?.includes('skip-playwright') === false)
-  .filter((story) => story.id.includes('loading') === false)
-  .filter((story) => story.id.includes('spinner') === false);
+const stories = Object.values(storybook.entries).filter(
+  (entry) =>
+    entry.type === 'story' && !entry.tags?.includes('skip-playwright'),
+);
 
 for (const story of stories) {
   test(`${story.title} ${story.name} should not have visual regressions`, async ({
@@ -35,6 +34,11 @@ for (const story of stories) {
       resolve => requestAnimationFrame(() => requestAnimationFrame(resolve))),
     );
     await page.waitForTimeout(500);
+
+    // Use `tags: ['slow']` on stories with play functions that need extra settle time
+    if (story.tags?.includes('slow')) {
+      await page.waitForTimeout(3000);
+    }
 
     await expect(page).toHaveScreenshot(`${story.id}.png`, {
       fullPage: true,

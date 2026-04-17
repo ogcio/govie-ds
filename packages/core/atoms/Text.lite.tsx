@@ -1,6 +1,6 @@
 import { useMetadata } from '@builder.io/mitosis';
 import { tv } from 'tailwind-variants';
-import { Size, Whitespace } from './utilities';
+import { getSize, getWhitespace, type Size, type Whitespace } from './utilities';
 
 export type Props = {
   children: any;
@@ -33,7 +33,7 @@ export default function Text(props: Props) {
   );
 }
 
-const textVariants = tv({
+export const textVariants = tv({
   base: 'gi-font-primary gi-not-prose',
   variants: {
     size: {
@@ -54,7 +54,3 @@ const textVariants = tv({
     whitespace: 'normal',
   },
 });
-
-const getSize = (x: Props['size'] = Size.MD) => (Object.values(Size).includes(x) ? x : Size.MD);
-const getWhitespace = (x: Props['whitespace'] = Whitespace.NORMAL) =>
-  Object.values(Whitespace).includes(x) ? x : Whitespace.NORMAL;
