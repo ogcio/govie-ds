@@ -51,8 +51,8 @@
   "author": "",
   "license": "MIT",
   "peerDependencies": {
-    "react": "*",
-    "react-dom": "*"
+    "react": "^18.0.0 || ^19.0.0",
+    "react-dom": "^18.0.0 || ^19.0.0"
   },
   "dependencies": {
     "@fontsource/lato": "^5.1.1",
@@ -60,11 +60,16 @@
     "@radix-ui/react-slot": "^1.1.2",
     "bowser": "^2.13.1",
     "clsx": "^2.1.1",
+    "focus-trap": "7.8.0",
+    "i18next": "25.10.9",
+    "lodash": "4.17.23",
+    "react-hook-form": "7.72.0",
     "react-i18next": "^16.3.3",
-    "rollup-preserve-directives": "^1.1.2"
+    "tailwind-variants": "0.2.1"
   },
   "devDependencies": {
     "@chromatic-com/storybook": "^5.1.1",
+    "@faker-js/faker": "9.9.0",
     "@ogcio/design-system-prettier-config": "workspace:*",
     "@ogcio/design-system-tailwind": "workspace:*",
     "@ogcio/theme-doete": "workspace:*",
@@ -76,21 +81,26 @@
     "@storybook/addon-themes": "^10.3.3",
     "@storybook/addon-vitest": "^10.3.3",
     "@storybook/react-vite": "^10.3.3",
+    "@tanstack/match-sorter-utils": "8.19.4",
+    "@tanstack/react-table": "8.21.2",
     "@testing-library/jest-dom": "^6.4.8",
     "@testing-library/react": "^16.0.1",
-    "@testing-library/user-event": "^14.5.2",
-    "@types/css-modules": "^1.0.5",
+    "@vitejs/plugin-react": "4.7.0",
     "autoprefixer": "^10.4.19",
     "axe-core": "^4.10.0",
     "eslint-plugin-react-hooks": "^7.0.1",
     "eslint-plugin-storybook": "^10.2.19",
     "glob": "^11.0.1",
-    "i18next": "^25.6.2",
     "postcss": "^8.4.40",
     "postcss-import": "^16.1.0",
     "react": "19.0.0",
     "react-dom": "19.0.0",
+    "rollup-preserve-directives": "1.1.3",
     "storybook": "^10.3.3",
-    "storybook-addon-pseudo-states": "^10.3.3"
+    "storybook-addon-pseudo-states": "^10.3.3",
+    "vite": "6.4.1",
+    "vite-plugin-dts": "4.5.4",
+    "vite-plugin-lib-inject-css": "2.2.2",
+    "vitest": "3.2.4"
   }
 }
