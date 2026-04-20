@@ -1,7 +1,7 @@
 import type { StoryContext, Renderer } from 'storybook/internal/types';
 import { createElement } from 'react';
 import { within, expect } from 'storybook/test';
-import { ContainerInsetSizeEnum } from '../Container';
+import { ContainerInsetSizeEnum, ContainerMaxWidthEnum } from '../Container';
 export const containerMeta = {
   tags: ['autodocs'] as string[],
   title: 'Layout/Container',
@@ -26,6 +26,20 @@ export const containerMeta = {
       },
       options: Object.values(ContainerInsetSizeEnum),
       description: 'Defines the bottom padding of the container. Options are `none`, `md`, `lg`, and `xl`.'
+    },
+    gutterSize: {
+      control: {
+        type: 'select'
+      },
+      options: Object.values(ContainerInsetSizeEnum),
+      description: 'Defines the horizontal gutter (padding) of the container. Options are `none`, `md`, `lg`, and `xl`.'
+    },
+    maxWidth: {
+      control: {
+        type: 'select'
+      },
+      options: Object.values(ContainerMaxWidthEnum),
+      description: 'Caps the container max width. Options are `sm`, `md`, `lg`, `xl`, or `full` (no cap).'
     }
   } as const,
   parameters: {
