@@ -1,5 +1,6 @@
 import { useMetadata } from '@builder.io/mitosis';
 import { tv } from 'tailwind-variants';
+import { getContainerLayoutType } from './utilities';
 
 export type Props = {
   children?: any;
@@ -31,17 +32,12 @@ export default function Container(props: Props) {
   return (
     <div
       data-testid="govie-container"
-      data-inset-top={props.insetTop}
-      data-inset-bottom={props.insetBottom}
-      data-gutter-size={props.gutterSize || ContainerInsetSizeEnum.Medium}
-      data-max-width={props.maxWidth || ContainerMaxWidthEnum.Full}
-      data-full-width={props.fullWidth || false}
       className={styles({
-        gutterSize: props.gutterSize || ContainerInsetSizeEnum.Medium,
-        fullWidth: props.fullWidth || false,
+        layout: getContainerLayoutType(props),
         maxWidth: props.maxWidth || ContainerMaxWidthEnum.Full,
-        insetTop: props.insetTop || ContainerInsetSizeEnum.Medium,
-        insetBottom: props.insetBottom || ContainerInsetSizeEnum.Medium,
+        gutterSize: props.gutterSize || ContainerGutterSizeEnum.Small,
+        insetTop: props.insetTop,
+        insetBottom: props.insetBottom,
         class: props.className,
       })}
       id={props.id}
@@ -66,15 +62,32 @@ export const ContainerMaxWidthEnum = {
   Full: 'full',
 } as const;
 
-/** Mirrors utilities from `packages/design/tailwind/css/layout.css` (layout + gutter + inset blocks). */
+export const ContainerGutterSizeEnum = {
+  None: 'none',
+  Small: 'sm',
+  Medium: 'md',
+  Large: 'lg',
+  ExtraLarge: 'xl',
+} as const;
+
+/** Utilities aligned with `packages/design/tailwind/css/layout.css` (gi-layout-container / -full-width / -inset + gutter + inset). */
 export const styles = tv({
-  base: ['gi-w-full gi-max-w-[100vw] gi-px-4 md:gi-container md:gi-mx-auto'],
+  base: '',
   variants: {
+    layout: {
+      /** `.gi-layout-container` — `!fullWidth && !hasInset` */
+      standard: 'gi-w-full gi-max-w-[100vw] md:gi-container md:gi-mx-auto',
+      /** `.gi-layout-container-full-width` — `fullWidth && !hasInset` */
+      fullWidth: 'gi-w-full gi-max-w-[100vw] gi-px-6 lg:gi-px-8 2xl:gi-max-w-screen-2xl 2xl:gi-mx-auto',
+      /** `.gi-layout-container-inset` — `hasInset` */
+      inset: 'gi-w-full gi-max-w-[100vw] gi-container gi-mx-auto',
+    },
     gutterSize: {
-      [ContainerInsetSizeEnum.None]: '!gi-px-0',
-      [ContainerInsetSizeEnum.Medium]: '!gi-px-6',
-      [ContainerInsetSizeEnum.Large]: '!gi-px-8',
-      [ContainerInsetSizeEnum.ExtraLarge]: '!gi-px-10',
+      [ContainerGutterSizeEnum.None]: 'gi-px-0',
+      [ContainerGutterSizeEnum.Small]: 'gi-px-4',
+      [ContainerGutterSizeEnum.Medium]: 'gi-px-6',
+      [ContainerGutterSizeEnum.Large]: 'gi-px-8',
+      [ContainerGutterSizeEnum.ExtraLarge]: 'gi-px-10',
     },
     insetTop: {
       [ContainerInsetSizeEnum.None]: 'gi-pt-0',
@@ -87,10 +100,6 @@ export const styles = tv({
       [ContainerInsetSizeEnum.Medium]: 'lg:gi-pb-8 md:gi-pb-6 gi-pb-4',
       [ContainerInsetSizeEnum.Large]: 'lg:gi-pb-12 md:gi-pb-9 gi-pb-6',
       [ContainerInsetSizeEnum.ExtraLarge]: 'lg:gi-pb-16 md:gi-pb-12 gi-pb-8',
-    },
-    fullWidth: {
-      true: ['gi-w-full gi-max-w-[100vw] gi-px-6 lg:gi-px-8 2xl:gi-max-w-screen-2xl 2xl:gi-mx-auto'],
-      false: '',
     },
     maxWidth: {
       [ContainerMaxWidthEnum.Small]: '!gi-max-w-sm',
@@ -105,8 +114,8 @@ export const styles = tv({
     },
   },
   defaultVariants: {
-    gutterSize: ContainerInsetSizeEnum.Medium,
-    fullWidth: false,
+    layout: 'standard',
+    gutterSize: 'sm',
     maxWidth: ContainerMaxWidthEnum.Full,
   },
 });
