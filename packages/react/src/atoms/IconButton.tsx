@@ -57,7 +57,7 @@ export const iconButtonStyles = tv({
     },
   },
   defaultVariants: {
-    size: 'md',
+    size: IconButtonSize.MD,
   },
 });
 const getVariant = (x: Props['variant'] = Variant.PRIMARY) =>

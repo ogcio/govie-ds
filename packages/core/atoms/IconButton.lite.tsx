@@ -89,7 +89,7 @@ export const iconButtonStyles = tv({
     },
   },
   defaultVariants: {
-    size: 'md',
+    size: IconButtonSize.MD,
   },
 });
 
