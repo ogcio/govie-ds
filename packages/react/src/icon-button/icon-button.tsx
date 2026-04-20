@@ -5,7 +5,7 @@ import GiIconButton, {
   type Props as GiIconButtonProps,
 } from '../atoms/IconButton.js';
 import clsx from 'clsx';
-import { normalizeSize, type ComponentSize } from '../utils/normalize-size.js';
+import { normalizeSize } from '../utils/normalize-size.js';
 
 /** @deprecated Use `'sm' | 'md' | 'lg' | 'xl'` instead. */
 type LegacyIconButtonSize = 'small' | 'medium' | 'large' | 'extraLarge';
@@ -92,7 +92,7 @@ export const IconButton = forwardRef<HTMLButtonElement, IconButtonProps>(
     },
     reference,
   ) => {
-    const normalizedSize = normalizeSize(size as ComponentSize);
+    const normalizedSize = normalizeSize(size);
     const iconSize = normalizedSize === 'sm' ? 'sm' : 'md';
 
     return (

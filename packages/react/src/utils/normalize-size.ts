@@ -1,7 +1,5 @@
 import { Size } from '../atoms/utilities';
 
-type AtomSize = (typeof Size)[keyof typeof Size];
-
 const SIZE_NORMALIZE_MAP = {
   small: Size.SM,
   medium: Size.MD,
@@ -13,11 +11,10 @@ const SIZE_NORMALIZE_MAP = {
   xl: Size.XL,
 } as const;
 
-export type ComponentSize = keyof typeof SIZE_NORMALIZE_MAP;
-
 /**
  * Normalises a wrapper's wide size union into the atom's narrow
  * size vocabulary (`'sm' | 'md' | 'lg' | 'xl'`). Defaults to `'md'` when omitted.
  */
-export const normalizeSize = (size: ComponentSize = Size.MD): AtomSize =>
-  SIZE_NORMALIZE_MAP[size];
+export const normalizeSize = (
+  size: keyof typeof SIZE_NORMALIZE_MAP = Size.MD,
+): (typeof Size)[keyof typeof Size] => SIZE_NORMALIZE_MAP[size];
