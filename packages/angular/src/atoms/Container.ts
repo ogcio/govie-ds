@@ -20,6 +20,7 @@ export type Props = {
 };
 
 import { tv } from 'tailwind-variants';
+import { getContainerLayoutType } from './utilities';
 export const ContainerInsetSizeEnum = {
   None: 'none',
   Medium: 'md',
@@ -33,17 +34,33 @@ export const ContainerMaxWidthEnum = {
   ExtraLarge: 'xl',
   Full: 'full',
 } as const;
+export const ContainerGutterSizeEnum = {
+  None: 'none',
+  Small: 'sm',
+  Medium: 'md',
+  Large: 'lg',
+  ExtraLarge: 'xl',
+} as const;
 
-/** Mirrors utilities from `packages/design/tailwind/css/layout.css` (layout + gutter + inset blocks). */
-/** Mirrors utilities from `packages/design/tailwind/css/layout.css` (layout + gutter + inset blocks). */
+/** Utilities aligned with `packages/design/tailwind/css/layout.css` (gi-layout-container / -full-width / -inset + gutter + inset). */
+/** Utilities aligned with `packages/design/tailwind/css/layout.css` (gi-layout-container / -full-width / -inset + gutter + inset). */
 export const styles = tv({
-  base: ['gi-w-full gi-max-w-[100vw] gi-px-4 md:gi-container md:gi-mx-auto'],
+  base: '',
   variants: {
+    layout: {
+      /** `.gi-layout-container` — `!fullWidth && !hasInset` */
+      standard: 'gi-w-full gi-max-w-[100vw] md:gi-container md:gi-mx-auto',
+      /** `.gi-layout-container-full-width` — `fullWidth && !hasInset` */
+      fullWidth: 'gi-w-full gi-max-w-[100vw] gi-px-6 lg:gi-px-8 2xl:gi-max-w-screen-2xl 2xl:gi-mx-auto',
+      /** `.gi-layout-container-inset` — `hasInset` */
+      inset: 'gi-w-full gi-max-w-[100vw] gi-container gi-mx-auto',
+    },
     gutterSize: {
-      [ContainerInsetSizeEnum.None]: '!gi-px-0',
-      [ContainerInsetSizeEnum.Medium]: '!gi-px-6',
-      [ContainerInsetSizeEnum.Large]: '!gi-px-8',
-      [ContainerInsetSizeEnum.ExtraLarge]: '!gi-px-10',
+      [ContainerGutterSizeEnum.None]: 'gi-px-0',
+      [ContainerGutterSizeEnum.Small]: 'gi-px-4',
+      [ContainerGutterSizeEnum.Medium]: 'gi-px-6',
+      [ContainerGutterSizeEnum.Large]: 'gi-px-8',
+      [ContainerGutterSizeEnum.ExtraLarge]: 'gi-px-10',
     },
     insetTop: {
       [ContainerInsetSizeEnum.None]: 'gi-pt-0',
@@ -56,10 +73,6 @@ export const styles = tv({
       [ContainerInsetSizeEnum.Medium]: 'lg:gi-pb-8 md:gi-pb-6 gi-pb-4',
       [ContainerInsetSizeEnum.Large]: 'lg:gi-pb-12 md:gi-pb-9 gi-pb-6',
       [ContainerInsetSizeEnum.ExtraLarge]: 'lg:gi-pb-16 md:gi-pb-12 gi-pb-8',
-    },
-    fullWidth: {
-      true: ['gi-w-full gi-max-w-[100vw] gi-px-6 lg:gi-px-8 2xl:gi-max-w-screen-2xl 2xl:gi-mx-auto'],
-      false: '',
     },
     maxWidth: {
       [ContainerMaxWidthEnum.Small]: '!gi-max-w-sm',
@@ -74,8 +87,8 @@ export const styles = tv({
     },
   },
   defaultVariants: {
-    gutterSize: ContainerInsetSizeEnum.Medium,
-    fullWidth: false,
+    layout: 'standard',
+    gutterSize: 'sm',
     maxWidth: ContainerMaxWidthEnum.Full,
   },
 });
@@ -85,19 +98,14 @@ export const styles = tv({
   template: `
     <div
       data-testid="govie-container"
-      [attr.data-inset-top]="insetTop"
-      [attr.data-inset-bottom]="insetBottom"
-      [attr.data-gutter-size]="gutterSize || ContainerInsetSizeEnum.Medium"
-      [attr.data-max-width]="maxWidth || ContainerMaxWidthEnum.Full"
-      [attr.data-full-width]="fullWidth || false"
       [attr.id]="id"
       [class]="
         styles({
-          gutterSize: gutterSize || ContainerInsetSizeEnum.Medium,
-          fullWidth: fullWidth || false,
+          layout: getContainerLayoutType(props),
           maxWidth: maxWidth || ContainerMaxWidthEnum.Full,
-          insetTop: insetTop || ContainerInsetSizeEnum.Medium,
-          insetBottom: insetBottom || ContainerInsetSizeEnum.Medium,
+          gutterSize: gutterSize || ContainerGutterSizeEnum.Small,
+          insetTop: insetTop,
+          insetBottom: insetBottom,
           class: className,
         })
       "
@@ -116,15 +124,15 @@ export const styles = tv({
   imports: [CommonModule],
 })
 export default class Container {
-  ContainerInsetSizeEnum = ContainerInsetSizeEnum;
   ContainerMaxWidthEnum = ContainerMaxWidthEnum;
+  ContainerGutterSizeEnum = ContainerGutterSizeEnum;
   styles = styles;
+  getContainerLayoutType = getContainerLayoutType;
 
+  @Input() id!: Props['id'];
+  @Input() maxWidth!: Props['maxWidth'];
+  @Input() gutterSize!: Props['gutterSize'];
   @Input() insetTop!: Props['insetTop'];
   @Input() insetBottom!: Props['insetBottom'];
-  @Input() gutterSize!: Props['gutterSize'];
-  @Input() maxWidth!: Props['maxWidth'];
-  @Input() fullWidth!: Props['fullWidth'];
-  @Input() id!: Props['id'];
   @Input() className!: Props['className'];
 }
