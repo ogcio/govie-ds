@@ -1,5 +1,9 @@
+import { CommonModule } from '@angular/common';
 import type { StoryObj } from '@storybook/angular';
-import Container from '../atoms/Container';
+import Container, {
+  ContainerInsetSizeEnum,
+  ContainerMaxWidthEnum,
+} from '../atoms/Container';
 import {
   containerMeta,
   Default as defaultStory,
@@ -10,6 +14,8 @@ import {
   TestRenderIndentedHTMLContent as testRenderIndentedHTMLContent,
   TestSafelyRenderHTMLContent as testSafelyRenderHTMLContent,
   TestHandleEmptyContentGracefully as testHandleEmptyContentGracefully,
+  AllGutterSizes as allGutterSizes,
+  AllMaxWidths as allMaxWidths,
 } from '../atoms/storybook/Container.meta';
 
 const meta = {
@@ -32,6 +38,8 @@ const renderWithProjectedText = (arguments_: Record<string, unknown>) => ({
     <gi-container
       [insetTop]="insetTop"
       [insetBottom]="insetBottom"
+      [gutterSize]="gutterSize"
+      [maxWidth]="maxWidth"
       [id]="id"
       [className]="className"
       [fullWidth]="fullWidth"
@@ -111,5 +119,58 @@ export const TestHandleEmptyContentGracefully: StoryObj = {
       imports: [Container],
     },
     template: `<gi-container [insetTop]="insetTop" [insetBottom]="insetBottom"></gi-container>`,
+  }),
+};
+
+export const AllGutterSizes: StoryObj = {
+  ...allGutterSizes,
+  render: () => ({
+    props: {
+      gutterSizes: Object.values(ContainerInsetSizeEnum),
+    },
+    moduleMetadata: {
+      imports: [Container, CommonModule],
+    },
+    template: `
+      <div class="gi-flex gi-flex-col gi-gap-8">
+        <div *ngFor="let gutter of gutterSizes" class="gi-flex gi-flex-col gi-gap-2">
+          <span class="gi-font-bold gi-font-primary">{{ gutter }}</span>
+          <gi-container
+            [gutterSize]="gutter"
+            insetTop="none"
+            insetBottom="none"
+          >
+            Sample content for gutter {{ gutter }}.
+          </gi-container>
+        </div>
+      </div>
+    `,
+  }),
+};
+
+export const AllMaxWidths: StoryObj = {
+  ...allMaxWidths,
+  render: () => ({
+    props: {
+      maxWidths: Object.values(ContainerMaxWidthEnum),
+    },
+    moduleMetadata: {
+      imports: [Container, CommonModule],
+    },
+    template: `
+      <div class="gi-flex gi-flex-col gi-gap-8">
+        <div *ngFor="let maxWidth of maxWidths" class="gi-flex gi-flex-col gi-gap-2">
+          <span class="gi-font-bold gi-font-primary">{{ maxWidth }}</span>
+          <gi-container
+            [maxWidth]="maxWidth"
+            insetTop="none"
+            insetBottom="none"
+            className="gi-border-sm gi-border-solid gi-border-color-border-system-neutral-subtle"
+          >
+            Sample content for max width {{ maxWidth }}.
+          </gi-container>
+        </div>
+      </div>
+    `,
   }),
 };

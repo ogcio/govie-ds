@@ -33,21 +33,48 @@ export const ContainerMaxWidthEnum = {
   ExtraLarge: 'xl',
   Full: 'full',
 } as const;
-const styles = tv({
-  base: 'gi-layout-container gi-layout-gutter-size gi-layout-container-inset',
+
+/** Mirrors utilities from `packages/design/tailwind/css/layout.css` (layout + gutter + inset blocks). */
+/** Mirrors utilities from `packages/design/tailwind/css/layout.css` (layout + gutter + inset blocks). */
+export const styles = tv({
+  base: ['gi-w-full gi-max-w-[100vw] gi-px-4 md:gi-container md:gi-mx-auto'],
   variants: {
+    gutterSize: {
+      [ContainerInsetSizeEnum.None]: '!gi-px-0',
+      [ContainerInsetSizeEnum.Medium]: '!gi-px-6',
+      [ContainerInsetSizeEnum.Large]: '!gi-px-8',
+      [ContainerInsetSizeEnum.ExtraLarge]: '!gi-px-10',
+    },
+    insetTop: {
+      [ContainerInsetSizeEnum.None]: 'gi-pt-0',
+      [ContainerInsetSizeEnum.Medium]: 'lg:gi-pt-8 md:gi-pt-6 gi-pt-4',
+      [ContainerInsetSizeEnum.Large]: 'lg:gi-pt-12 md:gi-pt-9 gi-pt-6',
+      [ContainerInsetSizeEnum.ExtraLarge]: 'lg:gi-pt-16 md:gi-pt-12 gi-pt-8',
+    },
+    insetBottom: {
+      [ContainerInsetSizeEnum.None]: 'gi-pb-0',
+      [ContainerInsetSizeEnum.Medium]: 'lg:gi-pb-8 md:gi-pb-6 gi-pb-4',
+      [ContainerInsetSizeEnum.Large]: 'lg:gi-pb-12 md:gi-pb-9 gi-pb-6',
+      [ContainerInsetSizeEnum.ExtraLarge]: 'lg:gi-pb-16 md:gi-pb-12 gi-pb-8',
+    },
     fullWidth: {
-      true: 'gi-layout-container-full-width',
+      true: ['gi-w-full gi-max-w-[100vw] gi-px-6 lg:gi-px-8 2xl:gi-max-w-screen-2xl 2xl:gi-mx-auto'],
+      false: '',
     },
     maxWidth: {
       [ContainerMaxWidthEnum.Small]: '!gi-max-w-sm',
       [ContainerMaxWidthEnum.Medium]: '!gi-max-w-md',
-      [ContainerMaxWidthEnum.Large]: '!gi-max-w-lg',
-      [ContainerMaxWidthEnum.ExtraLarge]: '!gi-max-w-xl',
-      [ContainerMaxWidthEnum.Full]: '!gi-max-w-none',
+      [ContainerMaxWidthEnum.Large]: [
+        'gi-w-full gi-max-w-[100vw] gi-px-6 lg:gi-px-8 gi-mx-auto sm:gi-max-w-[640px] md:gi-max-w-[768px] lg:gi-max-w-[1024px] md:gi-mx-auto',
+      ],
+      [ContainerMaxWidthEnum.ExtraLarge]: [
+        'gi-w-full gi-max-w-[100vw] gi-px-6 lg:gi-px-8 gi-mx-auto sm:gi-max-w-[640px] md:gi-max-w-[768px] lg:gi-max-w-[1024px] xl:gi-max-w-[1280px] md:gi-mx-auto',
+      ],
+      [ContainerMaxWidthEnum.Full]: '',
     },
   },
   defaultVariants: {
+    gutterSize: ContainerInsetSizeEnum.Medium,
     fullWidth: false,
     maxWidth: ContainerMaxWidthEnum.Full,
   },
@@ -66,7 +93,11 @@ const styles = tv({
       [attr.id]="id"
       [class]="
         styles({
+          gutterSize: gutterSize || ContainerInsetSizeEnum.Medium,
+          fullWidth: fullWidth || false,
           maxWidth: maxWidth || ContainerMaxWidthEnum.Full,
+          insetTop: insetTop || ContainerInsetSizeEnum.Medium,
+          insetBottom: insetBottom || ContainerInsetSizeEnum.Medium,
           class: className,
         })
       "

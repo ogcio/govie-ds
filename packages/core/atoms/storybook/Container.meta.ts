@@ -61,9 +61,7 @@ export const Default = {
     await step('should apply the correct container classes', async () => {
       const containerElement = canvas.getByTestId('govie-container');
       expect(containerElement).toBeInTheDocument();
-      expect(containerElement.classList.contains('gi-layout-container')).toBe(
-        true,
-      );
+      expect(containerElement.className).toContain('gi-w-full');
     });
   },
 };
@@ -158,6 +156,40 @@ export const TestHandleEmptyContentGracefully = {
       const containerElement = canvas.getByTestId('govie-container');
       expect(containerElement).toBeInTheDocument();
       expect(containerElement.textContent).toBe('');
+    });
+  },
+};
+
+export const AllGutterSizes = {
+  play: async ({ canvasElement, step }: StoryContext<Renderer>) => {
+    const canvas = within(canvasElement as HTMLElement);
+
+    await step('renders one container per gutter size', async () => {
+      const elements = canvas.getAllByTestId('govie-container');
+      expect(elements).toHaveLength(Object.values(ContainerInsetSizeEnum).length);
+      for (const gutter of Object.values(ContainerInsetSizeEnum)) {
+        const match = elements.find(
+          (el) => el.getAttribute('data-gutter-size') === gutter,
+        );
+        expect(match).toBeTruthy();
+      }
+    });
+  },
+};
+
+export const AllMaxWidths = {
+  play: async ({ canvasElement, step }: StoryContext<Renderer>) => {
+    const canvas = within(canvasElement as HTMLElement);
+
+    await step('renders one container per max width', async () => {
+      const elements = canvas.getAllByTestId('govie-container');
+      expect(elements).toHaveLength(Object.values(ContainerMaxWidthEnum).length);
+      for (const maxWidth of Object.values(ContainerMaxWidthEnum)) {
+        const match = elements.find(
+          (el) => el.getAttribute('data-max-width') === maxWidth,
+        );
+        expect(match).toBeTruthy();
+      }
     });
   },
 };

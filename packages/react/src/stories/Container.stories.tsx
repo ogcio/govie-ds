@@ -1,5 +1,8 @@
 import type { Meta, StoryObj } from '@storybook/react-vite';
-import Container from '../atoms/Container';
+import Container, {
+  ContainerInsetSizeEnum,
+  ContainerMaxWidthEnum,
+} from '../atoms/Container';
 import {
   containerMeta,
   Default as defaultStory,
@@ -10,6 +13,8 @@ import {
   TestRenderIndentedHTMLContent as testRenderIndentedHTMLContent,
   TestSafelyRenderHTMLContent as testSafelyRenderHTMLContent,
   TestHandleEmptyContentGracefully as testHandleEmptyContentGracefully,
+  AllGutterSizes as allGutterSizes,
+  AllMaxWidths as allMaxWidths,
 } from '../atoms/storybook/Container.meta';
 
 const meta: Meta<typeof Container> = {
@@ -42,4 +47,45 @@ export const TestSafelyRenderHTMLContent: Story = {
 
 export const TestHandleEmptyContentGracefully: Story = {
   ...testHandleEmptyContentGracefully,
+};
+
+export const AllGutterSizes: Story = {
+  ...allGutterSizes,
+  render: () => (
+    <div className="gi-flex gi-flex-col gi-gap-8">
+      {Object.values(ContainerInsetSizeEnum).map((gutter) => (
+        <div key={gutter} className="gi-flex gi-flex-col gi-gap-2">
+          <span className="gi-font-bold gi-font-primary">{gutter}</span>
+          <Container
+            gutterSize={gutter}
+            insetTop={ContainerInsetSizeEnum.None}
+            insetBottom={ContainerInsetSizeEnum.None}
+          >
+            Sample content for gutter {gutter}.
+          </Container>
+        </div>
+      ))}
+    </div>
+  ),
+};
+
+export const AllMaxWidths: Story = {
+  ...allMaxWidths,
+  render: () => (
+    <div className="gi-flex gi-flex-col gi-gap-8">
+      {Object.values(ContainerMaxWidthEnum).map((maxWidth) => (
+        <div key={maxWidth} className="gi-flex gi-flex-col gi-gap-2">
+          <span className="gi-font-bold gi-font-primary">{maxWidth}</span>
+          <Container
+            maxWidth={maxWidth}
+            insetTop={ContainerInsetSizeEnum.None}
+            insetBottom={ContainerInsetSizeEnum.None}
+            className="gi-border-sm gi-border-solid gi-border-color-border-system-neutral-subtle"
+          >
+            Sample content for max width {maxWidth}.
+          </Container>
+        </div>
+      ))}
+    </div>
+  ),
 };
