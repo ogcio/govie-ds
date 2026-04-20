@@ -9,7 +9,6 @@ export const iconButtonMeta = {
   args: {
     id: 'icon-button-default',
     dataTestId: 'icon-button-default',
-    children: '★',
     ariaLabel: 'Favourite',
     variant: Variant.PRIMARY,
     appearance: Appearance.DEFAULT,
@@ -39,7 +38,7 @@ export const iconButtonMeta = {
     },
     ariaLabel: {
       control: false,
-      description: 'Accessible name for the button. Recommended for icon-only buttons.',
+      description: 'Accessible name for the button. Strongly recommended for icon-only buttons via ariaLabel, ariaLabelledBy, or a visually-hidden text child.',
       table: {
         type: {
           summary: 'string'
@@ -100,12 +99,30 @@ export const iconButtonMeta = {
         }
       }
     },
-    ariaHidden: {
+    ariaBusy: {
       control: false,
-      description: 'Hides the element from assistive technologies.',
+      description: 'Indicates the element is being modified and assistive technologies may want to wait until changes are complete.',
       table: {
         type: {
           summary: 'boolean'
+        }
+      }
+    },
+    role: {
+      control: false,
+      description: 'Overrides the implicit button role. Use only when required by composite patterns such as toolbars or menubars.',
+      table: {
+        type: {
+          summary: 'string'
+        }
+      }
+    },
+    form: {
+      control: false,
+      description: 'Associates the button with a form element by ID, even when not a descendant of that form.',
+      table: {
+        type: {
+          summary: 'string'
         }
       }
     },
@@ -185,6 +202,16 @@ export const Default = {
       const button = canvas.getByTestId('icon-button-default');
       expect(button).toBeInTheDocument();
       expect(button.tagName).toBe('BUTTON');
+    });
+    await step('has an accessible name', async () => {
+      const button = canvas.getByRole('button', {
+        name: 'Favourite'
+      });
+      expect(button).toBeInTheDocument();
+    });
+    await step('has type="button" by default', async () => {
+      const button = canvas.getByTestId('icon-button-default');
+      expect(button).toHaveAttribute('type', 'button');
     });
   }
 };

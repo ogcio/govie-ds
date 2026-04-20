@@ -48,7 +48,7 @@ export type IconButtonProps = Omit<GiIconButtonProps, 'size'> & {
     | 'tree'
     | 'grid'
     | 'dialog';
-  /** @deprecated Use ariaHidden instead */
+  /** @deprecated This property will be removed in a future major release. */
   'aria-hidden'?: boolean | 'true' | 'false';
 };
 
@@ -77,7 +77,6 @@ export const IconButton = forwardRef<HTMLButtonElement, IconButtonProps>(
       'aria-expanded': ariaExpandedAttribute,
       'aria-controls': ariaControlsAttribute,
       'aria-haspopup': ariaHasPopupAttribute,
-      'aria-hidden': ariaHiddenAttribute,
       ariaLabel,
       ariaLabelledBy,
       ariaDescribedBy,
@@ -85,7 +84,9 @@ export const IconButton = forwardRef<HTMLButtonElement, IconButtonProps>(
       ariaExpanded,
       ariaControls,
       ariaHasPopup,
-      ariaHidden,
+      ariaBusy,
+      role,
+      form,
       dataTestId,
       dataTestid,
       id,
@@ -138,8 +139,10 @@ export const IconButton = forwardRef<HTMLButtonElement, IconButtonProps>(
             | boolean
             | undefined
         }
-        ariaHidden={(ariaHidden ?? ariaHiddenAttribute) as boolean | undefined}
+        ariaBusy={ariaBusy}
+        role={role}
         type={type}
+        form={form}
         tabIndex={tabIndex}
         dataTestId={dataTestId ?? dataTestid ?? dataTestIdAttribute}
       >

@@ -28,8 +28,10 @@ export type Props = {
   ariaPressed?: boolean | 'mixed';
   ariaHasPopup?: 'menu' | 'listbox' | 'dialog' | 'grid' | 'tree' | boolean;
   ariaControls?: string;
-  ariaHidden?: boolean;
+  ariaBusy?: boolean;
+  role?: string;
   type?: 'button' | 'submit' | 'reset';
+  form?: string;
   tabIndex?: number;
   dataTestId?: string;
   ref?: any;
@@ -93,8 +95,10 @@ const getSize = (x: Props['size'] = IconButtonSize.MD) =>
       [attr.aria-pressed]="ariaPressed"
       [attr.aria-haspopup]="ariaHasPopup"
       [attr.aria-controls]="ariaControls"
-      [attr.aria-hidden]="ariaHidden"
+      [attr.aria-busy]="ariaBusy"
+      [attr.role]="role"
       [attr.type]="type ?? 'button'"
+      [attr.form]="form"
       [attr.tabIndex]="tabIndex"
       [attr.data-testid]="dataTestId"
     >
@@ -130,8 +134,10 @@ export default class IconButton {
   @Input() ariaPressed!: Props['ariaPressed'];
   @Input() ariaHasPopup!: Props['ariaHasPopup'];
   @Input() ariaControls!: Props['ariaControls'];
-  @Input() ariaHidden!: Props['ariaHidden'];
+  @Input() ariaBusy!: Props['ariaBusy'];
+  @Input() role!: Props['role'];
   @Input() type!: Props['type'];
+  @Input() form!: Props['form'];
   @Input() tabIndex!: Props['tabIndex'];
   @Input() dataTestId!: Props['dataTestId'];
   @Output() onClick = new EventEmitter<any>();

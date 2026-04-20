@@ -29,8 +29,10 @@ export type Props = {
   ariaPressed?: boolean | 'mixed';
   ariaHasPopup?: 'menu' | 'listbox' | 'dialog' | 'grid' | 'tree' | boolean;
   ariaControls?: string;
-  ariaHidden?: boolean;
+  ariaBusy?: boolean;
+  role?: string;
   type?: 'button' | 'submit' | 'reset';
+  form?: string;
   tabIndex?: number;
   dataTestId?: string;
   ref?: any;
@@ -92,8 +94,10 @@ const IconButton = forwardRef<Props['ref'], Props>(function IconButton(props: Pr
       aria-pressed={props.ariaPressed}
       aria-haspopup={props.ariaHasPopup}
       aria-controls={props.ariaControls}
-      aria-hidden={props.ariaHidden}
+      aria-busy={props.ariaBusy}
+      role={props.role}
       type={props.type ?? 'button'}
+      form={props.form}
       tabIndex={props.tabIndex}
       data-testid={props.dataTestId}
     >
