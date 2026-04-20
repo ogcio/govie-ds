@@ -3,6 +3,7 @@ import type { StoryObj } from '@storybook/angular';
 import Container, {
   ContainerInsetSizeEnum,
   ContainerMaxWidthEnum,
+  ContainerGutterSizeEnum,
 } from '../atoms/Container';
 import {
   containerMeta,
@@ -126,7 +127,7 @@ export const AllGutterSizes: StoryObj = {
   ...allGutterSizes,
   render: () => ({
     props: {
-      gutterSizes: Object.values(ContainerInsetSizeEnum),
+      gutterSizes: Object.values(ContainerGutterSizeEnum),
     },
     moduleMetadata: {
       imports: [Container, CommonModule],
@@ -135,11 +136,7 @@ export const AllGutterSizes: StoryObj = {
       <div class="gi-flex gi-flex-col gi-gap-8">
         <div *ngFor="let gutter of gutterSizes" class="gi-flex gi-flex-col gi-gap-2">
           <span class="gi-font-bold gi-font-primary">{{ gutter }}</span>
-          <gi-container
-            [gutterSize]="gutter"
-            insetTop="none"
-            insetBottom="none"
-          >
+          <gi-container [gutterSize]="gutter">
             Sample content for gutter {{ gutter }}.
           </gi-container>
         </div>

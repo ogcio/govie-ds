@@ -14,7 +14,7 @@ export type Props = {
   className?: string;
   maxWidth?: (typeof ContainerMaxWidthEnum)[keyof typeof ContainerMaxWidthEnum];
   fullWidth?: boolean;
-  gutterSize?: (typeof ContainerInsetSizeEnum)[keyof typeof ContainerInsetSizeEnum];
+  gutterSize?: (typeof ContainerGutterSizeEnum)[keyof typeof ContainerGutterSizeEnum];
 };
 
 import { tv } from 'tailwind-variants';
@@ -39,26 +39,25 @@ export const ContainerGutterSizeEnum = {
   Large: 'lg',
   ExtraLarge: 'xl',
 } as const;
-
-/** Utilities aligned with `packages/design/tailwind/css/layout.css` (gi-layout-container / -full-width / -inset + gutter + inset). */
 /** Utilities aligned with `packages/design/tailwind/css/layout.css` (gi-layout-container / -full-width / -inset + gutter + inset). */
 export const styles = tv({
   base: '',
   variants: {
     layout: {
       /** `.gi-layout-container` — `!fullWidth && !hasInset` */
-      standard: 'gi-w-full gi-max-w-[100vw] md:gi-container md:gi-mx-auto',
+      standard: 'gi-w-full gi-max-w-[100vw] gi-px-4 md:gi-container md:gi-mx-auto',
       /** `.gi-layout-container-full-width` — `fullWidth && !hasInset` */
       fullWidth: 'gi-w-full gi-max-w-[100vw] gi-px-6 lg:gi-px-8 2xl:gi-max-w-screen-2xl 2xl:gi-mx-auto',
       /** `.gi-layout-container-inset` — `hasInset` */
       inset: 'gi-w-full gi-max-w-[100vw] gi-container gi-mx-auto',
     },
+    /** `!` so horizontal padding wins over `.gi-container` / inset `gi-container` rules at md+. */
     gutterSize: {
-      [ContainerGutterSizeEnum.None]: 'gi-px-0',
-      [ContainerGutterSizeEnum.Small]: 'gi-px-4',
-      [ContainerGutterSizeEnum.Medium]: 'gi-px-6',
-      [ContainerGutterSizeEnum.Large]: 'gi-px-8',
-      [ContainerGutterSizeEnum.ExtraLarge]: 'gi-px-10',
+      [ContainerGutterSizeEnum.None]: '!gi-px-0',
+      [ContainerGutterSizeEnum.Small]: '!gi-px-4',
+      [ContainerGutterSizeEnum.Medium]: '!gi-px-6',
+      [ContainerGutterSizeEnum.Large]: '!gi-px-8',
+      [ContainerGutterSizeEnum.ExtraLarge]: '!gi-px-10',
     },
     insetTop: {
       [ContainerInsetSizeEnum.None]: 'gi-pt-0',
@@ -86,7 +85,7 @@ export const styles = tv({
   },
   defaultVariants: {
     layout: 'standard',
-    gutterSize: 'sm',
+    gutterSize: ContainerGutterSizeEnum.Small,
     maxWidth: ContainerMaxWidthEnum.Full,
   },
 });
@@ -100,8 +99,12 @@ function Container(props: Props) {
         layout: getContainerLayoutType(props),
         maxWidth: props.maxWidth || ContainerMaxWidthEnum.Full,
         gutterSize: props.gutterSize || ContainerGutterSizeEnum.Small,
-        insetTop: props.insetTop,
-        insetBottom: props.insetBottom,
+        ...(props.insetTop != null && {
+          insetTop: props.insetTop,
+        }),
+        ...(props.insetBottom != null && {
+          insetBottom: props.insetBottom,
+        }),
         class: props.className,
       })}
     >
