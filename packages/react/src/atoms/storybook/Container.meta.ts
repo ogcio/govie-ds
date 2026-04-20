@@ -1,12 +1,13 @@
 import type { StoryContext, Renderer } from 'storybook/internal/types';
 import { createElement } from 'react';
 import { within, expect } from 'storybook/test';
-import { ContainerInsetSizeEnum, ContainerMaxWidthEnum } from '../Container';
+import { ContainerInsetSizeEnum, ContainerMaxWidthEnum, ContainerGutterSizeEnum } from '../Container';
 export const containerMeta = {
   tags: ['autodocs'] as string[],
   title: 'Layout/Container',
   args: {
-    children: 'Paragraph'
+    children: 'Paragraph',
+    gutterSize: ContainerGutterSizeEnum.Small
   },
   argTypes: {
     children: {
@@ -31,8 +32,8 @@ export const containerMeta = {
       control: {
         type: 'select'
       },
-      options: Object.values(ContainerInsetSizeEnum),
-      description: 'Defines the horizontal gutter (padding) of the container. Options are `none`, `md`, `lg`, and `xl`.'
+      options: Object.values(ContainerGutterSizeEnum),
+      description: 'Defines the horizontal gutter (padding) of the container. Options are `none`, `sm`, `md`, `lg`, and `xl`.'
     },
     maxWidth: {
       control: {
@@ -147,6 +148,13 @@ export const TestHandleEmptyContentGracefully = {
     });
   }
 };
+const gutterSizeToPaddingClass: Record<(typeof ContainerGutterSizeEnum)[keyof typeof ContainerGutterSizeEnum], string> = {
+  [ContainerGutterSizeEnum.None]: 'gi-px-0',
+  [ContainerGutterSizeEnum.Small]: 'gi-px-4',
+  [ContainerGutterSizeEnum.Medium]: 'gi-px-6',
+  [ContainerGutterSizeEnum.Large]: 'gi-px-8',
+  [ContainerGutterSizeEnum.ExtraLarge]: 'gi-px-10'
+};
 export const AllGutterSizes = {
   play: async ({
     canvasElement,
@@ -155,9 +163,10 @@ export const AllGutterSizes = {
     const canvas = within(canvasElement as HTMLElement);
     await step('renders one container per gutter size', async () => {
       const elements = canvas.getAllByTestId('govie-container');
-      expect(elements).toHaveLength(Object.values(ContainerInsetSizeEnum).length);
-      for (const gutter of Object.values(ContainerInsetSizeEnum)) {
-        const match = elements.find(el => el.getAttribute('data-gutter-size') === gutter);
+      expect(elements).toHaveLength(Object.values(ContainerGutterSizeEnum).length);
+      for (const gutter of Object.values(ContainerGutterSizeEnum)) {
+        const token = gutterSizeToPaddingClass[gutter];
+        const match = elements.find(el => el.className.includes(token));
         expect(match).toBeTruthy();
       }
     });
@@ -171,10 +180,11 @@ export const AllMaxWidths = {
     const canvas = within(canvasElement as HTMLElement);
     await step('renders one container per max width', async () => {
       const elements = canvas.getAllByTestId('govie-container');
-      expect(elements).toHaveLength(Object.values(ContainerMaxWidthEnum).length);
-      for (const maxWidth of Object.values(ContainerMaxWidthEnum)) {
-        const match = elements.find(el => el.getAttribute('data-max-width') === maxWidth);
-        expect(match).toBeTruthy();
+      const widths = Object.values(ContainerMaxWidthEnum);
+      expect(elements).toHaveLength(widths.length);
+      for (const maxWidth of widths) {
+        const element = elements.find(element => element.className.includes(`gi-max-w-${maxWidth}`));
+        expect(element).toBeDefined();
       }
     });
   }

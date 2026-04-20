@@ -2,6 +2,7 @@ import type { Meta, StoryObj } from '@storybook/react-vite';
 import Container, {
   ContainerInsetSizeEnum,
   ContainerMaxWidthEnum,
+  ContainerGutterSizeEnum,
 } from '../atoms/Container';
 import {
   containerMeta,
@@ -53,14 +54,10 @@ export const AllGutterSizes: Story = {
   ...allGutterSizes,
   render: () => (
     <div className="gi-flex gi-flex-col gi-gap-8">
-      {Object.values(ContainerInsetSizeEnum).map((gutter) => (
+      {Object.values(ContainerGutterSizeEnum).map((gutter) => (
         <div key={gutter} className="gi-flex gi-flex-col gi-gap-2">
           <span className="gi-font-bold gi-font-primary">{gutter}</span>
-          <Container
-            gutterSize={gutter}
-            insetTop={ContainerInsetSizeEnum.None}
-            insetBottom={ContainerInsetSizeEnum.None}
-          >
+          <Container gutterSize={gutter}>
             Sample content for gutter {gutter}.
           </Container>
         </div>
