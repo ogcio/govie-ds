@@ -1,5 +1,6 @@
 import type { StoryContext, Renderer } from 'storybook/internal/types';
 import { within, expect } from 'storybook/test';
+import { enumType } from './utilities';
 import { Align, Size, Whitespace } from '../utilities';
 export const paragraphMeta = {
   tags: ['autodocs'] as string[],
@@ -15,51 +16,18 @@ export const paragraphMeta = {
         disable: true
       }
     },
-    size: {
-      control: {
-        type: 'select'
-      },
-      options: Object.values(Size),
+    size: enumType(Size, {
       description: 'Font size of the Paragraph.',
-      table: {
-        type: {
-          summary: Object.values(Size).map(v => `"${v}"`).join(' | ')
-        },
-        defaultValue: {
-          summary: 'md'
-        }
-      }
-    },
-    align: {
-      control: {
-        type: 'select'
-      },
-      options: Object.values(Align),
+      defaultValue: Size.MD
+    }),
+    align: enumType(Align, {
       description: 'Text alignment.',
-      table: {
-        type: {
-          summary: Object.values(Align).map(v => `"${v}"`).join(' | ')
-        },
-        defaultValue: {
-          summary: 'start'
-        }
-      }
-    },
-    whitespace: {
-      control: {
-        type: 'select'
-      },
-      options: Object.values(Whitespace),
+      defaultValue: Align.START
+    }),
+    whitespace: enumType(Whitespace, {
       description: 'Whitespace handling.',
-      table: {
-        type: {
-          summary: Object.values(Whitespace).map(v => `"${v}"`).join(' | ')
-        },
-        defaultValue: {
-          summary: 'normal'
-        }
-      }
-    },
+      defaultValue: Whitespace.NORMAL
+    }),
     className: {
       control: false,
       description: 'Additional CSS classes applied to the paragraph element.',

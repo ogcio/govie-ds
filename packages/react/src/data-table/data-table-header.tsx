@@ -1,9 +1,5 @@
-import React, {
-  Children,
-  HTMLAttributes,
-  isValidElement,
-  useMemo,
-} from 'react';
+import type { HTMLAttributes } from 'react';
+import React, { Children, isValidElement, useMemo } from 'react';
 import { tv } from 'tailwind-variants';
 import Button from '../atoms/Button';
 import { Chip } from '../chip/chip.js';
@@ -165,7 +161,7 @@ export const DataTableHeaderFilterList: React.FC<
 
       <Button
         appearance="dark"
-        size="medium"
+        size="md"
         variant="flat"
         onClick={() => {
           onClear?.();

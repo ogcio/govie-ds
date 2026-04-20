@@ -1,18 +1,14 @@
 'use client';
-import React, {
-  PropsWithChildren,
-  useEffect,
-  useState,
-  useCallback,
-  memo,
-} from 'react';
+import type { PropsWithChildren } from 'react';
+import React, { useEffect, useState, useCallback, memo } from 'react';
 import Heading from '../Heading.js';
 import Button from '../atoms/Button';
 import Paragraph from '../atoms/Paragraph';
 import { cn } from '../cn.js';
-import { Icon, IconId } from '../icon/icon.js';
+import type { IconId } from '../icon/icon.js';
+import { Icon } from '../icon/icon.js';
 import { Link } from '../link/link.js';
-import {
+import type {
   SideNavHeadingProps,
   SideNavItemProps,
   SideNavProps,
@@ -189,7 +185,7 @@ export const SideNavItem: React.FC<
           <Button
             variant="flat"
             appearance="dark"
-            size="medium"
+            size="md"
             onClick={handleButtonClick}
             className={buttonClassName}
             id={itemId}

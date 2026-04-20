@@ -1,5 +1,6 @@
 import type { StoryContext, Renderer } from 'storybook/internal/types';
 import { within, expect } from 'storybook/test';
+import { enumType } from './utilities';
 import { Align, Size, Whitespace } from '../utilities';
 
 export const paragraphMeta = {
@@ -11,54 +12,10 @@ export const paragraphMeta = {
     children: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.',
   },
   argTypes: {
-    children: {
-      table: { disable: true },
-    },
-    size: {
-      control: { type: 'select' },
-      options: Object.values(Size),
-      description: 'Font size of the Paragraph.',
-      table: {
-        type: {
-          summary: Object.values(Size)
-            .map((v) => `"${v}"`)
-            .join(' | '),
-        },
-        defaultValue: {
-          summary: 'md',
-        },
-      },
-    },
-    align: {
-      control: { type: 'select' },
-      options: Object.values(Align),
-      description: 'Text alignment.',
-      table: {
-        type: {
-          summary: Object.values(Align)
-            .map((v) => `"${v}"`)
-            .join(' | '),
-        },
-        defaultValue: {
-          summary: 'start',
-        },
-      },
-    },
-    whitespace: {
-      control: { type: 'select' },
-      options: Object.values(Whitespace),
-      description: 'Whitespace handling.',
-      table: {
-        type: {
-          summary: Object.values(Whitespace)
-            .map((v) => `"${v}"`)
-            .join(' | '),
-        },
-        defaultValue: {
-          summary: 'normal',
-        },
-      },
-    },
+    children: { table: { disable: true } },
+    size: enumType(Size, { description: 'Font size of the Paragraph.', defaultValue: Size.MD }),
+    align: enumType(Align, { description: 'Text alignment.', defaultValue: Align.START }),
+    whitespace: enumType(Whitespace, { description: 'Whitespace handling.', defaultValue: Whitespace.NORMAL }),
     className: {
       control: false,
       description: 'Additional CSS classes applied to the paragraph element.',

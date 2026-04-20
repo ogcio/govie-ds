@@ -534,9 +534,15 @@ importers:
       '@prettier/sync':
         specifier: ^0.6.1
         version: 0.6.1(prettier@3.8.1)
+      '@types/lodash':
+        specifier: ^4.17.24
+        version: 4.17.24
       chokidar-cli:
         specifier: ^3.0.0
         version: 3.0.0
+      lodash:
+        specifier: ^4.17.23
+        version: 4.17.23
       storybook:
         specifier: ^10.3.3
         version: 10.3.3(@testing-library/dom@10.4.1)(prettier@3.8.1)(react-dom@19.2.4(react@19.2.4))(react@19.2.4)

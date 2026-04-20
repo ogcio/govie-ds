@@ -1,9 +1,10 @@
-import { ComponentPropsWithoutRef, ReactElement } from 'react';
-import { Props as ButtonProps } from '../atoms/Button';
-import { IconProps } from '../icon/icon.js';
-import { LinkProps } from '../link/link.js';
-import { TagProps } from '../tag/tag.js';
-import { CardContainer, CardMedia } from './card-next.js';
+import type { ComponentPropsWithoutRef, ReactElement } from 'react';
+import type { Props as GiButtonProps } from '../atoms/Button';
+import type { ButtonSize } from '../button/types.js';
+import type { IconProps } from '../icon/icon.js';
+import type { LinkProps } from '../link/link.js';
+import type { TagProps } from '../tag/tag.js';
+import type { CardContainer, CardMedia } from './card-next.js';
 
 type CardNextChild =
   | ReactElement<typeof CardMedia>
@@ -16,7 +17,7 @@ type InsetProps = 'body' | 'full' | 'none';
 type TypeProps = 'vertical' | 'horizontal';
 
 export type Action =
-  | (ButtonProps & { type: 'button' })
+  | (Omit<GiButtonProps, 'size'> & { size?: ButtonSize; type: 'button' })
   | (LinkProps & { type: 'link' });
 
 export type ImagePropTypes = {

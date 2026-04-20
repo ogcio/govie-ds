@@ -1,7 +1,9 @@
 'use client';
 
-import { createContext, FC, useContext, useState, useEffect } from 'react';
+import type { FC } from 'react';
+import { createContext, useContext, useState, useEffect } from 'react';
 import Button from '../atoms/Button';
+import { normalizeSize } from '../utils/normalize-size.js';
 import { cn } from '../cn.js';
 import { useDomId } from '../hooks/use-dom-id.js';
 import type {
@@ -47,7 +49,7 @@ export const ButtonGroupItem: FC<ButtonGroupItemProps> = ({
   return (
     <Button
       variant={isSelected ? 'primary' : 'secondary'}
-      size={size}
+      size={normalizeSize(size)}
       appearance={appearance}
       onClick={handleClick}
       id={itemId}
