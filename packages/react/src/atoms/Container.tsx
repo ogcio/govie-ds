@@ -44,14 +44,11 @@ export const styles = tv({
   base: '',
   variants: {
     layout: {
-      /** `.gi-layout-container` — `!fullWidth && !hasInset` */
       standard: 'gi-w-full gi-max-w-[100vw] gi-px-4 md:gi-container md:gi-mx-auto',
-      /** `.gi-layout-container-full-width` — `fullWidth && !hasInset` */
       fullWidth: 'gi-w-full gi-max-w-[100vw] gi-px-6 lg:gi-px-8 2xl:gi-max-w-screen-2xl 2xl:gi-mx-auto',
       /** `.gi-layout-container-inset` — `hasInset` */
       inset: 'gi-w-full gi-max-w-[100vw] gi-container gi-mx-auto',
     },
-    /** `!` so horizontal padding wins over `.gi-container` / inset `gi-container` rules at md+. */
     gutterSize: {
       [ContainerGutterSizeEnum.None]: '!gi-px-0',
       [ContainerGutterSizeEnum.Small]: '!gi-px-4',
