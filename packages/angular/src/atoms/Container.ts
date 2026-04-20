@@ -8,23 +8,50 @@ import { Component, Input } from '@angular/core';
 
 import { CommonModule } from '@angular/common';
 
-export type ContainerInsetSizeType = (typeof ContainerInsetSizeEnum)[keyof typeof ContainerInsetSizeEnum];
 export type Props = {
   children?: any;
   id?: string;
-  insetTop?: ContainerInsetSizeType;
-  insetBottom?: ContainerInsetSizeType;
+  insetTop?: (typeof ContainerInsetSizeEnum)[keyof typeof ContainerInsetSizeEnum];
+  insetBottom?: (typeof ContainerInsetSizeEnum)[keyof typeof ContainerInsetSizeEnum];
   className?: string;
+  maxWidth?: (typeof ContainerMaxWidthEnum)[keyof typeof ContainerMaxWidthEnum];
   fullWidth?: boolean;
+  gutterSize?: (typeof ContainerInsetSizeEnum)[keyof typeof ContainerInsetSizeEnum];
 };
 
-import clsx from 'clsx';
+import { tv } from 'tailwind-variants';
 export const ContainerInsetSizeEnum = {
   None: 'none',
   Medium: 'md',
   Large: 'lg',
   ExtraLarge: 'xl',
 } as const;
+export const ContainerMaxWidthEnum = {
+  Small: 'sm',
+  Medium: 'md',
+  Large: 'lg',
+  ExtraLarge: 'xl',
+  Full: 'full',
+} as const;
+const styles = tv({
+  base: 'gi-layout-container gi-layout-gutter-size gi-layout-container-inset',
+  variants: {
+    fullWidth: {
+      true: 'gi-layout-container-full-width',
+    },
+    maxWidth: {
+      [ContainerMaxWidthEnum.Small]: '!gi-max-w-sm',
+      [ContainerMaxWidthEnum.Medium]: '!gi-max-w-md',
+      [ContainerMaxWidthEnum.Large]: '!gi-max-w-lg',
+      [ContainerMaxWidthEnum.ExtraLarge]: '!gi-max-w-xl',
+      [ContainerMaxWidthEnum.Full]: '!gi-max-w-none',
+    },
+  },
+  defaultVariants: {
+    fullWidth: false,
+    maxWidth: ContainerMaxWidthEnum.Full,
+  },
+});
 
 @Component({
   selector: 'gi-container',
@@ -33,11 +60,14 @@ export const ContainerInsetSizeEnum = {
       data-testid="govie-container"
       [attr.data-inset-top]="insetTop"
       [attr.data-inset-bottom]="insetBottom"
+      [attr.data-gutter-size]="gutterSize || ContainerInsetSizeEnum.Medium"
+      [attr.data-max-width]="maxWidth || ContainerMaxWidthEnum.Full"
+      [attr.data-full-width]="fullWidth || false"
       [attr.id]="id"
       [class]="
-        clsx('gi-layout-container', className, {
-          'gi-layout-container-inset': insetTop || insetBottom,
-          'gi-layout-container-full-width': fullWidth,
+        styles({
+          maxWidth: maxWidth || ContainerMaxWidthEnum.Full,
+          class: className,
         })
       "
     >
@@ -55,11 +85,15 @@ export const ContainerInsetSizeEnum = {
   imports: [CommonModule],
 })
 export default class Container {
-  clsx = clsx;
+  ContainerInsetSizeEnum = ContainerInsetSizeEnum;
+  ContainerMaxWidthEnum = ContainerMaxWidthEnum;
+  styles = styles;
 
   @Input() insetTop!: Props['insetTop'];
   @Input() insetBottom!: Props['insetBottom'];
+  @Input() gutterSize!: Props['gutterSize'];
+  @Input() maxWidth!: Props['maxWidth'];
+  @Input() fullWidth!: Props['fullWidth'];
   @Input() id!: Props['id'];
   @Input() className!: Props['className'];
-  @Input() fullWidth!: Props['fullWidth'];
 }

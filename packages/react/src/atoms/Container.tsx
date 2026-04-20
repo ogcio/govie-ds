@@ -6,23 +6,50 @@
 
 import * as React from 'react';
 
-export type ContainerInsetSizeType = (typeof ContainerInsetSizeEnum)[keyof typeof ContainerInsetSizeEnum];
 export type Props = {
   children?: any;
   id?: string;
-  insetTop?: ContainerInsetSizeType;
-  insetBottom?: ContainerInsetSizeType;
+  insetTop?: (typeof ContainerInsetSizeEnum)[keyof typeof ContainerInsetSizeEnum];
+  insetBottom?: (typeof ContainerInsetSizeEnum)[keyof typeof ContainerInsetSizeEnum];
   className?: string;
+  maxWidth?: (typeof ContainerMaxWidthEnum)[keyof typeof ContainerMaxWidthEnum];
   fullWidth?: boolean;
+  gutterSize?: (typeof ContainerInsetSizeEnum)[keyof typeof ContainerInsetSizeEnum];
 };
 
-import clsx from 'clsx';
+import { tv } from 'tailwind-variants';
 export const ContainerInsetSizeEnum = {
   None: 'none',
   Medium: 'md',
   Large: 'lg',
   ExtraLarge: 'xl',
 } as const;
+export const ContainerMaxWidthEnum = {
+  Small: 'sm',
+  Medium: 'md',
+  Large: 'lg',
+  ExtraLarge: 'xl',
+  Full: 'full',
+} as const;
+const styles = tv({
+  base: 'gi-layout-container gi-layout-gutter-size gi-layout-container-inset',
+  variants: {
+    fullWidth: {
+      true: 'gi-layout-container-full-width',
+    },
+    maxWidth: {
+      [ContainerMaxWidthEnum.Small]: '!gi-max-w-sm',
+      [ContainerMaxWidthEnum.Medium]: '!gi-max-w-md',
+      [ContainerMaxWidthEnum.Large]: '!gi-max-w-lg',
+      [ContainerMaxWidthEnum.ExtraLarge]: '!gi-max-w-xl',
+      [ContainerMaxWidthEnum.Full]: '!gi-max-w-none',
+    },
+  },
+  defaultVariants: {
+    fullWidth: false,
+    maxWidth: ContainerMaxWidthEnum.Full,
+  },
+});
 
 function Container(props: Props) {
   return (
@@ -30,10 +57,13 @@ function Container(props: Props) {
       data-testid="govie-container"
       data-inset-top={props.insetTop}
       data-inset-bottom={props.insetBottom}
+      data-gutter-size={props.gutterSize || ContainerInsetSizeEnum.Medium}
+      data-max-width={props.maxWidth || ContainerMaxWidthEnum.Full}
+      data-full-width={props.fullWidth || false}
       id={props.id}
-      className={clsx('gi-layout-container', props.className, {
-        'gi-layout-container-inset': props.insetTop || props.insetBottom,
-        'gi-layout-container-full-width': props.fullWidth,
+      className={styles({
+        maxWidth: props.maxWidth || ContainerMaxWidthEnum.Full,
+        class: props.className,
       })}
     >
       {props.children}
