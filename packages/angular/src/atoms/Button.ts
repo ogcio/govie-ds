@@ -40,35 +40,22 @@ export type Props = {
 };
 
 import { tv } from 'tailwind-variants';
-import { Size } from './utilities';
-export const Variant = {
-  PRIMARY: 'primary',
-  SECONDARY: 'secondary',
-  FLAT: 'flat',
-} as const;
-export const Appearance = {
-  DEFAULT: 'default',
-  DARK: 'dark',
-  LIGHT: 'light',
-} as const;
+import { Variant, Appearance, Size } from './utilities';
 export const ButtonSize = {
   SM: Size.SM,
   MD: Size.MD,
   LG: Size.LG,
 } as const;
-export const styles = tv({
+export const buttonBaseStyles = tv({
   base: [
     'gi-font-primary',
     'gi-border-solid',
     'gi-border-sm',
-    'gi-gap-2',
     'gi-flex',
     'gi-rounded-sm',
     'gi-items-center',
-    //disabled
     'disabled:gi-cursor-not-allowed',
     'disabled:gi-pointer-events-none',
-    // focus
     'enabled:focus:gi-outline',
     'enabled:focus:gi-outline-sm',
     'enabled:focus:gi-outline-color-shadow-intent-focus-default',
@@ -93,11 +80,6 @@ export const styles = tv({
       light: '',
       dark: '',
     },
-    size: {
-      sm: 'gi-h-8 gi-px-2 gi-py-1.5 gi-text-xs',
-      md: 'gi-h-10 gi-px-3 gi-py-2 gi-text-sm',
-      lg: 'gi-h-12 gi-px-4 gi-py-3 gi-text-2md',
-    },
     disabled: {
       true: '',
       false: '',
@@ -105,8 +87,8 @@ export const styles = tv({
   },
   compoundVariants: [
     {
-      variant: 'primary',
-      appearance: 'default',
+      variant: Variant.PRIMARY,
+      appearance: Appearance.DEFAULT,
       disabled: false,
       class: [
         'gi-text-color-text-tone-primary-fill-default',
@@ -117,8 +99,8 @@ export const styles = tv({
       ],
     },
     {
-      variant: 'primary',
-      appearance: 'light',
+      variant: Variant.PRIMARY,
+      appearance: Appearance.LIGHT,
       disabled: false,
       class: [
         'gi-text-color-text-tone-light-fill-default',
@@ -129,8 +111,8 @@ export const styles = tv({
       ],
     },
     {
-      variant: 'primary',
-      appearance: 'dark',
+      variant: Variant.PRIMARY,
+      appearance: Appearance.DARK,
       disabled: false,
       class: [
         'gi-text-color-text-tone-dark-fill-default',
@@ -141,8 +123,8 @@ export const styles = tv({
       ],
     },
     {
-      variant: 'primary',
-      appearance: 'default',
+      variant: Variant.PRIMARY,
+      appearance: Appearance.DEFAULT,
       disabled: true,
       class: [
         'gi-bg-color-surface-tone-primary-fill-disabled',
@@ -151,8 +133,8 @@ export const styles = tv({
       ],
     },
     {
-      variant: 'primary',
-      appearance: 'light',
+      variant: Variant.PRIMARY,
+      appearance: Appearance.LIGHT,
       disabled: true,
       class: [
         'gi-bg-color-surface-tone-light-fill-disabled',
@@ -161,8 +143,8 @@ export const styles = tv({
       ],
     },
     {
-      variant: 'primary',
-      appearance: 'dark',
+      variant: Variant.PRIMARY,
+      appearance: Appearance.DARK,
       disabled: true,
       class: [
         'gi-bg-color-surface-tone-dark-fill-disabled',
@@ -171,8 +153,8 @@ export const styles = tv({
       ],
     },
     {
-      variant: 'secondary',
-      appearance: 'default',
+      variant: Variant.SECONDARY,
+      appearance: Appearance.DEFAULT,
       disabled: false,
       class: [
         'gi-border-color-border-tone-primary-outline-default',
@@ -183,8 +165,8 @@ export const styles = tv({
       ],
     },
     {
-      variant: 'secondary',
-      appearance: 'light',
+      variant: Variant.SECONDARY,
+      appearance: Appearance.LIGHT,
       disabled: false,
       class: [
         'gi-text-color-text-tone-light-outline-default',
@@ -196,8 +178,8 @@ export const styles = tv({
       ],
     },
     {
-      variant: 'secondary',
-      appearance: 'dark',
+      variant: Variant.SECONDARY,
+      appearance: Appearance.DARK,
       disabled: false,
       class: [
         'gi-border-color-border-tone-dark-outline-default',
@@ -207,8 +189,8 @@ export const styles = tv({
       ],
     },
     {
-      variant: 'secondary',
-      appearance: 'default',
+      variant: Variant.SECONDARY,
+      appearance: Appearance.DEFAULT,
       disabled: true,
       class: [
         'gi-border-color-border-tone-primary-outline-disabled',
@@ -218,8 +200,8 @@ export const styles = tv({
       ],
     },
     {
-      variant: 'secondary',
-      appearance: 'light',
+      variant: Variant.SECONDARY,
+      appearance: Appearance.LIGHT,
       disabled: true,
       class: [
         'gi-bg-color-surface-tone-light-outline-disabled',
@@ -229,8 +211,8 @@ export const styles = tv({
       ],
     },
     {
-      variant: 'secondary',
-      appearance: 'dark',
+      variant: Variant.SECONDARY,
+      appearance: Appearance.DARK,
       disabled: true,
       class: [
         'gi-border-color-border-tone-dark-outline-disabled',
@@ -240,8 +222,8 @@ export const styles = tv({
       ],
     },
     {
-      variant: 'flat',
-      appearance: 'default',
+      variant: Variant.FLAT,
+      appearance: Appearance.DEFAULT,
       disabled: false,
       class: [
         'gi-text-color-text-tone-primary-flat-default',
@@ -252,8 +234,8 @@ export const styles = tv({
       ],
     },
     {
-      variant: 'flat',
-      appearance: 'light',
+      variant: Variant.FLAT,
+      appearance: Appearance.LIGHT,
       disabled: false,
       class: [
         'gi-bg-color-surface-tone-light-flat-default',
@@ -264,8 +246,8 @@ export const styles = tv({
       ],
     },
     {
-      variant: 'flat',
-      appearance: 'dark',
+      variant: Variant.FLAT,
+      appearance: Appearance.DARK,
       disabled: false,
       class: [
         'gi-text-color-text-tone-dark-flat-default',
@@ -275,8 +257,8 @@ export const styles = tv({
       ],
     },
     {
-      variant: 'flat',
-      appearance: 'default',
+      variant: Variant.FLAT,
+      appearance: Appearance.DEFAULT,
       disabled: true,
       class: [
         'gi-text-color-text-tone-primary-flat-disabled',
@@ -285,8 +267,8 @@ export const styles = tv({
       ],
     },
     {
-      variant: 'flat',
-      appearance: 'light',
+      variant: Variant.FLAT,
+      appearance: Appearance.LIGHT,
       disabled: true,
       class: [
         'gi-bg-color-surface-tone-light-flat-disabled',
@@ -295,8 +277,8 @@ export const styles = tv({
       ],
     },
     {
-      variant: 'flat',
-      appearance: 'dark',
+      variant: Variant.FLAT,
+      appearance: Appearance.DARK,
       disabled: true,
       class: [
         'gi-bg-color-surface-tone-dark-flat-disabled',
@@ -306,10 +288,23 @@ export const styles = tv({
     },
   ],
   defaultVariants: {
-    variant: 'primary',
-    appearance: 'default',
-    size: 'md',
+    variant: Variant.PRIMARY,
+    appearance: Appearance.DEFAULT,
     disabled: false,
+  },
+});
+export const styles = tv({
+  extend: buttonBaseStyles,
+  base: ['gi-gap-2'],
+  variants: {
+    size: {
+      sm: 'gi-h-8 gi-px-2 gi-py-1.5 gi-text-xs',
+      md: 'gi-h-10 gi-px-3 gi-py-2 gi-text-sm',
+      lg: 'gi-h-12 gi-px-4 gi-py-3 gi-text-2md',
+    },
+  },
+  defaultVariants: {
+    size: ButtonSize.MD,
   },
 });
 const getVariant = (x: Props['variant'] = Variant.PRIMARY) =>

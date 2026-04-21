@@ -160,6 +160,7 @@ checkboxes
 color
 colors
 combobox
+components-iconbutton
 components-scoreselect
 customizable
 customization

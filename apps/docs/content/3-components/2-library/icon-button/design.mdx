@@ -33,9 +33,24 @@ Icon buttons are ideal for quick, easily recognised actions, but they rely on fa
 - Don't use ambiguous icons that users may not recognise.
 - Don't rely on icon-only buttons for complex or primary actions.
 - Don't omit accessible names or focus styles.
+- Don't pass text or non-icon content as children — use the standard Button component for text labels.
 
 <ComponentContainer>
   <IconButton icon={{ icon: 'more_horiz' }} />
 </ComponentContainer>
+
+## Accessibility
+
+- Icon buttons have no visible text, so assistive technologies rely on a programmatic accessible name to announce the button's purpose. Without one, screen readers announce the button as simply "button" with no context.
+- Every icon button **must** have an accessible name. Use one of the following approaches:
+
+| Approach         | When to use                                             | Example                                                       |
+| ---------------- | ------------------------------------------------------- | ------------------------------------------------------------- |
+| `ariaLabel`      | Most common. Provide a short text description directly. | `<IconButton ariaLabel="Close dialog">...</IconButton>`       |
+| `ariaLabelledBy` | When a visible label exists elsewhere on the page.      | `<IconButton ariaLabelledBy="section-title">...</IconButton>` |
+
+### Toggle buttons
+
+If the icon button represents an on/off state (e.g. mute), use `ariaPressed` to communicate the current state. Keep the label constant — do not change it based on state.
 
 </Section>

@@ -118,7 +118,7 @@ export const DropdownItem = ({
               <IconButton
                 variant="flat"
                 appearance="dark"
-                size="small"
+                size="sm"
                 className="gi-combobox-search-icon"
                 onClick={() => {
                   onSearch?.('');

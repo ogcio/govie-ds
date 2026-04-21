@@ -2,7 +2,7 @@
 
 import type { FC } from 'react';
 import { createContext, useContext, useState, useEffect } from 'react';
-import Button from '../atoms/Button';
+import Button, { type Props as GiButtonProps } from '../atoms/Button';
 import { normalizeSize } from '../utils/normalize-size.js';
 import { cn } from '../cn.js';
 import { useDomId } from '../hooks/use-dom-id.js';
@@ -49,7 +49,7 @@ export const ButtonGroupItem: FC<ButtonGroupItemProps> = ({
   return (
     <Button
       variant={isSelected ? 'primary' : 'secondary'}
-      size={normalizeSize(size)}
+      size={normalizeSize(size) as GiButtonProps['size']}
       appearance={appearance}
       onClick={handleClick}
       id={itemId}

@@ -1,4 +1,4 @@
-import Button from '../atoms/Button';
+import Button, { type Props as GiButtonProps } from '../atoms/Button';
 import { normalizeSize } from '../utils/normalize-size.js';
 import { translate as t } from '../i18n/utility.js';
 import { Link } from '../link/link.js';
@@ -64,7 +64,7 @@ export const CardLegacy = ({
     return (
       <Button
         {...action}
-        size={normalizeSize(action.size)}
+        size={normalizeSize(action.size) as GiButtonProps['size']}
         aria-label={t('card.actionButton', {
           children: action.children,
           defaultValue: `Action button: ${action.children}`,

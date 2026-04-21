@@ -1,5 +1,5 @@
 import type { Meta, StoryObj } from '@storybook/react-vite';
-import { ComponentProps } from 'react';
+import type { ComponentProps } from 'react';
 import { expect, within } from 'storybook/test';
 import { IconButton } from '../icon-button/icon-button.js';
 import { InputCheckboxTableCell } from '../input-checkbox/input-checkbox.js';
@@ -392,7 +392,7 @@ export const TableWithFooter: Story = {
                     onClick={() => alert(`Edit project ${row.id}`)}
                     variant="flat"
                     appearance="dark"
-                    size="large"
+                    size="lg"
                   />
                 </Tooltip>
                 <Tooltip text="Delete the project" position="top">
@@ -401,7 +401,7 @@ export const TableWithFooter: Story = {
                     onClick={() => alert(`Delete project ${row.id}`)}
                     variant="flat"
                     appearance="dark"
-                    size="large"
+                    size="lg"
                   />
                 </Tooltip>
               </div>
@@ -606,7 +606,7 @@ export const WithSmallRowSize: Story = {
               <Tag text={row.status.text} type={row.status.type} />
             </TableData>
             <TableData>
-              <IconButton {...iconProps} size="medium" />
+              <IconButton {...iconProps} size="md" />
             </TableData>
           </TableRow>
         ))}
@@ -653,7 +653,7 @@ export const WithMediumRowSize: Story = {
               <Tag text={row.status.text} type={row.status.type} />
             </TableData>
             <TableData>
-              <IconButton {...iconProps} size="large" />
+              <IconButton {...iconProps} size="lg" />
             </TableData>
           </TableRow>
         ))}
@@ -700,7 +700,7 @@ export const WithLargeRowSize: Story = {
               <Tag text={row.status.text} type={row.status.type} />
             </TableData>
             <TableData>
-              <IconButton {...iconProps} size="extraLarge" />
+              <IconButton {...iconProps} size="xl" />
             </TableData>
           </TableRow>
         ))}

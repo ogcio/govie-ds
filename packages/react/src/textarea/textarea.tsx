@@ -1,8 +1,7 @@
 'use client';
+import type { ChangeEvent, TextareaHTMLAttributes } from 'react';
 import React, {
-  ChangeEvent,
   forwardRef,
-  TextareaHTMLAttributes,
   useEffect,
   useImperativeHandle,
   useRef,
@@ -11,7 +10,8 @@ import React, {
 import { cn } from '../cn.js';
 import { HintText } from '../hint-text/hint-text.js';
 import { translate as t } from '../i18n/utility.js';
-import { Icon, IconId } from '../icon/icon.js';
+import type { IconId } from '../icon/icon.js';
+import { Icon } from '../icon/icon.js';
 import { IconButton } from '../icon-button/icon-button.js';
 
 export type TextAreaProps = React.DetailedHTMLProps<
@@ -135,7 +135,7 @@ export const TextArea = forwardRef<HTMLTextAreaElement, TextAreaProps>(
                   icon={{ icon: 'close' }}
                   onClick={handleOnResetClick}
                   variant="flat"
-                  size="small"
+                  size="sm"
                   appearance="dark"
                   // TODO I18N: translation
                   aria-label="Clear input"

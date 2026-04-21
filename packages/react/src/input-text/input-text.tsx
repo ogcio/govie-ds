@@ -2,7 +2,8 @@
 
 import { forwardRef, useImperativeHandle, useMemo, useRef } from 'react';
 import { cn } from '../cn.js';
-import { Icon, IconId } from '../icon/icon.js';
+import type { IconId } from '../icon/icon.js';
+import { Icon } from '../icon/icon.js';
 import { IconButton } from '../icon-button/icon-button.js';
 import { Input as PrimitiveInput } from '../primitives/input.js';
 import type {
@@ -184,7 +185,7 @@ export const InputActionButton = ({
       aria-label={ariaLabel || undefined}
       onClick={onClick}
       variant="flat"
-      size="small"
+      size="sm"
       appearance="dark"
     />
   );

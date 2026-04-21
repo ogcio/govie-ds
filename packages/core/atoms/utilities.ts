@@ -19,6 +19,18 @@ export const Align = {
   JUSTIFY: 'justify',
 } as const;
 
+export const Variant = {
+  PRIMARY: 'primary',
+  SECONDARY: 'secondary',
+  FLAT: 'flat',
+} as const;
+
+export const Appearance = {
+  DEFAULT: 'default',
+  DARK: 'dark',
+  LIGHT: 'light',
+} as const;
+
 export const getSize = (x: (typeof Size)[keyof typeof Size] = Size.MD) =>
   Object.values(Size).includes(x) ? x : Size.MD;
 

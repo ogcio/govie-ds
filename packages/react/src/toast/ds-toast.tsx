@@ -1,10 +1,11 @@
 'use client';
 import { tv, type VariantProps } from 'tailwind-variants';
 import Paragraph from '../atoms/Paragraph';
-import { Icon, IconId } from '../icon/icon.js';
+import type { IconId } from '../icon/icon.js';
+import { Icon } from '../icon/icon.js';
 import { IconButton } from '../icon-button/icon-button.js';
 import { Link } from '../link/link.js';
-import { ToastProps } from './types.js';
+import type { ToastProps } from './types.js';
 
 const toastVariants = tv({
   slots: {
@@ -96,7 +97,7 @@ function Toast({
             <div className={dismiss()}>
               <IconButton
                 onClick={onClose}
-                size="small"
+                size="sm"
                 appearance="dark"
                 variant="flat"
                 icon={{ icon: 'close' }}
