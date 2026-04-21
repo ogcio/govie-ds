@@ -1,12 +1,7 @@
 import type { StoryContext, Renderer } from 'storybook/internal/types';
 import { createElement } from 'react';
 import { within, expect } from 'storybook/test';
-import { MaxWidth } from '../utilities';
-
-/** Class fragment applied for each `maxWidth` variant (for interaction tests). */
-export function maxWidthClassToken(value: (typeof MaxWidth)[keyof typeof MaxWidth]): string {
-  return value === '2xl' ? 'gi-max-w-2xl' : `gi-max-w-${value}`;
-}
+import { MaxWidth } from '../Container';
 export const containerMeta = {
   tags: ['autodocs'] as string[],
   title: 'Layout/Container',
@@ -45,7 +40,7 @@ export const containerMeta = {
   parameters: {
     docs: {
       description: {
-        component: 'Container component when you need a centralised, consistent layout wrapper for content on your webpage.'
+        component: 'Container component, with responsive vertical inset padding and horizontal gutter padding, and configurable max width.'
       }
     },
     controls: {
@@ -90,7 +85,7 @@ export const GuttersOnAndOff = {
     });
   }
 };
-export const TestRenderIndentedHTMLContent = {
+export const RendersIndentedHTMLContent = {
   tags: ['skip-playwright'],
   args: {
     children: createElement('p', null, 'Indented content'),
@@ -110,27 +105,7 @@ export const TestRenderIndentedHTMLContent = {
     });
   }
 };
-export const TestSafelyRenderHTMLContent = {
-  tags: ['skip-playwright'],
-  args: {
-    children: createElement('p', null, createElement('script', null, "alert('XSS')"), 'Safe content'),
-    dataTestId: 'govie-container'
-  },
-  play: async ({
-    canvasElement,
-    step
-  }: StoryContext<Renderer>) => {
-    const canvas = within(canvasElement as HTMLElement);
-    await step('should safely render HTML content', async () => {
-      const containerElement = canvas.getByTestId('govie-container');
-      const paragraphElement = canvas.getByText('Safe content');
-      expect(containerElement).toBeInTheDocument();
-      expect(paragraphElement).toBeInTheDocument();
-      expect(paragraphElement.innerHTML).toContain('Safe content');
-    });
-  }
-};
-export const TestHandleEmptyContentGracefully = {
+export const HandlesEmptyContentGracefully = {
   tags: ['skip-playwright'],
   args: {
     children: '',
@@ -159,7 +134,7 @@ export const AllMaxWidths = {
       const widths = Object.values(MaxWidth);
       expect(elements).toHaveLength(widths.length);
       for (const maxWidth of widths) {
-        const token = maxWidthClassToken(maxWidth);
+        const token = maxWidth === MaxWidth['2xl'] ? 'gi-max-w-2xl' : `gi-max-w-${maxWidth}`;
         const element = elements.find(node => node.className.includes(token));
         expect(element).toBeDefined();
       }

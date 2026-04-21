@@ -1,4 +1,4 @@
-import { type MaxWidth } from '../atoms/utilities.js';
+import type { MaxWidth } from '../atoms/Container.js';
 import { cn } from '../cn.js';
 import { GiContainer } from '../index.js';
 

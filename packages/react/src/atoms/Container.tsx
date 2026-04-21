@@ -17,12 +17,17 @@ export type Props = {
 };
 
 import { tv } from 'tailwind-variants';
-import { MaxWidth, getValidProp } from './utilities';
+import { clamp, Size } from './utilities';
+export const MaxWidth = {
+  ...Size,
+  '2xl': '2xl',
+  full: 'full',
+} as const;
 export const styles = tv({
   base: 'gi-w-full gi-container md:gi-mx-auto',
   variants: {
     inset: {
-      true: 'gi-container gi-mx-auto gi-py-4 md:gi-py-6 lg:gi-py-8',
+      true: 'gi-mx-auto gi-py-4 md:gi-py-6 lg:gi-py-8',
     },
     gutters: {
       true: 'gi-px-4 md:gi-px-6 lg:gi-px-8',
@@ -40,7 +45,7 @@ export const styles = tv({
   defaultVariants: {
     inset: false,
     gutters: true,
-    maxWidth: 'full',
+    maxWidth: MaxWidth.full,
   },
 });
 
@@ -52,7 +57,7 @@ function Container(props: Props) {
       className={styles({
         inset: props.inset ?? false,
         gutters: props.gutters ?? true,
-        maxWidth: getValidProp(props.maxWidth, MaxWidth, MaxWidth.full),
+        maxWidth: clamp(props.maxWidth, MaxWidth, MaxWidth.full),
         class: props.className,
       })}
     >

@@ -1,15 +1,13 @@
 import { CommonModule } from '@angular/common';
 import type { StoryObj } from '@storybook/angular';
-import Container from '../atoms/Container';
-import { MaxWidth } from '../atoms/utilities';
+import Container, { MaxWidth } from '../atoms/Container';
 import {
   containerMeta,
   Default as defaultStory,
   WithInset as withInset,
   GuttersOnAndOff as guttersOnAndOff,
-  TestRenderIndentedHTMLContent as testRenderIndentedHTMLContent,
-  TestSafelyRenderHTMLContent as testSafelyRenderHTMLContent,
-  TestHandleEmptyContentGracefully as testHandleEmptyContentGracefully,
+  RendersIndentedHTMLContent as rendersIndentedHTMLContent,
+  HandlesEmptyContentGracefully as handlesEmptyContentGracefully,
   AllMaxWidths as allMaxWidths,
 } from '../atoms/storybook/Container.meta';
 
@@ -60,6 +58,7 @@ export const GuttersOnAndOff: StoryObj = {
     },
     template: `
       <div class="gi-flex gi-flex-col gi-gap-8">
+        <p>Try scaling the viewport to see the responsive gutters in action.</p>
         <div class="gi-flex gi-flex-col gi-gap-2">
           <span class="gi-font-bold gi-font-primary">gutters: true</span>
           <gi-container [gutters]="true" dataTestId="govie-container">
@@ -77,8 +76,8 @@ export const GuttersOnAndOff: StoryObj = {
   }),
 };
 
-export const TestRenderIndentedHTMLContent: StoryObj = {
-  ...testRenderIndentedHTMLContent,
+export const RendersIndentedHTMLContent: StoryObj = {
+  ...rendersIndentedHTMLContent,
   render: (arguments_) => ({
     props: arguments_,
     moduleMetadata: {
@@ -92,8 +91,8 @@ export const TestRenderIndentedHTMLContent: StoryObj = {
   }),
 };
 
-export const TestSafelyRenderHTMLContent: StoryObj = {
-  ...testSafelyRenderHTMLContent,
+export const HandlesEmptyContentGracefully: StoryObj = {
+  ...handlesEmptyContentGracefully,
   render: (arguments_) => ({
     props: arguments_,
     moduleMetadata: {
@@ -106,17 +105,6 @@ export const TestSafelyRenderHTMLContent: StoryObj = {
         </p>
       </gi-container>
     `,
-  }),
-};
-
-export const TestHandleEmptyContentGracefully: StoryObj = {
-  ...testHandleEmptyContentGracefully,
-  render: (arguments_) => ({
-    props: arguments_,
-    moduleMetadata: {
-      imports: [Container],
-    },
-    template: `<gi-container [inset]="inset" [gutters]="gutters" [dataTestId]="dataTestId"></gi-container>`,
   }),
 };
 

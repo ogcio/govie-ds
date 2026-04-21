@@ -1,6 +1,6 @@
 import { useMetadata } from '@builder.io/mitosis';
 import { tv } from 'tailwind-variants';
-import { MaxWidth, getValidProp } from './utilities';
+import { clamp, Size } from './utilities';
 
 export type Props = {
   id?: string;
@@ -11,6 +11,7 @@ export type Props = {
   maxWidth?: (typeof MaxWidth)[keyof typeof MaxWidth];
   dataTestId?: string;
 };
+export const MaxWidth = { ...Size, '2xl': '2xl', full: 'full' } as const;
 
 useMetadata({ angular: { selector: 'gi-container' } });
 
@@ -19,7 +20,7 @@ useMetadata({ angular: { selector: 'gi-container' } });
  * @param props.id - The id of the container.
  * @param props.children - The content to be rendered inside the container.
  * @param props.className - The class name of the container.
- * @param props.inset - Boolean to apply default inset padding of `md` to the container. Default is `false`.
+ * @param props.inset - Boolean to apply responsive vertical inset padding to the container. Default is `false`.
  * @param props.gutters - Whether the container should have gutters. Default is `true`.
  * @param props.maxWidth - The max width of the container: `sm`, `md`, `lg`, `xl`, or `full`. Default is `full`.
  * @param props.dataTestId - The data test id of the container.
@@ -30,7 +31,7 @@ export default function Container(props: Props) {
       className={styles({
         inset: props.inset ?? false,
         gutters: props.gutters ?? true,
-        maxWidth: getValidProp(props.maxWidth, MaxWidth, MaxWidth.full),
+        maxWidth: clamp(props.maxWidth, MaxWidth, MaxWidth.full),
         class: props.className,
       })}
       id={props.id}
@@ -45,7 +46,7 @@ export const styles = tv({
   base: 'gi-w-full gi-container md:gi-mx-auto',
   variants: {
     inset: {
-      true: 'gi-container gi-mx-auto gi-py-4 md:gi-py-6 lg:gi-py-8',
+      true: 'gi-mx-auto gi-py-4 md:gi-py-6 lg:gi-py-8',
     },
     gutters: {
       true: 'gi-px-4 md:gi-px-6 lg:gi-px-8',
@@ -63,6 +64,6 @@ export const styles = tv({
   defaultVariants: {
     inset: false,
     gutters: true,
-    maxWidth: 'full',
+    maxWidth: MaxWidth.full,
   },
 });

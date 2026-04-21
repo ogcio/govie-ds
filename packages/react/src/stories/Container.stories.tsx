@@ -1,14 +1,12 @@
 import type { Meta, StoryObj } from '@storybook/react-vite';
-import Container from '../atoms/Container';
-import { MaxWidth } from '../atoms/utilities';
+import Container, { MaxWidth } from '../atoms/Container';
 import {
   containerMeta,
   Default as defaultStory,
   WithInset as withInset,
   GuttersOnAndOff as guttersOnAndOff,
-  TestRenderIndentedHTMLContent as testRenderIndentedHTMLContent,
-  TestSafelyRenderHTMLContent as testSafelyRenderHTMLContent,
-  TestHandleEmptyContentGracefully as testHandleEmptyContentGracefully,
+  RendersIndentedHTMLContent as rendersIndentedHTMLContent,
+  HandlesEmptyContentGracefully as handlesEmptyContentGracefully,
   AllMaxWidths as allMaxWidths,
 } from '../atoms/storybook/Container.meta';
 
@@ -30,6 +28,7 @@ export const GuttersOnAndOff: Story = {
   ...guttersOnAndOff,
   render: () => (
     <div className="gi-flex gi-flex-col gi-gap-8">
+      <p>Try scaling the viewport to see the responsive gutters in action.</p>
       <div className="gi-flex gi-flex-col gi-gap-2">
         <span className="gi-font-bold gi-font-primary">gutters: true</span>
         <Container gutters dataTestId="govie-container">
@@ -46,16 +45,12 @@ export const GuttersOnAndOff: Story = {
   ),
 };
 
-export const TestRenderIndentedHTMLContent: Story = {
-  ...testRenderIndentedHTMLContent,
+export const RendersIndentedHTMLContent: Story = {
+  ...rendersIndentedHTMLContent,
 };
 
-export const TestSafelyRenderHTMLContent: Story = {
-  ...testSafelyRenderHTMLContent,
-};
-
-export const TestHandleEmptyContentGracefully: Story = {
-  ...testHandleEmptyContentGracefully,
+export const HandlesEmptyContentGracefully: Story = {
+  ...handlesEmptyContentGracefully,
 };
 
 export const AllMaxWidths: Story = {

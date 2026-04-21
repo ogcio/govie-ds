@@ -42,7 +42,7 @@ export const getWhitespace = (x: (typeof Whitespace)[keyof typeof Whitespace] = 
 export const getAlign = (x: (typeof Align)[keyof typeof Align] = Align.START) =>
   Object.values(Align).includes(x) ? x : Align.START;
 
-export function getValidProp<T extends Record<string, string>>(
+export function clamp<T extends Record<string, string>>(
   value: string | undefined,
   options: T,
   defaultValue: T[keyof T],
