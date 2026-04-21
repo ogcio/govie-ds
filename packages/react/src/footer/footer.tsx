@@ -1,13 +1,14 @@
 'use client';
-import React, { ReactNode } from 'react';
+import type { ReactNode } from 'react';
+import React from 'react';
 import { renderToStaticMarkup } from 'react-dom/server';
 import {
   LogoGoldGreen as GovieLogoHarpWithText,
   LogoHarpWhite as GovieLogoHarp,
 } from '../atoms/icons/logos';
 import { cn } from '../cn.js';
-import { LogoProps } from '../common/types.js';
-import { Container } from '../container/container.js';
+import type { LogoProps } from '../common/types.js';
+import GiContainer from '../atoms/Container.js';
 import { translate as t } from '../i18n/utility.js';
 import Anchor from '../primitives/anchor.js';
 import { SectionBreak } from '../section-break/section-break.js';
@@ -79,7 +80,7 @@ export function Footer({
       {...props}
     >
       <div className="gi-py-10">
-        <Container>
+        <GiContainer>
           {primarySlot && (
             <div
               aria-label={t('footer.primarySlot', {
@@ -116,7 +117,7 @@ export function Footer({
               </div>
             )}
           </div>
-        </Container>
+        </GiContainer>
       </div>
 
       {utilitySlot && (

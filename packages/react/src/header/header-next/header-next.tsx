@@ -15,6 +15,7 @@ import {
   headerVariants,
 } from '../variants.js';
 import { HeaderProvider } from './header-context.js';
+import { GiContainer } from '../../index.js';
 
 export const HeaderNext = forwardRef<HTMLElement, HeaderNextProps>(
   (
@@ -68,13 +69,13 @@ export const HeaderNext = forwardRef<HTMLElement, HeaderNextProps>(
           data-variant={variant}
           {...rest}
         >
-          <Container className="gi-order-2" fullWidth={fullWidth}>
+          <GiContainer className="gi-order-2">
             <div className={headerMenuVariants({ appearance: variant })}>
               {headerLogo}
               {headerTitle}
               {headerPrimaryMenu}
             </div>
-          </Container>
+          </GiContainer>
           {headerSecondaryMenu}
           {restChildren}
         </header>

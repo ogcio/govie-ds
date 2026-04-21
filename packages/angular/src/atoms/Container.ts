@@ -21,7 +21,7 @@ export type Props = {
 import { tv } from 'tailwind-variants';
 import { MaxWidth, getValidProp } from './utilities';
 export const styles = tv({
-  base: 'gi-w-full gi-max-w-[100vw] gi-container md:gi-mx-auto',
+  base: 'gi-w-full gi-container md:gi-mx-auto',
   variants: {
     inset: {
       true: 'gi-container gi-mx-auto gi-py-4 md:gi-py-6 lg:gi-py-8',

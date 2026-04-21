@@ -18,7 +18,7 @@ import {
   Card,
   Chip,
   Combobox,
-  Container,
+  GiContainer,
   CookieBanner,
   Details,
   Drawer,
@@ -219,7 +219,7 @@ const NativeFormExample = () => {
     setMessage('');
   };
   return (
-    <Container className="p-4 border border-gray-200 bg-white rounded-lg shadow-sm">
+    <GiContainer className="p-4 border border-gray-200 bg-white rounded-lg shadow-sm">
       <form ref={formRef} onSubmit={handleSubmit}>
         <Heading as="h4" className="mb-4">
           Native Form (No Form Library)
@@ -275,7 +275,7 @@ const NativeFormExample = () => {
           )}
         </div>
       </form>
-    </Container>
+    </GiContainer>
   );
 };
 
@@ -294,7 +294,7 @@ const ReachHookFormWithRegister = () => {
   };
 
   return (
-    <Container className="p-4 border border-gray-200 bg-white rounded-lg shadow-sm">
+    <GiContainer className="p-4 border border-gray-200 bg-white rounded-lg shadow-sm">
       <FormProvider {...formMethods}>
         <form onSubmit={handleSubmit(onSubmit)}>
           <Heading as="h4" className="mb-4">
@@ -321,7 +321,7 @@ const ReachHookFormWithRegister = () => {
           </div>
         </form>
       </FormProvider>
-    </Container>
+    </GiContainer>
   );
 };
 
@@ -369,7 +369,7 @@ const ReachHookFormWithController = () => {
   return (
     <FormProvider {...methods}>
       <form onSubmit={handleSubmit(onSubmit)}>
-        <Container className="p-4 border border-gray-200 bg-white rounded-lg shadow-sm">
+        <GiContainer className="p-4 border border-gray-200 bg-white rounded-lg shadow-sm">
           <Heading as="h4" className="mb-2">
             With React Hook Form (Controller Method)
           </Heading>
@@ -520,7 +520,7 @@ const ReachHookFormWithController = () => {
               </Button>
             </div>
           </div>
-        </Container>
+        </GiContainer>
       </form>
     </FormProvider>
   );
@@ -569,7 +569,7 @@ const ValidationFormExample = () => {
   };
 
   return (
-    <Container className="p-4 border border-gray-200 bg-white rounded-lg shadow-sm">
+    <GiContainer className="p-4 border border-gray-200 bg-white rounded-lg shadow-sm">
       <FormProvider {...methods}>
         <Form onSubmit={handleSubmit(onSubmit)}>
           <Heading as="h4" className="mb-4">
@@ -672,7 +672,7 @@ const ValidationFormExample = () => {
           </div>
         </Form>
       </FormProvider>
-    </Container>
+    </GiContainer>
   );
 };
 
@@ -683,7 +683,7 @@ export default function Home() {
       <HeaderComposable />
       <CookieBanner {...CookieBannerProps} />
 
-      <Container className="py-8">
+      <GiContainer className="py-8">
         <Heading as="h1" className="mb-8">
           Design System Showcase
         </Heading>
@@ -701,7 +701,7 @@ export default function Home() {
           {/* Forms Tab */}
           <TabPanel value="forms">
             <div className="space-y-8">
-              <Container className="p-4 border border-gray-200 bg-white rounded-lg shadow-sm">
+              <GiContainer className="p-4 border border-gray-200 bg-white rounded-lg shadow-sm">
                 <Heading as="h4" className="mb-4">
                   Standalone Form Elements
                 </Heading>
@@ -745,7 +745,7 @@ export default function Home() {
                     <StandaloneTextAreaExample />
                   </div>
                 </div>
-              </Container>
+              </GiContainer>
 
               <NativeFormExample />
               <ReachHookFormWithRegister />
@@ -757,7 +757,7 @@ export default function Home() {
           {/* Inputs Tab */}
           <TabPanel value="inputs">
             <div className="space-y-6">
-              <Container className="p-4 border border-gray-200 bg-white rounded-lg shadow-sm">
+              <GiContainer className="p-4 border border-gray-200 bg-white rounded-lg shadow-sm">
                 <Heading as="h4" className="mb-4">
                   Input Components
                 </Heading>
@@ -797,14 +797,14 @@ export default function Home() {
                     <InputCheckbox id="single-checkbox" value="agree" label="I agree to the terms" />
                   </div>
                 </div>
-              </Container>
+              </GiContainer>
             </div>
           </TabPanel>
 
           {/* Navigation Tab */}
           <TabPanel value="navigation">
             <div className="space-y-6">
-              <Container className="p-4 border border-gray-200 bg-white rounded-lg shadow-sm">
+              <GiContainer className="p-4 border border-gray-200 bg-white rounded-lg shadow-sm">
                 <Heading as="h4" className="mb-4">
                   Navigation Components
                 </Heading>
@@ -854,14 +854,14 @@ export default function Home() {
                     <Pagination currentPage={5} onPageChange={() => {}} totalPages={10} />
                   </div>
                 </div>
-              </Container>
+              </GiContainer>
             </div>
           </TabPanel>
 
           {/* Layout Tab */}
           <TabPanel value="layout">
             <div className="space-y-6">
-              <Container className="p-4 border border-gray-200 bg-white rounded-lg shadow-sm">
+              <GiContainer className="p-4 border border-gray-200 bg-white rounded-lg shadow-sm">
                 <Heading as="h4" className="mb-4">
                   Layout Components
                 </Heading>
@@ -967,14 +967,14 @@ export default function Home() {
                     </div>
                   </div>
                 </div>
-              </Container>
+              </GiContainer>
             </div>
           </TabPanel>
 
           {/* Feedback Tab */}
           <TabPanel value="feedback">
             <div className="space-y-6">
-              <Container className="p-4 border border-gray-200 bg-white rounded-lg shadow-sm">
+              <GiContainer className="p-4 border border-gray-200 bg-white rounded-lg shadow-sm">
                 <Heading as="h4" className="mb-4">
                   Feedback Components
                 </Heading>
@@ -1108,14 +1108,14 @@ export default function Home() {
                     </div>
                   </div>
                 </div>
-              </Container>
+              </GiContainer>
             </div>
           </TabPanel>
 
           {/* Data Display Tab */}
           <TabPanel value="data">
             <div className="space-y-6">
-              <Container className="p-4 border border-gray-200 bg-white rounded-lg shadow-sm">
+              <GiContainer className="p-4 border border-gray-200 bg-white rounded-lg shadow-sm">
                 <Heading as="h4" className="mb-4">
                   Data Display Components
                 </Heading>
@@ -1249,13 +1249,13 @@ export default function Home() {
                     </Details>
                   </div>
                 </div>
-              </Container>
+              </GiContainer>
             </div>
           </TabPanel>
         </Tabs>
 
         {/* Additional UI Elements */}
-        <Container className="mt-8 p-4 border border-gray-200 bg-white rounded-lg shadow-sm">
+        <GiContainer className="mt-8 p-4 border border-gray-200 bg-white rounded-lg shadow-sm">
           <Heading as="h4" className="mb-4">
             Buttons and Icons
           </Heading>
@@ -1299,8 +1299,8 @@ export default function Home() {
               </div>
             </div>
           </div>
-        </Container>
-      </Container>
+        </GiContainer>
+      </GiContainer>
 
       <Footer />
       <ToastProvider />

@@ -67,7 +67,6 @@ export const AllMaxWidths: Story = {
           <span className="gi-font-bold gi-font-primary">{maxWidth}</span>
           <Container
             maxWidth={maxWidth}
-            inset={false}
             dataTestId="govie-container"
             className="gi-border-sm gi-border-solid gi-border-color-border-system-neutral-subtle"
           >

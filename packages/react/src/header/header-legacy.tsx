@@ -9,14 +9,14 @@ import {
   LogoHarpWhite as GovieLogoHarp,
 } from '../atoms/icons/logos';
 import { cn } from '../cn.js';
-import { Container } from '../container/container.js';
+import GiContainer from '../atoms/Container.js';
 import { translate as t } from '../i18n/utility.js';
 import { Icon } from '../icon/icon.js';
 import Anchor from '../primitives/anchor.js';
 import { MobileHeaderMenuItems } from './components/header-menu.js';
 import { SlotContainer, SlotItemAction } from './components/header-slot.js';
 import { attachEventsToItemActionTriggers } from './helper.js';
-import {
+import type {
   HeaderAppearance,
   HeaderItem,
   HeaderProps,
@@ -212,11 +212,7 @@ export function HeaderLegacy({
       data-testid={dataTestid}
       {...props}
     >
-      <Container
-        id="HeaderContainer"
-        className="gi-order-2"
-        fullWidth={fullWidth}
-      >
+      <GiContainer id="HeaderContainer" className="gi-order-2">
         <div className={headerMenuVariants({ appearance })}>
           <div className={headerLogoVariants({ appearance })}>
             {logo?.href && (
@@ -260,18 +256,15 @@ export function HeaderLegacy({
             })}
           </div>
         </div>
-      </Container>
+      </GiContainer>
 
       {secondaryLinks && (
         <div className={headerSecondaryLinksVariants({ appearance })}>
-          <Container
-            className="gi-flex gi-justify-end gi-items-center"
-            fullWidth={fullWidth}
-          >
+          <GiContainer className="gi-flex gi-justify-end gi-items-center">
             {secondaryLinks && (
               <SecondaryLinks links={secondaryLinks} appearance={appearance} />
             )}
-          </Container>
+          </GiContainer>
         </div>
       )}
 
