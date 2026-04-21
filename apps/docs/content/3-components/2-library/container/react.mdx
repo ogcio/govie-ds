@@ -1,6 +1,6 @@
 ---
 title: 'Container'
-description: 'Container HTML Component React Component'
+description: 'Centres page content with consistent horizontal gutters, optional vertical inset, and configurable max width.'
 status: 'stable'
 component:
   id: 'container-react'
@@ -11,36 +11,46 @@ component:
       fields:
         - name: 'children'
           ofType: 'node'
-          description: 'A React node representing the content to be rendered inside the container.'
-          required: true
+          description: 'Content rendered inside the container.'
+          required: false
         - name: 'id'
           ofType: 'string'
-          description: 'A string to uniquely identify the container, useful for testing or targeting specific containers in styles or scripts.'
+          description: 'Optional id for the root element.'
           required: false
-        - name: 'insetTop'
+        - name: 'className'
           ofType: 'string'
-          description: 'Defines the top padding of the container. Options are none, md, lg, and xl.'
+          description: 'Additional class names merged onto the root element.'
           required: false
-        - name: 'insetBottom'
+        - name: 'inset'
+          ofType: 'boolean'
+          description: 'When true, applies responsive vertical padding (`py`). Default is false.'
+          required: false
+        - name: 'gutters'
+          ofType: 'boolean'
+          description: 'When true, applies responsive horizontal padding (`px`). Default is true.'
+          required: false
+        - name: 'maxWidth'
           ofType: 'string'
-          description: 'Defines the bottom padding of the container. Options are none, md, lg, and xl.'
+          description: 'Maximum width token: `sm`, `md`, `lg`, `xl`, `2xl`, or `full`. Default is `full`.'
+          required: false
+        - name: 'dataTestId'
+          ofType: 'string'
+          description: 'Sets `data-testid` on the root element for tests.'
           required: false
   stories:
     - name: 'default'
       url: '/story/layout-container--default'
-    - name: 'with-none-inset'
-      url: '/story/layout-container--with-none-inset'
-    - name: 'with-medium-inset'
-      url: '/story/layout-container--with-medium-inset'
-    - name: 'with-large-inset'
-      url: '/story/layout-container--with-large-inset'
-    - name: 'with-extra-large-inset'
-      url: '/story/layout-container--with-extra-large-inset'
+    - name: 'with-inset'
+      url: '/story/layout-container--with-inset'
+    - name: 'gutters-on-and-off'
+      url: '/story/layout-container--gutters-on-and-off'
+    - name: 'all-max-widths'
+      url: '/story/layout-container--all-max-widths'
 ---
 
 # Container
 
-Use the Container to center page content and keep readable line lengths across breakpoints. It enforces consistent horizontal alignment and optional vertical insets for sections.
+Use the Container as a layout wrapper when you need centred content, readable line length, and consistent horizontal spacing. It supports optional **gutters** (horizontal padding), an **inset** mode for section-level vertical padding, and a **max width** cap across breakpoints.
 
 <Section current="react">
 
@@ -54,21 +64,23 @@ Use the Container to center page content and keep readable line lengths across b
 
 <StorybookFrame componentId="container-react" story="default" />
 
-### With None Inset
+### With inset
 
-<StorybookFrame componentId="container-react" story="with-none-inset" />
+Vertical inset padding is enabled with the `inset` prop.
 
-### With Medium Inset
+<StorybookFrame componentId="container-react" story="with-inset" />
 
-<StorybookFrame componentId="container-react" story="with-medium-inset" />
+### Gutters on and off
 
-### With Large Inset
+Compare default horizontal gutters (`gutters` true) with edge-to-edge content (`gutters` false).
 
-<StorybookFrame componentId="container-react" story="with-large-inset" />
+<StorybookFrame componentId="container-react" story="gutters-on-and-off" />
 
-### With Extra Large Inset
+### All max widths
 
-<StorybookFrame componentId="container-react" story="with-extra-large-inset" />
+Each `maxWidth` value maps to a corresponding max-width utility (`sm` through `2xl`, or `full`).
+
+<StorybookFrame componentId="container-react" story="all-max-widths" />
 
 ## Properties
 

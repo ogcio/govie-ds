@@ -31,6 +31,8 @@ export const Appearance = {
   LIGHT: 'light',
 } as const;
 
+export const MaxWidth = { ...Size, '2xl': '2xl', full: 'full' } as const;
+
 export const getSize = (x: (typeof Size)[keyof typeof Size] = Size.MD) =>
   Object.values(Size).includes(x) ? x : Size.MD;
 
@@ -40,12 +42,11 @@ export const getWhitespace = (x: (typeof Whitespace)[keyof typeof Whitespace] = 
 export const getAlign = (x: (typeof Align)[keyof typeof Align] = Align.START) =>
   Object.values(Align).includes(x) ? x : Align.START;
 
-export function getContainerLayoutType(props: any): 'inset' | 'fullWidth' | 'standard' {
-  if (props.insetTop || props.insetBottom) {
-    return 'inset';
-  }
-  if (props.fullWidth) {
-    return 'fullWidth';
-  }
-  return 'standard';
+export function getValidProp<T extends Record<string, string>>(
+  value: string | undefined,
+  options: T,
+  defaultValue: T[keyof T],
+): T[keyof T] {
+  const allowed = Object.values(options) as T[keyof T][];
+  return value !== undefined && allowed.includes(value as T[keyof T]) ? (value as T[keyof T]) : defaultValue;
 }

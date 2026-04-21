@@ -1,40 +1,44 @@
 import type { StoryContext, Renderer } from 'storybook/internal/types';
 import { createElement } from 'react';
 import { within, expect } from 'storybook/test';
-import { ContainerInsetSizeEnum, ContainerMaxWidthEnum, ContainerGutterSizeEnum } from '../Container.lite';
+import { MaxWidth } from '../utilities';
+
+/** Class fragment applied for each `maxWidth` variant (for interaction tests). */
+export function maxWidthClassToken(value: (typeof MaxWidth)[keyof typeof MaxWidth]): string {
+  return value === '2xl' ? 'gi-max-w-2xl' : `gi-max-w-${value}`;
+}
 
 export const containerMeta = {
   tags: ['autodocs'] as string[],
   title: 'Layout/Container',
   args: {
     children: 'Paragraph',
-    gutterSize: ContainerGutterSizeEnum.Small,
+    gutters: true,
+    inset: false,
+    maxWidth: MaxWidth.full,
+    dataTestId: 'govie-container',
   },
   argTypes: {
     children: {
       control: 'text',
       description: 'HTML content or other components to be rendered inside the container.',
     },
-    insetTop: {
-      control: { type: 'select' },
-      options: Object.values(ContainerInsetSizeEnum),
-      description: 'Defines the top padding of the container. Options are `none`, `md`, `lg`, and `xl`.',
+    inset: {
+      control: 'boolean',
+      description: 'When `true`, applies default vertical inset padding (responsive `py` scale). Default is `false`.',
     },
-    insetBottom: {
-      control: { type: 'select' },
-      options: Object.values(ContainerInsetSizeEnum),
-      description: 'Defines the bottom padding of the container. Options are `none`, `md`, `lg`, and `xl`.',
-    },
-    gutterSize: {
-      control: { type: 'select' },
-      options: Object.values(ContainerGutterSizeEnum),
-      description:
-        'Defines the horizontal gutter (padding) of the container. Options are `none`, `sm`, `md`, `lg`, and `xl`.',
+    gutters: {
+      control: 'boolean',
+      description: 'When `true`, applies horizontal gutter padding (responsive `px` scale). Default is `true`.',
     },
     maxWidth: {
       control: { type: 'select' },
-      options: Object.values(ContainerMaxWidthEnum),
-      description: 'Caps the container max width. Options are `sm`, `md`, `lg`, `xl`, or `full` (no cap).',
+      options: Object.values(MaxWidth),
+      description: 'Caps the container max width: `sm`, `md`, `lg`, `xl`, `2xl`, or `full`. Default is `full`.',
+    },
+    dataTestId: {
+      control: 'text',
+      description: 'Value for the `data-testid` attribute (optional).',
     },
   } as const,
   parameters: {
@@ -43,6 +47,9 @@ export const containerMeta = {
         component:
           'Container component when you need a centralised, consistent layout wrapper for content on your webpage.',
       },
+    },
+    controls: {
+      exclude: ['insetTop', 'insetBottom', 'gutterSize', 'gutterSizes', 'fullWidth'],
     },
   },
 };
@@ -60,35 +67,25 @@ export const Default = {
   },
 };
 
-export const WithNoneInset = {
+export const WithInset = {
   args: {
     children: 'Paragraph',
-    insetBottom: ContainerInsetSizeEnum.None,
-    insetTop: ContainerInsetSizeEnum.None,
+    inset: true,
+    dataTestId: 'govie-container',
   },
 };
 
-export const WithMediumInset = {
-  args: {
-    children: 'Paragraph',
-    insetTop: ContainerInsetSizeEnum.Medium,
-    insetBottom: ContainerInsetSizeEnum.Medium,
-  },
-};
+/** Side-by-side comparison: default gutters vs `gutters={false}` (render supplied by framework stories). */
+export const GuttersOnAndOff = {
+  play: async ({ canvasElement, step }: StoryContext<Renderer>) => {
+    const canvas = within(canvasElement as HTMLElement);
 
-export const WithLargeInset = {
-  args: {
-    children: 'Paragraph',
-    insetTop: ContainerInsetSizeEnum.Large,
-    insetBottom: ContainerInsetSizeEnum.Large,
-  },
-};
-
-export const WithExtraLargeInset = {
-  args: {
-    children: 'Paragraph',
-    insetTop: ContainerInsetSizeEnum.ExtraLarge,
-    insetBottom: ContainerInsetSizeEnum.ExtraLarge,
+    await step('renders one container with gutters and one without', async () => {
+      const elements = canvas.getAllByTestId('govie-container');
+      expect(elements).toHaveLength(2);
+      expect(elements.some((element) => element.className.includes('gi-px-0'))).toBe(true);
+      expect(elements.some((element) => element.className.includes('gi-px-4'))).toBe(true);
+    });
   },
 };
 
@@ -96,6 +93,7 @@ export const TestRenderIndentedHTMLContent = {
   tags: ['skip-playwright'],
   args: {
     children: createElement('p', null, 'Indented content'),
+    dataTestId: 'govie-container',
   },
   play: async ({ canvasElement, step }: StoryContext<Renderer>) => {
     const canvas = within(canvasElement as HTMLElement);
@@ -105,7 +103,7 @@ export const TestRenderIndentedHTMLContent = {
       const paragraphElement = canvas.getByText('Indented content');
       expect(containerElement).toBeInTheDocument();
       expect(paragraphElement).toBeInTheDocument();
-      expect((paragraphElement as HTMLElement).tagName).toBe('P');
+      expect(paragraphElement.tagName).toBe('P');
     });
   },
 };
@@ -114,6 +112,7 @@ export const TestSafelyRenderHTMLContent = {
   tags: ['skip-playwright'],
   args: {
     children: createElement('p', null, createElement('script', null, "alert('XSS')"), 'Safe content'),
+    dataTestId: 'govie-container',
   },
   play: async ({ canvasElement, step }: StoryContext<Renderer>) => {
     const canvas = within(canvasElement as HTMLElement);
@@ -123,7 +122,7 @@ export const TestSafelyRenderHTMLContent = {
       const paragraphElement = canvas.getByText('Safe content');
       expect(containerElement).toBeInTheDocument();
       expect(paragraphElement).toBeInTheDocument();
-      expect((paragraphElement as HTMLElement).innerHTML).toContain('Safe content');
+      expect(paragraphElement.innerHTML).toContain('Safe content');
     });
   },
 };
@@ -132,6 +131,7 @@ export const TestHandleEmptyContentGracefully = {
   tags: ['skip-playwright'],
   args: {
     children: '',
+    dataTestId: 'govie-container',
   },
   play: async ({ canvasElement, step }: StoryContext<Renderer>) => {
     const canvas = within(canvasElement as HTMLElement);
@@ -144,41 +144,17 @@ export const TestHandleEmptyContentGracefully = {
   },
 };
 
-const gutterSizeToPaddingClass: Record<(typeof ContainerGutterSizeEnum)[keyof typeof ContainerGutterSizeEnum], string> =
-  {
-    [ContainerGutterSizeEnum.None]: 'gi-px-0',
-    [ContainerGutterSizeEnum.Small]: 'gi-px-4',
-    [ContainerGutterSizeEnum.Medium]: 'gi-px-6',
-    [ContainerGutterSizeEnum.Large]: 'gi-px-8',
-    [ContainerGutterSizeEnum.ExtraLarge]: 'gi-px-10',
-  };
-
-export const AllGutterSizes = {
-  play: async ({ canvasElement, step }: StoryContext<Renderer>) => {
-    const canvas = within(canvasElement as HTMLElement);
-
-    await step('renders one container per gutter size', async () => {
-      const elements = canvas.getAllByTestId('govie-container');
-      expect(elements).toHaveLength(Object.values(ContainerGutterSizeEnum).length);
-      for (const gutter of Object.values(ContainerGutterSizeEnum)) {
-        const token = gutterSizeToPaddingClass[gutter];
-        const match = elements.find((el) => el.className.includes(token));
-        expect(match).toBeTruthy();
-      }
-    });
-  },
-};
-
 export const AllMaxWidths = {
   play: async ({ canvasElement, step }: StoryContext<Renderer>) => {
     const canvas = within(canvasElement as HTMLElement);
 
     await step('renders one container per max width', async () => {
       const elements = canvas.getAllByTestId('govie-container');
-      const widths = Object.values(ContainerMaxWidthEnum);
+      const widths = Object.values(MaxWidth);
       expect(elements).toHaveLength(widths.length);
       for (const maxWidth of widths) {
-        const element = elements.find((element) => element.className.includes(`gi-max-w-${maxWidth}`));
+        const token = maxWidthClassToken(maxWidth);
+        const element = elements.find((node) => node.className.includes(token));
         expect(element).toBeDefined();
       }
     });
