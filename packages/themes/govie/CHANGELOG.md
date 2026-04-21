@@ -1,5 +1,20 @@
 # Changelog
 
+## [1.21.5](https://github.com/ogcio/govie-ds/compare/themes-govie-v1.21.4...themes-govie-v1.21.5) (2026-04-21)
+
+
+### Miscellaneous Chores
+
+* **AB#37185:** standardize TypeScript configs ([3e37cf4](https://github.com/ogcio/govie-ds/commit/3e37cf421a51ae915f692066d1d4dae3c244d0c3))
+
+
+### Dependencies
+
+* The following workspace dependencies were updated
+  * devDependencies
+    * @ogcio/theme-builder bumped to 1.24.0
+    * @ogcio/design-system-tokens bumped to 1.22.1
+
 ## [1.21.4](https://github.com/ogcio/govie-ds/compare/themes-govie-v1.21.3...themes-govie-v1.21.4) (2026-03-24)
 
 

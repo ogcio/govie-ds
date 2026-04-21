@@ -1,5 +1,33 @@
 # Changelog
 
+## [1.34.0](https://github.com/ogcio/govie-ds/compare/docs-v1.33.0...docs-v1.34.0) (2026-04-21)
+
+
+### Features
+
+* **AB#35985:** Adding Paragraph mitosis component  ([#907](https://github.com/ogcio/govie-ds/issues/907)) ([aff976f](https://github.com/ogcio/govie-ds/commit/aff976f591579b4eca8bd73f438863b9ec1960a5))
+* **AB#35987:** adds &lt;Text/&gt; atom component([#904](https://github.com/ogcio/govie-ds/issues/904)) ([fd08a67](https://github.com/ogcio/govie-ds/commit/fd08a678e698d601ec694b38d62739a105f09f8e))
+* **AB#36657:** Adding Button.meta file + updating Button stories  ([#919](https://github.com/ogcio/govie-ds/issues/919)) ([c232014](https://github.com/ogcio/govie-ds/commit/c232014699cdd762582cffbed42e845e3e31f228))
+
+
+### Miscellaneous Chores
+
+* **AB#36665:** Adding eslint-react-hooks plugin ([#918](https://github.com/ogcio/govie-ds/issues/918)) ([1c85933](https://github.com/ogcio/govie-ds/commit/1c85933b766b1f930880f8fd69ff7d107967fdaa))
+* **AB#36793:** add in typography docs for xl ([#926](https://github.com/ogcio/govie-ds/issues/926)) ([a4e528b](https://github.com/ogcio/govie-ds/commit/a4e528b59714a686517aa4c660430b842025748a))
+
+
+### Dependencies
+
+* The following workspace dependencies were updated
+  * dependencies
+    * @ogcio/design-system-html bumped to 1.21.1
+    * @ogcio/design-system-react bumped to 1.35.0
+    * @ogcio/design-system-tailwind bumped to 1.25.0
+    * @ogcio/design-system-tokens bumped to 1.22.1
+    * @ogcio/theme-govie bumped to 1.21.5
+  * devDependencies
+    * @ogcio/design-system-eslint-config bumped to 1.4.1
+
 ## [1.33.0](https://github.com/ogcio/govie-ds/compare/docs-v1.32.1...docs-v1.33.0) (2026-04-03)
 
 
