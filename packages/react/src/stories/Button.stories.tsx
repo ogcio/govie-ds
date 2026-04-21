@@ -1,7 +1,7 @@
 import type { Meta, StoryObj } from '@storybook/react-vite';
 import _ from 'lodash';
-import { Button } from '../atoms/index.js';
-import { Variant, Appearance, ButtonSize, type Props } from '../atoms/Button';
+import { Button } from '../button/button';
+import { Variant, Appearance, ButtonSize } from '../atoms/Button';
 import {
   buttonMeta,
   Default as buttonDefault,
@@ -116,7 +116,7 @@ export const AllSizes: Story = {
 
 export const Disabled: Story = {
   ...buttonDisabled,
-  render: ({ onClick, onFocus }: Props) => (
+  render: ({ onClick, onFocus }) => (
     <div className="gi-flex gi-flex-col gi-gap-4 gi-items-start">
       {_.map(Variant, (variant) =>
         _.map(Appearance, (appearance) => (
