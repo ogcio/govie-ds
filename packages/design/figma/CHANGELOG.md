@@ -1,5 +1,21 @@
 # Changelog
 
+## [1.0.5](https://github.com/ogcio/govie-ds/compare/figma-v1.0.4...figma-v1.0.5) (2026-04-21)
+
+
+### Miscellaneous Chores
+
+* **AB#37185:** standardize TypeScript configs ([3e37cf4](https://github.com/ogcio/govie-ds/commit/3e37cf421a51ae915f692066d1d4dae3c244d0c3))
+
+
+### Dependencies
+
+* The following workspace dependencies were updated
+  * dependencies
+    * @ogcio/theme-govie bumped to 1.21.5
+  * devDependencies
+    * @ogcio/design-system-eslint-config bumped to 1.4.1
+
 ## [1.0.4](https://github.com/ogcio/govie-ds/compare/figma-v1.0.3...figma-v1.0.4) (2026-03-24)
 
 

@@ -1,5 +1,13 @@
 # Changelog
 
+## [1.22.1](https://github.com/ogcio/govie-ds/compare/tokens-v1.22.0...tokens-v1.22.1) (2026-04-21)
+
+
+### Miscellaneous Chores
+
+* **AB#36793:** add in typography docs for xl ([#926](https://github.com/ogcio/govie-ds/issues/926)) ([a4e528b](https://github.com/ogcio/govie-ds/commit/a4e528b59714a686517aa4c660430b842025748a))
+* **AB#37185:** standardize TypeScript configs ([3e37cf4](https://github.com/ogcio/govie-ds/commit/3e37cf421a51ae915f692066d1d4dae3c244d0c3))
+
 ## [1.22.0](https://github.com/ogcio/govie-ds/compare/tokens-v1.21.1...tokens-v1.22.0) (2026-03-24)
 
 

@@ -1,5 +1,43 @@
 # Changelog
 
+## [1.35.0](https://github.com/ogcio/govie-ds/compare/react-lib-v1.34.0...react-lib-v1.35.0) (2026-04-21)
+
+
+### Features
+
+* **AB#35985:** Adding Paragraph mitosis component  ([#907](https://github.com/ogcio/govie-ds/issues/907)) ([aff976f](https://github.com/ogcio/govie-ds/commit/aff976f591579b4eca8bd73f438863b9ec1960a5))
+* **AB#35987:** adds &lt;Text/&gt; atom component([#904](https://github.com/ogcio/govie-ds/issues/904)) ([fd08a67](https://github.com/ogcio/govie-ds/commit/fd08a678e698d601ec694b38d62739a105f09f8e))
+* **AB#36657:** Adding Button.meta file + updating Button stories  ([#919](https://github.com/ogcio/govie-ds/issues/919)) ([c232014](https://github.com/ogcio/govie-ds/commit/c232014699cdd762582cffbed42e845e3e31f228))
+* **AB#36950:** consolidate ESLint configs and update linting setup ([cafa919](https://github.com/ogcio/govie-ds/commit/cafa919b0409ef704c4e6a6426f9677e63861cdf))
+
+
+### Bug Fixes
+
+* **AB#37034:** add align to legacy paragraph for as="span" ([#917](https://github.com/ogcio/govie-ds/issues/917)) ([bd63dc5](https://github.com/ogcio/govie-ds/commit/bd63dc54a6f7b34963826c2ca554c99176d49387))
+* **AB#37355:** fixing dataTestId on button react wrapper ([#930](https://github.com/ogcio/govie-ds/issues/930)) ([3d9d0fa](https://github.com/ogcio/govie-ds/commit/3d9d0fae725af74fb80821e66259f704283a9471))
+
+
+### Miscellaneous Chores
+
+* **AB#36572:** react dependencies audit ([#922](https://github.com/ogcio/govie-ds/issues/922)) ([8b52836](https://github.com/ogcio/govie-ds/commit/8b52836ebcfe050e1a9c7fe8cff7d48b6361f90d))
+* **AB#36665:** adding eslint plugin react-hooks@v7 warn overrides ([#925](https://github.com/ogcio/govie-ds/issues/925)) ([4ecb800](https://github.com/ogcio/govie-ds/commit/4ecb80067560e5dd6b58ccb53a0b134acc0a42d2))
+* **AB#36665:** Adding eslint-react-hooks plugin ([#918](https://github.com/ogcio/govie-ds/issues/918)) ([1c85933](https://github.com/ogcio/govie-ds/commit/1c85933b766b1f930880f8fd69ff7d107967fdaa))
+* **AB#36665:** run lint for all files ([626f79b](https://github.com/ogcio/govie-ds/commit/626f79b5c51e569e5fa75930855cf8f545881faf))
+* **AB#36829:** add extra timeout for flaky tests ([645a140](https://github.com/ogcio/govie-ds/commit/645a140d7c7a7a5d9623c27e84250385293b8983))
+* **AB#36829:** update screenshots ([214b2e3](https://github.com/ogcio/govie-ds/commit/214b2e3b7369398684047b4855a2de159fec9039))
+* **AB#36829:** upgrade Playwright to v1.59.1 ([806b26a](https://github.com/ogcio/govie-ds/commit/806b26ad87a8d5e52ed2ba0b2381363219366d7a))
+* **AB#37102:** strict ESLint rule ([73d3149](https://github.com/ogcio/govie-ds/commit/73d3149ad287f2f2d1c4a578f8ee91ea8654756b))
+* **AB#37185:** adjust TS include path for React ([7857d32](https://github.com/ogcio/govie-ds/commit/7857d325275b24ea81119f3ed2f71229248c494d))
+* **AB#37185:** standardize TypeScript configs ([3e37cf4](https://github.com/ogcio/govie-ds/commit/3e37cf421a51ae915f692066d1d4dae3c244d0c3))
+
+
+### Dependencies
+
+* The following workspace dependencies were updated
+  * devDependencies
+    * @ogcio/design-system-tailwind bumped to 1.25.0
+    * @ogcio/theme-govie bumped to 1.21.5
+
 ## [1.34.0](https://github.com/ogcio/govie-ds/compare/react-lib-v1.33.0...react-lib-v1.34.0) (2026-04-03)
 
 

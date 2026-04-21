@@ -1,5 +1,21 @@
 # Changelog
 
+## [1.21.1](https://github.com/ogcio/govie-ds/compare/html-lib-v1.21.0...html-lib-v1.21.1) (2026-04-21)
+
+
+### Miscellaneous Chores
+
+* **AB#37185:** standardize TypeScript configs ([3e37cf4](https://github.com/ogcio/govie-ds/commit/3e37cf421a51ae915f692066d1d4dae3c244d0c3))
+
+
+### Dependencies
+
+* The following workspace dependencies were updated
+  * devDependencies
+    * @ogcio/design-system-eslint-config bumped to 1.4.1
+    * @ogcio/design-system-tailwind bumped to 1.25.0
+    * @ogcio/theme-govie bumped to 1.21.5
+
 ## [1.21.0](https://github.com/ogcio/govie-ds/compare/html-lib-v1.20.0...html-lib-v1.21.0) (2026-04-03)
 
 

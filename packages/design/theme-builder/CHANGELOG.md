@@ -1,5 +1,25 @@
 # Changelog
 
+## [1.24.0](https://github.com/ogcio/govie-ds/compare/design-theme-builder-v1.23.0...design-theme-builder-v1.24.0) (2026-04-21)
+
+
+### Features
+
+* **AB#36950:** consolidate ESLint configs and update linting setup ([cafa919](https://github.com/ogcio/govie-ds/commit/cafa919b0409ef704c4e6a6426f9677e63861cdf))
+
+
+### Miscellaneous Chores
+
+* **AB#37102:** strict ESLint rule ([73d3149](https://github.com/ogcio/govie-ds/commit/73d3149ad287f2f2d1c4a578f8ee91ea8654756b))
+* **AB#37185:** standardize TypeScript configs ([3e37cf4](https://github.com/ogcio/govie-ds/commit/3e37cf421a51ae915f692066d1d4dae3c244d0c3))
+
+
+### Dependencies
+
+* The following workspace dependencies were updated
+  * dependencies
+    * @ogcio/design-system-tokens bumped to 1.22.1
+
 ## [1.23.0](https://github.com/ogcio/govie-ds/compare/design-theme-builder-v1.22.1...design-theme-builder-v1.23.0) (2026-03-24)
 
 

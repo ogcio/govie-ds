@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.4.1](https://github.com/ogcio/govie-ds/compare/eslint-config-v1.4.0...eslint-config-v1.4.1) (2026-04-21)
+
+
+### Miscellaneous Chores
+
+* **AB#37185:** standardize TypeScript configs ([3e37cf4](https://github.com/ogcio/govie-ds/commit/3e37cf421a51ae915f692066d1d4dae3c244d0c3))
+
 ## [1.4.0](https://github.com/ogcio/govie-ds/compare/eslint-config-v1.3.0...eslint-config-v1.4.0) (2026-03-24)
 
 
