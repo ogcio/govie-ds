@@ -62,10 +62,6 @@ export {
   type DropdownItemProps,
 } from './combo-box/types.js';
 export { Container } from './container/container.js';
-export {
-  default as GiContainer,
-  type Props as ContainerProps,
-} from './atoms/Container.js';
 export * from './cookie-banner/cookie-banner.js';
 export { Details, type DetailsProps } from './details/details.js';
 export {
