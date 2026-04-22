@@ -41,7 +41,7 @@ export const styles = tv({
       xl: 'gi-max-w-xl',
       '2xl': 'gi-max-w-2xl',
       full: 'gi-max-w-full',
-      screen: 'gi-max-w-[100vw]',
+      screen: 'gi-max-w-screen',
     },
   },
   defaultVariants: {
@@ -54,14 +54,14 @@ export const styles = tv({
 function Container(props: Props) {
   return (
     <div
+      id={props.id}
+      data-testid={props.dataTestId}
       className={styles({
         inset: props.inset ?? false,
         gutters: props.gutters ?? true,
         maxWidth: clamp(props.maxWidth, MaxWidth, MaxWidth.screen),
         class: props.className,
       })}
-      id={props.id}
-      data-testid={props.dataTestId}
     >
       {props.children}
     </div>

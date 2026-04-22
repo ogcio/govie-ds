@@ -53,7 +53,7 @@ export function Container({
     <GiContainer
       id={id}
       className={className}
-      dataTestId={dataTestId}
+      dataTestId={dataTestId ?? 'govie-container'}
       maxWidth={maxWidth}
       gutters={gutters}
       inset={inset}

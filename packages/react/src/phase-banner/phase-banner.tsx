@@ -41,11 +41,17 @@ export function PhaseBanner({
   );
 
   if (wrap === 'container') {
-    return <GiContainer>{bannerContent}</GiContainer>;
+    return (
+      <GiContainer dataTestId="govie-container">{bannerContent}</GiContainer>
+    );
   }
 
   if (wrap === 'container-full-width') {
-    return <GiContainer maxWidth="full">{bannerContent}</GiContainer>;
+    return (
+      <GiContainer maxWidth="full" dataTestId="govie-container">
+        {bannerContent}
+      </GiContainer>
+    );
   }
 
   return bannerContent;

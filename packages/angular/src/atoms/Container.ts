@@ -43,7 +43,7 @@ export const styles = tv({
       xl: 'gi-max-w-xl',
       '2xl': 'gi-max-w-2xl',
       full: 'gi-max-w-full',
-      screen: 'gi-max-w-[100vw]',
+      screen: 'gi-max-w-screen',
     },
   },
   defaultVariants: {
@@ -57,6 +57,8 @@ export const styles = tv({
   selector: 'gi-container',
   template: `
     <div
+      [attr.id]="id"
+      [attr.data-testid]="dataTestId"
       [class]="
         styles({
           inset: inset ?? false,
@@ -65,8 +67,6 @@ export const styles = tv({
           class: className,
         })
       "
-      [attr.id]="id"
-      [attr.data-testid]="dataTestId"
     >
       <ng-content></ng-content>
     </div>
@@ -86,10 +86,10 @@ export default class Container {
   styles = styles;
   clamp = clamp;
 
+  @Input() id!: Props['id'];
+  @Input() dataTestId!: Props['dataTestId'];
   @Input() inset!: Props['inset'];
   @Input() gutters!: Props['gutters'];
   @Input() maxWidth!: Props['maxWidth'];
   @Input() className!: Props['className'];
-  @Input() id!: Props['id'];
-  @Input() dataTestId!: Props['dataTestId'];
 }

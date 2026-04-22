@@ -1,7 +1,7 @@
 'use client';
 import React from 'react';
 import type { ButtonProps } from '../button/types.js';
-import GiContainer from '../atoms/Container.js';
+import Container from '../atoms/Container.js';
 import type { LinkProps } from '../link/link.js';
 
 export type CookieBannerProps = {
@@ -32,7 +32,7 @@ export const CookieBanner = ({
           data-testid={dataTestid}
         >
           <div className="gi-py-5">
-            <GiContainer>
+            <Container>
               <div id="cookie-banner-description">{children}</div>
               <div
                 className="
@@ -43,7 +43,7 @@ export const CookieBanner = ({
                 {reject && reject}
                 {cookieLink && cookieLink}
               </div>
-            </GiContainer>
+            </Container>
           </div>
         </div>
       )}

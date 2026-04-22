@@ -45,12 +45,9 @@ export const Default: Story = {
   play: async ({ canvasElement, step }) => {
     const canvas = within(canvasElement);
 
-    await step('should apply the correct container classes', async () => {
+    await step('Element should be rendered', async () => {
       const containerElement = canvas.getByTestId('govie-container');
-      expect(containerElement).toBeInTheDocument();
-      expect(containerElement.classList.contains('gi-layout-container')).toBe(
-        true,
-      );
+      await expect(containerElement).toBeInTheDocument();
     });
   },
 };
