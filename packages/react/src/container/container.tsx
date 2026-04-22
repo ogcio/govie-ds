@@ -36,7 +36,7 @@ type ContainerProps = Omit<AtomicContainerProps, 'children'> &
     insetTop?: ContainerInsetSizeType;
     /** @deprecated Use the `inset` prop on the layout container instead. */
     insetBottom?: ContainerInsetSizeType;
-    /** @deprecated Use `maxWidth` (for example `'full'`) instead. */
+    /** @deprecated Use `maxWidth` (for example `'full'` or `'screen'`) instead. */
     fullWidth?: boolean;
   }>;
 
@@ -51,23 +51,10 @@ export function Container({
   maxWidth,
   dataTestId,
 }: ContainerProps) {
-  const legacyProps = insetTop || insetBottom;
-  if (legacyProps) {
-    return (
-      <div
-        data-testid={dataTestId ?? 'govie-container'}
-        className={styles({ insetTop, insetBottom })}
-        id={id}
-      >
-        {children}
-      </div>
-    );
-  }
-
   return (
     <AtomicContainer
       id={id}
-      className={className}
+      className={styles({ insetTop, insetBottom, class: className })}
       dataTestId={dataTestId ?? 'govie-container'}
       maxWidth={maxWidth}
       gutters={gutters}

@@ -1,5 +1,11 @@
 import type { Meta, StoryObj } from '@storybook/react-vite';
 import Container, { MaxWidth } from '../atoms/Container';
+import type {
+  Container as LegacyContainer} from '../container/container.js';
+import {
+  ContainerInsetSizeEnum,
+} from '../container/container.js';
+import { Paragraph } from '../paragraph/paragraph.js';
 import { map } from 'lodash';
 import {
   containerMeta,
@@ -20,6 +26,7 @@ const meta: Meta<typeof Container> = {
 export default meta;
 
 type Story = StoryObj<typeof Container>;
+type LegacyContainerStory = StoryObj<typeof LegacyContainer>;
 
 export const Default: Story = { ...defaultStory };
 
