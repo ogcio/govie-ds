@@ -11,7 +11,7 @@ export type Props = {
   maxWidth?: (typeof MaxWidth)[keyof typeof MaxWidth];
   dataTestId?: string;
 };
-export const MaxWidth = { ...Size, '2xl': '2xl', full: 'full' } as const;
+export const MaxWidth = { ...Size, '2xl': '2xl', full: 'full', screen: 'screen' } as const;
 
 useMetadata({ angular: { selector: 'gi-container' } });
 
@@ -31,7 +31,7 @@ export default function Container(props: Props) {
       className={styles({
         inset: props.inset ?? false,
         gutters: props.gutters ?? true,
-        maxWidth: clamp(props.maxWidth, MaxWidth, MaxWidth.full),
+        maxWidth: clamp(props.maxWidth, MaxWidth, MaxWidth.screen),
         class: props.className,
       })}
       id={props.id}
@@ -59,11 +59,12 @@ export const styles = tv({
       xl: 'gi-max-w-xl',
       '2xl': 'gi-max-w-2xl',
       full: 'gi-max-w-full',
+      screen: 'gi-max-w-[100vw]',
     },
   },
   defaultVariants: {
     inset: false,
     gutters: true,
-    maxWidth: MaxWidth.full,
+    maxWidth: MaxWidth.screen,
   },
 });

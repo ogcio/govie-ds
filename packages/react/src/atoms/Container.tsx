@@ -25,7 +25,7 @@ export const MaxWidth = {
   screen: 'screen',
 } as const;
 export const styles = tv({
-  base: 'gi-w-full gi-container gi-mx-auto',
+  base: 'gi-w-full gi-container md:gi-mx-auto',
   variants: {
     inset: {
       true: 'gi-mx-auto gi-py-4 md:gi-py-6 lg:gi-py-8',

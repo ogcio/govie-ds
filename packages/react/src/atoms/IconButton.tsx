@@ -39,7 +39,7 @@ export type Props = {
 };
 
 import { tv } from 'tailwind-variants';
-import { Variant, Appearance, Size } from './utilities';
+import { Variant, Appearance, Size, clamp } from './utilities';
 import { buttonBaseStyles } from './Button';
 export const IconButtonSize = {
   SM: Size.SM,
@@ -75,9 +75,9 @@ const IconButton = forwardRef<Props['ref'], Props>(function IconButton(props: Pr
       ref={ref}
       id={props.id}
       className={iconButtonStyles({
-        variant: getVariant(props.variant),
-        appearance: getAppearance(props.appearance),
-        size: getSize(props.size),
+        variant: clamp(props.variant, Variant, Variant.PRIMARY),
+        appearance: clamp(props.appearance, Appearance, Appearance.DEFAULT),
+        size: clamp(props.size, IconButtonSize, IconButtonSize.MD),
         disabled: !!props.disabled,
         class: props.className,
       })}

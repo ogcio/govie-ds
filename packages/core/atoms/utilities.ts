@@ -31,8 +31,6 @@ export const Appearance = {
   LIGHT: 'light',
 } as const;
 
-export const MaxWidth = { ...Size, '2xl': '2xl', full: 'full' } as const;
-
 export function clamp<T extends Record<string, string>>(
   value: string | undefined,
   options: T,

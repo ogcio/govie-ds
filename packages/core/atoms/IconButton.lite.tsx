@@ -1,6 +1,6 @@
 import { tv } from 'tailwind-variants';
 import { useMetadata } from '@builder.io/mitosis';
-import { Variant, Appearance, Size } from './utilities';
+import { Variant, Appearance, Size, clamp } from './utilities';
 import { buttonBaseStyles } from './Button.lite';
 
 export const IconButtonSize = {
@@ -50,9 +50,9 @@ export default function IconButton(props: Props) {
       ref={props.ref}
       id={props.id}
       class={iconButtonStyles({
-        variant: getVariant(props.variant),
-        appearance: getAppearance(props.appearance),
-        size: getSize(props.size),
+        variant: clamp(props.variant, Variant, Variant.PRIMARY),
+        appearance: clamp(props.appearance, Appearance, Appearance.DEFAULT),
+        size: clamp(props.size, IconButtonSize, IconButtonSize.MD),
         disabled: !!props.disabled,
         class: props.className,
       })}

@@ -38,7 +38,7 @@ export type Props = {
 };
 
 import { tv } from 'tailwind-variants';
-import { Variant, Appearance, Size } from './utilities';
+import { Variant, Appearance, Size, clamp } from './utilities';
 import { buttonBaseStyles } from './Button';
 export const IconButtonSize = {
   SM: Size.SM,
@@ -75,9 +75,9 @@ const getSize = (x: Props['size'] = IconButtonSize.MD) =>
       [attr.id]="id"
       [class]="
         iconButtonStyles({
-          variant: getVariant(variant),
-          appearance: getAppearance(appearance),
-          size: getSize(size),
+          variant: clamp(variant, Variant, Variant.PRIMARY),
+          appearance: clamp(appearance, Appearance, Appearance.DEFAULT),
+          size: clamp(size, IconButtonSize, IconButtonSize.MD),
           disabled: !!disabled,
           class: className,
         })
@@ -116,10 +116,9 @@ const getSize = (x: Props['size'] = IconButtonSize.MD) =>
   imports: [CommonModule],
 })
 export default class IconButton {
+  IconButtonSize = IconButtonSize;
   iconButtonStyles = iconButtonStyles;
-  getVariant = getVariant;
-  getAppearance = getAppearance;
-  getSize = getSize;
+  clamp = clamp;
 
   @Input() id!: Props['id'];
   @Input() variant!: Props['variant'];
