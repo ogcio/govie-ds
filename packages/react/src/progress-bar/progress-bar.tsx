@@ -1,6 +1,6 @@
 import { cn } from '../cn.js';
 import { translate as t } from '../i18n/utility.js';
-
+import { tv } from 'tailwind-variants';
 export type ProgressBarProps = {
   max?: number;
   value?: number;
@@ -19,9 +19,9 @@ export function ProgressBar({
   ...props
 }: ProgressBarProps) {
   const fillPercentage = (value * 100) / max;
-
+  const { container, bar, indeterminate } = styles({ isIndeterminate });
   return (
-    <div className="gi-progress-bar-container">
+    <div className={container()}>
       <div
         role="progressbar"
         aria-valuenow={isIndeterminate ? undefined : value}
@@ -30,14 +30,12 @@ export function ProgressBar({
         aria-label={t('progressBar.progressBar', {
           defaultValue: 'Progress bar',
         })}
-        className={cn('gi-progress-bar', className)}
+        className={cn(bar(), className)}
         data-testid={dataTestid}
         {...props}
       >
         <div
-          className={cn({
-            'gi-progress-bar-indeterminate': isIndeterminate,
-          })}
+          className={indeterminate()}
           style={isIndeterminate ? {} : { width: `${fillPercentage}%` }}
         />
       </div>
@@ -45,3 +43,20 @@ export function ProgressBar({
     </div>
   );
 }
+
+const styles = tv({
+  slots: {
+    container: 'gi-flex gi-items-center gi-flex-col',
+    bar: 'gi-w-full gi-bg-gray-400 gi-overflow-hidden gi-rounded-sm gi-h-1',
+    indeterminate: 'gi-transition-all gi-bg-gray-950 gi-h-1 gi-rounded-sm',
+    label: 'gi-mt-2 gi-text-sm gi-text-gray-950',
+  },
+  variants: {
+    isIndeterminate: {
+      true: {
+        indeterminate:
+          'gi-relative gi-overflow-hidden gi-w-[25%] gi-animate-indeterminate-progress',
+      },
+    },
+  },
+});
