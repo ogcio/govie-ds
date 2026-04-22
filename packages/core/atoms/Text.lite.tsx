@@ -1,6 +1,6 @@
 import { useMetadata } from '@builder.io/mitosis';
 import { tv } from 'tailwind-variants';
-import { clamp, Size, Whitespace } from './utilities';
+import { getSize, getWhitespace, type Size, type Whitespace } from './utilities';
 
 export type Props = {
   children: any;
@@ -19,8 +19,8 @@ export default function Text(props: Props) {
   return (
     <span
       className={textVariants({
-        size: clamp(props.size, Size, Size.MD),
-        whitespace: clamp(props.whitespace, Whitespace, Whitespace.NORMAL),
+        size: getSize(props.size),
+        whitespace: getWhitespace(props.whitespace),
         class: props.className,
       })}
       id={props.id}

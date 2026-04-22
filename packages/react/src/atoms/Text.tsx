@@ -18,7 +18,7 @@ export type Props = {
 };
 
 import { tv } from 'tailwind-variants';
-import { clamp, Size, Whitespace } from './utilities';
+import { getSize, getWhitespace, Size, Whitespace } from './utilities';
 export const textVariants = tv({
   base: 'gi-font-primary gi-not-prose',
   variants: {
@@ -49,8 +49,8 @@ function Text(props: Props) {
       data-testid={props.dataTestId}
       aria-hidden={props.ariaHidden}
       className={textVariants({
-        size: clamp(props.size, Size, Size.MD),
-        whitespace: clamp(props.whitespace, Whitespace, Whitespace.NORMAL),
+        size: getSize(props.size),
+        whitespace: getWhitespace(props.whitespace),
         class: props.className,
       })}
     >

@@ -28,7 +28,7 @@ useMetadata({ angular: { selector: 'gi-container' } });
 export default function Container(props: Props) {
   return (
     <div
-      className={styles({
+      class={styles({
         inset: props.inset ?? false,
         gutters: props.gutters ?? true,
         maxWidth: clamp(props.maxWidth, MaxWidth, MaxWidth.screen),

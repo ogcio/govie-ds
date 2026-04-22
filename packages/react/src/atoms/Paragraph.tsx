@@ -19,7 +19,7 @@ export type Props = {
 };
 
 import { tv } from 'tailwind-variants';
-import { Align, clamp, Size, Whitespace } from './utilities';
+import { getSize, getAlign, getWhitespace, Align, Size, Whitespace } from './utilities';
 import { textVariants } from './Text';
 export const paragraphStyles = tv({
   extend: textVariants,
@@ -42,9 +42,9 @@ function Paragraph(props: Props) {
     <p
       id={props.id}
       className={paragraphStyles({
-        size: clamp(props.size, Size, Size.MD),
-        align: clamp(props.align, Align, Align.START),
-        whitespace: clamp(props.whitespace, Whitespace, Whitespace.NORMAL),
+        size: getSize(props.size),
+        align: getAlign(props.align),
+        whitespace: getWhitespace(props.whitespace),
         class: props.className,
       })}
       style={props.styles}
