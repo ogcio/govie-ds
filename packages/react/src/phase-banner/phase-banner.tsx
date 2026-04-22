@@ -1,7 +1,7 @@
 'use client';
 
 import { useBreakpoint } from '../hooks/use-breakpoint.js';
-import GiContainer from '../atoms/Container.js';
+import Container from '../atoms/Container.js';
 import { Tag } from '../tag/tag.js';
 
 export type PhaseBannerProps = {
@@ -41,16 +41,14 @@ export function PhaseBanner({
   );
 
   if (wrap === 'container') {
-    return (
-      <GiContainer dataTestId="govie-container">{bannerContent}</GiContainer>
-    );
+    return <Container dataTestId="govie-container">{bannerContent}</Container>;
   }
 
   if (wrap === 'container-full-width') {
     return (
-      <GiContainer maxWidth="full" dataTestId="govie-container">
+      <Container maxWidth="full" dataTestId="govie-container">
         {bannerContent}
-      </GiContainer>
+      </Container>
     );
   }
 

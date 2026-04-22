@@ -9,7 +9,7 @@ import {
   LogoHarpWhite as GovieLogoHarp,
 } from '../atoms/icons/logos';
 import { cn } from '../cn.js';
-import GiContainer from '../atoms/Container.js';
+import Container from '../atoms/Container.js';
 import { translate as t } from '../i18n/utility.js';
 import { Icon } from '../icon/icon.js';
 import Anchor from '../primitives/anchor.js';
@@ -212,7 +212,7 @@ export function HeaderLegacy({
       data-testid={dataTestid}
       {...props}
     >
-      <GiContainer id="HeaderContainer" className="gi-order-2">
+      <Container id="HeaderContainer" className="gi-order-2">
         <div className={headerMenuVariants({ appearance })}>
           <div className={headerLogoVariants({ appearance })}>
             {logo?.href && (
@@ -256,15 +256,15 @@ export function HeaderLegacy({
             })}
           </div>
         </div>
-      </GiContainer>
+      </Container>
 
       {secondaryLinks && (
         <div className={headerSecondaryLinksVariants({ appearance })}>
-          <GiContainer className="gi-flex gi-justify-end gi-items-center">
+          <Container className="gi-flex gi-justify-end gi-items-center">
             {secondaryLinks && (
               <SecondaryLinks links={secondaryLinks} appearance={appearance} />
             )}
-          </GiContainer>
+          </Container>
         </div>
       )}
 
