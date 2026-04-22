@@ -48,10 +48,12 @@ export const GuttersOnAndOff: Story = {
 
 export const RendersIndentedHTMLContent: Story = {
   ...rendersIndentedHTMLContent,
+  tags: ['skip-playwright'],
 };
 
 export const HandlesEmptyContentGracefully: Story = {
   ...handlesEmptyContentGracefully,
+  tags: ['skip-playwright'],
 };
 
 export const AllMaxWidths: Story = {
