@@ -1,44 +1,39 @@
-export type Gap =
-  | number
-  | {
-      base?: number;
-      xs?: number;
-      sm?: number;
-      md?: number;
-      lg?: number;
-      xl?: number;
-      '2xl'?: number;
-    };
-type SimpleDirection = 'column' | 'row';
+import type { Props as StackAtomProps } from '../atoms/Stack';
+import type { ResponsiveValue } from '../atoms/utilities';
 
-export type Alignment = 'start' | 'center' | 'end' | 'stretch';
-export type Distribution =
-  | 'start'
-  | 'center'
-  | 'end'
-  | 'between'
-  | 'around'
-  | 'evenly'
-  | 'stretch';
-export type Direction =
-  | SimpleDirection
-  | {
-      base?: SimpleDirection;
-      xs?: SimpleDirection;
-      sm?: SimpleDirection;
-      md?: SimpleDirection;
-      lg?: SimpleDirection;
-      xl?: SimpleDirection;
-      '2xl'?: SimpleDirection;
-    };
+type SimpleDirection = 'row' | 'column';
 
-export type StackProps = {
-  direction?: Direction;
-  itemsAlignment?: Alignment;
-  itemsDistribution?: Distribution;
-  gap?: Gap;
-  hasDivider?: boolean;
-  wrap?: boolean;
+type LegacyResponsiveDirection = ResponsiveValue<SimpleDirection> & {
+  /** @deprecated Use `xs` instead. */
+  base?: SimpleDirection;
+};
+
+type LegacyResponsiveGap = ResponsiveValue<number> & {
+  /** @deprecated Use `xs` instead. */
+  base?: number;
+};
+
+export type StackProps = Omit<StackAtomProps, 'direction' | 'gap'> & {
+  direction?: SimpleDirection | LegacyResponsiveDirection;
+  gap?: number | LegacyResponsiveGap;
+  /** @deprecated Use `align` instead. */
+  itemsAlignment?: 'start' | 'center' | 'end' | 'stretch';
+  /** @deprecated Use `justify` instead. */
+  itemsDistribution?:
+    | 'start'
+    | 'center'
+    | 'end'
+    | 'between'
+    | 'around'
+    | 'evenly';
+  /** @deprecated Use `className` with a height utility instead. */
   fixedHeight?: string;
-  className?: string;
+  /** @deprecated Dividers are not supported in the cross-framework atom. This prop is React-only. */
+  hasDivider?: boolean;
+  /** @deprecated Use `ariaLabel` instead. Maps to `aria-label`. */
+  'aria-label'?: string;
+  /** @deprecated Use `ariaLabelledBy` instead. Maps to `aria-labelledby`. */
+  'aria-labelledby'?: string;
+  /** @deprecated Use `dataTestId` instead. Maps to `data-testid`. */
+  'data-testid'?: string;
 } & React.HTMLAttributes<HTMLDivElement>;

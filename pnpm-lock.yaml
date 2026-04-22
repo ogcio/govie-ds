@@ -469,9 +469,15 @@ importers:
       '@tailwindcss/typography':
         specifier: ^0.5.16
         version: 0.5.19(tailwindcss@3.4.14)
+      '@types/lodash':
+        specifier: ^4.17.24
+        version: 4.17.24
       autoprefixer:
         specifier: ^10.4.23
         version: 10.4.27(postcss@8.5.8)
+      lodash:
+        specifier: ^4.17.23
+        version: 4.17.23
       ng-packagr:
         specifier: ^21.1.0
         version: 21.2.1(@angular/compiler-cli@21.1.6(@angular/compiler@21.1.6)(typescript@5.9.3))(tailwindcss@3.4.14)(tslib@2.8.1)(typescript@5.9.3)

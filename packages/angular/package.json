@@ -26,6 +26,8 @@
   },
   "devDependencies": {
     "@angular-devkit/build-angular": "~21.1.0",
+    "@types/lodash": "^4.17.24",
+    "lodash": "^4.17.23",
     "@angular/cli": "~21.1.0",
     "@angular/common": "^21.1.0",
     "@angular/compiler": "^21.1.0",
