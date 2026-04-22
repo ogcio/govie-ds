@@ -20,7 +20,7 @@ export type Props = {
 };
 
 import { tv } from 'tailwind-variants';
-import { getSize, getWhitespace, Size, Whitespace } from './utilities';
+import { clamp, Size, Whitespace } from './utilities';
 export const textVariants = tv({
   base: 'gi-font-primary gi-not-prose',
   variants: {
@@ -53,8 +53,8 @@ export const textVariants = tv({
       [attr.aria-hidden]="ariaHidden"
       [class]="
         textVariants({
-          size: getSize(size),
-          whitespace: getWhitespace(whitespace),
+          size: clamp(size, Size, Size.MD),
+          whitespace: clamp(whitespace, Whitespace, Whitespace.NORMAL),
           class: className,
         })
       "
@@ -73,8 +73,7 @@ export const textVariants = tv({
 })
 export default class Text {
   textVariants = textVariants;
-  getSize = getSize;
-  getWhitespace = getWhitespace;
+  clamp = clamp;
 
   @Input() id!: Props['id'];
   @Input() styles!: Props['styles'];

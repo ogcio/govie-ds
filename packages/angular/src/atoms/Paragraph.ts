@@ -21,7 +21,7 @@ export type Props = {
 };
 
 import { tv } from 'tailwind-variants';
-import { getSize, getAlign, getWhitespace, Align, Size, Whitespace } from './utilities';
+import { Align, clamp, Size, Whitespace } from './utilities';
 import { textVariants } from './Text';
 export const paragraphStyles = tv({
   extend: textVariants,
@@ -46,9 +46,9 @@ export const paragraphStyles = tv({
       [attr.id]="id"
       [class]="
         paragraphStyles({
-          size: getSize(size),
-          align: getAlign(align),
-          whitespace: getWhitespace(whitespace),
+          size: clamp(size, Size, Size.MD),
+          align: clamp(align, Align, Align.START),
+          whitespace: clamp(whitespace, Whitespace, Whitespace.NORMAL),
           class: className,
         })
       "
@@ -71,9 +71,7 @@ export const paragraphStyles = tv({
 })
 export default class Paragraph {
   paragraphStyles = paragraphStyles;
-  getSize = getSize;
-  getAlign = getAlign;
-  getWhitespace = getWhitespace;
+  clamp = clamp;
 
   @Input() id!: Props['id'];
   @Input() size!: Props['size'];

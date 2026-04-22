@@ -22,9 +22,10 @@ export const MaxWidth = {
   ...Size,
   '2xl': '2xl',
   full: 'full',
+  screen: 'screen',
 } as const;
 export const styles = tv({
-  base: 'gi-w-full gi-container md:gi-mx-auto',
+  base: 'gi-w-full gi-container gi-mx-auto',
   variants: {
     inset: {
       true: 'gi-mx-auto gi-py-4 md:gi-py-6 lg:gi-py-8',
@@ -40,12 +41,13 @@ export const styles = tv({
       xl: 'gi-max-w-xl',
       '2xl': 'gi-max-w-2xl',
       full: 'gi-max-w-full',
+      screen: 'gi-max-w-[100vw]',
     },
   },
   defaultVariants: {
     inset: false,
     gutters: true,
-    maxWidth: MaxWidth.full,
+    maxWidth: MaxWidth.screen,
   },
 });
 
@@ -57,7 +59,7 @@ function Container(props: Props) {
       className={styles({
         inset: props.inset ?? false,
         gutters: props.gutters ?? true,
-        maxWidth: clamp(props.maxWidth, MaxWidth, MaxWidth.full),
+        maxWidth: clamp(props.maxWidth, MaxWidth, MaxWidth.screen),
         class: props.className,
       })}
     >
