@@ -133,7 +133,7 @@ export const AllMaxWidths = {
       const widths = Object.values(MaxWidth);
       expect(elements).toHaveLength(widths.length);
       for (const maxWidth of widths) {
-        const token = `gi-max-w-${maxWidth}`;
+        const token = maxWidth === 'screen' ? 'gi-max-w-[100vw]' : `gi-max-w-${maxWidth}`;
         const element = elements.find((node) => node.className.includes(token));
         expect(element).toBeDefined();
       }

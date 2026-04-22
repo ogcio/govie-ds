@@ -49,7 +49,7 @@ export const styles = tv({
       xl: 'gi-max-w-xl',
       '2xl': 'gi-max-w-2xl',
       full: 'gi-max-w-full',
-      screen: 'gi-max-w-screen',
+      screen: 'gi-max-w-[100vw]',
     },
   },
   defaultVariants: {
