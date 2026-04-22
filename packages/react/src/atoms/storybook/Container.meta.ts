@@ -2,6 +2,7 @@ import type { StoryContext, Renderer } from 'storybook/internal/types';
 import { createElement } from 'react';
 import { within, expect } from 'storybook/test';
 import { MaxWidth } from '../Container';
+import { enumType } from './utilities';
 export const containerMeta = {
   tags: ['autodocs'] as string[],
   title: 'Layout/Container',
@@ -19,22 +20,39 @@ export const containerMeta = {
     },
     inset: {
       control: 'boolean',
-      description: 'When `true`, applies default vertical inset padding (responsive `py` scale). Default is `false`.'
+      description: 'When `true`, applies default vertical inset padding (responsive `py` scale). Default is `false`.',
+      table: {
+        type: {
+          summary: 'boolean'
+        }
+      }
     },
     gutters: {
       control: 'boolean',
-      description: 'When `true`, applies horizontal gutter padding (responsive `px` scale). Default is `true`.'
+      description: 'When `true`, applies horizontal gutter padding (responsive `px` scale). Default is `true`.',
+      table: {
+        type: {
+          summary: 'boolean'
+        }
+      }
     },
-    maxWidth: {
-      control: {
-        type: 'select'
-      },
-      options: Object.values(MaxWidth),
-      description: 'Caps the container max width: `sm`, `md`, `lg`, `xl`, `2xl`, or `full`. Default is `full`.'
-    },
+    maxWidth: enumType(MaxWidth, {
+      description: 'Caps the container max width: `sm`, `md`, `lg`, `xl`, `2xl`, or `full`. Default is `screen`.',
+      defaultValue: MaxWidth.screen,
+      table: {
+        type: {
+          summary: 'string'
+        }
+      }
+    }),
     dataTestId: {
       control: 'text',
-      description: 'Value for the `data-testid` attribute (optional).'
+      description: 'Value for the `data-testid` attribute (optional).',
+      table: {
+        type: {
+          summary: 'string'
+        }
+      }
     }
   } as const,
   parameters: {

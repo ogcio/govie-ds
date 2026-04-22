@@ -1,6 +1,7 @@
-import type { MaxWidth } from '../atoms/Container.js';
 import { cn } from '../cn.js';
-import GiContainer from '../atoms/Container.js';
+import GiContainer, {
+  type Props as GiContainerProps,
+} from '../atoms/Container.js';
 
 export const ContainerInsetSizeEnum = {
   None: 'none',
@@ -12,21 +13,15 @@ export const ContainerInsetSizeEnum = {
 export type ContainerInsetSizeType =
   (typeof ContainerInsetSizeEnum)[keyof typeof ContainerInsetSizeEnum];
 
-type ContainerProps = React.PropsWithChildren<{
-  id?: string;
-  /** @deprecated Use the `inset` prop on the layout container instead. */
-  insetTop?: ContainerInsetSizeType;
-  /** @deprecated Use the `inset` prop on the layout container instead. */
-  insetBottom?: ContainerInsetSizeType;
-  className?: string;
-  /** @deprecated Use `maxWidth` (for example `'full'`) instead. */
-  fullWidth?: boolean;
-  // Props for the new container
-  inset?: boolean;
-  gutters?: boolean;
-  maxWidth?: (typeof MaxWidth)[keyof typeof MaxWidth];
-  dataTestId?: string;
-}>;
+type ContainerProps = Omit<GiContainerProps, 'children'> &
+  React.PropsWithChildren<{
+    /** @deprecated Use the `inset` prop on the layout container instead. */
+    insetTop?: ContainerInsetSizeType;
+    /** @deprecated Use the `inset` prop on the layout container instead. */
+    insetBottom?: ContainerInsetSizeType;
+    /** @deprecated Use `maxWidth` (for example `'full'`) instead. */
+    fullWidth?: boolean;
+  }>;
 
 export function Container({
   children,

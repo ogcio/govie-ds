@@ -1,5 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/react-vite';
 import Container, { MaxWidth } from '../atoms/Container';
+import { map } from 'lodash';
 import {
   containerMeta,
   Default as defaultStory,
@@ -57,7 +58,7 @@ export const AllMaxWidths: Story = {
   ...allMaxWidths,
   render: () => (
     <div className="gi-flex gi-flex-col gi-gap-8">
-      {Object.values(MaxWidth).map((maxWidth) => (
+      {map(MaxWidth, (maxWidth) => (
         <div key={maxWidth} className="gi-flex gi-flex-col gi-gap-2">
           <span className="gi-font-bold gi-font-primary">{maxWidth}</span>
           <Container
