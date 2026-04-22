@@ -1,11 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/react-vite';
 import Container, { MaxWidth } from '../atoms/Container';
-import type {
-  Container as LegacyContainer} from '../container/container.js';
-import {
-  ContainerInsetSizeEnum,
-} from '../container/container.js';
-import { Paragraph } from '../paragraph/paragraph.js';
+import type { Container as LegacyContainer } from '../container/container.js';
 import { map } from 'lodash';
 import {
   containerMeta,
