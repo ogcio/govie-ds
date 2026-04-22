@@ -72,6 +72,20 @@ Commands:
   make react-visual-update
   ```
 
+#### Running a subset of tests
+
+To run or update only a subset of stories, append Playwright's `-g` flag (grep on test title) to the command inside the `react-visual-tests` / `react-visual-update` Makefile targets. The flag accepts a regex, so you can match multiple components at once:
+
+```bash
+# Run only Autocomplete stories
+... test -g "Autocomplete"
+
+# Update snapshots for Autocomplete and Select
+... test --update-snapshots -g "Autocomplete|Select"
+```
+
+This speeds up iteration when debugging a specific flaky component without re-running the full suite.
+
 Reference: [Makefile](../Makefile)
 
 ## 4. CI/CD Integration
@@ -91,5 +105,5 @@ Regression testing is fully integrated into Azure DevOps Pipelines to ensure con
 
 Components or specific states that are unsuitable for visual testing (e.g. those containing persistent animations, loaders, or spinners) should be excluded:
 
-- **Playwright**: Apply the `skip-playwright` tag to the story parameters.
-- **Automatic Filters**: The [visual.spec.ts](../packages/react/tests/visual.spec.ts) script automatically bypasses stories with IDs containing "loading" or "spinner".
+- **Playwright**: Apply the `skip-playwright` tag to the story.
+- **Slow stories**: For stories with `play` functions that need extra settle time before the screenshot, apply the `slow` tag — the test adds an additional wait of 3 seconds before capturing.

@@ -1,100 +1,124 @@
 ---
 title: 'Icon Button'
-description: 'Icon Button HTML Component React Component'
+description: 'Icon Button React Component'
 status: 'stable'
 component:
   id: 'icon-button-react'
-  link: '/story/form-iconbutton--default'
+  link: '/story/components-iconbutton--default'
   status: 'stable'
   properties:
     - name: 'IconButtonProps'
       fields:
+        - name: 'children'
+          ofType: 'node'
+          description: 'Icon content rendered inside the button. Pass an icon component as a child.'
+          required: true
         - name: 'icon'
           ofType: 'object'
-          description: 'Specifies the Icon component that the button will accept. The value should be an object with an icon property.'
-          required: true
+          description: '@deprecated — Use children instead. Previously accepted an object with an icon property to specify the icon by name.'
+          required: false
         - name: 'variant'
           ofType: 'string'
-          description: 'Defines the variant style of the button. Options: primary, secondary, flat.'
+          description: 'Visual style variant of the button. Options: primary, secondary, flat.'
           required: false
         - name: 'appearance'
           ofType: 'string'
-          description: 'Specifies the visual appearance style of the button. Options: default, dark, light.'
+          description: 'Colour appearance of the button. Options: default, dark, light.'
           required: false
         - name: 'size'
           ofType: 'string'
-          description: 'Defines the size of the button. Options: medium, small, large.'
+          description: 'Size of the button. Options: small, medium, large, extraLarge.'
           required: false
         - name: 'disabled'
           ofType: 'boolean'
-          description: 'Specifies whether the button is disabled.'
+          description: 'Disables the button and prevents user interaction.'
+          required: false
+        - name: 'ariaLabel'
+          ofType: 'string'
+          description: 'Accessible name for the button. Recommended for icon-only buttons.'
+          required: false
+        - name: 'ariaLabelledBy'
+          ofType: 'string'
+          description: 'ID of the element that labels this button.'
+          required: false
+        - name: 'ariaDescribedBy'
+          ofType: 'string'
+          description: 'ID of the element that describes this button.'
+          required: false
+        - name: 'ariaExpanded'
+          ofType: 'boolean'
+          description: 'Indicates whether a controlled element is expanded.'
+          required: false
+        - name: 'ariaPressed'
+          ofType: 'boolean'
+          description: 'Indicates the current pressed state of a toggle button.'
+          required: false
+        - name: 'ariaHasPopup'
+          ofType: 'string'
+          description: 'Indicates the type of popup triggered by the button. Options: menu, listbox, dialog, grid, tree.'
+          required: false
+        - name: 'ariaControls'
+          ofType: 'string'
+          description: 'ID of the element controlled by this button.'
+          required: false
+        - name: 'ariaHidden'
+          ofType: 'boolean'
+          description: 'Hides the element from assistive technologies.'
+          required: false
+        - name: 'type'
+          ofType: 'string'
+          description: 'HTML button type attribute. Options: button, submit, reset. Defaults to button.'
+          required: false
+        - name: 'tabIndex'
+          ofType: 'number'
+          description: 'Tab index for the button element.'
           required: false
         - name: 'onClick'
           ofType: 'function'
-          description: 'A callback function that is triggered when the button is clicked.'
+          description: 'A callback triggered when the button is clicked.'
+          required: false
+        - name: 'onFocus'
+          ofType: 'function'
+          description: 'A callback triggered when the button receives focus.'
+          required: false
+        - name: 'onBlur'
+          ofType: 'function'
+          description: 'A callback triggered when the button loses focus.'
+          required: false
+        - name: 'onKeyDown'
+          ofType: 'function'
+          description: 'A callback triggered on a key press down.'
+          required: false
+        - name: 'onKeyUp'
+          ofType: 'function'
+          description: 'A callback triggered on a key press release.'
+          required: false
+        - name: 'className'
+          ofType: 'string'
+          description: 'Additional CSS classes applied to the button element.'
+          required: false
+        - name: 'id'
+          ofType: 'string'
+          description: 'HTML id attribute for the button element.'
+          required: false
+        - name: 'dataTestId'
+          ofType: 'string'
+          description: 'Test id for targeting the element in automated tests.'
           required: false
   stories:
     - name: 'default'
-      url: '/story/form-iconbutton--default'
-    - name: 'small'
-      url: '/story/form-iconbutton--small'
-    - name: 'large'
-      url: '/story/form-iconbutton--large'
-    - name: 'disabled'
-      url: '/story/form-iconbutton--disabled'
-    - name: 'primary-default'
-      url: '/story/form-iconbutton--primary-default'
-    - name: 'primary-hover'
-      url: '/story/form-iconbutton--primary-hover'
-    - name: 'primary-focus'
-      url: '/story/form-iconbutton--primary-focus'
-    - name: 'primary-disabled'
-      url: '/story/form-iconbutton--primary-disabled'
-    - name: 'secondary-default'
-      url: '/story/form-iconbutton--secondary-default'
-    - name: 'secondary-hover'
-      url: '/story/form-iconbutton--secondary-hover'
-    - name: 'secondary-focus'
-      url: '/story/form-iconbutton--secondary-focus'
-    - name: 'secondary-disabled'
-      url: '/story/form-iconbutton--secondary-disabled'
-    - name: 'flat-default'
-      url: '/story/form-iconbutton--flat-default'
-    - name: 'flat-hover'
-      url: '/story/form-iconbutton--flat-hover'
-    - name: 'flat-focus'
-      url: '/story/form-iconbutton--flat-focus'
-    - name: 'flat-disabled'
-      url: '/story/form-iconbutton--flat-disabled'
-    - name: 'primary-light'
-      url: '/story/form-iconbutton--primary-light'
-    - name: 'primary-light-hover'
-      url: '/story/form-iconbutton--primary-light-hover'
-    - name: 'primary-light-focus'
-      url: '/story/form-iconbutton--primary-light-focus'
-    - name: 'primary-light-disabled'
-      url: '/story/form-iconbutton--primary-light-disabled'
-    - name: 'secondary-light'
-      url: '/story/form-iconbutton--secondary-light'
-    - name: 'secondary-light-hover'
-      url: '/story/form-iconbutton--secondary-light-hover'
-    - name: 'secondary-light-focus'
-      url: '/story/form-iconbutton--secondary-light-focus'
-    - name: 'secondary-light-disabled'
-      url: '/story/form-iconbutton--secondary-light-disabled'
-    - name: 'flat-light'
-      url: '/story/form-iconbutton--flat-light'
-    - name: 'flat-light-hover'
-      url: '/story/form-iconbutton--flat-light-hover'
-    - name: 'flat-light-focus'
-      url: '/story/form-iconbutton--flat-light-focus'
-    - name: 'flat-light-disabled'
-      url: '/story/form-iconbutton--flat-light-disabled'
+      url: '/story/components-iconbutton--default'
+    - name: 'all-variants'
+      url: '/story/components-iconbutton--all-variants'
+    - name: 'all-appearances'
+      url: '/story/components-iconbutton--all-appearances'
+    - name: 'all-sizes'
+      url: '/story/components-iconbutton--all-sizes'
 ---
 
 # Icon Button
 
-An Icon Button is a button that uses an icon instead of text to represent an action, like a thumbs-up for 'like' or a trash can for 'delete.' It’s commonly used in places where space is limited, such as toolbars or mobile interfaces.
+An Icon Button is a button that uses an icon instead of text to represent an action, like a thumbs-up for 'like' or a trash can for 'delete.' It's commonly used in places where space is limited, such as toolbars or mobile interfaces.
 
 <Section current="react">
 <ComponentPreview>
@@ -110,178 +134,22 @@ An Icon Button is a button that uses an icon instead of text to represent an act
   <StorybookFrame componentId="icon-button-react" story="default" />
 </ComponentPreview>
 
-### Small
+### All Variants
 
 <ComponentPreview>
-  <StorybookFrame componentId="icon-button-react" story="small" />
+  <StorybookFrame componentId="icon-button-react" story="all-variants" />
 </ComponentPreview>
 
-### Large
+### All Appearances
 
 <ComponentPreview>
-  <StorybookFrame componentId="icon-button-react" story="large" />
+  <StorybookFrame componentId="icon-button-react" story="all-appearances" />
 </ComponentPreview>
 
-### Disabled
+### All Sizes
 
 <ComponentPreview>
-  <StorybookFrame componentId="icon-button-react" story="disabled" />
-</ComponentPreview>
-
-### Primary Default
-
-<ComponentPreview>
-  <StorybookFrame componentId="icon-button-react" story="primary-default" />
-</ComponentPreview>
-
-### Primary Hover
-
-<ComponentPreview>
-  <StorybookFrame componentId="icon-button-react" story="primary-hover" />
-</ComponentPreview>
-
-### Primary Focus
-
-<ComponentPreview>
-  <StorybookFrame componentId="icon-button-react" story="primary-focus" />
-</ComponentPreview>
-
-### Primary Disabled
-
-<ComponentPreview>
-  <StorybookFrame componentId="icon-button-react" story="primary-disabled" />
-</ComponentPreview>
-
-### Secondary Default
-
-<ComponentPreview>
-  <StorybookFrame componentId="icon-button-react" story="secondary-default" />
-</ComponentPreview>
-
-### Secondary Hover
-
-<ComponentPreview>
-  <StorybookFrame componentId="icon-button-react" story="secondary-hover" />
-</ComponentPreview>
-
-### Secondary Focus
-
-<ComponentPreview>
-  <StorybookFrame componentId="icon-button-react" story="secondary-focus" />
-</ComponentPreview>
-
-### Secondary Disabled
-
-<ComponentPreview>
-  <StorybookFrame componentId="icon-button-react" story="secondary-disabled" />
-</ComponentPreview>
-
-### Flat Default
-
-<ComponentPreview>
-  <StorybookFrame componentId="icon-button-react" story="flat-default" />
-</ComponentPreview>
-
-### Flat Hover
-
-<ComponentPreview>
-  <StorybookFrame componentId="icon-button-react" story="flat-hover" />
-</ComponentPreview>
-
-### Flat Focus
-
-<ComponentPreview>
-  <StorybookFrame componentId="icon-button-react" story="flat-focus" />
-</ComponentPreview>
-
-### Flat Disabled
-
-<ComponentPreview>
-  <StorybookFrame componentId="icon-button-react" story="flat-disabled" />
-</ComponentPreview>
-
-### Primary Light
-
-<ComponentPreview>
-  <StorybookFrame componentId="icon-button-react" story="primary-light" />
-</ComponentPreview>
-
-### Primary Light Hover
-
-<ComponentPreview>
-  <StorybookFrame componentId="icon-button-react" story="primary-light-hover" />
-</ComponentPreview>
-
-### Primary Light Focus
-
-<ComponentPreview>
-  <StorybookFrame componentId="icon-button-react" story="primary-light-focus" />
-</ComponentPreview>
-
-### Primary Light Disabled
-
-<ComponentPreview>
-  <StorybookFrame
-    componentId="icon-button-react"
-    story="primary-light-disabled"
-  />
-</ComponentPreview>
-
-### Secondary Light
-
-<ComponentPreview>
-  <StorybookFrame componentId="icon-button-react" story="secondary-light" />
-</ComponentPreview>
-
-### Secondary Light Hover
-
-<ComponentPreview>
-  <StorybookFrame
-    componentId="icon-button-react"
-    story="secondary-light-hover"
-  />
-</ComponentPreview>
-
-### Secondary Light Focus
-
-<ComponentPreview>
-  <StorybookFrame
-    componentId="icon-button-react"
-    story="secondary-light-focus"
-  />
-</ComponentPreview>
-
-### Secondary Light Disabled
-
-<ComponentPreview>
-  <StorybookFrame
-    componentId="icon-button-react"
-    story="secondary-light-disabled"
-  />
-</ComponentPreview>
-
-### Flat Light
-
-<ComponentPreview>
-  <StorybookFrame componentId="icon-button-react" story="flat-light" />
-</ComponentPreview>
-
-### Flat Light Hover
-
-<ComponentPreview>
-  <StorybookFrame componentId="icon-button-react" story="flat-light-hover" />
-</ComponentPreview>
-
-### Flat Light Focus
-
-<ComponentPreview>
-  <StorybookFrame componentId="icon-button-react" story="flat-light-focus" />
-</ComponentPreview>
-
-### Flat Light Disabled
-
-<ComponentPreview>
-  <StorybookFrame componentId="icon-button-react" story="flat-light-disabled" />
+  <StorybookFrame componentId="icon-button-react" story="all-sizes" />
 </ComponentPreview>
 
 ## Properties

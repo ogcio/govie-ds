@@ -9,33 +9,119 @@ component:
   properties:
     - name: ButtonProps
       fields:
-        - name: 'children'
-          ofType: 'node'
-          description: 'The content inside the button. Can be a string or any valid React node.'
+        - name: 'id'
+          ofType: 'string'
+          description: 'Optional id for linking/targeting and aria references.'
+          required: false
+        - name: 'className'
+          ofType: 'string'
+          description: 'Additional CSS classes to apply to the button element.'
           required: false
         - name: 'variant'
-          ofType: 'string'
-          description: 'Defines the visual style of the button. Options include: primary, secondary, flat.'
+          ofType: '"primary" | "secondary" | "flat"'
+          description: 'Visual style variant of the button.'
           required: false
         - name: 'appearance'
-          ofType: 'string'
-          description: 'Adjusts the overall tone or theme of the button. Options are: default, dark, light.'
+          ofType: '"default" | "dark" | "light"'
+          description: 'Colour appearance of the button.'
           required: false
         - name: 'size'
-          ofType: 'string'
-          description: 'Specifies the size of the button. Options include: small, medium, large.'
+          ofType: '"sm" | "md" | "lg" | "small" | "medium" | "large"'
+          description: 'Size of the button. @deprecated — "small" | "medium" | "large" deprecated; use "sm" | "md" | "lg" instead.'
           required: false
         - name: 'disabled'
           ofType: 'boolean'
-          description: 'A boolean that, when true, disables the button and prevents interaction.'
+          description: 'Disables the button and prevents user interaction.'
+          required: false
+        - name: 'role'
+          ofType: 'string'
+          description: 'Overrides the implicit ARIA role of the element. Only set when a non-button semantic is required.'
+          required: false
+        - name: 'type'
+          ofType: '"button" | "submit" | "reset"'
+          description: 'HTML button type attribute. Defaults to "button" to prevent accidental form submission.'
+          required: false
+        - name: 'form'
+          ofType: 'string'
+          description: 'Associates the button with a form element by its id. Maps to the HTML form attribute.'
+          required: false
+        - name: 'value'
+          ofType: 'string'
+          description: 'Value submitted with the form when the button is of type "submit". Maps to the HTML value attribute.'
+          required: false
+        - name: 'tabIndex'
+          ofType: 'number'
+          description: 'Controls the tab order of the button. Use -1 to remove the button from the natural tab order.'
+          required: false
+        - name: 'onClick'
+          ofType: '(event: any) => void'
+          description: 'Click event handler.'
+          required: false
+        - name: 'onFocus'
+          ofType: '(event: any) => void'
+          description: 'Focus event handler.'
+          required: false
+        - name: 'onBlur'
+          ofType: '(event: any) => void'
+          description: 'Blur event handler.'
+          required: false
+        - name: 'onKeyDown'
+          ofType: '(event: any) => void'
+          description: 'Key down event handler.'
+          required: false
+        - name: 'onKeyUp'
+          ofType: '(event: any) => void'
+          description: 'Key up event handler.'
+          required: false
+        - name: 'ariaLabel'
+          ofType: 'string'
+          description: 'Accessible label for the button. Use when the button has no visible text or when the visible text is insufficient to describe the action. Maps to aria-label.'
+          required: false
+        - name: 'ariaLabelledBy'
+          ofType: 'string'
+          description: 'Points to element id(s) whose content labels the button. Maps to aria-labelledby.'
+          required: false
+        - name: 'ariaDescribedBy'
+          ofType: 'string'
+          description: 'Points to element id(s) whose content describes the button. Maps to aria-describedby.'
+          required: false
+        - name: 'ariaChecked'
+          ofType: 'boolean'
+          description: 'Indicates the current checked state of the button when used in a toggle or checkbox role. Maps to aria-checked.'
+          required: false
+        - name: 'ariaPressed'
+          ofType: 'boolean | "mixed"'
+          description: 'Indicates whether the button is currently pressed. Use for toggle buttons. Accepts true, false, or "mixed". Maps to aria-pressed.'
+          required: false
+        - name: 'ariaExpanded'
+          ofType: 'boolean'
+          description: 'Indicates whether a controlled element (e.g. a menu or disclosure) is expanded or collapsed. Maps to aria-expanded.'
+          required: false
+        - name: 'ariaControls'
+          ofType: 'string'
+          description: 'Points to the id of the element the button controls (e.g. a panel, menu, or dialog). Maps to aria-controls.'
+          required: false
+        - name: 'ariaHasPopup'
+          ofType: 'boolean | "menu" | "listbox" | "dialog" | "grid" | "tree"'
+          description: 'Indicates that the button can open a popup element such as a menu, listbox, or dialog. Maps to aria-haspopup.'
+          required: false
+        - name: 'ariaBusy'
+          ofType: 'boolean'
+          description: 'Indicates that the button or its associated region is being updated. Maps to aria-busy.'
+          required: false
+        - name: 'dataTestId'
+          ofType: 'string'
+          description: 'Test id for targeting the element in automated tests.'
           required: false
   stories:
-    - name: 'primary'
-      url: '/story/components-button--primary'
-    - name: 'secondary'
-      url: '/story/components-button--secondary'
-    - name: 'flat'
-      url: '/story/components-button--flat'
+    - name: 'default'
+      url: '/story/components-button--default'
+    - name: 'all-variants'
+      url: '/story/components-button--all-variants'
+    - name: 'all-appearances'
+      url: '/story/components-button--all-appearances'
+    - name: 'all-sizes'
+      url: '/story/components-button--all-sizes'
 ---
 
 # Button
@@ -51,21 +137,23 @@ This versatile component comes in multiple variants, sizes, and styles to accomm
 
 ## Examples
 
-### Primary
+### Default
 
-<StorybookFrame componentId="button-react" story="primary" />
+<StorybookFrame componentId="button-react" story="default" />
 
-### Secondary
+### All Variants
 
-<StorybookFrame componentId="button-react" story="secondary" />
+<StorybookFrame componentId="button-react" story="all-variants" />
 
-### Flat
+### All Appearances
 
-<StorybookFrame componentId="button-react" story="flat" />
+<StorybookFrame componentId="button-react" story="all-appearances" />
+
+### All Sizes
+
+<StorybookFrame componentId="button-react" story="all-sizes" />
 
 ## Properties
-
-This component will extend the default HTML button element and it will add the following properties:
 
 <ComponentPropertiesTable componentId="button-react" />
 

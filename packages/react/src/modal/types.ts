@@ -1,7 +1,8 @@
-import { ComponentPropsWithoutRef, ReactElement } from 'react';
-import { Props as ButtonProps } from '../atoms/Button';
-import { IconButtonProps } from '../icon-button/icon-button.js';
-import { ModalBody, ModalFooter, ModalTitle } from './modal.js';
+import type { ComponentPropsWithoutRef, ReactElement } from 'react';
+import type { Props as GiButtonProps } from '../atoms/Button';
+import type { ButtonProps, ButtonSize } from '../button/types.js';
+import type { IconButtonProps } from '../icon-button/icon-button.js';
+import type { ModalBody, ModalFooter, ModalTitle } from './modal.js';
 
 export type ModalPositions = 'center' | 'left' | 'right' | 'bottom';
 export type ModalFooterOrientation = 'vertical' | 'horizontal';
@@ -17,7 +18,7 @@ type ModalWrapperOwnProps = {
   isOpen: boolean;
   onClose: () => void;
   position?: ModalPositions;
-  closeButtonSize?: ButtonProps['size'];
+  closeButtonSize?: ButtonSize;
 };
 
 export type ModalWrapperProps = ModalWrapperOwnProps &
@@ -39,7 +40,7 @@ export type ModalProps = React.AriaAttributes & {
 
 export type ModalCloseButtonProps = {
   label?: string;
-  size?: ButtonProps['size'];
+  size?: ButtonSize;
 } & Omit<
   IconButtonProps,
   'className' | 'icon' | 'variant' | 'appearance' | 'size'
@@ -47,8 +48,8 @@ export type ModalCloseButtonProps = {
 
 export type ModalFooterButton = {
   label: string;
-  variant: ButtonProps['variant'];
-} & ButtonProps;
+  variant: GiButtonProps['variant'];
+} & Omit<GiButtonProps, 'size'> & { size?: ButtonSize };
 
 export type ModalFooterProps = {
   className?: string;

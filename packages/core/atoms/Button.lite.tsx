@@ -1,29 +1,18 @@
 import { tv } from 'tailwind-variants';
 import { useMetadata } from '@builder.io/mitosis';
+import { Variant, Appearance, Size } from './utilities';
 
-export const Variant = {
-  PRIMARY: 'primary',
-  SECONDARY: 'secondary',
-  FLAT: 'flat',
-} as const;
-
-export const Appearance = {
-  DEFAULT: 'default',
-  DARK: 'dark',
-  LIGHT: 'light',
-} as const;
-
-export const Size = {
-  SMALL: 'small',
-  MEDIUM: 'medium',
-  LARGE: 'large',
+export const ButtonSize = {
+  SM: Size.SM,
+  MD: Size.MD,
+  LG: Size.LG,
 } as const;
 
 export type Props = {
   id?: string;
   variant?: (typeof Variant)[keyof typeof Variant];
   appearance?: (typeof Appearance)[keyof typeof Appearance];
-  size?: (typeof Size)[keyof typeof Size];
+  size?: (typeof ButtonSize)[keyof typeof ButtonSize];
   children?: any;
   disabled?: boolean;
   className?: string;
@@ -67,6 +56,7 @@ export default function Button(props: Props) {
         disabled: !!props.disabled,
         class: props.className,
       })}
+      data-size={getSize(props.size)}
       disabled={props.disabled || undefined}
       onClick={(event) => props.onClick && props.onClick(event)}
       onFocus={(event) => props.onFocus && props.onFocus(event)}
@@ -94,34 +84,31 @@ export default function Button(props: Props) {
   );
 }
 
-export const styles = tv({
+export const buttonBaseStyles = tv({
   base: [
     'gi-font-primary',
     'gi-border-solid',
     'gi-border-sm',
-    'gi-gap-2',
     'gi-flex',
     'gi-rounded-sm',
     'gi-items-center',
-    //disabled
     'disabled:gi-cursor-not-allowed',
     'disabled:gi-pointer-events-none',
-    // focus
-    'focus:gi-outline',
-    'focus:gi-outline-sm',
-    'focus:gi-outline-color-shadow-intent-focus-default',
-    'focus:gi-outline-offset-0',
-    'focus:gi-border-solid',
-    'focus:gi-border-color-border-intent-focus-default',
-    'focus:gi-border-sm',
-    'focus:gi-rounded-sm',
+    'enabled:focus:gi-outline',
+    'enabled:focus:gi-outline-sm',
+    'enabled:focus:gi-outline-color-shadow-intent-focus-default',
+    'enabled:focus:gi-outline-offset-0',
+    'enabled:focus:gi-border-solid',
+    'enabled:focus:gi-border-color-border-intent-focus-default',
+    'enabled:focus:gi-border-sm',
+    'enabled:focus:gi-rounded-sm',
   ],
   variants: {
     variant: {
       primary: [
         'gi-border-transparent',
-        'focus:gi-shadow-color-border-intent-focus-light',
-        'focus:gi-shadow-[inset_0_0_0_2px]',
+        'enabled:focus:gi-shadow-color-border-intent-focus-light',
+        'enabled:focus:gi-shadow-[inset_0_0_0_2px]',
       ],
       secondary: [],
       flat: ['gi-border-base-transparent'],
@@ -131,11 +118,6 @@ export const styles = tv({
       light: '',
       dark: '',
     },
-    size: {
-      small: 'gi-h-8 gi-px-2 gi-py-1.5 gi-text-xs',
-      medium: 'gi-h-10 gi-px-3 gi-py-2 gi-text-sm',
-      large: 'gi-h-12 gi-px-4 gi-py-3 gi-text-2md',
-    },
     disabled: {
       true: '',
       false: '',
@@ -143,44 +125,44 @@ export const styles = tv({
   },
   compoundVariants: [
     {
-      variant: 'primary',
-      appearance: 'default',
+      variant: Variant.PRIMARY,
+      appearance: Appearance.DEFAULT,
       disabled: false,
       class: [
         'gi-text-color-text-tone-primary-fill-default',
         'gi-bg-color-surface-tone-primary-fill-default',
         'gi-stroke-color-text-tone-primary-fill-default',
         'hover:gi-bg-color-surface-tone-primary-fill-hover',
-        'focus:gi-bg-color-surface-tone-primary-fill-hover',
+        'enabled:focus:gi-bg-color-surface-tone-primary-fill-hover',
       ],
     },
     {
-      variant: 'primary',
-      appearance: 'light',
+      variant: Variant.PRIMARY,
+      appearance: Appearance.LIGHT,
       disabled: false,
       class: [
         'gi-text-color-text-tone-light-fill-default',
         'gi-stroke-color-text-tone-light-fill-default',
         'gi-bg-color-surface-tone-light-fill-default',
         'hover:gi-bg-color-surface-tone-light-fill-hover',
-        'focus:gi-bg-color-surface-tone-light-fill-hover',
+        'enabled:focus:gi-bg-color-surface-tone-light-fill-hover',
       ],
     },
     {
-      variant: 'primary',
-      appearance: 'dark',
+      variant: Variant.PRIMARY,
+      appearance: Appearance.DARK,
       disabled: false,
       class: [
         'gi-text-color-text-tone-dark-fill-default',
         'gi-stroke-color-text-tone-dark-fill-default',
         'gi-bg-color-surface-tone-dark-fill-default',
         'hover:gi-bg-color-surface-tone-dark-fill-hover',
-        'focus:gi-bg-color-surface-tone-dark-fill-hover',
+        'enabled:focus:gi-bg-color-surface-tone-dark-fill-hover',
       ],
     },
     {
-      variant: 'primary',
-      appearance: 'default',
+      variant: Variant.PRIMARY,
+      appearance: Appearance.DEFAULT,
       disabled: true,
       class: [
         'gi-bg-color-surface-tone-primary-fill-disabled',
@@ -189,8 +171,8 @@ export const styles = tv({
       ],
     },
     {
-      variant: 'primary',
-      appearance: 'light',
+      variant: Variant.PRIMARY,
+      appearance: Appearance.LIGHT,
       disabled: true,
       class: [
         'gi-bg-color-surface-tone-light-fill-disabled',
@@ -199,8 +181,8 @@ export const styles = tv({
       ],
     },
     {
-      variant: 'primary',
-      appearance: 'dark',
+      variant: Variant.PRIMARY,
+      appearance: Appearance.DARK,
       disabled: true,
       class: [
         'gi-bg-color-surface-tone-dark-fill-disabled',
@@ -209,20 +191,20 @@ export const styles = tv({
       ],
     },
     {
-      variant: 'secondary',
-      appearance: 'default',
+      variant: Variant.SECONDARY,
+      appearance: Appearance.DEFAULT,
       disabled: false,
       class: [
         'gi-border-color-border-tone-primary-outline-default',
         'gi-text-color-text-tone-primary-outline-default',
         'gi-stroke-color-text-tone-primary-outline-default',
         'hover:gi-bg-color-surface-tone-primary-outline-hover',
-        'focus:gi-bg-color-surface-tone-primary-outline-hover',
+        'enabled:focus:gi-bg-color-surface-tone-primary-outline-hover',
       ],
     },
     {
-      variant: 'secondary',
-      appearance: 'light',
+      variant: Variant.SECONDARY,
+      appearance: Appearance.LIGHT,
       disabled: false,
       class: [
         'gi-text-color-text-tone-light-outline-default',
@@ -230,23 +212,23 @@ export const styles = tv({
         'gi-border-color-border-tone-light-outline-default',
         'gi-bg-base-transparent',
         'hover:gi-bg-color-surface-tone-light-outline-hover',
-        'focus:gi-bg-color-surface-tone-dark-fill-hover',
+        'enabled:focus:gi-bg-color-surface-tone-dark-fill-hover',
       ],
     },
     {
-      variant: 'secondary',
-      appearance: 'dark',
+      variant: Variant.SECONDARY,
+      appearance: Appearance.DARK,
       disabled: false,
       class: [
         'gi-border-color-border-tone-dark-outline-default',
         'gi-bg-color-surface-tone-dark-outline-default',
         'hover:gi-bg-color-surface-tone-dark-outline-hover',
-        'focus:gi-bg-color-surface-tone-light-fill-hover',
+        'enabled:focus:gi-bg-color-surface-tone-light-fill-hover',
       ],
     },
     {
-      variant: 'secondary',
-      appearance: 'default',
+      variant: Variant.SECONDARY,
+      appearance: Appearance.DEFAULT,
       disabled: true,
       class: [
         'gi-border-color-border-tone-primary-outline-disabled',
@@ -256,8 +238,8 @@ export const styles = tv({
       ],
     },
     {
-      variant: 'secondary',
-      appearance: 'light',
+      variant: Variant.SECONDARY,
+      appearance: Appearance.LIGHT,
       disabled: true,
       class: [
         'gi-bg-color-surface-tone-light-outline-disabled',
@@ -267,8 +249,8 @@ export const styles = tv({
       ],
     },
     {
-      variant: 'secondary',
-      appearance: 'dark',
+      variant: Variant.SECONDARY,
+      appearance: Appearance.DARK,
       disabled: true,
       class: [
         'gi-border-color-border-tone-dark-outline-disabled',
@@ -278,43 +260,43 @@ export const styles = tv({
       ],
     },
     {
-      variant: 'flat',
-      appearance: 'default',
+      variant: Variant.FLAT,
+      appearance: Appearance.DEFAULT,
       disabled: false,
       class: [
         'gi-text-color-text-tone-primary-flat-default',
         'gi-stroke-color-text-tone-primary-flat-default',
         'gi-bg-base-transparent',
         'hover:gi-bg-color-surface-tone-primary-flat-hover',
-        'focus:gi-bg-color-surface-tone-primary-outline-hover',
+        'enabled:focus:gi-bg-color-surface-tone-primary-outline-hover',
       ],
     },
     {
-      variant: 'flat',
-      appearance: 'light',
+      variant: Variant.FLAT,
+      appearance: Appearance.LIGHT,
       disabled: false,
       class: [
         'gi-bg-color-surface-tone-light-flat-default',
         'gi-text-color-text-tone-light-flat-default',
         'gi-stroke-color-text-tone-light-flat-default',
         'hover:gi-bg-color-surface-tone-light-flat-hover',
-        'focus:gi-bg-color-surface-tone-dark-fill-hover',
+        'enabled:focus:gi-bg-color-surface-tone-dark-fill-hover',
       ],
     },
     {
-      variant: 'flat',
-      appearance: 'dark',
+      variant: Variant.FLAT,
+      appearance: Appearance.DARK,
       disabled: false,
       class: [
         'gi-text-color-text-tone-dark-flat-default',
         'gi-stroke-color-text-tone-dark-flat-default',
         'hover:gi-bg-color-surface-tone-dark-flat-hover',
-        'focus:gi-bg-color-surface-tone-light-fill-hover',
+        'enabled:focus:gi-bg-color-surface-tone-light-fill-hover',
       ],
     },
     {
-      variant: 'flat',
-      appearance: 'default',
+      variant: Variant.FLAT,
+      appearance: Appearance.DEFAULT,
       disabled: true,
       class: [
         'gi-text-color-text-tone-primary-flat-disabled',
@@ -323,8 +305,8 @@ export const styles = tv({
       ],
     },
     {
-      variant: 'flat',
-      appearance: 'light',
+      variant: Variant.FLAT,
+      appearance: Appearance.LIGHT,
       disabled: true,
       class: [
         'gi-bg-color-surface-tone-light-flat-disabled',
@@ -333,8 +315,8 @@ export const styles = tv({
       ],
     },
     {
-      variant: 'flat',
-      appearance: 'dark',
+      variant: Variant.FLAT,
+      appearance: Appearance.DARK,
       disabled: true,
       class: [
         'gi-bg-color-surface-tone-dark-flat-disabled',
@@ -344,10 +326,24 @@ export const styles = tv({
     },
   ],
   defaultVariants: {
-    variant: 'primary',
-    appearance: 'default',
-    size: 'medium',
+    variant: Variant.PRIMARY,
+    appearance: Appearance.DEFAULT,
     disabled: false,
+  },
+});
+
+export const styles = tv({
+  extend: buttonBaseStyles,
+  base: ['gi-gap-2'],
+  variants: {
+    size: {
+      sm: 'gi-h-8 gi-px-2 gi-py-1.5 gi-text-xs',
+      md: 'gi-h-10 gi-px-3 gi-py-2 gi-text-sm',
+      lg: 'gi-h-12 gi-px-4 gi-py-3 gi-text-2md',
+    },
+  },
+  defaultVariants: {
+    size: ButtonSize.MD,
   },
 });
 
@@ -355,4 +351,4 @@ const getVariant = (x: Props['variant'] = Variant.PRIMARY) =>
   Object.values(Variant).includes(x) ? x : Variant.PRIMARY;
 const getAppearance = (x: Props['appearance']) =>
   x === Appearance.LIGHT || x === Appearance.DARK ? x : Appearance.DEFAULT;
-const getSize = (x: Props['size']) => (x === Size.SMALL || x === Size.LARGE ? x : Size.MEDIUM);
+const getSize = (x: Props['size'] = ButtonSize.MD) => (Object.values(ButtonSize).includes(x) ? x : ButtonSize.MD);

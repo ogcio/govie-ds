@@ -1,4 +1,4 @@
-import * as React from 'react';
+import type * as React from 'react';
 import type { Props as GiButtonProps } from '../atoms/Button.js';
 
 export const ButtonVariants = ['primary', 'secondary', 'flat'] as const;
@@ -6,7 +6,13 @@ export type ButtonVariant = (typeof ButtonVariants)[number];
 
 export type ButtonAppearance = 'default' | 'dark' | 'light';
 
-export type ButtonSize = 'medium' | 'small' | 'large';
+/**
+ * Legacy button size values.
+ * @deprecated Use `'sm' | 'md' | 'lg'` instead.
+ */
+export type LegacyButtonSize = 'small' | 'medium' | 'large';
+
+export type ButtonSize = LegacyButtonSize | NonNullable<GiButtonProps['size']>;
 
 export type ButtonProps = Omit<
   React.ButtonHTMLAttributes<HTMLButtonElement>,
@@ -20,7 +26,12 @@ export type ButtonProps = Omit<
   | 'aria-haspopup'
   | 'aria-busy'
 > &
-  GiButtonProps & {
+  Omit<GiButtonProps, 'size'> & {
+    /**
+     * Size of the button. Accepts `'sm' | 'md' | 'lg'`.
+     * Legacy values `'small' | 'medium' | 'large'` are still accepted but deprecated.
+     */
+    size?: ButtonSize;
     /** @deprecated Use dataTestId instead */
     dataTestid?: string;
     /** @deprecated Use dataTestId instead */

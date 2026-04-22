@@ -57,7 +57,7 @@ export const Pagination: React.FC<PaginationProps> = ({
         <Button
           key={page}
           variant={page === currentPage ? 'primary' : 'flat'}
-          size="large"
+          size="lg"
           appearance="dark"
           onClick={() => onPageChange(page)}
           ariaLabel={t('pagination.goToPage', {
@@ -96,7 +96,7 @@ export const Pagination: React.FC<PaginationProps> = ({
     >
       <Button
         variant="flat"
-        size="large"
+        size="lg"
         appearance="dark"
         disabled={currentPage === 1}
         onClick={() => onPageChange(currentPage - 1)}
@@ -117,7 +117,7 @@ export const Pagination: React.FC<PaginationProps> = ({
       <Button
         disabled={currentPage === totalPages}
         variant="flat"
-        size="large"
+        size="lg"
         appearance="dark"
         onClick={() => onPageChange(currentPage + 1)}
         ariaLabel={t('pagination.goToNext', { defaultValue: 'Go to next' })}

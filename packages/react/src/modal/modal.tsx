@@ -1,10 +1,9 @@
 'use client';
+import type { ReactNode, ReactElement } from 'react';
 import {
   cloneElement,
-  ReactNode,
   Children,
   isValidElement,
-  ReactElement,
   useState,
   useRef,
   useEffect,
@@ -13,7 +12,8 @@ import {
 } from 'react';
 import { createPortal } from 'react-dom';
 import Heading, { type Props as HeadingProps } from '../Heading.js';
-import Button from '../atoms/Button';
+import Button, { type Props as GiButtonProps } from '../atoms/Button';
+import { normalizeSize } from '../utils/normalize-size.js';
 import { cn } from '../cn.js';
 import { useAriaHider } from '../hooks/use-aria-hider.js';
 import { useFocusTrap } from '../hooks/use-focus-trap.js';
@@ -45,19 +45,17 @@ const VARIANT_ORDER: Record<
 
 const ModalCloseButton = ({
   label,
-  size = 'small',
+  size = 'sm',
   ...props
 }: ModalCloseButtonProps) => {
-  let iconSize: IconSize = 'sm';
-  if (size === 'large' || size === 'medium') {
-    iconSize = 'md';
-  }
+  const normalizedSize = normalizeSize(size);
+  const iconSize: IconSize = normalizedSize === 'sm' ? 'sm' : 'md';
 
   return label ? (
     <Button
       onClick={props.onClick}
       variant="flat"
-      size={size}
+      size={normalizedSize as GiButtonProps['size']}
       appearance="dark"
       className="gi-modal-icon"
       ariaLabel={label}
@@ -75,7 +73,7 @@ const ModalCloseButton = ({
       aria-label="Close modal"
       onClick={props.onClick}
       variant="flat"
-      size={size}
+      size={normalizedSize}
       appearance="dark"
       dataTestid="modal-close-button"
       {...props}

@@ -676,12 +676,12 @@ export const WithReactHookForm: Story = {
             selectedCount={selectedRows.length}
             actions={
               <>
-                <Button appearance="light" size="medium" variant="flat">
+                <Button appearance="light" size="md" variant="flat">
                   Delete
                 </Button>
                 <Button
                   appearance="light"
-                  size="medium"
+                  size="md"
                   variant="flat"
                   onClick={() => table.resetRowSelection()}
                 >

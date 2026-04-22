@@ -76,7 +76,7 @@ export const DropdownItem = ({
       <Button
         variant="flat"
         appearance="dark"
-        size="large"
+        size="lg"
         onClick={(event) => {
           event.preventDefault();
           setIsOpen(!isOpen);
@@ -118,7 +118,7 @@ export const DropdownItem = ({
               <IconButton
                 variant="flat"
                 appearance="dark"
-                size="small"
+                size="sm"
                 className="gi-combobox-search-icon"
                 onClick={() => {
                   onSearch?.('');

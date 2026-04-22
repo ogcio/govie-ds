@@ -1,6 +1,7 @@
 import type { StoryContext, Renderer } from 'storybook/internal/types';
 import { within, expect } from 'storybook/test';
 import { Size, Whitespace } from '../utilities';
+import { enumType } from './utilities';
 const loremIpsum = 'Lorem ipsum dolor sit amet.';
 export const textMeta = {
   tags: ['autodocs'] as string[],
@@ -17,36 +18,14 @@ export const textMeta = {
         disable: true
       }
     },
-    size: {
-      control: {
-        type: 'select'
-      },
-      options: Object.values(Size),
+    size: enumType(Size, {
       description: 'Font size of the Text',
-      table: {
-        type: {
-          summary: Object.values(Size).map(v => `"${v}"`).join(' | ')
-        },
-        defaultValue: {
-          summary: 'md'
-        }
-      }
-    },
-    whitespace: {
-      control: {
-        type: 'select'
-      },
-      options: Object.values(Whitespace),
+      defaultValue: Size.MD
+    }),
+    whitespace: enumType(Whitespace, {
       description: 'Whitespace handling.',
-      table: {
-        type: {
-          summary: Object.values(Whitespace).map(v => `"${v}"`).join(' | ')
-        },
-        defaultValue: {
-          summary: 'normal'
-        }
-      }
-    },
+      defaultValue: Whitespace.NORMAL
+    }),
     className: {
       control: false,
       description: 'Additional CSS classes applied to the paragraph element.',

@@ -1,5 +1,6 @@
 import { forwardRef } from 'react';
 import GiButton, { type Props as GiButtonProps } from '../atoms/Button';
+import { normalizeSize } from '../utils/normalize-size.js';
 import type { ButtonProps } from './types';
 
 export const Button = forwardRef<HTMLButtonElement, ButtonProps>(
@@ -23,6 +24,7 @@ export const Button = forwardRef<HTMLButtonElement, ButtonProps>(
       value,
       tabIndex,
       dataTestid,
+      dataTestId,
       'aria-label': ariaLabel,
       'aria-labelledby': ariaLabelledBy,
       'aria-describedby': ariaDescribedBy,
@@ -32,7 +34,7 @@ export const Button = forwardRef<HTMLButtonElement, ButtonProps>(
       'aria-controls': ariaControls,
       'aria-haspopup': ariaHasPopup,
       'aria-busy': ariaBusy,
-      'data-testid': dataTestId,
+      'data-testid': nativeDataTestId,
     },
     ref,
   ) => {
@@ -42,7 +44,7 @@ export const Button = forwardRef<HTMLButtonElement, ButtonProps>(
         id={id}
         variant={variant}
         appearance={appearance}
-        size={size}
+        size={normalizeSize(size) as GiButtonProps['size']}
         children={children}
         disabled={disabled}
         className={className}
@@ -65,7 +67,7 @@ export const Button = forwardRef<HTMLButtonElement, ButtonProps>(
         form={form}
         value={value}
         tabIndex={tabIndex}
-        dataTestId={dataTestId ?? dataTestid}
+        dataTestId={dataTestId ?? dataTestid ?? nativeDataTestId}
       />
     );
   },
