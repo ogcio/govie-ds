@@ -13,7 +13,7 @@ Use the Container to center page content and keep readable line lengths across b
 
 <Section current="design">
 
-<ComponentPreview className="gi-not-prose block w-full">
+<ComponentPreview className="not-prose block w-full">
   <Container>
     <p>Container</p>
   </Container>
@@ -21,67 +21,55 @@ Use the Container to center page content and keep readable line lengths across b
 
 ## Anatomy & Classes
 
-- `gi-layout-container`: Default container with Tailwind’s container behaviour from the `md` breakpoint.
-- `gi-layout-container-max-xl`: Max-width capped at 1280px for optimal readability.
-- `gi-layout-container-full-width`: Full-width layout capped at 2xl (1536px).
+The Container is a single root **`<div>`** that always applies **`container mx-auto`**: full width up to the design-system max, horizontal **container** padding (unless you turn it off), and **auto margins** to centre the block.
 
-## Responsive Inset Values
+- **`gutters`** (default: **true**): with **false**, **`px-0`** removes horizontal padding from **`container`** (full-bleed content in the same max-width column).
+- **`inset`**: with **true**, adds vertical section padding: **`py-4`**, **`md:py-6`**, and **`lg:py-8`**. Omitted or **false** means no extra vertical padding from the component.
+- **`maxWidth`**: on top of the default **`container`** width, you can set **`sm`**, **`md`**, **`lg`**, **`xl`**, **`2xl`**, or **`full`**; each adds the corresponding **`max-w-screen-*`** (or **`max-w-full`** for **`full`**). The **default** variant does not add a max-width class and relies on **`container`**.
 
-The Container supports vertical insets to create consistent spacing above and below content.
+Use **`className`** for any extra classes. Pass **`id`** and **`dataTestId`** to set the root **`id`** and **`data-testid`**.
+
+## Responsive Inset (`inset`)
+
+When **`inset`** is **true**, top and bottom padding follow the same breakpoint scale as the implementation (mobile-first **Tailwind** / \*\*\*\* padding utilities):
 
 <table>
   <thead>
     <tr>
-      <th>Inset value</th>
-      <th>Desktop</th>
-      <th>Tablet</th>
-      <th>Mobile</th>
+      <th>Range</th>
+      <th>Class</th>
+      <th>Typical padding (top and bottom)</th>
     </tr>
   </thead>
   <tbody>
     <tr>
-      <td>none</td>
       <td>
-        <strong>0px</strong>
+        Below the <code>md</code> breakpoint
       </td>
       <td>
-        <strong>0px</strong>
-      </td>
-      <td>
-        <strong>0px</strong>
-      </td>
-    </tr>
-    <tr>
-      <td>md</td>
-      <td>
-        <strong>32px</strong>
-      </td>
-      <td>
-        <strong>24px</strong>
+        <code>py-4</code>
       </td>
       <td>
         <strong>16px</strong>
       </td>
     </tr>
     <tr>
-      <td>lg</td>
       <td>
-        <strong>48px</strong>
+        From <code>md</code> to below <code>lg</code>
       </td>
       <td>
-        <strong>36px</strong>
+        <code>md:py-6</code>
       </td>
       <td>
         <strong>24px</strong>
       </td>
     </tr>
     <tr>
-      <td>xl</td>
       <td>
-        <strong>64px</strong>
+        <code>lg</code> and up
       </td>
       <td>
-        <strong>48px</strong>
+        <code>lg:py-8</code>
       </td>
       <td>
         <strong>32px</strong>
@@ -97,10 +85,10 @@ Use the Container when you need a centralized, consistent wrapper for page secti
 ### Do
 
 - Use it to provide a centralized, consistent layout wrapper for page content.
-- Keep content readable with a capped max-width via **gi-container**.
-- Center sections horizontally using **gi-mx-auto**.
+- Keep content readable with a capped max-width via **container**.
+- Center sections horizontally using **`mx-auto`**.
 - Wrap main content areas or any section that should align to the center for a uniform look and feel.
-- Target it in automated tests with **data-testid="govie-container"** to reliably select wrapped content.
+- Target it in automated tests with the **dataTestId** prop to reliably select wrapped content.
 
 ### Don't
 

@@ -30,9 +30,8 @@ export const containerMeta = {
       table: { type: { summary: 'boolean' } },
     },
     maxWidth: enumType(MaxWidth, {
-      description:
-        'Caps the container max width: `sm`, `md`, `lg`, `xl`, `2xl`,`full`, or `screen`. Default is `screen`.',
-      defaultValue: MaxWidth.screen,
+      description: 'Caps the container max width: `sm`, `md`, `lg`, `xl`, `2xl`,`full`, or `default`.',
+      defaultValue: MaxWidth.default,
       table: { type: { summary: 'string' } },
     }),
     dataTestId: {

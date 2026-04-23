@@ -166,6 +166,7 @@ customizable
 customization
 data-table-tanstack
 data-testid
+dataTestId
 defaultValue
 dialogs
 digitalisation
@@ -219,6 +220,7 @@ labeling
 lifecycle
 md
 minimizing
+mx
 navigation-sidenav
 no-color
 noColor

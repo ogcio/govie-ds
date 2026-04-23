@@ -12,7 +12,7 @@ component:
         - name: 'children'
           ofType: 'node'
           description: 'Content rendered inside the container.'
-          required: false
+          required: true
         - name: 'id'
           ofType: 'string'
           description: 'Optional id for the root element.'
@@ -76,7 +76,7 @@ Compare default horizontal gutters (`gutters` true) with edge-to-edge content (`
 
 <StorybookFrame componentId="container-react" story="gutters-on-and-off" />
 
-### All max widths
+### Max widths
 
 Each `maxWidth` value maps to a corresponding max-width utility (`sm` through `2xl`, or `full`).
 
