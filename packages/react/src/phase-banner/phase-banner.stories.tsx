@@ -93,6 +93,13 @@ export const WrappedInContainer: Story = {
   },
 };
 
+export const WrappedInContainerFullWidth: Story = {
+  args: {
+    ...Default.args,
+    wrap: 'container-full-width',
+  },
+};
+
 export const TestBetaLevel: Story = {
   args: {
     children: 'This is a span',
