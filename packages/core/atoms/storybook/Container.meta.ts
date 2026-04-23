@@ -1,5 +1,4 @@
 import type { StoryContext, Renderer } from 'storybook/internal/types';
-import { createElement } from 'react';
 import { within, expect } from 'storybook/test';
 import { MaxWidth } from '../Container.lite';
 import { enumType } from './utilities';
@@ -74,24 +73,6 @@ export const WithInset = {
 };
 
 export const GuttersOnAndOff = {};
-
-export const RendersIndentedHTMLContent = {
-  tags: ['skip-playwright'],
-  args: {
-    children: createElement('p', { 'data-testid': 'indented-content' }, 'Indented content'),
-    dataTestId: 'govie-container',
-  },
-  play: async ({ canvasElement, step }: StoryContext<Renderer>) => {
-    const canvas = within(canvasElement as HTMLElement);
-
-    await step('should correctly handle and render indented HTML content', async () => {
-      const containerElement = canvas.getByTestId('govie-container');
-      const paragraphElement = canvas.getByTestId('indented-content');
-      expect(containerElement).toBeInTheDocument();
-      expect(paragraphElement).toBeInTheDocument();
-    });
-  },
-};
 
 export const HandlesEmptyContentGracefully = {
   tags: ['skip-playwright'],

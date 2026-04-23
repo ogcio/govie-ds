@@ -38,7 +38,7 @@ export function Container({
     <GiContainer
       id={id}
       className={styles({ insetTop, insetBottom, class: className })}
-      dataTestId={dataTestId ?? 'govie-container'}
+      dataTestId={dataTestId}
       maxWidth={maxWidth}
       gutters={gutters}
       inset={inset}

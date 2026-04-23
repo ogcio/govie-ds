@@ -7,7 +7,6 @@ import {
   Default as defaultStory,
   WithInset as withInset,
   GuttersOnAndOff as guttersOnAndOff,
-  RendersIndentedHTMLContent as rendersIndentedHTMLContent,
   HandlesEmptyContentGracefully as handlesEmptyContentGracefully,
   AllMaxWidths as allMaxWidths,
 } from '../atoms/storybook/Container.meta';
@@ -46,11 +45,6 @@ export const GuttersOnAndOff: Story = {
       </div>
     </div>
   ),
-};
-
-export const RendersIndentedHTMLContent: Story = {
-  ...rendersIndentedHTMLContent,
-  tags: ['skip-playwright'],
 };
 
 export const HandlesEmptyContentGracefully: Story = {

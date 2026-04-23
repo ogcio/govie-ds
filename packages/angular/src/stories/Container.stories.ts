@@ -6,7 +6,6 @@ import {
   Default as defaultStory,
   WithInset as withInset,
   GuttersOnAndOff as guttersOnAndOff,
-  RendersIndentedHTMLContent as rendersIndentedHTMLContent,
   HandlesEmptyContentGracefully as handlesEmptyContentGracefully,
   AllMaxWidths as allMaxWidths,
 } from '../atoms/storybook/Container.meta';
@@ -21,7 +20,7 @@ export default meta;
 const renderWithProjectedText = (props: Record<string, unknown>) => ({
   props: {
     ...props,
-    content: typeof props['children'] === 'string' ? props['children'] : '',
+    content: props['children'] as string,
   },
   moduleMetadata: {
     imports: [Container],
@@ -73,21 +72,6 @@ export const GuttersOnAndOff: StoryObj = {
           </gi-container>
         </div>
       </div>
-    `,
-  }),
-};
-
-export const RendersIndentedHTMLContent: StoryObj = {
-  ...rendersIndentedHTMLContent,
-  render: (props) => ({
-    props,
-    moduleMetadata: {
-      imports: [Container],
-    },
-    template: `
-      <gi-container [inset]="inset" [gutters]="gutters" [dataTestId]="dataTestId">
-        <p>Indented content</p>
-      </gi-container>
     `,
   }),
 };
