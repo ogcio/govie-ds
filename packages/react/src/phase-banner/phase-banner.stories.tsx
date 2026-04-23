@@ -84,10 +84,12 @@ export const WrappedInContainer: Story = {
     wrap: 'container',
   },
   play: async ({ canvasElement }) => {
-    const containerElement = canvasElement.querySelector(
-      '[data-testid="govie-container"]',
-    );
+    const canvas = within(canvasElement);
+    const phaseBanner = canvas.getByTestId('phase-banner');
+    const containerElement = phaseBanner.parentElement;
     await expect(containerElement).toBeInTheDocument();
+    await expect(containerElement?.tagName).toBe('DIV');
+    await expect(phaseBanner).toBe(containerElement?.firstElementChild);
   },
 };
 
