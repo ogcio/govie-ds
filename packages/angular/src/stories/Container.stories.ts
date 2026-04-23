@@ -18,10 +18,10 @@ const meta = {
 
 export default meta;
 
-const renderWithProjectedText = (arguments_: Record<string, unknown>) => ({
+const renderWithProjectedText = (props: Record<string, unknown>) => ({
   props: {
-    ...arguments_,
-    content: typeof arguments_['children'] === 'string' ? arguments_['children'] : '',
+    ...props,
+    content: typeof props['children'] === 'string' ? props['children'] : '',
   },
   moduleMetadata: {
     imports: [Container],
@@ -42,17 +42,18 @@ const renderWithProjectedText = (arguments_: Record<string, unknown>) => ({
 
 export const Default: StoryObj = {
   ...defaultStory,
-  render: (arguments_) => renderWithProjectedText(arguments_ as Record<string, unknown>),
+  render: (props) => renderWithProjectedText(props as Record<string, unknown>),
 };
 
 export const WithInset: StoryObj = {
   ...withInset,
-  render: (arguments_) => renderWithProjectedText(arguments_ as Record<string, unknown>),
+  render: (props) => renderWithProjectedText(props as Record<string, unknown>),
 };
 
 export const GuttersOnAndOff: StoryObj = {
   ...guttersOnAndOff,
-  render: () => ({
+  render: (props) => ({
+    props,
     moduleMetadata: {
       imports: [Container, CommonModule],
     },
@@ -78,8 +79,8 @@ export const GuttersOnAndOff: StoryObj = {
 
 export const RendersIndentedHTMLContent: StoryObj = {
   ...rendersIndentedHTMLContent,
-  render: (arguments_) => ({
-    props: arguments_,
+  render: (props) => ({
+    props,
     moduleMetadata: {
       imports: [Container],
     },
@@ -93,8 +94,8 @@ export const RendersIndentedHTMLContent: StoryObj = {
 
 export const HandlesEmptyContentGracefully: StoryObj = {
   ...handlesEmptyContentGracefully,
-  render: (arguments_) => ({
-    props: arguments_,
+  render: (props) => ({
+    props,
     moduleMetadata: {
       imports: [Container],
     },
