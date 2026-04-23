@@ -23,13 +23,6 @@ Use the Container to centre page content, keep a comfortable line length, and li
 
 The Container is one wrapper around your content. By design, it responsively changes it discretely, respective of screen size and centres the block. See the **Max widths** section in the React tab for a visual example.
 
-### Container classes (HTML only)
-
-- `gi-layout-container`: Default container with Tailwind’s container behaviour from the `md` breakpoint.
-- `gi-layout-container-full-width`: Full-width layout capped at 2xl (1536px).
-- `gi-layout-container-inset`: Container with inset padding from the `md` breakpoint.
-- `gi-layout-container-max-xl`: Max-width capped at 1280px for optimal readability.
-
 ### Container props
 
 - **`gutters`** — On by default. Side padding so text and controls do not sit on the very edge of the container. Set to **`false`** if you need the same width but with content that goes edge to edge.
@@ -37,6 +30,13 @@ The Container is one wrapper around your content. By design, it responsively cha
 - **`maxWidth`** — Use a narrower cap, or full width, when a section should not use the default container width.
 
 You can pass **`className`**, and use **`id`** or **`dataTestId`** for styling hooks or tests.
+
+### Container classes (HTML only)
+
+- `gi-layout-container`: Default container with Tailwind’s container behaviour from the `md` breakpoint.
+- `gi-layout-container-full-width`: Full-width layout capped at 2xl (1536px).
+- `gi-layout-container-inset`: Container with inset padding from the `md` breakpoint.
+- `gi-layout-container-max-xl`: Max-width capped at 1280px for optimal readability.
 
 ## Usage
 
