@@ -20,34 +20,39 @@ import { tv } from 'tailwind-variants';
 import { clamp, Size } from './utilities';
 export const MaxWidth = {
   ...Size,
+  default: 'default',
   '2xl': '2xl',
   full: 'full',
-  screen: 'screen',
 } as const;
 export const styles = tv({
-  base: 'gi-w-full gi-container md:gi-mx-auto',
+  base: 'gi-container gi-mx-auto',
   variants: {
     inset: {
-      true: 'gi-mx-auto gi-py-4 md:gi-py-6 lg:gi-py-8',
+      true: 'gi-py-4 md:gi-py-6 lg:gi-py-8',
     },
     gutters: {
-      true: 'gi-px-4 md:gi-px-6 lg:gi-px-8',
-      false: 'gi-px-0',
+      false: 'gi-px-0', // gi-container override
     },
     maxWidth: {
-      sm: 'gi-max-w-sm',
-      md: 'gi-max-w-md',
-      lg: 'gi-max-w-lg',
-      xl: 'gi-max-w-xl',
-      '2xl': 'gi-max-w-2xl',
-      full: 'gi-max-w-full',
-      screen: 'gi-max-w-[100vw]',
+      default: '',
+      // defaults to gi-container
+      sm: 'gi-max-w-screen-sm',
+      // 640px
+      md: 'gi-max-w-screen-md',
+      // 768px
+      lg: 'gi-max-w-screen-lg',
+      // 1024px
+      xl: 'gi-max-w-screen-xl',
+      // 1280px
+      '2xl': 'gi-max-w-screen-2xl',
+      // 1536px
+      full: 'gi-max-w-full', // parent 100%
     },
   },
   defaultVariants: {
     inset: false,
     gutters: true,
-    maxWidth: MaxWidth.screen,
+    maxWidth: 'default',
   },
 });
 
@@ -59,7 +64,7 @@ function Container(props: Props) {
       className={styles({
         inset: props.inset ?? false,
         gutters: props.gutters ?? true,
-        maxWidth: clamp(props.maxWidth, MaxWidth, MaxWidth.screen),
+        maxWidth: clamp(props.maxWidth, MaxWidth, MaxWidth.default),
         class: props.className,
       })}
     >
