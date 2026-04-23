@@ -1,5 +1,5 @@
-import AtomicContainer, {
-  type Props as AtomicContainerProps,
+import GiContainer, {
+  type Props as GiContainerProps,
 } from '../atoms/Container.js';
 import { tv } from 'tailwind-variants';
 
@@ -13,7 +13,7 @@ export const ContainerInsetSizeEnum = {
 export type ContainerInsetSizeType =
   (typeof ContainerInsetSizeEnum)[keyof typeof ContainerInsetSizeEnum];
 
-type ContainerProps = Omit<AtomicContainerProps, 'children'> &
+type ContainerProps = Omit<GiContainerProps, 'children'> &
   React.PropsWithChildren<{
     /** @deprecated Use the `inset` prop on the layout container instead. */
     insetTop?: ContainerInsetSizeType;
@@ -35,7 +35,7 @@ export function Container({
   dataTestId,
 }: ContainerProps) {
   return (
-    <AtomicContainer
+    <GiContainer
       id={id}
       className={styles({ insetTop, insetBottom, class: className })}
       dataTestId={dataTestId ?? 'govie-container'}
@@ -44,7 +44,7 @@ export function Container({
       inset={inset}
     >
       {children}
-    </AtomicContainer>
+    </GiContainer>
   );
 }
 

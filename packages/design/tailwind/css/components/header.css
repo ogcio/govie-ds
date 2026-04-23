@@ -1,8 +1,7 @@
 .gi-header {
   @apply gi-grid gi-relative 
   gi-overflow-x-clip
-  gi-w-full gi-font-primary
-  gi-w-[100vw];
+  gi-w-full gi-font-primary;
 }
 
 .gi-header-secondary-bar {
