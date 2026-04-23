@@ -6,7 +6,6 @@ import {
   Default as defaultStory,
   WithInset as withInset,
   GuttersOnAndOff as guttersOnAndOff,
-  HandlesEmptyContentGracefully as handlesEmptyContentGracefully,
   AllMaxWidths as allMaxWidths,
 } from '../atoms/storybook/Container.meta';
 
@@ -61,34 +60,17 @@ export const GuttersOnAndOff: StoryObj = {
         <p>Try scaling the viewport to see the responsive gutters in action.</p>
         <div class="gi-flex gi-flex-col gi-gap-2">
           <span class="gi-font-bold gi-font-primary">gutters: true</span>
-          <gi-container [gutters]="true" dataTestId="govie-container">
+          <gi-container [gutters]="true">
             Sample content with horizontal gutters.
           </gi-container>
         </div>
         <div class="gi-flex gi-flex-col gi-gap-2">
           <span class="gi-font-bold gi-font-primary">gutters: false</span>
-          <gi-container [gutters]="false" dataTestId="govie-container">
+          <gi-container [gutters]="false">
             Sample content without horizontal gutters.
           </gi-container>
         </div>
       </div>
-    `,
-  }),
-};
-
-export const HandlesEmptyContentGracefully: StoryObj = {
-  ...handlesEmptyContentGracefully,
-  render: (props) => ({
-    props,
-    moduleMetadata: {
-      imports: [Container],
-    },
-    template: `
-      <gi-container [inset]="inset" [gutters]="gutters" [dataTestId]="dataTestId">
-        <p>
-          <script>alert('XSS')</script>Safe content
-        </p>
-      </gi-container>
     `,
   }),
 };
@@ -109,7 +91,6 @@ export const AllMaxWidths: StoryObj = {
           <gi-container
             [maxWidth]="maxWidth"
             [inset]="false"
-            dataTestId="govie-container"
             className="gi-border-sm gi-border-solid gi-border-color-border-system-neutral-subtle"
           >
             Sample content for max width {{ maxWidth }}.

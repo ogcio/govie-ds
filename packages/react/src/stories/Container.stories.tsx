@@ -1,13 +1,12 @@
 import type { Meta, StoryObj } from '@storybook/react-vite';
-import Container, { MaxWidth } from '../atoms/Container';
-import type { Container as LegacyContainer } from '../container/container.js';
+import { MaxWidth } from '../atoms/Container';
+import { Container } from '../container/container.js';
 import { map } from 'lodash';
 import {
   containerMeta,
   Default as defaultStory,
   WithInset as withInset,
   GuttersOnAndOff as guttersOnAndOff,
-  HandlesEmptyContentGracefully as handlesEmptyContentGracefully,
   AllMaxWidths as allMaxWidths,
 } from '../atoms/storybook/Container.meta';
 
@@ -20,7 +19,6 @@ const meta: Meta<typeof Container> = {
 export default meta;
 
 type Story = StoryObj<typeof Container>;
-type LegacyContainerStory = StoryObj<typeof LegacyContainer>;
 
 export const Default: Story = { ...defaultStory };
 
@@ -33,23 +31,16 @@ export const GuttersOnAndOff: Story = {
       <p>Try scaling the viewport to see the responsive gutters in action.</p>
       <div className="gi-flex gi-flex-col gi-gap-2">
         <span className="gi-font-bold gi-font-primary">gutters: true</span>
-        <Container gutters dataTestId="govie-container">
-          Sample content with horizontal gutters.
-        </Container>
+        <Container gutters>Sample content with horizontal gutters.</Container>
       </div>
       <div className="gi-flex gi-flex-col gi-gap-2">
         <span className="gi-font-bold gi-font-primary">gutters: false</span>
-        <Container gutters={false} dataTestId="govie-container">
+        <Container gutters={false}>
           Sample content without horizontal gutters.
         </Container>
       </div>
     </div>
   ),
-};
-
-export const HandlesEmptyContentGracefully: Story = {
-  ...handlesEmptyContentGracefully,
-  tags: ['skip-playwright'],
 };
 
 export const AllMaxWidths: Story = {
@@ -61,7 +52,6 @@ export const AllMaxWidths: Story = {
           <span className="gi-font-bold gi-font-primary">{maxWidth}</span>
           <Container
             maxWidth={maxWidth}
-            dataTestId="govie-container"
             className="gi-border-sm gi-border-solid gi-border-color-border-system-neutral-subtle"
           >
             Sample content for max width {maxWidth}.

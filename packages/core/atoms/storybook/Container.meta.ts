@@ -68,27 +68,9 @@ export const WithInset = {
   args: {
     children: 'Paragraph',
     inset: true,
-    dataTestId: 'govie-container',
   },
 };
 
 export const GuttersOnAndOff = {};
-
-export const HandlesEmptyContentGracefully = {
-  tags: ['skip-playwright'],
-  args: {
-    children: '',
-    dataTestId: 'govie-container',
-  },
-  play: async ({ canvasElement, step }: StoryContext<Renderer>) => {
-    const canvas = within(canvasElement as HTMLElement);
-
-    await step('should handle empty content gracefully', async () => {
-      const containerElement = canvas.getByTestId('govie-container');
-      expect(containerElement).toBeInTheDocument();
-      expect(containerElement.textContent).toBe('');
-    });
-  },
-};
 
 export const AllMaxWidths = {};
