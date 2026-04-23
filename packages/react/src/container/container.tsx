@@ -3,23 +3,6 @@ import AtomicContainer, {
 } from '../atoms/Container.js';
 import { tv } from 'tailwind-variants';
 
-const styles = tv({
-  base: 'gi-w-full gi-max-w-[100vw] gi-container gi-mx-auto',
-  variants: {
-    insetTop: {
-      none: 'gi-pt-0',
-      md: 'lg:gi-pt-8 md:gi-pt-6 gi-pt-4',
-      lg: 'lg:gi-pt-12 md:gi-pt-9 gi-pt-6',
-      xl: 'lg:gi-pt-16 md:gi-pt-12 gi-pt-8',
-    },
-    insetBottom: {
-      none: 'gi-pb-0',
-      md: 'lg:gi-pb-8 md:gi-pb-6 gi-pb-4',
-      lg: 'lg:gi-pb-12 md:gi-pb-9 gi-pb-6',
-      xl: 'lg:gi-pb-16 md:gi-pb-12 gi-pb-8',
-    },
-  },
-});
 export const ContainerInsetSizeEnum = {
   None: 'none',
   Medium: 'md',
@@ -64,3 +47,21 @@ export function Container({
     </AtomicContainer>
   );
 }
+
+const styles = tv({
+  base: 'gi-w-full gi-max-w-[100vw] gi-container gi-mx-auto',
+  variants: {
+    insetTop: {
+      none: 'gi-pt-0',
+      md: 'lg:gi-pt-8 md:gi-pt-6 gi-pt-4',
+      lg: 'lg:gi-pt-12 md:gi-pt-9 gi-pt-6',
+      xl: 'lg:gi-pt-16 md:gi-pt-12 gi-pt-8',
+    },
+    insetBottom: {
+      none: 'gi-pb-0',
+      md: 'lg:gi-pb-8 md:gi-pb-6 gi-pb-4',
+      lg: 'lg:gi-pb-12 md:gi-pb-9 gi-pb-6',
+      xl: 'lg:gi-pb-16 md:gi-pb-12 gi-pb-8',
+    },
+  },
+});

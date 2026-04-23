@@ -8,7 +8,7 @@ import {
   Footer,
   Form,
   FormFieldWithTag,
-  GiContainer,
+  Container,
   Header,
   HeaderLogo,
   HeaderMenuItemButton,
@@ -137,7 +137,7 @@ export function App() {
     <>
       <HeaderComposable />
       <CookieBanner {...CookieBannerProps} />
-      <GiContainer>
+      <Container>
         <Heading>Design System </Heading>
         <Tabs id="tabs" ariaLabelledBy="">
           <TabList>
@@ -271,7 +271,7 @@ export function App() {
           <Paragraph>This is the content</Paragraph>
         </Alert>
         {/* <List items={['Item 1', 'Item 2', 'Item 3']} type={TypeEnum.Bullet} /> */}
-      </GiContainer>
+      </Container>
       <Footer
         utilitySlot={
           <div className="gi-flex gi-flex-row gi-gap-y-2 gi-gap-4 gi-justify-center gi-flex-wrap">
