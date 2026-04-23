@@ -68,7 +68,7 @@ export const HeaderNext = forwardRef<HTMLElement, HeaderNextProps>(
           data-variant={variant}
           {...rest}
         >
-          <Container className="gi-order-2">
+          <Container className="gi-order-2 gi-min-w-0">
             <div className={headerMenuVariants({ appearance: variant })}>
               {headerLogo}
               {headerTitle}
