@@ -9,91 +9,41 @@ component:
 
 # Container
 
-Use the Container to center page content and keep readable line lengths across breakpoints. It enforces consistent horizontal alignment and optional vertical insets for sections.
+Use the Container to centre page content, keep a comfortable line length, and line sections up with the rest of the layout. You can add side padding and extra vertical space when a section needs it.
 
 <Section current="design">
 
-<ComponentPreview className="not-prose block w-full">
+<ComponentPreview className="gi-not-prose block w-full">
   <Container>
     <p>Container</p>
   </Container>
 </ComponentPreview>
 
-## Anatomy & Classes
+## Layout
 
-The Container is a single root **`<div>`** that always applies **`container mx-auto`**: full width up to the design-system max, horizontal **container** padding (unless you turn it off), and **auto margins** to centre the block.
+The Container is one wrapper around your content. By design, it responsively changes it discretely, respective of screen size and centres the block. See the **Max widths** section in the React tab for a visual example..
 
-- **`gutters`** (default: **true**): with **false**, **`px-0`** removes horizontal padding from **`container`** (full-bleed content in the same max-width column).
-- **`inset`**: with **true**, adds vertical section padding: **`py-4`**, **`md:py-6`**, and **`lg:py-8`**. Omitted or **false** means no extra vertical padding from the component.
-- **`maxWidth`**: on top of the default **`container`** width, you can set **`sm`**, **`md`**, **`lg`**, **`xl`**, **`2xl`**, or **`full`**; each adds the corresponding **`max-w-screen-*`** (or **`max-w-full`** for **`full`**). The **default** variant does not add a max-width class and relies on **`container`**.
+- **`gutters`** — On by default. Side padding so text and controls do not sit on the very edge of the container. Set to **`false`** if you need the same width but with content that goes edge to edge.
+- **`inset`** — Adds space above and below the block. The spacing increases on larger screens.
+- **`maxWidth`** — Use a narrower cap, or full width, when a section should not use the default container width.
 
-Use **`className`** for any extra classes. Pass **`id`** and **`dataTestId`** to set the root **`id`** and **`data-testid`**.
-
-## Responsive Inset (`inset`)
-
-When **`inset`** is **true**, top and bottom padding follow the same breakpoint scale as the implementation (mobile-first **Tailwind** / \*\*\*\* padding utilities):
-
-<table>
-  <thead>
-    <tr>
-      <th>Range</th>
-      <th>Class</th>
-      <th>Typical padding (top and bottom)</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td>
-        Below the <code>md</code> breakpoint
-      </td>
-      <td>
-        <code>py-4</code>
-      </td>
-      <td>
-        <strong>16px</strong>
-      </td>
-    </tr>
-    <tr>
-      <td>
-        From <code>md</code> to below <code>lg</code>
-      </td>
-      <td>
-        <code>md:py-6</code>
-      </td>
-      <td>
-        <strong>24px</strong>
-      </td>
-    </tr>
-    <tr>
-      <td>
-        <code>lg</code> and up
-      </td>
-      <td>
-        <code>lg:py-8</code>
-      </td>
-      <td>
-        <strong>32px</strong>
-      </td>
-    </tr>
-  </tbody>
-</table>
+You can pass **`className`**, and use **`id`** or **`dataTestId`** for styling hooks or tests.
 
 ## Usage
 
-Use the Container when you need a centralized, consistent wrapper for page sections, ensuring content remains readable and aligned.
+Use the Container for page regions and sections that should share the same alignment and width as the rest of the service. It is a simple building block, not a full page layout on its own.
 
 ### Do
 
-- Use it to provide a centralized, consistent layout wrapper for page content.
-- Keep content readable with a capped max-width via **container**.
-- Center sections horizontally using **`mx-auto`**.
-- Wrap main content areas or any section that should align to the center for a uniform look and feel.
-- Target it in automated tests with the **dataTestId** prop to reliably select wrapped content.
+- Use it to wrap main content and sections that should read and align consistently.
+- Turn on **`inset`** when a block needs clear separation from what sits above and below.
+- Rely on **`gutters`** and **`maxWidth`** when you need edge-to-edge content or a different cap without rolling custom width rules each time.
+- Set **`dataTestId`** when automated tests need a reliable handle on the wrapper.
 
 ### Don't
 
-- Avoid using the container component if you need a flexible or dynamic layout that requires complex positioning, such as grids or flexbox-based structures.
-- This component is not suitable for scenarios where you need to override the maximum width or margins frequently, or when the content needs to be fluid across the full width of the viewport.
-- If your content does not require centralised alignment or if the predefined styles conflict with the specific requirements of your design, consider using a custom container or a different layout component that offers greater flexibility.
+- Rely on it for complex layout (multi-column pages, nested grids, or heavy flex). Reach for layout utilities or a more specialised pattern instead.
+- Add one inside another unless you have a clear reason; multiple nested wrappers are usually harder to read and reason about.
+- Use it when your design does not need a shared width and alignment—plain markup or a lighter wrapper may be clearer.
 
 </Section>
