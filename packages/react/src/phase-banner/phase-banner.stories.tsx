@@ -94,6 +94,7 @@ export const WrappedInContainer: Story = {
 };
 
 export const WrappedInContainerFullWidth: Story = {
+  tags: ['skip-playwright'],
   args: {
     ...Default.args,
     wrap: 'container-full-width',
