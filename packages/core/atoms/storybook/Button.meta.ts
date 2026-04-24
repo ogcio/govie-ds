@@ -2,7 +2,7 @@ import type { ArgTypes, StoryContext, Renderer } from 'storybook/internal/types'
 import { within, expect, fn, userEvent } from 'storybook/test';
 import type { Props } from '../Button.lite';
 import { ButtonSize } from '../Button.lite';
-import { Variant, Appearance } from '../utilities';
+import { Variant, Appearance } from '../constants';
 import { enumType } from './utilities';
 
 export const buttonMeta = {

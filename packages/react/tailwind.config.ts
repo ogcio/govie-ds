@@ -22,6 +22,10 @@ const config: Config = {
     { pattern: /col-./ },
     { pattern: /row-./ },
     { pattern: /gap-./, variants: ['sm', 'md', 'lg', 'xl', '2xl'] },
+    { pattern: /flex-row/, variants: ['sm', 'md', 'lg', 'xl', '2xl'] },
+    { pattern: /flex-col/, variants: ['sm', 'md', 'lg', 'xl', '2xl'] },
+    { pattern: /h-./, variants: ['sm', 'md', 'lg', 'xl', '2xl'] },
+    { pattern: /w-./, variants: ['sm', 'md', 'lg', 'xl', '2xl'] },
   ],
 };
 

@@ -23,43 +23,17 @@ export type Props = {
 };
 
 import { tv } from 'tailwind-variants';
-import {
-  Direction,
-  AlignItems,
-  Justify,
-  getAlignItems,
-  getJustify,
-  resolveResponsive,
-  resolveResponsiveVariants,
-} from './utilities';
-import type { ResponsiveValue } from './utilities';
-export const stackVariants = tv({
+import { Direction, AlignItems, Justify } from './constants';
+import type { ResponsiveValue } from './constants';
+import { getAlignItems, getJustify, resolveResponsive } from './utilities';
+const directionToClass = (direction: string, bp?: string): string => {
+  const cls = direction === 'row' ? 'gi-flex-row' : 'gi-flex-col';
+  return bp ? `${bp}:${cls}` : cls;
+};
+const gapToClass = (gap: number, bp?: string): string => (bp ? `${bp}:gi-gap-${gap}` : `gi-gap-${gap}`);
+const stackVariants = tv({
   base: ['gi-flex', 'gi-w-full'],
   variants: {
-    direction: {
-      row: 'gi-flex-row',
-      column: 'gi-flex-col',
-    },
-    smDirection: {
-      row: 'sm:gi-flex-row',
-      column: 'sm:gi-flex-col',
-    },
-    mdDirection: {
-      row: 'md:gi-flex-row',
-      column: 'md:gi-flex-col',
-    },
-    lgDirection: {
-      row: 'lg:gi-flex-row',
-      column: 'lg:gi-flex-col',
-    },
-    xlDirection: {
-      row: 'xl:gi-flex-row',
-      column: 'xl:gi-flex-col',
-    },
-    '2xlDirection': {
-      row: '2xl:gi-flex-row',
-      column: '2xl:gi-flex-col',
-    },
     align: {
       start: 'gi-items-start',
       center: 'gi-items-center',
@@ -81,7 +55,6 @@ export const stackVariants = tv({
     },
   },
   defaultVariants: {
-    direction: 'column',
     align: 'start',
     justify: 'start',
     wrap: false,
@@ -97,11 +70,14 @@ function Stack(props: Props) {
       aria-labelledby={props.role ? props.ariaLabelledBy : undefined}
       style={props.styles}
       className={stackVariants({
-        ...resolveResponsiveVariants(props.direction ?? Direction.COLUMN, 'Direction'),
         align: getAlignItems(props.align),
         justify: getJustify(props.justify),
         wrap: props.wrap ?? false,
-        class: [resolveResponsive(props.gap ?? 0, 'gi-gap'), props.className],
+        class: [
+          resolveResponsive(props.direction ?? Direction.COLUMN, directionToClass),
+          resolveResponsive(props.gap ?? 0, gapToClass),
+          props.className,
+        ],
       })}
       data-testid={props.dataTestId}
     >

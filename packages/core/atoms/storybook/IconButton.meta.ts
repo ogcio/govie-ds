@@ -1,7 +1,7 @@
 import type { StoryContext, Renderer } from 'storybook/internal/types';
 import { within, expect, fn, userEvent } from 'storybook/test';
 import { IconButtonSize as Size } from '../IconButton.lite';
-import { Variant, Appearance } from '../utilities';
+import { Variant, Appearance } from '../constants';
 import { enumType } from './utilities';
 
 export const iconButtonMeta = {

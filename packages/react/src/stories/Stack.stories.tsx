@@ -1,7 +1,7 @@
 import type { Meta, StoryObj } from '@storybook/react-vite';
 import _ from 'lodash';
 import { Stack } from '../stack/stack';
-import { Direction, AlignItems, Justify } from '../atoms/utilities';
+import { Direction, AlignItems, Justify } from '../atoms/constants';
 import {
   stackMeta,
   Default as stackDefault,

@@ -1,6 +1,7 @@
 import { tv } from 'tailwind-variants';
 import { useMetadata } from '@builder.io/mitosis';
-import { getSize, getAlign, getWhitespace, type Align, type Size, type Whitespace } from './utilities';
+import type { Align, Size, Whitespace } from './constants';
+import { getSize, getAlign, getWhitespace } from './utilities';
 import { textVariants } from './Text.lite';
 
 export type Props = {

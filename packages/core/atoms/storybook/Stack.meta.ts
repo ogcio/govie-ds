@@ -1,7 +1,7 @@
 import type { ArgTypes, StoryContext, Renderer } from 'storybook/internal/types';
 import { within, expect } from 'storybook/test';
 import type { Props } from '../Stack.lite';
-import { Direction, AlignItems, Justify } from '../utilities';
+import { Direction, AlignItems, Justify } from '../constants';
 import { enumType } from './utilities';
 
 export const stackMeta = {

@@ -1,7 +1,6 @@
 import { Children, Fragment, type FC } from 'react';
-import { tv } from 'tailwind-variants';
 import GiStack from '../atoms/Stack';
-import { resolveResponsiveVariants } from '../atoms/utilities';
+import { resolveResponsive } from '../atoms/utilities';
 import { cn } from '../cn.js';
 import { normalizeLegacyBreakpoints } from '../utils/normalize-breakpoints.js';
 import type { StackProps } from './types.js';
@@ -49,31 +48,15 @@ export const Stack: FC<StackProps> = ({
   );
 };
 
-const dividerVariants = tv({
-  variants: {
-    direction: { column: 'gi-w-full gi-h-[1px]', row: 'gi-h-full gi-w-[1px]' },
-    smDirection: {
-      column: 'sm:gi-w-full sm:gi-h-[1px]',
-      row: 'sm:gi-h-full sm:gi-w-[1px]',
-    },
-    mdDirection: {
-      column: 'md:gi-w-full md:gi-h-[1px]',
-      row: 'md:gi-h-full md:gi-w-[1px]',
-    },
-    lgDirection: {
-      column: 'lg:gi-w-full lg:gi-h-[1px]',
-      row: 'lg:gi-h-full lg:gi-w-[1px]',
-    },
-    xlDirection: {
-      column: 'xl:gi-w-full xl:gi-h-[1px]',
-      row: 'xl:gi-h-full xl:gi-w-[1px]',
-    },
-    '2xlDirection': {
-      column: '2xl:gi-w-full 2xl:gi-h-[1px]',
-      row: '2xl:gi-h-full 2xl:gi-w-[1px]',
-    },
-  },
-});
+const dividerDirectionToClass = (direction: string, bp?: string): string => {
+  const cls = direction === 'row' ? 'gi-h-full gi-w-px' : 'gi-w-full gi-h-px';
+  return bp
+    ? cls
+        .split(' ')
+        .map((c) => `${bp}:${c}`)
+        .join(' ')
+    : cls;
+};
 
 const addDividers = (
   children: React.ReactNode,
@@ -86,9 +69,7 @@ const addDividers = (
       {index < childArray.length - 1 && (
         <div
           className={cn(
-            dividerVariants(
-              resolveResponsiveVariants(direction ?? 'column', 'Direction'),
-            ),
+            resolveResponsive(direction ?? 'column', dividerDirectionToClass),
             'gi-bg-gray-400',
           )}
           aria-hidden="true"

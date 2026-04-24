@@ -1,37 +1,6 @@
 import _ from 'lodash';
-
-export const Size = {
-  SM: 'sm',
-  MD: 'md',
-  LG: 'lg',
-  XL: 'xl',
-} as const;
-
-export const Whitespace = {
-  NORMAL: 'normal',
-  PRE: 'pre',
-  PRE_WRAP: 'pre-wrap',
-  BREAK_SPACES: 'break-spaces',
-} as const;
-
-export const Align = {
-  START: 'start',
-  CENTER: 'center',
-  END: 'end',
-  JUSTIFY: 'justify',
-} as const;
-
-export const Variant = {
-  PRIMARY: 'primary',
-  SECONDARY: 'secondary',
-  FLAT: 'flat',
-} as const;
-
-export const Appearance = {
-  DEFAULT: 'default',
-  DARK: 'dark',
-  LIGHT: 'light',
-} as const;
+import { AlignItems, Align, Breakpoint, Justify, Size, Whitespace } from './constants';
+import type { BreakpointKey, ResponsiveValue } from './constants';
 
 export const getSize = (x: (typeof Size)[keyof typeof Size] = Size.MD) =>
   Object.values(Size).includes(x) ? x : Size.MD;
@@ -42,99 +11,48 @@ export const getWhitespace = (x: (typeof Whitespace)[keyof typeof Whitespace] = 
 export const getAlign = (x: (typeof Align)[keyof typeof Align] = Align.START) =>
   Object.values(Align).includes(x) ? x : Align.START;
 
-export const Direction = {
-  ROW: 'row',
-  COLUMN: 'column',
-} as const;
-
-export const AlignItems = {
-  START: 'start',
-  CENTER: 'center',
-  END: 'end',
-  STRETCH: 'stretch',
-  BASELINE: 'baseline',
-} as const;
-
-export const Justify = {
-  START: 'start',
-  CENTER: 'center',
-  END: 'end',
-  BETWEEN: 'between',
-  AROUND: 'around',
-  EVENLY: 'evenly',
-} as const;
-
-export const Breakpoint = {
-  XS: 'xs',
-  SM: 'sm',
-  MD: 'md',
-  LG: 'lg',
-  XL: 'xl',
-  '2XL': '2xl',
-} as const;
-
 export const getAlignItems = (x: (typeof AlignItems)[keyof typeof AlignItems] = AlignItems.START) =>
-  Object.values(AlignItems).includes(x) ? x : AlignItems.START;
+  _.values(AlignItems).includes(x) ? x : AlignItems.START;
 
 export const getJustify = (x: (typeof Justify)[keyof typeof Justify] = Justify.START) =>
-  Object.values(Justify).includes(x) ? x : Justify.START;
-
-export type BreakpointKey = (typeof Breakpoint)[keyof typeof Breakpoint];
-
-export type ResponsiveValue<T> = T | Partial<Record<BreakpointKey, T>>;
+  _.values(Justify).includes(x) ? x : Justify.START;
 
 const breakpointKeys: BreakpointKey[] = _.values(Breakpoint);
 const baseBreakpoint: BreakpointKey = Breakpoint.XS;
 
 /**
  * Generates a Tailwind class string from a responsive value.
- * The `xs` breakpoint is treated as the base (unprefixed), matching Tailwind's
- * mobile-first approach where unprefixed classes apply from zero up.
+ * The `xs` breakpoint passes `undefined` as `bp` to the callback,
+ * matching Tailwind's mobile-first approach where unprefixed classes
+ * apply from zero up.
+ *
+ * Example:
+ * const toGap = (n: number, bp?: string) => bp ? `${bp}:gi-gap-${n}` : `gi-gap-${n}`;
+ *
+ * resolveResponsive(4, toGap);
+ * //"gi-gap-4"
+ *
+ * resolveResponsive({ xs: 2, md: 4, xl: 8 }, toGap);
+ * //"gi-gap-2 md:gi-gap-4 xl:gi-gap-8"
  */
-export const resolveResponsive = <T extends string | number>(
+export const resolveResponsive = <T>(
   value: ResponsiveValue<T>,
-  classPrefix: string,
+  toClass: (val: T, bp?: BreakpointKey) => string,
 ): string => {
   if (!_.isPlainObject(value)) {
-    return `${classPrefix}-${value}`;
+    return toClass(value as T);
   }
 
   const responsive = value as Partial<Record<BreakpointKey, T>>;
-  const results: string[] = [];
-  for (const breakpoint of breakpointKeys) {
-    const breakpointValue = responsive[breakpoint];
-    if (breakpointValue !== undefined) {
-      if (breakpoint === baseBreakpoint) {
-        results.push(`${classPrefix}-${breakpointValue}`);
-      } else {
-        results.push(`${breakpoint}:${classPrefix}-${breakpointValue}`);
+  return _.reduce(
+    breakpointKeys,
+    (result, bp) => {
+      if (bp in responsive) {
+        const cls = toClass(responsive[bp] as T, bp === baseBreakpoint ? undefined : bp);
+        return result ? `${result} ${cls}` : cls;
       }
-    }
-  }
-  return results.join(' ');
-};
-
-/**
- * Builds a tv() variant key map from a responsive value.
- * Expects a PascalCase `variantName` (e.g. `'Direction'`).
- * The `xs` breakpoint maps to the base key via lowerFirst (`direction`),
- * while other breakpoints produce prefixed keys (`mdDirection`, `lgDirection`).
- */
-export const resolveResponsiveVariants = <T>(value: ResponsiveValue<T>, variantName: string): Record<string, T> => {
-  if (!_.isPlainObject(value)) {
-    return { [_.lowerFirst(variantName)]: value as T };
-  }
-
-  const result: Record<string, T> = {};
-  for (const breakpoint of breakpointKeys) {
-    const breakpointValue = (value as Partial<Record<BreakpointKey, T>>)[breakpoint];
-    if (breakpointValue !== undefined) {
-      if (breakpoint === baseBreakpoint) {
-        result[_.lowerFirst(variantName)] = breakpointValue;
-      } else {
-        result[`${breakpoint}${variantName}`] = breakpointValue;
-      }
-    }
-  }
-  return result;
+      return result;
+    },
+    '',
+  );
 };

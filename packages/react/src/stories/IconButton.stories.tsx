@@ -10,7 +10,7 @@ import {
   AllAppearances as allAppearances,
   AllSizes as allSizes,
 } from '../atoms/storybook/IconButton.meta';
-import { Variant, Appearance } from '../atoms/utilities';
+import { Variant, Appearance } from '../atoms/constants';
 import IconButton, {
   IconButtonSize as Size,
   type Props,

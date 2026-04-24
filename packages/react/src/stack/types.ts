@@ -1,5 +1,5 @@
 import type { Props as StackAtomProps } from '../atoms/Stack';
-import type { ResponsiveValue } from '../atoms/utilities';
+import type { ResponsiveValue } from '../atoms/constants';
 
 type SimpleDirection = 'row' | 'column';
 
@@ -28,7 +28,7 @@ export type StackProps = Omit<StackAtomProps, 'direction' | 'gap'> & {
     | 'evenly';
   /** @deprecated Use `className` with a height utility instead. */
   fixedHeight?: string;
-  /** @deprecated Dividers are not supported in the cross-framework atom. This prop is React-only. */
+  /** @deprecated Dividers will be removed in a future release. */
   hasDivider?: boolean;
   /** @deprecated Use `ariaLabel` instead. Maps to `aria-label`. */
   'aria-label'?: string;
