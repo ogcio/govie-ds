@@ -49,7 +49,6 @@ export function Container({
 }
 
 const styles = tv({
-  base: 'gi-w-full gi-max-w-[100vw] gi-container gi-mx-auto',
   variants: {
     insetTop: {
       none: 'gi-pt-0',

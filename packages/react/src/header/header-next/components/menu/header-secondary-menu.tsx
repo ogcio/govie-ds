@@ -1,9 +1,9 @@
 'use client';
 
 import { Children, forwardRef } from 'react';
-import { Container } from '../../../../container/container.js';
+import Container from '../../../../atoms/Container.js';
 import { isSpecialComponent } from '../../../../utils/utilities.js';
-import { HeaderSecondaryMenuProps } from '../../../types.js';
+import type { HeaderSecondaryMenuProps } from '../../../types.js';
 import { headerSecondaryLinksVariants } from '../../../variants.js';
 import { useHeaderContext } from '../../header-context.js';
 import { HeaderMenuSectionProvider } from './header-menu-context.js';
@@ -47,7 +47,7 @@ export const HeaderSecondaryMenu = forwardRef<
           className={headerSecondaryLinksVariants({ appearance, className })}
           {...rest}
         >
-          <Container className="gi-w-full" fullWidth={headerContext.fullWidth}>
+          <Container>
             <ul
               className="gi-flex gi-justify-end gi-items-center gi-gap-2"
               data-orientation="horizontal"
