@@ -212,10 +212,7 @@ export function HeaderLegacy({
       data-testid={dataTestid}
       {...props}
     >
-      <Container
-        id="HeaderContainer"
-        className="gi-order-2 gi-min-w-0 md:gi-px-8"
-      >
+      <Container id="HeaderContainer" className="gi-order-2 gi-min-w-0">
         <div className={headerMenuVariants({ appearance })}>
           <div className={headerLogoVariants({ appearance })}>
             {logo?.href && (
