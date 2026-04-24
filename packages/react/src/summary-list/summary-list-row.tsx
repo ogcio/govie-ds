@@ -1,16 +1,33 @@
 'use client';
-import { Children, ReactElement } from 'react';
+import type { ReactElement } from 'react';
+import { Children } from 'react';
 import { cn } from '../cn.js';
 import { useDomId } from '../hooks/use-dom-id.js';
 import { translate as t } from '../i18n/utility.js';
 import { getSpecialComponentType } from '../utilities.js';
 import { useSummaryListContext } from './summary-list-context.js';
-import {
+import type {
   SummaryListActionListProps,
   SummaryListActionProps,
   SummaryListRowProps,
   SummaryListValueProps,
 } from './types.js';
+import { tv } from 'tailwind-variants';
+
+const styles = tv({
+  slots: {
+    th: 'gi-font-bold gi-align-top gi-text-left gi-truncate gi-min-h-12 gi-px-3 gi-py-2',
+    tr: 'gi-flex gi-flex-col md:gi-table-row gi-align-middle md:gi-py-none gi-py-2',
+    td: 'gi-align-top gi-px-3 gi-min-h-12 gi-py-2',
+  },
+  variants: {
+    withBorder: {
+      true: {
+        tr: 'gi-border-b gi-border-color-border-system-neutral-muted',
+      },
+    },
+  },
+});
 
 export const SummaryListRow = ({
   children,
@@ -33,22 +50,19 @@ export const SummaryListRow = ({
   const valueSrId = `${rowId}-value`;
   const actionsSrId = `${rowId}-actions`;
 
+  const { tr, th, td } = styles();
   return (
-    <tr
-      {...props}
-      className={cn(
-        {
-          'gi-border-b gi-border-color-border-system-neutral-muted': withBorder,
-        },
-        className,
-      )}
-    >
-      <th id={rowId} scope="row">
+    <tr {...props} className={tr({ withBorder, class: className })}>
+      <th id={rowId} scope="row" className={th()}>
         {label}
       </th>
 
       {valueTd ? (
-        <td {...valueTd.props} aria-labelledby={`${rowId} ${valueSrId}`}>
+        <td
+          className={td()}
+          {...valueTd.props}
+          aria-labelledby={`${rowId} ${valueSrId}`}
+        >
           <span id={valueSrId} className="gi-sr-only">
             {t('summaryList.col.value', { defaultValue: 'Value' })}
           </span>
@@ -57,7 +71,10 @@ export const SummaryListRow = ({
       ) : null}
 
       {actions.length > 0 ? (
-        <td aria-labelledby={`${rowId} ${actionsSrId}`}>
+        <td
+          className={td({ className: 'gi-truncate' })}
+          aria-labelledby={`${rowId} ${actionsSrId}`}
+        >
           <ActionList id={actionsSrId}>
             {actions.map((action, index) => (
               <span
@@ -76,7 +93,7 @@ export const SummaryListRow = ({
 
 export const ActionList = ({ id, children }: SummaryListActionListProps) => {
   return (
-    <div className={cn('gi-summary-list-action')}>
+    <div className="gi-text-sm gi-font-normal gi-align-top md:gi-text-right gi-whitespace-nowrap">
       <span id={id} className="gi-sr-only">
         {t('summaryList.col.actions', { defaultValue: 'Actions' })}
       </span>

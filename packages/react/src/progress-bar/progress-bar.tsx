@@ -55,7 +55,7 @@ const styles = tv({
     isIndeterminate: {
       true: {
         indeterminate:
-          'gi-relative gi-overflow-hidden gi-w-[25%] gi-animate-indeterminate-progress',
+          'gi-relative gi-overflow-hidden gi-w-1/4 gi-animate-indeterminate-progress',
       },
     },
   },

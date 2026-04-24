@@ -1,5 +1,6 @@
 'use client';
-import { Children, ReactElement } from 'react';
+import type { ReactElement } from 'react';
+import { Children } from 'react';
 import { cn } from '../cn.js';
 import { useBreakpoint } from '../hooks/use-breakpoint.js';
 import { useDomId } from '../hooks/use-dom-id.js';
@@ -7,7 +8,12 @@ import { translate as t } from '../i18n/utility.js';
 import { getSpecialComponentType } from '../utilities.js';
 import { useSummaryListContext } from './summary-list-context.js';
 import { ActionList } from './summary-list-row.js';
-import { SummaryListActionProps, SummaryListHeaderProps } from './types.js';
+import type { SummaryListActionProps, SummaryListHeaderProps } from './types.js';
+import { tv } from 'tailwind-variants';
+
+const styles = tv({
+  base: 'gi-py-2 gi-px-3 gi-min-h-12 gi-truncate gi-font-bold gi-text-left gi-align-middle',
+});
 
 export const SummaryListHeader = ({
   children,
@@ -35,14 +41,14 @@ export const SummaryListHeader = ({
 
   return (
     <tr {...props} className={cn('gi-h-14', className)}>
-      <th scope="col" className="gi-text-center gi-align-middle">
+      <th scope="col" className={styles()}>
         {!isMobile && (
           <span className={cn(overflowClasses)} style={style}>
             {label}
           </span>
         )}
         {isMobile ? (
-          <div className={cn('gi-flex gi-justify-between')}>
+          <div className="gi-flex gi-justify-between">
             <span className={cn(overflowClasses)} style={style}>
               {label}
             </span>
@@ -65,7 +71,7 @@ export const SummaryListHeader = ({
         ) : null}
       </th>
       {!isMobile && summaryListActions ? (
-        <th scope="col" colSpan={2}>
+        <th scope="col" className={styles()} colSpan={2}>
           <span className="gi-sr-only">
             {t('header.actions', {
               defaultValue: 'Actions',
