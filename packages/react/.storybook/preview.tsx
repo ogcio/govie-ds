@@ -1,5 +1,5 @@
-import '@ogcio/theme-doete/light.css';
 import '@ogcio/theme-govie/theme.css';
+import '@ogcio/theme-doete/light.css';
 import {
   Controls,
   Description,
