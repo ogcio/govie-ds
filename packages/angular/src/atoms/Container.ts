@@ -36,7 +36,7 @@ export const styles = tv({
       false: 'gi-px-0', // gi-container override
     },
     maxWidth: {
-      default: '',
+      default: 'gi-max-w-full 2xl:gi-max-w-screen-2xl',
       // defaults to gi-container
       sm: 'gi-max-w-screen-sm',
       // 640px
