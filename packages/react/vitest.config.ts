@@ -16,7 +16,7 @@ export default mergeConfig(
     test: {
       reporters: [
         'default',
-        ['junit', { outputFile: 'coverage/test-report.xml' }],
+        ['junit', { outputFile: 'coverage/results.xml' }],
       ],
       coverage: {
         enabled: true,
