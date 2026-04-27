@@ -1,12 +1,13 @@
 'use client';
-import React, { ReactNode } from 'react';
+import type { ReactNode } from 'react';
+import React from 'react';
 import { renderToStaticMarkup } from 'react-dom/server';
 import {
   LogoGoldGreen as GovieLogoHarpWithText,
   LogoHarpWhite as GovieLogoHarp,
 } from '../atoms/icons/logos';
 import { cn } from '../cn.js';
-import { LogoProps } from '../common/types.js';
+import type { LogoProps } from '../common/types.js';
 import { Container } from '../container/container.js';
 import { translate as t } from '../i18n/utility.js';
 import Anchor from '../primitives/anchor.js';
@@ -28,12 +29,12 @@ function getLogo({ logo }: FooterProps) {
     renderToStaticMarkup(<GovieLogoHarpWithText />),
   );
   const svgDataUriDesktop = `data:image/svg+xml;base64,${svgDesktopString}`;
-
   return (
     <picture>
       <source srcSet={logo?.imageLarge || svgDataUriDesktop} />
       <img
-        className="gi-h-16"
+        width={181.34}
+        height={64}
         src={logo?.imageSmall || svgDataUriMobile}
         alt={logo?.alt || t('logo.govieLogo', { defaultValue: 'Gov.ie Logo' })}
       />
