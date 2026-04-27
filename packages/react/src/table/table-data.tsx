@@ -95,8 +95,8 @@ export const TableExpandIcon = ({
   const containerRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
-    const table = containerRef.current?.closest('.gi-table');
-    const size = table?.getAttribute('data-row-size') as 'sm' | 'md' | 'lg';
+    const table = containerRef.current?.closest<HTMLElement>('.gi-table');
+    const size = table?.dataset?.rowSize as 'sm' | 'md' | 'lg';
     if (size) {
       setRowSize(size);
     }

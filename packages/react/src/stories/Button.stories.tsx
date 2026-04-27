@@ -1,6 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/react-vite';
 import _ from 'lodash';
-import { Button } from '../atoms/index.js';
+import { Button } from '../button/button';
 import { ButtonSize } from '../atoms/Button';
 import { Variant, Appearance } from '../atoms/constants.js';
 import {
