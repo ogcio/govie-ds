@@ -72,6 +72,41 @@ export const Default: Story = {
   ),
 };
 
+export const Inline: Story = {
+  args: {
+    groupId: 'UniqueID',
+    inline: true,
+  },
+  render: (props) => (
+    <FormField>
+      <FormFieldLabel>Organisation</FormFieldLabel>
+      <InputCheckboxGroup {...props}>
+        <InputCheckbox
+          value="employment-tribunal"
+          label="Employment Tribunal"
+          id="UniqueID-check1"
+        />
+        <InputCheckbox
+          value="ministry-of-defence"
+          label="Ministry of Defence"
+          id="UniqueID-check2"
+        />
+        <InputCheckbox
+          value="department-for-transport"
+          label="Department for Transport"
+          id="UniqueID-check3"
+        />
+        <InputCheckbox
+          value="others"
+          label="Others"
+          id="UniqueID-check4"
+          disabled
+        />
+      </InputCheckboxGroup>
+    </FormField>
+  ),
+};
+
 export const WithLabelHintAndError: Story = {
   args: {
     groupId: 'govie-field-ID2',
