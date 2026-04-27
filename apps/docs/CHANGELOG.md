@@ -1,5 +1,20 @@
 # Changelog
 
+## [1.35.0](https://github.com/ogcio/govie-ds/compare/docs-v1.34.0...docs-v1.35.0) (2026-04-27)
+
+
+### Features
+
+* **AB#36573:** Adding IconButton atom component ([#923](https://github.com/ogcio/govie-ds/issues/923)) ([fdf5a86](https://github.com/ogcio/govie-ds/commit/fdf5a868da7bc3de3ffc7d4df5f3abd808421e88))
+* **AB#36951:** Migrate Сontainer to mitosis ([#928](https://github.com/ogcio/govie-ds/issues/928)) ([06ba94a](https://github.com/ogcio/govie-ds/commit/06ba94a14448c3e324d4525d9ea076a4e8243be9))
+
+
+### Dependencies
+
+* The following workspace dependencies were updated
+  * dependencies
+    * @ogcio/design-system-react bumped to 1.36.0
+
 ## [1.34.0](https://github.com/ogcio/govie-ds/compare/docs-v1.33.0...docs-v1.34.0) (2026-04-21)
 
 
