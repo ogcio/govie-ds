@@ -16,7 +16,6 @@ import {
 const meta: Meta<typeof Button> = {
   ...buttonMeta,
   title: 'Components/Button',
-  component: Button,
   argTypes: {
     ...buttonMeta.argTypes,
     onClick: {

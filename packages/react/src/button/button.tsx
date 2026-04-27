@@ -18,6 +18,15 @@ export const Button = forwardRef<HTMLButtonElement, ButtonProps>(
       onBlur,
       onKeyDown,
       onKeyUp,
+      ariaLabel,
+      ariaLabelledBy,
+      ariaDescribedBy,
+      ariaChecked,
+      ariaPressed,
+      ariaExpanded,
+      ariaControls,
+      ariaHasPopup,
+      ariaBusy,
       role,
       type,
       form,
@@ -25,15 +34,15 @@ export const Button = forwardRef<HTMLButtonElement, ButtonProps>(
       tabIndex,
       dataTestid,
       dataTestId,
-      'aria-label': ariaLabel,
-      'aria-labelledby': ariaLabelledBy,
-      'aria-describedby': ariaDescribedBy,
-      'aria-checked': ariaChecked,
-      'aria-pressed': ariaPressed,
-      'aria-expanded': ariaExpanded,
-      'aria-controls': ariaControls,
-      'aria-haspopup': ariaHasPopup,
-      'aria-busy': ariaBusy,
+      'aria-label': nativeAriaLabel,
+      'aria-labelledby': nativeAriaLabelledBy,
+      'aria-describedby': nativeAriaDescribedBy,
+      'aria-checked': nativeAriaChecked,
+      'aria-pressed': nativeAriaPressed,
+      'aria-expanded': nativeAriaExpanded,
+      'aria-controls': nativeAriaControls,
+      'aria-haspopup': nativeAriaHasPopup,
+      'aria-busy': nativeAriaBusy,
       'data-testid': nativeDataTestId,
     },
     ref,
@@ -53,15 +62,21 @@ export const Button = forwardRef<HTMLButtonElement, ButtonProps>(
         onBlur={onBlur}
         onKeyDown={onKeyDown}
         onKeyUp={onKeyUp}
-        ariaLabel={ariaLabel}
-        ariaLabelledBy={ariaLabelledBy}
-        ariaDescribedBy={ariaDescribedBy}
-        ariaChecked={ariaChecked as boolean | undefined}
-        ariaPressed={ariaPressed as boolean | 'mixed' | undefined}
-        ariaExpanded={ariaExpanded as boolean | undefined}
-        ariaControls={ariaControls}
-        ariaHasPopup={ariaHasPopup as GiButtonProps['ariaHasPopup']}
-        ariaBusy={ariaBusy as boolean | undefined}
+        ariaLabel={ariaLabel ?? nativeAriaLabel}
+        ariaLabelledBy={ariaLabelledBy ?? nativeAriaLabelledBy}
+        ariaDescribedBy={ariaDescribedBy ?? nativeAriaDescribedBy}
+        ariaChecked={(ariaChecked ?? nativeAriaChecked) as boolean | undefined}
+        ariaPressed={
+          (ariaPressed ?? nativeAriaPressed) as boolean | 'mixed' | undefined
+        }
+        ariaExpanded={
+          (ariaExpanded ?? nativeAriaExpanded) as boolean | undefined
+        }
+        ariaControls={ariaControls ?? nativeAriaControls}
+        ariaHasPopup={
+          (ariaHasPopup ?? nativeAriaHasPopup) as GiButtonProps['ariaHasPopup']
+        }
+        ariaBusy={(ariaBusy ?? nativeAriaBusy) as boolean | undefined}
         role={role}
         type={type}
         form={form}
