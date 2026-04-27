@@ -1,5 +1,23 @@
 # Changelog
 
+## [1.36.0](https://github.com/ogcio/govie-ds/compare/react-lib-v1.35.0...react-lib-v1.36.0) (2026-04-27)
+
+
+### Features
+
+* **AB#36573:** Adding IconButton atom component ([#923](https://github.com/ogcio/govie-ds/issues/923)) ([fdf5a86](https://github.com/ogcio/govie-ds/commit/fdf5a868da7bc3de3ffc7d4df5f3abd808421e88))
+* **AB#36951:** Migrate Сontainer to mitosis ([#928](https://github.com/ogcio/govie-ds/issues/928)) ([06ba94a](https://github.com/ogcio/govie-ds/commit/06ba94a14448c3e324d4525d9ea076a4e8243be9))
+
+
+### Bug Fixes
+
+* **AB#37709:** React button fixes ([#936](https://github.com/ogcio/govie-ds/issues/936)) ([af4e674](https://github.com/ogcio/govie-ds/commit/af4e6746939020f45d8089c90919c0c7f784882a))
+
+
+### Miscellaneous Chores
+
+* **AB#37519:** bump React package deps and address pnpm audit ([e952464](https://github.com/ogcio/govie-ds/commit/e9524645659e51504ed01199dda98b8f7b2ad650))
+
 ## [1.35.0](https://github.com/ogcio/govie-ds/compare/react-lib-v1.34.0...react-lib-v1.35.0) (2026-04-21)
 
 
