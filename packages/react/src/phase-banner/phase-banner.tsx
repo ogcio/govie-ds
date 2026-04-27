@@ -1,7 +1,7 @@
 'use client';
 
-import { Container } from '../container/container.js';
 import { useBreakpoint } from '../hooks/use-breakpoint.js';
+import Container from '../atoms/Container.js';
 import { Tag } from '../tag/tag.js';
 
 export type PhaseBannerProps = {
@@ -45,7 +45,7 @@ export function PhaseBanner({
   }
 
   if (wrap === 'container-full-width') {
-    return <Container fullWidth>{bannerContent}</Container>;
+    return <Container maxWidth="full">{bannerContent}</Container>;
   }
 
   return bannerContent;

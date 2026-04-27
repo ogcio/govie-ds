@@ -2,14 +2,13 @@ import _ from 'lodash';
 import { AlignItems, Align, Breakpoint, Justify, Size, Whitespace } from './constants';
 import type { BreakpointKey, ResponsiveValue } from './constants';
 
-export const getSize = (x: (typeof Size)[keyof typeof Size] = Size.MD) =>
-  Object.values(Size).includes(x) ? x : Size.MD;
+export const getSize = (x: (typeof Size)[keyof typeof Size] = Size.MD) => (_.values(Size).includes(x) ? x : Size.MD);
 
 export const getWhitespace = (x: (typeof Whitespace)[keyof typeof Whitespace] = Whitespace.NORMAL) =>
-  Object.values(Whitespace).includes(x) ? x : Whitespace.NORMAL;
+  _.values(Whitespace).includes(x) ? x : Whitespace.NORMAL;
 
 export const getAlign = (x: (typeof Align)[keyof typeof Align] = Align.START) =>
-  Object.values(Align).includes(x) ? x : Align.START;
+  _.values(Align).includes(x) ? x : Align.START;
 
 export const getAlignItems = (x: (typeof AlignItems)[keyof typeof AlignItems] = AlignItems.START) =>
   _.values(AlignItems).includes(x) ? x : AlignItems.START;
@@ -17,8 +16,14 @@ export const getAlignItems = (x: (typeof AlignItems)[keyof typeof AlignItems] = 
 export const getJustify = (x: (typeof Justify)[keyof typeof Justify] = Justify.START) =>
   _.values(Justify).includes(x) ? x : Justify.START;
 
-const breakpointKeys: BreakpointKey[] = _.values(Breakpoint);
-const baseBreakpoint: BreakpointKey = Breakpoint.XS;
+export function clamp<T extends Record<string, string>>(
+  value: string | undefined,
+  options: T,
+  defaultValue: T[keyof T],
+): T[keyof T] {
+  const allowed = _.values(options) as T[keyof T][];
+  return value !== undefined && allowed.includes(value as T[keyof T]) ? (value as T[keyof T]) : defaultValue;
+}
 
 /**
  * Generates a Tailwind class string from a responsive value.
@@ -42,13 +47,13 @@ export const resolveResponsive = <T>(
   if (!_.isPlainObject(value)) {
     return toClass(value as T);
   }
-
   const responsive = value as Partial<Record<BreakpointKey, T>>;
+
   return _.reduce(
-    breakpointKeys,
+    _.values(Breakpoint),
     (result, bp) => {
       if (bp in responsive) {
-        const cls = toClass(responsive[bp] as T, bp === baseBreakpoint ? undefined : bp);
+        const cls = toClass(responsive[bp] as T, bp === Breakpoint.XS ? undefined : bp);
         return result ? `${result} ${cls}` : cls;
       }
       return result;

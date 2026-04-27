@@ -224,6 +224,7 @@ labeling
 lifecycle
 md
 minimizing
+mx
 navigation-sidenav
 no-color
 noColor

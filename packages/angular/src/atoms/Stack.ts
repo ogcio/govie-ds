@@ -25,8 +25,7 @@ export type Props = {
 };
 
 import { tv } from 'tailwind-variants';
-import { Direction, AlignItems, Justify } from './constants';
-import type { ResponsiveValue } from './constants';
+import { Direction, AlignItems, Justify, ResponsiveValue } from './constants';
 import { getAlignItems, getJustify, resolveResponsive } from './utilities';
 const directionToClass = (direction: string, bp?: string): string => {
   const cls = direction === 'row' ? 'gi-flex-row' : 'gi-flex-col';

@@ -2,7 +2,6 @@
 
 import { Children, forwardRef, type ReactElement } from 'react';
 import { cn } from '../../cn.js';
-import { Container } from '../../container/container.js';
 import { translate as t } from '../../i18n/utility.js';
 import {
   getSpecialComponentType,
@@ -15,6 +14,7 @@ import {
   headerVariants,
 } from '../variants.js';
 import { HeaderProvider } from './header-context.js';
+import Container from '../../atoms/Container.js';
 
 export const HeaderNext = forwardRef<HTMLElement, HeaderNextProps>(
   (
@@ -68,7 +68,7 @@ export const HeaderNext = forwardRef<HTMLElement, HeaderNextProps>(
           data-variant={variant}
           {...rest}
         >
-          <Container className="gi-order-2" fullWidth={fullWidth}>
+          <Container className="gi-order-2 gi-min-w-0">
             <div className={headerMenuVariants({ appearance: variant })}>
               {headerLogo}
               {headerTitle}
