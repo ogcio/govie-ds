@@ -22,3 +22,10 @@ run-react-playwright = docker run --rm \
 	-v "$(CURDIR)/packages/react/playwright-report:/app/playwright-report" \
 	-v "$(CURDIR)/packages/react/test-results:/app/test-results" \
 	govie-playwright
+
+ci-install:
+	pnpm install --frozen-lockfile;
+
+ci-lint:
+	pnpm run lint;
+	pnpm run format:check;
