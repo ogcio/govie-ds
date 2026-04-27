@@ -1,6 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/react-vite';
 import _ from 'lodash';
-import { Button } from '../atoms/index.js';
+import { Button } from '../button/button';
 import { ButtonSize } from '../atoms/Button';
 import { Variant, Appearance } from '../atoms/utilities.js';
 import {
@@ -16,7 +16,6 @@ import {
 const meta: Meta<typeof Button> = {
   ...buttonMeta,
   title: 'Components/Button',
-  component: Button,
   argTypes: {
     ...buttonMeta.argTypes,
     onClick: {
@@ -60,6 +59,7 @@ type Story = StoryObj<typeof meta>;
 
 export const Default: Story = {
   ...buttonDefault,
+  render: (props) => <Button {...props} />,
 };
 
 export const AllVariants: Story = {
