@@ -1,5 +1,7 @@
 'use client';
-import { Children, ReactElement } from 'react';
+import type { ReactElement } from 'react';
+import { Children } from 'react';
+import { tv } from 'tailwind-variants';
 import { cn } from '../cn.js';
 import { getSpecialComponentType } from '../utilities.js';
 import { SummaryListProvider } from './summary-list-context.js';
@@ -23,21 +25,37 @@ export const SummaryList = ({
     (child) => getSpecialComponentType(child) === 'SummaryListRow',
   ) as ReactElement<SummaryListRowProps>[];
 
+  const { container, thead } = styles({ withBorder });
   return (
     <SummaryListProvider>
-      <div
-        className={cn('gi-summary-list', {
-          'gi-border gi-border-color-border-system-neutral-muted': withBorder,
-        })}
-      >
-        <table className={className} role="table" {...props}>
-          {header ? <thead>{header}</thead> : null}
+      <div className={container()}>
+        <table className={cn(className, 'gi-w-full')} role="table" {...props}>
+          {header ? <thead className={thead()}>{header}</thead> : null}
           {rows ? <tbody>{rows}</tbody> : null}
         </table>
       </div>
     </SummaryListProvider>
   );
 };
+
+const styles = tv({
+  slots: {
+    container:
+      'gi-rounded-md gi-overflow-hidden gi-antialiased gi-text-md gi-w-full gi-border gi-border-color-border-system-neutral-muted',
+    thead:
+      'gi-bg-color-surface-system-neutral-layer1 gi-border-b gi-border-color-border-system-neutral-muted',
+  },
+  variants: {
+    withBorder: {
+      true: {
+        container: 'gi-border gi-border-color-border-system-neutral-muted',
+      },
+      false: {
+        container: 'gi-border-none',
+      },
+    },
+  },
+});
 
 SummaryList.displayName = 'SummaryList';
 Object.defineProperty(SummaryList, 'componentType', {

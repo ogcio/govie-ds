@@ -311,6 +311,18 @@ export function createTheme(
       xl: '8px',
     },
     extend: {
+      keyframes: {
+        'indeterminate-progress': {
+          '0%': { left: '-100%' },
+          '25%': { left: '0%' },
+          '50%': { left: '25%' },
+          '75%': { left: '50%' },
+          '100%': { left: '100%' },
+        },
+      },
+      animation: {
+        'indeterminate-progress': 'indeterminate-progress 1s linear infinite',
+      },
       colors: {
         color: {
           ...(meta
