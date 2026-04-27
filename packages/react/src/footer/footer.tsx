@@ -17,10 +17,13 @@ export type FooterProps = {
   primarySlot?: ReactNode;
   secondarySlot?: ReactNode;
   utilitySlot?: ReactNode;
-  logo?: LogoProps;
+  logo?: LogoProps & { width?: number; height?: number };
   className?: string;
   dataTestid?: string;
 } & React.HTMLAttributes<HTMLDivElement>;
+
+// Default logo size if no width/height is provided
+const LOGO = { width: 181, height: 64 };
 
 function getLogo({ logo }: FooterProps) {
   const svgMobileString = btoa(renderToStaticMarkup(<GovieLogoHarp />));
@@ -29,12 +32,13 @@ function getLogo({ logo }: FooterProps) {
     renderToStaticMarkup(<GovieLogoHarpWithText />),
   );
   const svgDataUriDesktop = `data:image/svg+xml;base64,${svgDesktopString}`;
-
   return (
     <picture>
       <source srcSet={logo?.imageLarge || svgDataUriDesktop} />
       <img
-        className="gi-h-16"
+        width={logo?.width ?? LOGO.width}
+        height={logo?.height ?? LOGO.height}
+        className="gi-h-16 gi-w-auto"
         src={logo?.imageSmall || svgDataUriMobile}
         alt={logo?.alt || t('logo.govieLogo', { defaultValue: 'Gov.ie Logo' })}
       />

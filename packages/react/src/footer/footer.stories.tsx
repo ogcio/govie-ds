@@ -5,6 +5,7 @@ import { Link } from '../link/link.js';
 import { SectionBreak } from '../section-break/section-break.js';
 import { Stack } from '../stack/stack.js';
 import { Footer } from './footer.js';
+import { generateSvgPlaceholderDataUrl } from '../utils/placeholder.js';
 
 const meta: Meta<typeof Footer> = {
   component: Footer,
@@ -391,6 +392,19 @@ export const MinimalFooter: Story = {
       </Stack>
     ),
   },
+  play: async ({ canvasElement, step }) => {
+    const canvas = within(canvasElement);
+    await step(
+      'should render the default logo with default width and height',
+      async () => {
+        const img = canvas.getByAltText('Gov.ie Logo');
+        const computedStyle = getComputedStyle(img);
+        const { width, height } = getRoundedDimensions(img);
+        expect(width).toBe(181);
+        expect(height).toBe(64);
+      },
+    );
+  },
 };
 
 export const GovieFooter: Story = {
@@ -494,4 +508,69 @@ export const TestAllSlots: Story = {
       expect(utilityElement).toBeInTheDocument();
     });
   },
+};
+
+export const CustomLogo: Story = {
+  render: (props) => {
+    return (
+      <Footer
+        data-testid="footer-custom-logo"
+        primarySlot={
+          <div>
+            The footer decides how the logo <em>looks</em> on screen—a fixed{' '}
+            <span className="gi-font-bold">64px</span> tall bar with{' '}
+            <span className="gi-font-bold">width: auto</span> so your asset
+            keeps its aspect ratio. Pass the actual pixel dimensions of your
+            image file (its intrinsic width and height) to the logo prop, not
+            the size you expect in the footer. These values become{' '}
+            <code>&lt;img&gt;</code> attributes so the browser knows the correct
+            aspect ratio up front and can reserve roughly the right space while
+            the graphic loads—better for layout stability and CLS.
+          </div>
+        }
+        secondarySlot={
+          <div>
+            This placeholder SVG really is 220×80px; <code>logo.width</code>/
+            <code>logo.height</code> mirror that. The footer still renders it at
+            64px tall with proportional width.
+          </div>
+        }
+        logo={{
+          width: 220,
+          height: 80,
+          imageLarge: generateSvgPlaceholderDataUrl(220, 80),
+        }}
+        {...props}
+      />
+    );
+  },
+  tags: ['skip-playwright'],
+  play: async ({ canvasElement, step }) => {
+    const canvas = within(canvasElement);
+
+    await step(
+      'should reserve intrinsic ratio and enforce footer logo height',
+      async () => {
+        const img = canvas.getByAltText('Gov.ie Logo');
+        expect(img).toHaveAttribute('width', '220');
+        expect(img).toHaveAttribute('height', '80');
+
+        expect(getRoundedDimensions(img as Element)).toMatchObject({
+          width: Math.round((220 / 80) * 64),
+          height: 64,
+        });
+      },
+    );
+  },
+};
+
+const getRoundedDimensions = (element: Element) => {
+  return {
+    width: Math.round(
+      Number.parseFloat(getComputedStyle(element).width.replace('px', '')),
+    ),
+    height: Math.round(
+      Number.parseFloat(getComputedStyle(element).height.replace('px', '')),
+    ),
+  };
 };
