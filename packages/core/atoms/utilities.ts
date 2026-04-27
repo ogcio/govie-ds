@@ -1,21 +1,34 @@
 import _ from 'lodash';
-import { AlignItems, Align, Breakpoint, Justify, Size, Whitespace } from './constants';
+import { Align, AlignItems, Breakpoint, Justify, Size, Whitespace } from './constants';
 import type { BreakpointKey, ResponsiveValue } from './constants';
 
-export const getSize = (x: (typeof Size)[keyof typeof Size] = Size.MD) => (_.values(Size).includes(x) ? x : Size.MD);
+export const getSize = (x: (typeof Size)[keyof typeof Size] | undefined) => clamp(x, Size, Size.MD);
 
-export const getWhitespace = (x: (typeof Whitespace)[keyof typeof Whitespace] = Whitespace.NORMAL) =>
-  _.values(Whitespace).includes(x) ? x : Whitespace.NORMAL;
+export const getWhitespace = (x: (typeof Whitespace)[keyof typeof Whitespace] | undefined) =>
+  clamp(x, Whitespace, Whitespace.NORMAL);
 
-export const getAlign = (x: (typeof Align)[keyof typeof Align] = Align.START) =>
-  _.values(Align).includes(x) ? x : Align.START;
+export const getAlign = (x: (typeof Align)[keyof typeof Align] | undefined) => clamp(x, Align, Align.START);
 
-export const getAlignItems = (x: (typeof AlignItems)[keyof typeof AlignItems] = AlignItems.START) =>
-  _.values(AlignItems).includes(x) ? x : AlignItems.START;
+export const getAlignItems = (x: (typeof AlignItems)[keyof typeof AlignItems] | undefined) =>
+  clamp(x, AlignItems, AlignItems.START);
 
-export const getJustify = (x: (typeof Justify)[keyof typeof Justify] = Justify.START) =>
-  _.values(Justify).includes(x) ? x : Justify.START;
+export const getJustify = (x: (typeof Justify)[keyof typeof Justify] | undefined) => clamp(x, Justify, Justify.START);
 
+/**
+ * Validates a string value against an `as const` enum object.
+ * Returns the value if it matches one of the allowed options,
+ * otherwise falls back to the provided default.
+ *
+ * Example:
+ * const Size = { SM: 'sm', MD: 'md', LG: 'lg' } as const;
+ *
+ * clamp('sm', Size, Size.MD);
+ * //"sm"
+ *
+ * clamp('invalid', Size, Size.MD);
+ * //"md"
+ *
+ */
 export function clamp<T extends Record<string, string>>(
   value: string | undefined,
   options: T,
@@ -47,8 +60,8 @@ export const resolveResponsive = <T>(
   if (!_.isPlainObject(value)) {
     return toClass(value as T);
   }
-  const responsive = value as Partial<Record<BreakpointKey, T>>;
 
+  const responsive = value as Partial<Record<BreakpointKey, T>>;
   return _.reduce(
     _.values(Breakpoint),
     (result, bp) => {

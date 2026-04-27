@@ -23,13 +23,13 @@ export type Props = {
 };
 
 import { tv } from 'tailwind-variants';
-import { Direction, AlignItems, Justify, ResponsiveValue } from './constants';
+import { Direction, AlignItems, Justify, ResponsiveValue, BreakpointKey } from './constants';
 import { getAlignItems, getJustify, resolveResponsive } from './utilities';
-const directionToClass = (direction: string, bp?: string): string => {
+const directionToClass = (direction: string, bp?: BreakpointKey): string => {
   const cls = direction === 'row' ? 'gi-flex-row' : 'gi-flex-col';
   return bp ? `${bp}:${cls}` : cls;
 };
-const gapToClass = (gap: number, bp?: string): string => (bp ? `${bp}:gi-gap-${gap}` : `gi-gap-${gap}`);
+const gapToClass = (gap: number, bp?: BreakpointKey): string => (bp ? `${bp}:gi-gap-${gap}` : `gi-gap-${gap}`);
 const stackVariants = tv({
   base: ['gi-flex', 'gi-w-full'],
   variants: {
