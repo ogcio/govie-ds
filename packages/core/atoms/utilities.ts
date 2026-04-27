@@ -39,3 +39,12 @@ export const getWhitespace = (x: (typeof Whitespace)[keyof typeof Whitespace] = 
 
 export const getAlign = (x: (typeof Align)[keyof typeof Align] = Align.START) =>
   Object.values(Align).includes(x) ? x : Align.START;
+
+export function clamp<T extends Record<string, string>>(
+  value: string | undefined,
+  options: T,
+  defaultValue: T[keyof T],
+): T[keyof T] {
+  const allowed = Object.values(options) as T[keyof T][];
+  return value !== undefined && allowed.includes(value as T[keyof T]) ? (value as T[keyof T]) : defaultValue;
+}
