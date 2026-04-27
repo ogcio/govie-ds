@@ -1,16 +1,17 @@
 'use client';
 
-import {
+import type {
   ChangeEvent,
+  FC,
+  PropsWithChildren} from 'react';
+import {
   Children,
   cloneElement,
-  FC,
   isValidElement,
-  PropsWithChildren,
   useState,
   useEffect,
 } from 'react';
-import { InputRadioGroupProps } from './types.js';
+import type { InputRadioGroupProps } from './types.js';
 
 export const InputRadioGroup: FC<PropsWithChildren<InputRadioGroupProps>> = ({
   groupId,
@@ -63,14 +64,14 @@ export const InputRadioGroup: FC<PropsWithChildren<InputRadioGroupProps>> = ({
   });
 
   return (
-    <div className="gi-input-group-container">
-      <div className="gi-input-group-options-container">
+    <div className="gi-flex">
+      <div className="gi-flex gi-flex-col gi-gap-2.5">
         <div
           role="radiogroup"
           className={
             inline
-              ? 'gi-input-group-options-inline'
-              : 'gi-input-group-options-stacked'
+              ? 'gi-flex gi-flex-row gi-gap-4'
+              : 'gi-flex gi-flex-col gi-gap-2.5'
           }
         >
           {childrenWithOnChange}

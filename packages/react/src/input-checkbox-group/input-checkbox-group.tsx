@@ -6,9 +6,9 @@ import {
   useState,
   useEffect,
 } from 'react';
-import { InputCheckboxSizeEnumType } from '../input-checkbox/types.js';
-import { InputRadioSizeType } from '../input-radio/types.js';
-import { InputCheckboxGroupProps } from './types.js';
+import type { InputCheckboxSizeEnumType } from '../input-checkbox/types.js';
+import type { InputRadioSizeType } from '../input-radio/types.js';
+import type { InputCheckboxGroupProps } from './types.js';
 
 export const InputCheckboxGroup: React.FC<
   React.PropsWithChildren<InputCheckboxGroupProps>
@@ -67,13 +67,13 @@ export const InputCheckboxGroup: React.FC<
   });
 
   return (
-    <div className="gi-input-group-container">
-      <div className="gi-input-group-options-container">
+    <div className="gi-flex">
+      <div className="gi-flex gi-flex-col gi-gap-2.5">
         <div
           className={
             inline
-              ? 'gi-input-group-options-inline'
-              : 'gi-input-group-options-stacked'
+              ? 'gi-flex gi-flex-row gi-gap-4'
+              : 'gi-flex gi-flex-col gi-gap-2.5'
           }
         >
           {childrenWithOnChange}
