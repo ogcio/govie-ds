@@ -32,8 +32,7 @@ const meta: Meta<typeof Footer> = {
     },
     logo: {
       control: 'object',
-      description:
-        'Optional custom logo component. Either width or height must be specified to override the default size, with width taking precedence to retain aspect ratio.',
+      description: 'Optional custom logo component',
     },
     className: {
       control: 'text',
