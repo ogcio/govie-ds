@@ -11,11 +11,11 @@ component:
       fields:
         - name: 'direction'
           ofType: '"row" | "column" | ResponsiveValue'
-          description: 'Flex direction. Accepts a string or a responsive breakpoint object { xs?, sm?, md?, lg?, xl?, 2xl? }.'
+          description: 'Flex direction. Accepts a string or a responsive breakpoint object { base?, xs?, sm?, md?, lg?, xl?, 2xl? }.'
           required: false
         - name: 'gap'
           ofType: 'number | ResponsiveValue'
-          description: 'Tailwind spacing scale value (0–12). Accepts a number or a responsive breakpoint object { xs?, sm?, md?, lg?, xl?, 2xl? }.'
+          description: 'Tailwind spacing scale value (0–12). Accepts a number or a responsive breakpoint object { base?, xs?, sm?, md?, lg?, xl?, 2xl? }.'
           required: false
         - name: 'align'
           ofType: '"start" | "center" | "end" | "stretch" | "baseline"'
@@ -49,10 +49,6 @@ component:
           ofType: 'string'
           description: 'Optional id for linking/targeting and aria references.'
           required: false
-        - name: 'styles'
-          ofType: 'Record<string, string>'
-          description: 'Inline styles applied directly to the container element. Use for truly dynamic values that cannot be expressed as Tailwind classes.'
-          required: false
         - name: 'dataTestId'
           ofType: 'string'
           description: 'Test id for targeting the element in automated tests.'
@@ -61,34 +57,6 @@ component:
           ofType: 'node'
           description: 'The items to be stacked.'
           required: true
-        - name: 'itemsAlignment'
-          ofType: '"start" | "center" | "end" | "stretch"'
-          description: '@deprecated — Use align instead. Cross-axis alignment.'
-          required: false
-        - name: 'itemsDistribution'
-          ofType: '"start" | "center" | "end" | "between" | "around" | "evenly"'
-          description: '@deprecated — Use justify instead. Main-axis distribution.'
-          required: false
-        - name: 'fixedHeight'
-          ofType: 'string'
-          description: '@deprecated — Use className with a height utility or styles prop instead.'
-          required: false
-        - name: 'hasDivider'
-          ofType: 'boolean'
-          description: '@deprecated — Dividers are React-only and not supported in the cross-framework atom.'
-          required: false
-        - name: 'aria-label'
-          ofType: 'string'
-          description: '@deprecated — Use ariaLabel instead. Maps to aria-label.'
-          required: false
-        - name: 'aria-labelledby'
-          ofType: 'string'
-          description: '@deprecated — Use ariaLabelledBy instead. Maps to aria-labelledby.'
-          required: false
-        - name: 'data-testid'
-          ofType: 'string'
-          description: '@deprecated — Use dataTestId instead. Maps to data-testid.'
-          required: false
   stories:
     - name: 'default'
       url: '/story/layout-stack--default'
@@ -114,10 +82,10 @@ Use the Stack component to arrange items vertically or horizontally with consist
 <ComponentPreview className="gi-not-prose w-full block">
   <Stack
     direction={{ base: 'column', sm: 'row', md: 'column' }}
-    itemsAlignment="center"
-    itemsDistribution="center"
+    align="center"
+    justify="center"
     gap={{ base: 5 }}
-    fixedHeight="200px"
+    className="gi-h-[200px]"
   >
     <div className="gi-bg-gray-300 gi-p-2">Item 1</div>
     <div className="gi-bg-gray-300 gi-p-2">Item 2</div>

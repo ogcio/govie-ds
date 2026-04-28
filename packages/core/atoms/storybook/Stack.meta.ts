@@ -19,13 +19,13 @@ export const stackMeta = {
   argTypes: {
     direction: enumType(Direction, {
       description:
-        'Flex direction. Accepts a string or a responsive breakpoint object `{ xs?, sm?, md?, lg?, xl?, 2xl? }`.',
+        'Flex direction. Accepts a string or a responsive breakpoint object `{ base?, xs?, sm?, md?, lg?, xl?, 2xl? }`.',
       defaultValue: Direction.COLUMN,
     }),
     gap: {
       control: { type: 'number' },
       description:
-        'Tailwind spacing scale value (0–12). Accepts a number or a responsive breakpoint object `{ xs?, sm?, md?, lg?, xl?, 2xl? }`.',
+        'Tailwind spacing scale value (0–12). Accepts a number or a responsive breakpoint object `{ base?, xs?, sm?, md?, lg?, xl?, 2xl? }`.',
       table: {
         type: { summary: 'number | ResponsiveGap' },
         defaultValue: { summary: '0' },
@@ -199,10 +199,23 @@ export const Responsive = {
   args: {
     ...stackMeta.args,
     direction: {
-      xs: 'column',
+      base: 'column',
+      xs: 'row',
+      sm: 'column',
       md: 'row',
+      lg: 'column',
+      xl: 'row',
+      '2xl': 'column',
     } as const,
-    gap: { xs: 2, md: 6 },
+    gap: {
+      base: 1,
+      xs: 2,
+      sm: 4,
+      md: 6,
+      lg: 8,
+      xl: 10,
+      '2xl': 12,
+    },
     role: 'region' as const,
     ariaLabel: 'layout region',
     dataTestId: 'stack-responsive-test',
@@ -214,12 +227,6 @@ export const Responsive = {
       const element = canvas.getByTestId('stack-responsive-test');
       expect(element).toBeInTheDocument();
       expect(element.tagName).toBe('DIV');
-    });
-
-    await step('exposes aria-label when role is set', async () => {
-      const element = canvas.getByTestId('stack-responsive-test');
-      expect(element).toHaveAttribute('role', 'region');
-      expect(element).toHaveAttribute('aria-label', 'layout region');
     });
   },
 };

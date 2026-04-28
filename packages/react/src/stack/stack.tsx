@@ -1,9 +1,33 @@
 import { Children, Fragment, type FC } from 'react';
-import GiStack from '../atoms/Stack';
+import GiStack, { type Props as StackAtomProps } from '../atoms/Stack';
+import type { ResponsiveValue } from '../atoms/constants';
 import { resolveResponsive } from '../atoms/utilities';
 import { cn } from '../cn.js';
-import { normalizeLegacyBreakpoints } from '../utils/normalize-breakpoints.js';
-import type { StackProps } from './types.js';
+
+export type StackProps = Omit<StackAtomProps, 'direction' | 'gap'> & {
+  direction?: ResponsiveValue<'row' | 'column'>;
+  gap?: ResponsiveValue<number>;
+  /** @deprecated Use `align` instead. */
+  itemsAlignment?: 'start' | 'center' | 'end' | 'stretch';
+  /** @deprecated Use `justify` instead. */
+  itemsDistribution?:
+    | 'start'
+    | 'center'
+    | 'end'
+    | 'between'
+    | 'around'
+    | 'evenly';
+  /** @deprecated Use `className` with a height utility instead. */
+  fixedHeight?: string;
+  /** @deprecated Dividers will be removed in a future release. */
+  hasDivider?: boolean;
+  /** @deprecated Use `ariaLabel` instead. Maps to `aria-label`. */
+  'aria-label'?: string;
+  /** @deprecated Use `ariaLabelledBy` instead. Maps to `aria-labelledby`. */
+  'aria-labelledby'?: string;
+  /** @deprecated Use `dataTestId` instead. Maps to `data-testid`. */
+  'data-testid'?: string;
+} & React.HTMLAttributes<HTMLDivElement>;
 
 export const Stack: FC<StackProps> = ({
   children,
@@ -26,13 +50,11 @@ export const Stack: FC<StackProps> = ({
   dataTestId,
   'data-testid': nativeDataTestId,
 }) => {
-  const normalizedDirection = normalizeLegacyBreakpoints(direction);
-
   return (
     <GiStack
       id={id}
-      direction={normalizedDirection}
-      gap={normalizeLegacyBreakpoints(gap)}
+      direction={direction}
+      gap={gap}
       align={align ?? itemsAlignment}
       justify={justify ?? itemsDistribution}
       wrap={wrap}
@@ -43,20 +65,15 @@ export const Stack: FC<StackProps> = ({
       styles={fixedHeight ? { height: fixedHeight } : undefined}
       dataTestId={dataTestId ?? nativeDataTestId}
     >
-      {hasDivider ? addDividers(children, normalizedDirection) : children}
+      {hasDivider ? addDividers(children, direction) : children}
     </GiStack>
   );
 };
 
-const dividerDirectionToClass = (direction: string, bp?: string): string => {
-  const cls = direction === 'row' ? 'gi-h-full gi-w-px' : 'gi-w-full gi-h-px';
-  return bp
-    ? cls
-        .split(' ')
-        .map((c) => `${bp}:${c}`)
-        .join(' ')
-    : cls;
-};
+const dividerDirectionToClass = (direction: string, prefix: string): string =>
+  direction === 'row'
+    ? `${prefix}gi-h-full ${prefix}gi-w-px`
+    : `${prefix}gi-w-full ${prefix}gi-h-px`;
 
 const addDividers = (
   children: React.ReactNode,
