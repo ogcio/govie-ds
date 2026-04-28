@@ -29,12 +29,14 @@ function getLogo({ logo }: FooterProps) {
     renderToStaticMarkup(<GovieLogoHarpWithText />),
   );
   const svgDataUriDesktop = `data:image/svg+xml;base64,${svgDesktopString}`;
-
+  const isLogoSizeDefined = logo?.width || logo?.height;
   return (
     <picture>
       <source srcSet={logo?.imageLarge || svgDataUriDesktop} />
       <img
-        className="gi-h-16"
+        width={logo?.width}
+        height={logo?.height}
+        className={cn({ 'gi-h-16': !isLogoSizeDefined })}
         src={logo?.imageSmall || svgDataUriMobile}
         alt={logo?.alt || t('logo.govieLogo', { defaultValue: 'Gov.ie Logo' })}
       />

@@ -5,6 +5,7 @@ import { Link } from '../link/link.js';
 import { SectionBreak } from '../section-break/section-break.js';
 import { Stack } from '../stack/stack.js';
 import { Footer } from './footer.js';
+import { generateSvgPlaceholderDataUrl } from '../utils/placeholder.js';
 
 const meta: Meta<typeof Footer> = {
   component: Footer,
@@ -492,6 +493,47 @@ export const TestAllSlots: Story = {
       expect(primaryElement).toBeInTheDocument();
       expect(secondaryElement).toBeInTheDocument();
       expect(utilityElement).toBeInTheDocument();
+    });
+  },
+};
+
+export const CustomLogo: Story = {
+  tags: ['skip-playwright'],
+  args: {
+    logo: {
+      imageSmall: generateSvgPlaceholderDataUrl(220, 56),
+      imageLarge: generateSvgPlaceholderDataUrl(220, 56),
+      alt: 'Custom footer logo',
+      href: '/custom-logo',
+      // width greater than svg width to show svg size can be overridden
+      width: 220,
+      height: 100,
+    },
+    utilitySlot: (
+      <Stack
+        direction={{ base: 'column', xs: 'column', md: 'row' }}
+        gap={4}
+        itemsDistribution="center"
+      >
+        <Link noColor href="/privacy-policy" aria-label="Privacy Policy">
+          Privacy Policy
+        </Link>
+        <Link noColor href="/accessibility" aria-label="Accessibility">
+          Accessibility
+        </Link>
+        <div className="gi-text-sm">© 2025 Government of Ireland.</div>
+      </Stack>
+    ),
+  },
+  play: async ({ canvasElement, step }) => {
+    const canvas = within(canvasElement);
+
+    await step('should apply logo width/height when provided', async () => {
+      const img = canvas.getByAltText('Custom footer logo');
+
+      // When width/height are undefined, React omits the attribute entirely.
+      // We assert width is present here because this story sets it by default.
+      expect(img).toHaveAttribute('width', '220');
     });
   },
 };
