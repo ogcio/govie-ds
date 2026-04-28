@@ -1,0 +1,21 @@
+import { IconProps } from './types';
+
+export function Mic(props: IconProps) {
+  return (
+    <svg
+      viewBox="0 -960 960 960"
+      width={props.size ?? 24}
+      height={props.size ?? 24}
+      class={props.className}
+      id={props.id}
+      role={props.label ? 'img' : undefined}
+      aria-label={props.label}
+      aria-hidden={!props.label}
+      fill={props.color ?? 'currentColor'}
+      data-testid={props.dataTestId ?? 'mic'}
+      xmlns="http://www.w3.org/2000/svg"
+    >
+      <path d="M395-435q-35-35-35-85v-240q0-50 35-85t85-35q50 0 85 35t35 85v240q0 50-35 85t-85 35q-50 0-85-35Zm85-205Zm-40 520v-123q-104-14-172-93t-68-184h80q0 83 58.5 141.5T480-320q83 0 141.5-58.5T680-520h80q0 105-68 184t-172 93v123h-80Zm68.5-371.5Q520-503 520-520v-240q0-17-11.5-28.5T480-800q-17 0-28.5 11.5T440-760v240q0 17 11.5 28.5T480-480q17 0 28.5-11.5Z" />
+    </svg>
+  );
+}
