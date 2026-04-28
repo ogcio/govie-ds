@@ -25,13 +25,10 @@ export type Props = {
 };
 
 import { tv } from 'tailwind-variants';
-import { Direction, AlignItems, Justify, ResponsiveValue, BreakpointKey } from './constants';
+import { Direction, AlignItems, Justify, ResponsiveValue } from './constants';
 import { getAlignItems, getJustify, resolveResponsive } from './utilities';
-const directionToClass = (direction: string, bp?: BreakpointKey): string => {
-  const cls = direction === 'row' ? 'gi-flex-row' : 'gi-flex-col';
-  return bp ? `${bp}:${cls}` : cls;
-};
-const gapToClass = (gap: number, bp?: BreakpointKey): string => (bp ? `${bp}:gi-gap-${gap}` : `gi-gap-${gap}`);
+const directionToClass = (direction: string, prefix: string): string =>
+  direction === 'row' ? `${prefix}gi-flex-row` : `${prefix}gi-flex-col`;
 const stackVariants = tv({
   base: ['gi-flex', 'gi-w-full'],
   variants: {
@@ -71,18 +68,12 @@ const stackVariants = tv({
       [attr.aria-label]="role ? ariaLabel : undefined"
       [attr.aria-labelledby]="role ? ariaLabelledBy : undefined"
       [ngStyle]="styles"
-      [class]="
-        stackVariants({
+      [class]="stackVariants({
           align: getAlignItems(align),
           justify: getJustify(justify),
           wrap: wrap ?? false,
-          class: [
-            resolveResponsive(direction ?? Direction.COLUMN, directionToClass),
-            resolveResponsive(gap ?? 0, gapToClass),
-            className,
-          ],
-        })
-      "
+          class: [resolveResponsive(direction ?? Direction.COLUMN, directionToClass), resolveResponsive(gap ?? 0, (gap: number, prefix: string): string => \`\${prefix}gi-gap-\${gap}\`), className]
+        })"
       [attr.data-testid]="dataTestId"
     >
       <ng-content></ng-content>
@@ -100,7 +91,6 @@ const stackVariants = tv({
 })
 export default class Stack {
   directionToClass = directionToClass;
-  gapToClass = gapToClass;
   stackVariants = stackVariants;
   getAlignItems = getAlignItems;
   getJustify = getJustify;

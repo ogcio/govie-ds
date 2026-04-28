@@ -1,6 +1,6 @@
 import { useMetadata } from '@builder.io/mitosis';
 import { tv } from 'tailwind-variants';
-import { Direction, AlignItems, Justify, type ResponsiveValue, type BreakpointKey } from './constants';
+import { Direction, type AlignItems, type Justify, type ResponsiveValue } from './constants';
 import { getAlignItems, getJustify, resolveResponsive } from './utilities';
 
 useMetadata({ angular: { selector: 'gi-stack' } });
@@ -35,7 +35,7 @@ export default function Stack(props: Props) {
         wrap: props.wrap ?? false,
         class: [
           resolveResponsive(props.direction ?? Direction.COLUMN, directionToClass),
-          resolveResponsive(props.gap ?? 0, gapToClass),
+          resolveResponsive(props.gap ?? 0, (gap: number, prefix: string): string => `${prefix}gi-gap-${gap}`),
           props.className,
         ],
       })}
@@ -46,12 +46,8 @@ export default function Stack(props: Props) {
   );
 }
 
-const directionToClass = (direction: string, bp?: BreakpointKey): string => {
-  const cls = direction === 'row' ? 'gi-flex-row' : 'gi-flex-col';
-  return bp ? `${bp}:${cls}` : cls;
-};
-
-const gapToClass = (gap: number, bp?: BreakpointKey): string => (bp ? `${bp}:gi-gap-${gap}` : `gi-gap-${gap}`);
+const directionToClass = (direction: string, prefix: string): string =>
+  direction === 'row' ? `${prefix}gi-flex-row` : `${prefix}gi-flex-col`;
 
 const stackVariants = tv({
   base: ['gi-flex', 'gi-w-full'],

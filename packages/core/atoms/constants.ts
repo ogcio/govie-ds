@@ -58,6 +58,7 @@ export const Justify = {
 } as const;
 
 export const Breakpoint = {
+  BASE: 'base',
   XS: 'xs',
   SM: 'sm',
   MD: 'md',

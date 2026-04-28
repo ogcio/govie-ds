@@ -4,6 +4,5 @@
     "entryFile": "src/index.ts"
   },
   "dest": "dist",
-  "assets": ["./styles.css", "./fonts.css"],
-  "allowedNonPeerDependencies": ["lodash"]
+  "assets": ["./styles.css", "./fonts.css"]
 }

@@ -23,12 +23,10 @@
     "lodash": "^4.0.0"
   },
   "dependencies": {
-    "lodash": "^4.17.23",
     "tslib": "^2.3.0"
   },
   "devDependencies": {
     "@angular-devkit/build-angular": "~21.1.0",
-    "@types/lodash": "^4.17.24",
     "@angular/cli": "~21.1.0",
     "@angular/common": "^21.1.0",
     "@angular/compiler": "^21.1.0",

@@ -192,8 +192,7 @@ export type {
 } from './select/types.js';
 export * from './side-nav/index.js';
 export { Spinner, type SpinnerProps } from './spinner/spinner.js';
-export { Stack } from './stack/stack.js';
-export { type StackProps } from './stack/types.js';
+export { Stack, type StackProps } from './stack/stack.js';
 export * from './summary-list/index.js';
 export { Caption, type CaptionProps } from './table/caption.js';
 export { ColumnGroup } from './table/column-group.js';
