@@ -10,36 +10,48 @@ component:
     - name: 'StackProps'
       fields:
         - name: 'direction'
-          ofType: 'string | object'
-          description: 'Defines the direction of the stack. Options: column, row. Can also accept an object with responsive breakpoints (base, xs, sm, md, lg, xl, 2xl).'
-          required: false
-        - name: 'itemsAlignment'
-          ofType: 'string'
-          description: 'Aligns items along the cross-axis. Options: start, center, end, stretch.'
-          required: false
-        - name: 'itemsDistribution'
-          ofType: 'string'
-          description: 'Defines how items are distributed along the main axis. Options: start, center, end, between, around, evenly, stretch.'
+          ofType: '"row" | "column" | ResponsiveValue'
+          description: 'Flex direction. Accepts a string or a responsive breakpoint object { base?, xs?, sm?, md?, lg?, xl?, 2xl? }.'
           required: false
         - name: 'gap'
-          ofType: 'number | object'
-          description: 'Specifies the space between stack items. Can be a number or a responsive object with breakpoints.'
+          ofType: 'number | ResponsiveValue'
+          description: 'Tailwind spacing scale value (0–12). Accepts a number or a responsive breakpoint object { base?, xs?, sm?, md?, lg?, xl?, 2xl? }.'
           required: false
-        - name: 'hasDivider'
-          ofType: 'boolean'
-          description: 'If true, adds a divider between stack items.'
+        - name: 'align'
+          ofType: '"start" | "center" | "end" | "stretch" | "baseline"'
+          description: 'Cross-axis alignment (align-items). Controls how children are positioned perpendicular to the flex direction.'
+          required: false
+        - name: 'justify'
+          ofType: '"start" | "center" | "end" | "between" | "around" | "evenly"'
+          description: 'Main-axis distribution (justify-content). Controls how children are spaced along the flex direction.'
           required: false
         - name: 'wrap'
           ofType: 'boolean'
-          description: 'If true, allows stack items to wrap onto the next line.'
+          description: 'When true, children wrap onto the next line instead of overflowing.'
           required: false
-        - name: 'fixedHeight'
+        - name: 'role'
+          ofType: '"region" | "navigation" | "complementary" | "search" | "form" | "group"'
+          description: 'Landmark role for the container. Only set when a landmark semantic is required.'
+          required: false
+        - name: 'ariaLabel'
           ofType: 'string'
-          description: 'Specifies a fixed height for the stack, typically used when you want the stack to have a consistent height.'
+          description: 'Accessible label for the container. Only applied when role is set. Maps to aria-label.'
+          required: false
+        - name: 'ariaLabelledBy'
+          ofType: 'string'
+          description: 'Points to the id of an element that labels the container. Preferred over ariaLabel when a visible heading exists. Only applied when role is set. Maps to aria-labelledby.'
           required: false
         - name: 'className'
           ofType: 'string'
-          description: 'Custom class name to apply to the stack container.'
+          description: 'Additional CSS classes to apply to the stack container.'
+          required: false
+        - name: 'id'
+          ofType: 'string'
+          description: 'Optional id for linking/targeting and aria references.'
+          required: false
+        - name: 'dataTestId'
+          ofType: 'string'
+          description: 'Test id for targeting the element in automated tests.'
           required: false
         - name: 'children'
           ofType: 'node'
@@ -48,24 +60,18 @@ component:
   stories:
     - name: 'default'
       url: '/story/layout-stack--default'
-    - name: 'with-default-props'
-      url: '/story/layout-stack--with-default-props'
-    - name: 'responsive-direction-with-divider'
-      url: '/story/layout-stack--responsive-direction-with-divider'
-    - name: 'centered-items-with-gap'
-      url: '/story/layout-stack--centered-items-with-gap'
-    - name: 'around-distribution-with-divider'
-      url: '/story/layout-stack--around-distribution-with-divider'
-    - name: 'center-distribution'
-      url: '/story/layout-stack--center-distribution'
-    - name: 'with-components'
-      url: '/story/layout-stack--with-components'
-    - name: 'nested-stack'
-      url: '/story/layout-stack--nested-stack'
-    - name: 'test-items-render-correctly'
-      url: '/story/layout-stack--test-items-render-correctly'
-    - name: 'test-items-render-with-breakpoints'
-      url: '/story/layout-stack--test-items-render-with-breakpoints'
+    - name: 'directions'
+      url: '/story/layout-stack--directions'
+    - name: 'alignments'
+      url: '/story/layout-stack--alignments'
+    - name: 'justifications'
+      url: '/story/layout-stack--justifications'
+    - name: 'gap-scale'
+      url: '/story/layout-stack--gap-scale'
+    - name: 'responsive'
+      url: '/story/layout-stack--responsive'
+    - name: 'wrapped'
+      url: '/story/layout-stack--wrapped'
 ---
 
 # Stack
@@ -76,10 +82,10 @@ Use the Stack component to arrange items vertically or horizontally with consist
 <ComponentPreview className="gi-not-prose w-full block">
   <Stack
     direction={{ base: 'column', sm: 'row', md: 'column' }}
-    itemsAlignment="center"
-    itemsDistribution="center"
+    align="center"
+    justify="center"
     gap={{ base: 5 }}
-    fixedHeight="200px"
+    className="gi-h-[200px]"
   >
     <div className="gi-bg-gray-300 gi-p-2">Item 1</div>
     <div className="gi-bg-gray-300 gi-p-2">Item 2</div>
@@ -87,65 +93,35 @@ Use the Stack component to arrange items vertically or horizontally with consist
   </Stack>
 </ComponentPreview>
 
+## Examples
+
 ### Default
 
-<StorybookFrame
-  className="h-[200px]"
-  componentId="stack-react"
-  story="default"
-/>
+<StorybookFrame componentId="stack-react" story="default" />
 
-### With Default Props
+### Directions
 
-<StorybookFrame componentId="stack-react" story="with-default-props" />
+<StorybookFrame componentId="stack-react" story="directions" />
 
-### Responsive Direction With Divider
+### Alignments
 
-<StorybookFrame
-  className="h-[200px]"
-  componentId="stack-react"
-  story="responsive-direction-with-divider"
-/>
+<StorybookFrame componentId="stack-react" story="alignments" />
 
-### Centered Items With Gap
+### Justifications
 
-<StorybookFrame
-  className="h-[200px]"
-  componentId="stack-react"
-  story="centered-items-with-gap"
-/>
+<StorybookFrame componentId="stack-react" story="justifications" />
 
-### Around Distribution With Divider
+### Gap Scale
 
-<StorybookFrame
-  className="h-[200px]"
-  componentId="stack-react"
-  story="around-distribution-with-divider"
-/>
+<StorybookFrame componentId="stack-react" story="gap-scale" />
 
-### Center Distribution
+### Responsive
 
-<StorybookFrame
-  className="h-[200px]"
-  componentId="stack-react"
-  story="center-distribution"
-/>
+<StorybookFrame componentId="stack-react" story="responsive" />
 
-### With Components
+### Wrapped
 
-<StorybookFrame
-  className="h-[350px]"
-  componentId="stack-react"
-  story="with-components"
-/>
-
-### Nested Stack
-
-<StorybookFrame
-  className="h-[400px]"
-  componentId="stack-react"
-  story="nested-stack"
-/>
+<StorybookFrame componentId="stack-react" story="wrapped" />
 
 ## Properties
 

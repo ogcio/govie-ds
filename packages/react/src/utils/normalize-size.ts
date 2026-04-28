@@ -1,4 +1,4 @@
-import { Size } from '../atoms/utilities';
+import { Size } from '../atoms/constants';
 
 const SIZE_NORMALIZE_MAP = {
   small: Size.SM,

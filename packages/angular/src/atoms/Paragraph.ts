@@ -21,7 +21,8 @@ export type Props = {
 };
 
 import { tv } from 'tailwind-variants';
-import { getSize, getAlign, getWhitespace, Align, Size, Whitespace } from './utilities';
+import type { Align, Size, Whitespace } from './constants';
+import { getSize, getAlign, getWhitespace } from './utilities';
 import { textVariants } from './Text';
 export const paragraphStyles = tv({
   extend: textVariants,

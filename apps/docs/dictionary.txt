@@ -7,6 +7,8 @@
 AccordionItem
 AccordionItemProps
 AccordionProps
+ariaLabel
+ariaLabelledBy
 Arial
 Autocomplete
 AutocompleteItem
@@ -94,6 +96,7 @@ Programmatically
 ProgressBarProps
 ProgressStepperProps
 RefObject
+ResponsiveValue
 Roadmap
 SEO
 SSR
@@ -155,6 +158,7 @@ bundler
 center
 center-distribution
 centered-items-with-gap
+className
 centralized
 checkboxes
 color

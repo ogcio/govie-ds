@@ -1,6 +1,6 @@
 import type { StoryContext, Renderer } from 'storybook/internal/types';
 import { within, expect } from 'storybook/test';
-import { Size, Whitespace } from '../utilities';
+import { Size, Whitespace } from '../constants';
 import { enumType } from './utilities';
 
 const loremIpsum = 'Lorem ipsum dolor sit amet.';
