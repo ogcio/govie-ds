@@ -6,6 +6,13 @@ import { SectionBreak } from '../section-break/section-break.js';
 import { Stack } from '../stack/stack.js';
 import { Footer } from './footer.js';
 
+const customLogoSvg = `<svg xmlns="http://www.w3.org/2000/svg" width="220" height="56" viewBox="0 0 220 56" role="img" aria-label="Custom logo">
+  <rect width="200" height="56" rx="8" fill="#0B4C7A"/>
+  <circle cx="28" cy="28" r="12" fill="#FFFFFF"/>
+  <path d="M58 18h140v6H58zM58 32h110v6H58z" fill="#FFFFFF" opacity="0.9"/>
+</svg>`;
+const customLogoDataUri = `data:image/svg+xml,${encodeURIComponent(customLogoSvg)}`;
+
 const meta: Meta<typeof Footer> = {
   component: Footer,
   title: 'layout/Footer',
@@ -493,6 +500,45 @@ export const TestAllSlots: Story = {
       expect(primaryElement).toBeInTheDocument();
       expect(secondaryElement).toBeInTheDocument();
       expect(utilityElement).toBeInTheDocument();
+    });
+  },
+};
+
+export const CustomLogo: Story = {
+  args: {
+    logo: {
+      imageSmall: customLogoDataUri,
+      imageLarge: customLogoDataUri,
+      alt: 'Custom footer logo',
+      href: '/custom-logo',
+      // width greater than svg width to show svg size can be overridden
+      width: 220,
+    },
+    utilitySlot: (
+      <Stack
+        direction={{ base: 'column', xs: 'column', md: 'row' }}
+        gap={4}
+        itemsDistribution="center"
+      >
+        <Link noColor href="/privacy-policy" aria-label="Privacy Policy">
+          Privacy Policy
+        </Link>
+        <Link noColor href="/accessibility" aria-label="Accessibility">
+          Accessibility
+        </Link>
+        <div className="gi-text-sm">© 2025 Government of Ireland.</div>
+      </Stack>
+    ),
+  },
+  play: async ({ canvasElement, step }) => {
+    const canvas = within(canvasElement);
+
+    await step('should apply logo width/height when provided', async () => {
+      const img = canvas.getByAltText('Custom footer logo');
+
+      // When width/height are undefined, React omits the attribute entirely.
+      // We assert width is present here because this story sets it by default.
+      expect(img).toHaveAttribute('width', '220');
     });
   },
 };
