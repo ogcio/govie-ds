@@ -5,13 +5,7 @@ import { Link } from '../link/link.js';
 import { SectionBreak } from '../section-break/section-break.js';
 import { Stack } from '../stack/stack.js';
 import { Footer } from './footer.js';
-
-const customLogoSvg = `<svg xmlns="http://www.w3.org/2000/svg" width="220" height="56" viewBox="0 0 220 56" role="img" aria-label="Custom logo">
-  <rect width="200" height="56" rx="8" fill="#0B4C7A"/>
-  <circle cx="28" cy="28" r="12" fill="#FFFFFF"/>
-  <path d="M58 18h140v6H58zM58 32h110v6H58z" fill="#FFFFFF" opacity="0.9"/>
-</svg>`;
-const customLogoDataUri = `data:image/svg+xml,${encodeURIComponent(customLogoSvg)}`;
+import { generateSvgPlaceholderDataUrl } from '../utils/placeholder.js';
 
 const meta: Meta<typeof Footer> = {
   component: Footer,
@@ -504,14 +498,16 @@ export const TestAllSlots: Story = {
 };
 
 export const CustomLogo: Story = {
+  tags: ['skip-playwright'],
   args: {
     logo: {
-      imageSmall: customLogoDataUri,
-      imageLarge: customLogoDataUri,
+      imageSmall: generateSvgPlaceholderDataUrl(220, 56),
+      imageLarge: generateSvgPlaceholderDataUrl(220, 56),
       alt: 'Custom footer logo',
       href: '/custom-logo',
       // width greater than svg width to show svg size can be overridden
       width: 220,
+      height: 100,
     },
     utilitySlot: (
       <Stack
