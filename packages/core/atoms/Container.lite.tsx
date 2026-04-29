@@ -1,6 +1,7 @@
 import { useMetadata } from '@builder.io/mitosis';
 import { tv } from 'tailwind-variants';
-import { clamp, Size } from './utilities';
+import { clamp } from './utilities';
+import { Size } from './constants';
 
 export type Props = {
   id?: string;

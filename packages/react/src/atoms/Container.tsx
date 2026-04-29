@@ -17,7 +17,8 @@ export type Props = {
 };
 
 import { tv } from 'tailwind-variants';
-import { clamp, Size } from './utilities';
+import { clamp } from './utilities';
+import { Size } from './constants';
 export const MaxWidth = {
   ...Size,
   default: 'default',

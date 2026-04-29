@@ -18,7 +18,8 @@ export type Props = {
 };
 
 import { tv } from 'tailwind-variants';
-import { getSize, getWhitespace, Size, Whitespace } from './utilities';
+import type { Size, Whitespace } from './constants';
+import { getSize, getWhitespace } from './utilities';
 export const textVariants = tv({
   base: 'gi-font-primary gi-not-prose',
   variants: {

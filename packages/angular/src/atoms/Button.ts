@@ -40,7 +40,7 @@ export type Props = {
 };
 
 import { tv } from 'tailwind-variants';
-import { Variant, Appearance, Size } from './utilities';
+import { Variant, Appearance, Size } from './constants';
 export const ButtonSize = {
   SM: Size.SM,
   MD: Size.MD,

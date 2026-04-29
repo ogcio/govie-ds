@@ -1,7 +1,7 @@
 import type { StoryContext, Renderer } from 'storybook/internal/types';
 import { within, expect } from 'storybook/test';
 import { enumType } from './utilities';
-import { Align, Size, Whitespace } from '../utilities';
+import { Align, Size, Whitespace } from '../constants';
 export const paragraphMeta = {
   tags: ['autodocs'] as string[],
   title: 'Typography/Paragraph',
