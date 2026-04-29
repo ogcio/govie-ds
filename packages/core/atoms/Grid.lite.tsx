@@ -1,0 +1,151 @@
+import _ from 'lodash';
+import { useMetadata } from '@builder.io/mitosis';
+import { tv } from 'tailwind-variants';
+import type { ResponsiveValue, BreakpointKey } from './constants';
+import { resolveResponsive } from './utilities';
+
+useMetadata({ angular: { selector: 'gi-grid' } });
+
+export type Props = {
+  container?: boolean;
+  columns?: ResponsiveValue<number>;
+  gap?: ResponsiveValue<number>;
+  size?: ResponsiveValue<number>;
+  role?: 'region' | 'navigation' | 'complementary' | 'search' | 'form';
+  ariaLabel?: string;
+  ariaLabelledBy?: string;
+  className?: string;
+  id?: string;
+  dataTestId?: string;
+  children: any;
+};
+
+export default function Grid(props: Props) {
+  return (
+    <div
+      id={props.id}
+      role={props.role}
+      aria-label={props.role ? props.ariaLabel : undefined}
+      aria-labelledby={props.role ? props.ariaLabelledBy : undefined}
+      class={styles({
+        container: props.container ?? false,
+        class: _.compact([
+          props.container
+            ? [
+                resolveResponsive(props.gap ?? 0, fromMap(GAP_CLASSES)),
+                resolveResponsive(props.columns ?? FigmaColumns, fromMap(PARENT_COL_CLASSES)),
+                resolveResponsive(props.gap ?? 0, fromMap(PARENT_GAP_CLASSES)),
+              ].join(' ')
+            : resolveResponsive(props.size ?? 1, fromMap(SPAN_CLASSES)),
+          props.className,
+        ]).join(' '),
+      })}
+      style={props.container ? buildContainerStyle(props.columns, props.gap) : buildItemStyle(props.size)}
+      data-testid={props.dataTestId}
+    >
+      {props.children}
+    </div>
+  );
+}
+
+// Default column counts per breakpoint, matching the Figma grid specification.
+const FigmaColumns: Partial<Record<BreakpointKey, number>> = {
+  base: 4,
+  xs: 4,
+  sm: 6,
+  md: 8,
+  lg: 12,
+  xl: 12,
+  '2xl': 12,
+};
+
+// Class maps must be static strings (no template literals) so Tailwind JIT can scan them.
+const GAP_CLASSES: Record<BreakpointKey, string> = {
+  base: 'gi-gap-[var(--grid-gap,0px)]',
+  xs: 'xs:gi-gap-[var(--grid-gap-xs,var(--grid-gap,0px))]',
+  sm: 'sm:gi-gap-[var(--grid-gap-sm,var(--grid-gap,0px))]',
+  md: 'md:gi-gap-[var(--grid-gap-md,var(--grid-gap,0px))]',
+  lg: 'lg:gi-gap-[var(--grid-gap-lg,var(--grid-gap,0px))]',
+  xl: 'xl:gi-gap-[var(--grid-gap-xl,var(--grid-gap,0px))]',
+  '2xl': '2xl:gi-gap-[var(--grid-gap-2xl,var(--grid-gap,0px))]',
+};
+
+const PARENT_COL_CLASSES: Record<BreakpointKey, string> = {
+  base: '[&>*]:[--grid-parent-columns:var(--grid-columns,4)]',
+  xs: 'xs:[&>*]:[--grid-parent-columns:var(--grid-columns-xs,var(--grid-columns,4))]',
+  sm: 'sm:[&>*]:[--grid-parent-columns:var(--grid-columns-sm,var(--grid-columns,6))]',
+  md: 'md:[&>*]:[--grid-parent-columns:var(--grid-columns-md,var(--grid-columns,8))]',
+  lg: 'lg:[&>*]:[--grid-parent-columns:var(--grid-columns-lg,var(--grid-columns,12))]',
+  xl: 'xl:[&>*]:[--grid-parent-columns:var(--grid-columns-xl,var(--grid-columns,12))]',
+  '2xl': '2xl:[&>*]:[--grid-parent-columns:var(--grid-columns-2xl,var(--grid-columns,12))]',
+};
+
+const PARENT_GAP_CLASSES: Record<BreakpointKey, string> = {
+  base: '[&>*]:[--grid-parent-gap:var(--grid-gap,0px)]',
+  xs: 'xs:[&>*]:[--grid-parent-gap:var(--grid-gap-xs,var(--grid-gap,0px))]',
+  sm: 'sm:[&>*]:[--grid-parent-gap:var(--grid-gap-sm,var(--grid-gap,0px))]',
+  md: 'md:[&>*]:[--grid-parent-gap:var(--grid-gap-md,var(--grid-gap,0px))]',
+  lg: 'lg:[&>*]:[--grid-parent-gap:var(--grid-gap-lg,var(--grid-gap,0px))]',
+  xl: 'xl:[&>*]:[--grid-parent-gap:var(--grid-gap-xl,var(--grid-gap,0px))]',
+  '2xl': '2xl:[&>*]:[--grid-parent-gap:var(--grid-gap-2xl,var(--grid-gap,0px))]',
+};
+
+const SPAN_CLASSES: Record<BreakpointKey, string> = {
+  base: '[--grid-span:var(--grid-item-span,1)]',
+  xs: 'xs:[--grid-span:var(--grid-item-span-xs,var(--grid-item-span,1))]',
+  sm: 'sm:[--grid-span:var(--grid-item-span-sm,var(--grid-item-span,1))]',
+  md: 'md:[--grid-span:var(--grid-item-span-md,var(--grid-item-span,1))]',
+  lg: 'lg:[--grid-span:var(--grid-item-span-lg,var(--grid-item-span,1))]',
+  xl: 'xl:[--grid-span:var(--grid-item-span-xl,var(--grid-item-span,1))]',
+  '2xl': '2xl:[--grid-span:var(--grid-item-span-2xl,var(--grid-item-span,1))]',
+};
+
+const fromMap =
+  (classMap: Record<BreakpointKey, string>) =>
+  (_value: number, prefix: string): string =>
+    classMap[(prefix.replace(/:$/, '') || 'base') as BreakpointKey];
+
+const buildContainerStyle = (columns: Props['columns'], gap: Props['gap']): Record<string, string> => ({
+  ...buildCssVariables(columns, '--grid-columns', (n: number): string => String(Math.max(1, n))),
+  ...buildCssVariables(gap, '--grid-gap', (n: number): string => `var(--gieds-space-${Math.max(0, n)})`),
+});
+
+const buildItemStyle = (size: Props['size']): Record<string, string> =>
+  buildCssVariables(size, '--grid-item-span', (n: number): string => String(Math.max(1, n)));
+
+// Converts a responsive prop into CSS variable key-value pairs.
+const buildCssVariables = (
+  value: Props['columns'] | Props['gap'],
+  baseName: string,
+  transform: (n: number) => string,
+): Record<string, string> => {
+  const key = (bp: BreakpointKey): string => (bp === 'base' ? baseName : `${baseName}-${bp}`);
+
+  if (_.isNumber(value)) {
+    return { [baseName]: transform(value) };
+  }
+  if (!_.isPlainObject(value)) {
+    return {};
+  }
+  const responsive = value as Partial<Record<BreakpointKey, number>>;
+  return Object.fromEntries(
+    (_.keys(responsive) as BreakpointKey[]).map((bp) => [key(bp), transform(responsive[bp] as number)]),
+  );
+};
+
+const styles = tv({
+  base: 'gi-min-w-0',
+  variants: {
+    container: {
+      true: 'gi-flex gi-flex-wrap gi-mx-4 md:gi-mx-6 lg:gi-mx-8',
+      false: [
+        'gi-grow-0 gi-shrink-0',
+        // Grid item basis formula: span / cols * 100% - gap * (cols - span) / cols, capped at 100%.
+        // Must be a plain string so tailwind can scan and generate the CSS rule.
+        '[--grid-basis:min(calc(var(--grid-span)_/_var(--grid-parent-columns)_*_100%_-_var(--grid-parent-gap)_*_(var(--grid-parent-columns)_-_var(--grid-span))_/_var(--grid-parent-columns)),100%)]',
+        'gi-basis-[var(--grid-basis)] gi-max-w-[var(--grid-basis)]',
+      ].join(' '),
+    },
+  },
+  defaultVariants: { container: false },
+});

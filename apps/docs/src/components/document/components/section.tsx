@@ -22,6 +22,7 @@ const baseTabs = [
       'browser-support',
       'character-count',
       'library/text',
+      'grid',
     ],
   },
   {

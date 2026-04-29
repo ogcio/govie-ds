@@ -28,6 +28,7 @@ import {
   Footer,
   Form,
   FormField,
+  Grid,
   FormFieldError,
   FormFieldHint,
   FormFieldLabel,
@@ -934,6 +935,27 @@ export default function Home() {
                         </div>
                       </Stack>
                     </div>
+                  </div>
+
+                  <div>
+                    <h5 className="font-semibold mb-2">Grid (Responsive Size)</h5>
+                    <Grid container gap={4} dataTestId="grid-responsive-size">
+                      <Grid size={{ base: 4, xs: 4, sm: 4, md: 6, lg: 8 }} dataTestId="grid-rsize-content">
+                        <div className="gi-bg-gray-300 gi-p-1 gi-flex gi-items-center gi-justify-center gi-font-primary gi-rounded">
+                          Content
+                        </div>
+                      </Grid>
+                      <Grid size={{ base: 4, xs: 4, sm: 2, md: 2, lg: 4 }} dataTestId="grid-rsize-sidebar">
+                        <div className="gi-bg-gray-300 gi-p-1 gi-flex gi-items-center gi-justify-center gi-font-primary gi-rounded">
+                          Sidebar
+                        </div>
+                      </Grid>
+                      <Grid size={{ base: 4, xs: 4, sm: 6, md: 8, lg: 12 }} dataTestId="grid-rsize-footer">
+                        <div className="gi-bg-gray-300 gi-p-1 gi-flex gi-items-center gi-justify-center gi-font-primary gi-rounded">
+                          Footer
+                        </div>
+                      </Grid>
+                    </Grid>
                   </div>
 
                   <div>

@@ -1,0 +1,141 @@
+---
+title: 'Grid'
+description: 'Grid Component React Component'
+status: 'stable'
+component:
+  id: 'grid-react'
+  link: '/story/layout-grid--default'
+  status: 'stable'
+  properties:
+    - name: 'GridProps'
+      fields:
+        - name: 'container'
+          ofType: 'boolean'
+          description: 'When true, activates grid container mode with responsive Figma defaults. When false, the element acts as a grid item.'
+          required: false
+        - name: 'columns'
+          ofType: 'number | ResponsiveValue<number>'
+          description: 'Override the number of columns. Accepts a number or a responsive breakpoint object.'
+          required: false
+        - name: 'gap'
+          ofType: 'number | ResponsiveValue<number>'
+          description: 'Gap between grid items in Tailwind spacing scale (0–12). Accepts a number or a responsive breakpoint object.'
+          required: false
+        - name: 'size'
+          ofType: 'number | ResponsiveValue<number>'
+          description: 'Column span for a grid item. Accepts a number or a responsive breakpoint object.'
+          required: false
+        - name: 'role'
+          ofType: '"region" | "navigation" | "complementary" | "search" | "form"'
+          description: 'Landmark role for the container. Only set when a landmark semantic is required.'
+          required: false
+        - name: 'ariaLabel'
+          ofType: 'string'
+          description: 'Accessible label for the container.'
+          required: false
+        - name: 'ariaLabelledBy'
+          ofType: 'string'
+          description: 'Points to the id of an element that labels the container. Preferred over ariaLabel when a visible heading exists. Only applied when role is set. Maps to aria-labelledby.'
+          required: false
+        - name: 'className'
+          ofType: 'string'
+          description: 'Additional CSS classes to apply to the grid element.'
+          required: false
+        - name: 'id'
+          ofType: 'string'
+          description: 'Optional id for linking/targeting and aria references.'
+          required: false
+        - name: 'dataTestId'
+          ofType: 'string'
+          description: 'Test id for targeting the element in automated tests.'
+          required: false
+        - name: 'children'
+          ofType: 'node'
+          description: 'The grid items to be rendered inside the container.'
+          required: true
+  stories:
+    - name: 'default'
+      url: '/story/layout-grid--default'
+    - name: 'responsive-gap'
+      url: '/story/layout-grid--responsive-gap'
+    - name: 'responsive-columns'
+      url: '/story/layout-grid--responsive-columns'
+    - name: 'responsive-size'
+      url: '/story/layout-grid--responsive-size'
+    - name: 'column-override'
+      url: '/story/layout-grid--column-override'
+---
+
+# Grid
+
+Grid is a flex-based layout component with two modes: **container** (distributes children according to the Figma column spec by default) and **item** (controls column span). It supports responsive breakpoint objects for columns, gap, and size.
+
+<Section current="react">
+
+<ComponentPreview className="gi-not-prose w-full block">
+  <Grid container gap={4}>
+    <Grid>
+      <div className="gi-bg-gray-300 gi-p-1 gi-text-center">1</div>
+    </Grid>
+    <Grid>
+      <div className="gi-bg-gray-300 gi-p-1 gi-text-center">2</div>
+    </Grid>
+    <Grid>
+      <div className="gi-bg-gray-300 gi-p-1 gi-text-center">3</div>
+    </Grid>
+    <Grid>
+      <div className="gi-bg-gray-300 gi-p-1 gi-text-center">4</div>
+    </Grid>
+    <Grid>
+      <div className="gi-bg-gray-300 gi-p-1 gi-text-center">5</div>
+    </Grid>
+    <Grid>
+      <div className="gi-bg-gray-300 gi-p-1 gi-text-center">6</div>
+    </Grid>
+    <Grid>
+      <div className="gi-bg-gray-300 gi-p-1 gi-text-center">7</div>
+    </Grid>
+    <Grid>
+      <div className="gi-bg-gray-300 gi-p-1 gi-text-center">8</div>
+    </Grid>
+    <Grid>
+      <div className="gi-bg-gray-300 gi-p-1 gi-text-center">9</div>
+    </Grid>
+    <Grid>
+      <div className="gi-bg-gray-300 gi-p-1 gi-text-center">10</div>
+    </Grid>
+    <Grid>
+      <div className="gi-bg-gray-300 gi-p-1 gi-text-center">11</div>
+    </Grid>
+    <Grid>
+      <div className="gi-bg-gray-300 gi-p-1 gi-text-center">12</div>
+    </Grid>
+  </Grid>
+</ComponentPreview>
+## Examples
+
+### Default
+
+<StorybookFrame componentId="grid-react" story="default" />
+
+### Responsive Gap
+
+<StorybookFrame componentId="grid-react" story="responsive-gap" />
+
+### Responsive Columns
+
+<StorybookFrame componentId="grid-react" story="responsive-columns" />
+
+### Responsive Size
+
+<StorybookFrame componentId="grid-react" story="responsive-size" />
+
+### Column Override
+
+<StorybookFrame componentId="grid-react" story="column-override" />
+
+## Properties
+
+<ComponentPropertiesTable componentId="grid-react" />
+
+</Section>

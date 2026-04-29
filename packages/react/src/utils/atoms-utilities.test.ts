@@ -24,7 +24,8 @@ describe('clamp', () => {
   });
 });
 
-const toClass = (value: string, prefix: string): string => `${prefix}gi-flex-${value}`;
+const toClass = (value: string, prefix: string): string =>
+  `${prefix}gi-flex-${value}`;
 
 const toGap = (gap: number, prefix: string): string => `${prefix}gi-gap-${gap}`;
 describe('resolveResponsive', () => {
@@ -33,7 +34,9 @@ describe('resolveResponsive', () => {
   });
 
   it('generates breakpoint-prefixed classes from a responsive object', () => {
-    expect(resolveResponsive({ base: 'col', md: 'row' }, toClass)).toBe('gi-flex-col md:gi-flex-row');
+    expect(resolveResponsive({ base: 'col', md: 'row' }, toClass)).toBe(
+      'gi-flex-col md:gi-flex-row',
+    );
   });
 
   it('treats base as the unprefixed breakpoint', () => {
@@ -45,17 +48,21 @@ describe('resolveResponsive', () => {
   });
 
   it('preserves breakpoint order regardless of object key order', () => {
-    expect(resolveResponsive({ lg: 'row', base: 'col', sm: 'row' }, toClass)).toBe(
-      'gi-flex-col sm:gi-flex-row lg:gi-flex-row',
-    );
+    expect(
+      resolveResponsive({ lg: 'row', base: 'col', sm: 'row' }, toClass),
+    ).toBe('gi-flex-col sm:gi-flex-row lg:gi-flex-row');
   });
 
   it('skips breakpoints not present in the responsive object', () => {
-    expect(resolveResponsive({ base: 'col', xl: 'row' }, toClass)).toBe('gi-flex-col xl:gi-flex-row');
+    expect(resolveResponsive({ base: 'col', xl: 'row' }, toClass)).toBe(
+      'gi-flex-col xl:gi-flex-row',
+    );
   });
 
   it('works with numeric values', () => {
     expect(resolveResponsive(4, toGap)).toBe('gi-gap-4');
-    expect(resolveResponsive({ base: 2, md: 4, xl: 8 }, toGap)).toBe('gi-gap-2 md:gi-gap-4 xl:gi-gap-8');
+    expect(resolveResponsive({ base: 2, md: 4, xl: 8 }, toGap)).toBe(
+      'gi-gap-2 md:gi-gap-4 xl:gi-gap-8',
+    );
   });
 });
