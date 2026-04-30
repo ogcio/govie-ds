@@ -940,7 +940,7 @@ export default function Home() {
                   <div>
                     <h5 className="font-semibold mb-2">Grid (Responsive Size)</h5>
                     <Grid container gap={4} dataTestId="grid-responsive-size">
-                      <Grid size={{ base: 4, xs: 4, sm: 4, md: 6, lg: 8 }} dataTestId="grid-rsize-content">
+                      <Grid size={{ base: 4, md: 6, lg: 8 }} dataTestId="grid-rsize-content">
                         <div className="gi-bg-gray-300 gi-p-1 gi-flex gi-items-center gi-justify-center gi-font-primary gi-rounded">
                           Content
                         </div>

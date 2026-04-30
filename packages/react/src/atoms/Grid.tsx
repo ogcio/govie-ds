@@ -81,8 +81,12 @@ const buildContainerStyle = (columns: Props['columns'], gap: Props['gap']): Reco
   ...buildCssVariables(columns, '--grid-columns', (n: number): string => String(Math.max(1, n))),
   ...buildCssVariables(gap, '--grid-gap', (n: number): string => `var(--gieds-space-${Math.max(0, n)})`),
 });
-const buildItemStyle = (size: Props['size']): Record<string, string> =>
-  buildCssVariables(size, '--grid-item-span', (n: number): string => String(Math.max(1, n)));
+const buildItemStyle = (size: Props['size']): Record<string, string> => ({
+  ...buildCssVariables(size, '--grid-item-span', (n: number): string => String(Math.max(1, n))),
+  // Grid item basis formula: span / cols * 100% - gap * (cols - span) / cols, capped at 100%.
+  '--grid-basis':
+    'min(calc(var(--grid-span) / var(--grid-parent-columns) * 100% - var(--grid-parent-gap) * (var(--grid-parent-columns) - var(--grid-span)) / var(--grid-parent-columns)), 100%)',
+});
 
 // Converts a responsive prop into CSS variable key-value pairs.
 // Converts a responsive prop into CSS variable key-value pairs.
@@ -109,14 +113,8 @@ const styles = tv({
   base: 'gi-min-w-0',
   variants: {
     container: {
-      true: 'gi-flex gi-flex-wrap gi-mx-4 md:gi-mx-6 lg:gi-mx-8',
-      false: [
-        'gi-grow-0 gi-shrink-0',
-        // Grid item basis formula: span / cols * 100% - gap * (cols - span) / cols, capped at 100%.
-        // Must be a plain string so tailwind can scan and generate the CSS rule.
-        '[--grid-basis:min(calc(var(--grid-span)_/_var(--grid-parent-columns)_*_100%_-_var(--grid-parent-gap)_*_(var(--grid-parent-columns)_-_var(--grid-span))_/_var(--grid-parent-columns)),100%)]',
-        'gi-basis-[var(--grid-basis)] gi-max-w-[var(--grid-basis)]',
-      ].join(' '),
+      true: 'gi-flex gi-flex-wrap',
+      false: 'gi-grow-0 gi-shrink-0 gi-basis-[var(--grid-basis)] gi-max-w-[var(--grid-basis)]',
     },
   },
   defaultVariants: {
@@ -139,10 +137,10 @@ function Grid(props: Props) {
                 resolveResponsive(props.gap ?? 0, fromMap(GAP_CLASSES)),
                 resolveResponsive(props.columns ?? FigmaColumns, fromMap(PARENT_COL_CLASSES)),
                 resolveResponsive(props.gap ?? 0, fromMap(PARENT_GAP_CLASSES)),
-              ].join(' ')
+              ]
             : resolveResponsive(props.size ?? 1, fromMap(SPAN_CLASSES)),
           props.className,
-        ]).join(' '),
+        ]),
       })}
       style={props.container ? buildContainerStyle(props.columns, props.gap) : buildItemStyle(props.size)}
       data-testid={props.dataTestId}
