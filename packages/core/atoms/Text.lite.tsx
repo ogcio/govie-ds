@@ -1,6 +1,7 @@
 import { useMetadata } from '@builder.io/mitosis';
 import { tv } from 'tailwind-variants';
-import { getSize, getWhitespace, type Size, type Whitespace } from './utilities';
+import type { Size, Whitespace } from './constants';
+import { getSize, getWhitespace } from './utilities';
 
 export type Props = {
   children: any;

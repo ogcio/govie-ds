@@ -1,6 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/react-vite';
 import Paragraph from '../atoms/Paragraph';
-import { Align } from '../atoms/utilities';
+import { Align } from '../atoms/constants';
 import {
   paragraphMeta,
   Default as defaultStory,
@@ -8,7 +8,7 @@ import {
   AllWhitespaces as allWhitespaces,
   AllAlignments as allAlignments,
 } from '../atoms/storybook/Paragraph.meta';
-import { Size, Whitespace } from '../atoms/utilities';
+import { Size, Whitespace } from '../atoms/constants';
 
 const meta: Meta<typeof Paragraph> = {
   ...paragraphMeta,

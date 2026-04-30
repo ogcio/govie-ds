@@ -72,13 +72,13 @@ Use the Stack component to arrange items in a vertical or horizontal flow with c
 
 - Do keep spacing consistent by using the `gap` prop instead of ad-hoc margins.
 - Do use responsive objects (e.g., `{ base: 'column', md: 'row' }`) for layout changes.
-- Do align and distribute items using `itemsAlignment` and `itemsDistribution` for clarity.
+- Do align and distribute items using `align` and `justify` for clarity.
 
 ### Don't
 
 - Don't mix manual margins and `gap` for the same items—pick one spacing system.
 - Don't force Stack to behave like a grid when a Grid layout is more appropriate.
-- Avoid adding dividers everywhere; use hasDivider only when it genuinely helps readability.
+- Avoid using `hasDivider` — it is deprecated and only available in the React wrapper. Use borders or custom separators instead.
 
 <ComponentContainer>
   <Stack direction="row" gap={2} wrap>

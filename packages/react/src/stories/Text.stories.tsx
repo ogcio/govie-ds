@@ -5,7 +5,7 @@ import {
   Default as defaultStory,
   AllTextSizes as allTextSizes,
 } from '../atoms/storybook/Text.meta';
-import { Size } from '../atoms/utilities';
+import { Size } from '../atoms/constants';
 
 const loremIpsum = 'Lorem ipsum dolor sit amet.';
 

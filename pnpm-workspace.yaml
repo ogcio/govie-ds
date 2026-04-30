@@ -2,6 +2,7 @@ packages:
   - "apps/*"
   - "examples/*"
   - "packages/**"
+  - "!**/dist/**" # avoid generated package.json (e.g. ng-packagr) being picked up as workspace
 
 minimumReleaseAge: 1440 # 1 day — protect against supply chain attacks
 
