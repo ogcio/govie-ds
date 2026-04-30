@@ -1,7 +1,11 @@
 'use client';
 import React, { useState, useEffect } from 'react';
 import { Trans, useTranslation } from 'react-i18next';
-import { ArrowRight, ArrowLeft, Button } from '../atoms/index.js';
+import { Button } from '../atoms/index.js';
+import {
+  ArrowRightIcon as ArrowRight,
+  ArrowLeftIcon as ArrowLeft,
+} from '../atoms/icons';
 import { Breakpoint, useBreakpoint } from '../hooks/use-breakpoint.js';
 import { Icon } from '../icon/icon.js';
 import { getDisplayPages } from '../utils/utilities.js';

@@ -6,7 +6,7 @@ useMetadata({ angular: { selector: 'gi-placeholder-icon' } });
 export default function Placeholder(props: IconProps) {
   return (
     <svg
-      viewBox="0 -960 960 960"
+      viewBox="0 0 24 24"
       width={props.size ?? 24}
       height={props.size ?? 24}
       class={props.className}

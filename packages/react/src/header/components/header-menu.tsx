@@ -1,11 +1,11 @@
 'use client';
 
 import { useState } from 'react';
-import { KeyboardArrowRight } from '../../atoms/icons/index.js';
+import { KeyboardArrowRightIcon as KeyboardArrowRight } from '../../atoms/icons/index.js';
 import { cn } from '../../cn.js';
 import { translate as t } from '../../i18n/utility.js';
 import { ListItem } from '../../list-item/list-item.js';
-import { HeaderProps } from '../types.js';
+import type { HeaderProps } from '../types.js';
 
 export type MobileHeaderMenuProps = Pick<
   HeaderProps,

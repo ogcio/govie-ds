@@ -2,7 +2,13 @@
 import type { ComponentType } from 'react';
 import { useState } from 'react';
 import type { IconProps } from '../atoms/icons';
-import { CheckCircle, Info, Warning, Error } from '../atoms/icons';
+
+import {
+  CheckCircleIcon as CheckCircle,
+  ErrorIcon as Error,
+  InfoIcon as Info,
+  WarningIcon as Warning,
+} from '../atoms/icons';
 import { cn } from '../cn.js';
 import { translate as t } from '../i18n/utility.js';
 import { IconButton } from '../icon-button/icon-button.js';

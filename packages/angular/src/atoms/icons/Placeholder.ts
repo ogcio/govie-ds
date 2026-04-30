@@ -14,7 +14,7 @@ import { IconProps } from './types';
   selector: 'gi-placeholder-icon',
   template: `
     <svg
-      viewBox="0 -960 960 960"
+      viewBox="0 0 24 24"
       xmlns="http://www.w3.org/2000/svg"
       [attr.width]="size ?? 24"
       [attr.height]="size ?? 24"

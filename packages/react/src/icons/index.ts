@@ -1,11 +1,1 @@
-export {
-  Close,
-  KeyboardArrowDown,
-  KeyboardArrowUp,
-  Visibility,
-  VisibilityOff,
-  CheckCircle,
-  Error,
-  Info,
-  Warning,
-} from '../atoms/icons';
+export * from '../atoms/icons/index.js';
