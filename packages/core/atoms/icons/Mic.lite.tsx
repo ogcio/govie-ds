@@ -1,6 +1,9 @@
 import { IconProps } from './types';
+import { useMetadata } from '@builder.io/mitosis';
 
-export function Mic(props: IconProps) {
+useMetadata({ angular: { selector: 'gi-mic-icon' } });
+
+export default function Mic(props: IconProps) {
   return (
     <svg
       viewBox="0 -960 960 960"

@@ -1,6 +1,9 @@
+import { useMetadata } from '@builder.io/mitosis';
 import { IconProps } from './types';
 
-export function Link(props: IconProps) {
+useMetadata({ angular: { selector: 'gi-link-icon' } });
+
+export default function Link(props: IconProps) {
   return (
     <svg
       viewBox="0 -960 960 960"

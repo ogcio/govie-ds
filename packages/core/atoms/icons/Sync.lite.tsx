@@ -1,6 +1,9 @@
 import { IconProps } from './types';
+import { useMetadata } from '@builder.io/mitosis';
 
-export function Sync(props: IconProps) {
+useMetadata({ angular: { selector: 'gi-sync-icon' } });
+
+export default function Sync(props: IconProps) {
   return (
     <svg
       viewBox="0 -960 960 960"

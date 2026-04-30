@@ -1,6 +1,9 @@
 import { IconProps } from './types';
+import { useMetadata } from '@builder.io/mitosis';
 
-export function Menu(props: IconProps) {
+useMetadata({ angular: { selector: 'gi-menu-icon' } });
+
+export default function Menu(props: IconProps) {
   return (
     <svg
       viewBox="0 -960 960 960"

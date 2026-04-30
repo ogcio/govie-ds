@@ -1,6 +1,9 @@
 import { IconProps } from './types';
+import { useMetadata } from '@builder.io/mitosis';
 
-export function PersonCancel(props: IconProps) {
+useMetadata({ angular: { selector: 'gi-person-cancel-icon' } });
+
+export default function PersonCancel(props: IconProps) {
   return (
     <svg
       viewBox="0 -960 960 960"

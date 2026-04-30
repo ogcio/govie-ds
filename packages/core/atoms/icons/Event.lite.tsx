@@ -1,6 +1,9 @@
 import { IconProps } from './types';
+import { useMetadata } from '@builder.io/mitosis';
 
-export function Event(props: IconProps) {
+useMetadata({ angular: { selector: 'gi-event-icon' } });
+
+export default function Event(props: IconProps) {
   return (
     <svg
       viewBox="0 -960 960 960"

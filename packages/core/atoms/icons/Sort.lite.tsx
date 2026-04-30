@@ -1,6 +1,9 @@
 import { IconProps } from './types';
+import { useMetadata } from '@builder.io/mitosis';
 
-export function Sort(props: IconProps) {
+useMetadata({ angular: { selector: 'gi-sort-icon' } });
+
+export default function Sort(props: IconProps) {
   return (
     <svg
       viewBox="0 -960 960 960"

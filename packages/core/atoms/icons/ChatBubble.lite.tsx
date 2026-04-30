@@ -1,6 +1,9 @@
 import { IconProps } from './types';
+import { useMetadata } from '@builder.io/mitosis';
 
-export function ChatBubble(props: IconProps) {
+useMetadata({ angular: { selector: 'gi-chat-bubble-icon' } });
+
+export default function ChatBubble(props: IconProps) {
   return (
     <svg
       viewBox="0 -960 960 960"

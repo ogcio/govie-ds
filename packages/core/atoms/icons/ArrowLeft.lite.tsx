@@ -1,4 +1,7 @@
 import { IconProps } from './types';
+import { useMetadata } from '@builder.io/mitosis';
+
+useMetadata({ angular: { selector: 'gi-arrow-left-icon' } });
 
 export default function ArrowLeft(props: IconProps) {
   return (

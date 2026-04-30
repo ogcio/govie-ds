@@ -1,6 +1,9 @@
 import { IconProps } from './types';
+import { useMetadata } from '@builder.io/mitosis';
 
-export function DirectionsCar(props: IconProps) {
+useMetadata({ angular: { selector: 'gi-directions-car-icon' } });
+
+export default function DirectionsCar(props: IconProps) {
   return (
     <svg
       viewBox="0 -960 960 960"

@@ -1,39 +1,16 @@
 import type { ArgTypes, StoryContext, Renderer } from 'storybook/internal/types';
 import { within, expect } from 'storybook/test';
 import type { IconProps } from '../icons/types';
-import ArrowLeft from '../icons/ArrowLeft.lite';
-import ArrowRight from '../icons/ArrowRight.lite';
-import CheckCircle from '../icons/CheckCircle.lite';
-import Close from '../icons/Close.lite';
-import Error from '../icons/Error.lite';
-import FirstPage from '../icons/FirstPage.lite';
-import Info from '../icons/Info.lite';
-import KeyboardArrowDown from '../icons/KeyboardArrowDown.lite';
-import KeyboardArrowLeft from '../icons/KeyboardArrowLeft.lite';
-import KeyboardArrowRight from '../icons/KeyboardArrowRight.lite';
-import KeyboardArrowUp from '../icons/KeyboardArrowUp.lite';
-import LastPage from '../icons/LastPage.lite';
-import Visibility from '../icons/Visibility.lite';
-import VisibilityOff from '../icons/VisibilityOff.lite';
-import Warning from '../icons/Warning.lite';
+import * as icons from '../icons';
+import _ from 'lodash';
 
-export const iconList = [
-  { Component: ArrowLeft, name: 'ArrowLeft', selector: 'arrow-left' },
-  { Component: ArrowRight, name: 'ArrowRight', selector: 'arrow-right' },
-  { Component: CheckCircle, name: 'CheckCircle', selector: 'check-circle' },
-  { Component: Close, name: 'Close', selector: 'close' },
-  { Component: Error, name: 'Error', selector: 'error' },
-  { Component: FirstPage, name: 'FirstPage', selector: 'first-page' },
-  { Component: Info, name: 'Info', selector: 'info' },
-  { Component: KeyboardArrowDown, name: 'KeyboardArrowDown', selector: 'keyboard-arrow-down' },
-  { Component: KeyboardArrowLeft, name: 'KeyboardArrowLeft', selector: 'keyboard-arrow-left' },
-  { Component: KeyboardArrowRight, name: 'KeyboardArrowRight', selector: 'keyboard-arrow-right' },
-  { Component: KeyboardArrowUp, name: 'KeyboardArrowUp', selector: 'keyboard-arrow-up' },
-  { Component: LastPage, name: 'LastPage', selector: 'last-page' },
-  { Component: Visibility, name: 'Visibility', selector: 'visibility' },
-  { Component: VisibilityOff, name: 'VisibilityOff', selector: 'visibility-off' },
-  { Component: Warning, name: 'Warning', selector: 'warning' },
-];
+export const iconList = _.values(icons).map((icon) => {
+  return {
+    Component: icon,
+    name: icon.name,
+    selector: 'gi-' + _.kebabCase(icon.name + '-icon'),
+  };
+});
 
 export const iconsMeta = {
   tags: ['autodocs'] as string[],
@@ -67,7 +44,7 @@ export const iconsMeta = {
     docs: {
       description: {
         component:
-          'Use icons to visually reinforce actions, status, and navigation. Icons accept a `size` prop (in pixels), an optional `color`, and a `label` for accessibility.',
+          'Use icons to visually reinforce actions, status, and navigation. Icons accept a `size` prop (in pixels), an optional `color`, and a `label` for accessibility. In React, the icon is suffixed with `Icon`, and in Angular, the icon selector name is wrapped with `gi-<icon-name>-icon`.',
       },
     },
   },

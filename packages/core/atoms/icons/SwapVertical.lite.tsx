@@ -1,6 +1,9 @@
 import { IconProps } from './types';
+import { useMetadata } from '@builder.io/mitosis';
 
-export function SwapVertical(props: IconProps) {
+useMetadata({ angular: { selector: 'gi-swap-vertical-icon' } });
+
+export default function SwapVertical(props: IconProps) {
   return (
     <svg
       viewBox="0 -960 960 960"

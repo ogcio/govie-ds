@@ -1,6 +1,9 @@
 import { IconProps } from './types';
+import { useMetadata } from '@builder.io/mitosis';
 
-export function Edit(props: IconProps) {
+useMetadata({ angular: { selector: 'gi-edit-icon' } });
+
+export default function Edit(props: IconProps) {
   return (
     <svg
       viewBox="0 -960 960 960"

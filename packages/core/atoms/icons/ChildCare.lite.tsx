@@ -1,6 +1,9 @@
 import { IconProps } from './types';
+import { useMetadata } from '@builder.io/mitosis';
 
-export function ChildCare(props: IconProps) {
+useMetadata({ angular: { selector: 'gi-child-care-icon' } });
+
+export default function ChildCare(props: IconProps) {
   return (
     <svg
       viewBox="0 -960 960 960"

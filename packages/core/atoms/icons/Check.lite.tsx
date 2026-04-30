@@ -1,6 +1,9 @@
 import { IconProps } from './types';
+import { useMetadata } from '@builder.io/mitosis';
 
-export function Check(props: IconProps) {
+useMetadata({ angular: { selector: 'gi-check-icon' } });
+
+export default function Check(props: IconProps) {
   return (
     <svg
       viewBox="0 -960 960 960"

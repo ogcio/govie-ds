@@ -1,6 +1,9 @@
 import { IconProps } from './types';
+import { useMetadata } from '@builder.io/mitosis';
 
-export function Refresh(props: IconProps) {
+useMetadata({ angular: { selector: 'gi-refresh-icon' } });
+
+export default function Refresh(props: IconProps) {
   return (
     <svg
       viewBox="0 -960 960 960"

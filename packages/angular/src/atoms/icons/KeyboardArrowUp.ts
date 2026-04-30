@@ -11,7 +11,7 @@ import { CommonModule } from '@angular/common';
 import { IconProps } from './types';
 
 @Component({
-  selector: 'keyboard-arrow-up',
+  selector: 'gi-keyboard-arrow-up-icon',
   template: `
     <svg
       viewBox="0 -960 960 960"

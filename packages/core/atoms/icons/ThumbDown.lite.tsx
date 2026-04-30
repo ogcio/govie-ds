@@ -1,6 +1,9 @@
 import { IconProps } from './types';
+import { useMetadata } from '@builder.io/mitosis';
 
-export function ThumbDown(props: IconProps) {
+useMetadata({ angular: { selector: 'gi-thumb-down-icon' } });
+
+export default function ThumbDown(props: IconProps) {
   return (
     <svg
       viewBox="0 -960 960 960"

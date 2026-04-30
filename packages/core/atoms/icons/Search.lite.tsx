@@ -1,6 +1,9 @@
 import { IconProps } from './types';
+import { useMetadata } from '@builder.io/mitosis';
 
-export function Search(props: IconProps) {
+useMetadata({ angular: { selector: 'gi-search-icon' } });
+
+export default function Search(props: IconProps) {
   return (
     <svg
       viewBox="0 -960 960 960"

@@ -1,4 +1,7 @@
 import { IconProps } from './types';
+import { useMetadata } from '@builder.io/mitosis';
+
+useMetadata({ angular: { selector: 'gi-visibility-off-icon' } });
 
 export default function VisibilityOff(props: IconProps) {
   return (

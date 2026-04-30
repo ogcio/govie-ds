@@ -1,6 +1,9 @@
 import { IconProps } from './types';
+import { useMetadata } from '@builder.io/mitosis';
 
-export function AttachFile(props: IconProps) {
+useMetadata({ angular: { selector: 'gi-attach-file-icon' } });
+
+export default function AttachFile(props: IconProps) {
   return (
     <svg
       viewBox="0 -960 960 960"

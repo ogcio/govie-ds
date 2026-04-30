@@ -1,6 +1,9 @@
 import { IconProps } from './types';
+import { useMetadata } from '@builder.io/mitosis';
 
-export function FilterList(props: IconProps) {
+useMetadata({ angular: { selector: 'gi-filter-list-icon' } });
+
+export default function FilterList(props: IconProps) {
   return (
     <svg
       viewBox="0 -960 960 960"

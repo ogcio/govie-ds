@@ -1,6 +1,9 @@
+import { useMetadata } from '@builder.io/mitosis';
 import { IconProps } from './types';
 
-export function Accessibility(props: IconProps) {
+useMetadata({ angular: { selector: 'gi-accessibility-icon' } });
+
+export default function Accessibility(props: IconProps) {
   return (
     <svg
       viewBox="0 -960 960 960"

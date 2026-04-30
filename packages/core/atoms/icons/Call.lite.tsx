@@ -1,6 +1,9 @@
 import { IconProps } from './types';
+import { useMetadata } from '@builder.io/mitosis';
 
-export function Call(props: IconProps) {
+useMetadata({ angular: { selector: 'gi-call-icon' } });
+
+export default function Call(props: IconProps) {
   return (
     <svg
       viewBox="0 -960 960 960"

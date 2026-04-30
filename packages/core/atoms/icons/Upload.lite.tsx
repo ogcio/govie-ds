@@ -1,6 +1,9 @@
 import { IconProps } from './types';
+import { useMetadata } from '@builder.io/mitosis';
 
-export function Upload(props: IconProps) {
+useMetadata({ angular: { selector: 'gi-upload-icon' } });
+
+export default function Upload(props: IconProps) {
   return (
     <svg
       viewBox="0 -960 960 960"

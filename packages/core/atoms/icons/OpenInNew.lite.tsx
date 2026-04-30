@@ -1,6 +1,9 @@
 import { IconProps } from './types';
+import { useMetadata } from '@builder.io/mitosis';
 
-export function OpenInNew(props: IconProps) {
+useMetadata({ angular: { selector: 'gi-open-in-new-icon' } });
+
+export default function OpenInNew(props: IconProps) {
   return (
     <svg
       viewBox="0 -960 960 960"

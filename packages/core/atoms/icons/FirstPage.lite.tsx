@@ -1,4 +1,7 @@
 import { IconProps } from './types';
+import { useMetadata } from '@builder.io/mitosis';
+
+useMetadata({ angular: { selector: 'gi-first-page-icon' } });
 
 export default function FirstPage(props: IconProps) {
   return (

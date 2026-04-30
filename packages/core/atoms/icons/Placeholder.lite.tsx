@@ -1,6 +1,9 @@
 import { IconProps } from './types';
+import { useMetadata } from '@builder.io/mitosis';
 
-export function Placeholder(props: IconProps) {
+useMetadata({ angular: { selector: 'gi-placeholder-icon' } });
+
+export default function Placeholder(props: IconProps) {
   return (
     <svg
       viewBox="0 -960 960 960"

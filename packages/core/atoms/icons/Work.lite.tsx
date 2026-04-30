@@ -1,6 +1,9 @@
 import { IconProps } from './types';
+import { useMetadata } from '@builder.io/mitosis';
 
-export function Work(props: IconProps) {
+useMetadata({ angular: { selector: 'gi-work-icon' } });
+
+export default function Work(props: IconProps) {
   return (
     <svg
       viewBox="0 -960 960 960"

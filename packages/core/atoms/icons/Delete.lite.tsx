@@ -1,6 +1,9 @@
 import { IconProps } from './types';
+import { useMetadata } from '@builder.io/mitosis';
 
-export function Delete(props: IconProps) {
+useMetadata({ angular: { selector: 'gi-delete-icon' } });
+
+export default function Delete(props: IconProps) {
   return (
     <svg
       viewBox="0 -960 960 960"

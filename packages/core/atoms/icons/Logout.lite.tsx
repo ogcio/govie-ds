@@ -1,6 +1,9 @@
 import { IconProps } from './types';
+import { useMetadata } from '@builder.io/mitosis';
 
-export function Logout(props: IconProps) {
+useMetadata({ angular: { selector: 'gi-logout-icon' } });
+
+export default function Logout(props: IconProps) {
   return (
     <svg
       viewBox="0 -960 960 960"

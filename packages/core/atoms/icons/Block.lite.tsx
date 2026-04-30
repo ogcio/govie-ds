@@ -1,6 +1,9 @@
 import { IconProps } from './types';
+import { useMetadata } from '@builder.io/mitosis';
 
-export function Block(props: IconProps) {
+useMetadata({ angular: { selector: 'gi-block-icon' } });
+
+export default function Block(props: IconProps) {
   return (
     <svg
       viewBox="0 -960 960 960"

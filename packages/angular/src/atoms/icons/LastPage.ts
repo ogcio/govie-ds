@@ -11,7 +11,7 @@ import { CommonModule } from '@angular/common';
 import { IconProps } from './types';
 
 @Component({
-  selector: 'last-page',
+  selector: 'gi-last-page-icon',
   template: `
     <svg
       viewBox="0 -960 960 960"

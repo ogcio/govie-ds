@@ -1,6 +1,9 @@
 import { IconProps } from './types';
+import { useMetadata } from '@builder.io/mitosis';
 
-export function Home(props: IconProps) {
+useMetadata({ angular: { selector: 'gi-home-icon' } });
+
+export default function Home(props: IconProps) {
   return (
     <svg
       viewBox="0 -960 960 960"

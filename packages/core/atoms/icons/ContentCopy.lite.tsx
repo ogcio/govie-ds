@@ -1,6 +1,9 @@
 import { IconProps } from './types';
+import { useMetadata } from '@builder.io/mitosis';
 
-export function ContentCopy(props: IconProps) {
+useMetadata({ angular: { selector: 'gi-content-copy-icon' } });
+
+export default function ContentCopy(props: IconProps) {
   return (
     <svg
       viewBox="0 -960 960 960"

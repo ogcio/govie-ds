@@ -1,6 +1,9 @@
 import { IconProps } from './types';
+import { useMetadata } from '@builder.io/mitosis';
 
-export function CandlestickChart(props: IconProps) {
+useMetadata({ angular: { selector: 'gi-candlestick-chart-icon' } });
+
+export default function CandlestickChart(props: IconProps) {
   return (
     <svg
       viewBox="0 -960 960 960"

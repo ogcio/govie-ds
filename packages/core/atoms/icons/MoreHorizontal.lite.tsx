@@ -1,6 +1,9 @@
 import { IconProps } from './types';
+import { useMetadata } from '@builder.io/mitosis';
 
-export function MoreHorizontal(props: IconProps) {
+useMetadata({ angular: { selector: 'gi-more-horizontal-icon' } });
+
+export default function MoreHorizontal(props: IconProps) {
   return (
     <svg
       viewBox="0 -960 960 960"

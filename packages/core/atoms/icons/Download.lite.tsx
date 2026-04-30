@@ -1,6 +1,9 @@
 import { IconProps } from './types';
+import { useMetadata } from '@builder.io/mitosis';
 
-export function Download(props: IconProps) {
+useMetadata({ angular: { selector: 'gi-download-icon' } });
+
+export default function Download(props: IconProps) {
   return (
     <svg
       viewBox="0 -960 960 960"

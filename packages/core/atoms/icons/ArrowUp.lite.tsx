@@ -1,6 +1,9 @@
 import { IconProps } from './types';
+import { useMetadata } from '@builder.io/mitosis';
 
-export function ArrowUp(props: IconProps) {
+useMetadata({ angular: { selector: 'gi-arrow-up-icon' } });
+
+export default function ArrowUp(props: IconProps) {
   return (
     <svg
       viewBox="0 -960 960 960"

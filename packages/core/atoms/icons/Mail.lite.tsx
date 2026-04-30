@@ -1,6 +1,9 @@
 import { IconProps } from './types';
+import { useMetadata } from '@builder.io/mitosis';
 
-export function Mail(props: IconProps) {
+useMetadata({ angular: { selector: 'gi-mail-icon' } });
+
+export default function Mail(props: IconProps) {
   return (
     <svg
       viewBox="0 -960 960 960"

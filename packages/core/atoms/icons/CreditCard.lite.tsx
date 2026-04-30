@@ -1,6 +1,9 @@
 import { IconProps } from './types';
+import { useMetadata } from '@builder.io/mitosis';
 
-export function CreditCard(props: IconProps) {
+useMetadata({ angular: { selector: 'gi-credit-card-icon' } });
+
+export default function CreditCard(props: IconProps) {
   return (
     <svg
       viewBox="0 -960 960 960"

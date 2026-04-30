@@ -1,4 +1,7 @@
 import { IconProps } from './types';
+import { useMetadata } from '@builder.io/mitosis';
+
+useMetadata({ angular: { selector: 'gi-last-page-icon' } });
 
 export default function LastPage(props: IconProps) {
   return (

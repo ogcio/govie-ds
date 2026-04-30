@@ -1,6 +1,9 @@
 import { IconProps } from './types';
+import { useMetadata } from '@builder.io/mitosis';
 
-export function UnfoldMore(props: IconProps) {
+useMetadata({ angular: { selector: 'gi-unfold-more-icon' } });
+
+export default function UnfoldMore(props: IconProps) {
   return (
     <svg
       viewBox="0 -960 960 960"

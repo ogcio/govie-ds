@@ -1,6 +1,9 @@
 import { IconProps } from './types';
+import { useMetadata } from '@builder.io/mitosis';
 
-export function SpaceDashboard(props: IconProps) {
+useMetadata({ angular: { selector: 'gi-space-dashboard-icon' } });
+
+export default function SpaceDashboard(props: IconProps) {
   return (
     <svg
       viewBox="0 -960 960 960"

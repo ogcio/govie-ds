@@ -1,6 +1,9 @@
 import { IconProps } from './types';
+import { useMetadata } from '@builder.io/mitosis';
 
-export function Send(props: IconProps) {
+useMetadata({ angular: { selector: 'gi-send-icon' } });
+
+export default function Send(props: IconProps) {
   return (
     <svg
       viewBox="0 -960 960 960"

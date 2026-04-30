@@ -1,6 +1,9 @@
 import { IconProps } from './types';
+import { useMetadata } from '@builder.io/mitosis';
 
-export function LocationOn(props: IconProps) {
+useMetadata({ angular: { selector: 'gi-location-on-icon' } });
+
+export default function LocationOn(props: IconProps) {
   return (
     <svg
       viewBox="0 -960 960 960"
