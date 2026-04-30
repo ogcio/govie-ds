@@ -6,9 +6,34 @@ import type {
 import {
   forwardRef
 } from 'react';
-import * as Icons from '../atoms/icons';
+import {
+  KeyboardArrowDownIcon,
+  KeyboardArrowUpIcon,
+  KeyboardArrowRightIcon,
+  KeyboardArrowLeftIcon,
+  CloseIcon,
+  VisibilityIcon,
+  VisibilityOffIcon,
+  CheckCircleIcon,
+  WarningIcon,
+  InfoIcon,
+  ErrorIcon,
+  ArrowLeftIcon,
+  ArrowRightIcon,
+  FirstPageIcon,
+  LastPageIcon,
+} from '../atoms/icons';
 import { cn } from '../cn.js';
-import type { iconIds } from './icons';
+import type { iconIds } from './icons.js';
+import Bluesky from './svgs/bluesky.js';
+import Facebook from './svgs/facebook.js';
+import Instagram from './svgs/instagram.js';
+import Linkedin from './svgs/linkedin.js';
+import Placeholder from './svgs/placeholder.js';
+import Threads from './svgs/threads.js';
+import Tiktok from './svgs/tiktok.js';
+import X from './svgs/x.js';
+import Youtube from './svgs/youtube.js';
 
 export type IconId = (typeof iconIds)[number];
 export type IconSize = 'sm' | 'md' | 'lg' | 'xl';
@@ -37,113 +62,42 @@ const SIZE_MAP: Record<IconSize, string> = {
   xl: '48px',
 };
 
-type IconRegistryEntry = {
-  Component: ComponentType<{ size: string; className: string }>;
-  disabledClass?: string;
-};
-const ICON_REGISTRY: Record<IconId, IconRegistryEntry> = {
-  accessibility_new: { Component: Icons.AccessibilityIcon },
-  add_circle: { Component: Icons.AddCircleIcon },
-  apps: { Component: Icons.AppsIcon },
-  arrow_back: { Component: Icons.ArrowBackIcon },
-  arrow_downward: { Component: Icons.ArrowDownIcon },
-  arrow_drop_down: { Component: Icons.ArrowDropDownIcon },
-  arrow_drop_up: { Component: Icons.ArrowDropUpIcon },
-  arrow_forward: { Component: Icons.ArrowForwardIcon },
-  arrow_left_alt: { Component: Icons.ArrowLeftIcon },
-  arrow_outward: { Component: Icons.ArrowOutwardIcon },
-  arrow_right_alt: { Component: Icons.ArrowRightIcon },
-  arrow_upward: { Component: Icons.ArrowUpIcon },
-  attach_file: { Component: Icons.AttachFileIcon },
-  block: { Component: Icons.BlockIcon },
-  call: { Component: Icons.CallIcon },
-  cancel: { Component: Icons.CancelIcon },
-  candlestick_chart: { Component: Icons.CandlestickChartIcon },
-  chat_bubble: { Component: Icons.ChatBubbleIcon },
-  check: { Component: Icons.CheckIcon },
-  check_circle: { Component: Icons.CheckCircleIcon },
-  chevron_left: { Component: Icons.KeyboardArrowLeftIcon },
-  chevron_right: { Component: Icons.KeyboardArrowRightIcon },
-  child_care: { Component: Icons.ChildCareIcon },
-  close: { Component: Icons.CloseIcon },
-  content_copy: { Component: Icons.ContentCopyIcon },
-  credit_card: { Component: Icons.CreditCardIcon },
-  delete: { Component: Icons.DeleteIcon },
-  directions_car: { Component: Icons.DirectionsCarIcon },
-  do_not_disturb_on: { Component: Icons.DoNotDisturbOnIcon },
-  download: { Component: Icons.DownloadIcon },
-  edit: { Component: Icons.EditIcon },
-  error: { Component: Icons.ErrorIcon },
-  event: { Component: Icons.EventIcon },
-  filter_list: { Component: Icons.FilterListIcon },
-  health_and_safety: { Component: Icons.HealthAndSafetyIcon },
-  home: { Component: Icons.HomeIcon },
-  info: { Component: Icons.InfoIcon },
-  keyboard_arrow_down: { Component: Icons.KeyboardArrowDownIcon },
-  keyboard_arrow_up: { Component: Icons.KeyboardArrowUpIcon },
-  link: { Component: Icons.LinkIcon },
-  location_on: { Component: Icons.LocationOnIcon },
-  login: { Component: Icons.LoginIcon },
-  logout: { Component: Icons.LogoutIcon },
-  mail: { Component: Icons.MailIcon },
-  menu: { Component: Icons.MenuIcon },
-  mic: { Component: Icons.MicIcon },
-  more_horiz: { Component: Icons.MoreHorizontalIcon },
-  more_vert: { Component: Icons.MoreVerticalIcon },
-  open_in_new: { Component: Icons.OpenInNewIcon },
-  person: { Component: Icons.PersonIcon },
-  person_cancel: { Component: Icons.PersonCancelIcon },
-  person_check: { Component: Icons.PersonCheckIcon },
-  refresh: { Component: Icons.RefreshIcon },
-  search: { Component: Icons.SearchIcon },
-  send: { Component: Icons.SendIcon },
-  settings: { Component: Icons.SettingsIcon },
-  sort: { Component: Icons.SortIcon },
-  space_dashboard: { Component: Icons.SpaceDashboardIcon },
-  sync: { Component: Icons.SyncIcon },
-  swap_vert: { Component: Icons.SwapVerticalIcon },
-  thumb_down: { Component: Icons.ThumbDownIcon },
-  thumb_up: { Component: Icons.ThumbUpIcon },
-  unfold_more: { Component: Icons.UnfoldMoreIcon },
-  upload: { Component: Icons.UploadIcon },
-  visibility: { Component: Icons.VisibilityIcon },
-  visibility_off: { Component: Icons.VisibilityOffIcon },
-  warning: { Component: Icons.WarningIcon },
-  work: { Component: Icons.WorkIcon },
-
-  placeholder: { Component: Icons.PlaceholderIcon },
-  first_page: { Component: Icons.FirstPageIcon },
-  last_page: { Component: Icons.LastPageIcon },
-
-  social_bluesky: {
-    Component: Icons.BlueskyIcon,
-    disabledClass: 'gi-stroke-gray-700',
-  },
-  social_facebook: {
-    Component: Icons.FacebookIcon,
-    disabledClass: 'gi-stroke-gray-700',
-  },
+const ICON_REGISTRY: Record<
+  string,
+  {
+    Component: ComponentType<{ size: string; className: string }>;
+    disabledClass?: string;
+  }
+> = {
+  social_bluesky: { Component: Bluesky, disabledClass: 'gi-stroke-gray-700' },
+  social_facebook: { Component: Facebook, disabledClass: 'gi-stroke-gray-700' },
   social_instagram: {
-    Component: Icons.InstagramIcon,
+    Component: Instagram,
     disabledClass: 'gi-stroke-gray-700',
   },
-  social_linkedin: {
-    Component: Icons.LinkedinIcon,
-    disabledClass: 'gi-stroke-gray-700',
-  },
-  social_threads: {
-    Component: Icons.ThreadsIcon,
-    disabledClass: 'gi-stroke-gray-700',
-  },
-  social_tiktok: {
-    Component: Icons.TiktokIcon,
-    disabledClass: 'gi-stroke-gray-700',
-  },
-  social_x: { Component: Icons.XIcon, disabledClass: 'gi-stroke-gray-700' },
-  social_youtube: {
-    Component: Icons.YoutubeIcon,
-    disabledClass: 'gi-stroke-gray-700',
-  },
+  social_linkedin: { Component: Linkedin, disabledClass: 'gi-stroke-gray-700' },
+  social_threads: { Component: Threads, disabledClass: 'gi-stroke-gray-700' },
+  social_tiktok: { Component: Tiktok, disabledClass: 'gi-stroke-gray-700' },
+  social_x: { Component: X, disabledClass: 'gi-stroke-gray-700' },
+  social_youtube: { Component: Youtube, disabledClass: 'gi-stroke-gray-700' },
+  placeholder: { Component: Placeholder },
+  keyboard_arrow_down: { Component: KeyboardArrowDownIcon },
+  keyboard_arrow_up: { Component: KeyboardArrowUpIcon },
+  close: { Component: CloseIcon },
+  visibility: { Component: VisibilityIcon },
+  visibility_off: { Component: VisibilityOffIcon },
+  info: { Component: InfoIcon },
+  error: { Component: ErrorIcon },
+  warning: { Component: WarningIcon },
+  check_circle: { Component: CheckCircleIcon },
+  keyboard_arrow_left: { Component: KeyboardArrowLeftIcon },
+  keyboard_arrow_right: { Component: KeyboardArrowRightIcon },
+  chevron_left: { Component: KeyboardArrowLeftIcon },
+  chevron_right: { Component: KeyboardArrowRightIcon },
+  arrow_left_alt: { Component: ArrowLeftIcon },
+  arrow_right_alt: { Component: ArrowRightIcon },
+  first_page: { Component: FirstPageIcon },
+  last_page: { Component: LastPageIcon },
 };
 
 export const Icon = forwardRef<HTMLSpanElement, IconProps>(
@@ -164,7 +118,7 @@ export const Icon = forwardRef<HTMLSpanElement, IconProps>(
     ref,
   ) => {
     const fontSize = SIZE_MAP[size] ?? SIZE_MAP.md;
-    const reg = ICON_REGISTRY[icon];
+    const reg = ICON_REGISTRY[String(icon)];
 
     if (reg && !useFontIcon) {
       const { Component, disabledClass } = reg;
