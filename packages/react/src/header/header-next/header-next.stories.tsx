@@ -1,4 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/react-vite';
+import type { IconId } from '../../icon/icon.js';
+import type { HeaderAppearance } from '../types.js';
 import { useMemo, useState } from 'react';
 import { within, expect, userEvent, screen } from 'storybook/test';
 import { cn } from '../../cn.js';
@@ -11,7 +13,6 @@ import {
   LogoHarpBlack,
   LogoHarpWhite,
 } from '../../atoms/icons/logos';
-
 import { DrawerMenuExample } from '../../drawer/drawer.content.js';
 import {
   DrawerBody,
@@ -23,7 +24,6 @@ import {
   FormFieldLabel,
 } from '../../forms/form-field/form-field.js';
 import { useToggleMap } from '../../hooks/use-toggle-map.js';
-import type { IconId } from '../../icon/icon.js';
 import { Icon } from '../../icon/icon.js';
 import { Link } from '../../link/link.js';
 import { List, ListTypeEnum } from '../../list/list.js';
@@ -43,12 +43,6 @@ import { HeaderNext as Header, HeaderSlotContainer } from './header-next.js';
 const meta = {
   title: 'layout/Header',
   component: Header,
-  parameters: {
-    pseudo: {
-      hover: '.link-hover',
-      focus: '.link-focus',
-    },
-  },
 } satisfies Meta<typeof Header>;
 
 export default meta;
@@ -619,14 +613,15 @@ export const Light: StoryObj = {
   },
 };
 
-const TitleAsLink = () => {
-  const [variant, setVariant] = useState<'default' | 'light'>('default');
+const TitleAsLink = ({ focused }: { focused?: boolean }) => {
+  const [variant, setVariant] = useState<HeaderAppearance>('default');
+  const toggleVariant = () =>
+    setVariant(variant === 'light' ? 'default' : 'light');
   return (
     <div
       className={cn(
         'gi-p-4',
-        variant === 'light' && 'gi-bg-black',
-        variant === 'default' && 'gi-bg-white',
+        variant === 'light' ? 'gi-bg-black' : 'gi-bg-white',
       )}
     >
       <Header variant={variant} aria-label="Site header">
@@ -655,13 +650,13 @@ const TitleAsLink = () => {
           )}
         </HeaderLogo>
         <HeaderTitle href="#">
-          By passing in an href, the title becomes a link
+          Title as a link {focused ? 'focused' : ''}
         </HeaderTitle>
         <HeaderPrimaryMenu>
           <HeaderMenuItemLink href="#" showItemMode="always">
             Departments
           </HeaderMenuItemLink>
-          <HeaderMenuItemLink href="#" showItemMode="desktop-only">
+          <HeaderMenuItemLink href="#" showItemMode="always">
             Services
           </HeaderMenuItemLink>
           <HeaderMenuItemSeparator />
@@ -672,12 +667,7 @@ const TitleAsLink = () => {
             Language
           </HeaderMenuItemButton>
 
-          <HeaderMenuItemButton
-            onClick={() =>
-              setVariant(variant === 'default' ? 'light' : 'default')
-            }
-            showItemMode="always"
-          >
+          <HeaderMenuItemButton onClick={toggleVariant} showItemMode="always">
             {variant === 'default' ? 'Light' : 'Dark'}
           </HeaderMenuItemButton>
         </HeaderPrimaryMenu>
@@ -687,6 +677,14 @@ const TitleAsLink = () => {
 };
 
 export const WithTitleAsLink: StoryObj = {
+  parameters: {
+    docs: {
+      description: {
+        story:
+          'By passing in an `href` prop to the `HeaderTitle` component, the title becomes a link.',
+      },
+    },
+  },
   argTypes: {
     variant: {
       options: ['default', 'light'],
@@ -710,7 +708,7 @@ export const WithTitleAsLink: StoryObj = {
     await step('title is a link', async () => {
       expect(
         await canvas.findByRole('link', {
-          name: /by passing in an href, the title becomes a link/i,
+          name: /title as a link/i,
         }),
       ).toBeInTheDocument();
     });
@@ -718,8 +716,16 @@ export const WithTitleAsLink: StoryObj = {
 };
 
 export const WithTitleAsLinkFocusState: StoryObj = {
+  parameters: {
+    docs: {
+      description: {
+        story:
+          'Default link effects are applied to the title, such as focus and hover. Navigate directly to this story page to see the effects.',
+      },
+    },
+  },
   render: function Render() {
-    return <TitleAsLink />;
+    return <TitleAsLink focused />;
   },
   play: async ({ canvasElement, step }) => {
     const canvas = within(canvasElement);
@@ -727,11 +733,18 @@ export const WithTitleAsLinkFocusState: StoryObj = {
     await step(
       'focus outline is visible and has no visual regressions',
       async () => {
+        const header = await canvas.findByRole('banner', {
+          name: /site header/i,
+        });
+        expect(header).toBeInTheDocument();
         const link = await canvas.findByRole('link', {
-          name: /by passing in an href, the title becomes a link/i,
+          name: /title as a link focused/i,
         });
         expect(link).toBeInTheDocument();
+        await userEvent.click(header);
+
         await userEvent.tab();
+        expect(link).toHaveFocus();
       },
     );
   },
