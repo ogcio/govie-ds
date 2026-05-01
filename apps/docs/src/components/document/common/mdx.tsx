@@ -12,6 +12,7 @@ import {
   AccordionItem,
   Alert,
   Blockquote,
+  Box,
   BreadcrumbCurrentLink,
   BreadcrumbEllipsis,
   BreadcrumbLink,
@@ -205,6 +206,7 @@ const documentComponents: MDXComponents = {
     return <AutocompleteItem {...props} __type="AutocompleteItem" />;
   },
   Blockquote,
+  Box,
   BorderRadiusTable,
   BorderWidthTable,
   BreadcrumbCurrentLink,

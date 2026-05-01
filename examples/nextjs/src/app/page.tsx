@@ -8,6 +8,7 @@ import {
   Alert,
   Autocomplete,
   AutocompleteItem,
+  Box,
   BreadcrumbCurrentLink,
   BreadcrumbEllipsis,
   BreadcrumbLink,
@@ -912,6 +913,13 @@ export default function Home() {
                       </Card>
                     </div>
                   </div>
+
+                  <Box>
+                    <h5 className="font-semibold mb-2">Box</h5>
+                    <Box className="gi-p-4 gi-bg-gray-100">
+                      <Box className="gi-p-2 gi-bg-emerald-700 gi-text-white gi-mb-2">Box Item</Box>
+                    </Box>
+                  </Box>
 
                   <div>
                     <h5 className="font-semibold mb-2">Stack Layout</h5>

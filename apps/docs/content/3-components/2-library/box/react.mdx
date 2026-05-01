@@ -1,0 +1,72 @@
+---
+title: 'Box'
+description: 'Box Component React Component'
+status: 'stable'
+component:
+  id: 'box-react'
+  link: '/story/layout-box--default'
+  status: 'stable'
+  properties:
+    - name: 'BoxProps'
+      fields:
+        - name: 'className'
+          ofType: 'string'
+          description: 'CSS classes to apply to the box. Use gi-* Tailwind utilities for spacing, backgrounds, sizing, etc.'
+          required: false
+        - name: 'id'
+          ofType: 'string'
+          description: 'Optional id for targeting and aria references.'
+          required: false
+        - name: 'dataTestId'
+          ofType: 'string'
+          description: 'Test id for targeting the element in automated tests.'
+          required: false
+        - name: 'children'
+          ofType: 'node'
+          description: 'Content to render inside the box.'
+          required: true
+  stories:
+    - name: 'default'
+      url: '/story/layout-box--default'
+    - name: 'spacing'
+      url: '/story/layout-box--spacing'
+    - name: 'background'
+      url: '/story/layout-box--background'
+    - name: 'sizing'
+      url: '/story/layout-box--sizing'
+---
+
+# Box
+
+Box is the simplest layout primitive in the design system — a plain `<div>` wrapper that signals design-system membership. All styling is applied through `className` with `gi-*` Tailwind utilities. Use Box instead of bare `<div>` elements to make design-system adoption visible and consistent across your codebase.
+
+<Section current="react">
+<ComponentPreview className="gi-not-prose w-full block">
+  <Box className="gi-p-4 gi-bg-gray-100">
+    Box content with padding and background
+  </Box>
+</ComponentPreview>
+
+## Examples
+
+### Default
+
+<StorybookFrame componentId="box-react" story="default" />
+
+### Spacing
+
+<StorybookFrame componentId="box-react" story="spacing" />
+
+### Background
+
+<StorybookFrame componentId="box-react" story="background" />
+
+### Sizing
+
+<StorybookFrame componentId="box-react" story="sizing" />
+
+## Properties
+
+<ComponentPropertiesTable componentId="box-react" />
+
+</Section>
