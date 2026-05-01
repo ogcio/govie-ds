@@ -2,10 +2,9 @@
 import type {
   ComponentPropsWithoutRef,
   ComponentType,
-  MouseEventHandler} from 'react';
-import {
-  forwardRef
+  MouseEventHandler,
 } from 'react';
+import { forwardRef } from 'react';
 import {
   KeyboardArrowDownIcon,
   KeyboardArrowUpIcon,
