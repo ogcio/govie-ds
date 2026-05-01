@@ -1,25 +1,40 @@
 'use client';
 
-import { cn } from '../../../cn.js';
-import { HeaderTitleProps } from '../../types.js';
+import { Link } from '../../../link/link.js';
+import type { HeaderAppearance, HeaderTitleProps } from '../../types.js';
 import { headerTitleVariants } from '../../variants.js';
+import { cn } from '../../../cn.js';
 import { useHeaderContext } from '../header-context.js';
 
-export const HeaderTitle = ({ children, className }: HeaderTitleProps) => {
+const toggleAppearance: Record<HeaderAppearance, 'light' | 'default'> = {
+  default: 'light',
+  light: 'default',
+};
+
+export const HeaderTitle = ({
+  children,
+  href,
+  className,
+}: HeaderTitleProps) => {
   const context = useHeaderContext();
 
   if (!context) {
     throw new Error('HeaderTitle must be used within a Header');
   }
-
   return (
     <div
-      className={cn(
+      className={cn(headerTitleVariants({ appearance: context.variant }), {
         className,
-        headerTitleVariants({ appearance: context.variant }),
-      )}
+        'gi-p-2': !!href,
+      })}
     >
-      {children}
+      {href ? (
+        <Link appearance={toggleAppearance[context.variant]} href={href}>
+          {children}
+        </Link>
+      ) : (
+        children
+      )}
     </div>
   );
 };

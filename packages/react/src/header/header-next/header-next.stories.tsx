@@ -611,3 +611,52 @@ export const Light: StoryObj = {
     );
   },
 };
+
+export const WithTitleAsLink: StoryObj = {
+  argTypes: {
+    variant: {
+      options: ['default', 'light'],
+      control: { type: 'radio' },
+    },
+  },
+  args: {
+    variant: 'default',
+  },
+  render: function Render() {
+    const [variant, setVariant] = useState<'default' | 'light'>('default');
+    return (
+      <Header variant={variant} aria-label="Site header">
+        <HeaderLogo>
+          <LogoHarpWhite
+            label="Gov.ie logo"
+            className="gi-block gi-h-10 gi-w-auto sm:gi-hidden"
+          />
+          <LogoWhite
+            label="Gov.ie logo"
+            className="gi-hidden gi-h-12 gi-w-auto sm:gi-block"
+          />
+        </HeaderLogo>
+        <HeaderTitle href="/">Title</HeaderTitle>
+        <HeaderPrimaryMenu>
+          <HeaderMenuItemLink href="#" showItemMode="desktop-only">
+            Departments
+          </HeaderMenuItemLink>
+          <HeaderMenuItemLink href="#" showItemMode="desktop-only">
+            Services
+          </HeaderMenuItemLink>
+          <HeaderMenuItemSeparator />
+          <HeaderMenuItemButton>FAQ</HeaderMenuItemButton>
+          <HeaderMenuItemButton>Search</HeaderMenuItemButton>
+
+          <HeaderMenuItemButton showItemMode="desktop-only">
+            Language
+          </HeaderMenuItemButton>
+
+          <HeaderMenuItemButton showItemMode="mobile-only">
+            Menu
+          </HeaderMenuItemButton>
+        </HeaderPrimaryMenu>
+      </Header>
+    );
+  },
+};
