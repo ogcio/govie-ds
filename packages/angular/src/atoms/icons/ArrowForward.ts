@@ -24,7 +24,7 @@ import { IconProps } from './types';
       [attr.aria-label]="label"
       [attr.aria-hidden]="!label"
       [attr.fill]="color ?? 'currentColor'"
-      [attr.data-testid]="dataTestId ?? 'arrow_forward'"
+      [attr.data-testid]="dataTestId ?? 'arrow-forward'"
     >
       <path d="M647-440H160v-80h487L423-744l57-56 320 320-320 320-57-56 224-224Z"></path>
     </svg>

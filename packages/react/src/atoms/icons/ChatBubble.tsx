@@ -21,7 +21,7 @@ function ChatBubble(props: IconProps) {
       aria-label={props.label}
       aria-hidden={!props.label}
       fill={props.color ?? 'currentColor'}
-      data-testid={props.dataTestId ?? 'chat_bubble'}
+      data-testid={props.dataTestId ?? 'chat-bubble'}
     >
       <path d="M80-80v-720q0-33 23.5-56.5T160-880h640q33 0 56.5 23.5T880-800v480q0 33-23.5 56.5T800-240H240L80-80Zm126-240h594v-480H160v525l46-45Zm-46 0v-480 480Z" />
     </svg>

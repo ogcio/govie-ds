@@ -21,7 +21,7 @@ function KeyboardArrowLeft(props: IconProps) {
       aria-label={props.label}
       aria-hidden={!props.label}
       fill={props.color ?? 'currentColor'}
-      data-testid={props.dataTestId ?? 'keyboard_arrow_left'}
+      data-testid={props.dataTestId ?? 'keyboard-arrow-left'}
     >
       <path d="M560-240 320-480l240-240 56 56-184 184 184 184-56 56Z" />
     </svg>

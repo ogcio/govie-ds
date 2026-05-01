@@ -21,7 +21,7 @@ function ArrowLeft(props: IconProps) {
       aria-label={props.label}
       aria-hidden={!props.label}
       fill={props.color ?? 'currentColor'}
-      data-testid={props.dataTestId ?? 'arrow_left'}
+      data-testid={props.dataTestId ?? 'arrow-left'}
     >
       <path d="M400-240 160-480l240-240 56 58-142 142h486v80H314l142 142-56 58Z" />
     </svg>

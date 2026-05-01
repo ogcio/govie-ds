@@ -24,7 +24,7 @@ import { IconProps } from './types';
       [attr.aria-label]="label"
       [attr.aria-hidden]="!label"
       [attr.fill]="color ?? 'currentColor'"
-      [attr.data-testid]="dataTestId ?? 'keyboard_arrow_up'"
+      [attr.data-testid]="dataTestId ?? 'keyboard-arrow-up'"
     >
       <path d="M480-528 296-344l-56-56 240-240 240 240-56 56-184-184Z"></path>
     </svg>

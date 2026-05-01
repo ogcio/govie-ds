@@ -15,7 +15,7 @@ export default function ArrowBackward(props: IconProps) {
       aria-label={props.label}
       aria-hidden={!props.label}
       fill={props.color ?? 'currentColor'}
-      data-testid={props.dataTestId ?? 'arrow_back'}
+      data-testid={props.dataTestId ?? 'arrow-backward'}
       xmlns="http://www.w3.org/2000/svg"
     >
       <path d="m313-440 224 224-57 56-320-320 320-320 57 56-224 224h487v80H313Z" />

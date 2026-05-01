@@ -21,7 +21,7 @@ function ArrowDownward(props: IconProps) {
       aria-label={props.label}
       aria-hidden={!props.label}
       fill={props.color ?? 'currentColor'}
-      data-testid={props.dataTestId ?? 'arrow_down'}
+      data-testid={props.dataTestId ?? 'arrow-downward'}
     >
       <path d="M440-800v487L216-537l-56 57 320 320 320-320-56-57-224 224v-487h-80Z" />
     </svg>

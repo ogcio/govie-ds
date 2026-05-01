@@ -343,6 +343,7 @@ export const iconsMeta = {
     }
   }
 };
+const iconName = (selector: string) => selector.replace('gi-', '').replace('-icon', '');
 export const Default = {
   args: iconsMeta.args,
   play: async ({
@@ -350,8 +351,15 @@ export const Default = {
     step
   }: StoryContext<Renderer>) => {
     const canvas = within(canvasElement as HTMLElement);
-    const flatIconList = _.flatMap(Object.values(iconList), 'selector');
-    for (const selector of flatIconList) {
+    const {
+      base,
+      navigation,
+      social
+    } = iconList;
+    const flatIconList = [...base, ...navigation, ...social];
+    for (const {
+      selector
+    } of flatIconList) {
       await step(`renders ${selector} icon`, async () => {
         expect(canvas.getByTestId(selector)).toBeInTheDocument();
       });

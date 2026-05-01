@@ -21,7 +21,7 @@ function UnfoldMore(props: IconProps) {
       aria-label={props.label}
       aria-hidden={!props.label}
       fill={props.color ?? 'currentColor'}
-      data-testid={props.dataTestId ?? 'unfold_more'}
+      data-testid={props.dataTestId ?? 'unfold-more'}
     >
       <path d="M480-120 300-300l58-58 122 122 122-122 58 58-180 180ZM358-598l-58-58 180-180 180 180-58 58-122-122-122 122Z" />
     </svg>

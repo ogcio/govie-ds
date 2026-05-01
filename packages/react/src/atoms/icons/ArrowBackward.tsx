@@ -21,7 +21,7 @@ function ArrowBackward(props: IconProps) {
       aria-label={props.label}
       aria-hidden={!props.label}
       fill={props.color ?? 'currentColor'}
-      data-testid={props.dataTestId ?? 'arrow_back'}
+      data-testid={props.dataTestId ?? 'arrow-backward'}
     >
       <path d="m313-440 224 224-57 56-320-320 320-320 57 56-224 224h487v80H313Z" />
     </svg>

@@ -21,7 +21,7 @@ function ArrowDropDown(props: IconProps) {
       aria-label={props.label}
       aria-hidden={!props.label}
       fill={props.color ?? 'currentColor'}
-      data-testid={props.dataTestId ?? 'arrow_drop_down'}
+      data-testid={props.dataTestId ?? 'arrow-drop-down'}
     >
       <path d="M480-360 280-560h400L480-360Z" />
     </svg>

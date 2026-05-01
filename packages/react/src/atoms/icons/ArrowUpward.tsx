@@ -21,7 +21,7 @@ function ArrowUpward(props: IconProps) {
       aria-label={props.label}
       aria-hidden={!props.label}
       fill={props.color ?? 'currentColor'}
-      data-testid={props.dataTestId ?? 'arrow_up'}
+      data-testid={props.dataTestId ?? 'arrow-upward'}
     >
       <path d="M440-160v-487L216-423l-56-57 320-320 320 320-56 57-224-224v487h-80Z" />
     </svg>

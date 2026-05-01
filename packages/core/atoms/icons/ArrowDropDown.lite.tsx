@@ -15,7 +15,7 @@ export default function ArrowDropDown(props: IconProps) {
       aria-label={props.label}
       aria-hidden={!props.label}
       fill={props.color ?? 'currentColor'}
-      data-testid={props.dataTestId ?? 'arrow_drop_down'}
+      data-testid={props.dataTestId ?? 'arrow-drop-down'}
       xmlns="http://www.w3.org/2000/svg"
     >
       <path d="M480-360 280-560h400L480-360Z" />
