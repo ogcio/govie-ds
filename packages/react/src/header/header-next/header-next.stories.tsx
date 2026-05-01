@@ -654,7 +654,7 @@ const TitleAsLink = () => {
             />
           )}
         </HeaderLogo>
-        <HeaderTitle data-testid="title-as-link-focused" href="#">
+        <HeaderTitle href="#">
           By passing in an href, the title becomes a link
         </HeaderTitle>
         <HeaderPrimaryMenu>
@@ -727,14 +727,11 @@ export const WithTitleAsLinkFocusState: StoryObj = {
     await step(
       'focus outline is visible and has no visual regressions',
       async () => {
-        const title = await canvas.findByTestId('title-as-link-focused');
-        expect(title).toBeInTheDocument();
-        // write a line to ADD the class 'link-focus' to the link
-        const link = title.querySelector('a');
+        const link = await canvas.findByRole('link', {
+          name: /by passing in an href, the title becomes a link/i,
+        });
         expect(link).toBeInTheDocument();
-        console.log(link);
-        link?.classList.add('link-focus');
-        expect(link).toHaveClass('link-focus');
+        await userEvent.tab();
       },
     );
   },
