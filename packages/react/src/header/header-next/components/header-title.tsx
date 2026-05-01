@@ -25,11 +25,17 @@ export const HeaderTitle = ({
     <div
       className={cn(headerTitleVariants({ appearance: context.variant }), {
         className,
+        // enables focus outline to be visible for link
         'gi-p-2': !!href,
       })}
     >
       {href ? (
-        <Link appearance={toggleAppearance[context.variant]} href={href}>
+        <Link
+          appearance={toggleAppearance[context.variant]}
+          href={href}
+          // the !important is necessary until link has inline-tailwind support, as gi-link overrides any styles passed here
+          className="gi-truncate gi-py-1 gi-max-w-fit !gi-block !gi-w-full "
+        >
           {children}
         </Link>
       ) : (
