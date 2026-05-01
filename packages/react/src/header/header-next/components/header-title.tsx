@@ -23,10 +23,10 @@ export const HeaderTitle = ({
   }
   return (
     <div
-      className={cn(headerTitleVariants({ appearance: context.variant }), {
+      className={headerTitleVariants({
+        appearance: context.variant,
+        isLink: !!href,
         className,
-        // enables focus outline to be visible for link
-        'gi-p-2': !!href,
       })}
     >
       {href ? (

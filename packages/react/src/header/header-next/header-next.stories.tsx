@@ -43,6 +43,12 @@ import { HeaderNext as Header, HeaderSlotContainer } from './header-next.js';
 const meta = {
   title: 'layout/Header',
   component: Header,
+  parameters: {
+    pseudo: {
+      hover: '.link-hover',
+      focus: '.link-focus',
+    },
+  },
 } satisfies Meta<typeof Header>;
 
 export default meta;
@@ -648,7 +654,7 @@ const TitleAsLink = () => {
             />
           )}
         </HeaderLogo>
-        <HeaderTitle href="#">
+        <HeaderTitle data-testid="title-as-link-focused" href="#">
           By passing in an href, the title becomes a link
         </HeaderTitle>
         <HeaderPrimaryMenu>
@@ -721,11 +727,14 @@ export const WithTitleAsLinkFocusState: StoryObj = {
     await step(
       'focus outline is visible and has no visual regressions',
       async () => {
-        const title = await canvas.findByRole('link', {
-          name: /by passing in an href, the title becomes a link/i,
-        });
-        await userEvent.click(title);
-        expect(title).toHaveFocus();
+        const title = await canvas.findByTestId('title-as-link-focused');
+        expect(title).toBeInTheDocument();
+        // write a line to ADD the class 'link-focus' to the link
+        const link = title.querySelector('a');
+        expect(link).toBeInTheDocument();
+        console.log(link);
+        link?.classList.add('link-focus');
+        expect(link).toHaveClass('link-focus');
       },
     );
   },

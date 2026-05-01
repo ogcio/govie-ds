@@ -65,6 +65,10 @@ export const headerTitleVariants = tv({
   base: 'gi-header-title',
   variants: {
     appearance: AppearanceText,
+    isLink: {
+      true: 'gi-p-2',
+      false: '',
+    },
   },
 });
 
