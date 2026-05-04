@@ -5,6 +5,7 @@ import { Link } from '../link/link.js';
 import { SectionBreak } from '../section-break/section-break.js';
 import { Stack } from '../stack/stack.js';
 import { Footer } from './footer.js';
+import { generateSvgPlaceholderDataUrl } from '../utils/placeholder.js';
 
 const meta: Meta<typeof Footer> = {
   component: Footer,
@@ -45,7 +46,10 @@ export const CompleteFooter: Story = {
   args: {
     dataTestid: 'gi-footer',
     primarySlot: (
-      <div className="gi-grid-responsive !gi-ml-0 !gi-mr-0">
+      <div
+        className="gi-grid-responsive !gi-ml-0 !gi-mr-0"
+        data-testid="primary"
+      >
         <div className="gi-col-span-4 md:gi-col-span-4 lg:gi-col-span-3">
           <h3 className="gi-heading-sm gi-mb-4">Services</h3>
           <SectionBreak
@@ -185,10 +189,10 @@ export const CompleteFooter: Story = {
       </div>
     ),
     secondarySlot: (
-      <Stack direction={'column'} gap={4} role="region">
+      <Stack direction={'column'} gap={4} role="region" dataTestId="secondary">
         <Stack
           aria-label="Footer Secondary Links"
-          direction={{ base: 'column', xs: 'column', md: 'row' }}
+          direction={{ base: 'column', md: 'row' }}
           gap={4}
           wrap
         >
@@ -247,10 +251,11 @@ export const CompleteFooter: Story = {
     ),
     utilitySlot: (
       <Stack
-        direction={{ base: 'column', xs: 'column', md: 'row' }}
+        direction={{ base: 'column', md: 'row' }}
         gap={4}
-        itemsDistribution="center"
-        itemsAlignment="center"
+        justify="center"
+        align="center"
+        dataTestId="utility"
       >
         <Link noColor href="/privacy-policy" aria-label="Privacy Policy">
           Privacy Policy
@@ -302,6 +307,12 @@ export const CompleteFooter: Story = {
       const element = canvas.getByTestId('gi-footer');
       expect(element).toBeInTheDocument();
     });
+
+    await step('should render all slots when provided', async () => {
+      expect(canvas.getByTestId('primary')).toBeInTheDocument();
+      expect(canvas.getByTestId('secondary')).toBeInTheDocument();
+      expect(canvas.getByTestId('utility')).toBeInTheDocument();
+    });
   },
 };
 
@@ -309,7 +320,7 @@ export const SimpleFooter: Story = {
   args: {
     secondarySlot: (
       <Stack
-        direction={{ base: 'column', xs: 'column', md: 'row' }}
+        direction={{ base: 'column', md: 'row' }}
         gap={4}
         wrap
         aria-label="Footer Secondary Links"
@@ -356,11 +367,7 @@ export const SimpleFooter: Story = {
       </Stack>
     ),
     utilitySlot: (
-      <Stack
-        direction={{ base: 'column', xs: 'column', md: 'row' }}
-        gap={4}
-        itemsDistribution="center"
-      >
+      <Stack direction={{ base: 'column', md: 'row' }} gap={4} justify="center">
         <Link noColor href="/privacy-policy" aria-label="Privacy Policy">
           Privacy Policy
         </Link>
@@ -376,11 +383,7 @@ export const SimpleFooter: Story = {
 export const MinimalFooter: Story = {
   args: {
     utilitySlot: (
-      <Stack
-        direction={{ base: 'column', xs: 'column', md: 'row' }}
-        gap={4}
-        itemsDistribution="center"
-      >
+      <Stack direction={{ base: 'column', md: 'row' }} gap={4} justify="center">
         <Link noColor href="/privacy-policy" aria-label="Privacy Policy">
           Privacy Policy
         </Link>
@@ -390,6 +393,17 @@ export const MinimalFooter: Story = {
         <div className="gi-text-sm">© 2025 Government of Ireland.</div>
       </Stack>
     ),
+  },
+  play: async ({ canvasElement, step }) => {
+    const canvas = within(canvasElement);
+    await step(
+      'should render the default logo with default width and height',
+      async () => {
+        const img = canvas.getByAltText('Gov.ie Logo');
+        expect(img).toHaveAttribute('width', '181');
+        expect(img).toHaveAttribute('height', '64');
+      },
+    );
   },
 };
 
@@ -475,23 +489,26 @@ export const GovieFooter: Story = {
   },
 };
 
-export const TestAllSlots: Story = {
-  tags: ['skip-playwright'],
+export const CustomLogo: Story = {
   args: {
-    primarySlot: <div data-testid="primary">Primary</div>,
-    secondarySlot: <div data-testid="secondary">Secondary</div>,
-    utilitySlot: <div data-testid="utility">Utility</div>,
+    logo: {
+      width: 220,
+      height: 80,
+      imageLarge: generateSvgPlaceholderDataUrl(220, 80),
+    },
+    primarySlot: <div>Primary</div>,
+    secondarySlot: <div>This footer uses a custom logo image.</div>,
+    utilitySlot: <div>Utility</div>,
   },
   play: async ({ canvasElement, step }) => {
     const canvas = within(canvasElement);
-
-    await step('should render all slots when provided', async () => {
-      const primaryElement = canvas.getByTestId('primary');
-      const secondaryElement = canvas.getByTestId('secondary');
-      const utilityElement = canvas.getByTestId('utility');
-      expect(primaryElement).toBeInTheDocument();
-      expect(secondaryElement).toBeInTheDocument();
-      expect(utilityElement).toBeInTheDocument();
-    });
+    await step(
+      'should propagate custom logo dimensions to the img',
+      async () => {
+        const img = canvas.getByAltText('Gov.ie Logo');
+        expect(img).toHaveAttribute('width', '220');
+        expect(img).toHaveAttribute('height', '80');
+      },
+    );
   },
 };
