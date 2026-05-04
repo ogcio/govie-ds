@@ -9,29 +9,13 @@ const meta: Meta = {
 
 export default meta;
 
-const iconName = (selector: string) => selector.replace('gi-', '').replace('-icon', '');
-
-function iconItemTemplate({ selector }: { name: string; selector: string }) {
-  return `
-      <div class="gi-w-32 gi-flex gi-flex-col gi-items-center gi-gap-2">
-        <${selector}
-          [size]="size"
-          [color]="color"
-          [label]="label"
-          [className]="className"
-          dataTestId="${selector}"
-        ></${selector}>
-        <span class="gi-text-xs gi-text-center gi-whitespace-nowrap">${iconName(selector)}</span>
-      </div>`;
-}
-
 export const Default: StoryObj = {
   ...iconsDefault,
   render: (props) => {
     return {
       props,
       moduleMetadata: {
-        imports: _.map(_.flatMap(Object.values(iconList)), 'Component'),
+        imports: _.map(_.flatMap(iconList), 'Component'),
       },
       template: `
     <div class="gi-flex gi-flex-col gi-gap-8">
@@ -41,7 +25,20 @@ export const Default: StoryObj = {
         <div class="gi-flex gi-flex-col gi-gap-8">
           <h2 class="gi-text-lg gi-font-bold gi-mb-8 gi-underline gi-text-center">${_.startCase(key)}</h2>
           <div class="gi-flex gi-flex-wrap gi-gap-8">
-            ${_.map(icons, iconItemTemplate).join('')}
+            ${_.map(
+              icons,
+              ({ selector }) => `
+      <div class="gi-w-32 gi-flex gi-flex-col gi-items-center gi-gap-2">
+        <${selector}
+          [size]="size"
+          [color]="color"
+          [label]="label"
+          [className]="className"
+          dataTestId="${selector}"
+        ></${selector}>
+        <span class="gi-text-xs gi-text-center gi-whitespace-nowrap">${selector.replace('gi-', '').replace('-icon', '')}</span>
+      </div>`,
+            ).join('')}
           </div>
         </div>
       `,

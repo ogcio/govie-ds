@@ -338,12 +338,11 @@ export const iconsMeta = {
   parameters: {
     docs: {
       description: {
-        component: 'Use icons to visually reinforce actions, status, and navigation. Icons accept a `size` prop (in pixels), an optional `color`, and a `label` for accessibility. In React, the icon is suffixed with `Icon`, and in Angular, the icon selector name is wrapped with `gi-<icon-name>-icon`.'
+        component: 'Use icons to visually reinforce actions, status, and navigation. Icons accept a `size` prop (in pixels), an optional `color`, and a `label` for accessibility.'
       }
     }
   }
 };
-const iconName = (selector: string) => selector.replace('gi-', '').replace('-icon', '');
 export const Default = {
   args: iconsMeta.args,
   play: async ({

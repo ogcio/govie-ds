@@ -4,10 +4,10 @@ import { useState } from 'react';
 import type { IconProps } from '../atoms/icons';
 
 import {
-  CheckCircleIcon as CheckCircle,
-  ErrorIcon as Error,
-  InfoIcon as Info,
-  WarningIcon as Warning,
+  CheckCircleIcon,
+  ErrorIcon,
+  InfoIcon,
+  WarningIcon,
 } from '../atoms/icons';
 import { cn } from '../cn.js';
 import { translate as t } from '../i18n/utility.js';
@@ -16,10 +16,10 @@ import { type AlertProps } from './types.js';
 import { alertVariants } from './variants.js';
 
 export const ALERT_VARIANT_ICONS: Record<string, ComponentType<IconProps>> = {
-  warning: (props) => <Warning {...props} />,
-  success: (props) => <CheckCircle {...props} />,
-  danger: (props) => <Error {...props} />,
-  info: (props) => <Info {...props} />,
+  warning: (props) => <WarningIcon {...props} />,
+  success: (props) => <CheckCircleIcon {...props} />,
+  danger: (props) => <ErrorIcon {...props} />,
+  info: (props) => <InfoIcon {...props} />,
 };
 
 function Alert({

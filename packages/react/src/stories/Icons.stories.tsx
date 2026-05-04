@@ -1,12 +1,10 @@
 import type { Meta, StoryObj } from '@storybook/react-vite';
 import _ from 'lodash';
-import type { IconProps } from '../atoms/icons';
 import {
   iconsMeta,
   Default as iconsDefault,
   iconList,
 } from '../atoms/storybook/Icons.meta';
-import type { ComponentType } from 'react';
 
 const meta: Meta = {
   ...iconsMeta,
@@ -26,8 +24,13 @@ export const Default: StoryObj = {
               {_.startCase(key)}
             </h2>
             <div className="gi-flex gi-flex-wrap gi-gap-8">
-              {_.map(icons, (icon) => (
-                <IconItem key={icon.selector} {...icon} />
+              {_.map(icons, ({ Component, selector, name }) => (
+                <div className=" gi-w-32 gi-flex gi-flex-col gi-items-center gi-gap-2">
+                  <Component size={48} dataTestId={selector} />
+                  <span className="gi-text-xs gi-text-center gi-whitespace-nowrap">
+                    {name}
+                  </span>
+                </div>
               ))}
             </div>
           </div>
@@ -35,22 +38,4 @@ export const Default: StoryObj = {
       </div>
     );
   },
-};
-const IconItem = ({
-  Component,
-  name,
-  selector,
-}: {
-  Component: ComponentType<IconProps>;
-  name: string;
-  selector: string;
-}) => {
-  return (
-    <div className=" gi-w-32 gi-flex gi-flex-col gi-items-center gi-gap-2">
-      <Component size={48} dataTestId={selector} />
-      <span className="gi-text-xs gi-text-center gi-whitespace-nowrap">
-        {name}
-      </span>
-    </div>
-  );
 };

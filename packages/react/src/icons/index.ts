@@ -1,1 +1,1 @@
-export * from '../atoms/icons/index.js';
+export * from '../atoms/icons/index';
