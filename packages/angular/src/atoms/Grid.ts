@@ -23,106 +23,25 @@ export type Props = {
 };
 
 import _ from 'lodash';
-import { tv } from 'tailwind-variants';
 import type { ResponsiveValue, BreakpointKey } from './constants';
-import { resolveResponsive } from './utilities';
-// Default column counts per breakpoint, matching the Figma grid specification.
-const FigmaColumns: Partial<Record<BreakpointKey, number>> = {
-  base: 4,
-  xs: 4,
-  sm: 6,
-  md: 8,
-  lg: 12,
-  xl: 12,
-  '2xl': 12,
-};
-
-// Class maps must be static strings (no template literals) so Tailwind JIT can scan them.
-// Class maps must be static strings (no template literals) so Tailwind JIT can scan them.
-const GAP_CLASSES: Record<BreakpointKey, string> = {
-  base: 'gi-gap-[var(--grid-gap,0px)]',
-  xs: 'xs:gi-gap-[var(--grid-gap-xs,var(--grid-gap,0px))]',
-  sm: 'sm:gi-gap-[var(--grid-gap-sm,var(--grid-gap,0px))]',
-  md: 'md:gi-gap-[var(--grid-gap-md,var(--grid-gap,0px))]',
-  lg: 'lg:gi-gap-[var(--grid-gap-lg,var(--grid-gap,0px))]',
-  xl: 'xl:gi-gap-[var(--grid-gap-xl,var(--grid-gap,0px))]',
-  '2xl': '2xl:gi-gap-[var(--grid-gap-2xl,var(--grid-gap,0px))]',
-};
-const PARENT_COL_CLASSES: Record<BreakpointKey, string> = {
-  base: '[&>*]:[--grid-parent-columns:var(--grid-columns,4)]',
-  xs: 'xs:[&>*]:[--grid-parent-columns:var(--grid-columns-xs,var(--grid-columns,4))]',
-  sm: 'sm:[&>*]:[--grid-parent-columns:var(--grid-columns-sm,var(--grid-columns,6))]',
-  md: 'md:[&>*]:[--grid-parent-columns:var(--grid-columns-md,var(--grid-columns,8))]',
-  lg: 'lg:[&>*]:[--grid-parent-columns:var(--grid-columns-lg,var(--grid-columns,12))]',
-  xl: 'xl:[&>*]:[--grid-parent-columns:var(--grid-columns-xl,var(--grid-columns,12))]',
-  '2xl': '2xl:[&>*]:[--grid-parent-columns:var(--grid-columns-2xl,var(--grid-columns,12))]',
-};
-const PARENT_GAP_CLASSES: Record<BreakpointKey, string> = {
-  base: '[&>*]:[--grid-parent-gap:var(--grid-gap,0px)]',
-  xs: 'xs:[&>*]:[--grid-parent-gap:var(--grid-gap-xs,var(--grid-gap,0px))]',
-  sm: 'sm:[&>*]:[--grid-parent-gap:var(--grid-gap-sm,var(--grid-gap,0px))]',
-  md: 'md:[&>*]:[--grid-parent-gap:var(--grid-gap-md,var(--grid-gap,0px))]',
-  lg: 'lg:[&>*]:[--grid-parent-gap:var(--grid-gap-lg,var(--grid-gap,0px))]',
-  xl: 'xl:[&>*]:[--grid-parent-gap:var(--grid-gap-xl,var(--grid-gap,0px))]',
-  '2xl': '2xl:[&>*]:[--grid-parent-gap:var(--grid-gap-2xl,var(--grid-gap,0px))]',
-};
-const SPAN_CLASSES: Record<BreakpointKey, string> = {
-  base: '[--grid-span:var(--grid-item-span,1)]',
-  xs: 'xs:[--grid-span:var(--grid-item-span-xs,var(--grid-item-span,1))]',
-  sm: 'sm:[--grid-span:var(--grid-item-span-sm,var(--grid-item-span,1))]',
-  md: 'md:[--grid-span:var(--grid-item-span-md,var(--grid-item-span,1))]',
-  lg: 'lg:[--grid-span:var(--grid-item-span-lg,var(--grid-item-span,1))]',
-  xl: 'xl:[--grid-span:var(--grid-item-span-xl,var(--grid-item-span,1))]',
-  '2xl': '2xl:[--grid-span:var(--grid-item-span-2xl,var(--grid-item-span,1))]',
-};
-const fromMap =
-  (classMap: Record<BreakpointKey, string>) =>
-  (_value: number, prefix: string): string =>
-    classMap[(prefix.replace(/:$/, '') || 'base') as BreakpointKey];
-const buildContainerStyle = (columns: Props['columns'], gap: Props['gap']): Record<string, string> => ({
-  ...buildCssVariables(columns, '--grid-columns', (n: number): string => String(Math.max(1, n))),
-  ...buildCssVariables(gap, '--grid-gap', (n: number): string => `var(--gieds-space-${Math.max(0, n)})`),
-});
-const buildItemStyle = (size: Props['size']): Record<string, string> => ({
-  ...buildCssVariables(size, '--grid-item-span', (n: number): string => String(Math.max(1, n))),
-  // Grid item basis formula: span / cols * 100% - gap * (cols - span) / cols, capped at 100%.
-  '--grid-basis':
-    'min(calc(var(--grid-span) / var(--grid-parent-columns) * 100% - var(--grid-parent-gap) * (var(--grid-parent-columns) - var(--grid-span)) / var(--grid-parent-columns)), 100%)',
-});
-
-// Converts a responsive prop into CSS variable key-value pairs.
-// Converts a responsive prop into CSS variable key-value pairs.
-const buildCssVariables = (
-  value: Props['columns'] | Props['gap'],
-  baseName: string,
-  transform: (n: number) => string,
-): Record<string, string> => {
-  const key = (bp: BreakpointKey): string => (bp === 'base' ? baseName : `${baseName}-${bp}`);
+const buildGridClasses = (value: ResponsiveValue<number> | undefined, prefix: string, min: number): string => {
   if (_.isNumber(value)) {
-    return {
-      [baseName]: transform(value),
-    };
+    return `${prefix}-${Math.max(min, value)}`;
   }
   if (!_.isPlainObject(value)) {
-    return {};
+    return '';
   }
   const responsive = value as Partial<Record<BreakpointKey, number>>;
-  return Object.fromEntries(
-    (_.keys(responsive) as BreakpointKey[]).map((bp) => [key(bp), transform(responsive[bp] as number)]),
-  );
+  return (_.keys(responsive) as BreakpointKey[])
+    .map((bp) => {
+      const clamped = Math.max(min, responsive[bp] as number);
+      if (bp === 'base') {
+        return `${prefix}-${clamped}`;
+      }
+      return `${prefix}-${bp}-${clamped}`;
+    })
+    .join(' ');
 };
-const styles = tv({
-  base: 'gi-min-w-0',
-  variants: {
-    container: {
-      true: 'gi-flex gi-flex-wrap',
-      false: 'gi-grow-0 gi-shrink-0 gi-basis-[var(--grid-basis)] gi-max-w-[var(--grid-basis)]',
-    },
-  },
-  defaultVariants: {
-    container: false,
-  },
-});
 
 @Component({
   selector: 'gi-grid',
@@ -132,22 +51,7 @@ const styles = tv({
       [attr.role]="role"
       [attr.aria-label]="role ? ariaLabel : undefined"
       [attr.aria-labelledby]="role ? ariaLabelledBy : undefined"
-      [class]="
-        styles({
-          container: container ?? false,
-          class: _.compact([
-            container
-              ? [
-                  resolveResponsive(gap ?? 0, fromMap(GAP_CLASSES)),
-                  resolveResponsive(columns ?? FigmaColumns, fromMap(PARENT_COL_CLASSES)),
-                  resolveResponsive(gap ?? 0, fromMap(PARENT_GAP_CLASSES)),
-                ]
-              : resolveResponsive(size ?? 1, fromMap(SPAN_CLASSES)),
-            className,
-          ]),
-        })
-      "
-      [ngStyle]="container ? buildContainerStyle(columns, gap) : buildItemStyle(size)"
+      [class]="\`\${className || ''} \${container ? \`gi-grid-container \${buildGridClasses(columns, 'gi-grid-columns', 1)} \${buildGridClasses(gap, 'gi-grid-gap', 0)}\` : \`gi-grid-item \${buildGridClasses(size, 'gi-grid-span', 1)}\`}\`"
       [attr.data-testid]="dataTestId"
     >
       <ng-content></ng-content>
@@ -164,26 +68,17 @@ const styles = tv({
   imports: [CommonModule],
 })
 export default class Grid {
-  FigmaColumns = FigmaColumns;
-  GAP_CLASSES = GAP_CLASSES;
-  PARENT_COL_CLASSES = PARENT_COL_CLASSES;
-  PARENT_GAP_CLASSES = PARENT_GAP_CLASSES;
-  SPAN_CLASSES = SPAN_CLASSES;
-  fromMap = fromMap;
-  buildContainerStyle = buildContainerStyle;
-  buildItemStyle = buildItemStyle;
-  styles = styles;
+  buildGridClasses = buildGridClasses;
   _ = _;
-  resolveResponsive = resolveResponsive;
 
   @Input() id!: Props['id'];
   @Input() role!: Props['role'];
   @Input() ariaLabel!: Props['ariaLabel'];
   @Input() ariaLabelledBy!: Props['ariaLabelledBy'];
-  @Input() container!: Props['container'];
-  @Input() gap!: Props['gap'];
-  @Input() columns!: Props['columns'];
-  @Input() size!: Props['size'];
   @Input() className!: Props['className'];
+  @Input() container!: Props['container'];
+  @Input() columns!: Props['columns'];
+  @Input() gap!: Props['gap'];
+  @Input() size!: Props['size'];
   @Input() dataTestId!: Props['dataTestId'];
 }
