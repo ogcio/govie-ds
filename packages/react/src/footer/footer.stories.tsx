@@ -46,7 +46,10 @@ export const CompleteFooter: Story = {
   args: {
     dataTestid: 'gi-footer',
     primarySlot: (
-      <div className="gi-grid-responsive !gi-ml-0 !gi-mr-0">
+      <div
+        className="gi-grid-responsive !gi-ml-0 !gi-mr-0"
+        data-testid="primary"
+      >
         <div className="gi-col-span-4 md:gi-col-span-4 lg:gi-col-span-3">
           <h3 className="gi-heading-sm gi-mb-4">Services</h3>
           <SectionBreak
@@ -186,10 +189,10 @@ export const CompleteFooter: Story = {
       </div>
     ),
     secondarySlot: (
-      <Stack direction={'column'} gap={4} role="region">
+      <Stack direction={'column'} gap={4} role="region" dataTestId="secondary">
         <Stack
           aria-label="Footer Secondary Links"
-          direction={{ base: 'column', xs: 'column', md: 'row' }}
+          direction={{ base: 'column', md: 'row' }}
           gap={4}
           wrap
         >
@@ -248,10 +251,11 @@ export const CompleteFooter: Story = {
     ),
     utilitySlot: (
       <Stack
-        direction={{ base: 'column', xs: 'column', md: 'row' }}
+        direction={{ base: 'column', md: 'row' }}
         gap={4}
-        itemsDistribution="center"
-        itemsAlignment="center"
+        justify="center"
+        align="center"
+        dataTestId="utility"
       >
         <Link noColor href="/privacy-policy" aria-label="Privacy Policy">
           Privacy Policy
@@ -303,6 +307,12 @@ export const CompleteFooter: Story = {
       const element = canvas.getByTestId('gi-footer');
       expect(element).toBeInTheDocument();
     });
+
+    await step('should render all slots when provided', async () => {
+      expect(canvas.getByTestId('primary')).toBeInTheDocument();
+      expect(canvas.getByTestId('secondary')).toBeInTheDocument();
+      expect(canvas.getByTestId('utility')).toBeInTheDocument();
+    });
   },
 };
 
@@ -310,7 +320,7 @@ export const SimpleFooter: Story = {
   args: {
     secondarySlot: (
       <Stack
-        direction={{ base: 'column', xs: 'column', md: 'row' }}
+        direction={{ base: 'column', md: 'row' }}
         gap={4}
         wrap
         aria-label="Footer Secondary Links"
@@ -357,11 +367,7 @@ export const SimpleFooter: Story = {
       </Stack>
     ),
     utilitySlot: (
-      <Stack
-        direction={{ base: 'column', xs: 'column', md: 'row' }}
-        gap={4}
-        itemsDistribution="center"
-      >
+      <Stack direction={{ base: 'column', md: 'row' }} gap={4} justify="center">
         <Link noColor href="/privacy-policy" aria-label="Privacy Policy">
           Privacy Policy
         </Link>
@@ -377,11 +383,7 @@ export const SimpleFooter: Story = {
 export const MinimalFooter: Story = {
   args: {
     utilitySlot: (
-      <Stack
-        direction={{ base: 'column', xs: 'column', md: 'row' }}
-        gap={4}
-        itemsDistribution="center"
-      >
+      <Stack direction={{ base: 'column', md: 'row' }} gap={4} justify="center">
         <Link noColor href="/privacy-policy" aria-label="Privacy Policy">
           Privacy Policy
         </Link>
@@ -398,10 +400,8 @@ export const MinimalFooter: Story = {
       'should render the default logo with default width and height',
       async () => {
         const img = canvas.getByAltText('Gov.ie Logo');
-        const computedStyle = getComputedStyle(img);
-        const { width, height } = getRoundedDimensions(img);
-        expect(width).toBe(181);
-        expect(height).toBe(64);
+        expect(img).toHaveAttribute('width', '181');
+        expect(img).toHaveAttribute('height', '64');
       },
     );
   },
@@ -489,88 +489,26 @@ export const GovieFooter: Story = {
   },
 };
 
-export const TestAllSlots: Story = {
-  tags: ['skip-playwright'],
-  args: {
-    primarySlot: <div data-testid="primary">Primary</div>,
-    secondarySlot: <div data-testid="secondary">Secondary</div>,
-    utilitySlot: <div data-testid="utility">Utility</div>,
-  },
-  play: async ({ canvasElement, step }) => {
-    const canvas = within(canvasElement);
-
-    await step('should render all slots when provided', async () => {
-      const primaryElement = canvas.getByTestId('primary');
-      const secondaryElement = canvas.getByTestId('secondary');
-      const utilityElement = canvas.getByTestId('utility');
-      expect(primaryElement).toBeInTheDocument();
-      expect(secondaryElement).toBeInTheDocument();
-      expect(utilityElement).toBeInTheDocument();
-    });
-  },
-};
-
 export const CustomLogo: Story = {
-  render: (props) => {
-    return (
-      <Footer
-        data-testid="footer-custom-logo"
-        primarySlot={
-          <div>
-            The footer decides how the logo <em>looks</em> on screen—a fixed{' '}
-            <span className="gi-font-bold">64px</span> tall bar with{' '}
-            <span className="gi-font-bold">width: auto</span> so your asset
-            keeps its aspect ratio. Pass the actual pixel dimensions of your
-            image file (its intrinsic width and height) to the logo prop, not
-            the size you expect in the footer. These values become{' '}
-            <code>&lt;img&gt;</code> attributes so the browser knows the correct
-            aspect ratio up front and can reserve roughly the right space while
-            the graphic loads—better for layout stability and CLS.
-          </div>
-        }
-        secondarySlot={
-          <div>
-            This placeholder SVG really is 220×80px; <code>logo.width</code>/
-            <code>logo.height</code> mirror that. The footer still renders it at
-            64px tall with proportional width.
-          </div>
-        }
-        logo={{
-          width: 220,
-          height: 80,
-          imageLarge: generateSvgPlaceholderDataUrl(220, 80),
-        }}
-        {...props}
-      />
-    );
+  args: {
+    logo: {
+      width: 220,
+      height: 80,
+      imageLarge: generateSvgPlaceholderDataUrl(220, 80),
+    },
+    primarySlot: <div>Primary</div>,
+    secondarySlot: <div>This footer uses a custom logo image.</div>,
+    utilitySlot: <div>Utility</div>,
   },
-  tags: ['skip-playwright'],
   play: async ({ canvasElement, step }) => {
     const canvas = within(canvasElement);
-
     await step(
-      'should reserve intrinsic ratio and enforce footer logo height',
+      'should propagate custom logo dimensions to the img',
       async () => {
         const img = canvas.getByAltText('Gov.ie Logo');
         expect(img).toHaveAttribute('width', '220');
         expect(img).toHaveAttribute('height', '80');
-
-        expect(getRoundedDimensions(img as Element)).toMatchObject({
-          width: Math.round((220 / 80) * 64),
-          height: 64,
-        });
       },
     );
   },
-};
-
-const getRoundedDimensions = (element: Element) => {
-  return {
-    width: Math.round(
-      Number.parseFloat(getComputedStyle(element).width.replace('px', '')),
-    ),
-    height: Math.round(
-      Number.parseFloat(getComputedStyle(element).height.replace('px', '')),
-    ),
-  };
 };

@@ -22,8 +22,8 @@ export type FooterProps = {
   dataTestid?: string;
 } & React.HTMLAttributes<HTMLDivElement>;
 
-// Default logo size if no width/height is provided
-const LOGO = { width: 181, height: 64 };
+// Intrinsic dimensions of the built-in Gov.ie SVG. Sets <img> aspect ratio to avoid CLS.
+const DEFAULT_LOGO = { width: 181, height: 64 };
 
 function getLogo({ logo }: FooterProps) {
   const svgMobileString = btoa(renderToStaticMarkup(<GovieLogoHarp />));
@@ -36,9 +36,9 @@ function getLogo({ logo }: FooterProps) {
     <picture>
       <source srcSet={logo?.imageLarge || svgDataUriDesktop} />
       <img
-        width={logo?.width ?? LOGO.width}
-        height={logo?.height ?? LOGO.height}
         className="gi-h-16 gi-w-auto"
+        width={logo?.width ?? DEFAULT_LOGO.width}
+        height={logo?.height ?? DEFAULT_LOGO.height}
         src={logo?.imageSmall || svgDataUriMobile}
         alt={logo?.alt || t('logo.govieLogo', { defaultValue: 'Gov.ie Logo' })}
       />
