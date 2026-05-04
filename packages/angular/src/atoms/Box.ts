@@ -8,16 +8,25 @@ import { Component, Input } from '@angular/core';
 
 import { CommonModule } from '@angular/common';
 
-export type Props = {
-  className?: string;
-  children?: any;
-  id?: string;
-  dataTestId?: string;
-};
+export type Props = LayoutBaseProps;
+
+import type { LayoutBaseProps } from './constants';
 
 @Component({
   selector: 'gi-box',
-  template: ` <div [attr.id]="id" [class]="className" [attr.data-testid]="dataTestId"><ng-content></ng-content></div> `,
+  template: `
+    <div
+      [attr.id]="id"
+      [class]="className"
+      [attr.role]="role"
+      [attr.aria-label]="role ? ariaLabel : undefined"
+      [attr.aria-labelledby]="role ? ariaLabelledBy : undefined"
+      [ngStyle]="styles"
+      [attr.data-testid]="dataTestId"
+    >
+      <ng-content></ng-content>
+    </div>
+  `,
   styles: [
     `
       :host {
@@ -31,5 +40,9 @@ export type Props = {
 export default class Box {
   @Input() id!: Props['id'];
   @Input() className!: Props['className'];
+  @Input() role!: Props['role'];
+  @Input() ariaLabel!: Props['ariaLabel'];
+  @Input() ariaLabelledBy!: Props['ariaLabelledBy'];
+  @Input() styles!: Props['styles'];
   @Input() dataTestId!: Props['dataTestId'];
 }

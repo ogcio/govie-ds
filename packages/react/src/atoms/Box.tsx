@@ -6,16 +6,21 @@
 
 import * as React from 'react';
 
-export type Props = {
-  className?: string;
-  children?: any;
-  id?: string;
-  dataTestId?: string;
-};
+export type Props = LayoutBaseProps;
+
+import type { LayoutBaseProps } from './constants';
 
 function Box(props: Props) {
   return (
-    <div id={props.id} className={props.className} data-testid={props.dataTestId}>
+    <div
+      id={props.id}
+      className={props.className}
+      role={props.role}
+      aria-label={props.role ? props.ariaLabel : undefined}
+      aria-labelledby={props.role ? props.ariaLabelledBy : undefined}
+      style={props.styles}
+      data-testid={props.dataTestId}
+    >
       {props.children}
     </div>
   );

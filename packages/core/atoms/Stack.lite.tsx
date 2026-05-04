@@ -1,6 +1,6 @@
 import { useMetadata } from '@builder.io/mitosis';
 import { tv } from 'tailwind-variants';
-import { Direction, type AlignItems, type Justify, type ResponsiveValue } from './constants';
+import { Direction, type AlignItems, type Justify, type LayoutBaseProps, type ResponsiveValue } from './constants';
 import { getAlignItems, getJustify, resolveResponsive } from './utilities';
 
 useMetadata({ angular: { selector: 'gi-stack' } });
@@ -11,15 +11,7 @@ export type Props = {
   align?: (typeof AlignItems)[keyof typeof AlignItems];
   justify?: (typeof Justify)[keyof typeof Justify];
   wrap?: boolean;
-  role?: 'region' | 'navigation' | 'complementary' | 'search' | 'form' | 'group';
-  ariaLabel?: string;
-  ariaLabelledBy?: string;
-  className?: string;
-  id?: string;
-  styles?: Record<string, string>;
-  children?: any;
-  dataTestId?: string;
-};
+} & LayoutBaseProps;
 
 export default function Stack(props: Props) {
   return (
@@ -35,7 +27,7 @@ export default function Stack(props: Props) {
         wrap: props.wrap ?? false,
         class: [
           resolveResponsive(props.direction ?? Direction.COLUMN, directionToClass),
-          resolveResponsive(props.gap ?? 0, (gap: number, prefix: string): string => `${prefix}gi-gap-${gap}`),
+          resolveResponsive(props.gap ?? 0, gapToClass),
           props.className,
         ],
       })}
@@ -48,6 +40,8 @@ export default function Stack(props: Props) {
 
 const directionToClass = (direction: string, prefix: string): string =>
   direction === 'row' ? `${prefix}gi-flex-row` : `${prefix}gi-flex-col`;
+
+const gapToClass = (gap: number, prefix: string): string => `${prefix}gi-gap-${gap}`;
 
 const stackVariants = tv({
   base: ['gi-flex', 'gi-w-full'],

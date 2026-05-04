@@ -65,6 +65,10 @@ component:
           ofType: 'string'
           description: 'Optional id for the stack container.'
           required: false
+        - name: 'styles'
+          ofType: 'Record<string, string>'
+          description: 'Inline styles applied directly to the container element. Use for truly dynamic values that cannot be expressed as Tailwind classes.'
+          required: false
         - name: 'dataTestId'
           ofType: 'string'
           description: 'Test id for targeting the element in automated tests.'

@@ -18,35 +18,19 @@ Box is the simplest layout primitive in the design system — a plain `<div>` wr
   </Box>
 </ComponentPreview>
 
-## Variants
+## Layout Composition
 
-### Spacing Wrapper
-
-<ComponentPreviewLayout>
-  <ComponentPreviewItem className="h-auto w-full">
-    <Box className="gi-p-4 gi-bg-gray-100">
-      Padding 4
-    </Box>
-  </ComponentPreviewItem>
-</ComponentPreviewLayout>
-
-### Background Wrapper
+Box works naturally alongside Container and Stack to build page layouts. Use Container for page-width constraints, Stack for flex-based flow, and Box for grouping and spacing wrappers.
 
 <ComponentPreviewLayout>
   <ComponentPreviewItem className="h-auto w-full">
-    <Box className="gi-bg-emerald-700 gi-text-white gi-p-4">
-      Emerald 700 background with white text
-    </Box>
-  </ComponentPreviewItem>
-</ComponentPreviewLayout>
-
-### Sizing Wrapper
-
-<ComponentPreviewLayout>
-  <ComponentPreviewItem className="h-auto w-full">
-    <Box className="gi-w-64 gi-h-32 gi-bg-gray-100 gi-flex gi-items-center gi-justify-center">
-      64 x 32
-    </Box>
+    <Container>
+      <Stack direction="row" gap={4}>
+        <Box className="gi-p-4 gi-bg-gray-300 gi-flex-1">Box 1</Box>
+        <Box className="gi-p-4 gi-bg-gray-300 gi-flex-1">Box 2</Box>
+        <Box className="gi-p-4 gi-bg-gray-300 gi-flex-1">Box 3</Box>
+      </Stack>
+    </Container>
   </ComponentPreviewItem>
 </ComponentPreviewLayout>
 
@@ -59,17 +43,11 @@ Use Box as a design-system-native replacement for bare `<div>` elements. It prov
 - Do use Box instead of bare `<div>` elements for design-system wrappers.
 - Do apply styling through `className` with `gi-*` Tailwind utilities.
 - Do use Box for simple spacing, backgrounds, and sizing wrappers.
+- Do use `role` and `ariaLabel` when Box serves as a landmark container.
 
 ### Don't
 
 - Don't use Box when you need flex layout — use Stack instead.
-- Don't add `role` or ARIA attributes directly — use Stack for landmark containers.
 - Don't use inline styles — use `gi-*` Tailwind utilities via className.
-
-<ComponentContainer>
-  <Box className="gi-p-4 gi-bg-gray-100">
-    <Box className="gi-p-2 gi-bg-emerald-700 gi-text-white">Nested Box with background</Box>
-  </Box>
-</ComponentContainer>
 
 </Section>

@@ -9,25 +9,21 @@ import { Component, Input } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
 export type Props = {
-  id?: string;
-  children?: any;
-  className?: string;
   inset?: boolean;
   gutters?: boolean;
   maxWidth?: (typeof MaxWidth)[keyof typeof MaxWidth];
-  dataTestId?: string;
-};
+} & LayoutBaseProps;
 
 import { tv } from 'tailwind-variants';
 import { clamp } from './utilities';
-import { Size } from './constants';
+import { Size, LayoutBaseProps } from './constants';
 export const MaxWidth = {
   ...Size,
   default: 'default',
   '2xl': '2xl',
   full: 'full',
 } as const;
-export const styles = tv({
+export const containerStyles = tv({
   base: 'gi-container gi-mx-auto',
   variants: {
     inset: {
@@ -64,9 +60,13 @@ export const styles = tv({
   template: `
     <div
       [attr.id]="id"
+      [attr.role]="role"
+      [attr.aria-label]="role ? ariaLabel : undefined"
+      [attr.aria-labelledby]="role ? ariaLabelledBy : undefined"
+      [ngStyle]="styles"
       [attr.data-testid]="dataTestId"
       [class]="
-        styles({
+        containerStyles({
           inset: inset ?? false,
           gutters: gutters ?? true,
           maxWidth: clamp(maxWidth, MaxWidth, MaxWidth.default),
@@ -89,10 +89,14 @@ export const styles = tv({
 })
 export default class Container {
   MaxWidth = MaxWidth;
-  styles = styles;
+  containerStyles = containerStyles;
   clamp = clamp;
 
   @Input() id!: Props['id'];
+  @Input() role!: Props['role'];
+  @Input() ariaLabel!: Props['ariaLabel'];
+  @Input() ariaLabelledBy!: Props['ariaLabelledBy'];
+  @Input() styles!: Props['styles'];
   @Input() dataTestId!: Props['dataTestId'];
   @Input() inset!: Props['inset'];
   @Input() gutters!: Props['gutters'];

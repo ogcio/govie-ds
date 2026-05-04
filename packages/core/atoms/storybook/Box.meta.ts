@@ -20,13 +20,40 @@ export const boxMeta = {
     },
     id: {
       control: false,
-      description: 'Optional id for targeting and aria references.',
+      description: 'Optional id for linking/targeting and aria references.',
       table: { type: { summary: 'string' } },
     },
     dataTestId: {
       control: false,
       description: 'Test id for targeting the element in automated tests.',
       table: { type: { summary: 'string' } },
+    },
+    role: {
+      control: false,
+      description: 'Landmark role for the container. Only set when a landmark semantic is required.',
+      table: {
+        type: {
+          summary: "'region' | 'navigation' | 'complementary' | 'search' | 'form' | 'group'",
+        },
+      },
+    },
+    ariaLabel: {
+      control: false,
+      description:
+        'Accessible label for the container. Use when the box has a `role` prop to provide an accessible name for the landmark. Maps to `aria-label`.',
+      table: { type: { summary: 'string' } },
+    },
+    ariaLabelledBy: {
+      control: false,
+      description:
+        'Points to the id of an element that labels the container. Preferred over `ariaLabel` when a visible heading exists. Only applied when `role` is set. Maps to `aria-labelledby`.',
+      table: { type: { summary: 'string' } },
+    },
+    styles: {
+      control: false,
+      description:
+        'Inline styles applied directly to the container element. Use for truly dynamic values that cannot be expressed as Tailwind classes.',
+      table: { type: { summary: 'Record<string, string>' } },
     },
     children: {
       table: { disable: true },
@@ -43,7 +70,11 @@ export const boxMeta = {
 };
 
 export const Default = {
-  args: boxMeta.args,
+  args: {
+    ...boxMeta.args,
+    role: 'region' as const,
+    ariaLabel: 'Example region',
+  },
   play: async ({ canvasElement, step }: StoryContext<Renderer>) => {
     const canvas = within(canvasElement as HTMLElement);
 
@@ -68,32 +99,21 @@ export const Default = {
       expect(element).not.toHaveAttribute('tabindex');
     });
 
-    await step('has no implicit ARIA role', async () => {
+    await step('renders role attribute', async () => {
       const element = canvas.getByTestId('box-test');
-      expect(element).not.toHaveAttribute('role');
+      expect(element).toHaveAttribute('role', 'region');
+    });
+
+    await step('renders aria-label when role is set', async () => {
+      const element = canvas.getByTestId('box-test');
+      expect(element).toHaveAttribute('aria-label', 'Example region');
     });
   },
 };
 
-export const Spacing = {
+export const WithContainerAndStack = {
   args: {
     ...boxMeta.args,
-    dataTestId: 'box-spacing',
-  },
-};
-
-export const Background = {
-  args: {
-    ...boxMeta.args,
-    className: 'gi-bg-gray-100 gi-p-4',
-    dataTestId: 'box-background',
-  },
-};
-
-export const Sizing = {
-  args: {
-    ...boxMeta.args,
-    className: 'gi-w-64 gi-h-32 gi-p-4 gi-bg-gray-50',
-    dataTestId: 'box-sizing',
+    dataTestId: 'box-layout',
   },
 };
