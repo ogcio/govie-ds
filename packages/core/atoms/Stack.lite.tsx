@@ -35,7 +35,7 @@ export default function Stack(props: Props) {
         wrap: props.wrap ?? false,
         class: [
           resolveResponsive(props.direction ?? Direction.COLUMN, directionToClass),
-          resolveResponsive(props.gap ?? 0, (gap: number, prefix: string): string => `${prefix}gi-gap-${gap}`),
+          resolveResponsive(props.gap ?? 0, gapToClass),
           props.className,
         ],
       })}
@@ -49,8 +49,11 @@ export default function Stack(props: Props) {
 const directionToClass = (direction: string, prefix: string): string =>
   direction === 'row' ? `${prefix}gi-flex-row` : `${prefix}gi-flex-col`;
 
+const gapToClass = (gap: number, prefix: string): string => `${prefix}gi-gap-${gap}`;
+
+// TODO: add twMerge to enable consumer `className` to override component-default utilities
 const stackVariants = tv({
-  base: ['gi-flex', 'gi-w-full'],
+  base: ['gi-flex'],
   variants: {
     align: {
       start: 'gi-items-start',

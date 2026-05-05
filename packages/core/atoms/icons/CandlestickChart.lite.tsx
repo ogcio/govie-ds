@@ -1,0 +1,24 @@
+import { IconProps } from './types';
+import { useMetadata } from '@builder.io/mitosis';
+
+useMetadata({ angular: { selector: 'gi-candlestick-chart-icon' } });
+
+export default function CandlestickChart(props: IconProps) {
+  return (
+    <svg
+      viewBox="0 -960 960 960"
+      width={props.size ?? 24}
+      height={props.size ?? 24}
+      class={props.className}
+      id={props.id}
+      role={props.label ? 'img' : undefined}
+      aria-label={props.label}
+      aria-hidden={!props.label}
+      fill={props.color ?? 'currentColor'}
+      data-testid={props.dataTestId ?? 'candlestick-chart'}
+      xmlns="http://www.w3.org/2000/svg"
+    >
+      <path d="M280-160v-80h-80v-480h80v-80h80v80h80v480h-80v80h-80Zm0-160h80v-320h-80v320Zm320 160v-200h-80v-280h80v-160h80v160h80v280h-80v200h-80Zm0-280h80v-120h-80v120Zm-280-40Zm320-20Z" />
+    </svg>
+  );
+}
