@@ -11,7 +11,7 @@ import { CommonModule } from '@angular/common';
 import { IconProps } from './types';
 
 @Component({
-  selector: 'error',
+  selector: 'gi-error-icon',
   template: `
     <svg
       viewBox="0 -960 960 960"
