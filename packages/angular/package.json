@@ -11,8 +11,8 @@
   "scripts": {
     "build": "ng-packagr -p ng-package.json -c tsconfig.lib.json && pnpm build:styles",
     "build:styles": "tailwindcss -i ./styles.css -o ./dist/styles.css --minify",
-    "storybook:dev": "ng run design-system-angular:storybook",
-    "storybook:build": "ng run design-system-angular:build-storybook",
+    "storybook:dev": "pnpm build:styles && ng run design-system-angular:storybook",
+    "storybook:build": "pnpm build:styles && ng run design-system-angular:build-storybook",
     "typecheck": "tsc -p tsconfig.json --noEmit",
     "format": "prettier --write .",
     "format:check": "prettier --check ."
