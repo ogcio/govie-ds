@@ -1,14 +1,11 @@
 'use client';
 import type { ComponentType } from 'react';
 import { useState } from 'react';
-import type { IconProps } from '../atoms/icons';
-
-import {
-  CheckCircleIcon,
-  ErrorIcon,
-  InfoIcon,
-  WarningIcon,
-} from '../atoms/icons';
+import type { IconProps } from '../atoms/icons/types';
+import CheckCircleIcon from '../atoms/icons/CheckCircle';
+import ErrorIcon from '../atoms/icons/Error';
+import InfoIcon from '../atoms/icons/Info';
+import WarningIcon from '../atoms/icons/Warning';
 import { cn } from '../cn.js';
 import { translate as t } from '../i18n/utility.js';
 import { IconButton } from '../icon-button/icon-button.js';

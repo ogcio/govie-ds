@@ -18,7 +18,7 @@ export const Default: StoryObj = {
   render: () => {
     return (
       <div className="gi-flex gi-flex-col gi-gap-8 ">
-        {Object.entries(iconList).map(([key, icons]) => (
+        {_.map(iconList, (icons, key) => (
           <div key={key} className="gi-border-b gi-pb-4">
             <h2 className="gi-text-lg gi-font-bold gi-mb-8 gi-underline gi-text-center">
               {_.startCase(key)}

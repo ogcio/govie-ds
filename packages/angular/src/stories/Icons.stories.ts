@@ -18,33 +18,34 @@ export const Default: StoryObj = {
         imports: _.map(_.flatMap(iconList), 'Component'),
       },
       template: `
-    <div class="gi-flex gi-flex-col gi-gap-8">
-      ${Object.entries(iconList)
-        .map(
-          ([key, icons]) => `
         <div class="gi-flex gi-flex-col gi-gap-8">
-          <h2 class="gi-text-lg gi-font-bold gi-mb-8 gi-underline gi-text-center">${_.startCase(key)}</h2>
-          <div class="gi-flex gi-flex-wrap gi-gap-8">
-            ${_.map(
-              icons,
-              ({ selector }) => `
-      <div class="gi-w-32 gi-flex gi-flex-col gi-items-center gi-gap-2">
-        <${selector}
-          [size]="size"
-          [color]="color"
-          [label]="label"
-          [className]="className"
-          dataTestId="${selector}"
-        ></${selector}>
-        <span class="gi-text-xs gi-text-center gi-whitespace-nowrap">${selector.replace('gi-', '').replace('-icon', '')}</span>
-      </div>`,
-            ).join('')}
-          </div>
+          ${_.map(
+            iconList,
+            (icons, key) => `
+            <div class="gi-flex gi-flex-col gi-gap-8">
+              <h2 class="gi-text-lg gi-font-bold gi-mb-8 gi-underline gi-text-center">${_.startCase(key)}</h2>
+              <div class="gi-flex gi-flex-wrap gi-gap-8">
+                ${_.map(
+                  icons,
+                  ({ selector }) => `
+                    <div class="gi-w-32 gi-flex gi-flex-col gi-items-center gi-gap-2">
+                      <${selector}
+                        [size]="size"
+                        [color]="color"
+                        [label]="label"
+                        [className]="className"
+                        dataTestId="${selector}"
+                      ></${selector}>
+                      <span class="gi-text-xs gi-text-center gi-whitespace-nowrap">
+                        ${selector.replace('gi-', '').replace('-icon', '')}
+                      </span>
+                    </div>`,
+                ).join('')}
+              </div>
+            </div>
+          `,
+          ).join('')}
         </div>
-      `,
-        )
-        .join('')}
-    </div>
     `,
     };
   },
