@@ -8,7 +8,7 @@ export const stackMeta = {
   title: 'Layout/Stack',
   args: {
     direction: Direction.COLUMN,
-    gap: 4,
+    gap: 4 as const,
     wrap: false,
     align: AlignItems.START,
     justify: Justify.START,
@@ -27,7 +27,7 @@ export const stackMeta = {
       description: 'Tailwind spacing scale value (0–12). Accepts a number or a responsive breakpoint object `{ base?, xs?, sm?, md?, lg?, xl?, 2xl? }`.',
       table: {
         type: {
-          summary: 'number | ResponsiveGap'
+          summary: 'SpacingScale | ResponsiveValue<SpacingScale>'
         },
         defaultValue: {
           summary: '0'
@@ -242,7 +242,7 @@ export const Responsive = {
       lg: 8,
       xl: 10,
       '2xl': 12
-    },
+    } as const,
     role: 'region' as const,
     ariaLabel: 'layout region',
     dataTestId: 'stack-responsive-test'

@@ -10,7 +10,7 @@ import { CommonModule } from '@angular/common';
 
 export type Props = {
   direction?: ResponsiveValue<(typeof Direction)[keyof typeof Direction]>;
-  gap?: ResponsiveValue<number>;
+  gap?: ResponsiveValue<SpacingScale>;
   align?: (typeof AlignItems)[keyof typeof AlignItems];
   justify?: (typeof Justify)[keyof typeof Justify];
   wrap?: boolean;
@@ -25,7 +25,7 @@ export type Props = {
 };
 
 import { tv } from 'tailwind-variants';
-import { Direction, AlignItems, Justify, ResponsiveValue } from './constants';
+import { Direction, AlignItems, Justify, ResponsiveValue, SpacingScale } from './constants';
 import { getAlignItems, getJustify, resolveResponsive } from './utilities';
 const directionToClass = (direction: string, prefix: string): string =>
   direction === 'row' ? `${prefix}gi-flex-row` : `${prefix}gi-flex-col`;

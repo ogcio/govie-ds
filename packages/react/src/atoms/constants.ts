@@ -1,5 +1,6 @@
 export type BreakpointKey = (typeof Breakpoint)[keyof typeof Breakpoint];
 export type ResponsiveValue<T> = T | Partial<Record<BreakpointKey, T>>;
+export type SpacingScale = 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10 | 11 | 12;
 export const Size = {
   SM: 'sm',
   MD: 'md',

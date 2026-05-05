@@ -132,6 +132,7 @@ export {
   type Props as InsetTextProps,
 } from './atoms/InsetText.js';
 export { default as Text, type Props as TextProps } from './atoms/Text.js';
+export { default as Grid, type Props as GridProps } from './atoms/Grid.js';
 export type { LabelTextProps } from './label/types.js';
 export { Link, type LinkProps } from './link/link.js';
 export { ListItem, type ListItemProps } from './list-item/list-item.js';

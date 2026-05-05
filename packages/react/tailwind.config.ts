@@ -26,6 +26,18 @@ const config: Config = {
     { pattern: /flex-col/, variants: ['sm', 'md', 'lg', 'xl', '2xl'] },
     { pattern: /h-./, variants: ['sm', 'md', 'lg', 'xl', '2xl'] },
     { pattern: /w-./, variants: ['sm', 'md', 'lg', 'xl', '2xl'] },
+    {
+      pattern: /gi-grid-columns-\d+/,
+      variants: ['xs', 'sm', 'md', 'lg', 'xl', '2xl'],
+    },
+    {
+      pattern: /gi-grid-gap-\d+/,
+      variants: ['xs', 'sm', 'md', 'lg', 'xl', '2xl'],
+    },
+    {
+      pattern: /gi-grid-span-\d+/,
+      variants: ['xs', 'sm', 'md', 'lg', 'xl', '2xl'],
+    },
   ],
 };
 
