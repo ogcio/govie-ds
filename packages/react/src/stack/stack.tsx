@@ -1,4 +1,3 @@
-import _ from 'lodash';
 import { Children, Fragment, type FC } from 'react';
 import GiStack, { type Props as GiStackProps } from '../atoms/Stack';
 import { resolveResponsive } from '../atoms/utilities';
@@ -15,8 +14,10 @@ export type StackProps = GiStackProps & {
     | 'between'
     | 'around'
     | 'evenly';
-  /** @deprecated Use `className` with a height utility instead. */
+  /** @deprecated Use `className` with a height utility (e.g., `gi-h-[200px]`) or pass `style={{ height: '...' }}` instead; will be removed in the next major release. */
   fixedHeight?: string;
+  /** @deprecated Pass `fillWidth={false}` to opt out of the legacy `gi-w-full` default; will be removed in the next major release. */
+  fillWidth?: boolean;
   /** @deprecated Dividers will be removed in a future release. */
   hasDivider?: boolean;
   /** @deprecated Use `ariaLabel` instead. Maps to `aria-label`. */
@@ -44,6 +45,7 @@ export const Stack: FC<StackProps> = ({
   id,
   hasDivider,
   fixedHeight,
+  fillWidth = true,
   itemsAlignment,
   itemsDistribution,
   dataTestId,
@@ -60,14 +62,11 @@ export const Stack: FC<StackProps> = ({
       role={role}
       ariaLabel={ariaLabel ?? nativeAriaLabel}
       ariaLabelledBy={ariaLabelledBy ?? nativeAriaLabelledBy}
-      className={className}
-      styles={
-        _.merge(
-          {},
-          style,
-          fixedHeight ? { height: fixedHeight } : {},
-        ) as Record<string, string>
-      }
+      className={cn(fillWidth && 'gi-w-full', className)}
+      styles={{
+        ...((style ?? {}) as Record<string, string>),
+        ...(fixedHeight && { height: fixedHeight }),
+      }}
       dataTestId={dataTestId ?? nativeDataTestId}
     >
       {hasDivider ? addDividers(children, direction) : children}
