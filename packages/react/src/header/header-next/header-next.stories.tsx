@@ -1,6 +1,9 @@
 import type { Meta, StoryObj } from '@storybook/react-vite';
+import type { IconId } from '../../icon/icon.js';
+import type { HeaderAppearance } from '../types.js';
 import { useMemo, useState } from 'react';
 import { within, expect, userEvent, screen } from 'storybook/test';
+import { cn } from '../../cn.js';
 import Heading from '../../Heading.js';
 import Button from '../../atoms/Button';
 import {
@@ -10,7 +13,6 @@ import {
   LogoHarpBlack,
   LogoHarpWhite,
 } from '../../atoms/icons/logos';
-
 import { DrawerMenuExample } from '../../drawer/drawer.content.js';
 import {
   DrawerBody,
@@ -22,7 +24,6 @@ import {
   FormFieldLabel,
 } from '../../forms/form-field/form-field.js';
 import { useToggleMap } from '../../hooks/use-toggle-map.js';
-import type { IconId } from '../../icon/icon.js';
 import { Icon } from '../../icon/icon.js';
 import { Link } from '../../link/link.js';
 import { List, ListTypeEnum } from '../../list/list.js';
@@ -608,6 +609,143 @@ export const Light: StoryObj = {
           </HeaderSlotContainer>
         ) : null}
       </>
+    );
+  },
+};
+
+const TitleAsLink = ({ focused }: { focused?: boolean }) => {
+  const [variant, setVariant] = useState<HeaderAppearance>('default');
+  const toggleVariant = () =>
+    setVariant(variant === 'light' ? 'default' : 'light');
+  return (
+    <div
+      className={cn(
+        'gi-p-4',
+        variant === 'light' ? 'gi-bg-black' : 'gi-bg-white',
+      )}
+    >
+      <Header variant={variant} aria-label="Site header">
+        <HeaderLogo>
+          {variant === 'default' ? (
+            <LogoHarpWhite
+              label="Gov.ie logo"
+              className="gi-block gi-h-10 gi-w-auto sm:gi-hidden"
+            />
+          ) : (
+            <LogoHarpBlack
+              label="Gov.ie logo"
+              className="gi-block gi-h-10 gi-w-auto sm:gi-hidden"
+            />
+          )}
+          {variant === 'default' ? (
+            <LogoWhite
+              label="Gov.ie logo"
+              className="gi-hidden gi-h-12 gi-w-auto sm:gi-block"
+            />
+          ) : (
+            <LogoBlack
+              label="Gov.ie logo"
+              className="gi-hidden gi-h-12 gi-w-auto sm:gi-block"
+            />
+          )}
+        </HeaderLogo>
+        <HeaderTitle href="#">
+          Title as a link {focused ? 'focused' : ''}
+        </HeaderTitle>
+        <HeaderPrimaryMenu>
+          <HeaderMenuItemLink href="#" showItemMode="always">
+            Departments
+          </HeaderMenuItemLink>
+          <HeaderMenuItemLink href="#" showItemMode="always">
+            Services
+          </HeaderMenuItemLink>
+          <HeaderMenuItemSeparator />
+          <HeaderMenuItemButton>FAQ</HeaderMenuItemButton>
+          <HeaderMenuItemButton>Search</HeaderMenuItemButton>
+
+          <HeaderMenuItemButton showItemMode="desktop-only">
+            Language
+          </HeaderMenuItemButton>
+
+          <HeaderMenuItemButton onClick={toggleVariant} showItemMode="always">
+            {variant === 'default' ? 'Light' : 'Dark'}
+          </HeaderMenuItemButton>
+        </HeaderPrimaryMenu>
+      </Header>
+    </div>
+  );
+};
+
+export const WithTitleAsLink: StoryObj = {
+  parameters: {
+    docs: {
+      description: {
+        story:
+          'By passing in an `href` prop to the `HeaderTitle` component, the title becomes a link.',
+      },
+    },
+  },
+  argTypes: {
+    variant: {
+      options: ['default', 'light'],
+      control: { type: 'radio' },
+    },
+  },
+  args: {
+    variant: 'default',
+  },
+  render: function Render() {
+    return <TitleAsLink />;
+  },
+  play: async ({ canvasElement, step }) => {
+    const canvas = within(canvasElement);
+
+    await step('header + primary nav present', async () => {
+      expect(
+        await canvas.findByRole('banner', { name: /site header/i }),
+      ).toBeInTheDocument();
+    });
+    await step('title is a link', async () => {
+      expect(
+        await canvas.findByRole('link', {
+          name: /title as a link/i,
+        }),
+      ).toBeInTheDocument();
+    });
+  },
+};
+
+export const WithTitleAsLinkFocusState: StoryObj = {
+  parameters: {
+    docs: {
+      description: {
+        story:
+          'Default link effects are applied to the title, such as focus and hover. Navigate directly to this story page to see the effects.',
+      },
+    },
+  },
+  render: function Render() {
+    return <TitleAsLink focused />;
+  },
+  play: async ({ canvasElement, step }) => {
+    const canvas = within(canvasElement);
+
+    await step(
+      'focus outline is visible and has no visual regressions',
+      async () => {
+        const header = await canvas.findByRole('banner', {
+          name: /site header/i,
+        });
+        expect(header).toBeInTheDocument();
+        const link = await canvas.findByRole('link', {
+          name: /title as a link focused/i,
+        });
+        expect(link).toBeInTheDocument();
+        await userEvent.click(header);
+
+        await userEvent.tab();
+        expect(link).toHaveFocus();
+      },
     );
   },
 };
