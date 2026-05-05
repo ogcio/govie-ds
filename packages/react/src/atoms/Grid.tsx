@@ -7,36 +7,40 @@
 import * as React from 'react';
 
 export type Props = {
+  id?: string;
+  children: any;
   container?: boolean;
-  columns?: ResponsiveValue<number>;
-  gap?: ResponsiveValue<number>;
-  size?: ResponsiveValue<number>;
+  columns?: ResponsiveValue<SpacingScale>;
+  gap?: ResponsiveValue<SpacingScale>;
+  size?: ResponsiveValue<SpacingScale>;
   role?: 'region' | 'navigation' | 'complementary' | 'search' | 'form';
   ariaLabel?: string;
   ariaLabelledBy?: string;
   className?: string;
-  id?: string;
   dataTestId?: string;
-  children: any;
 };
 
 import _ from 'lodash';
-import type { ResponsiveValue, BreakpointKey } from './constants';
-const buildGridClasses = (value: ResponsiveValue<number> | undefined, prefix: string, min: number): string => {
-  if (_.isNumber(value)) {
-    return `${prefix}-${Math.max(min, value)}`;
-  }
-  if (!_.isPlainObject(value)) {
+import type { ResponsiveValue, BreakpointKey, SpacingScale } from './constants';
+const FIGMA_COLUMNS: Partial<Record<BreakpointKey, SpacingScale>> = {
+  base: 4,
+  sm: 6,
+  md: 8,
+  lg: 12,
+};
+const buildGridClasses = (value: ResponsiveValue<SpacingScale> | undefined, prefix: string): string => {
+  if (!value) {
     return '';
   }
-  const responsive = value as Partial<Record<BreakpointKey, number>>;
-  return (_.keys(responsive) as BreakpointKey[])
-    .map((bp) => {
-      const clamped = Math.max(min, responsive[bp] as number);
-      if (bp === 'base') {
-        return `${prefix}-${clamped}`;
+  const source = _.isNumber(value)
+    ? {
+        base: Math.max(0, value) as SpacingScale,
       }
-      return `${prefix}-${bp}-${clamped}`;
+    : (value as Partial<Record<BreakpointKey, SpacingScale>>);
+  return (_.keys(source) as BreakpointKey[])
+    .map((bp) => {
+      const clamped = Math.max(0, source[bp] as number);
+      return bp === 'base' ? `${prefix}-${clamped}` : `${bp}:${prefix}-${clamped}`;
     })
     .join(' ');
 };
@@ -48,7 +52,16 @@ function Grid(props: Props) {
       role={props.role}
       aria-label={props.role ? props.ariaLabel : undefined}
       aria-labelledby={props.role ? props.ariaLabelledBy : undefined}
-      className={`${props.className || ''} ${props.container ? `gi-grid-container ${buildGridClasses(props.columns, 'gi-grid-columns', 1)} ${buildGridClasses(props.gap, 'gi-grid-gap', 0)}` : `gi-grid-item ${buildGridClasses(props.size, 'gi-grid-span', 1)}`}`}
+      className={
+        props.container
+          ? _.compact([
+              'gi-grid-container',
+              buildGridClasses(props.columns ?? FIGMA_COLUMNS, 'gi-grid-columns'),
+              buildGridClasses(props.gap, 'gi-grid-gap'),
+              props.className,
+            ]).join(' ')
+          : _.compact(['gi-grid-item', buildGridClasses(props.size, 'gi-grid-span'), props.className]).join(' ')
+      }
       data-testid={props.dataTestId}
     >
       {props.children}

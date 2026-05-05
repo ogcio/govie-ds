@@ -1,13 +1,13 @@
 import { useMetadata } from '@builder.io/mitosis';
 import { tv } from 'tailwind-variants';
-import { Direction, type AlignItems, type Justify, type ResponsiveValue } from './constants';
+import { Direction, type AlignItems, type Justify, type ResponsiveValue, type SpacingScale } from './constants';
 import { getAlignItems, getJustify, resolveResponsive } from './utilities';
 
 useMetadata({ angular: { selector: 'gi-stack' } });
 
 export type Props = {
   direction?: ResponsiveValue<(typeof Direction)[keyof typeof Direction]>;
-  gap?: ResponsiveValue<number>;
+  gap?: ResponsiveValue<SpacingScale>;
   align?: (typeof AlignItems)[keyof typeof AlignItems];
   justify?: (typeof Justify)[keyof typeof Justify];
   wrap?: boolean;

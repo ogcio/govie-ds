@@ -118,7 +118,7 @@ export const GapScale: Story = {
   ...stackGapScale,
   render: () => (
     <div className="gi-flex gi-flex-col gi-gap-6">
-      {_.map([0, 1, 2, 4, 6, 8], (gap) => (
+      {_.map([0, 1, 2, 4, 6, 8] as const, (gap) => (
         <div key={gap}>
           <p className="gi-text-sm gi-font-bold gi-mb-2">gap={gap}</p>
           <Stack dataTestId={`stack-gap-${gap}`} direction="row" gap={gap}>

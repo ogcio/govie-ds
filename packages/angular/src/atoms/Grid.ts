@@ -9,36 +9,40 @@ import { Component, Input } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
 export type Props = {
+  id?: string;
+  children: any;
   container?: boolean;
-  columns?: ResponsiveValue<number>;
-  gap?: ResponsiveValue<number>;
-  size?: ResponsiveValue<number>;
+  columns?: ResponsiveValue<SpacingScale>;
+  gap?: ResponsiveValue<SpacingScale>;
+  size?: ResponsiveValue<SpacingScale>;
   role?: 'region' | 'navigation' | 'complementary' | 'search' | 'form';
   ariaLabel?: string;
   ariaLabelledBy?: string;
   className?: string;
-  id?: string;
   dataTestId?: string;
-  children: any;
 };
 
 import _ from 'lodash';
-import type { ResponsiveValue, BreakpointKey } from './constants';
-const buildGridClasses = (value: ResponsiveValue<number> | undefined, prefix: string, min: number): string => {
-  if (_.isNumber(value)) {
-    return `${prefix}-${Math.max(min, value)}`;
-  }
-  if (!_.isPlainObject(value)) {
+import type { ResponsiveValue, BreakpointKey, SpacingScale } from './constants';
+const FIGMA_COLUMNS: Partial<Record<BreakpointKey, SpacingScale>> = {
+  base: 4,
+  sm: 6,
+  md: 8,
+  lg: 12,
+};
+const buildGridClasses = (value: ResponsiveValue<SpacingScale> | undefined, prefix: string): string => {
+  if (!value) {
     return '';
   }
-  const responsive = value as Partial<Record<BreakpointKey, number>>;
-  return (_.keys(responsive) as BreakpointKey[])
-    .map((bp) => {
-      const clamped = Math.max(min, responsive[bp] as number);
-      if (bp === 'base') {
-        return `${prefix}-${clamped}`;
+  const source = _.isNumber(value)
+    ? {
+        base: Math.max(0, value) as SpacingScale,
       }
-      return `${prefix}-${bp}-${clamped}`;
+    : (value as Partial<Record<BreakpointKey, SpacingScale>>);
+  return (_.keys(source) as BreakpointKey[])
+    .map((bp) => {
+      const clamped = Math.max(0, source[bp] as number);
+      return bp === 'base' ? `${prefix}-${clamped}` : `${bp}:${prefix}-${clamped}`;
     })
     .join(' ');
 };
@@ -51,7 +55,16 @@ const buildGridClasses = (value: ResponsiveValue<number> | undefined, prefix: st
       [attr.role]="role"
       [attr.aria-label]="role ? ariaLabel : undefined"
       [attr.aria-labelledby]="role ? ariaLabelledBy : undefined"
-      [class]="\`\${className || ''} \${container ? \`gi-grid-container \${buildGridClasses(columns, 'gi-grid-columns', 1)} \${buildGridClasses(gap, 'gi-grid-gap', 0)}\` : \`gi-grid-item \${buildGridClasses(size, 'gi-grid-span', 1)}\`}\`"
+      [class]="
+        container
+          ? _.compact([
+              'gi-grid-container',
+              buildGridClasses(columns ?? FIGMA_COLUMNS, 'gi-grid-columns'),
+              buildGridClasses(gap, 'gi-grid-gap'),
+              className,
+            ]).join(' ')
+          : _.compact(['gi-grid-item', buildGridClasses(size, 'gi-grid-span'), className]).join(' ')
+      "
       [attr.data-testid]="dataTestId"
     >
       <ng-content></ng-content>
@@ -68,6 +81,7 @@ const buildGridClasses = (value: ResponsiveValue<number> | undefined, prefix: st
   imports: [CommonModule],
 })
 export default class Grid {
+  FIGMA_COLUMNS = FIGMA_COLUMNS;
   buildGridClasses = buildGridClasses;
   _ = _;
 
@@ -75,10 +89,10 @@ export default class Grid {
   @Input() role!: Props['role'];
   @Input() ariaLabel!: Props['ariaLabel'];
   @Input() ariaLabelledBy!: Props['ariaLabelledBy'];
-  @Input() className!: Props['className'];
   @Input() container!: Props['container'];
   @Input() columns!: Props['columns'];
   @Input() gap!: Props['gap'];
+  @Input() className!: Props['className'];
   @Input() size!: Props['size'];
   @Input() dataTestId!: Props['dataTestId'];
 }

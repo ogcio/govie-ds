@@ -6,7 +6,7 @@ export const gridMeta = {
   title: 'Layout/Grid',
   args: {
     container: true,
-    gap: 4,
+    gap: 4 as const,
     dataTestId: 'grid-test'
   },
   argTypes: {
@@ -29,7 +29,7 @@ export const gridMeta = {
       description: 'Override the number of columns. Accepts a number or a responsive breakpoint object `{ base?, xs?, sm?, md?, lg?, xl?, 2xl? }`. Defaults to Figma spec (4 → 4 → 6 → 8 → 12 → 12 → 12).',
       table: {
         type: {
-          summary: 'number | ResponsiveValue<number>'
+          summary: 'SpacingScale | ResponsiveValue<SpacingScale>'
         }
       }
     },
@@ -40,7 +40,7 @@ export const gridMeta = {
       description: 'Gap between grid items in Tailwind spacing scale (0–12). Accepts a number or a responsive breakpoint object `{ base?, xs?, sm?, md?, lg?, xl?, 2xl? }`.',
       table: {
         type: {
-          summary: 'number | ResponsiveValue<number>'
+          summary: 'SpacingScale | ResponsiveValue<SpacingScale>'
         },
         defaultValue: {
           summary: '0'
@@ -54,7 +54,7 @@ export const gridMeta = {
       description: 'Column span for a grid item. Accepts a number or a responsive breakpoint object `{ base?, xs?, sm?, md?, lg?, xl?, 2xl? }`. Overrides the default auto-distribution.',
       table: {
         type: {
-          summary: 'number | ResponsiveValue<number>'
+          summary: 'SpacingScale | ResponsiveValue<SpacingScale>'
         }
       }
     },
@@ -131,8 +131,8 @@ export const Default = {
   tags: ['skip-playwright'],
   args: {
     ...gridMeta.args,
-    gap: 1,
-    columns: 4,
+    gap: 1 as const,
+    columns: 4 as const,
     role: 'region' as const,
     ariaLabel: 'grid layout',
     dataTestId: 'grid-default'
@@ -173,7 +173,7 @@ export const ResponsiveGap = {
       sm: 3,
       md: 4,
       lg: 6
-    },
+    } as const,
     dataTestId: 'grid-responsive-gap'
   },
   play: async ({
@@ -205,8 +205,8 @@ export const ResponsiveColumns = {
       md: 4,
       lg: 6,
       xl: 12
-    },
-    gap: 2,
+    } as const,
+    gap: 2 as const,
     dataTestId: 'grid-responsive-columns'
   },
   play: async ({
@@ -231,7 +231,7 @@ export const ResponsiveColumns = {
 export const ResponsiveSize = {
   args: {
     ...gridMeta.args,
-    gap: 2,
+    gap: 2 as const,
     dataTestId: 'grid-responsive-size'
   },
   play: async ({
@@ -257,7 +257,7 @@ export const ResponsiveSize = {
 export const Nested = {
   args: {
     ...gridMeta.args,
-    gap: 4,
+    gap: 4 as const,
     dataTestId: 'grid-nested'
   },
   play: async ({
@@ -287,7 +287,7 @@ export const ColumnOverride = {
   tags: ['skip-playwright'],
   args: {
     ...gridMeta.args,
-    columns: 3,
+    columns: 3 as const,
     dataTestId: 'grid-override'
   },
   play: async ({

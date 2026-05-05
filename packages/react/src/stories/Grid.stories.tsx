@@ -114,8 +114,8 @@ export const Nested: Story = {
   ...gridNested,
   render: ({ gap, dataTestId }) => (
     <Grid container gap={gap} dataTestId={dataTestId}>
-      <Grid size={{ xs: 4, lg: 8 }}>
-        <Grid container gap={2} dataTestId="grid-nested-inner">
+      <Grid size={{ base: 4, lg: 8 }}>
+        <Grid container gap={2 as const} dataTestId="grid-nested-inner">
           {_.map(_.range(1, 5), (index) => (
             <Grid
               key={index}
@@ -127,7 +127,7 @@ export const Nested: Story = {
           ))}
         </Grid>
       </Grid>
-      <Grid size={{ xs: 4, lg: 4 }} className={itemClasses}>
+      <Grid size={{ base: 4, lg: 4 }} className={itemClasses}>
         5
       </Grid>
     </Grid>
