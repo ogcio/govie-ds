@@ -19,7 +19,6 @@ import { Direction, AlignItems, Justify, LayoutBaseProps, ResponsiveValue } from
 import { getAlignItems, getJustify, resolveResponsive } from './utilities';
 const directionToClass = (direction: string, prefix: string): string =>
   direction === 'row' ? `${prefix}gi-flex-row` : `${prefix}gi-flex-col`;
-const gapToClass = (gap: number, prefix: string): string => `${prefix}gi-gap-${gap}`;
 const stackVariants = tv({
   base: ['gi-flex', 'gi-w-full'],
   variants: {
@@ -64,7 +63,7 @@ function Stack(props: Props) {
         wrap: props.wrap ?? false,
         class: [
           resolveResponsive(props.direction ?? Direction.COLUMN, directionToClass),
-          resolveResponsive(props.gap ?? 0, gapToClass),
+          resolveResponsive(props.gap ?? 0, (gap: number, prefix: string): string => `${prefix}gi-gap-${gap}`),
           props.className,
         ],
       })}
