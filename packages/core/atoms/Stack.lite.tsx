@@ -1,6 +1,6 @@
 import { useMetadata } from '@builder.io/mitosis';
 import { tv } from 'tailwind-variants';
-import { Direction, type AlignItems, type Justify, type ResponsiveValue } from './constants';
+import { Direction, type AlignItems, type Justify, type LayoutBaseProps, type ResponsiveValue } from './constants';
 import { getAlignItems, getJustify, resolveResponsive } from './utilities';
 
 useMetadata({ angular: { selector: 'gi-stack' } });
@@ -11,15 +11,7 @@ export type Props = {
   align?: (typeof AlignItems)[keyof typeof AlignItems];
   justify?: (typeof Justify)[keyof typeof Justify];
   wrap?: boolean;
-  role?: 'region' | 'navigation' | 'complementary' | 'search' | 'form' | 'group';
-  ariaLabel?: string;
-  ariaLabelledBy?: string;
-  className?: string;
-  id?: string;
-  styles?: Record<string, string>;
-  children?: any;
-  dataTestId?: string;
-};
+} & LayoutBaseProps;
 
 export default function Stack(props: Props) {
   return (

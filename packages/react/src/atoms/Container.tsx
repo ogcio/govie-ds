@@ -7,25 +7,21 @@
 import * as React from 'react';
 
 export type Props = {
-  id?: string;
-  children?: any;
-  className?: string;
   inset?: boolean;
   gutters?: boolean;
   maxWidth?: (typeof MaxWidth)[keyof typeof MaxWidth];
-  dataTestId?: string;
-};
+} & LayoutBaseProps;
 
 import { tv } from 'tailwind-variants';
 import { clamp } from './utilities';
-import { Size } from './constants';
+import { Size, LayoutBaseProps } from './constants';
 export const MaxWidth = {
   ...Size,
   default: 'default',
   '2xl': '2xl',
   full: 'full',
 } as const;
-export const styles = tv({
+export const containerStyles = tv({
   base: 'gi-container gi-mx-auto',
   variants: {
     inset: {
@@ -61,8 +57,12 @@ function Container(props: Props) {
   return (
     <div
       id={props.id}
+      role={props.role}
+      aria-label={props.role ? props.ariaLabel : undefined}
+      aria-labelledby={props.role ? props.ariaLabelledBy : undefined}
+      style={props.styles}
       data-testid={props.dataTestId}
-      className={styles({
+      className={containerStyles({
         inset: props.inset ?? false,
         gutters: props.gutters ?? true,
         maxWidth: clamp(props.maxWidth, MaxWidth, MaxWidth.default),

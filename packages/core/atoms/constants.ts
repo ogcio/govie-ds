@@ -66,3 +66,14 @@ export const Breakpoint = {
   XL: 'xl',
   '2XL': '2xl',
 } as const;
+
+export type LayoutBaseProps = {
+  className?: string;
+  children?: any;
+  id?: string;
+  dataTestId?: string;
+  role?: 'region' | 'navigation' | 'complementary' | 'search' | 'form' | 'group';
+  ariaLabel?: string;
+  ariaLabelledBy?: string;
+  styles?: Record<string, string>;
+};

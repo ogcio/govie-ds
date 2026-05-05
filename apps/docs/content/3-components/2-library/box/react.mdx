@@ -1,0 +1,76 @@
+---
+title: 'Box'
+description: 'Box Component React Component'
+status: 'stable'
+component:
+  id: 'box-react'
+  link: '/story/layout-box--default'
+  status: 'stable'
+  properties:
+    - name: 'BoxProps'
+      fields:
+        - name: 'className'
+          ofType: 'string'
+          description: 'CSS classes to apply to the box. Use gi-* Tailwind utilities for spacing, backgrounds, sizing, etc.'
+          required: false
+        - name: 'id'
+          ofType: 'string'
+          description: 'Optional id for linking/targeting and aria references.'
+          required: false
+        - name: 'dataTestId'
+          ofType: 'string'
+          description: 'Test id for targeting the element in automated tests.'
+          required: false
+        - name: 'role'
+          ofType: 'string'
+          description: 'Landmark role for the container. Only set when a landmark semantic is required.'
+          required: false
+        - name: 'ariaLabel'
+          ofType: 'string'
+          description: 'Accessible label for the container. Use when the box has a role prop to provide an accessible name for the landmark. Maps to aria-label.'
+          required: false
+        - name: 'ariaLabelledBy'
+          ofType: 'string'
+          description: 'Points to the id of an element that labels the container. Preferred over ariaLabel when a visible heading exists. Only applied when role is set. Maps to aria-labelledby.'
+          required: false
+        - name: 'styles'
+          ofType: 'Record<string, string>'
+          description: 'Inline styles applied directly to the container element. Use for truly dynamic values that cannot be expressed as Tailwind classes.'
+          required: false
+        - name: 'children'
+          ofType: 'node'
+          description: 'Content to render inside the box.'
+          required: true
+  stories:
+    - name: 'default'
+      url: '/story/layout-box--default'
+    - name: 'with-container-and-stack'
+      url: '/story/layout-box--with-container-and-stack'
+---
+
+# Box
+
+Box is the simplest layout primitive in the design system — a plain `<div>` wrapper that signals design-system membership. All styling is applied through `className` with `gi-*` Tailwind utilities. Use Box instead of bare `<div>` elements to make design-system adoption visible and consistent across your codebase.
+
+<Section current="react">
+<ComponentPreview className="gi-not-prose w-full block">
+  <Box className="gi-p-4 gi-bg-gray-100">
+    Box content with padding and background
+  </Box>
+</ComponentPreview>
+
+## Examples
+
+### Default
+
+<StorybookFrame componentId="box-react" story="default" />
+
+### With Container and Stack
+
+<StorybookFrame componentId="box-react" story="with-container-and-stack" />
+
+## Properties
+
+<ComponentPropertiesTable componentId="box-react" />
+
+</Section>

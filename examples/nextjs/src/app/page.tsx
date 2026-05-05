@@ -8,6 +8,7 @@ import {
   Alert,
   Autocomplete,
   AutocompleteItem,
+  Box,
   BreadcrumbCurrentLink,
   BreadcrumbEllipsis,
   BreadcrumbLink,
@@ -211,7 +212,6 @@ const NativeFormExample = () => {
     const formData = new FormData(event.currentTarget);
     const data = Object.fromEntries(formData.entries());
     setSubmittedData(JSON.stringify(data, null, 2));
-    console.log('Form Data:', data);
   };
   const handleClear = () => {
     formRef.current?.reset();
@@ -288,8 +288,7 @@ const ReachHookFormWithRegister = () => {
 
   const { register, handleSubmit, reset } = formMethods;
 
-  const onSubmit = (data: any) => {
-    console.log('Form Data:', JSON.stringify(data));
+  const onSubmit = () => {
     reset(basicFormDefaultValues);
   };
 
@@ -343,14 +342,8 @@ const ReachHookFormWithController = () => {
 
   const { handleSubmit, control, reset } = methods;
 
-  const onSubmit = useCallback((data: any) => {
-    console.log('Form submitted successfully');
-    console.log('Form Data:', data);
-  }, []);
-
   const handleClear = () => {
     reset();
-    console.log('Form cleared');
   };
 
   const selectOptions: string[] = ['Topic 1', 'Topic 2', 'Topic 3', 'Topic 4', 'Topic 5'];
@@ -368,7 +361,7 @@ const ReachHookFormWithController = () => {
 
   return (
     <FormProvider {...methods}>
-      <form onSubmit={handleSubmit(onSubmit)}>
+      <form onSubmit={handleSubmit(() => reset())}>
         <Container className="p-4 border border-gray-200 bg-white rounded-lg shadow-sm">
           <Heading as="h4" className="mb-2">
             With React Hook Form (Controller Method)
@@ -913,6 +906,15 @@ export default function Home() {
                     </div>
                   </div>
 
+                  <Box>
+                    <Heading as="h5" className="gi-font-semibold gi-mb-2">
+                      Box
+                    </Heading>
+                    <Box className="gi-p-4 gi-bg-gray-100">
+                      <Box className="gi-p-2 gi-bg-emerald-700 gi-text-white gi-mb-2">Box Item</Box>
+                    </Box>
+                  </Box>
+
                   <div>
                     <h5 className="font-semibold mb-2">Stack Layout</h5>
                     <div className="h-[200px] bg-gray-50 overflow-auto p-2">
@@ -1142,7 +1144,7 @@ export default function Home() {
                             <TableData>alice@example.com</TableData>
                             <TableData>Admin</TableData>
                             <TableData>
-                              <Chip label="Active" onClose={() => console.log('Chip closed')} />
+                              <Chip label="Active" onClose={() => {}} />
                             </TableData>
                             <TableData>
                               <div className="flex gap-2">
@@ -1161,7 +1163,7 @@ export default function Home() {
                             <TableData>bob@example.com</TableData>
                             <TableData>User</TableData>
                             <TableData>
-                              <Chip label="Inactive" onClose={() => console.log('Chip closed')} />
+                              <Chip label="Inactive" onClose={() => {}} />
                             </TableData>
                             <TableData>
                               <div className="flex gap-2">
@@ -1180,7 +1182,7 @@ export default function Home() {
                             <TableData>carol@example.com</TableData>
                             <TableData>Manager</TableData>
                             <TableData>
-                              <Chip label="Active" onClose={() => console.log('Chip closed')} />
+                              <Chip label="Active" onClose={() => {}} />
                             </TableData>
                             <TableData>
                               <div className="flex gap-2">
@@ -1234,9 +1236,9 @@ export default function Home() {
                   <div>
                     <h5 className="font-semibold mb-2">Chips and Tags</h5>
                     <div className="flex flex-wrap gap-2">
-                      <Chip label="Default Chip" onClose={() => console.log('Chip closed')} />
-                      <Chip label="Closable Chip" onClose={() => console.log('Chip closed')} />
-                      <Chip label="Another Tag" onClose={() => console.log('Chip closed')} />
+                      <Chip label="Default Chip" onClose={() => {}} />
+                      <Chip label="Closable Chip" onClose={() => {}} />
+                      <Chip label="Another Tag" onClose={() => {}} />
                     </div>
                   </div>
 
