@@ -1,7 +1,8 @@
 'use client';
 import React, { useState, useEffect } from 'react';
 import { Trans, useTranslation } from 'react-i18next';
-import { ArrowRight, ArrowLeft, Button } from '../atoms/index.js';
+import { Button } from '../atoms';
+import { ArrowRightIcon, ArrowLeftIcon } from '../atoms/icons';
 import { Breakpoint, useBreakpoint } from '../hooks/use-breakpoint.js';
 import { Icon } from '../icon/icon.js';
 import { getDisplayPages } from '../utils/utilities.js';
@@ -107,7 +108,7 @@ export const Pagination: React.FC<PaginationProps> = ({
         dataTestId="govie-pagination-prev-btn"
       >
         <React.Fragment key="previous-btn-pagination">
-          <ArrowLeft className="gi-block gi-shrink-0" />
+          <ArrowLeftIcon className="gi-block gi-shrink-0" />
         </React.Fragment>
         {!isSMWidth && t('pagination.previous', { defaultValue: 'Previous' })}
       </Button>
@@ -126,7 +127,7 @@ export const Pagination: React.FC<PaginationProps> = ({
       >
         {!isSMWidth && t('pagination.next', { defaultValue: 'Next' })}
         <React.Fragment key="next-btn-pagination">
-          <ArrowRight className="gi-block gi-shrink-0" />
+          <ArrowRightIcon className="gi-block gi-shrink-0" />
         </React.Fragment>
       </Button>
     </div>

@@ -11,7 +11,7 @@ import { CommonModule } from '@angular/common';
 import { IconProps } from './types';
 
 @Component({
-  selector: 'keyboard-arrow-right',
+  selector: 'gi-keyboard-arrow-right-icon',
   template: `
     <svg
       viewBox="0 -960 960 960"
@@ -24,7 +24,7 @@ import { IconProps } from './types';
       [attr.aria-label]="label"
       [attr.aria-hidden]="!label"
       [attr.fill]="color ?? 'currentColor'"
-      [attr.data-testid]="dataTestId ?? 'keyboard_arrow_right'"
+      [attr.data-testid]="dataTestId ?? 'keyboard-arrow-right'"
     >
       <path d="M504-480 320-664l56-56 240 240-240 240-56-56 184-184Z"></path>
     </svg>

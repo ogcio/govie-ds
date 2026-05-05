@@ -1,8 +1,11 @@
 'use client';
 import type { ComponentType } from 'react';
 import { useState } from 'react';
-import type { IconProps } from '../atoms/icons';
-import { CheckCircle, Info, Warning, Error } from '../atoms/icons';
+import type { IconProps } from '../atoms/icons/types';
+import CheckCircleIcon from '../atoms/icons/CheckCircle';
+import ErrorIcon from '../atoms/icons/Error';
+import InfoIcon from '../atoms/icons/Info';
+import WarningIcon from '../atoms/icons/Warning';
 import { cn } from '../cn.js';
 import { translate as t } from '../i18n/utility.js';
 import { IconButton } from '../icon-button/icon-button.js';
@@ -10,10 +13,10 @@ import { type AlertProps } from './types.js';
 import { alertVariants } from './variants.js';
 
 export const ALERT_VARIANT_ICONS: Record<string, ComponentType<IconProps>> = {
-  warning: (props) => <Warning {...props} />,
-  success: (props) => <CheckCircle {...props} />,
-  danger: (props) => <Error {...props} />,
-  info: (props) => <Info {...props} />,
+  warning: (props) => <WarningIcon {...props} />,
+  success: (props) => <CheckCircleIcon {...props} />,
+  danger: (props) => <ErrorIcon {...props} />,
+  info: (props) => <InfoIcon {...props} />,
 };
 
 function Alert({

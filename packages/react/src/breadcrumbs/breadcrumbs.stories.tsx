@@ -80,7 +80,7 @@ export const WithSingleItemAndIconStart: Story = {
     const listItemElements = canvas.getAllByRole('listitem');
     expect(listItemElements[0].children[0]).toHaveAttribute(
       'data-testid',
-      'keyboard_arrow_left',
+      'keyboard-arrow-left',
     );
   },
 };
