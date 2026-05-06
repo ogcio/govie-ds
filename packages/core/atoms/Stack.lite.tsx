@@ -1,7 +1,9 @@
 import { useMetadata } from '@builder.io/mitosis';
 import { tv } from 'tailwind-variants';
 import { Direction, type AlignItems, type Justify, type ResponsiveValue } from './constants';
+import type { Props as BoxProps } from './Box.lite';
 import { getAlignItems, getJustify, resolveResponsive } from './utilities';
+import GiBox from './Box.lite';
 
 useMetadata({ angular: { selector: 'gi-stack' } });
 
@@ -11,25 +13,17 @@ export type Props = {
   align?: (typeof AlignItems)[keyof typeof AlignItems];
   justify?: (typeof Justify)[keyof typeof Justify];
   wrap?: boolean;
-  role?: 'region' | 'navigation' | 'complementary' | 'search' | 'form' | 'group';
-  ariaLabel?: string;
-  ariaLabelledBy?: string;
-  className?: string;
-  id?: string;
-  styles?: Record<string, string>;
-  children?: any;
-  dataTestId?: string;
-};
+} & BoxProps;
 
 export default function Stack(props: Props) {
   return (
-    <div
+    <GiBox
       id={props.id}
       role={props.role}
-      aria-label={props.role ? props.ariaLabel : undefined}
-      aria-labelledby={props.role ? props.ariaLabelledBy : undefined}
-      style={props.styles}
-      class={stackVariants({
+      ariaLabel={props.ariaLabel}
+      ariaLabelledBy={props.ariaLabelledBy}
+      styles={props.styles}
+      className={stackVariants({
         align: getAlignItems(props.align),
         justify: getJustify(props.justify),
         wrap: props.wrap ?? false,
@@ -39,10 +33,10 @@ export default function Stack(props: Props) {
           props.className,
         ],
       })}
-      data-testid={props.dataTestId}
+      dataTestId={props.dataTestId}
     >
       {props.children}
-    </div>
+    </GiBox>
   );
 }
 

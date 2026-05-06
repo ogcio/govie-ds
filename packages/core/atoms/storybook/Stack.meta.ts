@@ -1,8 +1,8 @@
-import type { ArgTypes, StoryContext, Renderer } from 'storybook/internal/types';
+import type { StoryContext, Renderer } from 'storybook/internal/types';
 import { within, expect } from 'storybook/test';
-import type { Props } from '../Stack.lite';
 import { Direction, AlignItems, Justify } from '../constants';
-import { enumType } from './utilities';
+import { checker, enumType } from './utilities';
+import { boxMeta } from './Box.meta';
 
 export const stackMeta = {
   tags: ['autodocs'] as string[],
@@ -17,6 +17,7 @@ export const stackMeta = {
     children: 'Stack content',
   },
   argTypes: {
+    ...boxMeta.argTypes,
     direction: enumType(Direction, {
       description:
         'Flex direction. Accepts a string or a responsive breakpoint object `{ base?, xs?, sm?, md?, lg?, xl?, 2xl? }`.',
@@ -49,52 +50,7 @@ export const stackMeta = {
         defaultValue: { summary: 'false' },
       },
     },
-    role: {
-      control: false,
-      description: 'Landmark role for the container. Only set when a landmark semantic is required.',
-      table: {
-        type: {
-          summary: "'region' | 'navigation' | 'complementary' | 'search' | 'form' | 'group'",
-        },
-      },
-    },
-    ariaLabel: {
-      control: false,
-      description:
-        'Accessible label for the container. Use when the stack has a `role` prop to provide an accessible name for the landmark. Maps to `aria-label`.',
-      table: { type: { summary: 'string' } },
-    },
-    ariaLabelledBy: {
-      control: false,
-      description:
-        'Points to the id of an element that labels the container. Preferred over `ariaLabel` when a visible heading exists. Only applied when `role` is set. Maps to `aria-labelledby`.',
-      table: { type: { summary: 'string' } },
-    },
-    className: {
-      control: false,
-      description: 'Additional CSS classes to apply to the stack container.',
-      table: { type: { summary: 'string' } },
-    },
-    id: {
-      control: false,
-      description: 'Optional id for linking/targeting and aria references.',
-      table: { type: { summary: 'string' } },
-    },
-    styles: {
-      control: false,
-      description:
-        'Inline styles applied directly to the container element. Use for truly dynamic values that cannot be expressed as Tailwind classes.',
-      table: { type: { summary: 'Record<string, string>' } },
-    },
-    dataTestId: {
-      control: false,
-      description: 'Test id for targeting the element in automated tests.',
-      table: { type: { summary: 'string' } },
-    },
-    children: {
-      table: { disable: true },
-    },
-  } satisfies ArgTypes<Props>,
+  } as const,
   parameters: {
     docs: {
       description: {
@@ -107,35 +63,18 @@ export const stackMeta = {
 
 export const Default = {
   tags: ['skip-playwright'],
-  args: stackMeta.args,
-  play: async ({ canvasElement, step }: StoryContext<Renderer>) => {
+  args: {
+    ...stackMeta.args,
+    role: 'region' as const,
+    ariaLabel: 'Stack region',
+    id: 'stack-default',
+  },
+  play: async ({ canvasElement, step, args }: StoryContext<Renderer>) => {
     const canvas = within(canvasElement as HTMLElement);
+    const check = checker('stack-test', canvas, step);
 
-    await step('renders a div element', async () => {
-      const element = canvas.getByTestId('stack-test');
-      expect(element).toBeInTheDocument();
-      expect(element.tagName).toBe('DIV');
-    });
-
-    await step('has no implicit ARIA role by default', async () => {
-      const element = canvas.getByTestId('stack-test');
-      expect(element).not.toHaveAttribute('role');
-    });
-
-    await step('does not expose aria-label without a role', async () => {
-      const element = canvas.getByTestId('stack-test');
-      expect(element).not.toHaveAttribute('aria-label');
-    });
-
-    await step('does not expose aria-labelledby without a role', async () => {
-      const element = canvas.getByTestId('stack-test');
-      expect(element).not.toHaveAttribute('aria-labelledby');
-    });
-
-    await step('does not interfere with child focus order', async () => {
-      const element = canvas.getByTestId('stack-test');
-      expect(element).not.toHaveAttribute('tabindex');
-    });
+    await check.attributes({ 'aria-label': args.ariaLabel, role: args.role });
+    await check.children();
   },
 };
 
@@ -218,16 +157,15 @@ export const Responsive = {
     },
     role: 'region' as const,
     ariaLabel: 'layout region',
+    id: 'stack-responsive',
     dataTestId: 'stack-responsive-test',
   },
-  play: async ({ canvasElement, step }: StoryContext<Renderer>) => {
+  play: async ({ canvasElement, step, args }: StoryContext<Renderer>) => {
     const canvas = within(canvasElement as HTMLElement);
+    const check = checker('stack-responsive-test', canvas, step);
 
-    await step('renders the responsive stack container', async () => {
-      const element = canvas.getByTestId('stack-responsive-test');
-      expect(element).toBeInTheDocument();
-      expect(element.tagName).toBe('DIV');
-    });
+    await check.attributes({ 'aria-label': args.ariaLabel, role: args.role, id: args.id });
+    await check.children();
   },
 };
 

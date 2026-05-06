@@ -1,5 +1,6 @@
-import type { InputType } from 'storybook/internal/types';
+import type { InputType, Renderer, StoryContext } from 'storybook/internal/types';
 import _ from 'lodash';
+import { expect, type within } from 'storybook/test';
 
 /**
  * Converts an `as const` enum object into a Storybook argType with a select
@@ -36,3 +37,22 @@ export function enumType<const T extends Readonly<Record<string, string>>>(enumO
     table: options.table
   } : {}, base) satisfies InputType;
 }
+
+/**
+ * Creates a reusable test helper bound to a specific element and Storybook step runner.
+ * Returns an object with assertion methods for common play-function checks.
+ */
+export const checker = (testId: string, canvas: ReturnType<typeof within>, step: StoryContext<Renderer>['step']) => ({
+  children: async () => await step('renders children', async () => {
+    const element = canvas.getByTestId(testId);
+    expect(element.childNodes.length).toBeGreaterThan(0);
+  }),
+  attributes: async (options: Record<string, unknown>) => {
+    for (const [key, value] of _.toPairs(options)) {
+      await step(`renders ${key} attribute`, async () => {
+        const element = canvas.getByTestId(testId);
+        expect(element).toHaveAttribute(key, value);
+      });
+    }
+  }
+})

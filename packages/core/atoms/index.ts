@@ -1,3 +1,4 @@
+export { default as Box } from './Box.lite';
 export { default as Button } from './Button.lite';
 export { default as IconButton } from './IconButton.lite';
 export { default as InsetText } from './InsetText.lite';

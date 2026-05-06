@@ -2,26 +2,28 @@ import { useMetadata } from '@builder.io/mitosis';
 import { tv } from 'tailwind-variants';
 import { clamp } from './utilities';
 import { Size } from './constants';
+import type { Props as BoxProps } from './Box.lite';
+import GiBox from './Box.lite';
 
 export type Props = {
-  id?: string;
-  children?: any;
-  className?: string;
   inset?: boolean;
   gutters?: boolean;
   maxWidth?: (typeof MaxWidth)[keyof typeof MaxWidth];
-  dataTestId?: string;
-};
+} & BoxProps;
 export const MaxWidth = { ...Size, default: 'default', '2xl': '2xl', full: 'full' } as const;
 
 useMetadata({ angular: { selector: 'gi-container' } });
 
 export default function Container(props: Props) {
   return (
-    <div
+    <GiBox
       id={props.id}
-      data-testid={props.dataTestId}
-      class={styles({
+      role={props.role}
+      ariaLabel={props.ariaLabel}
+      ariaLabelledBy={props.ariaLabelledBy}
+      styles={props.styles}
+      dataTestId={props.dataTestId}
+      className={containerStyles({
         inset: props.inset ?? false,
         gutters: props.gutters ?? true,
         maxWidth: clamp(props.maxWidth, MaxWidth, MaxWidth.default),
@@ -29,11 +31,11 @@ export default function Container(props: Props) {
       })}
     >
       {props.children}
-    </div>
+    </GiBox>
   );
 }
 
-export const styles = tv({
+export const containerStyles = tv({
   base: 'gi-container gi-mx-auto',
   variants: {
     inset: {

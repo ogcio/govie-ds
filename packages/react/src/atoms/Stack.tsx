@@ -12,19 +12,13 @@ export type Props = {
   align?: (typeof AlignItems)[keyof typeof AlignItems];
   justify?: (typeof Justify)[keyof typeof Justify];
   wrap?: boolean;
-  role?: 'region' | 'navigation' | 'complementary' | 'search' | 'form' | 'group';
-  ariaLabel?: string;
-  ariaLabelledBy?: string;
-  className?: string;
-  id?: string;
-  styles?: Record<string, string>;
-  children?: any;
-  dataTestId?: string;
-};
+} & BoxProps;
 
 import { tv } from 'tailwind-variants';
 import { Direction, AlignItems, Justify, ResponsiveValue } from './constants';
+import type { Props as BoxProps } from './Box';
 import { getAlignItems, getJustify, resolveResponsive } from './utilities';
+import GiBox from './Box';
 const directionToClass = (direction: string, prefix: string): string =>
   direction === 'row' ? `${prefix}gi-flex-row` : `${prefix}gi-flex-col`;
 const gapToClass = (gap: number, prefix: string): string => `${prefix}gi-gap-${gap}`;
@@ -63,12 +57,12 @@ const stackVariants = tv({
 
 function Stack(props: Props) {
   return (
-    <div
+    <GiBox
       id={props.id}
       role={props.role}
-      aria-label={props.role ? props.ariaLabel : undefined}
-      aria-labelledby={props.role ? props.ariaLabelledBy : undefined}
-      style={props.styles}
+      ariaLabel={props.ariaLabel}
+      ariaLabelledBy={props.ariaLabelledBy}
+      styles={props.styles}
       className={stackVariants({
         align: getAlignItems(props.align),
         justify: getJustify(props.justify),
@@ -79,10 +73,10 @@ function Stack(props: Props) {
           props.className,
         ],
       })}
-      data-testid={props.dataTestId}
+      dataTestId={props.dataTestId}
     >
       {props.children}
-    </div>
+    </GiBox>
   );
 }
 

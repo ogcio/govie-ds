@@ -26,6 +26,7 @@ export { ButtonGroup, ButtonGroupItem } from './button-group/button-group.js';
 export * from './button-group/types.js';
 export { Button } from './button/button.js';
 export type { ButtonProps } from './button/types';
+export { Box, type BoxProps } from './Box.js';
 
 export {
   CardAction,

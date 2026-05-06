@@ -42,6 +42,7 @@ export const Stack: FC<StackProps> = ({
   'aria-labelledby': nativeAriaLabelledBy,
   className,
   style,
+  styles,
   id,
   hasDivider,
   fixedHeight,
@@ -64,7 +65,7 @@ export const Stack: FC<StackProps> = ({
       ariaLabelledBy={ariaLabelledBy ?? nativeAriaLabelledBy}
       className={cn(fillWidth && 'gi-w-full', className)}
       styles={{
-        ...((style ?? {}) as Record<string, string>),
+        ...((style ?? styles ?? {}) as Record<string, string>),
         ...(fixedHeight && { height: fixedHeight }),
       }}
       dataTestId={dataTestId ?? nativeDataTestId}
