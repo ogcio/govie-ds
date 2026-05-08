@@ -13,16 +13,21 @@ import {
 const meta: Meta<typeof Container> = {
   ...containerMeta,
   title: 'Layout/Container',
-  component: Container,
 };
 
 export default meta;
 
 type Story = StoryObj<typeof Container>;
 
-export const Default: Story = { ...defaultStory };
+export const Default: Story = {
+  ...defaultStory,
+  render: (props) => <Container {...props} />,
+};
 
-export const WithInset: Story = { ...withInset };
+export const WithInset: Story = {
+  ...withInset,
+  render: (props) => <Container {...props} />,
+};
 
 export const GuttersOnAndOff: Story = {
   ...guttersOnAndOff,

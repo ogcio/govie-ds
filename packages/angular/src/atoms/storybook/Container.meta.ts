@@ -1,7 +1,8 @@
 import type { StoryContext, Renderer } from 'storybook/internal/types';
-import { within, expect } from 'storybook/test';
+import { within } from 'storybook/test';
 import { MaxWidth } from '../Container';
-import { enumType } from './utilities';
+import { checker, enumType } from './utilities';
+import { boxMeta } from './Box.meta';
 export const containerMeta = {
   tags: ['autodocs'] as string[],
   title: 'Layout/Container',
@@ -10,13 +11,10 @@ export const containerMeta = {
     gutters: true,
     inset: false,
     maxWidth: MaxWidth.full,
-    dataTestId: 'govie-container'
+    dataTestId: 'container'
   },
   argTypes: {
-    children: {
-      control: 'text',
-      description: 'HTML content or other components to be rendered inside the container.'
-    },
+    ...boxMeta.argTypes,
     inset: {
       control: 'boolean',
       description: 'When `true`, applies default vertical inset padding (responsive `py` scale). Default is `false`.',
@@ -43,16 +41,7 @@ export const containerMeta = {
           summary: 'string'
         }
       }
-    }),
-    dataTestId: {
-      control: 'text',
-      description: 'Value for the `data-testid` attribute (optional).',
-      table: {
-        type: {
-          summary: 'string'
-        }
-      }
-    }
+    })
   } as const,
   parameters: {
     docs: {
@@ -66,16 +55,25 @@ export const containerMeta = {
   }
 };
 export const Default = {
-  args: containerMeta.args,
+  args: {
+    ...containerMeta.args,
+    role: 'region' as const,
+    ariaLabel: 'Main content',
+    id: 'container-id'
+  },
   play: async ({
     canvasElement,
-    step
+    step,
+    args
   }: StoryContext<Renderer>) => {
     const canvas = within(canvasElement as HTMLElement);
-    await step('Should render a container', async () => {
-      const containerElement = canvas.getByTestId('govie-container');
-      expect(containerElement).toBeInTheDocument();
+    const check = checker(args.dataTestId, canvas, step);
+    await check.attributes({
+      'aria-label': args.ariaLabel,
+      role: args.role,
+      id: args.id
     });
+    await check.children();
   }
 };
 export const WithInset = {

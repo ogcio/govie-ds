@@ -1,0 +1,53 @@
+---
+title: 'Box'
+description: 'Box Component'
+status: 'stable'
+component:
+  id: 'box'
+  status: 'stable'
+---
+
+# Box
+
+Box is the simplest layout primitive in the design system — a plain `<div>` wrapper that signals design-system membership. All styling is applied through `className` with `gi-*` Tailwind utilities. Use Box instead of bare `<div>` elements to make design-system adoption visible and consistent across your codebase.
+
+<Section current="design">
+<ComponentPreview className="gi-not-prose w-full block">
+  <Box className="gi-p-4 gi-bg-gray-100">
+    Box content with padding and background
+  </Box>
+</ComponentPreview>
+
+## Layout Composition
+
+Box works naturally alongside Container and Stack to build page layouts. Use Container for page-width constraints, Stack for flex-based flow, and Box for grouping and spacing wrappers.
+
+<ComponentPreviewLayout>
+  <ComponentPreviewItem className="h-auto w-full">
+    <Container>
+      <Stack direction="row" gap={4}>
+        <Box className="gi-p-4 gi-bg-gray-300 gi-flex-1">Box 1</Box>
+        <Box className="gi-p-4 gi-bg-gray-300 gi-flex-1">Box 2</Box>
+        <Box className="gi-p-4 gi-bg-gray-300 gi-flex-1">Box 3</Box>
+      </Stack>
+    </Container>
+  </ComponentPreviewItem>
+</ComponentPreviewLayout>
+
+## Usage
+
+Use Box as a design-system-native replacement for bare `<div>` elements. It provides no layout behaviour of its own — all styling comes from `className` with `gi-*` Tailwind utilities.
+
+### Do
+
+- Do use Box instead of bare `<div>` elements for design-system wrappers.
+- Do apply styling through `className` with `gi-*` Tailwind utilities.
+- Do use Box for simple spacing, backgrounds, and sizing wrappers.
+- Do use `role` and `ariaLabel` when Box serves as a landmark container.
+
+### Don't
+
+- Don't use Box when you need flex layout — use Stack instead.
+- Don't use inline styles — use `gi-*` Tailwind utilities via className.
+
+</Section>

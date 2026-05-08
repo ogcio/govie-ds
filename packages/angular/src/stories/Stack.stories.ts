@@ -1,3 +1,4 @@
+import { omit } from 'lodash';
 import type { StoryObj } from '@storybook/angular';
 import Stack from '../atoms/Stack';
 import {
@@ -14,6 +15,14 @@ import {
 const meta = {
   ...stackMeta,
   title: 'Layout/Stack',
+  argTypes: {
+    ...omit(stackMeta.argTypes, 'style'),
+    styles: {
+      control: false,
+      description: 'Inline styles applied directly to the container element.',
+      table: { type: { summary: 'Record<string, string>' } },
+    },
+  },
 };
 
 export default meta;

@@ -1,3 +1,4 @@
+import { omit } from 'lodash';
 import { CommonModule } from '@angular/common';
 import type { StoryObj } from '@storybook/angular';
 import Container, { MaxWidth } from '../atoms/Container';
@@ -12,6 +13,14 @@ import {
 const meta = {
   ...containerMeta,
   title: 'Layout/Container',
+  argTypes: {
+    ...omit(containerMeta.argTypes, 'style'),
+    styles: {
+      control: false,
+      description: 'Inline styles applied directly to the container element.',
+      table: { type: { summary: 'Record<string, string>' } },
+    },
+  },
 };
 
 export default meta;

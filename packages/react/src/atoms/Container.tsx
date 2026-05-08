@@ -7,25 +7,23 @@
 import * as React from 'react';
 
 export type Props = {
-  id?: string;
-  children?: any;
-  className?: string;
   inset?: boolean;
   gutters?: boolean;
   maxWidth?: (typeof MaxWidth)[keyof typeof MaxWidth];
-  dataTestId?: string;
-};
+} & BoxProps;
 
 import { tv } from 'tailwind-variants';
 import { clamp } from './utilities';
 import { Size } from './constants';
+import type { Props as BoxProps } from './Box';
+import GiBox from './Box';
 export const MaxWidth = {
   ...Size,
   default: 'default',
   '2xl': '2xl',
   full: 'full',
 } as const;
-export const styles = tv({
+export const containerStyles = tv({
   base: 'gi-container gi-mx-auto',
   variants: {
     inset: {
@@ -59,10 +57,14 @@ export const styles = tv({
 
 function Container(props: Props) {
   return (
-    <div
+    <GiBox
       id={props.id}
-      data-testid={props.dataTestId}
-      className={styles({
+      role={props.role}
+      ariaLabel={props.ariaLabel}
+      ariaLabelledBy={props.ariaLabelledBy}
+      styles={props.styles}
+      dataTestId={props.dataTestId}
+      className={containerStyles({
         inset: props.inset ?? false,
         gutters: props.gutters ?? true,
         maxWidth: clamp(props.maxWidth, MaxWidth, MaxWidth.default),
@@ -70,7 +72,7 @@ function Container(props: Props) {
       })}
     >
       {props.children}
-    </div>
+    </GiBox>
   );
 }
 
