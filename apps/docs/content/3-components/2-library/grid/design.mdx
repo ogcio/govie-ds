@@ -1,0 +1,173 @@
+---
+title: 'Grid'
+description: 'Grid Component'
+status: 'stable'
+component:
+  id: 'grid'
+  status: 'stable'
+---
+
+# Grid
+
+Grid is a flex-based layout component that distributes children into columns with responsive behaviour. By default it follows the Figma grid specification (4 columns on mobile, 6 on small, 8 on medium, 12 on large), giving designers pixel-perfect layouts out of the box.
+
+<Section current="design">
+
+<ComponentPreview className="gi-not-prose w-full block">
+  <Grid container gap={4}>
+    <Grid>
+      <div className="gi-bg-gray-300 gi-p-1 gi-text-center">1</div>
+    </Grid>
+    <Grid>
+      <div className="gi-bg-gray-300 gi-p-1 gi-text-center">2</div>
+    </Grid>
+    <Grid>
+      <div className="gi-bg-gray-300 gi-p-1 gi-text-center">3</div>
+    </Grid>
+    <Grid>
+      <div className="gi-bg-gray-300 gi-p-1 gi-text-center">4</div>
+    </Grid>
+    <Grid>
+      <div className="gi-bg-gray-300 gi-p-1 gi-text-center">5</div>
+    </Grid>
+    <Grid>
+      <div className="gi-bg-gray-300 gi-p-1 gi-text-center">6</div>
+    </Grid>
+    <Grid>
+      <div className="gi-bg-gray-300 gi-p-1 gi-text-center">7</div>
+    </Grid>
+    <Grid>
+      <div className="gi-bg-gray-300 gi-p-1 gi-text-center">8</div>
+    </Grid>
+    <Grid>
+      <div className="gi-bg-gray-300 gi-p-1 gi-text-center">9</div>
+    </Grid>
+    <Grid>
+      <div className="gi-bg-gray-300 gi-p-1 gi-text-center">10</div>
+    </Grid>
+    <Grid>
+      <div className="gi-bg-gray-300 gi-p-1 gi-text-center">11</div>
+    </Grid>
+    <Grid>
+      <div className="gi-bg-gray-300 gi-p-1 gi-text-center">12</div>
+    </Grid>
+  </Grid>
+</ComponentPreview>
+
+## Variants
+
+### Automatic Mode
+
+Without any `size` prop, children distribute evenly according to the Figma column spec. Items wrap automatically as the viewport changes.
+
+<ComponentContainer>
+  <Grid container gap={4}>
+    <Grid>
+      <div className="gi-bg-gray-300 gi-p-1 gi-text-center">1</div>
+    </Grid>
+    <Grid>
+      <div className="gi-bg-gray-300 gi-p-1 gi-text-center">2</div>
+    </Grid>
+    <Grid>
+      <div className="gi-bg-gray-300 gi-p-1 gi-text-center">3</div>
+    </Grid>
+    <Grid>
+      <div className="gi-bg-gray-300 gi-p-1 gi-text-center">4</div>
+    </Grid>
+    <Grid>
+      <div className="gi-bg-gray-300 gi-p-1 gi-text-center">5</div>
+    </Grid>
+    <Grid>
+      <div className="gi-bg-gray-300 gi-p-1 gi-text-center">6</div>
+    </Grid>
+    <Grid>
+      <div className="gi-bg-gray-300 gi-p-1 gi-text-center">7</div>
+    </Grid>
+    <Grid>
+      <div className="gi-bg-gray-300 gi-p-1 gi-text-center">8</div>
+    </Grid>
+    <Grid>
+      <div className="gi-bg-gray-300 gi-p-1 gi-text-center">9</div>
+    </Grid>
+    <Grid>
+      <div className="gi-bg-gray-300 gi-p-1 gi-text-center">10</div>
+    </Grid>
+    <Grid>
+      <div className="gi-bg-gray-300 gi-p-1 gi-text-center">11</div>
+    </Grid>
+    <Grid>
+      <div className="gi-bg-gray-300 gi-p-1 gi-text-center">12</div>
+    </Grid>
+  </Grid>
+</ComponentContainer>
+
+### Controlled Mode
+
+Use the `size` prop on items for explicit column spans. This gives full control over the layout at each breakpoint.
+
+<ComponentContainer>
+  <Grid container gap={4}>
+    <Grid size={{ xs: 4, lg: 8 }}>
+      <div className="gi-bg-gray-300 gi-p-1 gi-text-center">Main</div>
+    </Grid>
+    <Grid size={{ xs: 4, lg: 4 }}>
+      <div className="gi-bg-gray-300 gi-p-1 gi-text-center">Sidebar</div>
+    </Grid>
+  </Grid>
+</ComponentContainer>
+
+### Column Override
+
+Override the default Figma column count with the `columns` prop for simple equal-width grids.
+
+<ComponentContainer>
+  <Grid container columns={3} gap={4}>
+    <Grid>
+      <div className="gi-bg-gray-300 gi-p-1 gi-text-center">A</div>
+    </Grid>
+    <Grid>
+      <div className="gi-bg-gray-300 gi-p-1 gi-text-center">B</div>
+    </Grid>
+    <Grid>
+      <div className="gi-bg-gray-300 gi-p-1 gi-text-center">C</div>
+    </Grid>
+  </Grid>
+</ComponentContainer>
+
+## Usage
+
+Use the Grid component to create responsive multi-column layouts that align with the design system's Figma grid specification. It handles column counts, gutters, and wrapping automatically while allowing full control when needed.
+
+### Do
+
+- Use automatic mode (no `size` prop) for equal-width item grids that follow the Figma column spec.
+- Use `size` with responsive breakpoint objects for explicit layouts like main content and sidebar.
+- Use the `gap` prop for consistent spacing — it integrates with design tokens automatically.
+- Use `columns` to override the default column count when you need a simple equal grid (e.g. a 3-column card layout).
+
+<ComponentContainer>
+  <Grid container gap={4}>
+    <Grid size={{ xs: 4, lg: 8 }}>
+      <div className="gi-bg-gray-200 gi-p-1">Main content area</div>
+    </Grid>
+    <Grid size={{ xs: 4, lg: 4 }}>
+      <div className="gi-bg-gray-200 gi-p-1">Sidebar</div>
+    </Grid>
+  </Grid>
+</ComponentContainer>
+
+### Don't
+
+- Don't use Grid for single-column stacked layouts — use Stack instead.
+- Don't use raw CSS grid classes (`gi-grid-responsive`, `gi-layout-container-2-column`) when the Grid component is available.
+- Don't forget `container` on the parent — without it, the element behaves as a grid item.
+
+<ComponentContainer>
+  <Grid container gap={4}>
+    <Grid>
+      <div className="gi-bg-gray-200 gi-p-1">Item without container on parent would not layout correctly</div>
+    </Grid>
+  </Grid>
+</ComponentContainer>
+
+</Section>

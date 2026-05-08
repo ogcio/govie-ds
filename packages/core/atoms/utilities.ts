@@ -34,13 +34,16 @@ export const resolveResponsive = <T>(
   value: ResponsiveValue<T>,
   toClass: (value: T, prefix: string) => string,
 ): string => {
-  if (!_.isPlainObject(value)) {
-    return toClass(value as T, '');
+  if (!value) {
+    return '';
   }
 
-  const responsive = value as Partial<Record<BreakpointKey, T>>;
+  const entries: Partial<Record<BreakpointKey, T>> = _.isPlainObject(value)
+    ? (value as Partial<Record<BreakpointKey, T>>)
+    : { [Breakpoint.BASE]: value as T };
+
   return _.values(Breakpoint)
-    .filter((bp) => bp in responsive)
-    .map((bp) => toClass(responsive[bp] as T, bp === Breakpoint.BASE ? '' : `${bp}:`))
+    .filter((bp) => bp in entries)
+    .map((bp) => toClass(entries[bp] as T, bp === Breakpoint.BASE ? '' : `${bp}:`))
     .join(' ');
 };

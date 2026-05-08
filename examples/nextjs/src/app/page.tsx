@@ -92,9 +92,10 @@ import {
   HeaderPrimaryMenu,
   HeaderMenuItemSeparator,
   HeaderMenuItemButton,
+  Grid,
 } from '@ogcio/design-system-react';
 import { LogoWhite, LogoHarpWhite } from '@ogcio/design-system-react/logos';
-import { useCallback, useEffect, useRef, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 
 const HeaderComposable = () => {
   const [searchOpen, setSearchOpen] = useState(false);
@@ -701,7 +702,9 @@ export default function Home() {
 
                 <Box className="grid grid-cols-1 md:grid-cols-2 gap-6">
                   <Box>
-                    <h5 className="font-semibold mb-2">Radio Group</h5>
+                    <Heading as="h5" className="font-semibold mb-2">
+                      Radio Group
+                    </Heading>
                     <FormField>
                       <FormFieldLabel>Where do you live?</FormFieldLabel>
                       <FormFieldHint>Select your city</FormFieldHint>
@@ -714,7 +717,9 @@ export default function Home() {
                   </Box>
 
                   <Box>
-                    <h5 className="font-semibold mb-2">Checkbox Group</h5>
+                    <Heading as="h5" className="font-semibold mb-2">
+                      Checkbox Group
+                    </Heading>
                     <InputCheckboxGroup groupId="nationality">
                       <InputCheckbox value="irish" label="Irish" />
                       <InputCheckbox value="british" label="British" />
@@ -723,7 +728,9 @@ export default function Home() {
                   </Box>
 
                   <Box>
-                    <h5 className="font-semibold mb-2">Combobox</h5>
+                    <Heading as="h5" className="font-semibold mb-2">
+                      Combobox
+                    </Heading>
                     <Form>
                       <Combobox>
                         <DropdownItem options={ComboBoxProps.organisationOptions}>Organisations</DropdownItem>
@@ -734,7 +741,9 @@ export default function Home() {
                   </Box>
 
                   <Box>
-                    <h5 className="font-semibold mb-2">Text Area</h5>
+                    <Heading as="h5" className="font-semibold mb-2">
+                      Text Area
+                    </Heading>
                     <StandaloneTextAreaExample />
                   </Box>
                 </Box>
@@ -757,17 +766,23 @@ export default function Home() {
 
                 <Box className="grid grid-cols-1 md:grid-cols-2 gap-6">
                   <Box>
-                    <h5 className="font-semibold mb-2">Text Input with Clear Button</h5>
+                    <Heading as="h5" className="font-semibold mb-2">
+                      Text Input with Clear Button
+                    </Heading>
                     <InputText clearButtonEnabled placeholder="Type something..." />
                   </Box>
 
                   <Box>
-                    <h5 className="font-semibold mb-2">Password Input</h5>
+                    <Heading as="h5" className="font-semibold mb-2">
+                      Password Input
+                    </Heading>
                     <InputPassword placeholder="Enter password" />
                   </Box>
 
                   <Box>
-                    <h5 className="font-semibold mb-2">Autocomplete</h5>
+                    <Heading as="h5" className="font-semibold mb-2">
+                      Autocomplete
+                    </Heading>
                     <Autocomplete>
                       <AutocompleteItem value="option1">Option 1</AutocompleteItem>
                       <AutocompleteItem value="option2">Option 2</AutocompleteItem>
@@ -776,7 +791,9 @@ export default function Home() {
                   </Box>
 
                   <Box>
-                    <h5 className="font-semibold mb-2">Select (New)</h5>
+                    <Heading as="h5" className="font-semibold mb-2">
+                      Select (New)
+                    </Heading>
                     <SelectNext>
                       <SelectItemNext value="">Choose an option</SelectItemNext>
                       <SelectItemNext value="option1">Option 1</SelectItemNext>
@@ -786,7 +803,9 @@ export default function Home() {
                   </Box>
 
                   <Box>
-                    <h5 className="font-semibold mb-2">Single Checkbox</h5>
+                    <Heading as="h5" className="font-semibold mb-2">
+                      Single Checkbox
+                    </Heading>
                     <InputCheckbox id="single-checkbox" value="agree" label="I agree to the terms" />
                   </Box>
                 </Box>
@@ -804,7 +823,9 @@ export default function Home() {
 
                 <Box className="space-y-6">
                   <Box>
-                    <h5 className="font-semibold mb-2">Breadcrumbs</h5>
+                    <Heading as="h5" className="font-semibold mb-2">
+                      Breadcrumbs
+                    </Heading>
                     <Breadcrumbs>
                       <BreadcrumbLink href="/home">Home</BreadcrumbLink>
                       <BreadcrumbEllipsis />
@@ -814,7 +835,9 @@ export default function Home() {
                   </Box>
 
                   <Box>
-                    <h5 className="font-semibold mb-2">Breadcrumbs with Next.js Links</h5>
+                    <Heading as="h5" className="font-semibold mb-2">
+                      Breadcrumbs with Next.js Links
+                    </Heading>
                     <Breadcrumbs>
                       <BreadcrumbLink asChild>
                         <NextLink href="/home">Home</NextLink>
@@ -828,7 +851,9 @@ export default function Home() {
                   </Box>
 
                   <Box>
-                    <h5 className="font-semibold mb-2">Links</h5>
+                    <Heading as="h5" className="font-semibold mb-2">
+                      Links
+                    </Heading>
                     <Box className="space-x-4">
                       <Link href="https://www.google.com" external={true}>
                         External Link
@@ -843,7 +868,9 @@ export default function Home() {
                   </Box>
 
                   <Box>
-                    <h5 className="font-semibold mb-2">Pagination</h5>
+                    <Heading as="h5" className="font-semibold mb-2">
+                      Pagination
+                    </Heading>
                     <Pagination currentPage={5} onPageChange={() => {}} totalPages={10} />
                   </Box>
                 </Box>
@@ -861,7 +888,9 @@ export default function Home() {
 
                 <Box className="space-y-6">
                   <Box>
-                    <h5 className="font-semibold mb-2">Cards</h5>
+                    <Heading as="h5" className="font-semibold mb-2">
+                      Cards
+                    </Heading>
                     <Box className="grid grid-cols-1 md:grid-cols-2 gap-4">
                       <Card
                         action={{
@@ -906,7 +935,9 @@ export default function Home() {
                     </Box>
                   </Box>
                   <Box>
-                    <h5 className="font-semibold mb-2">Stack Layout</h5>
+                    <Heading as="h5" className="font-semibold mb-2">
+                      Stack Layout
+                    </Heading>
                     <Box className="h-[200px] bg-gray-50 overflow-auto p-2">
                       <Stack
                         direction={{ sm: 'column', base: 'row' }}
@@ -929,12 +960,39 @@ export default function Home() {
                   </Box>
 
                   <Box>
-                    <h5 className="font-semibold mb-2">Lists</h5>
+                    <Heading as="h5" className="font-semibold mb-2">
+                      Grid (Responsive Size)
+                    </Heading>
+                    <Grid container gap={4} dataTestId="grid-responsive-size">
+                      <Grid size={{ base: 4, md: 6, lg: 8 }} dataTestId="grid-rsize-content">
+                        <Box className="gi-bg-gray-300 gi-p-1 gi-flex gi-items-center gi-justify-center gi-font-primary gi-rounded">
+                          Content
+                        </Box>
+                      </Grid>
+                      <Grid size={{ base: 4, xs: 4, sm: 2, md: 2, lg: 4 }} dataTestId="grid-rsize-sidebar">
+                        <Box className="gi-bg-gray-300 gi-p-1 gi-flex gi-items-center gi-justify-center gi-font-primary gi-rounded">
+                          Sidebar
+                        </Box>
+                      </Grid>
+                      <Grid size={{ base: 4, xs: 4, sm: 6, md: 8, lg: 12 }} dataTestId="grid-rsize-footer">
+                        <Box className="gi-bg-gray-300 gi-p-1 gi-flex gi-items-center gi-justify-center gi-font-primary gi-rounded">
+                          Footer
+                        </Box>
+                      </Grid>
+                    </Grid>
+                  </Box>
+
+                  <Box>
+                    <Heading as="h5" className="font-semibold mb-2">
+                      Lists
+                    </Heading>
                     <List items={['Item 1', 'Item 2', 'Item 3']} type="bullet" />
                   </Box>
 
                   <Box>
-                    <h5 className="font-semibold mb-2">Typography</h5>
+                    <Heading as="h5" className="font-semibold mb-2">
+                      Typography
+                    </Heading>
                     <Box className="space-y-2">
                       <Heading as="h2">Heading H2</Heading>
                       <Heading as="h3">Heading H3</Heading>
@@ -973,7 +1031,9 @@ export default function Home() {
 
                 <Box className="space-y-6">
                   <Box>
-                    <h5 className="font-semibold mb-2">Alerts</h5>
+                    <Heading as="h5" className="font-semibold mb-2">
+                      Alerts
+                    </Heading>
                     <Alert title="Info Alert" dismissible>
                       <Paragraph>This is an informational alert message.</Paragraph>
                     </Alert>
@@ -985,7 +1045,9 @@ export default function Home() {
                   </Box>
 
                   <Box>
-                    <h5 className="font-semibold mb-2">Toast Notifications</h5>
+                    <Heading as="h5" className="font-semibold mb-2">
+                      Toast Notifications
+                    </Heading>
                     <Box className="flex flex-wrap gap-2">
                       <Button onClick={() => handleCreateToast('Success', 'success')}>Success Toast</Button>
                       <Button onClick={() => handleCreateToast('Error', 'danger')}>Error Toast</Button>
@@ -1002,7 +1064,9 @@ export default function Home() {
                   </Box>
 
                   <Box>
-                    <h5 className="font-semibold mb-2">Progress Indicators</h5>
+                    <Heading as="h5" className="font-semibold mb-2">
+                      Progress Indicators
+                    </Heading>
                     <Box className="space-y-4">
                       <Box>
                         <h6 className="text-sm font-medium mb-2">Progress Bar</h6>
@@ -1061,12 +1125,16 @@ export default function Home() {
                   </Box>
 
                   <Box>
-                    <h5 className="font-semibold mb-2">Phase Banner </h5>
+                    <Heading as="h5" className="font-semibold mb-2">
+                      Phase Banner{' '}
+                    </Heading>
                     <PhaseBanner level="Alpha">This is a pre-release version</PhaseBanner>
                   </Box>
 
                   <Box>
-                    <h5 className="font-semibold mb-2">Modals and Drawers</h5>
+                    <Heading as="h5" className="font-semibold mb-2">
+                      Modals and Drawers
+                    </Heading>
                     <Box className="flex gap-4">
                       <Modal triggerButton={<Button>Open Modal</Button>} aria-describedby="Modal example">
                         <ModalTitle>Modal Title</ModalTitle>
@@ -1114,7 +1182,9 @@ export default function Home() {
 
                 <Box className="space-y-6">
                   <Box>
-                    <h5 className="font-semibold mb-2">Table</h5>
+                    <Heading as="h5" className="font-semibold mb-2">
+                      Table
+                    </Heading>
                     <Box className="w-full overflow-x-auto">
                       <Table className="min-w-full table-auto">
                         <TableHead>
@@ -1191,7 +1261,9 @@ export default function Home() {
                   </Box>
 
                   <Box>
-                    <h5 className="font-semibold mb-2">Summary List</h5>
+                    <Heading as="h5" className="font-semibold mb-2">
+                      Summary List
+                    </Heading>
                     <SummaryList withBorder>
                       <SummaryListHeader label="Summary card heading">
                         <SummaryListAction href="/action">Action 1</SummaryListAction>
@@ -1224,7 +1296,9 @@ export default function Home() {
                   </Box>
 
                   <Box>
-                    <h5 className="font-semibold mb-2">Chips and Tags</h5>
+                    <Heading as="h5" className="font-semibold mb-2">
+                      Chips and Tags
+                    </Heading>
                     <Box className="flex flex-wrap gap-2">
                       <Chip label="Default Chip" onClose={() => {}} />
                       <Chip label="Closable Chip" onClose={() => {}} />
@@ -1233,7 +1307,9 @@ export default function Home() {
                   </Box>
 
                   <Box>
-                    <h5 className="font-semibold mb-2">Details (Collapsible)</h5>
+                    <Heading as="h5" className="font-semibold mb-2">
+                      Details (Collapsible)
+                    </Heading>
                     <Details label="Help with Nationality">
                       We need to know your nationality so we can work out which elections you&apos;re entitled to vote
                       in. If you cannot provide your nationality, you&apos;ll have to send copies of identity documents
@@ -1254,7 +1330,9 @@ export default function Home() {
 
           <Box className="space-y-4">
             <Box>
-              <h5 className="font-semibold mb-2">Button Variants</h5>
+              <Heading as="h5" className="font-semibold mb-2">
+                Button Variants
+              </Heading>
               <Box className="flex flex-wrap gap-2">
                 <Button variant="primary">Primary</Button>
                 <Button variant="secondary">Secondary</Button>
@@ -1262,7 +1340,9 @@ export default function Home() {
             </Box>
 
             <Box>
-              <h5 className="font-semibold mb-2">Button Sizes</h5>
+              <Heading as="h5" className="font-semibold mb-2">
+                Button Sizes
+              </Heading>
               <Box className="flex items-center gap-2">
                 <Button size="small">Small</Button>
                 <Button size="medium">Medium</Button>
@@ -1271,7 +1351,9 @@ export default function Home() {
             </Box>
 
             <Box>
-              <h5 className="font-semibold mb-2">Icons and Icon Buttons</h5>
+              <Heading as="h5" className="font-semibold mb-2">
+                Icons and Icon Buttons
+              </Heading>
               <Box className="flex items-center gap-4">
                 <Icon icon="thumb_up" />
                 <Icon icon="home" />

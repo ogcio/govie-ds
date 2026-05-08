@@ -1,5 +1,5 @@
 import type { StoryContext, Renderer } from 'storybook/internal/types';
-import { within, expect } from 'storybook/test';
+import { within } from 'storybook/test';
 import { Direction, AlignItems, Justify } from '../constants';
 import { checker, enumType } from './utilities';
 import { boxMeta } from './Box.meta';
@@ -73,6 +73,7 @@ export const Default = {
     const canvas = within(canvasElement as HTMLElement);
     const check = checker('stack-test', canvas, step);
 
+    await check.exists('DIV');
     await check.attributes({ 'aria-label': args.ariaLabel, role: args.role });
     await check.children();
   },
@@ -84,9 +85,7 @@ export const Directions = {
 
     await step('renders all direction variants', async () => {
       for (const direction of Object.values(Direction)) {
-        const element = canvas.getByTestId(`stack-direction-${direction}`);
-        expect(element).toBeInTheDocument();
-        expect(element.tagName).toBe('DIV');
+        await checker(`stack-direction-${direction}`, canvas, step).exists('DIV');
       }
     });
   },
@@ -98,9 +97,7 @@ export const Alignments = {
 
     await step('renders all alignment variants', async () => {
       for (const alignment of Object.values(AlignItems)) {
-        const element = canvas.getByTestId(`stack-align-${alignment}`);
-        expect(element).toBeInTheDocument();
-        expect(element.tagName).toBe('DIV');
+        await checker(`stack-align-${alignment}`, canvas, step).exists('DIV');
       }
     });
   },
@@ -112,9 +109,7 @@ export const Justifications = {
 
     await step('renders all justification variants', async () => {
       for (const justification of Object.values(Justify)) {
-        const element = canvas.getByTestId(`stack-justify-${justification}`);
-        expect(element).toBeInTheDocument();
-        expect(element.tagName).toBe('DIV');
+        await checker(`stack-justify-${justification}`, canvas, step).exists('DIV');
       }
     });
   },
@@ -126,9 +121,7 @@ export const GapScale = {
 
     await step('renders stacks with different gap values', async () => {
       for (const gap of [0, 1, 2, 4, 6, 8]) {
-        const element = canvas.getByTestId(`stack-gap-${gap}`);
-        expect(element).toBeInTheDocument();
-        expect(element.tagName).toBe('DIV');
+        await checker(`stack-gap-${gap}`, canvas, step).exists('DIV');
       }
     });
   },
@@ -164,6 +157,7 @@ export const Responsive = {
     const canvas = within(canvasElement as HTMLElement);
     const check = checker('stack-responsive-test', canvas, step);
 
+    await check.exists('DIV');
     await check.attributes({ 'aria-label': args.ariaLabel, role: args.role, id: args.id });
     await check.children();
   },
@@ -173,10 +167,6 @@ export const Wrapped = {
   play: async ({ canvasElement, step }: StoryContext<Renderer>) => {
     const canvas = within(canvasElement as HTMLElement);
 
-    await step('renders a wrapped stack container', async () => {
-      const element = canvas.getByTestId('stack-wrap-test');
-      expect(element).toBeInTheDocument();
-      expect(element.tagName).toBe('DIV');
-    });
+    await checker('stack-wrap-test', canvas, step).exists('DIV');
   },
 };

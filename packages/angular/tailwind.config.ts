@@ -11,6 +11,10 @@ const config: Config = {
     'gi-prose',
     'gi-not-prose',
     { pattern: /gap-./, variants: ['xs', 'sm', 'md', 'lg', 'xl', '2xl'] },
+    {
+      pattern: /gi-grid-(columns|gap|span)-\d+/,
+      variants: ['xs', 'sm', 'md', 'lg', 'xl', '2xl'],
+    },
     { pattern: /flex-(row|col)$/, variants: ['xs', 'sm', 'md', 'lg', 'xl', '2xl'] },
   ],
 };

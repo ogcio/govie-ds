@@ -1,0 +1,222 @@
+import type { ArgTypes, StoryContext, Renderer } from 'storybook/internal/types';
+import { within } from 'storybook/test';
+import type { Props } from '../Grid';
+import { boxMeta } from './Box.meta';
+import { checker } from './utilities';
+export const gridMeta = {
+  tags: ['autodocs'] as string[],
+  title: 'Layout/Grid',
+  args: {
+    container: true,
+    gap: 4 as const,
+    dataTestId: 'grid-test'
+  },
+  argTypes: {
+    ...boxMeta.argTypes,
+    container: {
+      control: false,
+      description: 'When true, activates grid container mode with responsive defaults. When false, the element acts as a grid item.',
+      table: {
+        type: {
+          summary: 'boolean'
+        },
+        defaultValue: {
+          summary: 'false'
+        }
+      }
+    },
+    columns: {
+      control: {
+        type: 'number'
+      },
+      description: 'Override the number of columns. Accepts a number (0–12) or a responsive breakpoint object `{ base?, xs?, sm?, md?, lg?, xl?, 2xl? }`. Without this prop the container defaults to `{ base: 4, sm: 6, md: 8, lg: 12 }`.',
+      table: {
+        type: {
+          summary: 'number (0–12) | ResponsiveValue<number>'
+        }
+      }
+    },
+    gap: {
+      control: {
+        type: 'number'
+      },
+      description: 'Gap between grid items using the spacing scale (0–12). Accepts a number or a responsive breakpoint object `{ base?, xs?, sm?, md?, lg?, xl?, 2xl? }`.',
+      table: {
+        type: {
+          summary: 'number (0–12) | ResponsiveValue<number>'
+        },
+        defaultValue: {
+          summary: '0'
+        }
+      }
+    },
+    size: {
+      control: {
+        type: 'number'
+      },
+      description: 'Column span for a grid item. Accepts a number (0–12) or a responsive breakpoint object `{ base?, xs?, sm?, md?, lg?, xl?, 2xl? }`. Overrides the default auto-distribution.',
+      table: {
+        type: {
+          summary: 'number (0–12) | ResponsiveValue<number>'
+        }
+      }
+    }
+  } satisfies ArgTypes<Props>,
+  parameters: {
+    layout: 'padded',
+    docs: {
+      description: {
+        component: 'Grid is a flex-based layout component with two modes: container (distributes children into columns, defaulting to `{ base: 4, sm: 6, md: 8, lg: 12 }`) and item (controls column span). Supports responsive breakpoint objects for columns, gap, and size.'
+      }
+    }
+  }
+};
+export const Default = {
+  tags: ['skip-playwright'],
+  args: {
+    ...gridMeta.args,
+    gap: 1 as const,
+    columns: 4 as const,
+    role: 'region' as const,
+    ariaLabel: 'grid layout',
+    dataTestId: 'grid-default'
+  },
+  play: async ({
+    canvasElement,
+    step,
+    args
+  }: StoryContext<Renderer>) => {
+    const canvas = within(canvasElement as HTMLElement);
+    const check = checker(args.dataTestId, canvas, step);
+    await check.exists('DIV');
+    await check.attributes({
+      'aria-label': args.ariaLabel,
+      role: args.role
+    });
+    await check.children();
+    await step('renders all 12 child items', async () => {
+      for (let index = 1; index <= 12; index++) {
+        await checker(`grid-item-${index}`, canvas, step).exists('DIV');
+      }
+    });
+  }
+};
+export const ResponsiveGap = {
+  args: {
+    ...gridMeta.args,
+    gap: {
+      base: 1,
+      xs: 2,
+      sm: 3,
+      md: 4,
+      lg: 6
+    } as const,
+    dataTestId: 'grid-responsive-gap'
+  },
+  play: async ({
+    canvasElement,
+    step
+  }: StoryContext<Renderer>) => {
+    const canvas = within(canvasElement as HTMLElement);
+    const check = checker('grid-responsive-gap', canvas, step);
+    await check.exists('DIV');
+    await check.children();
+    await step('renders all 8 child items', async () => {
+      for (let index = 1; index <= 8; index++) {
+        await checker(`grid-gap-item-${index}`, canvas, step).exists('DIV');
+      }
+    });
+  }
+};
+export const ResponsiveColumns = {
+  args: {
+    ...gridMeta.args,
+    columns: {
+      base: 1,
+      xs: 2,
+      sm: 3,
+      md: 4,
+      lg: 6,
+      xl: 12
+    } as const,
+    gap: 2 as const,
+    dataTestId: 'grid-responsive-columns'
+  },
+  play: async ({
+    canvasElement,
+    step
+  }: StoryContext<Renderer>) => {
+    const canvas = within(canvasElement as HTMLElement);
+    const check = checker('grid-responsive-columns', canvas, step);
+    await check.exists('DIV');
+    await check.children();
+    await step('renders all 12 child items', async () => {
+      for (let index = 1; index <= 12; index++) {
+        await checker(`grid-rcol-${index}`, canvas, step).exists('DIV');
+      }
+    });
+  }
+};
+export const ResponsiveSize = {
+  args: {
+    ...gridMeta.args,
+    gap: 2 as const,
+    dataTestId: 'grid-responsive-size'
+  },
+  play: async ({
+    canvasElement,
+    step
+  }: StoryContext<Renderer>) => {
+    const canvas = within(canvasElement as HTMLElement);
+    const check = checker('grid-responsive-size', canvas, step);
+    await check.exists('DIV');
+    await step('renders content and sidebar items', async () => {
+      for (const id of ['grid-rsize-content', 'grid-rsize-sidebar', 'grid-rsize-footer']) {
+        await checker(id, canvas, step).exists('DIV');
+      }
+    });
+  }
+};
+export const Nested = {
+  args: {
+    ...gridMeta.args,
+    gap: 4 as const,
+    dataTestId: 'grid-nested'
+  },
+  play: async ({
+    canvasElement,
+    step
+  }: StoryContext<Renderer>) => {
+    const canvas = within(canvasElement as HTMLElement);
+    const check = checker('grid-nested', canvas, step);
+    await check.exists('DIV');
+    await checker('grid-nested-inner', canvas, step).exists('DIV');
+    await step('renders nested child items', async () => {
+      for (let index = 1; index <= 4; index++) {
+        await checker(`grid-nested-item-${index}`, canvas, step).exists('DIV');
+      }
+    });
+  }
+};
+export const ColumnOverride = {
+  tags: ['skip-playwright'],
+  args: {
+    ...gridMeta.args,
+    columns: 3 as const,
+    dataTestId: 'grid-override'
+  },
+  play: async ({
+    canvasElement,
+    step
+  }: StoryContext<Renderer>) => {
+    const canvas = within(canvasElement as HTMLElement);
+    const check = checker('grid-override', canvas, step);
+    await check.exists('DIV');
+    await check.children();
+    await step('renders all 3 child items', async () => {
+      for (let index = 1; index <= 3; index++) {
+        await checker(`grid-col-${index}`, canvas, step).exists('DIV');
+      }
+    });
+  }
+}
