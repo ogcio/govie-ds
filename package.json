@@ -84,5 +84,10 @@
     "react-color": "^2.19.3",
     "react-hook-form": "^7.58.1",
     "tinycolor2": "^1.6.0"
+  },
+  "pnpm": {
+    "overrides": {
+      "apisauce>axios": "~1.16.0"
+    }
   }
 }

@@ -4,6 +4,9 @@ settings:
   autoInstallPeers: true
   excludeLinksFromLockfile: false
 
+overrides:
+  apisauce>axios: ~1.16.0
+
 importers:
 
   .:
@@ -530,13 +533,20 @@ importers:
   packages/build/prettier-config: {}
 
   packages/core:
+    dependencies:
+      lodash:
+        specifier: ^4.18.1
+        version: 4.18.1
+      storybook:
+        specifier: ^10.3.3
+        version: 10.3.3(@testing-library/dom@10.4.1)(prettier@3.8.1)(react-dom@19.2.4(react@19.2.4))(react@19.2.4)
     devDependencies:
       '@builder.io/mitosis':
-        specifier: ^0.12.1
-        version: 0.12.1(less@4.6.4)(postcss-load-config@4.0.2(postcss@8.5.14))(postcss@8.5.14)(sass@1.98.0)
+        specifier: ^0.13.0
+        version: 0.13.0(less@4.6.4)(postcss-load-config@4.0.2(postcss@8.5.14))(postcss@8.5.14)(sass@1.98.0)
       '@builder.io/mitosis-cli':
-        specifier: ^0.12.1
-        version: 0.12.1(less@4.6.4)(postcss-load-config@4.0.2(postcss@8.5.14))(postcss@8.5.14)(sass@1.98.0)(typescript@5.9.3)
+        specifier: ^0.13.0
+        version: 0.13.0(less@4.6.4)(postcss-load-config@4.0.2(postcss@8.5.14))(postcss@8.5.14)(sass@1.98.0)(typescript@5.9.3)
       '@prettier/sync':
         specifier: ^0.6.1
         version: 0.6.1(prettier@3.8.1)
@@ -546,17 +556,11 @@ importers:
       chokidar-cli:
         specifier: ^3.0.0
         version: 3.0.0
-      lodash:
-        specifier: ^4.18.1
-        version: 4.18.1
-      storybook:
-        specifier: ^10.3.3
-        version: 10.3.3(@testing-library/dom@10.4.1)(prettier@3.8.1)(react-dom@19.2.4(react@19.2.4))(react@19.2.4)
       tsx:
-        specifier: ^4.19.2
+        specifier: ^4.21.0
         version: 4.21.0
       typescript:
-        specifier: ^5.4.5
+        specifier: ^5.9.3
         version: 5.9.3
 
   packages/design/figma:
@@ -1926,12 +1930,12 @@ packages:
     resolution: {integrity: sha512-6zABk/ECA/QYSCQ1NGiVwwbQerUCZ+TQbp64Q3AgmfNvurHH0j8TtXa1qbShXA6qqkpAj4V5W8pP6mLe1mcMqA==}
     engines: {node: '>=18'}
 
-  '@builder.io/mitosis-cli@0.12.1':
-    resolution: {integrity: sha512-XzCZkerE+ZgZ4hbliHhA4z81vSMhO7s3ZS9aUTeZCuQNjw5yBQEirs5vlNJL6PBQipgQRJLtVwuhQOXxODe5ow==}
+  '@builder.io/mitosis-cli@0.13.0':
+    resolution: {integrity: sha512-n4ItCUsY7e5VjhTA7Vs+l36xQG2BfMTo4diRdsxKs7/xOlr57wL6FhT2UAkf02GqgEMsOQtWvP+0RvFXwSvuaQ==}
     hasBin: true
 
-  '@builder.io/mitosis@0.12.1':
-    resolution: {integrity: sha512-6jwAbTUb5fnYqGVe1Ll4JWrJmJJEkAkG1T4k9Jx+z9/7SzBzNnwo19EXEKlSE8FnHod0i6+sx5j/tcWoD9fplw==}
+  '@builder.io/mitosis@0.13.0':
+    resolution: {integrity: sha512-vuBOpduBnBdy9vL3VA65cuBIf7LPN9VoB4D4veMi/TQCdXDkeKdTgIhYeP7YioIEnINBmTWgoDBnj6wEARIwuw==}
 
   '@builder.io/sdk@2.2.9':
     resolution: {integrity: sha512-B9DUNKYIkGXzvEm4ciZNjTQ6cdfuZXZ0gViKEXeAiIR/L6aDXdCyIlcPFtBOepVZQiI5fZNQAlbWY1pDgaW4BA==}
@@ -5341,8 +5345,8 @@ packages:
     resolution: {integrity: sha512-zBQouZixDTbo3jMGqHKyePxYxr1e5W8UdTmBQ7sNtaA9M2bE32daxxPLS/jojhKOHxQ7LWwPjfiwf/fhaJWzlg==}
     engines: {node: '>=4'}
 
-  axios@1.13.6:
-    resolution: {integrity: sha512-ChTCHMouEe2kn713WHbQGcuYrr6fXTBiu460OTwWrWob16g1bXn4vtz07Ope7ewMozJAnEquLk5lWQWtBig9DQ==}
+  axios@1.16.0:
+    resolution: {integrity: sha512-6hp5CwvTPlN2A31g5dxnwAX0orzM7pmCRDLnZSX772mv8WDqICwFjowHuPs04Mc8deIld1+ejhtaMn5vp6b+1w==}
 
   axobject-query@4.1.0:
     resolution: {integrity: sha512-qIj0G9wZbMGNLjLmg1PT6v2mE9AH2zlnADJD/2tC6E00hgmhUOfEB6greHPAfLRSufHqROIUTkw6E+M3lH0PTQ==}
@@ -6897,8 +6901,8 @@ packages:
   focus-trap@7.8.0:
     resolution: {integrity: sha512-/yNdlIkpWbM0ptxno3ONTuf+2g318kh2ez3KSeZN5dZ8YC6AAmgeWz+GasYYiBJPFaYcSAPeu4GfhUaChzIJXA==}
 
-  follow-redirects@1.15.11:
-    resolution: {integrity: sha512-deG2P0JfjrTxl50XGCDyfI97ZGVCxIpfKYmfyrQ54n5FO/0gfIES8C/Psl6kWVDolizcaaxZJnTS0QSMxvnsBQ==}
+  follow-redirects@1.16.0:
+    resolution: {integrity: sha512-y5rN/uOsadFT/JfYwhxRS5R7Qce+g3zG97+JrtFZlC9klX/W5hD7iiLzScI4nZqUS7DNUdhPgw4xI8W2LuXlUw==}
     engines: {node: '>=4.0'}
     peerDependencies:
       debug: '*'
@@ -9393,8 +9397,9 @@ packages:
     resolution: {integrity: sha512-llQsMLSUDUPT44jdrU/O37qlnifitDP+ZwrmmZcoSKyLKvtZxpyV0n2/bD/N4tBAAZ/gJEdZU7KMraoK1+XYAg==}
     engines: {node: '>= 0.10'}
 
-  proxy-from-env@1.1.0:
-    resolution: {integrity: sha512-D+zkORCbA9f1tdWRK0RaCR3GPv50cMxcrz4X8k5LTSUD1Dkw47mKJEZQNunItRTkWwgtaUSo1RVFRIG9ZXiFYg==}
+  proxy-from-env@2.1.0:
+    resolution: {integrity: sha512-cJ+oHTW1VAEa8cJslgmUZrc+sjRKgAKl3Zyse6+PV38hZe/V6Z14TbCuXcan9F9ghlz4QrFr2c92TNF82UkYHA==}
+    engines: {node: '>=10'}
 
   prr@1.0.1:
     resolution: {integrity: sha512-yPw4Sng1gWghHQWj0B3ZggWUm4qVbPwPFcRG8KyxiU7J2OHFSoEHKS+EZ3fv5l1t9CyCiop6l/ZYeWbrgoQejw==}
@@ -12807,9 +12812,9 @@ snapshots:
 
   '@bcoe/v8-coverage@1.0.2': {}
 
-  '@builder.io/mitosis-cli@0.12.1(less@4.6.4)(postcss-load-config@4.0.2(postcss@8.5.14))(postcss@8.5.14)(sass@1.98.0)(typescript@5.9.3)':
+  '@builder.io/mitosis-cli@0.13.0(less@4.6.4)(postcss-load-config@4.0.2(postcss@8.5.14))(postcss@8.5.14)(sass@1.98.0)(typescript@5.9.3)':
     dependencies:
-      '@builder.io/mitosis': 0.12.1(less@4.6.4)(postcss-load-config@4.0.2(postcss@8.5.14))(postcss@8.5.14)(sass@1.98.0)
+      '@builder.io/mitosis': 0.13.0(less@4.6.4)(postcss-load-config@4.0.2(postcss@8.5.14))(postcss@8.5.14)(sass@1.98.0)
       cosmiconfig: 9.0.0(typescript@5.9.3)
       debug: 4.4.3
       dedent: 0.7.0
@@ -12836,7 +12841,7 @@ snapshots:
       - supports-color
       - typescript
 
-  '@builder.io/mitosis@0.12.1(less@4.6.4)(postcss-load-config@4.0.2(postcss@8.5.14))(postcss@8.5.14)(sass@1.98.0)':
+  '@builder.io/mitosis@0.13.0(less@4.6.4)(postcss-load-config@4.0.2(postcss@8.5.14))(postcss@8.5.14)(sass@1.98.0)':
     dependencies:
       '@angular/compiler': 11.2.14
       '@babel/core': 7.14.5
@@ -16286,7 +16291,7 @@ snapshots:
 
   apisauce@3.2.2(debug@4.4.3):
     dependencies:
-      axios: 1.13.6(debug@4.4.3)
+      axios: 1.16.0(debug@4.4.3)
     transitivePeerDependencies:
       - debug
 
@@ -16456,11 +16461,11 @@ snapshots:
 
   axe-core@4.11.3: {}
 
-  axios@1.13.6(debug@4.4.3):
+  axios@1.16.0(debug@4.4.3):
     dependencies:
-      follow-redirects: 1.15.11(debug@4.4.3)
+      follow-redirects: 1.16.0(debug@4.4.3)
       form-data: 4.0.5
-      proxy-from-env: 1.1.0
+      proxy-from-env: 2.1.0
     transitivePeerDependencies:
       - debug
 
@@ -17708,7 +17713,7 @@ snapshots:
       '@typescript-eslint/parser': 8.57.2(eslint@9.39.4(jiti@2.6.1))(typescript@5.9.3)
       eslint: 9.39.4(jiti@2.6.1)
       eslint-import-resolver-node: 0.3.9
-      eslint-import-resolver-typescript: 3.10.1(eslint-plugin-import-x@4.16.2(@typescript-eslint/utils@8.59.0(eslint@9.39.4(jiti@2.6.1))(typescript@5.9.3))(eslint-import-resolver-node@0.3.9)(eslint@9.39.4(jiti@2.6.1)))(eslint-plugin-import@2.32.0)(eslint@9.39.4(jiti@2.6.1))
+      eslint-import-resolver-typescript: 3.10.1(eslint-plugin-import-x@4.16.2(@typescript-eslint/utils@8.59.0(eslint@9.39.4(jiti@2.6.1))(typescript@5.9.3))(eslint-import-resolver-node@0.3.9)(eslint@9.39.4(jiti@2.6.1)))(eslint-plugin-import@2.32.0(@typescript-eslint/parser@8.57.2(eslint@9.39.4(jiti@2.6.1))(typescript@5.9.3))(eslint@9.39.4(jiti@2.6.1)))(eslint@9.39.4(jiti@2.6.1))
       eslint-plugin-import: 2.32.0(@typescript-eslint/parser@8.57.2(eslint@9.39.4(jiti@2.6.1))(typescript@5.9.3))(eslint-import-resolver-typescript@3.10.1)(eslint@9.39.4(jiti@2.6.1))
       eslint-plugin-jsx-a11y: 6.10.2(eslint@9.39.4(jiti@2.6.1))
       eslint-plugin-react: 7.37.5(eslint@9.39.4(jiti@2.6.1))
@@ -17735,7 +17740,7 @@ snapshots:
     transitivePeerDependencies:
       - supports-color
 
-  eslint-import-resolver-typescript@3.10.1(eslint-plugin-import-x@4.16.2(@typescript-eslint/utils@8.59.0(eslint@9.39.4(jiti@2.6.1))(typescript@5.9.3))(eslint-import-resolver-node@0.3.9)(eslint@9.39.4(jiti@2.6.1)))(eslint-plugin-import@2.32.0)(eslint@9.39.4(jiti@2.6.1)):
+  eslint-import-resolver-typescript@3.10.1(eslint-plugin-import-x@4.16.2(@typescript-eslint/utils@8.59.0(eslint@9.39.4(jiti@2.6.1))(typescript@5.9.3))(eslint-import-resolver-node@0.3.9)(eslint@9.39.4(jiti@2.6.1)))(eslint-plugin-import@2.32.0(@typescript-eslint/parser@8.57.2(eslint@9.39.4(jiti@2.6.1))(typescript@5.9.3))(eslint@9.39.4(jiti@2.6.1)))(eslint@9.39.4(jiti@2.6.1)):
     dependencies:
       '@nolyfill/is-core-module': 1.0.39
       debug: 4.4.3
@@ -17774,7 +17779,7 @@ snapshots:
       '@typescript-eslint/parser': 8.57.2(eslint@9.39.4(jiti@2.6.1))(typescript@5.9.3)
       eslint: 9.39.4(jiti@2.6.1)
       eslint-import-resolver-node: 0.3.9
-      eslint-import-resolver-typescript: 3.10.1(eslint-plugin-import-x@4.16.2(@typescript-eslint/utils@8.59.0(eslint@9.39.4(jiti@2.6.1))(typescript@5.9.3))(eslint-import-resolver-node@0.3.9)(eslint@9.39.4(jiti@2.6.1)))(eslint-plugin-import@2.32.0)(eslint@9.39.4(jiti@2.6.1))
+      eslint-import-resolver-typescript: 3.10.1(eslint-plugin-import-x@4.16.2(@typescript-eslint/utils@8.59.0(eslint@9.39.4(jiti@2.6.1))(typescript@5.9.3))(eslint-import-resolver-node@0.3.9)(eslint@9.39.4(jiti@2.6.1)))(eslint-plugin-import@2.32.0(@typescript-eslint/parser@8.57.2(eslint@9.39.4(jiti@2.6.1))(typescript@5.9.3))(eslint@9.39.4(jiti@2.6.1)))(eslint@9.39.4(jiti@2.6.1))
     transitivePeerDependencies:
       - supports-color
 
@@ -18396,7 +18401,7 @@ snapshots:
     dependencies:
       tabbable: 6.4.0
 
-  follow-redirects@1.15.11(debug@4.4.3):
+  follow-redirects@1.16.0(debug@4.4.3):
     optionalDependencies:
       debug: 4.4.3
 
@@ -19014,7 +19019,7 @@ snapshots:
   http-proxy@1.18.1(debug@4.4.3):
     dependencies:
       eventemitter3: 4.0.7
-      follow-redirects: 1.15.11(debug@4.4.3)
+      follow-redirects: 1.16.0(debug@4.4.3)
       requires-port: 1.0.0
     transitivePeerDependencies:
       - debug
@@ -21437,7 +21442,7 @@ snapshots:
       forwarded: 0.2.0
       ipaddr.js: 1.9.1
 
-  proxy-from-env@1.1.0: {}
+  proxy-from-env@2.1.0: {}
 
   prr@1.0.1:
     optional: true
