@@ -2,7 +2,7 @@ import type { Meta, StoryObj } from '@storybook/react-vite';
 import { within, expect } from 'storybook/test';
 import { Icon } from '../icon/icon.js';
 import { Link } from '../link/link.js';
-import { SectionBreak } from '../section-break/section-break.js';
+import { Divider } from '../Divider';
 import { Stack } from '../stack/stack.js';
 import { Footer } from './footer.js';
 import { generateSvgPlaceholderDataUrl } from '../utils/placeholder.js';
@@ -52,10 +52,7 @@ export const CompleteFooter: Story = {
       >
         <div className="gi-col-span-4 md:gi-col-span-4 lg:gi-col-span-3">
           <h3 className="gi-heading-sm gi-mb-4">Services</h3>
-          <SectionBreak
-            color="gi-border-color-border-system-neutral-subtle"
-            size="md"
-          />
+          <Divider className="gi-border-color-border-system-neutral-subtle gi-my-4" />
           <ul className="gi-space-y-2">
             <li>
               <Link
@@ -88,10 +85,7 @@ export const CompleteFooter: Story = {
         </div>
         <div className="gi-col-span-4 md:gi-col-span-4 lg:gi-col-span-3">
           <h3 className="gi-heading-sm gi-mb-4">Departments</h3>
-          <SectionBreak
-            color="gi-border-color-border-system-neutral-subtle"
-            size="md"
-          />
+          <Divider className="gi-border-color-border-system-neutral-subtle gi-my-4" />
           <ul className="gi-space-y-2">
             <li>
               <Link
@@ -124,10 +118,7 @@ export const CompleteFooter: Story = {
         </div>
         <div className="gi-col-span-4 md:gi-col-span-4 lg:gi-col-span-3">
           <h3 className="gi-heading-sm gi-mb-4">Publications</h3>
-          <SectionBreak
-            color="gi-border-color-border-system-neutral-subtle"
-            size="md"
-          />
+          <Divider className="gi-border-color-border-system-neutral-subtle gi-my-4" />
           <ul className="gi-space-y-2">
             <li>
               <Link noColor href="/publications/reports" aria-label="Reports">
@@ -156,10 +147,7 @@ export const CompleteFooter: Story = {
         </div>
         <div className="gi-col-span-4 md:gi-col-span-4 lg:gi-col-span-3">
           <h3 className="gi-heading-sm gi-mb-4">Contact</h3>
-          <SectionBreak
-            color="gi-border-color-border-system-neutral-subtle"
-            size="md"
-          />
+          <Divider className="gi-border-color-border-system-neutral-subtle gi-my-4" />
           <ul className="gi-space-y-2">
             <li>
               <Link

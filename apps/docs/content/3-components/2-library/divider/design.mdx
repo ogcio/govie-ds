@@ -1,0 +1,71 @@
+---
+title: 'Divider'
+description: 'Divider Component'
+status: 'stable'
+component:
+  id: 'divider'
+  status: 'stable'
+---
+
+# Divider
+
+A pure visual separator that renders a thin line between content sections. The Divider has no margin or spacing of its own — spacing is controlled by the parent layout.
+
+<Section current="design">
+
+<ComponentPreview>
+  <Divider />
+</ComponentPreview>
+
+## Variants
+
+### Horizontal
+
+The default orientation. Renders a full-width horizontal line.
+
+<ComponentPreviewLayout>
+  <ComponentPreviewItem className="w-full">
+    <Divider />
+  </ComponentPreviewItem>
+</ComponentPreviewLayout>
+
+### Vertical
+
+Renders a vertical line that fills the height of its parent container. The parent must define a height (e.g. via flex or a fixed height).
+
+<ComponentPreviewLayout>
+  <ComponentPreviewItem className="w-full">
+    <Stack direction="row" gap={4} className="gi-h-20">
+      <Box className="p-4">Left</Box>
+      <Divider orientation="vertical" />
+      <Box className="p-4">Right</Box>
+    </Stack>
+  </ComponentPreviewItem>
+</ComponentPreviewLayout>
+
+### Inset
+
+Proportionally indents the divider from the edges, useful for visually grouping content within a list or card.
+
+<ComponentPreviewLayout>
+  <ComponentPreviewItem className="w-full">
+    <Divider inset />
+  </ComponentPreviewItem>
+</ComponentPreviewLayout>
+
+## Usage
+
+Use the Divider to visually separate content sections. It works best inside flex or grid layouts where the parent controls spacing.
+
+### Do
+
+- Use Divider to create a thematic break between sections of content.
+- Control spacing around the Divider using the parent layout's gap or padding.
+- Use the `inset` prop when the divider should not extend to the full width.
+
+### Don't
+
+- Don't add margins directly to the Divider — use the parent's spacing instead.
+- Don't use Divider as a decorative border on a container — use CSS borders instead.
+
+</Section>

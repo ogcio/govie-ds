@@ -11,7 +11,7 @@ import type { LogoProps } from '../common/types.js';
 import Container from '../atoms/Container.js';
 import { translate as t } from '../i18n/utility.js';
 import Anchor from '../primitives/anchor.js';
-import { SectionBreak } from '../section-break/section-break.js';
+import { Divider } from '../Divider';
 
 export type FooterProps = {
   primarySlot?: ReactNode;
@@ -96,10 +96,7 @@ export function Footer({
           )}
 
           {primarySlot && secondarySlot && (
-            <SectionBreak
-              color="gi-border-color-border-system-neutral-subtle"
-              size="lg"
-            />
+            <Divider className="gi-border-color-border-system-neutral-subtle gi-my-8" />
           )}
 
           <div

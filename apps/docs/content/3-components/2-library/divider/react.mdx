@@ -1,0 +1,73 @@
+---
+title: 'Divider'
+description: 'Divider React Component'
+status: 'stable'
+component:
+  id: 'divider-react'
+  link: '/story/layout-divider--default'
+  status: 'stable'
+  properties:
+    - name: 'DividerProps'
+      fields:
+        - name: 'orientation'
+          ofType: '"horizontal" | "vertical"'
+          description: 'Sets the direction of the divider line. Defaults to horizontal.'
+          required: false
+        - name: 'inset'
+          ofType: 'boolean'
+          description: 'When true, proportionally indents the divider from the edges.'
+          required: false
+        - name: 'className'
+          ofType: 'string'
+          description: 'Custom class name to apply to the divider element.'
+          required: false
+        - name: 'style'
+          ofType: 'React.CSSProperties'
+          description: 'Inline styles applied directly to the element. Use for truly dynamic values that cannot be expressed as Tailwind classes. Alias: `styles`.'
+          required: false
+        - name: 'id'
+          ofType: 'string'
+          description: 'Optional id for the divider element.'
+          required: false
+        - name: 'dataTestId'
+          ofType: 'string'
+          description: 'Test id for targeting the element in automated tests.'
+          required: false
+  stories:
+    - name: 'default'
+      url: '/story/layout-divider--default'
+    - name: 'vertical'
+      url: '/story/layout-divider--vertical'
+    - name: 'inset'
+      url: '/story/layout-divider--inset'
+---
+
+# Divider
+
+A pure visual separator that renders a thin line between content sections. The Divider has no margin or spacing of its own — spacing is controlled by the parent layout.
+
+<Section current="react">
+
+<ComponentPreview>
+  <Divider />
+</ComponentPreview>
+
+## Examples
+
+### Default
+
+<StorybookFrame componentId="divider-react" story="default" />
+
+### Vertical
+
+<StorybookFrame componentId="divider-react" story="vertical" />
+
+### Inset
+
+<StorybookFrame componentId="divider-react" story="inset" />
+
+## Properties
+
+<ComponentPropertiesTable componentId="divider-react" />
+
+</Section>

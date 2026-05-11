@@ -23,6 +23,7 @@ const baseTabs = [
       'character-count',
       'library/text',
       'box',
+      'divider',
     ],
   },
   {

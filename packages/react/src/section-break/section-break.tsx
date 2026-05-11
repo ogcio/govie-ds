@@ -7,6 +7,7 @@ export type SectionBreakProps = {
   color?: string;
 } & React.HtmlHTMLAttributes<HTMLHRElement>;
 
+/** @deprecated Use `<Divider>` instead. */
 export function SectionBreak({
   size = 'sm',
   color = 'gi-border-gray-400',
