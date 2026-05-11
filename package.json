@@ -35,9 +35,11 @@
     "gen:licenses": "sh scripts/licenses.sh"
   },
   "lint-staged": {
-    "**/*.{js,ts,tsx}": ["eslint"],
-    "apps/docs/**/*.mdx": [
-      "pnpm -F @ogcio/design-system-docs run lint:spelling"
+    "**/*.{js,ts,tsx}": [
+      "eslint"
+    ],
+    "**/*": [
+      "prettier --check --ignore-unknown"
     ]
   },
   "devDependencies": {
@@ -84,5 +86,10 @@
     "react-color": "^2.19.3",
     "react-hook-form": "^7.58.1",
     "tinycolor2": "^1.6.0"
+  },
+  "pnpm": {
+    "overrides": {
+      "apisauce>axios": "~1.16.0"
+    }
   }
 }
