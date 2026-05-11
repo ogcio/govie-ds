@@ -22,16 +22,14 @@ export default function Grid(props: Props) {
       ariaLabel={props.ariaLabel}
       ariaLabelledBy={props.ariaLabelledBy}
       styles={props.styles}
-      className={
-        props.container
-          ? _.compact([
-              'gi-grid-container',
-              getGridClasses(props.columns ?? DEFAULT_COLUMNS, 'gi-grid-columns'),
-              getGridClasses(props.gap, 'gi-grid-gap'),
-              props.className,
-            ]).join(' ')
-          : _.compact(['gi-grid-item', getGridClasses(props.size, 'gi-grid-span'), props.className]).join(' ')
-      }
+      className={_.compact([
+        props.container &&
+          `gi-grid-container ${getGridClasses(props.columns ?? DEFAULT_COLUMNS, 'gi-grid-columns')}
+        ${getGridClasses(props.gap, 'gi-grid-gap')}`,
+
+        (!_.isNil(props.size) || !props.container) && `gi-grid-item ${getGridClasses(props.size, 'gi-grid-span')}`,
+        props.className,
+      ]).join(' ')}
       dataTestId={props.dataTestId}
     >
       {props.children}

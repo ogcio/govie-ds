@@ -39,14 +39,13 @@ const getGridClasses = (value: ResponsiveValue<SpacingScale> | undefined, prefix
       [ariaLabelledBy]="ariaLabelledBy"
       [styles]="styles"
       [className]="
-        container
-          ? _.compact([
-              'gi-grid-container',
-              getGridClasses(columns ?? DEFAULT_COLUMNS, 'gi-grid-columns'),
-              getGridClasses(gap, 'gi-grid-gap'),
-              className,
-            ]).join(' ')
-          : _.compact(['gi-grid-item', getGridClasses(size, 'gi-grid-span'), className]).join(' ')
+        _.compact([
+          container &&
+            \`gi-grid-container \${getGridClasses(columns ?? DEFAULT_COLUMNS, 'gi-grid-columns')}
+                \${getGridClasses(gap, 'gi-grid-gap')}\`,
+          (!_.isNil(size) || !container) && \`gi-grid-item \${getGridClasses(size, 'gi-grid-span')}\`,
+          className,
+        ]).join(' ')
       "
       [dataTestId]="dataTestId"
       ><ng-content></ng-content
@@ -75,7 +74,7 @@ export default class Grid {
   @Input() container!: Props['container'];
   @Input() columns!: Props['columns'];
   @Input() gap!: Props['gap'];
-  @Input() className!: Props['className'];
   @Input() size!: Props['size'];
+  @Input() className!: Props['className'];
   @Input() dataTestId!: Props['dataTestId'];
 }

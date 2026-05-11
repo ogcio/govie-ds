@@ -11,19 +11,19 @@ component:
       fields:
         - name: 'container'
           ofType: 'boolean'
-          description: 'When true, activates grid container mode with responsive Figma defaults. When false, the element acts as a grid item.'
+          description: 'When true, activates grid container mode with responsive defaults (4 columns on mobile, 6 on small, 8 on medium, 12 on large). When false, the element acts as a grid item.'
           required: false
         - name: 'columns'
-          ofType: 'number | ResponsiveValue<number>'
-          description: 'Override the number of columns. Accepts a number or a responsive breakpoint object.'
+          ofType: 'number 1–12 | ResponsiveValue<1–12>'
+          description: 'Override the number of columns (1–12). Accepts a number or a responsive breakpoint object.'
           required: false
         - name: 'gap'
-          ofType: 'number | ResponsiveValue<number>'
-          description: 'Gap between grid items in Tailwind spacing scale (0–12). Accepts a number or a responsive breakpoint object.'
+          ofType: 'number 0–12 | ResponsiveValue<0–12>'
+          description: 'Gap between grid items using the spacing scale (0–12). Accepts a number or a responsive breakpoint object.'
           required: false
         - name: 'size'
-          ofType: 'number | ResponsiveValue<number>'
-          description: 'Column span for a grid item. Accepts a number or a responsive breakpoint object.'
+          ofType: 'number 1–12 | ResponsiveValue<1–12>'
+          description: 'Column span for a grid item. Accepts a number (1–12) or a responsive breakpoint object. Overrides the default auto-distribution.'
           required: false
         - name: 'role'
           ofType: '"region" | "navigation" | "complementary" | "search" | "form"'
@@ -66,13 +66,13 @@ component:
       url: '/story/layout-grid--responsive-columns'
     - name: 'responsive-size'
       url: '/story/layout-grid--responsive-size'
-    - name: 'column-override'
-      url: '/story/layout-grid--column-override'
+    - name: 'custom-columns'
+      url: '/story/layout-grid--custom-columns'
 ---
 
 # Grid
 
-Grid is a flex-based layout component with two modes: **container** (distributes children according to the Figma column spec by default) and **item** (controls column span). It supports responsive breakpoint objects for columns, gap, and size.
+Grid is a flex-based layout component with two modes: **container** (distributes children according to the default column specification) and **item** (controls column span). It supports responsive breakpoint objects for columns, gap, and size.
 
 <Section current="react">
 
@@ -134,9 +134,9 @@ Grid is a flex-based layout component with two modes: **container** (distributes
 
 <StorybookFrame componentId="grid-react" story="responsive-size" />
 
-### Column Override
+### Custom Columns
 
-<StorybookFrame componentId="grid-react" story="column-override" />
+<StorybookFrame componentId="grid-react" story="custom-columns" />
 
 ## Properties
 

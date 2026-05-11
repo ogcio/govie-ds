@@ -7,7 +7,7 @@ import {
   ResponsiveColumns as gridResponsiveColumns,
   ResponsiveSize as gridResponsiveSize,
   Nested as gridNested,
-  ColumnOverride as gridColumnOverride,
+  CustomColumns as gridCustomColumns,
 } from '../atoms/storybook/Grid.meta';
 
 const meta = {
@@ -112,19 +112,17 @@ export const Nested: StoryObj = {
   render: (props) => ({
     props: {
       ...props,
-      mainSize: { xs: 4, lg: 8 },
-      sidebarSize: { xs: 4, lg: 4 },
+      mainSize: { base: 4, lg: 8 },
+      sidebarSize: { base: 4, lg: 4 },
     },
     moduleMetadata: { imports: [Grid] },
     template: `
       <gi-grid [container]="true" [gap]="gap" [dataTestId]="dataTestId">
-        <gi-grid [size]="mainSize">
-          <gi-grid [container]="true" [gap]="2" [dataTestId]="'grid-nested-inner'">
-            <gi-grid className="${ITEM_CLASSES}" [dataTestId]="'grid-nested-item-1'">1</gi-grid>
-            <gi-grid className="${ITEM_CLASSES}" [dataTestId]="'grid-nested-item-2'">2</gi-grid>
-            <gi-grid className="${ITEM_CLASSES}" [dataTestId]="'grid-nested-item-3'">3</gi-grid>
-            <gi-grid className="${ITEM_CLASSES}" [dataTestId]="'grid-nested-item-4'">4</gi-grid>
-          </gi-grid>
+        <gi-grid [container]="true" [size]="mainSize" [gap]="2" [dataTestId]="'grid-nested-inner'">
+          <gi-grid className="${ITEM_CLASSES}" [dataTestId]="'grid-nested-item-1'">1</gi-grid>
+          <gi-grid className="${ITEM_CLASSES}" [dataTestId]="'grid-nested-item-2'">2</gi-grid>
+          <gi-grid className="${ITEM_CLASSES}" [dataTestId]="'grid-nested-item-3'">3</gi-grid>
+          <gi-grid className="${ITEM_CLASSES}" [dataTestId]="'grid-nested-item-4'">4</gi-grid>
         </gi-grid>
         <gi-grid [size]="sidebarSize" className="${ITEM_CLASSES}">5</gi-grid>
       </gi-grid>
@@ -132,8 +130,8 @@ export const Nested: StoryObj = {
   }),
 };
 
-export const ColumnOverride: StoryObj = {
-  ...gridColumnOverride,
+export const CustomColumns: StoryObj = {
+  ...gridCustomColumns,
   render: (props) => ({
     props,
     moduleMetadata: { imports: [Grid] },

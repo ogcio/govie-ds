@@ -79,7 +79,7 @@ export const Default = {
   }: StoryContext<Renderer>) => {
     const canvas = within(canvasElement as HTMLElement);
     const check = checker('stack-test', canvas, step);
-    await check.exists('DIV');
+    await check.is('div');
     await check.attributes({
       'aria-label': args.ariaLabel,
       role: args.role
@@ -95,7 +95,7 @@ export const Directions = {
     const canvas = within(canvasElement as HTMLElement);
     await step('renders all direction variants', async () => {
       for (const direction of Object.values(Direction)) {
-        await checker(`stack-direction-${direction}`, canvas, step).exists('DIV');
+        await checker(`stack-direction-${direction}`, canvas, step).is('div');
       }
     });
   }
@@ -108,7 +108,7 @@ export const Alignments = {
     const canvas = within(canvasElement as HTMLElement);
     await step('renders all alignment variants', async () => {
       for (const alignment of Object.values(AlignItems)) {
-        await checker(`stack-align-${alignment}`, canvas, step).exists('DIV');
+        await checker(`stack-align-${alignment}`, canvas, step).is('div');
       }
     });
   }
@@ -121,7 +121,7 @@ export const Justifications = {
     const canvas = within(canvasElement as HTMLElement);
     await step('renders all justification variants', async () => {
       for (const justification of Object.values(Justify)) {
-        await checker(`stack-justify-${justification}`, canvas, step).exists('DIV');
+        await checker(`stack-justify-${justification}`, canvas, step).is('div');
       }
     });
   }
@@ -134,7 +134,7 @@ export const GapScale = {
     const canvas = within(canvasElement as HTMLElement);
     await step('renders stacks with different gap values', async () => {
       for (const gap of [0, 1, 2, 4, 6, 8]) {
-        await checker(`stack-gap-${gap}`, canvas, step).exists('DIV');
+        await checker(`stack-gap-${gap}`, canvas, step).is('div');
       }
     });
   }
@@ -172,7 +172,7 @@ export const Responsive = {
   }: StoryContext<Renderer>) => {
     const canvas = within(canvasElement as HTMLElement);
     const check = checker('stack-responsive-test', canvas, step);
-    await check.exists('DIV');
+    await check.is('div');
     await check.attributes({
       'aria-label': args.ariaLabel,
       role: args.role,
@@ -187,6 +187,6 @@ export const Wrapped = {
     step
   }: StoryContext<Renderer>) => {
     const canvas = within(canvasElement as HTMLElement);
-    await checker('stack-wrap-test', canvas, step).exists('DIV');
+    await checker('stack-wrap-test', canvas, step).is('div');
   }
 }

@@ -9,7 +9,7 @@ component:
 
 # Grid
 
-Grid is a flex-based layout component that distributes children into columns with responsive behaviour. By default it follows the Figma grid specification (4 columns on mobile, 6 on small, 8 on medium, 12 on large), giving designers pixel-perfect layouts out of the box.
+Grid is a flex-based layout component that distributes children into columns with responsive behaviour. By default it follows the design system grid specification (4 columns on mobile, 6 on small, 8 on medium, 12 on large), giving designers pixel-perfect layouts out of the box.
 
 <Section current="design">
 
@@ -58,7 +58,7 @@ Grid is a flex-based layout component that distributes children into columns wit
 
 ### Automatic Mode
 
-Without any `size` prop, children distribute evenly according to the Figma column spec. Items wrap automatically as the viewport changes.
+Without any `size` prop, children distribute evenly according to the default column specification. Items wrap automatically as the viewport changes.
 
 <ComponentContainer>
   <Grid container gap={4}>
@@ -118,7 +118,7 @@ Use the `size` prop on items for explicit column spans. This gives full control 
 
 ### Column Override
 
-Override the default Figma column count with the `columns` prop for simple equal-width grids.
+Override the default column count with the `columns` prop for simple equal-width grids.
 
 <ComponentContainer>
   <Grid container columns={3} gap={4}>
@@ -136,11 +136,11 @@ Override the default Figma column count with the `columns` prop for simple equal
 
 ## Usage
 
-Use the Grid component to create responsive multi-column layouts that align with the design system's Figma grid specification. It handles column counts, gutters, and wrapping automatically while allowing full control when needed.
+Use the Grid component to create responsive multi-column layouts that align with the design system's grid specification. It handles column counts, gutters, and wrapping automatically while allowing full control when needed.
 
 ### Do
 
-- Use automatic mode (no `size` prop) for equal-width item grids that follow the Figma column spec.
+- Use automatic mode (no `size` prop) for equal-width item grids that follow the default column specification.
 - Use `size` with responsive breakpoint objects for explicit layouts like main content and sidebar.
 - Use the `gap` prop for consistent spacing — it integrates with design tokens automatically.
 - Use `columns` to override the default column count when you need a simple equal grid (e.g. a 3-column card layout).

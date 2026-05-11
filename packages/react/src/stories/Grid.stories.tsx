@@ -8,7 +8,7 @@ import {
   ResponsiveColumns as gridResponsiveColumns,
   ResponsiveSize as gridResponsiveSize,
   Nested as gridNested,
-  ColumnOverride as gridColumnOverride,
+  CustomColumns as customGrid,
 } from '../atoms/storybook/Grid.meta';
 
 const meta: Meta<typeof Grid> = {
@@ -107,18 +107,21 @@ export const Nested: Story = {
   ...gridNested,
   render: (props) => (
     <Grid {...props}>
-      <Grid size={{ base: 4, lg: 8 }}>
-        <Grid container gap={2 as const} dataTestId="grid-nested-inner">
-          {_.map(_.range(1, 5), (index) => (
-            <Grid
-              key={index}
-              className={itemClasses}
-              dataTestId={`grid-nested-item-${index}`}
-            >
-              {index}
-            </Grid>
-          ))}
-        </Grid>
+      <Grid
+        container
+        size={{ base: 4, lg: 8 }}
+        gap={2 as const}
+        dataTestId="grid-nested-inner"
+      >
+        {_.map(_.range(1, 5), (index) => (
+          <Grid
+            key={index}
+            className={itemClasses}
+            dataTestId={`grid-nested-item-${index}`}
+          >
+            {index}
+          </Grid>
+        ))}
       </Grid>
       <Grid size={{ base: 4, lg: 4 }} className={itemClasses}>
         5
@@ -127,8 +130,8 @@ export const Nested: Story = {
   ),
 };
 
-export const ColumnOverride: Story = {
-  ...gridColumnOverride,
+export const CustomColumns: Story = {
+  ...customGrid,
   render: (props) => (
     <Grid {...props}>
       {_.map(_.range(1, 4), (index) => (

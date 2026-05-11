@@ -26,9 +26,9 @@ export const gridMeta = {
     columns: {
       control: { type: 'number' },
       description:
-        'Override the number of columns. Accepts a number (0–12) or a responsive breakpoint object `{ base?, xs?, sm?, md?, lg?, xl?, 2xl? }`. Without this prop the container defaults to `{ base: 4, sm: 6, md: 8, lg: 12 }`.',
+        'Override the number of columns. Accepts a number (1–12) or a responsive breakpoint object `{ base?, xs?, sm?, md?, lg?, xl?, 2xl? }`. Without this prop the container defaults to `{ base: 4, sm: 6, md: 8, lg: 12 }`.',
       table: {
-        type: { summary: 'number (0–12) | ResponsiveValue<number>' },
+        type: { summary: 'number (1–12) | ResponsiveValue<1–12>' },
       },
     },
     gap: {
@@ -36,16 +36,16 @@ export const gridMeta = {
       description:
         'Gap between grid items using the spacing scale (0–12). Accepts a number or a responsive breakpoint object `{ base?, xs?, sm?, md?, lg?, xl?, 2xl? }`.',
       table: {
-        type: { summary: 'number (0–12) | ResponsiveValue<number>' },
+        type: { summary: 'number (0–12) | ResponsiveValue<0–12>' },
         defaultValue: { summary: '0' },
       },
     },
     size: {
       control: { type: 'number' },
       description:
-        'Column span for a grid item. Accepts a number (0–12) or a responsive breakpoint object `{ base?, xs?, sm?, md?, lg?, xl?, 2xl? }`. Overrides the default auto-distribution.',
+        'Column span for a grid item. Accepts a number (1–12) or a responsive breakpoint object `{ base?, xs?, sm?, md?, lg?, xl?, 2xl? }`. Overrides the default auto-distribution.',
       table: {
-        type: { summary: 'number (0–12) | ResponsiveValue<number>' },
+        type: { summary: 'number (1–12) | ResponsiveValue<1–12>' },
       },
     },
   } satisfies ArgTypes<Props>,
@@ -74,13 +74,13 @@ export const Default = {
     const canvas = within(canvasElement as HTMLElement);
 
     const check = checker(args.dataTestId, canvas, step);
-    await check.exists('DIV');
+    await check.is('div');
     await check.attributes({ 'aria-label': args.ariaLabel, role: args.role });
     await check.children();
 
     await step('renders all 12 child items', async () => {
       for (let index = 1; index <= 12; index++) {
-        await checker(`grid-item-${index}`, canvas, step).exists('DIV');
+        await checker(`grid-item-${index}`, canvas, step).is('div');
       }
     });
   },
@@ -96,12 +96,12 @@ export const ResponsiveGap = {
     const canvas = within(canvasElement as HTMLElement);
 
     const check = checker('grid-responsive-gap', canvas, step);
-    await check.exists('DIV');
+    await check.is('div');
     await check.children();
 
     await step('renders all 8 child items', async () => {
       for (let index = 1; index <= 8; index++) {
-        await checker(`grid-gap-item-${index}`, canvas, step).exists('DIV');
+        await checker(`grid-gap-item-${index}`, canvas, step).is('div');
       }
     });
   },
@@ -118,12 +118,12 @@ export const ResponsiveColumns = {
     const canvas = within(canvasElement as HTMLElement);
 
     const check = checker('grid-responsive-columns', canvas, step);
-    await check.exists('DIV');
+    await check.is('div');
     await check.children();
 
     await step('renders all 12 child items', async () => {
       for (let index = 1; index <= 12; index++) {
-        await checker(`grid-rcol-${index}`, canvas, step).exists('DIV');
+        await checker(`grid-rcol-${index}`, canvas, step).is('div');
       }
     });
   },
@@ -139,11 +139,11 @@ export const ResponsiveSize = {
     const canvas = within(canvasElement as HTMLElement);
 
     const check = checker('grid-responsive-size', canvas, step);
-    await check.exists('DIV');
+    await check.is('div');
 
     await step('renders content and sidebar items', async () => {
       for (const id of ['grid-rsize-content', 'grid-rsize-sidebar', 'grid-rsize-footer']) {
-        await checker(id, canvas, step).exists('DIV');
+        await checker(id, canvas, step).is('div');
       }
     });
   },
@@ -159,35 +159,35 @@ export const Nested = {
     const canvas = within(canvasElement as HTMLElement);
 
     const check = checker('grid-nested', canvas, step);
-    await check.exists('DIV');
+    await check.is('div');
 
-    await checker('grid-nested-inner', canvas, step).exists('DIV');
+    await checker('grid-nested-inner', canvas, step).is('div');
 
     await step('renders nested child items', async () => {
       for (let index = 1; index <= 4; index++) {
-        await checker(`grid-nested-item-${index}`, canvas, step).exists('DIV');
+        await checker(`grid-nested-item-${index}`, canvas, step).is('div');
       }
     });
   },
 };
 
-export const ColumnOverride = {
+export const CustomColumns = {
   tags: ['skip-playwright'],
   args: {
     ...gridMeta.args,
     columns: 3 as const,
-    dataTestId: 'grid-override',
+    dataTestId: 'grid-custom-columns',
   },
   play: async ({ canvasElement, step }: StoryContext<Renderer>) => {
     const canvas = within(canvasElement as HTMLElement);
 
-    const check = checker('grid-override', canvas, step);
-    await check.exists('DIV');
+    const check = checker('grid-custom-columns', canvas, step);
+    await check.is('div');
     await check.children();
 
     await step('renders all 3 child items', async () => {
       for (let index = 1; index <= 3; index++) {
-        await checker(`grid-col-${index}`, canvas, step).exists('DIV');
+        await checker(`grid-col-${index}`, canvas, step).is('div');
       }
     });
   },
