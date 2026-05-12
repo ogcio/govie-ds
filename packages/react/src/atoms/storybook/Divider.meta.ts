@@ -92,8 +92,7 @@ export const Default = {
     step
   }: StoryContext<Renderer>) => {
     const canvas = within(canvasElement as HTMLElement);
-    const check = checker('divider-test', canvas, step);
-    await check.attributes({
+    await checker('divider-test', canvas, step).attributes({
       id: 'divider-example'
     });
     await step('renders as native <hr> with separator role', async () => {
@@ -125,21 +124,8 @@ export const Vertical = {
     step
   }: StoryContext<Renderer>) => {
     const canvas = within(canvasElement as HTMLElement);
-    const check = checker('divider-vertical-test', canvas, step);
-    await check.attributes({
+    await checker('divider-vertical-test', canvas, step).attributes({
       'aria-orientation': Orientation.VERTICAL
-    });
-    await step('renders as native <hr> with separator role', async () => {
-      const element = canvas.getByRole('separator');
-      expect(element.tagName.toLowerCase()).toBe('hr');
-    });
-    await step('has no accessible name', async () => {
-      const element = canvas.getByRole('separator');
-      expect(element).not.toHaveAccessibleName();
-    });
-    await step('is not focusable', async () => {
-      const element = canvas.getByRole('separator');
-      expect(element).not.toHaveAttribute('tabindex');
     });
   }
 };

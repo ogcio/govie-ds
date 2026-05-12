@@ -42,7 +42,7 @@ export const Small: Story = {
     await step('should have correct text size classes for "sm"', async () => {
       const canvas = within(canvasElement);
       const separatorElement = canvas.getByRole('separator');
-      expect(separatorElement).toHaveClass('gi-section-break-sm');
+      expect(separatorElement).toHaveClass('gi-m-0');
     });
   },
 };
@@ -55,7 +55,7 @@ export const Medium: Story = {
     await step('should have correct text size classes for "md"', async () => {
       const canvas = within(canvasElement);
       const separatorElement = canvas.getByRole('separator');
-      expect(separatorElement).toHaveClass('gi-section-break-md');
+      expect(separatorElement).toHaveClass('gi-my-4');
     });
   },
 };
@@ -68,7 +68,7 @@ export const Large: Story = {
     await step('should have correct text size classes for "lg"', async () => {
       const canvas = within(canvasElement);
       const separatorElement = canvas.getByRole('separator');
-      expect(separatorElement).toHaveClass('gi-section-break-lg');
+      expect(separatorElement).toHaveClass('gi-my-8');
     });
   },
 };
@@ -81,7 +81,7 @@ export const ExtraLarge: Story = {
     await step('should have correct text size classes for "xl"', async () => {
       const canvas = within(canvasElement);
       const separatorElement = canvas.getByRole('separator');
-      expect(separatorElement).toHaveClass('gi-section-break-xl');
+      expect(separatorElement).toHaveClass('gi-my-12');
     });
   },
 };
