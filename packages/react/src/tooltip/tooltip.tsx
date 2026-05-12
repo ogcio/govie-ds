@@ -1,5 +1,6 @@
 'use client';
-import { ReactNode, useState, useId, useEffect, useCallback } from 'react';
+import type { ReactNode } from 'react';
+import { useState, useId, useEffect, useCallback } from 'react';
 import { tooltipVariants } from './variants.js';
 
 export const positionVariants = ['top', 'bottom', 'left', 'right'];
@@ -69,7 +70,7 @@ export const Tooltip = ({ text, position = 'top', dataTestid, children }: Toolti
           aria-hidden={!isVisible}
           data-testid={`dti-tooltip-content-${position}`}
         >
-          {text.length > 100 ? text.slice(0, 100) + '...' : text}
+          {text.length > 100 ? `${text.slice(0, 100)}...` : text}
         </span>
       )}
     </span>

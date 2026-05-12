@@ -1,4 +1,5 @@
-import { createFocusTrap, Options as FocusTrapOptions, FocusTrap } from 'focus-trap';
+import type { Options as FocusTrapOptions, FocusTrap } from 'focus-trap';
+import { createFocusTrap } from 'focus-trap';
 import { useLayoutEffect } from 'react';
 
 export const useFocusTrap = (

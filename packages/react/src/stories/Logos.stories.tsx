@@ -1,5 +1,5 @@
 import type { Meta, StoryObj } from '@storybook/react-vite';
-import { BaseSVGProps } from '../atoms';
+import type { BaseSVGProps } from '../atoms';
 import { LogoBlack, LogoGoldGreen, LogoGoldWhite, LogoHarpBlack, LogoHarpWhite, LogoWhite } from '../atoms/icons/logos';
 import { logosMeta, Default as logosDefault } from '../atoms/storybook/Logos.meta';
 

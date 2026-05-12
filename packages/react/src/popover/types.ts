@@ -1,4 +1,4 @@
-import { Options as PopperOptions } from '@popperjs/core';
+import type { Options as PopperOptions } from '@popperjs/core';
 
 export type PopoverProps = {
   triggerRef: React.RefObject<any> | null;

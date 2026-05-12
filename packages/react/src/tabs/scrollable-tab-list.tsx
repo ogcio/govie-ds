@@ -1,18 +1,8 @@
-import {
-  useState,
-  useRef,
-  useEffect,
-  Children,
-  isValidElement,
-  ReactNode,
-  KeyboardEvent,
-  MouseEvent,
-  CSSProperties,
-  useLayoutEffect,
-} from 'react';
+import type { ReactNode, CSSProperties } from 'react';
+import { useState, useRef, useEffect, Children, isValidElement, useLayoutEffect } from 'react';
 import { cn } from '../cn.js';
 import { InternalTabItem } from './tab-item.js';
-import { TabItemProps, TabKeyboardEvent, TabMouseClickEvent } from './types.js';
+import type { TabItemProps, TabKeyboardEvent, TabMouseClickEvent } from './types.js';
 
 type ScrollableTabsProps = {
   children: ReactNode;

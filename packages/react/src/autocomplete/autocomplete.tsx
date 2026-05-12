@@ -1,8 +1,7 @@
 'use client';
+import type { FC, ChangeEvent } from 'react';
 import React, {
-  FC,
   useRef,
-  ChangeEvent,
   isValidElement,
   Children,
   forwardRef,
@@ -17,14 +16,10 @@ import { translate as t } from '../i18n/utility.js';
 import { InputText } from '../input-text/input-text.js';
 import { Popover } from '../popover/popover.js';
 import { SelectMenu, SelectMenuGroupItem, SelectMenuOption } from '../select/select-menu.js';
-import { SelectNextGroupItemElement, SelectNextOptionItemElement } from '../select/types.js';
+import type { SelectNextGroupItemElement, SelectNextOptionItemElement } from '../select/types.js';
 import { cycleEnabledIndex } from '../utilities.js';
-import {
-  AUTOCOMPLETE_ACTIONS,
-  AutocompleteItemProps,
-  AutocompleteOptionItemElement,
-  AutocompleteProps,
-} from './types.js';
+import type { AutocompleteItemProps, AutocompleteOptionItemElement, AutocompleteProps } from './types.js';
+import { AUTOCOMPLETE_ACTIONS } from './types.js';
 import { useAutocompleteController } from './use-autocomplete-controller.js';
 
 const {

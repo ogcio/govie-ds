@@ -1,4 +1,4 @@
-import { AnchorHTMLAttributes } from 'react';
+import type { AnchorHTMLAttributes } from 'react';
 import { cn } from '../cn.js';
 import Anchor from '../primitives/anchor.js';
 

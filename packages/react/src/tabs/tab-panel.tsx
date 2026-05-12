@@ -1,5 +1,5 @@
 import { slugify } from '../utilities.js';
-import { TabPanelProps } from './types.js';
+import type { TabPanelProps } from './types.js';
 
 export function TabPanel({ value, children }: TabPanelProps) {
   const valueSlug = slugify(value);

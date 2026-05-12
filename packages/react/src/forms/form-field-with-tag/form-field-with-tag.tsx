@@ -8,7 +8,8 @@ import type { HintTextProps } from '../../hint-text/types.js';
 import { translate as t } from '../../i18n/utility.js';
 import { Label } from '../../label/label.js';
 import type { LabelTextProps } from '../../label/types.js';
-import { Tag, TagProps } from '../../tag/tag.js';
+import type { TagProps } from '../../tag/tag.js';
+import { Tag } from '../../tag/tag.js';
 
 /**
  * @deprecated This type is deprecated and will be removed in a future release.

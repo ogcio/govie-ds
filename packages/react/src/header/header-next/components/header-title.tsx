@@ -1,7 +1,7 @@
 'use client';
 
 import { cn } from '../../../cn.js';
-import { HeaderTitleProps } from '../../types.js';
+import type { HeaderTitleProps } from '../../types.js';
 import { headerTitleVariants } from '../../variants.js';
 import { useHeaderContext } from '../header-context.js';
 

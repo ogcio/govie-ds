@@ -1,7 +1,7 @@
 'use client';
 
 import { createContext, useContext, type ReactNode } from 'react';
-import { HeaderMenuSectionContextProps } from '../../../types.js';
+import type { HeaderMenuSectionContextProps } from '../../../types.js';
 
 const HeaderMenuSectionContext = createContext<HeaderMenuSectionContextProps | null>(null);
 

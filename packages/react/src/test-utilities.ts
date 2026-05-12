@@ -1,6 +1,8 @@
-import { render as tlRender, RenderOptions, RenderResult } from '@testing-library/react';
-import { run, Result } from 'axe-core';
-import React from 'react';
+import type { RenderOptions, RenderResult } from '@testing-library/react';
+import { render as tlRender } from '@testing-library/react';
+import type { Result } from 'axe-core';
+import { run } from 'axe-core';
+import type React from 'react';
 
 function toAxeErrorMessage(violations: Result[]) {
   return violations

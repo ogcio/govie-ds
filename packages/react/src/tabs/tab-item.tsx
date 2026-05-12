@@ -1,11 +1,12 @@
 'use client';
 
-import { forwardRef, FC, Ref } from 'react';
+import type { FC, Ref } from 'react';
+import { forwardRef } from 'react';
 import { cn } from '../cn.js';
 import { Icon } from '../icon/icon.js';
 import { Button as PrimitiveButton } from '../primitives/button.js';
 import { slugify } from '../utilities.js';
-import { InternalTabItemProps, TabItemProps } from './types.js';
+import type { InternalTabItemProps, TabItemProps } from './types.js';
 import { tabItemVariants } from './variants.js';
 
 export const TabItem: FC<TabItemProps> = () => null;
