@@ -9,14 +9,13 @@ export default {
   getTargetPath: () => '.',
   commonOptions: {
     typescript: true,
-    plugins: [annotation],
   },
   options: {
     angular: {
       typescript: true,
       standalone: true,
       prettier: false,
-      plugins: [prettierFormat],
+      plugins: [annotation, prettierFormat],
     },
   },
 } satisfies MitosisConfig;
