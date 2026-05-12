@@ -613,7 +613,7 @@ export const Light: StoryObj = {
   },
 };
 
-const TitleAsLink = ({ focused }: { focused?: boolean }) => {
+const LinkExamples = ({ focused }: { focused?: boolean }) => {
   const [variant, setVariant] = useState<HeaderAppearance>('default');
   const toggleVariant = () =>
     setVariant(variant === 'light' ? 'default' : 'light');
@@ -625,7 +625,7 @@ const TitleAsLink = ({ focused }: { focused?: boolean }) => {
       )}
     >
       <Header variant={variant} aria-label="Site header">
-        <HeaderLogo>
+        <HeaderLogo href="#" ariaLabel="Gov.ie logo">
           {variant === 'default' ? (
             <LogoHarpWhite
               label="Gov.ie logo"
@@ -653,7 +653,7 @@ const TitleAsLink = ({ focused }: { focused?: boolean }) => {
           Title as a link {focused ? 'focused' : ''}
         </HeaderTitle>
         <HeaderPrimaryMenu>
-          <HeaderMenuItemLink href="#" showItemMode="always">
+          <HeaderMenuItemLink href="#" showItemMode="desktop-only">
             Departments
           </HeaderMenuItemLink>
           <HeaderMenuItemLink href="#" showItemMode="always">
@@ -676,7 +676,7 @@ const TitleAsLink = ({ focused }: { focused?: boolean }) => {
   );
 };
 
-export const WithTitleAsLink: StoryObj = {
+export const WithTitleAndLogoAsLinks: StoryObj = {
   parameters: {
     docs: {
       description: {
@@ -695,7 +695,7 @@ export const WithTitleAsLink: StoryObj = {
     variant: 'default',
   },
   render: function Render() {
-    return <TitleAsLink />;
+    return <LinkExamples />;
   },
   play: async ({ canvasElement, step }) => {
     const canvas = within(canvasElement);
@@ -725,7 +725,7 @@ export const WithTitleAsLinkFocusState: StoryObj = {
     },
   },
   render: function Render() {
-    return <TitleAsLink focused />;
+    return <LinkExamples focused />;
   },
   play: async ({ canvasElement, step }) => {
     const canvas = within(canvasElement);
@@ -737,14 +737,18 @@ export const WithTitleAsLinkFocusState: StoryObj = {
           name: /site header/i,
         });
         expect(header).toBeInTheDocument();
-        const link = await canvas.findByRole('link', {
-          name: /title as a link focused/i,
-        });
-        expect(link).toBeInTheDocument();
+        const links = await canvas.findAllByRole('link');
+        const linkLogo = links[0];
+        const linkTitle = links[1];
+        expect(linkLogo).toHaveAttribute('aria-label', 'Gov.ie logo');
+        expect(linkTitle.textContent).toBe('Title as a link focused');
+        expect(linkLogo).toHaveAttribute('href', '#');
+        expect(linkTitle).toHaveAttribute('href', '#');
         await userEvent.click(header);
-
         await userEvent.tab();
-        expect(link).toHaveFocus();
+        expect(linkLogo).toHaveFocus();
+        await userEvent.tab();
+        expect(linkTitle).toHaveFocus();
       },
     );
   },

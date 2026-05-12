@@ -3,7 +3,6 @@
 import type { HeaderTitleProps } from '../../types.js';
 import { headerTitleVariants } from '../../variants.js';
 import { useHeaderContext } from '../header-context.js';
-import { cn } from '../../../cn.js';
 import { tv } from 'tailwind-variants';
 
 export const HeaderTitle = ({
@@ -25,11 +24,7 @@ export const HeaderTitle = ({
       })}
     >
       {href ? (
-        <a
-          href={href}
-          // the !important is necessary until link has inline-tailwind support, as gi-link overrides any styles passed here
-          className={styles({ appearance: context.variant })}
-        >
+        <a href={href} className={styles({ appearance: context.variant })}>
           {children}
         </a>
       ) : (
@@ -47,7 +42,7 @@ Object.defineProperty(HeaderTitle, 'componentType', {
 
 const styles = tv({
   base: [
-    'gi-truncate gi-py-1 gi-max-w-fit gi-block gi-w-full gi-underline',
+    'gi-truncate gi-py-1 gi-max-w-fit gi-block gi-w-full gi-underline gi-p-1',
     'focus:gi-rounded-sm',
     'focus:gi-shadow-[0_0_0_2px_var(--gieds-color-gray-950),0_0_0_5px_var(--gieds-color-yellow-400)]',
     'focus-visible:gi-shadow-[0_0_0_2px_var(--gieds-color-gray-950),0_0_0_5px_var(--gieds-color-yellow-400)]',

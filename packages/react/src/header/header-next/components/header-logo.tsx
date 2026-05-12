@@ -1,9 +1,10 @@
 'use client';
-import { HeaderLogoProps } from '../../types.js';
+import type { HeaderLogoProps } from '../../types.js';
 import { headerLogoVariants } from '../../variants.js';
 import { useHeaderContext } from '../header-context.js';
+import { cn } from '../../../cn.js';
 
-export const HeaderLogo = ({ children }: HeaderLogoProps) => {
+export const HeaderLogo = ({ children, ariaLabel, href }: HeaderLogoProps) => {
   const context = useHeaderContext();
 
   if (!context) {
@@ -11,8 +12,21 @@ export const HeaderLogo = ({ children }: HeaderLogoProps) => {
   }
 
   return (
-    <div className={headerLogoVariants({ appearance: context?.variant })}>
-      {children}
+    <div
+      className={cn(
+        !!href && 'gi-p-1',
+        headerLogoVariants({
+          appearance: context?.variant,
+        }),
+      )}
+    >
+      {href ? (
+        <a href={href} aria-label={ariaLabel}>
+          {children}
+        </a>
+      ) : (
+        children
+      )}
     </div>
   );
 };

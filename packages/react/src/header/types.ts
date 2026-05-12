@@ -152,7 +152,10 @@ export type HeaderNextProps = ComponentPropsWithoutRef<'header'> & {
   fullWidth?: boolean;
 };
 
-export type HeaderLogoProps = PropsWithChildren;
+export type HeaderLogoProps = PropsWithChildren<{
+  ariaLabel?: string;
+  href?: string;
+}>;
 export type HeaderVariant = 'default' | 'light';
 export type HeaderMenuItemLinkProps =
   AnchorHTMLAttributes<HTMLAnchorElement> & {
