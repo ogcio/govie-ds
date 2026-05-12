@@ -5,8 +5,7 @@ export const InputCheckboxSizeEnum = {
   Small: 'sm',
 } as const;
 
-export type InputCheckboxSizeEnumType =
-  (typeof InputCheckboxSizeEnum)[keyof typeof InputCheckboxSizeEnum];
+export type InputCheckboxSizeEnumType = (typeof InputCheckboxSizeEnum)[keyof typeof InputCheckboxSizeEnum];
 
 export type InputCheckboxProps = {
   size?: InputCheckboxSizeEnumType;

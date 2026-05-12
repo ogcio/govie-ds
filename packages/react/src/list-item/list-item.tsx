@@ -11,15 +11,7 @@ export type ListItemProps = AnchorHTMLAttributes<HTMLAnchorElement> & {
   slot?: React.ReactNode;
 };
 
-export function ListItem({
-  label,
-  href,
-  external,
-  bold,
-  slot,
-  className,
-  ...props
-}: ListItemProps) {
+export function ListItem({ label, href, external, bold, slot, className, ...props }: ListItemProps) {
   return (
     <Anchor
       aria-label={label}

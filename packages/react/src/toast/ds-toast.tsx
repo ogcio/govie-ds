@@ -73,22 +73,15 @@ function Toast({
   onClose,
   slotAction,
 }: ToastProps) {
-  const { base, heading, container, innerContainer, dismiss, baseDismissible } =
-    toastVariants({
-      variant,
-    });
+  const { base, heading, container, innerContainer, dismiss, baseDismissible } = toastVariants({
+    variant,
+  });
 
   const baseVariant = dismissible ? baseDismissible : base;
 
   return (
     <div className={baseVariant()}>
-      {showIcon ? (
-        <Icon
-          icon={icon({ variant })}
-          className="gi-toast-icon"
-          data-variant={variant}
-        />
-      ) : null}
+      {showIcon ? <Icon icon={icon({ variant })} className="gi-toast-icon" data-variant={variant} /> : null}
 
       <div className={container()}>
         <div className={innerContainer()}>

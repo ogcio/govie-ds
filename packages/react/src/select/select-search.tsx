@@ -1,9 +1,5 @@
 import { Children, forwardRef, isValidElement } from 'react';
-import {
-  Autocomplete,
-  AutocompleteGroupItem,
-  AutocompleteItem,
-} from '../autocomplete/autocomplete.js';
+import { Autocomplete, AutocompleteGroupItem, AutocompleteItem } from '../autocomplete/autocomplete.js';
 import { SelectNextProps } from './types.js';
 
 export const SelectSearch = forwardRef<HTMLInputElement, SelectNextProps>(
@@ -34,13 +30,7 @@ export const SelectSearch = forwardRef<HTMLInputElement, SelectNextProps>(
     });
 
     return (
-      <Autocomplete
-        {...props}
-        onBlur={onBlur}
-        name={name}
-        ref={ref}
-        onChange={onChange as any}
-      >
+      <Autocomplete {...props} onBlur={onBlur} name={name} ref={ref} onChange={onChange as any}>
         {mappedChildren}
       </Autocomplete>
     );

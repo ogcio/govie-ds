@@ -44,16 +44,8 @@ export const ParentChild = {
         <SideNavItem secondary value="team-permissions" label="Permissions" />
       </SideNavItem>
       <SideNavItem value="projects" label="Projects" primary expandable>
-        <SideNavItem
-          secondary
-          value="projects-active"
-          label="Active Projects"
-        />
-        <SideNavItem
-          secondary
-          value="projects-archived"
-          label="Archived Projects"
-        />
+        <SideNavItem secondary value="projects-active" label="Active Projects" />
+        <SideNavItem secondary value="projects-archived" label="Archived Projects" />
       </SideNavItem>
     </SideNav>
   ),
@@ -70,26 +62,9 @@ export const FullExample = {
         <SideNavHeading secondary>Heading Label Secondary</SideNavHeading>
         <SideNavItem secondary value="team-permissions" label="Permissions" />
       </SideNavItem>
-      <SideNavItem
-        primary
-        open
-        expandable
-        value="projects"
-        label="Projects"
-        href="#"
-      >
-        <SideNavItem
-          secondary
-          value="projects-active"
-          label="Active"
-          href="#"
-        />
-        <SideNavItem
-          secondary
-          href="#"
-          value="projects-archived"
-          label="Archived"
-        />
+      <SideNavItem primary open expandable value="projects" label="Projects" href="#">
+        <SideNavItem secondary value="projects-active" label="Active" href="#" />
+        <SideNavItem secondary href="#" value="projects-archived" label="Archived" />
       </SideNavItem>
       <SideNavItem primary value="settings" label="Settings" />
     </SideNav>

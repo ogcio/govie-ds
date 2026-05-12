@@ -59,8 +59,7 @@ const meta: Meta<typeof Tabs> = {
     },
     stretch: {
       control: 'boolean',
-      description:
-        'If true, all the tabs will space equally covering full available width. Default: false',
+      description: 'If true, all the tabs will space equally covering full available width. Default: false',
     },
     padding: {
       control: 'boolean',
@@ -99,9 +98,7 @@ export const Default: Story = {
   play: async ({ canvasElement }) => {
     const canvas = within(canvasElement);
     const computedStyle = getComputedStyle(canvasElement);
-    const mutedBorderColor = computedStyle
-      .getPropertyValue('--gieds-color-border-system-neutral-muted')
-      .trim();
+    const mutedBorderColor = computedStyle.getPropertyValue('--gieds-color-border-system-neutral-muted').trim();
 
     expect(mutedBorderColor).toBe('#d8dadf');
 
@@ -110,11 +107,7 @@ export const Default: Story = {
 
     const itemBorder = tab1.querySelector('[data-testid="tab-item-border"]');
 
-    await waitFor(() =>
-      expect(itemBorder?.classList).toContain(
-        'gi-bg-color-border-tone-primary-accent-selected',
-      ),
-    );
+    await waitFor(() => expect(itemBorder?.classList).toContain('gi-bg-color-border-tone-primary-accent-selected'));
 
     expect(tab1).toHaveAttribute('aria-selected', 'true');
     expect(tab2).toHaveAttribute('aria-selected', 'false');
@@ -160,11 +153,7 @@ export const Dark: Story = {
 
     const itemBorder = tab1.querySelector('[data-testid="tab-item-border"]');
 
-    await waitFor(() =>
-      expect(itemBorder?.classList).toContain(
-        'gi-bg-color-text-system-neutral-interactive-default',
-      ),
-    );
+    await waitFor(() => expect(itemBorder?.classList).toContain('gi-bg-color-text-system-neutral-interactive-default'));
 
     await userEvent.click(tab2);
 
@@ -420,9 +409,7 @@ export const TabsWithIcon: Story = {
     });
 
     await step('renders two icons', async () => {
-      const icons = canvasElement.querySelectorAll(
-        'svg, .material-symbols-outlined, [data-testid="govie-icon"]',
-      );
+      const icons = canvasElement.querySelectorAll('svg, .material-symbols-outlined, [data-testid="govie-icon"]');
       expect(icons.length).toBe(2);
     });
   },

@@ -46,10 +46,7 @@ export const Default: Story = {
   },
   play: async ({ canvasElement }) => {
     const canvas = within(canvasElement);
-    expect(canvas.getByText('Hint')).toHaveAttribute(
-      'data-testid',
-      'hint-text',
-    );
+    expect(canvas.getByText('Hint')).toHaveAttribute('data-testid', 'hint-text');
   },
 };
 

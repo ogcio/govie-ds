@@ -3,12 +3,7 @@ import { useRef, useState } from 'react';
 import { Controller, FormProvider, useForm } from 'react-hook-form';
 import { expect, userEvent, within } from 'storybook/test';
 import Button from '../atoms/Button';
-import {
-  FormField,
-  FormFieldError,
-  FormFieldHint,
-  FormFieldLabel,
-} from '../forms/form-field/form-field.js';
+import { FormField, FormFieldError, FormFieldHint, FormFieldLabel } from '../forms/form-field/form-field.js';
 import { TextArea } from './textarea.js';
 
 const meta = {
@@ -50,8 +45,7 @@ const meta = {
       },
     },
     autoComplete: {
-      description:
-        'Specifies whether the browser should provide auto-completion options for the textarea.',
+      description: 'Specifies whether the browser should provide auto-completion options for the textarea.',
       control: 'text',
       table: {
         category: 'Behavior',
@@ -111,11 +105,7 @@ export const Focus: Story = {
     <FormField>
       <FormFieldLabel>Label</FormFieldLabel>
       <FormFieldHint>Support text</FormFieldHint>
-      <TextArea
-        className="focus-input"
-        iconStart="placeholder"
-        placeholder="Placeholder"
-      />
+      <TextArea className="focus-input" iconStart="placeholder" placeholder="Placeholder" />
     </FormField>
   ),
   parameters: {
@@ -175,9 +165,7 @@ export const WithLabelHintAndError: Story = {
     <FormField>
       <FormFieldLabel htmlFor="textarea-id-3">Label</FormFieldLabel>
       <FormFieldHint>Hint: This is a helpful hint.</FormFieldHint>
-      <FormFieldError dataTestid="error-text">
-        Error: Please correct this issue.
-      </FormFieldError>
+      <FormFieldError dataTestid="error-text">Error: Please correct this issue.</FormFieldError>
       <TextArea {...props} data-testid="textarea-id-3" />
     </FormField>
   ),
@@ -235,9 +223,7 @@ export const WithMaxChars: Story = {
 
     expect(textarea.maxLength).toBe(30);
 
-    const remainingElement = canvas.getByText(
-      /You have 30 characters remaining/,
-    );
+    const remainingElement = canvas.getByText(/You have 30 characters remaining/);
     expect(remainingElement).toBeInTheDocument();
   },
 };
@@ -303,9 +289,7 @@ export const Controlled: Story = {
 
     return (
       <FormField>
-        <FormFieldLabel htmlFor="textarea-controlled">
-          Controlled Label
-        </FormFieldLabel>
+        <FormFieldLabel htmlFor="textarea-controlled">Controlled Label</FormFieldLabel>
         <TextArea
           {...props}
           value={value}
@@ -319,9 +303,7 @@ export const Controlled: Story = {
   play: async ({ canvasElement }) => {
     const canvas = within(canvasElement);
 
-    const textarea = canvas.getByTestId(
-      'textarea-controlled',
-    ) as HTMLTextAreaElement;
+    const textarea = canvas.getByTestId('textarea-controlled') as HTMLTextAreaElement;
 
     expect(textarea.value).toBe('Initial value');
 
@@ -413,34 +395,19 @@ export const Uncontrolled: Story = {
 
     return (
       <FormField>
-        <FormFieldLabel htmlFor="textarea-uncontrolled">
-          Uncontrolled Label
-        </FormFieldLabel>
-        <TextArea
-          {...props}
-          ref={ref}
-          clearButtonEnabled
-          data-testid="textarea-uncontrolled"
-        />
-        <Button
-          className="gi-mt-1"
-          onClick={handleShowValue}
-          dataTestId="show-value-button"
-        >
+        <FormFieldLabel htmlFor="textarea-uncontrolled">Uncontrolled Label</FormFieldLabel>
+        <TextArea {...props} ref={ref} clearButtonEnabled data-testid="textarea-uncontrolled" />
+        <Button className="gi-mt-1" onClick={handleShowValue} dataTestId="show-value-button">
           Show Value
         </Button>
-        <FormFieldHint data-testid="uncontrolled-output">
-          Value: {value}
-        </FormFieldHint>
+        <FormFieldHint data-testid="uncontrolled-output">Value: {value}</FormFieldHint>
       </FormField>
     );
   },
   play: async ({ canvasElement }) => {
     const canvas = within(canvasElement);
 
-    const textarea = canvas.getByTestId(
-      'textarea-uncontrolled',
-    ) as HTMLTextAreaElement;
+    const textarea = canvas.getByTestId('textarea-uncontrolled') as HTMLTextAreaElement;
 
     await userEvent.type(textarea, 'Hello, world!');
 
@@ -469,9 +436,7 @@ export const WithReactHookForm: Story = {
         <form onSubmit={onSubmit}>
           <FormField data-testid="form-field-id">
             {methods.formState.errors.message && (
-              <FormFieldError data-testid="error-msg">
-                {methods.formState.errors.message.message}
-              </FormFieldError>
+              <FormFieldError data-testid="error-msg">{methods.formState.errors.message.message}</FormFieldError>
             )}
             <FormFieldLabel htmlFor="textarea-id-0">Message</FormFieldLabel>
 
@@ -497,11 +462,7 @@ export const WithReactHookForm: Story = {
             <Button type="submit" dataTestId="submit-btn">
               Submit
             </Button>
-            <Button
-              type="button"
-              onClick={() => methods.reset()}
-              dataTestId="reset-btn"
-            >
+            <Button type="button" onClick={() => methods.reset()} dataTestId="reset-btn">
               Reset
             </Button>
           </div>
@@ -513,9 +474,7 @@ export const WithReactHookForm: Story = {
   play: async ({ canvasElement }) => {
     const canvas = within(canvasElement);
 
-    const textAreaElement = canvas.getByTestId(
-      'textarea-id-0',
-    ) as HTMLTextAreaElement;
+    const textAreaElement = canvas.getByTestId('textarea-id-0') as HTMLTextAreaElement;
     const submitButton = canvas.getByTestId('submit-btn');
     const resetButton = canvas.getByTestId('reset-btn');
 
@@ -526,17 +485,13 @@ export const WithReactHookForm: Story = {
     await userEvent.click(submitButton);
     expect(canvas.queryByTestId('error-msg')).toBeNull();
 
-    const remainingBeforeReset = canvas.getByText(
-      /^You have \d+ characters remaining$/,
-    );
+    const remainingBeforeReset = canvas.getByText(/^You have \d+ characters remaining$/);
     expect(remainingBeforeReset).toBeTruthy();
 
     await userEvent.click(resetButton);
     expect(textAreaElement.value).toBe('');
 
-    const remainingAfterReset = canvas.getByText(
-      /^You have 20 characters remaining$/,
-    );
+    const remainingAfterReset = canvas.getByText(/^You have 20 characters remaining$/);
     expect(remainingAfterReset).toBeTruthy();
   },
 };

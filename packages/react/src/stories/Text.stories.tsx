@@ -1,10 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/react-vite';
 import { Text } from '../atoms';
-import {
-  textMeta,
-  Default as defaultStory,
-  AllTextSizes as allTextSizes,
-} from '../atoms/storybook/Text.meta';
+import { textMeta, Default as defaultStory, AllTextSizes as allTextSizes } from '../atoms/storybook/Text.meta';
 import { Size } from '../atoms/constants';
 
 const loremIpsum = 'Lorem ipsum dolor sit amet.';

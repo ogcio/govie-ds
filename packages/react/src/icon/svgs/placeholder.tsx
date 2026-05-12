@@ -1,10 +1,4 @@
-function Placeholder({
-  className,
-  size,
-}: {
-  className?: string;
-  size?: string;
-}) {
+function Placeholder({ className, size }: { className?: string; size?: string }) {
   return (
     <svg
       width={size || '24'}

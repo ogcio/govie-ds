@@ -1,8 +1,4 @@
-import {
-  render as tlRender,
-  RenderOptions,
-  RenderResult,
-} from '@testing-library/react';
+import { render as tlRender, RenderOptions, RenderResult } from '@testing-library/react';
 import { run, Result } from 'axe-core';
 import React from 'react';
 
@@ -24,10 +20,7 @@ interface CustomRenderResult extends RenderResult {
   axe: () => Promise<void>;
 }
 
-export function renderComponent(
-  component: React.ReactNode,
-  options?: RenderOptions,
-): CustomRenderResult {
+export function renderComponent(component: React.ReactNode, options?: RenderOptions): CustomRenderResult {
   const { container, ...renderRest } = tlRender(component, options);
 
   return {
@@ -43,10 +36,7 @@ export function renderComponent(
   };
 }
 
-export const testVariantsAxe = (
-  variants: any,
-  renderFunction: (variant: any) => CustomRenderResult,
-) => {
+export const testVariantsAxe = (variants: any, renderFunction: (variant: any) => CustomRenderResult) => {
   for (const variant of variants) {
     test(`axe accessibility test for variant: ${variant}`, async () => {
       const { axe } = renderFunction(variant);

@@ -1,11 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/react-vite';
 import { expect, userEvent, waitFor, within } from 'storybook/test';
-import {
-  FormField,
-  FormFieldError,
-  FormFieldHint,
-  FormFieldLabel,
-} from '../forms/form-field/form-field.js';
+import { FormField, FormFieldError, FormFieldHint, FormFieldLabel } from '../forms/form-field/form-field.js';
 import { Select, SelectGroupItem, SelectItem } from './select.js';
 
 const meta = {
@@ -13,8 +8,7 @@ const meta = {
   parameters: {
     docs: {
       description: {
-        component:
-          'A composable select component allows users to choose an option from a long list.',
+        component: 'A composable select component allows users to choose an option from a long list.',
       },
     },
   },
@@ -78,12 +72,7 @@ export const WithLabelHintAndError = {
       <FormFieldLabel htmlFor="select">Label</FormFieldLabel>
       <FormFieldHint>This is a hint</FormFieldHint>
       <FormFieldError dataTestid="error-text">This is an error</FormFieldError>
-      <Select
-        aria-label="Select"
-        data-testid="select"
-        id="select"
-        defaultValue="select-option"
-      >
+      <Select aria-label="Select" data-testid="select" id="select" defaultValue="select-option">
         <SelectItem value="select-option" hidden>
           Select Option
         </SelectItem>
@@ -170,11 +159,7 @@ export const DisabledItem = {
 
 export const WithGroups = {
   render: () => (
-    <Select
-      aria-label="Select"
-      data-testid="select"
-      defaultValue="select-option"
-    >
+    <Select aria-label="Select" data-testid="select" defaultValue="select-option">
       <SelectGroupItem label="Group 1" data-testid="select-group">
         <SelectItem value="select-option" hidden>
           Select Option

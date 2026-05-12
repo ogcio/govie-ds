@@ -13,16 +13,14 @@ export const StepFillLevel = {
   Half: 'half',
   Full: 'full',
 } as const;
-export type StepFillLevelType =
-  (typeof StepFillLevel)[keyof typeof StepFillLevel];
+export type StepFillLevelType = (typeof StepFillLevel)[keyof typeof StepFillLevel];
 
 export const ProgressStepperIndicator = {
   Hashtag: 'hashtag',
   Number: 'number',
 } as const;
 
-export type ProgressStepperIndicatorType =
-  (typeof ProgressStepperIndicator)[keyof typeof ProgressStepperIndicator];
+export type ProgressStepperIndicatorType = (typeof ProgressStepperIndicator)[keyof typeof ProgressStepperIndicator];
 
 export type Step = {
   label: string;

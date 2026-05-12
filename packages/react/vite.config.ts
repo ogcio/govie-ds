@@ -32,12 +32,7 @@ export default defineConfig({
     },
     rollupOptions: {
       external: (id) => {
-        return (
-          id === 'react' ||
-          id === 'react-dom' ||
-          id.startsWith('react/') ||
-          id.startsWith('react-dom/')
-        );
+        return id === 'react' || id === 'react-dom' || id.startsWith('react/') || id.startsWith('react-dom/');
       },
       input: Object.fromEntries(
         glob
@@ -52,10 +47,7 @@ export default defineConfig({
             ],
           })
           .map((file: string) => [
-            path.relative(
-              'src',
-              file.slice(0, file.length - path.extname(file).length),
-            ),
+            path.relative('src', file.slice(0, file.length - path.extname(file).length)),
             fileURLToPath(new URL(file, import.meta.url)),
           ]),
       ),

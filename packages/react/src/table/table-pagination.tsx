@@ -61,10 +61,7 @@ export const TablePagination: React.FC<TablePaginationProps> = ({
           useFontIcon: true,
         }}
       />
-      <div
-        className="gi-table-pagination-label gi-space-x-2"
-        aria-live="polite"
-      >
+      <div className="gi-table-pagination-label gi-space-x-2" aria-live="polite">
         <span>
           {t('table.pagination.page', {
             defaultValue: 'Page',

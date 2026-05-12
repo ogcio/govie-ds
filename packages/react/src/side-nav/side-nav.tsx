@@ -8,11 +8,7 @@ import { cn } from '../cn.js';
 import type { IconId } from '../icon/icon.js';
 import { Icon } from '../icon/icon.js';
 import { Link } from '../link/link.js';
-import type {
-  SideNavHeadingProps,
-  SideNavItemProps,
-  SideNavProps,
-} from './types.js';
+import type { SideNavHeadingProps, SideNavItemProps, SideNavProps } from './types.js';
 
 type SideNavContextType = {
   openItemIds: string[];
@@ -22,9 +18,7 @@ type SideNavContextType = {
   navId: string;
 };
 
-const SideNavContext = React.createContext<SideNavContextType | undefined>(
-  undefined,
-);
+const SideNavContext = React.createContext<SideNavContextType | undefined>(undefined);
 
 const ItemContent = memo(
   ({
@@ -52,10 +46,7 @@ const ItemContent = memo(
         </div>
         {showExpandableIcon && (
           <div className="gi-side-nav-expandable-icon">
-            <Icon
-              className={cn(isOpen && 'gi-rotate-180')}
-              icon="keyboard_arrow_down"
-            />
+            <Icon className={cn(isOpen && 'gi-rotate-180')} icon="keyboard_arrow_down" />
           </div>
         )}
       </>
@@ -63,34 +54,15 @@ const ItemContent = memo(
   },
 );
 
-export const SideNavItem: React.FC<
-  PropsWithChildren<SideNavItemProps> & { open?: boolean }
-> = React.memo(
-  ({
-    children,
-    primary,
-    secondary,
-    expandable,
-    label,
-    value,
-    icon,
-    href,
-    asChild,
-    open,
-  }) => {
+export const SideNavItem: React.FC<PropsWithChildren<SideNavItemProps> & { open?: boolean }> = React.memo(
+  ({ children, primary, secondary, expandable, label, value, icon, href, asChild, open }) => {
     const context = React.useContext(SideNavContext);
 
     if (!context) {
       throw new Error('SideNavItem must be used within a SideNav');
     }
 
-    const {
-      openItemIds,
-      selectedItemId,
-      setOpenItemIds,
-      setSelectedItemId,
-      navId,
-    } = context;
+    const { openItemIds, selectedItemId, setOpenItemIds, setSelectedItemId, navId } = context;
 
     const isOpen = openItemIds.includes(value);
     const isSelected = selectedItemId === value;
@@ -107,9 +79,7 @@ export const SideNavItem: React.FC<
     }, [open, setOpenItemIds, value]);
 
     const handleExpandCollapse = useCallback(() => {
-      const updatedOpenIds = isOpen
-        ? openItemIds.filter((id) => id !== value)
-        : [...openItemIds, value];
+      const updatedOpenIds = isOpen ? openItemIds.filter((id) => id !== value) : [...openItemIds, value];
       setOpenItemIds(updatedOpenIds);
     }, [isOpen, openItemIds, setOpenItemIds, value]);
 
@@ -153,10 +123,7 @@ export const SideNavItem: React.FC<
     });
 
     return (
-      <div
-        role="group"
-        aria-label={`${label} ${primary && expandable ? 'dropdown' : 'item'}`}
-      >
+      <div role="group" aria-label={`${label} ${primary && expandable ? 'dropdown' : 'item'}`}>
         {isNavigable ? (
           <Link
             id={itemId}
@@ -173,12 +140,7 @@ export const SideNavItem: React.FC<
             {asChild ? (
               children
             ) : (
-              <ItemContent
-                icon={icon}
-                label={label}
-                showExpandableIcon={showExpandableIcon}
-                isOpen={isOpen}
-              />
+              <ItemContent icon={icon} label={label} showExpandableIcon={showExpandableIcon} isOpen={isOpen} />
             )}
           </Link>
         ) : (
@@ -190,21 +152,12 @@ export const SideNavItem: React.FC<
             className={buttonClassName}
             id={itemId}
           >
-            <ItemContent
-              icon={icon}
-              label={label}
-              showExpandableIcon={showExpandableIcon}
-              isOpen={isOpen}
-            />
+            <ItemContent icon={icon} label={label} showExpandableIcon={showExpandableIcon} isOpen={isOpen} />
           </Button>
         )}
 
         {expandable && primary && (
-          <div
-            className={cn(isOpen ? 'gi-side-nav-item-content' : 'gi-hidden')}
-          >
-            {children}
-          </div>
+          <div className={cn(isOpen ? 'gi-side-nav-item-content' : 'gi-hidden')}>{children}</div>
         )}
       </div>
     );
@@ -214,9 +167,7 @@ export const SideNavItem: React.FC<
 export const SideNav: React.FC<PropsWithChildren<SideNavProps>> = memo(
   ({ children, className, dataTestid, onChange, value }) => {
     const [openItemIds, setOpenItemIds] = useState<string[]>([]);
-    const [selectedItemId, setSelectedItemId] = useState<string | undefined>(
-      value,
-    );
+    const [selectedItemId, setSelectedItemId] = useState<string | undefined>(value);
     const navId = React.useId();
 
     const handleSetSelectedItemId = useCallback(
@@ -240,10 +191,7 @@ export const SideNav: React.FC<PropsWithChildren<SideNavProps>> = memo(
 
     return (
       <SideNavContext.Provider value={contextValue}>
-        <div
-          className={cn('gi-side-nav-container', className)}
-          data-testid={dataTestid}
-        >
+        <div className={cn('gi-side-nav-container', className)} data-testid={dataTestid}>
           {children}
         </div>
       </SideNavContext.Provider>
@@ -251,29 +199,19 @@ export const SideNav: React.FC<PropsWithChildren<SideNavProps>> = memo(
   },
 );
 
-export const SideNavHeading: React.FC<SideNavHeadingProps> = memo(
-  ({ children, secondary, className, ...props }) => {
-    const context = React.useContext(SideNavContext);
+export const SideNavHeading: React.FC<SideNavHeadingProps> = memo(({ children, secondary, className, ...props }) => {
+  const context = React.useContext(SideNavContext);
 
-    if (!context) {
-      throw new Error('SideNavHeading must be used within a SideNav');
-    }
+  if (!context) {
+    throw new Error('SideNavHeading must be used within a SideNav');
+  }
 
-    return (
-      <Heading
-        {...props}
-        as="h5"
-        className={cn(
-          'gi-side-nav-heading',
-          secondary ? 'gi-px-6' : 'gi-px-3',
-          className,
-        )}
-      >
-        {children}
-      </Heading>
-    );
-  },
-);
+  return (
+    <Heading {...props} as="h5" className={cn('gi-side-nav-heading', secondary ? 'gi-px-6' : 'gi-px-3', className)}>
+      {children}
+    </Heading>
+  );
+});
 
 SideNav.displayName = 'SideNav';
 SideNavItem.displayName = 'SideNavItem';

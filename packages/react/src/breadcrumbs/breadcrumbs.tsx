@@ -10,12 +10,7 @@ export const BreadcrumbEllipsis = () => (
   </div>
 );
 
-export const BreadcrumbLink = ({
-  href,
-  children,
-  asChild,
-  ...ariaProps
-}: BreadcrumbLinkProps) => (
+export const BreadcrumbLink = ({ href, children, asChild, ...ariaProps }: BreadcrumbLinkProps) => (
   <Link
     noColor
     asChild={asChild}
@@ -29,13 +24,9 @@ export const BreadcrumbLink = ({
   </Link>
 );
 
-export const BreadcrumbCurrentLink = (props: BreadcrumbLinkProps) => (
-  <BreadcrumbLink {...props} aria-current="page" />
-);
+export const BreadcrumbCurrentLink = (props: BreadcrumbLinkProps) => <BreadcrumbLink {...props} aria-current="page" />;
 
-const BreadcrumbSeparator = () => (
-  <span className="gi-px-3 gi-text-gray-500">/</span>
-);
+const BreadcrumbSeparator = () => <span className="gi-px-3 gi-text-gray-500">/</span>;
 
 export const Breadcrumbs = ({ children, iconStart }: BreadcrumbProps) => {
   const items = Array.isArray(children) ? children : [children];
@@ -61,11 +52,7 @@ export const Breadcrumbs = ({ children, iconStart }: BreadcrumbProps) => {
           </li>
         )}
         {items.map((component, index) => (
-          <li
-            className="gi-mx-0"
-            role="listitem"
-            key={`breadcrumb_item_${index}`}
-          >
+          <li className="gi-mx-0" role="listitem" key={`breadcrumb_item_${index}`}>
             {component}
             {index < items.length - 1 && <BreadcrumbSeparator />}
           </li>

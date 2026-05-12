@@ -53,10 +53,7 @@ export const SummaryListHeader = ({
             </span>
             <ActionList id={id}>
               {summaryListActions.map((action, index) => (
-                <span
-                  key={`${rowId}-a${index}`}
-                  className={cn({ 'gi-ml-4': index > 0 })}
-                >
+                <span key={`${rowId}-a${index}`} className={cn({ 'gi-ml-4': index > 0 })}>
                   {action}
                 </span>
               ))}
@@ -73,10 +70,7 @@ export const SummaryListHeader = ({
           </span>
           <ActionList id={id}>
             {summaryListActions.map((action, index) => (
-              <span
-                key={`${rowId}-a${index}`}
-                className={cn({ 'gi-ml-4': index > 0 })}
-              >
+              <span key={`${rowId}-a${index}`} className={cn({ 'gi-ml-4': index > 0 })}>
                 {action}
               </span>
             ))}

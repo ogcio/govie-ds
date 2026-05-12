@@ -100,7 +100,4 @@ export type CardMediaProps = Omit<
   'children'
 >;
 
-export type CardTagProps = Omit<
-  ComponentPropsWithoutRef<'div'> & TagProps,
-  'children'
->;
+export type CardTagProps = Omit<ComponentPropsWithoutRef<'div'> & TagProps, 'children'>;

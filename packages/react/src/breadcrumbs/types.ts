@@ -1,9 +1,5 @@
 import { PropsWithChildren } from 'react';
-import {
-  BreadcrumbCurrentLink,
-  BreadcrumbEllipsis,
-  BreadcrumbLink,
-} from './breadcrumbs.js';
+import { BreadcrumbCurrentLink, BreadcrumbEllipsis, BreadcrumbLink } from './breadcrumbs.js';
 
 type BreadcrumbLinkBaseProps = PropsWithChildren<{
   asChild?: false;
@@ -17,14 +13,10 @@ type BreadcrumbLinkAsChildProps = PropsWithChildren<{
 }> &
   React.AriaAttributes;
 
-export type BreadcrumbLinkProps =
-  | BreadcrumbLinkBaseProps
-  | BreadcrumbLinkAsChildProps;
+export type BreadcrumbLinkProps = BreadcrumbLinkBaseProps | BreadcrumbLinkAsChildProps;
 
 type BreadcrumbChildrenType = React.ReactElement<
-  | typeof BreadcrumbLink
-  | typeof BreadcrumbCurrentLink
-  | typeof BreadcrumbEllipsis
+  typeof BreadcrumbLink | typeof BreadcrumbCurrentLink | typeof BreadcrumbEllipsis
 >;
 
 export type BreadcrumbProps = {

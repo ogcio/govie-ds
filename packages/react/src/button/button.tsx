@@ -66,16 +66,10 @@ export const Button = forwardRef<HTMLButtonElement, ButtonProps>(
         ariaLabelledBy={ariaLabelledBy ?? nativeAriaLabelledBy}
         ariaDescribedBy={ariaDescribedBy ?? nativeAriaDescribedBy}
         ariaChecked={(ariaChecked ?? nativeAriaChecked) as boolean | undefined}
-        ariaPressed={
-          (ariaPressed ?? nativeAriaPressed) as boolean | 'mixed' | undefined
-        }
-        ariaExpanded={
-          (ariaExpanded ?? nativeAriaExpanded) as boolean | undefined
-        }
+        ariaPressed={(ariaPressed ?? nativeAriaPressed) as boolean | 'mixed' | undefined}
+        ariaExpanded={(ariaExpanded ?? nativeAriaExpanded) as boolean | undefined}
         ariaControls={ariaControls ?? nativeAriaControls}
-        ariaHasPopup={
-          (ariaHasPopup ?? nativeAriaHasPopup) as GiButtonProps['ariaHasPopup']
-        }
+        ariaHasPopup={(ariaHasPopup ?? nativeAriaHasPopup) as GiButtonProps['ariaHasPopup']}
         ariaBusy={(ariaBusy ?? nativeAriaBusy) as boolean | undefined}
         role={role}
         type={type}

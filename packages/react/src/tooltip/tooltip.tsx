@@ -12,12 +12,7 @@ export type TooltipProps = {
   dataTestid?: string;
 };
 
-export const Tooltip = ({
-  text,
-  position = 'top',
-  dataTestid,
-  children,
-}: TooltipProps) => {
+export const Tooltip = ({ text, position = 'top', dataTestid, children }: TooltipProps) => {
   const [isVisible, setIsVisible] = useState(false);
   const [isFocused, setIsFocused] = useState(false);
   const describedById = useId();

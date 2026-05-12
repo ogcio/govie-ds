@@ -9,8 +9,7 @@ const meta = {
   parameters: {
     docs: {
       description: {
-        component:
-          'A Label component to wrap label text and associate it with a form input element.',
+        component: 'A Label component to wrap label text and associate it with a form input element.',
       },
     },
   },
@@ -144,12 +143,9 @@ export const TestCorrectContent: Story = {
       expect(labelElement.getAttribute('for')).toBe('input-id');
     });
 
-    await step(
-      'should associate the label with the correct input field using "for"',
-      async () => {
-        const labelElement = canvas.getByText('This is a label');
-        expect(labelElement.getAttribute('for')).toBe('input-id');
-      },
-    );
+    await step('should associate the label with the correct input field using "for"', async () => {
+      const labelElement = canvas.getByText('This is a label');
+      expect(labelElement.getAttribute('for')).toBe('input-id');
+    });
   },
 };

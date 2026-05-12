@@ -9,9 +9,12 @@ export type DataTableSelectedRowsBannerProps = {
   className?: string;
 };
 
-export const DataTableSelectedRowsBanner: React.FC<
-  DataTableSelectedRowsBannerProps
-> = ({ selectedCount, actions, className, ...props }) => {
+export const DataTableSelectedRowsBanner: React.FC<DataTableSelectedRowsBannerProps> = ({
+  selectedCount,
+  actions,
+  className,
+  ...props
+}) => {
   return (
     <div className={cn(styles.root(), className)} {...props}>
       <span className={styles.label()}>

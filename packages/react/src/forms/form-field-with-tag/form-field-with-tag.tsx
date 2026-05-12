@@ -26,26 +26,14 @@ export type FormFieldWithTagProps = {
  * @deprecated This component is deprecated and will be removed in a future release.
  * Please use the new FormField component instead.
  */
-export const FormFieldWithTag = ({
-  label,
-  hint,
-  error,
-  children,
-  className,
-  tag,
-}: FormFieldWithTagProps) => {
+export const FormFieldWithTag = ({ label, hint, error, children, className, tag }: FormFieldWithTagProps) => {
   return (
     <fieldset className={cn({ 'gi-error-state': error }, className)}>
       <div className="gi-pb-3 gi-flex gi-flex-col gi-gap-1">
         <div>
           <div className="gi-flex gi-items-center gi-justify-between">
             {label?.text && (
-              <Label
-                text={label.text}
-                size={label.size}
-                htmlFor={label.htmlFor}
-                className="gi-font-bold"
-              >
+              <Label text={label.text} size={label.size} htmlFor={label.htmlFor} className="gi-font-bold">
                 {label.children}
               </Label>
             )}
@@ -61,13 +49,9 @@ export const FormFieldWithTag = ({
             )}
           </div>
 
-          {hint?.text && (
-            <HintText text={hint.text} size={hint.size} className="gi-mb-1" />
-          )}
+          {hint?.text && <HintText text={hint.text} size={hint.size} className="gi-mb-1" />}
         </div>
-        {error?.text && (
-          <ErrorText text={error.text} size={error.size} className="gi-mb-1" />
-        )}
+        {error?.text && <ErrorText text={error.text} size={error.size} className="gi-mb-1" />}
       </div>
 
       <Slottable>{children}</Slottable>

@@ -9,10 +9,7 @@ export const tabItemVariants = tv({
       'hover:gi-text-color-icon-system-neutral-interactive-hover hover:gi-bg-color-surface-system-neutral-interactive-hover hover:gi-fill-color-text-system-neutral-interactive-default',
       'gi-focus-state-outline focus:gi-shadow-[inset_0_0_0_2px] focus:gi-border-none focus:gi-border-transparent focus:gi-bg-color-surface-system-neutral-interactive-hover focus:gi-text-color-text-system-neutral-interactive-default focus:gi-rounded-sm focus:gi-z-1',
     ],
-    border: [
-      'gi-h-[2px] gi-absolute gi-bottom-0 gi-left-0 gi-w-full',
-      'group-focus:!gi-bg-transparent',
-    ],
+    border: ['gi-h-[2px] gi-absolute gi-bottom-0 gi-left-0 gi-w-full', 'group-focus:!gi-bg-transparent'],
   },
   variants: {
     size: {
@@ -73,8 +70,7 @@ export const tabItemVariants = tv({
     {
       checked: false,
       class: {
-        border:
-          'group-hover:gi-bg-color-surface-system-neutral-interactive-hover',
+        border: 'group-hover:gi-bg-color-surface-system-neutral-interactive-hover',
       },
     },
   ],

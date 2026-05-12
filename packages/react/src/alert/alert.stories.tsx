@@ -30,8 +30,7 @@ const meta = {
     },
     showIcon: {
       control: 'boolean',
-      description:
-        'Controls whether the icon is shown. Set to false to hide it.',
+      description: 'Controls whether the icon is shown. Set to false to hide it.',
       table: { defaultValue: { summary: 'true' } },
     },
     children: {
@@ -226,9 +225,7 @@ export const TestRendersTitleAndMessage: StoryObj = {
     });
 
     await step('renders message', async () => {
-      expect(
-        await canvas.findByText('This is an info alert'),
-      ).toBeInTheDocument();
+      expect(await canvas.findByText('This is an info alert')).toBeInTheDocument();
     });
 
     await step('icon renders by default and uses currentColor fill', () => {

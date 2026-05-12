@@ -1,12 +1,6 @@
 'use client';
 
-import {
-  createContext,
-  useCallback,
-  useContext,
-  useMemo,
-  useState,
-} from 'react';
+import { createContext, useCallback, useContext, useMemo, useState } from 'react';
 import { HeaderVariant } from '../types.js';
 
 type DrawerPosition = 'left' | 'right';
@@ -24,11 +18,7 @@ type HeaderProviderProps = {
   fullWidth?: boolean;
 };
 
-export function HeaderProvider({
-  children,
-  variant = 'default',
-  fullWidth,
-}: HeaderProviderProps) {
+export function HeaderProvider({ children, variant = 'default', fullWidth }: HeaderProviderProps) {
   return (
     <HeaderContext.Provider
       value={{

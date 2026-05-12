@@ -1,6 +1,4 @@
-import GiContainer, {
-  type Props as GiContainerProps,
-} from '../atoms/Container.js';
+import GiContainer, { type Props as GiContainerProps } from '../atoms/Container.js';
 import { tv } from 'tailwind-variants';
 
 export const ContainerInsetSizeEnum = {
@@ -10,8 +8,7 @@ export const ContainerInsetSizeEnum = {
   ExtraLarge: 'xl',
 } as const;
 
-export type ContainerInsetSizeType =
-  (typeof ContainerInsetSizeEnum)[keyof typeof ContainerInsetSizeEnum];
+export type ContainerInsetSizeType = (typeof ContainerInsetSizeEnum)[keyof typeof ContainerInsetSizeEnum];
 
 type ContainerProps = Omit<GiContainerProps, 'children'> &
   React.PropsWithChildren<{
@@ -24,14 +21,7 @@ type ContainerProps = Omit<GiContainerProps, 'children'> &
     style?: React.CSSProperties;
   }>;
 
-export function Container({
-  insetTop,
-  insetBottom,
-  className,
-  style,
-  styles,
-  ...props
-}: ContainerProps) {
+export function Container({ insetTop, insetBottom, className, style, styles, ...props }: ContainerProps) {
   return (
     <GiContainer
       {...props}

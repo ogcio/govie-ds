@@ -26,9 +26,7 @@ export const DropdownItem = ({
   const [noResults, setNoResults] = useState(false);
   const [selectedValues, setSelectedValues] = useState<string[]>(defaultValue);
   const generatedId = useId();
-  const dropdownCustomClass = children
-    ? `${slugify(`${children}-${generatedId}`)}`
-    : '';
+  const dropdownCustomClass = children ? `${slugify(`${children}-${generatedId}`)}` : '';
 
   const isControlled = value !== undefined;
   const selected = isControlled ? value : selectedValues;
@@ -68,11 +66,7 @@ export const DropdownItem = ({
   };
 
   return (
-    <div
-      role="group"
-      aria-label={`${children} dropdown`}
-      className="gi-combobox-dropdown-item"
-    >
+    <div role="group" aria-label={`${children} dropdown`} className="gi-combobox-dropdown-item">
       <Button
         variant="flat"
         appearance="dark"
@@ -87,15 +81,10 @@ export const DropdownItem = ({
       >
         <div className="gi-combobox-toggle-content">
           <Paragraph size="md">{children}</Paragraph>
-          {selected?.length > 0 && (
-            <Tag type={TagTypeEnum.Counter} text={selected.length.toString()} />
-          )}
+          {selected?.length > 0 && <Tag type={TagTypeEnum.Counter} text={selected.length.toString()} />}
         </div>
 
-        <Icon
-          className={cn({ 'gi-rotate-180': isOpen })}
-          icon="keyboard_arrow_down"
-        />
+        <Icon className={cn({ 'gi-rotate-180': isOpen })} icon="keyboard_arrow_down" />
       </Button>
 
       <div
@@ -152,9 +141,7 @@ export const DropdownItem = ({
                 className={`gi-combobox-checkbox gi-combobox-key-${dropdownCustomClass}`}
               >
                 <InputCheckbox
-                  onChange={(event) =>
-                    handleChange(checkbox.value, event.target.checked)
-                  }
+                  onChange={(event) => handleChange(checkbox.value, event.target.checked)}
                   checked={checked}
                   id={`${index}_${dropdownCustomClass}_${checkbox.value}`}
                   label={checkbox.label}

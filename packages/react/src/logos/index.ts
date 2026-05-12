@@ -1,8 +1,1 @@
-export {
-  LogoBlack,
-  LogoGoldGreen,
-  LogoGoldWhite,
-  LogoHarpBlack,
-  LogoWhite,
-  LogoHarpWhite,
-} from '../atoms/icons/logos';
+export { LogoBlack, LogoGoldGreen, LogoGoldWhite, LogoHarpBlack, LogoWhite, LogoHarpWhite } from '../atoms/icons/logos';

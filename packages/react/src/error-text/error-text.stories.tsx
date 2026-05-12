@@ -47,15 +47,12 @@ export const Default: Story = {
   play: async ({ canvasElement, step }) => {
     const canvas = within(canvasElement);
 
-    await step(
-      'should render error text with the correct content',
-      async () => {
-        const errorElement = canvas.getByText('Error');
-        expect(errorElement).toBeTruthy();
-        expect(errorElement.tagName).toBe('DIV');
-        expect(errorElement).toHaveAttribute('data-testid', 'error-text');
-      },
-    );
+    await step('should render error text with the correct content', async () => {
+      const errorElement = canvas.getByText('Error');
+      expect(errorElement).toBeTruthy();
+      expect(errorElement.tagName).toBe('DIV');
+      expect(errorElement).toHaveAttribute('data-testid', 'error-text');
+    });
   },
 };
 

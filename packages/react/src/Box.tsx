@@ -6,7 +6,5 @@ export type BoxProps = Omit<GiBoxProps, 'children'> &
   }>;
 
 export function Box({ style, styles, ...props }: BoxProps) {
-  return (
-    <GiBox {...props} styles={(style ?? styles) as Record<string, string>} />
-  );
+  return <GiBox {...props} styles={(style ?? styles) as Record<string, string>} />;
 }

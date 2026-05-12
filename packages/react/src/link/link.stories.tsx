@@ -146,9 +146,7 @@ export const Default: Story = {
     });
 
     await step('should have visited style', async () => {
-      expect(linkElement.classList.contains('visited:gi-text-blue-700')).toBe(
-        false,
-      );
+      expect(linkElement.classList.contains('visited:gi-text-blue-700')).toBe(false);
     });
   },
 };
@@ -160,9 +158,8 @@ export const InTypographyContext: Story = {
         Heading with an <Link href="#">inline link</Link>
       </H1>
       <Paragraph as="span" size="md" className="gi-block gi-text-black">
-        Paragraph with several links: <Link href="#">first link</Link>,{' '}
-        <Link href="#">typography link</Link>, <Link href="#">quivery</Link>,
-        and <Link href="#">jet</Link> to show wrapping and descenders.
+        Paragraph with several links: <Link href="#">first link</Link>, <Link href="#">typography link</Link>,{' '}
+        <Link href="#">quivery</Link>, and <Link href="#">jet</Link> to show wrapping and descenders.
       </Paragraph>
     </div>
   ),
@@ -358,11 +355,8 @@ export const TestNoVisited: Story = {
     const canvas = within(canvasElement);
     const linkElement = canvas.getByRole('link');
 
-    await step(
-      'should not have visited style if noVisited is true',
-      async () => {
-        expect(linkElement.classList.contains('gi-link-no-visited')).toBe(true);
-      },
-    );
+    await step('should not have visited style if noVisited is true', async () => {
+      expect(linkElement.classList.contains('gi-link-no-visited')).toBe(true);
+    });
   },
 };

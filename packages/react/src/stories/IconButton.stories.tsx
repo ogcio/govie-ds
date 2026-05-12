@@ -11,10 +11,7 @@ import {
   AllSizes as allSizes,
 } from '../atoms/storybook/IconButton.meta';
 import { Variant, Appearance } from '../atoms/constants';
-import IconButton, {
-  IconButtonSize as Size,
-  type Props,
-} from '../atoms/IconButton';
+import IconButton, { IconButtonSize as Size, type Props } from '../atoms/IconButton';
 
 const meta: Meta<typeof IconButton> = {
   ...iconButtonMeta,
@@ -84,12 +81,7 @@ export const AllVariants: Story = {
   render: () => (
     <div className="gi-flex gi-gap-4">
       {_.map(Variant, (variant) => (
-        <IconButton
-          key={variant}
-          variant={variant}
-          ariaLabel={variant}
-          dataTestId={`icon-button-variant-${variant}`}
-        >
+        <IconButton key={variant} variant={variant} ariaLabel={variant} dataTestId={`icon-button-variant-${variant}`}>
           <Info size={iconSizeForButton[Size.MD]} />
         </IconButton>
       ))}
@@ -102,10 +94,7 @@ export const AllAppearances: Story = {
   render: () => (
     <div className="gi-flex gi-gap-4">
       {_.map(Appearance, (appearance) => (
-        <div
-          key={appearance}
-          className={appearance === 'light' ? 'gi-bg-black gi-p-2' : 'gi-p-2'}
-        >
+        <div key={appearance} className={appearance === 'light' ? 'gi-bg-black gi-p-2' : 'gi-p-2'}>
           <IconButton
             appearance={appearance}
             ariaLabel={appearance}
@@ -124,12 +113,7 @@ export const AllSizes: Story = {
   render: () => (
     <div className="gi-flex gi-items-center gi-gap-4">
       {_.map(Size, (size) => (
-        <IconButton
-          key={size}
-          size={size}
-          ariaLabel={size}
-          dataTestId={`icon-button-size-${size}`}
-        >
+        <IconButton key={size} size={size} ariaLabel={size} dataTestId={`icon-button-size-${size}`}>
           <Info size={iconSizeForButton[size]} />
         </IconButton>
       ))}

@@ -11,12 +11,7 @@ export type PhaseBannerProps = {
   padding?: boolean;
 };
 
-export function PhaseBanner({
-  level,
-  children,
-  wrap = 'none',
-  padding = true,
-}: PhaseBannerProps) {
+export function PhaseBanner({ level, children, wrap = 'none', padding = true }: PhaseBannerProps) {
   const { breakpoint } = useBreakpoint();
 
   const paddingClasses: Record<string, string> = {
@@ -27,14 +22,10 @@ export function PhaseBanner({
     xl: 'gi-px-8',
   };
 
-  const responsivePadding =
-    padding && breakpoint ? paddingClasses[breakpoint] : '';
+  const responsivePadding = padding && breakpoint ? paddingClasses[breakpoint] : '';
 
   const bannerContent = (
-    <div
-      data-testid="phase-banner"
-      className={`gi-phase-banner-container ${responsivePadding}`}
-    >
+    <div data-testid="phase-banner" className={`gi-phase-banner-container ${responsivePadding}`}>
       <Tag text={level} type="info" />
       <div className="gi-phase-banner-content">{children}</div>
     </div>

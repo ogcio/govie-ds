@@ -1,7 +1,4 @@
-export type {
-  DataTableFooterProps,
-  DataTableFooterTypeProps,
-} from './data-table-footer.js';
+export type { DataTableFooterProps, DataTableFooterTypeProps } from './data-table-footer.js';
 export {
   DataTableFooter,
   DataTableFooterStart,

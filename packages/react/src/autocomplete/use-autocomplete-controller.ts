@@ -1,12 +1,5 @@
 import { debounce } from 'lodash';
-import {
-  Children,
-  isValidElement,
-  useEffect,
-  useMemo,
-  useReducer,
-  useRef,
-} from 'react';
+import { Children, isValidElement, useEffect, useMemo, useReducer, useRef } from 'react';
 import { useScrollHighlightedItem } from '../hooks/use-scroll-highlighted-item.js';
 import { safeCloneElement } from '../utils/utilities.js';
 import {
@@ -29,10 +22,7 @@ const {
   SET_OPTION_TYPE,
 } = AUTOCOMPLETE_ACTIONS;
 
-const reducer = (
-  state: AutocompleteState,
-  action: AutocompleteAction,
-): AutocompleteState => {
+const reducer = (state: AutocompleteState, action: AutocompleteAction): AutocompleteState => {
   switch (action.type) {
     case SET_IS_OPEN: {
       return { ...state, isOpen: action.payload };
@@ -86,11 +76,8 @@ const reducer = (
   }
 };
 
-const isAutocompleteItem = (
-  child: React.ReactNode,
-): child is AutocompleteOptionItemElement => {
-  const type =
-    (child as any)?.type?.componentType || (child as any)?.props?.__type;
+const isAutocompleteItem = (child: React.ReactNode): child is AutocompleteOptionItemElement => {
+  const type = (child as any)?.type?.componentType || (child as any)?.props?.__type;
 
   return (
     isValidElement(child) &&
@@ -99,10 +86,7 @@ const isAutocompleteItem = (
   );
 };
 
-const filterChildOption = (
-  child: AutocompleteOptionItemElement,
-  inputValue: string,
-) => {
+const filterChildOption = (child: AutocompleteOptionItemElement, inputValue: string) => {
   const label = child.props.children?.toString().toLowerCase() || '';
   const value = child.props.value?.toLowerCase();
   const input = inputValue.toLowerCase();
@@ -123,9 +107,7 @@ const getOptionLabelByValue = (children: any, value: string): string => {
     }
 
     if (type === 'AutocompleteGroupItem') {
-      const groupChildren = Children.toArray(child.props.children).filter(
-        (child) => isValidElement(child),
-      );
+      const groupChildren = Children.toArray(child.props.children).filter((child) => isValidElement(child));
 
       for (const child of groupChildren) {
         if ((child as any).props?.value === value) {
@@ -143,8 +125,7 @@ const detectOptionType = (children: any) => {
   if (valid?.length) {
     const allGroup = valid.every(
       (child: any) =>
-        child.props.__type === 'AutocompleteGroupItem' ||
-        child.type?.componentType === 'AutocompleteGroupItem',
+        child.props.__type === 'AutocompleteGroupItem' || child.type?.componentType === 'AutocompleteGroupItem',
     );
 
     return allGroup ? 'AutocompleteGroupItem' : 'AutocompleteItem';
@@ -165,23 +146,11 @@ export const useAutocompleteController = ({
 }: {
   onChange?: (input: string, name?: string) => void;
   ref?: any;
-} & Pick<
-  AutocompleteProps,
-  | 'children'
-  | 'defaultValue'
-  | 'isOpen'
-  | 'freeSolo'
-  | 'onOpen'
-  | 'onClose'
-  | 'value'
->) => {
+} & Pick<AutocompleteProps, 'children' | 'defaultValue' | 'isOpen' | 'freeSolo' | 'onOpen' | 'onClose' | 'value'>) => {
   const inputRef = useRef<HTMLInputElement>(null);
   const listRef = useRef<HTMLDivElement>(null);
   const hasMountedRef = useRef(false);
-  const validChildren = useMemo(
-    () => getValidChildren(children || []),
-    [children],
-  );
+  const validChildren = useMemo(() => getValidChildren(children || []), [children]);
 
   const focusInput = () => inputRef.current?.focus();
   const optionType = useMemo(() => detectOptionType(children), [children]);
@@ -211,11 +180,7 @@ export const useAutocompleteController = ({
       hasMountedRef.current = true;
       return;
     }
-    if (
-      state.inputValue === '' &&
-      state.value === '' &&
-      state.autocompleteOptions?.length
-    ) {
+    if (state.inputValue === '' && state.value === '' && state.autocompleteOptions?.length) {
       focusInput();
     }
   }, [state.isClearButtonEnabled]);
@@ -249,18 +214,12 @@ export const useAutocompleteController = ({
           const filtered = validChildren
             .map((child: any) => {
               const type = child.type?.componentType || child.props?.__type;
-              const isGroupItem =
-                optionType === 'AutocompleteGroupItem' &&
-                type === 'AutocompleteGroupItem';
+              const isGroupItem = optionType === 'AutocompleteGroupItem' && type === 'AutocompleteGroupItem';
 
               if (isGroupItem) {
-                const groupChildren = Children.toArray(
-                  child.props.children,
-                ).filter((child) => isValidElement(child));
+                const groupChildren = Children.toArray(child.props.children).filter((child) => isValidElement(child));
 
-                const matched = groupChildren.filter((groupItem: any) =>
-                  filterChildOption(groupItem, input),
-                );
+                const matched = groupChildren.filter((groupItem: any) => filterChildOption(groupItem, input));
 
                 if (matched.length > 0) {
                   return safeCloneElement(child, { children: matched });

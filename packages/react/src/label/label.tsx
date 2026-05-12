@@ -12,12 +12,7 @@ export const Label = forwardRef<HTMLLabelElement, LabelTextProps>(
   ({ text, size = LabelSize.Medium, className, children, ...props }, ref) => {
     const { base } = styles({ size });
     return (
-      <label
-        className={base({ className })}
-        data-testid="label"
-        ref={ref}
-        {...props}
-      >
+      <label className={base({ className })} data-testid="label" ref={ref} {...props}>
         {children ?? text}
       </label>
     );

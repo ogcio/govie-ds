@@ -10,11 +10,7 @@ export const HeaderLogo = ({ children }: HeaderLogoProps) => {
     throw new Error('HeaderLogo must be used within a Header');
   }
 
-  return (
-    <div className={headerLogoVariants({ appearance: context?.variant })}>
-      {children}
-    </div>
-  );
+  return <div className={headerLogoVariants({ appearance: context?.variant })}>{children}</div>;
 };
 
 Object.defineProperty(HeaderLogo, 'componentType', {

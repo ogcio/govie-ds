@@ -2,12 +2,7 @@ import type { Meta, StoryObj } from '@storybook/react-vite';
 import { FormProvider, useForm } from 'react-hook-form';
 import { userEvent, within, expect } from 'storybook/test';
 import Button from '../atoms/Button';
-import {
-  FormField,
-  FormFieldError,
-  FormFieldHint,
-  FormFieldLabel,
-} from '../forms/form-field/form-field.js';
+import { FormField, FormFieldError, FormFieldHint, FormFieldLabel } from '../forms/form-field/form-field.js';
 import { Stack } from '../stack/stack.js';
 import { InputPassword } from './input-password.js';
 
@@ -24,10 +19,7 @@ export const Default: Story = {
     return (
       <FormField>
         <FormFieldLabel htmlFor="text-password-id">Password</FormFieldLabel>
-        <InputPassword
-          placeholder="Placeholder"
-          data-testid="text-password-id"
-        />
+        <InputPassword placeholder="Placeholder" data-testid="text-password-id" />
       </FormField>
     );
   },
@@ -46,10 +38,7 @@ export const AllVariants: Story = {
         <FormField>
           <FormFieldLabel>Label</FormFieldLabel>
           <FormFieldHint>Support text</FormFieldHint>
-          <InputPassword
-            placeholder="Placeholder"
-            inputClassName="focus-input"
-          />
+          <InputPassword placeholder="Placeholder" inputClassName="focus-input" />
         </FormField>
 
         <FormField>
@@ -96,9 +85,7 @@ export const WithReactHookForm: Story = {
         <form onSubmit={onSubmit}>
           <FormField data-testid="form-field-id">
             {methods.formState.errors.password && (
-              <FormFieldError data-testid="error-msg">
-                {methods.formState.errors.password.message}
-              </FormFieldError>
+              <FormFieldError data-testid="error-msg">{methods.formState.errors.password.message}</FormFieldError>
             )}
             <FormFieldLabel htmlFor="text-password-id">Password</FormFieldLabel>
             <InputPassword
@@ -113,11 +100,7 @@ export const WithReactHookForm: Story = {
             <Button type="submit" dataTestId="submit-btn">
               Submit
             </Button>
-            <Button
-              type="button"
-              onClick={() => methods.reset()}
-              dataTestId="reset-btn"
-            >
+            <Button type="button" onClick={() => methods.reset()} dataTestId="reset-btn">
               Reset
             </Button>
           </div>
@@ -153,9 +136,7 @@ export const WithReactHookForm: Story = {
 
 const inputPasswordRefCallback = (element: HTMLInputElement | null) => {
   if (element) {
-    (
-      globalThis as unknown as { __inputPasswordRef?: HTMLInputElement }
-    ).__inputPasswordRef = element;
+    (globalThis as unknown as { __inputPasswordRef?: HTMLInputElement }).__inputPasswordRef = element;
     element.dataset.refSeen = 'true';
   }
 };
@@ -173,19 +154,12 @@ export const TestRefForwarding: Story = {
   play: async ({ canvasElement, step }) => {
     const canvas = within(canvasElement);
 
-    await step(
-      'should support ref forwarding to the underlying input element',
-      async () => {
-        const inputElement = canvas.getByLabelText(
-          'Password Input',
-        ) as HTMLInputElement;
-        const storedRef = (
-          globalThis as unknown as { __inputPasswordRef?: HTMLInputElement }
-        ).__inputPasswordRef;
+    await step('should support ref forwarding to the underlying input element', async () => {
+      const inputElement = canvas.getByLabelText('Password Input') as HTMLInputElement;
+      const storedRef = (globalThis as unknown as { __inputPasswordRef?: HTMLInputElement }).__inputPasswordRef;
 
-        expect(storedRef).toBe(inputElement);
-      },
-    );
+      expect(storedRef).toBe(inputElement);
+    });
   },
 };
 
@@ -196,44 +170,31 @@ export const TestVisibility: Story = {
     return (
       <FormField>
         <FormFieldLabel htmlFor="text-password-id">Password</FormFieldLabel>
-        <InputPassword
-          placeholder="Placeholder"
-          data-testid="text-password-id"
-        />
+        <InputPassword placeholder="Placeholder" data-testid="text-password-id" />
       </FormField>
     );
   },
   play: async ({ canvasElement, step }) => {
     const canvas = within(canvasElement);
 
-    await step(
-      'should render a password input with a visibility toggle button',
-      async () => {
-        const passwordInputElement = canvas.getByTestId(
-          'text-password-id',
-        ) as HTMLInputElement;
-        const visibilityToggleButtonElement = canvas.getByRole('button');
+    await step('should render a password input with a visibility toggle button', async () => {
+      const passwordInputElement = canvas.getByTestId('text-password-id') as HTMLInputElement;
+      const visibilityToggleButtonElement = canvas.getByRole('button');
 
-        expect(passwordInputElement).toBeInTheDocument();
-        expect(passwordInputElement.type).toBe('password');
-        expect(visibilityToggleButtonElement).toBeInTheDocument();
-      },
-    );
+      expect(passwordInputElement).toBeInTheDocument();
+      expect(passwordInputElement.type).toBe('password');
+      expect(visibilityToggleButtonElement).toBeInTheDocument();
+    });
 
-    await step(
-      'should toggle input type between password and text when clicking the visibility button',
-      async () => {
-        const passwordInputElement = canvas.getByTestId(
-          'text-password-id',
-        ) as HTMLInputElement;
-        const visibilityToggleButtonElement = canvas.getByRole('button');
+    await step('should toggle input type between password and text when clicking the visibility button', async () => {
+      const passwordInputElement = canvas.getByTestId('text-password-id') as HTMLInputElement;
+      const visibilityToggleButtonElement = canvas.getByRole('button');
 
-        await userEvent.click(visibilityToggleButtonElement);
-        expect(passwordInputElement.type).toBe('text');
+      await userEvent.click(visibilityToggleButtonElement);
+      expect(passwordInputElement.type).toBe('text');
 
-        await userEvent.click(visibilityToggleButtonElement);
-        expect(passwordInputElement.type).toBe('password');
-      },
-    );
+      await userEvent.click(visibilityToggleButtonElement);
+      expect(passwordInputElement.type).toBe('password');
+    });
   },
 };

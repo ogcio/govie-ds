@@ -66,20 +66,10 @@ export function TableData({
   return (
     <td
       ref={ref}
-      className={cn(
-        'gi-table-td',
-        sizeClass,
-        alignmentClass,
-        verticalAlignmentClass,
-        className,
-      )}
+      className={cn('gi-table-td', sizeClass, alignmentClass, verticalAlignmentClass, className)}
       {...props}
     >
-      {hasFormElement ? (
-        children
-      ) : (
-        <TableCell className={tableCellClassName}>{children}</TableCell>
-      )}
+      {hasFormElement ? children : <TableCell className={tableCellClassName}>{children}</TableCell>}
     </td>
   );
 }
@@ -87,10 +77,7 @@ export function TableData({
 export const TableCell = ({ children, className }: TableCellProps) => (
   <div className={cn('gi-table-data-cell', className)}>{children}</div>
 );
-export const TableExpandIcon = ({
-  expanded,
-  onClick,
-}: TableExpandIconProps) => {
+export const TableExpandIcon = ({ expanded, onClick }: TableExpandIconProps) => {
   const [rowSize, setRowSize] = useState<'sm' | 'md' | 'lg'>('md');
   const containerRef = useRef<HTMLDivElement>(null);
 
@@ -128,16 +115,10 @@ export const TableExpandIcon = ({
   );
 };
 
-export const TableDataSlot = ({
-  children,
-  className,
-  ...props
-}: TableDataSlotProps) => {
+export const TableDataSlot = ({ children, className, ...props }: TableDataSlotProps) => {
   return (
     <td className="gi-table-td" {...props}>
-      <div className={cn('gi-table-data-slot-container', className)}>
-        {children}
-      </div>
+      <div className={cn('gi-table-data-slot-container', className)}>{children}</div>
     </td>
   );
 };

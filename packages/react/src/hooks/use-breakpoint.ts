@@ -36,10 +36,7 @@ export const useBreakpoint = (): {
 
   useEffect(() => {
     const handleResize = () => {
-      const currentWidth = Math.min(
-        globalThis.document.documentElement.clientWidth,
-        globalThis.window.innerWidth,
-      );
+      const currentWidth = Math.min(globalThis.document.documentElement.clientWidth, globalThis.window.innerWidth);
       setWidth(currentWidth);
       setBreakpoint(getBreakpoint(currentWidth));
     };

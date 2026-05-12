@@ -6,7 +6,5 @@ export type GridProps = Omit<GiGridProps, 'children'> &
   }>;
 
 export function Grid({ style, styles, ...props }: GridProps) {
-  return (
-    <GiGrid {...props} styles={(style ?? styles) as Record<string, string>} />
-  );
+  return <GiGrid {...props} styles={(style ?? styles) as Record<string, string>} />;
 }

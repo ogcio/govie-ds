@@ -7,11 +7,7 @@ export type SectionBreakProps = {
   color?: string;
 } & React.HtmlHTMLAttributes<HTMLHRElement>;
 
-export function SectionBreak({
-  size = 'sm',
-  color = 'gi-border-gray-400',
-  ...props
-}: SectionBreakProps) {
+export function SectionBreak({ size = 'sm', color = 'gi-border-gray-400', ...props }: SectionBreakProps) {
   let marginClass = 'gi-section-break-sm';
   switch (size) {
     case 'md': {

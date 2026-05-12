@@ -1,12 +1,7 @@
 import type { Meta, StoryObj } from '@storybook/react-vite';
 import { useState } from 'react';
 import { expect, userEvent, waitFor, within } from 'storybook/test';
-import {
-  FormField,
-  FormFieldError,
-  FormFieldHint,
-  FormFieldLabel,
-} from '../forms/form-field/form-field.js';
+import { FormField, FormFieldError, FormFieldHint, FormFieldLabel } from '../forms/form-field/form-field.js';
 import { InputCheckbox } from '../input-checkbox/input-checkbox.js';
 import { InputCheckboxGroup } from './input-checkbox-group.js';
 
@@ -46,27 +41,10 @@ export const Default: Story = {
     <FormField>
       <FormFieldLabel>Organisation</FormFieldLabel>
       <InputCheckboxGroup {...props}>
-        <InputCheckbox
-          value="employment-tribunal"
-          label="Employment Tribunal"
-          id="UniqueID-check1"
-        />
-        <InputCheckbox
-          value="ministry-of-defence"
-          label="Ministry of Defence"
-          id="UniqueID-check2"
-        />
-        <InputCheckbox
-          value="department-for-transport"
-          label="Department for Transport"
-          id="UniqueID-check3"
-        />
-        <InputCheckbox
-          value="others"
-          label="Others"
-          id="UniqueID-check4"
-          disabled
-        />
+        <InputCheckbox value="employment-tribunal" label="Employment Tribunal" id="UniqueID-check1" />
+        <InputCheckbox value="ministry-of-defence" label="Ministry of Defence" id="UniqueID-check2" />
+        <InputCheckbox value="department-for-transport" label="Department for Transport" id="UniqueID-check3" />
+        <InputCheckbox value="others" label="Others" id="UniqueID-check4" disabled />
       </InputCheckboxGroup>
     </FormField>
   ),
@@ -79,13 +57,8 @@ export const WithLabelHintAndError: Story = {
   render: (arguments_) => (
     <FormField>
       <FormFieldLabel>What is your nationality?</FormFieldLabel>
-      <FormFieldHint>
-        If you have dual nationality, select all options that are relevant to
-        you.
-      </FormFieldHint>
-      <FormFieldError>
-        Select if you are Irish, British or a citizen of a different country
-      </FormFieldError>
+      <FormFieldHint>If you have dual nationality, select all options that are relevant to you.</FormFieldHint>
+      <FormFieldError>Select if you are Irish, British or a citizen of a different country</FormFieldError>
       <InputCheckboxGroup {...arguments_}>
         <InputCheckbox value="irish" label="Irish" id="UniqueID-check1" />
         <InputCheckbox
@@ -123,11 +96,7 @@ export const Controlled: Story = {
     return (
       <FormField>
         <FormFieldLabel>Select your hobbies</FormFieldLabel>
-        <InputCheckboxGroup
-          {...props}
-          values={selectedValues}
-          onChange={setSelectedValues}
-        >
+        <InputCheckboxGroup {...props} values={selectedValues} onChange={setSelectedValues}>
           <InputCheckbox
             value="reading"
             label="Reading"

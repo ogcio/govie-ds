@@ -6,10 +6,7 @@ import { cn } from '../../cn.js';
 import { ListItem } from '../../list-item/list-item.js';
 import type { HeaderProps } from '../types.js';
 
-export type MobileHeaderMenuProps = Pick<
-  HeaderProps,
-  'items' | 'secondaryLinks'
->;
+export type MobileHeaderMenuProps = Pick<HeaderProps, 'items' | 'secondaryLinks'>;
 
 export type MenuItemAccordionProps = {
   index: number;
@@ -67,17 +64,11 @@ export const MenuItemAccordion = ({ index, item }: MenuItemAccordionProps) => {
   );
 };
 
-export const MobileHeaderMenuItems = ({
-  items,
-  secondaryLinks,
-}: MobileHeaderMenuProps) => {
+export const MobileHeaderMenuItems = ({ items, secondaryLinks }: MobileHeaderMenuProps) => {
   return (
     <ul>
       {items?.map(({ itemType, label, ...item }, index) => {
-        const [isLink, isSlot] = [
-          itemType === 'link' || itemType === 'custom-link',
-          itemType === 'slot',
-        ];
+        const [isLink, isSlot] = [itemType === 'link' || itemType === 'custom-link', itemType === 'slot'];
         if (!label) {
           return null;
         }
@@ -85,12 +76,7 @@ export const MobileHeaderMenuItems = ({
         if (isLink) {
           return (
             <li key={`navLink-${label}-${index}`}>
-              <ListItem
-                href={item?.href}
-                label={label}
-                external={item?.external}
-                slot={item?.component as any}
-              />
+              <ListItem href={item?.href} label={label} external={item?.external} slot={item?.component as any} />
             </li>
           );
         } else if (isSlot) {
@@ -110,12 +96,7 @@ export const MobileHeaderMenuItems = ({
 
       {secondaryLinks?.map((link, index) => (
         <li key={`secondary-${link.label}-${index}`}>
-          <ListItem
-            href={link.href}
-            label={link.label}
-            bold={false}
-            slot={link.slot as any}
-          />
+          <ListItem href={link.href} label={link.label} bold={false} slot={link.slot as any} />
         </li>
       ))}
     </ul>

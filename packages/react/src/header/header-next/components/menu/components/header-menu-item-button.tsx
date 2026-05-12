@@ -20,28 +20,18 @@ const MenuButton = ({ showItemMode, children, icon, ...props }: any) => {
   );
 };
 
-export const HeaderMenuItemButton = ({
-  asChild,
-  children,
-  className,
-  ...props
-}: HeaderMenuItemButtonProps) => {
+export const HeaderMenuItemButton = ({ asChild, children, className, ...props }: HeaderMenuItemButtonProps) => {
   const section = useHeaderMenuSection();
   const context = useHeaderContext();
 
   if (!section || section === 'secondary') {
-    throw new Error(
-      'HeaderMenuItemButton must be used within a HeaderPrimaryMenu',
-    );
+    throw new Error('HeaderMenuItemButton must be used within a HeaderPrimaryMenu');
   }
   const appearance = context.variant;
   const Component = asChild ? Slot : MenuButton;
 
   return (
-    <Component
-      className={cn(headerToolItemVariants({ appearance }), className)}
-      {...props}
-    >
+    <Component className={cn(headerToolItemVariants({ appearance }), className)} {...props}>
       {children}
     </Component>
   );

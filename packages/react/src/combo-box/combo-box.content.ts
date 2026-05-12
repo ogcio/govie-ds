@@ -96,8 +96,7 @@ export const organisationOptions = [
     value: 'department-of-agriculture-food-and-the-marine',
   },
   {
-    label:
-      'Department of Children, Equality, Disability, Integration and Youth',
+    label: 'Department of Children, Equality, Disability, Integration and Youth',
     value: 'department-of-children-equality-disability-integration-and-youth',
   },
   {
@@ -121,8 +120,7 @@ export const organisationOptions = [
     value: 'department-of-foreign-affairs',
   },
   {
-    label:
-      'Department of Further and Higher Education, Research, Innovation and Science',
+    label: 'Department of Further and Higher Education, Research, Innovation and Science',
     value: 'department-of-higher-education-innovation-and-science',
   },
   {

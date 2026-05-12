@@ -39,9 +39,7 @@ export const Default: Story = {
         </Button>
 
         <Popover triggerRef={triggerRef} open={open} onOpenChange={setOpen}>
-          <div className="gi-text-sm gi-text-gray-800 gi-p-6">
-            This is a popover content
-          </div>
+          <div className="gi-text-sm gi-text-gray-800 gi-p-6">This is a popover content</div>
         </Popover>
       </div>
     );
@@ -57,9 +55,7 @@ export const Default: Story = {
     });
     await userEvent.click(triggerButton);
 
-    const openPopoverContent = await canvas.findByText(
-      'This is a popover content',
-    );
+    const openPopoverContent = await canvas.findByText('This is a popover content');
     await expect(openPopoverContent).toBeVisible();
   },
 };
@@ -136,9 +132,7 @@ export const Test: Story = {
         </Button>
 
         <Popover triggerRef={triggerRef} open={open} onOpenChange={setOpen}>
-          <div className="gi-text-sm gi-text-gray-800 gi-p-6">
-            This is a popover content
-          </div>
+          <div className="gi-text-sm gi-text-gray-800 gi-p-6">This is a popover content</div>
         </Popover>
       </div>
     );
@@ -154,18 +148,14 @@ export const Test: Story = {
     });
     await userEvent.click(triggerButton);
 
-    const openPopoverContent = await canvas.findByText(
-      'This is a popover content',
-    );
+    const openPopoverContent = await canvas.findByText('This is a popover content');
     await expect(openPopoverContent).toBeVisible();
     await userEvent.click(document.body);
 
     await expect(openPopoverContent).not.toBeInTheDocument();
 
     await userEvent.click(triggerButton);
-    const reOpenPopoverContent = await canvas.findByText(
-      'This is a popover content',
-    );
+    const reOpenPopoverContent = await canvas.findByText('This is a popover content');
     await expect(reOpenPopoverContent).toBeVisible();
     await userEvent.keyboard('{Escape}');
     await expect(reOpenPopoverContent).not.toBeInTheDocument();

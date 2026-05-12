@@ -6,8 +6,7 @@ export const InputRadioSizeEnum = {
   Small: 'sm',
 } as const;
 
-export type InputRadioSizeType =
-  (typeof InputRadioSizeEnum)[keyof typeof InputRadioSizeEnum];
+export type InputRadioSizeType = (typeof InputRadioSizeEnum)[keyof typeof InputRadioSizeEnum];
 
 export type InputRadioProps = {
   label?: string;
