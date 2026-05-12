@@ -1,4 +1,7 @@
 import { IconProps } from './types';
+import { useMetadata } from '@builder.io/mitosis';
+
+useMetadata({ angular: { selector: 'gi-keyboard-arrow-right-icon' } });
 
 export default function KeyboardArrowRight(props: IconProps) {
   return (
@@ -12,7 +15,7 @@ export default function KeyboardArrowRight(props: IconProps) {
       aria-label={props.label}
       aria-hidden={!props.label}
       fill={props.color ?? 'currentColor'}
-      data-testid={props.dataTestId ?? 'keyboard_arrow_right'}
+      data-testid={props.dataTestId ?? 'keyboard-arrow-right'}
       xmlns="http://www.w3.org/2000/svg"
     >
       <path d="M504-480 320-664l56-56 240 240-240 240-56-56 184-184Z" />

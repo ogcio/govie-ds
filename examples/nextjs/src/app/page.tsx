@@ -8,6 +8,7 @@ import {
   Alert,
   Autocomplete,
   AutocompleteItem,
+  Box,
   BreadcrumbCurrentLink,
   BreadcrumbEllipsis,
   BreadcrumbLink,
@@ -211,7 +212,6 @@ const NativeFormExample = () => {
     const formData = new FormData(event.currentTarget);
     const data = Object.fromEntries(formData.entries());
     setSubmittedData(JSON.stringify(data, null, 2));
-    console.log('Form Data:', data);
   };
   const handleClear = () => {
     formRef.current?.reset();
@@ -227,7 +227,7 @@ const NativeFormExample = () => {
         <Paragraph className="mb-4 text-gray-600">
           This example uses native HTML form handling without React Hook Form or any other form library.
         </Paragraph>
-        <div className="space-y-4">
+        <Box className="space-y-4">
           <FormField>
             <FormFieldLabel htmlFor="native-name">Name</FormFieldLabel>
             <FormFieldHint>Enter your full name</FormFieldHint>
@@ -261,19 +261,19 @@ const NativeFormExample = () => {
             />
             <CharacterCount maxChars={maxChars} value={message} />
           </FormField>
-          <div className="flex gap-2">
+          <Box className="flex gap-2">
             <Button type="submit">Submit</Button>
             <Button type="button" variant="secondary" onClick={handleClear}>
               Clear
             </Button>
-          </div>
+          </Box>
           {submittedData && (
-            <div className="mt-4 p-3 bg-gray-50 rounded">
+            <Box className="mt-4 p-3 bg-gray-50 rounded">
               <strong>Submitted Data:</strong>
               <pre className="mt-1 text-sm overflow-auto">{submittedData}</pre>
-            </div>
+            </Box>
           )}
-        </div>
+        </Box>
       </form>
     </Container>
   );
@@ -288,8 +288,7 @@ const ReachHookFormWithRegister = () => {
 
   const { register, handleSubmit, reset } = formMethods;
 
-  const onSubmit = (data: any) => {
-    console.log('Form Data:', JSON.stringify(data));
+  const onSubmit = () => {
     reset(basicFormDefaultValues);
   };
 
@@ -300,7 +299,7 @@ const ReachHookFormWithRegister = () => {
           <Heading as="h4" className="mb-4">
             With React Hook Form (Register Method)
           </Heading>
-          <div className="space-y-4">
+          <Box className="space-y-4">
             <FormField>
               <FormFieldLabel htmlFor="input-text-id">InputText</FormFieldLabel>
               <InputText id="input-text-id" {...register('inputText')} className="w-full" placeholder="Enter text..." />
@@ -312,13 +311,13 @@ const ReachHookFormWithRegister = () => {
               <CharacterCount maxChars={maxChars} value={textAreaValue ?? ''} />
             </FormField>
 
-            <div className="flex gap-2">
+            <Box className="flex gap-2">
               <Button type="submit">Submit</Button>
               <Button type="button" onClick={() => reset(basicFormDefaultValues)}>
                 Clear
               </Button>
-            </div>
-          </div>
+            </Box>
+          </Box>
         </form>
       </FormProvider>
     </Container>
@@ -343,14 +342,8 @@ const ReachHookFormWithController = () => {
 
   const { handleSubmit, control, reset } = methods;
 
-  const onSubmit = useCallback((data: any) => {
-    console.log('Form submitted successfully');
-    console.log('Form Data:', data);
-  }, []);
-
   const handleClear = () => {
     reset();
-    console.log('Form cleared');
   };
 
   const selectOptions: string[] = ['Topic 1', 'Topic 2', 'Topic 3', 'Topic 4', 'Topic 5'];
@@ -368,7 +361,7 @@ const ReachHookFormWithController = () => {
 
   return (
     <FormProvider {...methods}>
-      <form onSubmit={handleSubmit(onSubmit)}>
+      <form onSubmit={handleSubmit(() => reset())}>
         <Container className="p-4 border border-gray-200 bg-white rounded-lg shadow-sm">
           <Heading as="h4" className="mb-2">
             With React Hook Form (Controller Method)
@@ -377,7 +370,7 @@ const ReachHookFormWithController = () => {
             Please fill in the fields
           </Heading>
 
-          <div className="flex flex-col gap-4 w-full max-w-lg mx-auto">
+          <Box className="flex flex-col gap-4 w-full max-w-lg mx-auto">
             <FormField label={{ text: 'Input Text' }} className="w-full">
               <Controller
                 control={control}
@@ -511,15 +504,15 @@ const ReachHookFormWithController = () => {
               />
             </FormField>
 
-            <div className="flex gap-2 pt-4">
+            <Box className="flex gap-2 pt-4">
               <Button type="submit" variant="primary">
                 Submit
               </Button>
               <Button type="button" variant="secondary" onClick={handleClear}>
                 Clear
               </Button>
-            </div>
-          </div>
+            </Box>
+          </Box>
         </Container>
       </form>
     </FormProvider>
@@ -576,7 +569,7 @@ const ValidationFormExample = () => {
             With Select Next and Validation Using React Hook Form
           </Heading>
 
-          <div className="space-y-4">
+          <Box className="space-y-4">
             <FormField>
               <FormFieldLabel htmlFor="customerType">Customer Type</FormFieldLabel>
               {errors.customerType?.message && <FormFieldError>{errors.customerType.message}</FormFieldError>}
@@ -656,20 +649,20 @@ const ValidationFormExample = () => {
               />
             </FormField>
 
-            <div className="flex gap-2 pt-4">
+            <Box className="flex gap-2 pt-4">
               <Button type="submit">Submit</Button>
               <Button type="button" onClick={() => reset(defaultValues)}>
                 Reset
               </Button>
-            </div>
+            </Box>
 
             {formData && (
-              <div className="mt-4 p-2 bg-gray-50 rounded">
+              <Box className="mt-4 p-2 bg-gray-50 rounded">
                 <strong>Form data:</strong>
                 <pre className="mt-1 text-sm">{formData}</pre>
-              </div>
+              </Box>
             )}
-          </div>
+          </Box>
         </Form>
       </FormProvider>
     </Container>
@@ -700,14 +693,14 @@ export default function Home() {
 
           {/* Forms Tab */}
           <TabPanel value="forms">
-            <div className="space-y-8">
+            <Box className="space-y-8">
               <Container className="p-4 border border-gray-200 bg-white rounded-lg shadow-sm">
                 <Heading as="h4" className="mb-4">
                   Standalone Form Elements
                 </Heading>
 
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                  <div>
+                <Box className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                  <Box>
                     <h5 className="font-semibold mb-2">Radio Group</h5>
                     <FormField>
                       <FormFieldLabel>Where do you live?</FormFieldLabel>
@@ -718,18 +711,18 @@ export default function Home() {
                         <InputRadio value="galway" label="Galway" />
                       </InputRadioGroup>
                     </FormField>
-                  </div>
+                  </Box>
 
-                  <div>
+                  <Box>
                     <h5 className="font-semibold mb-2">Checkbox Group</h5>
                     <InputCheckboxGroup groupId="nationality">
                       <InputCheckbox value="irish" label="Irish" />
                       <InputCheckbox value="british" label="British" />
                       <InputCheckbox value="citizen-of-another-country" label="Citizen of another country" />
                     </InputCheckboxGroup>
-                  </div>
+                  </Box>
 
-                  <div>
+                  <Box>
                     <h5 className="font-semibold mb-2">Combobox</h5>
                     <Form>
                       <Combobox>
@@ -738,51 +731,51 @@ export default function Home() {
                         <DropdownItem options={ComboBoxProps.topicOptions}>Topic</DropdownItem>
                       </Combobox>
                     </Form>
-                  </div>
+                  </Box>
 
-                  <div>
+                  <Box>
                     <h5 className="font-semibold mb-2">Text Area</h5>
                     <StandaloneTextAreaExample />
-                  </div>
-                </div>
+                  </Box>
+                </Box>
               </Container>
 
               <NativeFormExample />
               <ReachHookFormWithRegister />
               <ReachHookFormWithController />
               <ValidationFormExample />
-            </div>
+            </Box>
           </TabPanel>
 
           {/* Inputs Tab */}
           <TabPanel value="inputs">
-            <div className="space-y-6">
+            <Box className="space-y-6">
               <Container className="p-4 border border-gray-200 bg-white rounded-lg shadow-sm">
                 <Heading as="h4" className="mb-4">
                   Input Components
                 </Heading>
 
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                  <div>
+                <Box className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                  <Box>
                     <h5 className="font-semibold mb-2">Text Input with Clear Button</h5>
                     <InputText clearButtonEnabled placeholder="Type something..." />
-                  </div>
+                  </Box>
 
-                  <div>
+                  <Box>
                     <h5 className="font-semibold mb-2">Password Input</h5>
                     <InputPassword placeholder="Enter password" />
-                  </div>
+                  </Box>
 
-                  <div>
+                  <Box>
                     <h5 className="font-semibold mb-2">Autocomplete</h5>
                     <Autocomplete>
                       <AutocompleteItem value="option1">Option 1</AutocompleteItem>
                       <AutocompleteItem value="option2">Option 2</AutocompleteItem>
                       <AutocompleteItem value="option3">Option 3</AutocompleteItem>
                     </Autocomplete>
-                  </div>
+                  </Box>
 
-                  <div>
+                  <Box>
                     <h5 className="font-semibold mb-2">Select (New)</h5>
                     <SelectNext>
                       <SelectItemNext value="">Choose an option</SelectItemNext>
@@ -790,27 +783,27 @@ export default function Home() {
                       <SelectItemNext value="option2">Option 2</SelectItemNext>
                       <SelectItemNext value="option3">Option 3</SelectItemNext>
                     </SelectNext>
-                  </div>
+                  </Box>
 
-                  <div>
+                  <Box>
                     <h5 className="font-semibold mb-2">Single Checkbox</h5>
                     <InputCheckbox id="single-checkbox" value="agree" label="I agree to the terms" />
-                  </div>
-                </div>
+                  </Box>
+                </Box>
               </Container>
-            </div>
+            </Box>
           </TabPanel>
 
           {/* Navigation Tab */}
           <TabPanel value="navigation">
-            <div className="space-y-6">
+            <Box className="space-y-6">
               <Container className="p-4 border border-gray-200 bg-white rounded-lg shadow-sm">
                 <Heading as="h4" className="mb-4">
                   Navigation Components
                 </Heading>
 
-                <div className="space-y-6">
-                  <div>
+                <Box className="space-y-6">
+                  <Box>
                     <h5 className="font-semibold mb-2">Breadcrumbs</h5>
                     <Breadcrumbs>
                       <BreadcrumbLink href="/home">Home</BreadcrumbLink>
@@ -818,9 +811,9 @@ export default function Home() {
                       <BreadcrumbLink href="/documentation">Documentation</BreadcrumbLink>
                       <BreadcrumbCurrentLink href="/travel">Travel</BreadcrumbCurrentLink>
                     </Breadcrumbs>
-                  </div>
+                  </Box>
 
-                  <div>
+                  <Box>
                     <h5 className="font-semibold mb-2">Breadcrumbs with Next.js Links</h5>
                     <Breadcrumbs>
                       <BreadcrumbLink asChild>
@@ -832,11 +825,11 @@ export default function Home() {
                       </BreadcrumbLink>
                       <BreadcrumbCurrentLink href="/travel">Travel</BreadcrumbCurrentLink>
                     </Breadcrumbs>
-                  </div>
+                  </Box>
 
-                  <div>
+                  <Box>
                     <h5 className="font-semibold mb-2">Links</h5>
-                    <div className="space-x-4">
+                    <Box className="space-x-4">
                       <Link href="https://www.google.com" external={true}>
                         External Link
                       </Link>
@@ -846,30 +839,30 @@ export default function Home() {
                       <Link href="#" noVisited={true}>
                         Link without visited state
                       </Link>
-                    </div>
-                  </div>
+                    </Box>
+                  </Box>
 
-                  <div>
+                  <Box>
                     <h5 className="font-semibold mb-2">Pagination</h5>
                     <Pagination currentPage={5} onPageChange={() => {}} totalPages={10} />
-                  </div>
-                </div>
+                  </Box>
+                </Box>
               </Container>
-            </div>
+            </Box>
           </TabPanel>
 
           {/* Layout Tab */}
           <TabPanel value="layout">
-            <div className="space-y-6">
+            <Box className="space-y-6">
               <Container className="p-4 border border-gray-200 bg-white rounded-lg shadow-sm">
                 <Heading as="h4" className="mb-4">
                   Layout Components
                 </Heading>
 
-                <div className="space-y-6">
-                  <div>
+                <Box className="space-y-6">
+                  <Box>
                     <h5 className="font-semibold mb-2">Cards</h5>
-                    <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                    <Box className="grid grid-cols-1 md:grid-cols-2 gap-4">
                       <Card
                         action={{
                           children: 'Button',
@@ -910,12 +903,11 @@ export default function Home() {
                       >
                         <NextLink href="#">Next.js Link Title</NextLink>
                       </Card>
-                    </div>
-                  </div>
-
-                  <div>
+                    </Box>
+                  </Box>
+                  <Box>
                     <h5 className="font-semibold mb-2">Stack Layout</h5>
-                    <div className="h-[200px] bg-gray-50 overflow-auto p-2">
+                    <Box className="h-[200px] bg-gray-50 overflow-auto p-2">
                       <Stack
                         direction={{ sm: 'column', base: 'row' }}
                         itemsAlignment="start"
@@ -923,27 +915,27 @@ export default function Home() {
                         gap={5}
                         hasDivider
                       >
-                        <div className="bg-gray-300 p-2 h-[50px] w-[100px] flex items-center justify-center">
+                        <Box className="bg-gray-300 p-2 h-[50px] w-[100px] flex items-center justify-center">
                           Item 1
-                        </div>
-                        <div className="bg-gray-300 p-2 h-[50px] w-[100px] flex items-center justify-center">
+                        </Box>
+                        <Box className="bg-gray-300 p-2 h-[50px] w-[100px] flex items-center justify-center">
                           Item 2
-                        </div>
-                        <div className="bg-gray-300 p-2 h-[50px] w-[100px] flex items-center justify-center">
+                        </Box>
+                        <Box className="bg-gray-300 p-2 h-[50px] w-[100px] flex items-center justify-center">
                           Item 3
-                        </div>
+                        </Box>
                       </Stack>
-                    </div>
-                  </div>
+                    </Box>
+                  </Box>
 
-                  <div>
+                  <Box>
                     <h5 className="font-semibold mb-2">Lists</h5>
                     <List items={['Item 1', 'Item 2', 'Item 3']} type="bullet" />
-                  </div>
+                  </Box>
 
-                  <div>
+                  <Box>
                     <h5 className="font-semibold mb-2">Typography</h5>
-                    <div className="space-y-2">
+                    <Box className="space-y-2">
                       <Heading as="h2">Heading H2</Heading>
                       <Heading as="h3">Heading H3</Heading>
                       <Heading as="h4">Heading H4</Heading>
@@ -964,23 +956,23 @@ export default function Home() {
                         It can take up to 8 weeks to register a lasting power of attorney if there are no mistakes in
                         the application.
                       </InsetText>
-                    </div>
-                  </div>
-                </div>
+                    </Box>
+                  </Box>
+                </Box>
               </Container>
-            </div>
+            </Box>
           </TabPanel>
 
           {/* Feedback Tab */}
           <TabPanel value="feedback">
-            <div className="space-y-6">
+            <Box className="space-y-6">
               <Container className="p-4 border border-gray-200 bg-white rounded-lg shadow-sm">
                 <Heading as="h4" className="mb-4">
                   Feedback Components
                 </Heading>
 
-                <div className="space-y-6">
-                  <div>
+                <Box className="space-y-6">
+                  <Box>
                     <h5 className="font-semibold mb-2">Alerts</h5>
                     <Alert title="Info Alert" dismissible>
                       <Paragraph>This is an informational alert message.</Paragraph>
@@ -990,11 +982,11 @@ export default function Home() {
                     <Alert title="Info Alert" showIcon={false}>
                       <Paragraph>This is an alert message without icon.</Paragraph>
                     </Alert>
-                  </div>
+                  </Box>
 
-                  <div>
+                  <Box>
                     <h5 className="font-semibold mb-2">Toast Notifications</h5>
-                    <div className="flex flex-wrap gap-2">
+                    <Box className="flex flex-wrap gap-2">
                       <Button onClick={() => handleCreateToast('Success', 'success')}>Success Toast</Button>
                       <Button onClick={() => handleCreateToast('Error', 'danger')}>Error Toast</Button>
                       <Button onClick={() => handleCreateToast('Info', 'info')}>Info Toast</Button>
@@ -1006,18 +998,18 @@ export default function Home() {
                       >
                         Toast with Action
                       </Button>
-                    </div>
-                  </div>
+                    </Box>
+                  </Box>
 
-                  <div>
+                  <Box>
                     <h5 className="font-semibold mb-2">Progress Indicators</h5>
-                    <div className="space-y-4">
-                      <div>
+                    <Box className="space-y-4">
+                      <Box>
                         <h6 className="text-sm font-medium mb-2">Progress Bar</h6>
                         <ProgressBar value={50} label="Loading..." />
-                      </div>
+                      </Box>
 
-                      <div>
+                      <Box>
                         <h6 className="text-sm font-medium mb-2">Progress Stepper (Horizontal)</h6>
                         <ProgressStepper>
                           <StepItem label="Step 1">Step 1 Content</StepItem>
@@ -1025,9 +1017,9 @@ export default function Home() {
                           <StepItem label="Step 3">Step 3 Content</StepItem>
                           <StepItem label="Step 4">Step 4 Content</StepItem>
                         </ProgressStepper>
-                      </div>
+                      </Box>
 
-                      <div>
+                      <Box>
                         <h6 className="text-sm font-medium mb-2">Progress Stepper (Numbers)</h6>
                         <ProgressStepper indicator="number" currentStepIndex={2}>
                           <StepItem label="Step 1" />
@@ -1035,9 +1027,9 @@ export default function Home() {
                           <StepItem label="Step 3" />
                           <StepItem label="Step 4" />
                         </ProgressStepper>
-                      </div>
+                      </Box>
 
-                      <div>
+                      <Box>
                         <h6 className="text-sm font-medium mb-2">Progress Stepper (Vertical)</h6>
                         <ProgressStepper indicator="number" orientation="vertical" currentStepIndex={1}>
                           <StepItem label="Complete your application" />
@@ -1045,9 +1037,9 @@ export default function Home() {
                           <StepItem label="Submit for approval" />
                           <StepItem label="Await confirmation" />
                         </ProgressStepper>
-                      </div>
+                      </Box>
 
-                      <div>
+                      <Box>
                         <h6 className="text-sm font-medium mb-2">Progress Stepper With `stepStates`</h6>
 
                         <ProgressStepper
@@ -1064,18 +1056,18 @@ export default function Home() {
                           <StepItem key="with-step-states-step-7" label="Step 7" />
                           <StepItem key="with-step-states-step-8" label="Step 8" />
                         </ProgressStepper>
-                      </div>
-                    </div>
-                  </div>
+                      </Box>
+                    </Box>
+                  </Box>
 
-                  <div>
+                  <Box>
                     <h5 className="font-semibold mb-2">Phase Banner </h5>
                     <PhaseBanner level="Alpha">This is a pre-release version</PhaseBanner>
-                  </div>
+                  </Box>
 
-                  <div>
+                  <Box>
                     <h5 className="font-semibold mb-2">Modals and Drawers</h5>
-                    <div className="flex gap-4">
+                    <Box className="flex gap-4">
                       <Modal triggerButton={<Button>Open Modal</Button>} aria-describedby="Modal example">
                         <ModalTitle>Modal Title</ModalTitle>
                         <ModalBody>
@@ -1097,33 +1089,33 @@ export default function Home() {
                           </Paragraph>
                         </DrawerBody>
                         <DrawerFooter>
-                          <div className="flex gap-6 justify-end">
+                          <Box className="flex gap-6 justify-end">
                             <Button variant="secondary" appearance="dark">
                               Cancel
                             </Button>
                             <Button>Save</Button>
-                          </div>
+                          </Box>
                         </DrawerFooter>
                       </Drawer>
-                    </div>
-                  </div>
-                </div>
+                    </Box>
+                  </Box>
+                </Box>
               </Container>
-            </div>
+            </Box>
           </TabPanel>
 
           {/* Data Display Tab */}
           <TabPanel value="data">
-            <div className="space-y-6">
+            <Box className="space-y-6">
               <Container className="p-4 border border-gray-200 bg-white rounded-lg shadow-sm">
                 <Heading as="h4" className="mb-4">
                   Data Display Components
                 </Heading>
 
-                <div className="space-y-6">
-                  <div>
+                <Box className="space-y-6">
+                  <Box>
                     <h5 className="font-semibold mb-2">Table</h5>
-                    <div className="w-full overflow-x-auto">
+                    <Box className="w-full overflow-x-auto">
                       <Table className="min-w-full table-auto">
                         <TableHead>
                           <TableRow>
@@ -1142,17 +1134,17 @@ export default function Home() {
                             <TableData>alice@example.com</TableData>
                             <TableData>Admin</TableData>
                             <TableData>
-                              <Chip label="Active" onClose={() => console.log('Chip closed')} />
+                              <Chip label="Active" onClose={() => {}} />
                             </TableData>
                             <TableData>
-                              <div className="flex gap-2">
+                              <Box className="flex gap-2">
                                 <Button size="small" variant="secondary">
                                   Edit
                                 </Button>
                                 <Button size="small" variant="secondary">
                                   Delete
                                 </Button>
-                              </div>
+                              </Box>
                             </TableData>
                           </TableRow>
                           <TableRow>
@@ -1161,17 +1153,17 @@ export default function Home() {
                             <TableData>bob@example.com</TableData>
                             <TableData>User</TableData>
                             <TableData>
-                              <Chip label="Inactive" onClose={() => console.log('Chip closed')} />
+                              <Chip label="Inactive" onClose={() => {}} />
                             </TableData>
                             <TableData>
-                              <div className="flex gap-2">
+                              <Box className="flex gap-2">
                                 <Button size="small" variant="secondary">
                                   Edit
                                 </Button>
                                 <Button size="small" variant="secondary">
                                   Delete
                                 </Button>
-                              </div>
+                              </Box>
                             </TableData>
                           </TableRow>
                           <TableRow>
@@ -1180,25 +1172,25 @@ export default function Home() {
                             <TableData>carol@example.com</TableData>
                             <TableData>Manager</TableData>
                             <TableData>
-                              <Chip label="Active" onClose={() => console.log('Chip closed')} />
+                              <Chip label="Active" onClose={() => {}} />
                             </TableData>
                             <TableData>
-                              <div className="flex gap-2">
+                              <Box className="flex gap-2">
                                 <Button size="small" variant="secondary">
                                   Edit
                                 </Button>
                                 <Button size="small" variant="secondary">
                                   Delete
                                 </Button>
-                              </div>
+                              </Box>
                             </TableData>
                           </TableRow>
                         </TableBody>
                       </Table>
-                    </div>
-                  </div>
+                    </Box>
+                  </Box>
 
-                  <div>
+                  <Box>
                     <h5 className="font-semibold mb-2">Summary List</h5>
                     <SummaryList withBorder>
                       <SummaryListHeader label="Summary card heading">
@@ -1229,28 +1221,28 @@ export default function Home() {
                         <SummaryListAction href="/change-phone">Change phone</SummaryListAction>
                       </SummaryListRow>
                     </SummaryList>
-                  </div>
+                  </Box>
 
-                  <div>
+                  <Box>
                     <h5 className="font-semibold mb-2">Chips and Tags</h5>
-                    <div className="flex flex-wrap gap-2">
-                      <Chip label="Default Chip" onClose={() => console.log('Chip closed')} />
-                      <Chip label="Closable Chip" onClose={() => console.log('Chip closed')} />
-                      <Chip label="Another Tag" onClose={() => console.log('Chip closed')} />
-                    </div>
-                  </div>
+                    <Box className="flex flex-wrap gap-2">
+                      <Chip label="Default Chip" onClose={() => {}} />
+                      <Chip label="Closable Chip" onClose={() => {}} />
+                      <Chip label="Another Tag" onClose={() => {}} />
+                    </Box>
+                  </Box>
 
-                  <div>
+                  <Box>
                     <h5 className="font-semibold mb-2">Details (Collapsible)</h5>
                     <Details label="Help with Nationality">
                       We need to know your nationality so we can work out which elections you&apos;re entitled to vote
                       in. If you cannot provide your nationality, you&apos;ll have to send copies of identity documents
                       through the post.
                     </Details>
-                  </div>
-                </div>
+                  </Box>
+                </Box>
               </Container>
-            </div>
+            </Box>
           </TabPanel>
         </Tabs>
 
@@ -1260,27 +1252,27 @@ export default function Home() {
             Buttons and Icons
           </Heading>
 
-          <div className="space-y-4">
-            <div>
+          <Box className="space-y-4">
+            <Box>
               <h5 className="font-semibold mb-2">Button Variants</h5>
-              <div className="flex flex-wrap gap-2">
+              <Box className="flex flex-wrap gap-2">
                 <Button variant="primary">Primary</Button>
                 <Button variant="secondary">Secondary</Button>
-              </div>
-            </div>
+              </Box>
+            </Box>
 
-            <div>
+            <Box>
               <h5 className="font-semibold mb-2">Button Sizes</h5>
-              <div className="flex items-center gap-2">
+              <Box className="flex items-center gap-2">
                 <Button size="small">Small</Button>
                 <Button size="medium">Medium</Button>
                 <Button size="large">Large</Button>
-              </div>
-            </div>
+              </Box>
+            </Box>
 
-            <div>
+            <Box>
               <h5 className="font-semibold mb-2">Icons and Icon Buttons</h5>
-              <div className="flex items-center gap-4">
+              <Box className="flex items-center gap-4">
                 <Icon icon="thumb_up" />
                 <Icon icon="home" />
                 <Icon icon="search" />
@@ -1296,9 +1288,9 @@ export default function Home() {
                     ariaLabel: 'Delete',
                   }}
                 />
-              </div>
-            </div>
-          </div>
+              </Box>
+            </Box>
+          </Box>
         </Container>
       </Container>
 

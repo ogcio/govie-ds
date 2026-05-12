@@ -1,29 +1,29 @@
 'use client';
-import {
+import type {
   ComponentPropsWithoutRef,
   ComponentType,
-  forwardRef,
   MouseEventHandler,
 } from 'react';
+import { forwardRef } from 'react';
 import {
-  KeyboardArrowDown,
-  KeyboardArrowUp,
-  KeyboardArrowRight,
-  KeyboardArrowLeft,
-  Close,
-  Visibility,
-  VisibilityOff,
-  CheckCircle,
-  Warning,
-  Info,
-  Error,
-  ArrowLeft,
-  ArrowRight,
-  FirstPage,
-  LastPage,
+  KeyboardArrowDownIcon,
+  KeyboardArrowUpIcon,
+  KeyboardArrowRightIcon,
+  KeyboardArrowLeftIcon,
+  CloseIcon,
+  VisibilityIcon,
+  VisibilityOffIcon,
+  CheckCircleIcon,
+  WarningIcon,
+  InfoIcon,
+  ErrorIcon,
+  ArrowLeftIcon,
+  ArrowRightIcon,
+  FirstPageIcon,
+  LastPageIcon,
 } from '../atoms/icons';
 import { cn } from '../cn.js';
-import { iconIds } from './icons.js';
+import type { iconIds } from './icons.js';
 import Bluesky from './svgs/bluesky.js';
 import Facebook from './svgs/facebook.js';
 import Instagram from './svgs/instagram.js';
@@ -80,23 +80,23 @@ const ICON_REGISTRY: Record<
   social_x: { Component: X, disabledClass: 'gi-stroke-gray-700' },
   social_youtube: { Component: Youtube, disabledClass: 'gi-stroke-gray-700' },
   placeholder: { Component: Placeholder },
-  keyboard_arrow_down: { Component: KeyboardArrowDown },
-  keyboard_arrow_up: { Component: KeyboardArrowUp },
-  close: { Component: Close },
-  visibility: { Component: Visibility },
-  visibility_off: { Component: VisibilityOff },
-  info: { Component: Info },
-  error: { Component: Error },
-  warning: { Component: Warning },
-  check_circle: { Component: CheckCircle },
-  keyboard_arrow_left: { Component: KeyboardArrowLeft },
-  keyboard_arrow_right: { Component: KeyboardArrowRight },
-  chevron_left: { Component: KeyboardArrowLeft },
-  chevron_right: { Component: KeyboardArrowRight },
-  arrow_left_alt: { Component: ArrowLeft },
-  arrow_right_alt: { Component: ArrowRight },
-  first_page: { Component: FirstPage },
-  last_page: { Component: LastPage },
+  keyboard_arrow_down: { Component: KeyboardArrowDownIcon },
+  keyboard_arrow_up: { Component: KeyboardArrowUpIcon },
+  close: { Component: CloseIcon },
+  visibility: { Component: VisibilityIcon },
+  visibility_off: { Component: VisibilityOffIcon },
+  info: { Component: InfoIcon },
+  error: { Component: ErrorIcon },
+  warning: { Component: WarningIcon },
+  check_circle: { Component: CheckCircleIcon },
+  keyboard_arrow_left: { Component: KeyboardArrowLeftIcon },
+  keyboard_arrow_right: { Component: KeyboardArrowRightIcon },
+  chevron_left: { Component: KeyboardArrowLeftIcon },
+  chevron_right: { Component: KeyboardArrowRightIcon },
+  arrow_left_alt: { Component: ArrowLeftIcon },
+  arrow_right_alt: { Component: ArrowRightIcon },
+  first_page: { Component: FirstPageIcon },
+  last_page: { Component: LastPageIcon },
 };
 
 export const Icon = forwardRef<HTMLSpanElement, IconProps>(

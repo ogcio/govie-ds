@@ -119,7 +119,7 @@ export const Default: StoryObj = {
       expect(input).toHaveValue('Select Option');
     });
     await waitFor(() => {
-      expect(canvas.getByTestId('keyboard_arrow_down')).toBeInTheDocument();
+      expect(canvas.getByTestId('keyboard-arrow-down')).toBeInTheDocument();
     });
 
     await userEvent.click(input);
@@ -127,7 +127,7 @@ export const Default: StoryObj = {
       expect(canvas.getByRole('listbox')).toBeInTheDocument();
     });
     await waitFor(() => {
-      expect(canvas.getByTestId('keyboard_arrow_up')).toBeInTheDocument();
+      expect(canvas.getByTestId('keyboard-arrow-up')).toBeInTheDocument();
     });
 
     const list = await canvas.findByRole('listbox');

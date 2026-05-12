@@ -5,9 +5,7 @@
   "type": "module",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
-  "files": [
-    "dist"
-  ],
+  "files": ["dist"],
   "scripts": {
     "build": "pnpm build:tokens && pnpm build:source",
     "build:tokens": "tsx scripts/build.ts",

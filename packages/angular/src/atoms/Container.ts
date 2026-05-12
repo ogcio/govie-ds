@@ -9,25 +9,23 @@ import { Component, Input } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
 export type Props = {
-  id?: string;
-  children?: any;
-  className?: string;
   inset?: boolean;
   gutters?: boolean;
   maxWidth?: (typeof MaxWidth)[keyof typeof MaxWidth];
-  dataTestId?: string;
-};
+} & BoxProps;
 
 import { tv } from 'tailwind-variants';
 import { clamp } from './utilities';
 import { Size } from './constants';
+import type { Props as BoxProps } from './Box';
+import GiBox from './Box';
 export const MaxWidth = {
   ...Size,
   default: 'default',
   '2xl': '2xl',
   full: 'full',
 } as const;
-export const styles = tv({
+export const containerStyles = tv({
   base: 'gi-container gi-mx-auto',
   variants: {
     inset: {
@@ -62,20 +60,23 @@ export const styles = tv({
 @Component({
   selector: 'gi-container',
   template: `
-    <div
-      [attr.id]="id"
-      [attr.data-testid]="dataTestId"
-      [class]="
-        styles({
+    <gi-box
+      [id]="id"
+      [role]="role"
+      [ariaLabel]="ariaLabel"
+      [ariaLabelledBy]="ariaLabelledBy"
+      [styles]="styles"
+      [dataTestId]="dataTestId"
+      [className]="
+        containerStyles({
           inset: inset ?? false,
           gutters: gutters ?? true,
           maxWidth: clamp(maxWidth, MaxWidth, MaxWidth.default),
           class: className,
         })
       "
-    >
-      <ng-content></ng-content>
-    </div>
+      ><ng-content></ng-content
+    ></gi-box>
   `,
   styles: [
     `
@@ -85,14 +86,18 @@ export const styles = tv({
     `,
   ],
   standalone: true,
-  imports: [CommonModule],
+  imports: [CommonModule, GiBox],
 })
 export default class Container {
   MaxWidth = MaxWidth;
-  styles = styles;
+  containerStyles = containerStyles;
   clamp = clamp;
 
   @Input() id!: Props['id'];
+  @Input() role!: Props['role'];
+  @Input() ariaLabel!: Props['ariaLabel'];
+  @Input() ariaLabelledBy!: Props['ariaLabelledBy'];
+  @Input() styles!: Props['styles'];
   @Input() dataTestId!: Props['dataTestId'];
   @Input() inset!: Props['inset'];
   @Input() gutters!: Props['gutters'];

@@ -11,7 +11,7 @@ import { CommonModule } from '@angular/common';
 import { IconProps } from './types';
 
 @Component({
-  selector: 'last-page',
+  selector: 'gi-last-page-icon',
   template: `
     <svg
       viewBox="0 -960 960 960"
@@ -24,7 +24,7 @@ import { IconProps } from './types';
       [attr.aria-label]="label"
       [attr.aria-hidden]="!label"
       [attr.fill]="color ?? 'currentColor'"
-      [attr.data-testid]="dataTestId ?? 'last_page'"
+      [attr.data-testid]="dataTestId ?? 'last-page'"
     >
       <path d="m280-240-56-56 184-184-184-184 56-56 240 240-240 240Zm360 0v-480h80v480h-80Z"></path>
     </svg>

@@ -65,6 +65,10 @@ component:
           ofType: 'string'
           description: 'Optional id for the stack container.'
           required: false
+        - name: 'style'
+          ofType: 'React.CSSProperties'
+          description: 'Inline styles applied directly to the stack element. Use for truly dynamic values that cannot be expressed as Tailwind classes. Alias: `styles`.'
+          required: false
         - name: 'dataTestId'
           ofType: 'string'
           description: 'Test id for targeting the element in automated tests.'

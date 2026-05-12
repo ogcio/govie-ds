@@ -1,11 +1,10 @@
 'use client';
 
 import { useState } from 'react';
-import { KeyboardArrowRight } from '../../atoms/icons/index.js';
+import KeyboardArrowRightIcon from '../../atoms/icons/KeyboardArrowRight';
 import { cn } from '../../cn.js';
-import { translate as t } from '../../i18n/utility.js';
 import { ListItem } from '../../list-item/list-item.js';
-import { HeaderProps } from '../types.js';
+import type { HeaderProps } from '../types.js';
 
 export type MobileHeaderMenuProps = Pick<
   HeaderProps,
@@ -51,7 +50,7 @@ export const MenuItemAccordion = ({ index, item }: MenuItemAccordionProps) => {
       >
         <div>
           <span className="gi-text-sm gi-font-bold gi-ml-1">{item.label}</span>
-          <KeyboardArrowRight className="gi-block gi-shrink-0 gi-accordion-item-icon" />
+          <KeyboardArrowRightIcon className="gi-block gi-shrink-0 gi-accordion-item-icon" />
         </div>
       </div>
 

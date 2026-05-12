@@ -21,7 +21,7 @@ function KeyboardArrowDown(props: IconProps) {
       aria-label={props.label}
       aria-hidden={!props.label}
       fill={props.color ?? 'currentColor'}
-      data-testid={props.dataTestId ?? 'keyboard_arrow_down'}
+      data-testid={props.dataTestId ?? 'keyboard-arrow-down'}
     >
       <path d="M480-344 240-584l56-56 184 184 184-184 56 56-240 240Z" />
     </svg>

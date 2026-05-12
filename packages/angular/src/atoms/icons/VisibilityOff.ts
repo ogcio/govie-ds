@@ -11,7 +11,7 @@ import { CommonModule } from '@angular/common';
 import { IconProps } from './types';
 
 @Component({
-  selector: 'visibility-off',
+  selector: 'gi-visibility-off-icon',
   template: `
     <svg
       viewBox="0 -960 960 960"
@@ -20,7 +20,7 @@ import { IconProps } from './types';
       [attr.height]="size ?? 24"
       [class]="className"
       [attr.id]="id"
-      [attr.data-testid]="dataTestId"
+      [attr.data-testid]="dataTestId ?? 'visibility-off'"
       [attr.role]="label ? 'img' : undefined"
       [attr.aria-label]="label"
       [attr.aria-hidden]="!label"

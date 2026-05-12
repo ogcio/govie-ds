@@ -17,7 +17,7 @@ function VisibilityOff(props: IconProps) {
       height={props.size ?? 24}
       className={props.className}
       id={props.id}
-      data-testid={props.dataTestId}
+      data-testid={props.dataTestId ?? 'visibility-off'}
       role={props.label ? 'img' : undefined}
       aria-label={props.label}
       aria-hidden={!props.label}

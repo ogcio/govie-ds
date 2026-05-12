@@ -21,34 +21,27 @@ type ContainerProps = Omit<GiContainerProps, 'children'> &
     insetBottom?: ContainerInsetSizeType;
     /** @deprecated Use `maxWidth` (for example `'full'` or `'screen'`) instead. */
     fullWidth?: boolean;
+    style?: React.CSSProperties;
   }>;
 
 export function Container({
-  children,
-  id,
-  insetBottom,
   insetTop,
+  insetBottom,
   className,
-  inset,
-  gutters,
-  maxWidth,
-  dataTestId,
+  style,
+  styles,
+  ...props
 }: ContainerProps) {
   return (
     <GiContainer
-      id={id}
-      className={styles({ insetTop, insetBottom, class: className })}
-      dataTestId={dataTestId}
-      maxWidth={maxWidth}
-      gutters={gutters}
-      inset={inset}
-    >
-      {children}
-    </GiContainer>
+      {...props}
+      className={getClasses({ insetTop, insetBottom, class: className })}
+      styles={(style ?? styles) as Record<string, string>}
+    />
   );
 }
 
-const styles = tv({
+const getClasses = tv({
   variants: {
     insetTop: {
       none: 'gi-pt-0',

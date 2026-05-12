@@ -35,21 +35,8 @@
     "gen:licenses": "sh scripts/licenses.sh"
   },
   "lint-staged": {
-    "packages/react/**/*.{js,ts,tsx}": [
-      "pnpm -F @ogcio/design-system-react run lint --fix"
-    ],
-    "packages/html/**/*.{js,ts,tsx}": [
-      "pnpm -F @ogcio/design-system-html run lint --fix"
-    ],
-    "examples/*/**/*.{js,ts,tsx}": [
-      "pnpm -F @ogcio/examples-nextjs run lint --fix"
-    ],
-    "apps/docs/**/*.{ts,tsx}": [
-      "pnpm -F @ogcio/design-system-docs run lint:code"
-    ],
-    "apps/docs/**/*.mdx": [
-      "pnpm -F @ogcio/design-system-docs run lint:spelling"
-    ]
+    "{apps,packages,examples}/**/*.{js,ts,tsx}": ["eslint"],
+    "{apps,packages,examples}/**/*": ["prettier --check --ignore-unknown"]
   },
   "devDependencies": {
     "@commitlint/cli": "^19.8.1",
@@ -95,5 +82,10 @@
     "react-color": "^2.19.3",
     "react-hook-form": "^7.58.1",
     "tinycolor2": "^1.6.0"
+  },
+  "pnpm": {
+    "overrides": {
+      "apisauce>axios": "~1.16.0"
+    }
   }
 }

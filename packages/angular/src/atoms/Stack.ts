@@ -14,23 +14,21 @@ export type Props = {
   align?: (typeof AlignItems)[keyof typeof AlignItems];
   justify?: (typeof Justify)[keyof typeof Justify];
   wrap?: boolean;
-  role?: 'region' | 'navigation' | 'complementary' | 'search' | 'form' | 'group';
-  ariaLabel?: string;
-  ariaLabelledBy?: string;
-  className?: string;
-  id?: string;
-  styles?: Record<string, string>;
-  children?: any;
-  dataTestId?: string;
-};
+} & BoxProps;
 
 import { tv } from 'tailwind-variants';
 import { Direction, AlignItems, Justify, ResponsiveValue } from './constants';
+import type { Props as BoxProps } from './Box';
 import { getAlignItems, getJustify, resolveResponsive } from './utilities';
+import GiBox from './Box';
 const directionToClass = (direction: string, prefix: string): string =>
   direction === 'row' ? `${prefix}gi-flex-row` : `${prefix}gi-flex-col`;
+const gapToClass = (gap: number, prefix: string): string => `${prefix}gi-gap-${gap}`;
+
+// TODO: add twMerge to enable consumer `className` to override component-default utilities
+// TODO: add twMerge to enable consumer `className` to override component-default utilities
 const stackVariants = tv({
-  base: ['gi-flex', 'gi-w-full'],
+  base: ['gi-flex'],
   variants: {
     align: {
       start: 'gi-items-start',
@@ -62,22 +60,27 @@ const stackVariants = tv({
 @Component({
   selector: 'gi-stack',
   template: `
-    <div
-      [attr.id]="id"
-      [attr.role]="role"
-      [attr.aria-label]="role ? ariaLabel : undefined"
-      [attr.aria-labelledby]="role ? ariaLabelledBy : undefined"
-      [ngStyle]="styles"
-      [class]="stackVariants({
+    <gi-box
+      [id]="id"
+      [role]="role"
+      [ariaLabel]="ariaLabel"
+      [ariaLabelledBy]="ariaLabelledBy"
+      [styles]="styles"
+      [className]="
+        stackVariants({
           align: getAlignItems(align),
           justify: getJustify(justify),
           wrap: wrap ?? false,
-          class: [resolveResponsive(direction ?? Direction.COLUMN, directionToClass), resolveResponsive(gap ?? 0, (gap: number, prefix: string): string => \`\${prefix}gi-gap-\${gap}\`), className]
-        })"
-      [attr.data-testid]="dataTestId"
-    >
-      <ng-content></ng-content>
-    </div>
+          class: [
+            resolveResponsive(direction ?? Direction.COLUMN, directionToClass),
+            resolveResponsive(gap ?? 0, gapToClass),
+            className,
+          ],
+        })
+      "
+      [dataTestId]="dataTestId"
+      ><ng-content></ng-content
+    ></gi-box>
   `,
   styles: [
     `
@@ -87,10 +90,11 @@ const stackVariants = tv({
     `,
   ],
   standalone: true,
-  imports: [CommonModule],
+  imports: [CommonModule, GiBox],
 })
 export default class Stack {
   directionToClass = directionToClass;
+  gapToClass = gapToClass;
   stackVariants = stackVariants;
   getAlignItems = getAlignItems;
   getJustify = getJustify;

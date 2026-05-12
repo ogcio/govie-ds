@@ -27,15 +27,8 @@ const itemClasses =
 export const Default: Story = {
   ...stackDefault,
   tags: ['skip-playwright'],
-  render: ({ direction, gap, align, justify, wrap, dataTestId }) => (
-    <Stack
-      direction={direction}
-      gap={gap}
-      align={align}
-      justify={justify}
-      wrap={wrap}
-      dataTestId={dataTestId}
-    >
+  render: (props) => (
+    <Stack {...props}>
       <div className={itemClasses}>Item 1</div>
       <div className={itemClasses}>Item 2</div>
       <div className={itemClasses}>Item 3</div>
@@ -134,26 +127,8 @@ export const GapScale: Story = {
 
 export const Responsive: Story = {
   ...stackResponsive,
-  render: ({
-    direction,
-    gap,
-    align,
-    justify,
-    wrap,
-    dataTestId,
-    role,
-    ariaLabel,
-  }) => (
-    <Stack
-      direction={direction}
-      gap={gap}
-      align={align}
-      justify={justify}
-      wrap={wrap}
-      dataTestId={dataTestId}
-      ariaLabel={ariaLabel}
-      role={role}
-    >
+  render: (props) => (
+    <Stack {...props}>
       <div className={itemClasses}>Item 1</div>
       <div className={itemClasses}>Item 2</div>
       <div className={itemClasses}>Item 3</div>

@@ -1,0 +1,24 @@
+import { IconProps } from './types';
+import { useMetadata } from '@builder.io/mitosis';
+
+useMetadata({ angular: { selector: 'gi-logout-icon' } });
+
+export default function Logout(props: IconProps) {
+  return (
+    <svg
+      viewBox="0 -960 960 960"
+      width={props.size ?? 24}
+      height={props.size ?? 24}
+      class={props.className}
+      id={props.id}
+      role={props.label ? 'img' : undefined}
+      aria-label={props.label}
+      aria-hidden={!props.label}
+      fill={props.color ?? 'currentColor'}
+      data-testid={props.dataTestId ?? 'logout'}
+      xmlns="http://www.w3.org/2000/svg"
+    >
+      <path d="M200-120q-33 0-56.5-23.5T120-200v-560q0-33 23.5-56.5T200-840h280v80H200v560h280v80H200Zm440-160-55-58 102-102H360v-80h327L585-622l55-58 200 200-200 200Z" />
+    </svg>
+  );
+}

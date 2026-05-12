@@ -1,5 +1,29 @@
 # Changelog
 
+## [1.36.0](https://github.com/ogcio/govie-ds/compare/react-lib-v1.35.0...react-lib-v1.36.0) (2026-05-05)
+
+
+### Features
+
+* **AB#36573:** Adding IconButton atom component ([#923](https://github.com/ogcio/govie-ds/issues/923)) ([fdf5a86](https://github.com/ogcio/govie-ds/commit/fdf5a868da7bc3de3ffc7d4df5f3abd808421e88))
+* **AB#36951:** Migrate Сontainer to mitosis ([#928](https://github.com/ogcio/govie-ds/issues/928)) ([06ba94a](https://github.com/ogcio/govie-ds/commit/06ba94a14448c3e324d4525d9ea076a4e8243be9))
+* **AB#36983:** Add Full Iconography to Mitosis ([#940](https://github.com/ogcio/govie-ds/issues/940)) ([47bc87f](https://github.com/ogcio/govie-ds/commit/47bc87fe94513bf47c4baddc51451fbb581ee0cf))
+* **AB#37384:** Add Stack mitosis component ([#932](https://github.com/ogcio/govie-ds/issues/932)) ([f5d6f14](https://github.com/ogcio/govie-ds/commit/f5d6f145d6f19da838c39d29460d5cebc31ff4c7))
+
+
+### Bug Fixes
+
+* **AB#37363:** add custom Logo width/height to the Footer ([5202eb2](https://github.com/ogcio/govie-ds/commit/5202eb256eceb6f565c52adafb506187c42b9dd6))
+* **AB#37363:** update Storybook tests ([9e4fe75](https://github.com/ogcio/govie-ds/commit/9e4fe752c8b7c01c65be695a72a79b5b13353a3c))
+* **AB#37384:** fix formatting ([7835e03](https://github.com/ogcio/govie-ds/commit/7835e035a5ea5318633a9006781eb3b0f8eba9cf))
+* **AB#37384:** fix Stack legacy behaviour ([2880950](https://github.com/ogcio/govie-ds/commit/288095098f0d7d1c2d8b0a216cff1f9c117a022d))
+* **AB#37709:** React button fixes ([#936](https://github.com/ogcio/govie-ds/issues/936)) ([af4e674](https://github.com/ogcio/govie-ds/commit/af4e6746939020f45d8089c90919c0c7f784882a))
+
+
+### Miscellaneous Chores
+
+* **AB#37519:** bump React package deps and address pnpm audit ([e952464](https://github.com/ogcio/govie-ds/commit/e9524645659e51504ed01199dda98b8f7b2ad650))
+
 ## [1.35.0](https://github.com/ogcio/govie-ds/compare/react-lib-v1.34.0...react-lib-v1.35.0) (2026-04-21)
 
 
