@@ -649,7 +649,7 @@ const LinkExamples = ({ focused }: { focused?: boolean }) => {
             />
           )}
         </HeaderLogo>
-        <HeaderTitle href="#">
+        <HeaderTitle href="#" ariaLabel="Title as a link">
           Title as a link {focused ? 'focused' : ''}
         </HeaderTitle>
         <HeaderPrimaryMenu>
@@ -741,7 +741,7 @@ export const WithTitleAsLinkFocusState: StoryObj = {
         const linkLogo = links[0];
         const linkTitle = links[1];
         expect(linkLogo).toHaveAttribute('aria-label', 'Gov.ie logo');
-        expect(linkTitle.textContent).toBe('Title as a link focused');
+        expect(linkTitle).toHaveAttribute('aria-label', 'Title as a link');
         expect(linkLogo).toHaveAttribute('href', '#');
         expect(linkTitle).toHaveAttribute('href', '#');
         await userEvent.click(header);

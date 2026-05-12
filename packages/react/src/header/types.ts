@@ -189,6 +189,7 @@ export type HeaderTitleProps = PropsWithChildren<
   {
     className?: string;
     href?: string;
+    ariaLabel?: string;
   } & ComponentPropsWithoutRef<'div'>
 >;
 export type HeaderSecondaryMenuProps = PropsWithChildren<

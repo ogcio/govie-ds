@@ -9,6 +9,7 @@ export const HeaderTitle = ({
   children,
   href,
   className,
+  ariaLabel,
 }: HeaderTitleProps) => {
   const context = useHeaderContext();
 
@@ -24,7 +25,11 @@ export const HeaderTitle = ({
       })}
     >
       {href ? (
-        <a href={href} className={styles({ appearance: context.variant })}>
+        <a
+          href={href}
+          aria-label={ariaLabel}
+          className={styles({ appearance: context.variant })}
+        >
           {children}
         </a>
       ) : (
