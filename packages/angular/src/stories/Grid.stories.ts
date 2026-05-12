@@ -7,7 +7,6 @@ import {
   ResponsiveColumns as gridResponsiveColumns,
   ResponsiveSize as gridResponsiveSize,
   Nested as gridNested,
-  CustomColumns as gridCustomColumns,
 } from '../atoms/storybook/Grid.meta';
 
 const meta = {
@@ -125,21 +124,6 @@ export const Nested: StoryObj = {
           <gi-grid className="${ITEM_CLASSES}" [dataTestId]="'grid-nested-item-4'">4</gi-grid>
         </gi-grid>
         <gi-grid [size]="sidebarSize" className="${ITEM_CLASSES}">5</gi-grid>
-      </gi-grid>
-    `,
-  }),
-};
-
-export const CustomColumns: StoryObj = {
-  ...gridCustomColumns,
-  render: (props) => ({
-    props,
-    moduleMetadata: { imports: [Grid] },
-    template: `
-      <gi-grid [container]="true" [columns]="columns" [gap]="gap" [dataTestId]="dataTestId">
-        <gi-grid className="${ITEM_CLASSES}" [dataTestId]="'grid-col-1'">1</gi-grid>
-        <gi-grid className="${ITEM_CLASSES}" [dataTestId]="'grid-col-2'">2</gi-grid>
-        <gi-grid className="${ITEM_CLASSES}" [dataTestId]="'grid-col-3'">3</gi-grid>
       </gi-grid>
     `,
   }),

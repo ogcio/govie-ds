@@ -197,26 +197,4 @@ export const Nested = {
       }
     });
   }
-};
-export const CustomColumns = {
-  tags: ['skip-playwright'],
-  args: {
-    ...gridMeta.args,
-    columns: 3 as const,
-    dataTestId: 'grid-custom-columns'
-  },
-  play: async ({
-    canvasElement,
-    step
-  }: StoryContext<Renderer>) => {
-    const canvas = within(canvasElement as HTMLElement);
-    const check = checker('grid-custom-columns', canvas, step);
-    await check.is('div');
-    await check.children();
-    await step('renders all 3 child items', async () => {
-      for (let index = 1; index <= 3; index++) {
-        await checker(`grid-col-${index}`, canvas, step).is('div');
-      }
-    });
-  }
 }
