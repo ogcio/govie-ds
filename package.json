@@ -35,12 +35,8 @@
     "gen:licenses": "sh scripts/licenses.sh"
   },
   "lint-staged": {
-    "**/*.{js,ts,tsx}": [
-      "eslint"
-    ],
-    "**/*": [
-      "prettier --check --ignore-unknown"
-    ]
+    "{apps,packages,examples}/**/*.{js,ts,tsx}": ["eslint"],
+    "{apps,packages,examples}/**/*": ["prettier --check --ignore-unknown"]
   },
   "devDependencies": {
     "@commitlint/cli": "^19.8.1",
