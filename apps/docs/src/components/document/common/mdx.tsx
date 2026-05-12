@@ -48,6 +48,7 @@ import {
   FormFieldLabel,
   FormFieldError,
   FormFieldHint,
+  Grid,
   Header,
   HeaderSearch,
   Heading,
@@ -305,6 +306,7 @@ const documentComponents: MDXComponents = {
     return <FormFieldHint {...props} __type="FormFieldHint" />;
   },
   Footer,
+  Grid,
   GridPrimitives,
   Header,
   HeaderSearch,

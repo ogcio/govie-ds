@@ -2,12 +2,7 @@ import type { Meta, StoryObj } from '@storybook/react-vite';
 import { FormProvider, useForm } from 'react-hook-form';
 import { expect, userEvent, within } from 'storybook/test';
 import Button from '../atoms/Button';
-import {
-  FormField,
-  FormFieldError,
-  FormFieldHint,
-  FormFieldLabel,
-} from '../forms/form-field/form-field.js';
+import { FormField, FormFieldError, FormFieldHint, FormFieldLabel } from '../forms/form-field/form-field.js';
 import { IconButton } from '../icon-button/icon-button.js';
 import { TableBody } from '../table/table-body.js';
 import { TableData } from '../table/table-data.js';
@@ -30,8 +25,7 @@ const meta = {
   component: InputFile,
   argTypes: {
     accept: {
-      description:
-        'Defines the file types that the input should accept. For example: ".png, .jpg, image/*".',
+      description: 'Defines the file types that the input should accept. For example: ".png, .jpg, image/*".',
       control: 'text',
       table: {
         category: 'Attributes',
@@ -104,9 +98,7 @@ export const WithLabelAndError: Story = {
     <FormField id="file-upload-id">
       <FormFieldLabel htmlFor="file-upload-id">Upload File</FormFieldLabel>
       <InputFile {...arguments_} />
-      <FormFieldError dataTestid="error-text">
-        Error: File must be smaller than 5MB.
-      </FormFieldError>
+      <FormFieldError dataTestid="error-text">Error: File must be smaller than 5MB.</FormFieldError>
     </FormField>
   ),
   play: async ({ canvasElement }) => {
@@ -145,10 +137,7 @@ export const WithListOfUploadedFiles: Story = {
     accept: '*/*',
   },
   render: (arguments_) => (
-    <FormField
-      id="file-upload-id"
-      className="gi-block gi-min-w-0 gi-w-full md:gi-w-[400px]"
-    >
+    <FormField id="file-upload-id" className="gi-block gi-min-w-0 gi-w-full md:gi-w-[400px]">
       <FormFieldLabel htmlFor="file-upload-id">Upload File</FormFieldLabel>
       <InputFile {...arguments_} />
       <div className="gi-w-full gi-min-w-0 gi-overflow-x-auto">
@@ -156,9 +145,7 @@ export const WithListOfUploadedFiles: Story = {
           <TableHead>
             <TableRow>
               <TableHeader>Uploaded file</TableHeader>
-              <TableHeader className="gi-hidden md:gi-table-cell">
-                File size
-              </TableHeader>
+              <TableHeader className="gi-hidden md:gi-table-cell">File size</TableHeader>
               <TableHeader className="gi-w-32">Actions</TableHeader>
             </TableRow>
           </TableHead>
@@ -171,9 +158,7 @@ export const WithListOfUploadedFiles: Story = {
                   378 Kb
                 </span>
               </TableData>
-              <TableData className="gi-hidden md:gi-table-cell">
-                378 Kb
-              </TableData>
+              <TableData className="gi-hidden md:gi-table-cell">378 Kb</TableData>
               <TableData>
                 <IconButton
                   {...{
@@ -209,9 +194,7 @@ export const WithListOfUploadedFiles: Story = {
                   238 Kb
                 </span>
               </TableData>
-              <TableData className="gi-hidden md:gi-table-cell">
-                238 Kb
-              </TableData>
+              <TableData className="gi-hidden md:gi-table-cell">238 Kb</TableData>
               <TableData>
                 <IconButton
                   {...{
@@ -267,9 +250,7 @@ export const WithListOfUploadedFilesWithErrorState: Story = {
           <TableHead>
             <TableRow>
               <TableHeader>Uploaded file</TableHeader>
-              <TableHeader className="gi-hidden md:gi-table-cell">
-                File size
-              </TableHeader>
+              <TableHeader className="gi-hidden md:gi-table-cell">File size</TableHeader>
               <TableHeader className="gi-w-32">Actions</TableHeader>
             </TableRow>
           </TableHead>
@@ -282,9 +263,7 @@ export const WithListOfUploadedFilesWithErrorState: Story = {
                   378 Kb
                 </span>
               </TableData>
-              <TableData className="gi-hidden md:gi-table-cell">
-                378 Kb
-              </TableData>
+              <TableData className="gi-hidden md:gi-table-cell">378 Kb</TableData>
               <TableData>
                 <IconButton
                   {...{
@@ -320,9 +299,7 @@ export const WithListOfUploadedFilesWithErrorState: Story = {
                   238 Kb
                 </span>
               </TableData>
-              <TableData className="gi-hidden md:gi-table-cell">
-                238 Kb
-              </TableData>
+              <TableData className="gi-hidden md:gi-table-cell">238 Kb</TableData>
               <TableData>
                 <IconButton
                   {...{
@@ -379,13 +356,9 @@ export const WithReactHookForm: Story = {
         <form onSubmit={onSubmit}>
           <FormField>
             {methods.formState.errors.files && (
-              <FormFieldError dataTestid="error-msg">
-                {methods.formState.errors.files.message as string}
-              </FormFieldError>
+              <FormFieldError dataTestid="error-msg">{methods.formState.errors.files.message as string}</FormFieldError>
             )}
-            <FormFieldLabel htmlFor="file-upload-id">
-              Upload File
-            </FormFieldLabel>
+            <FormFieldLabel htmlFor="file-upload-id">Upload File</FormFieldLabel>
             <InputFile
               id="file-upload-id"
               accept="*/*"

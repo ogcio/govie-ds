@@ -2,12 +2,7 @@ import type { Meta, StoryObj } from '@storybook/react-vite';
 import { FormProvider, useForm } from 'react-hook-form';
 import { expect, userEvent, within } from 'storybook/test';
 import Button from '../atoms/Button';
-import {
-  FormField,
-  FormFieldError,
-  FormFieldHint,
-  FormFieldLabel,
-} from '../forms/form-field/form-field.js';
+import { FormField, FormFieldError, FormFieldHint, FormFieldLabel } from '../forms/form-field/form-field.js';
 import { Icon } from '../icon/icon.js';
 import { Link } from '../link/link.js';
 import { Spinner } from '../spinner/spinner.js';
@@ -26,8 +21,7 @@ const meta = {
   component: InputText,
   argTypes: {
     prefix: {
-      description:
-        'Element or text to display on the left side of the input, such as a unit or symbol.',
+      description: 'Element or text to display on the left side of the input, such as a unit or symbol.',
       control: 'text',
       table: {
         category: 'Content',
@@ -35,8 +29,7 @@ const meta = {
       },
     },
     suffix: {
-      description:
-        'Element or text to display on the right side of the input, such as a unit or symbol.',
+      description: 'Element or text to display on the right side of the input, such as a unit or symbol.',
       control: 'text',
       table: {
         category: 'Content',
@@ -60,8 +53,7 @@ const meta = {
       },
     },
     inputActionButton: {
-      description:
-        'Optional action button rendered inside the input for custom actions.',
+      description: 'Optional action button rendered inside the input for custom actions.',
       control: false,
       table: {
         category: 'Behavior',
@@ -81,19 +73,7 @@ const meta = {
     type: {
       control: 'select',
       description: 'Specifies the input type.',
-      options: [
-        'text',
-        'date',
-        'datetime-local',
-        'email',
-        'month',
-        'number',
-        'password',
-        'tel',
-        'time',
-        'url',
-        'week',
-      ],
+      options: ['text', 'date', 'datetime-local', 'email', 'month', 'number', 'password', 'tel', 'time', 'url', 'week'],
       table: {
         category: 'Content',
         type: { summary: 'string' },
@@ -123,9 +103,7 @@ export const Default: Story = {
   ),
   play: async ({ canvasElement }) => {
     const canvas = within(canvasElement);
-    const formField = canvas.getByTestId(
-      'form-field-id',
-    ) as HTMLFieldSetElement;
+    const formField = canvas.getByTestId('form-field-id') as HTMLFieldSetElement;
     expect(formField).toBeDefined();
   },
 };
@@ -180,26 +158,17 @@ export const WithLabelHintAndError: Story = {
     <FormField>
       <FormFieldLabel htmlFor="input-text-id">Label</FormFieldLabel>
       <FormFieldHint>Hint: This is a helpful hint.</FormFieldHint>
-      <FormFieldError dataTestid="error-text">
-        Error: Please correct this issue.
-      </FormFieldError>
+      <FormFieldError dataTestid="error-text">Error: Please correct this issue.</FormFieldError>
       <InputText {...props} data-testid="input-text-id" />
     </FormField>
   ),
   play: async ({ canvasElement }) => {
     const canvas = within(canvasElement);
     const textInput = canvas.getByTestId('input-text-id') as HTMLInputElement;
-    expect(globalThis.window.getComputedStyle(textInput).borderColor).toBe(
-      'rgb(187, 37, 13)',
-    );
+    expect(globalThis.window.getComputedStyle(textInput).borderColor).toBe('rgb(187, 37, 13)');
     expect(canvas.getByText('Label')).toHaveAttribute('data-testid', 'label');
-    expect(canvas.getByText('Hint: This is a helpful hint.')).toHaveAttribute(
-      'data-testid',
-      'hint-text',
-    );
-    expect(
-      canvas.getByText('Error: Please correct this issue.'),
-    ).toHaveAttribute('data-testid', 'error-text');
+    expect(canvas.getByText('Hint: This is a helpful hint.')).toHaveAttribute('data-testid', 'hint-text');
+    expect(canvas.getByText('Error: Please correct this issue.')).toHaveAttribute('data-testid', 'error-text');
   },
 };
 
@@ -220,23 +189,14 @@ export const WithLabelHintAndErrorLegacy: Story = {
   ),
   play: async ({ canvasElement }) => {
     const canvas = within(canvasElement);
-    const formField = canvas.getByTestId(
-      'form-field-id',
-    ) as HTMLFieldSetElement;
+    const formField = canvas.getByTestId('form-field-id') as HTMLFieldSetElement;
     expect(formField).toBeDefined();
 
     const textInput = canvas.getByTestId('input-text-id') as HTMLInputElement;
-    expect(globalThis.window.getComputedStyle(textInput).borderColor).toBe(
-      'rgb(187, 37, 13)',
-    );
+    expect(globalThis.window.getComputedStyle(textInput).borderColor).toBe('rgb(187, 37, 13)');
     expect(canvas.getByText('Label')).toHaveAttribute('data-testid', 'label');
-    expect(canvas.getByText('Hint: This is a helpful hint.')).toHaveAttribute(
-      'data-testid',
-      'hint-text',
-    );
-    expect(
-      canvas.getByText('Error: Please correct this issue.'),
-    ).toHaveAttribute('data-testid', 'error-text');
+    expect(canvas.getByText('Hint: This is a helpful hint.')).toHaveAttribute('data-testid', 'hint-text');
+    expect(canvas.getByText('Error: Please correct this issue.')).toHaveAttribute('data-testid', 'error-text');
   },
 };
 
@@ -308,11 +268,7 @@ export const InputWithIcons: Story = {
     <FormField>
       <FormFieldLabel>Label</FormFieldLabel>
       <FormFieldHint>Support text</FormFieldHint>
-      <InputText
-        iconStart="placeholder"
-        iconEnd="placeholder"
-        placeholder="Placeholder"
-      />
+      <InputText iconStart="placeholder" iconEnd="placeholder" placeholder="Placeholder" />
     </FormField>
   ),
 };
@@ -332,12 +288,7 @@ export const InputWithIconsDisabled: Story = {
   render: () => (
     <FormField>
       <FormFieldLabel>Label</FormFieldLabel>
-      <InputText
-        disabled
-        iconStart="placeholder"
-        iconEnd="placeholder"
-        placeholder="Placeholder"
-      />
+      <InputText disabled iconStart="placeholder" iconEnd="placeholder" placeholder="Placeholder" />
     </FormField>
   ),
 };
@@ -383,13 +334,7 @@ export const InputWithPrefixSuffixError: Story = {
       <FormFieldLabel>Label</FormFieldLabel>
       <FormFieldHint>Support text</FormFieldHint>
       <FormFieldError>Invalid</FormFieldError>
-      <InputText
-        iconStart="placeholder"
-        iconEnd="placeholder"
-        placeholder="Placeholder"
-        prefix="€"
-        suffix="kg"
-      />
+      <InputText iconStart="placeholder" iconEnd="placeholder" placeholder="Placeholder" prefix="€" suffix="kg" />
     </FormField>
   ),
 };
@@ -551,9 +496,7 @@ export const WithReactHookForm: Story = {
         <form onSubmit={onSubmit}>
           <FormField>
             {methods.formState.errors.username && (
-              <FormFieldError dataTestid="error-msg">
-                {methods.formState.errors.username.message}
-              </FormFieldError>
+              <FormFieldError dataTestid="error-msg">{methods.formState.errors.username.message}</FormFieldError>
             )}
             <FormFieldLabel htmlFor="input-text-id">Username</FormFieldLabel>
             <InputText

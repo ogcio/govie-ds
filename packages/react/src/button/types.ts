@@ -51,15 +51,7 @@ export type ButtonProps = Omit<
     /** @deprecated Use ariaControls instead */
     'aria-controls'?: string;
     /** @deprecated Use ariaHasPopup instead */
-    'aria-haspopup'?:
-      | boolean
-      | 'true'
-      | 'false'
-      | 'menu'
-      | 'listbox'
-      | 'tree'
-      | 'grid'
-      | 'dialog';
+    'aria-haspopup'?: boolean | 'true' | 'false' | 'menu' | 'listbox' | 'tree' | 'grid' | 'dialog';
     /** @deprecated Use ariaBusy instead */
     'aria-busy'?: boolean | 'true' | 'false';
   };

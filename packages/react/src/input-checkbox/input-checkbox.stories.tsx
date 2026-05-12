@@ -3,11 +3,7 @@ import { Controller, FormProvider, useForm } from 'react-hook-form';
 import { userEvent, expect, within } from 'storybook/test';
 
 import Button from '../atoms/Button';
-import {
-  FormField,
-  FormFieldError,
-  FormFieldLabel,
-} from '../forms/form-field/form-field.js';
+import { FormField, FormFieldError, FormFieldLabel } from '../forms/form-field/form-field.js';
 import { Link } from '../link/link.js';
 import { InputCheckbox } from './input-checkbox.js';
 import { InputCheckboxSizeEnum } from './types.js';
@@ -52,8 +48,7 @@ export const Default: Story = {
     hint: {
       control: 'text',
       type: 'string',
-      description:
-        'Additional text to inform the user about the Checkbox component',
+      description: 'Additional text to inform the user about the Checkbox component',
     },
     onChange: {
       control: 'object',
@@ -212,13 +207,9 @@ export const WithReactHookForm: Story = {
         <form onSubmit={onSubmit}>
           <FormField>
             {methods.formState.errors.terms && (
-              <FormFieldError dataTestid="error-msg">
-                {methods.formState.errors.terms.message}
-              </FormFieldError>
+              <FormFieldError dataTestid="error-msg">{methods.formState.errors.terms.message}</FormFieldError>
             )}
-            <FormFieldLabel htmlFor="checkbox-id-terms">
-              Accept Terms
-            </FormFieldLabel>
+            <FormFieldLabel htmlFor="checkbox-id-terms">Accept Terms</FormFieldLabel>
             <Controller
               name="terms"
               control={methods.control}
@@ -240,11 +231,7 @@ export const WithReactHookForm: Story = {
             <Button type="submit" dataTestId="submit-btn">
               Submit
             </Button>
-            <Button
-              type="button"
-              onClick={() => methods.reset()}
-              dataTestId="reset-btn"
-            >
+            <Button type="button" onClick={() => methods.reset()} dataTestId="reset-btn">
               Reset
             </Button>
           </div>

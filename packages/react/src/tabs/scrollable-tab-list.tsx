@@ -72,8 +72,7 @@ export const ScrollableTabs: React.FC<ScrollableTabsProps> = ({
   }, [activeTab]);
 
   const handleClick =
-    (index: number, original?: (event: TabMouseClickEvent) => void) =>
-    (event: TabMouseClickEvent) => {
+    (index: number, original?: (event: TabMouseClickEvent) => void) => (event: TabMouseClickEvent) => {
       setActiveTab(index);
 
       if (original) {
@@ -83,8 +82,7 @@ export const ScrollableTabs: React.FC<ScrollableTabsProps> = ({
       if (ariaControl) {
         for (const element of document.querySelectorAll(`[role="tabpanel"]`)) {
           if (element instanceof HTMLElement) {
-            element.style.display =
-              element.id === ariaControl ? 'block' : 'none';
+            element.style.display = element.id === ariaControl ? 'block' : 'none';
           }
         }
       }
@@ -129,19 +127,12 @@ export const ScrollableTabs: React.FC<ScrollableTabsProps> = ({
   };
 
   return (
-    <div
-      id={tabName}
-      ref={containerRef}
-      role="tablist"
-      className={cn('gi-tab-list ', className)}
-    >
+    <div id={tabName} ref={containerRef} role="tablist" className={cn('gi-tab-list ', className)}>
       {items}
       <span
         className={cn('gi-tab-indicator', {
-          'gi-bg-color-border-system-neutral-interactive-default':
-            appearance === 'dark',
-          'gi-bg-color-border-tone-primary-accent-selected':
-            appearance === 'default',
+          'gi-bg-color-border-system-neutral-interactive-default': appearance === 'dark',
+          'gi-bg-color-border-tone-primary-accent-selected': appearance === 'default',
         })}
         style={indicatorCss}
       />

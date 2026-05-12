@@ -30,15 +30,10 @@ export function getSpecialComponentType(child: ReactNode): string | null {
     return null;
   }
 
-  return (
-    (child.type as any)?.componentType || (child.props as any)?.__type || null
-  );
+  return (child.type as any)?.componentType || (child.props as any)?.__type || null;
 }
 
-export function isSpecialComponent(
-  child: ReactNode,
-  componentList: Array<string> = [],
-): boolean {
+export function isSpecialComponent(child: ReactNode, componentList: Array<string> = []): boolean {
   return componentList.includes(getSpecialComponentType(child) ?? '');
 }
 

@@ -71,7 +71,6 @@ import '@ogcio/design-system-react/fonts.css';
 
 **Next.js:** We recommend using [`next/font/google`](https://nextjs.org/docs/app/getting-started/fonts) to load the Lato font family for optimal performance.
 
-
 ```tsx
 // app/layout.tsx (App Router)
 import { Lato } from 'next/font/google';
@@ -157,4 +156,3 @@ resources: {
 ```
 
 Note: Each component in the design system documents its relevant i18n keys under an **i18n Keys** heading, if available, for example [Pagination i18n Keys](http://ds.blocks.gov.ie/components/library/pagination/#i18n-keys). Be sure to refer to this section when using or implementing a component to ensure all necessary translations are provided.
-

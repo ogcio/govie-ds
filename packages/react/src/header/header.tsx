@@ -18,9 +18,7 @@ export const Header = (props: HeaderProps | HeaderNextProps) => {
   const isLegacy = deprecatedKeys.some((key) => key in props);
 
   if (isLegacy) {
-    console.warn(
-      '[Header] Using legacy props. Please migrate to the new composable API.',
-    );
+    console.warn('[Header] Using legacy props. Please migrate to the new composable API.');
     return <HeaderLegacy {...props} />;
   }
 

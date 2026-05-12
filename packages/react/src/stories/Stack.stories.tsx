@@ -21,8 +21,7 @@ const meta: Meta<typeof Stack> = {
 export default meta;
 type Story = StoryObj<typeof meta>;
 
-const itemClasses =
-  'gi-bg-gray-300 gi-p-2 gi-h-[50px] gi-w-[100px] gi-flex gi-items-center gi-justify-center';
+const itemClasses = 'gi-bg-gray-300 gi-p-2 gi-h-[50px] gi-w-[100px] gi-flex gi-items-center gi-justify-center';
 
 export const Default: Story = {
   ...stackDefault,
@@ -43,11 +42,7 @@ export const Directions: Story = {
       {_.map(Direction, (direction) => (
         <div key={direction}>
           <p className="gi-text-sm gi-font-bold gi-mb-2">{direction}</p>
-          <Stack
-            dataTestId={`stack-direction-${direction}`}
-            direction={direction}
-            gap={2}
-          >
+          <Stack dataTestId={`stack-direction-${direction}`} direction={direction} gap={2}>
             <div className={itemClasses}>Item 1</div>
             <div className={itemClasses}>Item 2</div>
             <div className={itemClasses}>Item 3</div>
@@ -91,12 +86,7 @@ export const Justifications: Story = {
       {_.map(Justify, (justification) => (
         <div key={justification}>
           <p className="gi-text-sm gi-font-bold gi-mb-2">{justification}</p>
-          <Stack
-            dataTestId={`stack-justify-${justification}`}
-            direction="row"
-            gap={2}
-            justify={justification}
-          >
+          <Stack dataTestId={`stack-justify-${justification}`} direction="row" gap={2} justify={justification}>
             <div className={itemClasses}>Item 1</div>
             <div className={itemClasses}>Item 2</div>
             <div className={itemClasses}>Item 3</div>

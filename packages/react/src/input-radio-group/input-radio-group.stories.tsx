@@ -2,12 +2,7 @@ import type { Meta, StoryObj } from '@storybook/react-vite';
 import { useState } from 'react';
 import { expect, userEvent, waitFor, within } from 'storybook/test';
 import Paragraph from '../atoms/Paragraph';
-import {
-  FormField,
-  FormFieldError,
-  FormFieldHint,
-  FormFieldLabel,
-} from '../forms/form-field/form-field.js';
+import { FormField, FormFieldError, FormFieldHint, FormFieldLabel } from '../forms/form-field/form-field.js';
 import { InputRadio } from '../input-radio/input-radio.js';
 import { InputRadioGroup } from '../input-radio-group/input-radio-group.js';
 
@@ -16,8 +11,7 @@ const meta = {
   parameters: {
     docs: {
       description: {
-        component:
-          'Radio group component when users can only select one option.',
+        component: 'Radio group component when users can only select one option.',
       },
     },
   },
@@ -136,20 +130,10 @@ export const WithOptionHints: Story = {
   render: (arguments_) => (
     <FormField>
       <FormFieldLabel>Have you changed your name?</FormFieldLabel>
-      <FormFieldHint>
-        This includes changing your last name or spelling your name differently.
-      </FormFieldHint>
+      <FormFieldHint>This includes changing your last name or spelling your name differently.</FormFieldHint>
       <InputRadioGroup {...arguments_}>
-        <InputRadio
-          value="val1"
-          label="Yes"
-          hint="Yes, I have changed my name"
-        />
-        <InputRadio
-          value="val2"
-          label="No"
-          hint="No, I didn't change my name"
-        />
+        <InputRadio value="val1" label="Yes" hint="Yes, I have changed my name" />
+        <InputRadio value="val2" label="No" hint="No, I didn't change my name" />
       </InputRadioGroup>
     </FormField>
   ),
@@ -183,16 +167,8 @@ export const WithConditionalInput: Story = {
     <FormField>
       <FormFieldLabel>How would you prefer to be contacted?</FormFieldLabel>
       <InputRadioGroup {...arguments_}>
-        <InputRadio
-          value="email"
-          label="Email"
-          conditionalInput={{ id: 'email', placeholder: 'Email address' }}
-        />
-        <InputRadio
-          value="phone"
-          label="Phone"
-          conditionalInput={{ id: 'phone', placeholder: 'Phone number' }}
-        />
+        <InputRadio value="email" label="Email" conditionalInput={{ id: 'email', placeholder: 'Email address' }} />
+        <InputRadio value="phone" label="Phone" conditionalInput={{ id: 'phone', placeholder: 'Phone number' }} />
       </InputRadioGroup>
     </FormField>
   ),
@@ -223,11 +199,7 @@ export const Controlled: Story = {
     return (
       <FormField>
         <FormFieldLabel>Choose an option</FormFieldLabel>
-        <InputRadioGroup
-          {...arguments_}
-          value={selectedValue}
-          onChange={handleChange}
-        >
+        <InputRadioGroup {...arguments_} value={selectedValue} onChange={handleChange}>
           <InputRadio value="option1" label="Option 1" />
           <InputRadio value="option2" label="Option 2" />
           <InputRadio value="option3" label="Option 3" />

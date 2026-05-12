@@ -13,16 +13,10 @@ export type BrowserSupportProps = {
   className?: string;
 } & ComponentPropsWithoutRef<'div'>;
 
-export const BrowserSupport = ({
-  className,
-  ...props
-}: BrowserSupportProps) => {
+export const BrowserSupport = ({ className, ...props }: BrowserSupportProps) => {
   const { t } = useTranslation();
 
-  const isSupported = useMemo(
-    () => Bowser.getParser(navigator.userAgent).satisfies(BROWSER_POLICY),
-    [],
-  );
+  const isSupported = useMemo(() => Bowser.getParser(navigator.userAgent).satisfies(BROWSER_POLICY), []);
 
   if (isSupported) {
     return null;
@@ -39,11 +33,7 @@ export const BrowserSupport = ({
       {t(
         'This browser is not officially supported. Please update or switch to a supported browser for the best experience.',
       )}
-      <Link
-        href={`${DS_HOST}/get-started/developers/supported-browsers/`}
-        target="_blank"
-        rel="noreferrer"
-      >
+      <Link href={`${DS_HOST}/get-started/developers/supported-browsers/`} target="_blank" rel="noreferrer">
         {t('View supported browsers')}
       </Link>
     </Alert>

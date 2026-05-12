@@ -18,10 +18,7 @@ import { cn } from '../cn.js';
 import { Breakpoint, useBreakpoint } from '../hooks/use-breakpoint.js';
 import { Icon } from '../icon/icon.js';
 import { Tag } from '../tag/tag.js';
-import {
-  getSpecialComponentType,
-  isSpecialComponent,
-} from '../utils/utilities.js';
+import { getSpecialComponentType, isSpecialComponent } from '../utils/utilities.js';
 import type {
   CardDescriptionProps,
   CardContainerProps,
@@ -34,19 +31,14 @@ import type {
   CardTagProps,
 } from './types.js';
 
-const computeMediaLabel = (config: any) =>
-  config.ariaLabel ?? config.label ?? config.title ?? config.alt ?? '';
+const computeMediaLabel = (config: any) => config.ariaLabel ?? config.label ?? config.title ?? config.alt ?? '';
 
 const CardNextContext = createContext(false);
 const CardHeaderContext = createContext(false);
 const CardContainerContext = createContext(false);
 const CardA11yContext = createContext(null);
 
-export function useRequiredContext(
-  context: Context<boolean>,
-  componentName: string,
-  parentName: string,
-): true {
+export function useRequiredContext(context: Context<boolean>, componentName: string, parentName: string): true {
   const inside = useContext(context);
   if (!inside) {
     throw new Error(`${componentName} must be used inside <${parentName}>`);
@@ -54,14 +46,9 @@ export function useRequiredContext(
   return true;
 }
 
-const rootInsetStyle = (inset: 'none' | 'body' | 'full', px: number) =>
-  inset === 'full' ? { padding: px } : {};
+const rootInsetStyle = (inset: 'none' | 'body' | 'full', px: number) => (inset === 'full' ? { padding: px } : {});
 
-const contentInsetStyle = (
-  inset: 'none' | 'body' | 'full',
-  px: number,
-  orientation: 'horizontal' | 'vertical',
-) => {
+const contentInsetStyle = (inset: 'none' | 'body' | 'full', px: number, orientation: 'horizontal' | 'vertical') => {
   if (inset !== 'body') {
     return;
   }
@@ -82,18 +69,14 @@ export const CardNext: FC<CardNextProps> = ({
   ...props
 }) => {
   const { breakpoint } = useBreakpoint();
-  const isMobile =
-    breakpoint === Breakpoint.ExtraSmall || breakpoint === Breakpoint.Small;
+  const isMobile = breakpoint === Breakpoint.ExtraSmall || breakpoint === Breakpoint.Small;
   const [orientation, setOrientation] = useState(type);
   const [labelId, setLabelId] = useState<string>();
   const [descIds, setDescIds] = useState<string[]>([]);
   const a11yValue: any = useMemo(
     () => ({
       setLabelId: (id: string) => setLabelId(id),
-      addDescId: (id: string) =>
-        setDescIds((previous) =>
-          previous.includes(id) ? previous : [...previous, id],
-        ),
+      addDescId: (id: string) => setDescIds((previous) => (previous.includes(id) ? previous : [...previous, id])),
       labelId,
       descIds,
     }),
@@ -101,12 +84,8 @@ export const CardNext: FC<CardNextProps> = ({
   );
 
   const allChildren = Children.toArray(children);
-  const cardContainer = allChildren.find(
-    (child) => getSpecialComponentType(child) === 'CardContainer',
-  );
-  const cardMedia = allChildren.find(
-    (child) => getSpecialComponentType(child) === 'CardMedia',
-  );
+  const cardContainer = allChildren.find((child) => getSpecialComponentType(child) === 'CardContainer');
+  const cardMedia = allChildren.find((child) => getSpecialComponentType(child) === 'CardMedia');
 
   useEffect(() => {
     if (isMobile || type === 'vertical') {
@@ -127,8 +106,7 @@ export const CardNext: FC<CardNextProps> = ({
               'gi-card-vertical': orientation === 'vertical',
               'gi-card-horizontal': orientation === 'horizontal',
               'gi-bg-white': background === 'white',
-              'gi-bg-color-surface-system-neutral-layer1':
-                background === 'grey',
+              'gi-bg-color-surface-system-neutral-layer1': background === 'grey',
             },
             className,
           )}
@@ -210,11 +188,7 @@ Object.defineProperty(CardMedia, 'componentType', {
   enumerable: false,
 });
 
-export const CardContainer: FC<CardContainerProps> = ({
-  children,
-  className,
-  ...props
-}) => {
+export const CardContainer: FC<CardContainerProps> = ({ children, className, ...props }) => {
   useRequiredContext(CardNextContext, 'CardContainer', 'Card');
 
   return (
@@ -255,10 +229,7 @@ export const CardTitle: FC<CardTitleProps> = ({
     return node;
   };
 
-  const content =
-    truncate && !isStringChild
-      ? Children.map(children as ReactNode, decorateChild)
-      : children;
+  const content = truncate && !isStringChild ? Children.map(children as ReactNode, decorateChild) : children;
 
   const autoId = useId();
   const titleId = id ?? `card-title-${autoId}`;
@@ -289,13 +260,7 @@ export const CardTitle: FC<CardTitleProps> = ({
   );
 };
 
-export const CardSubtitle: FC<CardSubtitleProps> = ({
-  children,
-  className,
-  truncate,
-  id,
-  ...props
-}) => {
+export const CardSubtitle: FC<CardSubtitleProps> = ({ children, className, truncate, id, ...props }) => {
   useRequiredContext(CardHeaderContext, 'CardSubtitle', 'CardHeader');
   const raw = typeof children === 'string' && truncate ? children : undefined;
 
@@ -326,12 +291,7 @@ export const CardSubtitle: FC<CardSubtitleProps> = ({
   );
 };
 
-export const CardTag: FC<CardTagProps> = ({
-  text,
-  type,
-  className,
-  ...props
-}: CardTagProps) => {
+export const CardTag: FC<CardTagProps> = ({ text, type, className, ...props }: CardTagProps) => {
   useRequiredContext(CardHeaderContext, 'CardTag', 'CardHeader');
   return (
     <div
@@ -351,11 +311,7 @@ Object.defineProperty(CardTag, 'componentType', {
   enumerable: false,
 });
 
-export const CardHeader: FC<CardHeaderProps> = ({
-  children,
-  className,
-  ...props
-}) => {
+export const CardHeader: FC<CardHeaderProps> = ({ children, className, ...props }) => {
   useRequiredContext(CardContainerContext, 'CardHeader', 'CardContainer');
 
   const headingChildren: ReactNode[] = [];
@@ -412,11 +368,7 @@ export const CardDescription: FC<CardDescriptionProps> = ({
   );
 };
 
-export const CardAction: FC<CardActionProps> = ({
-  children,
-  className,
-  ...props
-}: CardActionProps) => {
+export const CardAction: FC<CardActionProps> = ({ children, className, ...props }: CardActionProps) => {
   useRequiredContext(CardContainerContext, 'CardAction', 'CardContainer');
   return (
     <div className={cn('gi-card-action', className)} role="group" {...props}>

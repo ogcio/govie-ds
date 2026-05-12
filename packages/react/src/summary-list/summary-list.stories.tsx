@@ -36,21 +36,16 @@ export const Default: StoryObj = {
         </SummaryListHeader>
         <SummaryListRow withBorder label="Ac amet">
           <SummaryListValue>
-            Id euismod risus sit phasellus sit urna tincidunt laoreet. Elit
-            volutpat sit facilisi.
+            Id euismod risus sit phasellus sit urna tincidunt laoreet. Elit volutpat sit facilisi.
           </SummaryListValue>
         </SummaryListRow>
         <SummaryListRow withBorder label="Felis natoque">
-          <SummaryListValue>
-            Est senectus nisl vestibulum ipsum. Aliquet cursus orci.
-          </SummaryListValue>
+          <SummaryListValue>Est senectus nisl vestibulum ipsum. Aliquet cursus orci.</SummaryListValue>
           <SummaryListAction href="/action">Action 1</SummaryListAction>
           <SummaryListAction href="/action">Action 2</SummaryListAction>
         </SummaryListRow>
         <SummaryListRow label="Ac viverra">
-          <SummaryListValue>
-            In nulla id non sit commodo. Turpis duis netus leo sem.
-          </SummaryListValue>
+          <SummaryListValue>In nulla id non sit commodo. Turpis duis netus leo sem.</SummaryListValue>
           <SummaryListAction href="/action">Action 1</SummaryListAction>
           <SummaryListAction href="/action">Action 2</SummaryListAction>
         </SummaryListRow>
@@ -88,21 +83,16 @@ export const WithMixedActions: StoryObj = {
       <SummaryList>
         <SummaryListRow withBorder label="Ac amet">
           <SummaryListValue>
-            Id euismod risus sit phasellus sit urna tincidunt laoreet. Elit
-            volutpat sit facilisi.
+            Id euismod risus sit phasellus sit urna tincidunt laoreet. Elit volutpat sit facilisi.
           </SummaryListValue>
         </SummaryListRow>
         <SummaryListRow withBorder label="Felis natoque">
-          <SummaryListValue>
-            Est senectus nisl vestibulum ipsum. Aliquet cursus orci.
-          </SummaryListValue>
+          <SummaryListValue>Est senectus nisl vestibulum ipsum. Aliquet cursus orci.</SummaryListValue>
           <SummaryListAction href="/action">Action 1</SummaryListAction>
           <SummaryListAction href="/action">Action 2</SummaryListAction>
         </SummaryListRow>
         <SummaryListRow withBorder label="Ac viverra">
-          <SummaryListValue>
-            In nulla id non sit commodo. Turpis duis netus leo sem.
-          </SummaryListValue>
+          <SummaryListValue>In nulla id non sit commodo. Turpis duis netus leo sem.</SummaryListValue>
           <SummaryListAction href="/action">Action 1</SummaryListAction>
         </SummaryListRow>
       </SummaryList>
@@ -116,19 +106,14 @@ export const WithNoActions: StoryObj = {
       <SummaryList>
         <SummaryListRow withBorder label="Ac amet">
           <SummaryListValue>
-            Id euismod risus sit phasellus sit urna tincidunt laoreet. Elit
-            volutpat sit facilisi.
+            Id euismod risus sit phasellus sit urna tincidunt laoreet. Elit volutpat sit facilisi.
           </SummaryListValue>
         </SummaryListRow>
         <SummaryListRow withBorder label="Felis natoque">
-          <SummaryListValue>
-            Est senectus nisl vestibulum ipsum. Aliquet cursus orci.
-          </SummaryListValue>
+          <SummaryListValue>Est senectus nisl vestibulum ipsum. Aliquet cursus orci.</SummaryListValue>
         </SummaryListRow>
         <SummaryListRow withBorder label="Ac viverra">
-          <SummaryListValue>
-            In nulla id non sit commodo. Turpis duis netus leo sem.
-          </SummaryListValue>
+          <SummaryListValue>In nulla id non sit commodo. Turpis duis netus leo sem.</SummaryListValue>
         </SummaryListRow>
       </SummaryList>
     );
@@ -141,19 +126,14 @@ export const WithMixedBorders: StoryObj = {
       <SummaryList>
         <SummaryListRow withBorder label="Ac amet">
           <SummaryListValue>
-            Id euismod risus sit phasellus sit urna tincidunt laoreet. Elit
-            volutpat sit facilisi.
+            Id euismod risus sit phasellus sit urna tincidunt laoreet. Elit volutpat sit facilisi.
           </SummaryListValue>
         </SummaryListRow>
         <SummaryListRow label="Felis natoque">
-          <SummaryListValue>
-            Est senectus nisl vestibulum ipsum. Aliquet cursus orci.
-          </SummaryListValue>
+          <SummaryListValue>Est senectus nisl vestibulum ipsum. Aliquet cursus orci.</SummaryListValue>
         </SummaryListRow>
         <SummaryListRow withBorder label="Ac viverra">
-          <SummaryListValue>
-            In nulla id non sit commodo. Turpis duis netus leo sem.
-          </SummaryListValue>
+          <SummaryListValue>In nulla id non sit commodo. Turpis duis netus leo sem.</SummaryListValue>
         </SummaryListRow>
       </SummaryList>
     );

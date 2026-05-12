@@ -4,18 +4,9 @@ import { Controller, useForm } from 'react-hook-form';
 
 import { expect, userEvent, waitFor, within } from 'storybook/test';
 import Button from '../atoms/Button';
-import {
-  FormField,
-  FormFieldError,
-  FormFieldHint,
-  FormFieldLabel,
-} from '../forms/form-field/form-field.js';
+import { FormField, FormFieldError, FormFieldHint, FormFieldLabel } from '../forms/form-field/form-field.js';
 import { Label } from '../label/label.js';
-import {
-  SelectGroupItemNext,
-  SelectItemNext,
-  SelectNext,
-} from './select-next.js';
+import { SelectGroupItemNext, SelectItemNext, SelectNext } from './select-next.js';
 
 const topics = Array.from({ length: 8 }, (_, index) => ({
   value: `topic_${index + 1}`,
@@ -27,15 +18,13 @@ const meta = {
   parameters: {
     docs: {
       description: {
-        component:
-          'A composable select component allows users to choose an option from a long list.',
+        component: 'A composable select component allows users to choose an option from a long list.',
       },
     },
   },
   argTypes: {
     children: {
-      description:
-        'SelectItemNext or SelectGroupItemNext elements that define the options.',
+      description: 'SelectItemNext or SelectGroupItemNext elements that define the options.',
       control: false,
       table: {
         category: 'Content',
@@ -132,11 +121,7 @@ export const Default: StoryObj = {
 
     const list = await canvas.findByRole('listbox');
     const options = within(list).getAllByRole('option');
-    expect(options.map((opt) => opt.textContent)).toEqual([
-      'Option 1',
-      'Option 2',
-      'Option 3',
-    ]);
+    expect(options.map((opt) => opt.textContent)).toEqual(['Option 1', 'Option 2', 'Option 3']);
 
     const option = await body.findByRole('option', { name: 'Option 1' });
     const style = globalThis.getComputedStyle(option as HTMLElement);
@@ -148,12 +133,7 @@ export const Focus = {
   render: () => (
     <FormField className="gi-w-56">
       <FormFieldLabel htmlFor="focus-select">Label</FormFieldLabel>
-      <SelectNext
-        id="focus-select"
-        aria-label="Select"
-        className="focus-select"
-        defaultValue="value-3"
-      >
+      <SelectNext id="focus-select" aria-label="Select" className="focus-select" defaultValue="value-3">
         <SelectItemNext value="select-option" hidden>
           Select Option
         </SelectItemNext>
@@ -176,12 +156,7 @@ export const WithLabelHintAndError = {
       <FormFieldLabel htmlFor="select">Label</FormFieldLabel>
       <FormFieldHint>This is a hint</FormFieldHint>
       <FormFieldError>This is an error</FormFieldError>
-      <SelectNext
-        aria-label="Select"
-        data-testid="select"
-        id="select"
-        defaultValue="select-option"
-      >
+      <SelectNext aria-label="Select" data-testid="select" id="select" defaultValue="select-option">
         <SelectItemNext value="select-option" hidden>
           Select Option
         </SelectItemNext>
@@ -299,12 +274,7 @@ export const WithGroups = {
   render: () => (
     <FormField className="gi-w-56">
       <FormFieldLabel>Label</FormFieldLabel>
-      <SelectNext
-        aria-label="Select"
-        data-testid="select"
-        defaultValue="value-1"
-        enableSearch
-      >
+      <SelectNext aria-label="Select" data-testid="select" defaultValue="value-1" enableSearch>
         <SelectGroupItemNext label="Group 1" data-testid="select-group">
           <SelectItemNext value="value-1">Option 1</SelectItemNext>
           <SelectItemNext value="value-2">Option 2</SelectItemNext>
@@ -436,14 +406,11 @@ export const WithReactHookForm: StoryObj = {
             name="topic"
             rules={{
               required: 'Topic is required',
-              validate: (value) =>
-                value !== 'topic_5' || 'Topic 5 is not allowed',
+              validate: (value) => value !== 'topic_5' || 'Topic 5 is not allowed',
             }}
             render={({ field, fieldState }) => (
               <>
-                {fieldState.error?.message && (
-                  <FormFieldError>{fieldState.error.message}</FormFieldError>
-                )}
+                {fieldState.error?.message && <FormFieldError>{fieldState.error.message}</FormFieldError>}
                 <SelectNext
                   aria-label="Select"
                   id="select-rhf"
@@ -467,9 +434,7 @@ export const WithReactHookForm: StoryObj = {
           />
         </FormField>
 
-        <Label className="gi-font-bold">
-          Watched value: {topicValue || '—'}
-        </Label>
+        <Label className="gi-font-bold">Watched value: {topicValue || '—'}</Label>
         <Label>Validation included (topic_5 is not allowed)</Label>
 
         <Button type="button" onClick={() => reset()} className="gi-w-fit">
@@ -504,9 +469,7 @@ export const WithReactHookForm: StoryObj = {
 
     await openAndSelect('Topic 7');
     await waitFor(() => {
-      expect(
-        canvas.queryByText('Topic 5 is not allowed'),
-      ).not.toBeInTheDocument();
+      expect(canvas.queryByText('Topic 5 is not allowed')).not.toBeInTheDocument();
       expect(canvas.queryByText('Topic is required')).not.toBeInTheDocument();
       expect(getWatched()).toHaveTextContent('topic_7');
     });
@@ -515,9 +478,7 @@ export const WithReactHookForm: StoryObj = {
 
     await waitFor(() => {
       expect(getWatched()).toHaveTextContent('—');
-      expect(
-        canvas.queryByText('Topic 5 is not allowed'),
-      ).not.toBeInTheDocument();
+      expect(canvas.queryByText('Topic 5 is not allowed')).not.toBeInTheDocument();
       expect(canvas.queryByText('Topic is required')).not.toBeInTheDocument();
     });
     await userEvent.click(resetButton);
@@ -551,11 +512,7 @@ export const TestNoSubmitOnEnter: StoryObj<typeof SelectNext> = {
 
     return (
       <div className="gi-flex gi-gap-12">
-        <form
-          onSubmit={handleSubmitOn}
-          data-testid="form-search-on"
-          className="gi-flex gi-flex-col gi-gap-4 gi-w-72"
-        >
+        <form onSubmit={handleSubmitOn} data-testid="form-search-on" className="gi-flex gi-flex-col gi-gap-4 gi-w-72">
           <FormField className="gi-w-56">
             <FormFieldLabel>Label (Search ON)</FormFieldLabel>
             <Controller
@@ -584,11 +541,7 @@ export const TestNoSubmitOnEnter: StoryObj<typeof SelectNext> = {
           </div>
         </form>
 
-        <form
-          onSubmit={handleSubmitOff}
-          data-testid="form-search-off"
-          className="gi-flex gi-flex-col gi-gap-4 gi-w-72"
-        >
+        <form onSubmit={handleSubmitOff} data-testid="form-search-off" className="gi-flex gi-flex-col gi-gap-4 gi-w-72">
           <FormField className="gi-w-56">
             <FormFieldLabel>Label (Search OFF)</FormFieldLabel>
             <Controller
@@ -631,107 +584,81 @@ export const TestNoSubmitOnEnter: StoryObj<typeof SelectNext> = {
     const inputOn = await on.findByRole('textbox', { name: /select/i });
     const inputOff = await off.findByRole('textbox', { name: /select/i });
 
-    await step(
-      '[Search ON] keyboard: Enter on focused select opens popover without submitting',
-      async () => {
-        await userEvent.tab();
-        await expect(inputOn).toHaveFocus();
-        await userEvent.keyboard('{Enter}');
-        await expect(submitCountOn).toHaveTextContent('0');
-        await userEvent.keyboard('{Esc}');
-        await waitFor(() => {
-          expect(canvas.queryByRole('dialog', { name: /popover/i })).toBeNull();
-        });
-      },
-    );
+    await step('[Search ON] keyboard: Enter on focused select opens popover without submitting', async () => {
+      await userEvent.tab();
+      await expect(inputOn).toHaveFocus();
+      await userEvent.keyboard('{Enter}');
+      await expect(submitCountOn).toHaveTextContent('0');
+      await userEvent.keyboard('{Esc}');
+      await waitFor(() => {
+        expect(canvas.queryByRole('dialog', { name: /popover/i })).toBeNull();
+      });
+    });
 
-    await step(
-      '[Search ON] mouse: Enter after clicking select does not submit the form',
-      async () => {
-        await userEvent.click(inputOn);
-        await waitFor(() => {
-          expect(
-            canvas.getByRole('dialog', { name: /popover/i }),
-          ).toBeInTheDocument();
-        });
-        await userEvent.keyboard('{Enter}');
-        await expect(submitCountOn).toHaveTextContent('0');
-        await userEvent.keyboard('{Esc}');
-        await waitFor(() => {
-          expect(canvas.queryByRole('dialog', { name: /popover/i })).toBeNull();
-        });
-      },
-    );
+    await step('[Search ON] mouse: Enter after clicking select does not submit the form', async () => {
+      await userEvent.click(inputOn);
+      await waitFor(() => {
+        expect(canvas.getByRole('dialog', { name: /popover/i })).toBeInTheDocument();
+      });
+      await userEvent.keyboard('{Enter}');
+      await expect(submitCountOn).toHaveTextContent('0');
+      await userEvent.keyboard('{Esc}');
+      await waitFor(() => {
+        expect(canvas.queryByRole('dialog', { name: /popover/i })).toBeNull();
+      });
+    });
 
-    await step(
-      '[Search ON] keyboard: type filter then ArrowDown + Enter selects without submitting',
-      async () => {
-        await userEvent.click(inputOn);
-        await waitFor(() => {
-          expect(
-            canvas.getByRole('dialog', { name: /popover/i }),
-          ).toBeInTheDocument();
-        });
-        await userEvent.type(inputOn, 'Option 1');
-        await userEvent.keyboard('{ArrowDown}{Enter}');
-        await expect(submitCountOn).toHaveTextContent('0');
-        await userEvent.keyboard('{Esc}');
-        await waitFor(() => {
-          expect(canvas.queryByRole('dialog', { name: /popover/i })).toBeNull();
-        });
-      },
-    );
+    await step('[Search ON] keyboard: type filter then ArrowDown + Enter selects without submitting', async () => {
+      await userEvent.click(inputOn);
+      await waitFor(() => {
+        expect(canvas.getByRole('dialog', { name: /popover/i })).toBeInTheDocument();
+      });
+      await userEvent.type(inputOn, 'Option 1');
+      await userEvent.keyboard('{ArrowDown}{Enter}');
+      await expect(submitCountOn).toHaveTextContent('0');
+      await userEvent.keyboard('{Esc}');
+      await waitFor(() => {
+        expect(canvas.queryByRole('dialog', { name: /popover/i })).toBeNull();
+      });
+    });
 
-    await step(
-      '[Search OFF] keyboard: Enter on focused select opens popover without submitting',
-      async () => {
-        await userEvent.tab();
-        await userEvent.tab();
-        await expect(inputOff).toHaveFocus();
-        await userEvent.keyboard('{Enter}');
-        await expect(submitCountOff).toHaveTextContent('0');
-        await userEvent.keyboard('{Esc}');
-        await waitFor(() => {
-          expect(canvas.queryByRole('dialog', { name: /popover/i })).toBeNull();
-        });
-      },
-    );
+    await step('[Search OFF] keyboard: Enter on focused select opens popover without submitting', async () => {
+      await userEvent.tab();
+      await userEvent.tab();
+      await expect(inputOff).toHaveFocus();
+      await userEvent.keyboard('{Enter}');
+      await expect(submitCountOff).toHaveTextContent('0');
+      await userEvent.keyboard('{Esc}');
+      await waitFor(() => {
+        expect(canvas.queryByRole('dialog', { name: /popover/i })).toBeNull();
+      });
+    });
 
-    await step(
-      '[Search OFF] mouse: Enter after clicking select does not submit the form',
-      async () => {
-        await userEvent.click(inputOff);
-        await waitFor(() => {
-          expect(
-            canvas.getByRole('dialog', { name: /popover/i }),
-          ).toBeInTheDocument();
-        });
-        await userEvent.keyboard('{Enter}');
-        await expect(submitCountOff).toHaveTextContent('0');
-        await userEvent.keyboard('{Esc}');
-        await waitFor(() => {
-          expect(canvas.queryByRole('dialog', { name: /popover/i })).toBeNull();
-        });
-      },
-    );
+    await step('[Search OFF] mouse: Enter after clicking select does not submit the form', async () => {
+      await userEvent.click(inputOff);
+      await waitFor(() => {
+        expect(canvas.getByRole('dialog', { name: /popover/i })).toBeInTheDocument();
+      });
+      await userEvent.keyboard('{Enter}');
+      await expect(submitCountOff).toHaveTextContent('0');
+      await userEvent.keyboard('{Esc}');
+      await waitFor(() => {
+        expect(canvas.queryByRole('dialog', { name: /popover/i })).toBeNull();
+      });
+    });
 
-    await step(
-      '[Search OFF] keyboard: ArrowDown + Enter selects without submitting',
-      async () => {
-        await userEvent.click(inputOff);
-        await waitFor(() => {
-          expect(
-            canvas.getByRole('dialog', { name: /popover/i }),
-          ).toBeInTheDocument();
-        });
-        await userEvent.keyboard('{ArrowDown}{Enter}');
-        await expect(submitCountOff).toHaveTextContent('0');
-        await userEvent.keyboard('{Esc}');
-        await waitFor(() => {
-          expect(canvas.queryByRole('dialog', { name: /popover/i })).toBeNull();
-        });
-      },
-    );
+    await step('[Search OFF] keyboard: ArrowDown + Enter selects without submitting', async () => {
+      await userEvent.click(inputOff);
+      await waitFor(() => {
+        expect(canvas.getByRole('dialog', { name: /popover/i })).toBeInTheDocument();
+      });
+      await userEvent.keyboard('{ArrowDown}{Enter}');
+      await expect(submitCountOff).toHaveTextContent('0');
+      await userEvent.keyboard('{Esc}');
+      await waitFor(() => {
+        expect(canvas.queryByRole('dialog', { name: /popover/i })).toBeNull();
+      });
+    });
   },
 };
 
@@ -742,11 +669,7 @@ export const TestKeyboardEvents: StoryObj<typeof SelectNext> = {
     return (
       <FormField className="gi-w-56">
         <FormFieldLabel>Label</FormFieldLabel>
-        <SelectNext
-          aria-label="Select"
-          value={value}
-          onChange={(event) => setValue(event.currentTarget.value)}
-        >
+        <SelectNext aria-label="Select" value={value} onChange={(event) => setValue(event.currentTarget.value)}>
           {Array.from({ length: 10 }, (_, index) => (
             <SelectItemNext key={index} value={`value_${index}`}>
               {`Option ${index}`}
@@ -761,15 +684,11 @@ export const TestKeyboardEvents: StoryObj<typeof SelectNext> = {
     const canvas = within(canvasElement);
     const input = await canvas.findByRole('textbox', { name: /select/i });
 
-    const expectOpen = async () =>
-      waitFor(() => expect(canvas.getByRole('listbox')).toBeInTheDocument());
-    const expectClosed = async () =>
-      waitFor(() => expect(canvas.queryByRole('listbox')).toBeNull());
+    const expectOpen = async () => waitFor(() => expect(canvas.getByRole('listbox')).toBeInTheDocument());
+    const expectClosed = async () => waitFor(() => expect(canvas.queryByRole('listbox')).toBeNull());
 
     const getHighlightedOption = () =>
-      canvasElement.ownerDocument.querySelector(
-        '[role="option"].gi-select-option-item-highlighted',
-      );
+      canvasElement.ownerDocument.querySelector('[role="option"].gi-select-option-item-highlighted');
 
     await step('ArrowDown opens and moves highlight', async () => {
       input.focus();
@@ -782,10 +701,7 @@ export const TestKeyboardEvents: StoryObj<typeof SelectNext> = {
 
       const highlighted = getHighlightedOption();
       await expect(highlighted).toBeTruthy();
-      await expect(highlighted).toHaveAttribute(
-        'data-testid',
-        'option-value_0',
-      );
+      await expect(highlighted).toHaveAttribute('data-testid', 'option-value_0');
       await userEvent.keyboard('{Esc}');
     });
 
@@ -891,8 +807,7 @@ export const TestConditionallyRender: StoryObj = {
   play: async ({ canvasElement, step }) => {
     const canvas = within(canvasElement);
     const selectInput = await canvas.findByRole('textbox', { name: /select/i });
-    const externalInput =
-      await canvas.findByPlaceholderText('Type something...');
+    const externalInput = await canvas.findByPlaceholderText('Type something...');
 
     await step('Enter opens dropdown', async () => {
       await userEvent.clear(externalInput);
@@ -900,9 +815,7 @@ export const TestConditionallyRender: StoryObj = {
 
       await userEvent.keyboard('{Tab}');
       await userEvent.keyboard('{Enter}');
-      await waitFor(() =>
-        expect(canvas.getByRole('listbox')).toBeInTheDocument(),
-      );
+      await waitFor(() => expect(canvas.getByRole('listbox')).toBeInTheDocument());
       await userEvent.keyboard('{Escape}');
       await waitFor(() => expect(canvas.queryByRole('listbox')).toBeNull());
     });
@@ -913,9 +826,7 @@ export const TestConditionallyRender: StoryObj = {
 
       await userEvent.keyboard('{Tab}');
       await userEvent.keyboard('{Enter}');
-      await waitFor(() =>
-        expect(canvas.getByRole('listbox')).toBeInTheDocument(),
-      );
+      await waitFor(() => expect(canvas.getByRole('listbox')).toBeInTheDocument());
       await userEvent.type(selectInput, 'or', { delay: 10 });
       await waitFor(() => canvas.getByRole('option', { name: /orange/i }));
       await waitFor(() => {
@@ -927,15 +838,9 @@ export const TestConditionallyRender: StoryObj = {
       await userEvent.keyboard('{ArrowDown}');
       await userEvent.keyboard('{Enter}');
 
-      await waitFor(() =>
-        expect(
-          canvas.getByText(/selected value:\s*value-3/i),
-        ).toBeInTheDocument(),
-      );
+      await waitFor(() => expect(canvas.getByText(/selected value:\s*value-3/i)).toBeInTheDocument());
       await userEvent.keyboard('{Enter}');
-      await waitFor(() =>
-        expect(canvas.getByRole('listbox')).toBeInTheDocument(),
-      );
+      await waitFor(() => expect(canvas.getByRole('listbox')).toBeInTheDocument());
 
       const closeIcon = await canvas.findByTestId('close');
       const clearButton = closeIcon?.closest('button');
@@ -956,43 +861,30 @@ export const TestConditionallyRender: StoryObj = {
       await userEvent.keyboard('{ArrowDown}');
 
       await userEvent.keyboard('{Enter}');
-      await waitFor(() =>
-        expect(
-          canvas.getByText(/selected value:\s*value-2/i),
-        ).toBeInTheDocument(),
-      );
+      await waitFor(() => expect(canvas.getByText(/selected value:\s*value-2/i)).toBeInTheDocument());
     });
 
-    await step(
-      'Arrows work across conditional children re-renders',
-      async () => {
-        await userEvent.clear(externalInput);
-        await userEvent.keyboard('{Tab}');
-        await userEvent.keyboard('{Enter}');
-        const notFound = await canvas.findByText(/no data found\./i);
-        expect(notFound).toBeInTheDocument();
-        await waitFor(() =>
-          expect(canvas.getByText(/selected value:/i)).toBeInTheDocument(),
-        );
-        await userEvent.type(externalInput, 'x'); // re-renders the options
-        await userEvent.keyboard('{Tab}');
-        await userEvent.keyboard('{Enter}');
+    await step('Arrows work across conditional children re-renders', async () => {
+      await userEvent.clear(externalInput);
+      await userEvent.keyboard('{Tab}');
+      await userEvent.keyboard('{Enter}');
+      const notFound = await canvas.findByText(/no data found\./i);
+      expect(notFound).toBeInTheDocument();
+      await waitFor(() => expect(canvas.getByText(/selected value:/i)).toBeInTheDocument());
+      await userEvent.type(externalInput, 'x'); // re-renders the options
+      await userEvent.keyboard('{Tab}');
+      await userEvent.keyboard('{Enter}');
 
-        await waitFor(() => {
-          canvas.getByRole('option', { name: /apple/i });
-          canvas.getByRole('option', { name: /carrot/i });
-          canvas.getByRole('option', { name: /orange/i });
-        });
-        await userEvent.keyboard('{ArrowDown}');
-        await userEvent.keyboard('{ArrowDown}');
-        await userEvent.keyboard('{Enter}');
-        await waitFor(() =>
-          expect(
-            canvas.getByText(/selected value:\s*value-2/i),
-          ).toBeInTheDocument(),
-        );
-      },
-    );
+      await waitFor(() => {
+        canvas.getByRole('option', { name: /apple/i });
+        canvas.getByRole('option', { name: /carrot/i });
+        canvas.getByRole('option', { name: /orange/i });
+      });
+      await userEvent.keyboard('{ArrowDown}');
+      await userEvent.keyboard('{ArrowDown}');
+      await userEvent.keyboard('{Enter}');
+      await waitFor(() => expect(canvas.getByText(/selected value:\s*value-2/i)).toBeInTheDocument());
+    });
 
     await step('Leading space is ignored', async () => {
       await userEvent.clear(externalInput);

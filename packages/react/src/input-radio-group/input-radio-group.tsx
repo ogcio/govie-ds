@@ -1,15 +1,6 @@
 'use client';
 
-import {
-  ChangeEvent,
-  Children,
-  cloneElement,
-  FC,
-  isValidElement,
-  PropsWithChildren,
-  useState,
-  useEffect,
-} from 'react';
+import { ChangeEvent, Children, cloneElement, FC, isValidElement, PropsWithChildren, useState, useEffect } from 'react';
 import { InputRadioGroupProps } from './types.js';
 
 export const InputRadioGroup: FC<PropsWithChildren<InputRadioGroupProps>> = ({
@@ -19,17 +10,14 @@ export const InputRadioGroup: FC<PropsWithChildren<InputRadioGroupProps>> = ({
   value: externalValue,
   children,
 }) => {
-  const [internalValue, setInternalValue] = useState<null | string>(
-    externalValue || null,
-  );
+  const [internalValue, setInternalValue] = useState<null | string>(externalValue || null);
 
   // Sync internal state with external value (for React Hook Form reset)
   useEffect(() => {
     setInternalValue(externalValue || null);
   }, [externalValue]);
 
-  const currentValue =
-    externalValue === undefined ? internalValue : externalValue;
+  const currentValue = externalValue === undefined ? internalValue : externalValue;
 
   const onOptionChange = (event: ChangeEvent<HTMLInputElement>) => {
     // We only update internal state if not controlled
@@ -65,14 +53,7 @@ export const InputRadioGroup: FC<PropsWithChildren<InputRadioGroupProps>> = ({
   return (
     <div className="gi-input-group-container">
       <div className="gi-input-group-options-container">
-        <div
-          role="radiogroup"
-          className={
-            inline
-              ? 'gi-input-group-options-inline'
-              : 'gi-input-group-options-stacked'
-          }
-        >
+        <div role="radiogroup" className={inline ? 'gi-input-group-options-inline' : 'gi-input-group-options-stacked'}>
           {childrenWithOnChange}
         </div>
       </div>

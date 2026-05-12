@@ -5,10 +5,7 @@ import { translate as t } from '../../i18n/utility.js';
 import { Icon } from '../../icon/icon.js';
 import { Input } from '../../primitives/input.js';
 import type { HeaderAppearance, HeaderItem } from '../types.js';
-import {
-  headerSlotContainerVariants,
-  headerToolItemVariants,
-} from '../variants.js';
+import { headerSlotContainerVariants, headerToolItemVariants } from '../variants.js';
 
 type HeaderSlotProps = {
   item: HeaderItem;
@@ -21,11 +18,7 @@ type HeaderSlotContainerProps = {
   appearance: HeaderAppearance;
 };
 
-export const SlotContainer = ({
-  index,
-  slot,
-  appearance,
-}: HeaderSlotContainerProps) => (
+export const SlotContainer = ({ index, slot, appearance }: HeaderSlotContainerProps) => (
   <div
     id={`SlotContainer-${index}`}
     data-testid={`SlotContainer-${index}`}
@@ -108,11 +101,7 @@ const DrawerTrigger = ({
   );
 };
 
-export const SlotItemAction = ({
-  item,
-  index,
-  appearance,
-}: HeaderSlotProps) => {
+export const SlotItemAction = ({ item, index, appearance }: HeaderSlotProps) => {
   if (item.slotAppearance === 'drawer') {
     return <DrawerTrigger index={index} item={item} appearance={appearance} />;
   }
@@ -137,13 +126,7 @@ export const SlotItemAction = ({
         type="button"
       />
       {item.label && <span className="label">{item.label}</span>}
-      {item.icon && (
-        <Icon
-          icon={item.icon}
-          ariaHidden={true}
-          id={`ItemIconActionTrigger-${index}`}
-        />
-      )}
+      {item.icon && <Icon icon={item.icon} ariaHidden={true} id={`ItemIconActionTrigger-${index}`} />}
       <Icon
         className="gi-hidden close-icon"
         ariaHidden={true}

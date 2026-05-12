@@ -1,8 +1,4 @@
-import {
-  Text,
-  Paragraph as GiParagraph,
-  type ParagraphProps as GiParagraphProps,
-} from '../atoms';
+import { Text, Paragraph as GiParagraph, type ParagraphProps as GiParagraphProps } from '../atoms';
 import { tv } from 'tailwind-variants';
 export type ParagraphAs = 'p' | 'span';
 

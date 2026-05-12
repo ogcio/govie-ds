@@ -2,12 +2,7 @@ import type { Meta, StoryObj } from '@storybook/react-vite';
 import { within, expect } from 'storybook/test';
 import { InputText } from '../input-text/input-text.js';
 import { TextArea } from '../textarea/textarea.js';
-import {
-  FormField,
-  FormFieldLabel,
-  FormFieldHint,
-  FormFieldError,
-} from './form-field/form-field.js';
+import { FormField, FormFieldLabel, FormFieldHint, FormFieldError } from './form-field/form-field.js';
 
 const meta = {
   title: 'Form/FormField',
@@ -67,8 +62,7 @@ export const Default: Story = {
   parameters: {
     docs: {
       description: {
-        story:
-          'A basic `FormField` with a label and an input. This demonstrates the simplest usage.',
+        story: 'A basic `FormField` with a label and an input. This demonstrates the simplest usage.',
       },
     },
   },
@@ -85,8 +79,7 @@ export const WithHint: Story = {
   parameters: {
     docs: {
       description: {
-        story:
-          'Adds a `FormFieldHint` below the label to provide guidance or instructions to the user.',
+        story: 'Adds a `FormFieldHint` below the label to provide guidance or instructions to the user.',
       },
     },
   },
@@ -115,9 +108,7 @@ export const WithHintAndError: Story = {
   render: () => (
     <FormField>
       <FormFieldLabel htmlFor="textarea-id">Description</FormFieldLabel>
-      <FormFieldHint>
-        Provide a short description (max 200 characters).
-      </FormFieldHint>
+      <FormFieldHint>Provide a short description (max 200 characters).</FormFieldHint>
       <FormFieldError>Description is required.</FormFieldError>
       <TextArea id="textarea-id" />
     </FormField>
@@ -125,8 +116,7 @@ export const WithHintAndError: Story = {
   parameters: {
     docs: {
       description: {
-        story:
-          'Shows how you can combine both `FormFieldHint` and `FormFieldError` within the same field.',
+        story: 'Shows how you can combine both `FormFieldHint` and `FormFieldError` within the same field.',
       },
     },
   },
@@ -147,9 +137,7 @@ export const WithSubLabel: Story = {
     const optional = await canvas.findByText('(optional)');
     const labelTextNode = await canvas.findByText('Label');
 
-    const labelElement = labelTextNode.closest(
-      'label',
-    ) as HTMLLabelElement | null;
+    const labelElement = labelTextNode.closest('label') as HTMLLabelElement | null;
     expect(labelElement).toBeTruthy();
 
     expect(optional).toBeInTheDocument();

@@ -1,12 +1,6 @@
 import path from 'node:path';
 import { storybookTest } from '@storybook/addon-vitest/vitest-plugin';
-import {
-  configDefaults,
-  coverageConfigDefaults,
-  defineConfig,
-  defineProject,
-  mergeConfig,
-} from 'vitest/config';
+import { configDefaults, coverageConfigDefaults, defineConfig, defineProject, mergeConfig } from 'vitest/config';
 
 import viteConfig from './vite.config';
 
@@ -14,10 +8,7 @@ export default mergeConfig(
   viteConfig,
   defineConfig({
     test: {
-      reporters: [
-        'default',
-        ['junit', { outputFile: 'coverage/results.xml' }],
-      ],
+      reporters: ['default', ['junit', { outputFile: 'coverage/results.xml' }]],
       coverage: {
         enabled: true,
         provider: 'v8',
@@ -68,15 +59,9 @@ export default mergeConfig(
         },
       ],
       resolveSnapshotPath: (testPath, snapExtension) => {
-        const testFileName = path
-          .basename(testPath)
-          .replace(/\.(test)\.(tsx)$/, '');
+        const testFileName = path.basename(testPath).replace(/\.(test)\.(tsx)$/, '');
 
-        return path.resolve(
-          process.cwd(),
-          '../../snapshots',
-          `${testFileName}${snapExtension}`,
-        );
+        return path.resolve(process.cwd(), '../../snapshots', `${testFileName}${snapExtension}`);
       },
     },
   }),

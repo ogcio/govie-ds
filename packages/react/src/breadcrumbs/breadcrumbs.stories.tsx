@@ -1,11 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/react-vite';
 import { within, expect } from 'storybook/test';
-import {
-  Breadcrumbs,
-  BreadcrumbCurrentLink,
-  BreadcrumbLink,
-  BreadcrumbEllipsis,
-} from './breadcrumbs.js';
+import { Breadcrumbs, BreadcrumbCurrentLink, BreadcrumbLink, BreadcrumbEllipsis } from './breadcrumbs.js';
 
 const meta = {
   title: 'Navigation/Breadcrumbs',
@@ -50,10 +45,7 @@ export const Default: Story = {
 
     const ellipsisElement = canvas.getByText('more_horiz');
     expect(ellipsisElement).toBeInTheDocument();
-    expect(ellipsisElement.parentElement).toHaveAttribute(
-      'aria-hidden',
-      'true',
-    );
+    expect(ellipsisElement.parentElement).toHaveAttribute('aria-hidden', 'true');
   },
 };
 
@@ -71,17 +63,12 @@ export const WithoutEllipsis: Story = {
 export const WithSingleItemAndIconStart: Story = {
   args: {
     iconStart: true,
-    children: [
-      <BreadcrumbLink href="/home">Back to [Previous page]</BreadcrumbLink>,
-    ],
+    children: [<BreadcrumbLink href="/home">Back to [Previous page]</BreadcrumbLink>],
   },
   play: async ({ canvasElement }) => {
     const canvas = within(canvasElement);
     const listItemElements = canvas.getAllByRole('listitem');
-    expect(listItemElements[0].children[0]).toHaveAttribute(
-      'data-testid',
-      'keyboard-arrow-left',
-    );
+    expect(listItemElements[0].children[0]).toHaveAttribute('data-testid', 'keyboard-arrow-left');
   },
 };
 

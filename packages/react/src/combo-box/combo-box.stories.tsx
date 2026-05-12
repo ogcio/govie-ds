@@ -2,11 +2,7 @@ import type { Meta, StoryObj } from '@storybook/react-vite';
 import { useState } from 'react';
 import { userEvent, within, expect } from 'storybook/test';
 import { Form } from '../forms/form.js';
-import {
-  organisationOptions,
-  categoryOptions,
-  topicOptions,
-} from './combo-box.content.js';
+import { organisationOptions, categoryOptions, topicOptions } from './combo-box.content.js';
 import { Combobox } from './combo-box.js';
 import { DropdownItem } from './dropdown-item.js';
 
@@ -28,8 +24,7 @@ export const Default: StoryObj = {
   argTypes: {
     children: {
       control: 'array',
-      description:
-        'The content that will be inserted into the accordion (AccordionItem components)',
+      description: 'The content that will be inserted into the accordion (AccordionItem components)',
       table: {
         type: { summary: 'React.ReactElement<typeof AccordionItem>[]' },
       },
@@ -119,19 +114,13 @@ export const ControlledAndUncontrolled = {
           <DropdownItem
             options={organisationOptions}
             defaultValue={['15431907-an-bord-pleanala']}
-            onChange={(values: string[]) =>
-              console.log('Uncontrolled Organisation Change:', values)
-            }
+            onChange={(values: string[]) => console.log('Uncontrolled Organisation Change:', values)}
             onSearch={(query) => console.log('Org Search:', query)}
           >
             Organisations (defaultValue)
           </DropdownItem>
 
-          <DropdownItem
-            options={categoryOptions}
-            value={selectedCategories}
-            onChange={handleCategoryChange}
-          >
+          <DropdownItem options={categoryOptions} value={selectedCategories} onChange={handleCategoryChange}>
             Categories (controlled)
           </DropdownItem>
         </Combobox>
@@ -164,14 +153,10 @@ export const TestDefaultSelectedValues: StoryObj = {
       const categoriesGroupElement = canvas.getByRole('group', {
         name: /Categories dropdown/i,
       });
-      const toggleButtonElement = within(categoriesGroupElement).getByRole(
-        'button',
-      );
+      const toggleButtonElement = within(categoriesGroupElement).getByRole('button');
       await userEvent.click(toggleButtonElement);
 
-      const checkboxElement = within(categoriesGroupElement).getByLabelText(
-        'Design',
-      ) as HTMLInputElement;
+      const checkboxElement = within(categoriesGroupElement).getByLabelText('Design') as HTMLInputElement;
       expect(checkboxElement.checked).toBe(true);
     });
   },
@@ -184,11 +169,7 @@ export const TestUncontrolledOnChange: StoryObj = {
     return (
       <Form>
         <Combobox className="gi-mx-auto">
-          <div
-            aria-live="polite"
-            data-testid="selected-values"
-            className="gi-hidden"
-          >
+          <div aria-live="polite" data-testid="selected-values" className="gi-hidden">
             {selectedValues.join(',')}
           </div>
           <DropdownItem
@@ -207,26 +188,19 @@ export const TestUncontrolledOnChange: StoryObj = {
   play: async ({ canvasElement, step }) => {
     const canvas = within(canvasElement);
 
-    await step(
-      'fires onChange when checkbox is clicked (uncontrolled)',
-      async () => {
-        const categoriesGroupElement = canvas.getByRole('group', {
-          name: /Categories dropdown/i,
-        });
-        const toggleButtonElement = within(categoriesGroupElement).getByRole(
-          'button',
-        );
-        await userEvent.click(toggleButtonElement);
+    await step('fires onChange when checkbox is clicked (uncontrolled)', async () => {
+      const categoriesGroupElement = canvas.getByRole('group', {
+        name: /Categories dropdown/i,
+      });
+      const toggleButtonElement = within(categoriesGroupElement).getByRole('button');
+      await userEvent.click(toggleButtonElement);
 
-        const developmentCheckboxElement = within(
-          categoriesGroupElement,
-        ).getByLabelText('Development');
-        await userEvent.click(developmentCheckboxElement);
+      const developmentCheckboxElement = within(categoriesGroupElement).getByLabelText('Development');
+      await userEvent.click(developmentCheckboxElement);
 
-        const outputElement = canvas.getByTestId('selected-values');
-        expect(outputElement).toHaveTextContent('development');
-      },
-    );
+      const outputElement = canvas.getByTestId('selected-values');
+      expect(outputElement).toHaveTextContent('development');
+    });
   },
 };
 
@@ -237,11 +211,7 @@ export const TestOnSearchCallback: StoryObj = {
     return (
       <Form>
         <Combobox className="gi-mx-auto">
-          <div
-            aria-live="polite"
-            data-testid="search-value"
-            className="gi-hidden"
-          >
+          <div aria-live="polite" data-testid="search-value" className="gi-hidden">
             {searchValue}
           </div>
           <DropdownItem
@@ -265,14 +235,10 @@ export const TestOnSearchCallback: StoryObj = {
       const categoriesGroupElement = canvas.getByRole('group', {
         name: /Categories dropdown/i,
       });
-      const toggleButtonElement = within(categoriesGroupElement).getByRole(
-        'button',
-      );
+      const toggleButtonElement = within(categoriesGroupElement).getByRole('button');
       await userEvent.click(toggleButtonElement);
 
-      const searchInputElement = within(
-        categoriesGroupElement,
-      ).getByPlaceholderText('Search');
+      const searchInputElement = within(categoriesGroupElement).getByPlaceholderText('Search');
       await userEvent.clear(searchInputElement);
       await userEvent.type(searchInputElement, 'Des');
 
@@ -310,18 +276,12 @@ export const TestDefault: StoryObj = {
       const categoriesGroupElement = canvas.getByRole('group', {
         name: /Categories dropdown/i,
       });
-      const categoriesToggleButtonElement = within(
-        categoriesGroupElement,
-      ).getByRole('button');
+      const categoriesToggleButtonElement = within(categoriesGroupElement).getByRole('button');
       await userEvent.click(categoriesToggleButtonElement);
-      expect(
-        within(categoriesGroupElement).getByPlaceholderText('Search'),
-      ).toBeInTheDocument();
+      expect(within(categoriesGroupElement).getByPlaceholderText('Search')).toBeInTheDocument();
 
       await userEvent.click(categoriesToggleButtonElement);
-      const searchInputMaybe = within(
-        categoriesGroupElement,
-      ).queryByPlaceholderText('Search');
+      const searchInputMaybe = within(categoriesGroupElement).queryByPlaceholderText('Search');
       expect(searchInputMaybe).not.toBeVisible();
     });
 
@@ -329,32 +289,23 @@ export const TestDefault: StoryObj = {
       const categoriesGroupElement = canvas.getByRole('group', {
         name: /Categories dropdown/i,
       });
-      const categoriesToggleButtonElement = within(
-        categoriesGroupElement,
-      ).getByRole('button');
+      const categoriesToggleButtonElement = within(categoriesGroupElement).getByRole('button');
       await userEvent.click(categoriesToggleButtonElement);
 
-      const searchInputElement = within(
-        categoriesGroupElement,
-      ).getByPlaceholderText('Search');
+      const searchInputElement = within(categoriesGroupElement).getByPlaceholderText('Search');
       await userEvent.clear(searchInputElement);
       await userEvent.type(searchInputElement, 'abcd');
 
-      expect(
-        within(categoriesGroupElement).getByText('No results found.'),
-      ).toBeInTheDocument();
+      expect(within(categoriesGroupElement).getByText('No results found.')).toBeInTheDocument();
     });
 
     await step('disables search when noSearch is true', async () => {
       const topicGroupElement = canvas.getByRole('group', {
         name: /Topic \(without search\) dropdown/i,
       });
-      const topicToggleButtonElement =
-        within(topicGroupElement).getByRole('button');
+      const topicToggleButtonElement = within(topicGroupElement).getByRole('button');
       await userEvent.click(topicToggleButtonElement);
-      expect(
-        within(topicGroupElement).queryByPlaceholderText('Search'),
-      ).not.toBeInTheDocument();
+      expect(within(topicGroupElement).queryByPlaceholderText('Search')).not.toBeInTheDocument();
     });
   },
 };

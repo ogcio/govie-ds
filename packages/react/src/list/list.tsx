@@ -38,12 +38,7 @@ const getListClass = ({ spaced, type }: Omit<ListProps, 'items'>) => {
   return classes.join(' ');
 };
 
-export function List({
-  items,
-  type = ListTypeEnum.None,
-  spaced,
-  ...props
-}: ListProps) {
+export function List({ items, type = ListTypeEnum.None, spaced, ...props }: ListProps) {
   return (
     <ul
       role={type === ListTypeEnum.None ? 'list' : undefined}

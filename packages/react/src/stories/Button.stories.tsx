@@ -67,11 +67,7 @@ export const AllVariants: Story = {
   render: () => (
     <div className="gi-flex gi-flex-col gi-gap-2 gi-items-start">
       {_.map(Variant, (variant) => (
-        <Button
-          key={variant}
-          dataTestId={`button-variant-${variant}`}
-          variant={variant}
-        >
+        <Button key={variant} dataTestId={`button-variant-${variant}`} variant={variant}>
           {variant} Button
         </Button>
       ))}
@@ -84,16 +80,8 @@ export const AllAppearances: Story = {
   render: () => (
     <div className="gi-flex gi-flex-col gi-gap-2 gi-items-start">
       {_.map(Appearance, (appearance) => (
-        <div
-          key={appearance}
-          className={
-            appearance === Appearance.LIGHT ? 'gi-p-4 gi-bg-black gi-w-fit' : ''
-          }
-        >
-          <Button
-            dataTestId={`button-appearance-${appearance}`}
-            appearance={appearance}
-          >
+        <div key={appearance} className={appearance === Appearance.LIGHT ? 'gi-p-4 gi-bg-black gi-w-fit' : ''}>
+          <Button dataTestId={`button-appearance-${appearance}`} appearance={appearance}>
             {appearance} Button
           </Button>
         </div>
@@ -135,20 +123,10 @@ export const Disabled: Story = {
             >
               {variant} {appearance}
             </Button>
-            <Button
-              variant={variant}
-              appearance={appearance}
-              disabled
-              className="pseudo-hover"
-            >
+            <Button variant={variant} appearance={appearance} disabled className="pseudo-hover">
               {variant} {appearance} hover
             </Button>
-            <Button
-              variant={variant}
-              appearance={appearance}
-              disabled
-              className="pseudo-focus"
-            >
+            <Button variant={variant} appearance={appearance} disabled className="pseudo-focus">
               {variant} {appearance} focus
             </Button>
           </div>
@@ -168,18 +146,10 @@ export const InteractionStates: Story = {
             key={`${variant}-${appearance}`}
             className={`gi-flex gi-flex-col gi-gap-2 sm:gi-flex-row ${appearance === Appearance.LIGHT ? 'gi-p-4 gi-bg-black' : ''}`}
           >
-            <Button
-              variant={variant}
-              appearance={appearance}
-              className="pseudo-hover"
-            >
+            <Button variant={variant} appearance={appearance} className="pseudo-hover">
               {variant} {appearance} hover
             </Button>
-            <Button
-              variant={variant}
-              appearance={appearance}
-              className="pseudo-focus"
-            >
+            <Button variant={variant} appearance={appearance} className="pseudo-focus">
               {variant} {appearance} focus
             </Button>
           </div>

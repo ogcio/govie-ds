@@ -1,18 +1,14 @@
 'use client';
 import { forwardRef } from 'react';
 import { Icon, type IconProps } from '../icon/icon.js';
-import GiIconButton, {
-  type Props as GiIconButtonProps,
-} from '../atoms/IconButton.js';
+import GiIconButton, { type Props as GiIconButtonProps } from '../atoms/IconButton.js';
 import clsx from 'clsx';
 import { normalizeSize } from '../utils/normalize-size.js';
 
 /** @deprecated Use `'sm' | 'md' | 'lg' | 'xl'` instead. */
 type LegacyIconButtonSize = 'small' | 'medium' | 'large' | 'extraLarge';
 
-export type IconButtonSize =
-  | LegacyIconButtonSize
-  | NonNullable<GiIconButtonProps['size']>;
+export type IconButtonSize = LegacyIconButtonSize | NonNullable<GiIconButtonProps['size']>;
 
 export type IconButtonProps = Omit<GiIconButtonProps, 'size'> & {
   /**
@@ -39,15 +35,7 @@ export type IconButtonProps = Omit<GiIconButtonProps, 'size'> & {
   /** @deprecated Use ariaControls instead */
   'aria-controls'?: string;
   /** @deprecated Use ariaHasPopup instead */
-  'aria-haspopup'?:
-    | boolean
-    | 'true'
-    | 'false'
-    | 'menu'
-    | 'listbox'
-    | 'tree'
-    | 'grid'
-    | 'dialog';
+  'aria-haspopup'?: boolean | 'true' | 'false' | 'menu' | 'listbox' | 'tree' | 'grid' | 'dialog';
   /** @deprecated This property will be removed in a future major release. */
   'aria-hidden'?: boolean | 'true' | 'false';
 };
@@ -122,12 +110,8 @@ export const IconButton = forwardRef<HTMLButtonElement, IconButtonProps>(
         ariaLabel={ariaLabel ?? ariaLabelAttribute}
         ariaLabelledBy={ariaLabelledBy ?? ariaLabelledByAttribute}
         ariaDescribedBy={ariaDescribedBy ?? ariaDescribedByAttribute}
-        ariaPressed={
-          (ariaPressed ?? ariaPressedAttribute) as boolean | 'mixed' | undefined
-        }
-        ariaExpanded={
-          (ariaExpanded ?? ariaExpandedAttribute) as boolean | undefined
-        }
+        ariaPressed={(ariaPressed ?? ariaPressedAttribute) as boolean | 'mixed' | undefined}
+        ariaExpanded={(ariaExpanded ?? ariaExpandedAttribute) as boolean | undefined}
         ariaControls={ariaControls ?? ariaControlsAttribute}
         ariaHasPopup={
           (ariaHasPopup ?? ariaHasPopupAttribute) as

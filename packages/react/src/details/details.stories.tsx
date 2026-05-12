@@ -8,8 +8,7 @@ const meta = {
     layout: 'fullscreen',
     docs: {
       description: {
-        component:
-          'Make a page easier to scan by letting users reveal more detailed information only if they need it.',
+        component: 'Make a page easier to scan by letting users reveal more detailed information only if they need it.',
       },
     },
   },
@@ -25,8 +24,7 @@ const meta = {
     },
     children: {
       control: 'text',
-      description:
-        'The content inside the details element, displayed when the element is open.',
+      description: 'The content inside the details element, displayed when the element is open.',
     },
     open: {
       control: 'boolean',
@@ -80,25 +78,20 @@ export const WithMultipleDetailsGrouped: Story = {
   render: () => (
     <div className="gi-flex gi-gap-2 gi-flex-col">
       <Details label="Help with Nationality" name="group1" open={false}>
-        We need to know your nationality so we can work out which elections
-        you’re entitled to vote in. If you cannot provide your nationality,
-        you’ll have to send copies of identity documents through the post.
+        We need to know your nationality so we can work out which elections you’re entitled to vote in. If you cannot
+        provide your nationality, you’ll have to send copies of identity documents through the post.
       </Details>
-      <Details
-        label="More Information on Nationality"
-        name="group1"
-        open={false}
-      >
-        Your nationality helps us determine your eligibility for specific voting
-        rights. Without it, you may need to submit additional documentation.
+      <Details label="More Information on Nationality" name="group1" open={false}>
+        Your nationality helps us determine your eligibility for specific voting rights. Without it, you may need to
+        submit additional documentation.
       </Details>
       <Details label="Help with Residency" name="group2" open={false}>
-        Residency information is necessary to assign you to the correct
-        electoral district. Please ensure it is accurate and up to date.
+        Residency information is necessary to assign you to the correct electoral district. Please ensure it is accurate
+        and up to date.
       </Details>
       <Details label="More Information on Residency" name="group2" open={false}>
-        Providing your residency details ensures we comply with local election
-        laws. If you’re unsure of your residency status, contact support.
+        Providing your residency details ensures we comply with local election laws. If you’re unsure of your residency
+        status, contact support.
       </Details>
     </div>
   ),
@@ -139,15 +132,12 @@ export const TestLabel: Story = {
   play: async ({ canvasElement, step }) => {
     const canvas = within(canvasElement);
 
-    await step(
-      'should render the details element with the correct label',
-      async () => {
-        const detailsElement = canvas.getByTestId('govie-details');
-        const summaryElement = canvas.getByTestId('govie-details-summary');
-        expect(detailsElement).toBeInTheDocument();
-        expect(summaryElement).toHaveTextContent('Help with Details');
-      },
-    );
+    await step('should render the details element with the correct label', async () => {
+      const detailsElement = canvas.getByTestId('govie-details');
+      const summaryElement = canvas.getByTestId('govie-details-summary');
+      expect(detailsElement).toBeInTheDocument();
+      expect(summaryElement).toHaveTextContent('Help with Details');
+    });
   },
 };
 
@@ -161,14 +151,9 @@ export const TestChildrenVisible: Story = {
   play: async ({ canvasElement, step }) => {
     const canvas = within(canvasElement);
 
-    await step(
-      'should render the children inside the details element',
-      async () => {
-        const contentElement = canvas.getByText(
-          'Here is the body content of the details element.',
-        );
-        expect(contentElement).toBeInTheDocument();
-      },
-    );
+    await step('should render the children inside the details element', async () => {
+      const contentElement = canvas.getByText('Here is the body content of the details element.');
+      expect(contentElement).toBeInTheDocument();
+    });
   },
 };

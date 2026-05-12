@@ -11,8 +11,7 @@ const meta = {
   parameters: {
     docs: {
       description: {
-        component:
-          'CharacterCount displays the remaining character count for form inputs.',
+        component: 'CharacterCount displays the remaining character count for form inputs.',
       },
     },
   },
@@ -82,11 +81,7 @@ export const WithTextArea: Story = {
             <Button type="submit" dataTestId="submit-btn">
               Submit
             </Button>
-            <Button
-              type="button"
-              onClick={() => methods.reset()}
-              dataTestId="reset-btn"
-            >
+            <Button type="button" onClick={() => methods.reset()} dataTestId="reset-btn">
               Reset
             </Button>
           </div>
@@ -97,29 +92,21 @@ export const WithTextArea: Story = {
   play: async ({ canvasElement }) => {
     const canvas = within(canvasElement);
 
-    const textAreaElement = canvas.getByTestId(
-      'textarea-id',
-    ) as HTMLTextAreaElement;
+    const textAreaElement = canvas.getByTestId('textarea-id') as HTMLTextAreaElement;
     const resetButton = canvas.getByTestId('reset-btn');
 
-    const remainingBeforeType = canvas.getByText(
-      /^You have 30 characters remaining$/,
-    );
+    const remainingBeforeType = canvas.getByText(/^You have 30 characters remaining$/);
     expect(remainingBeforeType).toBeTruthy();
 
     await userEvent.type(textAreaElement, 'Hello world');
 
-    const remainingAfterType = canvas.getByText(
-      /^You have 19 characters remaining$/,
-    );
+    const remainingAfterType = canvas.getByText(/^You have 19 characters remaining$/);
     expect(remainingAfterType).toBeTruthy();
 
     await userEvent.click(resetButton);
     expect(textAreaElement.value).toBe('');
 
-    const remainingAfterReset = canvas.getByText(
-      /^You have 30 characters remaining$/,
-    );
+    const remainingAfterReset = canvas.getByText(/^You have 30 characters remaining$/);
     expect(remainingAfterReset).toBeTruthy();
   },
 };

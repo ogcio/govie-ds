@@ -41,12 +41,7 @@ const createRandomCitizen = (): Person => {
 
     city: faker.location.city(),
     isActive: !!faker.number.int({ min: 0, max: 1 }),
-    status: faker.helpers.shuffle<Person['status']>([
-      'pending',
-      'in progress',
-      'accepted',
-      'declined',
-    ])[0]!,
+    status: faker.helpers.shuffle<Person['status']>(['pending', 'in progress', 'accepted', 'declined'])[0]!,
     disabledFields,
   };
 };

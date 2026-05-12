@@ -7,13 +7,7 @@ export type StackProps = GiStackProps & {
   /** @deprecated Use `align` instead. */
   itemsAlignment?: 'start' | 'center' | 'end' | 'stretch';
   /** @deprecated Use `justify` instead. */
-  itemsDistribution?:
-    | 'start'
-    | 'center'
-    | 'end'
-    | 'between'
-    | 'around'
-    | 'evenly';
+  itemsDistribution?: 'start' | 'center' | 'end' | 'between' | 'around' | 'evenly';
   /** @deprecated Use `className` with a height utility (e.g., `gi-h-[200px]`) or pass `style={{ height: '...' }}` instead; will be removed in the next major release. */
   fixedHeight?: string;
   /** @deprecated Pass `fillWidth={false}` to opt out of the legacy `gi-w-full` default; will be removed in the next major release. */
@@ -76,24 +70,16 @@ export const Stack: FC<StackProps> = ({
 };
 
 const dividerDirectionToClass = (direction: string, prefix: string): string =>
-  direction === 'row'
-    ? `${prefix}gi-h-full ${prefix}gi-w-px`
-    : `${prefix}gi-w-full ${prefix}gi-h-px`;
+  direction === 'row' ? `${prefix}gi-h-full ${prefix}gi-w-px` : `${prefix}gi-w-full ${prefix}gi-h-px`;
 
-const addDividers = (
-  children: React.ReactNode,
-  direction: StackProps['direction'],
-) => {
+const addDividers = (children: React.ReactNode, direction: StackProps['direction']) => {
   const childArray = Children.toArray(children);
   return childArray.map((child, index) => (
     <Fragment key={`item_${index}`}>
       {child}
       {index < childArray.length - 1 && (
         <div
-          className={cn(
-            resolveResponsive(direction ?? 'column', dividerDirectionToClass),
-            'gi-bg-gray-400',
-          )}
+          className={cn(resolveResponsive(direction ?? 'column', dividerDirectionToClass), 'gi-bg-gray-400')}
           aria-hidden="true"
         />
       )}

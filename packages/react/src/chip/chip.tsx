@@ -7,11 +7,7 @@ import { Icon } from '../icon/icon.js';
 
 export type ChipProps = {
   label: string;
-  onClose: (
-    event:
-      | React.MouseEvent<HTMLDivElement>
-      | React.KeyboardEvent<HTMLDivElement>,
-  ) => void;
+  onClose: (event: React.MouseEvent<HTMLDivElement> | React.KeyboardEvent<HTMLDivElement>) => void;
   className?: string;
 };
 
@@ -36,11 +32,7 @@ export const Chip = ({ label, className, onClose = () => null }: ChipProps) => {
       onKeyDown={handleKeyDown}
     >
       <span id={descriptionId}>{label}</span>
-      <div
-        role="button"
-        aria-label={t('chip.removeChip', { defaultValue: 'remove chip' })}
-        onClick={onClose}
-      >
+      <div role="button" aria-label={t('chip.removeChip', { defaultValue: 'remove chip' })} onClick={onClose}>
         <Icon icon="close" size="sm" />
       </div>
     </div>

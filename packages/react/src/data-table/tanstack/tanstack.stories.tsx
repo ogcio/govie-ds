@@ -10,36 +10,21 @@ import {
   getSortedRowModel,
   useReactTable,
 } from '@tanstack/react-table';
-import type {
-  ExpandedState,
-  ColumnDef,
-  FilterFn,
-  PaginationState,
-} from '@tanstack/react-table';
+import type { ExpandedState, ColumnDef, FilterFn, PaginationState } from '@tanstack/react-table';
 import { debounce } from 'lodash';
 import { type FC, Fragment, useEffect, useMemo, useRef, useState } from 'react';
 import type { FieldErrors, FieldError } from 'react-hook-form';
 import { useForm } from 'react-hook-form';
 
 import Button from '../../atoms/Button';
-import {
-  InputCheckbox,
-  InputCheckboxTableCell,
-} from '../../input-checkbox/input-checkbox.js';
+import { InputCheckbox, InputCheckboxTableCell } from '../../input-checkbox/input-checkbox.js';
 import { InputText } from '../../input-text/input-text.js';
 import { Label } from '../../label/label.js';
 import { Link } from '../../link/link.js';
 import { Popover } from '../../popover/popover.js';
 import { SelectItem, SelectNative } from '../../select/select-native.js';
 import { SelectItemNext, SelectNext } from '../../select/select-next.js';
-import {
-  Table,
-  TableHead,
-  TableRow,
-  TableHeader,
-  TableBody,
-  TableData,
-} from '../../table/index.js';
+import { Table, TableHead, TableRow, TableHeader, TableBody, TableData } from '../../table/index.js';
 import { TableExpandIcon, TableDataSlot } from '../../table/table-data.js';
 import { TablePagination } from '../../table/table-pagination.js';
 import { Tag, TagTypeEnum } from '../../tag/tag.js';
@@ -115,10 +100,7 @@ const getFieldError = (
   rowId: string | number,
   columnId: string,
 ): FieldError | undefined => {
-  const rowErrors = errors?.[String(rowId)] as Record<
-    string,
-    FieldError | undefined
-  >;
+  const rowErrors = errors?.[String(rowId)] as Record<string, FieldError | undefined>;
   if (rowErrors && rowErrors[columnId]) {
     return rowErrors[columnId];
   }
@@ -260,10 +242,7 @@ export const WithReactHookForm: Story = {
       }));
     };
 
-    const handleTemporaryDateChange = (
-      field: keyof FilterState['dateRange'],
-      value: string,
-    ) => {
+    const handleTemporaryDateChange = (field: keyof FilterState['dateRange'], value: string) => {
       setTemporaryFilters((previous) => ({
         ...previous,
         dateRange: {
@@ -282,10 +261,7 @@ export const WithReactHookForm: Story = {
               id="all"
               value="all"
               aria-label="Select all rows"
-              checked={
-                table.getIsAllPageRowsSelected() ||
-                table.getIsSomePageRowsSelected()
-              }
+              checked={table.getIsAllPageRowsSelected() || table.getIsSomePageRowsSelected()}
               onChange={table.getToggleAllPageRowsSelectedHandler()}
               indeterminate={table.getIsSomePageRowsSelected()}
             />
@@ -304,12 +280,7 @@ export const WithReactHookForm: Story = {
           id: 'expand',
           enableSorting: false,
           header: '',
-          cell: ({ row }) => (
-            <TableExpandIcon
-              expanded={(expanded as any)?.[row.id]}
-              onClick={row.toggleExpanded}
-            />
-          ),
+          cell: ({ row }) => <TableExpandIcon expanded={(expanded as any)?.[row.id]} onClick={row.toggleExpanded} />,
         },
         {
           accessorFn: (row) => `${row.firstName} ${row.lastName}`,
@@ -338,17 +309,10 @@ export const WithReactHookForm: Story = {
                     required: true,
                     pattern: /[^@]+@[^@.]+\.[^@.]+/,
                   }),
-                  iconEnd:
-                    row.original?.disabledFields?.includes('email') === true
-                      ? 'block'
-                      : undefined,
-                  iconStart:
-                    row.original?.disabledFields?.includes('email') === true
-                      ? undefined
-                      : 'edit',
+                  iconEnd: row.original?.disabledFields?.includes('email') === true ? 'block' : undefined,
+                  iconStart: row.original?.disabledFields?.includes('email') === true ? undefined : 'edit',
                   error: !!getFieldError(errors, row.original.id, column.id),
-                  disabled:
-                    row.original?.disabledFields?.includes('email') === true,
+                  disabled: row.original?.disabledFields?.includes('email') === true,
                   placeholder: 'Email',
                 },
               }}
@@ -370,20 +334,13 @@ export const WithReactHookForm: Story = {
                 props: {
                   'aria-label': 'Age input',
                   type: 'number',
-                  iconStart:
-                    row.original?.disabledFields?.includes('age') === true
-                      ? undefined
-                      : 'accessibility_new',
-                  iconEnd:
-                    row.original?.disabledFields?.includes('age') === true
-                      ? 'block'
-                      : undefined,
+                  iconStart: row.original?.disabledFields?.includes('age') === true ? undefined : 'accessibility_new',
+                  iconEnd: row.original?.disabledFields?.includes('age') === true ? 'block' : undefined,
                   ...register(`${row.original.id}.${column.id}` as never, {
                     required: true,
                   }),
                   error: !!getFieldError(errors, row.original.id, column.id),
-                  disabled:
-                    row.original?.disabledFields?.includes('age') === true,
+                  disabled: row.original?.disabledFields?.includes('age') === true,
                   placeholder: 'Age',
                 },
               }}
@@ -408,8 +365,7 @@ export const WithReactHookForm: Story = {
                     required: true,
                   }),
                   error: !!getFieldError(errors, row.original.id, column.id),
-                  disabled:
-                    !!row.original?.disabledFields?.includes('dateOfBirth'),
+                  disabled: !!row.original?.disabledFields?.includes('dateOfBirth'),
                   placeholder: 'YYYY-MM-DD',
                 },
               }}
@@ -434,17 +390,10 @@ export const WithReactHookForm: Story = {
                     required: true,
                   }),
                   error: !!getFieldError(errors, row.original.id, column.id),
-                  disabled:
-                    row.original?.disabledFields?.includes('city') === true,
+                  disabled: row.original?.disabledFields?.includes('city') === true,
                   placeholder: 'City',
-                  iconEnd:
-                    row.original?.disabledFields?.includes('city') === true
-                      ? 'block'
-                      : undefined,
-                  iconStart:
-                    row.original?.disabledFields?.includes('city') === true
-                      ? undefined
-                      : 'placeholder',
+                  iconEnd: row.original?.disabledFields?.includes('city') === true ? 'block' : undefined,
+                  iconStart: row.original?.disabledFields?.includes('city') === true ? undefined : 'placeholder',
                 },
               }}
             />
@@ -470,8 +419,7 @@ export const WithReactHookForm: Story = {
                     },
                   }),
                   error: !!getFieldError(errors, row.original.id, column.id),
-                  disabled:
-                    row.original?.disabledFields?.includes('isActive') === true,
+                  disabled: row.original?.disabledFields?.includes('isActive') === true,
                 },
               }}
             />
@@ -499,8 +447,7 @@ export const WithReactHookForm: Story = {
                     { value: 'declined', label: 'Declined' },
                   ],
                   error: !!getFieldError(errors, row.original.id, column.id),
-                  disabled:
-                    row.original?.disabledFields?.includes('status') === true,
+                  disabled: row.original?.disabledFields?.includes('status') === true,
                 },
               }}
             />
@@ -557,21 +504,14 @@ export const WithReactHookForm: Story = {
         if (value === 'active') {
           activeSelected = true;
         }
-        if (
-          value === 'pending' ||
-          value === 'in progress' ||
-          value === 'accepted' ||
-          value === 'declined'
-        ) {
+        if (value === 'pending' || value === 'in progress' || value === 'accepted' || value === 'declined') {
           statusValues.push(value);
         }
       }
 
       const statusColumn = table.getColumn('status');
       if (statusColumn) {
-        statusColumn.setFilterValue(
-          statusValues.length > 0 ? statusValues : undefined,
-        );
+        statusColumn.setFilterValue(statusValues.length > 0 ? statusValues : undefined);
       }
 
       const activeColumn = table.getColumn('isActive');
@@ -581,11 +521,7 @@ export const WithReactHookForm: Story = {
 
       const dobColumn = table.getColumn('dateOfBirth');
       if (dobColumn) {
-        dobColumn.setFilterValue(
-          filters.dateRange.from || filters.dateRange.to
-            ? filters.dateRange
-            : undefined,
-        );
+        dobColumn.setFilterValue(filters.dateRange.from || filters.dateRange.to ? filters.dateRange : undefined);
       }
 
       table.setPageIndex(0);
@@ -625,11 +561,8 @@ export const WithReactHookForm: Story = {
 
     const handleRemoveFilter = (id: string) => {
       const newFilters: FilterState = {
-        selectedFilters: appliedFilters.selectedFilters.filter(
-          (current) => current !== id,
-        ),
-        dateRange:
-          id === 'dateRange' ? { from: '', to: '' } : appliedFilters.dateRange,
+        selectedFilters: appliedFilters.selectedFilters.filter((current) => current !== id),
+        dateRange: id === 'dateRange' ? { from: '', to: '' } : appliedFilters.dateRange,
       };
 
       setAppliedFilters(newFilters);
@@ -655,9 +588,7 @@ export const WithReactHookForm: Story = {
     // Build active filters list for display
     const activeFiltersList = [
       ...filterOptions
-        .filter((option) =>
-          appliedFilters.selectedFilters.includes(option.value),
-        )
+        .filter((option) => appliedFilters.selectedFilters.includes(option.value))
         .map((option) => ({ id: option.value, label: option.label })),
       ...(appliedFilters.dateRange.from || appliedFilters.dateRange.to
         ? [
@@ -679,12 +610,7 @@ export const WithReactHookForm: Story = {
                 <Button appearance="light" size="md" variant="flat">
                   Delete
                 </Button>
-                <Button
-                  appearance="light"
-                  size="md"
-                  variant="flat"
-                  onClick={() => table.resetRowSelection()}
-                >
+                <Button appearance="light" size="md" variant="flat" onClick={() => table.resetRowSelection()}>
                   Clear Selection
                 </Button>
               </>
@@ -705,12 +631,7 @@ export const WithReactHookForm: Story = {
           </DataTableHeaderSearch>
 
           <DataTableHeaderFilter>
-            <Button
-              ref={triggerRef}
-              onClick={handleFilterOpen}
-              variant="secondary"
-              appearance="dark"
-            >
+            <Button ref={triggerRef} onClick={handleFilterOpen} variant="secondary" appearance="dark">
               Filters
             </Button>
             <Popover
@@ -721,62 +642,42 @@ export const WithReactHookForm: Story = {
             >
               <div className="gi-flex gi-flex-col gi-max-h-100 gi-max-w-100">
                 <DataTableHeaderFilterContent>
-                  <DataTableHeaderFilterContentTitle>
-                    Date Range
-                  </DataTableHeaderFilterContentTitle>
+                  <DataTableHeaderFilterContentTitle>Date Range</DataTableHeaderFilterContentTitle>
                   <div className="gi-flex gi-gap-2">
                     <InputText
                       id="from-date"
                       type="date"
                       placeholder="From"
                       value={temporaryFilters.dateRange.from}
-                      onChange={(event) =>
-                        handleTemporaryDateChange('from', event.target.value)
-                      }
+                      onChange={(event) => handleTemporaryDateChange('from', event.target.value)}
                     />
                     <InputText
                       id="to-date"
                       type="date"
                       placeholder="To"
                       value={temporaryFilters.dateRange.to}
-                      onChange={(event) =>
-                        handleTemporaryDateChange('to', event.target.value)
-                      }
+                      onChange={(event) => handleTemporaryDateChange('to', event.target.value)}
                     />
                   </div>
-                  <DataTableHeaderFilterContentTitle>
-                    Status & Activity
-                  </DataTableHeaderFilterContentTitle>
+                  <DataTableHeaderFilterContentTitle>Status & Activity</DataTableHeaderFilterContentTitle>
                   {filterOptions.map((option) => (
                     <InputCheckbox
                       key={option.id}
                       id={`checkbox-${option.id}`}
                       label={option.label}
                       value={option.id}
-                      checked={temporaryFilters.selectedFilters.includes(
-                        option.value,
-                      )}
-                      onChange={() =>
-                        handleTemporaryCheckboxChange(option.value)
-                      }
+                      checked={temporaryFilters.selectedFilters.includes(option.value)}
+                      onChange={() => handleTemporaryCheckboxChange(option.value)}
                       size="sm"
                     />
                   ))}
                 </DataTableHeaderFilterContent>
 
                 <DataTableHeaderFilterActions>
-                  <Button
-                    onClick={handleClearFilters}
-                    variant="flat"
-                    appearance="dark"
-                  >
+                  <Button onClick={handleClearFilters} variant="flat" appearance="dark">
                     Clear
                   </Button>
-                  <Button
-                    onClick={handleApplyFilter}
-                    variant="secondary"
-                    appearance="dark"
-                  >
+                  <Button onClick={handleApplyFilter} variant="secondary" appearance="dark">
                     Apply
                   </Button>
                 </DataTableHeaderFilterActions>
@@ -800,12 +701,7 @@ export const WithReactHookForm: Story = {
           />
         </DataTableHeader>
 
-        <Table
-          layout="auto"
-          rowSize="md"
-          stripped
-          className="gi-mt-4 gi-w-full"
-        >
+        <Table layout="auto" rowSize="md" stripped className="gi-mt-4 gi-w-full">
           <TableHead>
             {table.getHeaderGroups().map((headerGroup) => (
               <TableRow key={headerGroup.id}>
@@ -817,10 +713,7 @@ export const WithReactHookForm: Story = {
                     sorted={header.column.getIsSorted()}
                     onSort={header.column.getToggleSortingHandler()}
                   >
-                    {flexRender(
-                      header.column.columnDef.header,
-                      header.getContext(),
-                    )}
+                    {flexRender(header.column.columnDef.header, header.getContext())}
                   </TableHeader>
                 ))}
               </TableRow>
@@ -831,12 +724,7 @@ export const WithReactHookForm: Story = {
               <Fragment key={row.id}>
                 <TableRow>
                   {row.getVisibleCells().map((cell) => (
-                    <TableData key={cell.id}>
-                      {flexRender(
-                        cell.column.columnDef.cell,
-                        cell.getContext(),
-                      )}
-                    </TableData>
+                    <TableData key={cell.id}>{flexRender(cell.column.columnDef.cell, cell.getContext())}</TableData>
                   ))}
                 </TableRow>
                 {row.getIsExpanded() === true && (
@@ -845,14 +733,9 @@ export const WithReactHookForm: Story = {
                       <div className="gi-text-sm gi-px-24">
                         <Tag
                           text={row.original.status?.toLocaleUpperCase()}
-                          type={
-                            statusTypeMap[row.original.status] ??
-                            TagTypeEnum.Info
-                          }
+                          type={statusTypeMap[row.original.status] ?? TagTypeEnum.Info}
                         />
-                        <Label size="sm">
-                          You can view additional information about this row.
-                        </Label>
+                        <Label size="sm">You can view additional information about this row.</Label>
                         <Link href="#">View more details</Link>
                       </div>
                     </TableDataSlot>
@@ -899,8 +782,7 @@ export const DataTableHeaderBasic: Story = {
   parameters: {
     docs: {
       description: {
-        story:
-          'Basic usage of the DataTableHeader component with search, filter, and action buttons.',
+        story: 'Basic usage of the DataTableHeader component with search, filter, and action buttons.',
       },
     },
   },
@@ -943,19 +825,10 @@ export const DataTableHeaderBasic: Story = {
     return (
       <DataTableHeader>
         <DataTableHeaderSearch className="gi-max-w-52">
-          <InputText
-            id="data-table-global-filter"
-            onChange={() => null}
-            placeholder="Search all columns..."
-          />
+          <InputText id="data-table-global-filter" onChange={() => null} placeholder="Search all columns..." />
         </DataTableHeaderSearch>
         <DataTableHeaderFilter>
-          <Button
-            ref={triggerRef}
-            onClick={handleFilterToggle}
-            variant="secondary"
-            appearance="dark"
-          >
+          <Button ref={triggerRef} onClick={handleFilterToggle} variant="secondary" appearance="dark">
             Filters
           </Button>
           <Popover
@@ -971,17 +844,13 @@ export const DataTableHeaderBasic: Story = {
           >
             <div>
               <DataTableHeaderFilterContent>
-                <DataTableHeaderFilterContentTitle>
-                  Date Range
-                </DataTableHeaderFilterContentTitle>
+                <DataTableHeaderFilterContentTitle>Date Range</DataTableHeaderFilterContentTitle>
                 <div className="gi-flex gi-gap-2">
                   <InputText id="from-date" type="date" placeholder="From" />
                   <InputText id="to-date" type="date" placeholder="To" />
                 </div>
 
-                <DataTableHeaderFilterContentTitle>
-                  Tags
-                </DataTableHeaderFilterContentTitle>
+                <DataTableHeaderFilterContentTitle>Tags</DataTableHeaderFilterContentTitle>
                 <SelectNext aria-label="Select" defaultValue="all" enableSearch>
                   <SelectItemNext value="all" hidden>
                     All
@@ -995,11 +864,7 @@ export const DataTableHeaderBasic: Story = {
                 <Button onClick={handleClear} variant="flat" appearance="dark">
                   Clear
                 </Button>
-                <Button
-                  onClick={handleApply}
-                  variant="secondary"
-                  appearance="dark"
-                >
+                <Button onClick={handleApply} variant="secondary" appearance="dark">
                   Apply
                 </Button>
               </DataTableHeaderFilterActions>
@@ -1067,11 +932,7 @@ a full table context).
         </SelectNative>
       </DataTableFooterCenter>
       <DataTableFooterEnd>
-        <TablePagination
-          currentPage={1}
-          totalPages={10}
-          onPageChange={() => null}
-        />
+        <TablePagination currentPage={1} totalPages={10} onPageChange={() => null} />
       </DataTableFooterEnd>
     </DataTableFooter>
   ),

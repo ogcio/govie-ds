@@ -15,6 +15,5 @@ const SIZE_NORMALIZE_MAP = {
  * Normalises a wrapper's wide size union into the atom's narrow
  * size vocabulary (`'sm' | 'md' | 'lg' | 'xl'`). Defaults to `'md'` when omitted.
  */
-export const normalizeSize = (
-  size: keyof typeof SIZE_NORMALIZE_MAP = Size.MD,
-): (typeof Size)[keyof typeof Size] => SIZE_NORMALIZE_MAP[size];
+export const normalizeSize = (size: keyof typeof SIZE_NORMALIZE_MAP = Size.MD): (typeof Size)[keyof typeof Size] =>
+  SIZE_NORMALIZE_MAP[size];

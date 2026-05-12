@@ -8,19 +8,8 @@ import { headerSecondaryLinksVariants } from '../../../variants.js';
 import { useHeaderContext } from '../../header-context.js';
 import { HeaderMenuSectionProvider } from './header-menu-context.js';
 
-export const HeaderSecondaryMenu = forwardRef<
-  HTMLElement,
-  HeaderSecondaryMenuProps
->(
-  (
-    {
-      children,
-      className,
-      'aria-label': ariaLabel = 'Secondary navigation',
-      ...rest
-    },
-    ref,
-  ) => {
+export const HeaderSecondaryMenu = forwardRef<HTMLElement, HeaderSecondaryMenuProps>(
+  ({ children, className, 'aria-label': ariaLabel = 'Secondary navigation', ...rest }, ref) => {
     const headerContext = useHeaderContext();
     if (!headerContext) {
       throw new Error('HeaderSecondaryMenu must be used within a Header');
@@ -48,10 +37,7 @@ export const HeaderSecondaryMenu = forwardRef<
           {...rest}
         >
           <Container>
-            <ul
-              className="gi-flex gi-justify-end gi-items-center gi-gap-2"
-              data-orientation="horizontal"
-            >
+            <ul className="gi-flex gi-justify-end gi-items-center gi-gap-2" data-orientation="horizontal">
               {allowedChildren}
             </ul>
           </Container>

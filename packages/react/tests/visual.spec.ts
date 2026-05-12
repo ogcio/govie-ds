@@ -6,14 +6,11 @@ import storybook from '../storybook-static/index.json' with { type: 'json' };
 
 // Only run tests on stories, not other documentation pages.
 const stories = Object.values(storybook.entries).filter(
-  (entry) =>
-    entry.type === 'story' && !entry.tags?.includes('skip-playwright'),
+  (entry) => entry.type === 'story' && !entry.tags?.includes('skip-playwright'),
 );
 
 for (const story of stories) {
-  test(`${story.title} ${story.name} should not have visual regressions`, async ({
-    page,
-  }, workerInfo) => {
+  test(`${story.title} ${story.name} should not have visual regressions`, async ({ page }, workerInfo) => {
     const parameters = new URLSearchParams({
       id: story.id,
       viewMode: 'story',
@@ -22,17 +19,12 @@ for (const story of stories) {
     await page.goto(`/iframe.html?${parameters.toString()}`, {
       waitUntil: 'domcontentloaded',
     });
-    await Promise.race([
-      page.evaluate(() => document.fonts.ready),
-      page.waitForTimeout(5000),
-    ]);
+    await Promise.race([page.evaluate(() => document.fonts.ready), page.waitForTimeout(5000)]);
     await page.waitForSelector('#storybook-root');
     await page.waitForLoadState('networkidle');
 
     // Give the browser a couple of frames to apply styles/layout after fonts/assets
-    await page.evaluate(() => new Promise(
-      resolve => requestAnimationFrame(() => requestAnimationFrame(resolve))),
-    );
+    await page.evaluate(() => new Promise((resolve) => requestAnimationFrame(() => requestAnimationFrame(resolve))));
     await page.waitForTimeout(500);
 
     // Use `tags: ['slow']` on stories with play functions that need extra settle time

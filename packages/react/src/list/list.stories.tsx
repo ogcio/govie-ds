@@ -8,8 +8,7 @@ const meta = {
   parameters: {
     docs: {
       description: {
-        component:
-          'Use lists to make blocks of text easier to read, and to break information into manageable chunks.',
+        component: 'Use lists to make blocks of text easier to read, and to break information into manageable chunks.',
       },
     },
   },
@@ -29,8 +28,7 @@ const meta = {
     },
     spaced: {
       control: 'boolean',
-      description:
-        'If a list is hard to read because the items run across multiple lines you can add extra spacing.',
+      description: 'If a list is hard to read because the items run across multiple lines you can add extra spacing.',
     },
   },
   component: List,
@@ -55,24 +53,17 @@ export const Default: Story = {
       expect(canvas.getByText('Item 3')).toBeInTheDocument();
     });
 
-    await step(
-      'should have correct className for default type "normal"',
-      async () => {
-        const listContainerElement = canvas.getByTestId('list');
-        expect(listContainerElement.classList.contains('gi-list')).toBe(true);
-      },
-    );
+    await step('should have correct className for default type "normal"', async () => {
+      const listContainerElement = canvas.getByTestId('list');
+      expect(listContainerElement.classList.contains('gi-list')).toBe(true);
+    });
   },
 };
 
 export const Links: Story = {
   args: {
     dataTestid: 'list',
-    items: [
-      <Link href="#">Link 1</Link>,
-      <Link href="#">Link 2</Link>,
-      <Link href="#">Link 3</Link>,
-    ],
+    items: [<Link href="#">Link 1</Link>, <Link href="#">Link 2</Link>, <Link href="#">Link 3</Link>],
   },
   play: async ({ canvasElement, step }) => {
     const canvas = within(canvasElement);
@@ -99,15 +90,10 @@ export const Bullet: Story = {
   },
   play: async ({ canvasElement, step }) => {
     const canvas = within(canvasElement);
-    await step(
-      'should have correct className when type is "bullet"',
-      async () => {
-        const listContainerElement = canvas.getByTestId('list');
-        expect(listContainerElement.classList.contains('gi-list-bullet')).toBe(
-          true,
-        );
-      },
-    );
+    await step('should have correct className when type is "bullet"', async () => {
+      const listContainerElement = canvas.getByTestId('list');
+      expect(listContainerElement.classList.contains('gi-list-bullet')).toBe(true);
+    });
   },
 };
 
@@ -119,15 +105,10 @@ export const Numbered: Story = {
   },
   play: async ({ canvasElement, step }) => {
     const canvas = within(canvasElement);
-    await step(
-      'should have correct className when type is "number"',
-      async () => {
-        const listContainerElement = canvas.getByTestId('list');
-        expect(listContainerElement.classList.contains('gi-list-number')).toBe(
-          true,
-        );
-      },
-    );
+    await step('should have correct className when type is "number"', async () => {
+      const listContainerElement = canvas.getByTestId('list');
+      expect(listContainerElement.classList.contains('gi-list-number')).toBe(true);
+    });
   },
 };
 
@@ -146,9 +127,7 @@ export const ExtraSpace: Story = {
     const canvas = within(canvasElement);
     await step('should have correct className when is "spaced"', async () => {
       const listContainerElement = canvas.getByTestId('list');
-      expect(listContainerElement.classList.contains('gi-list-spaced')).toBe(
-        true,
-      );
+      expect(listContainerElement.classList.contains('gi-list-spaced')).toBe(true);
     });
   },
 };
@@ -162,13 +141,10 @@ export const TestTypeNone: Story = {
   },
   play: async ({ canvasElement, step }) => {
     const canvas = within(canvasElement);
-    await step(
-      'should have correct className when type is "none"',
-      async () => {
-        const listContainerElement = canvas.getByTestId('list');
-        expect(listContainerElement.classList.contains('gi-list')).toBe(true);
-      },
-    );
+    await step('should have correct className when type is "none"', async () => {
+      const listContainerElement = canvas.getByTestId('list');
+      expect(listContainerElement.classList.contains('gi-list')).toBe(true);
+    });
   },
 };
 
@@ -182,17 +158,10 @@ export const TestSpacedBullet: Story = {
   },
   play: async ({ canvasElement, step }) => {
     const canvas = within(canvasElement);
-    await step(
-      'should have correct "spaced" class combined with the "type" class',
-      async () => {
-        const listContainerElement = canvas.getByTestId('list');
-        expect(listContainerElement.classList.contains('gi-list-spaced')).toBe(
-          true,
-        );
-        expect(listContainerElement.classList.contains('gi-list-bullet')).toBe(
-          true,
-        );
-      },
-    );
+    await step('should have correct "spaced" class combined with the "type" class', async () => {
+      const listContainerElement = canvas.getByTestId('list');
+      expect(listContainerElement.classList.contains('gi-list-spaced')).toBe(true);
+      expect(listContainerElement.classList.contains('gi-list-bullet')).toBe(true);
+    });
   },
 };

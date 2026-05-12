@@ -71,20 +71,15 @@ export const Default: Story = {
       expect(nextButtonText).toBeInTheDocument();
     });
 
-    await step(
-      'should render page number buttons correctly on large breakpoints',
-      async () => {
-        for (const page of [1, 3, 4, 5, 6, 7, 10]) {
-          expect(canvas.getByText(page.toString())).toBeInTheDocument();
-        }
-      },
-    );
+    await step('should render page number buttons correctly on large breakpoints', async () => {
+      for (const page of [1, 3, 4, 5, 6, 7, 10]) {
+        expect(canvas.getByText(page.toString())).toBeInTheDocument();
+      }
+    });
 
     await step('should render ellipses correctly for page ranges', async () => {
       const iconElements = canvas.getAllByTestId('govie-icon');
-      const moreHorizIcon = iconElements.find(
-        (element) => element.textContent === 'more_horiz',
-      );
+      const moreHorizIcon = iconElements.find((element) => element.textContent === 'more_horiz');
 
       expect(moreHorizIcon).toBeInTheDocument();
     });
@@ -102,9 +97,7 @@ export const FirstPageSelected: Story = {
     await step('should disable previous button on the first page', async () => {
       const previousButton = canvas.getByTestId('govie-pagination-prev-btn');
       expect(previousButton).toBeInTheDocument();
-      expect(previousButton).toHaveClass(
-        'gi-text-color-text-tone-dark-flat-disabled',
-      );
+      expect(previousButton).toHaveClass('gi-text-color-text-tone-dark-flat-disabled');
 
       const previousButtonText = canvas.getByText('Previous');
       expect(previousButtonText).toBeDisabled();
@@ -122,9 +115,7 @@ export const FirstPageSelectedStyling: Story = {
     const canvas = within(canvasElement);
     await step('should disable previous button on the first page', async () => {
       const previousButton = canvas.getByTestId('govie-pagination-prev-btn');
-      expect(previousButton).toHaveClass(
-        'gi-text-color-text-tone-dark-flat-disabled',
-      );
+      expect(previousButton).toHaveClass('gi-text-color-text-tone-dark-flat-disabled');
     });
   },
 };
@@ -140,9 +131,7 @@ export const LastPageSelected: Story = {
     await step('should disable next button on the last page', async () => {
       const nextButton = canvas.getByTestId('govie-pagination-next-btn');
       expect(nextButton).toBeInTheDocument();
-      expect(nextButton).toHaveClass(
-        'gi-text-color-text-tone-dark-flat-disabled',
-      );
+      expect(nextButton).toHaveClass('gi-text-color-text-tone-dark-flat-disabled');
 
       const nextButtonText = canvas.getByText('Next');
       expect(nextButtonText).toBeDisabled();
@@ -160,9 +149,7 @@ export const LastPageSelectedStyling: Story = {
     const canvas = within(canvasElement);
     await step('should disable next button on the last page', async () => {
       const nextButton = canvas.getByTestId('govie-pagination-next-btn');
-      expect(nextButton).toHaveClass(
-        'gi-text-color-text-tone-dark-flat-disabled',
-      );
+      expect(nextButton).toHaveClass('gi-text-color-text-tone-dark-flat-disabled');
     });
   },
 };
@@ -180,15 +167,12 @@ export const TestExtraSmallBreakpoint: Story = {
 
     await canvas.findByRole('navigation');
 
-    await step(
-      'should render pagination buttons and page numbers when not on XS breakpoint',
-      async () => {
-        const pageButtons = canvas.getAllByRole('button');
-        expect(pageButtons.length).toBeGreaterThan(0);
-        expect(canvas.getByText(/Page 5/)).toBeInTheDocument();
-        expect(canvas.getByText(/of 10/)).toBeInTheDocument();
-      },
-    );
+    await step('should render pagination buttons and page numbers when not on XS breakpoint', async () => {
+      const pageButtons = canvas.getAllByRole('button');
+      expect(pageButtons.length).toBeGreaterThan(0);
+      expect(canvas.getByText(/Page 5/)).toBeInTheDocument();
+      expect(canvas.getByText(/of 10/)).toBeInTheDocument();
+    });
 
     await step('should hide pagination buttons on XS breakpoint', async () => {
       const pageButtons = canvas.queryAllByRole('button');
@@ -209,16 +193,13 @@ export const TestPageInteraction: Story = {
   play: async ({ canvasElement, step, args }) => {
     const canvas = within(canvasElement);
 
-    await step(
-      'should call onPageChange when a page button is clicked',
-      async () => {
-        const pageButton = canvas.getByText('3');
-        await userEvent.click(pageButton);
+    await step('should call onPageChange when a page button is clicked', async () => {
+      const pageButton = canvas.getByText('3');
+      await userEvent.click(pageButton);
 
-        await waitFor(() => {
-          expect(args.onPageChange).toHaveBeenCalledWith(3);
-        });
-      },
-    );
+      await waitFor(() => {
+        expect(args.onPageChange).toHaveBeenCalledWith(3);
+      });
+    });
   },
 };

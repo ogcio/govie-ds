@@ -2,13 +2,9 @@ const hidden = 'gi-hidden';
 const block = 'gi-block';
 
 const getElements = () => {
-  const itemSlotActions = document.querySelectorAll(
-    "[id^='ItemActionTrigger-']",
-  );
+  const itemSlotActions = document.querySelectorAll("[id^='ItemActionTrigger-']");
   const slotContainers = document.querySelectorAll("[id^='SlotContainer-']");
-  const searchTrigger = document.querySelector(
-    `#SearchTrigger`,
-  ) as HTMLInputElement;
+  const searchTrigger = document.querySelector(`#SearchTrigger`) as HTMLInputElement;
 
   return {
     itemSlotActions,
@@ -27,16 +23,10 @@ export const attachEventsToItemActionTriggers = () => {
       fromSearchTrigger?: boolean,
     ) => {
       const index = currentTrigger.dataset.index || '';
-      const icon = document.querySelector(
-        `#ItemIconActionTrigger-${index}`,
-      ) as HTMLInputElement;
-      const closeIcon = document.querySelector(
-        `#ItemCloseTrigger-${index}`,
-      ) as HTMLInputElement;
+      const icon = document.querySelector(`#ItemIconActionTrigger-${index}`) as HTMLInputElement;
+      const closeIcon = document.querySelector(`#ItemCloseTrigger-${index}`) as HTMLInputElement;
       const { itemSlotActions } = getElements();
-      const slot = document.querySelector(
-        `#SlotContainer-${index}`,
-      ) as HTMLInputElement;
+      const slot = document.querySelector(`#SlotContainer-${index}`) as HTMLInputElement;
 
       if (!fromFilteredItems || fromSearchTrigger) {
         for (const container of slotContainers) {
@@ -64,9 +54,7 @@ export const attachEventsToItemActionTriggers = () => {
         return;
       }
 
-      const filteredItems = [...itemSlotActions].filter(
-        (element) => element.id !== currentTrigger.id,
-      );
+      const filteredItems = [...itemSlotActions].filter((element) => element.id !== currentTrigger.id);
 
       for (const element of filteredItems) {
         const elementItem = element as HTMLInputElement;

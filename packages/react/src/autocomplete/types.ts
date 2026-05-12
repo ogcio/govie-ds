@@ -76,10 +76,7 @@ export type AutocompleteProps = PropsWithChildren<{
 
   value?: any;
 }> &
-  Omit<
-    React.InputHTMLAttributes<HTMLInputElement>,
-    'onChange' | 'defaultChecked'
-  >;
+  Omit<React.InputHTMLAttributes<HTMLInputElement>, 'onChange' | 'defaultChecked'>;
 
 export type AutocompleteItemProps = {
   children: string;

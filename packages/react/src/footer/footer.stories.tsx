@@ -21,8 +21,7 @@ const meta: Meta<typeof Footer> = {
     },
     utilitySlot: {
       control: 'object',
-      description:
-        'Utility stot - typically copyright, privacy policy, accessibility, etc.',
+      description: 'Utility stot - typically copyright, privacy policy, accessibility, etc.',
     },
     logo: {
       control: 'object',
@@ -46,38 +45,23 @@ export const CompleteFooter: Story = {
   args: {
     dataTestid: 'gi-footer',
     primarySlot: (
-      <div
-        className="gi-grid-responsive !gi-ml-0 !gi-mr-0"
-        data-testid="primary"
-      >
+      <div className="gi-grid-responsive !gi-ml-0 !gi-mr-0" data-testid="primary">
         <div className="gi-col-span-4 md:gi-col-span-4 lg:gi-col-span-3">
           <h3 className="gi-heading-sm gi-mb-4">Services</h3>
           <Divider className="gi-border-color-border-system-neutral-subtle gi-my-4" />
           <ul className="gi-space-y-2">
             <li>
-              <Link
-                noColor
-                href="/services/public-services"
-                aria-label="Public Services"
-              >
+              <Link noColor href="/services/public-services" aria-label="Public Services">
                 Public Services
               </Link>
             </li>
             <li>
-              <Link
-                noColor
-                href="/services/business-services"
-                aria-label="Business Services"
-              >
+              <Link noColor href="/services/business-services" aria-label="Business Services">
                 Business Services
               </Link>
             </li>
             <li>
-              <Link
-                noColor
-                href="/services/online-services"
-                aria-label="Online Services"
-              >
+              <Link noColor href="/services/online-services" aria-label="Online Services">
                 Online Services
               </Link>
             </li>
@@ -88,29 +72,17 @@ export const CompleteFooter: Story = {
           <Divider className="gi-border-color-border-system-neutral-subtle gi-my-4" />
           <ul className="gi-space-y-2">
             <li>
-              <Link
-                noColor
-                href="/departments/health"
-                aria-label="Department of Health"
-              >
+              <Link noColor href="/departments/health" aria-label="Department of Health">
                 Department of Health
               </Link>
             </li>
             <li>
-              <Link
-                noColor
-                href="/departments/education"
-                aria-label="Department of Education"
-              >
+              <Link noColor href="/departments/education" aria-label="Department of Education">
                 Department of Education
               </Link>
             </li>
             <li>
-              <Link
-                noColor
-                href="/departments/finance"
-                aria-label="Department of Finance"
-              >
+              <Link noColor href="/departments/finance" aria-label="Department of Finance">
                 Department of Finance
               </Link>
             </li>
@@ -126,20 +98,12 @@ export const CompleteFooter: Story = {
               </Link>
             </li>
             <li>
-              <Link
-                noColor
-                href="/publications/statistics"
-                aria-label="Statistics"
-              >
+              <Link noColor href="/publications/statistics" aria-label="Statistics">
                 Statistics
               </Link>
             </li>
             <li>
-              <Link
-                noColor
-                href="/publications/legislation"
-                aria-label="Legislation"
-              >
+              <Link noColor href="/publications/legislation" aria-label="Legislation">
                 Legislation
               </Link>
             </li>
@@ -150,20 +114,12 @@ export const CompleteFooter: Story = {
           <Divider className="gi-border-color-border-system-neutral-subtle gi-my-4" />
           <ul className="gi-space-y-2">
             <li>
-              <Link
-                noColor
-                href="/contact/find-an-office"
-                aria-label="Find an Office"
-              >
+              <Link noColor href="/contact/find-an-office" aria-label="Find an Office">
                 Find an Office
               </Link>
             </li>
             <li>
-              <Link
-                noColor
-                href="/contact/phone-directory"
-                aria-label="Phone Directory"
-              >
+              <Link noColor href="/contact/phone-directory" aria-label="Phone Directory">
                 Phone Directory
               </Link>
             </li>
@@ -178,12 +134,7 @@ export const CompleteFooter: Story = {
     ),
     secondarySlot: (
       <Stack direction={'column'} gap={4} role="region" dataTestId="secondary">
-        <Stack
-          aria-label="Footer Secondary Links"
-          direction={{ base: 'column', md: 'row' }}
-          gap={4}
-          wrap
-        >
+        <Stack aria-label="Footer Secondary Links" direction={{ base: 'column', md: 'row' }} gap={4} wrap>
           <Link noColor href="/about-us" aria-label="About Us">
             About Us
           </Link>
@@ -224,12 +175,7 @@ export const CompleteFooter: Story = {
             Events
           </Link>
         </Stack>
-        <Stack
-          direction={'row'}
-          gap={4}
-          aria-label="Social Media Links"
-          role="navigation"
-        >
+        <Stack direction={'row'} gap={4} aria-label="Social Media Links" role="navigation">
           <Icon icon="social_x" />
           <Icon icon="social_facebook" />
           <Icon icon="social_bluesky" />
@@ -238,13 +184,7 @@ export const CompleteFooter: Story = {
       </Stack>
     ),
     utilitySlot: (
-      <Stack
-        direction={{ base: 'column', md: 'row' }}
-        gap={4}
-        justify="center"
-        align="center"
-        dataTestId="utility"
-      >
+      <Stack direction={{ base: 'column', md: 'row' }} gap={4} justify="center" align="center" dataTestId="utility">
         <Link noColor href="/privacy-policy" aria-label="Privacy Policy">
           Privacy Policy
         </Link>
@@ -271,25 +211,15 @@ export const CompleteFooter: Story = {
       expect(footerElement).toHaveAttribute('data-testid', 'gi-footer');
     });
 
-    await step(
-      'should not render primary nav when primarySlot is not provided',
-      async () => {
-        const navigationElement = canvas.queryByLabelText(
-          'Primary footer navigation',
-        );
-        expect(navigationElement).not.toBeInTheDocument();
-      },
-    );
+    await step('should not render primary nav when primarySlot is not provided', async () => {
+      const navigationElement = canvas.queryByLabelText('Primary footer navigation');
+      expect(navigationElement).not.toBeInTheDocument();
+    });
 
-    await step(
-      'should not render secondary nav when secondarySlot is not provided',
-      async () => {
-        const navigationElement = canvas.queryByLabelText(
-          'Secondary footer navigation',
-        );
-        expect(navigationElement).not.toBeInTheDocument();
-      },
-    );
+    await step('should not render secondary nav when secondarySlot is not provided', async () => {
+      const navigationElement = canvas.queryByLabelText('Secondary footer navigation');
+      expect(navigationElement).not.toBeInTheDocument();
+    });
 
     await step('should render secondary slot when provided', async () => {
       const element = canvas.getByTestId('gi-footer');
@@ -307,12 +237,7 @@ export const CompleteFooter: Story = {
 export const SimpleFooter: Story = {
   args: {
     secondarySlot: (
-      <Stack
-        direction={{ base: 'column', md: 'row' }}
-        gap={4}
-        wrap
-        aria-label="Footer Secondary Links"
-      >
+      <Stack direction={{ base: 'column', md: 'row' }} gap={4} wrap aria-label="Footer Secondary Links">
         <Link noColor href="/about-us" aria-label="About Us">
           About Us
         </Link>
@@ -384,14 +309,11 @@ export const MinimalFooter: Story = {
   },
   play: async ({ canvasElement, step }) => {
     const canvas = within(canvasElement);
-    await step(
-      'should render the default logo with default width and height',
-      async () => {
-        const img = canvas.getByAltText('Gov.ie Logo');
-        expect(img).toHaveAttribute('width', '181');
-        expect(img).toHaveAttribute('height', '64');
-      },
-    );
+    await step('should render the default logo with default width and height', async () => {
+      const img = canvas.getByAltText('Gov.ie Logo');
+      expect(img).toHaveAttribute('width', '181');
+      expect(img).toHaveAttribute('height', '64');
+    });
   },
 };
 
@@ -467,13 +389,10 @@ export const GovieFooter: Story = {
   },
   play: async ({ canvasElement, step }) => {
     const canvas = within(canvasElement);
-    await step(
-      'should not render utility section when utilitySlot is not provided',
-      async () => {
-        const utilitySectionElement = canvas.queryByLabelText('Utility links');
-        expect(utilitySectionElement).not.toBeInTheDocument();
-      },
-    );
+    await step('should not render utility section when utilitySlot is not provided', async () => {
+      const utilitySectionElement = canvas.queryByLabelText('Utility links');
+      expect(utilitySectionElement).not.toBeInTheDocument();
+    });
   },
 };
 
@@ -490,13 +409,10 @@ export const CustomLogo: Story = {
   },
   play: async ({ canvasElement, step }) => {
     const canvas = within(canvasElement);
-    await step(
-      'should propagate custom logo dimensions to the img',
-      async () => {
-        const img = canvas.getByAltText('Gov.ie Logo');
-        expect(img).toHaveAttribute('width', '220');
-        expect(img).toHaveAttribute('height', '80');
-      },
-    );
+    await step('should propagate custom logo dimensions to the img', async () => {
+      const img = canvas.getByAltText('Gov.ie Logo');
+      expect(img).toHaveAttribute('width', '220');
+      expect(img).toHaveAttribute('height', '80');
+    });
   },
 };

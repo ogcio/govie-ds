@@ -35,12 +35,11 @@
     "gen:licenses": "sh scripts/licenses.sh"
   },
   "lint-staged": {
-    "**/*.{js,ts,tsx}": [
-      "eslint"
-    ],
-    "**/*": [
-      "prettier --check --ignore-unknown"
-    ]
+    "packages/react/**/*.{js,ts,tsx}": "eslint --config packages/react/eslint.config.js",
+    "packages/html/ds/**/*.{js,ts,tsx}": "eslint --config packages/html/ds/eslint.config.js",
+    "apps/docs/**/*.{js,ts,tsx}": "eslint --config apps/docs/eslint.config.js",
+    "{packages/!(react|html),examples}/**/*.{js,ts,tsx}": "eslint",
+    "{apps,packages,examples}/**/*": "prettier --check --ignore-unknown"
   },
   "devDependencies": {
     "@commitlint/cli": "^19.8.1",

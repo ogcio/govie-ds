@@ -2,10 +2,7 @@
 import type { ReactNode } from 'react';
 import React from 'react';
 import { renderToStaticMarkup } from 'react-dom/server';
-import {
-  LogoGoldGreen as GovieLogoHarpWithText,
-  LogoHarpWhite as GovieLogoHarp,
-} from '../atoms/icons/logos';
+import { LogoGoldGreen as GovieLogoHarpWithText, LogoHarpWhite as GovieLogoHarp } from '../atoms/icons/logos';
 import { cn } from '../cn.js';
 import type { LogoProps } from '../common/types.js';
 import Container from '../atoms/Container.js';
@@ -28,9 +25,7 @@ const DEFAULT_LOGO = { width: 181, height: 64 };
 function getLogo({ logo }: FooterProps) {
   const svgMobileString = btoa(renderToStaticMarkup(<GovieLogoHarp />));
   const svgDataUriMobile = `data:image/svg+xml;base64,${svgMobileString}`;
-  const svgDesktopString = btoa(
-    renderToStaticMarkup(<GovieLogoHarpWithText />),
-  );
+  const svgDesktopString = btoa(renderToStaticMarkup(<GovieLogoHarpWithText />));
   const svgDataUriDesktop = `data:image/svg+xml;base64,${svgDesktopString}`;
   return (
     <picture>
@@ -95,9 +90,7 @@ export function Footer({
             </div>
           )}
 
-          {primarySlot && secondarySlot && (
-            <Divider className="gi-border-color-border-system-neutral-subtle gi-my-8" />
-          )}
+          {primarySlot && secondarySlot && <Divider className="gi-border-color-border-system-neutral-subtle gi-my-8" />}
 
           <div
             className="gi-flex gi-flex-row-reverse gi-flex-wrap-reverse gi-justify-between gi-justify-items-stretch"
@@ -113,9 +106,7 @@ export function Footer({
               {renderLogo()}
             </div>
             {secondarySlot && (
-              <div className="gi-grow md:gi-max-w-[calc(100%_-_var(--gieds-space-80))]">
-                {secondarySlot}
-              </div>
+              <div className="gi-grow md:gi-max-w-[calc(100%_-_var(--gieds-space-80))]">{secondarySlot}</div>
             )}
           </div>
         </Container>

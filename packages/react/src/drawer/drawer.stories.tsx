@@ -69,8 +69,7 @@ export const Default: Story = {
     },
     triggerButton: {
       control: false,
-      description:
-        'Trigger element used to open the drawer. It is cloned to inject an onClick.',
+      description: 'Trigger element used to open the drawer. It is cloned to inject an onClick.',
       table: { type: { summary: 'ReactElement' } },
     },
     children: {
@@ -96,23 +95,14 @@ export const Default: Story = {
     const startsOpen = shouldStartOpen();
     return (
       <Drawer {...arguments_} startsOpen={startsOpen}>
-        <DrawerBody
-          key="body"
-          className="gi-border-t-xs gi-border-color-border-system-neutral-subtle"
-        >
+        <DrawerBody key="body" className="gi-border-t-xs gi-border-color-border-system-neutral-subtle">
           <DrawerMenuExample />
         </DrawerBody>
         <DrawerFooter key="footer">
-          <Button
-            variant="secondary"
-            appearance="dark"
-            className="gi-justify-center xs:gi-justify-start"
-          >
+          <Button variant="secondary" appearance="dark" className="gi-justify-center xs:gi-justify-start">
             Cancel
           </Button>
-          <Button className="gi-justify-center xs:gi-justify-start">
-            Primary
-          </Button>
+          <Button className="gi-justify-center xs:gi-justify-start">Primary</Button>
         </DrawerFooter>
       </Drawer>
     );
@@ -122,16 +112,12 @@ export const Default: Story = {
       expect(screen.getByTestId('modal')).toBeInTheDocument();
     });
 
-    await step(
-      'should render the drawer on load if startsOpen is true',
-      async () => {
-        const modalElement = await screen.findByTestId('modal');
-        const modalContainerElement =
-          await screen.findByTestId('modal-container');
-        expect(modalElement.classList.contains('gi-modal-open')).toBe(true);
-        expect(modalContainerElement).toBeTruthy();
-      },
-    );
+    await step('should render the drawer on load if startsOpen is true', async () => {
+      const modalElement = await screen.findByTestId('modal');
+      const modalContainerElement = await screen.findByTestId('modal-container');
+      expect(modalElement.classList.contains('gi-modal-open')).toBe(true);
+      expect(modalContainerElement).toBeTruthy();
+    });
   },
 };
 
@@ -146,23 +132,16 @@ export const DrawerRight: Story = {
       <Drawer {...arguments_} startsOpen={startsOpen}>
         <DrawerBody key="body">
           <Paragraph>
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Incidunt
-            esse magnam quis sit soluta cupiditate at deserunt exercitationem
-            voluptas doloribus asperiores.
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Incidunt esse magnam quis sit soluta cupiditate at
+            deserunt exercitationem voluptas doloribus asperiores.
           </Paragraph>
         </DrawerBody>
         <DrawerFooter key="footer">
           <div className="gi-flex gi-flex-col-reverse gi-gap-4 xs:gi-gap-6 xs:gi-justify-end xs:gi-flex-row">
-            <Button
-              variant="secondary"
-              appearance="dark"
-              className="gi-justify-center xs:gi-justify-start"
-            >
+            <Button variant="secondary" appearance="dark" className="gi-justify-center xs:gi-justify-start">
               Cancel
             </Button>
-            <Button className="gi-justify-center xs:gi-justify-start">
-              Primary
-            </Button>
+            <Button className="gi-justify-center xs:gi-justify-start">Primary</Button>
           </div>
         </DrawerFooter>
       </Drawer>
@@ -182,23 +161,16 @@ export const DrawerLeft: Story = {
       <Drawer {...arguments_} startsOpen={startsOpen}>
         <DrawerBody key="body">
           <Paragraph>
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Incidunt
-            esse magnam quis sit soluta cupiditate at deserunt exercitationem
-            voluptas doloribus asperiores.
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Incidunt esse magnam quis sit soluta cupiditate at
+            deserunt exercitationem voluptas doloribus asperiores.
           </Paragraph>
         </DrawerBody>
         <DrawerFooter key="footer">
           <div className="gi-flex gi-flex-col-reverse gi-gap-4 xs:gi-gap-6 xs:gi-justify-end xs:gi-flex-row">
-            <Button
-              variant="secondary"
-              appearance="dark"
-              className="gi-justify-center xs:gi-justify-start"
-            >
+            <Button variant="secondary" appearance="dark" className="gi-justify-center xs:gi-justify-start">
               Cancel
             </Button>
-            <Button className="gi-justify-center xs:gi-justify-start">
-              Primary
-            </Button>
+            <Button className="gi-justify-center xs:gi-justify-start">Primary</Button>
           </div>
         </DrawerFooter>
       </Drawer>
@@ -218,23 +190,16 @@ export const DrawerBottom: Story = {
       <Drawer {...arguments_} startsOpen={startsOpen}>
         <DrawerBody key="body">
           <Paragraph>
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Incidunt
-            esse magnam quis sit soluta cupiditate at deserunt exercitationem
-            voluptas doloribus asperiores.
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Incidunt esse magnam quis sit soluta cupiditate at
+            deserunt exercitationem voluptas doloribus asperiores.
           </Paragraph>
         </DrawerBody>
         <DrawerFooter key="footer">
           <div className="gi-flex gi-flex-col-reverse gi-gap-4 xs:gi-gap-6 xs:gi-justify-end xs:gi-flex-row">
-            <Button
-              variant="secondary"
-              appearance="dark"
-              className="gi-justify-center xs:gi-justify-start"
-            >
+            <Button variant="secondary" appearance="dark" className="gi-justify-center xs:gi-justify-start">
               Cancel
             </Button>
-            <Button className="gi-justify-center xs:gi-justify-start">
-              Primary
-            </Button>
+            <Button className="gi-justify-center xs:gi-justify-start">Primary</Button>
           </div>
         </DrawerFooter>
       </Drawer>
@@ -254,23 +219,14 @@ export const DrawerMenuTablet: Story = {
     const startsOpen = shouldStartOpen();
     return (
       <Drawer {...arguments_} startsOpen={startsOpen}>
-        <DrawerBody
-          key="body"
-          className="gi-border-t-xs gi-border-color-border-system-neutral-subtle"
-        >
+        <DrawerBody key="body" className="gi-border-t-xs gi-border-color-border-system-neutral-subtle">
           <DrawerMenuExample />
         </DrawerBody>
         <DrawerFooter key="footer">
-          <Button
-            variant="secondary"
-            appearance="dark"
-            className="gi-justify-center xs:gi-justify-start"
-          >
+          <Button variant="secondary" appearance="dark" className="gi-justify-center xs:gi-justify-start">
             Cancel
           </Button>
-          <Button className="gi-justify-center xs:gi-justify-start">
-            Primary
-          </Button>
+          <Button className="gi-justify-center xs:gi-justify-start">Primary</Button>
         </DrawerFooter>
       </Drawer>
     );
@@ -289,23 +245,14 @@ export const DrawerMenuMobile: Story = {
     const startsOpen = shouldStartOpen();
     return (
       <Drawer {...arguments_} startsOpen={startsOpen}>
-        <DrawerBody
-          key="body"
-          className="gi-border-t-xs gi-border-color-border-system-neutral-subtle"
-        >
+        <DrawerBody key="body" className="gi-border-t-xs gi-border-color-border-system-neutral-subtle">
           <DrawerMenuExample />
         </DrawerBody>
         <DrawerFooter key="footer">
-          <Button
-            variant="secondary"
-            appearance="dark"
-            className="gi-justify-center xs:gi-justify-start"
-          >
+          <Button variant="secondary" appearance="dark" className="gi-justify-center xs:gi-justify-start">
             Cancel
           </Button>
-          <Button className="gi-justify-center xs:gi-justify-start">
-            Primary
-          </Button>
+          <Button className="gi-justify-center xs:gi-justify-start">Primary</Button>
         </DrawerFooter>
       </Drawer>
     );
@@ -323,10 +270,7 @@ export const DesktopButtonStacked: Story = {
     const startsOpen = shouldStartOpen();
     return (
       <Drawer {...arguments_} startsOpen={startsOpen}>
-        <DrawerBody
-          key="body"
-          className="gi-border-t-xs gi-border-color-border-system-neutral-subtle"
-        >
+        <DrawerBody key="body" className="gi-border-t-xs gi-border-color-border-system-neutral-subtle">
           <DrawerMenuExample />
         </DrawerBody>
         <DrawerFooter stacked key="footer">
@@ -364,9 +308,7 @@ export const TestOpenCloseInteractions: Story = {
     const canvas = within(canvasElement);
 
     await step('should open the drawer on button trigger', async () => {
-      const triggerButtonElement = await canvas.findByTestId(
-        'drawer-trigger-button-container',
-      );
+      const triggerButtonElement = await canvas.findByTestId('drawer-trigger-button-container');
       await userEvent.click(triggerButtonElement);
       await waitFor(() => {
         const modalElement = screen.getByTestId('modal');
@@ -375,8 +317,7 @@ export const TestOpenCloseInteractions: Story = {
     });
 
     await step('should close the drawer on icon click', async () => {
-      const modalContainerElement =
-        await screen.findByTestId('modal-container');
+      const modalContainerElement = await screen.findByTestId('modal-container');
       const iconElement = modalContainerElement.querySelector('.gi-modal-icon');
       expect(iconElement).toBeTruthy();
       await userEvent.click(iconElement as Element);
@@ -387,9 +328,7 @@ export const TestOpenCloseInteractions: Story = {
     });
 
     await step('should close the drawer on overlay click', async () => {
-      const triggerButtonElement = await canvas.findByTestId(
-        'drawer-trigger-button-container',
-      );
+      const triggerButtonElement = await canvas.findByTestId('drawer-trigger-button-container');
       await userEvent.click(triggerButtonElement);
       await waitFor(() => {
         const modalElement = screen.getByTestId('modal');

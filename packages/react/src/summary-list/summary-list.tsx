@@ -3,18 +3,9 @@ import { Children, ReactElement } from 'react';
 import { cn } from '../cn.js';
 import { getSpecialComponentType } from '../utilities.js';
 import { SummaryListProvider } from './summary-list-context.js';
-import type {
-  SummaryListHeaderProps,
-  SummaryListProps,
-  SummaryListRowProps,
-} from './types.js';
+import type { SummaryListHeaderProps, SummaryListProps, SummaryListRowProps } from './types.js';
 
-export const SummaryList = ({
-  children,
-  className,
-  withBorder,
-  ...props
-}: SummaryListProps) => {
+export const SummaryList = ({ children, className, withBorder, ...props }: SummaryListProps) => {
   const allChildren = Children.toArray(children);
   const header = allChildren.filter(
     (child) => getSpecialComponentType(child) === 'SummaryListHeader',

@@ -31,11 +31,7 @@ type Story = StoryObj<typeof meta>;
 export const Default: Story = {
   ...dividerDefault,
   render: (props: DividerProps) => (
-    <Box
-      className={
-        props.orientation === Orientation.VERTICAL ? 'gi-flex gi-h-20' : ''
-      }
-    >
+    <Box className={props.orientation === Orientation.VERTICAL ? 'gi-flex gi-h-20' : ''}>
       <Divider {...props} />
     </Box>
   ),

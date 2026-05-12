@@ -12,8 +12,7 @@ const meta = {
     deprecated: true,
     docs: {
       description: {
-        component:
-          'This Card version is deprecated. Please use the Composable version.',
+        component: 'This Card version is deprecated. Please use the Composable version.',
       },
     },
   },
@@ -59,8 +58,7 @@ const meta = {
       table: {
         category: 'Card Content',
         type: {
-          summary:
-            '{ type: "image" | "icon" | "iframe", config: ImagePropTypes | IconProps | IframePropTypes }',
+          summary: '{ type: "image" | "icon" | "iframe", config: ImagePropTypes | IconProps | IframePropTypes }',
         },
       },
     },
@@ -117,8 +115,7 @@ export const Default: Story = {
         aspectRatio: '4 / 3',
       },
     },
-    content:
-      'Lorem ipsum dolor sit amet consectetur. Lectus aliquam morbi purus ac. Sollicitudin.',
+    content: 'Lorem ipsum dolor sit amet consectetur. Lectus aliquam morbi purus ac. Sollicitudin.',
     tag: {
       text: 'New',
       type: 'info',
@@ -137,8 +134,7 @@ export const VerticalWithoutImage: Story = {
     type: 'vertical',
     title: 'Vertical Card Without Image',
     href: '#',
-    content:
-      'Lorem ipsum dolor sit amet consectetur. Lectus aliquam morbi purus ac. Sollicitudin.',
+    content: 'Lorem ipsum dolor sit amet consectetur. Lectus aliquam morbi purus ac. Sollicitudin.',
     action: {
       type: 'link',
       size: 'md',
@@ -160,8 +156,7 @@ export const VerticalWithLink: Story = {
         alt: 'Vertical Card',
       },
     },
-    content:
-      'Lorem ipsum dolor sit amet consectetur. Lectus aliquam morbi purus ac. Sollicitudin.',
+    content: 'Lorem ipsum dolor sit amet consectetur. Lectus aliquam morbi purus ac. Sollicitudin.',
     tag: {
       text: 'Featured',
       type: 'info',
@@ -187,8 +182,7 @@ export const VerticalWithButton: Story = {
         alt: 'Vertical Card',
       },
     },
-    content:
-      'Lorem ipsum dolor sit amet consectetur. Lectus aliquam morbi purus ac. Sollicitudin.',
+    content: 'Lorem ipsum dolor sit amet consectetur. Lectus aliquam morbi purus ac. Sollicitudin.',
     action: {
       type: 'button',
       children: 'Button',
@@ -209,8 +203,7 @@ export const Horizontal: Story = {
         alt: 'Horizontal Card',
       },
     },
-    content:
-      'Lorem ipsum dolor sit amet consectetur. Lectus aliquam morbi purus ac. Sollicitudin.',
+    content: 'Lorem ipsum dolor sit amet consectetur. Lectus aliquam morbi purus ac. Sollicitudin.',
     action: {
       type: 'link',
       size: 'md',
@@ -225,8 +218,7 @@ export const HorizontalWithoutImage: Story = {
     type: 'horizontal',
     title: 'Horizontal Card Without Image',
     subTitle: 'Subtitle Here',
-    content:
-      'Lorem ipsum dolor sit amet consectetur. Lectus aliquam morbi purus ac. Sollicitudin.',
+    content: 'Lorem ipsum dolor sit amet consectetur. Lectus aliquam morbi purus ac. Sollicitudin.',
     action: {
       type: 'link',
       size: 'md',
@@ -248,8 +240,7 @@ export const HorizontalWithIcon: Story = {
       },
     },
     title: 'Card With Icon',
-    content:
-      'Lorem ipsum dolor sit amet consectetur. Lectus aliquam morbi purus ac. Sollicitudin.',
+    content: 'Lorem ipsum dolor sit amet consectetur. Lectus aliquam morbi purus ac. Sollicitudin.',
     action: {
       type: 'button',
       children: 'Download',
@@ -269,12 +260,10 @@ export const WithIframeEmbed: Story = {
         src: 'https://www.youtube.com/embed/K4TOrB7at0Y',
         title: 'Sample YouTube Video',
         allowFullScreen: true,
-        allow:
-          'accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture',
+        allow: 'accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture',
       },
     },
-    content:
-      'This card demonstrates embedding a YouTube video using an iframe.',
+    content: 'This card demonstrates embedding a YouTube video using an iframe.',
     tag: {
       text: 'Video',
       type: 'info',
@@ -330,8 +319,7 @@ export const WithCustomTitleLink: Story = {
         aspectRatio: '4 / 3',
       },
     },
-    content:
-      'Lorem ipsum dolor sit amet consectetur. Lectus aliquam morbi purus ac. Sollicitudin.',
+    content: 'Lorem ipsum dolor sit amet consectetur. Lectus aliquam morbi purus ac. Sollicitudin.',
     tag: {
       text: 'New',
       type: 'info',
@@ -360,8 +348,7 @@ export const WithoutTitleLink: Story = {
         aspectRatio: '4 / 3',
       },
     },
-    content:
-      'Lorem ipsum dolor sit amet consectetur. Lectus aliquam morbi purus ac. Sollicitudin.',
+    content: 'Lorem ipsum dolor sit amet consectetur. Lectus aliquam morbi purus ac. Sollicitudin.',
     tag: {
       text: 'New',
       type: 'info',

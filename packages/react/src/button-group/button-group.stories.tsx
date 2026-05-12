@@ -2,11 +2,7 @@ import type { Meta, StoryObj } from '@storybook/react-vite';
 import { useRef, useState } from 'react';
 import { expect, userEvent, waitFor, within } from 'storybook/test';
 
-import {
-  FormField,
-  FormFieldHint,
-  FormFieldLabel,
-} from '../forms/form-field/form-field.js';
+import { FormField, FormFieldHint, FormFieldLabel } from '../forms/form-field/form-field.js';
 import { ButtonGroup, ButtonGroupItem } from './button-group.js';
 
 const meta = {
@@ -40,8 +36,7 @@ const meta = {
       description: 'Callback when a value is selected',
     },
     children: {
-      description:
-        'ButtonGroupItem components to render inside the ButtonGroup',
+      description: 'ButtonGroupItem components to render inside the ButtonGroup',
     },
   },
 } satisfies Meta<typeof ButtonGroup>;
@@ -97,9 +92,7 @@ export const OpinionScale: Story = {
 
     return (
       <FormField className="gi-w-full">
-        <FormFieldLabel>
-          How likely are you to recommend our service to a friend or colleague?
-        </FormFieldLabel>
+        <FormFieldLabel>How likely are you to recommend our service to a friend or colleague?</FormFieldLabel>
         <FormFieldHint>1 = Not likely, 10 = Extremely likely</FormFieldHint>
         <ButtonGroup
           name={arguments_.name}
@@ -151,9 +144,7 @@ export const ExplicitItems: Story = {
 export const Controlled: Story = {
   name: 'Yes/No Question (Controlled)',
   render: function Render(arguments_) {
-    const [value, setValue] = useState(
-      arguments_.value || arguments_.defaultValue,
-    );
+    const [value, setValue] = useState(arguments_.value || arguments_.defaultValue);
 
     const handleChange = (newValue: string) => {
       setValue(newValue);
@@ -165,12 +156,7 @@ export const Controlled: Story = {
     return (
       <FormField>
         <FormFieldLabel>Are you currently a customer?</FormFieldLabel>
-        <ButtonGroup
-          name={arguments_.name}
-          size={arguments_.size}
-          value={value}
-          onChange={handleChange}
-        >
+        <ButtonGroup name={arguments_.name} size={arguments_.size} value={value} onChange={handleChange}>
           <ButtonGroupItem value="yes">Yes</ButtonGroupItem>
           <ButtonGroupItem value="no">No</ButtonGroupItem>
         </ButtonGroup>
@@ -226,15 +212,11 @@ export const TestRenderDefaultSelection: StoryObj = {
       const buttonTwoElement = canvas.getByText('Button 2');
 
       expect(buttonOneElement).toBeInTheDocument();
-      expect(buttonOneElement).toHaveClass(
-        'gi-bg-color-surface-tone-dark-fill-default',
-      );
+      expect(buttonOneElement).toHaveClass('gi-bg-color-surface-tone-dark-fill-default');
       expect(buttonOneElement).toHaveAttribute('aria-checked', 'true');
 
       expect(buttonTwoElement).toBeInTheDocument();
-      expect(buttonTwoElement).not.toHaveClass(
-        'gi-bg-color-surface-tone-dark-fill-default',
-      );
+      expect(buttonTwoElement).not.toHaveClass('gi-bg-color-surface-tone-dark-fill-default');
       expect(buttonTwoElement).toHaveAttribute('aria-checked', 'false');
     });
   },
@@ -258,29 +240,22 @@ export const TestNoFormSubmitOnClick: StoryObj = {
           <ButtonGroupItem value="1">Button 1</ButtonGroupItem>
           <ButtonGroupItem value="2">Button 2</ButtonGroupItem>
         </ButtonGroup>
-        <span
-          ref={submissionProbeReference}
-          data-testid="submit"
-          data-submitted="false"
-        />
+        <span ref={submissionProbeReference} data-testid="submit" data-submitted="false" />
       </form>
     );
   },
   play: async ({ canvasElement, step }) => {
     const canvas = within(canvasElement);
 
-    await step(
-      'should not submit the form on press a button group items',
-      async () => {
-        const buttonOneElement = canvas.getByText('Button 1');
-        const buttonTwoElement = canvas.getByText('Button 2');
+    await step('should not submit the form on press a button group items', async () => {
+      const buttonOneElement = canvas.getByText('Button 1');
+      const buttonTwoElement = canvas.getByText('Button 2');
 
-        await userEvent.click(buttonOneElement);
-        await userEvent.click(buttonTwoElement);
+      await userEvent.click(buttonOneElement);
+      await userEvent.click(buttonTwoElement);
 
-        const probeElement = canvas.getByTestId('submit');
-        expect(probeElement.dataset.submitted).not.toBe('true');
-      },
-    );
+      const probeElement = canvas.getByTestId('submit');
+      expect(probeElement.dataset.submitted).not.toBe('true');
+    });
   },
 };

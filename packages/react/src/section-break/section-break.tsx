@@ -25,11 +25,6 @@ export function SectionBreak({
   'data-testid': dataTestId,
 }: SectionBreakProps) {
   return (
-    <Divider
-      dataTestId={dataTestId}
-      id={id}
-      style={style}
-      className={clsx(marginClasses[size], color, className)}
-    />
+    <Divider dataTestId={dataTestId} id={id} style={style} className={clsx(marginClasses[size], color, className)} />
   );
 }

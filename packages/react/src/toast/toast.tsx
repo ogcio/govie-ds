@@ -33,10 +33,7 @@ export const ToastProvider = () => {
     globalThis.window.addEventListener('govie:add-toast', handleToastEvent);
     toastProviderState.isMounted = true;
     return () => {
-      globalThis.window.removeEventListener(
-        'govie:add-toast',
-        handleToastEvent,
-      );
+      globalThis.window.removeEventListener('govie:add-toast', handleToastEvent);
       toastProviderState.isMounted = false;
     };
   }, []);
@@ -49,9 +46,7 @@ export const ToastProvider = () => {
     <>
       {positions.map((position) => {
         const filteredToasts = toastStack.filter(
-          (toast) =>
-            toast.position?.x === position.x &&
-            toast.position?.y === position.y,
+          (toast) => toast.position?.x === position.x && toast.position?.y === position.y,
         );
 
         return createPortal(

@@ -154,15 +154,14 @@ export type HeaderNextProps = ComponentPropsWithoutRef<'header'> & {
 
 export type HeaderLogoProps = PropsWithChildren;
 export type HeaderVariant = 'default' | 'light';
-export type HeaderMenuItemLinkProps =
-  AnchorHTMLAttributes<HTMLAnchorElement> & {
-    asChild?: boolean;
-    showItemMode?: HeaderItemMode;
-    icon?: IconId;
-    href?: string;
-    external?: boolean;
-    children: ReactNode;
-  };
+export type HeaderMenuItemLinkProps = AnchorHTMLAttributes<HTMLAnchorElement> & {
+  asChild?: boolean;
+  showItemMode?: HeaderItemMode;
+  icon?: IconId;
+  href?: string;
+  external?: boolean;
+  children: ReactNode;
+};
 
 export type HeaderMenuItemButtonProps = PropsWithChildren<
   ButtonHTMLAttributes<HTMLButtonElement> & {
@@ -172,9 +171,7 @@ export type HeaderMenuItemButtonProps = PropsWithChildren<
     icon?: IconId;
   }
 >;
-export type HeaderPrimaryMenuProps = PropsWithChildren<
-  ComponentPropsWithoutRef<'nav'>
->;
+export type HeaderPrimaryMenuProps = PropsWithChildren<ComponentPropsWithoutRef<'nav'>>;
 export type HeaderMenuSectionContextProps = 'primary' | 'secondary';
 export type HeaderSlotContainerProps = PropsWithChildren<
   {
@@ -187,9 +184,7 @@ export type HeaderTitleProps = PropsWithChildren<
     className?: string;
   } & ComponentPropsWithoutRef<'div'>
 >;
-export type HeaderSecondaryMenuProps = PropsWithChildren<
-  ComponentPropsWithoutRef<'nav'>
->;
+export type HeaderSecondaryMenuProps = PropsWithChildren<ComponentPropsWithoutRef<'nav'>>;
 export type HeaderMenuItemSlotProps = PropsWithChildren<
   ComponentPropsWithoutRef<'div'> & {
     children?: ReactNode;

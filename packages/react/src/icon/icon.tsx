@@ -1,9 +1,5 @@
 'use client';
-import type {
-  ComponentPropsWithoutRef,
-  ComponentType,
-  MouseEventHandler,
-} from 'react';
+import type { ComponentPropsWithoutRef, ComponentType, MouseEventHandler } from 'react';
 import { forwardRef } from 'react';
 import {
   KeyboardArrowDownIcon,
@@ -101,19 +97,7 @@ const ICON_REGISTRY: Record<
 
 export const Icon = forwardRef<HTMLSpanElement, IconProps>(
   (
-    {
-      icon,
-      size = 'md',
-      filled,
-      disabled,
-      ariaHidden,
-      ariaLabel,
-      inline,
-      className,
-      onClick,
-      useFontIcon,
-      ...props
-    },
+    { icon, size = 'md', filled, disabled, ariaHidden, ariaLabel, inline, className, onClick, useFontIcon, ...props },
     ref,
   ) => {
     const fontSize = SIZE_MAP[size] ?? SIZE_MAP.md;

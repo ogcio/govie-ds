@@ -40,9 +40,7 @@ export const GuttersOnAndOff: Story = {
       </div>
       <div className="gi-flex gi-flex-col gi-gap-2">
         <span className="gi-font-bold gi-font-primary">gutters: false</span>
-        <Container gutters={false}>
-          Sample content without horizontal gutters.
-        </Container>
+        <Container gutters={false}>Sample content without horizontal gutters.</Container>
       </div>
     </div>
   ),

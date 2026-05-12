@@ -10,10 +10,7 @@ import { tabItemVariants } from './variants.js';
 
 export const TabItem: FC<TabItemProps> = () => null;
 
-export const InternalTabItem = forwardRef<
-  HTMLButtonElement | HTMLAnchorElement,
-  InternalTabItemProps
->((props, ref) => {
+export const InternalTabItem = forwardRef<HTMLButtonElement | HTMLAnchorElement, InternalTabItemProps>((props, ref) => {
   const {
     value,
     href,
@@ -52,11 +49,7 @@ export const InternalTabItem = forwardRef<
     <>
       {icon && <Icon icon={icon} />}
       {children}
-      <div
-        className={border()}
-        aria-hidden="true"
-        data-testid="tab-item-border"
-      />
+      <div className={border()} aria-hidden="true" data-testid="tab-item-border" />
     </>
   );
 
@@ -66,11 +59,7 @@ export const InternalTabItem = forwardRef<
         href={href}
         {...sharedA11y}
         {...rest}
-        className={cn(
-          base(),
-          'gi-inline-flex gi-items-center gi-gap-2 gi-decoration-xs',
-          className,
-        )}
+        className={cn(base(), 'gi-inline-flex gi-items-center gi-gap-2 gi-decoration-xs', className)}
         onClick={(event) => {
           onTabClick?.(event);
         }}
@@ -89,11 +78,7 @@ export const InternalTabItem = forwardRef<
       {...sharedA11y}
       {...rest}
       ref={ref as Ref<HTMLButtonElement>}
-      className={cn(
-        base(),
-        'gi-inline-flex gi-items-center gi-gap-2',
-        className,
-      )}
+      className={cn(base(), 'gi-inline-flex gi-items-center gi-gap-2', className)}
       onClick={(event) => {
         onTabClick?.(event);
       }}

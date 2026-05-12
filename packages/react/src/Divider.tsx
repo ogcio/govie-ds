@@ -5,10 +5,5 @@ export type DividerProps = GiDividerProps & {
 };
 
 export function Divider({ style, styles, ...props }: DividerProps) {
-  return (
-    <GiDivider
-      {...props}
-      styles={(style ?? styles) as Record<string, string>}
-    />
-  );
+  return <GiDivider {...props} styles={(style ?? styles) as Record<string, string>} />;
 }

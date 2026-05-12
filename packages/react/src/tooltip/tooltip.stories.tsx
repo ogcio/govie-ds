@@ -114,15 +114,10 @@ export const TopPosition: Story = {
   play: async ({ canvasElement, step }) => {
     const canvas = within(canvasElement);
     await userEvent.hover(await canvas.getByTestId('tooltip-trigger'));
-    await step(
-      'should apply correct position class for top position',
-      async () => {
-        const tooltipElement = await canvas.findByText(
-          'This is a tooltip at the top.',
-        );
-        await expect(tooltipElement).toHaveClass('gi-bottom-full');
-      },
-    );
+    await step('should apply correct position class for top position', async () => {
+      const tooltipElement = await canvas.findByText('This is a tooltip at the top.');
+      await expect(tooltipElement).toHaveClass('gi-bottom-full');
+    });
   },
 };
 
@@ -139,15 +134,10 @@ export const BottomPosition: Story = {
   play: async ({ canvasElement, step }) => {
     const canvas = within(canvasElement);
     await userEvent.hover(await canvas.getByTestId('tooltip-trigger'));
-    await step(
-      'should apply correct position class for bottom position',
-      async () => {
-        const tooltipElement = await canvas.findByText(
-          'This is a tooltip at the bottom.',
-        );
-        await expect(tooltipElement).toHaveClass('gi-top-full');
-      },
-    );
+    await step('should apply correct position class for bottom position', async () => {
+      const tooltipElement = await canvas.findByText('This is a tooltip at the bottom.');
+      await expect(tooltipElement).toHaveClass('gi-top-full');
+    });
   },
 };
 
@@ -164,15 +154,10 @@ export const LeftPosition: Story = {
   play: async ({ canvasElement, step }) => {
     const canvas = within(canvasElement);
     await userEvent.hover(await canvas.getByTestId('tooltip-trigger'));
-    await step(
-      'should apply correct position class for left position',
-      async () => {
-        const tooltipElement = await canvas.findByText(
-          'This is a tooltip on the left.',
-        );
-        await expect(tooltipElement).toHaveClass('gi-right-full');
-      },
-    );
+    await step('should apply correct position class for left position', async () => {
+      const tooltipElement = await canvas.findByText('This is a tooltip on the left.');
+      await expect(tooltipElement).toHaveClass('gi-right-full');
+    });
   },
 };
 
@@ -189,15 +174,10 @@ export const RightPosition: Story = {
   play: async ({ canvasElement, step }) => {
     const canvas = within(canvasElement);
     await userEvent.hover(await canvas.getByTestId('tooltip-trigger'));
-    await step(
-      'should apply correct position class for right position',
-      async () => {
-        const tooltipElement = await canvas.findByText(
-          'This is a tooltip on the right.',
-        );
-        await expect(tooltipElement).toHaveClass('gi-left-full');
-      },
-    );
+    await step('should apply correct position class for right position', async () => {
+      const tooltipElement = await canvas.findByText('This is a tooltip on the right.');
+      await expect(tooltipElement).toHaveClass('gi-left-full');
+    });
   },
 };
 

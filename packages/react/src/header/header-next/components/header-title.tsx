@@ -12,16 +12,7 @@ export const HeaderTitle = ({ children, className }: HeaderTitleProps) => {
     throw new Error('HeaderTitle must be used within a Header');
   }
 
-  return (
-    <div
-      className={cn(
-        className,
-        headerTitleVariants({ appearance: context.variant }),
-      )}
-    >
-      {children}
-    </div>
-  );
+  return <div className={cn(className, headerTitleVariants({ appearance: context.variant }))}>{children}</div>;
 };
 
 Object.defineProperty(HeaderTitle, 'componentType', {
