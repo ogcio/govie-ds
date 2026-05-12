@@ -18,7 +18,7 @@ export default defineConfig([
     },
   },
   {
-    ignores: ['dist/**', 'out-tsc/**', '**/*.min.*'],
+    ignores: ['**/dist/**', '**/out-tsc/**', '**/*.min.*'],
   },
   {
     rules: {

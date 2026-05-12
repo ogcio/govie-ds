@@ -5,7 +5,13 @@ import reactHooks from 'eslint-plugin-react-hooks';
 
 export default defineConfig([
   {
-    ignores: ['src/atoms/**/*', 'coverage/**', 'storybook-static/**', 'playwright-report/**', 'test-results/**'],
+    ignores: [
+      '**/src/atoms/**',
+      '**/coverage/**',
+      '**/storybook-static/**',
+      '**/playwright-report/**',
+      '**/test-results/**',
+    ],
   },
   ...storybook.configs['flat/recommended'],
   ...baseConfig,
