@@ -3,7 +3,8 @@
 import { Children, forwardRef } from 'react';
 import { cn } from '../../../../cn.js';
 import { isSpecialComponent } from '../../../../utils/utilities.js';
-import { HeaderPrimaryMenuProps, type HeaderItemMode } from '../../../types.js';
+import type { HeaderPrimaryMenuProps } from '../../../types.js';
+import { type HeaderItemMode } from '../../../types.js';
 import { useHeaderContext } from '../../header-context.js';
 import { HeaderMenuSectionProvider } from './header-menu-context.js';
 

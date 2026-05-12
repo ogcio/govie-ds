@@ -4,7 +4,7 @@ import { expect, screen, userEvent, waitFor, within } from 'storybook/test';
 import Button from '../atoms/Button';
 import { Stack } from '../stack/stack.js';
 import { Toast, toaster, ToastProvider } from './toast.js';
-import { ToastPosition } from './types.js';
+import type { ToastPosition } from './types.js';
 
 const meta: Meta<typeof Toast> = {
   title: 'Application/Toast',

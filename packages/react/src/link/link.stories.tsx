@@ -2,7 +2,8 @@ import type { Meta, StoryObj } from '@storybook/react-vite';
 import { within, expect } from 'storybook/test';
 import { H1 } from '../atoms/index.js';
 import { Paragraph } from '../paragraph/paragraph.js';
-import { Link, LinkProps } from './link.js';
+import type { LinkProps } from './link.js';
+import { Link } from './link.js';
 
 const meta = {
   title: 'Navigation/Link',

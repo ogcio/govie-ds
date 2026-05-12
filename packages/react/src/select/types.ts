@@ -1,4 +1,4 @@
-import {
+import type {
   ChangeEvent,
   DetailedHTMLProps,
   HTMLAttributes,
@@ -9,7 +9,7 @@ import {
   ReactNode,
   SelectHTMLAttributes,
 } from 'react';
-import { InputTextProps } from '../input-text/type.js';
+import type { InputTextProps } from '../input-text/type.js';
 
 /**
  * @deprecated Use `SelectNextProps` instead of `SelectProps`.

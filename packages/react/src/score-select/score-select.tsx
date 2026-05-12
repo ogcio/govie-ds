@@ -4,7 +4,7 @@ import { ButtonGroup, ButtonGroupItem } from '../button-group/button-group.js';
 import { cn } from '../cn.js';
 import { FormField, FormFieldHint, FormFieldLabel } from '../forms/form-field/form-field.js';
 import { Breakpoint, useBreakpoint } from '../hooks/use-breakpoint.js';
-import { ScoreSelectProps } from './type.js';
+import type { ScoreSelectProps } from './type.js';
 
 export const ScoreSelect: React.FC<ScoreSelectProps> = ({
   name,

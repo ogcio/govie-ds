@@ -238,7 +238,7 @@ export const WithLoading = () => {
       }
       case ACTIONS.SET_RESULTS: {
         const children = action.payload.map((name: string) => (
-          <AutocompleteItem key={name} value={name.toLowerCase()?.replace(/\s+/g, '-')}>
+          <AutocompleteItem key={name} value={name.toLowerCase()?.replaceAll(/\s+/g, '-')}>
             {name}
           </AutocompleteItem>
         ));

@@ -1,6 +1,6 @@
 import { Children, cloneElement, isValidElement } from 'react';
 import { generateRandomId } from '../utilities.js';
-import { TabsProps } from './types.js';
+import type { TabsProps } from './types.js';
 
 export function Tabs({
   appearance = 'default',

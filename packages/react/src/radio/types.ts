@@ -1,5 +1,6 @@
-import { InputRadioSizeType, InputRadioProps, InputRadioSizeEnum } from '../input-radio/types.js';
-import { InputRadioGroupProps } from '../input-radio-group/types.js';
+import type { InputRadioSizeType, InputRadioProps } from '../input-radio/types.js';
+import { InputRadioSizeEnum } from '../input-radio/types.js';
+import type { InputRadioGroupProps } from '../input-radio-group/types.js';
 
 /** @deprecated Use InputRadioSizeType instead */
 export type RadioSizeType = InputRadioSizeType;

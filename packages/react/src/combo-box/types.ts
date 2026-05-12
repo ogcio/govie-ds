@@ -1,4 +1,4 @@
-import { DropdownItem } from './dropdown-item.js';
+import type { DropdownItem } from './dropdown-item.js';
 
 export type DropdownItemProps = {
   children: string;

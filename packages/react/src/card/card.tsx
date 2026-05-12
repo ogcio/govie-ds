@@ -1,7 +1,7 @@
 'use client';
 import { CardLegacy } from './card-legacy.js';
 import { CardNext } from './card-next.js';
-import { CardProps } from './types.js';
+import type { CardProps } from './types.js';
 
 const deprecatedKeys = ['title', 'subTitle', 'href', 'media', 'tag', 'content', 'action', 'titleAsChild'] as const;
 

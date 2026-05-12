@@ -4,7 +4,7 @@ import { Slot } from '@radix-ui/react-slot';
 import { cn } from '../../../../../cn.js';
 import { Icon } from '../../../../../icon/icon.js';
 import { Button as PrimitiveButton } from '../../../../../primitives/button.js';
-import { HeaderMenuItemButtonProps } from '../../../../types.js';
+import type { HeaderMenuItemButtonProps } from '../../../../types.js';
 import { headerToolItemVariants } from '../../../../variants.js';
 import { useHeaderContext } from '../../../header-context.js';
 import { useHeaderMenuSection } from '../header-menu-context.js';

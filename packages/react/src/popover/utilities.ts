@@ -1,4 +1,4 @@
-import { Modifier, ModifierArguments } from '@popperjs/core/index.js';
+import type { Modifier, ModifierArguments } from '@popperjs/core/index.js';
 
 export const createDynamicHeightModifier = (maxHeight?: number): Modifier<'dynamicHeight', any> => ({
   name: 'dynamicHeight',
