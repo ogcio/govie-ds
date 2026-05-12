@@ -1,17 +1,10 @@
 'use client';
 
-import { Link } from '../../../link/link.js';
-import type {
-  HeaderAppearance as Appearance,
-  HeaderTitleProps,
-} from '../../types.js';
+import type { HeaderTitleProps } from '../../types.js';
 import { headerTitleVariants } from '../../variants.js';
 import { useHeaderContext } from '../header-context.js';
-
-const altTheme: Record<Appearance, Appearance> = {
-  default: 'light',
-  light: 'default',
-};
+import { cn } from '../../../cn.js';
+import { tv } from 'tailwind-variants';
 
 export const HeaderTitle = ({
   children,
@@ -32,14 +25,13 @@ export const HeaderTitle = ({
       })}
     >
       {href ? (
-        <Link
-          appearance={altTheme[context.variant]}
+        <a
           href={href}
           // the !important is necessary until link has inline-tailwind support, as gi-link overrides any styles passed here
-          className="gi-truncate gi-py-1 gi-max-w-fit !gi-block !gi-w-full"
+          className={styles({ appearance: context.variant })}
         >
           {children}
-        </Link>
+        </a>
       ) : (
         children
       )}
@@ -51,4 +43,22 @@ Object.defineProperty(HeaderTitle, 'componentType', {
   value: 'HeaderTitle',
   writable: false,
   enumerable: false,
+});
+
+const styles = tv({
+  base: [
+    'gi-truncate gi-py-1 gi-max-w-fit gi-block gi-w-full gi-underline',
+    'focus:gi-rounded-sm',
+    'focus:gi-shadow-[0_0_0_2px_var(--gieds-color-gray-950),0_0_0_5px_var(--gieds-color-yellow-400)]',
+    'focus-visible:gi-shadow-[0_0_0_2px_var(--gieds-color-gray-950),0_0_0_5px_var(--gieds-color-yellow-400)]',
+    'focus-visible:gi-no-underline',
+    'focus-visible:gi-rounded-sm',
+    'focus-visible:gi-outline-none',
+  ],
+  variants: {
+    appearance: {
+      default: 'gi-text-color-text-tone-convention-inverse',
+      light: 'gi-text-color-text-tone-convention-default',
+    },
+  },
 });
