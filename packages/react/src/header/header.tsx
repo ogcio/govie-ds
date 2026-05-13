@@ -1,6 +1,6 @@
 import { HeaderLegacy } from './header-legacy.js';
 import { HeaderNext } from './header-next/header-next.js';
-import { HeaderNextProps, HeaderProps } from './types.js';
+import type { HeaderNextProps, HeaderProps } from './types.js';
 
 const deprecatedKeys = [
   'title',
