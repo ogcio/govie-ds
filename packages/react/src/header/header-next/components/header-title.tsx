@@ -52,15 +52,19 @@ Object.defineProperty(HeaderTitle, 'componentType', {
 const styles = tv({
   base: [
     'gi-heading-sm gi-ml-4 md:gi-ml-6 lg:gi-ml-12 gi-min-w-0 lg:gi-block',
-    'gi-truncate gi-py-1 gi-w-full gi-p-1 ',
+    'gi-truncate gi-w-full gi-p-1',
   ],
   variants: {
     appearance: {
       default: 'gi-text-white gi-stroke-white',
-      light: 'gi-text-gray-950',
+      light: [
+        'gi-text-gray-950',
+        'focus:gi-shadow-[0_0_0_2px_var(--gieds-color-gray-950),0_0_0_5px_var(--gieds-color-yellow-400)]',
+      ],
     },
     link: {
       true: [
+        'gi-block',
         'gi-max-w-fit',
         'gi-justify-self-start',
         'focus:gi-rounded-sm',
@@ -72,4 +76,14 @@ const styles = tv({
       ],
     },
   },
+  compoundVariants: [
+    {
+      link: true,
+      appearance: 'light',
+      class: [
+        'focus:gi-shadow-[0_0_0_2px_var(--gieds-color-border-intent-focus-default)]',
+        'focus-visible:gi-shadow-[0_0_0_2px_var(--gieds-color-border-intent-focus-default)]',
+      ],
+    },
+  ],
 });
