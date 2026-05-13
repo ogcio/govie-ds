@@ -1,5 +1,7 @@
 import type { StoryObj } from '@storybook/angular';
+import Box from '../atoms/Box';
 import Divider from '../atoms/Divider';
+import Stack from '../atoms/Stack';
 import {
   dividerMeta,
   Default as dividerDefault,
@@ -19,16 +21,18 @@ export const Default: StoryObj = {
   ...dividerDefault,
   render: (props) => ({
     props,
-    moduleMetadata: { imports: [Divider] },
+    moduleMetadata: { imports: [Box, Divider, Stack] },
     template: `
-      <div [class]="orientation === '${Orientation.VERTICAL}' ? 'gi-flex gi-h-20' : ''">
+      <gi-stack [gap]="2" [direction]="orientation === '${Orientation.VERTICAL}' ? 'row' : 'column'" className="gi-font-primary gi-text-sm">
+        <gi-box>Content</gi-box>
         <gi-divider
           [orientation]="orientation"
           [inset]="inset"
           [id]="id"
           [dataTestId]="dataTestId"
         ></gi-divider>
-      </div>
+        <gi-box>Content</gi-box>
+      </gi-stack>
     `,
   }),
 };
@@ -37,18 +41,18 @@ export const Vertical: StoryObj = {
   ...dividerVertical,
   render: (props) => ({
     props,
-    moduleMetadata: { imports: [Divider] },
+    moduleMetadata: { imports: [Box, Divider, Stack] },
     template: `
-      <div class="gi-flex gi-flex-row gi-gap-4 gi-h-20">
-        <div class="gi-p-4">Left</div>
+      <gi-stack [direction]="'row'" [gap]="2" className="gi-font-primary gi-text-sm">
+        <gi-box>Left</gi-box>
         <gi-divider
           [orientation]="orientation"
           [inset]="inset"
           [id]="id"
           [dataTestId]="dataTestId"
         ></gi-divider>
-        <div class="gi-p-4">Right</div>
-      </div>
+        <gi-box>Right</gi-box>
+      </gi-stack>
     `,
   }),
 };
@@ -57,14 +61,17 @@ export const Inset: StoryObj = {
   ...dividerInset,
   render: (props) => ({
     props,
-    moduleMetadata: { imports: [Divider] },
+    moduleMetadata: { imports: [Box, Divider, Stack] },
     template: `
-      <gi-divider
-        [orientation]="orientation"
-        [inset]="inset"
-        [id]="id"
-        [dataTestId]="dataTestId"
-      ></gi-divider>
+      <gi-stack [gap]="2" className="gi-font-primary gi-text-sm">
+        <gi-box>Content</gi-box>
+        <gi-divider
+          [orientation]="orientation"
+          [inset]="inset"
+          [id]="id"
+          [dataTestId]="dataTestId"
+        ></gi-divider>
+      </gi-stack>
     `,
   }),
 };

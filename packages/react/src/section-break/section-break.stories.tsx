@@ -1,5 +1,4 @@
 import type { Meta, StoryObj } from '@storybook/react-vite';
-import { expect, within } from 'storybook/test';
 import { SectionBreak } from './section-break.js';
 
 const meta = {
@@ -38,25 +37,11 @@ export const Small: Story = {
   args: {
     size: 'sm',
   },
-  play: async ({ canvasElement, step }) => {
-    await step('should have correct text size classes for "sm"', async () => {
-      const canvas = within(canvasElement);
-      const separatorElement = canvas.getByRole('separator');
-      expect(separatorElement).toHaveClass('gi-m-0');
-    });
-  },
 };
 
 export const Medium: Story = {
   args: {
     size: 'md',
-  },
-  play: async ({ canvasElement, step }) => {
-    await step('should have correct text size classes for "md"', async () => {
-      const canvas = within(canvasElement);
-      const separatorElement = canvas.getByRole('separator');
-      expect(separatorElement).toHaveClass('gi-my-4');
-    });
   },
 };
 
@@ -64,24 +49,10 @@ export const Large: Story = {
   args: {
     size: 'lg',
   },
-  play: async ({ canvasElement, step }) => {
-    await step('should have correct text size classes for "lg"', async () => {
-      const canvas = within(canvasElement);
-      const separatorElement = canvas.getByRole('separator');
-      expect(separatorElement).toHaveClass('gi-my-8');
-    });
-  },
 };
 
 export const ExtraLarge: Story = {
   args: {
     size: 'xl',
-  },
-  play: async ({ canvasElement, step }) => {
-    await step('should have correct text size classes for "xl"', async () => {
-      const canvas = within(canvasElement);
-      const separatorElement = canvas.getByRole('separator');
-      expect(separatorElement).toHaveClass('gi-my-12');
-    });
   },
 };

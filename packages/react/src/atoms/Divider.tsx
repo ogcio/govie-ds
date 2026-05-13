@@ -43,7 +43,7 @@ const dividerStyles = tv({
     },
     {
       orientation: Orientation.VERTICAL,
-      class: 'gi-h-full',
+      class: 'gi-self-stretch gi-h-auto',
     },
   ],
   defaultVariants: {

@@ -6,6 +6,7 @@ export type SectionBreakProps = {
   size?: SectionBreakSize;
   color?: string;
   'data-testid'?: string;
+  dataTestId?: string;
 } & React.HtmlHTMLAttributes<HTMLHRElement>;
 
 const marginClasses: Partial<Record<SectionBreakSize, string>> = {
@@ -22,9 +23,15 @@ export function SectionBreak({
   id,
   style,
   className,
-  'data-testid': dataTestId,
+  'data-testid': nativeDataTestId,
+  dataTestId,
 }: SectionBreakProps) {
   return (
-    <Divider dataTestId={dataTestId} id={id} style={style} className={clsx(marginClasses[size], color, className)} />
+    <Divider
+      dataTestId={dataTestId ?? nativeDataTestId}
+      id={id}
+      style={style}
+      className={clsx(marginClasses[size], color, className)}
+    />
   );
 }

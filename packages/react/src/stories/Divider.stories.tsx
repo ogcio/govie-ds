@@ -31,24 +31,34 @@ type Story = StoryObj<typeof meta>;
 export const Default: Story = {
   ...dividerDefault,
   render: (props: DividerProps) => (
-    <Box className={props.orientation === Orientation.VERTICAL ? 'gi-flex gi-h-20' : ''}>
+    <Stack gap={2} direction={props.orientation === Orientation.VERTICAL ? 'row' : 'column'}>
+      <Box>Content</Box>
+
       <Divider {...props} />
-    </Box>
+
+      <Box>Content</Box>
+    </Stack>
   ),
 };
 
 export const Vertical: Story = {
   ...dividerVertical,
   render: (props) => (
-    <Stack direction="row" gap={4} className="gi-h-20">
-      <Box className="gi-p-4">Left</Box>
+    <Stack direction="row" gap={2}>
+      <Box>Left</Box>
       <Divider {...props} />
-      <Box className="gi-p-4">Right</Box>
+      <Box>Right</Box>
     </Stack>
   ),
 };
 
 export const Inset: Story = {
   ...dividerInset,
-  render: (props) => <Divider {...props} />,
+  render: (props) => (
+    <Stack gap={2}>
+      <Box>Content</Box>
+
+      <Divider {...props} />
+    </Stack>
+  ),
 };
