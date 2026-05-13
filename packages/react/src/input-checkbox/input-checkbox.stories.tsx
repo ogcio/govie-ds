@@ -2,9 +2,9 @@ import type { Meta, StoryObj } from '@storybook/react-vite';
 import { Controller, FormProvider, useForm } from 'react-hook-form';
 import { userEvent, expect, within } from 'storybook/test';
 
-import Button from '../atoms/Button';
-import { FormField, FormFieldError, FormFieldLabel } from '../forms/form-field/form-field.js';
-import { Link } from '../link/link.js';
+import Button from '@/atoms/Button';
+import { FormField, FormFieldError, FormFieldLabel } from '@/forms/form-field/form-field.js';
+import { Link } from '@/link/link.js';
 import { InputCheckbox } from './input-checkbox.js';
 import { InputCheckboxSizeEnum } from './types.js';
 

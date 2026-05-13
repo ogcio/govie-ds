@@ -1,7 +1,7 @@
 import type { ComponentPropsWithoutRef, ReactElement } from 'react';
-import type { Props as GiButtonProps } from '../atoms/Button';
-import type { ButtonProps, ButtonSize } from '../button/types.js';
-import type { IconButtonProps } from '../icon-button/icon-button.js';
+import type { Props as GiButtonProps } from '@/atoms/Button';
+import type { ButtonProps, ButtonSize } from '@/button/types.js';
+import type { IconButtonProps } from '@/icon-button/icon-button.js';
 import type { ModalBody, ModalFooter, ModalTitle } from './modal.js';
 
 export type ModalPositions = 'center' | 'left' | 'right' | 'bottom';

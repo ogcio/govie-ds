@@ -1,8 +1,8 @@
 import type { Meta, StoryObj } from '@storybook/react-vite';
 import _ from 'lodash';
-import { Button } from '../button/button';
-import { ButtonSize } from '../atoms/Button';
-import { Variant, Appearance } from '../atoms/constants.js';
+import { Button } from '@/button/button';
+import { ButtonSize } from '@/atoms/Button';
+import { Variant, Appearance } from '@/atoms/constants.js';
 import {
   buttonMeta,
   Default as buttonDefault,
@@ -11,7 +11,7 @@ import {
   AllSizes as buttonAllSizes,
   InteractionStates as buttonInteractionStates,
   Disabled as buttonDisabled,
-} from '../atoms/storybook/Button.meta';
+} from '@/atoms/storybook/Button.meta';
 
 const meta: Meta<typeof Button> = {
   ...buttonMeta,

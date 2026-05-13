@@ -9,7 +9,7 @@ import type {
   ReactNode,
   SelectHTMLAttributes,
 } from 'react';
-import type { InputTextProps } from '../input-text/type.js';
+import type { InputTextProps } from '@/input-text/type.js';
 
 /**
  * @deprecated Use `SelectNextProps` instead of `SelectProps`.

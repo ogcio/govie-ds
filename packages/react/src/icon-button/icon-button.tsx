@@ -1,9 +1,9 @@
 'use client';
 import { forwardRef } from 'react';
-import { Icon, type IconProps } from '../icon/icon.js';
-import GiIconButton, { type Props as GiIconButtonProps } from '../atoms/IconButton.js';
+import { Icon, type IconProps } from '@/icon/icon.js';
+import GiIconButton, { type Props as GiIconButtonProps } from '@/atoms/IconButton.js';
 import clsx from 'clsx';
-import { normalizeSize } from '../utils/normalize-size.js';
+import { normalizeSize } from '@/utils/normalize-size.js';
 
 /** @deprecated Use `'sm' | 'md' | 'lg' | 'xl'` instead. */
 type LegacyIconButtonSize = 'small' | 'medium' | 'large' | 'extraLarge';

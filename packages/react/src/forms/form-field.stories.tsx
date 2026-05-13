@@ -1,7 +1,7 @@
 import type { Meta, StoryObj } from '@storybook/react-vite';
 import { within, expect } from 'storybook/test';
-import { InputText } from '../input-text/input-text.js';
-import { TextArea } from '../textarea/textarea.js';
+import { InputText } from '@/input-text/input-text.js';
+import { TextArea } from '@/textarea/textarea.js';
 import { FormField, FormFieldLabel, FormFieldHint, FormFieldError } from './form-field/form-field.js';
 
 const meta = {

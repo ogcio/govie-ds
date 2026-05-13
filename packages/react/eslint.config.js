@@ -2,6 +2,7 @@ import { defineConfig } from 'eslint/config';
 import baseConfig from '../../eslint.config.mjs';
 import storybook from 'eslint-plugin-storybook';
 import reactHooks from 'eslint-plugin-react-hooks';
+import noRelativeImportPaths from 'eslint-plugin-no-relative-import-paths';
 
 export default defineConfig([
   {
@@ -18,6 +19,16 @@ export default defineConfig([
   {
     files: ['src/**/*.{js,jsx,ts,tsx}'],
     ...reactHooks.configs.flat.recommended,
+  },
+  {
+    files: ['src/**/*.{js,jsx,ts,tsx}'],
+    plugins: { 'no-relative-import-paths': noRelativeImportPaths },
+    rules: {
+      'no-relative-import-paths/no-relative-import-paths': [
+        'warn',
+        { allowSameFolder: true, rootDir: 'src', prefix: '@' },
+      ],
+    },
   },
   {
     // TODO: ESLINT remove this after error fixes

@@ -1,8 +1,8 @@
 'use client';
 import type { ThHTMLAttributes } from 'react';
 import { Children } from 'react';
-import { cn } from '../cn.js';
-import { Icon } from '../icon/icon.js';
+import { cn } from '@/cn.js';
+import { Icon } from '@/icon/icon.js';
 import type { TableAlign, VerticalAlign } from './table.js';
 
 type SortedType = 'asc' | 'desc' | false;

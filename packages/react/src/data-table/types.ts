@@ -1,6 +1,6 @@
-import type { InputCheckboxTableCellProps } from '../input-checkbox/types.js';
-import type { InputTextTableCellProps } from '../input-text/type.js';
-import type { SelectTableCellProps } from '../select/types.js';
+import type { InputCheckboxTableCellProps } from '@/input-checkbox/types.js';
+import type { InputTextTableCellProps } from '@/input-text/type.js';
+import type { SelectTableCellProps } from '@/select/types.js';
 
 export type EditorTableCellConfig =
   | {

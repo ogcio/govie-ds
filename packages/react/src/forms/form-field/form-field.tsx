@@ -2,13 +2,13 @@
 import { Slottable } from '@radix-ui/react-slot';
 import type { ReactNode, FieldsetHTMLAttributes } from 'react';
 import { Children, createContext, useContext } from 'react';
-import { cn } from '../../cn.js';
-import { ErrorText } from '../../error-text/error-text.js';
-import type { ErrorTextProps } from '../../error-text/types.js';
-import { HintText } from '../../hint-text/hint-text.js';
-import type { HintTextProps } from '../../hint-text/types.js';
-import { Label, styles } from '../../label/label.js';
-import { getSpecialComponentType, isSpecialComponent } from '../../utils/utilities.js';
+import { cn } from '@/cn.js';
+import { ErrorText } from '@/error-text/error-text.js';
+import type { ErrorTextProps } from '@/error-text/types.js';
+import { HintText } from '@/hint-text/hint-text.js';
+import type { HintTextProps } from '@/hint-text/types.js';
+import { Label, styles } from '@/label/label.js';
+import { getSpecialComponentType, isSpecialComponent } from '@/utils/utilities.js';
 import type { FormFieldLabelProps, FormFieldProps } from './types.js';
 
 type FormFieldBaseProps = Omit<FieldsetHTMLAttributes<HTMLFieldSetElement>, 'style'> & {

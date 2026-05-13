@@ -1,6 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/react-vite';
 import { expect, userEvent, within, waitFor } from 'storybook/test';
-import Button from '../atoms/Button';
+import Button from '@/atoms/Button';
 import { Tooltip } from './tooltip.js';
 
 const meta = {

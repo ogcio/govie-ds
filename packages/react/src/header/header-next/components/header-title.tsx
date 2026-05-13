@@ -1,9 +1,9 @@
 'use client';
 
-import { cn } from '../../../cn.js';
-import type { HeaderTitleProps } from '../../types.js';
-import { headerTitleVariants } from '../../variants.js';
-import { useHeaderContext } from '../header-context.js';
+import { cn } from '@/cn.js';
+import type { HeaderTitleProps } from '@/header/types.js';
+import { headerTitleVariants } from '@/header/variants.js';
+import { useHeaderContext } from '@/header/header-next/header-context.js';
 
 export const HeaderTitle = ({ children, className }: HeaderTitleProps) => {
   const context = useHeaderContext();

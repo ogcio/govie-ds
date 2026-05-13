@@ -1,4 +1,4 @@
-import { Breakpoint } from '../hooks/use-breakpoint.js';
+import { Breakpoint } from '@/hooks/use-breakpoint.js';
 import { generateSvgPlaceholderDataUrl } from './placeholder.js';
 import { getDisplayPages } from './utilities.js';
 

@@ -1,7 +1,7 @@
 import type { Meta, StoryObj } from '@storybook/react-vite';
 import { expect, within } from 'storybook/test';
-import { Icon } from '../icon/icon.js';
-import { Link } from '../link/link.js';
+import { Icon } from '@/icon/icon.js';
+import { Link } from '@/link/link.js';
 import { Label, LabelSize } from './label.js';
 
 const meta = {

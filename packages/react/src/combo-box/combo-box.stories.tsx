@@ -1,7 +1,7 @@
 import type { Meta, StoryObj } from '@storybook/react-vite';
 import { useState } from 'react';
 import { userEvent, within, expect } from 'storybook/test';
-import { Form } from '../forms/form.js';
+import { Form } from '@/forms/form.js';
 import { organisationOptions, categoryOptions, topicOptions } from './combo-box.content.js';
 import { Combobox } from './combo-box.js';
 import { DropdownItem } from './dropdown-item.js';

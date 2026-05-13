@@ -1,10 +1,10 @@
 import type { HTMLAttributes } from 'react';
 import React, { Children, isValidElement, useMemo } from 'react';
 import { tv } from 'tailwind-variants';
-import Button from '../atoms/Button';
-import { Chip } from '../chip/chip.js';
-import { cn } from '../cn.js';
-import { translate as t } from '../i18n/utility.js';
+import Button from '@/atoms/Button';
+import { Chip } from '@/chip/chip.js';
+import { cn } from '@/cn.js';
+import { translate as t } from '@/i18n/utility.js';
 
 interface DataTableHeaderTypeProps extends HTMLAttributes<HTMLDivElement> {
   children: React.ReactNode;

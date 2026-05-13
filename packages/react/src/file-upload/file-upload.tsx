@@ -1,5 +1,5 @@
-import { InputFile } from '../input-file/input-file.js';
-import type { InputFileProps } from '../input-file/types.js';
+import { InputFile } from '@/input-file/input-file.js';
+import type { InputFileProps } from '@/input-file/types.js';
 
 /**
  * @deprecated Use FileUploadProps instead of `Radio`.

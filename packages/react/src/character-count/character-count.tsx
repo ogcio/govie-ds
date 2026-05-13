@@ -1,6 +1,6 @@
 'use client';
-import { HintText } from '../hint-text/hint-text.js';
-import { translate as t } from '../i18n/utility.js';
+import { HintText } from '@/hint-text/hint-text.js';
+import { translate as t } from '@/i18n/utility.js';
 import type { CharacterCountProps } from './types.js';
 
 /**

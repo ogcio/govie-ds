@@ -1,12 +1,12 @@
 import type { Meta, StoryObj } from '@storybook/react-vite';
 import type { ComponentProps } from 'react';
 import { expect, within } from 'storybook/test';
-import { IconButton } from '../icon-button/icon-button.js';
-import { InputCheckboxTableCell } from '../input-checkbox/input-checkbox.js';
-import { Link } from '../link/link.js';
-import { Spinner } from '../spinner/spinner.js';
-import { Tag, TagTypeEnum } from '../tag/tag.js';
-import { Tooltip } from '../tooltip/tooltip.js';
+import { IconButton } from '@/icon-button/icon-button.js';
+import { InputCheckboxTableCell } from '@/input-checkbox/input-checkbox.js';
+import { Link } from '@/link/link.js';
+import { Spinner } from '@/spinner/spinner.js';
+import { Tag, TagTypeEnum } from '@/tag/tag.js';
+import { Tooltip } from '@/tooltip/tooltip.js';
 import { Caption } from './caption.js';
 import { TableBody } from './table-body.js';
 import { TableData } from './table-data.js';

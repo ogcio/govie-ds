@@ -1,4 +1,4 @@
-import type { InputCheckboxSizeEnumType } from '../input-checkbox/types.js';
+import type { InputCheckboxSizeEnumType } from '@/input-checkbox/types.js';
 
 export type InputCheckboxGroupProps = {
   size?: InputCheckboxSizeEnumType;

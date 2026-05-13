@@ -1,6 +1,6 @@
 import React from 'react';
 import { tv } from 'tailwind-variants';
-import { cn } from '../cn.js';
+import { cn } from '@/cn.js';
 
 interface DataTableFooterTypeProps extends React.HTMLAttributes<HTMLDivElement> {
   children: React.ReactNode;

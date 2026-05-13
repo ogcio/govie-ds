@@ -1,9 +1,9 @@
 import type { ComponentPropsWithoutRef, ReactElement } from 'react';
-import type { Props as GiButtonProps } from '../atoms/Button';
-import type { ButtonSize } from '../button/types.js';
-import type { IconProps } from '../icon/icon.js';
-import type { LinkProps } from '../link/link.js';
-import type { TagProps } from '../tag/tag.js';
+import type { Props as GiButtonProps } from '@/atoms/Button';
+import type { ButtonSize } from '@/button/types.js';
+import type { IconProps } from '@/icon/icon.js';
+import type { LinkProps } from '@/link/link.js';
+import type { TagProps } from '@/tag/tag.js';
 import type { CardContainer, CardMedia } from './card-next.js';
 
 type CardNextChild =

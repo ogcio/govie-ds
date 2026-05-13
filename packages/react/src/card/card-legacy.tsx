@@ -1,7 +1,7 @@
-import Button, { type Props as GiButtonProps } from '../atoms/Button';
-import { normalizeSize } from '../utils/normalize-size.js';
-import { translate as t } from '../i18n/utility.js';
-import { Link } from '../link/link.js';
+import Button, { type Props as GiButtonProps } from '@/atoms/Button';
+import { normalizeSize } from '@/utils/normalize-size.js';
+import { translate as t } from '@/i18n/utility.js';
+import { Link } from '@/link/link.js';
 import {
   CardAction,
   CardContainer,

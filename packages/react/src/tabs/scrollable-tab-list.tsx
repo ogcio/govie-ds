@@ -1,6 +1,6 @@
 import type { ReactNode, CSSProperties } from 'react';
 import { useState, useRef, useEffect, Children, isValidElement, useLayoutEffect } from 'react';
-import { cn } from '../cn.js';
+import { cn } from '@/cn.js';
 import { InternalTabItem } from './tab-item.js';
 import type { TabItemProps, TabKeyboardEvent, TabMouseClickEvent } from './types.js';
 

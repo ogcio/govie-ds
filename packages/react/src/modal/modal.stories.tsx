@@ -1,8 +1,8 @@
 import type { Meta, StoryObj } from '@storybook/react-vite';
 import { useState } from 'react';
 import { expect, within, waitFor, screen, userEvent } from 'storybook/test';
-import Button from '../atoms/Button';
-import Paragraph from '../atoms/Paragraph';
+import Button from '@/atoms/Button';
+import Paragraph from '@/atoms/Paragraph';
 import { ModalTitle, ModalBody, ModalFooter, Modal, ModalWrapper } from './modal.js';
 
 const meta = {

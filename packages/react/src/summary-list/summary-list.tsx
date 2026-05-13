@@ -1,8 +1,8 @@
 'use client';
 import type { ReactElement } from 'react';
 import { Children } from 'react';
-import { cn } from '../cn.js';
-import { getSpecialComponentType } from '../utilities.js';
+import { cn } from '@/cn.js';
+import { getSpecialComponentType } from '@/utilities.js';
 import { SummaryListProvider } from './summary-list-context.js';
 import type { SummaryListHeaderProps, SummaryListProps, SummaryListRowProps } from './types.js';
 
