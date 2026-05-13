@@ -9,7 +9,8 @@ const meta = {
     docs: {
       description: {
         docs: {
-          component: 'Section Break component to create a thematic break between sections of content.',
+          component:
+            '@deprecated — Use `Divider` instead. Section Break component to create a thematic break between sections of content.',
         },
       },
     },
