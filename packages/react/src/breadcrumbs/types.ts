@@ -1,5 +1,5 @@
-import { PropsWithChildren } from 'react';
-import { BreadcrumbCurrentLink, BreadcrumbEllipsis, BreadcrumbLink } from './breadcrumbs.js';
+import type { PropsWithChildren } from 'react';
+import type { BreadcrumbCurrentLink, BreadcrumbEllipsis, BreadcrumbLink } from './breadcrumbs.js';
 
 type BreadcrumbLinkBaseProps = PropsWithChildren<{
   asChild?: false;

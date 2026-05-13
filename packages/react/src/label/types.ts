@@ -1,5 +1,5 @@
-import { PropsWithChildren } from 'react';
-import { LabelSize } from './label.js';
+import type { PropsWithChildren } from 'react';
+import type { LabelSize } from './label.js';
 
 export type LabelSizeType = (typeof LabelSize)[keyof typeof LabelSize];
 

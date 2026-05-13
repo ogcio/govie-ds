@@ -1,6 +1,8 @@
-import { Children, FC } from 'react';
+import type { FC } from 'react';
+import { Children } from 'react';
 import { cn } from '../cn.js';
 import { Icon } from '../icon/icon.js';
+import type { StepFillLevelType } from './types.js';
 import {
   ProgressStepperIndicator,
   StepStatus,
@@ -9,7 +11,6 @@ import {
   type ProgressStepperIndicatorType,
   type ProgressStepperProps,
   type StepItemProps,
-  StepFillLevelType,
 } from './types.js';
 
 const getVerticalConnectorHeight = (gap: number): string => {

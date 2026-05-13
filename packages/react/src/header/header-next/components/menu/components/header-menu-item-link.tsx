@@ -5,7 +5,7 @@ import { forwardRef } from 'react';
 import { cn } from '../../../../../cn.js';
 import { Icon } from '../../../../../icon/icon.js';
 import Anchor from '../../../../../primitives/anchor.js';
-import { HeaderMenuItemLinkProps } from '../../../../types.js';
+import type { HeaderMenuItemLinkProps } from '../../../../types.js';
 import { headerSecondaryLinkItemVariants, headerToolItemVariants } from '../../../../variants.js';
 import { useHeaderContext } from '../../../header-context.js';
 import { useHeaderMenuSection } from '../header-menu-context.js';

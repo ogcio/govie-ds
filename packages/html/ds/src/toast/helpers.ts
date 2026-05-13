@@ -51,8 +51,7 @@ export function createToastByTemplate({
 
   let toastHTML = TOAST_TEMPLATE;
   for (const key of Object.keys(replacements)) {
-    // eslint-disable-next-line unicorn/prefer-string-replace-all
-    toastHTML = toastHTML.replace(new RegExp(key, 'g'), replacements[key]);
+    toastHTML = toastHTML.replaceAll(key, replacements[key]);
   }
 
   toastWrapper.innerHTML = toastHTML;

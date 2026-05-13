@@ -8,7 +8,7 @@ import { Select, SelectItem } from '../select/select.js';
 import { MobileHeaderMenuItems } from './components/header-menu.js';
 import { HeaderSearch } from './components/header-search.js';
 import { Header } from './header.js';
-import { HeaderProps } from './types.js';
+import type { HeaderProps } from './types.js';
 
 const meta = {
   title: 'layout/Header/Deprecated',

@@ -1,5 +1,5 @@
-import { PropsWithChildren } from 'react';
-import { ErrorSize } from './error-text.js';
+import type { PropsWithChildren } from 'react';
+import type { ErrorSize } from './error-text.js';
 
 export type ErrorSizeType = (typeof ErrorSize)[keyof typeof ErrorSize];
 

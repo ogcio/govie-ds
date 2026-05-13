@@ -1,5 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/react-vite';
-import Heading, { Props } from '../Heading';
+import type { Props } from '../Heading';
+import Heading from '../Heading';
 import {
   headingMeta,
   Default as headingDefault,

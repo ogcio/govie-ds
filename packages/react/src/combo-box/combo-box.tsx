@@ -1,5 +1,5 @@
 import { cn } from '../cn.js';
-import { ComboboxProps } from './types.js';
+import type { ComboboxProps } from './types.js';
 
 export const Combobox = ({ children, className, dataTestid }: ComboboxProps) => {
   return (

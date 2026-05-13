@@ -1,14 +1,6 @@
 'use client';
-import {
-  Children,
-  cloneElement,
-  isValidElement,
-  useState,
-  useEffect,
-  ChangeEvent,
-  KeyboardEvent,
-  forwardRef,
-} from 'react';
+import type { ChangeEvent, KeyboardEvent } from 'react';
+import { Children, cloneElement, isValidElement, useState, useEffect, forwardRef } from 'react';
 import { cn } from '../cn.js';
 import { translate as t } from '../i18n/utility.js';
 import { Icon } from '../icon/icon.js';
@@ -16,7 +8,7 @@ import { InputText } from '../input-text/input-text.js';
 import { Label } from '../label/label.js';
 import { Spinner } from '../spinner/spinner.js';
 
-import {
+import type {
   SelectMenuGroupReactElement,
   SelectMenuOptionProps,
   SelectMenuOptionReactElement,

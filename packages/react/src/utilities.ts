@@ -1,4 +1,5 @@
-import { isValidElement, ReactElement, ReactNode } from 'react';
+import type { ReactElement, ReactNode } from 'react';
+import { isValidElement } from 'react';
 
 /**
  * Returns a safe for url string representation.

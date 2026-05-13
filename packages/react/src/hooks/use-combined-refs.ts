@@ -1,4 +1,4 @@
-import { RefObject } from 'react';
+import type { RefObject } from 'react';
 
 export const useCombinedRefs = (...refs: (RefObject<any> | null)[]) => {
   return {

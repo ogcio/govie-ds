@@ -2,7 +2,7 @@
 import { useState, useEffect, Children, isValidElement } from 'react';
 import { cn } from '../cn.js';
 import { InternalTabItem } from './tab-item.js';
-import { TabItemProps, TabKeyboardEvent, TabListProps, TabMouseClickEvent } from './types.js';
+import type { TabItemProps, TabKeyboardEvent, TabListProps, TabMouseClickEvent } from './types.js';
 
 export const TabList = ({
   children,

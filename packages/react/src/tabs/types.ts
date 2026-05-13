@@ -1,5 +1,5 @@
-import { ReactNode } from 'react';
-import { IconId } from '../icon/icon.js';
+import type { ReactNode } from 'react';
+import type { IconId } from '../icon/icon.js';
 
 type TabAppearanceType = 'default' | 'dark';
 type TabLabelAlignmentType = 'start' | 'end' | 'center';

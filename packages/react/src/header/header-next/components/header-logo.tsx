@@ -1,5 +1,5 @@
 'use client';
-import { HeaderLogoProps } from '../../types.js';
+import type { HeaderLogoProps } from '../../types.js';
 import { headerLogoVariants } from '../../variants.js';
 import { useHeaderContext } from '../header-context.js';
 

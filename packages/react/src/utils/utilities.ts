@@ -1,5 +1,7 @@
-import { cloneElement, isValidElement, ReactNode } from 'react';
-import { Breakpoint, BreakpointType } from '../hooks/use-breakpoint.js';
+import type { ReactNode } from 'react';
+import { cloneElement, isValidElement } from 'react';
+import type { BreakpointType } from '../hooks/use-breakpoint.js';
+import { Breakpoint } from '../hooks/use-breakpoint.js';
 
 type DisplayPage = number | -1 | -2;
 

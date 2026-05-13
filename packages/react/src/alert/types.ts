@@ -1,6 +1,6 @@
-import { ComponentPropsWithoutRef } from 'react';
-import { VariantProps } from 'tailwind-variants';
-import { alertVariants } from './variants.js';
+import type { ComponentPropsWithoutRef } from 'react';
+import type { VariantProps } from 'tailwind-variants';
+import type { alertVariants } from './variants.js';
 
 export type AlertProps = ComponentPropsWithoutRef<'div'> & {
   variant?: VariantProps<typeof alertVariants>['variant'];

@@ -1,7 +1,8 @@
 'use client';
 
-import { ChangeEvent, Children, cloneElement, FC, isValidElement, PropsWithChildren, useState, useEffect } from 'react';
-import { InputRadioGroupProps } from './types.js';
+import type { ChangeEvent, FC, PropsWithChildren } from 'react';
+import { Children, cloneElement, isValidElement, useState, useEffect } from 'react';
+import type { InputRadioGroupProps } from './types.js';
 
 export const InputRadioGroup: FC<PropsWithChildren<InputRadioGroupProps>> = ({
   groupId,

@@ -1,10 +1,11 @@
 'use client';
 import { debounce } from 'lodash';
-import { ChangeEvent, FC, ReactElement, useEffect, useMemo, useState } from 'react';
+import type { ChangeEvent, FC, ReactElement } from 'react';
+import { useEffect, useMemo, useState } from 'react';
 import { InputCheckboxTableCell } from '../input-checkbox/input-checkbox.js';
 import { InputTextTableCell } from '../input-text/input-text.js';
 import { SelectTableCell } from '../select/select-native.js';
-import { EditorTableCellProps } from './types.js';
+import type { EditorTableCellProps } from './types.js';
 
 export const EditableTableCell: FC<EditorTableCellProps<any>> = ({
   value: initialValue,
