@@ -6,13 +6,7 @@ import { within, expect, userEvent, screen } from 'storybook/test';
 import { cn } from '../../cn.js';
 import Heading from '../../Heading.js';
 import Button from '../../atoms/Button';
-import {
-  LogoBlack,
-  LogoGoldWhite,
-  LogoWhite,
-  LogoHarpBlack,
-  LogoHarpWhite,
-} from '../../atoms/icons/logos';
+import { LogoBlack, LogoGoldWhite, LogoWhite, LogoHarpBlack, LogoHarpWhite } from '../../atoms/icons/logos';
 
 import { DrawerMenuExample } from '../../drawer/drawer.content.js';
 import { DrawerBody, DrawerFooter, DrawerWrapper } from '../../drawer/drawer.js';
@@ -537,38 +531,20 @@ export const Light: StoryObj = {
 
 const LinkExamples = ({ focused }: { focused?: boolean }) => {
   const [variant, setVariant] = useState<HeaderAppearance>('default');
-  const toggleVariant = () =>
-    setVariant(variant === 'light' ? 'default' : 'light');
+  const toggleVariant = () => setVariant(variant === 'light' ? 'default' : 'light');
   return (
-    <div
-      className={cn(
-        'gi-p-4',
-        variant === 'light' ? 'gi-bg-black' : 'gi-bg-white',
-      )}
-    >
+    <div className={cn('gi-p-4', variant === 'light' ? 'gi-bg-black' : 'gi-bg-white')}>
       <Header variant={variant} aria-label="Site header">
         <HeaderLogo href="#" ariaLabel="Gov.ie logo">
           {variant === 'default' ? (
-            <LogoHarpWhite
-              label="Gov.ie logo"
-              className="gi-block gi-h-10 gi-w-auto sm:gi-hidden"
-            />
+            <LogoHarpWhite label="Gov.ie logo" className="gi-block gi-h-10 gi-w-auto sm:gi-hidden" />
           ) : (
-            <LogoHarpBlack
-              label="Gov.ie logo"
-              className="gi-block gi-h-10 gi-w-auto sm:gi-hidden"
-            />
+            <LogoHarpBlack label="Gov.ie logo" className="gi-block gi-h-10 gi-w-auto sm:gi-hidden" />
           )}
           {variant === 'default' ? (
-            <LogoWhite
-              label="Gov.ie logo"
-              className="gi-hidden gi-h-12 gi-w-auto sm:gi-block"
-            />
+            <LogoWhite label="Gov.ie logo" className="gi-hidden gi-h-12 gi-w-auto sm:gi-block" />
           ) : (
-            <LogoBlack
-              label="Gov.ie logo"
-              className="gi-hidden gi-h-12 gi-w-auto sm:gi-block"
-            />
+            <LogoBlack label="Gov.ie logo" className="gi-hidden gi-h-12 gi-w-auto sm:gi-block" />
           )}
         </HeaderLogo>
         <HeaderTitle href="#" ariaLabel="Title as a link">
@@ -585,9 +561,7 @@ const LinkExamples = ({ focused }: { focused?: boolean }) => {
           <HeaderMenuItemButton>FAQ</HeaderMenuItemButton>
           <HeaderMenuItemButton>Search</HeaderMenuItemButton>
 
-          <HeaderMenuItemButton showItemMode="desktop-only">
-            Language
-          </HeaderMenuItemButton>
+          <HeaderMenuItemButton showItemMode="desktop-only">Language</HeaderMenuItemButton>
 
           <HeaderMenuItemButton onClick={toggleVariant} showItemMode="always">
             {variant === 'default' ? 'Light' : 'Dark'}
@@ -602,8 +576,7 @@ export const WithTitleAndLogoAsLinks: StoryObj = {
   parameters: {
     docs: {
       description: {
-        story:
-          'By passing in an `href` prop to the `HeaderTitle` component, the title becomes a link.',
+        story: 'By passing in an `href` prop to the `HeaderTitle` component, the title becomes a link.',
       },
     },
   },
@@ -623,9 +596,7 @@ export const WithTitleAndLogoAsLinks: StoryObj = {
     const canvas = within(canvasElement);
 
     await step('header + primary nav present', async () => {
-      expect(
-        await canvas.findByRole('banner', { name: /site header/i }),
-      ).toBeInTheDocument();
+      expect(await canvas.findByRole('banner', { name: /site header/i })).toBeInTheDocument();
     });
     await step('title is a link', async () => {
       expect(
@@ -652,26 +623,23 @@ export const WithTitleAsLinkFocusState: StoryObj = {
   play: async ({ canvasElement, step }) => {
     const canvas = within(canvasElement);
 
-    await step(
-      'focus outline is visible and has no visual regressions',
-      async () => {
-        const header = await canvas.findByRole('banner', {
-          name: /site header/i,
-        });
-        expect(header).toBeInTheDocument();
-        const links = await canvas.findAllByRole('link');
-        const linkLogo = links[0];
-        const linkTitle = links[1];
-        expect(linkLogo).toHaveAttribute('aria-label', 'Gov.ie logo');
-        expect(linkTitle).toHaveAttribute('aria-label', 'Title as a link');
-        expect(linkLogo).toHaveAttribute('href', '#');
-        expect(linkTitle).toHaveAttribute('href', '#');
-        await userEvent.click(header);
-        await userEvent.tab();
-        expect(linkLogo).toHaveFocus();
-        await userEvent.tab();
-        expect(linkTitle).toHaveFocus();
-      },
-    );
+    await step('focus outline is visible and has no visual regressions', async () => {
+      const header = await canvas.findByRole('banner', {
+        name: /site header/i,
+      });
+      expect(header).toBeInTheDocument();
+      const links = await canvas.findAllByRole('link');
+      const linkLogo = links[0];
+      const linkTitle = links[1];
+      expect(linkLogo).toHaveAttribute('aria-label', 'Gov.ie logo');
+      expect(linkTitle).toHaveAttribute('aria-label', 'Title as a link');
+      expect(linkLogo).toHaveAttribute('href', '#');
+      expect(linkTitle).toHaveAttribute('href', '#');
+      await userEvent.click(header);
+      await userEvent.tab();
+      expect(linkLogo).toHaveFocus();
+      await userEvent.tab();
+      expect(linkTitle).toHaveFocus();
+    });
   },
 };

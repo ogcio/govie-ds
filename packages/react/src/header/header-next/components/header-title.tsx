@@ -5,12 +5,7 @@ import { headerTitleVariants } from '../../variants.js';
 import { useHeaderContext } from '../header-context.js';
 import { tv } from 'tailwind-variants';
 
-export const HeaderTitle = ({
-  children,
-  href,
-  className,
-  ariaLabel,
-}: HeaderTitleProps) => {
+export const HeaderTitle = ({ children, href, className, ariaLabel }: HeaderTitleProps) => {
   const context = useHeaderContext();
 
   if (!context) {
@@ -50,10 +45,7 @@ Object.defineProperty(HeaderTitle, 'componentType', {
 });
 
 const styles = tv({
-  base: [
-    'gi-heading-sm gi-ml-4 md:gi-ml-6 lg:gi-ml-12 gi-min-w-0 lg:gi-block',
-    'gi-truncate gi-w-full gi-p-1',
-  ],
+  base: ['gi-heading-sm gi-ml-4 md:gi-ml-6 lg:gi-ml-12 gi-min-w-0 lg:gi-block', 'gi-truncate gi-w-full gi-p-1'],
   variants: {
     appearance: {
       default: 'gi-text-white gi-stroke-white',
