@@ -37,8 +37,15 @@
     "playwright:update-snapshots": "playwright test --update-snapshots",
     "typecheck": "tsc -p tsconfig.json --noEmit"
   },
-  "sideEffects": ["**/*.css", "./dist/browser-support/runtime.js"],
-  "files": ["dist", "styles", "fonts.css"],
+  "sideEffects": [
+    "**/*.css",
+    "./dist/browser-support/runtime.js"
+  ],
+  "files": [
+    "dist",
+    "styles",
+    "fonts.css"
+  ],
   "keywords": [],
   "author": "",
   "license": "MIT",
