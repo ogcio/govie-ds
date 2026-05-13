@@ -10,6 +10,7 @@ import type { HintTextProps } from '@/hint-text/types.js';
 import { Label, styles } from '@/label/label.js';
 import { getSpecialComponentType, isSpecialComponent } from '@/utils/utilities.js';
 import type { FormFieldLabelProps, FormFieldProps } from './types.js';
+import formFieldStyles from './descendingErrorStyles.js';
 
 type FormFieldBaseProps = Omit<FieldsetHTMLAttributes<HTMLFieldSetElement>, 'style'> & {
   className?: string;
@@ -62,7 +63,7 @@ const FormFieldBase = ({ children, className, ...props }: FormFieldBaseProps) =>
   );
 
   return (
-    <fieldset className={cn({ 'gi-error-state': !!error }, className)} {...props}>
+    <fieldset className={formFieldStyles({ error: !!error, className })} {...props}>
       <div className="gi-pb-3 gi-flex gi-flex-col gi-gap-1">
         <div>
           {label}
@@ -86,11 +87,14 @@ const FormFieldLabel = ({
   ...props
 }: FormFieldLabelProps) => {
   useFormFieldContext('FormFieldLabel');
-
   const content = (
     <>
       {text ?? children}
-      {secondaryLabel ? <span className="gi-secondary-label">{secondaryLabel}</span> : null}
+      {secondaryLabel ? (
+        <span className="gi-ml-1 gi-text-md gi-font-normal gi-text-color-text-system-neutral-muted">
+          {secondaryLabel}
+        </span>
+      ) : null}
     </>
   );
 
@@ -149,6 +153,7 @@ const FormFieldError = ({ children, text, size, className, ...props }: ErrorText
     </ErrorText>
   );
 };
+
 Object.defineProperty(FormFieldError, 'componentType', {
   value: 'FormFieldError',
   writable: false,

@@ -1,6 +1,7 @@
 'use client';
 import React, { useState, useEffect } from 'react';
 import { Trans, useTranslation } from 'react-i18next';
+import { cn } from '@/cn';
 import { Button } from '@/atoms';
 import { ArrowRightIcon, ArrowLeftIcon } from '@/atoms/icons';
 import { Breakpoint, useBreakpoint } from '@/hooks/use-breakpoint.js';
@@ -77,7 +78,7 @@ export const Pagination: React.FC<PaginationProps> = ({ currentPage, totalPages,
 
   return (
     <div
-      className="gi-pagination"
+      className="gi-flex xs:gi-justify-center gi-justify-between gi-items-center gi-gap-2"
       role="navigation"
       aria-label={t('pagination.page', {
         currentPage,
@@ -95,7 +96,7 @@ export const Pagination: React.FC<PaginationProps> = ({ currentPage, totalPages,
         ariaLabel={t('pagination.goToPrevious', {
           defaultValue: 'Go to previous',
         })}
-        className={isSMWidth ? 'gi-icon-btn-large' : ''}
+        className={cn({ 'gi-p-3 gi-h-12 gi-w-12 gi-justify-center': isSMWidth })}
         dataTestId="govie-pagination-prev-btn"
       >
         <React.Fragment key="previous-btn-pagination">
@@ -113,7 +114,7 @@ export const Pagination: React.FC<PaginationProps> = ({ currentPage, totalPages,
         appearance="dark"
         onClick={() => onPageChange(currentPage + 1)}
         ariaLabel={t('pagination.goToNext', { defaultValue: 'Go to next' })}
-        className={isSMWidth ? 'gi-icon-btn-large' : ''}
+        className={cn({ 'gi-p-3 gi-h-12 gi-w-12 gi-justify-center': isSMWidth })}
         dataTestId="govie-pagination-next-btn"
       >
         {!isSMWidth && t('pagination.next', { defaultValue: 'Next' })}

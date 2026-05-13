@@ -1,6 +1,6 @@
 'use client';
 import { useState, useEffect, Children, isValidElement } from 'react';
-import { cn } from '@/cn.js';
+import { tv } from 'tailwind-variants';
 import { InternalTabItem } from './tab-item.js';
 import type { TabItemProps, TabKeyboardEvent, TabListProps, TabMouseClickEvent } from './types.js';
 
@@ -183,11 +183,7 @@ export const TabList = ({
     <div
       role="tablist"
       aria-orientation="horizontal"
-      className={cn('gi-tab-list', {
-        'gi-tab-list-stretch': stretch,
-        'gi-gap-4': padding,
-        'gi-gap-0': !padding,
-      })}
+      className={styles({ stretch, padding })}
       aria-labelledby={ariaLabelledBy}
       id={`${tabName}-list`}
     >
@@ -195,3 +191,24 @@ export const TabList = ({
     </div>
   );
 };
+
+const styles = tv({
+  base: [
+    'gi-flex',
+    'gi-items-center',
+    'gi-overflow-visible',
+    'gi-whitespace-nowrap',
+    'gi-relative',
+    'gi-shadow-[inset_0_-1px_0_0_var(--gieds-color-border-system-neutral-muted)',
+  ],
+
+  variants: {
+    stretch: {
+      true: 'gi-w-full gi-justify-start',
+    },
+    padding: {
+      true: 'gi-gap-4',
+      false: 'gi-gap-0',
+    },
+  },
+});

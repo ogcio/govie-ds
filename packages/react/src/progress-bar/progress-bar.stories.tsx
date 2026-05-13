@@ -63,7 +63,6 @@ export const WithLabelIndeterminate: Story = {
 
       const progressBarInner = progressBar.firstElementChild as HTMLElement | null;
       expect(progressBarInner).toBeTruthy();
-      expect(progressBarInner).toHaveClass('gi-progress-bar-indeterminate');
     });
   },
 };

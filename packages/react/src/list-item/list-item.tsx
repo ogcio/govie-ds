@@ -1,5 +1,5 @@
 import type { AnchorHTMLAttributes } from 'react';
-import { cn } from '@/cn.js';
+import { tv } from 'tailwind-variants';
 import Anchor from '@/primitives/anchor.js';
 
 export type ListItemProps = AnchorHTMLAttributes<HTMLAnchorElement> & {
@@ -16,7 +16,7 @@ export function ListItem({ label, href, external, bold, slot, className, ...prop
     <Anchor
       aria-label={label}
       href={href}
-      className={cn(className, 'gi-list-item', { 'gi-font-bold': bold })}
+      className={styles({ bold, className })}
       external={external}
       asChild={!!slot}
       {...props}
@@ -25,3 +25,23 @@ export function ListItem({ label, href, external, bold, slot, className, ...prop
     </Anchor>
   );
 }
+
+export const styles = tv({
+  base: [
+    'gi-block gi-py-4 gi-border-color-border-system-neutral-subtle',
+    'gi-border-b-xs gi-border-solid !gi-text-sm',
+    'gi-focus-state-outline gi-focus-visible-state-outline',
+    // focus
+    'focus:gi-shadow-[inset_0_0_0_2px]',
+    'focus:gi-shadow-gray-950',
+    'focus:gi-rounded-sm',
+    'focus-visible:gi-shadow-[inset_0_0_0_2px]',
+    'focus-visible:gi-shadow-gray-950',
+    'focus-visible:gi-rounded-sm',
+  ],
+  variants: {
+    bold: {
+      true: 'gi-font-bold',
+    },
+  },
+});

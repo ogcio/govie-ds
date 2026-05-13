@@ -9,6 +9,7 @@ import { getSpecialComponentType } from '@/utilities.js';
 import { useSummaryListContext } from './summary-list-context.js';
 import { ActionList } from './summary-list-row.js';
 import type { SummaryListActionProps, SummaryListHeaderProps } from './types.js';
+import { tv } from 'tailwind-variants';
 
 export const SummaryListHeader = ({
   children,
@@ -36,14 +37,14 @@ export const SummaryListHeader = ({
 
   return (
     <tr {...props} className={cn('gi-h-14', className)}>
-      <th scope="col" className="gi-text-center gi-align-middle">
+      <th scope="col" className={styles({ className })}>
         {!isMobile && (
           <span className={cn(overflowClasses)} style={style}>
             {label}
           </span>
         )}
         {isMobile ? (
-          <div className={cn('gi-flex gi-justify-between')}>
+          <div className="gi-flex gi-justify-between">
             <span className={cn(overflowClasses)} style={style}>
               {label}
             </span>
@@ -63,7 +64,7 @@ export const SummaryListHeader = ({
         ) : null}
       </th>
       {!isMobile && summaryListActions ? (
-        <th scope="col" colSpan={2}>
+        <th scope="col" colSpan={2} className={styles({ className })}>
           <span className="gi-sr-only">
             {t('header.actions', {
               defaultValue: 'Actions',
@@ -81,6 +82,10 @@ export const SummaryListHeader = ({
     </tr>
   );
 };
+
+const styles = tv({
+  base: 'gi-py-2 gi-px-3 gi-min-h-12 gi-truncate gi-font-bold gi-text-left gi-align-middle',
+});
 
 SummaryListHeader.displayName = 'SummaryListHeader';
 Object.defineProperty(SummaryListHeader, 'componentType', {

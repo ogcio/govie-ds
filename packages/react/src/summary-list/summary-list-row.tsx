@@ -28,22 +28,16 @@ export const SummaryListRow = ({ children, label, withBorder, className, ...prop
   const valueSrId = `${rowId}-value`;
   const actionsSrId = `${rowId}-actions`;
 
+  const { tr, th, td } = styles({ withBorder });
+
   return (
-    <tr
-      {...props}
-      className={cn(
-        {
-          'gi-border-b gi-border-color-border-system-neutral-muted': withBorder,
-        },
-        className,
-      )}
-    >
-      <th id={rowId} scope="row">
+    <tr {...props} className={tr({ class: className })}>
+      <th id={rowId} scope="row" className={th()}>
         {label}
       </th>
 
       {valueTd ? (
-        <td {...valueTd.props} aria-labelledby={`${rowId} ${valueSrId}`}>
+        <td {...valueTd.props} aria-labelledby={`${rowId} ${valueSrId}`} className={td()}>
           <span id={valueSrId} className="gi-sr-only">
             {t('summaryList.col.value', { defaultValue: 'Value' })}
           </span>
@@ -52,7 +46,7 @@ export const SummaryListRow = ({ children, label, withBorder, className, ...prop
       ) : null}
 
       {actions.length > 0 ? (
-        <td aria-labelledby={`${rowId} ${actionsSrId}`}>
+        <td aria-labelledby={`${rowId} ${actionsSrId}`} className={td({ class: 'gi-truncate' })}>
           <ActionList id={actionsSrId}>
             {actions.map((action, index) => (
               <span key={`${rowId}-a${index}`} className={cn({ 'gi-ml-4': index > 0 })}>
@@ -66,9 +60,24 @@ export const SummaryListRow = ({ children, label, withBorder, className, ...prop
   );
 };
 
+const styles = tv({
+  slots: {
+    th: 'gi-font-bold gi-align-top gi-text-left gi-truncate gi-min-h-12 gi-px-3 gi-py-2',
+    tr: 'gi-flex gi-flex-col md:gi-table-row gi-align-middle md:gi-py-none gi-py-2',
+    td: 'gi-align-top gi-px-3 gi-min-h-12 gi-py-2',
+  },
+  variants: {
+    withBorder: {
+      true: {
+        tr: 'gi-border-b gi-border-color-border-system-neutral-muted',
+      },
+    },
+  },
+});
+
 export const ActionList = ({ id, children }: SummaryListActionListProps) => {
   return (
-    <div className={cn('gi-summary-list-action')}>
+    <div className="gi-text-sm gi-font-normal gi-align-top md:gi-text-right gi-whitespace-nowrap">
       <span id={id} className="gi-sr-only">
         {t('summaryList.col.actions', { defaultValue: 'Actions' })}
       </span>

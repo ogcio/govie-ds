@@ -328,6 +328,28 @@ export function createTheme(
             : variables.semantic.surface.primary),
         },
       },
+      keyframes: {
+        'indeterminate-progress': {
+          '0%': { left: '-100%' },
+          '25%': { left: '0%' },
+          '50%': { left: '25%' },
+          '75%': { left: '50%' },
+          '100%': { left: '100%' },
+        },
+        'toast-fadeinup': {
+          '0%': {
+            opacity: 0,
+            transform: 'translateY(25%)',
+          },
+          '100%': {
+            opacity: 1,
+            transform: 'translateY(0)',
+          },
+        },
+      },
+      animation: {
+        'indeterminate-progress': 'indeterminate-progress 1s linear infinite',
+      },
       typography: () => {
         return {
           DEFAULT: {
