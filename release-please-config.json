@@ -46,10 +46,6 @@
     }
   ],
   "packages": {
-    "apps/docs": {
-      "component": "docs",
-      "release-type": "node"
-    },
     "packages/build/eslint-config": {
       "component": "eslint-config",
       "release-type": "node"
@@ -58,12 +54,28 @@
       "component": "prettier-config",
       "release-type": "node"
     },
-    "packages/design/tailwind": {
-      "component": "design-tailwind",
+    "packages/design/figma": {
+      "component": "figma",
       "release-type": "node"
     },
     "packages/design/theme-builder": {
       "component": "design-theme-builder",
+      "release-type": "node"
+    },
+    "packages/design/tokens": {
+      "component": "tokens",
+      "release-type": "node"
+    },
+    "apps/docs": {
+      "component": "docs",
+      "release-type": "node"
+    },
+    "packages/themes/govie": {
+      "component": "themes-govie",
+      "release-type": "node"
+    },
+    "packages/design/tailwind": {
+      "component": "design-tailwind",
       "release-type": "node"
     },
     "packages/html/ds": {
@@ -72,18 +84,6 @@
     },
     "packages/react": {
       "component": "react-lib",
-      "release-type": "node"
-    },
-    "packages/themes/govie": {
-      "component": "themes-govie",
-      "release-type": "node"
-    },
-    "packages/design/tokens": {
-      "component": "tokens",
-      "release-type": "node"
-    },
-    "packages/design/figma": {
-      "component": "figma",
       "release-type": "node"
     }
   },

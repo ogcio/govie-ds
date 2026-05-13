@@ -39,7 +39,7 @@ description:
     features:
       - React component library
       - HTML component library
-      - Angular component library (alpha)1
+      - Angular component library (alpha)
       - Tailwind CSS styling and theming
       - Design tokens for consistent styling
       - Theme packages
