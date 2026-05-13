@@ -1,9 +1,6 @@
-import {
-  InputCheckboxProps,
-  InputCheckboxSizeEnum,
-  InputCheckboxSizeEnumType,
-} from '../input-checkbox/types.js';
-import { InputCheckboxGroupProps } from '../input-checkbox-group/types.js';
+import type { InputCheckboxProps, InputCheckboxSizeEnumType } from '../input-checkbox/types.js';
+import { InputCheckboxSizeEnum } from '../input-checkbox/types.js';
+import type { InputCheckboxGroupProps } from '../input-checkbox-group/types.js';
 
 /** @deprecated Use InputCheckboxSizeEnum instead */
 //eslint-disable-next-line unicorn/prefer-export-from

@@ -37,18 +37,14 @@ export const Default: Story = {
   play: async ({ canvasElement, step }) => {
     const canvas = within(canvasElement);
 
-    await step(
-      'should render a progress bar with a specified value',
-      async () => {
-        const progressBar = await canvas.findByTestId('progress-bar');
-        expect(progressBar).toBeTruthy();
+    await step('should render a progress bar with a specified value', async () => {
+      const progressBar = await canvas.findByTestId('progress-bar');
+      expect(progressBar).toBeTruthy();
 
-        const progressBarInner =
-          progressBar.firstElementChild as HTMLElement | null;
-        expect(progressBarInner).toBeTruthy();
-        expect(progressBarInner?.style?.width).toBe('50%');
-      },
-    );
+      const progressBarInner = progressBar.firstElementChild as HTMLElement | null;
+      expect(progressBarInner).toBeTruthy();
+      expect(progressBarInner?.style?.width).toBe('50%');
+    });
   },
 };
 
@@ -61,18 +57,14 @@ export const WithLabelIndeterminate: Story = {
   play: async ({ canvasElement, step }) => {
     const canvas = within(canvasElement);
 
-    await step(
-      'should render an indeterminate progress bar correctly',
-      async () => {
-        const progressBar = await canvas.findByTestId('progress-bar');
-        expect(progressBar).toBeTruthy();
+    await step('should render an indeterminate progress bar correctly', async () => {
+      const progressBar = await canvas.findByTestId('progress-bar');
+      expect(progressBar).toBeTruthy();
 
-        const progressBarInner =
-          progressBar.firstElementChild as HTMLElement | null;
-        expect(progressBarInner).toBeTruthy();
-        expect(progressBarInner).toHaveClass('gi-progress-bar-indeterminate');
-      },
-    );
+      const progressBarInner = progressBar.firstElementChild as HTMLElement | null;
+      expect(progressBarInner).toBeTruthy();
+      expect(progressBarInner).toHaveClass('gi-progress-bar-indeterminate');
+    });
   },
 };
 
@@ -96,8 +88,7 @@ export const TestMax500Value200: Story = {
       const progressBar = await canvas.findByTestId('progress-bar');
       expect(progressBar).toBeTruthy();
 
-      const progressBarInner =
-        progressBar.firstElementChild as HTMLElement | null;
+      const progressBarInner = progressBar.firstElementChild as HTMLElement | null;
       expect(progressBarInner).toBeTruthy();
       expect(progressBarInner?.style?.width).toBe('40%');
     });

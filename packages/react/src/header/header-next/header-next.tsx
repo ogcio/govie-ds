@@ -3,16 +3,9 @@
 import { Children, forwardRef, type ReactElement } from 'react';
 import { cn } from '../../cn.js';
 import { translate as t } from '../../i18n/utility.js';
-import {
-  getSpecialComponentType,
-  isSpecialComponent,
-} from '../../utils/utilities.js';
+import { getSpecialComponentType, isSpecialComponent } from '../../utils/utilities.js';
 import type { HeaderNextProps, HeaderSlotContainerProps } from '../types.js';
-import {
-  headerMenuVariants,
-  headerSlotContainerVariants,
-  headerVariants,
-} from '../variants.js';
+import { headerMenuVariants, headerSlotContainerVariants, headerVariants } from '../variants.js';
 import { HeaderProvider } from './header-context.js';
 import Container from '../../atoms/Container.js';
 
@@ -32,29 +25,18 @@ export const HeaderNext = forwardRef<HTMLElement, HeaderNextProps>(
   ) => {
     const allChildren = Children.toArray(children);
     const getChildrenByComponentType = (componentType: string) =>
-      allChildren.find(
-        (child) => getSpecialComponentType(child) === componentType,
-      ) as ReactElement | undefined;
+      allChildren.find((child) => getSpecialComponentType(child) === componentType) as ReactElement | undefined;
 
     const headerLogo = getChildrenByComponentType('HeaderLogo');
     const headerTitle = getChildrenByComponentType('HeaderTitle');
-    const headerSecondaryMenu = getChildrenByComponentType(
-      'HeaderSecondaryMenu',
-    );
+    const headerSecondaryMenu = getChildrenByComponentType('HeaderSecondaryMenu');
     const headerPrimaryMenu = getChildrenByComponentType('HeaderPrimaryMenu');
 
     const restChildren = allChildren.filter(
-      (child) =>
-        !isSpecialComponent(child, [
-          'HeaderLogo',
-          'HeaderTitle',
-          'HeaderPrimaryMenu',
-          'HeaderSecondaryMenu',
-        ]),
+      (child) => !isSpecialComponent(child, ['HeaderLogo', 'HeaderTitle', 'HeaderPrimaryMenu', 'HeaderSecondaryMenu']),
     );
 
-    const ariaLabel =
-      ariaLabelProp ?? t('header.siteHeader', { defaultValue: 'Site Header' });
+    const ariaLabel = ariaLabelProp ?? t('header.siteHeader', { defaultValue: 'Site Header' });
 
     return (
       <HeaderProvider variant={variant} fullWidth={fullWidth}>
@@ -85,18 +67,8 @@ export const HeaderNext = forwardRef<HTMLElement, HeaderNextProps>(
   },
 );
 
-export const HeaderSlotContainer = ({
-  variant,
-  className,
-  ...props
-}: HeaderSlotContainerProps) => (
-  <div
-    className={cn(
-      headerSlotContainerVariants({ appearance: variant }),
-      className,
-    )}
-    {...props}
-  />
+export const HeaderSlotContainer = ({ variant, className, ...props }: HeaderSlotContainerProps) => (
+  <div className={cn(headerSlotContainerVariants({ appearance: variant }), className)} {...props} />
 );
 
 HeaderNext.displayName = 'HeaderNext';

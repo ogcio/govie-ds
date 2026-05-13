@@ -32,16 +32,7 @@ export const getCheckboxWidth = (size?: InputCheckboxSizeEnumType) => {
 
 export const InputCheckbox = forwardRef<HTMLInputElement, InputCheckboxProps>(
   (
-    {
-      id,
-      size = InputCheckboxSizeEnum.Medium,
-      label,
-      children,
-      hint,
-      indeterminate = false,
-      containerProps,
-      ...props
-    },
+    { id, size = InputCheckboxSizeEnum.Medium, label, children, hint, indeterminate = false, containerProps, ...props },
     ref,
   ) => {
     const generatedId = useId();
@@ -93,10 +84,7 @@ export const InputCheckbox = forwardRef<HTMLInputElement, InputCheckboxProps>(
   },
 );
 
-export const InputCheckboxTableCell: React.FC<InputCheckboxTableCellProps> = ({
-  error,
-  ...props
-}) => (
+export const InputCheckboxTableCell: React.FC<InputCheckboxTableCellProps> = ({ error, ...props }) => (
   <InputCheckbox
     {...props}
     size="sm"

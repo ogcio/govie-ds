@@ -8,9 +8,7 @@ export default defineConfig({
   forbidOnly: !!process.env.CI,
   retries: process.env.CI ? 2 : 3,
   workers: process.env.CI ? 2 : undefined,
-  reporter: process.env.CI
-    ? [['junit', { outputFile: 'test-results/results.xml' }]]
-    : 'html',
+  reporter: process.env.CI ? [['junit', { outputFile: 'test-results/results.xml' }]] : 'html',
   use: {
     baseURL: BASE_URL,
   },

@@ -1,17 +1,11 @@
 'use client';
 import { debounce } from 'lodash';
-import {
-  ChangeEvent,
-  FC,
-  ReactElement,
-  useEffect,
-  useMemo,
-  useState,
-} from 'react';
+import type { ChangeEvent, FC, ReactElement } from 'react';
+import { useEffect, useMemo, useState } from 'react';
 import { InputCheckboxTableCell } from '../input-checkbox/input-checkbox.js';
 import { InputTextTableCell } from '../input-text/input-text.js';
 import { SelectTableCell } from '../select/select-native.js';
-import { EditorTableCellProps } from './types.js';
+import type { EditorTableCellProps } from './types.js';
 
 export const EditableTableCell: FC<EditorTableCellProps<any>> = ({
   value: initialValue,
@@ -38,8 +32,7 @@ export const EditableTableCell: FC<EditorTableCellProps<any>> = ({
   };
 
   const debouncedUpdateData = useMemo(
-    () =>
-      debounce((value: unknown) => updateData(rowIndex, columnId, value), 500),
+    () => debounce((value: unknown) => updateData(rowIndex, columnId, value), 500),
     [rowIndex, columnId],
   );
 
@@ -49,9 +42,7 @@ export const EditableTableCell: FC<EditorTableCellProps<any>> = ({
     };
   }, [debouncedUpdateData]);
 
-  const handleOnChangeValue = (
-    event: ChangeEvent<HTMLSelectElement> | ChangeEvent<HTMLInputElement>,
-  ) => {
+  const handleOnChangeValue = (event: ChangeEvent<HTMLSelectElement> | ChangeEvent<HTMLInputElement>) => {
     const newValue = event.target.value;
     setValue(newValue);
     debouncedUpdateData(newValue);
@@ -80,22 +71,10 @@ export const EditableTableCell: FC<EditorTableCellProps<any>> = ({
       );
     }
     case 'checkbox': {
-      return (
-        <InputCheckboxTableCell
-          checked={isChecked}
-          {...editor?.props}
-          onChange={handleOnChangeCheckbox}
-        />
-      );
+      return <InputCheckboxTableCell checked={isChecked} {...editor?.props} onChange={handleOnChangeCheckbox} />;
     }
     default: {
-      return (
-        <InputTextTableCell
-          {...editor.props}
-          value={value}
-          onChange={handleOnChangeValue}
-        />
-      );
+      return <InputTextTableCell {...editor.props} value={value} onChange={handleOnChangeValue} />;
     }
   }
 };

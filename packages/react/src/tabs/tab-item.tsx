@@ -1,19 +1,17 @@
 'use client';
 
-import { forwardRef, FC, Ref } from 'react';
+import type { FC, Ref } from 'react';
+import { forwardRef } from 'react';
 import { cn } from '../cn.js';
 import { Icon } from '../icon/icon.js';
 import { Button as PrimitiveButton } from '../primitives/button.js';
 import { slugify } from '../utilities.js';
-import { InternalTabItemProps, TabItemProps } from './types.js';
+import type { InternalTabItemProps, TabItemProps } from './types.js';
 import { tabItemVariants } from './variants.js';
 
 export const TabItem: FC<TabItemProps> = () => null;
 
-export const InternalTabItem = forwardRef<
-  HTMLButtonElement | HTMLAnchorElement,
-  InternalTabItemProps
->((props, ref) => {
+export const InternalTabItem = forwardRef<HTMLButtonElement | HTMLAnchorElement, InternalTabItemProps>((props, ref) => {
   const {
     value,
     href,
@@ -52,11 +50,7 @@ export const InternalTabItem = forwardRef<
     <>
       {icon && <Icon icon={icon} />}
       {children}
-      <div
-        className={border()}
-        aria-hidden="true"
-        data-testid="tab-item-border"
-      />
+      <div className={border()} aria-hidden="true" data-testid="tab-item-border" />
     </>
   );
 
@@ -66,11 +60,7 @@ export const InternalTabItem = forwardRef<
         href={href}
         {...sharedA11y}
         {...rest}
-        className={cn(
-          base(),
-          'gi-inline-flex gi-items-center gi-gap-2 gi-decoration-xs',
-          className,
-        )}
+        className={cn(base(), 'gi-inline-flex gi-items-center gi-gap-2 gi-decoration-xs', className)}
         onClick={(event) => {
           onTabClick?.(event);
         }}
@@ -89,11 +79,7 @@ export const InternalTabItem = forwardRef<
       {...sharedA11y}
       {...rest}
       ref={ref as Ref<HTMLButtonElement>}
-      className={cn(
-        base(),
-        'gi-inline-flex gi-items-center gi-gap-2',
-        className,
-      )}
+      className={cn(base(), 'gi-inline-flex gi-items-center gi-gap-2', className)}
       onClick={(event) => {
         onTabClick?.(event);
       }}

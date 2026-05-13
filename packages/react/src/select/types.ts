@@ -1,4 +1,4 @@
-import {
+import type {
   ChangeEvent,
   DetailedHTMLProps,
   HTMLAttributes,
@@ -9,27 +9,18 @@ import {
   ReactNode,
   SelectHTMLAttributes,
 } from 'react';
-import { InputTextProps } from '../input-text/type.js';
+import type { InputTextProps } from '../input-text/type.js';
 
 /**
  * @deprecated Use `SelectNextProps` instead of `SelectProps`.
  */
-export type SelectProps = DetailedHTMLProps<
-  SelectHTMLAttributes<HTMLSelectElement>,
-  HTMLSelectElement
->;
+export type SelectProps = DetailedHTMLProps<SelectHTMLAttributes<HTMLSelectElement>, HTMLSelectElement>;
 /**
  * @deprecated Use `SelectItemNextProps` instead of `SelectItemProps`.
  */
-export type SelectItemProps = DetailedHTMLProps<
-  OptionHTMLAttributes<HTMLOptionElement>,
-  HTMLOptionElement
->;
+export type SelectItemProps = DetailedHTMLProps<OptionHTMLAttributes<HTMLOptionElement>, HTMLOptionElement>;
 
-export type SelectGroupItemProps = DetailedHTMLProps<
-  OptgroupHTMLAttributes<HTMLOptGroupElement>,
-  HTMLOptGroupElement
->;
+export type SelectGroupItemProps = DetailedHTMLProps<OptgroupHTMLAttributes<HTMLOptGroupElement>, HTMLOptGroupElement>;
 
 export type SelectMenuProps = {
   children: ReactNode;
@@ -47,8 +38,7 @@ export type SelectMenuOptionReactElement = ReactElement<{
   enableSearch?: boolean;
 }>;
 
-export type SelectMenuGroupReactElement =
-  ReactElement<SelectMenuGroupOptionProps>;
+export type SelectMenuGroupReactElement = ReactElement<SelectMenuGroupOptionProps>;
 
 export type SelectMenuOptionProps = {
   children: ReactNode;
@@ -74,8 +64,7 @@ export type SelectNextOptionItemElement = ReactElement<
     selectedValue: string;
   }
 >;
-export type SelectNextGroupItemElement =
-  ReactElement<SelectMenuGroupOptionProps>;
+export type SelectNextGroupItemElement = ReactElement<SelectMenuGroupOptionProps>;
 export type SelectNextProps = PropsWithChildren<
   {
     name?: string;

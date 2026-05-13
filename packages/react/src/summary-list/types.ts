@@ -1,5 +1,5 @@
-import { ComponentPropsWithoutRef, ReactNode, TdHTMLAttributes } from 'react';
-import { LinkProps } from '../link/link.js';
+import type { ComponentPropsWithoutRef, ReactNode, TdHTMLAttributes } from 'react';
+import type { LinkProps } from '../link/link.js';
 
 export type SummaryListItem = {
   key: string;

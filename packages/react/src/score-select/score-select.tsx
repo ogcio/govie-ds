@@ -2,13 +2,9 @@
 import React, { useId } from 'react';
 import { ButtonGroup, ButtonGroupItem } from '../button-group/button-group.js';
 import { cn } from '../cn.js';
-import {
-  FormField,
-  FormFieldHint,
-  FormFieldLabel,
-} from '../forms/form-field/form-field.js';
+import { FormField, FormFieldHint, FormFieldLabel } from '../forms/form-field/form-field.js';
 import { Breakpoint, useBreakpoint } from '../hooks/use-breakpoint.js';
-import { ScoreSelectProps } from './type.js';
+import type { ScoreSelectProps } from './type.js';
 
 export const ScoreSelect: React.FC<ScoreSelectProps> = ({
   name,
@@ -27,8 +23,7 @@ export const ScoreSelect: React.FC<ScoreSelectProps> = ({
   const labelId = `${controlId}-label`;
   const hintId = hint ? `${controlId}-hint` : undefined;
   const { breakpoint } = useBreakpoint();
-  const isMobile =
-    breakpoint === Breakpoint.ExtraSmall || breakpoint === Breakpoint.Small;
+  const isMobile = breakpoint === Breakpoint.ExtraSmall || breakpoint === Breakpoint.Small;
 
   let scoreOptions: { value: string; label: string }[] = [];
 
@@ -73,8 +68,7 @@ export const ScoreSelect: React.FC<ScoreSelectProps> = ({
     }
   }
 
-  const isVerticalOrientation =
-    orientation === 'vertical' || (isMobile && !wrapInMobile);
+  const isVerticalOrientation = orientation === 'vertical' || (isMobile && !wrapInMobile);
 
   const getButtonGroupClass = () => {
     if (isVerticalOrientation) {
@@ -90,10 +84,7 @@ export const ScoreSelect: React.FC<ScoreSelectProps> = ({
       scoreOptions.length > 2 &&
       orientation === 'horizontal' &&
       !isVerticalOrientation && (
-        <div
-          className={cn('gi-score-select-labels-responsive')}
-          aria-hidden="true"
-        >
+        <div className={cn('gi-score-select-labels-responsive')} aria-hidden="true">
           <div>
             {scoreOptions[0]?.label} – {leftLabel}
           </div>

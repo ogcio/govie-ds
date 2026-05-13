@@ -78,8 +78,7 @@ export const NPS: Story = {
   name: 'Net Promoter Score (0–10)',
   args: {
     name: 'nps',
-    label:
-      'How likely are you to recommend our service to a friend or colleague?',
+    label: 'How likely are you to recommend our service to a friend or colleague?',
     hint: 'Description',
     size: 'large',
     type: '0-10',
@@ -95,8 +94,7 @@ export const NPS: Story = {
 export const Vertical: Story = {
   args: {
     name: 'nps',
-    label:
-      'How likely are you to recommend our service to a friend or colleague?',
+    label: 'How likely are you to recommend our service to a friend or colleague?',
     hint: 'Description',
     size: 'large',
     type: '0-10',

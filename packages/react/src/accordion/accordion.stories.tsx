@@ -3,7 +3,8 @@ import { waitFor } from 'storybook/test';
 import Button from '../atoms/Button';
 import { sleep } from '../test-utilities.js';
 import { AccordionItem } from './accordion-item.js';
-import { Accordion, AccordionProps } from './accordion.js';
+import type { AccordionProps } from './accordion.js';
+import { Accordion } from './accordion.js';
 
 const meta = {
   title: 'Layout/Accordion',
@@ -20,27 +21,22 @@ const meta = {
 export default meta;
 
 const headerByText = (root: HTMLElement, text: string) => {
-  const headers = [
-    ...root.querySelectorAll<HTMLElement>('[data-testid="accordion-header"]'),
-  ];
+  const headers = [...root.querySelectorAll<HTMLElement>('[data-testid="accordion-header"]')];
   return headers.find((h) => h.textContent?.includes(text)) ?? null;
 };
 
 const itemRootFromHeader = (h: HTMLElement | null) =>
   (h && h.closest<HTMLElement>('[data-testid="accordion-item"]')) || null;
 
-const panelFromItemRoot = (root: HTMLElement | null) =>
-  (root?.nextElementSibling as HTMLElement | null) ?? null;
+const panelFromItemRoot = (root: HTMLElement | null) => (root?.nextElementSibling as HTMLElement | null) ?? null;
 
-const isVisible = (element: HTMLElement | null) =>
-  !!element && globalThis.getComputedStyle(element).display !== 'none';
+const isVisible = (element: HTMLElement | null) => !!element && globalThis.getComputedStyle(element).display !== 'none';
 
 export const Default = {
   argTypes: {
     children: {
       control: 'array', // `children` is expected to be an array of React elements
-      description:
-        'The content that will be inserted into the accordion (AccordionItem components)',
+      description: 'The content that will be inserted into the accordion (AccordionItem components)',
       table: {
         type: { summary: 'React.ReactElement<typeof AccordionItem>[]' },
       },
@@ -48,54 +44,39 @@ export const Default = {
     variant: {
       control: 'radio',
       options: ['default', 'small'],
-      description:
-        'Defines the padding and style for the Accordion (default or small)',
+      description: 'Defines the padding and style for the Accordion (default or small)',
     },
   },
   render: (props: AccordionProps) => (
     <Accordion {...props}>
       <AccordionItem label="What is the Citizens Information Service?">
-        The Citizens Information Service provides information on public services
-        and entitlements. It helps citizens access services like social welfare,
-        health services, and more.
+        The Citizens Information Service provides information on public services and entitlements. It helps citizens
+        access services like social welfare, health services, and more.
       </AccordionItem>
       <AccordionItem label="How can I apply for social welfare benefits?">
-        To apply for social welfare benefits, you need to fill out an
-        application form, provide necessary documentation, and submit it online
-        or at your local office.
+        To apply for social welfare benefits, you need to fill out an application form, provide necessary documentation,
+        and submit it online or at your local office.
       </AccordionItem>
       <AccordionItem label="How do I get a public service card?">
-        To obtain a public service card, you need to visit a local service
-        center with identification documents and proof of address.
+        To obtain a public service card, you need to visit a local service center with identification documents and
+        proof of address.
       </AccordionItem>
-      <AccordionItem
-        disabled
-        label="Can I get financial assistance during a crisis?"
-      >
+      <AccordionItem disabled label="Can I get financial assistance during a crisis?">
         <Button>Learn More About Financial Assistance</Button>
       </AccordionItem>
     </Accordion>
   ),
   play: async ({ canvasElement, step }: any) => {
     await step('renders multiple items', async () => {
-      const h1 = headerByText(
-        canvasElement,
-        'What is the Citizens Information Service?',
-      );
-      const h2 = headerByText(
-        canvasElement,
-        'How can I apply for social welfare benefits?',
-      );
+      const h1 = headerByText(canvasElement, 'What is the Citizens Information Service?');
+      const h2 = headerByText(canvasElement, 'How can I apply for social welfare benefits?');
       if (!h1 || !h2) {
         throw new Error('Expected primary accordion headers not found');
       }
     });
 
     await step('toggles an enabled item', async () => {
-      const header = headerByText(
-        canvasElement,
-        'How can I apply for social welfare benefits?',
-      );
+      const header = headerByText(canvasElement, 'How can I apply for social welfare benefits?');
       const root = itemRootFromHeader(header);
       const panel = panelFromItemRoot(root);
       if (!header || !root || !panel) {
@@ -113,10 +94,7 @@ export const Default = {
     });
 
     await step('disabled item does not toggle', async () => {
-      const disabledHeader = headerByText(
-        canvasElement,
-        'Can I get financial assistance during a crisis?',
-      );
+      const disabledHeader = headerByText(canvasElement, 'Can I get financial assistance during a crisis?');
       const root = itemRootFromHeader(disabledHeader);
       const panel = panelFromItemRoot(root);
       if (!disabledHeader || !root || !panel) {
@@ -146,23 +124,18 @@ export const SmallVariant = {
   render: (props: AccordionProps) => (
     <Accordion {...props}>
       <AccordionItem label="What is the Citizens Information Service?">
-        The Citizens Information Service provides information on public services
-        and entitlements. It helps citizens access services like social welfare,
-        health services, and more.
+        The Citizens Information Service provides information on public services and entitlements. It helps citizens
+        access services like social welfare, health services, and more.
       </AccordionItem>
       <AccordionItem label="How can I apply for social welfare benefits?">
-        To apply for social welfare benefits, you need to fill out an
-        application form, provide necessary documentation, and submit it online
-        or at your local office.
+        To apply for social welfare benefits, you need to fill out an application form, provide necessary documentation,
+        and submit it online or at your local office.
       </AccordionItem>
       <AccordionItem label="How do I get a public service card?">
-        To obtain a public service card, you need to visit a local service
-        center with identification documents and proof of address.
+        To obtain a public service card, you need to visit a local service center with identification documents and
+        proof of address.
       </AccordionItem>
-      <AccordionItem
-        disabled
-        label="Can I get financial assistance during a crisis?"
-      >
+      <AccordionItem disabled label="Can I get financial assistance during a crisis?">
         <Button>Learn More About Financial Assistance</Button>
       </AccordionItem>
     </Accordion>
@@ -173,20 +146,16 @@ export const WithLongTitle: StoryObj<AccordionProps> = {
   render: (props: AccordionProps) => (
     <Accordion {...props}>
       <AccordionItem label="This is a very long accordion label designed to wrap across multiple lines to validate vertical alignment between the text block and the trailing chevron icon within the header area of the component">
-        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Maiores minus
-        eveniet ex officiis accusantium sint eius deleniti cumque? Iste
-        voluptatum omnis harum quaerat eius praesentium a at perferendis
-        quisquam hic.
+        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Maiores minus eveniet ex officiis accusantium sint
+        eius deleniti cumque? Iste voluptatum omnis harum quaerat eius praesentium a at perferendis quisquam hic.
       </AccordionItem>
 
       <AccordionItem
         disabled
         label="Disabled item with a label so long it must wrap at least twice to confirm that disabled styles don’t break the alignment and spacing behavior for the icon or the text"
       >
-        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Maiores minus
-        eveniet ex officiis accusantium sint eius deleniti cumque? Iste
-        voluptatum omnis harum quaerat eius praesentium a at perferendis
-        quisquam hic.
+        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Maiores minus eveniet ex officiis accusantium sint
+        eius deleniti cumque? Iste voluptatum omnis harum quaerat eius praesentium a at perferendis quisquam hic.
       </AccordionItem>
     </Accordion>
   ),

@@ -7,10 +7,7 @@ import type { CharacterCountProps } from './types.js';
  * CharacterCount displays the remaining character count for textarea-based
  * inputs, such as the TextArea component.
  */
-export const CharacterCount: React.FC<CharacterCountProps> = ({
-  maxChars,
-  value,
-}) => {
+export const CharacterCount: React.FC<CharacterCountProps> = ({ maxChars, value }) => {
   const remainingChars = Math.max(0, maxChars - (value?.length ?? 0));
 
   return (

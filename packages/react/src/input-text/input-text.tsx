@@ -6,49 +6,43 @@ import type { IconId } from '../icon/icon.js';
 import { Icon } from '../icon/icon.js';
 import { IconButton } from '../icon-button/icon-button.js';
 import { Input as PrimitiveInput } from '../primitives/input.js';
-import type {
-  InputActionButtonProps,
-  InputTextProps,
-  InputTextTableCellProps,
-} from './type.js';
+import type { InputActionButtonProps, InputTextProps, InputTextTableCellProps } from './type.js';
 
-const InputTextWithClear = forwardRef<HTMLInputElement, InputTextProps>(
-  ({ onChange, ...props }, externalRef) => {
-    const inputRef = useRef<HTMLInputElement | null>(null);
+const InputTextWithClear = forwardRef<HTMLInputElement, InputTextProps>(({ onChange, ...props }, externalRef) => {
+  const inputRef = useRef<HTMLInputElement | null>(null);
 
-    useImperativeHandle(externalRef, () => inputRef.current!);
+  useImperativeHandle(externalRef, () => inputRef.current!);
 
-    const handleOnReset = () => {
-      if (inputRef?.current) {
-        inputRef.current.value = '';
-        inputRef.current.focus();
-      }
+  const handleOnReset = () => {
+    if (inputRef?.current) {
+      inputRef.current.value = '';
+      inputRef.current.focus();
+    }
 
-      const newInputEvent = {
-        target: inputRef.current,
-        currentTarget: inputRef.current,
-        __origin: 'clear_button',
-      } as unknown as React.ChangeEvent<HTMLInputElement>;
+    const newInputEvent = {
+      target: inputRef.current,
+      currentTarget: inputRef.current,
+      __origin: 'clear_button',
+    } as unknown as React.ChangeEvent<HTMLInputElement>;
 
-      if (onChange) {
-        onChange(newInputEvent);
-      }
-    };
+    if (onChange) {
+      onChange(newInputEvent);
+    }
+  };
 
-    return (
-      <Input
-        {...props}
-        onChange={onChange}
-        ref={inputRef}
-        inputActionButton={{
-          icon: 'close',
-          onClick: handleOnReset,
-          ariaLabel: 'Clear input', // TODO I18N: translation
-        }}
-      />
-    );
-  },
-);
+  return (
+    <Input
+      {...props}
+      onChange={onChange}
+      ref={inputRef}
+      inputActionButton={{
+        icon: 'close',
+        onClick: handleOnReset,
+        ariaLabel: 'Clear input', // TODO I18N: translation
+      }}
+    />
+  );
+});
 
 const Input = forwardRef<HTMLInputElement, InputTextProps>(
   (
@@ -77,11 +71,7 @@ const Input = forwardRef<HTMLInputElement, InputTextProps>(
     const renderActionButton = useMemo(() => {
       if (inputActionButton && inputActionPosition === 'beforeSuffix') {
         return (
-          <div
-            className="gi-input-text-action-before-suffix"
-            data-suffix={!!suffix}
-            data-has-icon-end={!!iconEnd}
-          >
+          <div className="gi-input-text-action-before-suffix" data-suffix={!!suffix} data-has-icon-end={!!iconEnd}>
             <InputActionButton {...inputActionButton} disabled={disabled} />
           </div>
         );
@@ -90,10 +80,7 @@ const Input = forwardRef<HTMLInputElement, InputTextProps>(
     }, [inputActionButton]);
 
     return (
-      <div
-        className={cn(className, 'gi-input-text-container')}
-        {...containerProps}
-      >
+      <div className={cn(className, 'gi-input-text-container')} {...containerProps}>
         {prefix && (
           <div className="gi-input-text-prefix" data-disabled={disabled}>
             {prefix}
@@ -111,11 +98,7 @@ const Input = forwardRef<HTMLInputElement, InputTextProps>(
               data-prefix={!!prefix}
             >
               {typeof iconStart === 'string' ? (
-                <Icon
-                  icon={iconStart as IconId}
-                  size="md"
-                  disabled={disabled}
-                />
+                <Icon icon={iconStart as IconId} size="md" disabled={disabled} />
               ) : (
                 iconStart
               )}
@@ -137,18 +120,12 @@ const Input = forwardRef<HTMLInputElement, InputTextProps>(
           {iconEnd && (
             <div
               className={cn('gi-input-text-icon-end', iconEndClassName)}
-              data-end-element={
-                !!inputActionButton && inputActionPosition === 'afterSuffix'
-              }
+              data-end-element={!!inputActionButton && inputActionPosition === 'afterSuffix'}
               data-suffix={!!suffix}
               onClick={onIconEndClick}
               ref={iconEndRef}
             >
-              {typeof iconEnd === 'string' ? (
-                <Icon icon={iconEnd as IconId} size="md" disabled={disabled} />
-              ) : (
-                iconEnd
-              )}
+              {typeof iconEnd === 'string' ? <Icon icon={iconEnd as IconId} size="md" disabled={disabled} /> : iconEnd}
             </div>
           )}
           {renderActionButton}
@@ -168,13 +145,7 @@ const Input = forwardRef<HTMLInputElement, InputTextProps>(
   },
 );
 
-export const InputActionButton = ({
-  onClick,
-  ariaLabel,
-  icon,
-  dataTestId,
-  ...props
-}: InputActionButtonProps) => {
+export const InputActionButton = ({ onClick, ariaLabel, icon, dataTestId, ...props }: InputActionButtonProps) => {
   return (
     <IconButton
       {...props}
@@ -193,8 +164,7 @@ export const InputActionButton = ({
 
 export const InputText = forwardRef<HTMLInputElement, InputTextProps>(
   ({ type = 'text', clearButtonEnabled, ...props }, ref) => {
-    const showInputTextWithClearButton =
-      clearButtonEnabled || type === 'search';
+    const showInputTextWithClearButton = clearButtonEnabled || type === 'search';
 
     if (showInputTextWithClearButton) {
       return <InputTextWithClear ref={ref} type={type} {...props} />;
@@ -206,18 +176,17 @@ export const InputText = forwardRef<HTMLInputElement, InputTextProps>(
 
 InputText.displayName = 'InputText';
 
-export const InputTextTableCell = forwardRef<
-  HTMLInputElement,
-  InputTextTableCellProps
->(({ type = 'text', error, ...props }, ref) => (
-  <InputText
-    {...props}
-    containerProps={{
-      'data-table-cell': true,
-      'data-table-cell-error-state': error?.toString(),
-    }}
-    autoComplete="off"
-    ref={ref}
-    type={type}
-  />
-));
+export const InputTextTableCell = forwardRef<HTMLInputElement, InputTextTableCellProps>(
+  ({ type = 'text', error, ...props }, ref) => (
+    <InputText
+      {...props}
+      containerProps={{
+        'data-table-cell': true,
+        'data-table-cell-error-state': error?.toString(),
+      }}
+      autoComplete="off"
+      ref={ref}
+      type={type}
+    />
+  ),
+);

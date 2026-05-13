@@ -48,10 +48,7 @@ export const Tag = ({
   className,
   ...props
 }: TagProps) => (
-  <strong
-    {...props}
-    className={clsx('gi-tag', tagClass[type], tagSizeClass[size], className)}
-  >
+  <strong {...props} className={clsx('gi-tag', tagClass[type], tagSizeClass[size], className)}>
     {text}
   </strong>
 );

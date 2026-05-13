@@ -11,13 +11,12 @@ export default {
   getTargetPath: () => '.',
   commonOptions: {
     typescript: true,
-    plugins: [annotation],
   },
   options: {
     react: {
       typescript: true,
       prettier: false,
-      plugins: [fixForwardRef, normalizeReactSvgAttrs, prettierFormat],
+      plugins: [fixForwardRef, normalizeReactSvgAttrs, annotation, prettierFormat],
     },
   },
 } satisfies MitosisConfig;

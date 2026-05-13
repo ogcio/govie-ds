@@ -6,30 +6,22 @@ export const HtmlContent = (
   <>
     <DrawerBody>
       <p className="gi-paragraph-md">
-        Lorem ipsum dolor sit amet consectetur, adipisicing elit. Aperiam
-        molestias error accusantium non nobis excepturi doloremque dolorem
-        possimus corrupti. Nostrum quisquam est voluptate! Iure suscipit,
-        commodi cupiditate sit minima veritatis.
+        Lorem ipsum dolor sit amet consectetur, adipisicing elit. Aperiam molestias error accusantium non nobis
+        excepturi doloremque dolorem possimus corrupti. Nostrum quisquam est voluptate! Iure suscipit, commodi
+        cupiditate sit minima veritatis.
       </p>
     </DrawerBody>
     <DrawerFooter className="gi-flex gi-gap-6 gi-justify-end">
       <>
-        <button className="gi-btn gi-btn-secondary gi-btn-secondary-dark gi-btn-regular">
-          Cancel
-        </button>
-        <button className="gi-btn gi-btn-primary gi-btn-regular">
-          Primary
-        </button>
+        <button className="gi-btn gi-btn-secondary gi-btn-secondary-dark gi-btn-regular">Cancel</button>
+        <button className="gi-btn gi-btn-primary gi-btn-regular">Primary</button>
       </>
     </DrawerFooter>
   </>
 );
 
 export const TriggerButton = (
-  <button
-    data-testid="trigger-button-container"
-    className="gi-btn gi-btn-primary gi-btn-regular"
-  >
+  <button data-testid="trigger-button-container" className="gi-btn gi-btn-primary gi-btn-regular">
     Open Modal
   </button>
 );
@@ -55,9 +47,7 @@ export const DrawerMenuExample = () => {
   ];
 
   const MenuHeading = ({ children }: any) => (
-    <li className="gi-py-4 gi-text-sm gi-font-bold gi-text-brand-neutral-600">
-      {children}
-    </li>
+    <li className="gi-py-4 gi-text-sm gi-font-bold gi-text-brand-neutral-600">{children}</li>
   );
 
   return (
@@ -74,11 +64,7 @@ export const DrawerMenuExample = () => {
       <MenuHeading>Secondary items</MenuHeading>
       {secondaryItems?.map((link: any, index: number) => (
         <li key={`navLink-${link.label}-${index}`}>
-          <ListItem
-            href={link.href}
-            label={link.label}
-            external={link.external}
-          />
+          <ListItem href={link.href} label={link.label} external={link.external} />
         </li>
       ))}
     </ul>

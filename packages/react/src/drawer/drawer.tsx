@@ -7,16 +7,11 @@ import { cn } from '../cn.js';
 import { ModalWrapper, ModalBody, ModalFooter } from '../modal/modal.js';
 import type { ModalProps, ModalWrapperProps } from '../modal/types.js';
 
-type DrawerChildren =
-  | Array<ReactElement<typeof DrawerBody | typeof DrawerBody>>
-  | ReactElement<typeof Fragment>;
+type DrawerChildren = Array<ReactElement<typeof DrawerBody | typeof DrawerBody>> | ReactElement<typeof Fragment>;
 
 export type DrawerPosition = 'left' | 'right' | 'bottom';
 
-export type DrawerProps = Omit<
-  ModalProps,
-  'closeOnClick' | 'closeOnOverlayClick' | 'size'
-> & {
+export type DrawerProps = Omit<ModalProps, 'closeOnClick' | 'closeOnOverlayClick' | 'size'> & {
   position?: DrawerPosition;
   children: DrawerChildren;
 };
@@ -36,17 +31,9 @@ export type DrawerWrapperProps = ModalWrapperProps & {
   children: DrawerChildren;
 };
 
-export const DrawerWrapper = ({
-  children,
-  className,
-  ...props
-}: DrawerWrapperProps) => {
+export const DrawerWrapper = ({ children, className, ...props }: DrawerWrapperProps) => {
   return (
-    <ModalWrapper
-      className={cn('gi-flex gi-flex-col', className)}
-      closeButtonSize="large"
-      {...props}
-    >
+    <ModalWrapper className={cn('gi-flex gi-flex-col', className)} closeButtonSize="large" {...props}>
       {children}
     </ModalWrapper>
   );
@@ -69,8 +56,7 @@ export const Drawer = ({
     dataTestId: 'drawer-trigger-button-container',
     onClick: (event: React.MouseEvent) => {
       const existingOnClick =
-        typeof (triggerButton as ReactElement<any>)?.props?.onClick ===
-        'function'
+        typeof (triggerButton as ReactElement<any>)?.props?.onClick === 'function'
           ? (triggerButton as ReactElement<any>)?.props?.onClick
           : undefined;
 
@@ -105,10 +91,7 @@ Object.defineProperty(Drawer, 'componentType', {
 export const DrawerBody = ({ children, className }: DrawerBodySectionProps) => (
   <ModalBody
     includeModalClass={false}
-    className={cn(
-      'gi-px-6 gi-pt-1 gi-flex-1 gi-border-t-xs gi-border-gray-100 gi-overflow-y-auto',
-      className,
-    )}
+    className={cn('gi-px-6 gi-pt-1 gi-flex-1 gi-border-t-xs gi-border-gray-100 gi-overflow-y-auto', className)}
   >
     {children}
   </ModalBody>
@@ -120,11 +103,7 @@ Object.defineProperty(DrawerBody, 'componentType', {
   enumerable: false,
 });
 
-export const DrawerFooter = ({
-  children,
-  className,
-  stacked,
-}: DrawerSectionProps) => (
+export const DrawerFooter = ({ children, className, stacked }: DrawerSectionProps) => (
   <ModalFooter stacked={stacked} className={cn('gi-drawer-footer', className)}>
     {children}
   </ModalFooter>

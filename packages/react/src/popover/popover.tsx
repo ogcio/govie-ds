@@ -2,7 +2,7 @@
 import { createPopper, type Options } from '@popperjs/core';
 import { useRef, useEffect } from 'react';
 import { cn } from '../cn.js';
-import { PopoverProps } from './types.js';
+import type { PopoverProps } from './types.js';
 import { createDynamicHeightModifier } from './utilities.js';
 
 export const Popover = ({
@@ -116,9 +116,7 @@ export const Popover = ({
 
     const getAllAnchorElements = () => {
       const base = triggerRef?.current ?? null;
-      const extras = extraRefs
-        .map((reference) => reference?.current ?? null)
-        .filter(Boolean) as HTMLElement[];
+      const extras = extraRefs.map((reference) => reference?.current ?? null).filter(Boolean) as HTMLElement[];
       return { base, extras };
     };
 
@@ -127,9 +125,7 @@ export const Popover = ({
       const popoverElement = popoverRef.current;
       const { base, extras } = getAllAnchorElements();
 
-      const insidePopover = Boolean(
-        popoverElement && popoverElement.contains(target),
-      );
+      const insidePopover = Boolean(popoverElement && popoverElement.contains(target));
       const insideTrigger = Boolean(base && base.contains(target));
       let insideExtras = false;
 

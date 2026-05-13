@@ -1,12 +1,9 @@
 'use client';
 import { Link } from '../link/link.js';
 import { useSummaryListContext } from './summary-list-context.js';
-import { SummaryListActionProps } from './types.js';
+import type { SummaryListActionProps } from './types.js';
 
-export const SummaryListAction = ({
-  children,
-  ...props
-}: SummaryListActionProps) => {
+export const SummaryListAction = ({ children, ...props }: SummaryListActionProps) => {
   useSummaryListContext();
   return <Link {...props}>{children}</Link>;
 };

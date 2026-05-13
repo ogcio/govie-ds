@@ -10,8 +10,7 @@ const meta = {
   parameters: {
     docs: {
       description: {
-        component:
-          'Component for cookies to inform and ask the users for their consent',
+        component: 'Component for cookies to inform and ask the users for their consent',
       },
     },
   },
@@ -25,8 +24,7 @@ export const Default: Story = {
   argTypes: {
     children: {
       control: 'text',
-      description:
-        'The content that will be inserted the the default cookie banner',
+      description: 'The content that will be inserted the the default cookie banner',
     },
     cookieLink: {
       control: 'text',
@@ -44,8 +42,7 @@ export const Default: Story = {
           We use some essential cookies to make this service work.
           <br />
           <br />
-          We’d also like to use analytics cookies so we can understand how you
-          use the service and make improvements.
+          We’d also like to use analytics cookies so we can understand how you use the service and make improvements.
         </Paragraph>
       </>
     ),

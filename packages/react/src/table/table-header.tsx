@@ -1,17 +1,13 @@
 'use client';
-import { ThHTMLAttributes, Children } from 'react';
+import type { ThHTMLAttributes } from 'react';
+import { Children } from 'react';
 import { cn } from '../cn.js';
 import { Icon } from '../icon/icon.js';
-import { TableAlign, VerticalAlign } from './table.js';
+import type { TableAlign, VerticalAlign } from './table.js';
 
 type SortedType = 'asc' | 'desc' | false;
 
-export type TableHeaderSize =
-  | 'xs-fixed'
-  | 'sm-fixed'
-  | 'md-fixed'
-  | 'lg-flex'
-  | 'fluid';
+export type TableHeaderSize = 'xs-fixed' | 'sm-fixed' | 'md-fixed' | 'lg-flex' | 'fluid';
 
 interface TableHeaderProps extends ThHTMLAttributes<HTMLTableCellElement> {
   align?: TableAlign;
@@ -29,13 +25,7 @@ const getSortedIcon = (isChildrenString: boolean, sorted: SortedType) => {
   if (!sorted) {
     return <Icon inline icon="swap_vert" size="sm" />;
   }
-  return (
-    <Icon
-      inline
-      icon={sorted === 'asc' ? 'arrow_upward' : 'arrow_downward'}
-      size="sm"
-    />
-  );
+  return <Icon inline icon={sorted === 'asc' ? 'arrow_upward' : 'arrow_downward'} size="sm" />;
 };
 
 export function TableHeader({
@@ -86,14 +76,9 @@ export function TableHeader({
   }
   return (
     <th
-      className={cn(
-        alignmentClass,
-        verticalAlignmentClass,
-        'gi-table-th',
-        sizeClass,
-        className,
-        { 'gi-w-12': !isChildrenString },
-      )}
+      className={cn(alignmentClass, verticalAlignmentClass, 'gi-table-th', sizeClass, className, {
+        'gi-w-12': !isChildrenString,
+      })}
       role={role}
       data-sorted={!!onSort}
       data-header-string={isChildrenString}

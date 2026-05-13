@@ -35,8 +35,7 @@ export const Default: Story = {
     },
     ariaLabel: {
       control: 'text',
-      description:
-        'Define a string value that can be used to name an element (for accessibilty purposes)',
+      description: 'Define a string value that can be used to name an element (for accessibilty purposes)',
     },
     inline: {
       control: 'boolean',

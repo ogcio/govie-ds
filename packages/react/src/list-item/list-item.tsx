@@ -1,4 +1,4 @@
-import { AnchorHTMLAttributes } from 'react';
+import type { AnchorHTMLAttributes } from 'react';
 import { cn } from '../cn.js';
 import Anchor from '../primitives/anchor.js';
 
@@ -11,15 +11,7 @@ export type ListItemProps = AnchorHTMLAttributes<HTMLAnchorElement> & {
   slot?: React.ReactNode;
 };
 
-export function ListItem({
-  label,
-  href,
-  external,
-  bold,
-  slot,
-  className,
-  ...props
-}: ListItemProps) {
+export function ListItem({ label, href, external, bold, slot, className, ...props }: ListItemProps) {
   return (
     <Anchor
       aria-label={label}

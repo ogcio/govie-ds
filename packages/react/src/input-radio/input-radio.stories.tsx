@@ -2,11 +2,7 @@ import type { Meta, StoryObj } from '@storybook/react-vite';
 import { Controller, FormProvider, useForm } from 'react-hook-form';
 import { userEvent, within, expect } from 'storybook/test';
 import Button from '../atoms/Button';
-import {
-  FormField,
-  FormFieldError,
-  FormFieldLabel,
-} from '../forms/form-field/form-field.js';
+import { FormField, FormFieldError, FormFieldLabel } from '../forms/form-field/form-field.js';
 import { Link } from '../link/link.js';
 import { InputRadio } from './input-radio.js';
 
@@ -45,8 +41,7 @@ export const Default: Story = {
     hint: {
       control: 'text',
       type: 'string',
-      description:
-        'Additional text to inform the user about the Radio component',
+      description: 'Additional text to inform the user about the Radio component',
     },
     id: {
       control: 'text',
@@ -59,8 +54,7 @@ export const Default: Story = {
       description: 'The sizes for the Radio',
     },
     conditionalInput: {
-      description:
-        'Conditional input associated with the radio (see text input component)',
+      description: 'Conditional input associated with the radio (see text input component)',
     },
     checked: {
       control: 'boolean',
@@ -124,9 +118,7 @@ export const WithReactHookForm: Story = {
         <form onSubmit={onSubmit}>
           <FormField data-testid="form-field-id">
             {methods.formState.errors.contact && (
-              <FormFieldError dataTestid="error-msg">
-                {methods.formState.errors.contact.message}
-              </FormFieldError>
+              <FormFieldError dataTestid="error-msg">{methods.formState.errors.contact.message}</FormFieldError>
             )}
             <FormFieldLabel>Preferred contact</FormFieldLabel>
 
@@ -169,11 +161,7 @@ export const WithReactHookForm: Story = {
             <Button type="submit" dataTestId="submit-btn">
               Submit
             </Button>
-            <Button
-              type="button"
-              onClick={() => methods.reset()}
-              dataTestId="reset-btn"
-            >
+            <Button type="button" onClick={() => methods.reset()} dataTestId="reset-btn">
               Reset
             </Button>
           </div>

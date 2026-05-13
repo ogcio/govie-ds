@@ -39,12 +39,7 @@ function Alert({
 
   const AlertIcon = ALERT_VARIANT_ICONS[variant ?? 'info'];
   return (
-    <div
-      className={cn(base(), className, 'gi-not-prose')}
-      role="alert"
-      aria-live="assertive"
-      {...props}
-    >
+    <div className={cn(base(), className, 'gi-not-prose')} role="alert" aria-live="assertive" {...props}>
       {showIcon ? <AlertIcon className="gi-shrink-0 gi-block" /> : null}
 
       <div

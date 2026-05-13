@@ -1,5 +1,6 @@
 'use client';
-import { Children, ReactElement } from 'react';
+import type { ReactElement } from 'react';
+import { Children } from 'react';
 import { cn } from '../cn.js';
 import { useBreakpoint } from '../hooks/use-breakpoint.js';
 import { useDomId } from '../hooks/use-dom-id.js';
@@ -7,7 +8,7 @@ import { translate as t } from '../i18n/utility.js';
 import { getSpecialComponentType } from '../utilities.js';
 import { useSummaryListContext } from './summary-list-context.js';
 import { ActionList } from './summary-list-row.js';
-import { SummaryListActionProps, SummaryListHeaderProps } from './types.js';
+import type { SummaryListActionProps, SummaryListHeaderProps } from './types.js';
 
 export const SummaryListHeader = ({
   children,
@@ -53,10 +54,7 @@ export const SummaryListHeader = ({
             </span>
             <ActionList id={id}>
               {summaryListActions.map((action, index) => (
-                <span
-                  key={`${rowId}-a${index}`}
-                  className={cn({ 'gi-ml-4': index > 0 })}
-                >
+                <span key={`${rowId}-a${index}`} className={cn({ 'gi-ml-4': index > 0 })}>
                   {action}
                 </span>
               ))}
@@ -73,10 +71,7 @@ export const SummaryListHeader = ({
           </span>
           <ActionList id={id}>
             {summaryListActions.map((action, index) => (
-              <span
-                key={`${rowId}-a${index}`}
-                className={cn({ 'gi-ml-4': index > 0 })}
-              >
+              <span key={`${rowId}-a${index}`} className={cn({ 'gi-ml-4': index > 0 })}>
                 {action}
               </span>
             ))}

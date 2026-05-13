@@ -1,4 +1,4 @@
-import { ComponentPropsWithoutRef } from 'react';
+import type { ComponentPropsWithoutRef } from 'react';
 
 export type ToastHorizontalPosition = 'left' | 'center' | 'right';
 export type ToastVerticalPosition = 'top' | 'center' | 'bottom';

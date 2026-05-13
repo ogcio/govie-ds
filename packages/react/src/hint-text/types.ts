@@ -1,5 +1,5 @@
-import { PropsWithChildren } from 'react';
-import { HintSize } from './hint-text.js';
+import type { PropsWithChildren } from 'react';
+import type { HintSize } from './hint-text.js';
 
 export type HintSizeType = (typeof HintSize)[keyof typeof HintSize];
 

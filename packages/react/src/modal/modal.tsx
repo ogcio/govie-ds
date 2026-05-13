@@ -1,15 +1,6 @@
 'use client';
 import type { ReactNode, ReactElement } from 'react';
-import {
-  cloneElement,
-  Children,
-  isValidElement,
-  useState,
-  useRef,
-  useEffect,
-  useMemo,
-  useId,
-} from 'react';
+import { cloneElement, Children, isValidElement, useState, useRef, useEffect, useMemo, useId } from 'react';
 import { createPortal } from 'react-dom';
 import Heading, { type Props as HeadingProps } from '../Heading.js';
 import Button, { type Props as GiButtonProps } from '../atoms/Button';
@@ -19,11 +10,7 @@ import { useAriaHider } from '../hooks/use-aria-hider.js';
 import { useFocusTrap } from '../hooks/use-focus-trap.js';
 import { Icon, type IconSize } from '../icon/icon.js';
 import { IconButton } from '../icon-button/icon-button.js';
-import {
-  splitAriaProps,
-  getSpecialComponentType,
-  isSpecialComponent,
-} from '../utils/utilities.js';
+import { splitAriaProps, getSpecialComponentType, isSpecialComponent } from '../utils/utilities.js';
 
 import type {
   ModalCloseButtonProps,
@@ -34,20 +21,13 @@ import type {
   ModalHeaderProps,
 } from './types.js';
 
-const VARIANT_ORDER: Record<
-  NonNullable<ModalFooterButton['variant']>,
-  number
-> = {
+const VARIANT_ORDER: Record<NonNullable<ModalFooterButton['variant']>, number> = {
   flat: 0,
   secondary: 1,
   primary: 2,
 };
 
-const ModalCloseButton = ({
-  label,
-  size = 'sm',
-  ...props
-}: ModalCloseButtonProps) => {
+const ModalCloseButton = ({ label, size = 'sm', ...props }: ModalCloseButtonProps) => {
   const normalizedSize = normalizeSize(size);
   const iconSize: IconSize = normalizedSize === 'sm' ? 'sm' : 'md';
 
@@ -81,22 +61,10 @@ const ModalCloseButton = ({
   );
 };
 
-const ModalHeader = ({
-  closeButtonLabel,
-  modalTitle,
-  closeOnClick,
-  onClose,
-  closeButtonSize,
-}: ModalHeaderProps) => (
+const ModalHeader = ({ closeButtonLabel, modalTitle, closeOnClick, onClose, closeButtonSize }: ModalHeaderProps) => (
   <div className="gi-py-2  xs:gi-py-4">
     {modalTitle}
-    {closeOnClick && (
-      <ModalCloseButton
-        onClick={onClose}
-        label={closeButtonLabel}
-        size={closeButtonSize}
-      />
-    )}
+    {closeOnClick && <ModalCloseButton onClick={onClose} label={closeButtonLabel} size={closeButtonSize} />}
   </div>
 );
 
@@ -117,26 +85,18 @@ export const ModalWrapper = ({
 }: ModalWrapperProps) => {
   const modalRef = useRef<HTMLDivElement | null>(null);
   useAriaHider(modalRef, isOpen);
-  const [ariaProps, rest] = useMemo(
-    () => splitAriaProps(props as Record<string, unknown>),
-    [props],
-  );
+  const [ariaProps, rest] = useMemo(() => splitAriaProps(props as Record<string, unknown>), [props]);
 
   const allChildren = Children.toArray(children);
 
   const getChildrenByComponentType = (componentType: string) =>
-    allChildren.find(
-      (child) => getSpecialComponentType(child) === componentType,
-    ) as ReactElement | undefined;
+    allChildren.find((child) => getSpecialComponentType(child) === componentType) as ReactElement | undefined;
 
   const modalTitle = getChildrenByComponentType('ModalTitle');
-  const modalFooter =
-    getChildrenByComponentType('ModalFooter') ||
-    getChildrenByComponentType('DrawerFooter');
+  const modalFooter = getChildrenByComponentType('ModalFooter') || getChildrenByComponentType('DrawerFooter');
 
   const titleUid = useId();
-  const computedTitleId =
-    (modalTitle as any)?.props?.id || `gi-modal-title-${titleUid}`;
+  const computedTitleId = (modalTitle as any)?.props?.id || `gi-modal-title-${titleUid}`;
 
   const modalTitleClone = modalTitle
     ? cloneElement(modalTitle as ReactElement<HeadingProps>, {
@@ -152,8 +112,7 @@ export const ModalWrapper = ({
     : null;
 
   const contentChildren = allChildren.filter(
-    (child) =>
-      !isSpecialComponent(child, ['ModalTitle', 'ModalFooter', 'DrawerFooter']),
+    (child) => !isSpecialComponent(child, ['ModalTitle', 'ModalFooter', 'DrawerFooter']),
   );
 
   useEffect(() => {
@@ -180,9 +139,7 @@ export const ModalWrapper = ({
     }
 
     const handlePointerDown = (event: PointerEvent) => {
-      const container = (modalRef as any).current?.querySelector(
-        '.gi-modal-container-control',
-      ) as HTMLElement | null;
+      const container = (modalRef as any).current?.querySelector('.gi-modal-container-control') as HTMLElement | null;
       if (!container) {
         return;
       }
@@ -192,8 +149,7 @@ export const ModalWrapper = ({
     };
 
     document.addEventListener('pointerdown', handlePointerDown, true);
-    return () =>
-      document.removeEventListener('pointerdown', handlePointerDown, true);
+    return () => document.removeEventListener('pointerdown', handlePointerDown, true);
   }, [isOpen, closeOnClick, closeOnOverlayClick, onClose]);
 
   const Overlay = (
@@ -283,13 +239,7 @@ export const ModalBody = ({
   </div>
 );
 
-export const ModalFooter = ({
-  className,
-  children,
-  orientation,
-  dataModalSize,
-  stacked,
-}: ModalFooterProps) => {
+export const ModalFooter = ({ className, children, orientation, dataModalSize, stacked }: ModalFooterProps) => {
   const actionButtons = Array.isArray(children) ? children : [children];
   const filteredButtons = actionButtons.filter((actionButton) => {
     return (
@@ -306,10 +256,8 @@ export const ModalFooter = ({
   });
 
   const buttonClassName = cn({
-    'gi-justify-center sm:gi-justify-start':
-      !orientation && dataModalSize !== 'sm' && !stacked,
-    'gi-justify-center':
-      orientation === 'vertical' || dataModalSize === 'sm' || stacked,
+    'gi-justify-center sm:gi-justify-start': !orientation && dataModalSize !== 'sm' && !stacked,
+    'gi-justify-center': orientation === 'vertical' || dataModalSize === 'sm' || stacked,
     'gi-justify-start': orientation === 'horizontal',
   });
 
@@ -322,17 +270,10 @@ export const ModalFooter = ({
       })}
     >
       {sortedButtons.length > 0 && (
-        <div
-          data-orientation={orientation || 'unset'}
-          data-modal-size={dataModalSize}
-        >
+        <div data-orientation={orientation || 'unset'} data-modal-size={dataModalSize}>
           {sortedButtons.map((button, index) =>
             cloneElement(button, {
-              key:
-                button.key ||
-                button.props.id ||
-                button.props.dataTestId ||
-                `modal-footer-button-${index}`,
+              key: button.key || button.props.id || button.props.dataTestId || `modal-footer-button-${index}`,
               id: button.props.id || `modal-footer-button-${index}`,
               className: cn(button?.props?.className, buttonClassName),
             }),
@@ -374,12 +315,7 @@ const ModalPortal = ({
   return createPortal(children, document.body);
 };
 
-export const Modal = ({
-  children,
-  triggerButton,
-  startsOpen,
-  ...props
-}: ModalProps) => {
+export const Modal = ({ children, triggerButton, startsOpen, ...props }: ModalProps) => {
   const [isOpen, setIsOpen] = useState(!!startsOpen);
   const handleOpen = () => setIsOpen(true);
   const handleClose = () => setIsOpen(false);
@@ -393,12 +329,7 @@ export const Modal = ({
   return (
     <>
       {renderCloneTrigger}
-      <ModalWrapper
-        onClose={handleClose}
-        position="center"
-        isOpen={isOpen}
-        {...props}
-      >
+      <ModalWrapper onClose={handleClose} position="center" isOpen={isOpen} {...props}>
         {children}
       </ModalWrapper>
     </>

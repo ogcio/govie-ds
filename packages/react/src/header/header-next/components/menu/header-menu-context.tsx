@@ -1,10 +1,9 @@
 'use client';
 
 import { createContext, useContext, type ReactNode } from 'react';
-import { HeaderMenuSectionContextProps } from '../../../types.js';
+import type { HeaderMenuSectionContextProps } from '../../../types.js';
 
-const HeaderMenuSectionContext =
-  createContext<HeaderMenuSectionContextProps | null>(null);
+const HeaderMenuSectionContext = createContext<HeaderMenuSectionContextProps | null>(null);
 
 export function HeaderMenuSectionProvider({
   section,
@@ -13,19 +12,13 @@ export function HeaderMenuSectionProvider({
   section: HeaderMenuSectionContextProps;
   children: ReactNode;
 }) {
-  return (
-    <HeaderMenuSectionContext.Provider value={section}>
-      {children}
-    </HeaderMenuSectionContext.Provider>
-  );
+  return <HeaderMenuSectionContext.Provider value={section}>{children}</HeaderMenuSectionContext.Provider>;
 }
 
 export function useHeaderMenuSection(): HeaderMenuSectionContextProps {
   const value = useContext(HeaderMenuSectionContext);
   if (!value) {
-    throw new Error(
-      'useHeaderMenuSection must be used within HeaderMenuSectionProvider',
-    );
+    throw new Error('useHeaderMenuSection must be used within HeaderMenuSectionProvider');
   }
   return value;
 }

@@ -2,12 +2,7 @@
 import { useState, useEffect, Children, isValidElement } from 'react';
 import { cn } from '../cn.js';
 import { InternalTabItem } from './tab-item.js';
-import {
-  TabItemProps,
-  TabKeyboardEvent,
-  TabListProps,
-  TabMouseClickEvent,
-} from './types.js';
+import type { TabItemProps, TabKeyboardEvent, TabListProps, TabMouseClickEvent } from './types.js';
 
 export const TabList = ({
   children,
@@ -32,11 +27,7 @@ export const TabList = ({
     let checkedIndex = 0;
 
     Children.forEach(children, (child, index) => {
-      if (
-        isValidElement<TabItemProps>(child) &&
-        'checked' in child.props &&
-        child.props.checked === true
-      ) {
+      if (isValidElement<TabItemProps>(child) && 'checked' in child.props && child.props.checked === true) {
         checkedIndex = index;
         foundCheckedTab = true;
       }
@@ -59,21 +50,17 @@ export const TabList = ({
       return;
     }
 
-    const tabPanels =
-      tabSection.querySelectorAll<HTMLElement>('[role="tabpanel"]');
+    const tabPanels = tabSection.querySelectorAll<HTMLElement>('[role="tabpanel"]');
 
     for (const tabPanel of tabPanels) {
       tabPanel.style.display = 'none';
       tabPanel.setAttribute('aria-hidden', 'true');
     }
 
-    const tabElements = [
-      ...tabSection.querySelectorAll<HTMLElement>('[role="tab"]'),
-    ];
+    const tabElements = [...tabSection.querySelectorAll<HTMLElement>('[role="tab"]')];
 
     const selectedTab = tabElements.find((tabElement) => {
-      const index =
-        tabElement.dataset.index ?? tabElement.getAttribute('index');
+      const index = tabElement.dataset.index ?? tabElement.getAttribute('index');
 
       if (index === null) {
         return;
@@ -106,8 +93,7 @@ export const TabList = ({
   }, [activeTab]);
 
   const handleOnTabClick =
-    (index: number, originalHandler?: (event: TabMouseClickEvent) => void) =>
-    (event: TabMouseClickEvent) => {
+    (index: number, originalHandler?: (event: TabMouseClickEvent) => void) => (event: TabMouseClickEvent) => {
       setActiveTab(index);
       if (originalHandler) {
         originalHandler(event);

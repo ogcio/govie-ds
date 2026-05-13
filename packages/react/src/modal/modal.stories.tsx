@@ -3,13 +3,7 @@ import { useState } from 'react';
 import { expect, within, waitFor, screen, userEvent } from 'storybook/test';
 import Button from '../atoms/Button';
 import Paragraph from '../atoms/Paragraph';
-import {
-  ModalTitle,
-  ModalBody,
-  ModalFooter,
-  Modal,
-  ModalWrapper,
-} from './modal.js';
+import { ModalTitle, ModalBody, ModalFooter, Modal, ModalWrapper } from './modal.js';
 
 const meta = {
   title: 'Application/Modal',
@@ -22,8 +16,7 @@ const meta = {
     layout: 'fullscreen',
     docs: {
       description: {
-        component:
-          'A modal component that displays content on a button trigger or on page load',
+        component: 'A modal component that displays content on a button trigger or on page load',
       },
     },
   },
@@ -53,9 +46,8 @@ export const Default: Story = {
         <ModalTitle key="title">Modal Title</ModalTitle>
         <ModalBody key="body">
           <Paragraph>
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Incidunt
-            esse magnam quis sit soluta cupiditate at deserunt exercitationem
-            voluptas doloribus asperiores.
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Incidunt esse magnam quis sit soluta cupiditate at
+            deserunt exercitationem voluptas doloribus asperiores.
           </Paragraph>
         </ModalBody>
         <ModalFooter key="footer">
@@ -70,16 +62,12 @@ export const Default: Story = {
     children: <></>,
   },
   play: async ({ step }) => {
-    await step(
-      'should render the modal on load if startsOpen is true',
-      async () => {
-        const modalElement = await screen.findByTestId('modal');
-        const modalContainerElement =
-          await screen.findByTestId('modal-container');
-        expect(modalElement.classList.contains('gi-modal-open')).toBe(true);
-        expect(Boolean(modalContainerElement)).toBe(true);
-      },
-    );
+    await step('should render the modal on load if startsOpen is true', async () => {
+      const modalElement = await screen.findByTestId('modal');
+      const modalContainerElement = await screen.findByTestId('modal-container');
+      expect(modalElement.classList.contains('gi-modal-open')).toBe(true);
+      expect(Boolean(modalContainerElement)).toBe(true);
+    });
   },
 };
 
@@ -97,17 +85,12 @@ export const StateControlledModal: Story = {
     return (
       <>
         <Button onClick={handleOpen}>Open Modal</Button>
-        <ModalWrapper
-          dataTestId="test-id"
-          isOpen={isOpen}
-          onClose={handleClose}
-        >
+        <ModalWrapper dataTestId="test-id" isOpen={isOpen} onClose={handleClose}>
           <ModalTitle key="title">Modal Title</ModalTitle>
           <ModalBody key="body">
             <Paragraph>
-              Lorem ipsum dolor sit amet consectetur adipisicing elit. Incidunt
-              esse magnam quis sit soluta cupiditate at deserunt exercitationem
-              voluptas doloribus asperiores.
+              Lorem ipsum dolor sit amet consectetur adipisicing elit. Incidunt esse magnam quis sit soluta cupiditate
+              at deserunt exercitationem voluptas doloribus asperiores.
             </Paragraph>
           </ModalBody>
           <ModalFooter key="footer">
@@ -124,17 +107,12 @@ export const StateControlledModal: Story = {
 
 export const WithoutFooter: Story = {
   render: (arguments_) => (
-    <Modal
-      {...arguments_}
-      startsOpen={shouldStartOpen()}
-      className="gi-w-[600px]"
-    >
+    <Modal {...arguments_} startsOpen={shouldStartOpen()} className="gi-w-[600px]">
       <ModalTitle key="title">Modal Title</ModalTitle>
       <ModalBody key="body">
         <Paragraph>
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Incidunt esse
-          magnam quis sit soluta cupiditate at deserunt exercitationem voluptas
-          doloribus asperiores.
+          Lorem ipsum dolor sit amet consectetur adipisicing elit. Incidunt esse magnam quis sit soluta cupiditate at
+          deserunt exercitationem voluptas doloribus asperiores.
         </Paragraph>
       </ModalBody>
     </Modal>
@@ -144,39 +122,26 @@ export const WithoutFooter: Story = {
 
 export const WithLongContent: Story = {
   render: (arguments_) => (
-    <Modal
-      {...arguments_}
-      startsOpen={shouldStartOpen()}
-      className="gi-w-[600px]"
-    >
+    <Modal {...arguments_} startsOpen={shouldStartOpen()} className="gi-w-[600px]">
       <ModalTitle key="title">Modal Title</ModalTitle>
       <ModalBody key="body">
         <Paragraph>
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Incidunt esse
-          magnam quis sit soluta cupiditate at deserunt exercitationem voluptas
-          doloribus asperiores. Lorem ipsum dolor sit amet consectetur
-          adipisicing elit. Incidunt esse magnam quis sit soluta cupiditate at
-          deserunt exercitationem voluptas doloribus asperiores. Lorem ipsum
-          dolor sit amet consectetur adipisicing elit. Incidunt esse magnam quis
-          sit soluta cupiditate at deserunt exercitationem voluptas doloribus
-          asperiores. Lorem ipsum dolor sit amet consectetur adipisicing elit.
-          Incidunt esse magnam quis sit soluta cupiditate at deserunt
-          exercitationem voluptas doloribus asperiores. Lorem ipsum dolor sit
-          amet consectetur adipisicing elit. Incidunt esse magnam quis sit
-          soluta cupiditate at deserunt exercitationem voluptas doloribus
-          asperiores. Lorem ipsum dolor sit amet consectetur adipisicing elit.
-          Incidunt esse magnam quis sit soluta cupiditate at deserunt
-          exercitationem voluptas doloribus asperiores. Lorem ipsum dolor sit
-          amet consectetur adipisicing elit. Incidunt esse magnam quis sit
-          soluta cupiditate at deserunt exercitationem voluptas doloribus
-          asperiores. Lorem ipsum dolor sit amet consectetur adipisicing elit.
-          Incidunt esse magnam quis sit soluta cupiditate at deserunt
-          exercitationem voluptas doloribus asperiores. Lorem ipsum dolor sit
-          amet consectetur adipisicing elit. Incidunt esse magnam quis sit
-          soluta cupiditate at deserunt exercitationem voluptas doloribus
-          asperiores. Lorem ipsum dolor sit amet consectetur adipisicing elit.
-          Incidunt esse magnam quis sit soluta cupiditate at deserunt
-          exercitationem voluptas doloribus asperiores.
+          Lorem ipsum dolor sit amet consectetur adipisicing elit. Incidunt esse magnam quis sit soluta cupiditate at
+          deserunt exercitationem voluptas doloribus asperiores. Lorem ipsum dolor sit amet consectetur adipisicing
+          elit. Incidunt esse magnam quis sit soluta cupiditate at deserunt exercitationem voluptas doloribus
+          asperiores. Lorem ipsum dolor sit amet consectetur adipisicing elit. Incidunt esse magnam quis sit soluta
+          cupiditate at deserunt exercitationem voluptas doloribus asperiores. Lorem ipsum dolor sit amet consectetur
+          adipisicing elit. Incidunt esse magnam quis sit soluta cupiditate at deserunt exercitationem voluptas
+          doloribus asperiores. Lorem ipsum dolor sit amet consectetur adipisicing elit. Incidunt esse magnam quis sit
+          soluta cupiditate at deserunt exercitationem voluptas doloribus asperiores. Lorem ipsum dolor sit amet
+          consectetur adipisicing elit. Incidunt esse magnam quis sit soluta cupiditate at deserunt exercitationem
+          voluptas doloribus asperiores. Lorem ipsum dolor sit amet consectetur adipisicing elit. Incidunt esse magnam
+          quis sit soluta cupiditate at deserunt exercitationem voluptas doloribus asperiores. Lorem ipsum dolor sit
+          amet consectetur adipisicing elit. Incidunt esse magnam quis sit soluta cupiditate at deserunt exercitationem
+          voluptas doloribus asperiores. Lorem ipsum dolor sit amet consectetur adipisicing elit. Incidunt esse magnam
+          quis sit soluta cupiditate at deserunt exercitationem voluptas doloribus asperiores. Lorem ipsum dolor sit
+          amet consectetur adipisicing elit. Incidunt esse magnam quis sit soluta cupiditate at deserunt exercitationem
+          voluptas doloribus asperiores.
         </Paragraph>
       </ModalBody>
       <ModalFooter key="footer">
@@ -194,9 +159,8 @@ export const WithAllFooterButtonVariants: Story = {
       <ModalTitle key="title">Modal Title</ModalTitle>
       <ModalBody key="body">
         <Paragraph>
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Incidunt esse
-          magnam quis sit soluta cupiditate at deserunt exercitationem voluptas
-          doloribus asperiores.
+          Lorem ipsum dolor sit amet consectetur adipisicing elit. Incidunt esse magnam quis sit soluta cupiditate at
+          deserunt exercitationem voluptas doloribus asperiores.
         </Paragraph>
       </ModalBody>
       <ModalFooter key="footer">
@@ -215,9 +179,8 @@ export const ModalNotCloseOnClick: Story = {
       <ModalTitle key="title">Modal Title</ModalTitle>
       <ModalBody key="body">
         <Paragraph>
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Incidunt esse
-          magnam quis sit soluta cupiditate at deserunt exercitationem voluptas
-          doloribus asperiores.
+          Lorem ipsum dolor sit amet consectetur adipisicing elit. Incidunt esse magnam quis sit soluta cupiditate at
+          deserunt exercitationem voluptas doloribus asperiores.
         </Paragraph>
       </ModalBody>
     </Modal>
@@ -227,17 +190,12 @@ export const ModalNotCloseOnClick: Story = {
 
 export const ModalNotCloseOnOverlayClick: Story = {
   render: (arguments_) => (
-    <Modal
-      {...arguments_}
-      startsOpen={shouldStartOpen()}
-      closeOnOverlayClick={false}
-    >
+    <Modal {...arguments_} startsOpen={shouldStartOpen()} closeOnOverlayClick={false}>
       <ModalTitle key="title">Modal Title</ModalTitle>
       <ModalBody key="body">
         <Paragraph>
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Incidunt esse
-          magnam quis sit soluta cupiditate at deserunt exercitationem voluptas
-          doloribus asperiores.
+          Lorem ipsum dolor sit amet consectetur adipisicing elit. Incidunt esse magnam quis sit soluta cupiditate at
+          deserunt exercitationem voluptas doloribus asperiores.
         </Paragraph>
       </ModalBody>
       <ModalFooter key="footer">
@@ -256,9 +214,8 @@ export const WithCenterLarge: Story = {
       <ModalTitle key="title">Modal Title</ModalTitle>
       <ModalBody key="body">
         <Paragraph>
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Incidunt esse
-          magnam quis sit soluta cupiditate at deserunt exercitationem voluptas
-          doloribus asperiores.
+          Lorem ipsum dolor sit amet consectetur adipisicing elit. Incidunt esse magnam quis sit soluta cupiditate at
+          deserunt exercitationem voluptas doloribus asperiores.
         </Paragraph>
       </ModalBody>
       <ModalFooter key="footer">
@@ -276,9 +233,8 @@ export const WithCenterMedium: Story = {
       <ModalTitle key="title">Modal Title</ModalTitle>
       <ModalBody key="body">
         <Paragraph>
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Incidunt esse
-          magnam quis sit soluta cupiditate at deserunt exercitationem voluptas
-          doloribus asperiores.
+          Lorem ipsum dolor sit amet consectetur adipisicing elit. Incidunt esse magnam quis sit soluta cupiditate at
+          deserunt exercitationem voluptas doloribus asperiores.
         </Paragraph>
       </ModalBody>
       <ModalFooter key="footer">
@@ -296,9 +252,8 @@ export const WithCenterSmall: Story = {
       <ModalTitle key="title">Modal Title</ModalTitle>
       <ModalBody key="body">
         <Paragraph>
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Incidunt esse
-          magnam quis sit soluta cupiditate at deserunt exercitationem voluptas
-          doloribus asperiores.
+          Lorem ipsum dolor sit amet consectetur adipisicing elit. Incidunt esse magnam quis sit soluta cupiditate at
+          deserunt exercitationem voluptas doloribus asperiores.
         </Paragraph>
       </ModalBody>
       <ModalFooter key="footer">
@@ -326,9 +281,7 @@ export const TestOpenOnTriggerAndCloseOnIcon: Story = {
     const canvas = within(canvasElement);
 
     await step('should open the modal on button trigger', async () => {
-      const triggerButtonElement = canvas.getByTestId(
-        'modal-trigger-button-container',
-      );
+      const triggerButtonElement = canvas.getByTestId('modal-trigger-button-container');
       triggerButtonElement.click();
       await waitFor(() => {
         const modalElement = document.querySelector('[data-testid="modal"]');
@@ -341,9 +294,7 @@ export const TestOpenOnTriggerAndCloseOnIcon: Story = {
 
     await step('should close the modal on icon click', async () => {
       const modalElement = await screen.findByTestId('modal');
-      const triggerButtonElement = screen.getByTestId(
-        'modal-trigger-button-container',
-      );
+      const triggerButtonElement = screen.getByTestId('modal-trigger-button-container');
       const closeButton = await screen.findByRole('button', {
         name: 'Close modal',
       });
@@ -357,9 +308,7 @@ export const TestOpenOnTriggerAndCloseOnIcon: Story = {
       });
 
       const modalContainerElement = screen.getByTestId('modal-container');
-      const iconElement = modalContainerElement.querySelector(
-        '.gi-modal-icon',
-      ) as HTMLElement;
+      const iconElement = modalContainerElement.querySelector('.gi-modal-icon') as HTMLElement;
       expect(iconElement).toBeVisible();
       iconElement.click();
     });
@@ -382,9 +331,7 @@ export const TestCloseOnOverlayClick: Story = {
     const canvas = within(canvasElement);
 
     await step('should close the modal on overlay click', async () => {
-      const triggerButtonElement = canvas.getByTestId(
-        'modal-trigger-button-container',
-      );
+      const triggerButtonElement = canvas.getByTestId('modal-trigger-button-container');
       triggerButtonElement.click();
 
       let modalElement = await screen.findByTestId('modal');
@@ -407,11 +354,7 @@ export const TestCloseOnOverlayClick: Story = {
 export const TestFooterButtonsOrder: Story = {
   tags: ['skip-playwright'],
   render: (arguments_) => (
-    <Modal
-      {...arguments_}
-      dataTestId="modal-footer"
-      startsOpen={shouldStartOpen()}
-    >
+    <Modal {...arguments_} dataTestId="modal-footer" startsOpen={shouldStartOpen()}>
       <ModalTitle key="title">Modal Title</ModalTitle>
       <ModalBody key="body">
         <Paragraph>Body</Paragraph>
@@ -430,26 +373,20 @@ export const TestFooterButtonsOrder: Story = {
   play: async ({ canvasElement, step }) => {
     const canvas = within(canvasElement);
 
-    await step(
-      'should render modal footer buttons in correct order',
-      async () => {
-        const triggerButtonElement = canvas.getByTestId(
-          'modal-trigger-button-container',
-        );
-        triggerButtonElement.click();
+    await step('should render modal footer buttons in correct order', async () => {
+      const triggerButtonElement = canvas.getByTestId('modal-trigger-button-container');
+      triggerButtonElement.click();
 
-        await waitFor(() => {
-          const footerContainerElement = screen.getByTestId('modal-footer');
-          const footerButtonsNodeList =
-            footerContainerElement.querySelectorAll('button');
-          expect(footerButtonsNodeList).toHaveLength(4);
-          const footerButtons = [...footerButtonsNodeList];
-          expect(footerButtons[0].dataset.testid).toBe('modal-close-button');
-          expect(footerButtons[1].textContent).toBe('Help');
-          expect(footerButtons[2].textContent).toBe('Cancel');
-          expect(footerButtons[3].textContent).toBe('Save');
-        });
-      },
-    );
+      await waitFor(() => {
+        const footerContainerElement = screen.getByTestId('modal-footer');
+        const footerButtonsNodeList = footerContainerElement.querySelectorAll('button');
+        expect(footerButtonsNodeList).toHaveLength(4);
+        const footerButtons = [...footerButtonsNodeList];
+        expect(footerButtons[0].dataset.testid).toBe('modal-close-button');
+        expect(footerButtons[1].textContent).toBe('Help');
+        expect(footerButtons[2].textContent).toBe('Cancel');
+        expect(footerButtons[3].textContent).toBe('Save');
+      });
+    });
   },
 };

@@ -1,18 +1,8 @@
-import {
-  useState,
-  useRef,
-  useEffect,
-  Children,
-  isValidElement,
-  ReactNode,
-  KeyboardEvent,
-  MouseEvent,
-  CSSProperties,
-  useLayoutEffect,
-} from 'react';
+import type { ReactNode, CSSProperties } from 'react';
+import { useState, useRef, useEffect, Children, isValidElement, useLayoutEffect } from 'react';
 import { cn } from '../cn.js';
 import { InternalTabItem } from './tab-item.js';
-import { TabItemProps, TabKeyboardEvent, TabMouseClickEvent } from './types.js';
+import type { TabItemProps, TabKeyboardEvent, TabMouseClickEvent } from './types.js';
 
 type ScrollableTabsProps = {
   children: ReactNode;
@@ -72,8 +62,7 @@ export const ScrollableTabs: React.FC<ScrollableTabsProps> = ({
   }, [activeTab]);
 
   const handleClick =
-    (index: number, original?: (event: TabMouseClickEvent) => void) =>
-    (event: TabMouseClickEvent) => {
+    (index: number, original?: (event: TabMouseClickEvent) => void) => (event: TabMouseClickEvent) => {
       setActiveTab(index);
 
       if (original) {
@@ -83,8 +72,7 @@ export const ScrollableTabs: React.FC<ScrollableTabsProps> = ({
       if (ariaControl) {
         for (const element of document.querySelectorAll(`[role="tabpanel"]`)) {
           if (element instanceof HTMLElement) {
-            element.style.display =
-              element.id === ariaControl ? 'block' : 'none';
+            element.style.display = element.id === ariaControl ? 'block' : 'none';
           }
         }
       }
@@ -129,19 +117,12 @@ export const ScrollableTabs: React.FC<ScrollableTabsProps> = ({
   };
 
   return (
-    <div
-      id={tabName}
-      ref={containerRef}
-      role="tablist"
-      className={cn('gi-tab-list ', className)}
-    >
+    <div id={tabName} ref={containerRef} role="tablist" className={cn('gi-tab-list ', className)}>
       {items}
       <span
         className={cn('gi-tab-indicator', {
-          'gi-bg-color-border-system-neutral-interactive-default':
-            appearance === 'dark',
-          'gi-bg-color-border-tone-primary-accent-selected':
-            appearance === 'default',
+          'gi-bg-color-border-system-neutral-interactive-default': appearance === 'dark',
+          'gi-bg-color-border-tone-primary-accent-selected': appearance === 'default',
         })}
         style={indicatorCss}
       />

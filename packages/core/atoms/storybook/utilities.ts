@@ -47,6 +47,13 @@ export function enumType<const T extends Readonly<Record<string, string>>>(
  * Returns an object with assertion methods for common play-function checks.
  */
 export const checker = (testId: string, canvas: ReturnType<typeof within>, step: StoryContext<Renderer>['step']) => ({
+  is: async (tag = 'div') =>
+    await step(`renders ${testId} as ${tag.toUpperCase()}`, async () => {
+      const element = canvas.getByTestId(testId);
+      expect(element).toBeInTheDocument();
+      expect(element.tagName).toBe(tag.toUpperCase());
+    }),
+
   children: async () =>
     await step('renders children', async () => {
       const element = canvas.getByTestId(testId);

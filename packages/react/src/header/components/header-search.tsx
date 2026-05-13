@@ -1,7 +1,7 @@
 import Heading from '../../Heading.js';
 import Button from '../../atoms/Button';
 import { translate as t } from '../../i18n/utility.js';
-import { IconId } from '../../icon/icon.js';
+import type { IconId } from '../../icon/icon.js';
 import { IconButton } from '../../icon-button/icon-button.js';
 import { InputText } from '../../input-text/input-text.js';
 
@@ -11,11 +11,7 @@ export type HeaderSearchProps = {
   icon?: IconId;
 };
 
-export function HeaderSearch({
-  action,
-  serverAction,
-  icon = 'search',
-}: HeaderSearchProps) {
+export function HeaderSearch({ action, serverAction, icon = 'search' }: HeaderSearchProps) {
   const ActionType = action || serverAction;
   return (
     <form
@@ -46,11 +42,7 @@ export function HeaderSearch({
           </Button>
         </div>
         <div className="gi-ml-1 gi-flex-none gi-block md:gi-hidden">
-          <IconButton
-            aria-label={t('header.search', { defaultValue: 'Search' })}
-            aria-hidden="true"
-            icon={{ icon }}
-          />
+          <IconButton aria-label={t('header.search', { defaultValue: 'Search' })} aria-hidden="true" icon={{ icon }} />
         </div>
       </div>
     </form>

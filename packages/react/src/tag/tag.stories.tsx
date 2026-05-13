@@ -22,8 +22,7 @@ export const Default: Story = {
   argTypes: {
     text: {
       control: 'text',
-      description:
-        'The text displayed inside the tag. This is the content of the tag, typically a status or label.',
+      description: 'The text displayed inside the tag. This is the content of the tag, typically a status or label.',
       table: {
         type: { summary: 'string' },
         defaultValue: { summary: 'Completed' },

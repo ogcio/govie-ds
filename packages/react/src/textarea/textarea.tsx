@@ -1,12 +1,6 @@
 'use client';
 import type { ChangeEvent, TextareaHTMLAttributes } from 'react';
-import React, {
-  forwardRef,
-  useEffect,
-  useImperativeHandle,
-  useRef,
-  useState,
-} from 'react';
+import React, { forwardRef, useEffect, useImperativeHandle, useRef, useState } from 'react';
 import { cn } from '../cn.js';
 import { HintText } from '../hint-text/hint-text.js';
 import { translate as t } from '../i18n/utility.js';
@@ -52,9 +46,7 @@ export const TextArea = forwardRef<HTMLTextAreaElement, TextAreaProps>(
     externalRef,
   ) => {
     const inputRef = useRef<HTMLTextAreaElement>(null);
-    const [remainingChars, setRemainingChars] = useState<undefined | number>(
-      maxChars,
-    );
+    const [remainingChars, setRemainingChars] = useState<undefined | number>(maxChars);
 
     useImperativeHandle(externalRef, () => inputRef.current!);
 

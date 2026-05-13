@@ -1,6 +1,8 @@
-import { Children, FC } from 'react';
+import type { FC } from 'react';
+import { Children } from 'react';
 import { cn } from '../cn.js';
 import { Icon } from '../icon/icon.js';
+import type { StepFillLevelType } from './types.js';
 import {
   ProgressStepperIndicator,
   StepStatus,
@@ -9,7 +11,6 @@ import {
   type ProgressStepperIndicatorType,
   type ProgressStepperProps,
   type StepItemProps,
-  StepFillLevelType,
 } from './types.js';
 
 const getVerticalConnectorHeight = (gap: number): string => {
@@ -26,10 +27,7 @@ const Connector = ({
   fill,
   useFill,
 }: ConnectorProps) => {
-  const connectorStyle =
-    orientation === 'vertical'
-      ? { height: getVerticalConnectorHeight(verticalGap) }
-      : undefined;
+  const connectorStyle = orientation === 'vertical' ? { height: getVerticalConnectorHeight(verticalGap) } : undefined;
   return (
     <div
       data-orientation={orientation}
@@ -71,9 +69,7 @@ const getProgressIconStep = (
   isCompleted: boolean,
   isCurrentStep: boolean,
 ) => {
-  const { current, completed, next } = getIndicatorClasses(
-    indicator || ProgressStepperIndicator.Hashtag,
-  );
+  const { current, completed, next } = getIndicatorClasses(indicator || ProgressStepperIndicator.Hashtag);
 
   if (isCompleted) {
     return completed;
@@ -105,8 +101,7 @@ export const Step = ({
   useFill?: boolean;
 }) => {
   const isNextStep = !isCompleted && !isCurrentStep;
-  const showVerticalSlots =
-    orientation === 'vertical' && (isCurrentStep || defaultOpen || isCompleted);
+  const showVerticalSlots = orientation === 'vertical' && (isCurrentStep || defaultOpen || isCompleted);
   const hasLabel = Boolean(children);
 
   return (
@@ -124,12 +119,7 @@ export const Step = ({
         aria-label={hasLabel ? undefined : ariaLabel}
       >
         <div className="gi-progress-stepper-step" data-indicator={indicator}>
-          {getProgressIconStep(
-            indicator || ProgressStepperIndicator.Hashtag,
-            stepNumber,
-            isCompleted,
-            isCurrentStep,
-          )}
+          {getProgressIconStep(indicator || ProgressStepperIndicator.Hashtag, stepNumber, isCompleted, isCurrentStep)}
         </div>
         {hasLabel && (
           <div
@@ -207,11 +197,7 @@ export const ProgressStepper = ({
         aria-live="polite"
       >
         {Children.map(children, (child, index) => {
-          const {
-            label = '',
-            defaultOpen,
-            ariaLabel,
-          } = child.props as StepItemProps;
+          const { label = '', defaultOpen, ariaLabel } = child.props as StepItemProps;
 
           let isCurrentStep: boolean;
           let isCompleted: boolean;
@@ -256,10 +242,7 @@ export const ProgressStepper = ({
         })}
       </div>
       {showHorizontalSlot && (
-        <div
-          className="gi-h-full"
-          data-testid={`horizontal-step-slot-${currentStepIndex}`}
-        >
+        <div className="gi-h-full" data-testid={`horizontal-step-slot-${currentStepIndex}`}>
           {slot}
         </div>
       )}

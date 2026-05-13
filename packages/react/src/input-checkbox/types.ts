@@ -1,12 +1,11 @@
-import { InputHTMLAttributes } from 'react';
+import type { InputHTMLAttributes } from 'react';
 
 export const InputCheckboxSizeEnum = {
   Medium: 'md',
   Small: 'sm',
 } as const;
 
-export type InputCheckboxSizeEnumType =
-  (typeof InputCheckboxSizeEnum)[keyof typeof InputCheckboxSizeEnum];
+export type InputCheckboxSizeEnumType = (typeof InputCheckboxSizeEnum)[keyof typeof InputCheckboxSizeEnum];
 
 export type InputCheckboxProps = {
   size?: InputCheckboxSizeEnumType;

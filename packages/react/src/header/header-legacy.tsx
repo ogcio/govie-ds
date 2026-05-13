@@ -16,12 +16,7 @@ import Anchor from '../primitives/anchor.js';
 import { MobileHeaderMenuItems } from './components/header-menu.js';
 import { SlotContainer, SlotItemAction } from './components/header-slot.js';
 import { attachEventsToItemActionTriggers } from './helper.js';
-import type {
-  HeaderAppearance,
-  HeaderItem,
-  HeaderProps,
-  SecondaryLink,
-} from './types.js';
+import type { HeaderAppearance, HeaderItem, HeaderProps, SecondaryLink } from './types.js';
 import {
   headerMenuVariants,
   headerToolItemVariants,
@@ -48,17 +43,12 @@ function getLogo({ logo, appearance = 'default' }: HeaderProps) {
   const svgMobileString = btoa(renderToStaticMarkup(logoIcon.harp[appearance]));
   const svgDataUriMobile = `data:image/svg+xml;base64,${svgMobileString}`;
 
-  const svgDesktopString = btoa(
-    renderToStaticMarkup(logoIcon.withText[appearance]),
-  );
+  const svgDesktopString = btoa(renderToStaticMarkup(logoIcon.withText[appearance]));
   const svgDataUriDesktop = `data:image/svg+xml;base64,${svgDesktopString}`;
 
   return (
     <picture>
-      <source
-        srcSet={logo?.imageLarge || svgDataUriDesktop}
-        media="(min-width: 640px)"
-      />
+      <source srcSet={logo?.imageLarge || svgDataUriDesktop} media="(min-width: 640px)" />
       <img
         className={'gi-h-10 sm:gi-h-14'}
         src={logo?.imageSmall || svgDataUriMobile}
@@ -77,9 +67,7 @@ const buildDefaultMobileMenu = (
     label: mobileMenuLabel,
     icon: 'menu',
     itemType: 'slot',
-    component: (
-      <MobileHeaderMenuItems items={items} secondaryLinks={secondaryLinks} />
-    ),
+    component: <MobileHeaderMenuItems items={items} secondaryLinks={secondaryLinks} />,
     slotAppearance: 'drawer',
     showItemMode: 'mobile-only',
   };
@@ -105,10 +93,7 @@ const SecondaryLinkItem = ({
         {label}
       </Anchor>
     ) : (
-      <div
-        className={headerSecondaryLinkSlotItemVariants({ appearance })}
-        data-appearance={appearance}
-      >
+      <div className={headerSecondaryLinkSlotItemVariants({ appearance })} data-appearance={appearance}>
         {slot}
       </div>
     )}
@@ -122,12 +107,7 @@ const SecondaryLinks: React.FC<{
   return (
     <ul>
       {links?.map((link, index) => (
-        <SecondaryLinkItem
-          {...link}
-          index={index}
-          key={`secondary-${link.label}-${index}`}
-          appearance={appearance}
-        />
+        <SecondaryLinkItem {...link} index={index} key={`secondary-${link.label}-${index}`} appearance={appearance} />
       ))}
     </ul>
   );
@@ -151,18 +131,10 @@ export function HeaderLegacy({
     attachEventsToItemActionTriggers();
   }, []);
 
-  const ItemTypeComponent = ({
-    item,
-    index,
-  }: {
-    item: HeaderItem;
-    index: number;
-  }) => {
+  const ItemTypeComponent = ({ item, index }: { item: HeaderItem; index: number }) => {
     switch (item.itemType) {
       case 'slot': {
-        return (
-          <SlotItemAction index={index} item={item} appearance={appearance} />
-        );
+        return <SlotItemAction index={index} item={item} appearance={appearance} />;
       }
       case 'link': {
         return (
@@ -193,15 +165,11 @@ export function HeaderLegacy({
     }
   };
 
-  const headerMenuLabel = showMenuLabel
-    ? mobileMenuLabel || t('header.menu', { defaultValue: 'Menu' })
-    : '';
+  const headerMenuLabel = showMenuLabel ? mobileMenuLabel || t('header.menu', { defaultValue: 'Menu' }) : '';
 
   const finalItems = useMemo(() => {
     const newItems = items || [];
-    return addDefaultMobileMenu
-      ? buildDefaultMobileMenu(headerMenuLabel, newItems, secondaryLinks || [])
-      : newItems;
+    return addDefaultMobileMenu ? buildDefaultMobileMenu(headerMenuLabel, newItems, secondaryLinks || []) : newItems;
   }, [addDefaultMobileMenu]);
 
   return (
@@ -261,26 +229,18 @@ export function HeaderLegacy({
       {secondaryLinks && (
         <div className={headerSecondaryLinksVariants({ appearance })}>
           <Container className="gi-flex gi-justify-end gi-items-center">
-            {secondaryLinks && (
-              <SecondaryLinks links={secondaryLinks} appearance={appearance} />
-            )}
+            {secondaryLinks && <SecondaryLinks links={secondaryLinks} appearance={appearance} />}
           </Container>
         </div>
       )}
 
       {finalItems?.map(({ itemType, component, slotAppearance }, index) => {
         if (itemType === 'slot') {
-          const renderOnlyForDropdown =
-            component && slotAppearance !== 'drawer';
+          const renderOnlyForDropdown = component && slotAppearance !== 'drawer';
 
           if (renderOnlyForDropdown) {
             return (
-              <SlotContainer
-                key={`slot-container-${index}`}
-                slot={component}
-                index={index}
-                appearance={appearance}
-              />
+              <SlotContainer key={`slot-container-${index}`} slot={component} index={index} appearance={appearance} />
             );
           }
           return null;

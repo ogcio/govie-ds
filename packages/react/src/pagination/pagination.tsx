@@ -14,12 +14,7 @@ export type PaginationProps = {
   dataTestid?: string;
 };
 
-export const Pagination: React.FC<PaginationProps> = ({
-  currentPage,
-  totalPages,
-  onPageChange,
-  dataTestid,
-}) => {
+export const Pagination: React.FC<PaginationProps> = ({ currentPage, totalPages, onPageChange, dataTestid }) => {
   const { t } = useTranslation();
   const { breakpoint, width } = useBreakpoint();
 
@@ -48,11 +43,7 @@ export const Pagination: React.FC<PaginationProps> = ({
     return pagesToRender.map((page, index) =>
       page === -1 || page === -2 ? (
         <React.Fragment key={`ellipsis-${index}`}>
-          <Icon
-            role="presentation"
-            className="gi-text-gray-700"
-            icon="more_horiz"
-          />
+          <Icon role="presentation" className="gi-text-gray-700" icon="more_horiz" />
         </React.Fragment>
       ) : (
         <Button

@@ -1,5 +1,5 @@
-import React from 'react';
-import { IconId } from '../icon/icon.js';
+import type React from 'react';
+import type { IconId } from '../icon/icon.js';
 
 export type InputActionButtonProps = {
   icon: IconId;

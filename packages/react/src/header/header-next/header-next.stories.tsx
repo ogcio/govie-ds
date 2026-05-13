@@ -13,16 +13,10 @@ import {
   LogoHarpBlack,
   LogoHarpWhite,
 } from '../../atoms/icons/logos';
+
 import { DrawerMenuExample } from '../../drawer/drawer.content.js';
-import {
-  DrawerBody,
-  DrawerFooter,
-  DrawerWrapper,
-} from '../../drawer/drawer.js';
-import {
-  FormField,
-  FormFieldLabel,
-} from '../../forms/form-field/form-field.js';
+import { DrawerBody, DrawerFooter, DrawerWrapper } from '../../drawer/drawer.js';
+import { FormField, FormFieldLabel } from '../../forms/form-field/form-field.js';
 import { useToggleMap } from '../../hooks/use-toggle-map.js';
 import { Icon } from '../../icon/icon.js';
 import { Link } from '../../link/link.js';
@@ -67,11 +61,7 @@ const SlotExample1 = () => (
       />
     </div>
     <div className="gi-flex gi-flex-col-reverse gi-gap-4 xs:gi-gap-6 xs:gi-justify-end xs:gi-flex-row gi-p-4 xs:gi-p-6">
-      <Button
-        variant="secondary"
-        appearance="dark"
-        className="gi-justify-center xs:gi-justify-start"
-      >
+      <Button variant="secondary" appearance="dark" className="gi-justify-center xs:gi-justify-start">
         Cancel
       </Button>
       <Button className="gi-justify-center xs:gi-justify-start">Primary</Button>
@@ -110,9 +100,7 @@ export const Default: StoryObj = {
     }, [state.faq, state.language, state.drawer, state.search]);
 
     const handleMenuItemButton = (key: string) => () => {
-      const sections = ['faq', 'search', 'language'].filter(
-        (section) => section !== key,
-      );
+      const sections = ['faq', 'search', 'language'].filter((section) => section !== key);
       toggle(key);
       sections.map((section) => close(section));
     };
@@ -121,14 +109,8 @@ export const Default: StoryObj = {
       <>
         <Header variant="default" aria-label="Site header">
           <HeaderLogo>
-            <LogoHarpWhite
-              label="Gov.ie logo"
-              className="gi-block gi-h-10 gi-w-auto sm:gi-hidden"
-            />
-            <LogoWhite
-              label="Gov.ie logo"
-              className="gi-hidden gi-h-12 gi-w-auto sm:gi-block"
-            />
+            <LogoHarpWhite label="Gov.ie logo" className="gi-block gi-h-10 gi-w-auto sm:gi-hidden" />
+            <LogoWhite label="Gov.ie logo" className="gi-hidden gi-h-12 gi-w-auto sm:gi-block" />
           </HeaderLogo>
           <HeaderTitle>Title</HeaderTitle>
           <HeaderSecondaryMenu>
@@ -140,10 +122,7 @@ export const Default: StoryObj = {
             </HeaderMenuItemLink>
             <HeaderMenuItemSlot className="gi-flex gi-items-center">
               <label>Hello John &nbsp;| </label>
-              <a
-                href="#"
-                className="gi-header-secondary-item gi-header-secondary-item-default"
-              >
+              <a href="#" className="gi-header-secondary-item gi-header-secondary-item-default">
                 <Icon icon="logout" size="sm" />
               </a>
             </HeaderMenuItemSlot>
@@ -221,9 +200,7 @@ export const Default: StoryObj = {
             >
               Cancel
             </Button>
-            <Button className="gi-justify-center xs:gi-justify-start">
-              Primary
-            </Button>
+            <Button className="gi-justify-center xs:gi-justify-start">Primary</Button>
           </DrawerFooter>
         </DrawerWrapper>
         <DrawerWrapper
@@ -238,22 +215,12 @@ export const Default: StoryObj = {
           </DrawerBody>
         </DrawerWrapper>
         {state.search ? (
-          <HeaderSlotContainer
-            variant="default"
-            role="region"
-            aria-label="Site search"
-            aria-live="polite"
-          >
+          <HeaderSlotContainer variant="default" role="region" aria-label="Site search" aria-live="polite">
             <HeaderSearch />
           </HeaderSlotContainer>
         ) : null}
         {state.language ? (
-          <HeaderSlotContainer
-            id="language-slot"
-            variant="default"
-            role="region"
-            aria-label="Language selector"
-          >
+          <HeaderSlotContainer id="language-slot" variant="default" role="region" aria-label="Language selector">
             <SlotExample2 />
           </HeaderSlotContainer>
         ) : null}
@@ -264,12 +231,8 @@ export const Default: StoryObj = {
     const canvas = within(canvasElement);
 
     await step('header + navs are present', async () => {
-      expect(
-        await canvas.findByRole('banner', { name: /site header/i }),
-      ).toBeInTheDocument();
-      expect(
-        await canvas.findByRole('navigation', { name: /primary navigation/i }),
-      ).toBeInTheDocument();
+      expect(await canvas.findByRole('banner', { name: /site header/i })).toBeInTheDocument();
+      expect(await canvas.findByRole('navigation', { name: /primary navigation/i })).toBeInTheDocument();
       expect(
         await screen.findByRole('navigation', {
           name: /secondary navigation/i,
@@ -305,9 +268,7 @@ export const Default: StoryObj = {
 
       await userEvent.click(searchButton);
       expect(searchButton).toHaveAttribute('aria-expanded', 'true');
-      expect(
-        await screen.findByRole('region', { name: /site search/i }),
-      ).toBeInTheDocument();
+      expect(await screen.findByRole('region', { name: /site search/i })).toBeInTheDocument();
       expect(within(searchButton).getByTestId('close')).toBeInTheDocument();
 
       await userEvent.click(searchButton);
@@ -323,9 +284,7 @@ export const Default: StoryObj = {
 
       await userEvent.click(langButton);
       expect(langButton).toHaveAttribute('aria-expanded', 'true');
-      expect(
-        await screen.findByRole('region', { name: /language selector/i }),
-      ).toBeInTheDocument();
+      expect(await screen.findByRole('region', { name: /language selector/i })).toBeInTheDocument();
       expect(within(langButton).getByTestId('close')).toBeInTheDocument();
 
       await userEvent.click(langButton);
@@ -405,33 +364,19 @@ export const Govie: StoryObj = {
     const canvas = within(canvasElement);
 
     await step('header + primary nav present', async () => {
-      expect(
-        await canvas.findByRole('banner', { name: /site header/i }),
-      ).toBeInTheDocument();
+      expect(await canvas.findByRole('banner', { name: /site header/i })).toBeInTheDocument();
 
-      expect(
-        await canvas.findByRole('navigation', { name: /primary navigation/i }),
-      ).toBeInTheDocument();
+      expect(await canvas.findByRole('navigation', { name: /primary navigation/i })).toBeInTheDocument();
 
-      expect(
-        await canvas.findByRole('link', { name: /news/i }),
-      ).toBeInTheDocument();
-      expect(
-        await canvas.findByRole('link', { name: /departments/i }),
-      ).toBeInTheDocument();
-      expect(
-        await canvas.findByRole('link', { name: /services/i }),
-      ).toBeInTheDocument();
+      expect(await canvas.findByRole('link', { name: /news/i })).toBeInTheDocument();
+      expect(await canvas.findByRole('link', { name: /departments/i })).toBeInTheDocument();
+      expect(await canvas.findByRole('link', { name: /services/i })).toBeInTheDocument();
 
-      expect(
-        await canvas.findByRole('link', { name: /gaelige/i }),
-      ).toBeInTheDocument();
+      expect(await canvas.findByRole('link', { name: /gaelige/i })).toBeInTheDocument();
     });
 
     await step('logo link is present', async () => {
-      expect(
-        await canvas.findByRole('link', { name: /Gov.ie home/i }),
-      ).toBeInTheDocument();
+      expect(await canvas.findByRole('link', { name: /Gov.ie home/i })).toBeInTheDocument();
     });
   },
 };
@@ -460,9 +405,7 @@ export const Light: StoryObj = {
     }, [state.faq, state.language, state.drawer, state.search]);
 
     const handleMenuItemButton = (key: string) => () => {
-      const sections = ['faq', 'search', 'language'].filter(
-        (section) => section !== key,
-      );
+      const sections = ['faq', 'search', 'language'].filter((section) => section !== key);
       toggle(key);
       sections.map((section) => close(section));
     };
@@ -471,14 +414,8 @@ export const Light: StoryObj = {
       <>
         <Header variant="light" aria-label="Site header">
           <HeaderLogo>
-            <LogoHarpBlack
-              label="Gov.ie logo"
-              className="gi-block gi-h-10 gi-w-auto sm:gi-hidden"
-            />
-            <LogoBlack
-              label="Gov.ie logo"
-              className="gi-hidden gi-h-12 gi-w-auto sm:gi-block"
-            />
+            <LogoHarpBlack label="Gov.ie logo" className="gi-block gi-h-10 gi-w-auto sm:gi-hidden" />
+            <LogoBlack label="Gov.ie logo" className="gi-hidden gi-h-12 gi-w-auto sm:gi-block" />
           </HeaderLogo>
           <HeaderTitle>Title</HeaderTitle>
           <HeaderSecondaryMenu>
@@ -490,10 +427,7 @@ export const Light: StoryObj = {
             </HeaderMenuItemLink>
             <HeaderMenuItemSlot className="gi-flex gi-items-center">
               <label>Hello John &nbsp;| </label>
-              <a
-                href="#"
-                className="gi-header-secondary-item gi-header-secondary-item-light"
-              >
+              <a href="#" className="gi-header-secondary-item gi-header-secondary-item-light">
                 <Icon icon="logout" size="sm" />
               </a>
             </HeaderMenuItemSlot>
@@ -572,9 +506,7 @@ export const Light: StoryObj = {
             >
               Cancel
             </Button>
-            <Button className="gi-justify-center xs:gi-justify-start">
-              Primary
-            </Button>
+            <Button className="gi-justify-center xs:gi-justify-start">Primary</Button>
           </DrawerFooter>
         </DrawerWrapper>
         <DrawerWrapper
@@ -589,22 +521,12 @@ export const Light: StoryObj = {
           </DrawerBody>
         </DrawerWrapper>
         {state.search ? (
-          <HeaderSlotContainer
-            variant="light"
-            role="region"
-            aria-label="Site search"
-            aria-live="polite"
-          >
+          <HeaderSlotContainer variant="light" role="region" aria-label="Site search" aria-live="polite">
             <HeaderSearch />
           </HeaderSlotContainer>
         ) : null}
         {state.language ? (
-          <HeaderSlotContainer
-            id="language-slot"
-            variant="light"
-            role="region"
-            aria-label="Language selector"
-          >
+          <HeaderSlotContainer id="language-slot" variant="light" role="region" aria-label="Language selector">
             <SlotExample2 />
           </HeaderSlotContainer>
         ) : null}

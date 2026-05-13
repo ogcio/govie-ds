@@ -4,7 +4,7 @@ import nextPlugin from '@next/eslint-plugin-next';
 
 export default defineConfig([
   {
-    ignores: ['.next'],
+    ignores: ['**/.next/**'],
   },
   ...baseConfig,
   nextPlugin.flatConfig.recommended,

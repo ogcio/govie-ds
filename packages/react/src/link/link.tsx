@@ -1,14 +1,13 @@
 import { Slot } from '@radix-ui/react-slot';
-import React, { forwardRef, PropsWithChildren } from 'react';
+import type { PropsWithChildren } from 'react';
+import React, { forwardRef } from 'react';
 import { getSizeClass, getVariantAppearanceClass } from '../button/helpers.js';
-import {
-  ButtonAppearance,
-  ButtonSize,
-  ButtonVariant,
-} from '../button/types.js';
+import type { ButtonAppearance, ButtonSize, ButtonVariant } from '../button/types.js';
 import { cn } from '../cn.js';
-import { Icon, IconId } from '../icon/icon.js';
-import Anchor, { AnchorProps } from '../primitives/anchor.js';
+import type { IconId } from '../icon/icon.js';
+import { Icon } from '../icon/icon.js';
+import type { AnchorProps } from '../primitives/anchor.js';
+import Anchor from '../primitives/anchor.js';
 
 export type LinkProps = AnchorProps & {
   href?: string;
@@ -31,18 +30,9 @@ export type LinkProps = AnchorProps & {
   appearance?: Extract<ButtonAppearance, 'default' | 'light'>;
 };
 
-type LinkContainerProps = PropsWithChildren<
-  Pick<LinkProps, 'size' | 'iconStart' | 'iconEnd' | 'asChild' | 'asButton'>
->;
+type LinkContainerProps = PropsWithChildren<Pick<LinkProps, 'size' | 'iconStart' | 'iconEnd' | 'asChild' | 'asButton'>>;
 
-const LinkContainer = ({
-  size,
-  iconStart,
-  asChild,
-  asButton,
-  children,
-  iconEnd,
-}: LinkContainerProps) => {
+const LinkContainer = ({ size, iconStart, asChild, asButton, children, iconEnd }: LinkContainerProps) => {
   const iconSize = 'sm';
   const showIconStart = iconStart && !asButton && !asChild;
   const showIconEnd = iconEnd && !asButton && !asChild;
@@ -50,24 +40,14 @@ const LinkContainer = ({
   return (
     <>
       {showIconStart && (
-        <span
-          className="gi-link-icon gi-link-icon-start"
-          data-size={size || 'sm'}
-        >
+        <span className="gi-link-icon gi-link-icon-start" data-size={size || 'sm'}>
           <Icon icon={iconStart} size={iconSize} />
         </span>
       )}
-      {showIconEnd || showIconStart ? (
-        <span className="gi-pr-5 gi-pl-5">{children}</span>
-      ) : (
-        children
-      )}
+      {showIconEnd || showIconStart ? <span className="gi-pr-5 gi-pl-5">{children}</span> : children}
 
       {showIconEnd && (
-        <span
-          className="gi-link-icon gi-link-icon-end"
-          data-size={size || 'sm'}
-        >
+        <span className="gi-link-icon gi-link-icon-end" data-size={size || 'sm'}>
           <Icon icon={iconEnd} size={iconSize} />
         </span>
       )}
@@ -120,13 +100,7 @@ export const Link = forwardRef<HTMLElement, LinkProps>(
             'gi-btn': asButton,
             '!gi-inline-flex': asButton,
             'gi-link-disabled': disabled && !asButton && !asChild,
-            'gi-link-light':
-              appearance === 'light' &&
-              !asButton &&
-              !asChild &&
-              !noColor &&
-              !noVisited &&
-              !disabled,
+            'gi-link-light': appearance === 'light' && !asButton && !asChild && !noColor && !noVisited && !disabled,
             'gi-text-sm': size === 'sm',
             'gi-text-md': size === 'md',
           },
@@ -141,13 +115,7 @@ export const Link = forwardRef<HTMLElement, LinkProps>(
         {asChild ? (
           children
         ) : (
-          <LinkContainer
-            asButton={asButton}
-            asChild={asChild}
-            iconEnd={iconEnd}
-            iconStart={iconStart}
-            size={size}
-          >
+          <LinkContainer asButton={asButton} asChild={asChild} iconEnd={iconEnd} iconStart={iconStart} size={size}>
             {children}
           </LinkContainer>
         )}

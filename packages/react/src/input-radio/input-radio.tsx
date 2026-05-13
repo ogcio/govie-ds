@@ -6,11 +6,7 @@ import { HintText } from '../hint-text/hint-text.js';
 import { InputText } from '../input-text/input-text.js';
 import { Label } from '../label/label.js';
 import { Input } from '../primitives/input.js';
-import {
-  InputRadioSizeEnum,
-  type InputRadioProps,
-  type InputRadioSizeType,
-} from './types.js';
+import { InputRadioSizeEnum, type InputRadioProps, type InputRadioSizeType } from './types.js';
 
 const getRadioSize = (size?: InputRadioSizeType) => {
   if (size === InputRadioSizeEnum.Small) {
@@ -46,9 +42,7 @@ export const InputRadio: React.FC<InputRadioProps> = ({
       <Input
         type="radio"
         id={radioId}
-        {...(checked === undefined
-          ? { defaultChecked: props.defaultChecked }
-          : { checked, onChange: props.onChange })}
+        {...(checked === undefined ? { defaultChecked: props.defaultChecked } : { checked, onChange: props.onChange })}
         className={getRadioSize(size)}
         aria-describedby={hint ? `${radioId}-hint` : undefined}
         aria-required={conditionalInput ? 'true' : 'false'}

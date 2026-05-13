@@ -1,11 +1,8 @@
 'use client';
 import { useSummaryListContext } from './summary-list-context.js';
-import { SummaryListValueProps } from './types.js';
+import type { SummaryListValueProps } from './types.js';
 
-export const SummaryListValue = ({
-  children,
-  ...props
-}: SummaryListValueProps) => {
+export const SummaryListValue = ({ children, ...props }: SummaryListValueProps) => {
   useSummaryListContext();
   return <td {...props}>{children}</td>;
 };

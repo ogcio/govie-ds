@@ -1,29 +1,25 @@
 'use client';
-import {
-  Children,
-  cloneElement,
-  isValidElement,
-  useState,
-  useEffect,
-} from 'react';
-import { InputCheckboxSizeEnumType } from '../input-checkbox/types.js';
-import { InputRadioSizeType } from '../input-radio/types.js';
-import { InputCheckboxGroupProps } from './types.js';
+import { Children, cloneElement, isValidElement, useState, useEffect } from 'react';
+import type { InputCheckboxSizeEnumType } from '../input-checkbox/types.js';
+import type { InputRadioSizeType } from '../input-radio/types.js';
+import type { InputCheckboxGroupProps } from './types.js';
 
-export const InputCheckboxGroup: React.FC<
-  React.PropsWithChildren<InputCheckboxGroupProps>
-> = ({ size, groupId, inline, onChange, children, values: externalValues }) => {
-  const [internalValues, setInternalValues] = useState<string[]>(
-    externalValues || [],
-  );
+export const InputCheckboxGroup: React.FC<React.PropsWithChildren<InputCheckboxGroupProps>> = ({
+  size,
+  groupId,
+  inline,
+  onChange,
+  children,
+  values: externalValues,
+}) => {
+  const [internalValues, setInternalValues] = useState<string[]>(externalValues || []);
 
   // Sync internal state with external value (for React Hook Form reset)
   useEffect(() => {
     setInternalValues(externalValues || []);
   }, [externalValues]);
 
-  const currentValues =
-    externalValues === undefined ? internalValues : externalValues;
+  const currentValues = externalValues === undefined ? internalValues : externalValues;
 
   const handleCheckboxChange = (value: string) => {
     let newValues = [];
@@ -69,13 +65,7 @@ export const InputCheckboxGroup: React.FC<
   return (
     <div className="gi-input-group-container">
       <div className="gi-input-group-options-container">
-        <div
-          className={
-            inline
-              ? 'gi-input-group-options-inline'
-              : 'gi-input-group-options-stacked'
-          }
-        >
+        <div className={inline ? 'gi-input-group-options-inline' : 'gi-input-group-options-stacked'}>
           {childrenWithOnChange}
         </div>
       </div>

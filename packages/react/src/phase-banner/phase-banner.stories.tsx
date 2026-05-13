@@ -35,14 +35,12 @@ export const Default: Story = {
       control: 'radio',
       options: ['none', 'container', 'container-full-width'],
       type: { name: 'string', required: false },
-      description:
-        'Defines how the phase banner is wrapped inside a container.',
+      description: 'Defines how the phase banner is wrapped inside a container.',
     },
     padding: {
       control: 'boolean',
       type: { name: 'boolean', required: false },
-      description:
-        'Whether the phase banner should include horizontal padding.',
+      description: 'Whether the phase banner should include horizontal padding.',
     },
   },
   args: {
@@ -51,9 +49,7 @@ export const Default: Story = {
   },
   play: async ({ canvasElement, step }) => {
     const canvas = within(canvasElement);
-    await expect(
-      canvas.getByText('This is a phase banner.'),
-    ).toBeInTheDocument();
+    await expect(canvas.getByText('This is a phase banner.')).toBeInTheDocument();
     await expect(canvas.getByText('Alpha')).toBeInTheDocument();
 
     await step('should render a phase-banner with alpha level', async () => {
@@ -71,9 +67,7 @@ export const WithoutPadding: Story = {
     padding: false,
   },
   play: async ({ canvasElement }) => {
-    const bannerElement = canvasElement.querySelector(
-      '[data-testid="phase-banner"]',
-    );
+    const bannerElement = canvasElement.querySelector('[data-testid="phase-banner"]');
     await expect(bannerElement).not.toHaveClass('gi-px-4');
   },
 };
@@ -110,14 +104,11 @@ export const TestBetaLevel: Story = {
   play: async ({ canvasElement, step }) => {
     const canvas = within(canvasElement);
 
-    await step(
-      'should render a span with the correct content when props.as is "span"',
-      async () => {
-        const bannerElement = canvas.getByTestId('phase-banner');
-        await expect(bannerElement).toBeInTheDocument();
-        const firstChildElement = bannerElement.firstElementChild;
-        await expect(firstChildElement?.textContent?.trim()).toBe('Beta');
-      },
-    );
+    await step('should render a span with the correct content when props.as is "span"', async () => {
+      const bannerElement = canvas.getByTestId('phase-banner');
+      await expect(bannerElement).toBeInTheDocument();
+      const firstChildElement = bannerElement.firstElementChild;
+      await expect(firstChildElement?.textContent?.trim()).toBe('Beta');
+    });
   },
 };

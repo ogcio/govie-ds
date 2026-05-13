@@ -3,23 +3,13 @@
 import { Children, forwardRef } from 'react';
 import { cn } from '../../../../cn.js';
 import { isSpecialComponent } from '../../../../utils/utilities.js';
-import { HeaderPrimaryMenuProps, type HeaderItemMode } from '../../../types.js';
+import type { HeaderPrimaryMenuProps } from '../../../types.js';
+import { type HeaderItemMode } from '../../../types.js';
 import { useHeaderContext } from '../../header-context.js';
 import { HeaderMenuSectionProvider } from './header-menu-context.js';
 
-export const HeaderPrimaryMenu = forwardRef<
-  HTMLElement,
-  HeaderPrimaryMenuProps
->(
-  (
-    {
-      children,
-      className,
-      'aria-label': ariaLabel = 'Primary navigation',
-      ...rest
-    },
-    ref,
-  ) => {
+export const HeaderPrimaryMenu = forwardRef<HTMLElement, HeaderPrimaryMenuProps>(
+  ({ children, className, 'aria-label': ariaLabel = 'Primary navigation', ...rest }, ref) => {
     const headerContext = useHeaderContext();
 
     if (!headerContext) {
@@ -28,11 +18,7 @@ export const HeaderPrimaryMenu = forwardRef<
 
     const allChildren = Children.toArray(children);
     const allowedChildren = allChildren.filter((child) =>
-      isSpecialComponent(child, [
-        'HeaderMenuItemLink',
-        'HeaderMenuItemButton',
-        'HeaderMenuItemSeparator',
-      ]),
+      isSpecialComponent(child, ['HeaderMenuItemLink', 'HeaderMenuItemButton', 'HeaderMenuItemSeparator']),
     );
 
     if (allowedChildren.length === 0) {
@@ -51,8 +37,7 @@ export const HeaderPrimaryMenu = forwardRef<
         >
           <ul className="gi-flex gi-items-center gi-gap-2">
             {allowedChildren.map((component, index) => {
-              const showItemMode: HeaderItemMode =
-                (component as any)?.props?.showItemMode ?? 'desktop-only';
+              const showItemMode: HeaderItemMode = (component as any)?.props?.showItemMode ?? 'desktop-only';
 
               return (
                 <li

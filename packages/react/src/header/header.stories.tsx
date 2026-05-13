@@ -8,7 +8,7 @@ import { Select, SelectItem } from '../select/select.js';
 import { MobileHeaderMenuItems } from './components/header-menu.js';
 import { HeaderSearch } from './components/header-search.js';
 import { Header } from './header.js';
-import { HeaderProps } from './types.js';
+import type { HeaderProps } from './types.js';
 
 const meta = {
   title: 'layout/Header/Deprecated',
@@ -38,11 +38,7 @@ const SlotExample1 = () => (
       />
     </div>
     <div className="gi-flex gi-flex-col-reverse gi-gap-4 xs:gi-gap-6 xs:gi-justify-end xs:gi-flex-row gi-p-4 xs:gi-p-6">
-      <Button
-        variant="secondary"
-        appearance="dark"
-        className="gi-justify-center xs:gi-justify-start"
-      >
+      <Button variant="secondary" appearance="dark" className="gi-justify-center xs:gi-justify-start">
         Cancel
       </Button>
       <Button className="gi-justify-center xs:gi-justify-start">Primary</Button>
@@ -140,8 +136,7 @@ export const Default: Story = {
     },
     addDefaultMobileMenu: {
       control: 'boolean',
-      description:
-        'If true, adds a default mobile menu to the header according with your "items" ',
+      description: 'If true, adds a default mobile menu to the header according with your "items" ',
       table: {
         category: 'Header',
       },
@@ -156,8 +151,7 @@ export const Default: Story = {
     },
     showTitleOnMobile: {
       control: 'boolean',
-      description:
-        'If true, the title will be shown on mobile, if false it will be hidden',
+      description: 'If true, the title will be shown on mobile, if false it will be hidden',
       table: {
         category: 'Header',
       },
@@ -361,8 +355,7 @@ export const MobileView: Story = {
     logo: {
       href: 'path',
     },
-    title:
-      'Title on mobile very very very very very very very very very very long',
+    title: 'Title on mobile very very very very very very very very very very long',
     showTitleOnMobile: true,
     items: headerProps.items,
     addDefaultMobileMenu: true,
@@ -528,10 +521,7 @@ export const WithExternalLinks: Story = {
     await expect(externalTool).toHaveAttribute('rel', 'noreferrer noopener');
 
     await expect(internalTool).not.toHaveAttribute('target', '_blank');
-    await expect(internalTool).not.toHaveAttribute(
-      'rel',
-      'noreferrer noopener',
-    );
+    await expect(internalTool).not.toHaveAttribute('rel', 'noreferrer noopener');
   },
 };
 
@@ -604,10 +594,7 @@ export const MobileWithExternalLinks: Story = {
     await expect(externalTool).toHaveAttribute('rel', 'noreferrer noopener');
 
     await expect(internalTool).not.toHaveAttribute('target', '_blank');
-    await expect(internalTool).not.toHaveAttribute(
-      'rel',
-      'noreferrer noopener',
-    );
+    await expect(internalTool).not.toHaveAttribute('rel', 'noreferrer noopener');
   },
 
   globals: {
@@ -770,10 +757,7 @@ export const WithCustomSecondaryLinks: Story = {
         slot: (
           <>
             <span>Hello John | </span>
-            <a
-              href="#"
-              className="gi-header-secondary-item  gi-header-secondary-item"
-            >
+            <a href="#" className="gi-header-secondary-item  gi-header-secondary-item">
               Logout
             </a>
           </>
@@ -930,10 +914,7 @@ export const Light: Story = {
         slot: (
           <>
             <span>Hello John | </span>
-            <a
-              href="#"
-              className="gi-header-secondary-item gi-text-gray-950 gi-header-secondary-item-light"
-            >
+            <a href="#" className="gi-header-secondary-item gi-text-gray-950 gi-header-secondary-item-light">
               Logout
             </a>
           </>

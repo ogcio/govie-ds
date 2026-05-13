@@ -1,3 +1,5 @@
+@import 'node_modules/@ogcio/design-system-tailwind/css/grid.css';
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;

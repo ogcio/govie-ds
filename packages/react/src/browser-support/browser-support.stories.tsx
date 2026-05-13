@@ -26,8 +26,7 @@ export const Default: Story = {
     },
     onClose: {
       table: { disable: true },
-      description:
-        'Optional callback invoked when the banner is closed by the user.',
+      description: 'Optional callback invoked when the banner is closed by the user.',
     },
   },
   decorators: [
@@ -56,9 +55,7 @@ export const Default: Story = {
         name: 'View supported browsers',
       });
       expect(link).toBeInTheDocument();
-      expect(link.getAttribute('href')).toMatch(
-        /\/get-started\/developers\/supported-browsers\/?$/,
-      );
+      expect(link.getAttribute('href')).toMatch(/\/get-started\/developers\/supported-browsers\/?$/);
     });
   },
 };

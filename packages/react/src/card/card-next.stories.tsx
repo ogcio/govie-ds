@@ -1,4 +1,4 @@
-import { Meta, StoryObj } from '@storybook/react-vite';
+import type { Meta, StoryObj } from '@storybook/react-vite';
 import { expect, waitFor, within } from 'storybook/test';
 import Button from '../atoms/Button';
 import { Link } from '../link/link.js';
@@ -42,8 +42,7 @@ const meta: Meta = {
     truncate: false,
     title: 'Card Title',
     subtitle: 'This is the subtitle',
-    description:
-      'Lorem ipsum dolor sit amet consectetur. Lectus aliquam morbi purus ac. Sollicitudin.',
+    description: 'Lorem ipsum dolor sit amet consectetur. Lectus aliquam morbi purus ac. Sollicitudin.',
     tagText: 'New',
     headerLinkHref: '#',
     linkActionHref: '',
@@ -63,8 +62,7 @@ const meta: Meta = {
     },
     insetSpace: {
       control: { type: 'number', min: 0, step: 1 },
-      description:
-        'Spacing scale in px units. Default: 16px. Used when inset is "body" or "full".',
+      description: 'Spacing scale in px units. Default: 16px. Used when inset is "body" or "full".',
       table: {
         category: 'Layout',
         type: { summary: 'number (×4px units)' },
@@ -119,12 +117,10 @@ const meta: Meta = {
       control: false,
       table: {
         type: {
-          summary:
-            'CardMedia | CardContainer (CardHeader, CardDescription, CardAction)',
+          summary: 'CardMedia | CardContainer (CardHeader, CardDescription, CardAction)',
         },
       },
-      description:
-        'Composable structure using CardMedia and CardContainer. Only specific children allowed.',
+      description: 'Composable structure using CardMedia and CardContainer. Only specific children allowed.',
     },
   },
 };
@@ -133,16 +129,7 @@ export default meta;
 type Story = StoryObj<typeof Card>;
 
 export const Default: Story = {
-  render: ({
-    truncate,
-    title,
-    subtitle,
-    description,
-    tagText,
-    headerLinkHref,
-    linkActionHref,
-    ...props
-  }: any) => (
+  render: ({ truncate, title, subtitle, description, tagText, headerLinkHref, linkActionHref, ...props }: any) => (
     <Card {...props} data-testid="card">
       <CardMedia
         media={{
@@ -158,34 +145,18 @@ export const Default: Story = {
       <CardContainer>
         <CardHeader>
           <CardTitle id="card-title" truncate={truncate}>
-            {headerLinkHref ? (
-              <Link href={headerLinkHref}>{title}</Link>
-            ) : (
-              title
-            )}
+            {headerLinkHref ? <Link href={headerLinkHref}>{title}</Link> : title}
           </CardTitle>
-          <CardSubtitle
-            id="card-subtitle"
-            data-testid="card-subtitle"
-            truncate={truncate}
-          >
+          <CardSubtitle id="card-subtitle" data-testid="card-subtitle" truncate={truncate}>
             {subtitle}
           </CardSubtitle>
           <CardTag text={tagText} type="info" />
         </CardHeader>
-        <CardDescription
-          id="card-desc"
-          data-testid="card-desc"
-          className="gi-w-full"
-        >
+        <CardDescription id="card-desc" data-testid="card-desc" className="gi-w-full">
           {description}
         </CardDescription>
         <CardAction>
-          {linkActionHref ? (
-            <Link href="/action">Action 1</Link>
-          ) : (
-            <Button variant="secondary">Action 1</Button>
-          )}
+          {linkActionHref ? <Link href="/action">Action 1</Link> : <Button variant="secondary">Action 1</Button>}
         </CardAction>
       </CardContainer>
     </Card>
@@ -216,9 +187,7 @@ export const Default: Story = {
       await expect(heading).toHaveAttribute('id', labelledby);
 
       for (const id of describedby) {
-        const element = canvasElement.querySelector(
-          `#${id}`,
-        ) as HTMLElement | null;
+        const element = canvasElement.querySelector(`#${id}`) as HTMLElement | null;
         await expect(element).not.toBeNull();
       }
     });

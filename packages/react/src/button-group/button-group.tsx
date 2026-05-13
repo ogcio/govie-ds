@@ -6,15 +6,9 @@ import Button, { type Props as GiButtonProps } from '../atoms/Button';
 import { normalizeSize } from '../utils/normalize-size.js';
 import { cn } from '../cn.js';
 import { useDomId } from '../hooks/use-dom-id.js';
-import type {
-  ButtonGroupContextType,
-  ButtonGroupItemProps,
-  ButtonGroupProps,
-} from './types.js';
+import type { ButtonGroupContextType, ButtonGroupItemProps, ButtonGroupProps } from './types.js';
 
-const ButtonGroupContext = createContext<ButtonGroupContextType | undefined>(
-  undefined,
-);
+const ButtonGroupContext = createContext<ButtonGroupContextType | undefined>(undefined);
 
 export const ButtonGroupItem: FC<ButtonGroupItemProps> = ({
   value,
@@ -29,14 +23,7 @@ export const ButtonGroupItem: FC<ButtonGroupItemProps> = ({
     throw new Error('ButtonGroupItem must be used within a ButtonGroup');
   }
 
-  const {
-    selectedValue,
-    setSelectedValue,
-    size,
-    onChange,
-    groupId,
-    appearance,
-  } = context;
+  const { selectedValue, setSelectedValue, size, onChange, groupId, appearance } = context;
   const isSelected = selectedValue === value;
 
   const handleClick = () => {
@@ -77,9 +64,7 @@ export const ButtonGroup: FC<ButtonGroupProps> = ({
   className,
   ...props
 }) => {
-  const [internalValue, setInternalValue] = useState<string | undefined>(
-    defaultValue,
-  );
+  const [internalValue, setInternalValue] = useState<string | undefined>(defaultValue);
 
   const selectedValue = value === undefined ? internalValue : value;
 
@@ -113,10 +98,7 @@ export const ButtonGroup: FC<ButtonGroupProps> = ({
       }}
     >
       <div
-        className={cn(
-          'gi-flex gi-flex-wrap gi-gap-3 [&_button]:gi-min-w-12 [&_button]:gi-justify-center',
-          className,
-        )}
+        className={cn('gi-flex gi-flex-wrap gi-gap-3 [&_button]:gi-min-w-12 [&_button]:gi-justify-center', className)}
         role={customRole || 'radiogroup'}
         aria-labelledby={ariaLabelledby}
         aria-describedby={ariaDescribedby}

@@ -1,7 +1,4 @@
-export const generateSvgPlaceholder = (
-  width: number = 300,
-  height: number = 400,
-): string => {
+export const generateSvgPlaceholder = (width: number = 300, height: number = 400): string => {
   const text = `${width}x${height}`;
   const minSide = Math.min(width, height);
   const fontSize = Math.max(12, Math.min(18, Math.round(minSide / 8)));
@@ -22,10 +19,7 @@ export const generateSvgPlaceholder = (
   `.trim();
 };
 
-export const generateSvgPlaceholderDataUrl = (
-  width: number = 300,
-  height: number = 400,
-): string => {
+export const generateSvgPlaceholderDataUrl = (width: number = 300, height: number = 400): string => {
   const svg = generateSvgPlaceholder(width, height);
   return `data:image/svg+xml,${encodeURIComponent(svg)}`;
 };

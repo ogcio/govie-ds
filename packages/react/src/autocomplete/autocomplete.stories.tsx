@@ -14,8 +14,7 @@ const meta = {
     docs: {
       autoplay: false,
       description: {
-        component:
-          'Autocomplete component for selecting a value from a filtered list of options.',
+        component: 'Autocomplete component for selecting a value from a filtered list of options.',
       },
     },
   },
@@ -239,10 +238,7 @@ export const WithLoading = () => {
       }
       case ACTIONS.SET_RESULTS: {
         const children = action.payload.map((name: string) => (
-          <AutocompleteItem
-            key={name}
-            value={name.toLowerCase()?.replace(/\s+/g, '-')}
-          >
+          <AutocompleteItem key={name} value={name.toLowerCase()?.replaceAll(/\s+/g, '-')}>
             {name}
           </AutocompleteItem>
         ));
@@ -267,11 +263,7 @@ export const WithLoading = () => {
         const filtered = await new Promise((resolve) => {
           // Fake fetch
           setTimeout(() => {
-            const results = names
-              .filter((name) =>
-                name.toLowerCase().includes(query.toLowerCase()),
-              )
-              .slice(0, 10);
+            const results = names.filter((name) => name.toLowerCase().includes(query.toLowerCase())).slice(0, 10);
             resolve(results);
           }, 600);
         });
@@ -358,9 +350,7 @@ export const WithReactHookForm: StoryObj = {
     await userEvent.click(option);
     const watchedValueLabel = await canvas.findByText(/Watched value:/);
 
-    waitFor(() =>
-      expect(watchedValueLabel).toHaveTextContent('Watched value: backend_dev'),
-    );
+    waitFor(() => expect(watchedValueLabel).toHaveTextContent('Watched value: backend_dev'));
   },
 };
 
@@ -402,11 +392,7 @@ export const TestKeyboardEvents: StoryObj = {
     return (
       <FormField className="gi-w-56">
         <FormFieldLabel>Label</FormFieldLabel>
-        <Autocomplete
-          aria-label="Select"
-          value={value}
-          onChange={(event: any) => setValue(event.currentTarget.value)}
-        >
+        <Autocomplete aria-label="Select" value={value} onChange={(event: any) => setValue(event.currentTarget.value)}>
           {Array.from({ length: 10 }, (_, index) => (
             <AutocompleteItem key={index} value={`value_${index}`}>
               {`Option ${index}`}
@@ -421,23 +407,16 @@ export const TestKeyboardEvents: StoryObj = {
     const canvas = within(canvasElement);
     const input = await canvas.findByRole('textbox', { name: /select/i });
 
-    const expectOpen = async () =>
-      waitFor(() => expect(canvas.getByRole('listbox')).toBeInTheDocument());
-    const expectClosed = async () =>
-      waitFor(() => expect(canvas.queryByRole('listbox')).toBeNull());
+    const expectOpen = async () => waitFor(() => expect(canvas.getByRole('listbox')).toBeInTheDocument());
+    const expectClosed = async () => waitFor(() => expect(canvas.queryByRole('listbox')).toBeNull());
 
     await step('ArrowDown opens and moves highlight', async () => {
       input.focus();
       await userEvent.keyboard('{ArrowDown}');
       await expectOpen();
-      const highlighted = canvas
-        .getAllByRole('option')
-        .find((element) => element.dataset.highlighted === 'true');
+      const highlighted = canvas.getAllByRole('option').find((element) => element.dataset.highlighted === 'true');
       await expect(highlighted).toBeTruthy();
-      await expect(highlighted).toHaveAttribute(
-        'data-testid',
-        'option-value_0',
-      );
+      await expect(highlighted).toHaveAttribute('data-testid', 'option-value_0');
       await userEvent.keyboard('{Esc}');
     });
 
@@ -452,9 +431,7 @@ export const TestKeyboardEvents: StoryObj = {
     await step('ArrowUp opens menu and moves highlight', async () => {
       await userEvent.keyboard('{ArrowUp}');
       await expectOpen();
-      const highlighted = canvas
-        .getAllByRole('option')
-        .find((element) => element.dataset.highlighted === 'true');
+      const highlighted = canvas.getAllByRole('option').find((element) => element.dataset.highlighted === 'true');
       expect(highlighted).toBeTruthy();
       expect(highlighted).toHaveAttribute('data-testid', 'option-value_9');
     });

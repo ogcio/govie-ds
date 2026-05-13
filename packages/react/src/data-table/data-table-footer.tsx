@@ -6,31 +6,26 @@ interface DataTableFooterTypeProps extends React.HTMLAttributes<HTMLDivElement> 
   children: React.ReactNode;
 }
 
-interface DataTableFooterProps extends React.HTMLAttributes<
-  HTMLDivElement | HTMLTableSectionElement
-> {
+interface DataTableFooterProps extends React.HTMLAttributes<HTMLDivElement | HTMLTableSectionElement> {
   children?: React.ReactNode;
   standalone?: boolean;
 }
 
 export type { DataTableFooterProps, DataTableFooterTypeProps };
 
-export const DataTableFooterStart: React.FC<DataTableFooterTypeProps> = ({
-  children,
-  ...props
-}) => <div {...props}>{children}</div>;
+export const DataTableFooterStart: React.FC<DataTableFooterTypeProps> = ({ children, ...props }) => (
+  <div {...props}>{children}</div>
+);
 DataTableFooterStart.displayName = 'DataTableFooterStart';
 
-export const DataTableFooterCenter: React.FC<DataTableFooterTypeProps> = ({
-  children,
-  ...props
-}) => <div {...props}>{children}</div>;
+export const DataTableFooterCenter: React.FC<DataTableFooterTypeProps> = ({ children, ...props }) => (
+  <div {...props}>{children}</div>
+);
 DataTableFooterCenter.displayName = 'DataTableFooterCenter';
 
-export const DataTableFooterEnd: React.FC<DataTableFooterTypeProps> = ({
-  children,
-  ...props
-}) => <div {...props}>{children}</div>;
+export const DataTableFooterEnd: React.FC<DataTableFooterTypeProps> = ({ children, ...props }) => (
+  <div {...props}>{children}</div>
+);
 DataTableFooterEnd.displayName = 'DataTableFooterEnd';
 
 export const DataTableFooter: React.FC<DataTableFooterProps> = ({
@@ -77,10 +72,7 @@ export const DataTableFooter: React.FC<DataTableFooterProps> = ({
     }
 
     return (
-      <div
-        className={cn(slotClassName, section.props.className)}
-        style={section.props.style}
-      >
+      <div className={cn(slotClassName, section.props.className)} style={section.props.style}>
         {section.props.children}
       </div>
     );

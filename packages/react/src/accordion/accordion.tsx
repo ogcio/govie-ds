@@ -1,12 +1,7 @@
-import {
-  Children,
-  cloneElement,
-  ComponentPropsWithRef,
-  isValidElement,
-  ReactElement,
-} from 'react';
+import type { ComponentPropsWithRef, ReactElement } from 'react';
+import { Children, cloneElement, isValidElement } from 'react';
 import { cn } from '../cn.js';
-import { AccordionItem, AccordionItemProps } from './accordion-item.js';
+import type { AccordionItem, AccordionItemProps } from './accordion-item.js';
 
 export type AccordionProps = {
   children: ReactElement<typeof AccordionItem>[];
@@ -14,12 +9,7 @@ export type AccordionProps = {
   variant?: 'default' | 'small';
 } & ComponentPropsWithRef<'div'>;
 
-export const Accordion = ({
-  children,
-  className,
-  variant = 'default',
-  ...props
-}: AccordionProps) => {
+export const Accordion = ({ children, className, variant = 'default', ...props }: AccordionProps) => {
   return (
     <div {...props} role="presentation" className={cn('gi-w-full', className)}>
       {Children.map(children, (child, index) => {
@@ -31,12 +21,9 @@ export const Accordion = ({
               'gi-border-b': isLastChild,
             })}
           >
-            {cloneElement(
-              child as unknown as ReactElement<AccordionItemProps>,
-              {
-                variant,
-              },
-            )}
+            {cloneElement(child as unknown as ReactElement<AccordionItemProps>, {
+              variant,
+            })}
           </div>
         ) : null;
       })}

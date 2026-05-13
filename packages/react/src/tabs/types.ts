@@ -1,5 +1,5 @@
-import { ReactNode } from 'react';
-import { IconId } from '../icon/icon.js';
+import type { ReactNode } from 'react';
+import type { IconId } from '../icon/icon.js';
 
 type TabAppearanceType = 'default' | 'dark';
 type TabLabelAlignmentType = 'start' | 'end' | 'center';
@@ -33,12 +33,8 @@ export type TabKeyboardClickHandler =
   | React.KeyboardEventHandler<HTMLButtonElement>
   | React.KeyboardEventHandler<HTMLAnchorElement>;
 
-export type TabMouseClickEvent = React.MouseEvent<
-  HTMLButtonElement | HTMLAnchorElement
->;
-export type TabKeyboardEvent = React.KeyboardEvent<
-  HTMLButtonElement | HTMLAnchorElement
->;
+export type TabMouseClickEvent = React.MouseEvent<HTMLButtonElement | HTMLAnchorElement>;
+export type TabKeyboardEvent = React.KeyboardEvent<HTMLButtonElement | HTMLAnchorElement>;
 
 export type TabItemProps = {
   /** Optional href to render the tab as a link */

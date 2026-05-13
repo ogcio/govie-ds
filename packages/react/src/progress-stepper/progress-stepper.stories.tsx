@@ -4,11 +4,7 @@ import { within, expect } from 'storybook/test';
 import Heading from '../Heading.js';
 import Button from '../atoms/Button';
 import Paragraph from '../atoms/Paragraph';
-import {
-  FormField,
-  FormFieldHint,
-  FormFieldLabel,
-} from '../forms/form-field/form-field.js';
+import { FormField, FormFieldHint, FormFieldLabel } from '../forms/form-field/form-field.js';
 import { InputFile } from '../input-file/input-file.js';
 import { InputText } from '../input-text/input-text.js';
 import { Select, SelectItem } from '../select/select.js';
@@ -66,8 +62,7 @@ export const Default: Story = {
     },
     stepStates: {
       control: 'object',
-      description:
-        'Array describing the state (completed/current/disabled) for each step.',
+      description: 'Array describing the state (completed/current/disabled) for each step.',
     },
   },
   args: {
@@ -83,21 +78,14 @@ export const Default: Story = {
   },
   play: async ({ canvasElement, step }) => {
     const canvas = within(canvasElement);
-    await step(
-      'should render a horizontal progress stepper correctly',
-      async () => {
-        const stepperElement = canvas.getByTestId('progress-stepper');
-        const stepElements = [
-          ...stepperElement.querySelectorAll(
-            '.gi-progress-stepper-step-container',
-          ),
-        ] as HTMLElement[];
-        expect(stepElements.length).toBe(6);
-        expect(stepElements[0].dataset.completed).toBe('true');
-        expect(stepElements[1].dataset.current).toBe('true');
-        expect(stepElements[2].dataset.next).toBe('true');
-      },
-    );
+    await step('should render a horizontal progress stepper correctly', async () => {
+      const stepperElement = canvas.getByTestId('progress-stepper');
+      const stepElements = [...stepperElement.querySelectorAll('.gi-progress-stepper-step-container')] as HTMLElement[];
+      expect(stepElements.length).toBe(6);
+      expect(stepElements[0].dataset.completed).toBe('true');
+      expect(stepElements[1].dataset.current).toBe('true');
+      expect(stepElements[2].dataset.next).toBe('true');
+    });
   },
 };
 
@@ -131,11 +119,7 @@ Use \`stepVisuals\` to override defaults derived from \`currentStepIndex\` and e
     ];
 
     return (
-      <ProgressStepper
-        stepStates={stepStates}
-        orientation="vertical"
-        data-testid="progress-stepper-states"
-      >
+      <ProgressStepper stepStates={stepStates} orientation="vertical" data-testid="progress-stepper-states">
         <StepItem key="with-step-states-step-1" label="Step 1" />
         <StepItem key="with-step-states-step-2" label="Step 2" />
         <StepItem key="with-step-states-step-3" label="Step 3" />
@@ -150,44 +134,27 @@ Use \`stepVisuals\` to override defaults derived from \`currentStepIndex\` and e
   play: async ({ canvasElement, step }) => {
     const canvas = within(canvasElement);
 
-    await step(
-      'should render steps status and fill states correctly',
-      async () => {
-        const container = await canvas.findByTestId('progress-stepper-states');
+    await step('should render steps status and fill states correctly', async () => {
+      const container = await canvas.findByTestId('progress-stepper-states');
 
-        const steps = container.querySelectorAll(
-          '.gi-progress-stepper-step-container',
-        );
-        expect(steps).toHaveLength(8);
+      const steps = container.querySelectorAll('.gi-progress-stepper-step-container');
+      expect(steps).toHaveLength(8);
 
-        expect(steps[0]).toHaveAttribute('data-current', 'true');
-        expect(steps[0].nextElementSibling).toHaveAttribute(
-          'data-fill',
-          'full',
-        );
+      expect(steps[0]).toHaveAttribute('data-current', 'true');
+      expect(steps[0].nextElementSibling).toHaveAttribute('data-fill', 'full');
 
-        expect(steps[1]).toHaveAttribute('data-current', 'true');
-        expect(steps[1].nextElementSibling).toHaveAttribute(
-          'data-fill',
-          'empty',
-        );
+      expect(steps[1]).toHaveAttribute('data-current', 'true');
+      expect(steps[1].nextElementSibling).toHaveAttribute('data-fill', 'empty');
 
-        expect(steps[2]).toHaveAttribute('data-current', 'true');
-        expect(steps[2].nextElementSibling).toHaveAttribute(
-          'data-fill',
-          'half',
-        );
+      expect(steps[2]).toHaveAttribute('data-current', 'true');
+      expect(steps[2].nextElementSibling).toHaveAttribute('data-fill', 'half');
 
-        expect(steps[3]).toHaveAttribute('data-next', 'true');
-        expect(steps[3].nextElementSibling).toHaveAttribute(
-          'data-fill',
-          'full',
-        );
+      expect(steps[3]).toHaveAttribute('data-next', 'true');
+      expect(steps[3].nextElementSibling).toHaveAttribute('data-fill', 'full');
 
-        expect(steps[7]).toHaveAttribute('data-completed', 'true');
-        expect(steps[7]).not.toHaveAttribute('data-fill');
-      },
-    );
+      expect(steps[7]).toHaveAttribute('data-completed', 'true');
+      expect(steps[7]).not.toHaveAttribute('data-fill');
+    });
   },
 };
 
@@ -237,34 +204,22 @@ export const WithStepContent: Story = {
     return (
       <Stack aria-label="Progress Stepper with Content">
         <ProgressStepper currentStepIndex={currentIndex}>
-          <StepItem
-            key="withstepcontent-start-your-application"
-            label="Start Your Application"
-          >
+          <StepItem key="withstepcontent-start-your-application" label="Start Your Application">
             <Stack gap={2} className="gi-pt-2">
               Begin your application by filling in basic details.
             </Stack>
           </StepItem>
-          <StepItem
-            key="withstepcontent-personal-information"
-            label="Personal Information"
-          >
+          <StepItem key="withstepcontent-personal-information" label="Personal Information">
             <Stack gap={2} className="gi-pt-2">
               Provide your personal information, such as name, age, etc.
             </Stack>
           </StepItem>
-          <StepItem
-            key="withstepcontent-eligibility-check"
-            label="Eligibility Check"
-          >
+          <StepItem key="withstepcontent-eligibility-check" label="Eligibility Check">
             <Stack gap={2} className="gi-pt-2">
               Ensure that you meet the eligibility criteria for the application.
             </Stack>
           </StepItem>
-          <StepItem
-            key="withstepcontent-documents-submission"
-            label="Documents Submission"
-          >
+          <StepItem key="withstepcontent-documents-submission" label="Documents Submission">
             <Stack gap={2} className="gi-pt-2">
               Upload all required documents to proceed with the application.
             </Stack>
@@ -274,22 +229,13 @@ export const WithStepContent: Story = {
               Review all the information you’ve provided before submitting.
             </Stack>
           </StepItem>
-          <StepItem
-            key="withstepcontent-complete-submit"
-            label="Complete & Submit"
-          >
+          <StepItem key="withstepcontent-complete-submit" label="Complete & Submit">
             <Stack gap={2} className="gi-pt-2">
               Once everything is confirmed, submit your application.
             </Stack>
           </StepItem>
         </ProgressStepper>
-        <Stack
-          direction={'row'}
-          gap={3}
-          className="gi-pt-3"
-          itemsDistribution="start"
-          role="navigation"
-        >
+        <Stack direction={'row'} gap={3} className="gi-pt-3" itemsDistribution="start" role="navigation">
           {currentIndex > 0 && (
             <Button variant="secondary" onClick={handlePreviousButton}>
               Previous
@@ -323,18 +269,11 @@ export const WithVerticalOrientation: Story = {
   },
   play: async ({ canvasElement, step }) => {
     const canvas = within(canvasElement);
-    await step(
-      'should render a vertical progress stepper correctly',
-      async () => {
-        const stepperElement = canvas.getByTestId('progress-stepper');
-        const stepElements = [
-          ...stepperElement.querySelectorAll(
-            '.gi-progress-stepper-step-container',
-          ),
-        ] as HTMLElement[];
-        expect(stepElements[1].dataset.current).toBe('true');
-      },
-    );
+    await step('should render a vertical progress stepper correctly', async () => {
+      const stepperElement = canvas.getByTestId('progress-stepper');
+      const stepElements = [...stepperElement.querySelectorAll('.gi-progress-stepper-step-container')] as HTMLElement[];
+      expect(stepElements[1].dataset.current).toBe('true');
+    });
   },
 };
 
@@ -369,12 +308,7 @@ export const WithContentStepVertical: Story = {
             <Stack>Here are the content for Step 6</Stack>
           </StepItem>
         </ProgressStepper>
-        <Stack
-          direction="row"
-          gap={3}
-          className="gi-pt-5"
-          itemsDistribution="start"
-        >
+        <Stack direction="row" gap={3} className="gi-pt-5" itemsDistribution="start">
           {currentIndex > 0 && (
             <Button variant="secondary" onClick={handlePreviousButton}>
               Previous
@@ -397,15 +331,9 @@ export const WithFormContentStepVertical: Story = {
     const handlePreviousButton = () => setCurrentIndex(() => currentIndex - 1);
 
     return (
-      <div
-        className="gi-w-[500px]"
-        aria-label="Progress Stepper with Form Content"
-      >
+      <div className="gi-w-[500px]" aria-label="Progress Stepper with Form Content">
         <Stack>
-          <ProgressStepper
-            currentStepIndex={currentIndex}
-            orientation="vertical"
-          >
+          <ProgressStepper currentStepIndex={currentIndex} orientation="vertical">
             <StepItem
               key="withformcontentstepvertical-step-1"
               label="This step is for requesting information, this is the first step the user needs to finish."
@@ -413,82 +341,57 @@ export const WithFormContentStepVertical: Story = {
             >
               <Stack gap={2}>
                 <Heading size="sm">Category Details</Heading>
-                <Paragraph>
-                  Please select the options that best describes the query you’re
-                  raising.
-                </Paragraph>
+                <Paragraph>Please select the options that best describes the query you’re raising.</Paragraph>
                 <FormField className="lg:gi-w-[450px] gi-w-full">
-                  <FormFieldLabel htmlFor="category-select">
-                    Category
-                  </FormFieldLabel>
+                  <FormFieldLabel htmlFor="category-select">Category</FormFieldLabel>
                   <Select id="category-select">
                     <SelectItem value="0">Select a Category</SelectItem>
                   </Select>
                 </FormField>
                 <FormField className="lg:gi-w-[450px] gi-w-full">
-                  <FormFieldLabel htmlFor="customer-type-select">
-                    Customer Type
-                  </FormFieldLabel>
+                  <FormFieldLabel htmlFor="customer-type-select">Customer Type</FormFieldLabel>
                   <Select id="customer-type-select">
                     <SelectItem value="0">Select a Customer Type</SelectItem>
                   </Select>
                 </FormField>
                 <FormField className="lg:gi-w-[450px] gi-w-full">
-                  <FormFieldLabel htmlFor="related-topic-select">
-                    Related Topic
-                  </FormFieldLabel>
+                  <FormFieldLabel htmlFor="related-topic-select">Related Topic</FormFieldLabel>
                   <Select id="related-topic-select">
                     <SelectItem value="0">Select a related topic</SelectItem>
                   </Select>
                 </FormField>
               </Stack>
             </StepItem>
-            <StepItem
-              key="withformcontentstepvertical-step-2"
-              label="Step 2"
-              defaultOpen
-            >
+            <StepItem key="withformcontentstepvertical-step-2" label="Step 2" defaultOpen>
               <Stack gap={2}>
                 <Heading size="sm">Query Details</Heading>
                 <Paragraph>
-                  If this query is about someone else, please provide their
-                  details below. If it's about yourself, enter your own details.
+                  If this query is about someone else, please provide their details below. If it's about yourself, enter
+                  your own details.
                 </Paragraph>
                 <FormField className="lg:gi-w-[450px] gi-w-full">
-                  <FormFieldLabel htmlFor="fullname-text-id">
-                    Full name
-                  </FormFieldLabel>
+                  <FormFieldLabel htmlFor="fullname-text-id">Full name</FormFieldLabel>
                   <InputText id="fullname-text-id" />
                 </FormField>
                 <FormField className="lg:gi-w-[450px] gi-w-full">
-                  <FormFieldLabel htmlFor="pps-number-text-id">
-                    PPS Number
-                  </FormFieldLabel>
+                  <FormFieldLabel htmlFor="pps-number-text-id">PPS Number</FormFieldLabel>
                   <InputText id="pps-number-text-id" />
                 </FormField>
                 <FormField className="lg:gi-w-[450px] gi-w-full">
-                  <FormFieldLabel htmlFor="school-roll-number-text-id">
-                    School Roll Number
-                  </FormFieldLabel>
-                  <FormFieldHint>
-                    Don't know your school number? Find a school application.
-                  </FormFieldHint>
+                  <FormFieldLabel htmlFor="school-roll-number-text-id">School Roll Number</FormFieldLabel>
+                  <FormFieldHint>Don't know your school number? Find a school application.</FormFieldHint>
                   <InputText id="school-roll-number-text-id" />
                 </FormField>
                 <FormField className="lg:gi-w-[450px] gi-w-full">
-                  <FormFieldLabel htmlFor="description-text-id">
-                    Describe your Query
-                  </FormFieldLabel>
+                  <FormFieldLabel htmlFor="description-text-id">Describe your Query</FormFieldLabel>
                   <FormFieldHint>(Max 1'000 words)</FormFieldHint>
                   <TextArea cols={100} id="description-text-id" rows={4} />
                 </FormField>
                 <FormField>
-                  <FormFieldLabel htmlFor="file-upload-id">
-                    Document Upload
-                  </FormFieldLabel>
+                  <FormFieldLabel htmlFor="file-upload-id">Document Upload</FormFieldLabel>
                   <FormFieldHint>
-                    .jpg, .rtf, .txt, .doc,. docx and .pdf files are accepted.
-                    Looking for an application form? Find a form here.
+                    .jpg, .rtf, .txt, .doc,. docx and .pdf files are accepted. Looking for an application form? Find a
+                    form here.
                   </FormFieldHint>
                   <InputFile accept="*/*" id="file-upload-id" />
                 </FormField>
@@ -498,54 +401,34 @@ export const WithFormContentStepVertical: Story = {
               <Stack gap={2}>
                 <Heading size="sm">Contact Details</Heading>
                 <Paragraph>
-                  Where should we send updates about this query? Enter your
-                  contact details or the details of someone else who should
-                  receive the updates.
+                  Where should we send updates about this query? Enter your contact details or the details of someone
+                  else who should receive the updates.
                 </Paragraph>
                 <FormField className="lg:gi-w-[450px] gi-w-full">
-                  <FormFieldLabel htmlFor="contact-fullname-text-id">
-                    Full name
-                  </FormFieldLabel>
-                  <FormFieldHint>
-                    (to be used for communications relating to this query)
-                  </FormFieldHint>
+                  <FormFieldLabel htmlFor="contact-fullname-text-id">Full name</FormFieldLabel>
+                  <FormFieldHint>(to be used for communications relating to this query)</FormFieldHint>
                   <InputText id="contact-fullname-text-id" />
                 </FormField>
                 <FormField className="lg:gi-w-[450px] gi-w-full">
-                  <FormFieldLabel htmlFor="phone-number-text-id">
-                    Phone Number
-                  </FormFieldLabel>
-                  <FormFieldHint>
-                    (to be used for communications relating to this query)
-                  </FormFieldHint>
+                  <FormFieldLabel htmlFor="phone-number-text-id">Phone Number</FormFieldLabel>
+                  <FormFieldHint>(to be used for communications relating to this query)</FormFieldHint>
                   <InputText id="phone-number-text-id" />
                 </FormField>
                 <FormField className="lg:gi-w-[450px] gi-w-full">
-                  <FormFieldLabel htmlFor="email-text-id">
-                    Email Address
-                  </FormFieldLabel>
-                  <FormFieldHint>
-                    (to be used for communications relating to this query)
-                  </FormFieldHint>
+                  <FormFieldLabel htmlFor="email-text-id">Email Address</FormFieldLabel>
+                  <FormFieldHint>(to be used for communications relating to this query)</FormFieldHint>
                   <InputText id="email-text-id" />
                 </FormField>
               </Stack>
             </StepItem>
           </ProgressStepper>
-          <Stack
-            direction="row"
-            gap={3}
-            className="gi-pt-5"
-            itemsDistribution="start"
-          >
+          <Stack direction="row" gap={3} className="gi-pt-5" itemsDistribution="start">
             {currentIndex > 0 && (
               <Button variant="secondary" onClick={handlePreviousButton}>
                 Previous
               </Button>
             )}
-            {currentIndex < 3 && (
-              <Button onClick={handleNextButton}>Next</Button>
-            )}
+            {currentIndex < 3 && <Button onClick={handleNextButton}>Next</Button>}
           </Stack>
         </Stack>
       </div>
@@ -673,17 +556,14 @@ export const TestHorizontalSlotCurrentOnly: Story = {
   },
   play: async ({ canvasElement, step }) => {
     const canvas = within(canvasElement);
-    await step(
-      'should show slot content for the current step index',
-      async () => {
-        const stepperElement1 = canvas.getByTestId('horizontal-step-slot-0');
-        const stepperElement2 = canvas.queryByTestId('horizontal-step-slot-1');
-        const stepperElement3 = canvas.queryByTestId('horizontal-step-slot-2');
-        expect(stepperElement1).toBeInTheDocument();
-        expect(stepperElement2).toBeNull();
-        expect(stepperElement3).toBeNull();
-      },
-    );
+    await step('should show slot content for the current step index', async () => {
+      const stepperElement1 = canvas.getByTestId('horizontal-step-slot-0');
+      const stepperElement2 = canvas.queryByTestId('horizontal-step-slot-1');
+      const stepperElement3 = canvas.queryByTestId('horizontal-step-slot-2');
+      expect(stepperElement1).toBeInTheDocument();
+      expect(stepperElement2).toBeNull();
+      expect(stepperElement3).toBeNull();
+    });
   },
 };
 
@@ -705,17 +585,14 @@ export const TestVerticalDefaultOpenSlots: Story = {
   },
   play: async ({ canvasElement, step }) => {
     const canvas = within(canvasElement);
-    await step(
-      'should default open slot content while vertical orientation when "defaultOpen" is true',
-      async () => {
-        const stepperElement1 = canvas.getByTestId('vertical-step-slot-0');
-        const stepperElement2 = canvas.getByTestId('vertical-step-slot-1');
-        const stepperElement3 = canvas.getByTestId('vertical-step-slot-2');
-        expect(stepperElement1).toBeInTheDocument();
-        expect(stepperElement2).toBeInTheDocument();
-        expect(stepperElement3).toBeInTheDocument();
-      },
-    );
+    await step('should default open slot content while vertical orientation when "defaultOpen" is true', async () => {
+      const stepperElement1 = canvas.getByTestId('vertical-step-slot-0');
+      const stepperElement2 = canvas.getByTestId('vertical-step-slot-1');
+      const stepperElement3 = canvas.getByTestId('vertical-step-slot-2');
+      expect(stepperElement1).toBeInTheDocument();
+      expect(stepperElement2).toBeInTheDocument();
+      expect(stepperElement3).toBeInTheDocument();
+    });
   },
 };
 
@@ -738,18 +615,13 @@ export const TestIndicatorNumbersAllNumeric: Story = {
   },
   play: async ({ canvasElement, step }) => {
     const canvas = within(canvasElement);
-    await step(
-      'should check step numbers when "indicator" is a number',
-      async () => {
-        const steps = canvas.getAllByRole('listitem');
-        for (const stepElement of steps) {
-          const content = stepElement
-            .querySelector('.gi-progress-stepper-step')
-            ?.textContent?.trim();
-          expect(!Number.isNaN(Number(content))).toBe(true);
-        }
-      },
-    );
+    await step('should check step numbers when "indicator" is a number', async () => {
+      const steps = canvas.getAllByRole('listitem');
+      for (const stepElement of steps) {
+        const content = stepElement.querySelector('.gi-progress-stepper-step')?.textContent?.trim();
+        expect(!Number.isNaN(Number(content))).toBe(true);
+      }
+    });
   },
 };
 
@@ -772,21 +644,16 @@ export const TestIndicatorChecksWhenCompleted: Story = {
   },
   play: async ({ canvasElement, step }) => {
     const canvas = within(canvasElement);
-    await step(
-      'should have a check icon for the completed steps when "indicator" is a number',
-      async () => {
-        const listItems = canvas.getAllByRole('listitem');
-        const contents = listItems.map((listItem) =>
-          listItem
-            .querySelector('.gi-progress-stepper-step')
-            ?.textContent?.trim(),
-        );
-        const [content1, content2, currentStep] = contents;
-        expect(content1).toBe('check');
-        expect(content2).toBe('check');
-        expect(currentStep).toBe('3');
-      },
-    );
+    await step('should have a check icon for the completed steps when "indicator" is a number', async () => {
+      const listItems = canvas.getAllByRole('listitem');
+      const contents = listItems.map((listItem) =>
+        listItem.querySelector('.gi-progress-stepper-step')?.textContent?.trim(),
+      );
+      const [content1, content2, currentStep] = contents;
+      expect(content1).toBe('check');
+      expect(content2).toBe('check');
+      expect(currentStep).toBe('3');
+    });
   },
 };
 
@@ -814,11 +681,7 @@ export const TestExplicitStepStates: Story = {
     const canvas = within(canvasElement);
     await step('should respect explicit stepStates when provided', async () => {
       const stepperElement = canvas.getByTestId('progress-stepper');
-      const stepElements = [
-        ...stepperElement.querySelectorAll(
-          '.gi-progress-stepper-step-container',
-        ),
-      ] as HTMLElement[];
+      const stepElements = [...stepperElement.querySelectorAll('.gi-progress-stepper-step-container')] as HTMLElement[];
 
       expect(stepElements[0].dataset.completed).toBe('true');
       expect(stepElements[0].dataset.current).not.toBe('true');
@@ -853,22 +716,15 @@ export const TestCompleteAll: Story = {
   },
   play: async ({ canvasElement, step }) => {
     const canvas = within(canvasElement);
-    await step(
-      'should mark all steps as completed when completeAll is true',
-      async () => {
-        const stepperElement = canvas.getByTestId('progress-stepper');
-        const stepElements = [
-          ...stepperElement.querySelectorAll(
-            '.gi-progress-stepper-step-container',
-          ),
-        ] as HTMLElement[];
-        for (const stepElement of stepElements) {
-          expect(stepElement.dataset.completed).toBe('true');
-          expect(stepElement.dataset.current).not.toBe('true');
-          expect(stepElement.dataset.next).not.toBe('true');
-        }
-        expect(stepElements.length).toBe(3);
-      },
-    );
+    await step('should mark all steps as completed when completeAll is true', async () => {
+      const stepperElement = canvas.getByTestId('progress-stepper');
+      const stepElements = [...stepperElement.querySelectorAll('.gi-progress-stepper-step-container')] as HTMLElement[];
+      for (const stepElement of stepElements) {
+        expect(stepElement.dataset.completed).toBe('true');
+        expect(stepElement.dataset.current).not.toBe('true');
+        expect(stepElement.dataset.next).not.toBe('true');
+      }
+      expect(stepElements.length).toBe(3);
+    });
   },
 };

@@ -1,16 +1,10 @@
-import {
-  Title,
-  Subtitle,
-  Description,
-  Primary,
-  Controls,
-} from '@storybook/addon-docs/blocks';
+import { Title, Subtitle, Description, Primary, Controls } from '@storybook/addon-docs/blocks';
 import type { Meta, StoryObj } from '@storybook/react-vite';
 import { expect, screen, userEvent, waitFor, within } from 'storybook/test';
 import Button from '../atoms/Button';
 import { Stack } from '../stack/stack.js';
 import { Toast, toaster, ToastProvider } from './toast.js';
-import { ToastPosition } from './types.js';
+import type { ToastPosition } from './types.js';
 
 const meta: Meta<typeof Toast> = {
   title: 'Application/Toast',
@@ -37,8 +31,7 @@ const meta: Meta<typeof Toast> = {
     },
     showIcon: {
       control: 'boolean',
-      description:
-        'Controls whether the icon is shown. Set to false to hide it.',
+      description: 'Controls whether the icon is shown. Set to false to hide it.',
       table: { defaultValue: { summary: 'true' } },
     },
     description: {
@@ -122,9 +115,7 @@ export const WithSlotAction: Story = {
   render: (props) => (
     <>
       <ToastProvider />
-      <Button onClick={() => toaster.create(props)}>
-        Show Toast with Action
-      </Button>
+      <Button onClick={() => toaster.create(props)}>Show Toast with Action</Button>
     </>
   ),
   play: async ({ canvasElement }) => {
@@ -146,9 +137,7 @@ export const WithAction: Story = {
   render: (props) => (
     <>
       <ToastProvider />
-      <Button onClick={() => toaster.create(props)}>
-        Show Toast with Action
-      </Button>
+      <Button onClick={() => toaster.create(props)}>Show Toast with Action</Button>
     </>
   ),
   play: async ({ canvasElement }) => {
@@ -169,9 +158,7 @@ export const Dismissible: Story = {
     return (
       <>
         <ToastProvider />
-        <Button onClick={() => toaster.create(props)}>
-          Show Dismissible Toast
-        </Button>
+        <Button onClick={() => toaster.create(props)}>Show Dismissible Toast</Button>
       </>
     );
   },
@@ -191,9 +178,7 @@ export const WithLongerDuration: Story = {
   render: (props) => (
     <>
       <ToastProvider />
-      <Button onClick={() => toaster.create(props)}>
-        Show Toast with Longer Duration
-      </Button>
+      <Button onClick={() => toaster.create(props)}>Show Toast with Longer Duration</Button>
     </>
   ),
   play: async ({ canvasElement }) => {
@@ -212,9 +197,7 @@ export const WithPositionChange: Story = {
   render: (props) => (
     <>
       <ToastProvider />
-      <Button onClick={() => toaster.create(props)}>
-        Show Toast at Bottom Left
-      </Button>
+      <Button onClick={() => toaster.create(props)}>Show Toast at Bottom Left</Button>
     </>
   ),
   play: async ({ canvasElement }) => {
@@ -352,9 +335,7 @@ export const WithoutIcon: Story = {
   ),
   play: async ({ step }) => {
     await step('trigger and render toast', async () => {
-      await userEvent.click(
-        await screen.findByRole('button', { name: /trigger toast/i }),
-      );
+      await userEvent.click(await screen.findByRole('button', { name: /trigger toast/i }));
       const alert = await screen.findByRole('alert');
       expect(alert).toBeInTheDocument();
     });
@@ -378,24 +359,18 @@ export const TestRenderTitleAndMessage: Story = {
   render: (props) => (
     <>
       <ToastProvider />
-      <Button onClick={() => toaster.create(props)}>
-        Trigger Title And Message
-      </Button>
+      <Button onClick={() => toaster.create(props)}>Trigger Title And Message</Button>
     </>
   ),
   play: async ({ canvasElement, step }) => {
     const canvas = within(canvasElement);
     await step('should render toast with title and message', async () => {
-      const triggerButton = await canvas.findByText(
-        'Trigger Title And Message',
-      );
+      const triggerButton = await canvas.findByText('Trigger Title And Message');
       await userEvent.click(triggerButton);
       await waitFor(() => {
         const bodyScope = within(document.body);
         expect(bodyScope.getByText('Toast Title')).toBeInTheDocument();
-        expect(
-          bodyScope.getByText('This is the toast content'),
-        ).toBeInTheDocument();
+        expect(bodyScope.getByText('This is the toast content')).toBeInTheDocument();
       });
     });
   },

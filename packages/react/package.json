@@ -22,8 +22,8 @@
     }
   },
   "scripts": {
-    "format": "prettier 'src/**/*.{ts,tsx}' --write",
-    "format:check": "prettier 'src/**/*.{ts,tsx}' --check",
+    "format": "prettier . --write",
+    "format:check": "prettier . --check",
     "lint": "eslint .",
     "test": "vitest run",
     "test:watch": "vitest",
@@ -37,7 +37,6 @@
     "playwright:update-snapshots": "playwright test --update-snapshots",
     "typecheck": "tsc -p tsconfig.json --noEmit"
   },
-  "prettier": "@ogcio/design-system-prettier-config",
   "sideEffects": [
     "**/*.css",
     "./dist/browser-support/runtime.js"
@@ -70,7 +69,6 @@
   "devDependencies": {
     "@chromatic-com/storybook": "^5.1.2",
     "@faker-js/faker": "9.9.0",
-    "@ogcio/design-system-prettier-config": "workspace:*",
     "@ogcio/design-system-tailwind": "workspace:*",
     "@ogcio/theme-doete": "workspace:*",
     "@ogcio/theme-govie": "workspace:*",

@@ -8,9 +8,7 @@ export type ModalPositions = 'center' | 'left' | 'right' | 'bottom';
 export type ModalFooterOrientation = 'vertical' | 'horizontal';
 
 export type ModalChildren =
-  | Array<
-      ReactElement<typeof ModalTitle | typeof ModalBody | typeof ModalFooter>
-    >
+  | Array<ReactElement<typeof ModalTitle | typeof ModalBody | typeof ModalFooter>>
   | ReactElement<typeof ModalTitle | typeof ModalBody | typeof ModalFooter>;
 
 type ModalWrapperOwnProps = {
@@ -41,10 +39,7 @@ export type ModalProps = React.AriaAttributes & {
 export type ModalCloseButtonProps = {
   label?: string;
   size?: ButtonSize;
-} & Omit<
-  IconButtonProps,
-  'className' | 'icon' | 'variant' | 'appearance' | 'size'
->;
+} & Omit<IconButtonProps, 'className' | 'icon' | 'variant' | 'appearance' | 'size'>;
 
 export type ModalFooterButton = {
   label: string;

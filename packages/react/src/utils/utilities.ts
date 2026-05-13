@@ -1,5 +1,7 @@
-import { cloneElement, isValidElement, ReactNode } from 'react';
-import { Breakpoint, BreakpointType } from '../hooks/use-breakpoint.js';
+import type { ReactNode } from 'react';
+import { cloneElement, isValidElement } from 'react';
+import type { BreakpointType } from '../hooks/use-breakpoint.js';
+import { Breakpoint } from '../hooks/use-breakpoint.js';
 
 type DisplayPage = number | -1 | -2;
 
@@ -23,11 +25,7 @@ type DisplayPage = number | -1 | -2;
  * - For `currentPage = 3`, `totalPages = 100`, and `breakpoint = SM`, the output would be `[1, -1, 3, -2, 100]`.
  * - For `currentPage = 3`, `totalPages = 3`, and `breakpoint = SM`, the output would be `[1, 2, 3]`.
  */
-export const getDisplayPages = (
-  currentPage: number,
-  totalPages: number,
-  breakpoint: BreakpointType,
-): DisplayPage[] => {
+export const getDisplayPages = (currentPage: number, totalPages: number, breakpoint: BreakpointType): DisplayPage[] => {
   if (breakpoint === Breakpoint.Small || breakpoint === Breakpoint.Medium) {
     const displayedPages: DisplayPage[] = [];
     if (totalPages <= 3) {
@@ -85,10 +83,7 @@ export const getDisplayPages = (
   return displayedPages;
 };
 
-export const safeCloneElement = (
-  element: React.ReactElement,
-  props: Record<string, any> = {},
-) => {
+export const safeCloneElement = (element: React.ReactElement, props: Record<string, any> = {}) => {
   const { __type, ...restProps } = element.props as any;
   return cloneElement(element, { ...restProps, ...props });
 };
@@ -111,14 +106,9 @@ export function getSpecialComponentType(child: ReactNode): string | null {
     return null;
   }
 
-  return (
-    (child.type as any)?.componentType || (child.props as any)?.__type || null
-  );
+  return (child.type as any)?.componentType || (child.props as any)?.__type || null;
 }
 
-export function isSpecialComponent(
-  child: ReactNode,
-  componentList: Array<string> = [],
-): boolean {
+export function isSpecialComponent(child: ReactNode, componentList: Array<string> = []): boolean {
   return componentList.includes(getSpecialComponentType(child) ?? '');
 }

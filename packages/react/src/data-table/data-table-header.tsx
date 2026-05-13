@@ -33,8 +33,7 @@ export const DataTableHeader: React.FC<DataTableHeaderProps> = ({
   const { search, filter, filterList, actions } = useMemo(() => {
     let search: React.ReactElement<DataTableHeaderTypeProps> | null = null;
     let filter: React.ReactElement<DataTableHeaderTypeProps> | null = null;
-    let filterList: React.ReactElement<DataTableHeaderFilterListProps> | null =
-      null;
+    let filterList: React.ReactElement<DataTableHeaderFilterListProps> | null = null;
     let actions: React.ReactElement<DataTableHeaderTypeProps> | null = null;
 
     Children.forEach(children, (child) => {
@@ -62,18 +61,12 @@ export const DataTableHeader: React.FC<DataTableHeaderProps> = ({
         </div>
       )}
 
-      {filterList && showFilter && (
-        <div className={styles.filterListWrapper()}>{filterList}</div>
-      )}
+      {filterList && showFilter && <div className={styles.filterListWrapper()}>{filterList}</div>}
     </div>
   );
 };
 
-export const DataTableHeaderSearch: React.FC<DataTableHeaderTypeProps> = ({
-  children,
-  className,
-  ...props
-}) => {
+export const DataTableHeaderSearch: React.FC<DataTableHeaderTypeProps> = ({ children, className, ...props }) => {
   return (
     <div className={cn(styles.search(), className)} {...props}>
       {children}
@@ -81,11 +74,7 @@ export const DataTableHeaderSearch: React.FC<DataTableHeaderTypeProps> = ({
   );
 };
 
-export const DataTableHeaderActions: React.FC<DataTableHeaderTypeProps> = ({
-  children,
-  className,
-  ...props
-}) => {
+export const DataTableHeaderActions: React.FC<DataTableHeaderTypeProps> = ({ children, className, ...props }) => {
   return (
     <div className={cn(styles.actions(), className)} {...props}>
       {children}
@@ -93,11 +82,7 @@ export const DataTableHeaderActions: React.FC<DataTableHeaderTypeProps> = ({
   );
 };
 
-export const DataTableHeaderFilter: React.FC<DataTableHeaderTypeProps> = ({
-  children,
-  className,
-  ...props
-}) => {
+export const DataTableHeaderFilter: React.FC<DataTableHeaderTypeProps> = ({ children, className, ...props }) => {
   return (
     <div className={cn(styles.filter(), className)} {...props}>
       {children}
@@ -105,9 +90,7 @@ export const DataTableHeaderFilter: React.FC<DataTableHeaderTypeProps> = ({
   );
 };
 
-export const DataTableHeaderFilterContent: React.FC<
-  DataTableHeaderTypeProps
-> = ({ children, className, ...props }) => {
+export const DataTableHeaderFilterContent: React.FC<DataTableHeaderTypeProps> = ({ children, className, ...props }) => {
   return (
     <div className={cn(styles.filterContent(), className)} {...props}>
       {children}
@@ -115,9 +98,11 @@ export const DataTableHeaderFilterContent: React.FC<
   );
 };
 
-export const DataTableHeaderFilterContentTitle: React.FC<
-  DataTableHeaderTypeProps
-> = ({ children, className, ...props }) => {
+export const DataTableHeaderFilterContentTitle: React.FC<DataTableHeaderTypeProps> = ({
+  children,
+  className,
+  ...props
+}) => {
   return (
     <div className={cn(styles.filterContentTitle(), className)} {...props}>
       {children}
@@ -125,9 +110,7 @@ export const DataTableHeaderFilterContentTitle: React.FC<
   );
 };
 
-export const DataTableHeaderFilterActions: React.FC<
-  DataTableHeaderTypeProps
-> = ({ children, className, ...props }) => {
+export const DataTableHeaderFilterActions: React.FC<DataTableHeaderTypeProps> = ({ children, className, ...props }) => {
   return (
     <div className={cn(styles.filterActions(), className)} {...props}>
       {children}
@@ -135,9 +118,13 @@ export const DataTableHeaderFilterActions: React.FC<
   );
 };
 
-export const DataTableHeaderFilterList: React.FC<
-  DataTableHeaderFilterListProps
-> = ({ filters, onRemove, onClear, className, ...props }) => {
+export const DataTableHeaderFilterList: React.FC<DataTableHeaderFilterListProps> = ({
+  filters,
+  onRemove,
+  onClear,
+  className,
+  ...props
+}) => {
   if (!filters || filters.length === 0) {
     return null;
   }
@@ -152,11 +139,7 @@ export const DataTableHeaderFilterList: React.FC<
       </span>
 
       {filters.map((filter) => (
-        <Chip
-          key={filter.id}
-          onClose={() => onRemove?.(filter.id)}
-          label={filter.label}
-        />
+        <Chip key={filter.id} onClose={() => onRemove?.(filter.id)} label={filter.label} />
       ))}
 
       <Button
@@ -181,8 +164,7 @@ DataTableHeaderActions.displayName = 'DataTableHeaderActions';
 DataTableHeaderFilter.displayName = 'DataTableHeaderFilter';
 DataTableHeaderFilterList.displayName = 'DataTableHeaderFilterList';
 DataTableHeaderFilterContent.displayName = 'DataTableHeaderFilterContent';
-DataTableHeaderFilterContentTitle.displayName =
-  'DataTableHeaderFilterContentTitle';
+DataTableHeaderFilterContentTitle.displayName = 'DataTableHeaderFilterContentTitle';
 DataTableHeaderFilterActions.displayName = 'DataTableHeaderFilterActions';
 
 Object.defineProperty(DataTableHeader, 'componentType', {
@@ -220,15 +202,11 @@ const styles = tv({
     filterListWrapper: 'gi-w-full',
     filterList: 'gi-flex gi-items-center gi-gap-2 gi-flex-wrap',
     filterContentTitle: 'gi-py-2 gi-font-medium',
-    filterContent:
-      'gi-flex gi-flex-col gi-gap-2 gi-px-6 gi-py-4 gi-flex-1 gi-overflow-auto',
+    filterContent: 'gi-flex gi-flex-col gi-gap-2 gi-px-6 gi-py-4 gi-flex-1 gi-overflow-auto',
     filterActions: 'gi-flex gi-justify-end gi-gap-2 gi-p-6',
   },
 })();
 
-const isSection = <P,>(
-  child: React.ReactNode,
-  sectionType: React.ComponentType<P>,
-): child is React.ReactElement<P> => {
+const isSection = <P,>(child: React.ReactNode, sectionType: React.ComponentType<P>): child is React.ReactElement<P> => {
   return isValidElement(child) && child.type === sectionType;
 };

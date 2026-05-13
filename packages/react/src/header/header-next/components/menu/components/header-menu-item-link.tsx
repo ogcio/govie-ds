@@ -5,11 +5,8 @@ import { forwardRef } from 'react';
 import { cn } from '../../../../../cn.js';
 import { Icon } from '../../../../../icon/icon.js';
 import Anchor from '../../../../../primitives/anchor.js';
-import { HeaderMenuItemLinkProps } from '../../../../types.js';
-import {
-  headerSecondaryLinkItemVariants,
-  headerToolItemVariants,
-} from '../../../../variants.js';
+import type { HeaderMenuItemLinkProps } from '../../../../types.js';
+import { headerSecondaryLinkItemVariants, headerToolItemVariants } from '../../../../variants.js';
 import { useHeaderContext } from '../../../header-context.js';
 import { useHeaderMenuSection } from '../header-menu-context.js';
 
@@ -22,21 +19,13 @@ const MenuAnchor = ({ icon, children, showItemMode, ...props }: any) => {
   );
 };
 
-export const HeaderMenuItemLink = forwardRef<
-  HTMLAnchorElement,
-  HeaderMenuItemLinkProps
->(
-  (
-    { asChild, href, external, children, className, target, rel, ...props },
-    ref,
-  ) => {
+export const HeaderMenuItemLink = forwardRef<HTMLAnchorElement, HeaderMenuItemLinkProps>(
+  ({ asChild, href, external, children, className, target, rel, ...props }, ref) => {
     const context = useHeaderContext();
     const section = useHeaderMenuSection();
 
     if (!section) {
-      throw new Error(
-        'HeaderMenuItemLink must be used within a HeaderSecondaryMenu or HeaderPrimaryMenu',
-      );
+      throw new Error('HeaderMenuItemLink must be used within a HeaderSecondaryMenu or HeaderPrimaryMenu');
     }
 
     const appearance = context.variant;
