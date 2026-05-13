@@ -68,8 +68,6 @@ const styles = tv({
         'gi-max-w-fit',
         'gi-justify-self-start',
         'focus:gi-rounded-sm',
-        'focus:gi-shadow-[0_0_0_2px_var(--gieds-color-yellow-400)]',
-        'focus-visible:gi-shadow-[0_0_0_2px_var(--gieds-color-yellow-400)]',
         'focus-visible:gi-no-underline',
         'focus-visible:gi-rounded-sm',
         'focus-visible:gi-outline-none',
@@ -81,8 +79,16 @@ const styles = tv({
       link: true,
       appearance: 'light',
       class: [
-        'focus:gi-shadow-[0_0_0_2px_var(--gieds-color-border-intent-focus-default)]',
-        'focus-visible:gi-shadow-[0_0_0_2px_var(--gieds-color-border-intent-focus-default)]',
+        'focus:gi-shadow-[0_0_0_2px_var(--gieds-color-gray-950),0_0_0_5px_var(--gieds-color-yellow-400)]',
+        'focus-visible:gi-shadow-[0_0_0_2px_var(--gieds-color-gray-950),0_0_0_5px_var(--gieds-color-yellow-400)]',
+      ],
+    },
+    {
+      link: true,
+      appearance: 'default',
+      class: [
+        'focus:gi-shadow-[0_0_0_2px_var(--gieds-color-yellow-400)]',
+        'focus-visible:gi-shadow-[0_0_0_2px_var(--gieds-color-yellow-400)]',
       ],
     },
   ],
