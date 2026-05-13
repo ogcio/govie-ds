@@ -1,7 +1,7 @@
 import { Children, Fragment, type FC } from 'react';
-import GiStack, { type Props as GiStackProps } from '../atoms/Stack';
-import { resolveResponsive } from '../atoms/utilities';
-import { cn } from '../cn.js';
+import GiStack, { type Props as GiStackProps } from '@/atoms/Stack';
+import { resolveResponsive } from '@/atoms/utilities';
+import { cn } from '@/cn.js';
 
 export type StackProps = GiStackProps & {
   /** @deprecated Use `align` instead. */

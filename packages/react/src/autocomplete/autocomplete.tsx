@@ -10,14 +10,14 @@ import React, {
   useCallback,
 } from 'react';
 import { tv } from 'tailwind-variants';
-import { cn } from '../cn.js';
-import { useDomId } from '../hooks/use-dom-id.js';
-import { translate as t } from '../i18n/utility.js';
-import { InputText } from '../input-text/input-text.js';
-import { Popover } from '../popover/popover.js';
-import { SelectMenu, SelectMenuGroupItem, SelectMenuOption } from '../select/select-menu.js';
-import type { SelectNextGroupItemElement, SelectNextOptionItemElement } from '../select/types.js';
-import { cycleEnabledIndex } from '../utilities.js';
+import { cn } from '@/cn.js';
+import { useDomId } from '@/hooks/use-dom-id.js';
+import { translate as t } from '@/i18n/utility.js';
+import { InputText } from '@/input-text/input-text.js';
+import { Popover } from '@/popover/popover.js';
+import { SelectMenu, SelectMenuGroupItem, SelectMenuOption } from '@/select/select-menu.js';
+import type { SelectNextGroupItemElement, SelectNextOptionItemElement } from '@/select/types.js';
+import { cycleEnabledIndex } from '@/utilities.js';
 import type { AutocompleteItemProps, AutocompleteOptionItemElement, AutocompleteProps } from './types.js';
 import { AUTOCOMPLETE_ACTIONS } from './types.js';
 import { useAutocompleteController } from './use-autocomplete-controller.js';

@@ -1,15 +1,15 @@
 import type { Meta, StoryObj } from '@storybook/react-vite';
 import { useState } from 'react';
 import { within, expect } from 'storybook/test';
-import Heading from '../Heading.js';
-import Button from '../atoms/Button';
-import Paragraph from '../atoms/Paragraph';
-import { FormField, FormFieldHint, FormFieldLabel } from '../forms/form-field/form-field.js';
-import { InputFile } from '../input-file/input-file.js';
-import { InputText } from '../input-text/input-text.js';
-import { Select, SelectItem } from '../select/select.js';
-import { Stack } from '../stack/stack.js';
-import { TextArea } from '../textarea/textarea.js';
+import Heading from '@/Heading.js';
+import Button from '@/atoms/Button';
+import Paragraph from '@/atoms/Paragraph';
+import { FormField, FormFieldHint, FormFieldLabel } from '@/forms/form-field/form-field.js';
+import { InputFile } from '@/input-file/input-file.js';
+import { InputText } from '@/input-text/input-text.js';
+import { Select, SelectItem } from '@/select/select.js';
+import { Stack } from '@/stack/stack.js';
+import { TextArea } from '@/textarea/textarea.js';
 import { ProgressStepper, StepItem } from './progress-stepper.js';
 import { StepStatus, StepFillLevel } from './types.js';
 

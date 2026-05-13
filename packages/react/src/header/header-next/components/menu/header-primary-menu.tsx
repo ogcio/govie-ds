@@ -1,11 +1,11 @@
 'use client';
 
 import { Children, forwardRef } from 'react';
-import { cn } from '../../../../cn.js';
-import { isSpecialComponent } from '../../../../utils/utilities.js';
-import type { HeaderPrimaryMenuProps } from '../../../types.js';
-import { type HeaderItemMode } from '../../../types.js';
-import { useHeaderContext } from '../../header-context.js';
+import { cn } from '@/cn.js';
+import { isSpecialComponent } from '@/utils/utilities.js';
+import type { HeaderPrimaryMenuProps } from '@/header/types.js';
+import { type HeaderItemMode } from '@/header/types.js';
+import { useHeaderContext } from '@/header/header-next/header-context.js';
 import { HeaderMenuSectionProvider } from './header-menu-context.js';
 
 export const HeaderPrimaryMenu = forwardRef<HTMLElement, HeaderPrimaryMenuProps>(

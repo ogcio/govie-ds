@@ -2,15 +2,15 @@
 import type { ReactNode, ReactElement } from 'react';
 import { cloneElement, Children, isValidElement, useState, useRef, useEffect, useMemo, useId } from 'react';
 import { createPortal } from 'react-dom';
-import Heading, { type Props as HeadingProps } from '../Heading.js';
-import Button, { type Props as GiButtonProps } from '../atoms/Button';
-import { normalizeSize } from '../utils/normalize-size.js';
-import { cn } from '../cn.js';
-import { useAriaHider } from '../hooks/use-aria-hider.js';
-import { useFocusTrap } from '../hooks/use-focus-trap.js';
-import { Icon, type IconSize } from '../icon/icon.js';
-import { IconButton } from '../icon-button/icon-button.js';
-import { splitAriaProps, getSpecialComponentType, isSpecialComponent } from '../utils/utilities.js';
+import Heading, { type Props as HeadingProps } from '@/Heading.js';
+import Button, { type Props as GiButtonProps } from '@/atoms/Button';
+import { normalizeSize } from '@/utils/normalize-size.js';
+import { cn } from '@/cn.js';
+import { useAriaHider } from '@/hooks/use-aria-hider.js';
+import { useFocusTrap } from '@/hooks/use-focus-trap.js';
+import { Icon, type IconSize } from '@/icon/icon.js';
+import { IconButton } from '@/icon-button/icon-button.js';
+import { splitAriaProps, getSpecialComponentType, isSpecialComponent } from '@/utils/utilities.js';
 
 import type {
   ModalCloseButtonProps,

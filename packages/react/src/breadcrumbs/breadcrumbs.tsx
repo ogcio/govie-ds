@@ -1,7 +1,7 @@
-import ArrowLeftIcon from '../atoms/icons/KeyboardArrowLeft';
-import { translate as t } from '../i18n/utility.js';
-import { Icon } from '../icon/icon.js';
-import { Link } from '../link/link.js';
+import ArrowLeftIcon from '@/atoms/icons/KeyboardArrowLeft';
+import { translate as t } from '@/i18n/utility.js';
+import { Icon } from '@/icon/icon.js';
+import { Link } from '@/link/link.js';
 import type { BreadcrumbLinkProps, BreadcrumbProps } from './types.js';
 
 export const BreadcrumbEllipsis = () => (

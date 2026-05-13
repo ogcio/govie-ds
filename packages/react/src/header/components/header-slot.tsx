@@ -1,11 +1,11 @@
 import { useState } from 'react';
-import { cn } from '../../cn.js';
-import { DrawerBody, DrawerWrapper } from '../../drawer/drawer.js';
-import { translate as t } from '../../i18n/utility.js';
-import { Icon } from '../../icon/icon.js';
-import { Input } from '../../primitives/input.js';
-import type { HeaderAppearance, HeaderItem } from '../types.js';
-import { headerSlotContainerVariants, headerToolItemVariants } from '../variants.js';
+import { cn } from '@/cn.js';
+import { DrawerBody, DrawerWrapper } from '@/drawer/drawer.js';
+import { translate as t } from '@/i18n/utility.js';
+import { Icon } from '@/icon/icon.js';
+import { Input } from '@/primitives/input.js';
+import type { HeaderAppearance, HeaderItem } from '@/header/types.js';
+import { headerSlotContainerVariants, headerToolItemVariants } from '@/header/variants.js';
 
 type HeaderSlotProps = {
   item: HeaderItem;

@@ -2,13 +2,13 @@
 
 import { Slot } from '@radix-ui/react-slot';
 import { forwardRef } from 'react';
-import { cn } from '../../../../../cn.js';
-import { Icon } from '../../../../../icon/icon.js';
-import Anchor from '../../../../../primitives/anchor.js';
-import type { HeaderMenuItemLinkProps } from '../../../../types.js';
-import { headerSecondaryLinkItemVariants, headerToolItemVariants } from '../../../../variants.js';
-import { useHeaderContext } from '../../../header-context.js';
-import { useHeaderMenuSection } from '../header-menu-context.js';
+import { cn } from '@/cn.js';
+import { Icon } from '@/icon/icon.js';
+import Anchor from '@/primitives/anchor.js';
+import type { HeaderMenuItemLinkProps } from '@/header/types.js';
+import { headerSecondaryLinkItemVariants, headerToolItemVariants } from '@/header/variants.js';
+import { useHeaderContext } from '@/header/header-next/header-context.js';
+import { useHeaderMenuSection } from '@/header/header-next/components/menu/header-menu-context.js';
 
 const MenuAnchor = ({ icon, children, showItemMode, ...props }: any) => {
   return (

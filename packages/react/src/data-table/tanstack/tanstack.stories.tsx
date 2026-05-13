@@ -16,24 +16,24 @@ import { type FC, Fragment, useEffect, useMemo, useRef, useState } from 'react';
 import type { FieldErrors, FieldError } from 'react-hook-form';
 import { useForm } from 'react-hook-form';
 
-import Button from '../../atoms/Button';
-import { InputCheckbox, InputCheckboxTableCell } from '../../input-checkbox/input-checkbox.js';
-import { InputText } from '../../input-text/input-text.js';
-import { Label } from '../../label/label.js';
-import { Link } from '../../link/link.js';
-import { Popover } from '../../popover/popover.js';
-import { SelectItem, SelectNative } from '../../select/select-native.js';
-import { SelectItemNext, SelectNext } from '../../select/select-next.js';
-import { Table, TableHead, TableRow, TableHeader, TableBody, TableData } from '../../table/index.js';
-import { TableExpandIcon, TableDataSlot } from '../../table/table-data.js';
-import { TablePagination } from '../../table/table-pagination.js';
-import { Tag, TagTypeEnum } from '../../tag/tag.js';
+import Button from '@/atoms/Button';
+import { InputCheckbox, InputCheckboxTableCell } from '@/input-checkbox/input-checkbox.js';
+import { InputText } from '@/input-text/input-text.js';
+import { Label } from '@/label/label.js';
+import { Link } from '@/link/link.js';
+import { Popover } from '@/popover/popover.js';
+import { SelectItem, SelectNative } from '@/select/select-native.js';
+import { SelectItemNext, SelectNext } from '@/select/select-next.js';
+import { Table, TableHead, TableRow, TableHeader, TableBody, TableData } from '@/table/index.js';
+import { TableExpandIcon, TableDataSlot } from '@/table/table-data.js';
+import { TablePagination } from '@/table/table-pagination.js';
+import { Tag, TagTypeEnum } from '@/tag/tag.js';
 import {
   DataTableFooter,
   DataTableFooterCenter,
   DataTableFooterEnd,
   DataTableFooterStart,
-} from '../data-table-footer.js';
+} from '@/data-table/data-table-footer.js';
 import {
   DataTableHeader,
   DataTableHeaderActions,
@@ -43,9 +43,9 @@ import {
   DataTableHeaderFilterContentTitle,
   DataTableHeaderFilterList,
   DataTableHeaderSearch,
-} from '../data-table-header.js';
-import { DataTableSelectedRowsBanner } from '../data-table-selected-rows.js';
-import { EditableTableCell } from '../editable-table-cell.js';
+} from '@/data-table/data-table-header.js';
+import { DataTableSelectedRowsBanner } from '@/data-table/data-table-selected-rows.js';
+import { EditableTableCell } from '@/data-table/editable-table-cell.js';
 import { makeData } from './tanstack-helpers.js';
 
 declare module '@tanstack/react-table' {

@@ -1,15 +1,15 @@
 import type { Meta, StoryObj } from '@storybook/react-vite';
 import { FormProvider, useForm } from 'react-hook-form';
 import { expect, userEvent, within } from 'storybook/test';
-import Button from '../atoms/Button';
-import { FormField, FormFieldError, FormFieldHint, FormFieldLabel } from '../forms/form-field/form-field.js';
-import { IconButton } from '../icon-button/icon-button.js';
-import { TableBody } from '../table/table-body.js';
-import { TableData } from '../table/table-data.js';
-import { TableHead } from '../table/table-head.js';
-import { TableHeader } from '../table/table-header.js';
-import { TableRow } from '../table/table-row.js';
-import { Table } from '../table/table.js';
+import Button from '@/atoms/Button';
+import { FormField, FormFieldError, FormFieldHint, FormFieldLabel } from '@/forms/form-field/form-field.js';
+import { IconButton } from '@/icon-button/icon-button.js';
+import { TableBody } from '@/table/table-body.js';
+import { TableData } from '@/table/table-data.js';
+import { TableHead } from '@/table/table-head.js';
+import { TableHeader } from '@/table/table-header.js';
+import { TableRow } from '@/table/table-row.js';
+import { Table } from '@/table/table.js';
 import { InputFile } from './input-file.js';
 
 const meta = {

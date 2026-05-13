@@ -1,12 +1,12 @@
 'use client';
 import type { ChangeEvent, TextareaHTMLAttributes } from 'react';
 import React, { forwardRef, useEffect, useImperativeHandle, useRef, useState } from 'react';
-import { cn } from '../cn.js';
-import { HintText } from '../hint-text/hint-text.js';
-import { translate as t } from '../i18n/utility.js';
-import type { IconId } from '../icon/icon.js';
-import { Icon } from '../icon/icon.js';
-import { IconButton } from '../icon-button/icon-button.js';
+import { cn } from '@/cn.js';
+import { HintText } from '@/hint-text/hint-text.js';
+import { translate as t } from '@/i18n/utility.js';
+import type { IconId } from '@/icon/icon.js';
+import { Icon } from '@/icon/icon.js';
+import { IconButton } from '@/icon-button/icon-button.js';
 
 export type TextAreaProps = React.DetailedHTMLProps<
   TextareaHTMLAttributes<HTMLTextAreaElement>,

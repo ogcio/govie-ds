@@ -1,8 +1,8 @@
 import { Title, Subtitle, Description, Primary, Controls } from '@storybook/addon-docs/blocks';
 import type { Meta, StoryObj } from '@storybook/react-vite';
 import { expect, screen, userEvent, waitFor, within } from 'storybook/test';
-import Button from '../atoms/Button';
-import { Stack } from '../stack/stack.js';
+import Button from '@/atoms/Button';
+import { Stack } from '@/stack/stack.js';
 import { Toast, toaster, ToastProvider } from './toast.js';
 import type { ToastPosition } from './types.js';
 

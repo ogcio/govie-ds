@@ -1,11 +1,11 @@
 import type { Meta, StoryObj } from '@storybook/react-vite';
 import { FormProvider, useForm } from 'react-hook-form';
 import { expect, userEvent, within } from 'storybook/test';
-import Button from '../atoms/Button';
-import { FormField, FormFieldError, FormFieldHint, FormFieldLabel } from '../forms/form-field/form-field.js';
-import { Icon } from '../icon/icon.js';
-import { Link } from '../link/link.js';
-import { Spinner } from '../spinner/spinner.js';
+import Button from '@/atoms/Button';
+import { FormField, FormFieldError, FormFieldHint, FormFieldLabel } from '@/forms/form-field/form-field.js';
+import { Icon } from '@/icon/icon.js';
+import { Link } from '@/link/link.js';
+import { Spinner } from '@/spinner/spinner.js';
 import { InputText } from './input-text.js';
 
 const meta = {

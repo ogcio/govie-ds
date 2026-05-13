@@ -1,7 +1,7 @@
 import React from 'react';
 import { tv } from 'tailwind-variants';
-import { cn } from '../cn.js';
-import { translate as t } from '../i18n/utility.js';
+import { cn } from '@/cn.js';
+import { translate as t } from '@/i18n/utility.js';
 
 export type DataTableSelectedRowsBannerProps = {
   selectedCount: number;

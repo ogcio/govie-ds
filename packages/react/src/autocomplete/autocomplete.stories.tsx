@@ -3,8 +3,8 @@ import { debounce } from 'lodash';
 import { useEffect, useMemo, useReducer, useState } from 'react';
 import { useForm } from 'react-hook-form';
 import { expect, within, userEvent, waitFor } from 'storybook/test';
-import { FormField, FormFieldLabel } from '../forms/form-field/form-field.js';
-import { Label } from '../label/label.js';
+import { FormField, FormFieldLabel } from '@/forms/form-field/form-field.js';
+import { Label } from '@/label/label.js';
 import { Autocomplete, AutocompleteItem } from './autocomplete.js';
 import type { AutocompleteProps } from './types.js';
 

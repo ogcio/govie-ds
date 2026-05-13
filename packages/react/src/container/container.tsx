@@ -1,4 +1,4 @@
-import GiContainer, { type Props as GiContainerProps } from '../atoms/Container.js';
+import GiContainer, { type Props as GiContainerProps } from '@/atoms/Container.js';
 import { tv } from 'tailwind-variants';
 
 export const ContainerInsetSizeEnum = {

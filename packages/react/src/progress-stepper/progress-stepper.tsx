@@ -1,7 +1,7 @@
 import type { FC } from 'react';
 import { Children } from 'react';
-import { cn } from '../cn.js';
-import { Icon } from '../icon/icon.js';
+import { cn } from '@/cn.js';
+import { Icon } from '@/icon/icon.js';
 import type { StepFillLevelType } from './types.js';
 import {
   ProgressStepperIndicator,

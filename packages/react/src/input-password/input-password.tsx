@@ -1,7 +1,7 @@
 'use client';
 import React, { useState, forwardRef } from 'react';
-import type { IconId } from '../icon/icon.js';
-import { InputText } from '../input-text/input-text.js';
+import type { IconId } from '@/icon/icon.js';
+import { InputText } from '@/input-text/input-text.js';
 import type { InputPasswordProps } from './types.js';
 
 export const InputPassword = forwardRef<HTMLInputElement, InputPasswordProps>((props, ref) => {

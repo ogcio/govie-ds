@@ -1,6 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/react-vite';
-import { MaxWidth } from '../atoms/Container';
-import { Container } from '../container/container.js';
+import { MaxWidth } from '@/atoms/Container';
+import { Container } from '@/container/container.js';
 import { map } from 'lodash';
 import {
   containerMeta,
@@ -8,7 +8,7 @@ import {
   WithInset as withInset,
   GuttersOnAndOff as guttersOnAndOff,
   AllMaxWidths as allMaxWidths,
-} from '../atoms/storybook/Container.meta';
+} from '@/atoms/storybook/Container.meta';
 
 const meta: Meta<typeof Container> = {
   ...containerMeta,

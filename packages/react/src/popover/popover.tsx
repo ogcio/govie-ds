@@ -1,7 +1,7 @@
 'use client';
 import { createPopper, type Options } from '@popperjs/core';
 import { useRef, useEffect } from 'react';
-import { cn } from '../cn.js';
+import { cn } from '@/cn.js';
 import type { PopoverProps } from './types.js';
 import { createDynamicHeightModifier } from './utilities.js';
 

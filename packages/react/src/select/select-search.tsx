@@ -1,5 +1,5 @@
 import { Children, forwardRef, isValidElement } from 'react';
-import { Autocomplete, AutocompleteGroupItem, AutocompleteItem } from '../autocomplete/autocomplete.js';
+import { Autocomplete, AutocompleteGroupItem, AutocompleteItem } from '@/autocomplete/autocomplete.js';
 import type { SelectNextProps } from './types.js';
 
 export const SelectSearch = forwardRef<HTMLInputElement, SelectNextProps>(

@@ -1,11 +1,11 @@
 import type { Meta, StoryObj } from '@storybook/react-vite';
-import type { Props } from '../Heading';
-import Heading from '../Heading';
+import type { Props } from '@/Heading';
+import Heading from '@/Heading';
 import {
   headingMeta,
   Default as headingDefault,
   AllHeadingLevels as headingAllLevels,
-} from '../atoms/storybook/Heading.meta';
+} from '@/atoms/storybook/Heading.meta';
 
 const meta: Meta<typeof Heading> = {
   ...headingMeta,
