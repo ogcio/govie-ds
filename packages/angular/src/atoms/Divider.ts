@@ -10,7 +10,6 @@ import { CommonModule } from '@angular/common';
 
 export type Props = {
   orientation?: (typeof Orientation)[keyof typeof Orientation];
-  inset?: boolean;
   className?: string;
   styles?: Record<string, string>;
   id?: string;
@@ -21,36 +20,15 @@ import { tv } from 'tailwind-variants';
 import { Orientation } from './constants';
 import { getOrientation } from './utilities';
 const dividerStyles = tv({
-  base: 'gi-border-gray-300 gi-border-0',
+  base: 'gi-border-color-border-system-neutral-muted gi-border-0',
   variants: {
     orientation: {
-      [Orientation.HORIZONTAL]: 'gi-border-t-xs',
-      [Orientation.VERTICAL]: 'gi-border-l-xs',
-    },
-    inset: {
-      true: '',
-      false: '',
+      [Orientation.HORIZONTAL]: 'gi-border-t-xs gi-w-full',
+      [Orientation.VERTICAL]: 'gi-border-l-xs gi-self-stretch gi-h-auto',
     },
   },
-  compoundVariants: [
-    {
-      orientation: Orientation.HORIZONTAL,
-      inset: false,
-      class: 'gi-w-full',
-    },
-    {
-      orientation: Orientation.HORIZONTAL,
-      inset: true,
-      class: 'gi-w-11/12 gi-mx-auto',
-    },
-    {
-      orientation: Orientation.VERTICAL,
-      class: 'gi-self-stretch gi-h-auto',
-    },
-  ],
   defaultVariants: {
     orientation: Orientation.HORIZONTAL,
-    inset: false,
   },
 });
 
@@ -64,7 +42,6 @@ const dividerStyles = tv({
       [class]="
         dividerStyles({
           orientation: getOrientation(orientation),
-          inset: inset ?? false,
           className: className,
         })
       "
@@ -88,7 +65,6 @@ export default class Divider {
   @Input() id!: Props['id'];
   @Input() dataTestId!: Props['dataTestId'];
   @Input() orientation!: Props['orientation'];
-  @Input() inset!: Props['inset'];
   @Input() className!: Props['className'];
   @Input() styles!: Props['styles'];
 }

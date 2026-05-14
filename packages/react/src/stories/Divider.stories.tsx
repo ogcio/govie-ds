@@ -3,12 +3,7 @@ import { omit } from 'lodash';
 import { Divider, type DividerProps } from '../Divider';
 import { Stack } from '../stack/stack';
 import { Box } from '../Box';
-import {
-  dividerMeta,
-  Default as dividerDefault,
-  Vertical as dividerVertical,
-  Inset as dividerInset,
-} from '../atoms/storybook/Divider.meta';
+import { dividerMeta, Default as dividerDefault, Vertical as dividerVertical } from '../atoms/storybook/Divider.meta';
 import { Orientation } from '../atoms/constants';
 
 const meta = {
@@ -48,17 +43,6 @@ export const Vertical: Story = {
       <Box>Left</Box>
       <Divider {...props} />
       <Box>Right</Box>
-    </Stack>
-  ),
-};
-
-export const Inset: Story = {
-  ...dividerInset,
-  render: (props) => (
-    <Stack gap={2}>
-      <Box>Content</Box>
-
-      <Divider {...props} />
     </Stack>
   ),
 };

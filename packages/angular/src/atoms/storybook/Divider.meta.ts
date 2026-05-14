@@ -13,7 +13,6 @@ export const dividerMeta = {
   title: 'Layout/Divider',
   args: {
     orientation: Orientation.HORIZONTAL,
-    inset: false,
     id: 'divider-example',
     dataTestId: 'divider-test',
   },
@@ -22,20 +21,6 @@ export const dividerMeta = {
       description: 'Axis along which the divider draws its line.',
       defaultValue: Orientation.HORIZONTAL,
     }),
-    inset: {
-      control: {
-        type: 'boolean' as const,
-      },
-      description: 'When true, the divider is proportionally indented from the edges of its container.',
-      table: {
-        type: {
-          summary: 'boolean',
-        },
-        defaultValue: {
-          summary: 'false',
-        },
-      },
-    },
     className: {
       control: {
         disable: true,
@@ -86,7 +71,7 @@ export const dividerMeta = {
     docs: {
       description: {
         component:
-          'Divider is a visual separator rendered as a native `<hr>`. It has no margin — spacing is controlled by the parent layout (gap, padding). Supports horizontal and vertical orientations and an optional edge inset.',
+          'Divider is a visual separator rendered as a native `<hr>`. It has no margin — spacing is controlled by the parent layout (gap, padding). Supports horizontal and vertical orientations.',
       },
     },
   },
@@ -129,12 +114,5 @@ export const Vertical = {
     await checker('divider-vertical-test', canvas, step).attributes({
       'aria-orientation': Orientation.VERTICAL,
     });
-  },
-};
-export const Inset = {
-  args: {
-    ...dividerMeta.args,
-    inset: true,
-    dataTestId: 'divider-inset-test',
   },
 };

@@ -13,10 +13,6 @@ component:
           ofType: '"horizontal" | "vertical"'
           description: 'Sets the direction of the divider line. Defaults to horizontal.'
           required: false
-        - name: 'inset'
-          ofType: 'boolean'
-          description: 'When true, proportionally indents the divider from the edges.'
-          required: false
         - name: 'className'
           ofType: 'string'
           description: 'Custom class name to apply to the divider element.'
@@ -38,8 +34,6 @@ component:
       url: '/story/layout-divider--default'
     - name: 'vertical'
       url: '/story/layout-divider--vertical'
-    - name: 'inset'
-      url: '/story/layout-divider--inset'
 ---
 
 # Divider
@@ -61,10 +55,6 @@ A pure visual separator that renders a thin line between content sections. The D
 ### Vertical
 
 <StorybookFrame componentId="divider-react" story="vertical" />
-
-### Inset
-
-<StorybookFrame componentId="divider-react" story="inset" />
 
 ## Properties
 

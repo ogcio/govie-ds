@@ -90,7 +90,7 @@ export function Footer({
             </div>
           )}
 
-          {primarySlot && secondarySlot && <Divider className="gi-border-color-border-system-neutral-subtle gi-my-8" />}
+          {primarySlot && secondarySlot && <Divider className="gi-my-8" />}
 
           <div
             className="gi-flex gi-flex-row-reverse gi-flex-wrap-reverse gi-justify-between gi-justify-items-stretch"
