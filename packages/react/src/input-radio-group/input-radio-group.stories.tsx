@@ -1,10 +1,10 @@
 import type { Meta, StoryObj } from '@storybook/react-vite';
 import { useState } from 'react';
 import { expect, userEvent, waitFor, within } from 'storybook/test';
-import Paragraph from '../atoms/Paragraph';
-import { FormField, FormFieldError, FormFieldHint, FormFieldLabel } from '../forms/form-field/form-field.js';
-import { InputRadio } from '../input-radio/input-radio.js';
-import { InputRadioGroup } from '../input-radio-group/input-radio-group.js';
+import Paragraph from '@/atoms/Paragraph';
+import { FormField, FormFieldError, FormFieldHint, FormFieldLabel } from '@/forms/form-field/form-field.js';
+import { InputRadio } from '@/input-radio/input-radio.js';
+import { InputRadioGroup } from '@/input-radio-group/input-radio-group.js';
 
 const meta = {
   title: 'Form/Radio/InputRadioGroup',

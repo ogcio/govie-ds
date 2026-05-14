@@ -1,6 +1,6 @@
 'use client';
 import { tv, type VariantProps } from 'tailwind-variants';
-import { cn } from '../cn.js';
+import { cn } from '@/cn.js';
 
 export const spinnerSizeVariants = {
   xl: 'gi-w-10 gi-h-10',

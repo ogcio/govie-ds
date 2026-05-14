@@ -1,11 +1,11 @@
 'use client';
 
 import { useId } from 'react';
-import { cn } from '../cn.js';
-import { HintText } from '../hint-text/hint-text.js';
-import { InputText } from '../input-text/input-text.js';
-import { Label } from '../label/label.js';
-import { Input } from '../primitives/input.js';
+import { cn } from '@/cn.js';
+import { HintText } from '@/hint-text/hint-text.js';
+import { InputText } from '@/input-text/input-text.js';
+import { Label } from '@/label/label.js';
+import { Input } from '@/primitives/input.js';
 import { InputRadioSizeEnum, type InputRadioProps, type InputRadioSizeType } from './types.js';
 
 const getRadioSize = (size?: InputRadioSizeType) => {

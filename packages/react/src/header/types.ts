@@ -5,9 +5,9 @@ import type {
   PropsWithChildren,
   ReactNode,
 } from 'react';
-import type { LogoProps } from '../common/types.js';
-import type { DrawerPosition } from '../drawer/drawer.js';
-import type { IconId } from '../icon/icon.js';
+import type { LogoProps } from '@/common/types.js';
+import type { DrawerPosition } from '@/drawer/drawer.js';
+import type { IconId } from '@/icon/icon.js';
 
 export type HeaderItemMode = 'always' | 'mobile-only' | 'desktop-only';
 export type HeaderItemAppearance = 'dropdown' | 'drawer';

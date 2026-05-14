@@ -1,6 +1,6 @@
 import type { ComponentPropsWithRef, ReactElement } from 'react';
 import { Children, cloneElement, isValidElement } from 'react';
-import { cn } from '../cn.js';
+import { cn } from '@/cn.js';
 import type { AccordionItem, AccordionItemProps } from './accordion-item.js';
 
 export type AccordionProps = {

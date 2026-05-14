@@ -1,7 +1,7 @@
 'use client';
 import { Children, cloneElement, isValidElement, useState, useEffect } from 'react';
-import type { InputCheckboxSizeEnumType } from '../input-checkbox/types.js';
-import type { InputRadioSizeType } from '../input-radio/types.js';
+import type { InputCheckboxSizeEnumType } from '@/input-checkbox/types.js';
+import type { InputRadioSizeType } from '@/input-radio/types.js';
 import type { InputCheckboxGroupProps } from './types.js';
 
 export const InputCheckboxGroup: React.FC<React.PropsWithChildren<InputCheckboxGroupProps>> = ({

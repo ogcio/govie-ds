@@ -1,10 +1,10 @@
 'use client';
 import type { ReactElement } from 'react';
 import { Children } from 'react';
-import { cn } from '../cn.js';
-import { useDomId } from '../hooks/use-dom-id.js';
-import { translate as t } from '../i18n/utility.js';
-import { getSpecialComponentType } from '../utilities.js';
+import { cn } from '@/cn.js';
+import { useDomId } from '@/hooks/use-dom-id.js';
+import { translate as t } from '@/i18n/utility.js';
+import { getSpecialComponentType } from '@/utilities.js';
 import { useSummaryListContext } from './summary-list-context.js';
 import type {
   SummaryListActionListProps,

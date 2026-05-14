@@ -1,13 +1,13 @@
 'use client';
 
 import { Children, forwardRef, type ReactElement } from 'react';
-import { cn } from '../../cn.js';
-import { translate as t } from '../../i18n/utility.js';
-import { getSpecialComponentType, isSpecialComponent } from '../../utils/utilities.js';
-import type { HeaderNextProps, HeaderSlotContainerProps } from '../types.js';
-import { headerMenuVariants, headerSlotContainerVariants, headerVariants } from '../variants.js';
+import { cn } from '@/cn.js';
+import { translate as t } from '@/i18n/utility.js';
+import { getSpecialComponentType, isSpecialComponent } from '@/utils/utilities.js';
+import type { HeaderNextProps, HeaderSlotContainerProps } from '@/header/types.js';
+import { headerMenuVariants, headerSlotContainerVariants, headerVariants } from '@/header/variants.js';
 import { HeaderProvider } from './header-context.js';
-import Container from '../../atoms/Container.js';
+import Container from '@/atoms/Container.js';
 
 export const HeaderNext = forwardRef<HTMLElement, HeaderNextProps>(
   (

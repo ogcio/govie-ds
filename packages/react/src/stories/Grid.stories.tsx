@@ -1,6 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/react-vite';
 import _ from 'lodash';
-import { Grid } from '../Grid';
+import { Grid } from '@/Grid';
 import {
   gridMeta,
   Default as gridDefault,
@@ -8,7 +8,7 @@ import {
   ResponsiveColumns as gridResponsiveColumns,
   ResponsiveSize as gridResponsiveSize,
   Nested as gridNested,
-} from '../atoms/storybook/Grid.meta';
+} from '@/atoms/storybook/Grid.meta';
 
 const meta: Meta<typeof Grid> = {
   ...gridMeta,

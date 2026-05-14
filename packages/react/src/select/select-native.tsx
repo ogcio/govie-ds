@@ -1,6 +1,6 @@
 import type { FC } from 'react';
-import { cn } from '../cn.js';
-import { Icon } from '../icon/icon.js';
+import { cn } from '@/cn.js';
+import { Icon } from '@/icon/icon.js';
 import type { SelectGroupItemProps, SelectItemProps, SelectTableCellProps, SelectProps } from './types.js';
 
 export const SelectGroupItem = ({ children, ...props }: SelectGroupItemProps) => (

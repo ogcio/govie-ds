@@ -1,6 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/react-vite';
 import _ from 'lodash';
-import { iconsMeta, Default as iconsDefault, iconList } from '../atoms/storybook/Icons.meta';
+import { iconsMeta, Default as iconsDefault, iconList } from '@/atoms/storybook/Icons.meta';
 
 const meta: Meta = {
   ...iconsMeta,

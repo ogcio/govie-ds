@@ -1,5 +1,5 @@
 import type * as React from 'react';
-import type { Props as GiButtonProps } from '../atoms/Button.js';
+import type { Props as GiButtonProps } from '@/atoms/Button.js';
 
 export const ButtonVariants = ['primary', 'secondary', 'flat'] as const;
 export type ButtonVariant = (typeof ButtonVariants)[number];

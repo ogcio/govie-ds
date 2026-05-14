@@ -1,13 +1,13 @@
 import type { Meta, StoryObj } from '@storybook/react-vite';
 import { omit } from 'lodash';
-import { Box } from '../Box';
-import { Container } from '../container/container';
-import { Stack } from '../stack/stack';
+import { Box } from '@/Box';
+import { Container } from '@/container/container';
+import { Stack } from '@/stack/stack';
 import {
   boxMeta,
   Default as boxDefault,
   WithContainerAndStack as boxWithContainerAndStack,
-} from '../atoms/storybook/Box.meta';
+} from '@/atoms/storybook/Box.meta';
 
 const meta: Meta<typeof Box> = {
   ...boxMeta,

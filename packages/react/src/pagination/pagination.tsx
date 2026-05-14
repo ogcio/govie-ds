@@ -1,11 +1,11 @@
 'use client';
 import React, { useState, useEffect } from 'react';
 import { Trans, useTranslation } from 'react-i18next';
-import { Button } from '../atoms';
-import { ArrowRightIcon, ArrowLeftIcon } from '../atoms/icons';
-import { Breakpoint, useBreakpoint } from '../hooks/use-breakpoint.js';
-import { Icon } from '../icon/icon.js';
-import { getDisplayPages } from '../utils/utilities.js';
+import { Button } from '@/atoms';
+import { ArrowRightIcon, ArrowLeftIcon } from '@/atoms/icons';
+import { Breakpoint, useBreakpoint } from '@/hooks/use-breakpoint.js';
+import { Icon } from '@/icon/icon.js';
+import { getDisplayPages } from '@/utils/utilities.js';
 
 export type PaginationProps = {
   currentPage: number;

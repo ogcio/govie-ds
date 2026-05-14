@@ -1,9 +1,9 @@
 import type { Meta, StoryObj } from '@storybook/react-vite';
 import { FormProvider, useForm } from 'react-hook-form';
 import { expect, userEvent, within } from 'storybook/test';
-import Button from '../atoms/Button';
-import { FormField, FormFieldLabel } from '../forms/form-field/form-field.js';
-import { TextArea } from '../textarea/textarea.js';
+import Button from '@/atoms/Button';
+import { FormField, FormFieldLabel } from '@/forms/form-field/form-field.js';
+import { TextArea } from '@/textarea/textarea.js';
 import { CharacterCount } from './character-count.js';
 
 const meta = {

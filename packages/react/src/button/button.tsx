@@ -1,6 +1,6 @@
 import { forwardRef } from 'react';
-import GiButton, { type Props as GiButtonProps } from '../atoms/Button';
-import { normalizeSize } from '../utils/normalize-size.js';
+import GiButton, { type Props as GiButtonProps } from '@/atoms/Button';
+import { normalizeSize } from '@/utils/normalize-size.js';
 import type { ButtonProps } from './types';
 
 export const Button = forwardRef<HTMLButtonElement, ButtonProps>(

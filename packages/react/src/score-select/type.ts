@@ -1,4 +1,4 @@
-import type { ButtonSize } from '../button/types.js';
+import type { ButtonSize } from '@/button/types.js';
 
 type ScoreSelectType = '1-5' | '1-7' | '0-10';
 

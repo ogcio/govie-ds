@@ -1,7 +1,7 @@
 import type { Meta, StoryObj } from '@storybook/react-vite';
 import { waitFor } from 'storybook/test';
-import Button from '../atoms/Button';
-import { sleep } from '../test-utilities.js';
+import Button from '@/atoms/Button';
+import { sleep } from '@/test-utilities.js';
 import { AccordionItem } from './accordion-item.js';
 import type { AccordionProps } from './accordion.js';
 import { Accordion } from './accordion.js';

@@ -1,6 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/react-vite';
 import { expect, within } from 'storybook/test';
-import { Link } from '../link/link.js';
+import { Link } from '@/link/link.js';
 import { List, ListTypeEnum } from './list.js';
 
 const meta = {

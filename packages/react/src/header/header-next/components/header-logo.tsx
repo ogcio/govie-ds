@@ -1,7 +1,7 @@
 'use client';
-import type { HeaderLogoProps } from '../../types.js';
-import { headerLogoVariants } from '../../variants.js';
-import { useHeaderContext } from '../header-context.js';
+import type { HeaderLogoProps } from '@/header/types.js';
+import { headerLogoVariants } from '@/header/variants.js';
+import { useHeaderContext } from '@/header/header-next/header-context.js';
 
 export const HeaderLogo = ({ children, ariaLabel, href }: HeaderLogoProps) => {
   const context = useHeaderContext();

@@ -1,7 +1,7 @@
 import type { FieldsetHTMLAttributes, PropsWithChildren } from 'react';
-import type { ErrorTextProps } from '../../error-text/types.js';
-import type { HintTextProps } from '../../hint-text/types.js';
-import type { LabelSizeType, LabelTextProps } from '../../label/types.js';
+import type { ErrorTextProps } from '@/error-text/types.js';
+import type { HintTextProps } from '@/hint-text/types.js';
+import type { LabelSizeType, LabelTextProps } from '@/label/types.js';
 
 export type LegendProps = PropsWithChildren<
   React.HTMLAttributes<HTMLLegendElement> & {

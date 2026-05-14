@@ -1,5 +1,5 @@
 import type { Meta, StoryObj } from '@storybook/react-vite';
-import { generateSvgPlaceholderDataUrl } from '../utils/placeholder.js';
+import { generateSvgPlaceholderDataUrl } from '@/utils/placeholder.js';
 import { Card } from './card.js';
 
 const backgroundImageUrl400x300 = generateSvgPlaceholderDataUrl(400, 300);

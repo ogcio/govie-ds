@@ -1,8 +1,8 @@
 'use client';
 import { useEffect, useState } from 'react';
 import { createPortal } from 'react-dom';
-import { cn } from '../cn.js';
-import { translate as t } from '../i18n/utility.js';
+import { cn } from '@/cn.js';
+import { translate as t } from '@/i18n/utility.js';
 import { Toast as DSToast } from './ds-toast.js';
 import type { ToastPosition, ToastProps } from './types.js';
 
