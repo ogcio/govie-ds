@@ -10,23 +10,24 @@ export const HeaderLogo = ({ children, ariaLabel, href }: HeaderLogoProps) => {
   if (!context) {
     throw new Error('HeaderLogo must be used within a Header');
   }
-
+  if (href) {
+    return (
+      <a
+        href={href}
+        className={headerLogoVariants({ appearance: context.variant, className: 'gi-p-1 gi-block' })}
+        aria-label={ariaLabel}
+      >
+        {children}
+      </a>
+    );
+  }
   return (
     <div
-      className={cn(
-        !!href && 'gi-p-1',
-        headerLogoVariants({
-          appearance: context?.variant,
-        }),
-      )}
+      className={headerLogoVariants({
+        appearance: context.variant,
+      })}
     >
-      {href ? (
-        <a href={href} aria-label={ariaLabel}>
-          {children}
-        </a>
-      ) : (
-        children
-      )}
+      {children}
     </div>
   );
 };
