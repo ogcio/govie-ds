@@ -356,7 +356,7 @@ export function createTheme(
             transform: 'translateY(-25%)',
           },
         },
-        'toast-fadeleft': {
+        'toast-fadeinleft': {
           from: {
             opacity: 0,
             transform: 'translateX(-25%)',
@@ -366,7 +366,17 @@ export function createTheme(
             transform: 'translateX(0)',
           },
         },
-        'toast-faderight': {
+        'toast-fadeoutleft': {
+          from: {
+            opacity: 1,
+            transform: 'translateX(0)',
+          },
+          to: {
+            opacity: 0,
+            transform: 'translateX(-25%)',
+          },
+        },
+        'toast-fadeinright': {
           from: {
             opacity: 0,
             transform: 'translateX(25%)',
@@ -374,6 +384,16 @@ export function createTheme(
           to: {
             opacity: 1,
             transform: 'translateX(0)',
+          },
+        },
+        'toast-fadeoutright': {
+          from: {
+            opacity: 1,
+            transform: 'translateX(0)',
+          },
+          to: {
+            opacity: 0,
+            transform: 'translateX(25%)',
           },
         },
         'toast-fadeoutdown': {
@@ -390,14 +410,14 @@ export function createTheme(
       animation: {
         'indeterminate-progress': 'indeterminate-progress 1s linear infinite',
 
-        'toast-fadeinup': 'toast-fadeup 0.3s ease-in forwards',
-        'toast-fadeoutup': 'toast-fadeup 0.3s ease-out reverse forwards',
+        'toast-fadeinup': 'toast-fadeinup 0.3s ease-in forwards',
+        'toast-fadeoutup': 'toast-fadeoutup 0.3s ease-out forwards',
 
-        'toast-fadeinleft': 'toast-fadeleft 0.3s ease-in forwards',
-        'toast-fadeoutleft': 'toast-fadeleft 0.3s ease-out reverse',
+        'toast-fadeinleft': 'toast-fadeinleft 0.3s ease-in forwards',
+        'toast-fadeoutleft': 'toast-fadeoutleft 0.3s ease-in forwards',
 
-        'toast-fadeinright': 'toast-faderight 0.3s ease-in forwards',
-        'toast-fadeoutright': 'toast-faderight 0.3s ease-out reverse',
+        'toast-fadeinright': 'toast-fadeinright 0.3s ease-in forwards',
+        'toast-fadeoutright': 'toast-fadeoutright 0.3s ease-in forwards',
 
         'toast-fadeoutdown': 'toast-fadeoutdown 0.3s ease-in forwards',
       },

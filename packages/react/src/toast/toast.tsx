@@ -173,7 +173,7 @@ export const Toast = ({
 
 const toastVariants = tv({
   base: [
-    'gi-m-0 gi-p-0 md:gi-min-w-[320px] md:gi-max-w-[460px] gi-w-full gi-block gi-overflow-hidden gi-pointer-events-auto gi-relative gi-rounded-sm gi-box-border gi-shrink-[0] gi-animate-toast-fadeinup',
+    'gi-m-0 gi-p-0 md:gi-min-w-[320px] md:gi-max-w-[460px] gi-w-full gi-block gi-overflow-hidden gi-pointer-events-auto gi-relative gi-rounded-sm gi-box-border gi-shrink-[0]',
   ],
   variants: {
     animation: {
