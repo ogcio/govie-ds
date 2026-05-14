@@ -6,6 +6,12 @@ import preserveDirectives from 'rollup-preserve-directives';
 import { defineConfig } from 'vite';
 import dts from 'vite-plugin-dts';
 import { libInjectCss } from 'vite-plugin-lib-inject-css';
+import packageJson from './package.json' with { type: 'json' };
+
+const externalPackages = [
+  ...Object.keys(packageJson.dependencies ?? {}),
+  ...Object.keys(packageJson.peerDependencies ?? {}),
+];
 
 export default defineConfig({
   resolve: {
@@ -35,10 +41,8 @@ export default defineConfig({
       entry: 'src/index.ts',
       formats: ['es'],
     },
-    rollupOptions: {
-      external: (id) => {
-        return id === 'react' || id === 'react-dom' || id.startsWith('react/') || id.startsWith('react-dom/');
-      },
+    rolldownOptions: {
+      external: (id) => externalPackages.some((name) => id === name || id.startsWith(`${name}/`)),
       input: Object.fromEntries(
         glob
           .sync('src/**/*.{ts,tsx}', {
@@ -59,11 +63,6 @@ export default defineConfig({
       output: {
         assetFileNames: 'assets/[name][extname]',
         entryFileNames: '[name].js',
-        globals: {
-          react: 'React',
-          'react-dom': 'ReactDOM',
-          'react/jsx-runtime': 'jsxRuntime',
-        },
       },
     },
   },
