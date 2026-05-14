@@ -1,6 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/react-vite';
 import clsx from 'clsx';
-import type { HeaderAppearance } from '@/header/types.js';
+import type { HeaderAppearance } from '@/header/types';
 import { useMemo, useState } from 'react';
 import { within, expect, userEvent, screen } from 'storybook/test';
 import Heading from '@/Heading.js';
