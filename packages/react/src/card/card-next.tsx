@@ -13,12 +13,12 @@ import {
   type FC,
   type ReactNode,
 } from 'react';
-import Paragraph from '../atoms/Paragraph';
-import { cn } from '../cn.js';
-import { Breakpoint, useBreakpoint } from '../hooks/use-breakpoint.js';
-import { Icon } from '../icon/icon.js';
-import { Tag } from '../tag/tag.js';
-import { getSpecialComponentType, isSpecialComponent } from '../utils/utilities.js';
+import Paragraph from '@/atoms/Paragraph';
+import { cn } from '@/cn.js';
+import { Breakpoint, useBreakpoint } from '@/hooks/use-breakpoint.js';
+import { Icon } from '@/icon/icon.js';
+import { Tag } from '@/tag/tag.js';
+import { getSpecialComponentType, isSpecialComponent } from '@/utils/utilities.js';
 import type {
   CardDescriptionProps,
   CardContainerProps,

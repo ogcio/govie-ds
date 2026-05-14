@@ -1,8 +1,8 @@
 'use client';
 import React from 'react';
-import type { ButtonProps } from '../button/types.js';
-import Container from '../atoms/Container.js';
-import type { LinkProps } from '../link/link.js';
+import type { ButtonProps } from '@/button/types.js';
+import Container from '@/atoms/Container.js';
+import type { LinkProps } from '@/link/link.js';
 
 export type CookieBannerProps = {
   showConsent: boolean;

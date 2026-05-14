@@ -1,6 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/react-vite';
 import _ from 'lodash';
-import Info from '../atoms/icons/Info';
+import Info from '@/atoms/icons/Info';
 import {
   iconButtonMeta,
   Default as defaultStory,
@@ -9,9 +9,9 @@ import {
   AllVariants as allVariants,
   AllAppearances as allAppearances,
   AllSizes as allSizes,
-} from '../atoms/storybook/IconButton.meta';
-import { Variant, Appearance } from '../atoms/constants';
-import IconButton, { IconButtonSize as Size, type Props } from '../atoms/IconButton';
+} from '@/atoms/storybook/IconButton.meta';
+import { Variant, Appearance } from '@/atoms/constants';
+import IconButton, { IconButtonSize as Size, type Props } from '@/atoms/IconButton';
 
 const meta: Meta<typeof IconButton> = {
   ...iconButtonMeta,

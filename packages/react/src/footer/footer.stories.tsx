@@ -1,11 +1,11 @@
 import type { Meta, StoryObj } from '@storybook/react-vite';
 import { within, expect } from 'storybook/test';
-import { Icon } from '../icon/icon.js';
-import { Link } from '../link/link.js';
-import { Divider } from '../Divider';
-import { Stack } from '../stack/stack.js';
+import { Icon } from '@/icon/icon.js';
+import { Link } from '@/link/link.js';
+import { Divider } from '@/Divider';
+import { Stack } from '@/stack/stack.js';
 import { Footer } from './footer.js';
-import { generateSvgPlaceholderDataUrl } from '../utils/placeholder.js';
+import { generateSvgPlaceholderDataUrl } from '@/utils/placeholder.js';
 
 const meta: Meta<typeof Footer> = {
   component: Footer,

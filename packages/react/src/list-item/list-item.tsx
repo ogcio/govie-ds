@@ -1,6 +1,6 @@
 import type { AnchorHTMLAttributes } from 'react';
-import { cn } from '../cn.js';
-import Anchor from '../primitives/anchor.js';
+import { cn } from '@/cn.js';
+import Anchor from '@/primitives/anchor.js';
 
 export type ListItemProps = AnchorHTMLAttributes<HTMLAnchorElement> & {
   label?: string;

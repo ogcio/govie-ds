@@ -17,8 +17,8 @@ import {
   ArrowRightIcon,
   FirstPageIcon,
   LastPageIcon,
-} from '../atoms/icons';
-import { cn } from '../cn.js';
+} from '@/atoms/icons';
+import { cn } from '@/cn.js';
 import type { iconIds } from './icons.js';
 import Bluesky from './svgs/bluesky.js';
 import Facebook from './svgs/facebook.js';

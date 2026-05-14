@@ -1,5 +1,5 @@
-import { cn } from '../cn.js';
-import { translate as t } from '../i18n/utility.js';
+import { cn } from '@/cn.js';
+import { translate as t } from '@/i18n/utility.js';
 
 export type ProgressBarProps = {
   max?: number;

@@ -1,7 +1,7 @@
 'use client';
 
-import { InputText } from '../input-text/input-text.js';
-import type { InputTextProps } from '../input-text/type.js';
+import { InputText } from '@/input-text/input-text.js';
+import type { InputTextProps } from '@/input-text/type.js';
 
 /**
  * @deprecated Use `<InputText />` instead of `<TextInput />`.

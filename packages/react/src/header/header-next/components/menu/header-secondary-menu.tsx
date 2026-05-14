@@ -1,11 +1,11 @@
 'use client';
 
 import { Children, forwardRef } from 'react';
-import Container from '../../../../atoms/Container.js';
-import { isSpecialComponent } from '../../../../utils/utilities.js';
-import type { HeaderSecondaryMenuProps } from '../../../types.js';
-import { headerSecondaryLinksVariants } from '../../../variants.js';
-import { useHeaderContext } from '../../header-context.js';
+import Container from '@/atoms/Container.js';
+import { isSpecialComponent } from '@/utils/utilities.js';
+import type { HeaderSecondaryMenuProps } from '@/header/types.js';
+import { headerSecondaryLinksVariants } from '@/header/variants.js';
+import { useHeaderContext } from '@/header/header-next/header-context.js';
 import { HeaderMenuSectionProvider } from './header-menu-context.js';
 
 export const HeaderSecondaryMenu = forwardRef<HTMLElement, HeaderSecondaryMenuProps>(

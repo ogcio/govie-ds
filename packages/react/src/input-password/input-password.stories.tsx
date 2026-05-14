@@ -1,9 +1,9 @@
 import type { Meta, StoryObj } from '@storybook/react-vite';
 import { FormProvider, useForm } from 'react-hook-form';
 import { userEvent, within, expect } from 'storybook/test';
-import Button from '../atoms/Button';
-import { FormField, FormFieldError, FormFieldHint, FormFieldLabel } from '../forms/form-field/form-field.js';
-import { Stack } from '../stack/stack.js';
+import Button from '@/atoms/Button';
+import { FormField, FormFieldError, FormFieldHint, FormFieldLabel } from '@/forms/form-field/form-field.js';
+import { Stack } from '@/stack/stack.js';
 import { InputPassword } from './input-password.js';
 
 const meta = {

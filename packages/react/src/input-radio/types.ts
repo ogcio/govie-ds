@@ -1,5 +1,5 @@
 import type { InputHTMLAttributes } from 'react';
-import type { InputTextProps } from '../input-text/type.js';
+import type { InputTextProps } from '@/input-text/type.js';
 
 export const InputRadioSizeEnum = {
   Medium: 'md',

@@ -2,7 +2,7 @@
 
 import { useState, useRef, useEffect } from 'react';
 import { tv } from 'tailwind-variants';
-import { Icon } from '../icon/icon.js';
+import { Icon } from '@/icon/icon.js';
 
 export type DetailsProps = {
   label: string;

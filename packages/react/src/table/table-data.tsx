@@ -2,8 +2,8 @@
 
 import type { TdHTMLAttributes, ReactNode } from 'react';
 import { useRef, useEffect, useState } from 'react';
-import { cn } from '../cn.js';
-import { IconButton } from '../icon-button/icon-button.js';
+import { cn } from '@/cn.js';
+import { IconButton } from '@/icon-button/icon-button.js';
 import type { TableAlign, VerticalAlign } from './table.js';
 
 type TableDataSize = 'xs-fixed' | 'sm-fixed' | 'md-fixed' | 'lg-flex' | 'fluid';

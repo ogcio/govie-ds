@@ -1,5 +1,5 @@
 import React from 'react';
-import { cn } from '../cn.js';
+import { cn } from '@/cn.js';
 
 export function TableRow({ children, ...props }: React.TableHTMLAttributes<HTMLTableRowElement>) {
   return (

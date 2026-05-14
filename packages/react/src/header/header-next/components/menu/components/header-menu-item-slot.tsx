@@ -1,11 +1,11 @@
 'use client';
 
 import { forwardRef } from 'react';
-import { cn } from '../../../../../cn.js';
-import { type HeaderMenuItemSlotProps } from '../../../../types.js';
-import { headerSecondaryLinkSlotItemVariants } from '../../../../variants.js';
-import { useHeaderContext } from '../../../header-context.js';
-import { useHeaderMenuSection } from '../header-menu-context.js';
+import { cn } from '@/cn.js';
+import { type HeaderMenuItemSlotProps } from '@/header/types.js';
+import { headerSecondaryLinkSlotItemVariants } from '@/header/variants.js';
+import { useHeaderContext } from '@/header/header-next/header-context.js';
+import { useHeaderMenuSection } from '@/header/header-next/components/menu/header-menu-context.js';
 
 export const HeaderMenuItemSlot = forwardRef<HTMLDivElement, HeaderMenuItemSlotProps>(
   ({ children, className, ...props }, ref) => {

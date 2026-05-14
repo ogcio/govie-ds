@@ -2,7 +2,7 @@ import type { Meta, StoryObj } from '@storybook/react-vite';
 import { useRef, useState } from 'react';
 import { expect, userEvent, waitFor, within } from 'storybook/test';
 
-import { FormField, FormFieldHint, FormFieldLabel } from '../forms/form-field/form-field.js';
+import { FormField, FormFieldHint, FormFieldLabel } from '@/forms/form-field/form-field.js';
 import { ButtonGroup, ButtonGroupItem } from './button-group.js';
 
 const meta = {

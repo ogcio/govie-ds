@@ -1,6 +1,6 @@
 import path from 'node:path';
 import { storybookTest } from '@storybook/addon-vitest/vitest-plugin';
-import { configDefaults, coverageConfigDefaults, defineConfig, defineProject, mergeConfig } from 'vitest/config';
+import { configDefaults, coverageConfigDefaults, defineConfig, mergeConfig } from 'vitest/config';
 
 import viteConfig from './vite.config';
 
@@ -26,7 +26,8 @@ export default mergeConfig(
         ],
       },
       projects: [
-        defineProject({
+        {
+          extends: true,
           test: {
             name: 'unit',
             globals: true,
@@ -35,7 +36,7 @@ export default mergeConfig(
             setupFiles: ['./vitest-unit.setup.ts'],
             exclude: [...configDefaults.exclude, 'tests/*.spec.ts'],
           },
-        }),
+        },
         {
           extends: true,
           test: {

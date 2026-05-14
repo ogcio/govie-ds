@@ -1,13 +1,13 @@
 'use client';
 import type { PropsWithChildren } from 'react';
 import React, { useEffect, useState, useCallback, memo } from 'react';
-import Heading from '../Heading.js';
-import Button from '../atoms/Button';
-import Paragraph from '../atoms/Paragraph';
-import { cn } from '../cn.js';
-import type { IconId } from '../icon/icon.js';
-import { Icon } from '../icon/icon.js';
-import { Link } from '../link/link.js';
+import Heading from '@/Heading.js';
+import Button from '@/atoms/Button';
+import Paragraph from '@/atoms/Paragraph';
+import { cn } from '@/cn.js';
+import type { IconId } from '@/icon/icon.js';
+import { Icon } from '@/icon/icon.js';
+import { Link } from '@/link/link.js';
 import type { SideNavHeadingProps, SideNavItemProps, SideNavProps } from './types.js';
 
 type SideNavContextType = {

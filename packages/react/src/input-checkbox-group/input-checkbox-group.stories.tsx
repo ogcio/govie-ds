@@ -1,8 +1,8 @@
 import type { Meta, StoryObj } from '@storybook/react-vite';
 import { useState } from 'react';
 import { expect, userEvent, waitFor, within } from 'storybook/test';
-import { FormField, FormFieldError, FormFieldHint, FormFieldLabel } from '../forms/form-field/form-field.js';
-import { InputCheckbox } from '../input-checkbox/input-checkbox.js';
+import { FormField, FormFieldError, FormFieldHint, FormFieldLabel } from '@/forms/form-field/form-field.js';
+import { InputCheckbox } from '@/input-checkbox/input-checkbox.js';
 import { InputCheckboxGroup } from './input-checkbox-group.js';
 
 const meta = {

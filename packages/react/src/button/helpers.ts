@@ -1,4 +1,4 @@
-import type { IconButtonProps } from '../icon-button/icon-button.js';
+import type { IconButtonProps } from '@/icon-button/icon-button.js';
 import type { ButtonAppearance, ButtonVariant, ButtonSize } from './types.js';
 
 export const getVariantAppearanceClass = ({

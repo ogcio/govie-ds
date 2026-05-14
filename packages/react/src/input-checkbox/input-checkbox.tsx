@@ -1,9 +1,9 @@
 'use client';
 import { useId, forwardRef } from 'react';
-import { cn } from '../cn.js';
-import { HintText } from '../hint-text/hint-text.js';
-import { Label } from '../label/label.js';
-import { Input } from '../primitives/input.js';
+import { cn } from '@/cn.js';
+import { HintText } from '@/hint-text/hint-text.js';
+import { Label } from '@/label/label.js';
+import { Input } from '@/primitives/input.js';
 
 import {
   InputCheckboxSizeEnum,

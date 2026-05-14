@@ -10,13 +10,13 @@ import {
   useRef,
   useState,
 } from 'react';
-import { cn } from '../cn.js';
-import { useDomId } from '../hooks/use-dom-id.js';
-import { useScrollHighlightedItem } from '../hooks/use-scroll-highlighted-item.js';
-import { translate as t } from '../i18n/utility.js';
-import { InputText } from '../input-text/input-text.js';
-import { Popover } from '../popover/popover.js';
-import { cycleEnabledIndex } from '../utilities.js';
+import { cn } from '@/cn.js';
+import { useDomId } from '@/hooks/use-dom-id.js';
+import { useScrollHighlightedItem } from '@/hooks/use-scroll-highlighted-item.js';
+import { translate as t } from '@/i18n/utility.js';
+import { InputText } from '@/input-text/input-text.js';
+import { Popover } from '@/popover/popover.js';
+import { cycleEnabledIndex } from '@/utilities.js';
 import { SelectMenu, SelectMenuGroupItem, SelectMenuOption } from './select-menu.js';
 import { SelectSearch } from './select-search.js';
 import type {

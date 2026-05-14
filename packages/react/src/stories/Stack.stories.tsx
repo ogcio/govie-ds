@@ -1,7 +1,7 @@
 import type { Meta, StoryObj } from '@storybook/react-vite';
 import _ from 'lodash';
-import { Stack } from '../stack/stack';
-import { Direction, AlignItems, Justify } from '../atoms/constants';
+import { Stack } from '@/stack/stack';
+import { Direction, AlignItems, Justify } from '@/atoms/constants';
 import {
   stackMeta,
   Default as stackDefault,
@@ -11,7 +11,7 @@ import {
   GapScale as stackGapScale,
   Responsive as stackResponsive,
   Wrapped as stackWrapped,
-} from '../atoms/storybook/Stack.meta';
+} from '@/atoms/storybook/Stack.meta';
 
 const meta: Meta<typeof Stack> = {
   ...stackMeta,

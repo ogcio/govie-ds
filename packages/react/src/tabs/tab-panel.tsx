@@ -1,4 +1,4 @@
-import { slugify } from '../utilities.js';
+import { slugify } from '@/utilities.js';
 import type { TabPanelProps } from './types.js';
 
 export function TabPanel({ value, children }: TabPanelProps) {

@@ -1,11 +1,11 @@
 'use client';
 
 import { forwardRef, useImperativeHandle, useMemo, useRef } from 'react';
-import { cn } from '../cn.js';
-import type { IconId } from '../icon/icon.js';
-import { Icon } from '../icon/icon.js';
-import { IconButton } from '../icon-button/icon-button.js';
-import { Input as PrimitiveInput } from '../primitives/input.js';
+import { cn } from '@/cn.js';
+import type { IconId } from '@/icon/icon.js';
+import { Icon } from '@/icon/icon.js';
+import { IconButton } from '@/icon-button/icon-button.js';
+import { Input as PrimitiveInput } from '@/primitives/input.js';
 import type { InputActionButtonProps, InputTextProps, InputTextTableCellProps } from './type.js';
 
 const InputTextWithClear = forwardRef<HTMLInputElement, InputTextProps>(({ onChange, ...props }, externalRef) => {

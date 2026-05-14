@@ -1,15 +1,15 @@
 import { Slottable } from '@radix-ui/react-slot';
 import React from 'react';
-import { cn } from '../../cn.js';
-import { ErrorText } from '../../error-text/error-text.js';
-import type { ErrorTextProps } from '../../error-text/types.js';
-import { HintText } from '../../hint-text/hint-text.js';
-import type { HintTextProps } from '../../hint-text/types.js';
-import { translate as t } from '../../i18n/utility.js';
-import { Label } from '../../label/label.js';
-import type { LabelTextProps } from '../../label/types.js';
-import type { TagProps } from '../../tag/tag.js';
-import { Tag } from '../../tag/tag.js';
+import { cn } from '@/cn.js';
+import { ErrorText } from '@/error-text/error-text.js';
+import type { ErrorTextProps } from '@/error-text/types.js';
+import { HintText } from '@/hint-text/hint-text.js';
+import type { HintTextProps } from '@/hint-text/types.js';
+import { translate as t } from '@/i18n/utility.js';
+import { Label } from '@/label/label.js';
+import type { LabelTextProps } from '@/label/types.js';
+import type { TagProps } from '@/tag/tag.js';
+import { Tag } from '@/tag/tag.js';
 
 /**
  * @deprecated This type is deprecated and will be removed in a future release.

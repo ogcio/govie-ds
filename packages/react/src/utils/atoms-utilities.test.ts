@@ -1,4 +1,4 @@
-import { clamp, resolveResponsive } from '../atoms/utilities';
+import { clamp, resolveResponsive } from '@/atoms/utilities';
 
 const Color = {
   RED: 'red',

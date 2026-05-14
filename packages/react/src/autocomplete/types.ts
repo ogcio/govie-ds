@@ -1,5 +1,5 @@
 import type { ChangeEvent, PropsWithChildren, ReactElement } from 'react';
-import type { SelectMenuOptionProps } from '../select/types.js';
+import type { SelectMenuOptionProps } from '@/select/types.js';
 
 export const AUTOCOMPLETE_ACTIONS = {
   SET_IS_OPEN: 'SET_IS_OPEN',

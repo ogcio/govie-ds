@@ -3,7 +3,7 @@ import clsx from 'clsx';
 import type { ComponentPropsWithRef } from 'react';
 import React, { useState, useRef } from 'react';
 import { tv } from 'tailwind-variants';
-import { Icon } from '../icon/icon.js';
+import { Icon } from '@/icon/icon.js';
 
 export type AccordionItemProps = {
   children: React.ReactNode;

@@ -1,10 +1,10 @@
 'use client';
 import { tv, type VariantProps } from 'tailwind-variants';
-import Paragraph from '../atoms/Paragraph';
-import type { IconId } from '../icon/icon.js';
-import { Icon } from '../icon/icon.js';
-import { IconButton } from '../icon-button/icon-button.js';
-import { Link } from '../link/link.js';
+import Paragraph from '@/atoms/Paragraph';
+import type { IconId } from '@/icon/icon.js';
+import { Icon } from '@/icon/icon.js';
+import { IconButton } from '@/icon-button/icon-button.js';
+import { Link } from '@/link/link.js';
 import type { ToastProps } from './types.js';
 
 const toastVariants = tv({

@@ -7,12 +7,12 @@ import {
   LogoWhite as GovieLogoHarpWithText,
   LogoHarpBlack as GovieLogoHarpBlack,
   LogoHarpWhite as GovieLogoHarp,
-} from '../atoms/icons/logos';
-import { cn } from '../cn.js';
-import Container from '../atoms/Container.js';
-import { translate as t } from '../i18n/utility.js';
-import { Icon } from '../icon/icon.js';
-import Anchor from '../primitives/anchor.js';
+} from '@/atoms/icons/logos';
+import { cn } from '@/cn.js';
+import Container from '@/atoms/Container.js';
+import { translate as t } from '@/i18n/utility.js';
+import { Icon } from '@/icon/icon.js';
+import Anchor from '@/primitives/anchor.js';
 import { MobileHeaderMenuItems } from './components/header-menu.js';
 import { SlotContainer, SlotItemAction } from './components/header-slot.js';
 import { attachEventsToItemActionTriggers } from './helper.js';

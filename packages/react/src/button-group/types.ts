@@ -1,6 +1,6 @@
 import type { PropsWithChildren } from 'react';
-import type { Props as ButtonProps } from '../atoms/Button';
-import type { ButtonSize } from '../button/types.js';
+import type { Props as ButtonProps } from '@/atoms/Button';
+import type { ButtonSize } from '@/button/types.js';
 
 export type ButtonGroupProps = PropsWithChildren<{
   name: string;
