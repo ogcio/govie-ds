@@ -1,6 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/react-vite';
-import type { IconId } from '../../icon/icon.js';
-import type { HeaderAppearance } from '../types.js';
+import clsx from 'clsx';
+import type { HeaderAppearance } from '@/header/types.js';
 import { useMemo, useState } from 'react';
 import { within, expect, userEvent, screen } from 'storybook/test';
 import Heading from '@/Heading.js';
@@ -533,7 +533,7 @@ const LinkExamples = ({ focused }: { focused?: boolean }) => {
   const [variant, setVariant] = useState<HeaderAppearance>('default');
   const toggleVariant = () => setVariant(variant === 'light' ? 'default' : 'light');
   return (
-    <div className={cn('gi-p-4', variant === 'light' ? 'gi-bg-black' : 'gi-bg-white')}>
+    <div className={clsx('gi-p-4', variant === 'light' ? 'gi-bg-black' : 'gi-bg-white')}>
       <Header variant={variant} aria-label="Site header">
         <HeaderLogo href="#" ariaLabel="Gov.ie logo">
           {variant === 'default' ? (

@@ -1,6 +1,5 @@
 'use client';
-
-import { cn } from '@/cn.js';
+import { tv } from 'tailwind-variants';
 import type { HeaderTitleProps } from '@/header/types.js';
 import { headerTitleVariants } from '@/header/variants.js';
 import { useHeaderContext } from '@/header/header-next/header-context.js';
