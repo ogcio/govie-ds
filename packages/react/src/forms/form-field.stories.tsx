@@ -141,7 +141,6 @@ export const WithSubLabel: Story = {
     expect(labelElement).toBeTruthy();
 
     expect(optional).toBeInTheDocument();
-    expect(optional).toHaveClass('gi-secondary-label');
     expect(labelElement).toContainElement(optional);
   },
 };

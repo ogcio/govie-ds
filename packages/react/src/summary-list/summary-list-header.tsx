@@ -1,6 +1,7 @@
 'use client';
 import type { ReactElement } from 'react';
 import { Children } from 'react';
+import { tv } from 'tailwind-variants';
 import { cn } from '@/cn.js';
 import { useBreakpoint } from '@/hooks/use-breakpoint.js';
 import { useDomId } from '@/hooks/use-dom-id.js';
@@ -9,7 +10,6 @@ import { getSpecialComponentType } from '@/utilities.js';
 import { useSummaryListContext } from './summary-list-context.js';
 import { ActionList } from './summary-list-row.js';
 import type { SummaryListActionProps, SummaryListHeaderProps } from './types.js';
-import { tv } from 'tailwind-variants';
 
 export const SummaryListHeader = ({
   children,
