@@ -337,18 +337,69 @@ export function createTheme(
           '100%': { left: '100%' },
         },
         'toast-fadeinup': {
-          '0%': {
+          from: {
             opacity: 0,
             transform: 'translateY(25%)',
           },
-          '100%': {
+          to: {
             opacity: 1,
             transform: 'translateY(0)',
+          },
+        },
+        'toast-fadeoutup': {
+          from: {
+            opacity: 1,
+            transform: 'translateY(0)',
+          },
+          to: {
+            opacity: 0,
+            transform: 'translateY(-25%)',
+          },
+        },
+        'toast-fadeleft': {
+          from: {
+            opacity: 0,
+            transform: 'translateX(-25%)',
+          },
+          to: {
+            opacity: 1,
+            transform: 'translateX(0)',
+          },
+        },
+        'toast-faderight': {
+          from: {
+            opacity: 0,
+            transform: 'translateX(25%)',
+          },
+          to: {
+            opacity: 1,
+            transform: 'translateX(0)',
+          },
+        },
+        'toast-fadeoutdown': {
+          from: {
+            opacity: 1,
+            transform: 'translateY(0)',
+          },
+          to: {
+            opacity: 0,
+            transform: 'translateY(25%)',
           },
         },
       },
       animation: {
         'indeterminate-progress': 'indeterminate-progress 1s linear infinite',
+
+        'toast-fadeinup': 'toast-fadeup 0.3s ease-in forwards',
+        'toast-fadeoutup': 'toast-fadeup 0.3s ease-out reverse forwards',
+
+        'toast-fadeinleft': 'toast-fadeleft 0.3s ease-in forwards',
+        'toast-fadeoutleft': 'toast-fadeleft 0.3s ease-out reverse',
+
+        'toast-fadeinright': 'toast-faderight 0.3s ease-in forwards',
+        'toast-fadeoutright': 'toast-faderight 0.3s ease-out reverse',
+
+        'toast-fadeoutdown': 'toast-fadeoutdown 0.3s ease-in forwards',
       },
       typography: () => {
         return {

@@ -146,9 +146,7 @@ export const Toast = ({
     <div
       data-testid={`${title}-${variant || 'info'}`}
       data-animation={animation || 'no-animation'}
-      className={cn('gi-toast', {
-        'gi-toast-disappear': !isOpen,
-      })}
+      className={cn(toastVariants({ animation, isOpen }))}
       role="alert"
       aria-live="assertive"
       aria-atomic="true"
@@ -174,5 +172,34 @@ export const Toast = ({
 };
 
 const toastVariants = tv({
-  base: 'gi-m-0 gi-p-0 md:gi-min-w-[320px] md:gi-max-w-[460px] gi-w-full gi-block gi-overflow-hidden gi-pointer-events-auto gi-relative gi-rounded-sm gi-box-border gi-shrink-[0]',
+  base: [
+    'gi-m-0 gi-p-0 md:gi-min-w-[320px] md:gi-max-w-[460px] gi-w-full gi-block gi-overflow-hidden gi-pointer-events-auto gi-relative gi-rounded-sm gi-box-border gi-shrink-[0] gi-animate-toast-fadeinup',
+  ],
+  variants: {
+    animation: {
+      fadeinup: 'gi-animate-toast-fadeinup',
+      fadeinright: 'gi-animate-toast-fadeinright',
+      fadeinleft: 'gi-animate-toast-fadeinleft',
+    },
+    isOpen: {
+      false: 'gi-translate-y-0 gi-delay-250',
+    },
+  },
+  compoundVariants: [
+    {
+      animation: 'fadeinleft',
+      isOpen: false,
+      class: 'gi-animate-toast-fadeoutleft',
+    },
+    {
+      animation: 'fadeinup',
+      isOpen: false,
+      class: 'gi-animate-toast-fadeoutup',
+    },
+    {
+      animation: 'fadeinright',
+      isOpen: false,
+      class: 'gi-animate-toast-fadeoutright',
+    },
+  ],
 });
