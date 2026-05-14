@@ -153,7 +153,6 @@ export type HeaderNextProps = ComponentPropsWithoutRef<'header'> & {
 };
 
 export type HeaderLogoProps = PropsWithChildren<{
-  ariaLabel?: string;
   href?: string;
 }>;
 export type HeaderVariant = 'default' | 'light';

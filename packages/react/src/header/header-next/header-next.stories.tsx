@@ -535,7 +535,7 @@ const LinkExamples = ({ focused }: { focused?: boolean }) => {
   return (
     <div className={clsx('gi-p-4', variant === 'light' ? 'gi-bg-black' : 'gi-bg-white')}>
       <Header variant={variant} aria-label="Site header">
-        <HeaderLogo href="#" ariaLabel="Gov.ie logo">
+        <HeaderLogo href="#">
           {variant === 'default' ? (
             <LogoHarpWhite label="Gov.ie logo" className="gi-block gi-h-10 gi-w-auto sm:gi-hidden" />
           ) : (
@@ -630,7 +630,6 @@ export const WithTitleAsLinkFocusState: StoryObj = {
       const links = await canvas.findAllByRole('link');
       const linkLogo = links[0];
       const linkTitle = links[1];
-      expect(linkLogo).toHaveAttribute('aria-label', 'Gov.ie logo');
       expect(linkLogo).toHaveAttribute('href', '#');
       expect(linkTitle).toHaveAttribute('href', '#');
       await userEvent.click(header);

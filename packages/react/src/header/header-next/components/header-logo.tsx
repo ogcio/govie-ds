@@ -3,7 +3,7 @@ import type { HeaderLogoProps } from '@/header/types.js';
 import { headerLogoVariants } from '@/header/variants.js';
 import { useHeaderContext } from '@/header/header-next/header-context.js';
 
-export const HeaderLogo = ({ children, ariaLabel, href }: HeaderLogoProps) => {
+export const HeaderLogo = ({ children, href }: HeaderLogoProps) => {
   const context = useHeaderContext();
 
   if (!context) {
@@ -11,11 +11,7 @@ export const HeaderLogo = ({ children, ariaLabel, href }: HeaderLogoProps) => {
   }
   if (href) {
     return (
-      <a
-        href={href}
-        className={headerLogoVariants({ appearance: context.variant, className: 'gi-p-1 gi-block' })}
-        aria-label={ariaLabel}
-      >
+      <a href={href} className={headerLogoVariants({ appearance: context.variant, className: 'gi-p-1 gi-block' })}>
         {children}
       </a>
     );
