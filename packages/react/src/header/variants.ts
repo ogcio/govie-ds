@@ -18,7 +18,7 @@ export const headerVariants = tv({
 });
 
 export const headerMenuVariants = tv({
-  base: 'gi-header-menu',
+  base: ['gi-h-20', 'gi-items-center', 'gi-flex', 'gi-flex-row', 'gi-flex-nowrap', 'gi-py-3', 'sm:gi-py-4'],
   variants: {
     appearance: AppearanceBackground,
   },

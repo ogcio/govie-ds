@@ -18,7 +18,7 @@ export const headerVariants = tv({
 });
 
 export const headerMenuVariants = tv({
-  base: 'gi-header-menu gi-justify-between',
+  base: 'gi-header-menu',
   variants: {
     appearance: AppearanceBackground,
   },
