@@ -182,13 +182,10 @@ export type HeaderSlotContainerProps = PropsWithChildren<
     className?: string;
   } & ComponentPropsWithoutRef<'div'>
 >;
-export type HeaderTitleProps = PropsWithChildren<
-  {
-    className?: string;
-    href?: string;
-    ariaLabel?: string;
-  } & ComponentPropsWithoutRef<'div'>
->;
+export type HeaderTitleProps = PropsWithChildren<{
+  className?: string;
+  href?: string;
+}>;
 export type HeaderSecondaryMenuProps = PropsWithChildren<ComponentPropsWithoutRef<'nav'>>;
 export type HeaderMenuItemSlotProps = PropsWithChildren<
   ComponentPropsWithoutRef<'div'> & {

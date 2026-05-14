@@ -4,7 +4,7 @@ import type { HeaderTitleProps } from '@/header/types.js';
 import { headerTitleVariants } from '@/header/variants.js';
 import { useHeaderContext } from '@/header/header-next/header-context.js';
 
-export const HeaderTitle = ({ children, href, className, ariaLabel }: HeaderTitleProps) => {
+export const HeaderTitle = ({ children, href, className }: HeaderTitleProps) => {
   const context = useHeaderContext();
 
   if (!context) {
@@ -14,7 +14,6 @@ export const HeaderTitle = ({ children, href, className, ariaLabel }: HeaderTitl
     return (
       <a
         href={href}
-        aria-label={ariaLabel}
         className={styles({
           appearance: context.variant,
           link: true,
@@ -44,7 +43,16 @@ Object.defineProperty(HeaderTitle, 'componentType', {
 });
 
 const styles = tv({
-  base: ['gi-heading-sm gi-ml-4 md:gi-ml-6 lg:gi-ml-12 gi-min-w-0 lg:gi-block', 'gi-truncate gi-w-full gi-p-1'],
+  base: [
+    'gi-heading-sm',
+    'gi-ml-4',
+    'md:gi-ml-6 ',
+    'lg:gi-ml-12',
+    'gi-min-w-0',
+    'lg:gi-block',
+    'gi-truncate',
+    'gi-p-1',
+  ],
   variants: {
     appearance: {
       default: 'gi-text-white gi-stroke-white',
@@ -57,7 +65,6 @@ const styles = tv({
       true: [
         'gi-block',
         'gi-max-w-fit',
-        'gi-justify-self-start',
         'focus:gi-rounded-sm',
         'focus-visible:gi-no-underline',
         'focus-visible:gi-rounded-sm',

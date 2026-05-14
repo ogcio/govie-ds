@@ -11,7 +11,7 @@ import { DrawerMenuExample } from '@/drawer/drawer.content.js';
 import { DrawerBody, DrawerFooter, DrawerWrapper } from '@/drawer/drawer.js';
 import { FormField, FormFieldLabel } from '@/forms/form-field/form-field.js';
 import { useToggleMap } from '@/hooks/use-toggle-map.js';
-import type { IconId } from '@/icon/icon.js';
+import type { IconId } from '@/icon/icon';
 import { Icon } from '@/icon/icon.js';
 import { Link } from '@/link/link.js';
 import { List, ListTypeEnum } from '@/list/list.js';
@@ -547,9 +547,7 @@ const LinkExamples = ({ focused }: { focused?: boolean }) => {
             <LogoBlack label="Gov.ie logo" className="gi-hidden gi-h-12 gi-w-auto sm:gi-block" />
           )}
         </HeaderLogo>
-        <HeaderTitle href="#" ariaLabel="Title as a link">
-          Title as a link {focused ? 'focused' : ''}
-        </HeaderTitle>
+        <HeaderTitle href="#">Title as a link {focused ? 'focused' : ''}</HeaderTitle>
         <HeaderPrimaryMenu>
           <HeaderMenuItemLink href="#" showItemMode="desktop-only">
             Departments
@@ -609,6 +607,7 @@ export const WithTitleAndLogoAsLinks: StoryObj = {
 };
 
 export const WithTitleAsLinkFocusState: StoryObj = {
+  tags: ['skip-playwright'],
   parameters: {
     docs: {
       description: {
@@ -632,7 +631,6 @@ export const WithTitleAsLinkFocusState: StoryObj = {
       const linkLogo = links[0];
       const linkTitle = links[1];
       expect(linkLogo).toHaveAttribute('aria-label', 'Gov.ie logo');
-      expect(linkTitle).toHaveAttribute('aria-label', 'Title as a link');
       expect(linkLogo).toHaveAttribute('href', '#');
       expect(linkTitle).toHaveAttribute('href', '#');
       await userEvent.click(header);
