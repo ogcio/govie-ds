@@ -27,6 +27,7 @@ import { HeaderMenuItemSlot } from './components/menu/components/header-menu-ite
 import { HeaderPrimaryMenu } from './components/menu/header-primary-menu.js';
 import { HeaderSecondaryMenu } from './components/menu/header-secondary-menu.js';
 import { HeaderNext as Header, HeaderSlotContainer } from './header-next.js';
+import { F } from 'node_modules/@faker-js/faker/dist/airline-CLphikKp.js';
 
 const meta = {
   title: 'layout/Header',
@@ -530,42 +531,54 @@ export const Light: StoryObj = {
 };
 
 const LinkExamples = ({ focused }: { focused?: boolean }) => {
-  const [variant, setVariant] = useState<HeaderAppearance>('default');
-  const toggleVariant = () => setVariant(variant === 'light' ? 'default' : 'light');
   return (
-    <div className={clsx('gi-p-4', variant === 'light' ? 'gi-bg-black' : 'gi-bg-white')}>
-      <Header variant={variant} aria-label="Site header">
-        <HeaderLogo href="#">
-          {variant === 'default' ? (
+    <div className="gi-flex gi-flex-col gi-gap-2">
+      <div>
+        <Header data-testid="default-header" variant={'default'} aria-label="Site header">
+          <HeaderLogo href="#">
             <LogoHarpWhite label="Gov.ie logo" className="gi-block gi-h-10 gi-w-auto sm:gi-hidden" />
-          ) : (
-            <LogoHarpBlack label="Gov.ie logo" className="gi-block gi-h-10 gi-w-auto sm:gi-hidden" />
-          )}
-          {variant === 'default' ? (
             <LogoWhite label="Gov.ie logo" className="gi-hidden gi-h-12 gi-w-auto sm:gi-block" />
-          ) : (
-            <LogoBlack label="Gov.ie logo" className="gi-hidden gi-h-12 gi-w-auto sm:gi-block" />
-          )}
-        </HeaderLogo>
-        <HeaderTitle href="#">Title as a link {focused ? 'focused' : ''}</HeaderTitle>
-        <HeaderPrimaryMenu>
-          <HeaderMenuItemLink href="#" showItemMode="desktop-only">
-            Departments
-          </HeaderMenuItemLink>
-          <HeaderMenuItemLink href="#" showItemMode="always">
-            Services
-          </HeaderMenuItemLink>
-          <HeaderMenuItemSeparator />
-          <HeaderMenuItemButton>FAQ</HeaderMenuItemButton>
-          <HeaderMenuItemButton>Search</HeaderMenuItemButton>
+          </HeaderLogo>
+          <HeaderTitle href="#">Title as a link {focused ? 'focused' : ''}</HeaderTitle>
+          <HeaderPrimaryMenu>
+            <HeaderMenuItemLink href="#" showItemMode="desktop-only">
+              Departments
+            </HeaderMenuItemLink>
+            <HeaderMenuItemLink href="#" showItemMode="always">
+              Services
+            </HeaderMenuItemLink>
+            <HeaderMenuItemSeparator />
+            <HeaderMenuItemButton showItemMode="always">FAQ</HeaderMenuItemButton>
+            <HeaderMenuItemButton>Search</HeaderMenuItemButton>
 
-          <HeaderMenuItemButton showItemMode="desktop-only">Language</HeaderMenuItemButton>
+            <HeaderMenuItemButton showItemMode="desktop-only">Language</HeaderMenuItemButton>
+          </HeaderPrimaryMenu>
+        </Header>
+      </div>
+      <div>
+        <div className="gi-p-2 gi-bg-black">
+          <Header data-testid="light-header" variant={'light'} aria-label="Site header">
+            <HeaderLogo href="#">
+              <LogoHarpBlack label="Gov.ie logo" className="gi-block gi-h-10 gi-w-auto sm:gi-hidden" />
+              <LogoBlack label="Gov.ie logo" className="gi-hidden gi-h-12 gi-w-auto sm:gi-block" />
+            </HeaderLogo>
+            <HeaderTitle href="#">Title as a link light {focused ? 'focused' : ''}</HeaderTitle>
+            <HeaderPrimaryMenu>
+              <HeaderMenuItemLink href="#" showItemMode="desktop-only">
+                Departments
+              </HeaderMenuItemLink>
+              <HeaderMenuItemLink href="#" showItemMode="always">
+                Services
+              </HeaderMenuItemLink>
+              <HeaderMenuItemSeparator />
+              <HeaderMenuItemButton showItemMode="always">FAQ</HeaderMenuItemButton>
+              <HeaderMenuItemButton>Search</HeaderMenuItemButton>
 
-          <HeaderMenuItemButton onClick={toggleVariant} showItemMode="always">
-            {variant === 'default' ? 'Light' : 'Dark'}
-          </HeaderMenuItemButton>
-        </HeaderPrimaryMenu>
-      </Header>
+              <HeaderMenuItemButton showItemMode="desktop-only">Language</HeaderMenuItemButton>
+            </HeaderPrimaryMenu>
+          </Header>
+        </div>
+      </div>
     </div>
   );
 };
@@ -592,14 +605,21 @@ export const WithTitleAndLogoAsLinks: StoryObj = {
   },
   play: async ({ canvasElement, step }) => {
     const canvas = within(canvasElement);
-
-    await step('header + primary nav present', async () => {
-      expect(await canvas.findByRole('banner', { name: /site header/i })).toBeInTheDocument();
+    let firstBanner: HTMLElement;
+    let secondBanner: HTMLElement;
+    await step('headers are present', async () => {
+      firstBanner = await canvas.findByTestId('default-header');
+      secondBanner = await canvas.findByTestId('light-header');
     });
     await step('title is a link', async () => {
       expect(
-        await canvas.findByRole('link', {
+        await within(firstBanner).findByRole('link', {
           name: /title as a link/i,
+        }),
+      ).toBeInTheDocument();
+      expect(
+        await within(secondBanner).findByRole('link', {
+          name: /title as a link light/i,
         }),
       ).toBeInTheDocument();
     });
@@ -621,18 +641,16 @@ export const WithTitleAsLinkFocusState: StoryObj = {
   },
   play: async ({ canvasElement, step }) => {
     const canvas = within(canvasElement);
-
+    let firstBanner: HTMLElement;
     await step('focus outline is visible and has no visual regressions', async () => {
-      const header = await canvas.findByRole('banner', {
-        name: /site header/i,
-      });
-      expect(header).toBeInTheDocument();
-      const links = await canvas.findAllByRole('link');
+      firstBanner = await canvas.findByTestId('default-header');
+      expect(firstBanner).toBeInTheDocument();
+      const links = await within(firstBanner).findAllByRole('link');
       const linkLogo = links[0];
       const linkTitle = links[1];
       expect(linkLogo).toHaveAttribute('href', '#');
       expect(linkTitle).toHaveAttribute('href', '#');
-      await userEvent.click(header);
+      await userEvent.click(firstBanner);
       await userEvent.tab();
       expect(linkLogo).toHaveFocus();
       await userEvent.tab();
