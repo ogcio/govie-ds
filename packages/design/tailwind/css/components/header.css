@@ -55,12 +55,13 @@ focus:gi-bg-black
 }
 
 .gi-header-menu {
-  @apply gi-h-20 gi-items-center
+  @apply gi-h-20 gi-items-center 
   gi-justify-between
   gi-flex
   gi-flex-row
   gi-flex-nowrap
   gi-py-3
+  
   sm:gi-py-4;
 }
 

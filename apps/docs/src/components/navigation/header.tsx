@@ -58,7 +58,7 @@ export const DocsHeader = () => {
           <span className="gi-sr-only">Gov.ie logo</span>
         </HeaderLogo>
 
-        <HeaderTitle>Design System</HeaderTitle>
+        <HeaderTitle id="site-title">Design System</HeaderTitle>
 
         <HeaderPrimaryMenu aria-label="Primary navigation">
           {links.map((link) => (
