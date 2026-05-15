@@ -19,7 +19,7 @@ export function ProgressBar({
   ...props
 }: ProgressBarProps) {
   const fillPercentage = (value * 100) / max;
-  const { container, bar, indeterminate } = styles({ isIndeterminate });
+  const { container, bar, indeterminate, label: progressLabel } = styles({ isIndeterminate });
 
   return (
     <div className={container()}>
@@ -37,7 +37,7 @@ export function ProgressBar({
       >
         <div className={indeterminate()} style={isIndeterminate ? {} : { width: `${fillPercentage}%` }} />
       </div>
-      {label && <span>{label}</span>}
+      {label && <span className={progressLabel()}>{label}</span>}
     </div>
   );
 }
