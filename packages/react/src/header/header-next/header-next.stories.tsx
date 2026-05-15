@@ -534,7 +534,7 @@ const LinkExamples = ({ focused }: { focused?: boolean }) => {
   return (
     <div className="gi-flex gi-flex-col gi-gap-2">
       <div>
-        <Header data-testid="default-header" variant={'default'} aria-label="Site header">
+        <Header data-testid="default-header" variant={'default'} aria-label="Site header (default)">
           <HeaderLogo href="#">
             <LogoHarpWhite label="Gov.ie logo" className="gi-block gi-h-10 gi-w-auto sm:gi-hidden" />
             <LogoWhite label="Gov.ie logo" className="gi-hidden gi-h-12 gi-w-auto sm:gi-block" />
@@ -550,41 +550,46 @@ const LinkExamples = ({ focused }: { focused?: boolean }) => {
             <HeaderMenuItemSeparator />
             <HeaderMenuItemButton showItemMode="always">FAQ</HeaderMenuItemButton>
             <HeaderMenuItemButton>Search</HeaderMenuItemButton>
-
             <HeaderMenuItemButton showItemMode="desktop-only">Language</HeaderMenuItemButton>
           </HeaderPrimaryMenu>
         </Header>
       </div>
-      <div>
-        <div className="gi-p-2 gi-bg-black">
-          <Header data-testid="light-header" variant={'light'} aria-label="Site header">
-            <HeaderLogo href="#">
-              <LogoHarpBlack label="Gov.ie logo" className="gi-block gi-h-10 gi-w-auto sm:gi-hidden" />
-              <LogoBlack label="Gov.ie logo" className="gi-hidden gi-h-12 gi-w-auto sm:gi-block" />
-            </HeaderLogo>
-            <HeaderTitle href="#">Title as a link light {focused ? 'focused' : ''}</HeaderTitle>
-            <HeaderPrimaryMenu>
-              <HeaderMenuItemLink href="#" showItemMode="desktop-only">
-                Departments
-              </HeaderMenuItemLink>
-              <HeaderMenuItemLink href="#" showItemMode="always">
-                Services
-              </HeaderMenuItemLink>
-              <HeaderMenuItemSeparator />
-              <HeaderMenuItemButton showItemMode="always">FAQ</HeaderMenuItemButton>
-              <HeaderMenuItemButton>Search</HeaderMenuItemButton>
-
-              <HeaderMenuItemButton showItemMode="desktop-only">Language</HeaderMenuItemButton>
-            </HeaderPrimaryMenu>
-          </Header>
-        </div>
+      <div className="gi-p-2 gi-bg-black">
+        <Header id="header-light" data-testid="light-header" variant={'light'} aria-label="Site header (light)">
+          <HeaderLogo href="#">
+            <LogoHarpBlack label="Gov.ie logo" className="gi-block gi-h-10 gi-w-auto sm:gi-hidden" />
+            <LogoBlack label="Gov.ie logo" className="gi-hidden gi-h-12 gi-w-auto sm:gi-block" />
+          </HeaderLogo>
+          <HeaderTitle href="#">Title as a link light {focused ? 'focused' : ''}</HeaderTitle>
+          <HeaderPrimaryMenu aria-label="navigation-light">
+            <HeaderMenuItemLink href="#" showItemMode="desktop-only">
+              Departments
+            </HeaderMenuItemLink>
+            <HeaderMenuItemLink href="#" showItemMode="always">
+              Services
+            </HeaderMenuItemLink>
+            <HeaderMenuItemSeparator />
+            <HeaderMenuItemButton showItemMode="always">FAQ</HeaderMenuItemButton>
+            <HeaderMenuItemButton>Search</HeaderMenuItemButton>
+            <HeaderMenuItemButton showItemMode="desktop-only">Language</HeaderMenuItemButton>
+          </HeaderPrimaryMenu>
+        </Header>
       </div>
     </div>
   );
 };
 
+const dualHeaderA11yParameters = {
+  a11y: {
+    config: {
+      rules: [{ id: 'landmark-no-duplicate-banner', enabled: false }],
+    },
+  },
+} as const;
+
 export const WithTitleAndLogoAsLinks: StoryObj = {
   parameters: {
+    ...dualHeaderA11yParameters,
     docs: {
       description: {
         story: 'By passing in an `href` prop to the `HeaderTitle` component, the title becomes a link.',
@@ -629,6 +634,7 @@ export const WithTitleAndLogoAsLinks: StoryObj = {
 export const WithTitleAsLinkFocusState: StoryObj = {
   tags: ['skip-playwright'],
   parameters: {
+    ...dualHeaderA11yParameters,
     docs: {
       description: {
         story:
