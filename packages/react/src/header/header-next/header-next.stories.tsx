@@ -1,6 +1,4 @@
 import type { Meta, StoryObj } from '@storybook/react-vite';
-import clsx from 'clsx';
-import type { HeaderAppearance } from '@/header/types';
 import { useMemo, useState } from 'react';
 import { within, expect, userEvent, screen } from 'storybook/test';
 import Heading from '@/Heading.js';
@@ -27,7 +25,6 @@ import { HeaderMenuItemSlot } from './components/menu/components/header-menu-ite
 import { HeaderPrimaryMenu } from './components/menu/header-primary-menu.js';
 import { HeaderSecondaryMenu } from './components/menu/header-secondary-menu.js';
 import { HeaderNext as Header, HeaderSlotContainer } from './header-next.js';
-import { F } from 'node_modules/@faker-js/faker/dist/airline-CLphikKp.js';
 
 const meta = {
   title: 'layout/Header',
@@ -530,7 +527,7 @@ export const Light: StoryObj = {
   },
 };
 
-const LinkExamples = ({ focused }: { focused?: boolean }) => {
+const LinkExamples = ({ showFocusedLabel }: { focused?: boolean }) => {
   return (
     <div className="gi-flex gi-flex-col gi-gap-2">
       <div>
@@ -539,7 +536,7 @@ const LinkExamples = ({ focused }: { focused?: boolean }) => {
             <LogoHarpWhite label="Gov.ie logo" className="gi-block gi-h-10 gi-w-auto sm:gi-hidden" />
             <LogoWhite label="Gov.ie logo" className="gi-hidden gi-h-12 gi-w-auto sm:gi-block" />
           </HeaderLogo>
-          <HeaderTitle href="#">Title as a link {focused ? 'focused' : ''}</HeaderTitle>
+          <HeaderTitle href="#">Title as a link {showFocusedLabel ? 'focused' : ''}</HeaderTitle>
           <HeaderPrimaryMenu>
             <HeaderMenuItemLink href="#" showItemMode="desktop-only">
               Departments
@@ -560,7 +557,7 @@ const LinkExamples = ({ focused }: { focused?: boolean }) => {
             <LogoHarpBlack label="Gov.ie logo" className="gi-block gi-h-10 gi-w-auto sm:gi-hidden" />
             <LogoBlack label="Gov.ie logo" className="gi-hidden gi-h-12 gi-w-auto sm:gi-block" />
           </HeaderLogo>
-          <HeaderTitle href="#">Title as a link light {focused ? 'focused' : ''}</HeaderTitle>
+          <HeaderTitle href="#">Title as a link light {showFocusedLabel ? 'focused' : ''}</HeaderTitle>
           <HeaderPrimaryMenu aria-label="navigation-light">
             <HeaderMenuItemLink href="#" showItemMode="desktop-only">
               Departments
