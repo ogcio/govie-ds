@@ -2,8 +2,8 @@
 
 import type { ChangeEvent, FC, PropsWithChildren } from 'react';
 import { Children, cloneElement, isValidElement, useState, useEffect } from 'react';
+import clsx from 'clsx';
 import type { InputRadioGroupProps } from './types.js';
-import { cn } from '@/cn';
 
 export const InputRadioGroup: FC<PropsWithChildren<InputRadioGroupProps>> = ({
   groupId,
@@ -55,7 +55,7 @@ export const InputRadioGroup: FC<PropsWithChildren<InputRadioGroupProps>> = ({
   return (
     <div className="gi-flex">
       <div className="gi-flex gi-flex-col gi-gap-2.5">
-        <div role="radiogroup" className={cn('gi-flex', inline ? 'gi-flex-row gi-gap-4' : 'gi-flex-col gi-gap-2.5')}>
+        <div role="radiogroup" className={clsx('gi-flex', inline ? 'gi-flex-row gi-gap-4' : 'gi-flex-col gi-gap-2.5')}>
           {childrenWithOnChange}
         </div>
       </div>

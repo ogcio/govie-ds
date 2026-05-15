@@ -2,7 +2,7 @@
 import type { ReactElement } from 'react';
 import { Children } from 'react';
 import { tv } from 'tailwind-variants';
-import { cn } from '@/cn.js';
+import clsx from 'clsx';
 import { useDomId } from '@/hooks/use-dom-id.js';
 import { translate as t } from '@/i18n/utility.js';
 import { getSpecialComponentType } from '@/utilities.js';
@@ -32,7 +32,7 @@ export const SummaryListRow = ({ children, label, withBorder, className, ...prop
   const { tr, th, td } = styles({ withBorder });
 
   return (
-    <tr {...props} className={tr({ class: className })}>
+    <tr {...props} className={tr({ className })}>
       <th id={rowId} scope="row" className={th()}>
         {label}
       </th>
@@ -50,7 +50,7 @@ export const SummaryListRow = ({ children, label, withBorder, className, ...prop
         <td aria-labelledby={`${rowId} ${actionsSrId}`} className={td({ class: 'gi-truncate' })}>
           <ActionList id={actionsSrId}>
             {actions.map((action, index) => (
-              <span key={`${rowId}-a${index}`} className={cn({ 'gi-ml-4': index > 0 })}>
+              <span key={`${rowId}-a${index}`} className={clsx({ 'gi-ml-4': index > 0 })}>
                 {action}
               </span>
             ))}

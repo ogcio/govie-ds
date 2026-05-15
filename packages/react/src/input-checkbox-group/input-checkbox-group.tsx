@@ -1,9 +1,9 @@
 'use client';
 import { Children, cloneElement, isValidElement, useState, useEffect } from 'react';
+import clsx from 'clsx';
 import type { InputCheckboxSizeEnumType } from '@/input-checkbox/types.js';
 import type { InputRadioSizeType } from '@/input-radio/types.js';
 import type { InputCheckboxGroupProps } from './types.js';
-import { cn } from '@/cn.js';
 
 export const InputCheckboxGroup: React.FC<React.PropsWithChildren<InputCheckboxGroupProps>> = ({
   size,
@@ -66,7 +66,7 @@ export const InputCheckboxGroup: React.FC<React.PropsWithChildren<InputCheckboxG
   return (
     <div className="gi-flex">
       <div className="gi-flex gi-flex-col gi-gap-2.5">
-        <div className={cn('gi-flex', inline ? 'gi-flex-row gi-gap-4' : 'gi-flex-col gi-gap-2.5')}>
+        <div className={clsx('gi-flex', inline ? 'gi-flex-row gi-gap-4' : 'gi-flex-col gi-gap-2.5')}>
           {childrenWithOnChange}
         </div>
       </div>

@@ -28,16 +28,23 @@ export function ListItem({ label, href, external, bold, slot, className, ...prop
 
 export const styles = tv({
   base: [
-    'gi-block gi-py-4 gi-border-color-border-system-neutral-subtle',
-    'gi-border-b-xs gi-border-solid !gi-text-sm',
-    'gi-focus-state-outline gi-focus-visible-state-outline',
-    // focus
-    'focus:gi-shadow-[inset_0_0_0_2px]',
-    'focus:gi-shadow-gray-950',
+    'gi-block',
+    'gi-py-4',
+    'gi-border-color-border-system-neutral-subtle',
+    'gi-border-b-xs',
+    'gi-border-solid',
+    'focus:gi-no-underline',
     'focus:gi-rounded-sm',
-    'focus-visible:gi-shadow-[inset_0_0_0_2px]',
-    'focus-visible:gi-shadow-gray-950',
+    'focus:gi-shadow-[0_0_0_2px_var(--gieds-color-gray-950),0_0_0_5px_var(--gieds-color-yellow-400)]',
+    'focus-visible:gi-shadow-[0_0_0_2px_var(--gieds-color-gray-950),0_0_0_5px_var(--gieds-color-yellow-400)]',
+    'focus-visible:gi-no-underline',
     'focus-visible:gi-rounded-sm',
+    'focus-visible:gi-outline-none',
+    'gi-text-sm',
+    'hover:gi-underline',
+    'hover:gi-underline-offset-sm',
+    '[&>a:hover]:gi-underline',
+    '[&>a:hover]:gi-underline-offset-sm',
   ],
   variants: {
     bold: {
