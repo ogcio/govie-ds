@@ -1,9 +1,13 @@
 import type { Meta, StoryObj } from '@storybook/react-vite';
 import { omit } from 'lodash';
-import { Divider, type DividerProps } from '../Divider';
+import Divider, { type DividerProps } from '../Divider';
 import { Stack } from '../stack/stack';
 import { Box } from '../Box';
-import { dividerMeta, Default as dividerDefault, Vertical as dividerVertical } from '../atoms/storybook/Divider.meta';
+import {
+  dividerMeta,
+  Horizontal as dividerHorizontal,
+  Vertical as dividerVertical,
+} from '../atoms/storybook/Divider.meta';
 import { Orientation } from '../atoms/constants';
 
 const meta = {
@@ -23,8 +27,8 @@ const meta = {
 export default meta;
 type Story = StoryObj<typeof meta>;
 
-export const Default: Story = {
-  ...dividerDefault,
+export const Horizontal: Story = {
+  ...dividerHorizontal,
   render: (props: DividerProps) => (
     <Stack gap={2} direction={props.orientation === Orientation.VERTICAL ? 'row' : 'column'}>
       <Box>Content</Box>

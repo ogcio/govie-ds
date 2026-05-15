@@ -8,7 +8,7 @@ import type { LogoProps } from '@/common/types.js';
 import Container from '@/atoms/Container.js';
 import { translate as t } from '@/i18n/utility.js';
 import Anchor from '@/primitives/anchor.js';
-import { Divider } from '@/Divider';
+import Divider from '@/Divider';
 
 export type FooterProps = {
   primarySlot?: ReactNode;

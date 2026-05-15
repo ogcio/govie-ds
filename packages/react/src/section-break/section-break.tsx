@@ -1,5 +1,5 @@
 import clsx from 'clsx';
-import { Divider } from '@/Divider';
+import Divider from '@/Divider';
 
 export type SectionBreakSize = 'sm' | 'md' | 'lg' | 'xl';
 export type SectionBreakProps = {

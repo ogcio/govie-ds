@@ -76,7 +76,7 @@ export const dividerMeta = {
     },
   },
 };
-export const Default = {
+export const Horizontal = {
   args: {
     ...dividerMeta.args,
   },

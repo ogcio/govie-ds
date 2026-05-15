@@ -13,7 +13,7 @@ export * from './button-group/types.js';
 export { Button } from './button/button.js';
 export type { ButtonProps } from './button/types';
 export { Box, type BoxProps } from './Box.js';
-export { Divider, type DividerProps } from './Divider.js';
+export { default as Divider, type DividerProps } from './Divider.js';
 export { Grid, type GridProps } from './Grid.js';
 
 export {

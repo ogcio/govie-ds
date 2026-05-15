@@ -2,7 +2,11 @@ import type { StoryObj } from '@storybook/angular';
 import Box from '../atoms/Box';
 import Divider from '../atoms/Divider';
 import Stack from '../atoms/Stack';
-import { dividerMeta, Default as dividerDefault, Vertical as dividerVertical } from '../atoms/storybook/Divider.meta';
+import {
+  dividerMeta,
+  Horizontal as dividerHorizontal,
+  Vertical as dividerVertical,
+} from '../atoms/storybook/Divider.meta';
 import { Orientation } from '../atoms/constants';
 
 const meta = {
@@ -12,8 +16,8 @@ const meta = {
 
 export default meta;
 
-export const Default: StoryObj = {
-  ...dividerDefault,
+export const Horizontal: StoryObj = {
+  ...dividerHorizontal,
   render: (props) => ({
     props,
     moduleMetadata: { imports: [Box, Divider, Stack] },
@@ -22,7 +26,7 @@ export const Default: StoryObj = {
         <gi-box>Content</gi-box>
         <gi-divider
           [orientation]="orientation"
-          [inset]="inset"
+
           [id]="id"
           [dataTestId]="dataTestId"
         ></gi-divider>
@@ -42,7 +46,7 @@ export const Vertical: StoryObj = {
         <gi-box>Left</gi-box>
         <gi-divider
           [orientation]="orientation"
-          [inset]="inset"
+
           [id]="id"
           [dataTestId]="dataTestId"
         ></gi-divider>
