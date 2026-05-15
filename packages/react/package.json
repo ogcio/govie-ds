@@ -84,9 +84,9 @@
     "@testing-library/jest-dom": "^6.4.8",
     "@testing-library/react": "^16.0.1",
     "@types/lodash": "^4.17.24",
+    "@vitejs/plugin-react": "5.2.0",
     "@vitest/browser-playwright": "4.1.6",
     "@vitest/coverage-istanbul": "4.1.6",
-    "@vitejs/plugin-react": "5.2.0",
     "autoprefixer": "^10.4.19",
     "axe-core": "^4.11.3",
     "eslint-plugin-no-relative-import-paths": "^1.6.1",
@@ -102,6 +102,7 @@
     "storybook-addon-pseudo-states": "^10.3.5",
     "vite": "8.0.12",
     "vite-plugin-dts": "5.0.0",
+    "vite-plugin-externalize-deps": "^0.10.0",
     "vite-plugin-lib-inject-css": "2.2.2",
     "vitest": "4.1.6"
   }
