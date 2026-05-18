@@ -8,7 +8,7 @@ import type { StoryContext, Renderer } from 'storybook/internal/types';
 import { within, expect } from 'storybook/test';
 import { Orientation } from '../constants';
 import { checker, enumType } from './utilities';
-export const dividerMeta = {
+export const meta = {
   tags: ['autodocs'] as string[],
   title: 'Layout/Divider',
   args: {
@@ -77,9 +77,6 @@ export const dividerMeta = {
   },
 };
 export const Horizontal = {
-  args: {
-    ...dividerMeta.args,
-  },
   play: async ({ canvasElement, step }: StoryContext<Renderer>) => {
     const canvas = within(canvasElement as HTMLElement);
     await checker('divider-test', canvas, step).attributes({
@@ -105,7 +102,6 @@ export const Horizontal = {
 };
 export const Vertical = {
   args: {
-    ...dividerMeta.args,
     orientation: Orientation.VERTICAL,
     dataTestId: 'divider-vertical-test',
   },

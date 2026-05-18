@@ -1,23 +1,19 @@
 import type { StoryObj } from '@storybook/angular';
-import Box from '../atoms/Box';
-import Divider from '../atoms/Divider';
-import Stack from '../atoms/Stack';
-import {
-  dividerMeta,
-  Horizontal as dividerHorizontal,
-  Vertical as dividerVertical,
-} from '../atoms/storybook/Divider.meta';
-import { Orientation } from '../atoms/constants';
+import Box from '@/atoms/Box';
+import Divider from '@/atoms/Divider';
+import Stack from '@/atoms/Stack';
+import * as stories from '@/atoms/storybook/Divider.meta';
+import { Orientation } from '@/atoms/constants';
 
 const meta = {
-  ...dividerMeta,
+  ...stories.meta,
   title: 'Layout/Divider',
 };
 
 export default meta;
 
 export const Horizontal: StoryObj = {
-  ...dividerHorizontal,
+  ...stories.Horizontal,
   render: (props) => ({
     props,
     moduleMetadata: { imports: [Box, Divider, Stack] },
@@ -26,7 +22,6 @@ export const Horizontal: StoryObj = {
         <gi-box>Content</gi-box>
         <gi-divider
           [orientation]="orientation"
-
           [id]="id"
           [dataTestId]="dataTestId"
         ></gi-divider>
@@ -37,7 +32,7 @@ export const Horizontal: StoryObj = {
 };
 
 export const Vertical: StoryObj = {
-  ...dividerVertical,
+  ...stories.Vertical,
   render: (props) => ({
     props,
     moduleMetadata: { imports: [Box, Divider, Stack] },
@@ -46,7 +41,6 @@ export const Vertical: StoryObj = {
         <gi-box>Left</gi-box>
         <gi-divider
           [orientation]="orientation"
-
           [id]="id"
           [dataTestId]="dataTestId"
         ></gi-divider>

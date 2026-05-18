@@ -1,20 +1,16 @@
 import type { Meta, StoryObj } from '@storybook/react-vite';
 import { omit } from 'lodash';
-import Divider, { type DividerProps } from '../Divider';
-import { Stack } from '../stack/stack';
-import { Box } from '../Box';
-import {
-  dividerMeta,
-  Horizontal as dividerHorizontal,
-  Vertical as dividerVertical,
-} from '../atoms/storybook/Divider.meta';
-import { Orientation } from '../atoms/constants';
+import Divider, { type DividerProps } from '@/Divider';
+import { Stack } from '@/stack/stack';
+import { Box } from '@/Box';
+import * as stories from '@/atoms/storybook/Divider.meta';
+import { Orientation } from '@/atoms/constants';
 
 const meta = {
-  ...dividerMeta,
+  ...stories.meta,
   title: 'Layout/Divider',
   argTypes: {
-    ...omit(dividerMeta.argTypes, 'styles'),
+    ...omit(stories.meta.argTypes, 'styles'),
     style: {
       control: { disable: true },
       description:
@@ -28,20 +24,18 @@ export default meta;
 type Story = StoryObj<typeof meta>;
 
 export const Horizontal: Story = {
-  ...dividerHorizontal,
+  ...stories.Horizontal,
   render: (props: DividerProps) => (
     <Stack gap={2} direction={props.orientation === Orientation.VERTICAL ? 'row' : 'column'}>
       <Box>Content</Box>
-
       <Divider {...props} />
-
       <Box>Content</Box>
     </Stack>
   ),
 };
 
 export const Vertical: Story = {
-  ...dividerVertical,
+  ...stories.Vertical,
   render: (props) => (
     <Stack direction="row" gap={2}>
       <Box>Left</Box>
