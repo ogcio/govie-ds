@@ -4,6 +4,7 @@ import type {
   ComponentPropsWithoutRef,
   PropsWithChildren,
   ReactNode,
+  HTMLAttributes,
 } from 'react';
 import type { LogoProps } from '@/common/types.js';
 import type { DrawerPosition } from '@/drawer/drawer.js';
@@ -185,7 +186,7 @@ export type HeaderTitleProps = PropsWithChildren<{
   className?: string;
   href?: string;
 }> &
-  ComponentPropsWithoutRef<'div'>;
+  HTMLAttributes<HTMLElement>;
 export type HeaderSecondaryMenuProps = PropsWithChildren<ComponentPropsWithoutRef<'nav'>>;
 export type HeaderMenuItemSlotProps = PropsWithChildren<
   ComponentPropsWithoutRef<'div'> & {

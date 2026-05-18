@@ -527,7 +527,7 @@ export const Light: StoryObj = {
   },
 };
 
-const LinkExamples = ({ showFocusedLabel }: { focused?: boolean }) => {
+const LinkExamples = ({ showFocusedLabel }: { showFocusedLabel?: boolean }) => {
   return (
     <div className="gi-flex gi-flex-col gi-gap-2">
       <div>
@@ -640,7 +640,7 @@ export const WithTitleAsLinkFocusState: StoryObj = {
     },
   },
   render: function Render() {
-    return <LinkExamples focused />;
+    return <LinkExamples showFocusedLabel />;
   },
   play: async ({ canvasElement, step }) => {
     const canvas = within(canvasElement);

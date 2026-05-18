@@ -16,7 +16,6 @@ export const HeaderTitle = ({ children, href, className }: HeaderTitleProps) => 
         href={href}
         className={styles({
           appearance: context.variant,
-          link: true,
           className,
         })}
       >
@@ -45,49 +44,25 @@ Object.defineProperty(HeaderTitle, 'componentType', {
 const styles = tv({
   base: [
     'gi-heading-sm',
-    'gi-ml-4',
-    'md:gi-ml-6 ',
-    'lg:gi-ml-12',
-    'gi-min-w-0',
-    'lg:gi-block',
+    'gi-ml-4 md:gi-ml-6 lg:gi-ml-12',
+    'gi-min-w-0 gi-max-w-fit',
+    'gi-block',
     'gi-truncate',
-    'gi-p-1',
+    'gi-p-1 focus:gi-rounded-sm',
+    'focus-visible:gi-rounded-sm focus-visible:gi-no-underline focus-visible:gi-outline-none',
   ],
   variants: {
     appearance: {
-      default: 'gi-text-white gi-stroke-white',
+      default: [
+        'gi-text-white gi-stroke-white',
+        'focus:gi-shadow-[0_0_0_2px_var(--gieds-color-yellow-400)]',
+        'focus-visible:gi-shadow-[0_0_0_2px_var(--gieds-color-yellow-400)]',
+      ],
       light: [
         'gi-text-gray-950',
-        'focus:gi-shadow-[0_0_0_2px_var(--gieds-color-gray-950),0_0_0_5px_var(--gieds-color-yellow-400)]',
-      ],
-    },
-    link: {
-      true: [
-        'gi-block',
-        'gi-max-w-fit',
-        'focus:gi-rounded-sm',
-        'focus-visible:gi-no-underline',
-        'focus-visible:gi-rounded-sm',
-        'focus-visible:gi-outline-none',
-      ],
-    },
-  },
-  compoundVariants: [
-    {
-      link: true,
-      appearance: 'light',
-      class: [
         'focus:gi-shadow-[0_0_0_2px_var(--gieds-color-gray-950),0_0_0_5px_var(--gieds-color-yellow-400)]',
         'focus-visible:gi-shadow-[0_0_0_2px_var(--gieds-color-gray-950),0_0_0_5px_var(--gieds-color-yellow-400)]',
       ],
     },
-    {
-      link: true,
-      appearance: 'default',
-      class: [
-        'focus:gi-shadow-[0_0_0_2px_var(--gieds-color-yellow-400)]',
-        'focus-visible:gi-shadow-[0_0_0_2px_var(--gieds-color-yellow-400)]',
-      ],
-    },
-  ],
+  },
 });
