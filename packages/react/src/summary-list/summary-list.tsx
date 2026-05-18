@@ -31,8 +31,7 @@ export const SummaryList = ({ children, className, withBorder, ...props }: Summa
 
 const styles = tv({
   slots: {
-    container:
-      'gi-rounded-md gi-overflow-hidden gi-antialiased gi-text-md gi-w-full gi-border gi-border-color-border-system-neutral-muted',
+    container: 'gi-rounded-md gi-overflow-hidden gi-antialiased gi-text-md gi-w-full',
     thead: 'gi-bg-color-surface-system-neutral-layer1 gi-border-b gi-border-color-border-system-neutral-muted',
   },
   variants: {
