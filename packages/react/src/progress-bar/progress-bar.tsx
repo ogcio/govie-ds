@@ -19,7 +19,7 @@ export function ProgressBar({
   ...props
 }: ProgressBarProps) {
   const fillPercentage = (value * 100) / max;
-  const { container, bar, indeterminate, label: progressLabel } = styles({ isIndeterminate });
+  const { container, bar, progress, progressLabel } = styles({ isIndeterminate });
 
   return (
     <div className={container()}>
@@ -35,7 +35,7 @@ export function ProgressBar({
         data-testid={dataTestid}
         {...props}
       >
-        <div className={indeterminate()} style={isIndeterminate ? {} : { width: `${fillPercentage}%` }} />
+        <div className={progress()} style={isIndeterminate ? {} : { width: `${fillPercentage}%` }} />
       </div>
       {label && <span className={progressLabel()}>{label}</span>}
     </div>
@@ -46,13 +46,13 @@ const styles = tv({
   slots: {
     container: 'gi-flex gi-items-center gi-flex-col',
     bar: 'gi-w-full gi-bg-gray-400 gi-overflow-hidden gi-rounded-sm gi-h-1',
-    indeterminate: 'gi-transition-all gi-bg-gray-950 gi-h-1 gi-rounded-sm',
-    label: 'gi-mt-2 gi-text-sm gi-text-gray-950',
+    progress: 'gi-transition-all gi-bg-gray-950 gi-h-1 gi-rounded-sm',
+    progressLabel: 'gi-mt-2 gi-text-sm gi-text-gray-950',
   },
   variants: {
     isIndeterminate: {
       true: {
-        indeterminate: 'gi-relative gi-overflow-hidden gi-w-1/4 gi-animate-indeterminate-progress',
+        progress: 'gi-relative gi-w-1/4 gi-animate-indeterminate-progress',
       },
     },
   },
