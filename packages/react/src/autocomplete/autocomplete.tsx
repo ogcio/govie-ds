@@ -10,7 +10,6 @@ import React, {
   useCallback,
 } from 'react';
 import { tv } from 'tailwind-variants';
-import { cn } from '@/cn.js';
 import { useDomId } from '@/hooks/use-dom-id.js';
 import { translate as t } from '@/i18n/utility.js';
 import { InputText } from '@/input-text/input-text.js';
@@ -48,7 +47,7 @@ export const Autocomplete = forwardRef<HTMLInputElement, AutocompleteProps>((pro
     id,
   } = props;
   const isPointerDownOnMenu = useRef(false);
-  const styles = autocompleteStyles({ freeSolo, disabled });
+  const { root, iconEnd } = autocompleteStyles({ freeSolo, disabled });
 
   const { state, dispatch, inputRef, getOptionLabelByValue, listRef, debouncedFilter } = useAutocompleteController({
     ...props,
@@ -212,7 +211,7 @@ export const Autocomplete = forwardRef<HTMLInputElement, AutocompleteProps>((pro
   );
 
   return (
-    <div aria-disabled={disabled} className={cn(styles.root(), props.className)}>
+    <div aria-disabled={disabled} className={root({ className: props.className })}>
       <span id={srOnlyLabelId} className="gi-sr-only">
         {labelText}
       </span>
@@ -233,7 +232,7 @@ export const Autocomplete = forwardRef<HTMLInputElement, AutocompleteProps>((pro
         aria-disabled={disabled}
         disabled={disabled}
         placeholder={placeholder ?? t('autocomplete.placeholder', { defaultValue: 'Type to Search' })}
-        iconEndClassName={styles.iconEnd()}
+        iconEndClassName={iconEnd()}
         iconEnd={freeSolo ? undefined : getIconEnd(state.isOpen)}
         ref={inputRef}
         iconEndRef={iconEndRef}

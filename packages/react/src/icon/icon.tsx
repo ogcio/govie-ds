@@ -18,7 +18,7 @@ import {
   FirstPageIcon,
   LastPageIcon,
 } from '@/atoms/icons';
-import { cn } from '@/cn.js';
+import clsx from 'clsx';
 import type { iconIds } from './icons.js';
 import Bluesky from './svgs/bluesky.js';
 import Facebook from './svgs/facebook.js';
@@ -29,6 +29,7 @@ import Threads from './svgs/threads.js';
 import Tiktok from './svgs/tiktok.js';
 import X from './svgs/x.js';
 import Youtube from './svgs/youtube.js';
+import { tv } from 'tailwind-variants';
 
 export type IconId = (typeof iconIds)[number];
 export type IconSize = 'sm' | 'md' | 'lg' | 'xl';
@@ -105,7 +106,7 @@ export const Icon = forwardRef<HTMLSpanElement, IconProps>(
 
     if (reg && !useFontIcon) {
       const { Component, disabledClass } = reg;
-      const svgClass = cn(
+      const svgClass = clsx(
         { 'gi-block': !inline, 'gi-inline-block': inline },
         'gi-shrink-0',
         disabled && (disabledClass || 'gi-fill-gray-700'),
@@ -124,7 +125,7 @@ export const Icon = forwardRef<HTMLSpanElement, IconProps>(
         ref={ref}
         onClick={onClick}
         role={ariaLabel ? 'img' : 'presentation'}
-        className={cn(
+        className={clsx(
           {
             'gi-block': !inline,
             'gi-inline-block': inline,
