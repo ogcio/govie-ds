@@ -16,7 +16,7 @@ export const SummaryList = ({ children, className, withBorder, ...props }: Summa
     (child) => getSpecialComponentType(child) === 'SummaryListRow',
   ) as ReactElement<SummaryListRowProps>[];
 
-  const { container, thead } = styles({ withBorder: !!withBorder });
+  const { container, thead } = summaryListVariants({ withBorder: !!withBorder });
   return (
     <SummaryListProvider>
       <div className={container()}>
@@ -29,7 +29,7 @@ export const SummaryList = ({ children, className, withBorder, ...props }: Summa
   );
 };
 
-const styles = tv({
+export const summaryListVariants = tv({
   slots: {
     container: 'gi-rounded-md gi-overflow-hidden gi-antialiased gi-text-md gi-w-full',
     thead: 'gi-bg-color-surface-system-neutral-layer1 gi-border-b gi-border-color-border-system-neutral-muted',
@@ -43,6 +43,24 @@ const styles = tv({
         container: 'gi-border-none',
       },
     },
+  },
+});
+
+export const cellVariants = tv({
+  base: 'gi-py-2 gi-px-3 gi-min-h-12',
+  variants: {
+    type: {
+      head: 'gi-font-bold gi-text-left gi-truncate',
+      data: '',
+    },
+    header: {
+      true: 'gi-align-middle',
+      false: 'gi-align-top',
+    },
+  },
+  defaultVariants: {
+    header: false,
+    type: 'data',
   },
 });
 

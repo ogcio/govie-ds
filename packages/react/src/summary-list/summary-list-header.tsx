@@ -8,6 +8,7 @@ import { useDomId } from '@/hooks/use-dom-id.js';
 import { translate as t } from '@/i18n/utility.js';
 import { getSpecialComponentType } from '@/utilities.js';
 import { useSummaryListContext } from './summary-list-context.js';
+import { cellVariants } from './summary-list.js';
 import { ActionList } from './summary-list-row.js';
 import type { SummaryListActionProps, SummaryListHeaderProps } from './types.js';
 
@@ -37,7 +38,7 @@ export const SummaryListHeader = ({
 
   return (
     <tr {...props} className={cn('gi-h-14', className)}>
-      <th scope="col" className={styles({ className })}>
+      <th scope="col" className={cellVariants({ type: 'head', header: true, className })}>
         {!isMobile && (
           <span className={cn(overflowClasses)} style={style}>
             {label}
@@ -64,7 +65,7 @@ export const SummaryListHeader = ({
         ) : null}
       </th>
       {!isMobile && summaryListActions ? (
-        <th scope="col" colSpan={2} className={styles({ className })}>
+        <th scope="col" colSpan={2} className={cellVariants({ type: 'head', header: true, className })}>
           <span className="gi-sr-only">
             {t('header.actions', {
               defaultValue: 'Actions',

@@ -7,6 +7,8 @@ import { useDomId } from '@/hooks/use-dom-id.js';
 import { translate as t } from '@/i18n/utility.js';
 import { getSpecialComponentType } from '@/utilities.js';
 import { useSummaryListContext } from './summary-list-context.js';
+import { cellVariants } from './summary-list.js';
+
 import type {
   SummaryListActionListProps,
   SummaryListActionProps,
@@ -29,16 +31,14 @@ export const SummaryListRow = ({ children, label, withBorder, className, ...prop
   const valueSrId = `${rowId}-value`;
   const actionsSrId = `${rowId}-actions`;
 
-  const { tr, th, td } = styles({ withBorder });
-
   return (
-    <tr {...props} className={tr({ className })}>
-      <th id={rowId} scope="row" className={th()}>
+    <tr {...props} className={rowVariants({ withBorder, className })}>
+      <th id={rowId} scope="row" className={cellVariants({ type: 'head' })}>
         {label}
       </th>
 
       {valueTd ? (
-        <td {...valueTd.props} aria-labelledby={`${rowId} ${valueSrId}`} className={td()}>
+        <td {...valueTd.props} aria-labelledby={`${rowId} ${valueSrId}`} className={cellVariants()}>
           <span id={valueSrId} className="gi-sr-only">
             {t('summaryList.col.value', { defaultValue: 'Value' })}
           </span>
@@ -47,7 +47,7 @@ export const SummaryListRow = ({ children, label, withBorder, className, ...prop
       ) : null}
 
       {actions.length > 0 ? (
-        <td aria-labelledby={`${rowId} ${actionsSrId}`} className={td({ class: 'gi-truncate' })}>
+        <td aria-labelledby={`${rowId} ${actionsSrId}`} className={cellVariants({ className: 'gi-truncate' })}>
           <ActionList id={actionsSrId}>
             {actions.map((action, index) => (
               <span key={`${rowId}-a${index}`} className={clsx({ 'gi-ml-4': index > 0 })}>
@@ -61,17 +61,11 @@ export const SummaryListRow = ({ children, label, withBorder, className, ...prop
   );
 };
 
-const styles = tv({
-  slots: {
-    th: 'gi-font-bold gi-align-top gi-text-left gi-truncate gi-min-h-12 gi-px-3 gi-py-2',
-    tr: 'gi-flex gi-flex-col md:gi-table-row gi-align-middle md:gi-py-none gi-py-2',
-    td: 'gi-align-top gi-px-3 gi-min-h-12 gi-py-2',
-  },
+const rowVariants = tv({
+  base: 'gi-flex gi-flex-col md:gi-table-row gi-align-middle md:gi-py-none gi-py-2',
   variants: {
     withBorder: {
-      true: {
-        tr: 'gi-border-b gi-border-color-border-system-neutral-muted',
-      },
+      true: 'gi-border-b gi-border-color-border-system-neutral-muted',
     },
   },
 });
