@@ -39,6 +39,10 @@ export const Direction = {
   ROW: 'row',
   COLUMN: 'column',
 } as const;
+export const Orientation = {
+  HORIZONTAL: 'horizontal',
+  VERTICAL: 'vertical',
+} as const;
 export const AlignItems = {
   START: 'start',
   CENTER: 'center',

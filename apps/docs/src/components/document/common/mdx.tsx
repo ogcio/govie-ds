@@ -36,6 +36,7 @@ import {
   Container,
   CookieBanner,
   Details,
+  Divider,
   Drawer,
   DrawerBody,
   DrawerFooter,
@@ -271,6 +272,7 @@ const documentComponents: MDXComponents = {
   ContactDeptOrService,
   CookieBanner,
   CookieConsentCheckbox,
+  Divider,
   DownloadTheme,
   ThemeBuilder,
   DataTableSample: () => (
