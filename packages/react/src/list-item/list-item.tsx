@@ -29,6 +29,7 @@ export function ListItem({ label, href, external, bold, slot, className, ...prop
 export const styles = tv({
   base: [
     'gi-block',
+    'gi-text-sm',
     'gi-py-4',
     'gi-border-color-border-system-neutral-subtle',
     'gi-border-b-xs',
@@ -40,11 +41,8 @@ export const styles = tv({
     'focus-visible:gi-no-underline',
     'focus-visible:gi-rounded-sm',
     'focus-visible:gi-outline-none',
-    'gi-text-sm',
     'hover:gi-underline',
-    'hover:gi-underline-offset-sm',
     '[&>a:hover]:gi-underline',
-    '[&>a:hover]:gi-underline-offset-sm',
   ],
   variants: {
     bold: {
