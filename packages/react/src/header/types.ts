@@ -4,6 +4,7 @@ import type {
   ComponentPropsWithoutRef,
   PropsWithChildren,
   ReactNode,
+  HTMLAttributes,
 } from 'react';
 import type { LogoProps } from '@/common/types.js';
 import type { DrawerPosition } from '@/drawer/drawer.js';
@@ -152,7 +153,9 @@ export type HeaderNextProps = ComponentPropsWithoutRef<'header'> & {
   fullWidth?: boolean;
 };
 
-export type HeaderLogoProps = PropsWithChildren;
+export type HeaderLogoProps = PropsWithChildren<{
+  href?: string;
+}>;
 export type HeaderVariant = 'default' | 'light';
 export type HeaderMenuItemLinkProps = AnchorHTMLAttributes<HTMLAnchorElement> & {
   asChild?: boolean;
@@ -179,11 +182,11 @@ export type HeaderSlotContainerProps = PropsWithChildren<
     className?: string;
   } & ComponentPropsWithoutRef<'div'>
 >;
-export type HeaderTitleProps = PropsWithChildren<
-  {
-    className?: string;
-  } & ComponentPropsWithoutRef<'div'>
->;
+export type HeaderTitleProps = PropsWithChildren<{
+  className?: string;
+  href?: string;
+}> &
+  HTMLAttributes<HTMLElement>;
 export type HeaderSecondaryMenuProps = PropsWithChildren<ComponentPropsWithoutRef<'nav'>>;
 export type HeaderMenuItemSlotProps = PropsWithChildren<
   ComponentPropsWithoutRef<'div'> & {

@@ -181,7 +181,7 @@ export function HeaderLegacy({
       {...props}
     >
       <Container id="HeaderContainer" className="gi-order-2 gi-min-w-0">
-        <div className={headerMenuVariants({ appearance })}>
+        <div className={headerMenuVariants({ appearance, class: 'gi-justify-between' })}>
           <div className={headerLogoVariants({ appearance })}>
             {logo?.href && (
               <Anchor
