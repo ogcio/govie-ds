@@ -16,7 +16,7 @@ export const SummaryList = ({ children, className, withBorder, ...props }: Summa
     (child) => getSpecialComponentType(child) === 'SummaryListRow',
   ) as ReactElement<SummaryListRowProps>[];
 
-  const { container, thead } = styles({ withBorder });
+  const { container, thead } = styles({ withBorder: !!withBorder });
   return (
     <SummaryListProvider>
       <div className={container()}>
