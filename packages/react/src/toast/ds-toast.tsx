@@ -39,13 +39,20 @@ function Toast({
   onClose,
   slotAction,
 }: ToastProps) {
-  const { base, heading, container, innerContainer, dismiss } = toastVariants({
+  const {
+    base,
+    heading,
+    container,
+    innerContainer,
+    dismiss,
+    icon: iconStyle,
+  } = toastVariants({
     variant,
   });
 
   return (
     <div className={base()}>
-      {showIcon ? <Icon icon={icon({ variant })} className="gi-toast-icon" data-variant={variant} /> : null}
+      {showIcon ? <Icon icon={icon({ variant })} className={iconStyle()} data-variant={variant} /> : null}
 
       <div className={container()}>
         <div className={innerContainer()}>
@@ -83,20 +90,25 @@ const toastVariants = tv({
     heading: 'gi-text-2md gi-font-bold',
     dismiss: 'gi-h-full gi-relative gi-top-[-8px]',
     innerContainer: 'gi-flex gi-justify-between gi-w-full',
+    icon: '',
   },
   variants: {
     variant: {
       info: {
         base: 'gi-bg-color-surface-intent-info-default gi-border-color-border-intent-info-subtle gi-text-color-text-intent-info-default',
+        icon: 'gi-text-color-icon-intent-info-default',
       },
       danger: {
         base: 'gi-bg-color-surface-intent-error-default gi-border-color-border-intent-error-subtle gi-text-color-text-intent-error-default',
+        icon: 'gi-text-color-icon-intent-error-default',
       },
       success: {
         base: 'gi-bg-color-surface-intent-success-default gi-border-color-border-intent-success-subtle gi-text-color-text-intent-success-default',
+        icon: 'gi-text-color-icon-intent-success-default',
       },
       warning: {
         base: 'gi-bg-color-surface-intent-warning-default gi-border-color-border-intent-warning-subtle gi-text-color-text-intent-warning-default',
+        icon: 'gi-text-color-icon-intent-warning-default',
       },
     },
   },
