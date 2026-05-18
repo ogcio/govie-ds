@@ -593,12 +593,6 @@ export const WithTitleAndLogoAsLinks: StoryObj = {
       },
     },
   },
-  argTypes: {
-    variant: {
-      options: ['default', 'light'],
-      control: { type: 'radio' },
-    },
-  },
   args: {
     variant: 'default',
   },
