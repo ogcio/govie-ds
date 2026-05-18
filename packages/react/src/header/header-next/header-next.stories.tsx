@@ -9,7 +9,7 @@ import { DrawerMenuExample } from '@/drawer/drawer.content.js';
 import { DrawerBody, DrawerFooter, DrawerWrapper } from '@/drawer/drawer.js';
 import { FormField, FormFieldLabel } from '@/forms/form-field/form-field.js';
 import { useToggleMap } from '@/hooks/use-toggle-map.js';
-import type { IconId } from '@/icon/icon.js';
+import type { IconId } from '@/icon/icon';
 import { Icon } from '@/icon/icon.js';
 import { Link } from '@/link/link.js';
 import { List, ListTypeEnum } from '@/list/list.js';
@@ -524,5 +524,134 @@ export const Light: StoryObj = {
         ) : null}
       </>
     );
+  },
+};
+
+const LinkExamples = ({ showFocusedLabel }: { showFocusedLabel?: boolean }) => {
+  return (
+    <div className="gi-flex gi-flex-col gi-gap-2">
+      <div>
+        <Header data-testid="default-header" variant={'default'} aria-label="Site header (default)">
+          <HeaderLogo href="#">
+            <LogoHarpWhite label="Gov.ie logo" className="gi-block gi-h-10 gi-w-auto sm:gi-hidden" />
+            <LogoWhite label="Gov.ie logo" className="gi-hidden gi-h-12 gi-w-auto sm:gi-block" />
+          </HeaderLogo>
+          <HeaderTitle href="#">Title as a link {showFocusedLabel ? 'focused' : ''}</HeaderTitle>
+          <HeaderPrimaryMenu>
+            <HeaderMenuItemLink href="#" showItemMode="desktop-only">
+              Departments
+            </HeaderMenuItemLink>
+            <HeaderMenuItemLink href="#" showItemMode="always">
+              Services
+            </HeaderMenuItemLink>
+            <HeaderMenuItemSeparator />
+            <HeaderMenuItemButton showItemMode="always">FAQ</HeaderMenuItemButton>
+            <HeaderMenuItemButton>Search</HeaderMenuItemButton>
+            <HeaderMenuItemButton showItemMode="desktop-only">Language</HeaderMenuItemButton>
+          </HeaderPrimaryMenu>
+        </Header>
+      </div>
+      <div className="gi-p-2 gi-bg-black">
+        <Header id="header-light" data-testid="light-header" variant={'light'} aria-label="Site header (light)">
+          <HeaderLogo href="#">
+            <LogoHarpBlack label="Gov.ie logo" className="gi-block gi-h-10 gi-w-auto sm:gi-hidden" />
+            <LogoBlack label="Gov.ie logo" className="gi-hidden gi-h-12 gi-w-auto sm:gi-block" />
+          </HeaderLogo>
+          <HeaderTitle href="#">Title as a link light {showFocusedLabel ? 'focused' : ''}</HeaderTitle>
+          <HeaderPrimaryMenu aria-label="navigation-light">
+            <HeaderMenuItemLink href="#" showItemMode="desktop-only">
+              Departments
+            </HeaderMenuItemLink>
+            <HeaderMenuItemLink href="#" showItemMode="always">
+              Services
+            </HeaderMenuItemLink>
+            <HeaderMenuItemSeparator />
+            <HeaderMenuItemButton showItemMode="always">FAQ</HeaderMenuItemButton>
+            <HeaderMenuItemButton>Search</HeaderMenuItemButton>
+            <HeaderMenuItemButton showItemMode="desktop-only">Language</HeaderMenuItemButton>
+          </HeaderPrimaryMenu>
+        </Header>
+      </div>
+    </div>
+  );
+};
+
+const dualHeaderA11yParameters = {
+  a11y: {
+    config: {
+      rules: [{ id: 'landmark-no-duplicate-banner', enabled: false }],
+    },
+  },
+} as const;
+
+export const WithTitleAndLogoAsLinks: StoryObj = {
+  parameters: {
+    ...dualHeaderA11yParameters,
+    docs: {
+      description: {
+        story: 'By passing in an `href` prop to the `HeaderTitle` component, the title becomes a link.',
+      },
+    },
+  },
+  args: {
+    variant: 'default',
+  },
+  render: function Render() {
+    return <LinkExamples />;
+  },
+  play: async ({ canvasElement, step }) => {
+    const canvas = within(canvasElement);
+    let firstBanner: HTMLElement;
+    let secondBanner: HTMLElement;
+    await step('headers are present', async () => {
+      firstBanner = await canvas.findByTestId('default-header');
+      secondBanner = await canvas.findByTestId('light-header');
+    });
+    await step('title is a link', async () => {
+      expect(
+        await within(firstBanner).findByRole('link', {
+          name: /title as a link/i,
+        }),
+      ).toBeInTheDocument();
+      expect(
+        await within(secondBanner).findByRole('link', {
+          name: /title as a link light/i,
+        }),
+      ).toBeInTheDocument();
+    });
+  },
+};
+
+export const WithTitleAsLinkFocusState: StoryObj = {
+  tags: ['skip-playwright'],
+  parameters: {
+    ...dualHeaderA11yParameters,
+    docs: {
+      description: {
+        story:
+          'Default link effects are applied to the title, such as focus and hover. Navigate directly to this story page to see the effects.',
+      },
+    },
+  },
+  render: function Render() {
+    return <LinkExamples showFocusedLabel />;
+  },
+  play: async ({ canvasElement, step }) => {
+    const canvas = within(canvasElement);
+    let firstBanner: HTMLElement;
+    await step('focus outline is visible and has no visual regressions', async () => {
+      firstBanner = await canvas.findByTestId('default-header');
+      expect(firstBanner).toBeInTheDocument();
+      const links = await within(firstBanner).findAllByRole('link');
+      const linkLogo = links[0];
+      const linkTitle = links[1];
+      expect(linkLogo).toHaveAttribute('href', '#');
+      expect(linkTitle).toHaveAttribute('href', '#');
+      await userEvent.click(firstBanner);
+      await userEvent.tab();
+      expect(linkLogo).toHaveFocus();
+      await userEvent.tab();
+      expect(linkTitle).toHaveFocus();
+    });
   },
 };
