@@ -53,7 +53,7 @@ export const HeaderNext = forwardRef<HTMLElement, HeaderNextProps>(
           <Container className="gi-order-2 gi-min-w-0">
             <div className={headerMenuVariants({ appearance: variant })}>
               {headerLogo}
-              {headerTitle}
+              <div className="gi-flex-1 gi-min-w-0 gi-pr-2">{headerTitle}</div>
               {headerPrimaryMenu}
             </div>
           </Container>

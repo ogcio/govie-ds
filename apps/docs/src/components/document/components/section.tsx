@@ -24,6 +24,7 @@ const baseTabs = [
       'library/text',
       'grid',
       'box',
+      'divider',
     ],
   },
   {
