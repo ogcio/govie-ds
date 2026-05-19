@@ -1,7 +1,6 @@
 'use client';
 import React, { useState, useEffect } from 'react';
 import { Trans, useTranslation } from 'react-i18next';
-import clsx from 'clsx';
 import { Button } from '@/atoms';
 import { ArrowRightIcon, ArrowLeftIcon } from '@/atoms/icons';
 import { Breakpoint, useBreakpoint } from '@/hooks/use-breakpoint.js';
