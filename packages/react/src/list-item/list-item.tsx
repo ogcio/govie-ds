@@ -1,5 +1,5 @@
 import type { AnchorHTMLAttributes } from 'react';
-import { tv } from 'tailwind-variants';
+import { cn } from '@/cn.js';
 import Anchor from '@/primitives/anchor.js';
 
 export type ListItemProps = AnchorHTMLAttributes<HTMLAnchorElement> & {
@@ -16,7 +16,7 @@ export function ListItem({ label, href, external, bold, slot, className, ...prop
     <Anchor
       aria-label={label}
       href={href}
-      className={styles({ bold, className })}
+      className={cn(className, 'gi-list-item', { 'gi-font-bold': bold })}
       external={external}
       asChild={!!slot}
       {...props}
@@ -25,28 +25,3 @@ export function ListItem({ label, href, external, bold, slot, className, ...prop
     </Anchor>
   );
 }
-
-export const styles = tv({
-  base: [
-    'gi-block',
-    'gi-text-sm',
-    'gi-py-4',
-    'gi-border-color-border-system-neutral-subtle',
-    'gi-border-b-xs',
-    'gi-border-solid',
-    'focus:gi-no-underline',
-    'focus:gi-rounded-sm',
-    'focus:gi-shadow-[0_0_0_2px_var(--gieds-color-gray-950),0_0_0_5px_var(--gieds-color-yellow-400)]',
-    'focus-visible:gi-shadow-[0_0_0_2px_var(--gieds-color-gray-950),0_0_0_5px_var(--gieds-color-yellow-400)]',
-    'focus-visible:gi-no-underline',
-    'focus-visible:gi-rounded-sm',
-    'focus-visible:gi-outline-none',
-    'hover:gi-underline',
-    '[&>a:hover]:gi-underline',
-  ],
-  variants: {
-    bold: {
-      true: 'gi-font-bold',
-    },
-  },
-});
