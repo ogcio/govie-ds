@@ -199,7 +199,7 @@ const styles = tv({
     'gi-overflow-visible',
     'gi-whitespace-nowrap',
     'gi-relative',
-    'gi-shadow-[inset_0_-1px_0_0_var(--gieds-color-border-system-neutral-muted)',
+    'gi-shadow-[inset_0_-1px_0_0_var(--gieds-color-border-system-neutral-muted)]',
   ],
 
   variants: {

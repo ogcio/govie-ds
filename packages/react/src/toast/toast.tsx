@@ -83,6 +83,7 @@ const portal = tv({
     y: {
       top: 'gi-top-4',
       bottom: 'gi-bottom-4',
+      center: '',
     },
   },
 });
