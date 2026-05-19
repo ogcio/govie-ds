@@ -9,7 +9,6 @@ import { within, expect } from 'storybook/test';
 import type { IconProps } from '../icons/types';
 import * as icons from '../icons';
 import _ from 'lodash';
-import { Component } from 'react';
 export const iconList = {
   base: [
     {
