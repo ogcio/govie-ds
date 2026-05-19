@@ -9,6 +9,7 @@ import { within, expect } from 'storybook/test';
 import type { IconProps } from '../icons/types';
 import * as icons from '../icons';
 import _ from 'lodash';
+import { Component } from 'react';
 export const iconList = {
   base: [
     {
@@ -281,12 +282,27 @@ export const iconList = {
       name: 'Warning',
       selector: 'gi-warning-icon',
     },
+    {
+      Component: icons.WorkIcon,
+      name: 'Work',
+      selector: 'gi-work-icon',
+    },
   ],
   navigation: [
+    {
+      Component: icons.ArrowUpwardIcon,
+      name: 'ArrowUpward',
+      selector: 'gi-arrow-upward-icon',
+    },
     {
       Component: icons.ArrowDownwardIcon,
       name: 'ArrowDownward',
       selector: 'gi-arrow-downward-icon',
+    },
+    {
+      Component: icons.ArrowBackwardIcon,
+      name: 'ArrowBackward',
+      selector: 'gi-arrow-backward-icon',
     },
     {
       Component: icons.ArrowForwardIcon,
@@ -294,14 +310,14 @@ export const iconList = {
       selector: 'gi-arrow-forward-icon',
     },
     {
-      Component: icons.ArrowLeftIcon,
-      name: 'arrow_left',
-      selector: 'gi-arrow-left-icon',
-    },
-    {
       Component: icons.ArrowOutwardIcon,
       name: 'ArrowOutward',
       selector: 'gi-arrow-outward-icon',
+    },
+    {
+      Component: icons.ArrowLeftIcon,
+      name: 'ArrowLeft',
+      selector: 'gi-arrow-left-icon',
     },
     {
       Component: icons.ArrowRightIcon,
@@ -309,9 +325,14 @@ export const iconList = {
       selector: 'gi-arrow-right-icon',
     },
     {
-      Component: icons.ArrowUpwardIcon,
-      name: 'ArrowUpward',
-      selector: 'gi-arrow-upward-icon',
+      Component: icons.ArrowDropDownIcon,
+      name: 'ArrowDropDown',
+      selector: 'gi-arrow-drop-down-icon',
+    },
+    {
+      Component: icons.ArrowDropUpIcon,
+      name: 'ArrowDropUp',
+      selector: 'gi-arrow-drop-up-icon',
     },
     {
       Component: icons.FirstPageIcon,
