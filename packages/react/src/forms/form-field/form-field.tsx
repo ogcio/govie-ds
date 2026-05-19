@@ -2,7 +2,7 @@
 import { Slottable } from '@radix-ui/react-slot';
 import type { ReactNode, FieldsetHTMLAttributes } from 'react';
 import { Children, createContext, useContext } from 'react';
-import clsx from 'clsx';
+import { cn } from '@/cn.js';
 import { ErrorText } from '@/error-text/error-text.js';
 import type { ErrorTextProps } from '@/error-text/types.js';
 import { HintText } from '@/hint-text/hint-text.js';
@@ -62,7 +62,7 @@ const FormFieldBase = ({ children, className, ...props }: FormFieldBaseProps) =>
   );
 
   return (
-    <fieldset className={clsx({ 'gi-error-state': !!error }, className)} {...props}>
+    <fieldset className={cn({ 'gi-error-state': !!error }, className)} {...props}>
       <div className="gi-pb-3 gi-flex gi-flex-col gi-gap-1">
         <div>
           {label}
@@ -86,14 +86,11 @@ const FormFieldLabel = ({
   ...props
 }: FormFieldLabelProps) => {
   useFormFieldContext('FormFieldLabel');
+
   const content = (
     <>
       {text ?? children}
-      {secondaryLabel ? (
-        <span className="gi-ml-1 gi-text-md gi-font-normal gi-text-color-text-system-neutral-muted">
-          {secondaryLabel}
-        </span>
-      ) : null}
+      {secondaryLabel ? <span className="gi-secondary-label">{secondaryLabel}</span> : null}
     </>
   );
 
@@ -102,7 +99,7 @@ const FormFieldLabel = ({
       <Label
         size={size}
         htmlFor={htmlFor}
-        className={clsx('gi-font-bold', className)}
+        className={cn('gi-font-bold', className)}
         {...(props as React.LabelHTMLAttributes<HTMLLabelElement>)}
       >
         {content}
@@ -113,7 +110,7 @@ const FormFieldLabel = ({
   return (
     <legend
       className={styles({ size }).base({
-        className: clsx('gi-font-bold', className),
+        className: cn('gi-font-bold', className),
       })}
       {...(props as React.HTMLAttributes<HTMLLegendElement>)}
     >
@@ -147,12 +144,11 @@ FormFieldHint.displayName = 'FormFieldHint';
 const FormFieldError = ({ children, text, size, className, ...props }: ErrorTextProps) => {
   useFormFieldContext('FormFieldError');
   return (
-    <ErrorText text={text} size={size} className={clsx('gi-mb-1', className)} {...props}>
+    <ErrorText text={text} size={size} className={cn('gi-mb-1', className)} {...props}>
       {children}
     </ErrorText>
   );
 };
-
 Object.defineProperty(FormFieldError, 'componentType', {
   value: 'FormFieldError',
   writable: false,
