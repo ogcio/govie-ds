@@ -1,14 +1,11 @@
 'use client';
 import type { ReactElement } from 'react';
 import { Children } from 'react';
-import { tv } from 'tailwind-variants';
-import clsx from 'clsx';
+import { cn } from '@/cn.js';
 import { useDomId } from '@/hooks/use-dom-id.js';
 import { translate as t } from '@/i18n/utility.js';
 import { getSpecialComponentType } from '@/utilities.js';
 import { useSummaryListContext } from './summary-list-context.js';
-import { cellVariants } from './summary-list.js';
-
 import type {
   SummaryListActionListProps,
   SummaryListActionProps,
@@ -32,13 +29,21 @@ export const SummaryListRow = ({ children, label, withBorder, className, ...prop
   const actionsSrId = `${rowId}-actions`;
 
   return (
-    <tr {...props} className={rowVariants({ withBorder, className })}>
-      <th id={rowId} scope="row" className={cellVariants({ type: 'head' })}>
+    <tr
+      {...props}
+      className={cn(
+        {
+          'gi-border-b gi-border-color-border-system-neutral-muted': withBorder,
+        },
+        className,
+      )}
+    >
+      <th id={rowId} scope="row">
         {label}
       </th>
 
       {valueTd ? (
-        <td {...valueTd.props} aria-labelledby={`${rowId} ${valueSrId}`} className={cellVariants()}>
+        <td {...valueTd.props} aria-labelledby={`${rowId} ${valueSrId}`}>
           <span id={valueSrId} className="gi-sr-only">
             {t('summaryList.col.value', { defaultValue: 'Value' })}
           </span>
@@ -47,10 +52,10 @@ export const SummaryListRow = ({ children, label, withBorder, className, ...prop
       ) : null}
 
       {actions.length > 0 ? (
-        <td aria-labelledby={`${rowId} ${actionsSrId}`} className={cellVariants({ className: 'gi-truncate' })}>
+        <td aria-labelledby={`${rowId} ${actionsSrId}`}>
           <ActionList id={actionsSrId}>
             {actions.map((action, index) => (
-              <span key={`${rowId}-a${index}`} className={clsx({ 'gi-ml-4': index > 0 })}>
+              <span key={`${rowId}-a${index}`} className={cn({ 'gi-ml-4': index > 0 })}>
                 {action}
               </span>
             ))}
@@ -61,18 +66,9 @@ export const SummaryListRow = ({ children, label, withBorder, className, ...prop
   );
 };
 
-const rowVariants = tv({
-  base: 'gi-flex gi-flex-col md:gi-table-row gi-align-middle md:gi-py-none gi-py-2',
-  variants: {
-    withBorder: {
-      true: 'gi-border-b gi-border-color-border-system-neutral-muted',
-    },
-  },
-});
-
 export const ActionList = ({ id, children }: SummaryListActionListProps) => {
   return (
-    <div className="gi-text-sm gi-font-normal gi-align-top md:gi-text-right gi-whitespace-nowrap">
+    <div className={cn('gi-summary-list-action')}>
       <span id={id} className="gi-sr-only">
         {t('summaryList.col.actions', { defaultValue: 'Actions' })}
       </span>

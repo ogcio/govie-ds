@@ -1,7 +1,6 @@
 'use client';
 import type { ReactElement } from 'react';
 import { Children } from 'react';
-import { tv } from 'tailwind-variants';
 import { cn } from '@/cn.js';
 import { getSpecialComponentType } from '@/utilities.js';
 import { SummaryListProvider } from './summary-list-context.js';
@@ -16,53 +15,21 @@ export const SummaryList = ({ children, className, withBorder, ...props }: Summa
     (child) => getSpecialComponentType(child) === 'SummaryListRow',
   ) as ReactElement<SummaryListRowProps>[];
 
-  const { container, thead } = summaryListVariants({ withBorder: !!withBorder });
   return (
     <SummaryListProvider>
-      <div className={container()}>
-        <table className={cn(className, 'gi-w-full')} role="table" {...props}>
-          {header ? <thead className={thead()}>{header}</thead> : null}
+      <div
+        className={cn('gi-summary-list', {
+          'gi-border gi-border-color-border-system-neutral-muted': withBorder,
+        })}
+      >
+        <table className={className} role="table" {...props}>
+          {header ? <thead>{header}</thead> : null}
           {rows ? <tbody>{rows}</tbody> : null}
         </table>
       </div>
     </SummaryListProvider>
   );
 };
-
-export const summaryListVariants = tv({
-  slots: {
-    container: 'gi-rounded-md gi-overflow-hidden gi-antialiased gi-text-md gi-w-full',
-    thead: 'gi-bg-color-surface-system-neutral-layer1 gi-border-b gi-border-color-border-system-neutral-muted',
-  },
-  variants: {
-    withBorder: {
-      true: {
-        container: 'gi-border gi-border-color-border-system-neutral-muted',
-      },
-      false: {
-        container: 'gi-border-none',
-      },
-    },
-  },
-});
-
-export const cellVariants = tv({
-  base: 'gi-py-2 gi-px-3 gi-min-h-12',
-  variants: {
-    type: {
-      head: 'gi-font-bold gi-text-left gi-truncate',
-      data: '',
-    },
-    header: {
-      true: 'gi-align-middle',
-      false: 'gi-align-top',
-    },
-  },
-  defaultVariants: {
-    header: false,
-    type: 'data',
-  },
-});
 
 SummaryList.displayName = 'SummaryList';
 Object.defineProperty(SummaryList, 'componentType', {
