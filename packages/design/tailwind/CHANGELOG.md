@@ -1,5 +1,19 @@
 # Changelog
 
+## [1.26.0](https://github.com/ogcio/govie-ds/compare/design-tailwind-v1.25.0...design-tailwind-v1.26.0) (2026-05-19)
+
+
+### Features
+
+* **AB#37432:** Adding Grid mitosis component  ([#939](https://github.com/ogcio/govie-ds/issues/939)) ([13d2f50](https://github.com/ogcio/govie-ds/commit/13d2f50110e252a1cce985ad8f6f4cd44566c958))
+
+
+### Dependencies
+
+* The following workspace dependencies were updated
+  * dependencies
+    * @ogcio/design-system-tokens bumped to 1.22.2
+
 ## [1.25.0](https://github.com/ogcio/govie-ds/compare/design-tailwind-v1.24.0...design-tailwind-v1.25.0) (2026-04-21)
 
 
