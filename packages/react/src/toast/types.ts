@@ -1,7 +1,7 @@
 import type { ComponentPropsWithoutRef } from 'react';
 
 export type ToastHorizontalPosition = 'left' | 'center' | 'right';
-export type ToastVerticalPosition = 'top' | 'bottom';
+export type ToastVerticalPosition = 'top' | 'center' | 'bottom';
 export type ToastVariant = 'success' | 'info' | 'warning' | 'danger';
 export type ToastAnimation = 'fadeinup' | 'fadeinleft' | 'fadeinright';
 
