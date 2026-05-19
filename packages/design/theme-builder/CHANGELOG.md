@@ -1,5 +1,14 @@
 # Changelog
 
+## [1.24.1](https://github.com/ogcio/govie-ds/compare/design-theme-builder-v1.24.0...design-theme-builder-v1.24.1) (2026-05-19)
+
+
+### Dependencies
+
+* The following workspace dependencies were updated
+  * dependencies
+    * @ogcio/design-system-tokens bumped to 1.22.2
+
 ## [1.24.0](https://github.com/ogcio/govie-ds/compare/design-theme-builder-v1.23.0...design-theme-builder-v1.24.0) (2026-04-21)
 
 
