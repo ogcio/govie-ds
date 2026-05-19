@@ -1,4 +1,5 @@
 import { tv } from 'tailwind-variants';
+import clsx from 'clsx';
 import { translate as t } from '@/i18n/utility.js';
 
 export type ProgressBarProps = {
@@ -19,7 +20,7 @@ export function ProgressBar({
   ...props
 }: ProgressBarProps) {
   const fillPercentage = (value * 100) / max;
-  const { container, bar, progress, progressLabel } = styles({ isIndeterminate });
+  const { container, bar, progress, progressLabel } = styles();
 
   return (
     <div className={container()}>
@@ -35,7 +36,10 @@ export function ProgressBar({
         data-testid={dataTestid}
         {...props}
       >
-        <div className={progress()} style={isIndeterminate ? {} : { width: `${fillPercentage}%` }} />
+        <div
+          className={clsx(progress(), { 'gi-progress-bar-indeterminate': !!isIndeterminate })}
+          style={isIndeterminate ? {} : { width: `${fillPercentage}%` }}
+        />
       </div>
       {label && <span className={progressLabel()}>{label}</span>}
     </div>
@@ -48,12 +52,5 @@ const styles = tv({
     bar: 'gi-w-full gi-bg-gray-400 gi-overflow-hidden gi-rounded-sm gi-h-1',
     progress: 'gi-transition-all gi-bg-gray-950 gi-h-1 gi-rounded-sm',
     progressLabel: 'gi-mt-2 gi-text-sm gi-text-gray-950',
-  },
-  variants: {
-    isIndeterminate: {
-      true: {
-        progress: 'gi-relative gi-w-1/4 gi-animate-indeterminate-progress',
-      },
-    },
   },
 });
