@@ -7,6 +7,40 @@ import { IconButton } from '@/icon-button/icon-button.js';
 import { Link } from '@/link/link.js';
 import type { ToastProps } from './types.js';
 
+const toastVariants = tv({
+  slots: {
+    base: 'gi-toast-base',
+    baseDismissible: 'gi-toast-base-dismissible',
+    container: 'gi-toast-container',
+    heading: 'gi-toast-title',
+    dismiss: 'gi-toast-dismiss',
+    innerContainer: 'gi-flex gi-justify-between gi-w-full',
+  },
+  variants: {
+    variant: {
+      info: {
+        base: 'gi-toast-info',
+        baseDismissible: 'gi-toast-info',
+      },
+      danger: {
+        base: 'gi-toast-danger',
+        baseDismissible: 'gi-toast-danger',
+      },
+      success: {
+        base: 'gi-toast-success',
+        baseDismissible: 'gi-toast-success',
+      },
+      warning: {
+        base: 'gi-toast-warning',
+        baseDismissible: 'gi-toast-warning',
+      },
+    },
+  },
+  defaultVariants: {
+    variant: 'info',
+  },
+});
+
 const icon = ({ variant }: VariantProps<typeof toastVariants>) => {
   let icon;
   switch (variant) {
@@ -39,20 +73,15 @@ function Toast({
   onClose,
   slotAction,
 }: ToastProps) {
-  const {
-    base,
-    heading,
-    container,
-    innerContainer,
-    dismiss,
-    icon: iconStyle,
-  } = toastVariants({
+  const { base, heading, container, innerContainer, dismiss, baseDismissible } = toastVariants({
     variant,
   });
 
+  const baseVariant = dismissible ? baseDismissible : base;
+
   return (
-    <div className={base()}>
-      {showIcon ? <Icon icon={icon({ variant })} className={iconStyle()} data-variant={variant} /> : null}
+    <div className={baseVariant()}>
+      {showIcon ? <Icon icon={icon({ variant })} className="gi-toast-icon" data-variant={variant} /> : null}
 
       <div className={container()}>
         <div className={innerContainer()}>
@@ -72,7 +101,7 @@ function Toast({
         </div>
         <Paragraph>{description}</Paragraph>
         {(action || slotAction) && (
-          <div className="gi-text-gray-950 gi-mt-1">
+          <div className="gi-toast-action">
             <Link href={action?.href} noColor size="md" asChild={!!slotAction}>
               {slotAction || action?.label}
             </Link>
@@ -82,51 +111,5 @@ function Toast({
     </div>
   );
 }
-
-const toastVariants = tv({
-  slots: {
-    base: 'gi-relative gi-flex-row gi-flex gi-p-3 gi-border-xs gi-rounded-sm gi-gap-2',
-    container: 'gi-flex gi-flex-col gi-items-start gi-gap-1 gi-grow gi-pr-0',
-    heading: 'gi-text-2md gi-font-bold',
-    dismiss: 'gi-h-full gi-relative gi-top-[-8px]',
-    innerContainer: 'gi-flex gi-justify-between gi-w-full',
-    icon: '',
-  },
-  variants: {
-    variant: {
-      info: {
-        base: [
-          'gi-bg-color-surface-intent-info-default gi-border-color-border-intent-info-subtle gi-text-color-text-intent-info-default',
-          'gi-shadow-[0px_0px_25px_-5px_rgba(7,33,85,0.15)]',
-        ],
-        icon: 'gi-text-color-icon-intent-info-default',
-      },
-      danger: {
-        base: [
-          'gi-bg-color-surface-intent-error-default gi-border-color-border-intent-error-subtle gi-text-color-text-intent-error-default',
-          'gi-shadow-[0px_0px_25px_-5px_rgba(76,11,0,0.15)]',
-        ],
-        icon: 'gi-text-color-icon-intent-error-default',
-      },
-      success: {
-        base: [
-          'gi-bg-color-surface-intent-success-default gi-border-color-border-intent-success-subtle gi-text-color-text-intent-success-default',
-          'gi-shadow-[0px_0px_25px_-5px_rgba(0,61,33,0.15)]',
-        ],
-        icon: 'gi-text-color-icon-intent-success-default',
-      },
-      warning: {
-        base: [
-          'gi-bg-color-surface-intent-warning-default gi-border-color-border-intent-warning-subtle gi-text-color-text-intent-warning-default',
-          'gi-shadow-[0px_0px_25px_-5px_rgba(62,41,25,0.15)]',
-        ],
-        icon: 'gi-text-color-icon-intent-warning-default',
-      },
-    },
-  },
-  defaultVariants: {
-    variant: 'info',
-  },
-});
 
 export { Toast, toastVariants };
