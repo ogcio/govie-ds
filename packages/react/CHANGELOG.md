@@ -1,5 +1,39 @@
 # Changelog
 
+## [1.37.0](https://github.com/ogcio/govie-ds/compare/react-lib-v1.36.0...react-lib-v1.37.0) (2026-05-19)
+
+
+### Features
+
+* **AB#37145:** add href to header title and logo ([b439398](https://github.com/ogcio/govie-ds/commit/b4393985112c6534eabec9011869a0b4a315193c))
+* **AB#37418:** Add Box atom component ([#942](https://github.com/ogcio/govie-ds/issues/942)) ([d4262e0](https://github.com/ogcio/govie-ds/commit/d4262e0e4e84a3a4be502f55c999f2af606a6f89))
+* **AB#37422:** Adding Divider mitosis component ([#953](https://github.com/ogcio/govie-ds/issues/953)) ([8b56142](https://github.com/ogcio/govie-ds/commit/8b5614237922b8bc6ff8846767b1f6f4d51316c9))
+* **AB#37432:** Adding Grid mitosis component  ([#939](https://github.com/ogcio/govie-ds/issues/939)) ([13d2f50](https://github.com/ogcio/govie-ds/commit/13d2f50110e252a1cce985ad8f6f4cd44566c958))
+
+
+### Bug Fixes
+
+* **AB#37945:** sync icon stories ([#960](https://github.com/ogcio/govie-ds/issues/960)) ([085cadd](https://github.com/ogcio/govie-ds/commit/085caddfeb107493af49f689b769c3e7a4236ca7))
+
+
+### Miscellaneous Chores
+
+* **AB#37589:** add `@/` path alias to React and Angular packages ([7ad2861](https://github.com/ogcio/govie-ds/commit/7ad2861c20c4ed2215ba7b153c960b202eb84eca))
+* **AB#37589:** align prettier on package.json with release-please ([1b6d1c1](https://github.com/ogcio/govie-ds/commit/1b6d1c119062a8fa0dda3f28153329ee0bf724dc))
+* **AB#37589:** apply new prettier in React lib ([1db296a](https://github.com/ogcio/govie-ds/commit/1db296aa8d1e073c6c33520b94f85fc26e03a534))
+* **AB#37589:** autofix eslint warnings ([e7a349f](https://github.com/ogcio/govie-ds/commit/e7a349fa57e48e8b2b52062ae78b4000a8d9af08))
+* **AB#37589:** enforce `@/` alias via eslint and apply across React src ([fc32d4b](https://github.com/ogcio/govie-ds/commit/fc32d4b1eca1fdf5ad2dd5c9b2c2a32f2b8eb7ae))
+* **AB#37589:** update lint staged to use package configs ([f529b5d](https://github.com/ogcio/govie-ds/commit/f529b5d53bc629098840ed86c1fe80eada2cd9e7))
+* **Mitosis:** proper post-processing of all Mitosis sources ([a456756](https://github.com/ogcio/govie-ds/commit/a4567566d480aa9163be8fa7736901b1cfab058a))
+
+
+### Dependencies
+
+* The following workspace dependencies were updated
+  * devDependencies
+    * @ogcio/design-system-tailwind bumped to 1.26.0
+    * @ogcio/theme-govie bumped to 1.21.6
+
 ## [1.36.0](https://github.com/ogcio/govie-ds/compare/react-lib-v1.35.0...react-lib-v1.36.0) (2026-05-05)
 
 

@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.22.2](https://github.com/ogcio/govie-ds/compare/tokens-v1.22.1...tokens-v1.22.2) (2026-05-19)
+
+
+### Miscellaneous Chores
+
+* **AB#37589:** align prettier on package.json with release-please ([1b6d1c1](https://github.com/ogcio/govie-ds/commit/1b6d1c119062a8fa0dda3f28153329ee0bf724dc))
+
 ## [1.22.1](https://github.com/ogcio/govie-ds/compare/tokens-v1.22.0...tokens-v1.22.1) (2026-04-21)
 
 
