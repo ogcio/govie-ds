@@ -31,7 +31,7 @@ export function ProgressBar({
         aria-label={t('progressBar.progressBar', {
           defaultValue: 'Progress bar',
         })}
-        className={bar({ class: className })}
+        className={bar({ className })}
         data-testid={dataTestid}
         {...props}
       >
