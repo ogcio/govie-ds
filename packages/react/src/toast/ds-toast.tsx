@@ -95,19 +95,31 @@ const toastVariants = tv({
   variants: {
     variant: {
       info: {
-        base: 'gi-bg-color-surface-intent-info-default gi-border-color-border-intent-info-subtle gi-text-color-text-intent-info-default',
+        base: [
+          'gi-bg-color-surface-intent-info-default gi-border-color-border-intent-info-subtle gi-text-color-text-intent-info-default',
+          'gi-shadow-[0px_0px_25px_-5px_rgba(7,33,85,0.15)]',
+        ],
         icon: 'gi-text-color-icon-intent-info-default',
       },
       danger: {
-        base: 'gi-bg-color-surface-intent-error-default gi-border-color-border-intent-error-subtle gi-text-color-text-intent-error-default',
+        base: [
+          'gi-bg-color-surface-intent-error-default gi-border-color-border-intent-error-subtle gi-text-color-text-intent-error-default',
+          'gi-shadow-[0px_0px_25px_-5px_rgba(76,11,0,0.15)]',
+        ],
         icon: 'gi-text-color-icon-intent-error-default',
       },
       success: {
-        base: 'gi-bg-color-surface-intent-success-default gi-border-color-border-intent-success-subtle gi-text-color-text-intent-success-default',
+        base: [
+          'gi-bg-color-surface-intent-success-default gi-border-color-border-intent-success-subtle gi-text-color-text-intent-success-default',
+          'gi-shadow-[0px_0px_25px_-5px_rgba(0,61,33,0.15)]',
+        ],
         icon: 'gi-text-color-icon-intent-success-default',
       },
       warning: {
-        base: 'gi-bg-color-surface-intent-warning-default gi-border-color-border-intent-warning-subtle gi-text-color-text-intent-warning-default',
+        base: [
+          'gi-bg-color-surface-intent-warning-default gi-border-color-border-intent-warning-subtle gi-text-color-text-intent-warning-default',
+          'gi-shadow-[0px_0px_25px_-5px_rgba(62,41,25,0.15)]',
+        ],
         icon: 'gi-text-color-icon-intent-warning-default',
       },
     },

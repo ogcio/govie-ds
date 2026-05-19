@@ -2,9 +2,10 @@
 import { useEffect, useState } from 'react';
 import { createPortal } from 'react-dom';
 import { translate as t } from '@/i18n/utility.js';
+import { tv } from 'tailwind-variants';
+import clsx from 'clsx';
 import { Toast as DSToast } from './ds-toast.js';
 import type { ToastPosition, ToastProps } from './types.js';
-import { tv } from 'tailwind-variants';
 
 const positions: ToastPosition[] = [
   { x: 'left', y: 'top' },
@@ -146,7 +147,9 @@ export const Toast = ({
     <div
       data-testid={`${title}-${variant || 'info'}`}
       data-animation={animation || 'no-animation'}
-      className={toastVariants({ animation, isOpen })}
+      className={clsx('gi-toast', {
+        'gi-toast-disappear': !isOpen,
+      })}
       role="alert"
       aria-live="assertive"
       aria-atomic="true"
@@ -170,36 +173,3 @@ export const Toast = ({
     </div>
   );
 };
-
-const toastVariants = tv({
-  base: [
-    'gi-m-0 gi-p-0 md:gi-min-w-[320px] md:gi-max-w-[460px] gi-w-full gi-block gi-overflow-hidden gi-pointer-events-auto gi-relative gi-rounded-sm gi-box-border gi-shrink-0',
-  ],
-  variants: {
-    animation: {
-      fadeinup: 'gi-animate-toast-fadeinup',
-      fadeinright: 'gi-animate-toast-fadeinright',
-      fadeinleft: 'gi-animate-toast-fadeinleft',
-    },
-    isOpen: {
-      false: 'gi-translate-y-0 gi-delay-250',
-    },
-  },
-  compoundVariants: [
-    {
-      animation: 'fadeinleft',
-      isOpen: false,
-      class: 'gi-animate-toast-fadeoutleft',
-    },
-    {
-      animation: 'fadeinup',
-      isOpen: false,
-      class: 'gi-animate-toast-fadeoutup',
-    },
-    {
-      animation: 'fadeinright',
-      isOpen: false,
-      class: 'gi-animate-toast-fadeoutright',
-    },
-  ],
-});
