@@ -1,5 +1,30 @@
 # Changelog
 
+## [1.36.0](https://github.com/ogcio/govie-ds/compare/docs-v1.35.0...docs-v1.36.0) (2026-05-19)
+
+
+### Features
+
+* **AB#37418:** Add Box atom component ([#942](https://github.com/ogcio/govie-ds/issues/942)) ([d4262e0](https://github.com/ogcio/govie-ds/commit/d4262e0e4e84a3a4be502f55c999f2af606a6f89))
+* **AB#37422:** Adding Divider mitosis component ([#953](https://github.com/ogcio/govie-ds/issues/953)) ([8b56142](https://github.com/ogcio/govie-ds/commit/8b5614237922b8bc6ff8846767b1f6f4d51316c9))
+* **AB#37432:** Adding Grid mitosis component  ([#939](https://github.com/ogcio/govie-ds/issues/939)) ([13d2f50](https://github.com/ogcio/govie-ds/commit/13d2f50110e252a1cce985ad8f6f4cd44566c958))
+
+
+### Miscellaneous Chores
+
+* **AB#38333:** upgrading nextjs 16.2.6 ([7cc05eb](https://github.com/ogcio/govie-ds/commit/7cc05eb802b4c03770db6a74cad3d8f223421aec))
+
+
+### Dependencies
+
+* The following workspace dependencies were updated
+  * dependencies
+    * @ogcio/design-system-html bumped to 1.21.2
+    * @ogcio/design-system-react bumped to 1.37.0
+    * @ogcio/design-system-tailwind bumped to 1.26.0
+    * @ogcio/design-system-tokens bumped to 1.22.2
+    * @ogcio/theme-govie bumped to 1.21.6
+
 ## [1.35.0](https://github.com/ogcio/govie-ds/compare/docs-v1.34.0...docs-v1.35.0) (2026-05-05)
 
 

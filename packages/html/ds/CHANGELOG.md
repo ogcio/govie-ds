@@ -1,5 +1,20 @@
 # Changelog
 
+## [1.21.2](https://github.com/ogcio/govie-ds/compare/html-lib-v1.21.1...html-lib-v1.21.2) (2026-05-19)
+
+
+### Miscellaneous Chores
+
+* **AB#37589:** autofix eslint warnings ([e7a349f](https://github.com/ogcio/govie-ds/commit/e7a349fa57e48e8b2b52062ae78b4000a8d9af08))
+
+
+### Dependencies
+
+* The following workspace dependencies were updated
+  * devDependencies
+    * @ogcio/design-system-tailwind bumped to 1.26.0
+    * @ogcio/theme-govie bumped to 1.21.6
+
 ## [1.21.1](https://github.com/ogcio/govie-ds/compare/html-lib-v1.21.0...html-lib-v1.21.1) (2026-04-21)
 
 
