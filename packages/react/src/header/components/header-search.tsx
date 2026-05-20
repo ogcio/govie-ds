@@ -2,12 +2,15 @@ import Heading from '@/Heading.js';
 import Button from '@/atoms/Button';
 import { translate as t } from '@/i18n/utility.js';
 import type { IconId } from '@/icon/icon.js';
-import { IconButton } from '@/icon-button/icon-button.js';
+import { IconButton } from '@/icon-button/icon-button';
+import GiIconButton from '@/atoms/IconButton';
+import Close from '@/atoms/icons/Close';
 import { InputText } from '@/input-text/input-text.js';
 
 export type HeaderSearchProps = {
   action?: string;
   serverAction?: any; // eslint-disable-line @typescript-eslint/no-explicit-any
+  /** @deprecated variable icon will default to "search" icon in future releases */
   icon?: IconId;
 };
 
@@ -42,7 +45,17 @@ export function HeaderSearch({ action, serverAction, icon = 'search' }: HeaderSe
           </Button>
         </div>
         <div className="gi-ml-1 gi-flex-none gi-block md:gi-hidden">
-          <IconButton aria-label={t('header.search', { defaultValue: 'Search' })} aria-hidden="true" icon={{ icon }} />
+          {icon ? (
+            <IconButton
+              aria-label={t('header.search', { defaultValue: 'Search' })}
+              aria-hidden="true"
+              icon={{ icon }}
+            />
+          ) : (
+            <GiIconButton ariaLabel={t('header.search', { defaultValue: 'Search' })}>
+              <Close className="gi-shrink-0" />
+            </GiIconButton>
+          )}
         </div>
       </div>
     </form>

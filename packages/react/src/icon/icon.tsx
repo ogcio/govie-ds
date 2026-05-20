@@ -18,6 +18,9 @@ import {
   FirstPageIcon,
   LastPageIcon,
 } from '@/atoms/icons';
+import MenuIcon from '@/atoms/icons/Menu';
+import SearchIcon from '@/atoms/icons/Search';
+import { IconProps as GiIconProps } from '@/atoms/icons';
 import { cn } from '@/cn.js';
 import type { iconIds } from './icons.js';
 import Bluesky from './svgs/bluesky.js';
@@ -60,7 +63,7 @@ const SIZE_MAP: Record<IconSize, string> = {
 const ICON_REGISTRY: Record<
   string,
   {
-    Component: ComponentType<{ size: string; className: string }>;
+    Component: ComponentType<{ id?: string; size: string; className: string }>;
     disabledClass?: string;
   }
 > = {
@@ -93,6 +96,8 @@ const ICON_REGISTRY: Record<
   arrow_right_alt: { Component: ArrowRightIcon },
   first_page: { Component: FirstPageIcon },
   last_page: { Component: LastPageIcon },
+  menu: { Component: MenuIcon },
+  search: { Component: SearchIcon },
 };
 
 export const Icon = forwardRef<HTMLSpanElement, IconProps>(
@@ -112,7 +117,7 @@ export const Icon = forwardRef<HTMLSpanElement, IconProps>(
         className,
       );
 
-      return <Component size={fontSize} className={svgClass} />;
+      return <Component id={props?.id} size={fontSize} className={svgClass} />;
     }
 
     return (
