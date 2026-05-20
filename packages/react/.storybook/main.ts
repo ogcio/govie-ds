@@ -1,3 +1,4 @@
+import path from 'node:path';
 import type { StorybookConfig } from '@storybook/react-vite';
 
 const config: StorybookConfig = {
@@ -20,7 +21,12 @@ const config: StorybookConfig = {
   ],
 
   core: {
-    builder: '@storybook/builder-vite',
+    builder: {
+      name: '@storybook/builder-vite',
+      options: {
+        viteConfigPath: path.resolve(import.meta.dirname, 'vite.config.ts'),
+      },
+    },
   },
 
   build: {
