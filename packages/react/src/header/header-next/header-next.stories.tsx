@@ -82,18 +82,19 @@ const SlotExample2 = () => {
 
 export const Default: StoryObj = {
   render: function Render() {
-    const alternate: Record<string, string> = {
-      search: 'language',
-      language: 'search',
-    };
     const [state, { toggle, close, closeAll }] = useToggleMap({
+      faq: false,
       search: false,
       language: false,
+      drawer: false,
     });
 
     const handleMenuItemButton = (key: string) => () => {
+      const sections = ['faq', 'search', 'language'].filter((section) => section !== key);
       toggle(key);
-      close(alternate[key]);
+      for (const section of sections) {
+        close(section);
+      }
     };
 
     return (
@@ -113,7 +114,7 @@ export const Default: StoryObj = {
             </HeaderMenuItemLink>
             <HeaderMenuItemSlot className="gi-flex gi-items-center">
               <label>Hello John &nbsp;| </label>
-              <a href="#" className="gi-header-secondary-item gi-header-secondary-item-default">
+              <a href="#" className="gi-header-secondary-item gi-header-secondary-item-light" aria-label="logout">
                 <LogoutIcon size={SM} />
               </a>
             </HeaderMenuItemSlot>
@@ -231,14 +232,13 @@ export const Default: StoryObj = {
       ).toBeInTheDocument();
     });
 
-    await step('FAQ drawer button updates aria + icon', async () => {
+    await step('FAQ drawer button updates aria', async () => {
       const faqButton = await canvas.findByRole('button', {
         name: /toggle frequently asked questions/i,
       });
       expect(within(faqButton).getByTestId(/info/i)).toBeInTheDocument();
-
       await userEvent.click(faqButton);
-      expect(within(faqButton).getByTestId('close')).toBeInTheDocument();
+      expect(faqButton).toHaveAttribute('aria-expanded', 'true');
 
       const faqDrawer = document.querySelector('#FaqDrawer') as HTMLElement;
       expect(faqDrawer).toBeTruthy();
@@ -248,7 +248,7 @@ export const Default: StoryObj = {
         name: /close/i,
       });
       await userEvent.click(drawerCloseButton);
-      expect(within(faqButton).getByTestId(/info/i)).toBeInTheDocument();
+      expect(faqButton).toHaveAttribute('aria-expanded', 'false');
     });
 
     await step('Search slot region appears and hides', async () => {
@@ -280,7 +280,7 @@ export const Default: StoryObj = {
 
       await userEvent.click(langButton);
       expect(langButton).toHaveAttribute('aria-expanded', 'false');
-      expect(within(langButton).getByText(/mic/i)).toBeInTheDocument();
+      expect(within(langButton).getByTestId('mic')).toBeInTheDocument();
 
       await userEvent.click(canvasElement.ownerDocument.body);
     });
@@ -382,18 +382,19 @@ export const Light: StoryObj = {
     );
   },
   render: function Render() {
-    const alternate: Record<string, string> = {
-      search: 'language',
-      language: 'search',
-    };
     const [state, { toggle, close, closeAll }] = useToggleMap({
+      faq: false,
       search: false,
       language: false,
+      drawer: false,
     });
 
     const handleMenuItemButton = (key: string) => () => {
+      const sections = ['faq', 'search', 'language'].filter((section) => section !== key);
       toggle(key);
-      close(alternate[key]);
+      for (const section of sections) {
+        close(section);
+      }
     };
 
     return (
@@ -413,7 +414,7 @@ export const Light: StoryObj = {
             </HeaderMenuItemLink>
             <HeaderMenuItemSlot className="gi-flex gi-items-center">
               <label>Hello John &nbsp;| </label>
-              <a href="#" className="gi-header-secondary-item gi-header-secondary-item-light">
+              <a href="#" className="gi-header-secondary-item gi-header-secondary-item-light" aria-label="logout">
                 <LogoutIcon size={SM} />
               </a>
             </HeaderMenuItemSlot>

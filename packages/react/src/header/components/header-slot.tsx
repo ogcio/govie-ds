@@ -77,11 +77,11 @@ const DrawerTrigger = ({
           />
         )}
         <Close
+          id={`ItemCloseTrigger-${index}`}
           className={cn('gi-shrink-0', {
             'gi-hidden': !isOpen,
             'gi-block': isOpen,
           })}
-          id={`ItemCloseTrigger-${index}`}
           dataTestId={`ItemCloseTrigger-${index}`}
         />
       </label>
