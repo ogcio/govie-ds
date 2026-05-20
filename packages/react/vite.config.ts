@@ -1,16 +1,24 @@
 import path from 'node:path';
-import { fileURLToPath } from 'node:url';
 import react from '@vitejs/plugin-react';
 import { glob } from 'glob';
 import preserveDirectives from 'rollup-preserve-directives';
 import { defineConfig } from 'vite';
 import dts from 'vite-plugin-dts';
+import { externalizeDeps } from 'vite-plugin-externalize-deps';
 import { libInjectCss } from 'vite-plugin-lib-inject-css';
+
+const BUILD_EXCLUDE = [
+  'src/**/*.stories.tsx',
+  'src/**/*.test.*',
+  'src/test-utilities.ts',
+  'src/atoms/storybook/**',
+  'src/data-table/tanstack/tanstack-helpers.ts',
+];
 
 export default defineConfig({
   resolve: {
     alias: {
-      '@': fileURLToPath(new URL('src', import.meta.url)),
+      '@': path.resolve(import.meta.dirname, 'src'),
     },
   },
   plugins: [
@@ -18,52 +26,27 @@ export default defineConfig({
     libInjectCss(),
     dts({
       include: ['src'],
-      exclude: [
-        'src/**/*.stories.tsx',
-        'src/**/*.test.*',
-        'src/test-utilities.ts',
-        'src/atoms/storybook/**',
-        'src/data-table/tanstack/tanstack-helpers.ts',
-      ],
+      exclude: BUILD_EXCLUDE,
     }),
     preserveDirectives(),
+    externalizeDeps(),
   ],
   build: {
     copyPublicDir: false,
     sourcemap: false,
     lib: {
-      entry: 'src/index.ts',
-      formats: ['es'],
-    },
-    rollupOptions: {
-      external: (id) => {
-        return id === 'react' || id === 'react-dom' || id.startsWith('react/') || id.startsWith('react-dom/');
-      },
-      input: Object.fromEntries(
+      entry: Object.fromEntries(
         glob
           .sync('src/**/*.{ts,tsx}', {
-            ignore: [
-              'src/**/*.d.ts',
-              'src/**/*.stories.tsx',
-              'src/**/*.test.*',
-              'src/test-utilities.ts',
-              'src/atoms/storybook/**',
-              'src/data-table/tanstack/tanstack-helpers.ts',
-            ],
+            ignore: ['src/**/*.d.ts', ...BUILD_EXCLUDE],
           })
-          .map((file: string) => [
-            path.relative('src', file.slice(0, file.length - path.extname(file).length)),
-            fileURLToPath(new URL(file, import.meta.url)),
-          ]),
+          .map((file) => [file.replace(/^src\//, '').replace(/\.tsx?$/, ''), path.resolve(file)]),
       ),
+      formats: ['es'],
+    },
+    rolldownOptions: {
       output: {
         assetFileNames: 'assets/[name][extname]',
-        entryFileNames: '[name].js',
-        globals: {
-          react: 'React',
-          'react-dom': 'ReactDOM',
-          'react/jsx-runtime': 'jsxRuntime',
-        },
       },
     },
   },
