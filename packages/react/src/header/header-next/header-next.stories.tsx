@@ -1,16 +1,13 @@
 import type { Meta, StoryObj } from '@storybook/react-vite';
-import { useMemo, useState } from 'react';
+import { useState } from 'react';
 import { within, expect, userEvent, screen } from 'storybook/test';
 import Heading from '@/Heading.js';
 import Button from '@/atoms/Button';
 import { LogoBlack, LogoGoldWhite, LogoWhite, LogoHarpBlack, LogoHarpWhite } from '@/atoms/icons/logos';
-
 import { DrawerMenuExample } from '@/drawer/drawer.content.js';
 import { DrawerBody, DrawerFooter, DrawerWrapper } from '@/drawer/drawer.js';
 import { FormField, FormFieldLabel } from '@/forms/form-field/form-field.js';
 import { useToggleMap } from '@/hooks/use-toggle-map.js';
-import type { IconId } from '@/icon/icon';
-import { Icon } from '@/icon/icon.js';
 import { Link } from '@/link/link.js';
 import { List, ListTypeEnum } from '@/list/list.js';
 import { ListItem } from '@/list-item/list-item.js';
@@ -25,6 +22,14 @@ import { HeaderMenuItemSlot } from './components/menu/components/header-menu-ite
 import { HeaderPrimaryMenu } from './components/menu/header-primary-menu.js';
 import { HeaderSecondaryMenu } from './components/menu/header-secondary-menu.js';
 import { HeaderNext as Header, HeaderSlotContainer } from './header-next.js';
+import InfoIcon from '@/atoms/icons/Info';
+import LogoutIcon from '@/atoms/icons/Logout';
+import SearchIcon from '@/atoms/icons/Search';
+import MicrophoneIcon from '@/atoms/icons/Mic';
+import CloseIcon from '@/atoms/icons/Close';
+import MenuIcon from '@/atoms/icons/Menu';
+
+const SM = '16px';
 
 const meta = {
   title: 'layout/Header',
@@ -77,24 +82,18 @@ const SlotExample2 = () => {
 
 export const Default: StoryObj = {
   render: function Render() {
+    const alternate: Record<string, string> = {
+      search: 'language',
+      language: 'search',
+    };
     const [state, { toggle, close, closeAll }] = useToggleMap({
       search: false,
-      drawer: false,
+      language: false,
     });
 
-    const icons = useMemo(() => {
-      return {
-        faq: state.faq ? 'close' : 'info',
-        language: state.language ? 'close' : 'mic',
-        drawer: state.drawer ? 'close' : 'menu',
-        search: state.search ? 'close' : 'search',
-      } as Record<string, IconId>;
-    }, [state.faq, state.language, state.drawer, state.search]);
-
     const handleMenuItemButton = (key: string) => () => {
-      const sections = ['faq', 'search', 'language'].filter((section) => section !== key);
       toggle(key);
-      sections.map((section) => close(section));
+      close(alternate[key]);
     };
 
     return (
@@ -115,7 +114,7 @@ export const Default: StoryObj = {
             <HeaderMenuItemSlot className="gi-flex gi-items-center">
               <label>Hello John &nbsp;| </label>
               <a href="#" className="gi-header-secondary-item gi-header-secondary-item-default">
-                <Icon icon="logout" size="sm" />
+                <LogoutIcon size={SM} />
               </a>
             </HeaderMenuItemSlot>
           </HeaderSecondaryMenu>
@@ -129,38 +128,37 @@ export const Default: StoryObj = {
             <HeaderMenuItemSeparator />
             <HeaderMenuItemButton
               showItemMode="desktop-only"
-              icon={icons.faq}
               aria-label="Toggle frequently asked questions"
               aria-expanded={state.faq}
               aria-controls="FaqDrawer"
               onClick={handleMenuItemButton('faq')}
             >
               FAQ
+              <InfoIcon />
             </HeaderMenuItemButton>
             <HeaderMenuItemButton
               showItemMode="desktop-only"
-              icon={icons.search}
               aria-label="Toggle site search"
               aria-expanded={state.search}
               onClick={handleMenuItemButton('search')}
             >
               Search
+              {state.search ? <CloseIcon /> : <SearchIcon />}
             </HeaderMenuItemButton>
 
             <HeaderMenuItemButton
               showItemMode="desktop-only"
-              icon={icons.language}
               aria-label="Toggle language selector"
               aria-expanded={state.language}
               aria-haspopup="listbox"
               onClick={handleMenuItemButton('language')}
             >
               Language
+              {state.language ? <CloseIcon /> : <MicrophoneIcon />}
             </HeaderMenuItemButton>
 
             <HeaderMenuItemButton
               showItemMode="mobile-only"
-              icon={icons.drawer}
               aria-label="Toggle main menu"
               aria-expanded={state.drawer}
               aria-controls="MobileMenuDrawer"
@@ -168,6 +166,7 @@ export const Default: StoryObj = {
               onClick={handleMenuItemButton('drawer')}
             >
               Menu
+              <MenuIcon />
             </HeaderMenuItemButton>
           </HeaderPrimaryMenu>
         </Header>
@@ -317,13 +316,14 @@ export const Govie: StoryObj = {
             </HeaderMenuItemLink>
             <HeaderMenuItemButton
               showItemMode="mobile-only"
-              icon="menu"
               aria-label="Toggle main menu"
               aria-expanded={isMenuOpen}
               aria-controls="MobileMenuDrawer"
               aria-haspopup="dialog"
               onClick={toggleMenu}
-            />
+            >
+              <MenuIcon />
+            </HeaderMenuItemButton>
           </HeaderPrimaryMenu>
         </Header>
         <DrawerWrapper
@@ -382,24 +382,18 @@ export const Light: StoryObj = {
     );
   },
   render: function Render() {
+    const alternate: Record<string, string> = {
+      search: 'language',
+      language: 'search',
+    };
     const [state, { toggle, close, closeAll }] = useToggleMap({
       search: false,
-      drawer: false,
+      language: false,
     });
 
-    const icons = useMemo(() => {
-      return {
-        faq: state.faq ? 'close' : 'info',
-        language: state.language ? 'close' : 'mic',
-        drawer: state.drawer ? 'close' : 'menu',
-        search: state.search ? 'close' : 'search',
-      } as Record<string, IconId>;
-    }, [state.faq, state.language, state.drawer, state.search]);
-
     const handleMenuItemButton = (key: string) => () => {
-      const sections = ['faq', 'search', 'language'].filter((section) => section !== key);
       toggle(key);
-      sections.map((section) => close(section));
+      close(alternate[key]);
     };
 
     return (
@@ -420,7 +414,7 @@ export const Light: StoryObj = {
             <HeaderMenuItemSlot className="gi-flex gi-items-center">
               <label>Hello John &nbsp;| </label>
               <a href="#" className="gi-header-secondary-item gi-header-secondary-item-light">
-                <Icon icon="logout" size="sm" />
+                <LogoutIcon size={SM} />
               </a>
             </HeaderMenuItemSlot>
           </HeaderSecondaryMenu>
@@ -434,39 +428,38 @@ export const Light: StoryObj = {
             <HeaderMenuItemSeparator />
             <HeaderMenuItemButton
               showItemMode="desktop-only"
-              icon={icons.faq}
               aria-label="Toggle frequently asked questions"
               aria-expanded={state.faq}
               aria-controls="FaqDrawer"
               onClick={handleMenuItemButton('faq')}
             >
               FAQ
+              <InfoIcon />
             </HeaderMenuItemButton>
 
             <HeaderMenuItemButton
               showItemMode="desktop-only"
-              icon={icons.search}
               aria-label="Toggle site search"
               aria-expanded={state.search}
               onClick={handleMenuItemButton('search')}
             >
               Search
+              {state.search ? <CloseIcon /> : <SearchIcon />}
             </HeaderMenuItemButton>
 
             <HeaderMenuItemButton
               showItemMode="desktop-only"
-              icon={icons.language}
               aria-label="Toggle language selector"
               aria-expanded={state.language}
               aria-haspopup="listbox"
               onClick={handleMenuItemButton('language')}
             >
               Language
+              {state.language ? <CloseIcon /> : <MicrophoneIcon />}
             </HeaderMenuItemButton>
 
             <HeaderMenuItemButton
               showItemMode="mobile-only"
-              icon={icons.drawer}
               aria-label="Toggle main menu"
               aria-expanded={state.drawer}
               aria-controls="MobileMenuDrawer"
@@ -474,6 +467,7 @@ export const Light: StoryObj = {
               onClick={handleMenuItemButton('drawer')}
             >
               Menu
+              <MenuIcon />
             </HeaderMenuItemButton>
           </HeaderPrimaryMenu>
         </Header>

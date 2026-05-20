@@ -11,12 +11,10 @@ import { useHeaderMenuSection } from '@/header/header-next/components/menu/heade
 
 const MenuButton = ({ showItemMode, children, icon, ...props }: any) => {
   return (
-    <>
-      <PrimitiveButton data-item-mode={showItemMode} {...props}>
-        {children}
-        {icon && <Icon icon={icon} ariaHidden={true} />}
-      </PrimitiveButton>
-    </>
+    <PrimitiveButton data-item-mode={showItemMode} {...props}>
+      {children}
+      {icon && <Icon icon={icon} ariaHidden={true} />}
+    </PrimitiveButton>
   );
 };
 
