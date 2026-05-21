@@ -3,11 +3,10 @@ import type { ChangeEvent, KeyboardEvent } from 'react';
 import { Children, cloneElement, isValidElement, useState, useEffect, forwardRef } from 'react';
 import { cn } from '@/cn.js';
 import { translate as t } from '@/i18n/utility.js';
-import { Icon } from '@/icon/icon.js';
 import { InputText } from '@/input-text/input-text.js';
 import { Label } from '@/label/label.js';
 import { Spinner } from '@/spinner/spinner.js';
-
+import Check from '@/atoms/icons/Check.js';
 import type {
   SelectMenuGroupReactElement,
   SelectMenuOptionProps,
@@ -184,7 +183,7 @@ export const SelectMenuOption = ({
       {...props}
     >
       <span className="gi-text-sm">{children}</span>
-      {selected && <Icon icon="check" />}
+      {selected && <Check />}
     </li>
   );
 };
