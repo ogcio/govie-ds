@@ -43,9 +43,9 @@ export const Default: Story = {
     expect(listItemElements[2]).toHaveTextContent('Travel');
     expect(listItemElements[3]).toHaveTextContent('Documentation');
 
-    const ellipsisElement = canvas.getByText('more_horiz');
+    const ellipsisElement = canvas.getByTestId('more-horizontal');
     expect(ellipsisElement).toBeInTheDocument();
-    expect(ellipsisElement.parentElement).toHaveAttribute('aria-hidden', 'true');
+    expect(ellipsisElement).toHaveAttribute('aria-hidden', 'true');
   },
 };
 
