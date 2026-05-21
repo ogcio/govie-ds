@@ -183,7 +183,7 @@ export const SelectMenuOption = ({
       {...props}
     >
       <span className="gi-text-sm">{children}</span>
-      {selected && <Check />}
+      {selected && <Check className="gi-shrink-0" />}
     </li>
   );
 };
