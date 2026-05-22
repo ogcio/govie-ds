@@ -1,7 +1,7 @@
 import type { FC } from 'react';
 import { Children } from 'react';
 import { cn } from '@/cn.js';
-import Check from '@/atoms/icons/Check';
+import CheckIcon from '@/atoms/icons/Check';
 import {
   ProgressStepperIndicator,
   StepStatus,
@@ -49,12 +49,12 @@ const Connector = ({
 const getIndicatorClasses = (indicator: ProgressStepperIndicatorType) => {
   const indicatorClasses = {
     [ProgressStepperIndicator.Hashtag]: {
-      completed: <Check />,
+      completed: <CheckIcon />,
       current: () => '#',
       next: () => '#',
     },
     [ProgressStepperIndicator.Number]: {
-      completed: <Check />,
+      completed: <CheckIcon />,
       current: (stepNumber: number) => stepNumber,
       next: (stepNumber: number) => stepNumber,
     },
