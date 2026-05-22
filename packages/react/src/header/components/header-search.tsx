@@ -4,17 +4,16 @@ import { translate as t } from '@/i18n/utility.js';
 import type { IconId } from '@/icon/icon.js';
 import { IconButton } from '@/icon-button/icon-button';
 import GiIconButton from '@/atoms/IconButton';
-import Close from '@/atoms/icons/Close';
+import SearchIcon from '@/atoms/icons/Search';
 import { InputText } from '@/input-text/input-text.js';
 
 export type HeaderSearchProps = {
   action?: string;
   serverAction?: any; // eslint-disable-line @typescript-eslint/no-explicit-any
-  /** @deprecated variable icon will default to "search" icon in future releases */
   icon?: IconId;
 };
 
-export function HeaderSearch({ action, serverAction, icon = 'search' }: HeaderSearchProps) {
+export function HeaderSearch({ action, serverAction, icon }: HeaderSearchProps) {
   const ActionType = action || serverAction;
   return (
     <form
@@ -53,7 +52,7 @@ export function HeaderSearch({ action, serverAction, icon = 'search' }: HeaderSe
             />
           ) : (
             <GiIconButton ariaLabel={t('header.search', { defaultValue: 'Search' })}>
-              <Close className="gi-shrink-0" />
+              <SearchIcon className="gi-shrink-0" />
             </GiIconButton>
           )}
         </div>
