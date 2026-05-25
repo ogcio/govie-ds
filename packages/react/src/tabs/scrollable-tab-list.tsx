@@ -3,6 +3,7 @@ import { useState, useRef, useEffect, Children, isValidElement, useLayoutEffect 
 import { cn } from '@/cn.js';
 import { InternalTabItem } from './tab-item.js';
 import type { TabItemProps, TabKeyboardEvent, TabMouseClickEvent } from './types.js';
+import { tv } from 'tailwind-variants';
 
 type ScrollableTabsProps = {
   children: ReactNode;
@@ -119,13 +120,17 @@ export const ScrollableTabs: React.FC<ScrollableTabsProps> = ({
   return (
     <div id={tabName} ref={containerRef} role="tablist" className={cn('gi-tab-list ', className)}>
       {items}
-      <span
-        className={cn('gi-tab-indicator', {
-          'gi-bg-color-border-system-neutral-interactive-default': appearance === 'dark',
-          'gi-bg-color-border-tone-primary-accent-selected': appearance === 'default',
-        })}
-        style={indicatorCss}
-      />
+      <span className={styles({ appearance })} style={indicatorCss} />
     </div>
   );
 };
+
+const styles = tv({
+  base: 'gi-absolute gi-bottom-0 gi-transition-all gi-duration-300 gi-w-full gi-h-[2px]',
+  variants: {
+    appearance: {
+      default: 'gi-bg-color-border-tone-primary-accent-selected',
+      dark: 'gi-bg-color-border-system-neutral-interactive-default',
+    },
+  },
+});
