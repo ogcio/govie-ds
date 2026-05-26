@@ -1,8 +1,7 @@
 import type { FC } from 'react';
 import { Children } from 'react';
 import { cn } from '@/cn.js';
-import { Icon } from '@/icon/icon.js';
-import type { StepFillLevelType } from './types.js';
+import CheckIcon from '@/atoms/icons/Check';
 import {
   ProgressStepperIndicator,
   StepStatus,
@@ -11,6 +10,7 @@ import {
   type ProgressStepperIndicatorType,
   type ProgressStepperProps,
   type StepItemProps,
+  type StepFillLevelType,
 } from './types.js';
 
 const getVerticalConnectorHeight = (gap: number): string => {
@@ -49,12 +49,12 @@ const Connector = ({
 const getIndicatorClasses = (indicator: ProgressStepperIndicatorType) => {
   const indicatorClasses = {
     [ProgressStepperIndicator.Hashtag]: {
-      completed: <Icon icon="check" />,
+      completed: <CheckIcon />,
       current: () => '#',
       next: () => '#',
     },
     [ProgressStepperIndicator.Number]: {
-      completed: <Icon icon="check" />,
+      completed: <CheckIcon />,
       current: (stepNumber: number) => stepNumber,
       next: (stepNumber: number) => stepNumber,
     },
