@@ -1,9 +1,10 @@
+import type { ReactNode } from 'react';
 import { type Props as HeadingProps } from '@/Heading.js';
 import type { IconId } from '@/icon/icon.js';
 
 export type SideNavItemProps = {
   value: string;
-  label: string;
+  label: ReactNode;
   href?: string;
   asChild?: boolean;
   primary?: boolean;
@@ -11,6 +12,7 @@ export type SideNavItemProps = {
   open?: boolean;
   expandable?: boolean;
   icon?: IconId;
+  actions?: ReactNode;
 };
 
 export type SideNavProps = {

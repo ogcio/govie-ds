@@ -28,20 +28,20 @@ const ItemContent = memo(
     isOpen,
   }: {
     icon?: IconId;
-    label: string;
+    label: React.ReactNode;
     showExpandableIcon?: boolean;
     isOpen?: boolean;
   }) => {
     return (
       <>
-        <div className="gi-side-nav-item-left">
+        <div className="gi-side-nav-item-left gi-flex-1 gi-relative gi-flex gi-items-center gi-justify-between gi-w-full gi-gap-3">
           {icon && (
             <div className="gi-side-nav-item-icon">
               <Icon icon={icon} />
             </div>
           )}
-          <div className="gi-side-nav-item-label">
-            <Paragraph size="md">{label}</Paragraph>
+          <div className="gi-side-nav-item-label gi-flex-1">
+            {typeof label === 'string' ? <Paragraph size="md">{label}</Paragraph> : label}
           </div>
         </div>
         {showExpandableIcon && (
@@ -55,7 +55,7 @@ const ItemContent = memo(
 );
 
 export const SideNavItem: React.FC<PropsWithChildren<SideNavItemProps> & { open?: boolean }> = React.memo(
-  ({ children, primary, secondary, expandable, label, value, icon, href, asChild, open }) => {
+  ({ children, primary, secondary, expandable, label, value, icon, href, asChild, open, actions }) => {
     const context = React.useContext(SideNavContext);
 
     if (!context) {
@@ -110,51 +110,48 @@ export const SideNavItem: React.FC<PropsWithChildren<SideNavItemProps> & { open?
       [primary, expandable, handleExpandCollapse, handleSelection],
     );
 
-    const itemClassName = cn('gi-side-nav-item', {
+    const itemClassName = cn('gi-w-full !gi-h-12 gi-mt-1 gi-border-transparent ', {
       'gi-side-nav-item-selected': isSelected,
-      'gi-side-nav-item-primary': primary,
-      'gi-side-nav-item-secondary': secondary,
-    });
-
-    const buttonClassName = cn('gi-side-nav-item', {
-      'gi-side-nav-item-selected': isSelected,
-      'gi-side-nav-item-primary': primary,
-      'gi-side-nav-item-secondary': secondary,
+      'gi-side-nav-item-primary !gi-px-3 !gi-py-2': primary,
+      '!gi-px-6': secondary,
+      '!gi-pr-10': !!actions,
     });
 
     return (
-      <div role="group" aria-label={`${label} ${primary && expandable ? 'dropdown' : 'item'}`}>
-        {isNavigable ? (
-          <Link
-            id={itemId}
-            href={href}
-            asChild={asChild}
-            asButton={{
-              variant: 'flat',
-              appearance: 'dark',
-              size: 'medium',
-            }}
-            className={itemClassName}
-            onClick={handleClick}
-          >
-            {asChild ? (
-              children
-            ) : (
+      <div aria-label={`${typeof label === 'string' ? label : ''} ${primary && expandable ? 'dropdown' : 'item'}`}>
+        <div className="gi-relative gi-flex gi-items-center">
+          {isNavigable ? (
+            <Link
+              id={itemId}
+              href={href}
+              asChild={asChild}
+              asButton={{
+                variant: 'flat',
+                appearance: 'dark',
+              }}
+              className={itemClassName}
+              onClick={handleClick}
+            >
+              {asChild ? (
+                children
+              ) : (
+                <ItemContent icon={icon} label={label} showExpandableIcon={showExpandableIcon} isOpen={isOpen} />
+              )}
+            </Link>
+          ) : (
+            <Button
+              variant="flat"
+              appearance="dark"
+              size="lg"
+              onClick={handleButtonClick}
+              className={itemClassName}
+              id={itemId}
+            >
               <ItemContent icon={icon} label={label} showExpandableIcon={showExpandableIcon} isOpen={isOpen} />
-            )}
-          </Link>
-        ) : (
-          <Button
-            variant="flat"
-            appearance="dark"
-            size="md"
-            onClick={handleButtonClick}
-            className={buttonClassName}
-            id={itemId}
-          >
-            <ItemContent icon={icon} label={label} showExpandableIcon={showExpandableIcon} isOpen={isOpen} />
-          </Button>
-        )}
+            </Button>
+          )}
+          {actions && <div className="gi-absolute gi-right-2 gi-mt-1">{actions}</div>}
+        </div>
 
         {expandable && primary && (
           <div className={cn(isOpen ? 'gi-side-nav-item-content' : 'gi-hidden')}>{children}</div>
