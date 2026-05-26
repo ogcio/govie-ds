@@ -650,3 +650,76 @@ export const WithTitleAsLinkFocusState: StoryObj = {
     });
   },
 };
+
+export const UsingSearch: StoryObj = {
+  parameters: {
+    docs: {
+      description: {
+        story:
+          'Use toggle functionality to render elements below the Header when selected. Here, <HeaderSearch/> is conditionally rendered when clicking the Search button.',
+      },
+    },
+  },
+  render: function Render() {
+    const [state, { toggle }] = useToggleMap({ search: false });
+
+    return (
+      <Header>
+        <HeaderPrimaryMenu>
+          <HeaderMenuItemLink href="#" showItemMode="desktop-only">
+            Departments
+          </HeaderMenuItemLink>
+          <HeaderMenuItemLink href="#" showItemMode="desktop-only">
+            Services
+          </HeaderMenuItemLink>
+          <HeaderMenuItemSeparator />
+          <HeaderMenuItemButton
+            showItemMode="desktop-only"
+            aria-label="Toggle frequently asked questions"
+            aria-controls="FaqDrawer"
+          >
+            FAQ
+            <InfoIcon />
+          </HeaderMenuItemButton>
+          <HeaderMenuItemButton
+            showItemMode="always"
+            aria-label="Toggle site search"
+            aria-expanded={state.search}
+            onClick={() => toggle('search')}
+          >
+            Search
+            {state.search ? <CloseIcon /> : <SearchIcon />}
+          </HeaderMenuItemButton>
+
+          <HeaderMenuItemButton
+            showItemMode="always"
+            aria-label="Toggle main menu"
+            aria-controls="MobileMenuDrawer"
+            aria-haspopup="dialog"
+          >
+            Menu
+            <MenuIcon />
+          </HeaderMenuItemButton>
+        </HeaderPrimaryMenu>
+        {state.search ? (
+          <HeaderSlotContainer variant="light" role="region" aria-label="Site search" aria-live="polite">
+            <HeaderSearch />
+          </HeaderSlotContainer>
+        ) : null}
+      </Header>
+    );
+  },
+  play: async ({ canvasElement, step }) => {
+    const canvas = within(canvasElement);
+    await step('Search button opens up HeaderSearch', async () => {
+      const searchText = await canvas.findByText('Search');
+      const searchIcon = await canvas.findByTestId('search');
+      expect(searchText).toBeInTheDocument();
+      expect(searchIcon).toBeInTheDocument();
+      await userEvent.click(searchText);
+      expect(searchIcon).not.toBeInTheDocument();
+      const searchArea = await canvas.findByTestId('header-search-form');
+      expect(searchArea).toBeInTheDocument();
+    });
+  },
+};
