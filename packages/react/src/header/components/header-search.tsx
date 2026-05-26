@@ -1,9 +1,8 @@
 import Heading from '@/Heading.js';
 import Button from '@/atoms/Button';
 import { translate as t } from '@/i18n/utility.js';
-import type { IconId } from '@/icon/icon.js';
-import { IconButton } from '@/icon-button/icon-button';
-import GiIconButton from '@/atoms/IconButton';
+import Icon, { type IconId } from '@/icon/icon.js';
+import IconButton from '@/atoms/IconButton';
 import SearchIcon from '@/atoms/icons/Search';
 import { InputText } from '@/input-text/input-text.js';
 
@@ -44,17 +43,9 @@ export function HeaderSearch({ action, serverAction, icon }: HeaderSearchProps) 
           </Button>
         </div>
         <div className="gi-ml-1 gi-flex-none gi-block md:gi-hidden">
-          {icon ? (
-            <IconButton
-              aria-label={t('header.search', { defaultValue: 'Search' })}
-              aria-hidden="true"
-              icon={{ icon }}
-            />
-          ) : (
-            <GiIconButton ariaLabel={t('header.search', { defaultValue: 'Search' })}>
-              <SearchIcon className="gi-shrink-0" />
-            </GiIconButton>
-          )}
+          <IconButton ariaLabel={t('header.search', { defaultValue: 'Search' })}>
+            {icon ? <Icon icon={icon} /> : <SearchIcon className="gi-shrink-0" />}
+          </IconButton>
         </div>
       </div>
     </form>
