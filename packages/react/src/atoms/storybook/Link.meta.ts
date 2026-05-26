@@ -164,6 +164,19 @@ export const linkMeta = {
         },
       },
     },
+    underline: {
+      control: 'boolean',
+      description:
+        'Shows the default underline. Set to false for links with other visual distinction (navigation, cards) — body-text links should keep the underline per WCAG 1.4.1. When false, underline reappears on hover and hides again on focus.',
+      table: {
+        type: {
+          summary: 'boolean',
+        },
+        defaultValue: {
+          summary: 'true',
+        },
+      },
+    },
     className: {
       control: {
         disable: true,
@@ -249,7 +262,7 @@ export const NoUnderline = {
   args: {
     ...linkMeta.args,
     children: 'Link without underline',
-    className: 'gi-no-underline hover:gi-underline focus:gi-no-underline',
+    underline: false,
     dataTestId: 'link-no-underline',
   },
 };

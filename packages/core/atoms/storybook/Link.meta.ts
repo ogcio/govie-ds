@@ -95,6 +95,15 @@ export const linkMeta = {
         'Language of the link text, when it differs from the surrounding content. Maps to the HTML lang attribute.',
       table: { type: { summary: 'string' } },
     },
+    underline: {
+      control: 'boolean',
+      description:
+        'Shows the default underline. Set to false for links with other visual distinction (navigation, cards) — body-text links should keep the underline per WCAG 1.4.1. When false, underline reappears on hover and hides again on focus.',
+      table: {
+        type: { summary: 'boolean' },
+        defaultValue: { summary: 'true' },
+      },
+    },
     className: {
       control: { disable: true },
       description: 'CSS classes to apply. Use gi-* Tailwind utilities for additional styling.',
@@ -166,7 +175,7 @@ export const NoUnderline = {
   args: {
     ...linkMeta.args,
     children: 'Link without underline',
-    className: 'gi-no-underline hover:gi-underline focus:gi-no-underline',
+    underline: false,
     dataTestId: 'link-no-underline',
   },
 };

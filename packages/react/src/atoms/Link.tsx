@@ -12,6 +12,7 @@ export type Props = {
   children: any;
   href: string;
   className?: string;
+  underline?: boolean;
   external?: boolean;
   target?: '_self' | '_blank' | '_parent' | '_top';
   rel?: string;
@@ -34,8 +35,9 @@ import { tv } from 'tailwind-variants';
 const styles = tv({
   base: [
     'gi-font-primary',
-    'gi-underline',
+    'gi-w-fit',
     'gi-text-color-text-tone-convention-default',
+    'gi-inline-flex',
     'hover:gi-text-color-text-tone-convention-hover',
     'visited:gi-text-color-icon-tone-convention-visited',
     'focus:gi-no-underline',
@@ -47,7 +49,22 @@ const styles = tv({
     'focus-visible:gi-rounded-sm',
     'focus-visible:gi-outline-none',
     'focus-visible:gi-text-color-text-tone-convention-hover',
+    'aria-[current=page]:gi-text-color-icon-tone-convention-disabled',
+    'aria-[current=page]:gi-pointer-events-none',
+    'aria-[current=page]:gi-no-underline',
+    'aria-[current=page]:focus-visible:gi-outline-none',
+    'aria-[current=page]:focus-visible:gi-shadow-none',
+    'supports-[-moz-appearance:none]:gi-underline-offset-[0.23em]',
   ],
+  variants: {
+    underline: {
+      true: 'gi-underline',
+      false: 'gi-no-underline hover:gi-underline focus:gi-no-underline',
+    },
+  },
+  defaultVariants: {
+    underline: true,
+  },
 });
 
 function Link(props: Props) {
@@ -56,6 +73,7 @@ function Link(props: Props) {
       id={props.id}
       href={props.href}
       className={styles({
+        underline: props.underline,
         class: props.className,
       })}
       target={props.target || (props.external ? '_blank' : undefined)}
