@@ -1,6 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/react-vite';
-import { type ReactNode, useState } from 'react';
-import { within, expect, userEvent, screen } from 'storybook/test';
+import { useState } from 'react';
+import { within, expect, userEvent, screen, fn } from 'storybook/test';
 import clsx from 'clsx';
 import Heading from '@/Heading.js';
 import Button from '@/atoms/Button';
@@ -669,10 +669,6 @@ function HeaderSearchShowIconOnMd({ children }: { children: React.ReactNode }) {
   );
 }
 
-const CodeBlock = ({ children }: { children: ReactNode }) => (
-  <code className="gi-rounded gi-bg-gray-100 gi-px-1">{children}</code>
-);
-
 const nonUniqueRoles = {
   a11y: {
     config: {
@@ -686,7 +682,7 @@ export const UsingSearch: StoryObj = {
     ...nonUniqueRoles,
     docs: {
       description: {
-        story: 'Use HeaderSearch within the <Header/> component to render a form with actionable functionality.  ',
+        story: 'Use `<HeaderSearch/>` to render a form with actionable `search_query` requests',
       },
     },
   },
@@ -696,34 +692,57 @@ export const UsingSearch: StoryObj = {
         <div className="gi-flex gi-gap-4 ">
           <div className="gi-max-w-md gi-grow">
             <p>Desktop view</p>
-            <HeaderSearch />
+            {/* Pass in an action to specify a URL different to your own */}
+            <HeaderSearch action="/search-api" />
           </div>
           <Divider orientation="vertical" className="gi-flex-none" />
-          <div className="">
+          <div>
             <HeaderSearchShowIconOnMd>
               <p>Mobile view</p>
               <HeaderSearch />
             </HeaderSearchShowIconOnMd>
           </div>
+          <Divider orientation="vertical" />
+          <div>
+            <p>Custom icon prop</p>
+            <HeaderSearchShowIconOnMd>
+              <HeaderSearch icon={'menu'} />
+            </HeaderSearchShowIconOnMd>
+          </div>
         </div>
-        <Divider />
-        <p>
-          Customise the icons used in mobile view <CodeBlock>{`<HeaderSearch icon="<icon_name>"/>`}</CodeBlock>
-        </p>
-        <HeaderSearchShowIconOnMd>
-          <HeaderSearch icon={'menu'} />
-        </HeaderSearchShowIconOnMd>
-        <Divider />
-        <p>
-          Use <CodeBlock>{`<HeaderSearch action="<URL>"/>`}</CodeBlock> to make a search query request. Observe the
-          network tab in DevTools when clicking "Search".
-        </p>
-        <HeaderSearch action="/?path=/story/layout-header--using-search" />
       </div>
     );
   },
   play: async ({ canvasElement, step }) => {
     const canvas = within(canvasElement);
-    await step('Search button opens up HeaderSearch', async () => {});
+    const [desktopView, mobileView, customIconView] = await canvas.findAllByRole('form');
+    await step('All versions are rendered correctly', async () => {
+      expect(desktopView).toBeInTheDocument();
+      expect(mobileView).toBeInTheDocument();
+      expect(customIconView).toBeInTheDocument();
+      const searchButton = await within(desktopView).findByRole('button');
+      expect(searchButton).toHaveTextContent('Search');
+      expect(searchButton).toBeInTheDocument();
+      const searchIcon = await within(mobileView).findByTestId('search');
+      const menuIcon = await within(customIconView).findByTestId('menu');
+      expect(searchIcon).toBeInTheDocument();
+      expect(menuIcon).toBeInTheDocument();
+    });
+    await step('Button correctly submits the form', async () => {
+      const handleOnSubmitMock = fn().mockImplementation((event: FormDataEvent) => {
+        event.preventDefault();
+      });
+      desktopView.addEventListener('submit', handleOnSubmitMock);
+      const searchButton = await within(desktopView).findByRole('button');
+      const iconButton = await within(mobileView).findByRole('button');
+
+      await userEvent.click(searchButton);
+      expect(handleOnSubmitMock).toHaveBeenCalled();
+      handleOnSubmitMock.mockClear();
+      expect(handleOnSubmitMock).not.toHaveBeenCalled();
+      mobileView.addEventListener('submit', handleOnSubmitMock);
+      await userEvent.click(iconButton);
+      expect(handleOnSubmitMock).toHaveBeenCalled();
+    });
   },
 };
