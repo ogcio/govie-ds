@@ -110,11 +110,13 @@ export const SideNavItem: React.FC<PropsWithChildren<SideNavItemProps> & { open?
       [primary, expandable, handleExpandCollapse, handleSelection],
     );
 
+    const hasActionsWithExpandable = !!actions && showExpandableIcon;
     const itemClassName = cn('gi-w-full !gi-h-12 gi-mt-1 gi-border-transparent ', {
       'gi-side-nav-item-selected': isSelected,
       'gi-side-nav-item-primary !gi-px-3 !gi-py-2': primary,
       '!gi-px-6': secondary,
-      '!gi-pr-10': !!actions,
+      '!gi-pr-20': hasActionsWithExpandable,
+      '!gi-pr-10': !!actions && !hasActionsWithExpandable,
     });
 
     return (
@@ -135,7 +137,12 @@ export const SideNavItem: React.FC<PropsWithChildren<SideNavItemProps> & { open?
               {asChild ? (
                 children
               ) : (
-                <ItemContent icon={icon} label={label} showExpandableIcon={showExpandableIcon} isOpen={isOpen} />
+                <ItemContent
+                  icon={icon}
+                  label={label}
+                  showExpandableIcon={showExpandableIcon && !hasActionsWithExpandable}
+                  isOpen={isOpen}
+                />
               )}
             </Link>
           ) : (
@@ -147,10 +154,24 @@ export const SideNavItem: React.FC<PropsWithChildren<SideNavItemProps> & { open?
               className={itemClassName}
               id={itemId}
             >
-              <ItemContent icon={icon} label={label} showExpandableIcon={showExpandableIcon} isOpen={isOpen} />
+              <ItemContent
+                icon={icon}
+                label={label}
+                showExpandableIcon={showExpandableIcon && !hasActionsWithExpandable}
+                isOpen={isOpen}
+              />
             </Button>
           )}
-          {actions && <div className="gi-absolute gi-right-2 gi-mt-1">{actions}</div>}
+          {actions && (
+            <div className={cn('gi-absolute gi-mt-1', hasActionsWithExpandable ? 'gi-right-11' : 'gi-right-3')}>
+              {actions}
+            </div>
+          )}
+          {hasActionsWithExpandable && (
+            <div className="gi-absolute gi-right-4 gi-mt-1 gi-pointer-events-none">
+              <Icon className={cn(isOpen && 'gi-rotate-180')} icon="keyboard_arrow_down" />
+            </div>
+          )}
         </div>
 
         {expandable && primary && (

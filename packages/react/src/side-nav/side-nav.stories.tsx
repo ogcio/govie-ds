@@ -34,9 +34,9 @@ export const Basic = {
 export const WithIcons = {
   render: () => (
     <SideNav value="dashboard">
-      <SideNavItem icon="menu" value="dashboard" label="Dashboard" primary />
-      <SideNavItem icon="apps" value="analytics" label="Analytics" primary />
-      <SideNavItem icon="settings" value="settings" label="Settings" primary />
+      <SideNavItem icon="menu" value="dashboard" label="Dashboard" />
+      <SideNavItem icon="apps" value="analytics" label="Analytics" />
+      <SideNavItem icon="settings" value="settings" label="Settings" />
     </SideNav>
   ),
 };
@@ -67,7 +67,7 @@ export const WithActions = {
         value="inbox"
         icon="mail"
         label={
-          <Box className="gi-flex gi-justify-between gi-flex-1">
+          <Box className="gi-flex gi-justify-between gi-flex-1 gi-items-baseline">
             <Paragraph size="md" className="gi-font-bold">
               Inbox
             </Paragraph>
@@ -75,7 +75,7 @@ export const WithActions = {
           </Box>
         }
         actions={
-          <IconButton size="sm" variant="flat" appearance="dark" ariaLabel="More options" onClick={() => {}}>
+          <IconButton size="sm" variant="flat" appearance="dark" ariaLabel="More options">
             <MoreVertical />
           </IconButton>
         }
@@ -85,7 +85,7 @@ export const WithActions = {
           value="inbox-primary"
           label="Primary"
           actions={
-            <IconButton size="sm" variant="flat" appearance="dark" ariaLabel="More options" onClick={() => {}}>
+            <IconButton size="sm" variant="flat" appearance="dark" ariaLabel="More options">
               <MoreVertical />
             </IconButton>
           }
@@ -94,7 +94,7 @@ export const WithActions = {
           secondary
           value="inbox-social"
           label={
-            <Box className="gi-flex gi-justify-between gi-flex-1">
+            <Box className="gi-flex gi-justify-between gi-flex-1 gi-items-baseline">
               <Paragraph size="md">Social</Paragraph>
               <Tag text="5" type="counter" />
             </Box>
@@ -104,7 +104,7 @@ export const WithActions = {
           secondary
           value="inbox-promotions"
           label={
-            <Box className="gi-flex gi-justify-between gi-flex-1">
+            <Box className="gi-flex gi-justify-between gi-flex-1 gi-items-baseline">
               <Paragraph size="md">Promotions</Paragraph>
               <Tag text="12" type="counter" />
             </Box>
@@ -117,7 +117,7 @@ export const WithActions = {
         icon="send"
         label="Sent"
         actions={
-          <IconButton size="sm" variant="flat" appearance="dark" ariaLabel="More options" onClick={() => {}}>
+          <IconButton size="sm" variant="flat" appearance="dark" ariaLabel="More options">
             <MoreVertical />
           </IconButton>
         }
@@ -127,7 +127,7 @@ export const WithActions = {
         value="drafts"
         icon="edit"
         label={
-          <Box className="gi-flex gi-justify-between gi-flex-1">
+          <Box className="gi-flex gi-justify-between gi-flex-1 gi-items-baseline">
             <Paragraph size="md" className="gi-font-bold">
               Drafts
             </Paragraph>
