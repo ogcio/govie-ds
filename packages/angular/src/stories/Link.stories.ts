@@ -14,7 +14,7 @@ import {
 
 const meta = {
   ...linkMeta,
-  title: 'Components/Link',
+  title: 'Navigation/Link',
 };
 
 export default meta;

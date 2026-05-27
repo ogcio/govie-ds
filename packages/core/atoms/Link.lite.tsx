@@ -66,6 +66,7 @@ const styles = tv({
     'gi-inline-flex',
     'hover:gi-text-color-text-tone-convention-hover',
     'visited:gi-text-color-icon-tone-convention-visited',
+    'hover:visited:gi-text-color-icon-tone-convention-visited',
     'focus:gi-no-underline',
     'focus:gi-rounded-sm',
     'focus:gi-text-color-text-tone-convention-hover',
@@ -80,12 +81,18 @@ const styles = tv({
     'aria-[current=page]:gi-no-underline',
     'aria-[current=page]:focus-visible:gi-outline-none',
     'aria-[current=page]:focus-visible:gi-shadow-none',
+    'gi-decoration-[max(1px,0.08em)]',
+    'gi-underline-offset-[0.2em]',
+    'hover:gi-decoration-[max(2px,0.12em)]',
+    'hover:gi-underline-offset-[0.2em]',
+    'hover:gi-underline',
     'supports-[-moz-appearance:none]:gi-underline-offset-[0.23em]',
+    'supports-[-moz-appearance:none]:hover:gi-underline-offset-[0.23em]',
   ],
   variants: {
     underline: {
       true: 'gi-underline',
-      false: 'gi-no-underline hover:gi-underline focus:gi-no-underline',
+      false: 'gi-no-underline',
     },
   },
   defaultVariants: {
