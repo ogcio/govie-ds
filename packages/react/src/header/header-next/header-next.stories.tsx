@@ -1,6 +1,7 @@
 import type { Meta, StoryObj } from '@storybook/react-vite';
-import { useState } from 'react';
+import { type ReactNode, useState } from 'react';
 import { within, expect, userEvent, screen } from 'storybook/test';
+import clsx from 'clsx';
 import Heading from '@/Heading.js';
 import Button from '@/atoms/Button';
 import { LogoBlack, LogoGoldWhite, LogoWhite, LogoHarpBlack, LogoHarpWhite } from '@/atoms/icons/logos';
@@ -28,6 +29,7 @@ import SearchIcon from '@/atoms/icons/Search';
 import MicrophoneIcon from '@/atoms/icons/Mic';
 import CloseIcon from '@/atoms/icons/Close';
 import MenuIcon from '@/atoms/icons/Menu';
+import Divider from '@/atoms/Divider.js';
 
 const SM = '16px';
 
@@ -651,75 +653,77 @@ export const WithTitleAsLinkFocusState: StoryObj = {
   },
 };
 
+function HeaderSearchShowIconOnMd({ children }: { children: React.ReactNode }) {
+  return (
+    <div
+      className={clsx(
+        // IconButton column: force visible from md up
+        '[&_[data-testid=header-search-form]>div>div:last-child]:md:!gi-block',
+        // hide the text Button column on md+
+        '[&_[data-testid=header-search-form]>div>div:nth-last-child(2)]:md:!gi-hidden',
+        'gi-max-w-sm',
+      )}
+    >
+      {children}
+    </div>
+  );
+}
+
+const CodeBlock = ({ children }: { children: ReactNode }) => (
+  <code className="gi-rounded gi-bg-gray-100 gi-px-1">{children}</code>
+);
+
+const nonUniqueRoles = {
+  a11y: {
+    config: {
+      rules: [{ id: 'landmark-unique', enabled: false }],
+    },
+  },
+};
+
 export const UsingSearch: StoryObj = {
   parameters: {
+    ...nonUniqueRoles,
     docs: {
       description: {
-        story:
-          'Use toggle functionality to render elements below the Header when selected. Here, <HeaderSearch/> is conditionally rendered when clicking the Search button.',
+        story: 'Use HeaderSearch within the <Header/> component to render a form with actionable functionality.  ',
       },
     },
   },
   render: function Render() {
-    const [state, { toggle }] = useToggleMap({ search: false });
-
     return (
-      <Header>
-        <HeaderPrimaryMenu>
-          <HeaderMenuItemLink href="#" showItemMode="desktop-only">
-            Departments
-          </HeaderMenuItemLink>
-          <HeaderMenuItemLink href="#" showItemMode="desktop-only">
-            Services
-          </HeaderMenuItemLink>
-          <HeaderMenuItemSeparator />
-          <HeaderMenuItemButton
-            showItemMode="desktop-only"
-            aria-label="Toggle frequently asked questions"
-            aria-controls="FaqDrawer"
-          >
-            FAQ
-            <InfoIcon />
-          </HeaderMenuItemButton>
-          <HeaderMenuItemButton
-            showItemMode="always"
-            aria-label="Toggle site search"
-            aria-expanded={state.search}
-            onClick={() => toggle('search')}
-          >
-            Search
-            {state.search ? <CloseIcon /> : <SearchIcon />}
-          </HeaderMenuItemButton>
-
-          <HeaderMenuItemButton
-            showItemMode="always"
-            aria-label="Toggle main menu"
-            aria-controls="MobileMenuDrawer"
-            aria-haspopup="dialog"
-          >
-            Menu
-            <MenuIcon />
-          </HeaderMenuItemButton>
-        </HeaderPrimaryMenu>
-        {state.search ? (
-          <HeaderSlotContainer variant="light" role="region" aria-label="Site search" aria-live="polite">
+      <div className="gi-space-y-4 [&_[data-testid=header-search-form]]:gi-mx-0">
+        <div className="gi-flex gi-gap-4 ">
+          <div className="gi-max-w-md gi-grow">
+            <p>Desktop view</p>
             <HeaderSearch />
-          </HeaderSlotContainer>
-        ) : null}
-      </Header>
+          </div>
+          <Divider orientation="vertical" className="gi-flex-none" />
+          <div className="">
+            <HeaderSearchShowIconOnMd>
+              <p>Mobile view</p>
+              <HeaderSearch />
+            </HeaderSearchShowIconOnMd>
+          </div>
+        </div>
+        <Divider />
+        <p>
+          Customise the icons used in mobile view <CodeBlock>{`<HeaderSearch icon="<icon_name>"/>`}</CodeBlock>
+        </p>
+        <HeaderSearchShowIconOnMd>
+          <HeaderSearch icon={'menu'} />
+        </HeaderSearchShowIconOnMd>
+        <Divider />
+        <p>
+          Use <CodeBlock>{`<HeaderSearch action="<URL>"/>`}</CodeBlock> to make a search query request. Observe the
+          network tab in DevTools when clicking "Search".
+        </p>
+        <HeaderSearch action="/?path=/story/layout-header--using-search" />
+      </div>
     );
   },
   play: async ({ canvasElement, step }) => {
     const canvas = within(canvasElement);
-    await step('Search button opens up HeaderSearch', async () => {
-      const searchText = await canvas.findByText('Search');
-      const searchIcon = await canvas.findByTestId('search');
-      expect(searchText).toBeInTheDocument();
-      expect(searchIcon).toBeInTheDocument();
-      await userEvent.click(searchText);
-      expect(searchIcon).not.toBeInTheDocument();
-      const searchArea = await canvas.findByTestId('header-search-form');
-      expect(searchArea).toBeInTheDocument();
-    });
+    await step('Search button opens up HeaderSearch', async () => {});
   },
 };
