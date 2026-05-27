@@ -1,7 +1,7 @@
 import Heading from '@/Heading.js';
 import Button from '@/atoms/Button';
 import { translate as t } from '@/i18n/utility.js';
-import Icon, { type IconId } from '@/icon/icon.js';
+import Icon, { type IconId } from '@/icon/icon';
 import IconButton from '@/atoms/IconButton';
 import SearchIcon from '@/atoms/icons/Search';
 import { InputText } from '@/input-text/input-text.js';

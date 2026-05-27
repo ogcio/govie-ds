@@ -29,7 +29,7 @@ import SearchIcon from '@/atoms/icons/Search';
 import MicrophoneIcon from '@/atoms/icons/Mic';
 import CloseIcon from '@/atoms/icons/Close';
 import MenuIcon from '@/atoms/icons/Menu';
-import Divider from '@/atoms/Divider.js';
+import Divider from '@/atoms/Divider';
 
 const SM = '16px';
 
