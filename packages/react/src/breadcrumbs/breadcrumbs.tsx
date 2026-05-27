@@ -1,12 +1,12 @@
 import ArrowLeftIcon from '@/atoms/icons/KeyboardArrowLeft';
 import { translate as t } from '@/i18n/utility.js';
-import { Icon } from '@/icon/icon.js';
 import { Link } from '@/link/link.js';
 import type { BreadcrumbLinkProps, BreadcrumbProps } from './types.js';
+import MoreHorizontal from '@/atoms/icons/MoreHorizontal';
 
 export const BreadcrumbEllipsis = () => (
   <div aria-hidden="true">
-    <Icon className="gi-text-gray-700" icon="more_horiz" />
+    <MoreHorizontal className="gi-text-gray-700 gi-shrink-0" />
   </div>
 );
 

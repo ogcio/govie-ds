@@ -78,10 +78,10 @@ export const Default: Story = {
     });
 
     await step('should render ellipses correctly for page ranges', async () => {
-      const iconElements = canvas.getAllByTestId('govie-icon');
-      const moreHorizIcon = iconElements.find((element) => element.textContent === 'more_horiz');
-
-      expect(moreHorizIcon).toBeInTheDocument();
+      const moreHorizIcon = canvas.getAllByTestId('more-horizontal');
+      expect(moreHorizIcon.length).toBe(2);
+      expect(moreHorizIcon[0]).toBeInTheDocument();
+      expect(moreHorizIcon[1]).toBeInTheDocument();
     });
   },
 };

@@ -4,9 +4,9 @@ import { Trans, useTranslation } from 'react-i18next';
 import { Button } from '@/atoms';
 import { ArrowRightIcon, ArrowLeftIcon } from '@/atoms/icons';
 import { Breakpoint, useBreakpoint } from '@/hooks/use-breakpoint.js';
-import { Icon } from '@/icon/icon.js';
 import { getDisplayPages } from '@/utils/utilities.js';
 import { tv } from 'tailwind-variants';
+import MoreHorizontal from '@/atoms/icons/MoreHorizontal';
 
 export type PaginationProps = {
   currentPage: number;
@@ -44,7 +44,7 @@ export const Pagination: React.FC<PaginationProps> = ({ currentPage, totalPages,
     return pagesToRender.map((page, index) =>
       page === -1 || page === -2 ? (
         <React.Fragment key={`ellipsis-${index}`}>
-          <Icon role="presentation" className="gi-text-gray-700" icon="more_horiz" />
+          <MoreHorizontal className="gi-text-gray-700 gi-shrink-0" />
         </React.Fragment>
       ) : (
         <Button
