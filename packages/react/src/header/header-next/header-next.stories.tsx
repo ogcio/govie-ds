@@ -689,7 +689,7 @@ export const UsingSearch: StoryObj = {
   render: function Render() {
     return (
       <div className="gi-space-y-4 [&_[data-testid=header-search-form]]:gi-mx-0">
-        <div className="gi-flex gi-gap-4 ">
+        <div className="gi-flex gi-flex-col md:gi-flex-row gi-gap-4 ">
           <div className="gi-max-w-md gi-grow">
             <p>Desktop view</p>
             {/* Pass in an action to specify a URL different to your own */}
@@ -704,7 +704,7 @@ export const UsingSearch: StoryObj = {
           </div>
           <Divider orientation="vertical" />
           <div>
-            <p>Custom icon prop</p>
+            <p>Custom icon</p>
             <HeaderSearchShowIconOnMd>
               <HeaderSearch icon={'menu'} />
             </HeaderSearchShowIconOnMd>
@@ -743,6 +743,8 @@ export const UsingSearch: StoryObj = {
       mobileView.addEventListener('submit', handleOnSubmitMock);
       await userEvent.click(iconButton);
       expect(handleOnSubmitMock).toHaveBeenCalled();
+      // remove focus state from button
+      await userEvent.click(desktopView);
     });
   },
 };
