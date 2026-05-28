@@ -148,6 +148,10 @@ export const Default = {
       expect(button.tagName).toBe('BUTTON');
       expect(button).toBeInTheDocument();
     });
+    await step('has no type by default', async () => {
+      const button = canvas.getByTestId('button-test');
+      expect(button).not.toHaveAttribute('type');
+    });
   },
 };
 
