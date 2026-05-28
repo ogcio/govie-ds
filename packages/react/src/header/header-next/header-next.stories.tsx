@@ -715,16 +715,16 @@ export const UsingSearch: StoryObj = {
   },
   play: async ({ canvasElement, step }) => {
     const canvas = within(canvasElement);
-    const [desktopView, mobileView, customIconView] = await canvas.findAllByRole('form');
+    const [desktop, mobile, customIcon] = await canvas.findAllByRole('form');
     await step('All versions are rendered correctly', async () => {
-      expect(desktopView).toBeInTheDocument();
-      expect(mobileView).toBeInTheDocument();
-      expect(customIconView).toBeInTheDocument();
-      const searchButton = await within(desktopView).findByRole('button');
+      expect(desktop).toBeInTheDocument();
+      expect(mobile).toBeInTheDocument();
+      expect(customIcon).toBeInTheDocument();
+      const searchButton = await within(desktop).findByRole('button');
       expect(searchButton).toHaveTextContent('Search');
       expect(searchButton).toBeInTheDocument();
-      const searchIcon = await within(mobileView).findByTestId('search');
-      const menuIcon = await within(customIconView).findByTestId('menu');
+      const searchIcon = await within(mobile).findByTestId('search');
+      const menuIcon = await within(customIcon).findByTestId('menu');
       expect(searchIcon).toBeInTheDocument();
       expect(menuIcon).toBeInTheDocument();
     });
@@ -732,19 +732,22 @@ export const UsingSearch: StoryObj = {
       const handleOnSubmitMock = fn().mockImplementation((event: FormDataEvent) => {
         event.preventDefault();
       });
-      desktopView.addEventListener('submit', handleOnSubmitMock);
-      const searchButton = await within(desktopView).findByRole('button');
-      const iconButton = await within(mobileView).findByRole('button');
+      desktop.addEventListener('submit', handleOnSubmitMock);
+      const searchButton = await within(desktop).findByRole('button');
+      const iconButton = await within(mobile).findByRole('button');
 
       await userEvent.click(searchButton);
       expect(handleOnSubmitMock).toHaveBeenCalled();
       handleOnSubmitMock.mockClear();
       expect(handleOnSubmitMock).not.toHaveBeenCalled();
-      mobileView.addEventListener('submit', handleOnSubmitMock);
+      mobile.addEventListener('submit', handleOnSubmitMock);
       await userEvent.click(iconButton);
       expect(handleOnSubmitMock).toHaveBeenCalled();
+      // cleanup for live interaction
+      desktop.removeEventListener('submit', handleOnSubmitMock);
+      mobile.removeEventListener('submit', handleOnSubmitMock);
       // remove focus state from button
-      await userEvent.click(desktopView);
+      await userEvent.click(desktop);
     });
   },
 };

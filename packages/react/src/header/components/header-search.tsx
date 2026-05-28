@@ -35,7 +35,6 @@ export function HeaderSearch({ action, serverAction, icon }: HeaderSearchProps) 
         />
         <div className="gi-ml-1 gi-flex-none gi-hidden md:gi-block">
           <Button
-            type="submit"
             ariaLabel={t('header.submitSearch', {
               defaultValue: 'Submit Search',
             })}
@@ -44,7 +43,7 @@ export function HeaderSearch({ action, serverAction, icon }: HeaderSearchProps) 
           </Button>
         </div>
         <div className="gi-ml-1 gi-flex-none gi-block md:gi-hidden">
-          <IconButton ariaLabel={t('header.search', { defaultValue: 'Search' })} type="submit">
+          <IconButton ariaLabel={t('header.search', { defaultValue: 'Search' })}>
             {icon ? <Icon icon={icon} /> : <SearchIcon className="gi-shrink-0" />}
           </IconButton>
         </div>
