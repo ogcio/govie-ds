@@ -97,7 +97,7 @@ const getSize = (x: Props['size'] = IconButtonSize.MD) =>
       [attr.aria-controls]="ariaControls"
       [attr.aria-busy]="ariaBusy"
       [attr.role]="role"
-      [attr.type]="type ?? 'button'"
+      [attr.type]="type"
       [attr.form]="form"
       [attr.tabIndex]="tabIndex"
       [attr.data-testid]="dataTestId"

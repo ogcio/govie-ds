@@ -71,7 +71,7 @@ export default function IconButton(props: Props) {
       aria-controls={props.ariaControls}
       aria-busy={props.ariaBusy}
       role={props.role}
-      type={props.type ?? 'button'}
+      type={props.type}
       form={props.form}
       tabIndex={props.tabIndex}
       data-testid={props.dataTestId}

@@ -73,7 +73,7 @@ export default function Button(props: Props) {
       aria-haspopup={props.ariaHasPopup}
       aria-busy={props.ariaBusy}
       role={props.role}
-      type={props.type ?? 'button'}
+      type={props.type}
       form={props.form}
       value={props.value}
       tabIndex={props.tabIndex}
