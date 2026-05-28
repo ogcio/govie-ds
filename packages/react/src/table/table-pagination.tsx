@@ -1,7 +1,11 @@
 import { cn } from '@/cn.js';
 import { translate as t } from '@/i18n/utility.js';
-import { IconButton } from '@/icon-button/icon-button.js';
 import { SelectItem, SelectNative } from '@/select/select-native.js';
+import IconButton from '@/atoms/IconButton';
+import LastPage from '@/atoms/icons/LastPage';
+import KeyboardArrowRight from '@/atoms/icons/KeyboardArrowRight';
+import KeyboardArrowLeft from '@/atoms/icons/KeyboardArrowLeft';
+import FirstPage from '@/atoms/icons/FirstPage';
 
 export type TablePaginationProps = {
   align?: 'start' | 'center' | 'end';
@@ -44,23 +48,19 @@ export const TablePagination: React.FC<TablePaginationProps> = ({
         onClick={() => onPageChange(1)}
         appearance="dark"
         variant="flat"
-        className="gi-mr-2"
-        icon={{
-          icon: 'first_page',
-          useFontIcon: true,
-        }}
-      />
+        className="gi-mr-2 gi-p-2"
+      >
+        <FirstPage className="gi-shrink-0" />
+      </IconButton>
       <IconButton
         disabled={currentPage === 1}
         onClick={handlePrevious}
         appearance="dark"
         variant="flat"
-        className="gi-mr-2"
-        icon={{
-          icon: 'chevron_left',
-          useFontIcon: true,
-        }}
-      />
+        className="gi-mr-2 gi-p-2"
+      >
+        <KeyboardArrowLeft className="gi-shrink-0" />
+      </IconButton>
       <div className="gi-table-pagination-label gi-space-x-2" aria-live="polite">
         <span>
           {t('table.pagination.page', {
@@ -91,23 +91,19 @@ export const TablePagination: React.FC<TablePaginationProps> = ({
         disabled={currentPage === totalPages}
         appearance="dark"
         variant="flat"
-        className="gi-ml-2"
-        icon={{
-          icon: 'chevron_right',
-          useFontIcon: true,
-        }}
-      />
+        className="gi-ml-2 gi-p-2"
+      >
+        <KeyboardArrowRight className="gi-shrink-0" />
+      </IconButton>
       <IconButton
         disabled={currentPage === totalPages}
         onClick={() => onPageChange(totalPages)}
         appearance="dark"
         variant="flat"
-        className="gi-ml-2"
-        icon={{
-          icon: 'last_page',
-          useFontIcon: true,
-        }}
-      />
+        className="gi-ml-2 gi-p-2"
+      >
+        <LastPage className="gi-shrink-0" />
+      </IconButton>
     </div>
   );
 };
