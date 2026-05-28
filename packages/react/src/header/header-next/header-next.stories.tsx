@@ -721,14 +721,14 @@ export const UsingSearch: StoryObj = {
       expect(mobile).toBeInTheDocument();
       expect(customIcon).toBeInTheDocument();
       const searchButton = await within(desktop).findByRole('button');
-      expect(searchButton).toHaveTextContent('Search');
-      expect(searchButton).toBeInTheDocument();
       const searchIcon = await within(mobile).findByTestId('search');
       const menuIcon = await within(customIcon).findByTestId('menu');
+      expect(searchButton).toBeInTheDocument();
+      expect(searchButton).toHaveTextContent('Search');
       expect(searchIcon).toBeInTheDocument();
       expect(menuIcon).toBeInTheDocument();
     });
-    await step('Button correctly submits the form', async () => {
+    await step('Correctly submits the form for both buttons', async () => {
       const handleOnSubmitMock = fn().mockImplementation((event: FormDataEvent) => {
         event.preventDefault();
       });
