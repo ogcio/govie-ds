@@ -1,7 +1,9 @@
+import _ from 'lodash';
 import { Slot } from '@radix-ui/react-slot';
 import type { PropsWithChildren } from 'react';
 import React, { forwardRef } from 'react';
-import GiLink from '@/atoms/Link';
+import LinkNext, { type LinkProps as LinkNextProps } from '@/Link';
+import { Appearance, Underline } from '@/atoms/Link';
 import { getSizeClass, getVariantAppearanceClass } from '@/button/helpers';
 import type { ButtonAppearance, ButtonSize, ButtonVariant } from '@/button/types';
 import { cn } from '@/cn';
@@ -9,6 +11,7 @@ import type { IconId } from '@/icon/icon';
 import { Icon } from '@/icon/icon';
 import type { AnchorProps } from '@/primitives/anchor';
 import Anchor from '@/primitives/anchor';
+import clsx from 'clsx';
 
 export type LinkProps = AnchorProps & {
   href?: string;
@@ -77,28 +80,47 @@ export const Link = forwardRef<HTMLElement, LinkProps>(
     },
     ref,
   ) => {
-    const isBaseLink =
-      !asChild && !asButton && !iconStart && !iconEnd && !disabled && !noVisited && !noColor && !appearance;
+    const useLinkNext = !_.some({
+      asChild,
+      asButton,
+      iconStart,
+      iconEnd,
+      disabled,
+      size,
+    });
 
-    if (isBaseLink && props.href) {
+    if (useLinkNext && props.href) {
       return (
-        <GiLink
+        <LinkNext
           href={props.href}
           external={external}
-          underline={!noUnderline}
-          className={cn(
+          underline={noUnderline ? Underline.HOVER : Underline.ALWAYS}
+          appearance={noColor ? Appearance.INHERIT : appearance}
+          className={clsx(
             {
-              'gi-text-sm': size === 'sm',
-              'gi-text-md': size === 'md',
+              'visited:gi-text-color-text-tone-convention-default': noVisited,
             },
             className,
           )}
           dataTestId={dataTestid}
-          onClick={props.onClick}
           id={props.id}
+          target={props.target as LinkNextProps['target']}
+          rel={props.rel}
+          download={props.download}
+          ariaCurrent={props['aria-current']}
+          ariaLabel={props['aria-label']}
+          ariaLabelledBy={props['aria-labelledby']}
+          ariaDescribedBy={props['aria-describedby']}
+          ariaHidden={props['aria-hidden']}
+          tabIndex={props.tabIndex}
+          lang={props.lang}
+          onClick={props.onClick}
+          onFocus={props.onFocus}
+          onBlur={props.onBlur}
+          onKeyDown={props.onKeyDown}
         >
           {children}
-        </GiLink>
+        </LinkNext>
       );
     }
 

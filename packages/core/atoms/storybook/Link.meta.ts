@@ -1,11 +1,10 @@
-import type { ArgTypes, Renderer, StoryContext } from 'storybook/internal/types';
+import type { Renderer, StoryContext } from 'storybook/internal/types';
 import { within, expect, userEvent } from 'storybook/test';
-import type { Props } from '../Link.lite';
 import { checker } from './utilities';
 
 export const linkMeta = {
   tags: ['autodocs'] as string[],
-  title: 'Navigation/Link',
+  title: 'Next/Navigation/Link',
   args: {
     children: 'Link',
     href: 'https://www.gov.ie',
@@ -95,15 +94,6 @@ export const linkMeta = {
         'Language of the link text, when it differs from the surrounding content. Maps to the HTML lang attribute.',
       table: { type: { summary: 'string' } },
     },
-    underline: {
-      control: 'boolean',
-      description:
-        'Shows the default underline. Set to false for links with other visual distinction (navigation, cards) — body-text links should keep the underline per WCAG 1.4.1. When false, underline reappears on hover and hides again on focus.',
-      table: {
-        type: { summary: 'boolean' },
-        defaultValue: { summary: 'true' },
-      },
-    },
     className: {
       control: { disable: true },
       description: 'CSS classes to apply. Use gi-* Tailwind utilities for additional styling.',
@@ -119,7 +109,24 @@ export const linkMeta = {
       description: 'Test id for targeting the element in automated tests.',
       table: { type: { summary: 'string' } },
     },
-  } satisfies ArgTypes<Props>,
+    inline: {
+      control: 'boolean',
+      description:
+        'Enables styled inline link mode. When true, applies typography, colour, underline, and focus styles. When false, renders a bare anchor.',
+      table: {
+        type: { summary: 'boolean' },
+        defaultValue: { summary: 'false' },
+      },
+    },
+    underline: {
+      control: { disable: true },
+      table: { defaultValue: { summary: 'always' } },
+    },
+    appearance: {
+      control: { disable: true },
+      table: { defaultValue: { summary: 'default' } },
+    },
+  },
   parameters: {
     docs: {
       description: {
@@ -171,40 +178,43 @@ export const ExternalLink = {
   },
 };
 
-export const NoUnderline = {
+export const PrimitiveAnchor = {
   args: {
     ...linkMeta.args,
-    children: 'Link without underline',
-    underline: false,
-    dataTestId: 'link-no-underline',
+    children: 'Unstyled primitive anchor',
+    dataTestId: 'link-primitive',
+  },
+  play: async ({ canvasElement, step, args }: StoryContext<Renderer>) => {
+    const canvas = within(canvasElement as HTMLElement);
+    const check = checker(args.dataTestId, canvas, step);
+
+    await check.is('a');
+    await check.attributes({ href: args.href });
+
+    await step('has no inline link classes', async () => {
+      const element = canvas.getByTestId(args.dataTestId);
+      expect(element.className).toBe('');
+    });
   },
 };
 
-export const NoVisited = {
+export const InlineLink = {
   args: {
     ...linkMeta.args,
-    children: 'Link that keeps default colour when visited',
-    className: 'visited:gi-text-color-text-tone-convention-default',
-    dataTestId: 'link-no-visited',
+    children: 'Styled inline link',
+    inline: true,
+    dataTestId: 'link-inline',
   },
-};
+  play: async ({ canvasElement, step, args }: StoryContext<Renderer>) => {
+    const canvas = within(canvasElement as HTMLElement);
+    const check = checker(args.dataTestId, canvas, step);
 
-export const InheritColour = {
-  args: {
-    ...linkMeta.args,
-    children: 'Link inheriting parent colour',
-    className: 'gi-text-inherit hover:gi-text-inherit',
-    dataTestId: 'link-inherit',
-  },
-};
+    await check.is('a');
 
-export const Sizes = {
-  parameters: {
-    docs: {
-      description: {
-        story: 'Link inherits size from className. Use gi-text-sm, gi-text-md, or gi-text-lg.',
-      },
-    },
+    await step('has inline link styles', async () => {
+      const element = canvas.getByTestId(args.dataTestId);
+      expect(element.className).not.toBe('');
+    });
   },
 };
 

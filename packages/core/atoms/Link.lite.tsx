@@ -8,18 +8,17 @@ export type Props = {
   children: any;
   href: string;
   className?: string;
-  underline?: boolean;
 
   external?: boolean;
   target?: '_self' | '_blank' | '_parent' | '_top';
   rel?: string;
   download?: string | boolean;
 
-  ariaCurrent?: 'page' | 'step' | 'location' | 'date' | 'time' | boolean;
+  ariaCurrent?: 'page' | 'step' | 'location' | 'date' | 'time' | 'true' | 'false' | boolean;
   ariaLabel?: string;
   ariaLabelledBy?: string;
   ariaDescribedBy?: string;
-  ariaHidden?: boolean;
+  ariaHidden?: boolean | 'true' | 'false';
   tabIndex?: number;
   lang?: string;
 
@@ -36,7 +35,7 @@ export default function Link(props: Props) {
     <a
       id={props.id}
       href={props.href}
-      class={styles({ underline: props.underline, class: props.className })}
+      class={props.className}
       target={props.target || (props.external ? '_blank' : undefined)}
       rel={props.rel || (props.external ? 'noreferrer noopener' : undefined)}
       download={props.download}
@@ -58,7 +57,19 @@ export default function Link(props: Props) {
   );
 }
 
-const styles = tv({
+export const Underline = {
+  ALWAYS: 'always',
+  HOVER: 'hover',
+  NONE: 'none',
+} as const;
+
+export const Appearance = {
+  DEFAULT: 'default',
+  LIGHT: 'light',
+  INHERIT: 'inherit',
+} as const;
+
+export const linkStyles = tv({
   base: [
     'gi-font-primary',
     'gi-w-fit',
@@ -84,18 +95,23 @@ const styles = tv({
     'gi-decoration-[max(1px,0.08em)]',
     'gi-underline-offset-[0.2em]',
     'hover:gi-decoration-[max(2px,0.12em)]',
-    'hover:gi-underline-offset-[0.2em]',
     'hover:gi-underline',
     'supports-[-moz-appearance:none]:gi-underline-offset-[0.23em]',
-    'supports-[-moz-appearance:none]:hover:gi-underline-offset-[0.23em]',
   ],
   variants: {
     underline: {
-      true: 'gi-underline',
-      false: 'gi-no-underline',
+      [Underline.ALWAYS]: 'gi-underline',
+      [Underline.HOVER]: 'gi-no-underline',
+      [Underline.NONE]: 'gi-no-underline hover:gi-no-underline',
+    },
+    appearance: {
+      [Appearance.DEFAULT]: '',
+      [Appearance.LIGHT]: 'gi-text-white hover:gi-text-white focus:gi-text-white',
+      [Appearance.INHERIT]: 'gi-text-inherit hover:gi-text-inherit',
     },
   },
   defaultVariants: {
-    underline: true,
+    underline: Underline.ALWAYS,
+    appearance: Appearance.DEFAULT,
   },
 });

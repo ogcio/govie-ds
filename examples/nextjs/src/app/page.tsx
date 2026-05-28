@@ -44,7 +44,6 @@ import {
   InputRadio,
   InputRadioGroup,
   InputText,
-  Link,
   List,
   Modal,
   ModalBody,
@@ -94,6 +93,7 @@ import {
   HeaderMenuItemButton,
   Grid,
 } from '@ogcio/design-system-react';
+import { Link } from '@ogcio/design-system-react/next';
 import { LogoWhite, LogoHarpWhite } from '@ogcio/design-system-react/logos';
 import { useEffect, useRef, useState } from 'react';
 
@@ -855,14 +855,14 @@ export default function Home() {
                       Links
                     </Heading>
                     <Box className="space-x-4">
-                      <Link href="https://www.google.com" external={true}>
+                      <Link href="https://www.google.com" external={true} inline>
                         External Link
                       </Link>
-                      <Link href="#" noUnderline={true}>
+                      <Link href="#" underline="hover">
                         Link without underline
                       </Link>
-                      <Link href="#" noVisited={true}>
-                        Link without visited state
+                      <Link href="#" appearance="inherit">
+                        Link with inherit appearance
                       </Link>
                     </Box>
                   </Box>
