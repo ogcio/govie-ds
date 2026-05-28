@@ -31,6 +31,8 @@ export const TablePagination: React.FC<TablePaginationProps> = ({
       onPageChange(currentPage + 1);
     }
   };
+  const atFirstPage = currentPage === 1;
+  const atLastPage = currentPage === totalPages;
 
   return (
     <div
@@ -44,20 +46,22 @@ export const TablePagination: React.FC<TablePaginationProps> = ({
       )}
     >
       <IconButton
-        disabled={currentPage === 1}
+        disabled={atFirstPage}
         onClick={() => onPageChange(1)}
         appearance="dark"
         variant="flat"
         className="gi-mr-2 gi-p-2"
+        ariaLabel="First page"
       >
         <FirstPage className="gi-shrink-0" />
       </IconButton>
       <IconButton
-        disabled={currentPage === 1}
+        disabled={atFirstPage}
         onClick={handlePrevious}
         appearance="dark"
         variant="flat"
         className="gi-mr-2 gi-p-2"
+        ariaLabel="Previous page"
       >
         <KeyboardArrowLeft className="gi-shrink-0" />
       </IconButton>
@@ -88,19 +92,22 @@ export const TablePagination: React.FC<TablePaginationProps> = ({
       </div>
       <IconButton
         onClick={handleNext}
-        disabled={currentPage === totalPages}
+        disabled={atLastPage}
+        aria-disabled={atLastPage}
         appearance="dark"
         variant="flat"
         className="gi-ml-2 gi-p-2"
+        ariaLabel="Next page"
       >
         <KeyboardArrowRight className="gi-shrink-0" />
       </IconButton>
       <IconButton
-        disabled={currentPage === totalPages}
+        disabled={atLastPage}
         onClick={() => onPageChange(totalPages)}
         appearance="dark"
         variant="flat"
         className="gi-ml-2 gi-p-2"
+        ariaLabel="Last page"
       >
         <LastPage className="gi-shrink-0" />
       </IconButton>

@@ -133,7 +133,7 @@ export const Default: Story = {
               <Tag text={row.status.text} type={row.status.type} />
             </TableData>
             <TableData>
-              <IconButton size="lg" variant="flat" appearance="dark">
+              <IconButton size="lg" variant="flat" appearance="dark" ariaLabel="Download">
                 <DownloadIcon />
               </IconButton>
             </TableData>
@@ -377,6 +377,7 @@ export const TableWithFooter: Story = {
                     variant="flat"
                     appearance="dark"
                     size="lg"
+                    ariaLabel="Edit"
                   >
                     <Edit />
                   </IconButton>
@@ -387,6 +388,7 @@ export const TableWithFooter: Story = {
                     variant="flat"
                     appearance="dark"
                     size="lg"
+                    ariaLabel="Delete"
                   >
                     <Delete />
                   </IconButton>
@@ -535,7 +537,7 @@ export const WithStripped: Story = {
               <Tag text={row.status.text} type={row.status.type} />
             </TableData>
             <TableData>
-              <IconButton size="lg" variant="flat" appearance="dark">
+              <IconButton size="lg" variant="flat" appearance="dark" ariaLabel="Download">
                 <DownloadIcon />
               </IconButton>
             </TableData>
@@ -584,7 +586,7 @@ export const WithSmallRowSize: Story = {
               <Tag text={row.status.text} type={row.status.type} />
             </TableData>
             <TableData>
-              <IconButton size="md" variant="flat" appearance="dark">
+              <IconButton size="md" variant="flat" appearance="dark" ariaLabel="Download">
                 <DownloadIcon />
               </IconButton>{' '}
             </TableData>
@@ -633,7 +635,7 @@ export const WithMediumRowSize: Story = {
               <Tag text={row.status.text} type={row.status.type} />
             </TableData>
             <TableData>
-              <IconButton size="lg" variant="flat" appearance="dark">
+              <IconButton size="lg" variant="flat" appearance="dark" ariaLabel="Download">
                 <DownloadIcon />
               </IconButton>
             </TableData>
@@ -682,7 +684,7 @@ export const WithLargeRowSize: Story = {
               <Tag text={row.status.text} type={row.status.type} />
             </TableData>
             <TableData>
-              <IconButton size="xl" variant="flat" appearance="dark">
+              <IconButton size="xl" variant="flat" appearance="dark" ariaLabel="Download">
                 <DownloadIcon />
               </IconButton>
             </TableData>
