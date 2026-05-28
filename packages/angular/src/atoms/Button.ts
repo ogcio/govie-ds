@@ -344,7 +344,7 @@ const getSize = (x: Props['size'] = ButtonSize.MD) => (Object.values(ButtonSize)
       [attr.aria-haspopup]="ariaHasPopup"
       [attr.aria-busy]="ariaBusy"
       [attr.role]="role"
-      [attr.type]="type ?? 'button'"
+      [attr.type]="type"
       [attr.form]="form"
       [attr.value]="value"
       [attr.tabIndex]="tabIndex"
