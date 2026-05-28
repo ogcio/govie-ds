@@ -101,6 +101,7 @@ SelectItem
 SelectMenu
 SelectNext
 SideNav
+SideNavHeadingProps
 SideNavItemProps
 SideNavProps
 StepItem

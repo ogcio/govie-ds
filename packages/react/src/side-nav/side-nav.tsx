@@ -1,171 +1,166 @@
 'use client';
 import type { PropsWithChildren } from 'react';
-import React, { useEffect, useState, useCallback, memo } from 'react';
-import Heading from '@/Heading.js';
-import Button from '@/atoms/Button';
-import Paragraph from '@/atoms/Paragraph';
-import { cn } from '@/cn.js';
-import type { IconId } from '@/icon/icon.js';
-import { Icon } from '@/icon/icon.js';
-import { Link } from '@/link/link.js';
-import type { SideNavHeadingProps, SideNavItemProps, SideNavProps } from './types.js';
+import React, { useEffect, useState, useCallback, memo, useMemo } from 'react';
+import GiSideNav from '@/atoms/sideNav/SideNav';
+import GiSideNavItem, { slotStyles, contentStyles } from '@/atoms/sideNav/SideNavItem';
+import GiBox from '@/atoms/Box';
+import GiParagraph from '@/atoms/Paragraph';
+import KeyboardArrowDown from '@/atoms/icons/KeyboardArrowDown';
+import { Icon, type IconId } from '@/icon/icon';
+import { cn } from '@/cn';
+import type { SideNavItemProps, SideNavProps } from './types';
 
-type SideNavContextType = {
-  openItemIds: string[];
-  setOpenItemIds: React.Dispatch<React.SetStateAction<string[]>>;
-  selectedItemId?: string;
-  setSelectedItemId: (id: string) => void;
-  navId: string;
-};
-
-const SideNavContext = React.createContext<SideNavContextType | undefined>(undefined);
-
-const ItemContent = memo(
+export const SideNavItem: React.FC<PropsWithChildren<SideNavItemProps>> = memo(
   ({
-    icon,
+    children,
+    primary,
+    expandable,
     label,
-    showExpandableIcon,
-    isOpen,
-  }: {
-    icon?: IconId;
-    label: string;
-    showExpandableIcon?: boolean;
-    isOpen?: boolean;
+    value,
+    href,
+    icon,
+    open,
+    actions,
+    ariaLabel,
+    className,
+    dataTestId,
+    asChild,
   }) => {
-    return (
-      <>
-        <div className="gi-side-nav-item-left">
-          {icon && (
-            <div className="gi-side-nav-item-icon">
-              <Icon icon={icon} />
-            </div>
-          )}
-          <div className="gi-side-nav-item-label">
-            <Paragraph size="md">{label}</Paragraph>
-          </div>
-        </div>
-        {showExpandableIcon && (
-          <div className="gi-side-nav-expandable-icon">
-            <Icon className={cn(isOpen && 'gi-rotate-180')} icon="keyboard_arrow_down" />
-          </div>
-        )}
-      </>
-    );
-  },
-);
-
-export const SideNavItem: React.FC<PropsWithChildren<SideNavItemProps> & { open?: boolean }> = React.memo(
-  ({ children, primary, secondary, expandable, label, value, icon, href, asChild, open }) => {
-    const context = React.useContext(SideNavContext);
-
-    if (!context) {
-      throw new Error('SideNavItem must be used within a SideNav');
-    }
-
-    const { openItemIds, selectedItemId, setOpenItemIds, setSelectedItemId, navId } = context;
+    const context = useSideNavContext();
+    const { openItemIds, selectedItemId, setOpenItemIds, setSelectedItemId, navId, depth } = context;
 
     const isOpen = openItemIds.includes(value);
     const isSelected = selectedItemId === value;
+    const isPrimary = primary ?? depth === 0;
+    const itemId = `${navId}-${value}`;
+    const showSelected = isSelected && !expandable;
 
     useEffect(() => {
       if (open) {
-        setOpenItemIds((previousIds: string[]) => {
-          if (!previousIds.includes(value)) {
-            return [...previousIds, value];
+        setOpenItemIds((previousIds) => {
+          if (previousIds.includes(value)) {
+            return previousIds;
           }
-          return previousIds;
+          return [...previousIds, value];
         });
       }
     }, [open, setOpenItemIds, value]);
 
-    const handleExpandCollapse = useCallback(() => {
-      const updatedOpenIds = isOpen ? openItemIds.filter((id) => id !== value) : [...openItemIds, value];
-      setOpenItemIds(updatedOpenIds);
-    }, [isOpen, openItemIds, setOpenItemIds, value]);
-
-    const handleSelection = useCallback(() => {
-      setSelectedItemId(value);
-    }, [setSelectedItemId, value]);
-
-    const itemId = `${navId}-${value}`;
-    const showExpandableIcon = primary && expandable;
-    const isNavigable = href !== undefined;
-
     const handleClick = useCallback(() => {
-      if (primary && expandable) {
-        handleExpandCollapse();
+      if (expandable) {
+        setOpenItemIds((previousIds) =>
+          previousIds.includes(value) ? previousIds.filter((id) => id !== value) : [...previousIds, value],
+        );
+      } else {
+        setSelectedItemId(value);
       }
-      handleSelection();
-    }, [primary, expandable, handleExpandCollapse, handleSelection]);
+    }, [expandable, setOpenItemIds, setSelectedItemId, value]);
 
-    const handleButtonClick = useCallback(
-      (event: React.MouseEvent) => {
-        event.preventDefault();
-        if (primary && expandable) {
-          handleExpandCollapse();
-        } else {
-          handleSelection();
+    const nestedContextValue = useMemo(() => ({ ...context, depth: depth + 1 }), [context, depth]);
+
+    const childArray = React.Children.toArray(children);
+
+    const interactiveElement = (() => {
+      const content = (
+        <GiBox className={contentStyles({ primary: isPrimary })}>
+          {typeof icon === 'string' ? <Icon icon={icon as IconId} /> : icon}
+          {typeof label === 'string' ? (
+            <GiParagraph size={isPrimary ? 'md' : 'sm'} className="gi-flex-1">
+              {label}
+            </GiParagraph>
+          ) : (
+            label
+          )}
+          {expandable && isPrimary ? <KeyboardArrowDown className={isOpen ? 'gi-rotate-180' : ''} /> : null}
+        </GiBox>
+      );
+
+      if (asChild) {
+        const childElement = childArray.find((child) => React.isValidElement(child));
+        if (!childElement || !React.isValidElement(childElement)) {
+          return null;
         }
-      },
-      [primary, expandable, handleExpandCollapse, handleSelection],
-    );
+        const childProps = childElement.props as React.HTMLAttributes<HTMLElement>;
+        return React.cloneElement(childElement, {
+          ...childProps,
+          className: cn(
+            slotStyles({
+              hasActions: !!actions,
+              selected: showSelected,
+              size: 'lg',
+            }),
+            childProps.className,
+          ),
+          'aria-expanded': expandable ? isOpen : undefined,
+          'aria-controls': expandable ? `${itemId}-content` : undefined,
+          'aria-label': ariaLabel ?? childProps['aria-label'],
+          onClick: (event: React.MouseEvent<HTMLElement>) => {
+            handleClick();
+            childProps.onClick?.(event);
+          },
+          children: content,
+        } as React.HTMLAttributes<HTMLElement>);
+      }
 
-    const itemClassName = cn('gi-side-nav-item', {
-      'gi-side-nav-item-selected': isSelected,
-      'gi-side-nav-item-primary': primary,
-      'gi-side-nav-item-secondary': secondary,
-    });
-
-    const buttonClassName = cn('gi-side-nav-item', {
-      'gi-side-nav-item-selected': isSelected,
-      'gi-side-nav-item-primary': primary,
-      'gi-side-nav-item-secondary': secondary,
-    });
-
-    return (
-      <div role="group" aria-label={`${label} ${primary && expandable ? 'dropdown' : 'item'}`}>
-        {isNavigable ? (
-          <Link
-            id={itemId}
+      if (href && !expandable) {
+        return (
+          <a
             href={href}
-            asChild={asChild}
-            asButton={{
-              variant: 'flat',
-              appearance: 'dark',
-              size: 'medium',
-            }}
-            className={itemClassName}
+            aria-label={ariaLabel}
+            className={slotStyles({
+              hasActions: !!actions,
+              selected: showSelected,
+              size: 'lg',
+            })}
             onClick={handleClick}
           >
-            {asChild ? (
-              children
-            ) : (
-              <ItemContent icon={icon} label={label} showExpandableIcon={showExpandableIcon} isOpen={isOpen} />
-            )}
-          </Link>
-        ) : (
-          <Button
-            variant="flat"
-            appearance="dark"
-            size="md"
-            onClick={handleButtonClick}
-            className={buttonClassName}
-            id={itemId}
-          >
-            <ItemContent icon={icon} label={label} showExpandableIcon={showExpandableIcon} isOpen={isOpen} />
-          </Button>
-        )}
+            {content}
+          </a>
+        );
+      }
 
-        {expandable && primary && (
-          <div className={cn(isOpen ? 'gi-side-nav-item-content' : 'gi-hidden')}>{children}</div>
-        )}
-      </div>
+      return (
+        <button
+          type="button"
+          aria-label={ariaLabel}
+          aria-expanded={expandable ? isOpen : undefined}
+          aria-controls={expandable ? `${itemId}-content` : undefined}
+          className={slotStyles({
+            hasActions: !!actions,
+            selected: showSelected,
+            size: 'lg',
+          })}
+          onClick={handleClick}
+        >
+          {content}
+        </button>
+      );
+    })();
+
+    return (
+      <GiSideNavItem
+        id={itemId}
+        selected={showSelected}
+        expanded={expandable ? isOpen : undefined}
+        expandedContentId={expandable ? `${itemId}-content` : undefined}
+        expandedContent={
+          expandable ? (
+            <SideNavContext.Provider value={nestedContextValue}>{childArray}</SideNavContext.Provider>
+          ) : undefined
+        }
+        expandedLabel={typeof label === 'string' ? label : ariaLabel}
+        actions={actions}
+        className={className}
+        dataTestId={dataTestId}
+      >
+        {interactiveElement}
+      </GiSideNavItem>
     );
   },
 );
 
 export const SideNav: React.FC<PropsWithChildren<SideNavProps>> = memo(
-  ({ children, className, dataTestid, onChange, value }) => {
+  ({ children, className, dataTestId, dataTestid, onChange, value, ariaLabel, id }) => {
     const [openItemIds, setOpenItemIds] = useState<string[]>([]);
     const [selectedItemId, setSelectedItemId] = useState<string | undefined>(value);
     const navId = React.useId();
@@ -178,41 +173,51 @@ export const SideNav: React.FC<PropsWithChildren<SideNavProps>> = memo(
       [onChange],
     );
 
-    const contextValue = React.useMemo(
+    const contextValue = useMemo(
       () => ({
         openItemIds,
         selectedItemId,
         setOpenItemIds,
         setSelectedItemId: handleSetSelectedItemId,
         navId,
+        depth: 0,
       }),
       [openItemIds, selectedItemId, handleSetSelectedItemId, navId],
     );
 
     return (
       <SideNavContext.Provider value={contextValue}>
-        <div className={cn('gi-side-nav-container', className)} data-testid={dataTestid}>
+        <GiSideNav
+          id={id}
+          className={className}
+          dataTestId={dataTestId ?? dataTestid}
+          ariaLabel={ariaLabel ?? 'Side navigation'}
+        >
           {children}
-        </div>
+        </GiSideNav>
       </SideNavContext.Provider>
     );
   },
 );
 
-export const SideNavHeading: React.FC<SideNavHeadingProps> = memo(({ children, secondary, className, ...props }) => {
+type SideNavContextType = {
+  openItemIds: string[];
+  setOpenItemIds: React.Dispatch<React.SetStateAction<string[]>>;
+  selectedItemId?: string;
+  setSelectedItemId: (id: string) => void;
+  navId: string;
+  depth: number;
+};
+
+const SideNavContext = React.createContext<SideNavContextType | undefined>(undefined);
+
+function useSideNavContext() {
   const context = React.useContext(SideNavContext);
-
   if (!context) {
-    throw new Error('SideNavHeading must be used within a SideNav');
+    throw new Error('SideNavItem must be used within a SideNav');
   }
-
-  return (
-    <Heading {...props} as="h5" className={cn('gi-side-nav-heading', secondary ? 'gi-px-6' : 'gi-px-3', className)}>
-      {children}
-    </Heading>
-  );
-});
+  return context;
+}
 
 SideNav.displayName = 'SideNav';
 SideNavItem.displayName = 'SideNavItem';
-SideNavHeading.displayName = 'SideNavHeading';

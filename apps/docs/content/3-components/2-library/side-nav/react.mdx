@@ -9,55 +9,90 @@ component:
   properties:
     - name: SideNavProps
       fields:
-        - name: 'value'
-          ofType: 'string'
-          description: 'The currently selected item value.'
-          required: false
         - name: 'children'
           ofType: 'node'
-          description: 'The child elements of the SideNav.'
+          description: 'The child elements of the side navigation.'
           required: true
+        - name: 'value'
+          ofType: 'string'
+          description: 'The initially selected item value.'
+          required: false
+        - name: 'onChange'
+          ofType: 'function'
+          description: 'Callback fired when the selected item changes. Receives the value string.'
+          required: false
+        - name: 'ariaLabel'
+          ofType: 'string'
+          description: 'Accessible label for the navigation landmark. Defaults to "Side navigation".'
+          required: false
+        - name: 'id'
+          ofType: 'string'
+          description: 'HTML id attribute for the navigation element.'
+          required: false
+        - name: 'className'
+          ofType: 'string'
+          description: 'Additional CSS class names.'
+          required: false
+        - name: 'dataTestId'
+          ofType: 'string'
+          description: 'Test id for automated tests.'
+          required: false
     - name: SideNavItemProps
       fields:
         - name: 'value'
           ofType: 'string'
-          description: 'Unique identifier for the item.'
+          description: 'Unique identifier for the item, used for selection and expand/collapse tracking.'
           required: true
         - name: 'label'
-          ofType: 'string'
-          description: 'The visible label text for the item.'
-          required: true
+          ofType: 'node | string'
+          description: 'Text or composed content for the item. When a string, auto-wraps in a paragraph. When a node, rendered as-is.'
+          required: false
         - name: 'icon'
-          ofType: 'string'
-          description: 'Icon name (material symbols) to show beside the label.'
+          ofType: 'node | string'
+          description: 'Icon rendered before the label. Pass an icon component or a string icon id.'
           required: false
         - name: 'href'
           ofType: 'string'
-          description: 'URL if the item should behave like a link.'
-          required: false
-        - name: 'parent'
-          ofType: 'boolean'
-          description: 'Indicates that the item has children.'
+          description: 'When provided, the item renders as an anchor instead of a button. Ignored when expandable is true.'
           required: false
         - name: 'expandable'
           ofType: 'boolean'
-          description: 'Allows the item to be expanded/collapsed.'
+          description: 'Makes the item a collapsible parent with nested children.'
           required: false
         - name: 'open'
           ofType: 'boolean'
-          description: 'Sets the item to be initially open if expandable.'
+          description: 'Opens the expandable section on mount.'
           required: false
         - name: 'primary'
           ofType: 'boolean'
-          description: 'Indicates this is a primary navigation item.'
+          description: 'Whether the item uses primary (top-level) styling. Auto-detected from nesting depth when not set.'
           required: false
-        - name: 'secondary'
+        - name: 'children'
+          ofType: 'node'
+          description: 'Nested navigation items or headings for expandable items.'
+          required: false
+        - name: 'actions'
+          ofType: 'node'
+          description: 'Interactive controls rendered alongside the button or link.'
+          required: false
+        - name: 'asChild'
           ofType: 'boolean'
-          description: 'Indicates this is a secondary navigation item.'
+          description: 'When true, the first child element replaces the default button or anchor.'
           required: false
-
+        - name: 'ariaLabel'
+          ofType: 'string'
+          description: 'Accessible label for the item.'
+          required: false
+        - name: 'className'
+          ofType: 'string'
+          description: 'Additional CSS class names.'
+          required: false
+        - name: 'dataTestId'
+          ofType: 'string'
+          description: 'Test id for automated tests.'
+          required: false
     - name: SideNavHeadingProps
-      description: Visual/semantic heading for grouping items inside the SideNav.
+      description: Visual heading for grouping items inside the side navigation.
       fields:
         - name: 'children'
           ofType: 'node'
@@ -79,6 +114,8 @@ component:
       url: '/story/navigation-sidenav--with-icons'
     - name: 'parent-child'
       url: '/story/navigation-sidenav--parent-child'
+    - name: 'full-example'
+      url: '/story/navigation-sidenav--full-example'
 ---
 
 # Side Navigation
@@ -89,28 +126,16 @@ Side Navigation (SideNav) is used to organize and access major sections of an ap
 
 <ComponentPreview className="gi-not-prose w-full block">
   <SideNav value="projects-active">
-    <SideNavItem primary value="dashboard" label="Dashboard" />
-    <SideNavItem primary expandable value="team" label="Team">
-      <SideNavItem secondary value="team-members" label="Members" />
-      <SideNavItem secondary value="team-permissions" label="Permissions" />
+    <SideNavItem value="dashboard" label="Dashboard" />
+    <SideNavItem expandable value="team" label="Team">
+      <SideNavItem value="team-members" label="Members" />
+      <SideNavItem value="team-permissions" label="Permissions" />
     </SideNavItem>
-    <SideNavItem
-      primary
-      open
-      expandable
-      value="projects"
-      label="Projects"
-      href="#"
-    >
-      <SideNavItem secondary value="projects-active" label="Active" href="#" />
-      <SideNavItem
-        secondary
-        href="#"
-        value="projects-archived"
-        label="Archived"
-      />
+    <SideNavItem open expandable value="projects" label="Projects">
+      <SideNavItem value="projects-active" label="Active" href="#" />
+      <SideNavItem value="projects-archived" label="Archived" href="#" />
     </SideNavItem>
-    <SideNavItem primary value="settings" label="Settings" />
+    <SideNavItem value="settings" label="Settings" />
   </SideNav>
 </ComponentPreview>
 
@@ -134,6 +159,14 @@ Side Navigation (SideNav) is used to organize and access major sections of an ap
   className="h-96"
   componentId="side-nav-react"
   story="parent-child"
+/>
+
+### Full Example
+
+<StorybookFrame
+  className="h-96"
+  componentId="side-nav-react"
+  story="full-example"
 />
 
 ## Properties
