@@ -12,7 +12,7 @@ react-visual-tests:
 
 react-visual-update:
 	pnpm storybook:build:react
-	$(run-react-playwright) test --update-snapshots -g "Link"
+	$(run-react-playwright) test --update-snapshots
 
 
 run-react-playwright = docker run --rm \
