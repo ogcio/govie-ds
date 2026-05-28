@@ -4,7 +4,13 @@ import { Paragraph } from '@/paragraph/paragraph';
 import { Tag } from '@/tag/tag';
 import { SideNav, SideNavHeading, SideNavItem } from './side-nav';
 import { Box } from '@/Box';
+import Apps from '@/atoms/icons/Apps';
+import Edit from '@/atoms/icons/Edit';
+import Mail from '@/atoms/icons/Mail';
+import Menu from '@/atoms/icons/Menu';
 import MoreVertical from '@/atoms/icons/MoreVertical';
+import Send from '@/atoms/icons/Send';
+import Settings from '@/atoms/icons/Settings';
 
 const meta = {
   title: 'Navigation/SideNav',
@@ -34,9 +40,9 @@ export const Basic = {
 export const WithIcons = {
   render: () => (
     <SideNav value="dashboard">
-      <SideNavItem icon="menu" value="dashboard" label="Dashboard" />
-      <SideNavItem icon="apps" value="analytics" label="Analytics" />
-      <SideNavItem icon="settings" value="settings" label="Settings" />
+      <SideNavItem icon={<Menu />} value="dashboard" label="Dashboard" />
+      <SideNavItem icon={<Apps />} value="analytics" label="Analytics" />
+      <SideNavItem icon={<Settings />} value="settings" label="Settings" />
     </SideNav>
   ),
 };
@@ -65,7 +71,7 @@ export const WithActions = {
         expandable
         open
         value="inbox"
-        icon="mail"
+        icon={<Mail />}
         label={
           <Box className="gi-flex gi-justify-between gi-flex-1 gi-items-baseline">
             <Paragraph size="md" className="gi-font-bold">
@@ -114,7 +120,7 @@ export const WithActions = {
       <SideNavItem
         primary
         value="sent"
-        icon="send"
+        icon={<Send />}
         label="Sent"
         actions={
           <IconButton size="sm" variant="flat" appearance="dark" ariaLabel="More options">
@@ -125,7 +131,7 @@ export const WithActions = {
       <SideNavItem
         primary
         value="drafts"
-        icon="edit"
+        icon={<Edit />}
         label={
           <Box className="gi-flex gi-justify-between gi-flex-1 gi-items-baseline">
             <Paragraph size="md" className="gi-font-bold">
@@ -158,7 +164,7 @@ export const FullExample = {
         <SideNavHeading secondary>Heading Label Secondary</SideNavHeading>
         <SideNavItem secondary value="team-permissions" label="Permissions" />
       </SideNavItem>
-      <SideNavItem primary open expandable value="projects" label="Projects" href="#">
+      <SideNavItem primary open expandable value="projects" label="Projects">
         <SideNavItem secondary value="projects-active" label="Active" href="#" />
         <SideNavItem secondary href="#" value="projects-archived" label="Archived" />
       </SideNavItem>

@@ -4,11 +4,12 @@ import React, { useEffect, useState, useCallback, memo } from 'react';
 import Heading from '@/Heading.js';
 import Button from '@/atoms/Button';
 import Paragraph from '@/atoms/Paragraph';
-import { cn } from '@/cn.js';
 import type { IconId } from '@/icon/icon.js';
 import { Icon } from '@/icon/icon.js';
+import KeyboardArrowDown from '@/atoms/icons/KeyboardArrowDown';
 import { Link } from '@/link/link.js';
 import type { SideNavHeadingProps, SideNavItemProps, SideNavProps } from './types.js';
+import clsx from 'clsx';
 
 type SideNavContextType = {
   openItemIds: string[];
@@ -20,39 +21,18 @@ type SideNavContextType = {
 
 const SideNavContext = React.createContext<SideNavContextType | undefined>(undefined);
 
-const ItemContent = memo(
-  ({
-    icon,
-    label,
-    showExpandableIcon,
-    isOpen,
-  }: {
-    icon?: IconId;
-    label: React.ReactNode;
-    showExpandableIcon?: boolean;
-    isOpen?: boolean;
-  }) => {
-    return (
-      <>
-        <div className="gi-side-nav-item-left gi-flex-1 gi-relative gi-flex gi-items-center gi-justify-between gi-w-full gi-gap-3">
-          {icon && (
-            <div className="gi-side-nav-item-icon">
-              <Icon icon={icon} />
-            </div>
-          )}
-          <div className="gi-side-nav-item-label gi-flex-1">
-            {typeof label === 'string' ? <Paragraph size="md">{label}</Paragraph> : label}
-          </div>
-        </div>
-        {showExpandableIcon && (
-          <div className="gi-side-nav-expandable-icon">
-            <Icon className={cn(isOpen && 'gi-rotate-180')} icon="keyboard_arrow_down" />
-          </div>
-        )}
-      </>
-    );
-  },
-);
+const ItemContent = memo(({ icon, label }: { icon?: React.ReactNode; label: React.ReactNode }) => {
+  return (
+    <div className="gi-side-nav-item-left gi-flex-1 gi-relative gi-flex gi-items-center gi-justify-between gi-w-full gi-gap-3">
+      {icon && (
+        <div className="gi-side-nav-item-icon">{typeof icon === 'string' ? <Icon icon={icon as IconId} /> : icon}</div>
+      )}
+      <div className="gi-side-nav-item-label gi-flex-1">
+        {typeof label === 'string' ? <Paragraph size="md">{label}</Paragraph> : label}
+      </div>
+    </div>
+  );
+});
 
 export const SideNavItem: React.FC<PropsWithChildren<SideNavItemProps> & { open?: boolean }> = React.memo(
   ({ children, primary, secondary, expandable, label, value, icon, href, asChild, open, actions }) => {
@@ -109,19 +89,25 @@ export const SideNavItem: React.FC<PropsWithChildren<SideNavItemProps> & { open?
       },
       [primary, expandable, handleExpandCollapse, handleSelection],
     );
-
     const hasActionsWithExpandable = !!actions && showExpandableIcon;
-    const itemClassName = cn('gi-w-full !gi-h-12 gi-mt-1 gi-border-transparent ', {
+
+    // Right padding reserves space for absolutely positioned trailing elements:
+    const itemClassName = clsx('gi-w-full !gi-h-12 gi-border-transparent !gi-px-3 !gi-py-2 ', {
       'gi-side-nav-item-selected': isSelected,
-      'gi-side-nav-item-primary !gi-px-3 !gi-py-2': primary,
+      'gi-side-nav-item-primary': primary,
       '!gi-px-6': secondary,
-      '!gi-pr-20': hasActionsWithExpandable,
-      '!gi-pr-10': !!actions && !hasActionsWithExpandable,
+      // one element — either actions or chevron
+      '!gi-pr-12': !!actions !== !!showExpandableIcon,
+      // both elements — actions + chevron area
+      '!gi-pr-[84px]': hasActionsWithExpandable,
     });
 
     return (
-      <div aria-label={`${typeof label === 'string' ? label : ''} ${primary && expandable ? 'dropdown' : 'item'}`}>
-        <div className="gi-relative gi-flex gi-items-center">
+      <div
+        role="group"
+        aria-label={`${typeof label === 'string' ? label : ''} ${primary && expandable ? 'dropdown' : 'item'}`}
+      >
+        <div className="gi-relative gi-flex gi-items-center gi-mt-1">
           {isNavigable ? (
             <Link
               id={itemId}
@@ -134,16 +120,7 @@ export const SideNavItem: React.FC<PropsWithChildren<SideNavItemProps> & { open?
               className={itemClassName}
               onClick={handleClick}
             >
-              {asChild ? (
-                children
-              ) : (
-                <ItemContent
-                  icon={icon}
-                  label={label}
-                  showExpandableIcon={showExpandableIcon && !hasActionsWithExpandable}
-                  isOpen={isOpen}
-                />
-              )}
+              {asChild ? children : <ItemContent icon={icon} label={label} />}
             </Link>
           ) : (
             <Button
@@ -154,28 +131,23 @@ export const SideNavItem: React.FC<PropsWithChildren<SideNavItemProps> & { open?
               className={itemClassName}
               id={itemId}
             >
-              <ItemContent
-                icon={icon}
-                label={label}
-                showExpandableIcon={showExpandableIcon && !hasActionsWithExpandable}
-                isOpen={isOpen}
-              />
+              <ItemContent icon={icon} label={label} />
             </Button>
           )}
           {actions && (
-            <div className={cn('gi-absolute gi-mt-1', hasActionsWithExpandable ? 'gi-right-11' : 'gi-right-3')}>
+            <div className={clsx('gi-absolute', hasActionsWithExpandable ? 'gi-right-12' : 'gi-right-3')}>
               {actions}
             </div>
           )}
-          {hasActionsWithExpandable && (
-            <div className="gi-absolute gi-right-4 gi-mt-1 gi-pointer-events-none">
-              <Icon className={cn(isOpen && 'gi-rotate-180')} icon="keyboard_arrow_down" />
+          {showExpandableIcon && (
+            <div className="gi-absolute gi-right-3 gi-pointer-events-none">
+              <KeyboardArrowDown className={clsx(isOpen && 'gi-rotate-180')} />
             </div>
           )}
         </div>
 
         {expandable && primary && (
-          <div className={cn(isOpen ? 'gi-side-nav-item-content' : 'gi-hidden')}>{children}</div>
+          <div className={clsx(isOpen ? 'gi-side-nav-item-content' : 'gi-hidden')}>{children}</div>
         )}
       </div>
     );
@@ -209,7 +181,7 @@ export const SideNav: React.FC<PropsWithChildren<SideNavProps>> = memo(
 
     return (
       <SideNavContext.Provider value={contextValue}>
-        <div className={cn('gi-side-nav-container', className)} data-testid={dataTestid}>
+        <div className={clsx('gi-side-nav-container', className)} data-testid={dataTestid}>
           {children}
         </div>
       </SideNavContext.Provider>
@@ -225,7 +197,7 @@ export const SideNavHeading: React.FC<SideNavHeadingProps> = memo(({ children, s
   }
 
   return (
-    <Heading {...props} as="h5" className={cn('gi-side-nav-heading', secondary ? 'gi-px-6' : 'gi-px-3', className)}>
+    <Heading {...props} as="h5" className={clsx('gi-side-nav-heading', secondary ? 'gi-px-6' : 'gi-px-3', className)}>
       {children}
     </Heading>
   );

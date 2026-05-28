@@ -11,7 +11,7 @@ export type SideNavItemProps = {
   secondary?: boolean;
   open?: boolean;
   expandable?: boolean;
-  icon?: IconId;
+  icon?: IconId | Exclude<ReactNode, string>;
   actions?: ReactNode;
 };
 
