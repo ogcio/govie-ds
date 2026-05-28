@@ -3,8 +3,10 @@
 import type { TdHTMLAttributes, ReactNode } from 'react';
 import { useRef, useEffect, useState } from 'react';
 import { cn } from '@/cn.js';
-import { IconButton } from '@/icon-button/icon-button.js';
+import IconButton from '@/atoms/IconButton';
 import type { TableAlign, VerticalAlign } from './table.js';
+import KeyboardArrowUp from '@/atoms/icons/KeyboardArrowUp.js';
+import KeyboardArrowDown from '@/atoms/icons/KeyboardArrowDown.js';
 
 type TableDataSize = 'xs-fixed' | 'sm-fixed' | 'md-fixed' | 'lg-flex' | 'fluid';
 
@@ -101,16 +103,15 @@ export const TableExpandIcon = ({ expanded, onClick }: TableExpandIconProps) => 
         variant="flat"
         appearance="dark"
         size={sizeMap[rowSize]}
-        icon={{
-          icon: expanded ? 'keyboard_arrow_up' : 'keyboard_arrow_down',
-        }}
-        aria-label={expanded ? 'Collapse row' : 'Expand row'}
         className="gi-cursor-pointer"
         onClick={(event) => {
           event.preventDefault();
           onClick();
         }}
-      />
+        ariaLabel={expanded ? 'Collapse row' : 'Expand row'}
+      >
+        {expanded ? <KeyboardArrowUp className="gi-shrink-0" /> : <KeyboardArrowDown className="gi-shrink-0" />}
+      </IconButton>
     </div>
   );
 };
