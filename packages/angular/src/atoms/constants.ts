@@ -13,11 +13,11 @@ export const Size = {
   LG: 'lg',
   XL: 'xl',
 } as const;
-export const ICON_SIZE: Record<keyof typeof Size, string> = {
-  SM: '16px',
-  MD: '24px',
-  LG: '32px',
-  XL: '48px',
+export const ICON_SIZE: Record<keyof typeof Size, number> = {
+  SM: 16,
+  MD: 24,
+  LG: 32,
+  XL: 48,
 };
 export const Whitespace = {
   NORMAL: 'normal',
