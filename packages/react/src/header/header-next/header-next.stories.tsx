@@ -737,7 +737,11 @@ export const HeaderSearchCustomIcon: StoryObj<Pick<HeaderSearchProps, 'icon'>> =
     icon: {
       options: ['menu', 'sort', 'arrow_downward', 'apps'],
       control: { type: 'select' },
+      defaultValue: 'menu',
     },
+  },
+  args: {
+    icon: 'menu',
   },
 
   render: function Render({ icon }) {
