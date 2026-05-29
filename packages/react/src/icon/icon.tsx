@@ -20,7 +20,6 @@ import {
 } from '@/atoms/icons';
 import MenuIcon from '@/atoms/icons/Menu';
 import SearchIcon from '@/atoms/icons/Search';
-import { IconProps as GiIconProps } from '@/atoms/icons';
 import { cn } from '@/cn.js';
 import type { iconIds } from './icons.js';
 import Bluesky from './svgs/bluesky.js';

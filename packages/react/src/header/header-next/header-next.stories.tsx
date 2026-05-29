@@ -1,4 +1,4 @@
-import type { Meta, StoryObj } from '@storybook/react-vite';
+import type { Meta, StoryContext, StoryObj } from '@storybook/react-vite';
 import { useState } from 'react';
 import { within, expect, userEvent, screen, fn } from 'storybook/test';
 import clsx from 'clsx';
@@ -13,7 +13,7 @@ import { Link } from '@/link/link.js';
 import { List, ListTypeEnum } from '@/list/list.js';
 import { ListItem } from '@/list-item/list-item.js';
 import { SelectItemNext, SelectNext } from '@/select/select-next.js';
-import { HeaderSearch } from '@/header/components/header-search.js';
+import { HeaderSearch, type HeaderSearchProps } from '@/header/components/header-search.js';
 import { HeaderLogo } from './components/header-logo.js';
 import { HeaderTitle } from './components/header-title.js';
 import { HeaderMenuItemButton } from './components/menu/components/header-menu-item-button.js';
@@ -29,9 +29,6 @@ import SearchIcon from '@/atoms/icons/Search';
 import MicrophoneIcon from '@/atoms/icons/Mic';
 import CloseIcon from '@/atoms/icons/Close';
 import MenuIcon from '@/atoms/icons/Menu';
-import Divider from '@/atoms/Divider';
-
-const SM = '16px';
 
 const meta = {
   title: 'layout/Header',
@@ -117,7 +114,7 @@ export const Default: StoryObj = {
             <HeaderMenuItemSlot className="gi-flex gi-items-center">
               <label>Hello John &nbsp;| </label>
               <a href="#" className="gi-header-secondary-item gi-header-secondary-item-light" aria-label="logout">
-                <LogoutIcon size={SM} />
+                <LogoutIcon size={16} />
               </a>
             </HeaderMenuItemSlot>
           </HeaderSecondaryMenu>
@@ -417,7 +414,7 @@ export const Light: StoryObj = {
             <HeaderMenuItemSlot className="gi-flex gi-items-center">
               <label>Hello John &nbsp;| </label>
               <a href="#" className="gi-header-secondary-item gi-header-secondary-item-light" aria-label="logout">
-                <LogoutIcon size={SM} />
+                <LogoutIcon size={16} />
               </a>
             </HeaderMenuItemSlot>
           </HeaderSecondaryMenu>
@@ -653,6 +650,59 @@ export const WithTitleAsLinkFocusState: StoryObj = {
   },
 };
 
+type HeaderSearchPlayContext = Pick<StoryContext<Pick<HeaderSearchProps, 'icon'>>, 'canvasElement' | 'step'> & {
+  desktop?: boolean;
+};
+
+const headerSearchTests = async ({ canvasElement, step, desktop = true }: HeaderSearchPlayContext) => {
+  const canvas = within(canvasElement);
+  const form = await canvas.findByRole('form');
+  await step('Component is properly rendered', async () => {
+    expect(form).toBeInTheDocument();
+    const searchButton = await canvas.findByRole('button');
+    expect(searchButton).toBeInTheDocument();
+    if (desktop) {
+      expect(searchButton).toHaveTextContent('Search');
+    }
+  });
+  await step('Correctly submits the canvas for both buttons', async () => {
+    const handleOnSubmitMock = fn().mockImplementation((event: FormDataEvent) => {
+      event.preventDefault();
+    });
+    form.addEventListener('submit', handleOnSubmitMock);
+    const searchButton = await canvas.findByRole('button');
+    await userEvent.click(searchButton);
+    expect(handleOnSubmitMock).toHaveBeenCalled();
+    form.removeEventListener('submit', handleOnSubmitMock);
+    handleOnSubmitMock.mockClear();
+    await userEvent.click(form);
+  });
+};
+
+export const HeaderSearch_: StoryObj = {
+  parameters: {
+    controls: { disable: true },
+    a11y: {
+      config: {
+        rules: [{ id: 'landmark-unique', enabled: false }],
+      },
+    },
+    docs: {
+      description: {
+        story:
+          'Use `<HeaderSearch/>` to render a form with actionable `search_query` requests. Its primary intention is to be used within the `<Header>` component and rendered on pressing `Search 🔍`, but is also freely available to be used by itself.',
+      },
+    },
+  },
+  render: function Render() {
+    return (
+      // Pass in an action to specify a URL different to your own
+      <HeaderSearch action="/search-api" />
+    );
+  },
+  play: headerSearchTests,
+};
+
 function HeaderSearchShowIconOnMd({ children }: { children: React.ReactNode }) {
   return (
     <div
@@ -661,7 +711,6 @@ function HeaderSearchShowIconOnMd({ children }: { children: React.ReactNode }) {
         '[&_[data-testid=header-search-form]>div>div:last-child]:md:!gi-block',
         // hide the text Button column on md+
         '[&_[data-testid=header-search-form]>div>div:nth-last-child(2)]:md:!gi-hidden',
-        'gi-max-w-sm',
       )}
     >
       {children}
@@ -669,85 +718,37 @@ function HeaderSearchShowIconOnMd({ children }: { children: React.ReactNode }) {
   );
 }
 
-const nonUniqueRoles = {
-  a11y: {
-    config: {
-      rules: [{ id: 'landmark-unique', enabled: false }],
-    },
-  },
-};
-
-export const UsingSearch: StoryObj = {
+export const HeaderSearchCustomIcon: StoryObj<Pick<HeaderSearchProps, 'icon'>> = {
   parameters: {
-    ...nonUniqueRoles,
+    controls: { include: ['icon'] },
+    a11y: {
+      config: {
+        rules: [{ id: 'landmark-unique', enabled: false }],
+      },
+    },
     docs: {
       description: {
-        story: 'Use `<HeaderSearch/>` to render a form with actionable `search_query` requests',
+        story:
+          'For mobile screens, the Search button is replaced with an icon button. By default, the magnifying glass icon 🔍 is rendered when no icon is passed in. Use `<HeaderSearch icon=<icon_name>/>` to render a custom icon. Refer to the [full icon list](/docs/foundation-icons--docs) for more options. ',
       },
     },
   },
-  render: function Render() {
+  argTypes: {
+    icon: {
+      options: ['menu', 'sort', 'arrow_downward', 'apps'],
+      control: { type: 'select' },
+    },
+  },
+
+  render: function Render({ icon }) {
     return (
-      <div className="gi-space-y-4 [&_[data-testid=header-search-form]]:gi-mx-0">
-        <div className="gi-flex gi-flex-col md:gi-flex-row gi-gap-4 ">
-          <div className="gi-max-w-md gi-grow">
-            <p>Desktop view</p>
-            {/* Pass in an action to specify a URL different to your own */}
-            <HeaderSearch action="/search-api" />
-          </div>
-          <Divider orientation="vertical" className="gi-flex-none" />
-          <div>
-            <HeaderSearchShowIconOnMd>
-              <p>Mobile view</p>
-              <HeaderSearch />
-            </HeaderSearchShowIconOnMd>
-          </div>
-          <Divider orientation="vertical" />
-          <div>
-            <p>Custom icon</p>
-            <HeaderSearchShowIconOnMd>
-              <HeaderSearch icon={'menu'} />
-            </HeaderSearchShowIconOnMd>
-          </div>
-        </div>
+      <div>
+        <p>Mobile view</p>
+        <HeaderSearchShowIconOnMd>
+          <HeaderSearch icon={icon} />
+        </HeaderSearchShowIconOnMd>
       </div>
     );
   },
-  play: async ({ canvasElement, step }) => {
-    const canvas = within(canvasElement);
-    const [desktop, mobile, customIcon] = await canvas.findAllByRole('form');
-    await step('All versions are rendered correctly', async () => {
-      expect(desktop).toBeInTheDocument();
-      expect(mobile).toBeInTheDocument();
-      expect(customIcon).toBeInTheDocument();
-      const searchButton = await within(desktop).findByRole('button');
-      const searchIcon = await within(mobile).findByTestId('search');
-      const menuIcon = await within(customIcon).findByTestId('menu');
-      expect(searchButton).toBeInTheDocument();
-      expect(searchButton).toHaveTextContent('Search');
-      expect(searchIcon).toBeInTheDocument();
-      expect(menuIcon).toBeInTheDocument();
-    });
-    await step('Correctly submits the form for both buttons', async () => {
-      const handleOnSubmitMock = fn().mockImplementation((event: FormDataEvent) => {
-        event.preventDefault();
-      });
-      desktop.addEventListener('submit', handleOnSubmitMock);
-      const searchButton = await within(desktop).findByRole('button');
-      const iconButton = await within(mobile).findByRole('button');
-
-      await userEvent.click(searchButton);
-      expect(handleOnSubmitMock).toHaveBeenCalled();
-      handleOnSubmitMock.mockClear();
-      expect(handleOnSubmitMock).not.toHaveBeenCalled();
-      mobile.addEventListener('submit', handleOnSubmitMock);
-      await userEvent.click(iconButton);
-      expect(handleOnSubmitMock).toHaveBeenCalled();
-      // cleanup for live interaction
-      desktop.removeEventListener('submit', handleOnSubmitMock);
-      mobile.removeEventListener('submit', handleOnSubmitMock);
-      // remove focus state from button
-      await userEvent.click(desktop);
-    });
-  },
+  play: async ({ canvasElement, step }) => headerSearchTests({ canvasElement, step, desktop: false }),
 };
