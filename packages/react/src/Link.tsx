@@ -5,25 +5,12 @@ export type LinkProps = GiLinkProps & {
   asChild?: boolean;
 };
 
-export function Link({ asChild, variant, underline, appearance, className, children, ...props }: LinkProps) {
+export default function Link({ asChild, variant, underline, appearance, visited, className, ...rest }: LinkProps) {
+  const styleProps = { variant, underline, appearance, visited };
+
   if (asChild) {
-    return (
-      <Slot
-        className={linkStyles({
-          variant,
-          underline,
-          appearance,
-          class: className,
-        })}
-      >
-        {children}
-      </Slot>
-    );
+    return <Slot {...rest} className={linkStyles({ ...styleProps, class: className })} />;
   }
 
-  return (
-    <GiLink {...props} variant={variant} underline={underline} appearance={appearance} className={className}>
-      {children}
-    </GiLink>
-  );
+  return <GiLink {...styleProps} {...rest} className={className} />;
 }

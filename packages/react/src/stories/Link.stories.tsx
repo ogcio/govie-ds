@@ -1,5 +1,5 @@
 import type { Meta, StoryObj } from '@storybook/react-vite';
-import Link from '@/atoms/Link';
+import Link from '@/Link';
 import Box from '@/atoms/Box';
 import * as stories from '@/atoms/storybook/Link.meta';
 
@@ -7,6 +7,18 @@ const meta = {
   ...stories.linkMeta,
   title: 'Navigation/Link/Link',
   component: Link,
+  argTypes: {
+    ...stories.linkMeta.argTypes,
+    asChild: {
+      control: false,
+      description:
+        'When true, Link renders a Radix Slot instead of an anchor. The child element receives the styling classes. Useful for composing with framework routers like next/link.',
+      table: {
+        type: { summary: 'boolean' },
+        defaultValue: { summary: 'false' },
+      },
+    },
+  },
   parameters: {
     ...stories.linkMeta.parameters,
     docs: {
@@ -69,6 +81,14 @@ export const Appearances: Story = {
         </Link>
       </Box>
     </Box>
+  ),
+};
+
+export const AsChild: Story = {
+  render: () => (
+    <Link asChild variant="inline" href="#">
+      <a>Styled via Slot</a>
+    </Link>
   ),
 };
 
