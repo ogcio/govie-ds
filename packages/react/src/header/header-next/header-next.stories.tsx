@@ -13,7 +13,7 @@ import { Link } from '@/link/link.js';
 import { List, ListTypeEnum } from '@/list/list.js';
 import { ListItem } from '@/list-item/list-item.js';
 import { SelectItemNext, SelectNext } from '@/select/select-next.js';
-import { HeaderSearch, type HeaderSearchProps } from '@/header/components/header-search.js';
+import { HeaderSearch, type HeaderSearchProps } from '@/header/components/header-search';
 import { HeaderLogo } from './components/header-logo.js';
 import { HeaderTitle } from './components/header-title.js';
 import { HeaderMenuItemButton } from './components/menu/components/header-menu-item-button.js';
