@@ -114,7 +114,7 @@ export const Default: StoryObj = {
             <HeaderMenuItemSlot className="gi-flex gi-items-center">
               <label>Hello John &nbsp;| </label>
               <a href="#" className="gi-header-secondary-item gi-header-secondary-item-default" aria-label="logout">
-                <LogoutIcon size={16} />
+                <LogoutIcon size={16} label="Log out" />
               </a>
             </HeaderMenuItemSlot>
           </HeaderSecondaryMenu>
@@ -703,21 +703,6 @@ export const HeaderSearch_: StoryObj = {
   play: headerSearchTests,
 };
 
-function HeaderSearchShowIconOnMd({ children }: { children: React.ReactNode }) {
-  return (
-    <div
-      className={clsx(
-        // IconButton column: force visible from md up
-        '[&_[data-testid=header-search-form]>div>div:last-child]:md:!gi-block',
-        // hide the text Button column on md+
-        '[&_[data-testid=header-search-form]>div>div:nth-last-child(2)]:md:!gi-hidden',
-      )}
-    >
-      {children}
-    </div>
-  );
-}
-
 export const HeaderSearchCustomIcon: StoryObj<Pick<HeaderSearchProps, 'icon'>> = {
   parameters: {
     controls: { include: ['icon'] },
@@ -733,6 +718,11 @@ export const HeaderSearchCustomIcon: StoryObj<Pick<HeaderSearchProps, 'icon'>> =
       },
     },
   },
+  globals: {
+    viewport: {
+      value: 'mobile2',
+    },
+  },
   argTypes: {
     icon: {
       options: ['menu', 'sort', 'arrow_downward', 'apps'],
@@ -745,14 +735,7 @@ export const HeaderSearchCustomIcon: StoryObj<Pick<HeaderSearchProps, 'icon'>> =
   },
 
   render: function Render({ icon }) {
-    return (
-      <div>
-        <p>Mobile view</p>
-        <HeaderSearchShowIconOnMd>
-          <HeaderSearch icon={icon} />
-        </HeaderSearchShowIconOnMd>
-      </div>
-    );
+    return <HeaderSearch icon={icon} />;
   },
   play: async ({ canvasElement, step }) => headerSearchTests({ canvasElement, step, desktop: false }),
 };
