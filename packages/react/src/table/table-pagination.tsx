@@ -2,10 +2,10 @@ import { cn } from '@/cn.js';
 import { translate as t } from '@/i18n/utility.js';
 import { SelectItem, SelectNative } from '@/select/select-native.js';
 import IconButton from '@/atoms/IconButton';
-import LastPage from '@/atoms/icons/LastPage';
-import KeyboardArrowRight from '@/atoms/icons/KeyboardArrowRight';
-import KeyboardArrowLeft from '@/atoms/icons/KeyboardArrowLeft';
-import FirstPage from '@/atoms/icons/FirstPage';
+import LastPageIcon from '@/atoms/icons/LastPage';
+import KeyboardArrowRightIcon from '@/atoms/icons/KeyboardArrowRight';
+import KeyboardArrowLeftIcon from '@/atoms/icons/KeyboardArrowLeft';
+import FirstPageIcon from '@/atoms/icons/FirstPage';
 
 export type TablePaginationProps = {
   align?: 'start' | 'center' | 'end';
@@ -53,7 +53,7 @@ export const TablePagination: React.FC<TablePaginationProps> = ({
         className="gi-mr-2 gi-p-2"
         ariaLabel="First page"
       >
-        <FirstPage className="gi-shrink-0" />
+        <FirstPageIcon className="gi-shrink-0" />
       </IconButton>
       <IconButton
         disabled={atFirstPage}
@@ -63,7 +63,7 @@ export const TablePagination: React.FC<TablePaginationProps> = ({
         className="gi-mr-2 gi-p-2"
         ariaLabel="Previous page"
       >
-        <KeyboardArrowLeft className="gi-shrink-0" />
+        <KeyboardArrowLeftIcon className="gi-shrink-0" />
       </IconButton>
       <div className="gi-table-pagination-label gi-space-x-2" aria-live="polite">
         <span>
@@ -98,7 +98,7 @@ export const TablePagination: React.FC<TablePaginationProps> = ({
         className="gi-ml-2 gi-p-2"
         ariaLabel="Next page"
       >
-        <KeyboardArrowRight className="gi-shrink-0" />
+        <KeyboardArrowRightIcon className="gi-shrink-0" />
       </IconButton>
       <IconButton
         disabled={atLastPage}
@@ -108,7 +108,7 @@ export const TablePagination: React.FC<TablePaginationProps> = ({
         className="gi-ml-2 gi-p-2"
         ariaLabel="Last page"
       >
-        <LastPage className="gi-shrink-0" />
+        <LastPageIcon className="gi-shrink-0" />
       </IconButton>
     </div>
   );

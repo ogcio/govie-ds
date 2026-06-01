@@ -16,8 +16,8 @@ import { TableHeader } from './table-header.js';
 import { TableRow } from './table-row.js';
 import { Table } from './table.js';
 import DownloadIcon from '@/atoms/icons/Download';
-import Edit from '@/atoms/icons/Edit';
-import Delete from '@/atoms/icons/Delete';
+import EditIcon from '@/atoms/icons/Edit';
+import DeleteIcon from '@/atoms/icons/Delete';
 
 interface TableRowData {
   [key: string]: any;
@@ -379,7 +379,7 @@ export const TableWithFooter: Story = {
                     size="lg"
                     ariaLabel="Edit"
                   >
-                    <Edit />
+                    <EditIcon />
                   </IconButton>
                 </Tooltip>
                 <Tooltip text="Delete the project" position="top">
@@ -390,7 +390,7 @@ export const TableWithFooter: Story = {
                     size="lg"
                     ariaLabel="Delete"
                   >
-                    <Delete />
+                    <DeleteIcon />
                   </IconButton>
                 </Tooltip>
               </div>

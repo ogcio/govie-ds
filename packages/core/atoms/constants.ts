@@ -11,13 +11,6 @@ export const Size = {
   XL: 'xl',
 } as const;
 
-export const ICON_SIZE: Record<keyof typeof Size, number> = {
-  SM: 16,
-  MD: 24,
-  LG: 32,
-  XL: 48,
-};
-
 export const Whitespace = {
   NORMAL: 'normal',
   PRE: 'pre',

@@ -5,8 +5,8 @@ import { useRef, useEffect, useState } from 'react';
 import { cn } from '@/cn.js';
 import IconButton from '@/atoms/IconButton';
 import type { TableAlign, VerticalAlign } from './table.js';
-import KeyboardArrowUp from '@/atoms/icons/KeyboardArrowUp.js';
-import KeyboardArrowDown from '@/atoms/icons/KeyboardArrowDown.js';
+import KeyboardArrowUpIcon from '@/atoms/icons/KeyboardArrowUp';
+import KeyboardArrowDownIcon from '@/atoms/icons/KeyboardArrowDown';
 
 type TableDataSize = 'xs-fixed' | 'sm-fixed' | 'md-fixed' | 'lg-flex' | 'fluid';
 
@@ -110,7 +110,7 @@ export const TableExpandIcon = ({ expanded, onClick }: TableExpandIconProps) => 
         }}
         ariaLabel={expanded ? 'Collapse row' : 'Expand row'}
       >
-        {expanded ? <KeyboardArrowUp className="gi-shrink-0" /> : <KeyboardArrowDown className="gi-shrink-0" />}
+        {expanded ? <KeyboardArrowUpIcon className="gi-shrink-0" /> : <KeyboardArrowDownIcon className="gi-shrink-0" />}
       </IconButton>
     </div>
   );
