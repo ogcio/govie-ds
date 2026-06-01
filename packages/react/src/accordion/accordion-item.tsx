@@ -32,7 +32,7 @@ export const AccordionItem = ({
       setIsExpanded(!isExpanded);
     }
   };
-  const { base, header, arrowIcon } = accordionVariants({ variant, isExpanded, disabled: !!disabled });
+  const { base, header } = accordionVariants({ variant, disabled: !!disabled });
   return (
     <>
       <div
@@ -47,7 +47,11 @@ export const AccordionItem = ({
       >
         <div data-testid="accordion-header" className={header()}>
           {label}
-          <KeyboardArrow className={arrowIcon()} />
+          <KeyboardArrow
+            className={clsx('gi-pt-[1.5px] gi-transition-transform gi-duration-100', {
+              'gi-rotate-180': isExpanded,
+            })}
+          />
         </div>
       </div>
       <div
@@ -71,7 +75,6 @@ const accordionVariants = tv({
   slots: {
     base: 'gi-focus-visible-state-outline-inner-shadow-sm',
     header: ' gi-flex gi-items-start gi-justify-between',
-    arrowIcon: 'gi-transition-transform gi-duration-200',
   },
   variants: {
     variant: {
@@ -85,11 +88,6 @@ const accordionVariants = tv({
       },
       true: {
         header: 'gi-cursor-not-allowed gi-text-gray-600',
-      },
-    },
-    isExpanded: {
-      true: {
-        arrowIcon: 'gi-rotate-180',
       },
     },
   },

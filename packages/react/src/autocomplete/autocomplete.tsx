@@ -10,7 +10,7 @@ import React, {
   useCallback,
 } from 'react';
 import { tv } from 'tailwind-variants';
-import { cn } from '@/cn.js';
+import clsx from 'clsx';
 import { useDomId } from '@/hooks/use-dom-id.js';
 import { translate as t } from '@/i18n/utility.js';
 import { InputText } from '@/input-text/input-text.js';
@@ -21,6 +21,7 @@ import { cycleEnabledIndex } from '@/utilities.js';
 import type { AutocompleteItemProps, AutocompleteOptionItemElement, AutocompleteProps } from './types.js';
 import { AUTOCOMPLETE_ACTIONS } from './types.js';
 import { useAutocompleteController } from './use-autocomplete-controller.js';
+import KeyboardArrow from '@/atoms/icons/KeyboardArrowDown';
 
 const {
   ON_RESET,
@@ -212,7 +213,7 @@ export const Autocomplete = forwardRef<HTMLInputElement, AutocompleteProps>((pro
   );
 
   return (
-    <div aria-disabled={disabled} className={cn(styles.root(), props.className)}>
+    <div aria-disabled={disabled} className={clsx(styles.root(), props.className)}>
       <span id={srOnlyLabelId} className="gi-sr-only">
         {labelText}
       </span>
@@ -233,8 +234,8 @@ export const Autocomplete = forwardRef<HTMLInputElement, AutocompleteProps>((pro
         aria-disabled={disabled}
         disabled={disabled}
         placeholder={placeholder ?? t('autocomplete.placeholder', { defaultValue: 'Type to Search' })}
-        iconEndClassName={styles.iconEnd()}
-        iconEnd={freeSolo ? undefined : getIconEnd(state.isOpen)}
+        iconEndClassName={styles.iconEnd({ isOpen: state.isOpen })}
+        iconEnd={freeSolo ? undefined : <KeyboardArrow />}
         ref={inputRef}
         iconEndRef={iconEndRef}
         value={state.inputValue}
@@ -336,7 +337,7 @@ Object.defineProperty(AutocompleteGroupItem, 'componentType', {
 const autocompleteStyles = tv({
   slots: {
     root: 'gi-relative gi-w-full gi-not-prose',
-    iconEnd: '',
+    iconEnd: 'gi-transition-transform gi-duration-100',
   },
   variants: {
     freeSolo: {
@@ -350,10 +351,13 @@ const autocompleteStyles = tv({
         iconEnd: 'gi-cursor-not-allowed gi-pointer-events-none',
       },
     },
+    isOpen: {
+      true: {
+        iconEnd: 'gi-rotate-180',
+      },
+    },
   },
 });
-
-const getIconEnd = (isOpen: boolean) => (isOpen ? 'keyboard_arrow_up' : 'keyboard_arrow_down');
 
 const propagateOnChange = (onChange: AutocompleteProps['onChange'], name?: string) => (inputValue: string) => {
   onChange?.({
