@@ -3,9 +3,9 @@ import type { ThHTMLAttributes } from 'react';
 import { Children } from 'react';
 import { cn } from '@/cn.js';
 import type { TableAlign, VerticalAlign } from './table.js';
-import SwapVertical from '@/atoms/icons/SwapVertical';
-import ArrowUpward from '@/atoms/icons/ArrowUpward';
-import ArrowDownward from '@/atoms/icons/ArrowDownward';
+import SwapVerticalIcon from '@/atoms/icons/SwapVertical';
+import ArrowUpwardIcon from '@/atoms/icons/ArrowUpward';
+import ArrowDownwardIcon from '@/atoms/icons/ArrowDownward';
 
 type SortedType = 'asc' | 'desc' | false;
 
@@ -25,11 +25,11 @@ const getSortedIcon = (isChildrenString: boolean, sorted: SortedType) => {
   }
   switch (sorted) {
     case false:
-      return <SwapVertical size={16} className="gi-shrink-0" />;
+      return <SwapVerticalIcon size={16} className="gi-shrink-0" />;
     case 'asc':
-      return <ArrowUpward size={16} className="gi-shrink-0" />;
+      return <ArrowUpwardIcon size={16} className="gi-shrink-0" />;
     default:
-      return <ArrowDownward size={16} className="gi-shrink-0" />;
+      return <ArrowDownwardIcon size={16} className="gi-shrink-0" />;
   }
 };
 
