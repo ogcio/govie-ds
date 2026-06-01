@@ -78,7 +78,7 @@ const accordionVariants = tv({
   },
   variants: {
     variant: {
-      default: { header: 'gi-px-2 gi-py-4 gi-text-md gi-font-bold', arrowIcon: 'gi-pt-[1.5px]' },
+      default: { header: 'gi-px-2 gi-py-4 gi-text-md gi-font-bold' },
       small: { header: 'gi-py-2 gi-px-2 gi-text-sm gi-font-bold' },
     },
     disabled: {

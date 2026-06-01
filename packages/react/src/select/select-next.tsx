@@ -27,7 +27,7 @@ import type {
   SelectNextOptionProps,
   SelectNextTableCellProps,
 } from './types.js';
-import KeyboardArrowDown from '@/atoms/icons/KeyboardArrowDown.js';
+import KeyboardArrow from '@/atoms/icons/KeyboardArrowDown';
 
 export const SelectNext = forwardRef<HTMLInputElement, SelectNextProps>(
   (
@@ -278,7 +278,7 @@ export const SelectNext = forwardRef<HTMLInputElement, SelectNextProps>(
             'gi-cursor-not-allowed gi-pointer-events-none': disabled,
             'gi-rotate-180': isOpen,
           })}
-          iconEnd={<KeyboardArrowDown />}
+          iconEnd={<KeyboardArrow />}
           onIconEndClick={handleOnClick}
           ref={inputRef}
           iconEndRef={iconEndRef}
