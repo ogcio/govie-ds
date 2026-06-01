@@ -160,6 +160,16 @@ export type HeaderVariant = 'default' | 'light';
 export type HeaderMenuItemLinkProps = AnchorHTMLAttributes<HTMLAnchorElement> & {
   asChild?: boolean;
   showItemMode?: HeaderItemMode;
+  /**
+   *  @deprecated icon will be deprecated in a future release. Instead, pass the SVG icon directly into the children.
+   *  @example
+   * ```
+   *<HeaderMenuItemLink>
+   *    FAQ
+   *    <InfoIcon />
+   *</HeaderMenuItemLink>
+   * ```
+   */
   icon?: IconId;
   href?: string;
   external?: boolean;
@@ -171,6 +181,16 @@ export type HeaderMenuItemButtonProps = PropsWithChildren<
     className?: string;
     asChild?: boolean;
     showItemMode?: HeaderItemMode;
+    /**
+     *  @deprecated icon will be deprecated in a future release. Instead, pass the SVG icon directly into the children.
+     *  @example
+     * ```
+     *<HeaderMenuItemButton>
+     *    FAQ
+     *    <InfoIcon />
+     *</HeaderMenuItemButton>
+     * ```
+     */
     icon?: IconId;
   }
 >;
