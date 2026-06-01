@@ -3,7 +3,7 @@ import clsx from 'clsx';
 import type { ComponentPropsWithRef } from 'react';
 import React, { useState, useRef } from 'react';
 import { tv } from 'tailwind-variants';
-import { Icon } from '@/icon/icon.js';
+import KeyboardArrow from '@/atoms/icons/KeyboardArrowDown';
 
 export type AccordionItemProps = {
   children: React.ReactNode;
@@ -32,7 +32,7 @@ export const AccordionItem = ({
       setIsExpanded(!isExpanded);
     }
   };
-  const { base, header } = accordionVariants({ variant, disabled: !!disabled });
+  const { base, header, arrowIcon } = accordionVariants({ variant, isExpanded, disabled: !!disabled });
   return (
     <>
       <div
@@ -47,13 +47,7 @@ export const AccordionItem = ({
       >
         <div data-testid="accordion-header" className={header()}>
           {label}
-          <Icon
-            icon={isExpanded ? 'keyboard_arrow_up' : 'keyboard_arrow_down'}
-            size="md"
-            className={clsx({
-              'gi-pt-[1.5px]': variant === 'default',
-            })}
-          />
+          <KeyboardArrow className={arrowIcon()} />
         </div>
       </div>
       <div
@@ -77,10 +71,11 @@ const accordionVariants = tv({
   slots: {
     base: 'gi-focus-visible-state-outline-inner-shadow-sm',
     header: ' gi-flex gi-items-start gi-justify-between',
+    arrowIcon: 'gi-transition-transform gi-duration-200',
   },
   variants: {
     variant: {
-      default: { header: 'gi-px-2 gi-py-4 gi-text-md gi-font-bold' },
+      default: { header: 'gi-px-2 gi-py-4 gi-text-md gi-font-bold', arrowIcon: 'gi-pt-[1.5px]' },
       small: { header: 'gi-py-2 gi-px-2 gi-text-sm gi-font-bold' },
     },
     disabled: {
@@ -90,6 +85,11 @@ const accordionVariants = tv({
       },
       true: {
         header: 'gi-cursor-not-allowed gi-text-gray-600',
+      },
+    },
+    isExpanded: {
+      true: {
+        arrowIcon: 'gi-rotate-180',
       },
     },
   },
