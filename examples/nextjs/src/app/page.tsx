@@ -864,6 +864,9 @@ export default function Home() {
                       <Link href="#" appearance="inherit">
                         Link with inherit appearance
                       </Link>
+                      <Link href="#" asChild>
+                        <NextLink href="#">Nextjs link with inline styles</NextLink>
+                      </Link>
                     </Box>
                   </Box>
 
