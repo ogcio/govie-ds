@@ -13,6 +13,8 @@ export const linkMeta = {
   args: {
     children: 'Link',
     href: 'https://www.gov.ie',
+    variant: 'inline' as const,
+    visited: 'default' as const,
     external: false,
     id: 'link-example',
     dataTestId: 'link-test',
@@ -26,7 +28,7 @@ export const linkMeta = {
     href: {
       control: 'text',
       description:
-        'The URL the link points to. Required — an anchor without href has no implicit link role. Maps to the HTML href attribute.',
+        'The URL the link points to. An anchor without href has no implicit link role. Maps to the HTML href attribute.',
       table: {
         type: {
           summary: 'string',
@@ -198,15 +200,15 @@ export const linkMeta = {
     },
     variant: {
       control: 'select',
-      options: ['inline', 'plain'],
+      options: ['default', 'inline'],
       description:
-        'Controls the styling level. "inline" applies typography, colour, underline, and focus styles. "plain" renders a bare anchor with no design-system styles.',
+        'Controls the styling level. "default" renders a bare anchor with no design-system styles. "inline" applies typography, colour, underline, and focus styles.',
       table: {
         type: {
-          summary: "'inline' | 'plain'",
+          summary: "'default' | 'inline'",
         },
         defaultValue: {
-          summary: 'inline',
+          summary: 'default',
         },
       },
     },
@@ -228,6 +230,20 @@ export const linkMeta = {
       table: {
         type: {
           summary: "'light' | 'inherit'",
+        },
+      },
+    },
+    visited: {
+      control: 'select',
+      options: ['default', 'none'],
+      description:
+        'Controls visited link colour. "default" keeps the visited style. "none" resets visited colour to the default text colour.',
+      table: {
+        type: {
+          summary: "'default' | 'none'",
+        },
+        defaultValue: {
+          summary: 'default',
         },
       },
     },
@@ -283,7 +299,7 @@ export const PrimitiveAnchor = {
   args: {
     ...linkMeta.args,
     children: 'Unstyled primitive anchor',
-    variant: 'plain' as const,
+    variant: 'default' as const,
     dataTestId: 'link-primitive',
   },
   play: async ({ canvasElement, step, args }: StoryContext<Renderer>) => {

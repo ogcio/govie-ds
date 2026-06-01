@@ -37,13 +37,13 @@ export const InlineLink: Story = { ...stories.InlineLink };
 export const Underlines: Story = {
   render: () => (
     <Box className="gi-flex gi-flex-col gi-gap-4 gi-items-start">
-      <Link href="#" underline="always">
+      <Link href="#" variant="inline" underline="always">
         Always underlined
       </Link>
-      <Link href="#" underline="hover">
+      <Link href="#" variant="inline" underline="hover">
         Underline on hover only
       </Link>
-      <Link href="#" underline="none">
+      <Link href="#" variant="inline" underline="none">
         No underline
       </Link>
     </Box>
@@ -54,15 +54,17 @@ export const Appearances: Story = {
   render: () => (
     <Box className="gi-flex gi-flex-col gi-gap-4 gi-items-start">
       <Box className="gi-p-4">
-        <Link href="#">Default</Link>
+        <Link href="#" variant="inline">
+          Default
+        </Link>
       </Box>
       <Box className="gi-p-4 gi-bg-black">
-        <Link href="#" appearance="light">
+        <Link href="#" variant="inline" appearance="light">
           Light appearance
         </Link>
       </Box>
       <Box className="gi-p-4 gi-text-gray-700">
-        <Link href="#" appearance="inherit">
+        <Link href="#" variant="inline" appearance="inherit">
           Inherits parent colour
         </Link>
       </Box>
@@ -75,22 +77,24 @@ export const InteractionStates: Story = {
   render: () => (
     <Box className="gi-flex gi-flex-col gi-gap-4 gi-items-start">
       <Box className="gi-flex gi-flex-col gi-gap-2 sm:gi-flex-row">
-        <Link href="#">default</Link>
-        <Link href="#" className="pseudo-hover">
+        <Link href="#" variant="inline">
+          default
+        </Link>
+        <Link href="#" variant="inline" className="pseudo-hover">
           hover
         </Link>
-        <Link href="#" className="pseudo-focus">
+        <Link href="#" variant="inline" className="pseudo-focus">
           focus
         </Link>
       </Box>
       <Box className="gi-flex gi-flex-col gi-gap-2 sm:gi-flex-row gi-p-4 gi-bg-black">
-        <Link href="#" appearance="light">
+        <Link href="#" variant="inline" appearance="light">
           light
         </Link>
-        <Link href="#" appearance="light" className="pseudo-hover">
+        <Link href="#" variant="inline" appearance="light" className="pseudo-hover">
           light hover
         </Link>
-        <Link href="#" appearance="light" className="pseudo-focus">
+        <Link href="#" variant="inline" appearance="light" className="pseudo-focus">
           light focus
         </Link>
       </Box>

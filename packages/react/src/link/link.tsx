@@ -2,7 +2,7 @@ import _ from 'lodash';
 import { Slot } from '@radix-ui/react-slot';
 import type { PropsWithChildren } from 'react';
 import React, { forwardRef } from 'react';
-import LinkNext, { type Props as LinkNextProps, Appearance, Underline } from '@/atoms/Link';
+import LinkNext, { type Props as LinkNextProps, Appearance, Underline, Visited } from '@/atoms/Link';
 import { getSizeClass, getVariantAppearanceClass } from '@/button/helpers';
 import type { ButtonAppearance, ButtonSize, ButtonVariant } from '@/button/types';
 import { cn } from '@/cn';
@@ -10,7 +10,6 @@ import type { IconId } from '@/icon/icon';
 import { Icon } from '@/icon/icon';
 import type { AnchorProps } from '@/primitives/anchor';
 import Anchor from '@/primitives/anchor';
-import clsx from 'clsx';
 
 export type LinkProps = AnchorProps & {
   href?: string;
@@ -93,14 +92,11 @@ export const Link = forwardRef<HTMLElement, LinkProps>(
         <LinkNext
           href={props.href}
           external={external}
+          variant="inline"
           underline={noUnderline ? Underline.HOVER : Underline.ALWAYS}
           appearance={noColor ? Appearance.INHERIT : appearance === 'light' ? Appearance.LIGHT : undefined}
-          className={clsx(
-            {
-              'visited:gi-text-color-text-tone-convention-default': noVisited,
-            },
-            className,
-          )}
+          visited={noVisited ? Visited.NONE : undefined}
+          className={className}
           dataTestId={dataTestid}
           id={props.id}
           target={props.target as LinkNextProps['target']}
