@@ -4,7 +4,7 @@ import { Children } from 'react';
 import { cn } from '@/cn.js';
 import type { TableAlign, VerticalAlign } from './table.js';
 import SwapVertical from '@/atoms/icons/SwapVertical';
-import { ICON_SIZE as size } from '@/atoms/constants';
+import { ICON_SIZE } from '@/atoms/constants';
 import ArrowUpward from '@/atoms/icons/ArrowUpward';
 import ArrowDownward from '@/atoms/icons/ArrowDownward';
 
@@ -26,11 +26,13 @@ const getSortedIcon = (isChildrenString: boolean, sorted: SortedType) => {
   }
   switch (sorted) {
     case false:
-      return <SwapVertical size={size.SM} className="gi-shrink-0" />;
+      return <SwapVertical size={ICON_SIZE.SM} className="gi-shrink-0" />;
     case 'asc':
-      return <ArrowUpward size={size.SM} className="gi-shrink-0" />;
+      return <ArrowUpward size={ICON_SIZE.SM} className="gi-shrink-0" />;
+    case 'desc':
+      return <ArrowDownward size={ICON_SIZE.SM} className="gi-shrink-0" />;
     default:
-      return <ArrowDownward size={size.SM} className="gi-shrink-0" />;
+      return <ArrowDownward size={ICON_SIZE.SM} className="gi-shrink-0" />;
   }
 };
 

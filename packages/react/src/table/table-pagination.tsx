@@ -93,7 +93,6 @@ export const TablePagination: React.FC<TablePaginationProps> = ({
       <IconButton
         onClick={handleNext}
         disabled={atLastPage}
-        aria-disabled={atLastPage}
         appearance="dark"
         variant="flat"
         className="gi-ml-2 gi-p-2"

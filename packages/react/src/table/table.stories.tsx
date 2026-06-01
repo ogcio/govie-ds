@@ -588,7 +588,7 @@ export const WithSmallRowSize: Story = {
             <TableData>
               <IconButton size="md" variant="flat" appearance="dark" ariaLabel="Download">
                 <DownloadIcon />
-              </IconButton>{' '}
+              </IconButton>
             </TableData>
           </TableRow>
         ))}
