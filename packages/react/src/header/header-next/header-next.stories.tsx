@@ -413,8 +413,8 @@ export const Light: StoryObj = {
             </HeaderMenuItemLink>
             <HeaderMenuItemSlot className="gi-flex gi-items-center">
               <label>Hello John &nbsp;| </label>
-              <a href="#" className="gi-header-secondary-item gi-header-secondary-item-light" aria-label="logout">
-                <LogoutIcon size={16} />
+              <a href="#" className="gi-header-secondary-item gi-header-secondary-item-light">
+                <LogoutIcon size={16} label="Log out" />
               </a>
             </HeaderMenuItemSlot>
           </HeaderSecondaryMenu>
