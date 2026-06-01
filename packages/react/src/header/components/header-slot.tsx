@@ -6,6 +6,7 @@ import { Icon } from '@/icon/icon.js';
 import { Input } from '@/primitives/input.js';
 import type { HeaderAppearance, HeaderItem } from '@/header/types.js';
 import { headerSlotContainerVariants, headerToolItemVariants } from '@/header/variants.js';
+import Close from '@/atoms/icons/Close';
 
 type HeaderSlotProps = {
   item: HeaderItem;
@@ -75,15 +76,13 @@ const DrawerTrigger = ({
             ariaHidden={true}
           />
         )}
-        <Icon
-          className={cn({
+        <Close
+          id={`ItemCloseTrigger-${index}`}
+          className={cn('gi-shrink-0', {
             'gi-hidden': !isOpen,
             'gi-block': isOpen,
           })}
-          id={`ItemCloseTrigger-${index}`}
-          ariaHidden={true}
-          data-testid={`ItemCloseTrigger-${index}`}
-          icon="close"
+          dataTestId={`ItemCloseTrigger-${index}`}
         />
       </label>
       <DrawerWrapper
@@ -127,14 +126,10 @@ export const SlotItemAction = ({ item, index, appearance }: HeaderSlotProps) => 
       />
       {item.label && <span className="label">{item.label}</span>}
       {item.icon && <Icon icon={item.icon} ariaHidden={true} id={`ItemIconActionTrigger-${index}`} />}
-      <Icon
-        className="gi-hidden close-icon"
-        ariaHidden={true}
+      <Close
         id={`ItemCloseTrigger-${index}`}
-        icon="close"
-        data-testid={`ItemCloseTrigger-${index}`}
-        // TODO: temporary fix of icons interaction
-        useFontIcon={true}
+        className="gi-hidden close-icon"
+        dataTestId={`ItemCloseTrigger-${index}`}
       />
     </label>
   );
