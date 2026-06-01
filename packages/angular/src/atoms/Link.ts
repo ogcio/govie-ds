@@ -11,11 +11,12 @@ import { CommonModule } from '@angular/common';
 export type Props = {
   id?: string;
   children: any;
-  href: string;
+  href?: string;
   className?: string;
   variant?: (typeof Variant)[keyof typeof Variant];
   underline?: (typeof Underline)[keyof typeof Underline];
   appearance?: (typeof Appearance)[keyof typeof Appearance];
+  visited?: (typeof Visited)[keyof typeof Visited];
   external?: boolean;
   target?: '_self' | '_blank' | '_parent' | '_top';
   rel?: string;
@@ -36,8 +37,8 @@ export type Props = {
 
 import { tv } from 'tailwind-variants';
 export const Variant = {
+  DEFAULT: 'default',
   INLINE: 'inline',
-  PLAIN: 'plain',
 } as const;
 export const Underline = {
   ALWAYS: 'always',
@@ -48,18 +49,21 @@ export const Appearance = {
   LIGHT: 'light',
   INHERIT: 'inherit',
 } as const;
+export const Visited = {
+  DEFAULT: 'default',
+  NONE: 'none',
+} as const;
 export const linkStyles = tv({
   base: '',
   variants: {
     variant: {
+      [Variant.DEFAULT]: '',
       [Variant.INLINE]: [
         'gi-font-primary',
         'gi-w-fit',
         'gi-inline-flex',
         'gi-text-color-text-tone-convention-default',
         'hover:gi-text-color-text-tone-convention-hover',
-        'visited:gi-text-color-icon-tone-convention-visited',
-        'hover:visited:gi-text-color-icon-tone-convention-visited',
         'focus:gi-no-underline',
         'focus:gi-rounded-sm',
         'focus:gi-text-color-text-tone-convention-hover',
@@ -81,7 +85,6 @@ export const linkStyles = tv({
         'hover:gi-underline',
         'supports-[-moz-appearance:none]:gi-underline-offset-[0.23em]',
       ],
-      [Variant.PLAIN]: '',
     },
     underline: {
       [Underline.ALWAYS]: 'gi-underline',
@@ -92,10 +95,34 @@ export const linkStyles = tv({
       [Appearance.LIGHT]: 'gi-text-white hover:gi-text-white focus:gi-text-white',
       [Appearance.INHERIT]: 'gi-text-inherit hover:gi-text-inherit',
     },
+    visited: {
+      [Visited.DEFAULT]: '',
+      [Visited.NONE]: '',
+    },
   },
   defaultVariants: {
-    variant: Variant.INLINE,
+    variant: Variant.DEFAULT,
+    visited: Visited.DEFAULT,
   },
+  compoundVariants: [
+    {
+      variant: Variant.INLINE,
+      visited: Visited.DEFAULT,
+      class:
+        'visited:gi-text-color-icon-tone-convention-visited hover:visited:gi-text-color-icon-tone-convention-visited',
+    },
+    {
+      variant: Variant.INLINE,
+      visited: Visited.NONE,
+      class:
+        'visited:gi-text-color-text-tone-convention-default hover:visited:gi-text-color-text-tone-convention-default',
+    },
+    {
+      variant: Variant.DEFAULT,
+      visited: Visited.NONE,
+      class: 'visited:gi-text-inherit hover:visited:gi-text-inherit',
+    },
+  ],
 });
 
 @Component({
@@ -109,6 +136,7 @@ export const linkStyles = tv({
           variant: variant,
           underline: underline,
           appearance: appearance,
+          visited: visited,
           class: className,
         })
       "
@@ -148,6 +176,7 @@ export default class Link {
   @Input() variant!: Props['variant'];
   @Input() underline!: Props['underline'];
   @Input() appearance!: Props['appearance'];
+  @Input() visited!: Props['visited'];
   @Input() className!: Props['className'];
   @Input() target!: Props['target'];
   @Input() external!: Props['external'];

@@ -47,6 +47,7 @@ export const ExternalLink: StoryObj = {
       <gi-link
         [href]="href"
         [external]="external"
+        [variant]="variant"
         [id]="id"
         [dataTestId]="dataTestId"
       >
@@ -97,9 +98,9 @@ export const Underlines: StoryObj = {
     moduleMetadata: { imports: [Link, Box] },
     template: `
       <gi-box [className]="'gi-flex gi-flex-col gi-gap-4 gi-items-start'">
-        <gi-link href="#" underline="always">Always underlined</gi-link>
-        <gi-link href="#" underline="hover">Underline on hover only</gi-link>
-        <gi-link href="#" underline="none">No underline</gi-link>
+        <gi-link href="#" variant="inline" underline="always">Always underlined</gi-link>
+        <gi-link href="#" variant="inline" underline="hover">Underline on hover only</gi-link>
+        <gi-link href="#" variant="inline" underline="none">No underline</gi-link>
       </gi-box>
     `,
   }),
@@ -111,13 +112,13 @@ export const Appearances: StoryObj = {
     template: `
       <gi-box [className]="'gi-flex gi-flex-col gi-gap-4 gi-items-start'">
         <gi-box [className]="'gi-p-4'">
-          <gi-link href="#">Default (inline variant)</gi-link>
+          <gi-link href="#" variant="inline">Default (inline variant)</gi-link>
         </gi-box>
         <gi-box [className]="'gi-p-4 gi-bg-black'">
-          <gi-link href="#" appearance="light">Light appearance</gi-link>
+          <gi-link href="#" variant="inline" appearance="light">Light appearance</gi-link>
         </gi-box>
         <gi-box [className]="'gi-p-4 gi-text-gray-700'">
-          <gi-link href="#" appearance="inherit">Inherits parent colour</gi-link>
+          <gi-link href="#" variant="inline" appearance="inherit">Inherits parent colour</gi-link>
         </gi-box>
       </gi-box>
     `,
@@ -130,14 +131,14 @@ export const InteractionStates: StoryObj = {
     template: `
       <gi-box [className]="'gi-flex gi-flex-col gi-gap-4 gi-items-start'">
         <gi-box [className]="'gi-flex gi-flex-col gi-gap-2 sm:gi-flex-row'">
-          <gi-link href="#">default</gi-link>
-          <gi-link href="#" className="pseudo-hover">hover</gi-link>
-          <gi-link href="#" className="pseudo-focus">focus</gi-link>
+          <gi-link href="#" variant="inline">default</gi-link>
+          <gi-link href="#" variant="inline" className="pseudo-hover">hover</gi-link>
+          <gi-link href="#" variant="inline" className="pseudo-focus">focus</gi-link>
         </gi-box>
         <gi-box [className]="'gi-flex gi-flex-col gi-gap-2 sm:gi-flex-row gi-p-4 gi-bg-black'">
-          <gi-link href="#" appearance="light">light</gi-link>
-          <gi-link href="#" appearance="light" className="pseudo-hover">light hover</gi-link>
-          <gi-link href="#" appearance="light" className="pseudo-focus">light focus</gi-link>
+          <gi-link href="#" variant="inline" appearance="light">light</gi-link>
+          <gi-link href="#" variant="inline" appearance="light" className="pseudo-hover">light hover</gi-link>
+          <gi-link href="#" variant="inline" appearance="light" className="pseudo-focus">light focus</gi-link>
         </gi-box>
       </gi-box>
     `,
