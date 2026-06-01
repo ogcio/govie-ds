@@ -113,7 +113,7 @@ export const Default: StoryObj = {
             </HeaderMenuItemLink>
             <HeaderMenuItemSlot className="gi-flex gi-items-center">
               <label>Hello John &nbsp;| </label>
-              <a href="#" className="gi-header-secondary-item gi-header-secondary-item-light" aria-label="logout">
+              <a href="#" className="gi-header-secondary-item gi-header-secondary-item-default" aria-label="logout">
                 <LogoutIcon size={16} />
               </a>
             </HeaderMenuItemSlot>
