@@ -2,8 +2,7 @@ import _ from 'lodash';
 import { Slot } from '@radix-ui/react-slot';
 import type { PropsWithChildren } from 'react';
 import React, { forwardRef } from 'react';
-import LinkNext, { type LinkProps as LinkNextProps } from '@/Link';
-import { Appearance, Underline } from '@/atoms/Link';
+import LinkNext, { type Props as LinkNextProps, Appearance, Underline } from '@/atoms/Link';
 import { getSizeClass, getVariantAppearanceClass } from '@/button/helpers';
 import type { ButtonAppearance, ButtonSize, ButtonVariant } from '@/button/types';
 import { cn } from '@/cn';
@@ -95,7 +94,7 @@ export const Link = forwardRef<HTMLElement, LinkProps>(
           href={props.href}
           external={external}
           underline={noUnderline ? Underline.HOVER : Underline.ALWAYS}
-          appearance={noColor ? Appearance.INHERIT : appearance}
+          appearance={noColor ? Appearance.INHERIT : appearance === 'light' ? Appearance.LIGHT : undefined}
           className={clsx(
             {
               'visited:gi-text-color-text-tone-convention-default': noVisited,

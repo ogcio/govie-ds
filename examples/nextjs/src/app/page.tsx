@@ -855,10 +855,10 @@ export default function Home() {
                       Links
                     </Heading>
                     <Box className="space-x-4">
-                      <Link href="https://www.google.com" external={true} inline>
+                      <Link href="https://www.google.com" external={true}>
                         External Link
                       </Link>
-                      <Link href="#" underline="hover">
+                      <Link href="#" underline="none">
                         Link without underline
                       </Link>
                       <Link href="#" appearance="inherit">

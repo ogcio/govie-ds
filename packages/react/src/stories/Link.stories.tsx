@@ -1,12 +1,21 @@
 import type { Meta, StoryObj } from '@storybook/react-vite';
-import Link from '@/Link';
+import Link from '@/atoms/Link';
 import Box from '@/atoms/Box';
 import * as stories from '@/atoms/storybook/Link.meta';
 
 const meta = {
   ...stories.linkMeta,
-  title: 'Next/Navigation/Link',
+  title: 'Navigation/Link/Link',
   component: Link,
+  parameters: {
+    ...stories.linkMeta.parameters,
+    docs: {
+      ...stories.linkMeta.parameters?.docs,
+      description: {
+        component: `${stories.linkMeta.parameters?.docs?.description?.component ?? ''}\n\nThis is the recommended Link component for new projects. It is available via the \`next\` entry point of the React package:\n\n\`\`\`tsx\nimport { Link } from "@ogcio/design-system-react/next";\n\`\`\``,
+      },
+    },
+  },
 } as Meta<typeof Link>;
 
 export default meta;
@@ -15,12 +24,10 @@ type Story = StoryObj<typeof Link>;
 
 export const Default: Story = {
   ...stories.Default,
-  args: { ...stories.Default.args, inline: true },
 };
 
 export const ExternalLink: Story = {
   ...stories.ExternalLink,
-  args: { ...stories.ExternalLink.args, inline: true },
 };
 
 export const PrimitiveAnchor: Story = { ...stories.PrimitiveAnchor };
@@ -47,9 +54,7 @@ export const Appearances: Story = {
   render: () => (
     <Box className="gi-flex gi-flex-col gi-gap-4 gi-items-start">
       <Box className="gi-p-4">
-        <Link href="#" inline>
-          Default appearance
-        </Link>
+        <Link href="#">Default</Link>
       </Box>
       <Box className="gi-p-4 gi-bg-black">
         <Link href="#" appearance="light">
@@ -70,13 +75,11 @@ export const InteractionStates: Story = {
   render: () => (
     <Box className="gi-flex gi-flex-col gi-gap-4 gi-items-start">
       <Box className="gi-flex gi-flex-col gi-gap-2 sm:gi-flex-row">
-        <Link href="#" inline>
-          default
-        </Link>
-        <Link href="#" inline className="pseudo-hover">
+        <Link href="#">default</Link>
+        <Link href="#" className="pseudo-hover">
           hover
         </Link>
-        <Link href="#" inline className="pseudo-focus">
+        <Link href="#" className="pseudo-focus">
           focus
         </Link>
       </Box>

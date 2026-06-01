@@ -9,7 +9,7 @@ import { within, expect, userEvent } from 'storybook/test';
 import { checker } from './utilities';
 export const linkMeta = {
   tags: ['autodocs'] as string[],
-  title: 'Next/Navigation/Link',
+  title: 'Navigation/Link',
   args: {
     children: 'Link',
     href: 'https://www.gov.ie',
@@ -196,36 +196,38 @@ export const linkMeta = {
         },
       },
     },
-    inline: {
-      control: 'boolean',
+    variant: {
+      control: 'select',
+      options: ['inline', 'plain'],
       description:
-        'Enables styled inline link mode. When true, applies typography, colour, underline, and focus styles. When false, renders a bare anchor.',
+        'Controls the styling level. "inline" applies typography, colour, underline, and focus styles. "plain" renders a bare anchor with no design-system styles.',
       table: {
         type: {
-          summary: 'boolean',
+          summary: "'inline' | 'plain'",
         },
         defaultValue: {
-          summary: 'false',
+          summary: 'inline',
         },
       },
     },
     underline: {
-      control: {
-        disable: true,
-      },
+      control: 'select',
+      options: ['always', 'hover', 'none'],
+      description:
+        'Controls text decoration independently of variant. "always" shows underline, "hover" shows on hover only, "none" removes underline entirely.',
       table: {
-        defaultValue: {
-          summary: 'always',
+        type: {
+          summary: "'always' | 'hover' | 'none'",
         },
       },
     },
     appearance: {
-      control: {
-        disable: true,
-      },
+      control: 'select',
+      options: ['light', 'inherit'],
+      description: 'Overrides the text colour. Use "light" on dark backgrounds, "inherit" to match parent text colour.',
       table: {
-        defaultValue: {
-          summary: 'default',
+        type: {
+          summary: "'light' | 'inherit'",
         },
       },
     },
@@ -281,6 +283,7 @@ export const PrimitiveAnchor = {
   args: {
     ...linkMeta.args,
     children: 'Unstyled primitive anchor',
+    variant: 'plain' as const,
     dataTestId: 'link-primitive',
   },
   play: async ({ canvasElement, step, args }: StoryContext<Renderer>) => {
@@ -300,7 +303,7 @@ export const InlineLink = {
   args: {
     ...linkMeta.args,
     children: 'Styled inline link',
-    inline: true,
+    variant: 'inline' as const,
     dataTestId: 'link-inline',
   },
   play: async ({ canvasElement, step, args }: StoryContext<Renderer>) => {

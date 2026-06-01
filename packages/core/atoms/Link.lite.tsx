@@ -9,6 +9,10 @@ export type Props = {
   href: string;
   className?: string;
 
+  variant?: (typeof Variant)[keyof typeof Variant];
+  underline?: (typeof Underline)[keyof typeof Underline];
+  appearance?: (typeof Appearance)[keyof typeof Appearance];
+
   external?: boolean;
   target?: '_self' | '_blank' | '_parent' | '_top';
   rel?: string;
@@ -35,7 +39,12 @@ export default function Link(props: Props) {
     <a
       id={props.id}
       href={props.href}
-      class={props.className}
+      class={linkStyles({
+        variant: props.variant,
+        underline: props.underline,
+        appearance: props.appearance,
+        class: props.className,
+      })}
       target={props.target || (props.external ? '_blank' : undefined)}
       rel={props.rel || (props.external ? 'noreferrer noopener' : undefined)}
       download={props.download}
@@ -57,6 +66,11 @@ export default function Link(props: Props) {
   );
 }
 
+export const Variant = {
+  INLINE: 'inline',
+  PLAIN: 'plain',
+} as const;
+
 export const Underline = {
   ALWAYS: 'always',
   HOVER: 'hover',
@@ -64,54 +78,56 @@ export const Underline = {
 } as const;
 
 export const Appearance = {
-  DEFAULT: 'default',
   LIGHT: 'light',
   INHERIT: 'inherit',
 } as const;
 
 export const linkStyles = tv({
-  base: [
-    'gi-font-primary',
-    'gi-w-fit',
-    'gi-text-color-text-tone-convention-default',
-    'gi-inline-flex',
-    'hover:gi-text-color-text-tone-convention-hover',
-    'visited:gi-text-color-icon-tone-convention-visited',
-    'hover:visited:gi-text-color-icon-tone-convention-visited',
-    'focus:gi-no-underline',
-    'focus:gi-rounded-sm',
-    'focus:gi-text-color-text-tone-convention-hover',
-    'focus:gi-shadow-[0_0_0_2px_var(--gieds-color-gray-950),0_0_0_5px_var(--gieds-color-yellow-400)]',
-    'focus-visible:gi-shadow-[0_0_0_2px_var(--gieds-color-gray-950),0_0_0_5px_var(--gieds-color-yellow-400)]',
-    'focus-visible:gi-no-underline',
-    'focus-visible:gi-rounded-sm',
-    'focus-visible:gi-outline-none',
-    'focus-visible:gi-text-color-text-tone-convention-hover',
-    'aria-[current=page]:gi-text-color-icon-tone-convention-disabled',
-    'aria-[current=page]:gi-pointer-events-none',
-    'aria-[current=page]:gi-no-underline',
-    'aria-[current=page]:focus-visible:gi-outline-none',
-    'aria-[current=page]:focus-visible:gi-shadow-none',
-    'gi-decoration-[max(1px,0.08em)]',
-    'gi-underline-offset-[0.2em]',
-    'hover:gi-decoration-[max(2px,0.12em)]',
-    'hover:gi-underline',
-    'supports-[-moz-appearance:none]:gi-underline-offset-[0.23em]',
-  ],
+  base: '',
   variants: {
+    variant: {
+      [Variant.INLINE]: [
+        'gi-font-primary',
+        'gi-w-fit',
+        'gi-inline-flex',
+        'gi-text-color-text-tone-convention-default',
+        'hover:gi-text-color-text-tone-convention-hover',
+        'visited:gi-text-color-icon-tone-convention-visited',
+        'hover:visited:gi-text-color-icon-tone-convention-visited',
+        'focus:gi-no-underline',
+        'focus:gi-rounded-sm',
+        'focus:gi-text-color-text-tone-convention-hover',
+        'focus:gi-shadow-[0_0_0_2px_var(--gieds-color-gray-950),0_0_0_5px_var(--gieds-color-yellow-400)]',
+        'focus-visible:gi-shadow-[0_0_0_2px_var(--gieds-color-gray-950),0_0_0_5px_var(--gieds-color-yellow-400)]',
+        'focus-visible:gi-no-underline',
+        'focus-visible:gi-rounded-sm',
+        'focus-visible:gi-outline-none',
+        'focus-visible:gi-text-color-text-tone-convention-hover',
+        'aria-[current=page]:gi-text-color-icon-tone-convention-disabled',
+        'aria-[current=page]:gi-pointer-events-none',
+        'aria-[current=page]:gi-no-underline',
+        'aria-[current=page]:focus-visible:gi-outline-none',
+        'aria-[current=page]:focus-visible:gi-shadow-none',
+        'gi-decoration-[max(1px,0.08em)]',
+        'gi-underline-offset-[0.2em]',
+        'gi-underline',
+        'hover:gi-decoration-[max(2px,0.12em)]',
+        'hover:gi-underline',
+        'supports-[-moz-appearance:none]:gi-underline-offset-[0.23em]',
+      ],
+      [Variant.PLAIN]: '',
+    },
     underline: {
       [Underline.ALWAYS]: 'gi-underline',
       [Underline.HOVER]: 'gi-no-underline',
       [Underline.NONE]: 'gi-no-underline hover:gi-no-underline',
     },
     appearance: {
-      [Appearance.DEFAULT]: '',
       [Appearance.LIGHT]: 'gi-text-white hover:gi-text-white focus:gi-text-white',
       [Appearance.INHERIT]: 'gi-text-inherit hover:gi-text-inherit',
     },
   },
   defaultVariants: {
-    underline: Underline.ALWAYS,
-    appearance: Appearance.DEFAULT,
+    variant: Variant.INLINE,
   },
 });

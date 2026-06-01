@@ -6,7 +6,7 @@ import type { LinkProps } from './link.js';
 import { Link } from './link.js';
 
 const meta = {
-  title: 'Navigation/Link',
+  title: 'Navigation/Link/Link (Legacy)',
   component: Link,
   argTypes: {
     content: {
