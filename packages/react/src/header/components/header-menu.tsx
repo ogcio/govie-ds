@@ -1,7 +1,7 @@
 'use client';
 
 import { useState } from 'react';
-import KeyboardArrowRightIcon from '@/atoms/icons/KeyboardArrowRight';
+import KeyboardArrow from '@/atoms/icons/KeyboardArrowRight';
 import { cn } from '@/cn.js';
 import { ListItem } from '@/list-item/list-item.js';
 import type { HeaderProps } from '@/header/types.js';
@@ -48,7 +48,7 @@ export const MenuItemAccordion = ({ index, item }: MenuItemAccordionProps) => {
       >
         <div>
           <span className="gi-text-sm gi-font-bold gi-ml-1">{item.label}</span>
-          <KeyboardArrowRightIcon
+          <KeyboardArrow
             className={clsx('gi-shrink-0 gi-transition-transform gi-duration-100', {
               'gi-rotate-90': isOpen,
             })}
