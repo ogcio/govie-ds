@@ -24,12 +24,16 @@ component:
           description: 'Unique identifier for the item.'
           required: true
         - name: 'label'
-          ofType: 'string'
-          description: 'The visible label text for the item.'
+          ofType: 'ReactNode'
+          description: 'The visible label for the item. Accepts a plain string or a custom component for composable labels (e.g. text with a counter Tag).'
           required: true
         - name: 'icon'
           ofType: 'string'
           description: 'Icon name (material symbols) to show beside the label.'
+          required: false
+        - name: 'actions'
+          ofType: 'ReactNode'
+          description: 'Trailing action slot rendered outside the main interactive element. Use for controls like an IconButton that opens a menu.'
           required: false
         - name: 'href'
           ofType: 'string'
@@ -79,6 +83,8 @@ component:
       url: '/story/navigation-sidenav--with-icons'
     - name: 'parent-child'
       url: '/story/navigation-sidenav--parent-child'
+    - name: 'full-example'
+      url: '/story/navigation-sidenav--full-example'
 ---
 
 # Side Navigation
@@ -131,9 +137,17 @@ Side Navigation (SideNav) is used to organize and access major sections of an ap
 ### Parent Child
 
 <StorybookFrame
-  className="h-96"
+  className="h-52"
   componentId="side-nav-react"
   story="parent-child"
+/>
+
+### Full Example
+
+<StorybookFrame
+  className="h-[600px]"
+  componentId="side-nav-react"
+  story="full-example"
 />
 
 ## Properties

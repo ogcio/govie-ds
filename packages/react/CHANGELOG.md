@@ -1,5 +1,23 @@
 # Changelog
 
+## [1.38.0](https://github.com/ogcio/govie-ds/compare/react-lib-v1.37.0...react-lib-v1.38.0) (2026-06-02)
+
+
+### Features
+
+* **AB#35133:** inline tailwind conditional components ([#958](https://github.com/ogcio/govie-ds/issues/958)) ([85c5ad3](https://github.com/ogcio/govie-ds/commit/85c5ad375e9ab5e05770567cfece324ee6957068))
+* **AB#37755:** upgrade React package build to Vite 8 ([#957](https://github.com/ogcio/govie-ds/issues/957)) ([117e2df](https://github.com/ogcio/govie-ds/commit/117e2df18048fd5f5f3d674f347a4e5880bc54e1))
+* **AB#37991:** Adding actions to SideNavItem ([#970](https://github.com/ogcio/govie-ds/issues/970)) ([5775b9d](https://github.com/ogcio/govie-ds/commit/5775b9d5026641d685912a7333dd71e32b09c11d))
+* **AB#38086:** migrate header icons to mitosis ([#964](https://github.com/ogcio/govie-ds/issues/964)) ([0900af7](https://github.com/ogcio/govie-ds/commit/0900af7b9f007404aa544f86d2b286dea5281add))
+* **AB#38087:** add SVG Icons to breadcrumbs and pagination components ([375014d](https://github.com/ogcio/govie-ds/commit/375014dcf723501d5a4b47c369cafddc367d259f))
+* **AB#38088:** migrate Tick icon ([#965](https://github.com/ogcio/govie-ds/issues/965)) ([5a88a56](https://github.com/ogcio/govie-ds/commit/5a88a5672bf9bdb0b8fe00a32019ff9a9f3d2f37))
+* **AB#38089:** migrate table icons ([#972](https://github.com/ogcio/govie-ds/issues/972)) ([6bda5cb](https://github.com/ogcio/govie-ds/commit/6bda5cbf8bbd5d4355359c00632393b7dbc4722d))
+
+
+### Bug Fixes
+
+* **AB#38847:** button default type ([#971](https://github.com/ogcio/govie-ds/issues/971)) ([60827ea](https://github.com/ogcio/govie-ds/commit/60827ea8cbc8109a035d5f4d1f00963d1560c0ec))
+
 ## [1.37.0](https://github.com/ogcio/govie-ds/compare/react-lib-v1.36.0...react-lib-v1.37.0) (2026-05-19)
 
 

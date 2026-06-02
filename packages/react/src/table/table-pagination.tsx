@@ -1,7 +1,11 @@
 import { cn } from '@/cn.js';
 import { translate as t } from '@/i18n/utility.js';
-import { IconButton } from '@/icon-button/icon-button.js';
 import { SelectItem, SelectNative } from '@/select/select-native.js';
+import IconButton from '@/atoms/IconButton';
+import LastPageIcon from '@/atoms/icons/LastPage';
+import KeyboardArrowRightIcon from '@/atoms/icons/KeyboardArrowRight';
+import KeyboardArrowLeftIcon from '@/atoms/icons/KeyboardArrowLeft';
+import FirstPageIcon from '@/atoms/icons/FirstPage';
 
 export type TablePaginationProps = {
   align?: 'start' | 'center' | 'end';
@@ -27,6 +31,8 @@ export const TablePagination: React.FC<TablePaginationProps> = ({
       onPageChange(currentPage + 1);
     }
   };
+  const atFirstPage = currentPage === 1;
+  const atLastPage = currentPage === totalPages;
 
   return (
     <div
@@ -40,27 +46,25 @@ export const TablePagination: React.FC<TablePaginationProps> = ({
       )}
     >
       <IconButton
-        disabled={currentPage === 1}
+        disabled={atFirstPage}
         onClick={() => onPageChange(1)}
         appearance="dark"
         variant="flat"
-        className="gi-mr-2"
-        icon={{
-          icon: 'first_page',
-          useFontIcon: true,
-        }}
-      />
+        className="gi-mr-2 gi-p-2"
+        ariaLabel="First page"
+      >
+        <FirstPageIcon className="gi-shrink-0" />
+      </IconButton>
       <IconButton
-        disabled={currentPage === 1}
+        disabled={atFirstPage}
         onClick={handlePrevious}
         appearance="dark"
         variant="flat"
-        className="gi-mr-2"
-        icon={{
-          icon: 'chevron_left',
-          useFontIcon: true,
-        }}
-      />
+        className="gi-mr-2 gi-p-2"
+        ariaLabel="Previous page"
+      >
+        <KeyboardArrowLeftIcon className="gi-shrink-0" />
+      </IconButton>
       <div className="gi-table-pagination-label gi-space-x-2" aria-live="polite">
         <span>
           {t('table.pagination.page', {
@@ -88,26 +92,24 @@ export const TablePagination: React.FC<TablePaginationProps> = ({
       </div>
       <IconButton
         onClick={handleNext}
-        disabled={currentPage === totalPages}
+        disabled={atLastPage}
         appearance="dark"
         variant="flat"
-        className="gi-ml-2"
-        icon={{
-          icon: 'chevron_right',
-          useFontIcon: true,
-        }}
-      />
+        className="gi-ml-2 gi-p-2"
+        ariaLabel="Next page"
+      >
+        <KeyboardArrowRightIcon className="gi-shrink-0" />
+      </IconButton>
       <IconButton
-        disabled={currentPage === totalPages}
+        disabled={atLastPage}
         onClick={() => onPageChange(totalPages)}
         appearance="dark"
         variant="flat"
-        className="gi-ml-2"
-        icon={{
-          icon: 'last_page',
-          useFontIcon: true,
-        }}
-      />
+        className="gi-ml-2 gi-p-2"
+        ariaLabel="Last page"
+      >
+        <LastPageIcon className="gi-shrink-0" />
+      </IconButton>
     </div>
   );
 };
