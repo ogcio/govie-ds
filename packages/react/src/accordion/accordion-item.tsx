@@ -48,7 +48,7 @@ export const AccordionItem = ({
         <div data-testid="accordion-header" className={header()}>
           {label}
           <KeyboardArrowDownIcon
-            className={clsx('gi-transition-transform gi-duration-100', {
+            className={clsx('motion-safe:gi-transition-transform motion-safe:gi-duration-100', {
               'gi-rotate-180 gi-pb-[1.5px]': isExpanded,
               'gi-pt-[1.5px]': !isExpanded,
             })}

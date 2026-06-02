@@ -337,7 +337,7 @@ Object.defineProperty(AutocompleteGroupItem, 'componentType', {
 const autocompleteStyles = tv({
   slots: {
     root: 'gi-relative gi-w-full gi-not-prose',
-    iconEnd: 'gi-transition-transform gi-duration-100',
+    iconEnd: 'motion-safe:gi-transition-transform motion-safe:gi-duration-100',
   },
   variants: {
     freeSolo: {

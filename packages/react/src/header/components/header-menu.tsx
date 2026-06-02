@@ -48,7 +48,7 @@ export const MenuItemAccordion = ({ index, item }: MenuItemAccordionProps) => {
         <div>
           <span className="gi-text-sm gi-font-bold gi-ml-1">{item.label}</span>
           <KeyboardArrowRightIcon
-            className={clsx('gi-shrink-0 gi-transition-transform gi-duration-100', {
+            className={clsx('gi-shrink-0 motion-safe:gi-transition-transform motion-safe:gi-duration-100', {
               'gi-rotate-90': isOpen,
             })}
           />

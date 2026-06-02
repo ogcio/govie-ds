@@ -273,7 +273,7 @@ export const SelectNext = forwardRef<HTMLInputElement, SelectNextProps>(
           placeholder={placeholder ?? t('select.next.placeholder', { defaultValue: 'Search' })}
           readOnly
           inputClassName="gi-cursor-pointer"
-          iconEndClassName={clsx('gi-transition-transform gi-duration-100', {
+          iconEndClassName={clsx('motion-safe:gi-transition-transform motion-safe:gi-duration-100', {
             'gi-cursor-pointer': !disabled,
             'gi-cursor-not-allowed gi-pointer-events-none': disabled,
             'gi-rotate-180': isOpen,

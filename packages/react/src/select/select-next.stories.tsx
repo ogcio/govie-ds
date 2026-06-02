@@ -107,8 +107,10 @@ export const Default: StoryObj = {
     await waitFor(() => {
       expect(input).toHaveValue('Select Option');
     });
+    let keyboardArrowDown: HTMLElement;
     await waitFor(() => {
-      expect(canvas.getByTestId('keyboard-arrow-down')).toBeInTheDocument();
+      keyboardArrowDown = canvas.getByTestId('keyboard-arrow-down');
+      expect(keyboardArrowDown).toBeInTheDocument();
     });
 
     await userEvent.click(input);
@@ -116,7 +118,7 @@ export const Default: StoryObj = {
       expect(canvas.getByRole('listbox')).toBeInTheDocument();
     });
     await waitFor(() => {
-      expect(canvas.getByTestId('keyboard-arrow-up')).toBeInTheDocument();
+      expect((keyboardArrowDown.parentElement as HTMLElement).classList.contains('gi-rotate-180')).toBe(true);
     });
 
     const list = await canvas.findByRole('listbox');

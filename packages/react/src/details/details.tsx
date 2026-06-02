@@ -43,7 +43,7 @@ export const Details = ({ label, name, children, ...props }: DetailsProps) => {
         aria-expanded={isOpen ? 'true' : 'false'}
       >
         <KeyboardArrowDownIcon
-          className={clsx('gi-transition-transform gi-duration-100', {
+          className={clsx('motion-safe:gi-transition-transform motion-safe:gi-duration-100', {
             'gi-rotate-180': isOpen,
           })}
         />
