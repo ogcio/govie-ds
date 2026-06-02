@@ -234,8 +234,8 @@ export const Autocomplete = forwardRef<HTMLInputElement, AutocompleteProps>((pro
         aria-disabled={disabled}
         disabled={disabled}
         placeholder={placeholder ?? t('autocomplete.placeholder', { defaultValue: 'Type to Search' })}
-        iconEndClassName={styles.iconEnd({ isOpen: state.isOpen })}
-        iconEnd={freeSolo ? undefined : <KeyboardArrowDownIcon />}
+        iconEndClassName={styles.iconEnd()}
+        iconEnd={freeSolo ? undefined : <KeyboardArrowDownIcon className={styles.icon({ isOpen: state.isOpen })} />}
         ref={inputRef}
         iconEndRef={iconEndRef}
         value={state.inputValue}
@@ -337,7 +337,8 @@ Object.defineProperty(AutocompleteGroupItem, 'componentType', {
 const autocompleteStyles = tv({
   slots: {
     root: 'gi-relative gi-w-full gi-not-prose',
-    iconEnd: 'motion-safe:gi-transition-transform motion-safe:gi-duration-100',
+    iconEnd: '',
+    icon: 'motion-safe:gi-transition-transform motion-safe:gi-duration-100 gi-shrink-0',
   },
   variants: {
     freeSolo: {
@@ -349,11 +350,12 @@ const autocompleteStyles = tv({
     disabled: {
       true: {
         iconEnd: 'gi-cursor-not-allowed gi-pointer-events-none',
+        icon: 'gi-fill-gray-700',
       },
     },
     isOpen: {
       true: {
-        iconEnd: 'gi-rotate-180',
+        icon: 'gi-rotate-180',
       },
     },
   },

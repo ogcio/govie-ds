@@ -273,12 +273,18 @@ export const SelectNext = forwardRef<HTMLInputElement, SelectNextProps>(
           placeholder={placeholder ?? t('select.next.placeholder', { defaultValue: 'Search' })}
           readOnly
           inputClassName="gi-cursor-pointer"
-          iconEndClassName={clsx('motion-safe:gi-transition-transform motion-safe:gi-duration-100', {
+          iconEndClassName={clsx({
             'gi-cursor-pointer': !disabled,
             'gi-cursor-not-allowed gi-pointer-events-none': disabled,
-            'gi-rotate-180': isOpen,
           })}
-          iconEnd={<KeyboardArrowDownIcon />}
+          iconEnd={
+            <KeyboardArrowDownIcon
+              className={clsx('gi-shrink-0 motion-safe:gi-transition-transform motion-safe:gi-duration-100', {
+                'gi-rotate-180': isOpen,
+                'gi-fill-gray-700': disabled,
+              })}
+            />
+          }
           onIconEndClick={handleOnClick}
           ref={inputRef}
           iconEndRef={iconEndRef}
