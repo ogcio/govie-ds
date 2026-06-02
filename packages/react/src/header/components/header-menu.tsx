@@ -1,8 +1,8 @@
 'use client';
 
 import { useState } from 'react';
-import KeyboardArrowRightIcon from '@/atoms/icons/KeyboardArrowRight';
 import clsx from 'clsx';
+import KeyboardArrowRightIcon from '@/atoms/icons/KeyboardArrowRight';
 import { ListItem } from '@/list-item/list-item.js';
 import type { HeaderProps } from '@/header/types.js';
 

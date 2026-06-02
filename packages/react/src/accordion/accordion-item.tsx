@@ -1,8 +1,8 @@
 'use client';
-import clsx from 'clsx';
 import type { ComponentPropsWithRef } from 'react';
 import React, { useState, useRef } from 'react';
 import { tv } from 'tailwind-variants';
+import clsx from 'clsx';
 import KeyboardArrowDownIcon from '@/atoms/icons/KeyboardArrowDown';
 
 export type AccordionItemProps = {

@@ -2,8 +2,8 @@
 
 import { useState, useRef, useEffect } from 'react';
 import { tv } from 'tailwind-variants';
-import KeyboardArrowDownIcon from '@/atoms/icons/KeyboardArrowDown';
 import clsx from 'clsx';
+import KeyboardArrowDownIcon from '@/atoms/icons/KeyboardArrowDown';
 
 export type DetailsProps = {
   label: string;
