@@ -1,7 +1,7 @@
 import type { Meta, StoryObj } from '@storybook/react-vite';
 import type { ComponentProps } from 'react';
 import { expect, within } from 'storybook/test';
-import { IconButton } from '@/icon-button/icon-button.js';
+import IconButton from '@/atoms/IconButton';
 import { InputCheckboxTableCell } from '@/input-checkbox/input-checkbox.js';
 import { Link } from '@/link/link.js';
 import { Spinner } from '@/spinner/spinner.js';
@@ -15,6 +15,9 @@ import { TableHead } from './table-head.js';
 import { TableHeader } from './table-header.js';
 import { TableRow } from './table-row.js';
 import { Table } from './table.js';
+import DownloadIcon from '@/atoms/icons/Download';
+import EditIcon from '@/atoms/icons/Edit';
+import DeleteIcon from '@/atoms/icons/Delete';
 
 interface TableRowData {
   [key: string]: any;
@@ -25,16 +28,6 @@ interface TableStoryProps extends ComponentProps<typeof Table> {
   headers?: string[];
   rows?: TableRowData[];
 }
-
-const iconProps: any = {
-  icon: {
-    icon: 'download',
-  },
-  onClick: () => {},
-  variant: 'flat',
-  appearance: 'dark',
-  size: 'large',
-};
 
 const defaultValueHeaders = ['Select', 'ID', 'County', 'Description', 'Total', 'Link', 'Status', 'Download'];
 
@@ -140,7 +133,9 @@ export const Default: Story = {
               <Tag text={row.status.text} type={row.status.type} />
             </TableData>
             <TableData>
-              <IconButton {...iconProps} />
+              <IconButton size="lg" variant="flat" appearance="dark" ariaLabel="Download">
+                <DownloadIcon />
+              </IconButton>
             </TableData>
           </TableRow>
         ))}
@@ -378,21 +373,25 @@ export const TableWithFooter: Story = {
               <div className="gi-flex">
                 <Tooltip text="Edit the project" position="top">
                   <IconButton
-                    icon={{ icon: 'edit' }}
                     onClick={() => alert(`Edit project ${row.id}`)}
                     variant="flat"
                     appearance="dark"
                     size="lg"
-                  />
+                    ariaLabel="Edit"
+                  >
+                    <EditIcon />
+                  </IconButton>
                 </Tooltip>
                 <Tooltip text="Delete the project" position="top">
                   <IconButton
-                    icon={{ icon: 'delete' }}
                     onClick={() => alert(`Delete project ${row.id}`)}
                     variant="flat"
                     appearance="dark"
                     size="lg"
-                  />
+                    ariaLabel="Delete"
+                  >
+                    <DeleteIcon />
+                  </IconButton>
                 </Tooltip>
               </div>
             </TableData>
@@ -538,7 +537,9 @@ export const WithStripped: Story = {
               <Tag text={row.status.text} type={row.status.type} />
             </TableData>
             <TableData>
-              <IconButton {...iconProps} />
+              <IconButton size="lg" variant="flat" appearance="dark" ariaLabel="Download">
+                <DownloadIcon />
+              </IconButton>
             </TableData>
           </TableRow>
         ))}
@@ -585,7 +586,9 @@ export const WithSmallRowSize: Story = {
               <Tag text={row.status.text} type={row.status.type} />
             </TableData>
             <TableData>
-              <IconButton {...iconProps} size="md" />
+              <IconButton size="md" variant="flat" appearance="dark" ariaLabel="Download">
+                <DownloadIcon />
+              </IconButton>
             </TableData>
           </TableRow>
         ))}
@@ -632,7 +635,9 @@ export const WithMediumRowSize: Story = {
               <Tag text={row.status.text} type={row.status.type} />
             </TableData>
             <TableData>
-              <IconButton {...iconProps} size="lg" />
+              <IconButton size="lg" variant="flat" appearance="dark" ariaLabel="Download">
+                <DownloadIcon />
+              </IconButton>
             </TableData>
           </TableRow>
         ))}
@@ -679,7 +684,9 @@ export const WithLargeRowSize: Story = {
               <Tag text={row.status.text} type={row.status.type} />
             </TableData>
             <TableData>
-              <IconButton {...iconProps} size="xl" />
+              <IconButton size="xl" variant="flat" appearance="dark" ariaLabel="Download">
+                <DownloadIcon />
+              </IconButton>
             </TableData>
           </TableRow>
         ))}

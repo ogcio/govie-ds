@@ -2,8 +2,10 @@
 import type { ThHTMLAttributes } from 'react';
 import { Children } from 'react';
 import { cn } from '@/cn.js';
-import { Icon } from '@/icon/icon.js';
 import type { TableAlign, VerticalAlign } from './table.js';
+import SwapVerticalIcon from '@/atoms/icons/SwapVertical';
+import ArrowUpwardIcon from '@/atoms/icons/ArrowUpward';
+import ArrowDownwardIcon from '@/atoms/icons/ArrowDownward';
 
 type SortedType = 'asc' | 'desc' | false;
 
@@ -21,11 +23,14 @@ const getSortedIcon = (isChildrenString: boolean, sorted: SortedType) => {
   if (!isChildrenString) {
     return null;
   }
-
-  if (!sorted) {
-    return <Icon inline icon="swap_vert" size="sm" />;
+  switch (sorted) {
+    case false:
+      return <SwapVerticalIcon size={16} className="gi-shrink-0" />;
+    case 'asc':
+      return <ArrowUpwardIcon size={16} className="gi-shrink-0" />;
+    default:
+      return <ArrowDownwardIcon size={16} className="gi-shrink-0" />;
   }
-  return <Icon inline icon={sorted === 'asc' ? 'arrow_upward' : 'arrow_downward'} size="sm" />;
 };
 
 export function TableHeader({
