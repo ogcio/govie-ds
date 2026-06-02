@@ -21,7 +21,7 @@ import { cycleEnabledIndex } from '@/utilities.js';
 import type { AutocompleteItemProps, AutocompleteOptionItemElement, AutocompleteProps } from './types.js';
 import { AUTOCOMPLETE_ACTIONS } from './types.js';
 import { useAutocompleteController } from './use-autocomplete-controller.js';
-import KeyboardArrowIcon from '@/atoms/icons/KeyboardArrowDown';
+import KeyboardArrowDownIcon from '@/atoms/icons/KeyboardArrowDown';
 
 const {
   ON_RESET,
@@ -235,7 +235,7 @@ export const Autocomplete = forwardRef<HTMLInputElement, AutocompleteProps>((pro
         disabled={disabled}
         placeholder={placeholder ?? t('autocomplete.placeholder', { defaultValue: 'Type to Search' })}
         iconEndClassName={styles.iconEnd({ isOpen: state.isOpen })}
-        iconEnd={freeSolo ? undefined : <KeyboardArrowIcon />}
+        iconEnd={freeSolo ? undefined : <KeyboardArrowDownIcon />}
         ref={inputRef}
         iconEndRef={iconEndRef}
         value={state.inputValue}
