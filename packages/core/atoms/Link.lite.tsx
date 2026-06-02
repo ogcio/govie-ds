@@ -27,7 +27,7 @@ export const Visited = {
 export type Props = {
   id?: string;
   children: any;
-  href?: string;
+  href: string;
   className?: string;
 
   variant?: (typeof Variant)[keyof typeof Variant];
@@ -124,7 +124,7 @@ export const linkStyles = tv({
     },
     underline: {
       [Underline.ALWAYS]: 'gi-underline',
-      [Underline.HOVER]: 'gi-no-underline',
+      [Underline.HOVER]: 'gi-no-underline hover:gi-underline',
       [Underline.NONE]: 'gi-no-underline hover:gi-no-underline',
     },
     appearance: {
@@ -157,6 +157,16 @@ export const linkStyles = tv({
       variant: Variant.DEFAULT,
       visited: Visited.NONE,
       class: 'visited:gi-text-inherit hover:visited:gi-text-inherit',
+    },
+    {
+      appearance: Appearance.LIGHT,
+      visited: Visited.DEFAULT,
+      class: 'visited:gi-text-color-text-tone-light-visited hover:visited:gi-text-color-text-tone-light-visited',
+    },
+    {
+      appearance: Appearance.LIGHT,
+      visited: Visited.NONE,
+      class: 'visited:gi-text-color-text-tone-light-visited hover:visited:gi-text-color-text-tone-light-visited',
     },
   ],
 });

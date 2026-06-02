@@ -90,9 +90,9 @@ export const Link = forwardRef<HTMLElement, LinkProps>(
     if (useLinkNext) {
       return (
         <LinkNext
-          href={props.href}
-          external={external}
           variant="inline"
+          {...(asChild ? { asChild: true } : { href: props.href ?? '' })}
+          external={external}
           underline={noUnderline ? Underline.HOVER : Underline.ALWAYS}
           appearance={noColor ? Appearance.INHERIT : appearance === 'light' ? Appearance.LIGHT : undefined}
           visited={noVisited ? Visited.NONE : undefined}
@@ -113,7 +113,6 @@ export const Link = forwardRef<HTMLElement, LinkProps>(
           onFocus={props.onFocus}
           onBlur={props.onBlur}
           onKeyDown={props.onKeyDown}
-          asChild={asChild}
         >
           {children}
         </LinkNext>

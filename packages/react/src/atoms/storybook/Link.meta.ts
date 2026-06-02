@@ -13,22 +13,17 @@ export const linkMeta = {
   args: {
     children: 'Link',
     href: 'https://www.gov.ie',
-    variant: 'inline' as const,
-    visited: 'default' as const,
-    external: false,
     id: 'link-example',
     dataTestId: 'link-test',
   },
   argTypes: {
     children: {
       control: 'text',
-      description:
-        'Visible link text. Should describe the destination or purpose of the link — avoid generic text like "Click here" or "Read more".',
+      description: 'Link content — text, icons, or any HTML element.',
     },
     href: {
       control: 'text',
-      description:
-        'The URL the link points to. An anchor without href has no implicit link role. Maps to the HTML href attribute.',
+      description: 'The URL the link points to. Maps to the HTML href attribute.',
       table: {
         type: {
           summary: 'string',
@@ -252,7 +247,7 @@ export const linkMeta = {
     docs: {
       description: {
         component:
-          'Link renders a native anchor element with a minimal, intent-revealing API. Link text should describe the destination or purpose — avoid generic labels. Use the external prop to open links in a new tab safely.',
+          'Accessible anchor element for navigating to internal or external URLs. By default it renders a bare `<a>` tag with no visual styles — set `variant="inline"` to apply typography, colour, underline, and focus styles for use inside body text.',
       },
     },
   },
@@ -293,50 +288,5 @@ export const ExternalLink = {
       target: '_blank',
       rel: 'noreferrer noopener',
     });
-  },
-};
-export const PrimitiveAnchor = {
-  args: {
-    ...linkMeta.args,
-    children: 'Unstyled primitive anchor',
-    variant: 'default' as const,
-    dataTestId: 'link-primitive',
-  },
-  play: async ({ canvasElement, step, args }: StoryContext<Renderer>) => {
-    const canvas = within(canvasElement as HTMLElement);
-    const check = checker(args.dataTestId, canvas, step);
-    await check.is('a');
-    await check.attributes({
-      href: args.href,
-    });
-    await step('has no inline link classes', async () => {
-      const element = canvas.getByTestId(args.dataTestId);
-      expect(element.className).toBe('');
-    });
-  },
-};
-export const InlineLink = {
-  args: {
-    ...linkMeta.args,
-    children: 'Styled inline link',
-    variant: 'inline' as const,
-    dataTestId: 'link-inline',
-  },
-  play: async ({ canvasElement, step, args }: StoryContext<Renderer>) => {
-    const canvas = within(canvasElement as HTMLElement);
-    const check = checker(args.dataTestId, canvas, step);
-    await check.is('a');
-    await step('has inline link styles', async () => {
-      const element = canvas.getByTestId(args.dataTestId);
-      expect(element.className).not.toBe('');
-    });
-  },
-};
-export const InteractionStates = {
-  parameters: {
-    pseudo: {
-      hover: '.pseudo-hover',
-      focus: '.pseudo-focus',
-    },
   },
 };
