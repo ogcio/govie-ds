@@ -1,1 +1,1 @@
-export { default as Link, type Props as LinkProps } from '@/atoms/Link';
+export { default as Link, type LinkProps } from '@/Link';

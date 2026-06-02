@@ -2,7 +2,8 @@ import _ from 'lodash';
 import { Slot } from '@radix-ui/react-slot';
 import type { PropsWithChildren } from 'react';
 import React, { forwardRef } from 'react';
-import LinkNext, { type Props as LinkNextProps, Appearance, Underline, Visited } from '@/atoms/Link';
+import LinkNext, { type LinkProps as LinkNextProps } from '@/Link';
+import { Appearance, Underline, Visited } from '@/atoms/Link';
 import { getSizeClass, getVariantAppearanceClass } from '@/button/helpers';
 import type { ButtonAppearance, ButtonSize, ButtonVariant } from '@/button/types';
 import { cn } from '@/cn';
@@ -79,7 +80,6 @@ export const Link = forwardRef<HTMLElement, LinkProps>(
     ref,
   ) => {
     const useLinkNext = !_.some({
-      asChild,
       asButton,
       iconStart,
       iconEnd,
@@ -87,7 +87,7 @@ export const Link = forwardRef<HTMLElement, LinkProps>(
       size,
     });
 
-    if (useLinkNext && props.href) {
+    if (useLinkNext) {
       return (
         <LinkNext
           href={props.href}
@@ -113,6 +113,7 @@ export const Link = forwardRef<HTMLElement, LinkProps>(
           onFocus={props.onFocus}
           onBlur={props.onBlur}
           onKeyDown={props.onKeyDown}
+          asChild={asChild}
         >
           {children}
         </LinkNext>
