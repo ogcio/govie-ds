@@ -1,5 +1,25 @@
 # Changelog
 
+## [1.37.0](https://github.com/ogcio/govie-ds/compare/docs-v1.36.0...docs-v1.37.0) (2026-06-02)
+
+
+### Features
+
+* **AB#37685:** adjust Cookies name on footer ([6ef00d6](https://github.com/ogcio/govie-ds/commit/6ef00d677e6fc8594d4176711c2f9102cf80cf20))
+* **AB#37991:** Adding actions to SideNavItem ([#970](https://github.com/ogcio/govie-ds/issues/970)) ([5775b9d](https://github.com/ogcio/govie-ds/commit/5775b9d5026641d685912a7333dd71e32b09c11d))
+
+
+### Miscellaneous Chores
+
+* **AB#37685:** adjust Cookies name on footer ([#961](https://github.com/ogcio/govie-ds/issues/961)) ([6ef00d6](https://github.com/ogcio/govie-ds/commit/6ef00d677e6fc8594d4176711c2f9102cf80cf20))
+
+
+### Dependencies
+
+* The following workspace dependencies were updated
+  * dependencies
+    * @ogcio/design-system-react bumped to 1.38.0
+
 ## [1.36.0](https://github.com/ogcio/govie-ds/compare/docs-v1.35.0...docs-v1.36.0) (2026-05-19)
 
 
