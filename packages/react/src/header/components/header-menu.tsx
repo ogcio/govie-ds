@@ -1,11 +1,10 @@
 'use client';
 
 import { useState } from 'react';
-import KeyboardArrow from '@/atoms/icons/KeyboardArrowRight';
-import { cn } from '@/cn.js';
+import KeyboardArrowIcon from '@/atoms/icons/KeyboardArrowRight';
+import clsx from 'clsx';
 import { ListItem } from '@/list-item/list-item.js';
 import type { HeaderProps } from '@/header/types.js';
-import clsx from 'clsx';
 
 export type MobileHeaderMenuProps = Pick<HeaderProps, 'items' | 'secondaryLinks'>;
 
@@ -48,7 +47,7 @@ export const MenuItemAccordion = ({ index, item }: MenuItemAccordionProps) => {
       >
         <div>
           <span className="gi-text-sm gi-font-bold gi-ml-1">{item.label}</span>
-          <KeyboardArrow
+          <KeyboardArrowIcon
             className={clsx('gi-shrink-0 gi-transition-transform gi-duration-100', {
               'gi-rotate-90': isOpen,
             })}
@@ -59,7 +58,7 @@ export const MenuItemAccordion = ({ index, item }: MenuItemAccordionProps) => {
       <div
         id={`Accordion-slot-${index}`}
         role="region"
-        className={cn('gi-accordion-item-slot', {
+        className={clsx('gi-accordion-item-slot', {
           'gi-hidden': !isOpen,
         })}
       >

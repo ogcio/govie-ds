@@ -2,8 +2,7 @@
 
 import { useState, useRef, useEffect } from 'react';
 import { tv } from 'tailwind-variants';
-import { Icon } from '@/icon/icon';
-import KeyboardArrowDown from '@/atoms/icons/KeyboardArrowDown';
+import KeyboardArrowIcon from '@/atoms/icons/KeyboardArrowDown';
 import clsx from 'clsx';
 export type DetailsProps = {
   label: string;
@@ -42,7 +41,7 @@ export const Details = ({ label, name, children, ...props }: DetailsProps) => {
         aria-controls="details-content"
         aria-expanded={isOpen ? 'true' : 'false'}
       >
-        <KeyboardArrowDown
+        <KeyboardArrowIcon
           className={clsx('gi-transition-transform gi-duration-100', {
             'gi-rotate-180': isOpen,
           })}

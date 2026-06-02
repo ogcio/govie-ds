@@ -3,7 +3,7 @@ import clsx from 'clsx';
 import type { ComponentPropsWithRef } from 'react';
 import React, { useState, useRef } from 'react';
 import { tv } from 'tailwind-variants';
-import KeyboardArrow from '@/atoms/icons/KeyboardArrowDown';
+import KeyboardArrowIcon from '@/atoms/icons/KeyboardArrowDown';
 
 export type AccordionItemProps = {
   children: React.ReactNode;
@@ -47,7 +47,7 @@ export const AccordionItem = ({
       >
         <div data-testid="accordion-header" className={header()}>
           {label}
-          <KeyboardArrow
+          <KeyboardArrowIcon
             className={clsx('gi-pt-[1.5px] gi-transition-transform gi-duration-100', {
               'gi-rotate-180': isExpanded,
             })}
