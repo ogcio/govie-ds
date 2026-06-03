@@ -80,7 +80,7 @@ import TiktokIcon from '@/atoms/icons/socials/TikTok';
 import XIcon from '@/atoms/icons/socials/X';
 import YoutubeIcon from '@/atoms/icons/socials/Youtube';
 import PlaceholderIcon from '@/atoms/icons/Placeholder';
-import type { IconProps as GiIconProps } from '@/atoms/index';
+import type { IconProps as GiIconProps } from '@/atoms/icons/types';
 
 export type IconSize = 'sm' | 'md' | 'lg' | 'xl';
 
@@ -251,76 +251,76 @@ export const Icon = forwardRef<HTMLSpanElement, IconProps>(
 export default Icon;
 
 export type IconId =
-  | 'accessibility_new' // Accessibility new
-  | 'add_circle' // Add Circle outline
-  | 'apps' // Apps
-  | 'arrow_back' // Arrow back
-  | 'arrow_downward' // Arrow downward
-  | 'arrow_drop_down' // Arrow drop down
-  | 'arrow_drop_up' // Arrow drop up
-  | 'arrow_forward' // Arrow forward
-  | 'arrow_left_alt' // Arrow left
-  | 'arrow_outward' // Arrow outward
-  | 'arrow_right_alt' // Arrow right
-  | 'arrow_upward' // Arrow upward
-  | 'attach_file' // Attach file
-  | 'block' // Block
-  | 'call' // Call
-  | 'cancel' // Cancel
+  | 'accessibility_new'
+  | 'add_circle'
+  | 'apps'
+  | 'arrow_back'
+  | 'arrow_downward'
+  | 'arrow_drop_down'
+  | 'arrow_drop_up'
+  | 'arrow_forward'
+  | 'arrow_left_alt'
+  | 'arrow_outward'
+  | 'arrow_right_alt'
+  | 'arrow_upward'
+  | 'attach_file'
+  | 'block'
+  | 'call'
+  | 'cancel'
   | 'candlestick_chart'
-  | 'chat_bubble' // Chat bubble
-  | 'check' // Check
-  | 'check_circle' // Check circle
-  | 'chevron_left' // Chevron left
-  | 'chevron_right' // Chevron right
-  | 'child_care' // Child care
-  | 'close' // Close
-  | 'content_copy' // Content copy
-  | 'credit_card' // Credit card
-  | 'delete' // Delete
-  | 'directions_car' // Car
-  | 'do_not_disturb_on' // Remove circle outline
-  | 'download' // File download
-  | 'edit' // Edit
-  | 'error' // Error
-  | 'event' // Event
-  | 'filter_list' // Filter list
-  | 'health_and_safety' // Health and safety
-  | 'home' // Home
-  | 'info' // Info
-  | 'keyboard_arrow_down' // Keyboard arrow down
+  | 'chat_bubble'
+  | 'check'
+  | 'check_circle'
+  | 'chevron_left'
+  | 'chevron_right'
+  | 'child_care'
+  | 'close'
+  | 'content_copy'
+  | 'credit_card'
+  | 'delete'
+  | 'directions_car'
+  | 'do_not_disturb_on'
+  | 'download'
+  | 'edit'
+  | 'error'
+  | 'event'
+  | 'filter_list'
+  | 'health_and_safety'
+  | 'home'
+  | 'info'
+  | 'keyboard_arrow_down'
   | 'keyboard_arrow_left'
   | 'keyboard_arrow_right'
-  | 'keyboard_arrow_up' // Keyboard arrow up
-  | 'link' // Link
-  | 'location_on' // Location on
-  | 'login' // Login
-  | 'logout' // Logout
-  | 'mail' // Email
-  | 'menu' // Menu
-  | 'mic' // Mic
-  | 'more_horiz' // More horizontal
-  | 'more_vert' // More vertical
-  | 'open_in_new' // Open in new
-  | 'person' // Person
-  | 'person_cancel' // Person cancel
-  | 'person_check' // Person check
-  | 'refresh' // Refresh
-  | 'search' // Search
-  | 'send' // Send
-  | 'settings' // Settings
-  | 'sort' // Sort
-  | 'space_dashboard' // Space dashboard
-  | 'sync' // Sync
+  | 'keyboard_arrow_up'
+  | 'link'
+  | 'location_on'
+  | 'login'
+  | 'logout'
+  | 'mail'
+  | 'menu'
+  | 'mic'
+  | 'more_horiz'
+  | 'more_vert'
+  | 'open_in_new'
+  | 'person'
+  | 'person_cancel'
+  | 'person_check'
+  | 'refresh'
+  | 'search'
+  | 'send'
+  | 'settings'
+  | 'sort'
+  | 'space_dashboard'
+  | 'sync'
   | 'swap_vert'
-  | 'thumb_down' // Thumb down
-  | 'thumb_up' // Thumb up
+  | 'thumb_down'
+  | 'thumb_up'
   | 'unfold_more'
-  | 'upload' // File upload
-  | 'visibility' // Visibility
-  | 'visibility_off' // Visibility off
-  | 'warning' // Warning
-  | 'work' // Work
+  | 'upload'
+  | 'visibility'
+  | 'visibility_off'
+  | 'warning'
+  | 'work'
   | 'social_bluesky'
   | 'social_facebook'
   | 'social_instagram'
