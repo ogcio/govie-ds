@@ -45,7 +45,7 @@ export const ExternalLink: Story = {
 };
 
 export const Underlines: Story = {
-  render: () => (
+  render: (_props) => (
     <Box className="gi-flex gi-flex-col gi-gap-4 gi-items-start">
       <Link href="#" underline="always">
         Always underlined
@@ -61,7 +61,7 @@ export const Underlines: Story = {
 };
 
 export const Visited: Story = {
-  render: () => (
+  render: (_props) => (
     <Box className="gi-flex gi-flex-col gi-gap-4 gi-items-start">
       <Link href="#" visited="default">
         Default visited colour
@@ -74,7 +74,7 @@ export const Visited: Story = {
 };
 
 export const Appearances: Story = {
-  render: () => (
+  render: (_props) => (
     <Box className="gi-flex gi-flex-col gi-gap-4 gi-items-start">
       <Link href="#">Default appearance</Link>
       <Box className="gi-bg-black gi-p-4 gi-rounded">
@@ -103,7 +103,7 @@ export const InTypography: Story = {
       focus: '.pseudo-focus',
     },
   },
-  render: () => (
+  render: (_props) => (
     <Box className="gi-flex gi-flex-col gi-gap-8 gi-max-w-prose">
       <Box className="gi-flex gi-flex-col gi-gap-4">
         <H1>
@@ -217,7 +217,7 @@ export const InTypography: Story = {
 };
 
 export const AsChild: Story = {
-  render: () => (
+  render: (_props) => (
     <Link asChild variant="inline">
       <a href="#">Styled via Slot</a>
     </Link>

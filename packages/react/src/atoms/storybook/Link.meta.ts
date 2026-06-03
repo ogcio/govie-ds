@@ -220,11 +220,15 @@ export const linkMeta = {
     },
     appearance: {
       control: 'select',
-      options: ['light', 'inherit'],
-      description: 'Overrides the text colour. Use "light" on dark backgrounds, "inherit" to match parent text colour.',
+      options: ['default', 'light', 'inherit'],
+      description:
+        'Overrides the text colour. "default" inherits from variant. Use "light" on dark backgrounds, "inherit" to match parent text colour.',
       table: {
         type: {
-          summary: "'light' | 'inherit'",
+          summary: "'default' | 'light' | 'inherit'",
+        },
+        defaultValue: {
+          summary: 'default',
         },
       },
     },

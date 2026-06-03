@@ -1,9 +1,6 @@
-import _ from 'lodash';
 import { Slot } from '@radix-ui/react-slot';
 import type { PropsWithChildren } from 'react';
 import React, { forwardRef } from 'react';
-import LinkNext, { type LinkProps as LinkNextProps } from '@/Link';
-import { Appearance, Underline, Visited } from '@/atoms/Link';
 import { getSizeClass, getVariantAppearanceClass } from '@/button/helpers';
 import type { ButtonAppearance, ButtonSize, ButtonVariant } from '@/button/types';
 import { cn } from '@/cn';
@@ -79,46 +76,6 @@ export const Link = forwardRef<HTMLElement, LinkProps>(
     },
     ref,
   ) => {
-    const useLinkNext = !_.some({
-      asButton,
-      iconStart,
-      iconEnd,
-      disabled,
-      size,
-    });
-
-    if (useLinkNext) {
-      return (
-        <LinkNext
-          variant="inline"
-          {...(asChild ? { asChild: true } : { href: props.href ?? '' })}
-          external={external}
-          underline={noUnderline ? Underline.HOVER : Underline.ALWAYS}
-          appearance={noColor ? Appearance.INHERIT : appearance === 'light' ? Appearance.LIGHT : undefined}
-          visited={noVisited ? Visited.NONE : undefined}
-          className={className}
-          dataTestId={dataTestid}
-          id={props.id}
-          target={props.target as LinkNextProps['target']}
-          rel={props.rel}
-          download={props.download}
-          ariaCurrent={props['aria-current']}
-          ariaLabel={props['aria-label']}
-          ariaLabelledBy={props['aria-labelledby']}
-          ariaDescribedBy={props['aria-describedby']}
-          ariaHidden={props['aria-hidden']}
-          tabIndex={props.tabIndex}
-          lang={props.lang}
-          onClick={props.onClick}
-          onFocus={props.onFocus}
-          onBlur={props.onBlur}
-          onKeyDown={props.onKeyDown}
-        >
-          {children}
-        </LinkNext>
-      );
-    }
-
     const buttonVariant =
       asButton &&
       getVariantAppearanceClass({

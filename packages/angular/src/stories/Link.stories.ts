@@ -55,7 +55,7 @@ export const ExternalLink: StoryObj = {
 };
 
 export const Underlines: StoryObj = {
-  render: () => ({
+  render: (_props) => ({
     moduleMetadata: { imports: [Link, Box] },
     template: `
       <gi-box [className]="'gi-flex gi-flex-col gi-gap-4 gi-items-start'">
@@ -68,7 +68,7 @@ export const Underlines: StoryObj = {
 };
 
 export const Visited: StoryObj = {
-  render: () => ({
+  render: (_props) => ({
     moduleMetadata: { imports: [Link, Box] },
     template: `
       <gi-box [className]="'gi-flex gi-flex-col gi-gap-4 gi-items-start'">
@@ -80,7 +80,7 @@ export const Visited: StoryObj = {
 };
 
 export const Appearances: StoryObj = {
-  render: () => ({
+  render: (_props) => ({
     moduleMetadata: { imports: [Link, Box] },
     template: `
       <gi-box [className]="'gi-flex gi-flex-col gi-gap-4 gi-items-start'">
@@ -108,7 +108,7 @@ export const InTypography: StoryObj = {
       focus: '.pseudo-focus',
     },
   },
-  render: () => ({
+  render: (_props) => ({
     moduleMetadata: { imports: [Link, Box, Paragraph, H1, H2] },
     template: `
       <gi-box [className]="'gi-flex gi-flex-col gi-gap-8 gi-max-w-prose'">

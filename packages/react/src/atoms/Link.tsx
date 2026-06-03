@@ -45,6 +45,7 @@ export const Underline = {
   NONE: 'none',
 } as const;
 export const Appearance = {
+  DEFAULT: 'default',
   LIGHT: 'light',
   INHERIT: 'inherit',
 } as const;
@@ -77,10 +78,7 @@ export const linkStyles = tv({
         'aria-[current=page]:gi-no-underline',
         'aria-[current=page]:focus-visible:gi-outline-none',
         'aria-[current=page]:focus-visible:gi-shadow-none',
-        'gi-decoration-[max(1px,0.08em)]',
-        'gi-underline-offset-[0.2em]',
         'gi-underline',
-        'hover:gi-decoration-[max(2px,0.12em)]',
         'hover:gi-underline',
         'supports-[-moz-appearance:none]:gi-underline-offset-[0.23em]',
       ],
@@ -91,6 +89,7 @@ export const linkStyles = tv({
       [Underline.NONE]: 'gi-no-underline hover:gi-no-underline',
     },
     appearance: {
+      [Appearance.DEFAULT]: '',
       [Appearance.LIGHT]: 'gi-text-white hover:gi-text-white focus:gi-text-white',
       [Appearance.INHERIT]: 'gi-text-inherit hover:gi-text-inherit',
     },
@@ -101,6 +100,7 @@ export const linkStyles = tv({
   },
   defaultVariants: {
     variant: Variant.DEFAULT,
+    appearance: Appearance.DEFAULT,
     visited: Visited.DEFAULT,
   },
   compoundVariants: [
