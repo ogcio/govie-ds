@@ -37,6 +37,8 @@ export const iconIds = [
   'home', // Home
   'info', // Info
   'keyboard_arrow_down', // Keyboard arrow down
+  'keyboard_arrow_left',
+  'keyboard_arrow_right',
   'keyboard_arrow_up', // Keyboard arrow up
   'link', // Link
   'location_on', // Location on

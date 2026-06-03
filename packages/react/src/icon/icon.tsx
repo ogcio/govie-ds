@@ -1,37 +1,87 @@
 'use client';
 import type { ComponentPropsWithoutRef, ComponentType, MouseEventHandler } from 'react';
 import { forwardRef } from 'react';
-
+import { cn } from '@/cn';
+import type { iconIds } from './icons';
+import AccessibilityIcon from '@/atoms/icons/Accessibility';
+import AddCircle from '@/atoms/icons/AddCircle';
+import AppsIcon from '@/atoms/icons/Apps';
+import ArrowBackwardIcon from '@/atoms/icons/ArrowBackward';
+import ArrowDownwardIcon from '@/atoms/icons/ArrowDownward';
+import ArrowDropDownIcon from '@/atoms/icons/ArrowDropDown';
+import ArrowDropUpIcon from '@/atoms/icons/ArrowDropUp';
+import ArrowForwardIcon from '@/atoms/icons/ArrowForward';
+import ArrowLeftIcon from '@/atoms/icons/ArrowLeft';
+import ArrowOutwardIcon from '@/atoms/icons/ArrowOutward';
+import ArrowRightIcon from '@/atoms/icons/ArrowRight';
+import ArrowUpwardIcon from '@/atoms/icons/ArrowUpward';
+import AttachFileIcon from '@/atoms/icons/AttachFile';
+import BlockIcon from '@/atoms/icons/Block';
+import CallIcon from '@/atoms/icons/Call';
+import CancelIcon from '@/atoms/icons/Cancel';
+import CandlestickChartIcon from '@/atoms/icons/CandlestickChart';
+import ChatBubbleIcon from '@/atoms/icons/ChatBubble';
+import CheckIcon from '@/atoms/icons/Check';
+import CheckCircleIcon from '@/atoms/icons/CheckCircle';
+import CloseIcon from '@/atoms/icons/Close';
+import KeyboardArrowLeftIcon from '@/atoms/icons/KeyboardArrowLeft';
+import KeyboardArrowRightIcon from '@/atoms/icons/KeyboardArrowRight';
+import ChildCareIcon from '@/atoms/icons/ChildCare';
+import ContentCopyIcon from '@/atoms/icons/ContentCopy';
+import CreditCardIcon from '@/atoms/icons/CreditCard';
+import DeleteIcon from '@/atoms/icons/Delete';
+import DirectionsCarIcon from '@/atoms/icons/DirectionsCar';
+import DoNotDisturbOnIcon from '@/atoms/icons/DoNotDisturbOn';
+import DownloadIcon from '@/atoms/icons/Download';
+import EditIcon from '@/atoms/icons/Edit';
+import ErrorIcon from '@/atoms/icons/Error';
+import EventIcon from '@/atoms/icons/Event';
+import FilterListIcon from '@/atoms/icons/FilterList';
+import FirstPageIcon from '@/atoms/icons/FirstPage';
+import HealthAndSafetyIcon from '@/atoms/icons/HealthAndSafety';
+import HomeIcon from '@/atoms/icons/Home';
+import InfoIcon from '@/atoms/icons/Info';
 import KeyboardArrowDownIcon from '@/atoms/icons/KeyboardArrowDown';
 import KeyboardArrowUpIcon from '@/atoms/icons/KeyboardArrowUp';
-import KeyboardArrowRightIcon from '@/atoms/icons/KeyboardArrowRight';
-import KeyboardArrowLeftIcon from '@/atoms/icons/KeyboardArrowLeft';
-import CloseIcon from '@/atoms/icons/Close';
+import LastPageIcon from '@/atoms/icons/LastPage';
+import LinkIcon from '@/atoms/icons/Link';
+import LocationOnIcon from '@/atoms/icons/LocationOn';
+import LoginIcon from '@/atoms/icons/Login';
+import LogoutIcon from '@/atoms/icons/Logout';
+import MailIcon from '@/atoms/icons/Mail';
+import MicIcon from '@/atoms/icons/Mic';
+import MoreHorizontalIcon from '@/atoms/icons/MoreHorizontal';
+import MoreVerticalIcon from '@/atoms/icons/MoreVertical';
+import OpenInNewIcon from '@/atoms/icons/OpenInNew';
+import PersonIcon from '@/atoms/icons/Person';
+import PersonCancelIcon from '@/atoms/icons/PersonCancel';
+import PersonCheckIcon from '@/atoms/icons/PersonCheck';
+import RefreshIcon from '@/atoms/icons/Refresh';
+import SearchIcon from '@/atoms/icons/Search';
+import SendIcon from '@/atoms/icons/Send';
+import SettingsIcon from '@/atoms/icons/Settings';
+import SortIcon from '@/atoms/icons/Sort';
+import SpaceDashboardIcon from '@/atoms/icons/SpaceDashboard';
+import SyncIcon from '@/atoms/icons/Sync';
+import SwapVerticalIcon from '@/atoms/icons/SwapVertical';
+import ThumbDownIcon from '@/atoms/icons/ThumbDown';
+import ThumbUpIcon from '@/atoms/icons/ThumbUp';
+import UnfoldMoreIcon from '@/atoms/icons/UnfoldMore';
+import UploadIcon from '@/atoms/icons/Upload';
 import VisibilityIcon from '@/atoms/icons/Visibility';
 import VisibilityOffIcon from '@/atoms/icons/VisibilityOff';
-import CheckCircleIcon from '@/atoms/icons/CheckCircle';
 import WarningIcon from '@/atoms/icons/Warning';
-import InfoIcon from '@/atoms/icons/Info';
-import ErrorIcon from '@/atoms/icons/Error';
-import ArrowLeftIcon from '@/atoms/icons/ArrowLeft';
-import ArrowRightIcon from '@/atoms/icons/ArrowRight';
-import FirstPageIcon from '@/atoms/icons/FirstPage';
-import LastPageIcon from '@/atoms/icons/LastPage';
-import MenuIcon from '@/atoms/icons/Menu';
-import SearchIcon from '@/atoms/icons/Search';
-
-import { cn } from '@/cn.js';
-import type { iconIds } from './icons.js';
-import Bluesky from './svgs/bluesky.js';
-import Facebook from './svgs/facebook.js';
-import Instagram from './svgs/instagram.js';
-import Linkedin from './svgs/linkedin.js';
-import Placeholder from './svgs/placeholder.js';
-import Threads from './svgs/threads.js';
-import Tiktok from './svgs/tiktok.js';
-import X from './svgs/x.js';
-import Youtube from './svgs/youtube.js';
-
+import WorkIcon from '@/atoms/icons/Work';
+import BlueskyIcon from '@/atoms/icons/socials/Bluesky';
+import FacebookIcon from '@/atoms/icons/socials/Facebook';
+import InstagramIcon from '@/atoms/icons/socials/Instagram';
+import LinkedinIcon from '@/atoms/icons/socials/Linkedin';
+import ThreadsIcon from '@/atoms/icons/socials/Threads';
+import TiktokIcon from '@/atoms/icons/socials/TikTok';
+import XIcon from '@/atoms/icons/socials/X';
+import YoutubeIcon from '@/atoms/icons/socials/Youtube';
+import PlaceholderIcon from '@/atoms/icons/Placeholder';
+import type { IconProps as GiIconProps } from '@/atoms/index';
 export type IconId = (typeof iconIds)[number];
 export type IconSize = 'sm' | 'md' | 'lg' | 'xl';
 
@@ -60,43 +110,93 @@ const SIZE_MAP: Record<IconSize, string> = {
 };
 
 const ICON_REGISTRY: Record<
-  string,
+  IconId,
   {
-    Component: ComponentType<{ id?: string; size: string; className: string }>;
+    Component: ComponentType<GiIconProps>;
     disabledClass?: string;
   }
 > = {
-  // social_bluesky: { Component: Bluesky, disabledClass: 'gi-stroke-gray-700' },
-  social_facebook: { Component: Facebook, disabledClass: 'gi-stroke-gray-700' },
-  social_instagram: {
-    Component: Instagram,
-    disabledClass: 'gi-stroke-gray-700',
-  },
-  social_linkedin: { Component: Linkedin, disabledClass: 'gi-stroke-gray-700' },
-  social_threads: { Component: Threads, disabledClass: 'gi-stroke-gray-700' },
-  social_tiktok: { Component: Tiktok, disabledClass: 'gi-stroke-gray-700' },
-  social_x: { Component: X, disabledClass: 'gi-stroke-gray-700' },
-  social_youtube: { Component: Youtube, disabledClass: 'gi-stroke-gray-700' },
-  placeholder: { Component: Placeholder },
-  keyboard_arrow_down: { Component: KeyboardArrowDownIcon },
-  keyboard_arrow_up: { Component: KeyboardArrowUpIcon },
-  close: { Component: CloseIcon },
-  visibility: { Component: VisibilityIcon },
-  visibility_off: { Component: VisibilityOffIcon },
-  info: { Component: InfoIcon },
-  error: { Component: ErrorIcon },
-  warning: { Component: WarningIcon },
+  accessibility_new: { Component: AccessibilityIcon },
+  add_circle: { Component: AddCircle },
+  apps: { Component: AppsIcon },
+  arrow_back: { Component: ArrowBackwardIcon },
+  arrow_downward: { Component: ArrowDownwardIcon },
+  arrow_drop_down: { Component: ArrowDropDownIcon },
+  arrow_drop_up: { Component: ArrowDropUpIcon },
+  arrow_forward: { Component: ArrowForwardIcon },
+  arrow_left_alt: { Component: ArrowLeftIcon },
+  arrow_outward: { Component: ArrowOutwardIcon },
+  arrow_right_alt: { Component: ArrowRightIcon },
+  arrow_upward: { Component: ArrowUpwardIcon },
+  attach_file: { Component: AttachFileIcon },
+  block: { Component: BlockIcon },
+  call: { Component: CallIcon },
+  cancel: { Component: CancelIcon },
+  candlestick_chart: { Component: CandlestickChartIcon },
+  chat_bubble: { Component: ChatBubbleIcon },
+  check: { Component: CheckIcon },
   check_circle: { Component: CheckCircleIcon },
-  keyboard_arrow_left: { Component: KeyboardArrowLeftIcon },
-  keyboard_arrow_right: { Component: KeyboardArrowRightIcon },
   chevron_left: { Component: KeyboardArrowLeftIcon },
   chevron_right: { Component: KeyboardArrowRightIcon },
-  arrow_left_alt: { Component: ArrowLeftIcon },
-  arrow_right_alt: { Component: ArrowRightIcon },
+  child_care: { Component: ChildCareIcon },
+  close: { Component: CloseIcon },
+  content_copy: { Component: ContentCopyIcon },
+  credit_card: { Component: CreditCardIcon },
+  delete: { Component: DeleteIcon },
+  directions_car: { Component: DirectionsCarIcon },
+  do_not_disturb_on: { Component: DoNotDisturbOnIcon },
+  download: { Component: DownloadIcon },
+  edit: { Component: EditIcon },
+  error: { Component: ErrorIcon },
+  event: { Component: EventIcon },
+  filter_list: { Component: FilterListIcon },
+  health_and_safety: { Component: HealthAndSafetyIcon },
+  home: { Component: HomeIcon },
+  info: { Component: InfoIcon },
+  keyboard_arrow_down: { Component: KeyboardArrowDownIcon },
+  keyboard_arrow_left: { Component: KeyboardArrowLeftIcon },
+  keyboard_arrow_right: { Component: KeyboardArrowRightIcon },
+  keyboard_arrow_up: { Component: KeyboardArrowUpIcon },
+  link: { Component: LinkIcon },
+  location_on: { Component: LocationOnIcon },
+  login: { Component: LoginIcon },
+  logout: { Component: LogoutIcon },
+  mail: { Component: MailIcon },
+  menu: { Component: MailIcon },
+  mic: { Component: MicIcon },
+  more_horiz: { Component: MoreHorizontalIcon },
+  more_vert: { Component: MoreVerticalIcon },
+  open_in_new: { Component: OpenInNewIcon },
+  person: { Component: PersonIcon },
+  person_cancel: { Component: PersonCancelIcon },
+  person_check: { Component: PersonCheckIcon },
+  refresh: { Component: RefreshIcon },
+  search: { Component: SearchIcon },
+  send: { Component: SendIcon },
+  settings: { Component: SettingsIcon },
+  sort: { Component: SortIcon },
+  space_dashboard: { Component: SpaceDashboardIcon },
+  sync: { Component: SyncIcon },
+  swap_vert: { Component: SwapVerticalIcon },
+  thumb_down: { Component: ThumbDownIcon },
+  thumb_up: { Component: ThumbUpIcon },
+  unfold_more: { Component: UnfoldMoreIcon },
+  upload: { Component: UploadIcon },
+  visibility: { Component: VisibilityIcon },
+  visibility_off: { Component: VisibilityOffIcon },
+  warning: { Component: WarningIcon },
+  work: { Component: WorkIcon },
+  social_bluesky: { Component: BlueskyIcon },
+  social_facebook: { Component: FacebookIcon },
+  social_instagram: { Component: InstagramIcon },
+  social_linkedin: { Component: LinkedinIcon },
+  social_threads: { Component: ThreadsIcon },
+  social_tiktok: { Component: TiktokIcon },
+  social_x: { Component: XIcon },
+  social_youtube: { Component: YoutubeIcon },
+  placeholder: { Component: PlaceholderIcon },
   first_page: { Component: FirstPageIcon },
   last_page: { Component: LastPageIcon },
-  menu: { Component: MenuIcon },
-  search: { Component: SearchIcon },
 };
 
 export const Icon = forwardRef<HTMLSpanElement, IconProps>(
@@ -105,7 +205,7 @@ export const Icon = forwardRef<HTMLSpanElement, IconProps>(
     ref,
   ) => {
     const fontSize = SIZE_MAP[size] ?? SIZE_MAP.md;
-    const reg = ICON_REGISTRY[String(icon)];
+    const reg = ICON_REGISTRY[String(icon) as IconId];
 
     if (reg && !useFontIcon) {
       const { Component, disabledClass } = reg;
