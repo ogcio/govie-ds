@@ -48,6 +48,7 @@ import LocationOnIcon from '@/atoms/icons/LocationOn';
 import LoginIcon from '@/atoms/icons/Login';
 import LogoutIcon from '@/atoms/icons/Logout';
 import MailIcon from '@/atoms/icons/Mail';
+import MenuIcon from '@/atoms/icons/Menu';
 import MicIcon from '@/atoms/icons/Mic';
 import MoreHorizontalIcon from '@/atoms/icons/MoreHorizontal';
 import MoreVerticalIcon from '@/atoms/icons/MoreVertical';
@@ -93,6 +94,7 @@ export type IconProps = {
   ariaLabel?: string;
   inline?: boolean;
   className?: string;
+  dataTestId?: string;
   onClick?: MouseEventHandler<HTMLSpanElement>;
   /**
    * Use font icon instead of svg
@@ -161,7 +163,7 @@ const ICON_REGISTRY: Record<
   login: { Component: LoginIcon },
   logout: { Component: LogoutIcon },
   mail: { Component: MailIcon },
-  menu: { Component: MailIcon },
+  menu: { Component: MenuIcon },
   mic: { Component: MicIcon },
   more_horiz: { Component: MoreHorizontalIcon },
   more_vert: { Component: MoreVerticalIcon },
@@ -200,12 +202,24 @@ const ICON_REGISTRY: Record<
 
 export const Icon = forwardRef<HTMLSpanElement, IconProps>(
   (
-    { icon, size = 'md', filled, disabled, ariaHidden, ariaLabel, inline, className, onClick, useFontIcon, ...props },
+    {
+      icon,
+      size = 'md',
+      filled,
+      disabled,
+      ariaHidden,
+      ariaLabel,
+      inline,
+      className,
+      onClick,
+      useFontIcon,
+      dataTestId,
+      ...props
+    },
     ref,
   ) => {
     const fontSize = SIZE_MAP[size] ?? SIZE_MAP.md;
     const reg = ICON_REGISTRY[String(icon) as IconId];
-
     if (reg && !useFontIcon) {
       const { Component, disabledClass } = reg;
       const svgClass = clsx(
@@ -215,7 +229,9 @@ export const Icon = forwardRef<HTMLSpanElement, IconProps>(
         className,
       );
 
-      return <Component id={props?.id} size={fontSize} className={svgClass} />;
+      return (
+        <Component id={props?.id} size={fontSize} className={svgClass} label={ariaLabel} dataTestId={dataTestId} />
+      );
     }
 
     return (
