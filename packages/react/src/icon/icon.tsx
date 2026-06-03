@@ -1,25 +1,25 @@
 'use client';
 import type { ComponentPropsWithoutRef, ComponentType, MouseEventHandler } from 'react';
 import { forwardRef } from 'react';
-import {
-  KeyboardArrowDownIcon,
-  KeyboardArrowUpIcon,
-  KeyboardArrowRightIcon,
-  KeyboardArrowLeftIcon,
-  CloseIcon,
-  VisibilityIcon,
-  VisibilityOffIcon,
-  CheckCircleIcon,
-  WarningIcon,
-  InfoIcon,
-  ErrorIcon,
-  ArrowLeftIcon,
-  ArrowRightIcon,
-  FirstPageIcon,
-  LastPageIcon,
-} from '@/atoms/icons';
+
+import KeyboardArrowDownIcon from '@/atoms/icons/KeyboardArrowDown';
+import KeyboardArrowUpIcon from '@/atoms/icons/KeyboardArrowUp';
+import KeyboardArrowRightIcon from '@/atoms/icons/KeyboardArrowRight';
+import KeyboardArrowLeftIcon from '@/atoms/icons/KeyboardArrowLeft';
+import CloseIcon from '@/atoms/icons/Close';
+import VisibilityIcon from '@/atoms/icons/Visibility';
+import VisibilityOffIcon from '@/atoms/icons/VisibilityOff';
+import CheckCircleIcon from '@/atoms/icons/CheckCircle';
+import WarningIcon from '@/atoms/icons/Warning';
+import InfoIcon from '@/atoms/icons/Info';
+import ErrorIcon from '@/atoms/icons/Error';
+import ArrowLeftIcon from '@/atoms/icons/ArrowLeft';
+import ArrowRightIcon from '@/atoms/icons/ArrowRight';
+import FirstPageIcon from '@/atoms/icons/FirstPage';
+import LastPageIcon from '@/atoms/icons/LastPage';
 import MenuIcon from '@/atoms/icons/Menu';
 import SearchIcon from '@/atoms/icons/Search';
+
 import { cn } from '@/cn.js';
 import type { iconIds } from './icons.js';
 import Bluesky from './svgs/bluesky.js';
@@ -66,7 +66,7 @@ const ICON_REGISTRY: Record<
     disabledClass?: string;
   }
 > = {
-  social_bluesky: { Component: Bluesky, disabledClass: 'gi-stroke-gray-700' },
+  // social_bluesky: { Component: Bluesky, disabledClass: 'gi-stroke-gray-700' },
   social_facebook: { Component: Facebook, disabledClass: 'gi-stroke-gray-700' },
   social_instagram: {
     Component: Instagram,
