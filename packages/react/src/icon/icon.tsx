@@ -82,7 +82,6 @@ import XIcon from '@/atoms/icons/socials/X';
 import YoutubeIcon from '@/atoms/icons/socials/Youtube';
 import PlaceholderIcon from '@/atoms/icons/Placeholder';
 import type { IconProps as GiIconProps } from '@/atoms/icons/types';
-import { Icons } from './icons';
 
 export type IconSize = 'sm' | 'md' | 'lg' | 'xl';
 
