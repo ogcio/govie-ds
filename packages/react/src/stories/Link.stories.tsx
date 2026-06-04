@@ -3,6 +3,7 @@ import Link from '@/Link';
 import Box from '@/atoms/Box';
 import Paragraph from '@/atoms/Paragraph';
 import { H1, H2 } from '@/atoms/heading';
+import HomeIcon from '@/atoms/icons/Home';
 import * as stories from '@/atoms/storybook/Link.meta';
 
 const meta = {
@@ -36,59 +37,8 @@ export default meta;
 
 type Story = StoryObj<typeof Link>;
 
-export const Default: Story = {
-  ...stories.Default,
-};
-
-export const ExternalLink: Story = {
-  ...stories.ExternalLink,
-};
-
-export const Underlines: Story = {
-  render: (_props) => (
-    <Box className="gi-flex gi-flex-col gi-gap-4 gi-items-start">
-      <Link href="#" underline="always">
-        Always underlined
-      </Link>
-      <Link href="#" underline="hover">
-        Underline on hover only
-      </Link>
-      <Link href="#" underline="none">
-        No underline
-      </Link>
-    </Box>
-  ),
-};
-
-export const Visited: Story = {
-  render: (_props) => (
-    <Box className="gi-flex gi-flex-col gi-gap-4 gi-items-start">
-      <Link href="#" visited="default">
-        Default visited colour
-      </Link>
-      <Link href="#" visited="none">
-        No visited colour
-      </Link>
-    </Box>
-  ),
-};
-
-export const Appearances: Story = {
-  render: (_props) => (
-    <Box className="gi-flex gi-flex-col gi-gap-4 gi-items-start">
-      <Link href="#">Default appearance</Link>
-      <Box className="gi-bg-black gi-p-4 gi-rounded">
-        <Link href="#" appearance="light">
-          Light appearance
-        </Link>
-      </Box>
-      <Box className="gi-text-gray-700">
-        <Link href="#" appearance="inherit">
-          Inherit parent colour
-        </Link>
-      </Box>
-    </Box>
-  ),
+export const InlineLink: Story = {
+  ...stories.InlineLink,
 };
 
 export const InTypography: Story = {
@@ -169,7 +119,7 @@ export const InTypography: Story = {
 
       <Box className="gi-flex gi-flex-col gi-gap-4">
         <H2>Appearances</H2>
-        <Box className="gi-bg-black gi-p-4 gi-rounded">
+        <Box className="gi-bg-black gi-p-4 gi-rounded gi-w-fit">
           <Paragraph className="gi-text-white">
             Light on dark:{' '}
             <Link href="#" variant="inline" appearance="light">
@@ -198,7 +148,7 @@ export const InTypography: Story = {
             focus
           </Link>
         </Paragraph>
-        <Box className="gi-bg-black gi-p-4 gi-rounded">
+        <Box className="gi-bg-black gi-p-4 gi-rounded gi-w-fit">
           <Paragraph className="gi-text-white gi-flex gi-gap-4">
             <Link href="#" variant="inline" appearance="light">
               light
@@ -216,10 +166,52 @@ export const InTypography: Story = {
   ),
 };
 
-export const AsChild: Story = {
+export const PlainLink: Story = {
+  ...stories.PlainLink,
   render: (_props) => (
-    <Link asChild variant="inline">
-      <a href="#">Styled via Slot</a>
-    </Link>
+    <Box className="gi-flex gi-flex-col gi-gap-4 gi-items-start">
+      <Link href="#" ariaLabel="Home" className="gi-inline-flex gi-w-fit">
+        <HomeIcon />
+      </Link>
+      <Link asChild>
+        <a href="#" className="gi-font-primary">
+          Styled Native Anchor
+        </a>
+      </Link>
+    </Box>
+  ),
+};
+
+export const PlainFocusState: Story = {
+  ...stories.PlainFocusState,
+  render: (_props) => (
+    <Box className="gi-flex gi-flex-col gi-gap-6">
+      <Box className="gi-flex gi-gap-4 gi-items-center">
+        <Link href="#" ariaLabel="Home" dataTestId="link-icon-default" className="gi-inline-flex gi-w-fit pseudo-focus">
+          <HomeIcon />
+        </Link>
+        <Link asChild dataTestId="link-aschild-default">
+          <a href="#" className="gi-font-primary pseudo-focus">
+            Styled Native Anchor
+          </a>
+        </Link>
+      </Box>
+      <Box className="gi-bg-black gi-p-4 gi-rounded gi-w-fit gi-flex gi-gap-4 gi-items-center">
+        <Link
+          href="#"
+          appearance="light"
+          ariaLabel="Home light"
+          dataTestId="link-icon-light"
+          className="gi-inline-flex gi-w-fit pseudo-focus"
+        >
+          <HomeIcon />
+        </Link>
+        <Link asChild appearance="light" dataTestId="link-aschild-light">
+          <a href="#" className="gi-font-primary pseudo-focus">
+            Styled Native Anchor
+          </a>
+        </Link>
+      </Box>
+    </Box>
   ),
 };

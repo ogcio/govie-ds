@@ -3,7 +3,13 @@ import Link from '../atoms/Link';
 import Box from '../atoms/Box';
 import Paragraph from '../atoms/Paragraph';
 import { H1, H2 } from '../atoms/heading';
-import { linkMeta, Default as linkDefault, ExternalLink as linkExternal } from '../atoms/storybook/Link.meta';
+import HomeIcon from '../atoms/icons/Home';
+import {
+  linkMeta,
+  InlineLink as linkInline,
+  PlainFocusState as linkPlainFocus,
+  PlainLink as linkPlain,
+} from '../atoms/storybook/Link.meta';
 
 const meta = {
   ...linkMeta,
@@ -12,18 +18,16 @@ const meta = {
 
 export default meta;
 
-export const Default: StoryObj = {
-  ...linkDefault,
+export const InlineLink: StoryObj = {
+  ...linkInline,
   render: (props) => ({
     props,
     moduleMetadata: { imports: [Link] },
     template: `
       <gi-link
         [href]="href"
-        [external]="external"
         [id]="id"
         [dataTestId]="dataTestId"
-        [ariaLabel]="ariaLabel"
         [variant]="variant"
         [underline]="underline"
         [appearance]="appearance"
@@ -31,67 +35,6 @@ export const Default: StoryObj = {
       >
         {{ children }}
       </gi-link>
-    `,
-  }),
-};
-
-export const ExternalLink: StoryObj = {
-  ...linkExternal,
-  render: (props) => ({
-    props,
-    moduleMetadata: { imports: [Link] },
-    template: `
-      <gi-link
-        [href]="href"
-        [external]="external"
-        [variant]="variant"
-        [id]="id"
-        [dataTestId]="dataTestId"
-      >
-        {{ children }}
-      </gi-link>
-    `,
-  }),
-};
-
-export const Underlines: StoryObj = {
-  render: (_props) => ({
-    moduleMetadata: { imports: [Link, Box] },
-    template: `
-      <gi-box [className]="'gi-flex gi-flex-col gi-gap-4 gi-items-start'">
-        <gi-link href="#" underline="always">Always underlined</gi-link>
-        <gi-link href="#" underline="hover">Underline on hover only</gi-link>
-        <gi-link href="#" underline="none">No underline</gi-link>
-      </gi-box>
-    `,
-  }),
-};
-
-export const Visited: StoryObj = {
-  render: (_props) => ({
-    moduleMetadata: { imports: [Link, Box] },
-    template: `
-      <gi-box [className]="'gi-flex gi-flex-col gi-gap-4 gi-items-start'">
-        <gi-link href="#" visited="default">Default visited colour</gi-link>
-        <gi-link href="#" visited="none">No visited colour</gi-link>
-      </gi-box>
-    `,
-  }),
-};
-
-export const Appearances: StoryObj = {
-  render: (_props) => ({
-    moduleMetadata: { imports: [Link, Box] },
-    template: `
-      <gi-box [className]="'gi-flex gi-flex-col gi-gap-4 gi-items-start'">
-        <gi-link href="#">Default appearance</gi-link>
-        <gi-box [className]="'gi-bg-black gi-p-4 gi-rounded'">
-          <gi-link href="#" appearance="light">Light appearance</gi-link>
-        </gi-box>
-        <gi-box [className]="'gi-text-gray-700'">
-          <gi-link href="#" appearance="inherit">Inherit parent colour</gi-link>
-        </gi-box>
-      </gi-box>
     `,
   }),
 };
@@ -137,7 +80,7 @@ export const InTypography: StoryObj = {
 
         <gi-box [className]="'gi-flex gi-flex-col gi-gap-4'">
           <gi-h2>Appearances</gi-h2>
-          <gi-box [className]="'gi-bg-black gi-p-4 gi-rounded'">
+          <gi-box [className]="'gi-bg-black gi-p-4 gi-rounded gi-w-fit'">
             <gi-paragraph className="gi-text-white">Light on dark: <gi-link href="#" variant="inline" appearance="light">gov.ie services</gi-link></gi-paragraph>
           </gi-box>
           <gi-paragraph className="gi-text-gray-700 gi-pl-4">Inherit parent colour: <gi-link href="#" variant="inline" appearance="inherit">inherited link</gi-link></gi-paragraph>
@@ -150,7 +93,7 @@ export const InTypography: StoryObj = {
             <gi-link href="#" variant="inline" className="pseudo-hover">hover</gi-link>
             <gi-link href="#" variant="inline" className="pseudo-focus">focus</gi-link>
           </gi-paragraph>
-          <gi-box [className]="'gi-bg-black gi-p-4 gi-rounded'">
+          <gi-box [className]="'gi-bg-black gi-p-4 gi-rounded gi-w-fit'">
             <gi-paragraph className="gi-text-white gi-flex gi-gap-4">
               <gi-link href="#" variant="inline" appearance="light">light</gi-link>
               <gi-link href="#" variant="inline" appearance="light" className="pseudo-hover">hover</gi-link>
@@ -159,6 +102,39 @@ export const InTypography: StoryObj = {
           </gi-box>
         </gi-box>
 
+      </gi-box>
+    `,
+  }),
+};
+
+export const PlainLink: StoryObj = {
+  ...linkPlain,
+  render: (_props) => ({
+    moduleMetadata: { imports: [Link, HomeIcon] },
+    template: `
+      <gi-link href="#" ariaLabel="Home" className="gi-inline-flex gi-w-fit">
+        <gi-home-icon></gi-home-icon>
+      </gi-link>
+    `,
+  }),
+};
+
+export const PlainFocusState: StoryObj = {
+  ...linkPlainFocus,
+  render: (_props) => ({
+    moduleMetadata: { imports: [Link, Box, HomeIcon] },
+    template: `
+      <gi-box [className]="'gi-flex gi-flex-col gi-gap-6'">
+        <gi-box [className]="'gi-flex gi-gap-4 gi-items-center'">
+          <gi-link href="#" ariaLabel="Home" dataTestId="link-icon-default" className="gi-inline-flex gi-w-fit pseudo-focus">
+            <gi-home-icon></gi-home-icon>
+          </gi-link>
+        </gi-box>
+        <gi-box [className]="'gi-bg-black gi-p-4 gi-rounded gi-w-fit gi-flex gi-gap-4 gi-items-center'">
+          <gi-link href="#" appearance="light" ariaLabel="Home light" dataTestId="link-icon-light" className="gi-inline-flex gi-w-fit pseudo-focus">
+            <gi-home-icon></gi-home-icon>
+          </gi-link>
+        </gi-box>
       </gi-box>
     `,
   }),

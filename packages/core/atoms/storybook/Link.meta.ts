@@ -1,5 +1,5 @@
 import type { Renderer, StoryContext } from 'storybook/internal/types';
-import { within, expect, userEvent } from 'storybook/test';
+import { within, expect } from 'storybook/test';
 import { checker } from './utilities';
 
 export const linkMeta = {
@@ -156,10 +156,11 @@ export const linkMeta = {
   },
 };
 
-export const Default = {
+export const InlineLink = {
   args: {
     ...linkMeta.args,
-    dataTestId: 'link-default',
+    variant: 'inline' as const,
+    dataTestId: 'link-inline',
   },
   play: async ({ canvasElement, step, args }: StoryContext<Renderer>) => {
     const canvas = within(canvasElement as HTMLElement);
@@ -168,31 +169,58 @@ export const Default = {
     await check.is('a');
     await check.attributes({ href: args.href });
     await check.children();
+  },
+};
 
-    await step('is keyboard focusable', async () => {
-      await userEvent.tab();
-      expect(canvas.getByTestId(args.dataTestId)).toHaveFocus();
+export const PlainFocusState = {
+  args: {
+    ...linkMeta.args,
+    dataTestId: 'link-icon-default',
+  },
+  parameters: {
+    docs: {
+      description: {
+        story: 'Focus states for the default (plain) variant across default and light appearances.',
+      },
+    },
+    pseudo: {
+      focus: '.pseudo-focus',
+    },
+  },
+  play: async ({ canvasElement, step }: StoryContext<Renderer>) => {
+    const canvas = within(canvasElement as HTMLElement);
+
+    await step('icon link is focusable', async () => {
+      const element = canvas.getByTestId('link-icon-default');
+      element.focus();
+      expect(element).toHaveFocus();
+      expect(element.tagName).toBe('A');
+    });
+
+    await step('icon link has accessible name', async () => {
+      const element = canvas.getByTestId('link-icon-default');
+      expect(element).toHaveAttribute('aria-label');
+    });
+
+    await step('light icon link is focusable', async () => {
+      const element = canvas.getByTestId('link-icon-light');
+      element.focus();
+      expect(element).toHaveFocus();
     });
   },
 };
 
-export const ExternalLink = {
+export const PlainLink = {
   args: {
     ...linkMeta.args,
-    children: 'Visit GOV.IE',
-    href: 'https://www.gov.ie',
-    external: true,
-    dataTestId: 'link-external',
+    dataTestId: 'link-plain',
   },
-  play: async ({ canvasElement, step, args }: StoryContext<Renderer>) => {
-    const canvas = within(canvasElement as HTMLElement);
-    const check = checker(args.dataTestId, canvas, step);
-
-    await check.is('a');
-    await check.attributes({
-      href: args.href,
-      target: '_blank',
-      rel: 'noreferrer noopener',
-    });
+  parameters: {
+    docs: {
+      description: {
+        story:
+          'The default variant renders a bare anchor with no design-system styles. Use it to wrap components like icons, or compose with asChild to style a native anchor.',
+      },
+    },
   },
 };

@@ -54,7 +54,15 @@ export const Visited = {
   NONE: 'none',
 } as const;
 export const linkStyles = tv({
-  base: '',
+  base: [
+    'focus:gi-no-underline',
+    'focus:gi-rounded-sm',
+    'focus:gi-shadow-[0_0_0_2px_var(--gieds-color-gray-950),0_0_0_5px_var(--gieds-color-yellow-400)]',
+    'focus-visible:gi-shadow-[0_0_0_2px_var(--gieds-color-gray-950),0_0_0_5px_var(--gieds-color-yellow-400)]',
+    'focus-visible:gi-no-underline',
+    'focus-visible:gi-rounded-sm',
+    'focus-visible:gi-outline-none',
+  ],
   variants: {
     variant: {
       [Variant.DEFAULT]: '',
@@ -64,15 +72,6 @@ export const linkStyles = tv({
         'gi-inline-flex',
         'gi-text-color-text-tone-convention-default',
         'hover:gi-text-color-text-tone-convention-hover',
-        'focus:gi-no-underline',
-        'focus:gi-rounded-sm',
-        'focus:gi-text-color-text-tone-convention-hover',
-        'focus:gi-shadow-[0_0_0_2px_var(--gieds-color-gray-950),0_0_0_5px_var(--gieds-color-yellow-400)]',
-        'focus-visible:gi-shadow-[0_0_0_2px_var(--gieds-color-gray-950),0_0_0_5px_var(--gieds-color-yellow-400)]',
-        'focus-visible:gi-no-underline',
-        'focus-visible:gi-rounded-sm',
-        'focus-visible:gi-outline-none',
-        'focus-visible:gi-text-color-text-tone-convention-hover',
         'aria-[current=page]:gi-text-color-icon-tone-convention-disabled',
         'aria-[current=page]:gi-pointer-events-none',
         'aria-[current=page]:gi-no-underline',
@@ -90,8 +89,9 @@ export const linkStyles = tv({
     },
     appearance: {
       [Appearance.DEFAULT]: '',
-      [Appearance.LIGHT]: 'gi-text-white hover:gi-text-white focus:gi-text-white',
-      [Appearance.INHERIT]: 'gi-text-inherit hover:gi-text-inherit',
+      [Appearance.LIGHT]:
+        'gi-text-white hover:gi-text-white focus:gi-text-white focus-visible:gi-text-white focus:gi-shadow-[0_0_0_3px_var(--gieds-color-yellow-400)] focus-visible:gi-shadow-[0_0_0_3px_var(--gieds-color-yellow-400)]',
+      [Appearance.INHERIT]: 'gi-text-inherit hover:gi-text-inherit focus:gi-text-inherit focus-visible:gi-text-inherit',
     },
     visited: {
       [Visited.DEFAULT]: '',
