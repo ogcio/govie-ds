@@ -2,6 +2,9 @@ import type { Meta, StoryObj } from '@storybook/react-vite';
 import { within, expect } from 'storybook/test';
 import { Icon } from './icon.js';
 
+const test = () => {
+  return <Icon icon="accessibility_new" />;
+};
 const meta = {
   title: 'components/Icon',
   component: Icon,
@@ -40,6 +43,10 @@ export const Default: Story = {
     inline: {
       control: 'boolean',
       description: 'View the icon as inline',
+    },
+    dataTestId: {
+      control: 'text',
+      description: 'Pass in a dataTestId attribute to query the icon (for testing purposes).',
     },
   },
   args: {

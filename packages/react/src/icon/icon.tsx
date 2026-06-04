@@ -207,6 +207,7 @@ export const Icon = forwardRef<HTMLSpanElement, IconProps>(
       size = 'md',
       filled,
       disabled,
+      id,
       ariaHidden,
       ariaLabel,
       inline,
@@ -219,7 +220,8 @@ export const Icon = forwardRef<HTMLSpanElement, IconProps>(
     ref,
   ) => {
     const fontSize = SIZE_MAP[size] ?? SIZE_MAP.md;
-    const reg = ICON_REGISTRY[String(icon) as IconId];
+    const reg = ICON_REGISTRY[icon];
+
     if (reg && !useFontIcon) {
       const { Component, disabledClass } = reg;
       const svgClass = clsx(
@@ -229,16 +231,14 @@ export const Icon = forwardRef<HTMLSpanElement, IconProps>(
         className,
       );
 
-      return (
-        <Component id={props?.id} size={fontSize} className={svgClass} label={ariaLabel} dataTestId={dataTestId} />
-      );
+      return <Component id={id} size={fontSize} className={svgClass} label={ariaLabel} dataTestId={dataTestId} />;
     }
 
     return (
       <span
         aria-hidden={ariaHidden}
         aria-label={ariaLabel}
-        data-testid={'govie-icon'}
+        data-testid={dataTestId ?? 'govie-icon'}
         {...props}
         ref={ref}
         onClick={onClick}

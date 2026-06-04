@@ -43,21 +43,21 @@ const ModalCloseButton = ({ label, size = 'sm', ...props }: ModalCloseButtonProp
     >
       <>
         {label}
-        <CloseIcon size={iconSize} />
+        <CloseIcon size={iconSize} label="Close" />
       </>
     </Button>
   ) : (
     <IconButton
       className="gi-modal-icon"
-      aria-label="Close modal"
+      ariaLabel="Close modal"
       onClick={props.onClick}
       variant="flat"
       size={normalizedSize}
       appearance="dark"
-      dataTestid="modal-close-button"
+      dataTestId="modal-close-button"
       {...props}
     >
-      <CloseIcon size={iconSize} />
+      <CloseIcon size={iconSize} label="Close" />
     </IconButton>
   );
 };

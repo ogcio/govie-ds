@@ -179,10 +179,10 @@ export const CompleteFooter: Story = {
           </Link>
         </Stack>
         <Stack direction={'row'} gap={4} aria-label="Social Media Links" role="navigation">
-          <XIcon />
-          <FacebookIcon />
-          <BlueskyIcon />
-          <LinkedinIcon />
+          <XIcon label="social_x" />
+          <FacebookIcon label="social_facebook" />
+          <BlueskyIcon label="social_bluesky" />
+          <LinkedinIcon label="social_linkedin" />
         </Stack>
       </Stack>
     ),
