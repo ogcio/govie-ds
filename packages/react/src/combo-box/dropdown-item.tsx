@@ -84,7 +84,10 @@ export const DropdownItem = ({
           {selected?.length > 0 && <Tag type={TagTypeEnum.Counter} text={selected.length.toString()} />}
         </div>
 
-        <Icon className={cn({ 'gi-rotate-180': isOpen })} icon="keyboard_arrow_down" />
+        <Icon
+          className={cn('motion-safe:gi-transition-transform motion-safe:gi-duration-100', { 'gi-rotate-180': isOpen })}
+          icon="keyboard_arrow_down"
+        />
       </Button>
 
       <div
