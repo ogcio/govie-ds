@@ -1,7 +1,4 @@
-/**
- * @deprecated Icon list will be removed in the next major version update. Use type IconId to identify the icons available for `<Icon/>`
- */
-export const Icons = [
+export const iconIds = [
   'accessibility_new', // Accessibility new
   'add_circle', // Add Circle outline
   'apps', // Apps
@@ -82,3 +79,8 @@ export const Icons = [
   'first_page',
   'last_page',
 ] as const;
+
+/**
+ * @deprecated Icon list will be removed in the next major version update. Use type IconId to identify the icons available for `<Icon/>`
+ */
+export const Icons = [...iconIds];

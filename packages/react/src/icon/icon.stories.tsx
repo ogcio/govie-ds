@@ -2,9 +2,6 @@ import type { Meta, StoryObj } from '@storybook/react-vite';
 import { within, expect } from 'storybook/test';
 import { Icon } from './icon.js';
 
-const test = () => {
-  return <Icon icon="accessibility_new" />;
-};
 const meta = {
   title: 'components/Icon',
   component: Icon,
@@ -23,10 +20,6 @@ export const Default: Story = {
       control: 'radio',
       options: ['sm', 'md', 'lg', 'xl'],
       description: 'Specify the size of the icon',
-    },
-    filled: {
-      control: 'boolean',
-      description: 'Specify if the icon has a filled style',
     },
     disabled: {
       control: 'boolean',
@@ -73,13 +66,6 @@ export const ExtraLarge: Story = {
   args: {
     icon: 'thumb_up',
     size: 'xl',
-  },
-};
-
-export const Filled: Story = {
-  args: {
-    icon: 'thumb_up',
-    filled: true,
   },
 };
 

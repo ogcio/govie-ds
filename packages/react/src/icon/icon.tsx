@@ -88,7 +88,6 @@ export type IconSize = 'sm' | 'md' | 'lg' | 'xl';
 export type IconProps = {
   icon: IconId;
   size?: IconSize;
-  filled?: boolean;
   disabled?: boolean;
   ariaHidden?: boolean;
   ariaLabel?: string;
@@ -205,7 +204,6 @@ export const Icon = forwardRef<HTMLSpanElement, IconProps>(
     {
       icon,
       size = 'md',
-      filled,
       disabled,
       id,
       ariaHidden,
@@ -254,7 +252,7 @@ export const Icon = forwardRef<HTMLSpanElement, IconProps>(
         )}
         style={{
           fontSize,
-          fontVariationSettings: `'FILL' ${filled ? 1 : 0}, 'wght' 400, 'GRAD' 0, 'opsz' ${fontSize}`,
+          fontVariationSettings: `'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' ${fontSize}`,
           ...props?.style,
         }}
       >
