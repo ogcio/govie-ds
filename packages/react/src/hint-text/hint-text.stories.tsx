@@ -1,8 +1,8 @@
 import type { Meta, StoryObj } from '@storybook/react-vite';
 import { expect, within } from 'storybook/test';
-import { Icon } from '@/icon/icon.js';
 import { Link } from '@/link/link.js';
 import { HintSize, HintText } from './hint-text.js';
+import ArrowDropUpIcon from '@/atoms/icons/ArrowDropUp';
 
 const meta = {
   title: 'Typography/HintText',
@@ -91,7 +91,7 @@ export const WithRichText: Story = {
     children: (
       <div className="gi-flex">
         Here is a rich hint &nbsp;<Link href="#">Click here </Link>
-        <Icon icon="arrow_drop_up" />
+        <ArrowDropUpIcon />
       </div>
     ),
   },

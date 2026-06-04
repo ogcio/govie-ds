@@ -1,7 +1,7 @@
 import type { Meta, StoryObj } from '@storybook/react-vite';
 import { within, expect } from 'storybook/test';
-import { Icon } from '@/icon/icon.js';
 import { ErrorSize, ErrorText } from './error-text.js';
+import ErrorIcon from '@/atoms/icons/Error';
 
 const meta = {
   title: 'Typography/ErrorText',
@@ -107,7 +107,7 @@ export const WithRichText: Story = {
     text: (
       <div className="gi-flex">
         Error message &nbsp;
-        <Icon icon="error" />
+        <ErrorIcon />
       </div>
     ),
   },
