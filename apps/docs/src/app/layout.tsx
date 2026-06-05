@@ -83,7 +83,7 @@ export default function RootLayout({
       href: '/privacy-policy/',
     },
     {
-      label: 'Cookies Policy',
+      label: 'Cookies',
       href: '/cookies-policy/',
     },
     {

@@ -1,21 +1,19 @@
-import type { Meta, StoryObj } from '@storybook/react-vite';
-import { useMemo, useState } from 'react';
-import { within, expect, userEvent, screen } from 'storybook/test';
+import type { Meta, StoryContext, StoryObj } from '@storybook/react-vite';
+import { useState } from 'react';
+import { within, expect, userEvent, screen, fn } from 'storybook/test';
+import clsx from 'clsx';
 import Heading from '@/Heading.js';
 import Button from '@/atoms/Button';
 import { LogoBlack, LogoGoldWhite, LogoWhite, LogoHarpBlack, LogoHarpWhite } from '@/atoms/icons/logos';
-
 import { DrawerMenuExample } from '@/drawer/drawer.content.js';
 import { DrawerBody, DrawerFooter, DrawerWrapper } from '@/drawer/drawer.js';
 import { FormField, FormFieldLabel } from '@/forms/form-field/form-field.js';
 import { useToggleMap } from '@/hooks/use-toggle-map.js';
-import type { IconId } from '@/icon/icon';
-import { Icon } from '@/icon/icon.js';
 import { Link } from '@/link/link.js';
 import { List, ListTypeEnum } from '@/list/list.js';
 import { ListItem } from '@/list-item/list-item.js';
 import { SelectItemNext, SelectNext } from '@/select/select-next.js';
-import { HeaderSearch } from '@/header/components/header-search.js';
+import { HeaderSearch, type HeaderSearchProps } from '@/header/components/header-search';
 import { HeaderLogo } from './components/header-logo.js';
 import { HeaderTitle } from './components/header-title.js';
 import { HeaderMenuItemButton } from './components/menu/components/header-menu-item-button.js';
@@ -25,6 +23,12 @@ import { HeaderMenuItemSlot } from './components/menu/components/header-menu-ite
 import { HeaderPrimaryMenu } from './components/menu/header-primary-menu.js';
 import { HeaderSecondaryMenu } from './components/menu/header-secondary-menu.js';
 import { HeaderNext as Header, HeaderSlotContainer } from './header-next.js';
+import InfoIcon from '@/atoms/icons/Info';
+import LogoutIcon from '@/atoms/icons/Logout';
+import SearchIcon from '@/atoms/icons/Search';
+import MicrophoneIcon from '@/atoms/icons/Mic';
+import CloseIcon from '@/atoms/icons/Close';
+import MenuIcon from '@/atoms/icons/Menu';
 
 const meta = {
   title: 'layout/Header',
@@ -78,23 +82,18 @@ const SlotExample2 = () => {
 export const Default: StoryObj = {
   render: function Render() {
     const [state, { toggle, close, closeAll }] = useToggleMap({
+      faq: false,
       search: false,
+      language: false,
       drawer: false,
     });
-
-    const icons = useMemo(() => {
-      return {
-        faq: state.faq ? 'close' : 'info',
-        language: state.language ? 'close' : 'mic',
-        drawer: state.drawer ? 'close' : 'menu',
-        search: state.search ? 'close' : 'search',
-      } as Record<string, IconId>;
-    }, [state.faq, state.language, state.drawer, state.search]);
 
     const handleMenuItemButton = (key: string) => () => {
       const sections = ['faq', 'search', 'language'].filter((section) => section !== key);
       toggle(key);
-      sections.map((section) => close(section));
+      for (const section of sections) {
+        close(section);
+      }
     };
 
     return (
@@ -115,7 +114,7 @@ export const Default: StoryObj = {
             <HeaderMenuItemSlot className="gi-flex gi-items-center">
               <label>Hello John &nbsp;| </label>
               <a href="#" className="gi-header-secondary-item gi-header-secondary-item-default">
-                <Icon icon="logout" size="sm" />
+                <LogoutIcon size={16} label="Log out" />
               </a>
             </HeaderMenuItemSlot>
           </HeaderSecondaryMenu>
@@ -129,38 +128,37 @@ export const Default: StoryObj = {
             <HeaderMenuItemSeparator />
             <HeaderMenuItemButton
               showItemMode="desktop-only"
-              icon={icons.faq}
               aria-label="Toggle frequently asked questions"
               aria-expanded={state.faq}
               aria-controls="FaqDrawer"
               onClick={handleMenuItemButton('faq')}
             >
               FAQ
+              <InfoIcon />
             </HeaderMenuItemButton>
             <HeaderMenuItemButton
               showItemMode="desktop-only"
-              icon={icons.search}
               aria-label="Toggle site search"
               aria-expanded={state.search}
               onClick={handleMenuItemButton('search')}
             >
               Search
+              {state.search ? <CloseIcon /> : <SearchIcon />}
             </HeaderMenuItemButton>
 
             <HeaderMenuItemButton
               showItemMode="desktop-only"
-              icon={icons.language}
               aria-label="Toggle language selector"
               aria-expanded={state.language}
               aria-haspopup="listbox"
               onClick={handleMenuItemButton('language')}
             >
               Language
+              {state.language ? <CloseIcon /> : <MicrophoneIcon />}
             </HeaderMenuItemButton>
 
             <HeaderMenuItemButton
               showItemMode="mobile-only"
-              icon={icons.drawer}
               aria-label="Toggle main menu"
               aria-expanded={state.drawer}
               aria-controls="MobileMenuDrawer"
@@ -168,6 +166,7 @@ export const Default: StoryObj = {
               onClick={handleMenuItemButton('drawer')}
             >
               Menu
+              <MenuIcon />
             </HeaderMenuItemButton>
           </HeaderPrimaryMenu>
         </Header>
@@ -232,14 +231,13 @@ export const Default: StoryObj = {
       ).toBeInTheDocument();
     });
 
-    await step('FAQ drawer button updates aria + icon', async () => {
+    await step('FAQ drawer button updates aria', async () => {
       const faqButton = await canvas.findByRole('button', {
         name: /toggle frequently asked questions/i,
       });
       expect(within(faqButton).getByTestId(/info/i)).toBeInTheDocument();
-
       await userEvent.click(faqButton);
-      expect(within(faqButton).getByTestId('close')).toBeInTheDocument();
+      expect(faqButton).toHaveAttribute('aria-expanded', 'true');
 
       const faqDrawer = document.querySelector('#FaqDrawer') as HTMLElement;
       expect(faqDrawer).toBeTruthy();
@@ -249,7 +247,7 @@ export const Default: StoryObj = {
         name: /close/i,
       });
       await userEvent.click(drawerCloseButton);
-      expect(within(faqButton).getByTestId(/info/i)).toBeInTheDocument();
+      expect(faqButton).toHaveAttribute('aria-expanded', 'false');
     });
 
     await step('Search slot region appears and hides', async () => {
@@ -281,7 +279,7 @@ export const Default: StoryObj = {
 
       await userEvent.click(langButton);
       expect(langButton).toHaveAttribute('aria-expanded', 'false');
-      expect(within(langButton).getByText(/mic/i)).toBeInTheDocument();
+      expect(within(langButton).getByTestId('mic')).toBeInTheDocument();
 
       await userEvent.click(canvasElement.ownerDocument.body);
     });
@@ -317,13 +315,14 @@ export const Govie: StoryObj = {
             </HeaderMenuItemLink>
             <HeaderMenuItemButton
               showItemMode="mobile-only"
-              icon="menu"
               aria-label="Toggle main menu"
               aria-expanded={isMenuOpen}
               aria-controls="MobileMenuDrawer"
               aria-haspopup="dialog"
               onClick={toggleMenu}
-            />
+            >
+              <MenuIcon />
+            </HeaderMenuItemButton>
           </HeaderPrimaryMenu>
         </Header>
         <DrawerWrapper
@@ -383,23 +382,18 @@ export const Light: StoryObj = {
   },
   render: function Render() {
     const [state, { toggle, close, closeAll }] = useToggleMap({
+      faq: false,
       search: false,
+      language: false,
       drawer: false,
     });
-
-    const icons = useMemo(() => {
-      return {
-        faq: state.faq ? 'close' : 'info',
-        language: state.language ? 'close' : 'mic',
-        drawer: state.drawer ? 'close' : 'menu',
-        search: state.search ? 'close' : 'search',
-      } as Record<string, IconId>;
-    }, [state.faq, state.language, state.drawer, state.search]);
 
     const handleMenuItemButton = (key: string) => () => {
       const sections = ['faq', 'search', 'language'].filter((section) => section !== key);
       toggle(key);
-      sections.map((section) => close(section));
+      for (const section of sections) {
+        close(section);
+      }
     };
 
     return (
@@ -420,7 +414,7 @@ export const Light: StoryObj = {
             <HeaderMenuItemSlot className="gi-flex gi-items-center">
               <label>Hello John &nbsp;| </label>
               <a href="#" className="gi-header-secondary-item gi-header-secondary-item-light">
-                <Icon icon="logout" size="sm" />
+                <LogoutIcon size={16} label="Log out" />
               </a>
             </HeaderMenuItemSlot>
           </HeaderSecondaryMenu>
@@ -434,39 +428,38 @@ export const Light: StoryObj = {
             <HeaderMenuItemSeparator />
             <HeaderMenuItemButton
               showItemMode="desktop-only"
-              icon={icons.faq}
               aria-label="Toggle frequently asked questions"
               aria-expanded={state.faq}
               aria-controls="FaqDrawer"
               onClick={handleMenuItemButton('faq')}
             >
               FAQ
+              <InfoIcon />
             </HeaderMenuItemButton>
 
             <HeaderMenuItemButton
               showItemMode="desktop-only"
-              icon={icons.search}
               aria-label="Toggle site search"
               aria-expanded={state.search}
               onClick={handleMenuItemButton('search')}
             >
               Search
+              {state.search ? <CloseIcon /> : <SearchIcon />}
             </HeaderMenuItemButton>
 
             <HeaderMenuItemButton
               showItemMode="desktop-only"
-              icon={icons.language}
               aria-label="Toggle language selector"
               aria-expanded={state.language}
               aria-haspopup="listbox"
               onClick={handleMenuItemButton('language')}
             >
               Language
+              {state.language ? <CloseIcon /> : <MicrophoneIcon />}
             </HeaderMenuItemButton>
 
             <HeaderMenuItemButton
               showItemMode="mobile-only"
-              icon={icons.drawer}
               aria-label="Toggle main menu"
               aria-expanded={state.drawer}
               aria-controls="MobileMenuDrawer"
@@ -474,6 +467,7 @@ export const Light: StoryObj = {
               onClick={handleMenuItemButton('drawer')}
             >
               Menu
+              <MenuIcon />
             </HeaderMenuItemButton>
           </HeaderPrimaryMenu>
         </Header>
@@ -654,4 +648,94 @@ export const WithTitleAsLinkFocusState: StoryObj = {
       expect(linkTitle).toHaveFocus();
     });
   },
+};
+
+type HeaderSearchPlayContext = Pick<StoryContext<Pick<HeaderSearchProps, 'icon'>>, 'canvasElement' | 'step'> & {
+  desktop?: boolean;
+};
+
+const headerSearchTests = async ({ canvasElement, step, desktop = true }: HeaderSearchPlayContext) => {
+  const canvas = within(canvasElement);
+  const form = await canvas.findByRole('form');
+  await step('Component is properly rendered', async () => {
+    expect(form).toBeInTheDocument();
+    const searchButton = await canvas.findByRole('button');
+    expect(searchButton).toBeInTheDocument();
+    if (desktop) {
+      expect(searchButton).toHaveTextContent('Search');
+    }
+  });
+  await step('Correctly submits the canvas for both buttons', async () => {
+    const handleOnSubmitMock = fn().mockImplementation((event: FormDataEvent) => {
+      event.preventDefault();
+    });
+    form.addEventListener('submit', handleOnSubmitMock);
+    const searchButton = await canvas.findByRole('button');
+    await userEvent.click(searchButton);
+    expect(handleOnSubmitMock).toHaveBeenCalled();
+    form.removeEventListener('submit', handleOnSubmitMock);
+    handleOnSubmitMock.mockClear();
+    await userEvent.click(form);
+  });
+};
+
+export const HeaderSearch_: StoryObj = {
+  parameters: {
+    controls: { disable: true },
+    a11y: {
+      config: {
+        rules: [{ id: 'landmark-unique', enabled: false }],
+      },
+    },
+    docs: {
+      description: {
+        story:
+          'Use `<HeaderSearch/>` to render a form with actionable `search_query` requests. Its primary intention is to be used within the `<Header>` component and rendered on pressing `Search 🔍`, but is also freely available to be used by itself.',
+      },
+    },
+  },
+  render: function Render() {
+    return (
+      // Pass in an action to specify a URL different to your own
+      <HeaderSearch action="/search-api" />
+    );
+  },
+  play: headerSearchTests,
+};
+
+export const HeaderSearchCustomIcon: StoryObj<Pick<HeaderSearchProps, 'icon'>> = {
+  parameters: {
+    controls: { include: ['icon'] },
+    a11y: {
+      config: {
+        rules: [{ id: 'landmark-unique', enabled: false }],
+      },
+    },
+    docs: {
+      description: {
+        story:
+          'For mobile screens, the Search button is replaced with an icon button. By default, the magnifying glass icon 🔍 is rendered when no icon is passed in. Use `<HeaderSearch icon=<icon_name>/>` to render a custom icon. Refer to the [full icon list](/docs/foundation-icons--docs) for more options. ',
+      },
+    },
+  },
+  globals: {
+    viewport: {
+      value: 'mobile2',
+    },
+  },
+  argTypes: {
+    icon: {
+      options: ['menu', 'sort', 'arrow_downward', 'apps'],
+      control: { type: 'select' },
+      defaultValue: 'menu',
+    },
+  },
+  args: {
+    icon: 'menu',
+  },
+
+  render: function Render({ icon }) {
+    return <HeaderSearch icon={icon} />;
+  },
+  play: async ({ canvasElement, step }) => headerSearchTests({ canvasElement, step, desktop: false }),
 };

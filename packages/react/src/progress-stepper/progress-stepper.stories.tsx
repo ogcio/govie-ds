@@ -646,13 +646,11 @@ export const TestIndicatorChecksWhenCompleted: Story = {
     const canvas = within(canvasElement);
     await step('should have a check icon for the completed steps when "indicator" is a number', async () => {
       const listItems = canvas.getAllByRole('listitem');
-      const contents = listItems.map((listItem) =>
-        listItem.querySelector('.gi-progress-stepper-step')?.textContent?.trim(),
-      );
+      const contents = listItems.map((listItem) => listItem.querySelector('.gi-progress-stepper-step'));
       const [content1, content2, currentStep] = contents;
-      expect(content1).toBe('check');
-      expect(content2).toBe('check');
-      expect(currentStep).toBe('3');
+      expect(within(content1 as HTMLElement).getByTestId('check')).toBeInTheDocument();
+      expect(within(content2 as HTMLElement).getByTestId('check')).toBeInTheDocument();
+      expect(currentStep?.textContent?.trim()).toBe('3');
     });
   },
 };

@@ -141,9 +141,9 @@ export const Default = {
       expect(button).toBeInTheDocument();
     });
 
-    await step('has type="button" by default', async () => {
+    await step('has no type by default', async () => {
       const button = canvas.getByTestId('icon-button-default');
-      expect(button).toHaveAttribute('type', 'button');
+      expect(button).not.toHaveAttribute('type');
     });
   },
 };

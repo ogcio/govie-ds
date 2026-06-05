@@ -1,13 +1,13 @@
 import { Slot } from '@radix-ui/react-slot';
 import type { PropsWithChildren } from 'react';
 import React, { forwardRef } from 'react';
-import { getSizeClass, getVariantAppearanceClass } from '@/button/helpers.js';
-import type { ButtonAppearance, ButtonSize, ButtonVariant } from '@/button/types.js';
-import { cn } from '@/cn.js';
-import type { IconId } from '@/icon/icon.js';
-import { Icon } from '@/icon/icon.js';
-import type { AnchorProps } from '@/primitives/anchor.js';
-import Anchor from '@/primitives/anchor.js';
+import { getSizeClass, getVariantAppearanceClass } from '@/button/helpers';
+import type { ButtonAppearance, ButtonSize, ButtonVariant } from '@/button/types';
+import { cn } from '@/cn';
+import type { IconId } from '@/icon/icon';
+import { Icon } from '@/icon/icon';
+import type { AnchorProps } from '@/primitives/anchor';
+import Anchor from '@/primitives/anchor';
 
 export type LinkProps = AnchorProps & {
   href?: string;
