@@ -20,14 +20,24 @@ export default function Link({
   ariaDescribedBy,
   ariaHidden,
   dataTestId,
+  external,
+  target,
+  rel,
+  tabIndex,
   ...rest
 }: LinkProps) {
   const styleProps = { variant, underline, appearance, visited };
+  const anchorProps = {
+    target: target ?? (external ? '_blank' : undefined),
+    rel: rel ?? (external ? 'noreferrer noopener' : undefined),
+    tabIndex: ariaHidden ? -1 : tabIndex,
+  };
 
   if (asChild) {
     return (
       <Slot
         {...rest}
+        {...anchorProps}
         className={linkStyles({ ...styleProps, class: className })}
         aria-current={ariaCurrent}
         aria-label={ariaLabel}
@@ -43,8 +53,9 @@ export default function Link({
 
   return (
     <GiLink
-      {...styleProps}
       {...rest}
+      {...styleProps}
+      {...anchorProps}
       href={href}
       className={className}
       ariaCurrent={ariaCurrent}
