@@ -42,16 +42,16 @@ export const containerStyles = tv({
       true: 'gi-py-4 md:gi-py-6 lg:gi-py-8',
     },
     gutters: {
-      false: 'gi-px-0', // gi-container override
+      false: 'gi-px-0',
     },
     maxWidth: {
-      default: 'gi-max-w-full 2xl:gi-max-w-screen-2xl', // defaults to gi-container
-      sm: 'gi-max-w-screen-sm', // 640px
-      md: 'gi-max-w-screen-md', // 768px
-      lg: 'gi-max-w-screen-lg', // 1024px
-      xl: 'gi-max-w-screen-xl', // 1280px
-      '2xl': 'gi-max-w-screen-2xl', // 1536px
-      full: 'gi-max-w-full', // parent 100%
+      default: 'gi-max-w-full 2xl:gi-max-w-screen-2xl',
+      sm: 'gi-max-w-screen-sm',
+      md: 'gi-max-w-screen-md',
+      lg: 'gi-max-w-screen-lg',
+      xl: 'gi-max-w-screen-xl',
+      '2xl': 'gi-max-w-screen-2xl',
+      full: 'gi-max-w-full',
     },
   },
   defaultVariants: {
