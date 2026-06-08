@@ -176,7 +176,7 @@ export const resolveCssVariables = (
     '--gieds-screen-md': '768px',
     '--gieds-screen-lg': '1024px',
     '--gieds-screen-xl': '1280px',
-    '--gieds-screen-2xl': '1536px',
+    '--gieds-screen-2xl': '1600px',
     '--gieds-shadow-100': '0px 1px 2px 0px #0000000d',
     '--gieds-shadow-200': '0px 1px 3px 0px #0000001a',
     '--gieds-shadow-300': '0px 4px 6px -1px #0000001a',
