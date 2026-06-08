@@ -19,6 +19,10 @@
     "./logos": {
       "types": "./dist/logos/index.d.ts",
       "import": "./dist/logos/index.js"
+    },
+    "./next": {
+      "types": "./dist/next/index.d.ts",
+      "import": "./dist/next/index.js"
     }
   },
   "scripts": {

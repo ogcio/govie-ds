@@ -6,7 +6,7 @@ import type { LinkProps } from './link.js';
 import { Link } from './link.js';
 
 const meta = {
-  title: 'Navigation/Link',
+  title: 'Navigation/Link/Link (Legacy)',
   component: Link,
   argTypes: {
     content: {
@@ -341,23 +341,6 @@ export const TestExternal: Story = {
     await step('should open in a new tab if external', async () => {
       expect(linkElement.getAttribute('target')).toBe('_blank');
       expect(linkElement.getAttribute('rel')).toBe('noreferrer noopener');
-    });
-  },
-};
-
-export const TestNoVisited: Story = {
-  tags: ['skip-playwright'],
-  args: {
-    href: 'https://example.com',
-    children: 'Example Link',
-    noVisited: true,
-  },
-  play: async ({ canvasElement, step }) => {
-    const canvas = within(canvasElement);
-    const linkElement = canvas.getByRole('link');
-
-    await step('should not have visited style if noVisited is true', async () => {
-      expect(linkElement.classList.contains('gi-link-no-visited')).toBe(true);
     });
   },
 };
