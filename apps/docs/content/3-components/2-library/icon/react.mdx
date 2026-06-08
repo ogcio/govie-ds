@@ -17,13 +17,17 @@ component:
           ofType: 'string'
           description: 'Specifies the size of the icon. Options: sm, md, lg, xl.'
           required: false
+        - name: 'filled'
+          ofType: 'boolean'
+          description: 'Specifies whether the icon has a filled style. (**Deprecated**)'
+          required: false
         - name: 'disabled'
           ofType: 'boolean'
           description: 'Specifies whether the icon is disabled.'
           required: false
         - name: 'ariaHidden'
           ofType: 'string'
-          description: 'Hides non-interactive content from accessibility tools.'
+          description: 'Hides non-interactive content from accessibility tools. (**Deprecated** , if no `ariaLabel` is provided, `ariaHidden` defaults to `true`'
           required: false
         - name: 'ariaLabel'
           ofType: 'string'
