@@ -31,7 +31,7 @@ export const SelectNative: FC<SelectProps & { containerProps?: any }> = ({
         {children}
       </select>
       <KeyboardArrowDownIcon
-        className={clsx('gi-select-icon', {
+        className={clsx('gi-pointer-events-none gi-absolute gi-right-2 gi-top-1/2 gi--translate-y-1/2 gi-z-[3]', {
           'gi-text-color-icon-system-neutral-interactive-disabled': !!props.disabled,
         })}
       />

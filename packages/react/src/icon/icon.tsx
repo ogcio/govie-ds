@@ -1,6 +1,7 @@
 'use client';
-import type { ComponentPropsWithoutRef, ComponentType, MouseEventHandler } from 'react';
+import type { ComponentPropsWithoutRef, MouseEventHandler } from 'react';
 import { forwardRef } from 'react';
+import _ from 'lodash';
 import clsx from 'clsx';
 import AccessibilityIcon from '@/atoms/icons/Accessibility';
 import AddCircle from '@/atoms/icons/AddCircle';
@@ -81,7 +82,6 @@ import TiktokIcon from '@/atoms/icons/socials/TikTok';
 import XIcon from '@/atoms/icons/socials/X';
 import YoutubeIcon from '@/atoms/icons/socials/Youtube';
 import PlaceholderIcon from '@/atoms/icons/Placeholder';
-import type { IconProps as GiIconProps } from '@/atoms/icons/types';
 
 export type IconSize = 'sm' | 'md' | 'lg' | 'xl';
 
@@ -89,18 +89,21 @@ export type IconProps = {
   icon: IconId;
   size?: IconSize;
   disabled?: boolean;
+  /** @deprecated For SVG components, ariaHidden is implicitly true for icons with no `ariaLabel`/`label` */
   ariaHidden?: boolean;
   ariaLabel?: string;
   inline?: boolean;
   className?: string;
   dataTestId?: string;
+  /** @deprecated Use `IconButton` to add interactivity to your icons */
   onClick?: MouseEventHandler<HTMLSpanElement>;
-  /**
-   * Use font icon instead of svg
+  /** @deprecated This prop will be removed in future versions */
+  filled?: boolean;
+  /**Use font icon instead of svg
    * Used as a fallback for consistency during Mitosis migration.
-   */
+   * @deprecated This prop will be removed in future versions */
   useFontIcon?: boolean;
-} & Omit<ComponentPropsWithoutRef<'span'>, 'children'>;
+} & Omit<ComponentPropsWithoutRef<'span'>, 'children' | 'onClick'>;
 
 const SIZE_MAP: Record<IconSize, string> = {
   sm: '16px',
@@ -109,95 +112,89 @@ const SIZE_MAP: Record<IconSize, string> = {
   xl: '48px',
 };
 
-const ICON_REGISTRY: Record<
-  IconId,
-  {
-    Component: ComponentType<GiIconProps>;
-    disabledClass?: string;
-  }
-> = {
-  accessibility_new: { Component: AccessibilityIcon },
-  add_circle: { Component: AddCircle },
-  apps: { Component: AppsIcon },
-  arrow_back: { Component: ArrowBackwardIcon },
-  arrow_downward: { Component: ArrowDownwardIcon },
-  arrow_drop_down: { Component: ArrowDropDownIcon },
-  arrow_drop_up: { Component: ArrowDropUpIcon },
-  arrow_forward: { Component: ArrowForwardIcon },
-  arrow_left_alt: { Component: ArrowLeftIcon },
-  arrow_outward: { Component: ArrowOutwardIcon },
-  arrow_right_alt: { Component: ArrowRightIcon },
-  arrow_upward: { Component: ArrowUpwardIcon },
-  attach_file: { Component: AttachFileIcon },
-  block: { Component: BlockIcon },
-  call: { Component: CallIcon },
-  cancel: { Component: CancelIcon },
-  candlestick_chart: { Component: CandlestickChartIcon },
-  chat_bubble: { Component: ChatBubbleIcon },
-  check: { Component: CheckIcon },
-  check_circle: { Component: CheckCircleIcon },
-  chevron_left: { Component: KeyboardArrowLeftIcon },
-  chevron_right: { Component: KeyboardArrowRightIcon },
-  child_care: { Component: ChildCareIcon },
-  close: { Component: CloseIcon },
-  content_copy: { Component: ContentCopyIcon },
-  credit_card: { Component: CreditCardIcon },
-  delete: { Component: DeleteIcon },
-  directions_car: { Component: DirectionsCarIcon },
-  do_not_disturb_on: { Component: DoNotDisturbOnIcon },
-  download: { Component: DownloadIcon },
-  edit: { Component: EditIcon },
-  error: { Component: ErrorIcon },
-  event: { Component: EventIcon },
-  filter_list: { Component: FilterListIcon },
-  health_and_safety: { Component: HealthAndSafetyIcon },
-  home: { Component: HomeIcon },
-  info: { Component: InfoIcon },
-  keyboard_arrow_down: { Component: KeyboardArrowDownIcon },
-  keyboard_arrow_left: { Component: KeyboardArrowLeftIcon },
-  keyboard_arrow_right: { Component: KeyboardArrowRightIcon },
-  keyboard_arrow_up: { Component: KeyboardArrowUpIcon },
-  link: { Component: LinkIcon },
-  location_on: { Component: LocationOnIcon },
-  login: { Component: LoginIcon },
-  logout: { Component: LogoutIcon },
-  mail: { Component: MailIcon },
-  menu: { Component: MenuIcon },
-  mic: { Component: MicIcon },
-  more_horiz: { Component: MoreHorizontalIcon },
-  more_vert: { Component: MoreVerticalIcon },
-  open_in_new: { Component: OpenInNewIcon },
-  person: { Component: PersonIcon },
-  person_cancel: { Component: PersonCancelIcon },
-  person_check: { Component: PersonCheckIcon },
-  refresh: { Component: RefreshIcon },
-  search: { Component: SearchIcon },
-  send: { Component: SendIcon },
-  settings: { Component: SettingsIcon },
-  sort: { Component: SortIcon },
-  space_dashboard: { Component: SpaceDashboardIcon },
-  sync: { Component: SyncIcon },
-  swap_vert: { Component: SwapVerticalIcon },
-  thumb_down: { Component: ThumbDownIcon },
-  thumb_up: { Component: ThumbUpIcon },
-  unfold_more: { Component: UnfoldMoreIcon },
-  upload: { Component: UploadIcon },
-  visibility: { Component: VisibilityIcon },
-  visibility_off: { Component: VisibilityOffIcon },
-  warning: { Component: WarningIcon },
-  work: { Component: WorkIcon },
-  social_bluesky: { Component: BlueskyIcon },
-  social_facebook: { Component: FacebookIcon },
-  social_instagram: { Component: InstagramIcon },
-  social_linkedin: { Component: LinkedinIcon },
-  social_threads: { Component: ThreadsIcon },
-  social_tiktok: { Component: TiktokIcon },
-  social_x: { Component: XIcon },
-  social_youtube: { Component: YoutubeIcon },
-  placeholder: { Component: PlaceholderIcon },
-  first_page: { Component: FirstPageIcon },
-  last_page: { Component: LastPageIcon },
-};
+const ICON_REGISTRY = {
+  accessibility_new: AccessibilityIcon,
+  add_circle: AddCircle,
+  apps: AppsIcon,
+  arrow_back: ArrowBackwardIcon,
+  arrow_downward: ArrowDownwardIcon,
+  arrow_drop_down: ArrowDropDownIcon,
+  arrow_drop_up: ArrowDropUpIcon,
+  arrow_forward: ArrowForwardIcon,
+  arrow_left_alt: ArrowLeftIcon,
+  arrow_outward: ArrowOutwardIcon,
+  arrow_right_alt: ArrowRightIcon,
+  arrow_upward: ArrowUpwardIcon,
+  attach_file: AttachFileIcon,
+  block: BlockIcon,
+  call: CallIcon,
+  cancel: CancelIcon,
+  candlestick_chart: CandlestickChartIcon,
+  chat_bubble: ChatBubbleIcon,
+  check: CheckIcon,
+  check_circle: CheckCircleIcon,
+  chevron_left: KeyboardArrowLeftIcon,
+  chevron_right: KeyboardArrowRightIcon,
+  child_care: ChildCareIcon,
+  close: CloseIcon,
+  content_copy: ContentCopyIcon,
+  credit_card: CreditCardIcon,
+  delete: DeleteIcon,
+  directions_car: DirectionsCarIcon,
+  do_not_disturb_on: DoNotDisturbOnIcon,
+  download: DownloadIcon,
+  edit: EditIcon,
+  error: ErrorIcon,
+  event: EventIcon,
+  filter_list: FilterListIcon,
+  health_and_safety: HealthAndSafetyIcon,
+  home: HomeIcon,
+  info: InfoIcon,
+  keyboard_arrow_down: KeyboardArrowDownIcon,
+  keyboard_arrow_left: KeyboardArrowLeftIcon,
+  keyboard_arrow_right: KeyboardArrowRightIcon,
+  keyboard_arrow_up: KeyboardArrowUpIcon,
+  link: LinkIcon,
+  location_on: LocationOnIcon,
+  login: LoginIcon,
+  logout: LogoutIcon,
+  mail: MailIcon,
+  menu: MenuIcon,
+  mic: MicIcon,
+  more_horiz: MoreHorizontalIcon,
+  more_vert: MoreVerticalIcon,
+  open_in_new: OpenInNewIcon,
+  person: PersonIcon,
+  person_cancel: PersonCancelIcon,
+  person_check: PersonCheckIcon,
+  refresh: RefreshIcon,
+  search: SearchIcon,
+  send: SendIcon,
+  settings: SettingsIcon,
+  sort: SortIcon,
+  space_dashboard: SpaceDashboardIcon,
+  sync: SyncIcon,
+  swap_vert: SwapVerticalIcon,
+  thumb_down: ThumbDownIcon,
+  thumb_up: ThumbUpIcon,
+  unfold_more: UnfoldMoreIcon,
+  upload: UploadIcon,
+  visibility: VisibilityIcon,
+  visibility_off: VisibilityOffIcon,
+  warning: WarningIcon,
+  work: WorkIcon,
+  social_bluesky: BlueskyIcon,
+  social_facebook: FacebookIcon,
+  social_instagram: InstagramIcon,
+  social_linkedin: LinkedinIcon,
+  social_threads: ThreadsIcon,
+  social_tiktok: TiktokIcon,
+  social_x: XIcon,
+  social_youtube: YoutubeIcon,
+  placeholder: PlaceholderIcon,
+  first_page: FirstPageIcon,
+  last_page: LastPageIcon,
+} as const;
 
 export const Icon = forwardRef<HTMLSpanElement, IconProps>(
   (
@@ -212,20 +209,19 @@ export const Icon = forwardRef<HTMLSpanElement, IconProps>(
       className,
       onClick,
       useFontIcon,
+      filled,
       dataTestId,
       ...props
     },
     ref,
   ) => {
     const fontSize = SIZE_MAP[size] ?? SIZE_MAP.md;
-    const reg = ICON_REGISTRY[icon];
+    const Component = ICON_REGISTRY[icon];
 
-    if (reg && !useFontIcon) {
-      const { Component, disabledClass } = reg;
+    if (Component && !(useFontIcon || filled)) {
       const svgClass = clsx(
-        { 'gi-block': !inline, 'gi-inline-block': inline },
         'gi-shrink-0',
-        disabled && (disabledClass || 'gi-fill-gray-700'),
+        { 'gi-block': !inline, 'gi-inline-block': inline, 'gi-fill-gray-700': disabled },
         className,
       );
 
@@ -252,7 +248,7 @@ export const Icon = forwardRef<HTMLSpanElement, IconProps>(
         )}
         style={{
           fontSize,
-          fontVariationSettings: `'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' ${fontSize}`,
+          fontVariationSettings: `'FILL' ${filled ? 1 : 0}, 'wght' 400, 'GRAD' 0, 'opsz' ${fontSize}`,
           ...props?.style,
         }}
       >
@@ -264,85 +260,6 @@ export const Icon = forwardRef<HTMLSpanElement, IconProps>(
 
 export default Icon;
 
-export type IconId =
-  | 'accessibility_new'
-  | 'add_circle'
-  | 'apps'
-  | 'arrow_back'
-  | 'arrow_downward'
-  | 'arrow_drop_down'
-  | 'arrow_drop_up'
-  | 'arrow_forward'
-  | 'arrow_left_alt'
-  | 'arrow_outward'
-  | 'arrow_right_alt'
-  | 'arrow_upward'
-  | 'attach_file'
-  | 'block'
-  | 'call'
-  | 'cancel'
-  | 'candlestick_chart'
-  | 'chat_bubble'
-  | 'check'
-  | 'check_circle'
-  | 'chevron_left'
-  | 'chevron_right'
-  | 'child_care'
-  | 'close'
-  | 'content_copy'
-  | 'credit_card'
-  | 'delete'
-  | 'directions_car'
-  | 'do_not_disturb_on'
-  | 'download'
-  | 'edit'
-  | 'error'
-  | 'event'
-  | 'filter_list'
-  | 'health_and_safety'
-  | 'home'
-  | 'info'
-  | 'keyboard_arrow_down'
-  | 'keyboard_arrow_left'
-  | 'keyboard_arrow_right'
-  | 'keyboard_arrow_up'
-  | 'link'
-  | 'location_on'
-  | 'login'
-  | 'logout'
-  | 'mail'
-  | 'menu'
-  | 'mic'
-  | 'more_horiz'
-  | 'more_vert'
-  | 'open_in_new'
-  | 'person'
-  | 'person_cancel'
-  | 'person_check'
-  | 'refresh'
-  | 'search'
-  | 'send'
-  | 'settings'
-  | 'sort'
-  | 'space_dashboard'
-  | 'sync'
-  | 'swap_vert'
-  | 'thumb_down'
-  | 'thumb_up'
-  | 'unfold_more'
-  | 'upload'
-  | 'visibility'
-  | 'visibility_off'
-  | 'warning'
-  | 'work'
-  | 'social_bluesky'
-  | 'social_facebook'
-  | 'social_instagram'
-  | 'social_linkedin'
-  | 'social_threads'
-  | 'social_tiktok'
-  | 'social_x'
-  | 'social_youtube'
-  | 'placeholder'
-  | 'first_page'
-  | 'last_page';
+export type IconId = keyof typeof ICON_REGISTRY;
+
+export const Icons = _.keys(ICON_REGISTRY);
