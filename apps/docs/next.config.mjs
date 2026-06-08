@@ -10,7 +10,6 @@ const nextConfig = {
   images: {
     unoptimized: true, // TODO: review image optimisation
   },
-  serverExternalPackages: ['react-i18next', 'i18next'],
   turbopack: {},
 };
 
