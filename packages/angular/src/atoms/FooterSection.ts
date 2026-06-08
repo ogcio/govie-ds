@@ -12,9 +12,6 @@ export type Props = {
   variant?: (typeof FooterSectionVariant)[keyof typeof FooterSectionVariant];
   children?: any;
   className?: string;
-  role?: BoxProps['role'];
-  ariaLabel?: string;
-  ariaLabelledBy?: string;
   id?: string;
   dataTestId?: string;
 };
@@ -22,22 +19,21 @@ export type Props = {
 import { tv } from 'tailwind-variants';
 import { clamp } from './utilities';
 import GiBox from './Box';
-import type { Props as BoxProps } from './Box';
 export const FooterSectionVariant = {
-  DEFAULT: 'default',
-  META: 'meta',
+  PRIMARY: 'primary',
+  UTILITY: 'utility',
 } as const;
-const getVariant = (x: Props['variant']) => clamp(x, FooterSectionVariant, FooterSectionVariant.DEFAULT);
+const getVariant = (x: Props['variant']) => clamp(x, FooterSectionVariant, FooterSectionVariant.PRIMARY);
 const styles = tv({
   base: '',
   variants: {
     variant: {
-      default: 'gi-py-10 gi-bg-color-surface-system-neutral-layer1',
-      meta: 'gi-py-4 gi-px-8 gi-bg-color-surface-system-neutral-layer2',
+      primary: 'gi-py-10 gi-bg-color-surface-system-neutral-layer1',
+      utility: 'gi-py-4 gi-px-8 gi-bg-color-surface-system-neutral-layer2',
     },
   },
   defaultVariants: {
-    variant: 'default',
+    variant: 'primary',
   },
 });
 
@@ -52,9 +48,6 @@ const styles = tv({
           className: className,
         })
       "
-      [role]="role ?? (ariaLabel || ariaLabelledBy ? 'region' : undefined)"
-      [ariaLabel]="ariaLabel"
-      [ariaLabelledBy]="ariaLabelledBy"
       [dataTestId]="dataTestId"
       ><ng-content></ng-content
     ></gi-box>
@@ -76,8 +69,5 @@ export default class FooterSection {
   @Input() id!: Props['id'];
   @Input() variant!: Props['variant'];
   @Input() className!: Props['className'];
-  @Input() role!: Props['role'];
-  @Input() ariaLabel!: Props['ariaLabel'];
-  @Input() ariaLabelledBy!: Props['ariaLabelledBy'];
   @Input() dataTestId!: Props['dataTestId'];
 }

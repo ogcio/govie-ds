@@ -113,16 +113,7 @@ export function Footer({
         </Container>
       </FooterSection>
 
-      {utilitySlot && (
-        <FooterSection
-          variant="meta"
-          ariaLabel={t('footer.utilityLinks', {
-            defaultValue: 'Footer Utility Links',
-          })}
-        >
-          {utilitySlot}
-        </FooterSection>
-      )}
+      {utilitySlot && <FooterSection variant="utility">{utilitySlot}</FooterSection>}
     </footer>
   );
 }
