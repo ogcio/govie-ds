@@ -47,7 +47,7 @@ export const AccordionItem = ({
       >
         <div data-testid="accordion-header" className={header()}>
           {label}
-          <div className="gi-pt-[1.5px]">
+          <div className={clsx({ 'gi-pt-[1.5px]': variant === 'default' })}>
             <KeyboardArrowDownIcon className={icon()} />
           </div>
         </div>
