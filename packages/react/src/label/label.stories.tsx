@@ -115,7 +115,7 @@ export const WithRichText: Story = {
     children: (
       <div className="gi-flex">
         Here is a rich label &nbsp;<Link href="#">Click here </Link>
-        <ArrowDropUpIcon label="arrow_drop_up" />
+        <ArrowDropUpIcon />
       </div>
     ),
   },

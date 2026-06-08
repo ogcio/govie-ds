@@ -43,7 +43,7 @@ const ModalCloseButton = ({ label, size = 'sm', ...props }: ModalCloseButtonProp
     >
       <>
         {label}
-        <CloseIcon size={iconSize} label="Close" />
+        <CloseIcon size={iconSize} />
       </>
     </Button>
   ) : (
@@ -57,7 +57,7 @@ const ModalCloseButton = ({ label, size = 'sm', ...props }: ModalCloseButtonProp
       dataTestId="modal-close-button"
       {...props}
     >
-      <CloseIcon size={iconSize} label="Close" />
+      <CloseIcon size={iconSize} />
     </IconButton>
   );
 };

@@ -107,7 +107,7 @@ export const WithRichText: Story = {
     text: (
       <div className="gi-flex">
         Error message &nbsp;
-        <ErrorIcon label="error" />
+        <ErrorIcon />
       </div>
     ),
   },
