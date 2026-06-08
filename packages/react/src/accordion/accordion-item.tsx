@@ -47,7 +47,9 @@ export const AccordionItem = ({
       >
         <div data-testid="accordion-header" className={header()}>
           {label}
-          <KeyboardArrowDownIcon className={icon()} />
+          <div className="gi-pt-[1.5px]">
+            <KeyboardArrowDownIcon className={icon()} />
+          </div>
         </div>
       </div>
       <div
@@ -92,11 +94,6 @@ const accordionVariants = tv({
       true: {
         icon: 'gi-rotate-180',
       },
-      false: '',
     },
   },
-  compoundVariants: [
-    { isExpanded: true, variant: 'default', class: { icon: 'gi-pb-[1.5px]' } },
-    { isExpanded: false, variant: 'default', class: { icon: 'gi-pt-[1.5px]' } },
-  ],
 });

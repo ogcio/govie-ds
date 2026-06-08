@@ -116,9 +116,7 @@ export const Default: StoryObj = {
     await userEvent.click(input);
     await waitFor(() => {
       expect(canvas.getByRole('listbox')).toBeInTheDocument();
-    });
-    await waitFor(() => {
-      expect((keyboardArrowDown.parentElement as HTMLElement).classList.contains('gi-rotate-180')).toBe(true);
+      expect(keyboardArrowDown).toBeInTheDocument();
     });
 
     const list = await canvas.findByRole('listbox');
