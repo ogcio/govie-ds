@@ -4,13 +4,13 @@ import Button from '@/atoms/Button';
 import Paragraph from '@/atoms/Paragraph';
 import { cn } from '@/cn.js';
 import { translate as t } from '@/i18n/utility.js';
-import { Icon } from '@/icon/icon.js';
 import { IconButton } from '@/icon-button/icon-button.js';
 import { InputCheckbox } from '@/input-checkbox/input-checkbox.js';
 import { InputText } from '@/input-text/input-text.js';
 import { Tag, TagTypeEnum } from '@/tag/tag.js';
 import { slugify } from '@/utilities.js';
 import type { DropdownItemProps } from './types.js';
+import KeyboardArrowDownIcon from '@/atoms/icons/KeyboardArrowDown';
 
 export const DropdownItem = ({
   children,
@@ -83,8 +83,11 @@ export const DropdownItem = ({
           <Paragraph size="md">{children}</Paragraph>
           {selected?.length > 0 && <Tag type={TagTypeEnum.Counter} text={selected.length.toString()} />}
         </div>
-
-        <Icon className={cn({ 'gi-rotate-180': isOpen })} icon="keyboard_arrow_down" />
+        <KeyboardArrowDownIcon
+          className={cn('gi-shrink-0 motion-safe:gi-transition-transform motion-safe:gi-duration-100', {
+            'gi-rotate-180': isOpen,
+          })}
+        />
       </Button>
 
       <div

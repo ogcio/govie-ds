@@ -1,8 +1,8 @@
 'use client';
 
 import { useState } from 'react';
+import clsx from 'clsx';
 import KeyboardArrowRightIcon from '@/atoms/icons/KeyboardArrowRight';
-import { cn } from '@/cn.js';
 import { ListItem } from '@/list-item/list-item.js';
 import type { HeaderProps } from '@/header/types.js';
 
@@ -47,14 +47,18 @@ export const MenuItemAccordion = ({ index, item }: MenuItemAccordionProps) => {
       >
         <div>
           <span className="gi-text-sm gi-font-bold gi-ml-1">{item.label}</span>
-          <KeyboardArrowRightIcon className="gi-block gi-shrink-0 gi-accordion-item-icon" />
+          <KeyboardArrowRightIcon
+            className={clsx('gi-shrink-0 motion-safe:gi-transition-transform motion-safe:gi-duration-100', {
+              'gi-rotate-90': isOpen,
+            })}
+          />
         </div>
       </div>
 
       <div
         id={`Accordion-slot-${index}`}
         role="region"
-        className={cn('gi-accordion-item-slot', {
+        className={clsx('gi-accordion-item-slot', {
           'gi-hidden': !isOpen,
         })}
       >
