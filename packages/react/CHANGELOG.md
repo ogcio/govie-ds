@@ -1,5 +1,27 @@
 # Changelog
 
+## [1.39.0](https://github.com/ogcio/govie-ds/compare/react-lib-v1.38.0...react-lib-v1.39.0) (2026-06-09)
+
+
+### Features
+
+* **AB#36276:** animate Chevron Icons in Components ([#974](https://github.com/ogcio/govie-ds/issues/974)) ([1f40ac4](https://github.com/ogcio/govie-ds/commit/1f40ac4fe7d1206805da4c14d6b367af23d295ea))
+* **AB#38397:** Adding Link atom component ([#969](https://github.com/ogcio/govie-ds/issues/969)) ([9495c25](https://github.com/ogcio/govie-ds/commit/9495c25722689ac23e0253e7e005121448b87ab7))
+* **AB#38597:** Adding react Link wrapper ([#973](https://github.com/ogcio/govie-ds/issues/973)) ([9495c25](https://github.com/ogcio/govie-ds/commit/9495c25722689ac23e0253e7e005121448b87ab7))
+
+
+### Bug Fixes
+
+* **AB#37835:** Adding 1600 for 2xl ([#978](https://github.com/ogcio/govie-ds/issues/978)) ([1c3a730](https://github.com/ogcio/govie-ds/commit/1c3a7302a10382ed63f2a430ccca8b91221e923a))
+
+
+### Dependencies
+
+* The following workspace dependencies were updated
+  * devDependencies
+    * @ogcio/design-system-tailwind bumped to 1.26.1
+    * @ogcio/theme-govie bumped to 1.21.7
+
 ## [1.38.0](https://github.com/ogcio/govie-ds/compare/react-lib-v1.37.0...react-lib-v1.38.0) (2026-06-02)
 
 

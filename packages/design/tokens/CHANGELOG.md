@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.22.3](https://github.com/ogcio/govie-ds/compare/tokens-v1.22.2...tokens-v1.22.3) (2026-06-09)
+
+
+### Bug Fixes
+
+* **AB#37835:** Adding 1600 for 2xl ([#978](https://github.com/ogcio/govie-ds/issues/978)) ([1c3a730](https://github.com/ogcio/govie-ds/commit/1c3a7302a10382ed63f2a430ccca8b91221e923a))
+
 ## [1.22.2](https://github.com/ogcio/govie-ds/compare/tokens-v1.22.1...tokens-v1.22.2) (2026-05-19)
 
 
