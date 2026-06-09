@@ -21,6 +21,14 @@ export const Default: Story = {
       options: ['sm', 'md', 'lg', 'xl'],
       description: 'Specify the size of the icon',
     },
+    filled: {
+      control: 'boolean',
+      description: '(**Deprecated**) Specify if the icon has a filled style',
+    },
+    useFontIcon: {
+      control: 'boolean',
+      description: '(**Deprecated**) Enforce icon source fallback to material symbols font icons',
+    },
     disabled: {
       control: 'boolean',
       description: 'Specify if the icon is disabled',

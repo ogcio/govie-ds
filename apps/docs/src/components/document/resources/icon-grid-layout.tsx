@@ -1,29 +1,31 @@
 'use client';
-import { Icon, IconProps, Icons, Paragraph } from '@ogcio/design-system-react';
+import { Paragraph } from '@ogcio/design-system-react';
+import * as IconsList from '@ogcio/design-system-react/icons';
 import { DownloadIconButton } from './download-icon-button';
 import { CopyToClipboardButton } from './copy-to-clipboard-button';
 import { titleCase } from '@/lib/utilities';
 
-const icons = [...Icons.sort()];
-
 export function IconGridLayout() {
   return (
     <ul className="flex flex-wrap gap-2 p-0 gi-not-prose">
-      {icons.map((icon) => {
-        const iconName = titleCase(icon).replaceAll(' Alt', '');
+      {Object.entries(IconsList).map(([name, Icon]) => {
+        console.log(IconsList);
+        const iconName = titleCase(name)
+          .replaceAll(' Alt', '')
+          .replace('Icon', '');
         const safeName = iconName.toLowerCase().trim().replace(/\s+/g, '_');
         return (
-          <li key={icon} className="inline-block w-32">
+          <li key={name} className="inline-block w-48">
             <div className="border rounded-md transition-colors relative">
               <div className="flex justify-center px-10 py-12">
-                <Icon icon={icon as IconProps['icon']} size="lg" />
+                <Icon />
               </div>
               <div className="absolute bottom-1 right-1">
-                <CopyToClipboardButton text={icon} />
+                <CopyToClipboardButton text={iconName} />
               </div>
               <div className="absolute bottom-1 right-10">
                 <DownloadIconButton
-                  name={icon}
+                  name={iconName}
                   href={`/icons/${safeName}.svg`}
                 />
               </div>
