@@ -3,10 +3,12 @@ import { FormProvider, useForm } from 'react-hook-form';
 import { expect, userEvent, within } from 'storybook/test';
 import Button from '@/atoms/Button';
 import { FormField, FormFieldError, FormFieldHint, FormFieldLabel } from '@/forms/form-field/form-field.js';
-import { Icon } from '@/icon/icon.js';
 import { Link } from '@/link/link.js';
 import { Spinner } from '@/spinner/spinner.js';
 import { InputText } from './input-text.js';
+import ArrowDropUpIcon from '@/atoms/icons/ArrowDropUp';
+import ErrorIcon from '@/atoms/icons/Error';
+import InfoIcon from '@/atoms/icons/Info';
 
 const meta = {
   title: 'Form/InputText',
@@ -428,7 +430,7 @@ export const WithRichHintText: Story = {
       <FormFieldHint>
         <div className="gi-flex">
           Here is a rich hint &nbsp;<Link href="#">Click here </Link>
-          <Icon icon="arrow_drop_up" />
+          <ArrowDropUpIcon />
         </div>
       </FormFieldHint>
       <InputText type="search" placeholder="Placeholder" />
@@ -444,7 +446,7 @@ export const WithRichErrorText: Story = {
       <FormFieldError>
         <div className="gi-flex">
           Error message &nbsp;
-          <Icon icon="error" />
+          <ErrorIcon />
         </div>
       </FormFieldError>
       <InputText type="search" placeholder="Placeholder" />
@@ -459,7 +461,7 @@ export const WithRichLabelText: Story = {
       <FormFieldLabel htmlFor="input-text-id">
         <div className="gi-flex">
           Label message &nbsp;
-          <Icon icon="info" />
+          <InfoIcon />
         </div>
       </FormFieldLabel>
       <InputText type="search" placeholder="Placeholder" />

@@ -1,11 +1,14 @@
 import type { Meta, StoryObj } from '@storybook/react-vite';
 import { within, expect } from 'storybook/test';
-import { Icon } from '@/icon/icon.js';
 import { Link } from '@/link/link.js';
 import Divider from '@/Divider';
 import { Stack } from '@/stack/stack.js';
 import { Footer } from './footer.js';
 import { generateSvgPlaceholderDataUrl } from '@/utils/placeholder.js';
+import XIcon from '@/atoms/icons/socials/X';
+import FacebookIcon from '@/atoms/icons/socials/Facebook';
+import BlueskyIcon from '@/atoms/icons/socials/Bluesky';
+import LinkedinIcon from '@/atoms/icons/socials/Linkedin';
 
 const meta: Meta<typeof Footer> = {
   component: Footer,
@@ -176,10 +179,10 @@ export const CompleteFooter: Story = {
           </Link>
         </Stack>
         <Stack direction={'row'} gap={4} aria-label="Social Media Links" role="navigation">
-          <Icon icon="social_x" />
-          <Icon icon="social_facebook" />
-          <Icon icon="social_bluesky" />
-          <Icon icon="social_linkedin" />
+          <XIcon label="social_x" />
+          <FacebookIcon label="social_facebook" />
+          <BlueskyIcon label="social_bluesky" />
+          <LinkedinIcon label="social_linkedin" />
         </Stack>
       </Stack>
     ),

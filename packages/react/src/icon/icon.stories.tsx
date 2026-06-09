@@ -31,7 +31,11 @@ export const Default: Story = {
     },
     filled: {
       control: 'boolean',
-      description: '**Deprecated** Specify if the icon has a filled style',
+      description: '(**Deprecated**) Specify if the icon has a filled style',
+    },
+    useFontIcon: {
+      control: 'boolean',
+      description: '(**Deprecated**) Enforce icon source fallback to material symbols font icons',
     },
     disabled: {
       control: 'boolean',
@@ -43,11 +47,15 @@ export const Default: Story = {
     },
     ariaLabel: {
       control: 'text',
-      description: 'Define a string value that can be used to name an element (for accessibilty purposes)',
+      description: 'Define a string value that can be used to name an element (for accessibility purposes)',
     },
     inline: {
       control: 'boolean',
       description: 'View the icon as inline',
+    },
+    dataTestId: {
+      control: 'text',
+      description: 'Pass in a dataTestId attribute to query the icon (for testing purposes).',
     },
   },
   args: {
@@ -66,6 +74,7 @@ export const Large: Story = {
   args: {
     icon: 'thumb_up',
     size: 'lg',
+    dataTestId: 'thumb_down',
   },
 };
 
@@ -73,13 +82,6 @@ export const ExtraLarge: Story = {
   args: {
     icon: 'thumb_up',
     size: 'xl',
-  },
-};
-
-export const Filled: Story = {
-  args: {
-    icon: 'thumb_up',
-    filled: true,
   },
 };
 
@@ -106,25 +108,24 @@ export const AriaLabel: Story = {
 
 export const TestThumbDownDefault: Story = {
   tags: ['skip-playwright'],
-  args: { icon: 'thumb_down', size: 'md' },
+  args: { icon: 'thumb_down', size: 'md', dataTestId: 'thumbs_down' },
   play: async ({ canvasElement, step }) => {
     const canvas = within(canvasElement);
     await step('should render the ThumbDown icon', async () => {
-      const iconElement = canvas.getByTestId('govie-icon');
-      expect(iconElement.textContent?.trim()).toBe('thumb_down');
+      const iconElement = canvas.getByTestId('thumbs_down');
+      expect(iconElement).toBeInTheDocument();
     });
   },
 };
 
 export const TestThumbDownDisabled: Story = {
   tags: ['skip-playwright'],
-  args: { icon: 'thumb_down', size: 'md', disabled: true },
+  args: { icon: 'thumb_down', size: 'md', disabled: true, dataTestId: 'thumb_down' },
   play: async ({ canvasElement, step }) => {
     const canvas = within(canvasElement);
     await step('should render the ThumbDown disabled', async () => {
-      const iconElement = canvas.getByTestId('govie-icon');
-      expect(iconElement.textContent?.trim()).toBe('thumb_down');
-      expect(iconElement.classList.contains('gi-text-gray-700')).toBe(true);
+      const iconElement = canvas.getByTestId('thumb_down');
+      expect(iconElement.classList.contains('gi-fill-gray-700')).toBe(true);
     });
   },
 };
@@ -136,12 +137,12 @@ export const TestThumbDownAria: Story = {
     size: 'md',
     ariaHidden: true,
     ariaLabel: 'ARIA-LABEL',
+    dataTestId: 'thumb_down',
   },
   play: async ({ canvasElement, step }) => {
     const canvas = within(canvasElement);
     await step('should render the ThumbDown with ARIA', async () => {
-      const iconElement = canvas.getByTestId('govie-icon');
-      expect(iconElement.textContent?.trim()).toBe('thumb_down');
+      const iconElement = canvas.getByTestId('thumb_down');
       expect(iconElement.hasAttribute('aria-hidden')).toBe(true);
       expect(iconElement.hasAttribute('aria-label')).toBe(true);
       expect(iconElement.getAttribute('aria-label')).toBe('ARIA-LABEL');
@@ -151,13 +152,12 @@ export const TestThumbDownAria: Story = {
 
 export const TestThumbDownLarge: Story = {
   tags: ['skip-playwright'],
-  args: { icon: 'thumb_down', size: 'lg' },
+  args: { icon: 'thumb_down', size: 'lg', dataTestId: 'thumb_down' },
   play: async ({ canvasElement, step }) => {
     const canvas = within(canvasElement);
     await step('should render the ThumbDown icon large', async () => {
-      const iconElement = canvas.getByTestId('govie-icon');
-      expect(iconElement.textContent?.trim()).toBe('thumb_down');
-      expect(iconElement).toHaveStyle('font-size: 32px');
+      const iconElement = canvas.getByTestId('thumb_down');
+      expect(iconElement).toHaveAttribute('width', '32px');
     });
   },
 };

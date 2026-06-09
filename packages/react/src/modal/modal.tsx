@@ -8,7 +8,6 @@ import { normalizeSize } from '@/utils/normalize-size.js';
 import { cn } from '@/cn.js';
 import { useAriaHider } from '@/hooks/use-aria-hider.js';
 import { useFocusTrap } from '@/hooks/use-focus-trap.js';
-import { Icon, type IconSize } from '@/icon/icon.js';
 import { IconButton } from '@/icon-button/icon-button.js';
 import { splitAriaProps, getSpecialComponentType, isSpecialComponent } from '@/utils/utilities.js';
 
@@ -20,6 +19,7 @@ import type {
   ModalWrapperProps,
   ModalHeaderProps,
 } from './types.js';
+import CloseIcon from '@/atoms/icons/Close';
 
 const VARIANT_ORDER: Record<NonNullable<ModalFooterButton['variant']>, number> = {
   flat: 0,
@@ -29,7 +29,7 @@ const VARIANT_ORDER: Record<NonNullable<ModalFooterButton['variant']>, number> =
 
 const ModalCloseButton = ({ label, size = 'sm', ...props }: ModalCloseButtonProps) => {
   const normalizedSize = normalizeSize(size);
-  const iconSize: IconSize = normalizedSize === 'sm' ? 'sm' : 'md';
+  const iconSize = normalizedSize === 'sm' ? 16 : 24;
 
   return label ? (
     <Button
@@ -43,21 +43,22 @@ const ModalCloseButton = ({ label, size = 'sm', ...props }: ModalCloseButtonProp
     >
       <>
         {label}
-        <Icon icon="close" size={iconSize} />
+        <CloseIcon size={iconSize} />
       </>
     </Button>
   ) : (
     <IconButton
       className="gi-modal-icon"
-      icon={{ icon: 'close' }}
-      aria-label="Close modal"
+      ariaLabel="Close modal"
       onClick={props.onClick}
       variant="flat"
       size={normalizedSize}
       appearance="dark"
-      dataTestid="modal-close-button"
+      dataTestId="modal-close-button"
       {...props}
-    />
+    >
+      <CloseIcon size={iconSize} />
+    </IconButton>
   );
 };
 

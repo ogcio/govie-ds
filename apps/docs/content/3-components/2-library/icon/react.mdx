@@ -19,15 +19,20 @@ component:
           required: false
         - name: 'filled'
           ofType: 'boolean'
-          description: 'Specifies whether the icon has a filled style.'
+          description: 'Specifies whether the icon has a filled style. (**Deprecated**)'
+          required: false
+        - name: 'useFontIcon'
+          ofType: 'boolean'
+          description: '(**Deprecated**) Enforce icon source fallback to material symbols font icons'
           required: false
         - name: 'disabled'
           ofType: 'boolean'
           description: 'Specifies whether the icon is disabled.'
           required: false
+
         - name: 'ariaHidden'
           ofType: 'string'
-          description: 'Hides non-interactive content from accessibility tools.'
+          description: 'Hides non-interactive content from accessibility tools. (**Deprecated** , if no `ariaLabel` is provided, `ariaHidden` defaults to `true`'
           required: false
         - name: 'ariaLabel'
           ofType: 'string'
@@ -36,6 +41,10 @@ component:
         - name: 'inline'
           ofType: 'boolean'
           description: 'Specifies whether the icon should be displayed as inline.'
+          required: false
+        - name: 'dataTestId'
+          ofType: 'string'
+          description: 'Test id for targeting the element in automated tests.'
           required: false
   stories:
     - name: 'default'
