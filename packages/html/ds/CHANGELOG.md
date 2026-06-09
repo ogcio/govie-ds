@@ -1,5 +1,15 @@
 # Changelog
 
+## [1.21.3](https://github.com/ogcio/govie-ds/compare/html-lib-v1.21.2...html-lib-v1.21.3) (2026-06-09)
+
+
+### Dependencies
+
+* The following workspace dependencies were updated
+  * devDependencies
+    * @ogcio/design-system-tailwind bumped to 1.26.1
+    * @ogcio/theme-govie bumped to 1.21.7
+
 ## [1.21.2](https://github.com/ogcio/govie-ds/compare/html-lib-v1.21.1...html-lib-v1.21.2) (2026-05-19)
 
 
