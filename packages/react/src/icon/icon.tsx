@@ -98,7 +98,9 @@ const ICON_REGISTRY: Record<
   menu: { Component: MenuIcon },
   search: { Component: SearchIcon },
 };
-
+/**
+ * @deprecated It is recommended to use the icon components directly (e.g. <MenuIcon/>) instead of <Icon/>. This component will be removed in a future release
+ */
 export const Icon = forwardRef<HTMLSpanElement, IconProps>(
   (
     { icon, size = 'md', filled, disabled, ariaHidden, ariaLabel, inline, className, onClick, useFontIcon, ...props },

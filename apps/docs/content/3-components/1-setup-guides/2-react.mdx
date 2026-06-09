@@ -160,7 +160,8 @@ export default function App({ Component, pageProps }: AppProps) {
 </InsetText>
 <Alert variant="danger">
   **Deprecated**: Loading Material Symbols is now no longer necessary and can be
-  safely removed.
+  safely removed. If material symbols are absolutely necessary, please refer to
+  the stylesheet below.
 </Alert>
 
 ```tsx
@@ -178,6 +179,17 @@ export default function RootLayout({ children }) {
   );
 }
 ```
+
+In cases where material symbols font library is necessary, you can place this import line within your stylesheet. To use it with `<Icon/>` you must include the prop `useFontIcon`.
+
+<ComponentContainer
+  fullWidth
+  className="min-w-0 [&_pre]:whitespace-pre-wrap [&_pre]:break-all [&_pre]:overflow-x-hidden"
+>
+  ```css @import
+  url('https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,400,0..1,0&icon_names=accessibility_new,add_circle,apps,arrow_back,arrow_downward,arrow_drop_down,arrow_drop_up,arrow_forward,arrow_left_alt,arrow_outward,arrow_right_alt,arrow_upward,attach_file,block,call,cancel,candlestick_chart,chat_bubble,check,check_circle,chevron_left,chevron_right,child_care,close,content_copy,credit_card,delete,directions_car,do_not_disturb_on,download,edit,error,event,filter_list,first_page,health_and_safety,home,info,keyboard_arrow_down,keyboard_arrow_up,last_page,link,location_on,login,logout,mail,menu,mic,more_horiz,more_vert,open_in_new,person,person_cancel,person_check,refresh,search,send,settings,sort,space_dashboard,swap_vert,sync,thumb_down,thumb_up,unfold_more,upload,visibility,visibility_off,warning,work');
+  ```
+</ComponentContainer>
 
 ### Internationalisation (i18n) Guidelines
 
