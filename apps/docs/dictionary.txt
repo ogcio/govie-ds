@@ -196,6 +196,7 @@ form-radio-inputradiogroup
 form-select-selectnative
 form-textarea
 frontend
+fullWidth
 gi-
 govie
 h1
