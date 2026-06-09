@@ -1,5 +1,29 @@
 # Changelog
 
+## [1.38.0](https://github.com/ogcio/govie-ds/compare/docs-v1.37.0...docs-v1.38.0) (2026-06-09)
+
+
+### Features
+
+* **AB#38397:** Adding Link atom component ([#969](https://github.com/ogcio/govie-ds/issues/969)) ([9495c25](https://github.com/ogcio/govie-ds/commit/9495c25722689ac23e0253e7e005121448b87ab7))
+* **AB#38597:** Adding react Link wrapper ([#973](https://github.com/ogcio/govie-ds/issues/973)) ([9495c25](https://github.com/ogcio/govie-ds/commit/9495c25722689ac23e0253e7e005121448b87ab7))
+
+
+### Bug Fixes
+
+* **AB#37835:** Adding 1600 for 2xl ([#978](https://github.com/ogcio/govie-ds/issues/978)) ([1c3a730](https://github.com/ogcio/govie-ds/commit/1c3a7302a10382ed63f2a430ccca8b91221e923a))
+
+
+### Dependencies
+
+* The following workspace dependencies were updated
+  * dependencies
+    * @ogcio/design-system-html bumped to 1.21.3
+    * @ogcio/design-system-react bumped to 1.39.0
+    * @ogcio/design-system-tailwind bumped to 1.26.1
+    * @ogcio/design-system-tokens bumped to 1.22.3
+    * @ogcio/theme-govie bumped to 1.21.7
+
 ## [1.37.0](https://github.com/ogcio/govie-ds/compare/docs-v1.36.0...docs-v1.37.0) (2026-06-02)
 
 
