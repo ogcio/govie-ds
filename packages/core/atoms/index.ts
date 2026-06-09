@@ -2,6 +2,8 @@ export { default as Box } from './Box.lite';
 export { default as Button } from './Button.lite';
 export { default as IconButton } from './IconButton.lite';
 export { default as InsetText } from './InsetText.lite';
+export { default as Link } from './Link.lite';
+export { default as LinkButton } from './LinkButton.lite';
 export { default as Paragraph, type Props as ParagraphProps } from './Paragraph.lite';
 export { default as Text, type Props as TextProps } from './Text.lite';
 export { default as Grid, type Props as GridProps } from './Grid.lite';

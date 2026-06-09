@@ -1,0 +1,152 @@
+---
+title: LinkButton
+description: LinkButton React Component
+status: stable
+component:
+  id: 'link-button-react'
+  link: '/docs/components-linkbutton--docs'
+  status: 'stable'
+  properties:
+    - name: LinkButtonProps
+      fields:
+        - name: 'id'
+          ofType: 'string'
+          description: 'Optional id for linking/targeting and aria references.'
+          required: false
+        - name: 'href'
+          ofType: 'string'
+          description: 'The URL the link points to. Required — an anchor without href loses its implicit link role.'
+          required: true
+        - name: 'className'
+          ofType: 'string'
+          description: 'Additional CSS classes to apply to the element.'
+          required: false
+        - name: 'variant'
+          ofType: '"primary" | "secondary" | "flat"'
+          description: 'Visual style variant of the link button.'
+          required: false
+        - name: 'appearance'
+          ofType: '"default" | "dark" | "light"'
+          description: 'Colour appearance of the link button.'
+          required: false
+        - name: 'size'
+          ofType: '"sm" | "md" | "lg"'
+          description: 'Size of the link button.'
+          required: false
+        - name: 'disabled'
+          ofType: 'boolean'
+          description: 'Disables the link button. Sets aria-disabled="true", prevents navigation, and removes the element from the tab order.'
+          required: false
+        - name: 'external'
+          ofType: 'boolean'
+          description: 'Opens the link in a new tab. When true, sets target="_blank" and rel="noreferrer noopener". Explicit target/rel props override these defaults.'
+          required: false
+        - name: 'target'
+          ofType: '"_self" | "_blank" | "_parent" | "_top"'
+          description: 'Browsing context for the link. Overrides the value set by external.'
+          required: false
+        - name: 'rel'
+          ofType: 'string'
+          description: 'Link relationship. Overrides the default set by external.'
+          required: false
+        - name: 'tabIndex'
+          ofType: 'number'
+          description: 'Controls the tab order. Automatically set to -1 when disabled.'
+          required: false
+        - name: 'lang'
+          ofType: 'string'
+          description: 'Language of the link text, when it differs from the surrounding content. Maps to the HTML lang attribute.'
+          required: false
+        - name: 'onClick'
+          ofType: '(event: any) => void'
+          description: 'Click event handler.'
+          required: false
+        - name: 'onFocus'
+          ofType: '(event: any) => void'
+          description: 'Focus event handler.'
+          required: false
+        - name: 'onBlur'
+          ofType: '(event: any) => void'
+          description: 'Blur event handler.'
+          required: false
+        - name: 'onKeyDown'
+          ofType: '(event: any) => void'
+          description: 'Key down event handler.'
+          required: false
+        - name: 'onKeyUp'
+          ofType: '(event: any) => void'
+          description: 'Key up event handler.'
+          required: false
+        - name: 'className'
+          ofType: 'string'
+          description: 'Additional CSS classes to apply to the element.'
+          required: false
+        - name: 'ariaCurrent'
+          ofType: '"page" | "step" | "location" | "date" | "time" | "true" | "false" | boolean'
+          description: 'Indicates the current item within a navigation set or process. Use "page" for current-page links in nav, "step" for multi-step flows.'
+          required: false
+        - name: 'ariaLabel'
+          ofType: 'string'
+          description: 'Accessible label for the link button. Use when the visible text alone does not fully describe the destination. Maps to aria-label.'
+          required: false
+        - name: 'ariaLabelledBy'
+          ofType: 'string'
+          description: 'Points to element id(s) whose content labels the link button. Maps to aria-labelledby.'
+          required: false
+        - name: 'ariaDescribedBy'
+          ofType: 'string'
+          description: 'Points to element id(s) whose content describes the link button. Maps to aria-describedby.'
+          required: false
+        - name: 'children'
+          ofType: 'ReactNode'
+          description: 'Content to render inside the link button.'
+          required: true
+        - name: 'dataTestId'
+          ofType: 'string'
+          description: 'Test id for targeting the element in automated tests.'
+          required: false
+  stories:
+    - name: 'default'
+      url: '/story/components-linkbutton--default'
+    - name: 'all-variants'
+      url: '/story/components-linkbutton--all-variants'
+    - name: 'all-appearances'
+      url: '/story/components-linkbutton--all-appearances'
+    - name: 'all-sizes'
+      url: '/story/components-linkbutton--all-sizes'
+---
+
+# LinkButton
+
+LinkButton renders a native anchor element (`<a>`) styled like a Button. Use it for button-styled navigation links where the destination is a URL.
+It keeps the implicit `link` role so browser link behaviours (right-click "Open in new tab", Ctrl/Cmd+click) work correctly.
+
+<Section current="react" >
+
+<ComponentPreview>
+  <LinkButton href="https://www.gov.ie">This is a link button</LinkButton>
+</ComponentPreview>
+
+## Examples
+
+### Default
+
+<StorybookFrame componentId="link-button-react" story="default" />
+
+### All Variants
+
+<StorybookFrame componentId="link-button-react" story="all-variants" />
+
+### All Appearances
+
+<StorybookFrame componentId="link-button-react" story="all-appearances" />
+
+### All Sizes
+
+<StorybookFrame componentId="link-button-react" story="all-sizes" />
+
+## Properties
+
+<ComponentPropertiesTable componentId="link-button-react" />
+
+</Section>

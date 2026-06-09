@@ -87,6 +87,7 @@ export { default as InsetText, type Props as InsetTextProps } from './atoms/Inse
 export { default as Text, type Props as TextProps } from './atoms/Text.js';
 export type { LabelTextProps } from './label/types.js';
 export { Link, type LinkProps } from './link/link.js';
+export { default as LinkButton, type Props as LinkButtonProps } from './atoms/LinkButton.js';
 export { ListItem, type ListItemProps } from './list-item/list-item.js';
 export { List, type ListProps } from './list/list.js';
 export { Modal, ModalBody, ModalFooter, ModalTitle, ModalWrapper } from './modal/modal.js';

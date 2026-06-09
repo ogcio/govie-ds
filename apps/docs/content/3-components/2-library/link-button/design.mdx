@@ -1,0 +1,83 @@
+---
+title: LinkButton
+description: LinkButton Design Guidelines
+status: stable
+component:
+  id: 'link-button'
+  status: 'stable'
+---
+
+# LinkButton
+
+LinkButton renders a native anchor element (`<a>`) styled like a Button. Use it for button-styled navigation links where the destination is a URL.
+It keeps the implicit `link` role so browser link behaviours (right-click "Open in new tab", Ctrl/Cmd+click) work correctly.
+
+<Section current="design">
+
+<ComponentPreview>
+  <LinkButton href="https://www.gov.ie">This is a link button</LinkButton>
+</ComponentPreview>
+
+## Variants
+
+<ComponentPreviewLayout>
+  <ComponentPreviewItem>
+    <LinkButton href="#" variant="primary">
+      Primary
+    </LinkButton>
+  </ComponentPreviewItem>
+  <ComponentPreviewItem>
+    <LinkButton href="#" variant="secondary">
+      Secondary
+    </LinkButton>
+  </ComponentPreviewItem>
+  <ComponentPreviewItem>
+    <LinkButton href="#" variant="flat">
+      Flat
+    </LinkButton>
+  </ComponentPreviewItem>
+</ComponentPreviewLayout>
+
+- **Primary**: The main action link that stands out and draws attention. Use it for the most important navigation actions on a page.
+- **Secondary**: A less prominent link that complements the primary link. Use it for secondary navigation actions that are still important but not the main focus.
+- **Flat**: A link with minimal styling, often used for less important navigation actions or in contexts where a more subtle appearance is desired.
+
+## Appearance
+
+<ComponentPreviewLayout>
+  <ComponentPreviewItem>
+    <LinkButton href="#" appearance="default">
+      Default
+    </LinkButton>
+  </ComponentPreviewItem>
+  <ComponentPreviewItem>
+    <LinkButton href="#" appearance="dark">
+      Dark
+    </LinkButton>
+  </ComponentPreviewItem>
+  <ComponentPreviewItem>
+    <LinkButton href="#" appearance="light">
+      Light
+    </LinkButton>
+  </ComponentPreviewItem>
+</ComponentPreviewLayout>
+
+## Usage
+
+LinkButton is for navigation that should look like a button. It renders a semantic `<a>` element, so users get native link behaviours like middle-click to open in new tab, right-click context menu, and Ctrl/Cmd+click.
+
+### Do
+
+- **Use for navigation**: LinkButton is for navigating to URLs. If the action doesn't navigate, use Button instead.
+- **Use clear, destination-oriented labels**: Text should describe where the user will go (e.g., "View details", "Go to dashboard", "Download report").
+- **Maintain hierarchy**: Use primary for main navigation actions, secondary for alternatives, and flat for less important links.
+- **Use `external` for external links**: Set the `external` prop when linking outside your application to automatically add `target="_blank"` and `rel="noreferrer noopener"`.
+
+### Don't
+
+- **Don't use for actions**: If clicking triggers an action (submit, save, delete) rather than navigation, use Button instead.
+- **Don't use multiple primary link buttons**: Avoid having more than one primary link button in a section.
+- **Don't use vague labels**: Avoid generic labels like "Click here" or "Go" without context.
+- **Don't disable without explanation**: If a link button is disabled, provide clear information about why.
+
+</Section>

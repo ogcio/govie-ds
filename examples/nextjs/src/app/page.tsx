@@ -37,6 +37,7 @@ import {
   Heading,
   Icon,
   IconButton,
+  LinkButton,
   InputCheckbox,
   InputCheckboxGroup,
   InsetText,
@@ -1373,6 +1374,19 @@ export default function Home() {
                     ariaLabel: 'Delete',
                   }}
                 />
+              </Box>
+              <Heading as="h3">LinkButton</Heading>
+              <Box className="flex items-center gap-4">
+                <LinkButton href="/about">Default LinkButton</LinkButton>
+                <LinkButton href="/about" variant="secondary">
+                  Secondary LinkButton
+                </LinkButton>
+                <LinkButton href="/about" variant="flat">
+                  Flat LinkButton
+                </LinkButton>
+                <LinkButton href="/about" disabled>
+                  Disabled LinkButton
+                </LinkButton>
               </Box>
             </Box>
           </Box>

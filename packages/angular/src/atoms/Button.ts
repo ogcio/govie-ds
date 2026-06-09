@@ -41,6 +41,7 @@ export type Props = {
 
 import { tv } from 'tailwind-variants';
 import { Variant, Appearance, Size } from './constants';
+import { getVariant, getAppearance, clamp } from './utilities';
 export const ButtonSize = {
   SM: Size.SM,
   MD: Size.MD,
@@ -293,25 +294,22 @@ export const buttonBaseStyles = tv({
     disabled: false,
   },
 });
+export const buttonSizeVariants = {
+  sm: 'gi-h-8 gi-px-2 gi-py-1.5 gi-text-xs',
+  md: 'gi-h-10 gi-px-3 gi-py-2 gi-text-sm',
+  lg: 'gi-h-12 gi-px-4 gi-py-3 gi-text-2md',
+} as const;
 export const styles = tv({
   extend: buttonBaseStyles,
   base: ['gi-gap-2'],
   variants: {
-    size: {
-      sm: 'gi-h-8 gi-px-2 gi-py-1.5 gi-text-xs',
-      md: 'gi-h-10 gi-px-3 gi-py-2 gi-text-sm',
-      lg: 'gi-h-12 gi-px-4 gi-py-3 gi-text-2md',
-    },
+    size: buttonSizeVariants,
   },
   defaultVariants: {
     size: ButtonSize.MD,
   },
 });
-const getVariant = (x: Props['variant'] = Variant.PRIMARY) =>
-  Object.values(Variant).includes(x) ? x : Variant.PRIMARY;
-const getAppearance = (x: Props['appearance']) =>
-  x === Appearance.LIGHT || x === Appearance.DARK ? x : Appearance.DEFAULT;
-const getSize = (x: Props['size'] = ButtonSize.MD) => (Object.values(ButtonSize).includes(x) ? x : ButtonSize.MD);
+export const getSize = (x: Props['size'] = ButtonSize.MD) => clamp(x, ButtonSize, ButtonSize.MD);
 
 @Component({
   selector: 'gi-button',
@@ -365,9 +363,9 @@ const getSize = (x: Props['size'] = ButtonSize.MD) => (Object.values(ButtonSize)
 })
 export default class Button {
   styles = styles;
+  getSize = getSize;
   getVariant = getVariant;
   getAppearance = getAppearance;
-  getSize = getSize;
 
   @Input() id!: Props['id'];
   @Input() variant!: Props['variant'];

@@ -72,6 +72,8 @@ JSON
 JSX
 Lato
 Likert
+LinkButton
+LinkButtonProps
 LinkProps
 Matomo
 ModalBodyProps
@@ -156,13 +158,16 @@ centered-items-with-gap
 centralized
 checkboxes
 className
+Cmd
 codebase
 color
 colors
 combobox
 composable
 components-iconbutton
+components-linkbutton
 components-scoreselect
+Ctrl
 customizable
 customization
 data-table-tanstack
@@ -213,9 +218,11 @@ interruptive
 is-dismissible
 isOpen
 labeling
+lang
 lifecycle
 md
 minimizing
+nav
 navigation-sidenav
 no-color
 noColor
