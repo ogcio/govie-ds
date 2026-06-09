@@ -9,7 +9,6 @@ export function IconGridLayout() {
   return (
     <ul className="flex flex-wrap gap-2 p-0 gi-not-prose">
       {Object.entries(IconsList).map(([name, Icon]) => {
-        console.log(IconsList);
         const iconName = titleCase(name)
           .replaceAll(' Alt', '')
           .replace('Icon', '');
