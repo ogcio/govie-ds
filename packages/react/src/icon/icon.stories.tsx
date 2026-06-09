@@ -5,6 +5,14 @@ import { Icon } from './icon.js';
 const meta = {
   title: 'components/Icon',
   component: Icon,
+  parameters: {
+    docs: {
+      description: {
+        component:
+          '**NOTE**: This component is now deprecated and will be removed in future versions. For rendering icons, please use the SVG icon directly ([see here](/docs/foundation-icons--docs)).',
+      },
+    },
+  },
 } satisfies Meta<typeof Icon>;
 
 export default meta;
@@ -23,7 +31,7 @@ export const Default: Story = {
     },
     filled: {
       control: 'boolean',
-      description: 'Specify if the icon has a filled style',
+      description: '**Deprecated** Specify if the icon has a filled style',
     },
     disabled: {
       control: 'boolean',
@@ -31,7 +39,7 @@ export const Default: Story = {
     },
     ariaHidden: {
       control: 'text',
-      description: 'Hide non-interactive content from the accessibility',
+      description: '**Deprecated** Hide non-interactive content from the accessibility',
     },
     ariaLabel: {
       control: 'text',
