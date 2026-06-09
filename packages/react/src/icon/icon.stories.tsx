@@ -31,11 +31,11 @@ export const Default: Story = {
     },
     filled: {
       control: 'boolean',
-      description: '(**Deprecated**) Specify if the icon has a filled style',
+      description: 'Specify if the icon has a filled style',
     },
     useFontIcon: {
       control: 'boolean',
-      description: '(**Deprecated**) Enforce icon source fallback to material symbols font icons',
+      description: 'Enforce icon source fallback to material symbols font icons.',
     },
     disabled: {
       control: 'boolean',
@@ -43,7 +43,7 @@ export const Default: Story = {
     },
     ariaHidden: {
       control: 'text',
-      description: '**Deprecated** Hide non-interactive content from the accessibility',
+      description: 'Hide non-interactive content from the accessibility',
     },
     ariaLabel: {
       control: 'text',

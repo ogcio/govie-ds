@@ -101,7 +101,7 @@ export type IconProps = {
   filled?: boolean;
   /**Use font icon instead of svg
    * Used as a fallback for consistency during Mitosis migration.
-   * @deprecated This prop will be removed in future versions */
+   * @deprecated This prop will be removed in future versions. See Getting Started/React in the documentation for more info. */
   useFontIcon?: boolean;
 } & Omit<ComponentPropsWithoutRef<'span'>, 'children' | 'onClick'>;
 
@@ -196,6 +196,9 @@ const ICON_REGISTRY = {
   last_page: LastPageIcon,
 } as const;
 
+/**
+ * @deprecated It is recommended to use the icon components directly (e.g. <MenuIcon/>) instead of <Icon/>. This component will be removed in a future release
+ */
 export const Icon = forwardRef<HTMLSpanElement, IconProps>(
   (
     {
