@@ -10,7 +10,7 @@ import {
   useRef,
   useState,
 } from 'react';
-import { cn } from '@/cn.js';
+import clsx from 'clsx';
 import { useDomId } from '@/hooks/use-dom-id.js';
 import { useScrollHighlightedItem } from '@/hooks/use-scroll-highlighted-item.js';
 import { translate as t } from '@/i18n/utility.js';
@@ -27,6 +27,7 @@ import type {
   SelectNextOptionProps,
   SelectNextTableCellProps,
 } from './types.js';
+import KeyboardArrowDownIcon from '@/atoms/icons/KeyboardArrowDown';
 
 export const SelectNext = forwardRef<HTMLInputElement, SelectNextProps>(
   (
@@ -240,7 +241,7 @@ export const SelectNext = forwardRef<HTMLInputElement, SelectNextProps>(
 
     if (enableSearch) {
       return (
-        <div className={cn('gi-relative gi-w-full', props.className)}>
+        <div className={clsx('gi-relative gi-w-full', props.className)}>
           <SelectSearch
             {...props}
             value={internalValue}
@@ -258,7 +259,7 @@ export const SelectNext = forwardRef<HTMLInputElement, SelectNextProps>(
     }
 
     return (
-      <div aria-disabled={disabled} className={cn('gi-relative gi-w-full', props.className)}>
+      <div aria-disabled={disabled} className={clsx('gi-relative gi-w-full', props.className)}>
         <span id={srOnlyLabelId} className="gi-sr-only">
           {labelText}
         </span>
@@ -272,11 +273,18 @@ export const SelectNext = forwardRef<HTMLInputElement, SelectNextProps>(
           placeholder={placeholder ?? t('select.next.placeholder', { defaultValue: 'Search' })}
           readOnly
           inputClassName="gi-cursor-pointer"
-          iconEndClassName={cn({
+          iconEndClassName={clsx('motion-safe:gi-transition-transform motion-safe:gi-duration-100', {
             'gi-cursor-pointer': !disabled,
             'gi-cursor-not-allowed gi-pointer-events-none': disabled,
+            'gi-rotate-180': isOpen,
           })}
-          iconEnd={isOpen ? 'keyboard_arrow_up' : 'keyboard_arrow_down'}
+          iconEnd={
+            <KeyboardArrowDownIcon
+              className={clsx('gi-shrink-0', {
+                'gi-fill-gray-700': disabled,
+              })}
+            />
+          }
           onIconEndClick={handleOnClick}
           ref={inputRef}
           iconEndRef={iconEndRef}

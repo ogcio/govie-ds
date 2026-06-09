@@ -141,7 +141,11 @@ export const SideNavItem: React.FC<PropsWithChildren<SideNavItemProps> & { open?
           )}
           {showExpandableIcon && (
             <div className="gi-absolute gi-right-3 gi-pointer-events-none">
-              <KeyboardArrowDown className={clsx(isOpen && 'gi-rotate-180')} />
+              <KeyboardArrowDown
+                className={clsx('motion-safe:gi-transition-transform motion-safe:gi-duration-100', {
+                  'gi-rotate-180': isOpen,
+                })}
+              />
             </div>
           )}
         </div>

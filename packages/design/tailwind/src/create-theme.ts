@@ -283,7 +283,7 @@ export function createTheme(
       xl: meta ? meta.light.resolved.primitive.screen.xl.$value : '1280px',
       '2xl': meta
         ? meta.light.resolved.primitive.screen['2xl'].$value
-        : '1536px',
+        : '1600px',
       nojs: { raw: '(scripting: none)' },
     },
     textUnderlineOffset: {

@@ -9,7 +9,7 @@ describe('createTheme', () => {
         md: '768px',
         lg: '1024px',
         xl: '1280px',
-        '2xl': '1536px',
+        '2xl': '1600px',
       },
     });
   });
@@ -24,7 +24,7 @@ describe('createTheme', () => {
         md: '768px',
         lg: '1024px',
         xl: '1280px',
-        '2xl': '1536px',
+        '2xl': '1600px',
       },
     });
   });
@@ -1306,7 +1306,7 @@ describe('createTheme', () => {
                   },
                   '2xl': {
                     $type: 'dimension',
-                    $value: '1536px',
+                    $value: '1600px',
                   },
                 },
                 shadow: {
@@ -3237,7 +3237,7 @@ describe('createTheme', () => {
       }),
     ).toMatchObject({
       screens: {
-        '2xl': '1536px',
+        '2xl': '1600px',
         lg: '1024px',
         md: '768px',
         sm: '640px',
