@@ -25,7 +25,11 @@ The default orientation. Renders a full-width horizontal line.
 
 <ComponentPreviewLayout>
   <ComponentPreviewItem className="w-full">
-    <Divider />
+    <Stack gap={2} direction="column">
+      <Box>Content</Box>
+      <Divider />
+      <Box>Content</Box>
+    </Stack>
   </ComponentPreviewItem>
 </ComponentPreviewLayout>
 
@@ -35,10 +39,10 @@ Renders a vertical line that fills the height of its parent container. The paren
 
 <ComponentPreviewLayout>
   <ComponentPreviewItem className="w-full">
-    <Stack direction="row" gap={4} className="gi-h-20">
-      <Box className="p-4">Left</Box>
+    <Stack direction="row" gap={2}>
+      <Box>Left</Box>
       <Divider orientation="vertical" />
-      <Box className="p-4">Right</Box>
+      <Box>Right</Box>
     </Stack>
   </ComponentPreviewItem>
 </ComponentPreviewLayout>

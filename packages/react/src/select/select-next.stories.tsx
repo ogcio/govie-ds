@@ -107,16 +107,16 @@ export const Default: StoryObj = {
     await waitFor(() => {
       expect(input).toHaveValue('Select Option');
     });
+    let keyboardArrowDown: HTMLElement;
     await waitFor(() => {
-      expect(canvas.getByTestId('keyboard-arrow-down')).toBeInTheDocument();
+      keyboardArrowDown = canvas.getByTestId('keyboard-arrow-down');
+      expect(keyboardArrowDown).toBeInTheDocument();
     });
 
     await userEvent.click(input);
     await waitFor(() => {
       expect(canvas.getByRole('listbox')).toBeInTheDocument();
-    });
-    await waitFor(() => {
-      expect(canvas.getByTestId('keyboard-arrow-up')).toBeInTheDocument();
+      expect(keyboardArrowDown).toBeInTheDocument();
     });
 
     const list = await canvas.findByRole('listbox');
