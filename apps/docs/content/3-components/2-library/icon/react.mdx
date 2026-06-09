@@ -21,10 +21,15 @@ component:
           ofType: 'boolean'
           description: 'Specifies whether the icon has a filled style. (**Deprecated**)'
           required: false
+        - name: 'useFontIcon'
+          ofType: 'boolean'
+          description: '(**Deprecated**) Enforce icon source fallback to material symbols font icons'
+          required: false
         - name: 'disabled'
           ofType: 'boolean'
           description: 'Specifies whether the icon is disabled.'
           required: false
+
         - name: 'ariaHidden'
           ofType: 'string'
           description: 'Hides non-interactive content from accessibility tools. (**Deprecated** , if no `ariaLabel` is provided, `ariaHidden` defaults to `true`'
