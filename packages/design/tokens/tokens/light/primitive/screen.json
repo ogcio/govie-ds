@@ -6,7 +6,7 @@
       "md": { "$type": "dimension", "$value": "768px" },
       "lg": { "$type": "dimension", "$value": "1024px" },
       "xl": { "$type": "dimension", "$value": "1280px" },
-      "2xl": { "$type": "dimension", "$value": "1536px" }
+      "2xl": { "$type": "dimension", "$value": "1600px" }
     }
   }
 }

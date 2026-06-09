@@ -1,5 +1,19 @@
 # Changelog
 
+## [1.26.1](https://github.com/ogcio/govie-ds/compare/design-tailwind-v1.26.0...design-tailwind-v1.26.1) (2026-06-09)
+
+
+### Bug Fixes
+
+* **AB#37835:** Adding 1600 for 2xl ([#978](https://github.com/ogcio/govie-ds/issues/978)) ([1c3a730](https://github.com/ogcio/govie-ds/commit/1c3a7302a10382ed63f2a430ccca8b91221e923a))
+
+
+### Dependencies
+
+* The following workspace dependencies were updated
+  * dependencies
+    * @ogcio/design-system-tokens bumped to 1.22.3
+
 ## [1.26.0](https://github.com/ogcio/govie-ds/compare/design-tailwind-v1.25.0...design-tailwind-v1.26.0) (2026-05-19)
 
 
