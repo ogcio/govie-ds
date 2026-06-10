@@ -19,17 +19,16 @@ component:
           required: false
         - name: 'filled'
           ofType: 'boolean'
-          description: '@deprecated - Specifies whether the icon has a filled style.'
+          description: '@deprecated — Uses Material Symbols font icons for filled style. Material Symbols stylesheet import will be removed; manual import required. See below for details.'
           required: false
         - name: 'useFontIcon'
           ofType: 'boolean'
-          description: '@deprecated - Enforce icon source fallback to material symbols font icons. '
+          description: '@deprecated - Enforce icon source fallback to Material Symbols font icons. The Material Symbols stylesheet import will be removed in future versions, requiring developers to import manually. See below for details.'
           required: false
         - name: 'disabled'
           ofType: 'boolean'
           description: 'Specifies whether the icon is disabled.'
           required: false
-
         - name: 'ariaHidden'
           ofType: 'string'
           description: '@deprecated - Hides non-interactive content from accessibility tools.'
@@ -102,5 +101,13 @@ Icons help users quickly recognise actions, states and categories. Use them to c
 ## Properties
 
 <ComponentPropertiesTable componentId="icon-react" />
+
+### SVG and font icons
+
+Earlier versions of the package rendered all icons using Material Symbols font icons. The package now ships SVG icons internally, and `<Icon />` uses these by default. If you pass `filled` or `useFontIcon` as `true`, the component falls back to Material Symbols font icons instead.
+
+The package will soon stop including the Material Symbols stylesheet. If you still need font icons - for example, for filled styles not yet available as SVGs — add the font resource to your project so `<Icon filled={true} />` continues to work. Follow these [instructions](https://developers.google.com/fonts/docs/material_symbols#use_in_web) to set this up.
+
+Future work is planned to add filled SVG variants for all supported icons, which will remove the need for the deprecated `filled` and `useFontIcon` props and the Material Symbols font dependency.
 
 </Section>
