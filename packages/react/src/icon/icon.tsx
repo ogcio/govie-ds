@@ -89,7 +89,7 @@ export type IconProps = {
   icon: IconId;
   size?: IconSize;
   disabled?: boolean;
-  /** @deprecated For SVG components, ariaHidden is implicitly true for icons with no `ariaLabel`/`label` */
+  /** @deprecated For SVG components, ariaHidden is calculated based on the `ariaLabel` prop. `true` if `ariaLabel` is not passed. */
   ariaHidden?: boolean;
   ariaLabel?: string;
   inline?: boolean;
@@ -97,9 +97,9 @@ export type IconProps = {
   dataTestId?: string;
   /** @deprecated Use `IconButton` to add interactivity to your icons */
   onClick?: MouseEventHandler<HTMLSpanElement>;
-  /** @deprecated Work is planned to introduce SVG rendered filled icons in-place of Material symbols. This prop forces a Material Symbols font fallback to enable filled icons to be rendered.The package will stop including the Material Symbols stylesheet; import fonts manually if you still need this. See [here](https://ds.services.gov.ie/components/library/icon/react/) for more details.  */
+  /** @deprecated Work is planned to introduce SVG rendered filled icons in-place of Material symbols. This prop forces a Material Symbols font fallback to enable filled icons to be rendered. The package will stop including the Material Symbols stylesheet; import fonts manually if you still need this. See [here](https://ds.services.gov.ie/components/library/icon/react/) for more details.  */
   filled?: boolean;
-  /** @deprecated  Icons now ship as SVGs. This prop forces a Material Symbols font fallback.The package will stop including the Material Symbols stylesheet; import fonts manually if you still need this. See [here](https://ds.services.gov.ie/components/library/icon/react/) for more details. */
+  /** @deprecated  Icons now ship as SVGs. This prop forces a Material Symbols font fallback. The package will stop including the Material Symbols stylesheet; import fonts manually if you still need this. See [here](https://ds.services.gov.ie/components/library/icon/react/) for more details. */
   useFontIcon?: boolean;
 } & Omit<ComponentPropsWithoutRef<'span'>, 'children' | 'onClick'>;
 
