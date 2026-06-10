@@ -6,6 +6,7 @@ import { LogoGoldGreen as GovieLogoHarpWithText, LogoHarpWhite as GovieLogoHarp 
 import { cn } from '@/cn.js';
 import type { LogoProps } from '@/common/types.js';
 import Container from '@/atoms/Container.js';
+import FooterSection from '@/atoms/FooterSection';
 import { translate as t } from '@/i18n/utility.js';
 import Anchor from '@/primitives/anchor.js';
 import Divider from '@/Divider';
@@ -78,7 +79,7 @@ export function Footer({
       data-testid={dataTestid}
       {...props}
     >
-      <div className="gi-py-10">
+      <FooterSection>
         <Container>
           {primarySlot && (
             <div
@@ -100,7 +101,7 @@ export function Footer({
           >
             <div
               className="
-                gi-w-fit gi-mt-8 md:gi-mt-0 lg:gi-ml-auto lg:gi-flex-none gi-rounded-sm 
+                gi-w-fit gi-mt-8 md:gi-mt-0 lg:gi-ml-auto lg:gi-flex-none gi-rounded-sm
                 gi-focus-state-outline gi-focus-within-state-outline gi-focus-visible-state-outline"
             >
               {renderLogo()}
@@ -110,18 +111,9 @@ export function Footer({
             )}
           </div>
         </Container>
-      </div>
+      </FooterSection>
 
-      {utilitySlot && (
-        <div
-          className="gi-py-4 gi-px-8 gi-bg-color-surface-system-neutral-layer2"
-          aria-label={t('footer.utilityLinks', {
-            defaultValue: 'Footer Utility Links',
-          })}
-        >
-          {utilitySlot}
-        </div>
-      )}
+      {utilitySlot && <FooterSection variant="utility">{utilitySlot}</FooterSection>}
     </footer>
   );
 }
