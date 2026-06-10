@@ -8,114 +8,19 @@ import { Output, EventEmitter, Component, Input } from '@angular/core';
 
 import { CommonModule } from '@angular/common';
 
-export type Props = {
-  id?: string;
-  href: string;
-  children: any;
-  variant?: (typeof Variant)[keyof typeof Variant];
-  appearance?: (typeof Appearance)[keyof typeof Appearance];
-  size?: (typeof ButtonSize)[keyof typeof ButtonSize];
-  disabled?: boolean;
-  external?: boolean;
-  target?: '_self' | '_blank' | '_parent' | '_top';
-  rel?: string;
-  className?: string;
-  ariaCurrent?: 'page' | 'step' | 'location' | 'date' | 'time' | 'true' | 'false' | boolean;
-  ariaLabel?: string;
-  ariaLabelledBy?: string;
-  ariaDescribedBy?: string;
-  tabIndex?: number;
-  lang?: string;
-  onClick?: (event: any) => void;
-  onFocus?: (event: any) => void;
-  onBlur?: (event: any) => void;
-  onKeyDown?: (event: any) => void;
-  onKeyUp?: (event: any) => void;
-  ref?: any;
-  dataTestId?: string;
-};
+export type Props = Omit<LinkProps, 'variant' | 'appearance' | 'underline' | 'visited'> &
+  Pick<ButtonProps, 'variant' | 'appearance' | 'size'>;
 
 import { tv } from 'tailwind-variants';
-import { Variant, Appearance } from './constants';
-import { buttonBaseStyles, ButtonSize, buttonSizeVariants, getSize } from './Button';
-import { getVariant, getAppearance } from './utilities';
+import { buttonBaseStyles, ButtonSize, buttonSizeVariants, getSize, getVariant, getAppearance } from './Button';
+import type { Props as ButtonProps } from './Button';
+import type { Props as LinkProps } from './Link';
 export const linkButtonStyles = tv({
   extend: buttonBaseStyles,
-  base: ['gi-gap-2', 'gi-no-underline', 'hover:gi-no-underline', 'aria-[disabled=true]:gi-pointer-events-none'],
+  base: ['gi-gap-2', 'gi-no-underline', 'hover:gi-no-underline'],
   variants: {
     size: buttonSizeVariants,
   },
-  compoundVariants: [
-    {
-      disabled: false,
-      class: [
-        'focus:gi-outline',
-        'focus:gi-outline-sm',
-        'focus:gi-outline-color-shadow-intent-focus-default',
-        'focus:gi-outline-offset-0',
-        'focus:gi-border-color-border-intent-focus-default',
-      ],
-    },
-    {
-      variant: Variant.PRIMARY,
-      disabled: false,
-      class: ['focus:gi-shadow-color-border-intent-focus-light', 'focus:gi-shadow-[inset_0_0_0_2px]'],
-    },
-    {
-      variant: Variant.PRIMARY,
-      appearance: Appearance.DEFAULT,
-      disabled: false,
-      class: 'focus:gi-bg-color-surface-tone-primary-fill-hover',
-    },
-    {
-      variant: Variant.PRIMARY,
-      appearance: Appearance.LIGHT,
-      disabled: false,
-      class: 'focus:gi-bg-color-surface-tone-light-fill-hover',
-    },
-    {
-      variant: Variant.PRIMARY,
-      appearance: Appearance.DARK,
-      disabled: false,
-      class: 'focus:gi-bg-color-surface-tone-dark-fill-hover',
-    },
-    {
-      variant: Variant.SECONDARY,
-      appearance: Appearance.DEFAULT,
-      disabled: false,
-      class: 'focus:gi-bg-color-surface-tone-primary-outline-hover',
-    },
-    {
-      variant: Variant.SECONDARY,
-      appearance: Appearance.LIGHT,
-      disabled: false,
-      class: 'focus:gi-bg-color-surface-tone-dark-fill-hover',
-    },
-    {
-      variant: Variant.SECONDARY,
-      appearance: Appearance.DARK,
-      disabled: false,
-      class: 'focus:gi-bg-color-surface-tone-light-fill-hover',
-    },
-    {
-      variant: Variant.FLAT,
-      appearance: Appearance.DEFAULT,
-      disabled: false,
-      class: 'focus:gi-bg-color-surface-tone-primary-outline-hover',
-    },
-    {
-      variant: Variant.FLAT,
-      appearance: Appearance.LIGHT,
-      disabled: false,
-      class: 'focus:gi-bg-color-surface-tone-dark-fill-hover',
-    },
-    {
-      variant: Variant.FLAT,
-      appearance: Appearance.DARK,
-      disabled: false,
-      class: 'focus:gi-bg-color-surface-tone-light-fill-hover',
-    },
-  ],
   defaultVariants: {
     size: ButtonSize.MD,
   },
@@ -126,27 +31,27 @@ export const linkButtonStyles = tv({
   template: `
     <a
       [attr.id]="id"
-      [attr.href]="disabled ? undefined : href"
+      [attr.href]="href"
       [class]="
         linkButtonStyles({
           variant: getVariant(variant),
           appearance: getAppearance(appearance),
           size: getSize(size),
-          disabled: !!disabled,
           class: className,
         })
       "
-      [attr.role]="disabled ? 'link' : undefined"
+      [ngStyle]="styles"
       [attr.target]="target ?? (external ? '_blank' : undefined)"
       [attr.rel]="rel ?? (external ? 'noreferrer noopener' : undefined)"
+      [attr.download]="download"
       [attr.aria-current]="ariaCurrent"
       [attr.aria-label]="ariaLabel"
       [attr.aria-labelledby]="ariaLabelledBy"
       [attr.aria-describedby]="ariaDescribedBy"
-      [attr.aria-disabled]="disabled || undefined"
-      [attr.tabIndex]="disabled ? -1 : tabIndex"
+      [attr.aria-hidden]="ariaHidden"
+      [attr.tabIndex]="ariaHidden ? -1 : tabIndex"
       [attr.lang]="lang"
-      (click)="disabled ? $event.preventDefault() : onClick && this.onClick.emit($event)"
+      (click)="onClick && this.onClick.emit($event)"
       (focus)="onFocus && this.onFocus.emit($event)"
       (blur)="onBlur && this.onBlur.emit($event)"
       (keydown)="onKeyDown && this.onKeyDown.emit($event)"
@@ -172,19 +77,21 @@ export default class LinkButton {
   getAppearance = getAppearance;
 
   @Input() id!: Props['id'];
-  @Input() disabled!: Props['disabled'];
   @Input() href!: Props['href'];
   @Input() variant!: Props['variant'];
   @Input() appearance!: Props['appearance'];
   @Input() size!: Props['size'];
   @Input() className!: Props['className'];
+  @Input() styles!: Props['styles'];
   @Input() target!: Props['target'];
   @Input() external!: Props['external'];
   @Input() rel!: Props['rel'];
+  @Input() download!: Props['download'];
   @Input() ariaCurrent!: Props['ariaCurrent'];
   @Input() ariaLabel!: Props['ariaLabel'];
   @Input() ariaLabelledBy!: Props['ariaLabelledBy'];
   @Input() ariaDescribedBy!: Props['ariaDescribedBy'];
+  @Input() ariaHidden!: Props['ariaHidden'];
   @Input() tabIndex!: Props['tabIndex'];
   @Input() lang!: Props['lang'];
   @Input() dataTestId!: Props['dataTestId'];

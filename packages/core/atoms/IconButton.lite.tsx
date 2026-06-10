@@ -1,8 +1,7 @@
 import { tv } from 'tailwind-variants';
 import { useMetadata } from '@builder.io/mitosis';
-import { Variant, Appearance, Size } from './constants';
-import { buttonBaseStyles } from './Button.lite';
-import { getVariant, getAppearance } from './utilities';
+import { Size } from './constants';
+import { Variant, Appearance, buttonBaseStyles, getVariant, getAppearance } from './Button.lite';
 
 export const IconButtonSize = {
   SM: Size.SM,

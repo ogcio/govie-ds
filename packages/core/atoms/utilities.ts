@@ -1,15 +1,5 @@
 import _ from 'lodash';
-import {
-  Align,
-  AlignItems,
-  Appearance,
-  Breakpoint,
-  Justify,
-  Orientation,
-  Size,
-  Variant,
-  Whitespace,
-} from './constants';
+import { Align, AlignItems, Breakpoint, Justify, Orientation, Size, Whitespace } from './constants';
 import type { BreakpointKey, ResponsiveValue } from './constants';
 
 export const getSize = (x: (typeof Size)[keyof typeof Size] | undefined) => clamp(x, Size, Size.MD);
@@ -26,11 +16,6 @@ export const getJustify = (x: (typeof Justify)[keyof typeof Justify] | undefined
 
 export const getOrientation = (x: (typeof Orientation)[keyof typeof Orientation] | undefined) =>
   clamp(x, Orientation, Orientation.HORIZONTAL);
-
-export const getVariant = (x: (typeof Variant)[keyof typeof Variant] | undefined) => clamp(x, Variant, Variant.PRIMARY);
-
-export const getAppearance = (x: (typeof Appearance)[keyof typeof Appearance] | undefined) =>
-  clamp(x, Appearance, Appearance.DEFAULT);
 
 /**
  * Validates a string value against an `as const` enum object.

@@ -1384,8 +1384,8 @@ export default function Home() {
                 <LinkButton href="/about" variant="flat">
                   Flat LinkButton
                 </LinkButton>
-                <LinkButton href="/about" disabled>
-                  Disabled LinkButton
+                <LinkButton href="/about" appearance="dark">
+                  Dark LinkButton
                 </LinkButton>
               </Box>
             </Box>

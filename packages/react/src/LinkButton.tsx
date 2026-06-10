@@ -1,34 +1,33 @@
 import { Slot } from '@radix-ui/react-slot';
-import GiLink, { type Props as GiLinkProps, linkStyles } from '@/atoms/Link';
+import GiLinkButton, { type Props as GiLinkButtonProps, linkButtonStyles } from '@/atoms/LinkButton';
+import { getSize, getVariant, getAppearance } from '@/atoms/Button';
 
-export type LinkProps =
-  | (GiLinkProps & { asChild?: false; style?: React.CSSProperties })
-  | (Omit<GiLinkProps, 'href'> & { asChild: true; href?: string; style?: React.CSSProperties });
+export type LinkButtonProps =
+  | (GiLinkButtonProps & { asChild?: false; style?: React.CSSProperties })
+  | (Omit<GiLinkButtonProps, 'href'> & { asChild: true; href?: string; style?: React.CSSProperties });
 
-export default function Link({
+export function LinkButton({
   asChild,
+  children,
   variant,
-  underline,
   appearance,
-  visited,
+  size,
+  external,
+  href,
+  target,
+  rel,
   className,
   style,
   styles,
-  children,
-  href,
   ariaCurrent,
   ariaLabel,
   ariaLabelledBy,
   ariaDescribedBy,
   ariaHidden,
-  dataTestId,
-  external,
-  target,
-  rel,
   tabIndex,
+  dataTestId,
   ...rest
-}: LinkProps) {
-  const styleProps = { variant, underline, appearance, visited };
+}: LinkButtonProps) {
   const anchorProps = {
     target: target ?? (external ? '_blank' : undefined),
     rel: rel ?? (external ? 'noreferrer noopener' : undefined),
@@ -40,7 +39,12 @@ export default function Link({
       <Slot
         {...rest}
         {...anchorProps}
-        className={linkStyles({ ...styleProps, class: className })}
+        className={linkButtonStyles({
+          variant: getVariant(variant),
+          appearance: getAppearance(appearance),
+          size: getSize(size),
+          class: className,
+        })}
         style={(style ?? styles) as Record<string, string>}
         aria-current={ariaCurrent}
         aria-label={ariaLabel}
@@ -55,11 +59,14 @@ export default function Link({
   }
 
   return (
-    <GiLink
+    <GiLinkButton
       {...rest}
-      {...styleProps}
       {...anchorProps}
       href={href}
+      variant={variant}
+      appearance={appearance}
+      size={size}
+      external={external}
       className={className}
       styles={(style ?? styles) as Record<string, string>}
       ariaCurrent={ariaCurrent}
@@ -70,6 +77,6 @@ export default function Link({
       dataTestId={dataTestId}
     >
       {children}
-    </GiLink>
+    </GiLinkButton>
   );
 }

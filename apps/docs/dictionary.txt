@@ -147,6 +147,7 @@ anonymized
 application-browsersupport
 application-progressstepper
 application-tooltip
+ariaHidden
 ariaLabel
 asChild
 autocomplete
@@ -166,6 +167,7 @@ combobox
 composable
 components-iconbutton
 components-linkbutton
+navigation-linkbutton
 components-scoreselect
 Ctrl
 customizable

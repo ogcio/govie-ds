@@ -27,10 +27,12 @@ export type Props = {
   ariaHidden?: boolean | 'true' | 'false';
   tabIndex?: number;
   lang?: string;
+  styles?: Record<string, string>;
   onClick?: (event: any) => void;
   onFocus?: (event: any) => void;
   onBlur?: (event: any) => void;
   onKeyDown?: (event: any) => void;
+  onKeyUp?: (event: any) => void;
   dataTestId?: string;
 };
 
@@ -172,6 +174,7 @@ function Link(props: Props) {
         visited: props.visited,
         class: props.className,
       })}
+      style={props.styles}
       target={props.target ?? (props.external ? '_blank' : undefined)}
       rel={props.rel ?? (props.external ? 'noreferrer noopener' : undefined)}
       download={props.download}
@@ -186,6 +189,7 @@ function Link(props: Props) {
       onFocus={(event) => props.onFocus && props.onFocus(event)}
       onBlur={(event) => props.onBlur && props.onBlur(event)}
       onKeyDown={(event) => props.onKeyDown && props.onKeyDown(event)}
+      onKeyUp={(event) => props.onKeyUp && props.onKeyUp(event)}
       data-testid={props.dataTestId}
     >
       {props.children}

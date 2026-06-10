@@ -141,7 +141,8 @@ export const linkMeta = {
       control: {
         disable: true,
       },
-      description: 'Overrides the default tab order. Use -1 to remove from tab order in composite widgets.',
+      description:
+        'Overrides the default tab order. Automatically set to -1 when ariaHidden is true. Use -1 to remove from tab order in composite widgets.',
       table: {
         type: {
           summary: 'number',
@@ -191,6 +192,12 @@ export const linkMeta = {
         type: {
           summary: 'string',
         },
+      },
+    },
+    styles: {
+      control: false,
+      table: {
+        disable: true,
       },
     },
     variant: {

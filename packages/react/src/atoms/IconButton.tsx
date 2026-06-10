@@ -39,9 +39,8 @@ export type Props = {
 };
 
 import { tv } from 'tailwind-variants';
-import { Variant, Appearance, Size } from './constants';
-import { buttonBaseStyles } from './Button';
-import { getVariant, getAppearance } from './utilities';
+import { Size } from './constants';
+import { Variant, Appearance, buttonBaseStyles, getVariant, getAppearance } from './Button';
 export const IconButtonSize = {
   SM: Size.SM,
   MD: Size.MD,

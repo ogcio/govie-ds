@@ -15,7 +15,9 @@ It keeps the implicit `link` role so browser link behaviours (right-click "Open 
 <Section current="design">
 
 <ComponentPreview>
-  <LinkButton href="https://www.gov.ie">This is a link button</LinkButton>
+  <LinkButton href="https://ds.services.gov.ie/">
+    This is a link button
+  </LinkButton>
 </ComponentPreview>
 
 ## Variants
@@ -78,6 +80,6 @@ LinkButton is for navigation that should look like a button. It renders a semant
 - **Don't use for actions**: If clicking triggers an action (submit, save, delete) rather than navigation, use Button instead.
 - **Don't use multiple primary link buttons**: Avoid having more than one primary link button in a section.
 - **Don't use vague labels**: Avoid generic labels like "Click here" or "Go" without context.
-- **Don't disable without explanation**: If a link button is disabled, provide clear information about why.
+- **Don't fake a disabled link**: Links have no native disabled state. If the action is unavailable, hide the link or explain why with adjacent text.
 
 </Section>

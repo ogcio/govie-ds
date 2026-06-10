@@ -1,48 +1,52 @@
 import type { Meta, StoryObj } from '@storybook/react-vite';
-import _ from 'lodash';
-import LinkButton, { type Props } from '@/atoms/LinkButton';
+import { LinkButton } from '@/LinkButton';
 import Box from '@/atoms/Box';
-import { ButtonSize } from '@/atoms/Button';
-import { Variant, Appearance } from '@/atoms/constants';
-import {
-  linkButtonMeta,
-  Default as defaultStory,
-  AllVariants as allVariants,
-  AllAppearances as allAppearances,
-  AllSizes as allSizes,
-  InteractionStates as interactionStates,
-  Disabled as disabledStory,
-} from '@/atoms/storybook/LinkButton.meta';
+import { linkButtonMeta, Default as defaultStory } from '@/atoms/storybook/LinkButton.meta';
 
-const meta: Meta<typeof LinkButton> = {
+const meta = {
   ...linkButtonMeta,
-  title: 'Components/LinkButton',
+  title: 'Navigation/LinkButton',
+  component: LinkButton,
   argTypes: {
     ...linkButtonMeta.argTypes,
     onClick: {
       control: false,
       description: 'Click event handler.',
-      table: { type: { summary: '(event: any) => void' } },
+      table: { type: { summary: '(event: React.MouseEvent) => void' } },
     },
     onFocus: {
       control: false,
       description: 'Focus event handler.',
-      table: { type: { summary: '(event: any) => void' } },
+      table: { type: { summary: '(event: React.FocusEvent) => void' } },
     },
     onBlur: {
       control: false,
       description: 'Blur event handler.',
-      table: { type: { summary: '(event: any) => void' } },
+      table: { type: { summary: '(event: React.FocusEvent) => void' } },
     },
     onKeyDown: {
       control: false,
       description: 'Keydown event handler.',
-      table: { type: { summary: '(event: any) => void' } },
+      table: { type: { summary: '(event: React.KeyboardEvent) => void' } },
     },
     onKeyUp: {
       control: false,
       description: 'Keyup event handler.',
-      table: { type: { summary: '(event: any) => void' } },
+      table: { type: { summary: '(event: React.KeyboardEvent) => void' } },
+    },
+    style: {
+      control: false,
+      description: 'Inline styles. Prefer className with gi-* Tailwind utilities.',
+      table: { type: { summary: 'React.CSSProperties' } },
+    },
+    asChild: {
+      control: false,
+      description:
+        'Merges props and styles onto the immediate child element instead of rendering an `<a>`. Use for framework-native link components (e.g. Next.js `<Link>`).',
+      table: {
+        type: { summary: 'boolean' },
+        defaultValue: { summary: 'false' },
+      },
     },
   },
   decorators: (Story, context) => {
@@ -53,131 +57,12 @@ const meta: Meta<typeof LinkButton> = {
       </Box>
     );
   },
-};
+} as Meta<typeof LinkButton>;
 
 export default meta;
-type Story = StoryObj<typeof meta>;
+type Story = StoryObj<typeof LinkButton>;
 
 export const Default: Story = {
   ...defaultStory,
   render: (props) => <LinkButton {...props}>LinkButton</LinkButton>,
-};
-
-export const AllVariants: Story = {
-  ...allVariants,
-  render: () => (
-    <Box className="gi-flex gi-flex-col gi-gap-2 gi-items-start">
-      {_.map(Variant, (variant) => (
-        <LinkButton
-          key={variant}
-          href="https://www.gov.ie"
-          dataTestId={`link-button-variant-${variant}`}
-          variant={variant}
-        >
-          {variant} LinkButton
-        </LinkButton>
-      ))}
-    </Box>
-  ),
-};
-
-export const AllAppearances: Story = {
-  ...allAppearances,
-  render: () => (
-    <Box className="gi-flex gi-flex-col gi-gap-2 gi-items-start">
-      {_.map(Appearance, (appearance) => (
-        <Box key={appearance} className={appearance === Appearance.LIGHT ? 'gi-p-4 gi-bg-black gi-w-fit' : ''}>
-          <LinkButton
-            href="https://www.gov.ie"
-            dataTestId={`link-button-appearance-${appearance}`}
-            appearance={appearance}
-          >
-            {appearance} LinkButton
-          </LinkButton>
-        </Box>
-      ))}
-    </Box>
-  ),
-};
-
-export const AllSizes: Story = {
-  ...allSizes,
-  render: () => (
-    <Box className="gi-flex gi-flex-col gi-gap-2 gi-items-start">
-      {_.map(ButtonSize, (size) => (
-        <LinkButton key={size} href="https://www.gov.ie" dataTestId={`link-button-size-${size}`} size={size}>
-          {size} LinkButton
-        </LinkButton>
-      ))}
-    </Box>
-  ),
-};
-
-export const InteractionStates: Story = {
-  ...interactionStates,
-  render: () => (
-    <Box className="gi-flex gi-flex-col gi-gap-4 gi-items-start">
-      {_.map(Variant, (variant) =>
-        _.map(Appearance, (appearance) => (
-          <Box
-            key={`${variant}-${appearance}`}
-            className={`gi-flex gi-flex-col gi-gap-2 sm:gi-flex-row ${appearance === Appearance.LIGHT ? 'gi-p-4 gi-bg-black' : ''}`}
-          >
-            <LinkButton href="https://www.gov.ie" variant={variant} appearance={appearance} className="pseudo-hover">
-              {variant} {appearance} hover
-            </LinkButton>
-            <LinkButton href="https://www.gov.ie" variant={variant} appearance={appearance} className="pseudo-focus">
-              {variant} {appearance} focus
-            </LinkButton>
-          </Box>
-        )),
-      )}
-    </Box>
-  ),
-};
-
-export const Disabled: Story = {
-  ...disabledStory,
-  render: ({ onClick, onFocus }: Props) => (
-    <Box className="gi-flex gi-flex-col gi-gap-4 gi-items-start">
-      {_.map(Variant, (variant) =>
-        _.map(Appearance, (appearance) => (
-          <Box
-            key={`${variant}-${appearance}`}
-            className={`gi-flex gi-flex-col gi-gap-2 sm:gi-flex-row ${appearance === Appearance.LIGHT ? 'gi-p-4 gi-bg-black' : ''}`}
-          >
-            <LinkButton
-              href="https://www.gov.ie"
-              variant={variant}
-              appearance={appearance}
-              disabled
-              onClick={onClick}
-              onFocus={onFocus}
-              dataTestId={`link-button-disabled-${variant}-${appearance}`}
-            >
-              {variant} {appearance}
-            </LinkButton>
-            <LinkButton
-              href="https://www.gov.ie"
-              variant={variant}
-              appearance={appearance}
-              disabled
-              className="pseudo-hover"
-            >
-              {variant} {appearance} hover
-            </LinkButton>
-            <LinkButton
-              href="https://www.gov.ie"
-              variant={variant}
-              appearance={appearance}
-              disabled
-              className="pseudo-focus"
-            >
-              {variant} {appearance} focus
-            </LinkButton>
-          </Box>
-        )),
-      )}
-    </Box>
-  ),
 };

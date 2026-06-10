@@ -28,10 +28,12 @@ export type Props = {
   ariaHidden?: boolean | 'true' | 'false';
   tabIndex?: number;
   lang?: string;
+  styles?: Record<string, string>;
   onClick?: (event: any) => void;
   onFocus?: (event: any) => void;
   onBlur?: (event: any) => void;
   onKeyDown?: (event: any) => void;
+  onKeyUp?: (event: any) => void;
   dataTestId?: string;
 };
 
@@ -176,6 +178,7 @@ export const linkStyles = tv({
           class: className,
         })
       "
+      [ngStyle]="styles"
       [attr.target]="target ?? (external ? '_blank' : undefined)"
       [attr.rel]="rel ?? (external ? 'noreferrer noopener' : undefined)"
       [attr.download]="download"
@@ -190,6 +193,7 @@ export const linkStyles = tv({
       (focus)="onFocus && this.onFocus.emit($event)"
       (blur)="onBlur && this.onBlur.emit($event)"
       (keydown)="onKeyDown && this.onKeyDown.emit($event)"
+      (keyup)="onKeyUp && this.onKeyUp.emit($event)"
       [attr.data-testid]="dataTestId"
       ><ng-content></ng-content
     ></a>
@@ -214,6 +218,7 @@ export default class Link {
   @Input() appearance!: Props['appearance'];
   @Input() visited!: Props['visited'];
   @Input() className!: Props['className'];
+  @Input() styles!: Props['styles'];
   @Input() target!: Props['target'];
   @Input() external!: Props['external'];
   @Input() rel!: Props['rel'];
@@ -230,4 +235,5 @@ export default class Link {
   @Output() onFocus = new EventEmitter<any>();
   @Output() onBlur = new EventEmitter<any>();
   @Output() onKeyDown = new EventEmitter<any>();
+  @Output() onKeyUp = new EventEmitter<any>();
 }
