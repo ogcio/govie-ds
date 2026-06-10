@@ -243,8 +243,11 @@ secondaryLabel
 selectable
 sm
 sortable
+stylesheet
 substeps
 summarizing
+SVG
+SVGs
 textarea
 themeable
 theming
