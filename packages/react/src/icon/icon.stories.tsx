@@ -2,15 +2,19 @@ import type { Meta, StoryObj } from '@storybook/react-vite';
 import { within, expect } from 'storybook/test';
 import { Icon } from './icon.js';
 
+const FONT_ICON_MIGRATION_DOCS =
+  '**Migration:** Icons now render as SVGs by default. Remove `filled` and `useFontIcon` unless you explicitly need Material Symbols font icons. The package will stop including the Material Symbols stylesheet — [import fonts manually](https://developers.google.com/fonts/docs/material_symbols#use_in_web) if you still rely on these props. Filled SVG variants are planned, which will remove the need for both props. See the [Icon React docs](https://ds.services.gov.ie/components/library/icon/react/) for details.';
+
 const meta = {
   title: 'components/Icon',
   component: Icon,
-} satisfies Meta<typeof Icon>;
-
-export default meta;
-type Story = StoryObj<typeof meta>;
-
-export const Default: Story = {
+  parameters: {
+    docs: {
+      description: {
+        component: `Icons help users quickly recognise actions, states and categories.\n\n${FONT_ICON_MIGRATION_DOCS}`,
+      },
+    },
+  },
   argTypes: {
     icon: {
       control: 'text',
@@ -23,11 +27,13 @@ export const Default: Story = {
     },
     filled: {
       control: 'boolean',
-      description: '(**Deprecated**) Specify if the icon has a filled style',
+      description:
+        '**Deprecated:** Uses Material Symbols font icons for filled style. Remove this prop and use the default SVG icon. If you still need filled icons, import Material Symbols manually until filled SVG variants are available.',
     },
     useFontIcon: {
       control: 'boolean',
-      description: '(**Deprecated**) Enforce icon source fallback to material symbols font icons',
+      description:
+        '**Deprecated:** Forces Material Symbols font fallback instead of the default SVG. Remove this prop in most cases. If you still need font icons, import Material Symbols manually before package stylesheet support is removed.',
     },
     disabled: {
       control: 'boolean',
@@ -50,8 +56,33 @@ export const Default: Story = {
       description: 'Pass in a dataTestId attribute to query the icon (for testing purposes).',
     },
   },
+} satisfies Meta<typeof Icon>;
+
+export default meta;
+type Story = StoryObj<typeof meta>;
+
+export const Default: Story = {
   args: {
     icon: 'thumb_up',
+  },
+};
+
+/**
+ * Demonstrates Material Symbols font icon fallback when `filled` or `useFontIcon` is `true`.
+ * Prefer default SVG rendering. See component docs for migration guidance.
+ */
+export const FontIconFallback: Story = {
+  args: {
+    icon: 'thumb_up',
+    filled: true,
+  },
+  parameters: {
+    docs: {
+      description: {
+        story:
+          '**Deprecated:** Setting `filled={true}` or `useFontIcon={true}` falls back to Material Symbols font icons. Remove these props and rely on the default SVG icon where possible. If you still need font icons, import Material Symbols manually before package stylesheet support is removed.',
+      },
+    },
   },
 };
 
