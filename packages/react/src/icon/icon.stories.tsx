@@ -27,13 +27,11 @@ const meta = {
     },
     filled: {
       control: 'boolean',
-      description:
-        '**Deprecated:** Uses Material Symbols font icons for filled style. Remove this prop and use the default SVG icon. If you still need filled icons, import Material Symbols manually until filled SVG variants are available.',
+      description: 'Render the icon with a filled style using Material Symbols font icons.',
     },
     useFontIcon: {
       control: 'boolean',
-      description:
-        '**Deprecated:** Forces Material Symbols font fallback instead of the default SVG. Remove this prop in most cases. If you still need font icons, import Material Symbols manually before package stylesheet support is removed.',
+      description: 'Render the icon using Material Symbols font icons instead of the default SVG.',
     },
     disabled: {
       control: 'boolean',
@@ -64,25 +62,6 @@ type Story = StoryObj<typeof meta>;
 export const Default: Story = {
   args: {
     icon: 'thumb_up',
-  },
-};
-
-/**
- * Demonstrates Material Symbols font icon fallback when `filled` or `useFontIcon` is `true`.
- * Prefer default SVG rendering. See component docs for migration guidance.
- */
-export const FontIconFallback: Story = {
-  args: {
-    icon: 'thumb_up',
-    filled: true,
-  },
-  parameters: {
-    docs: {
-      description: {
-        story:
-          '**Deprecated:** Setting `filled={true}` or `useFontIcon={true}` falls back to Material Symbols font icons. Remove these props and rely on the default SVG icon where possible. If you still need font icons, import Material Symbols manually before package stylesheet support is removed.',
-      },
-    },
   },
 };
 
