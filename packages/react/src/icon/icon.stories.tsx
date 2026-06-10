@@ -1,6 +1,7 @@
 import type { Meta, StoryObj } from '@storybook/react-vite';
 import { within, expect } from 'storybook/test';
 import { Icon } from './icon.js';
+import LoadMaterialSymbols from '@/load-symbols/load-symbols.js';
 
 const FONT_ICON_MIGRATION_DOCS =
   '**Migration:** Icons now render as SVGs by default. Remove `filled` and `useFontIcon` unless you explicitly need Material Symbols font icons. The package will stop including the Material Symbols stylesheet — [import fonts manually](https://developers.google.com/fonts/docs/material_symbols#use_in_web) if you still rely on these props. Filled SVG variants are planned, which will remove the need for both props. See the [Icon React docs](https://ds.services.gov.ie/components/library/icon/react/) for details.';
@@ -161,5 +162,23 @@ export const TestThumbDownLarge: Story = {
       const iconElement = canvas.getByTestId('thumb_down');
       expect(iconElement).toHaveAttribute('width', '32px');
     });
+  },
+};
+
+export const EnablingMaterialSymbols: Story = {
+  tags: ['skip-playwright'],
+  args: { filled: true, icon: 'add_circle' },
+  parameters: {
+    docs: {
+      description: '',
+    },
+  },
+  render: function Render({ filled, icon }) {
+    return (
+      <>
+        <LoadMaterialSymbols />
+        <Icon filled={filled} icon={icon} />
+      </>
+    );
   },
 };

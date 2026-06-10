@@ -159,6 +159,12 @@ export default function App({ Component, pageProps }: AppProps) {
   explicitly load them using the `LoadMaterialSymbols` component.
 </InsetText>
 
+<Alert variant="danger">
+  **Deprecated**: Loading Material Symbols is now no longer necessary and can be
+  safely removed. If material symbols are absolutely necessary, please refer to
+  the stylesheet below.
+</Alert>
+
 ```tsx
 // app/layout.tsx
 import { LoadMaterialSymbols } from '@ogcio/design-system-react';
