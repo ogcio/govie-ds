@@ -31,7 +31,7 @@ component:
           required: false
         - name: 'ariaHidden'
           ofType: 'string'
-          description: '@deprecated - Hides non-interactive content from accessibility tools.'
+          description: '@deprecated - Hides non-interactive content from accessibility tools. `ariaHidden` is now implicitly `true` if `ariaLabel` is undefined, `false` otherwise.'
           required: false
         - name: 'ariaLabel'
           ofType: 'string'
