@@ -1,8 +1,8 @@
 import type { Meta, StoryObj } from '@storybook/react-vite';
 import { expect, within } from 'storybook/test';
-import { Icon } from '@/icon/icon.js';
 import { Link } from '@/link/link.js';
 import { Label, LabelSize } from './label.js';
+import ArrowDropUpIcon from '@/atoms/icons/ArrowDropUp';
 
 const meta = {
   title: 'Typography/Label',
@@ -115,7 +115,7 @@ export const WithRichText: Story = {
     children: (
       <div className="gi-flex">
         Here is a rich label &nbsp;<Link href="#">Click here </Link>
-        <Icon icon="arrow_drop_up" />
+        <ArrowDropUpIcon />
       </div>
     ),
   },

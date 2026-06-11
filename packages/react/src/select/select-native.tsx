@@ -1,7 +1,7 @@
 import type { FC } from 'react';
-import { cn } from '@/cn.js';
-import { Icon } from '@/icon/icon.js';
+import clsx from 'clsx';
 import type { SelectGroupItemProps, SelectItemProps, SelectTableCellProps, SelectProps } from './types.js';
+import KeyboardArrowDownIcon from '@/atoms/icons/KeyboardArrowDown';
 
 export const SelectGroupItem = ({ children, ...props }: SelectGroupItemProps) => (
   <optgroup {...props} role="group">
@@ -11,7 +11,7 @@ export const SelectGroupItem = ({ children, ...props }: SelectGroupItemProps) =>
 
 export const SelectItem = ({ children, ...props }: SelectItemProps) => (
   <option
-    className={cn('gi-select-option', props.className)}
+    className={clsx('gi-select-option', props.className)}
     aria-selected={props.selected ? 'true' : 'false'}
     {...props}
   >
@@ -27,10 +27,14 @@ export const SelectNative: FC<SelectProps & { containerProps?: any }> = ({
 }) => {
   return (
     <div className="gi-select-container" {...containerProps}>
-      <select className={cn('gi-select', className)} {...props}>
+      <select className={clsx('gi-select', className)} {...props}>
         {children}
       </select>
-      <Icon className="gi-select-icon" icon="keyboard_arrow_down" data-disabled={props?.disabled?.toString()} />
+      <KeyboardArrowDownIcon
+        className={clsx('gi-pointer-events-none gi-absolute gi-right-2 gi-top-1/2 gi--translate-y-1/2 gi-z-[3]', {
+          'gi-text-color-icon-system-neutral-interactive-disabled': !!props.disabled,
+        })}
+      />
     </div>
   );
 };
