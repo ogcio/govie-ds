@@ -188,7 +188,7 @@ export const EnablingMaterialSymbols: StoryObj<
   argTypes: {
     addLink: {
       control: 'boolean',
-      description: 'Include the Material Symbols stylesheet link in the document head.',
+      description: 'Include the Material Symbols stylesheet link in the document.',
     },
   },
   render: function Render({ icon, addLink }) {

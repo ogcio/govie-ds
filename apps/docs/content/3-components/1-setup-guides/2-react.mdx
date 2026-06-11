@@ -159,10 +159,12 @@ export default function App({ Component, pageProps }: AppProps) {
   explicitly load them using the `LoadMaterialSymbols` component.
 </InsetText>
 
-<Alert variant="danger">
-  **Deprecated**: Loading Material Symbols is now no longer necessary and can be
-  safely removed. If material symbols are absolutely necessary, please refer to
-  the stylesheet below.
+<Alert variant="danger" className="gi-max-w-none">
+  **Deprecated** <br /> As of version 1.40.0, this component is no longer
+  necessary and can be safely removed. Icons are now shipped directly from the
+  package. If using Material Symbols font icons are necessary, follow the
+  [Enabling Material Symbols
+  story](/storybook-react/?path=/docs/components-icon--docs#enabling-material-symbols).
 </Alert>
 
 ```tsx
