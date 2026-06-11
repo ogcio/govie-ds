@@ -6,6 +6,9 @@ import LoadMaterialSymbols from '@/load-symbols/load-symbols.js';
 const FONT_ICON_MIGRATION_DOCS =
   '**Migration:** Icons now render as SVGs by default. Remove `filled` and `useFontIcon` unless you explicitly need Material Symbols font icons. See the [Icon React docs](https://ds.services.gov.ie/components/library/icon/react/) for details.';
 
+const FONT_ICON_MIGRATION_DOCS =
+  '**Migration:** Icons now render as SVGs by default. Remove `filled` and `useFontIcon` unless you explicitly need Material Symbols font icons. See the [Icon React docs](https://ds.services.gov.ie/components/library/icon/react/) for details.';
+
 const meta = {
   title: 'components/Icon',
   component: Icon,
