@@ -8,6 +8,9 @@ status: in-review
 
 Icons are essential visual elements in any design system, providing users with quick visual cues for actions and information. They improve usability and create a consistent interface across applications, making it easier for users to recognise familiar actions and content types. For more details, check the [Icon component](/components/library/icon/).
 
-The **Icon** component supports multiple sizes and icons, allowing flexibility to meet various design needs. Below is a showcase of all available icons, displayed in small (`sm`), medium (`md`), and large (`lg`) sizes for reference.
+Each icon can now be directly imported from the React package:<br />
+`import { MenuIcon } from '@ogcio/design-system-react';`
+
+We also offer an **Icon** component ([Storybook here](/storybook-react/?path=/docs/components-icon--docs#enabling-material-symbols)), where the name of the icon (in snake case) can be passed in. We recommend this component be used sparingly, as by its nature, it loads **all** SVG icons into the page, which may not suit your needs.
 
 <IconGridLayout />
