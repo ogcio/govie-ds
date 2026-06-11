@@ -56,13 +56,17 @@ component:
       url: '/story/components-icon--extra-large'
     - name: 'disabled'
       url: '/story/components-icon--disabled'
+    - name: 'filled'
+      url: '/story/components-icon--filled'
+    - name: 'enabling-material-symbols'
+      url: '/story/components-icon--enabling-material-symbols'
 ---
 
 # Icon
 
 Icons help users quickly recognise actions, states and categories. Use them to complement labels in buttons, inputs, tables and navigation—not to replace text for critical actions.
 
-Earlier versions of the package rendered all icons using Material Symbols font icons. The package now ships SVG icons internally, and `<Icon />` uses these by default. If you pass `filled` or `useFontIcon` as `true`, the component falls back to Material Symbols font icons instead.
+Earlier versions of the package rendered all icons using Material Symbols font icons. The package now ships SVG icons internally, and `<Icon />` uses these by default. If you pass `filled` or `useFontIcon` as `true`, the component falls back to Material Symbols font icons instead. As we no longer package our design system with this, you'll need to add the link in manually. See [Storybook](/storybook-react/?path=/docs/components-icon--docs) for more examples.
 
 <Section current="react">
 <ComponentPreview>
@@ -98,6 +102,18 @@ Earlier versions of the package rendered all icons using Material Symbols font i
 
 <ComponentPreview>
   <StorybookFrame componentId="icon-react" story="disabled" />
+</ComponentPreview>
+
+### Filled
+
+<ComponentPreview>
+  <StorybookFrame componentId="icon-react" story="filled" />
+</ComponentPreview>
+
+### Enabling Material Symbols
+
+<ComponentPreview>
+  <StorybookFrame componentId="icon-react" story="enabling-material-symbols" />
 </ComponentPreview>
 
 ## Properties
