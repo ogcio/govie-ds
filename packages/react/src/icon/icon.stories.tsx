@@ -1,10 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/react-vite';
 import { within, expect } from 'storybook/test';
-import { Icon } from './icon.js';
-import LoadMaterialSymbols from '@/load-symbols/load-symbols.js';
-
-const FONT_ICON_MIGRATION_DOCS =
-  '**Migration:** Icons now render as SVGs by default. Remove `filled` and `useFontIcon` unless you explicitly need Material Symbols font icons. See the [Icon React docs](https://ds.services.gov.ie/components/library/icon/react/) for details.';
+import { Icon, type IconProps } from './icon.js';
 
 const FONT_ICON_MIGRATION_DOCS =
   '**Migration:** Icons now render as SVGs by default. Remove `filled` and `useFontIcon` unless you explicitly need Material Symbols font icons. See the [Icon React docs](https://ds.services.gov.ie/components/library/icon/react/) for details.';
@@ -173,20 +169,38 @@ export const TestThumbDownLarge: Story = {
     });
   },
 };
-
-export const EnablingMaterialSymbols: Story = {
+export const EnablingMaterialSymbols: StoryObj<
+  Pick<IconProps, 'icon'> & {
+    addLink: boolean;
+  }
+> = {
   tags: ['skip-playwright'],
-  args: { filled: true, icon: 'add_circle' },
+  args: { icon: 'add_circle', addLink: true },
   parameters: {
+    controls: { include: ['addLink'] },
     docs: {
-      description: '',
+      description: {
+        story:
+          'By adding in a stylesheet link to the `<head>`, you may continue to use the Material Symbols font fallback. Select the story, and change the `addLink` prop to false to see what happens when the stylesheet is removed. You should ensure that all the icons you require are within the icon_names list in the `href` link. ',
+      },
     },
   },
-  render: function Render({ filled, icon }) {
+  argTypes: {
+    addLink: {
+      control: 'boolean',
+      description: 'Include the Material Symbols stylesheet link in the document head.',
+    },
+  },
+  render: function Render({ icon, addLink }) {
     return (
       <>
-        <LoadMaterialSymbols />
-        <Icon filled={filled} icon={icon} />
+        {addLink && (
+          <link
+            href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,400,0..1,0&icon_names=accessibility_new,add_circle,apps,arrow_back,arrow_downward,arrow_drop_down,arrow_drop_up,arrow_forward,arrow_left_alt,arrow_outward,arrow_right_alt,arrow_upward,attach_file,block,call,cancel,candlestick_chart,chat_bubble,check,check_circle,chevron_left,chevron_right,child_care,close,content_copy,credit_card,delete,directions_car,do_not_disturb_on,download,edit,error,event,filter_list,first_page,health_and_safety,home,info,keyboard_arrow_down,keyboard_arrow_up,last_page,link,location_on,login,logout,mail,menu,mic,more_horiz,more_vert,open_in_new,person,person_cancel,person_check,refresh,search,send,settings,sort,space_dashboard,swap_vert,sync,thumb_down,thumb_up,unfold_more,upload,visibility,visibility_off,warning,work"
+            rel="stylesheet"
+          />
+        )}
+        <Icon icon={icon} useFontIcon={true} />
       </>
     );
   },
