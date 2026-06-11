@@ -3,7 +3,7 @@ import { within, expect } from 'storybook/test';
 import { Icon, type IconProps } from './icon.js';
 
 const FONT_ICON_MIGRATION_DOCS =
-  '**Migration:** Icons now render as SVGs by default. Remove `filled` and `useFontIcon` unless you explicitly need Material Symbols font icons. See the [Icon React docs](https://ds.services.gov.ie/components/library/icon/react/) for details.';
+  '**Migration:** Icons now render as SVGs by default. Remove `filled` and `useFontIcon` unless you explicitly need Material Symbols font icons. See "Enabling Material Symbols" story below and refer to the [Icon React docs](https://ds.services.gov.ie/components/library/icon/react/) for more details.';
 
 const meta = {
   title: 'components/Icon',
