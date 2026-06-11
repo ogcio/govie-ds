@@ -6,7 +6,7 @@
     "node": ">=24"
   },
   "scripts": {
-    "docs": "pnpm --F '@ogcio/design-system-docs^...' build && pnpm --F @ogcio/design-system-docs dev --webpack ",
+    "docs": "pnpm --F '@ogcio/design-system-docs^...' build && pnpm --F @ogcio/design-system-docs dev",
     "docs:build": "pnpm --F '@ogcio/design-system-docs...' build",
     "storybook:react": "pnpm --F '@ogcio/design-system-react^...' build && pnpm --F @ogcio/design-system-react storybook:dev",
     "storybook:angular": "pnpm --F '@ogcio/design-system-angular^...' build && pnpm --F @ogcio/design-system-angular storybook:dev",
