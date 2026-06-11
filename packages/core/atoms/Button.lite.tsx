@@ -1,6 +1,19 @@
 import { tv } from 'tailwind-variants';
 import { useMetadata } from '@builder.io/mitosis';
-import { Variant, Appearance, Size } from './constants';
+import { Size } from './constants';
+import { clamp } from './utilities';
+
+export const Variant = {
+  PRIMARY: 'primary',
+  SECONDARY: 'secondary',
+  FLAT: 'flat',
+} as const;
+
+export const Appearance = {
+  DEFAULT: 'default',
+  DARK: 'dark',
+  LIGHT: 'light',
+} as const;
 
 export const ButtonSize = {
   SM: Size.SM,
@@ -94,22 +107,10 @@ export const buttonBaseStyles = tv({
     'gi-items-center',
     'disabled:gi-cursor-not-allowed',
     'disabled:gi-pointer-events-none',
-    'enabled:focus:gi-outline',
-    'enabled:focus:gi-outline-sm',
-    'enabled:focus:gi-outline-color-shadow-intent-focus-default',
-    'enabled:focus:gi-outline-offset-0',
-    'enabled:focus:gi-border-solid',
-    'enabled:focus:gi-border-color-border-intent-focus-default',
-    'enabled:focus:gi-border-sm',
-    'enabled:focus:gi-rounded-sm',
   ],
   variants: {
     variant: {
-      primary: [
-        'gi-border-transparent',
-        'enabled:focus:gi-shadow-color-border-intent-focus-light',
-        'enabled:focus:gi-shadow-[inset_0_0_0_2px]',
-      ],
+      primary: ['gi-border-transparent'],
       secondary: [],
       flat: ['gi-border-base-transparent'],
     },
@@ -120,10 +121,24 @@ export const buttonBaseStyles = tv({
     },
     disabled: {
       true: '',
-      false: '',
+      false: [
+        'focus:gi-outline',
+        'focus:gi-outline-sm',
+        'focus:gi-outline-color-shadow-intent-focus-default',
+        'focus:gi-outline-offset-0',
+        'focus:gi-border-solid',
+        'focus:gi-border-color-border-intent-focus-default',
+        'focus:gi-border-sm',
+        'focus:gi-rounded-sm',
+      ],
     },
   },
   compoundVariants: [
+    {
+      variant: Variant.PRIMARY,
+      disabled: false,
+      class: ['focus:gi-shadow-color-border-intent-focus-light', 'focus:gi-shadow-[inset_0_0_0_2px]'],
+    },
     {
       variant: Variant.PRIMARY,
       appearance: Appearance.DEFAULT,
@@ -133,7 +148,7 @@ export const buttonBaseStyles = tv({
         'gi-bg-color-surface-tone-primary-fill-default',
         'gi-stroke-color-text-tone-primary-fill-default',
         'hover:gi-bg-color-surface-tone-primary-fill-hover',
-        'enabled:focus:gi-bg-color-surface-tone-primary-fill-hover',
+        'focus:gi-bg-color-surface-tone-primary-fill-hover',
       ],
     },
     {
@@ -145,7 +160,7 @@ export const buttonBaseStyles = tv({
         'gi-stroke-color-text-tone-light-fill-default',
         'gi-bg-color-surface-tone-light-fill-default',
         'hover:gi-bg-color-surface-tone-light-fill-hover',
-        'enabled:focus:gi-bg-color-surface-tone-light-fill-hover',
+        'focus:gi-bg-color-surface-tone-light-fill-hover',
       ],
     },
     {
@@ -157,7 +172,7 @@ export const buttonBaseStyles = tv({
         'gi-stroke-color-text-tone-dark-fill-default',
         'gi-bg-color-surface-tone-dark-fill-default',
         'hover:gi-bg-color-surface-tone-dark-fill-hover',
-        'enabled:focus:gi-bg-color-surface-tone-dark-fill-hover',
+        'focus:gi-bg-color-surface-tone-dark-fill-hover',
       ],
     },
     {
@@ -199,7 +214,7 @@ export const buttonBaseStyles = tv({
         'gi-text-color-text-tone-primary-outline-default',
         'gi-stroke-color-text-tone-primary-outline-default',
         'hover:gi-bg-color-surface-tone-primary-outline-hover',
-        'enabled:focus:gi-bg-color-surface-tone-primary-outline-hover',
+        'focus:gi-bg-color-surface-tone-primary-outline-hover',
       ],
     },
     {
@@ -212,7 +227,7 @@ export const buttonBaseStyles = tv({
         'gi-border-color-border-tone-light-outline-default',
         'gi-bg-base-transparent',
         'hover:gi-bg-color-surface-tone-light-outline-hover',
-        'enabled:focus:gi-bg-color-surface-tone-dark-fill-hover',
+        'focus:gi-bg-color-surface-tone-dark-fill-hover',
       ],
     },
     {
@@ -223,7 +238,7 @@ export const buttonBaseStyles = tv({
         'gi-border-color-border-tone-dark-outline-default',
         'gi-bg-color-surface-tone-dark-outline-default',
         'hover:gi-bg-color-surface-tone-dark-outline-hover',
-        'enabled:focus:gi-bg-color-surface-tone-light-fill-hover',
+        'focus:gi-bg-color-surface-tone-light-fill-hover',
       ],
     },
     {
@@ -268,7 +283,7 @@ export const buttonBaseStyles = tv({
         'gi-stroke-color-text-tone-primary-flat-default',
         'gi-bg-base-transparent',
         'hover:gi-bg-color-surface-tone-primary-flat-hover',
-        'enabled:focus:gi-bg-color-surface-tone-primary-outline-hover',
+        'focus:gi-bg-color-surface-tone-primary-outline-hover',
       ],
     },
     {
@@ -280,7 +295,7 @@ export const buttonBaseStyles = tv({
         'gi-text-color-text-tone-light-flat-default',
         'gi-stroke-color-text-tone-light-flat-default',
         'hover:gi-bg-color-surface-tone-light-flat-hover',
-        'enabled:focus:gi-bg-color-surface-tone-dark-fill-hover',
+        'focus:gi-bg-color-surface-tone-dark-fill-hover',
       ],
     },
     {
@@ -291,7 +306,7 @@ export const buttonBaseStyles = tv({
         'gi-text-color-text-tone-dark-flat-default',
         'gi-stroke-color-text-tone-dark-flat-default',
         'hover:gi-bg-color-surface-tone-dark-flat-hover',
-        'enabled:focus:gi-bg-color-surface-tone-light-fill-hover',
+        'focus:gi-bg-color-surface-tone-light-fill-hover',
       ],
     },
     {
@@ -332,23 +347,26 @@ export const buttonBaseStyles = tv({
   },
 });
 
+export const buttonSizeVariants = {
+  sm: 'gi-h-8 gi-px-2 gi-py-1.5 gi-text-xs',
+  md: 'gi-h-10 gi-px-3 gi-py-2 gi-text-sm',
+  lg: 'gi-h-12 gi-px-4 gi-py-3 gi-text-2md',
+} as const;
+
 export const styles = tv({
   extend: buttonBaseStyles,
   base: ['gi-gap-2'],
   variants: {
-    size: {
-      sm: 'gi-h-8 gi-px-2 gi-py-1.5 gi-text-xs',
-      md: 'gi-h-10 gi-px-3 gi-py-2 gi-text-sm',
-      lg: 'gi-h-12 gi-px-4 gi-py-3 gi-text-2md',
-    },
+    size: buttonSizeVariants,
   },
   defaultVariants: {
     size: ButtonSize.MD,
   },
 });
 
-const getVariant = (x: Props['variant'] = Variant.PRIMARY) =>
-  Object.values(Variant).includes(x) ? x : Variant.PRIMARY;
-const getAppearance = (x: Props['appearance']) =>
-  x === Appearance.LIGHT || x === Appearance.DARK ? x : Appearance.DEFAULT;
-const getSize = (x: Props['size'] = ButtonSize.MD) => (Object.values(ButtonSize).includes(x) ? x : ButtonSize.MD);
+export const getSize = (x: Props['size'] = ButtonSize.MD) => clamp(x, ButtonSize, ButtonSize.MD);
+
+export const getVariant = (x: (typeof Variant)[keyof typeof Variant] | undefined) => clamp(x, Variant, Variant.PRIMARY);
+
+export const getAppearance = (x: (typeof Appearance)[keyof typeof Appearance] | undefined) =>
+  clamp(x, Appearance, Appearance.DEFAULT);

@@ -1,7 +1,7 @@
 import { tv } from 'tailwind-variants';
 import { useMetadata } from '@builder.io/mitosis';
-import { Variant, Appearance, Size } from './constants';
-import { buttonBaseStyles } from './Button.lite';
+import { Size } from './constants';
+import { Variant, Appearance, buttonBaseStyles, getVariant, getAppearance } from './Button.lite';
 
 export const IconButtonSize = {
   SM: Size.SM,
@@ -97,9 +97,5 @@ export const iconButtonStyles = tv({
   },
 });
 
-const getVariant = (x: Props['variant'] = Variant.PRIMARY) =>
-  Object.values(Variant).includes(x) ? x : Variant.PRIMARY;
-const getAppearance = (x: Props['appearance']) =>
-  x === Appearance.LIGHT || x === Appearance.DARK ? x : Appearance.DEFAULT;
 const getSize = (x: Props['size'] = IconButtonSize.MD) =>
   Object.values(IconButtonSize).includes(x) ? x : IconButtonSize.MD;

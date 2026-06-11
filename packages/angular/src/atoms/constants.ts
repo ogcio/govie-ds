@@ -25,16 +25,6 @@ export const Align = {
   END: 'end',
   JUSTIFY: 'justify',
 } as const;
-export const Variant = {
-  PRIMARY: 'primary',
-  SECONDARY: 'secondary',
-  FLAT: 'flat',
-} as const;
-export const Appearance = {
-  DEFAULT: 'default',
-  DARK: 'dark',
-  LIGHT: 'light',
-} as const;
 export const Direction = {
   ROW: 'row',
   COLUMN: 'column',
