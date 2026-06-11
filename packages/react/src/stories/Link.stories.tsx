@@ -21,6 +21,11 @@ const meta = {
         defaultValue: { summary: 'false' },
       },
     },
+    style: {
+      control: false,
+      description: 'Inline styles. Prefer className with gi-* Tailwind utilities.',
+      table: { type: { summary: 'React.CSSProperties' } },
+    },
   },
   parameters: {
     ...stories.linkMeta.parameters,

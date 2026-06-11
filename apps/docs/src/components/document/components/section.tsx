@@ -25,6 +25,7 @@ const baseTabs = [
       'grid',
       'box',
       'divider',
+      'link-button',
     ],
   },
   {

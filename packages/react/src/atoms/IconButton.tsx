@@ -39,8 +39,8 @@ export type Props = {
 };
 
 import { tv } from 'tailwind-variants';
-import { Variant, Appearance, Size } from './constants';
-import { buttonBaseStyles } from './Button';
+import { Size } from './constants';
+import { Variant, Appearance, buttonBaseStyles, getVariant, getAppearance } from './Button';
 export const IconButtonSize = {
   SM: Size.SM,
   MD: Size.MD,
@@ -62,10 +62,6 @@ export const iconButtonStyles = tv({
     size: IconButtonSize.MD,
   },
 });
-const getVariant = (x: Props['variant'] = Variant.PRIMARY) =>
-  Object.values(Variant).includes(x) ? x : Variant.PRIMARY;
-const getAppearance = (x: Props['appearance']) =>
-  x === Appearance.LIGHT || x === Appearance.DARK ? x : Appearance.DEFAULT;
 const getSize = (x: Props['size'] = IconButtonSize.MD) =>
   Object.values(IconButtonSize).includes(x) ? x : IconButtonSize.MD;
 

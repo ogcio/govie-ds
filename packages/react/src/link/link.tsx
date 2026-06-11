@@ -19,6 +19,7 @@ export type LinkProps = AnchorProps & {
   external?: boolean;
   size?: 'sm' | 'md';
   dataTestid?: string;
+  /** @deprecated Use `<LinkButton>` instead. */
   asButton?: {
     variant?: ButtonVariant;
     appearance?: ButtonAppearance;
