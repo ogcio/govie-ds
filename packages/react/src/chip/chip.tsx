@@ -3,7 +3,7 @@ import { useId } from 'react';
 import { tv } from 'tailwind-variants';
 import { cn } from '@/cn.js';
 import { translate as t } from '@/i18n/utility.js';
-import { Icon } from '@/icon/icon.js';
+import CloseIcon from '@/atoms/icons/Close';
 
 export type ChipProps = {
   label: string;
@@ -33,7 +33,7 @@ export const Chip = ({ label, className, onClose = () => null }: ChipProps) => {
     >
       <span id={descriptionId}>{label}</span>
       <div role="button" aria-label={t('chip.removeChip', { defaultValue: 'remove chip' })} onClick={onClose}>
-        <Icon icon="close" size="sm" />
+        <CloseIcon size={16} />
       </div>
     </div>
   );

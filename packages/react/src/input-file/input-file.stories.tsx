@@ -11,6 +11,8 @@ import { TableHeader } from '@/table/table-header.js';
 import { TableRow } from '@/table/table-row.js';
 import { Table } from '@/table/table.js';
 import { InputFile } from './input-file.js';
+import DownloadIcon from '@/atoms/icons/Download';
+import DeleteIcon from '@/atoms/icons/Delete';
 
 const meta = {
   title: 'Form/InputFile',
@@ -162,28 +164,26 @@ export const WithListOfUploadedFiles: Story = {
               <TableData>
                 <IconButton
                   {...{
-                    icon: {
-                      icon: 'download',
-                    },
                     onClick: () => {},
                     variant: 'flat',
                     appearance: 'dark',
                     size: 'large',
                     className: '!gi-inline-flex',
                   }}
-                />
+                >
+                  <DownloadIcon label="download" />
+                </IconButton>
                 <IconButton
                   {...{
-                    icon: {
-                      icon: 'delete',
-                    },
                     onClick: () => {},
                     variant: 'flat',
                     appearance: 'dark',
                     size: 'large',
                     className: '!gi-inline-flex',
                   }}
-                />
+                >
+                  <DeleteIcon label="delete" />
+                </IconButton>
               </TableData>
             </TableRow>
             <TableRow>
@@ -198,28 +198,26 @@ export const WithListOfUploadedFiles: Story = {
               <TableData>
                 <IconButton
                   {...{
-                    icon: {
-                      icon: 'download',
-                    },
                     onClick: () => {},
                     variant: 'flat',
                     appearance: 'dark',
                     size: 'large',
                     className: '!gi-inline-flex',
                   }}
-                />
+                >
+                  <DownloadIcon label="download" />
+                </IconButton>
                 <IconButton
                   {...{
-                    icon: {
-                      icon: 'delete',
-                    },
                     onClick: () => {},
                     variant: 'flat',
                     appearance: 'dark',
                     size: 'large',
                     className: '!gi-inline-flex',
                   }}
-                />
+                >
+                  <DeleteIcon label="delete" />
+                </IconButton>
               </TableData>
             </TableRow>
           </TableBody>
@@ -267,28 +265,26 @@ export const WithListOfUploadedFilesWithErrorState: Story = {
               <TableData>
                 <IconButton
                   {...{
-                    icon: {
-                      icon: 'download',
-                    },
                     onClick: () => {},
                     variant: 'flat',
                     appearance: 'dark',
                     size: 'large',
                     className: '!gi-inline-flex',
                   }}
-                />
+                >
+                  <DownloadIcon label="download" />
+                </IconButton>
                 <IconButton
                   {...{
-                    icon: {
-                      icon: 'delete',
-                    },
                     onClick: () => {},
                     variant: 'flat',
                     appearance: 'dark',
                     size: 'large',
                     className: '!gi-inline-flex',
                   }}
-                />
+                >
+                  <DeleteIcon label="delete" />
+                </IconButton>
               </TableData>
             </TableRow>
             <TableRow>
@@ -303,28 +299,26 @@ export const WithListOfUploadedFilesWithErrorState: Story = {
               <TableData>
                 <IconButton
                   {...{
-                    icon: {
-                      icon: 'download',
-                    },
                     onClick: () => {},
                     variant: 'flat',
                     appearance: 'dark',
                     size: 'large',
                     className: '!gi-inline-flex',
                   }}
-                />
+                >
+                  <DownloadIcon label="download" />
+                </IconButton>
                 <IconButton
                   {...{
-                    icon: {
-                      icon: 'delete',
-                    },
                     onClick: () => {},
                     variant: 'flat',
                     appearance: 'dark',
                     size: 'large',
                     className: '!gi-inline-flex',
                   }}
-                />
+                >
+                  <DeleteIcon label="delete" />
+                </IconButton>
               </TableData>
             </TableRow>
           </TableBody>
