@@ -14,7 +14,9 @@ An Icon Button is a button that uses an icon instead of text to represent an act
 
 <Section current="design">
 <ComponentPreview>
-  <IconButton icon={{ icon: 'thumb_up' }} size="large" />
+  <IconButton size="large">
+    <ThumbUpIcon/>
+  </IconButton>
 </ComponentPreview>
 <FigmaPreviewButton href="https://www.figma.com/design/ZEqfpXhocdZs1K5YfsE5ws/Design-system?node-id=1386-7470&t=TDHF1QkZpdPfgn8m-4" />
 
@@ -36,7 +38,9 @@ Icon buttons are ideal for quick, easily recognised actions, but they rely on fa
 - Don't pass text or non-icon content as children — use the standard Button component for text labels.
 
 <ComponentContainer>
-  <IconButton icon={{ icon: 'more_horiz' }} />
+  <IconButton>
+    <MoreHorizontalIcon />
+  </IconButton>
 </ComponentContainer>
 
 ## Accessibility
@@ -44,10 +48,33 @@ Icon buttons are ideal for quick, easily recognised actions, but they rely on fa
 - Icon buttons have no visible text, so assistive technologies rely on a programmatic accessible name to announce the button's purpose. Without one, screen readers announce the button as simply "button" with no context.
 - Every icon button **must** have an accessible name. Use one of the following approaches:
 
-| Approach         | When to use                                             | Example                                                       |
-| ---------------- | ------------------------------------------------------- | ------------------------------------------------------------- |
-| `ariaLabel`      | Most common. Provide a short text description directly. | `<IconButton ariaLabel="Close dialog">...</IconButton>`       |
-| `ariaLabelledBy` | When a visible label exists elsewhere on the page.      | `<IconButton ariaLabelledBy="section-title">...</IconButton>` |
+<Table layout="fixed">
+  <TableHead>
+    <TableRow>
+      <TableHeader>Approach</TableHeader>
+      <TableHeader>When to use</TableHeader>
+      <TableHeader>Example</TableHeader>
+    </TableRow>
+  </TableHead>
+  <TableBody>
+    <TableRow>
+      <TableData>`ariaLabel`</TableData>
+      <TableData>
+        Most common. Provide a short text description directly.
+      </TableData>
+      <TableData>
+        `<IconButton ariaLabel="Close dialog">...</IconButton>`
+      </TableData>
+    </TableRow>
+    <TableRow>
+      <TableData>`ariaLabelledBy`</TableData>
+      <TableData>When a visible label exists elsewhere on the page.</TableData>
+      <TableData>
+        `<IconButton ariaLabelledBy="section-title">...</IconButton>`
+      </TableData>
+    </TableRow>
+  </TableBody>
+</Table>
 
 ### Toggle buttons
 

@@ -106,6 +106,87 @@ import {
   Tooltip,
   generateSvgPlaceholderDataUrl,
 } from '@ogcio/design-system-react';
+
+import { AccessibilityIcon } from '@ogcio/design-system-react/icons';
+import { AddCircleIcon } from '@ogcio/design-system-react/icons';
+import { AppsIcon } from '@ogcio/design-system-react/icons';
+import { ArrowBackwardIcon } from '@ogcio/design-system-react/icons';
+import { ArrowDownwardIcon } from '@ogcio/design-system-react/icons';
+import { ArrowDropDownIcon } from '@ogcio/design-system-react/icons';
+import { ArrowDropUpIcon } from '@ogcio/design-system-react/icons';
+import { ArrowForwardIcon } from '@ogcio/design-system-react/icons';
+import { ArrowLeftIcon } from '@ogcio/design-system-react/icons';
+import { ArrowOutwardIcon } from '@ogcio/design-system-react/icons';
+import { ArrowRightIcon } from '@ogcio/design-system-react/icons';
+import { ArrowUpwardIcon } from '@ogcio/design-system-react/icons';
+import { AttachFileIcon } from '@ogcio/design-system-react/icons';
+import { BlockIcon } from '@ogcio/design-system-react/icons';
+import { CallIcon } from '@ogcio/design-system-react/icons';
+import { CancelIcon } from '@ogcio/design-system-react/icons';
+import { CandlestickChartIcon } from '@ogcio/design-system-react/icons';
+import { ChatBubbleIcon } from '@ogcio/design-system-react/icons';
+import { CheckIcon } from '@ogcio/design-system-react/icons';
+import { CheckCircleIcon } from '@ogcio/design-system-react/icons';
+import { CloseIcon } from '@ogcio/design-system-react/icons';
+import { KeyboardArrowLeftIcon } from '@ogcio/design-system-react/icons';
+import { KeyboardArrowRightIcon } from '@ogcio/design-system-react/icons';
+import { ChildCareIcon } from '@ogcio/design-system-react/icons';
+import { ContentCopyIcon } from '@ogcio/design-system-react/icons';
+import { CreditCardIcon } from '@ogcio/design-system-react/icons';
+import { DeleteIcon } from '@ogcio/design-system-react/icons';
+import { DirectionsCarIcon } from '@ogcio/design-system-react/icons';
+import { DoNotDisturbOnIcon } from '@ogcio/design-system-react/icons';
+import { DownloadIcon } from '@ogcio/design-system-react/icons';
+import { EditIcon } from '@ogcio/design-system-react/icons';
+import { ErrorIcon } from '@ogcio/design-system-react/icons';
+import { EventIcon } from '@ogcio/design-system-react/icons';
+import { FilterListIcon } from '@ogcio/design-system-react/icons';
+import { FirstPageIcon } from '@ogcio/design-system-react/icons';
+import { HealthAndSafetyIcon } from '@ogcio/design-system-react/icons';
+import { HomeIcon } from '@ogcio/design-system-react/icons';
+import { InfoIcon } from '@ogcio/design-system-react/icons';
+import { KeyboardArrowDownIcon } from '@ogcio/design-system-react/icons';
+import { KeyboardArrowUpIcon } from '@ogcio/design-system-react/icons';
+import { LastPageIcon } from '@ogcio/design-system-react/icons';
+import { LinkIcon } from '@ogcio/design-system-react/icons';
+import { LocationOnIcon } from '@ogcio/design-system-react/icons';
+import { LoginIcon } from '@ogcio/design-system-react/icons';
+import { LogoutIcon } from '@ogcio/design-system-react/icons';
+import { MailIcon } from '@ogcio/design-system-react/icons';
+import { MenuIcon } from '@ogcio/design-system-react/icons';
+import { MicIcon } from '@ogcio/design-system-react/icons';
+import { MoreHorizontalIcon } from '@ogcio/design-system-react/icons';
+import { MoreVerticalIcon } from '@ogcio/design-system-react/icons';
+import { OpenInNewIcon } from '@ogcio/design-system-react/icons';
+import { PersonIcon } from '@ogcio/design-system-react/icons';
+import { PersonCancelIcon } from '@ogcio/design-system-react/icons';
+import { PersonCheckIcon } from '@ogcio/design-system-react/icons';
+import { RefreshIcon } from '@ogcio/design-system-react/icons';
+import { SearchIcon } from '@ogcio/design-system-react/icons';
+import { SendIcon } from '@ogcio/design-system-react/icons';
+import { SettingsIcon } from '@ogcio/design-system-react/icons';
+import { SortIcon } from '@ogcio/design-system-react/icons';
+import { SpaceDashboardIcon } from '@ogcio/design-system-react/icons';
+import { SyncIcon } from '@ogcio/design-system-react/icons';
+import { SwapVerticalIcon } from '@ogcio/design-system-react/icons';
+import { ThumbDownIcon } from '@ogcio/design-system-react/icons';
+import { ThumbUpIcon } from '@ogcio/design-system-react/icons';
+import { UnfoldMoreIcon } from '@ogcio/design-system-react/icons';
+import { UploadIcon } from '@ogcio/design-system-react/icons';
+import { VisibilityIcon } from '@ogcio/design-system-react/icons';
+import { VisibilityOffIcon } from '@ogcio/design-system-react/icons';
+import { WarningIcon } from '@ogcio/design-system-react/icons';
+import { WorkIcon } from '@ogcio/design-system-react/icons';
+import { BlueskyIcon } from '@ogcio/design-system-react/icons';
+import { FacebookIcon } from '@ogcio/design-system-react/icons';
+import { InstagramIcon } from '@ogcio/design-system-react/icons';
+import { LinkedinIcon } from '@ogcio/design-system-react/icons';
+import { ThreadsIcon } from '@ogcio/design-system-react/icons';
+import { TiktokIcon } from '@ogcio/design-system-react/icons';
+import { XIcon } from '@ogcio/design-system-react/icons';
+import { YoutubeIcon } from '@ogcio/design-system-react/icons';
+import { PlaceholderIcon } from '@ogcio/design-system-react/icons';
+
 import { MDXComponents } from 'mdx/types';
 import { useMDXComponent } from 'next-contentlayer2/hooks';
 import NextLink from 'next/link';
@@ -438,6 +519,86 @@ const documentComponents: MDXComponents = {
   HeaderComposableGovieSample,
   InsetText,
   LinkButton,
+  // icons
+  AccessibilityIcon,
+  AddCircleIcon,
+  AppsIcon,
+  ArrowBackwardIcon,
+  ArrowDownwardIcon,
+  ArrowDropDownIcon,
+  ArrowDropUpIcon,
+  ArrowForwardIcon,
+  ArrowLeftIcon,
+  ArrowOutwardIcon,
+  ArrowRightIcon,
+  ArrowUpwardIcon,
+  AttachFileIcon,
+  BlockIcon,
+  CallIcon,
+  CancelIcon,
+  CandlestickChartIcon,
+  ChatBubbleIcon,
+  CheckIcon,
+  CheckCircleIcon,
+  ChildCareIcon,
+  CloseIcon,
+  ContentCopyIcon,
+  CreditCardIcon,
+  DeleteIcon,
+  DirectionsCarIcon,
+  DoNotDisturbOnIcon,
+  DownloadIcon,
+  EditIcon,
+  ErrorIcon,
+  EventIcon,
+  FilterListIcon,
+  HealthAndSafetyIcon,
+  HomeIcon,
+  InfoIcon,
+  KeyboardArrowDownIcon,
+  KeyboardArrowLeftIcon,
+  KeyboardArrowRightIcon,
+  KeyboardArrowUpIcon,
+  LinkIcon,
+  LocationOnIcon,
+  LoginIcon,
+  LogoutIcon,
+  MailIcon,
+  MenuIcon,
+  MicIcon,
+  MoreHorizontalIcon,
+  MoreVerticalIcon,
+  OpenInNewIcon,
+  PersonIcon,
+  PersonCancelIcon,
+  PersonCheckIcon,
+  RefreshIcon,
+  SearchIcon,
+  SendIcon,
+  SettingsIcon,
+  SortIcon,
+  SpaceDashboardIcon,
+  SyncIcon,
+  SwapVerticalIcon,
+  ThumbDownIcon,
+  ThumbUpIcon,
+  UnfoldMoreIcon,
+  UploadIcon,
+  VisibilityIcon,
+  VisibilityOffIcon,
+  WarningIcon,
+  WorkIcon,
+  BlueskyIcon,
+  FacebookIcon,
+  InstagramIcon,
+  LinkedinIcon,
+  ThreadsIcon,
+  TiktokIcon,
+  XIcon,
+  YoutubeIcon,
+  PlaceholderIcon,
+  FirstPageIcon,
+  LastPageIcon,
 };
 
 export function Mdx({ code }: MdxProps) {

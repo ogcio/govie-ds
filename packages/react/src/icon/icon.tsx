@@ -4,7 +4,7 @@ import { forwardRef } from 'react';
 import _ from 'lodash';
 import clsx from 'clsx';
 import AccessibilityIcon from '@/atoms/icons/Accessibility';
-import AddCircle from '@/atoms/icons/AddCircle';
+import AddCircleIcon from '@/atoms/icons/AddCircle';
 import AppsIcon from '@/atoms/icons/Apps';
 import ArrowBackwardIcon from '@/atoms/icons/ArrowBackward';
 import ArrowDownwardIcon from '@/atoms/icons/ArrowDownward';
@@ -112,7 +112,7 @@ const SIZE_MAP: Record<IconSize, string> = {
 
 const ICON_REGISTRY = {
   accessibility_new: AccessibilityIcon,
-  add_circle: AddCircle,
+  add_circle: AddCircleIcon,
   apps: AppsIcon,
   arrow_back: ArrowBackwardIcon,
   arrow_downward: ArrowDownwardIcon,
