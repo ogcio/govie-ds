@@ -17,10 +17,6 @@ component:
           ofType: 'string'
           description: 'Specifies the size of the icon. Options: sm, md, lg, xl.'
           required: false
-        - name: 'filled'
-          ofType: 'boolean'
-          description: '@deprecated — Uses Material Symbols font icons fallback to apply fill to icons. Material Symbols stylesheet import will be removed, requiring a manual import of the font icons. See below for details.'
-          required: false
         - name: 'useFontIcon'
           ofType: 'boolean'
           description: '@deprecated - Enforce icon source fallback to Material Symbols font icons. The Material Symbols stylesheet import will be removed in future versions, requiring a manual import of the font icons. See below for details.'
@@ -66,17 +62,7 @@ component:
 
 Icons help users quickly recognise actions, states and categories. Use them to complement labels in buttons, inputs, tables and navigation—not to replace text for critical actions.
 
-Earlier versions of the package rendered all icons using Material Symbols font icons. The package now ships SVG icons internally, and `<Icon />` uses these by default. If you pass `filled` or `useFontIcon` as `true`, the component falls back to Material Symbols font icons instead. As we no longer package our design system with this, you'll need to add the link in manually. This can be done via the following setup; by adding `<LoadMaterialSymbols/>` to your `<head>`.
-
-```jsx
-<head>
-<LoadMaterialSymbols/>
-</head>
-<body>
-...
-<Icon useFontIcon="true" icon="thumb_up">
-</body>
-```
+Earlier versions of the package rendered all icons using Material Symbols font icons. The package now ships SVG icons internally, and `<Icon />` uses these by default. If you pass `useFontIcon` as `true`, the component falls back to Material Symbols font icons instead.
 
 <Section current="react">
 <ComponentPreview>

@@ -97,7 +97,7 @@ export type IconProps = {
   dataTestId?: string;
   /** @deprecated Use `IconButton` to add interactivity to your icons */
   onClick?: MouseEventHandler<HTMLSpanElement>;
-  /** @deprecated Work is planned to introduce SVG rendered filled icons in-place of Material symbols. This prop forces a Material Symbols font fallback to enable filled icons to be rendered. The package will stop including the Material Symbols stylesheet; import fonts manually if you still need this. See [here](https://ds.services.gov.ie/components/library/icon/react/) for more details.  */
+  /** @deprecated Filled icons are now unsupported due to icons migrating to direct SVG imports. */
   filled?: boolean;
   /** @deprecated  Icons now ship as SVGs. This prop forces a Material Symbols font fallback. The package will stop including the Material Symbols stylesheet; import fonts manually if you still need this. See [here](https://ds.services.gov.ie/components/library/icon/react/) for more details. */
   useFontIcon?: boolean;
@@ -216,7 +216,7 @@ export const Icon = forwardRef<HTMLSpanElement, IconProps>(
     const fontSize = SIZE_MAP[size] ?? SIZE_MAP.md;
     const Component = ICON_REGISTRY[icon];
 
-    if (Component && !(useFontIcon || filled)) {
+    if (Component && !useFontIcon) {
       const svgClass = clsx(
         'gi-shrink-0',
         { 'gi-block': !inline, 'gi-inline-block': inline, 'gi-fill-gray-700': disabled },
@@ -246,7 +246,6 @@ export const Icon = forwardRef<HTMLSpanElement, IconProps>(
         )}
         style={{
           fontSize,
-          fontVariationSettings: `'FILL' ${filled ? 1 : 0}, 'wght' 400, 'GRAD' 0, 'opsz' ${fontSize}`,
           ...props?.style,
         }}
       >

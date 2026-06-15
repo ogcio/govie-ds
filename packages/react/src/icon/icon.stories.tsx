@@ -4,7 +4,7 @@ import { Icon, type IconProps } from './icon.js';
 import LoadMaterialSymbols from '@/load-symbols/load-symbols.js';
 
 const FONT_ICON_MIGRATION_DOCS =
-  '**Migration:** Icons now render as SVGs by default. Remove `filled` and `useFontIcon` unless you explicitly need Material Symbols font icons. See "Enabling Material Symbols" story below and refer to the [Icon React docs](/components/library/icon/react/) for more details.';
+  '**Migration:** Icons now render as SVGs by default. Remove `useFontIcon` unless you explicitly need Material Symbols font icons. See the [Icon React docs](https://ds.services.gov.ie/components/library/icon/react/) for details.';
 
 const meta = {
   title: 'components/Icon',
@@ -25,10 +25,6 @@ const meta = {
       control: 'radio',
       options: ['sm', 'md', 'lg', 'xl'],
       description: 'Specify the size of the icon',
-    },
-    filled: {
-      control: 'boolean',
-      description: 'Render the icon with a filled style using Material Symbols font icons.',
     },
     useFontIcon: {
       control: 'boolean',
@@ -85,28 +81,6 @@ export const ExtraLarge: Story = {
   args: {
     icon: 'thumb_up',
     size: 'xl',
-  },
-};
-export const Filled: Story = {
-  args: {
-    icon: 'thumb_up',
-    filled: true,
-  },
-  parameters: {
-    docs: {
-      description: {
-        story:
-          'Filled icons are rendered via the Material Symbols fallback, as we do not package the filled icons internally. `<LoadMaterialSymbols/>` must be added in the `<head>` of your application to enable font fallback. See the [Icon Component documentation](/components/library/icon/react/) for further details',
-      },
-    },
-  },
-  render: ({ icon }) => {
-    return (
-      <>
-        <LoadMaterialSymbols />
-        <Icon icon={icon} filled />
-      </>
-    );
   },
 };
 
