@@ -11,7 +11,7 @@
   "exports": {
     ".": "./dist/index.js",
     "./styles.css": "./dist/styles.css",
-    "./material-symbols": "./dist/material-symbols.css",
+    "./material-symbols.css": "./dist/material-symbols.css",
     "./fonts.css": "./fonts.css",
     "./icons": {
       "types": "./dist/icons/index.d.ts",
