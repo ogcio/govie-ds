@@ -1,7 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/react-vite';
 import { within, expect } from 'storybook/test';
-import { Icon, type IconProps } from './icon.js';
-import LoadMaterialSymbols from '@/load-symbols/load-symbols.js';
+import { Icon } from './icon.js';
 
 const FONT_ICON_MIGRATION_DOCS =
   '**Migration:** Icons now render as SVGs by default. Remove `useFontIcon` unless you explicitly need Material Symbols font icons. See the [Icon React docs](https://ds.services.gov.ie/components/library/icon/react/) for details.';
