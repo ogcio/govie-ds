@@ -157,7 +157,7 @@ As of version <Tag type="info" text="1.40.0"/>, icons are now directly shipped f
 
 If you still wish to use the material symbols font icons with `<Icon/>` you may use the prop `useFontIcon` to enable this fallback. The CSS file is also provided within the package for ease of use.
 
-```jsx
+```tsx
 import '@ogcio/design-system-react/material-symbols.css'
 ...
 <Icon icon="thumb_up" useFontIcon>
@@ -166,6 +166,7 @@ import '@ogcio/design-system-react/material-symbols.css'
 <Blockquote>
 **NOTE:** There was a breaking change in **Next.JS 16 (Turbopack)**. Instead of loading the css file, you must attach the component `<LoadMaterialSymbols/>` in the `<head>`. Relevant information on this can be found in the [Icon Component](/components/library/icon/react/) documentation.
 </Blockquote>
+
 ```tsx
 // app/layout.tsx
 import { LoadMaterialSymbols } from '@ogcio/design-system-react';
