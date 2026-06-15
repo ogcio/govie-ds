@@ -1,6 +1,7 @@
 import type { Meta, StoryObj } from '@storybook/react-vite';
 import { within, expect } from 'storybook/test';
 import { Icon, type IconProps } from './icon.js';
+import LoadMaterialSymbols from '@/load-symbols/load-symbols.js';
 
 const FONT_ICON_MIGRATION_DOCS =
   '**Migration:** Icons now render as SVGs by default. Remove `filled` and `useFontIcon` unless you explicitly need Material Symbols font icons. See "Enabling Material Symbols" story below and refer to the [Icon React docs](/components/library/icon/react/) for more details.';
@@ -95,17 +96,14 @@ export const Filled: Story = {
     docs: {
       description: {
         story:
-          'Filled icons are rendered via the Material Symbols fallback. The fonts stylesheet link must be added in the `<head>` of your application. See below in "Enabling Material Symbols" for more details.',
+          'Filled icons are rendered via the Material Symbols fallback, as we do not package the filled icons internally. `<LoadMaterialSymbols/>` must be added in the `<head>` of your application to enable font fallback. See the [Icon Component documentation](/components/library/icon/react/) for further details',
       },
     },
   },
   render: ({ icon }) => {
     return (
       <>
-        <link
-          href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,400,0..1,0&icon_names=accessibility_new,add_circle,apps,arrow_back,arrow_downward,arrow_drop_down,arrow_drop_up,arrow_forward,arrow_left_alt,arrow_outward,arrow_right_alt,arrow_upward,attach_file,block,call,cancel,candlestick_chart,chat_bubble,check,check_circle,chevron_left,chevron_right,child_care,close,content_copy,credit_card,delete,directions_car,do_not_disturb_on,download,edit,error,event,filter_list,first_page,health_and_safety,home,info,keyboard_arrow_down,keyboard_arrow_up,last_page,link,location_on,login,logout,mail,menu,mic,more_horiz,more_vert,open_in_new,person,person_cancel,person_check,refresh,search,send,settings,sort,space_dashboard,swap_vert,sync,thumb_down,thumb_up,unfold_more,upload,visibility,visibility_off,warning,work"
-          rel="stylesheet"
-        />
+        <LoadMaterialSymbols />
         <Icon icon={icon} filled />
       </>
     );
