@@ -66,7 +66,17 @@ component:
 
 Icons help users quickly recognise actions, states and categories. Use them to complement labels in buttons, inputs, tables and navigation—not to replace text for critical actions.
 
-Earlier versions of the package rendered all icons using Material Symbols font icons. The package now ships SVG icons internally, and `<Icon />` uses these by default. If you pass `filled` or `useFontIcon` as `true`, the component falls back to Material Symbols font icons instead. As we no longer package our design system with this, you'll need to add the link in manually. See [Storybook](/storybook-react/?path=/docs/components-icon--docs) for more examples.
+Earlier versions of the package rendered all icons using Material Symbols font icons. The package now ships SVG icons internally, and `<Icon />` uses these by default. If you pass `filled` or `useFontIcon` as `true`, the component falls back to Material Symbols font icons instead. As we no longer package our design system with this, you'll need to add the link in manually. This can be done via the following setup; by adding `<LoadMaterialSymbols/>` to your `<head>`.
+
+```jsx
+<head>
+<LoadMaterialSymbols/>
+</head>
+<body>
+...
+<Icon useFontIcon="true" icon="thumb_up">
+</body>
+```
 
 <Section current="react">
 <ComponentPreview>

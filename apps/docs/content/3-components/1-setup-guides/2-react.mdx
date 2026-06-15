@@ -151,21 +151,11 @@ export default function App({ Component, pageProps }: AppProps) {
 }
 ```
 
-#### Load Material Symbols Icons in Next.js 16
+#### Loading Material Symbols Font Icons Fallback
 
-<InsetText>
-  **Note:** Due to a breaking change in Next.js 16 (Turbopack), Material Symbols
-  icons are not loaded automatically anymore. To make the icons work, you must
-  explicitly load them using the `LoadMaterialSymbols` component.
-</InsetText>
+As of version `1.40.0`, icons are now directly shipped from the package, and importing them directly is the recommended usage. See the [icons documentation](/resources/icons/) for the full list.
 
-<Alert variant="danger" className="gi-max-w-none">
-  **Deprecated** <br /> As of version 1.40.0, this component is no longer
-  necessary and can be safely removed. Icons are now shipped directly from the
-  package. If using Material Symbols font icons are necessary, follow the
-  [Enabling Material Symbols
-  story](/storybook-react/?path=/docs/components-icon--docs#enabling-material-symbols).
-</Alert>
+If you still wish to use the material symbols font icons with `<Icon/>` you must attach the component `<LoadMaterialSymbols/>` in the `<head>`, and ensure you use either `filled` or `useFontIcon` to enable material symbols.
 
 ```tsx
 // app/layout.tsx
@@ -177,7 +167,10 @@ export default function RootLayout({ children }) {
       <head>
         <LoadMaterialSymbols />
       </head>
-      <body>{children}</body>
+      <body>
+        {children}
+        <Icon icon="thumb_up" useFontIcon />
+      </body>
     </html>
   );
 }
