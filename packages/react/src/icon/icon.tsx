@@ -97,6 +97,8 @@ export type IconProps = {
   dataTestId?: string;
   /** @deprecated Use `IconButton` to add interactivity to your icons */
   onClick?: MouseEventHandler<HTMLSpanElement>;
+  /** @deprecated Filled icons are now unsupported due to icons migrating to direct SVG imports. */
+  filled?: boolean;
   /** @deprecated  Icons now ship as SVGs. This prop forces a Material Symbols font fallback. The package will stop including the Material Symbols stylesheet; import fonts manually if you still need this. See [here](https://ds.services.gov.ie/components/library/icon/react/) for more details. */
   useFontIcon?: boolean;
 } & Omit<ComponentPropsWithoutRef<'span'>, 'children' | 'onClick'>;
