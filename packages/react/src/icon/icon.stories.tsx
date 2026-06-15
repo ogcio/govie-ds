@@ -58,7 +58,6 @@ type Story = StoryObj<typeof meta>;
 export const Default: Story = {
   args: {
     icon: 'thumb_up',
-    useFontIcon: true,
   },
 };
 
