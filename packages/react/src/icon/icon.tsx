@@ -206,8 +206,8 @@ export const Icon = forwardRef<HTMLSpanElement, IconProps>(
       inline,
       className,
       onClick,
-      filled,
       useFontIcon,
+      filled,
       dataTestId,
       ...props
     },
