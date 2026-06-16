@@ -28,8 +28,8 @@ export function DownloadIconButton({ name, href, text }: SvgIcon | TextIcon) {
     return () => clearTimeout(timeout);
   }, [downloaded]);
 
-  const safeName = name.toLowerCase().trim().replace(/\s+/g, '_');
-
+  // const safeName = name.toLowerCase().trim().replace(/\s+/g, '_');
+  const safeName = name;
   const handleClick = () => {
     analytics.trackEvent({
       category: 'download content',

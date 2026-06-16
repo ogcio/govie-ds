@@ -32,10 +32,9 @@ export function IconGridLayout() {
       <ul className="flex flex-wrap gap-2 p-0 gi-not-prose">
         {Object.entries(AllIcons).map(([name, Icon]) => {
           if (!new RegExp(iconFilter, 'gi').exec(name)) {
-            return <></>;
+            return null;
           }
           const iconName = titleCase(name).replace('Icon', '');
-          const safeName = iconName.toLowerCase().trim().replace(/\s+/g, '_');
           return (
             <li key={name} className="inline-block w-36">
               <div className="border rounded-md transition-colors relative">
@@ -43,12 +42,12 @@ export function IconGridLayout() {
                   <Icon size="lg" />
                 </div>
                 <div className="absolute bottom-1 right-1">
-                  <CopyToClipboardButton text={`<${name}/>`} />
+                  <CopyToClipboardButton text={`<${iconName}/>`} />
                 </div>
                 <div className="absolute bottom-1 right-10">
                   <DownloadIconButton
                     name={name}
-                    href={`/icons/${safeName}.svg`}
+                    href={`/icons/${iconName}.svg`}
                   />
                 </div>
               </div>
