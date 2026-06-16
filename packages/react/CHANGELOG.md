@@ -1,5 +1,15 @@
 # Changelog
 
+## [1.40.0](https://github.com/ogcio/govie-ds/compare/react-lib-v1.39.0...react-lib-v1.40.0) (2026-06-15)
+
+
+### Features
+
+* **AB#38090:** render all icons as mitosis svg for Icon ([#975](https://github.com/ogcio/govie-ds/issues/975)) ([4f472bb](https://github.com/ogcio/govie-ds/commit/4f472bbef42d95c6d1e14dba99fdb213054eca73))
+* **AB#38402:** add LinkButton atom component ([#982](https://github.com/ogcio/govie-ds/issues/982)) ([a12ec49](https://github.com/ogcio/govie-ds/commit/a12ec4973c38c5c3930d7e7202d15186f1f94038))
+* **AB#38534:** Adding FooterSection atom ([#976](https://github.com/ogcio/govie-ds/issues/976)) ([ebcd215](https://github.com/ogcio/govie-ds/commit/ebcd2157947e588e5f950308a925012414793b78))
+* **AB#39534:** remove filled prop and references ([#986](https://github.com/ogcio/govie-ds/issues/986)) ([edaf65f](https://github.com/ogcio/govie-ds/commit/edaf65f69e7c956a75e5b4c958c4654b36c072fc))
+
 ## [1.39.0](https://github.com/ogcio/govie-ds/compare/react-lib-v1.38.0...react-lib-v1.39.0) (2026-06-09)
 
 
