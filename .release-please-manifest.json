@@ -4,9 +4,9 @@
   "packages/design/figma": "1.0.7",
   "packages/design/theme-builder": "1.24.2",
   "packages/design/tokens": "1.22.3",
-  "apps/docs": "1.38.0",
+  "apps/docs": "1.39.0",
   "packages/themes/govie": "1.21.7",
   "packages/design/tailwind": "1.26.1",
   "packages/html/ds": "1.21.3",
-  "packages/react": "1.39.0"
+  "packages/react": "1.40.0"
 }
