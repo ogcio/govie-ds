@@ -3,6 +3,7 @@ import { IconButton } from '@ogcio/design-system-react';
 import { useEffect, useState } from 'react';
 import { cn } from '@/lib/cn';
 import analytics from '@/lib/analytics';
+import { CheckIcon, DownloadIcon } from '@ogcio/design-system-react/icons';
 
 type SvgIcon = {
   name: string;
@@ -28,8 +29,6 @@ export function DownloadIconButton({ name, href, text }: SvgIcon | TextIcon) {
     return () => clearTimeout(timeout);
   }, [downloaded]);
 
-  // const safeName = name.toLowerCase().trim().replace(/\s+/g, '_');
-  const safeName = name;
   const handleClick = () => {
     analytics.trackEvent({
       category: 'download content',
@@ -44,16 +43,17 @@ export function DownloadIconButton({ name, href, text }: SvgIcon | TextIcon) {
     : href || '';
 
   return (
-    <a href={downloadHref} download={`${safeName}.svg`} onClick={handleClick}>
+    <a href={downloadHref} download={`${name}.svg`} onClick={handleClick}>
       <IconButton
-        icon={{ icon: downloaded ? 'check' : 'download' }}
         size="small"
         appearance="light"
         className={cn({
           'text-green-600': downloaded,
           'text-gray-600': !downloaded,
         })}
-      />
+      >
+        {downloaded ? <CheckIcon size={16} /> : <DownloadIcon size={16} />}
+      </IconButton>
     </a>
   );
 }
