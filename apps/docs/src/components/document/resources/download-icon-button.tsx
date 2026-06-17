@@ -52,7 +52,7 @@ export function DownloadIconButton({ name, href, text }: SvgIcon | TextIcon) {
           'text-gray-600': !downloaded,
         })}
       >
-        {downloaded ? <CheckIcon size={16} /> : <DownloadIcon size={16} />}
+        {downloaded ? <CheckIcon /> : <DownloadIcon />}
       </IconButton>
     </a>
   );

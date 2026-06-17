@@ -5,12 +5,13 @@ import {
   FormField,
   FormFieldLabel,
   InputText,
+  Box,
 } from '@ogcio/design-system-react';
 import * as AllIcons from '@ogcio/design-system-react/icons';
 import { DownloadIconButton } from './download-icon-button';
-import { CopyToClipboardButton } from './copy-to-clipboard-button';
 import { titleCase } from '@/lib/utilities';
 import { useState } from 'react';
+import _ from 'lodash';
 
 export function IconGridLayout() {
   const [iconFilter, setIconFilter] = useState('');
@@ -30,27 +31,24 @@ export function IconGridLayout() {
         />
       </FormField>
       <ul className="flex flex-wrap gap-2 p-0 gi-not-prose">
-        {Object.entries(AllIcons).map(([name, Icon]) => {
+        {_.toPairs(AllIcons).map(([name, Icon]) => {
           if (!new RegExp(iconFilter, 'gi').exec(name)) {
             return null;
           }
           const iconName = titleCase(name).replace('Icon', '');
           return (
-            <li key={name} className="inline-block w-36">
-              <div className="border rounded-md transition-colors relative">
-                <div className="flex justify-center px-10 py-12">
-                  <Icon size="lg" />
-                </div>
-                <div className="absolute bottom-1 right-1">
-                  <CopyToClipboardButton text={`<${iconName}/>`} />
-                </div>
-                <div className="absolute bottom-1 right-10">
+            <li key={name} className="w-36 aspect-square flex flex-col">
+              <Box className="grow border rounded-md relative p-1">
+                <Box className="h-full flex items-center justify-center">
+                  <Icon size={48} />
+                </Box>
+                <Box className="absolute bottom-1 right-1">
                   <DownloadIconButton
-                    name={name}
+                    name={iconName}
                     href={`/icons/${iconName}.svg`}
                   />
-                </div>
-              </div>
+                </Box>
+              </Box>
               <Paragraph size="sm" className="text-center">
                 {iconName}
               </Paragraph>
