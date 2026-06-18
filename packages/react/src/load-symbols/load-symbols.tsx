@@ -2,6 +2,7 @@
  * LoadMaterialSymbols Component
  *
  * This component is a workaround solution, responsible for loading the Material Symbols font from Google Fonts specifically for Next.js 16 users.
+ * @deprecated This component is now no longer necessary for icons to be rendered, and should only be used if using `useFontIcon` prop with the `<Icon/>` component. Icons are now shipped directly from the React package. See our [documentation](https://ds.services.gov.ie/components/setup-guides/react/#load-material-symbols-icons-in-nextjs-16) for more info.
  */
 export const LoadMaterialSymbols = () => {
   return (
