@@ -1,4 +1,4 @@
-import type { ReactElement, ReactNode } from 'react';
+import type { JSX, ReactElement, ReactNode } from 'react';
 import { isValidElement } from 'react';
 
 /**
@@ -56,4 +56,22 @@ export const cycleEnabledIndex = (
   }
 
   return -1;
+};
+
+export const getTextContent = (node: ReactNode, textContent: string[] = []): string => {
+  if (isValidElement(node)) {
+    const { children } = (node as JSX.Element).props;
+    if (Array.isArray(children)) {
+      for (const child of children) {
+        getTextContent(child, textContent);
+      }
+    } else if (children != null && children !== false) {
+      getTextContent(children, textContent);
+    }
+  } else if (typeof node === 'string' || typeof node === 'number') {
+    textContent.push(String(node));
+  } else if (node != null && typeof node !== 'boolean') {
+    textContent.push(JSON.stringify(node));
+  }
+  return textContent.join(' ');
 };

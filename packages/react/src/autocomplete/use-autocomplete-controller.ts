@@ -9,6 +9,7 @@ import type {
   AutocompleteProps,
 } from './types.js';
 import { AUTOCOMPLETE_ACTIONS } from './types.js';
+import { getTextContent } from '@/utilities.js';
 
 const {
   ON_RESET,
@@ -87,7 +88,7 @@ const isAutocompleteItem = (child: React.ReactNode): child is AutocompleteOption
 };
 
 const filterChildOption = (child: AutocompleteOptionItemElement, inputValue: string) => {
-  const label = child.props.children?.toString().toLowerCase() || '';
+  const label = getTextContent(child).toLowerCase();
   const value = child.props.value?.toLowerCase();
   const input = inputValue.toLowerCase();
   return label.includes(input) || value.includes(input);
@@ -103,7 +104,7 @@ const getOptionLabelByValue = (children: any, value: string): string => {
     const type = child.type?.componentType || child.props?.__type;
 
     if (child.props?.value === value) {
-      return child.props.children?.toString() || '';
+      return getTextContent(child);
     }
 
     if (type === 'AutocompleteGroupItem') {
@@ -111,7 +112,7 @@ const getOptionLabelByValue = (children: any, value: string): string => {
 
       for (const child of groupChildren) {
         if ((child as any).props?.value === value) {
-          return (child as any).props.children?.toString() || '';
+          return getTextContent(child);
         }
       }
     }

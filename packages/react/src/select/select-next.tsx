@@ -16,7 +16,7 @@ import { useScrollHighlightedItem } from '@/hooks/use-scroll-highlighted-item.js
 import { translate as t } from '@/i18n/utility.js';
 import { InputText } from '@/input-text/input-text.js';
 import { Popover } from '@/popover/popover.js';
-import { cycleEnabledIndex } from '@/utilities.js';
+import { cycleEnabledIndex, getTextContent } from '@/utilities.js';
 import { SelectMenu, SelectMenuGroupItem, SelectMenuOption } from './select-menu.js';
 import { SelectSearch } from './select-search.js';
 import type {
@@ -95,7 +95,7 @@ export const SelectNext = forwardRef<HTMLInputElement, SelectNextProps>(
       }
 
       if (found) {
-        const foundValue = found.props.children?.toString() || '';
+        const foundValue = getTextContent(found);
         setInputValue(foundValue);
       } else {
         setInputValue('');

@@ -7,6 +7,10 @@ import Button from '@/atoms/Button';
 import { FormField, FormFieldError, FormFieldHint, FormFieldLabel } from '@/forms/form-field/form-field.js';
 import { Label } from '@/label/label.js';
 import { SelectGroupItemNext, SelectItemNext, SelectNext } from './select-next.js';
+import { Container } from '@/container/container.js';
+import { Paragraph } from '@/paragraph/paragraph.js';
+import { MenuIcon } from '@/atoms/index.js';
+import { Alert } from '@/alert/alert.js';
 
 const topics = Array.from({ length: 8 }, (_, index) => ({
   value: `topic_${index + 1}`,
@@ -930,6 +934,95 @@ export const TestToggleDropdown: StoryObj = {
     await userEvent.keyboard('{Enter}');
     await waitFor(() => {
       expect(canvas.queryByRole('listbox')).toBeNull();
+    });
+  },
+};
+
+export const WithRichText: StoryObj = {
+  tags: ['skip-playwright'],
+  render: () => (
+    <Container className="gi-flex gi-gap-2">
+      <FormField className="gi-w-56">
+        <FormFieldLabel>Default</FormFieldLabel>
+        <SelectNext aria-label="Select" defaultValue="value-2" data-testid="default">
+          <SelectItemNext value="select-option" hidden>
+            Select Option
+          </SelectItemNext>
+          <SelectItemNext value="value-1">
+            <code>code block</code>
+          </SelectItemNext>
+          <SelectItemNext value="value-2">
+            <Paragraph>
+              <MenuIcon className="gi-inline" /> with icon
+            </Paragraph>
+          </SelectItemNext>
+          <SelectItemNext value="value-3">
+            <Paragraph>
+              <Alert variant="danger" data-testid="alert-default-item">
+                Alert
+              </Alert>
+            </Paragraph>
+          </SelectItemNext>
+        </SelectNext>
+      </FormField>
+      <FormField className="gi-w-56">
+        <FormFieldLabel>Search Enabled</FormFieldLabel>
+        <SelectNext aria-label="Select" defaultValue="value-3" enableSearch>
+          <SelectItemNext value="select-option" hidden>
+            Select Option
+          </SelectItemNext>
+          <SelectItemNext value="value-1">
+            <code>code block</code>
+          </SelectItemNext>
+          <SelectItemNext value="value-2">
+            <Paragraph>
+              <MenuIcon className="gi-inline" /> with icon
+            </Paragraph>
+          </SelectItemNext>
+          <SelectItemNext value="value-3">
+            <Paragraph>
+              <Alert variant="danger" data-testid="alert-search-item">
+                Alert
+              </Alert>
+            </Paragraph>
+          </SelectItemNext>
+        </SelectNext>
+      </FormField>
+    </Container>
+  ),
+  play: async ({ canvasElement }) => {
+    const canvas = within(canvasElement);
+    const [defaultSelect, searchSelect] = canvas.getAllByRole('textbox');
+    expect(defaultSelect.getAttribute('value')).toBe(' with icon');
+    await userEvent.click(defaultSelect);
+    await waitFor(() => {
+      expect(canvas.getByRole('listbox')).toBeInTheDocument();
+    });
+    const alertSelectItem = await canvas.findByTestId('option-value-3');
+    expect(alertSelectItem).toBeInTheDocument();
+    const alertComponent = await within(alertSelectItem).findByTestId('alert-default-item');
+    expect(alertComponent).toBeInTheDocument();
+    await userEvent.click(alertComponent);
+    expect(alertSelectItem).not.toBeInTheDocument();
+    expect(defaultSelect.getAttribute('value')).toBe('Alert');
+    await userEvent.click(searchSelect);
+    const iconOption = await canvas.findByTestId('option-value-2');
+    const alertOption = await canvas.findByTestId('option-value-3');
+    await userEvent.clear(searchSelect);
+    await userEvent.type(searchSelect, 'with', { delay: 200 });
+    await waitFor(() => {
+      expect(alertOption).not.toBeInTheDocument();
+    });
+    await userEvent.click(iconOption);
+    await waitFor(() => {
+      // get a new snapshot of the search select
+      const searchSelect = canvas.getAllByRole('textbox')[1];
+      expect(searchSelect.getAttribute('value')).toBe(' with icon');
+    });
+    // for screenshot
+    await userEvent.click(defaultSelect);
+    await waitFor(() => {
+      expect(canvas.getByRole('listbox')).toBeInTheDocument();
     });
   },
 };
