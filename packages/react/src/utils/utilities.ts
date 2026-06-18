@@ -1,4 +1,4 @@
-import type { ReactNode } from 'react';
+import type { ReactNode, JSX, ReactElement, PropsWithChildren } from 'react';
 import { cloneElement, isValidElement } from 'react';
 import type { BreakpointType } from '@/hooks/use-breakpoint.js';
 import { Breakpoint } from '@/hooks/use-breakpoint.js';
@@ -112,3 +112,38 @@ export function getSpecialComponentType(child: ReactNode): string | null {
 export function isSpecialComponent(child: ReactNode, componentList: Array<string> = []): boolean {
   return componentList.includes(getSpecialComponentType(child) ?? '');
 }
+
+/**
+ * Synchronous Depth First Search of all text within a ReactNode, appended together with spaces in-between. Similar to textContent for HTML.
+ *
+ * @param node - ReactNode that will be traversed to gather all children with textContent.
+ * @param _textContent - internal storage of all gathered text. Leave empty.
+ * @returns concatenated string of all children that is text.
+ * @example
+ * ```
+ * getTextContent(
+ *  <div>
+ *    <p>hello</p>
+ *    there
+ * </div>)
+ * returns "hello there"
+ * ```
+ */
+export const getTextContent = (node: ReactNode, _textContent: string[] = []): string => {
+  if (isValidElement(node)) {
+    const { children } = (node as ReactElement<PropsWithChildren>).props;
+    if (Array.isArray(children)) {
+      for (const child of children) {
+        getTextContent(child, _textContent);
+      }
+    } else if (children != null && children !== false) {
+      getTextContent(children, _textContent);
+    }
+  } else if (typeof node === 'string' || typeof node === 'number') {
+    _textContent.push(String(node));
+  } else if (node != null && typeof node !== 'boolean') {
+    // if the node is not accepted silently pass empty string
+    _textContent.push('');
+  }
+  return _textContent.join(' ');
+};
