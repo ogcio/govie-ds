@@ -940,6 +940,14 @@ export const TestToggleDropdown: StoryObj = {
 
 export const WithRichText: StoryObj = {
   tags: ['skip-playwright'],
+  parameters: {
+    docs: {
+      description: {
+        story:
+          'Rich text can be rendered within the SelectItemNext components, operating similarly to the `.textContent` HTMLElement method; traversing through the children and concatenating the content inside.',
+      },
+    },
+  },
   render: () => (
     <Container className="gi-flex gi-gap-2">
       <FormField className="gi-w-56">
