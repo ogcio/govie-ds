@@ -1,6 +1,6 @@
 {
   "name": "@ogcio/design-system-react",
-  "version": "1.39.0",
+  "version": "1.40.0",
   "description": "The Government of Ireland Design System React components.",
   "type": "module",
   "main": "dist/index.js",
@@ -11,6 +11,7 @@
   "exports": {
     ".": "./dist/index.js",
     "./styles.css": "./dist/styles.css",
+    "./material-symbols.css": "./material-symbols.css",
     "./fonts.css": "./fonts.css",
     "./icons": {
       "types": "./dist/icons/index.d.ts",
@@ -48,7 +49,8 @@
   "files": [
     "dist",
     "styles",
-    "fonts.css"
+    "fonts.css",
+    "material-symbols.css"
   ],
   "keywords": [],
   "author": "",
