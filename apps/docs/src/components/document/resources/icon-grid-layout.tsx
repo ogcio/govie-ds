@@ -6,12 +6,14 @@ import {
   FormFieldLabel,
   InputText,
   Box,
+  Grid,
 } from '@ogcio/design-system-react';
 import * as AllIcons from '@ogcio/design-system-react/icons';
 import { DownloadIconButton } from './download-icon-button';
 import { titleCase } from '@/lib/utilities';
 import { useState } from 'react';
 import _ from 'lodash';
+import type { ReactElement } from 'react';
 
 export function IconGridLayout() {
   const [iconFilter, setIconFilter] = useState('');
@@ -31,27 +33,39 @@ export function IconGridLayout() {
         />
       </FormField>
       <ul className="flex flex-wrap gap-2 p-0 gi-not-prose">
-        {_.toPairs(AllIcons).map(([name, Icon]) => {
-          if (!new RegExp(iconFilter, 'gi').exec(name)) {
-            return null;
-          }
-          const iconName = titleCase(name).replace('Icon', '');
-          return (
-            <li key={name} className="w-36 aspect-square flex flex-col">
-              <Box className="grow border rounded-md relative p-1">
-                <Box className="h-full flex items-center justify-center">
-                  <Icon size={48} />
-                </Box>
-                <Box className="absolute bottom-1 right-1">
-                  <DownloadIconButton name={iconName} IconComponent={Icon} />
-                </Box>
-              </Box>
-              <Paragraph size="sm" className="text-center">
-                {iconName}
-              </Paragraph>
-            </li>
-          );
-        })}
+        <Grid container gap={2}>
+          {_.reduce(
+            AllIcons,
+            (acc, Icon, name) => {
+              if (!name.toLowerCase().includes(iconFilter.toLowerCase())) {
+                return acc;
+              }
+              const iconName = titleCase(name).replace('Icon', '');
+              return [
+                ...acc,
+                <Grid key={name} size={2}>
+                  <Box className="h-36 w-36 flex flex-col">
+                    <Box className="grow border rounded-md relative p-1">
+                      <Box className="h-full flex items-center justify-center">
+                        <Icon size={48} />
+                      </Box>
+                      <Box className="absolute bottom-1 right-1">
+                        <DownloadIconButton
+                          name={iconName}
+                          IconComponent={Icon}
+                        />
+                      </Box>
+                    </Box>
+                    <Paragraph size="sm" className="text-center truncate">
+                      {iconName}
+                    </Paragraph>
+                  </Box>
+                </Grid>,
+              ];
+            },
+            [] as ReactElement[],
+          )}
+        </Grid>
       </ul>
     </Container>
   );
