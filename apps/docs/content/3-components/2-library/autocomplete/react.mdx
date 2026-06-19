@@ -53,6 +53,22 @@ component:
           ofType: 'boolean'
           description: 'Controls the open/closed state of the dropdown (use for controlled mode).'
           required: false
+        - name: 'multiple'
+          ofType: 'boolean'
+          description: 'When true, allows selecting multiple options. Selected items are shown as a count badge in the input field.'
+          required: false
+        - name: 'onSelectionChange'
+          ofType: 'function'
+          description: 'Callback triggered when selections change in multiple mode. Receives an array of selected values.'
+          required: false
+        - name: 'defaultSelectedValues'
+          ofType: 'string[]'
+          description: 'Initial selected values when multiple mode is first rendered.'
+          required: false
+        - name: 'selectedValues'
+          ofType: 'string[]'
+          description: 'Controls the selected values in multiple mode (use for controlled mode).'
+          required: false
   stories:
     - name: 'default'
       url: '/story/form-autocomplete--default'
@@ -66,6 +82,10 @@ component:
       url: '/story/form-autocomplete--with-free-solo'
     - name: 'with-loading'
       url: '/story/form-autocomplete--with-loading'
+    - name: 'with-multiple-count'
+      url: '/story/form-autocomplete--with-multiple-count'
+    - name: 'with-multiple-chips'
+      url: '/story/form-autocomplete--with-multiple-chips'
 ---
 
 # Autocomplete
@@ -142,6 +162,26 @@ The Autocomplete component allows users to search and select from a list of opti
   heightClassName="h-[405px]"
   componentId="autocomplete-react"
   story="with-loading"
+/>
+
+### Multi-select with Count
+
+When `multiple` is enabled, users can select more than one option. A count badge in the input field shows how many items are selected. A "Clear all selections" action is available in the dropdown.
+
+<StorybookFrame
+  heightClassName="h-[405px]"
+  componentId="autocomplete-react"
+  story="with-multiple-count"
+/>
+
+### Multi-select with Chips
+
+This example demonstrates using `onSelectionChange` and `selectedValues` to display selected items as removable chips below the autocomplete. Removing a chip deselects the corresponding option.
+
+<StorybookFrame
+  heightClassName="h-[405px]"
+  componentId="autocomplete-react"
+  story="with-multiple-chips"
 />
 
 ## Properties

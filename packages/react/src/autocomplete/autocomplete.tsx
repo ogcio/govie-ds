@@ -11,16 +11,16 @@ import React, {
 } from 'react';
 import { tv } from 'tailwind-variants';
 import clsx from 'clsx';
-import { useDomId } from '@/hooks/use-dom-id.js';
-import { translate as t } from '@/i18n/utility.js';
-import { InputText } from '@/input-text/input-text.js';
-import { Popover } from '@/popover/popover.js';
-import { SelectMenu, SelectMenuGroupItem, SelectMenuOption } from '@/select/select-menu.js';
-import type { SelectNextGroupItemElement, SelectNextOptionItemElement } from '@/select/types.js';
-import { cycleEnabledIndex } from '@/utilities.js';
-import type { AutocompleteItemProps, AutocompleteOptionItemElement, AutocompleteProps } from './types.js';
-import { AUTOCOMPLETE_ACTIONS } from './types.js';
-import { useAutocompleteController } from './use-autocomplete-controller.js';
+import { useDomId } from '@/hooks/use-dom-id';
+import { translate as t } from '@/i18n/utility';
+import { InputText } from '@/input-text/input-text';
+import { Popover } from '@/popover/popover';
+import { SelectMenu, SelectMenuGroupItem, SelectMenuOption } from '@/select/select-menu';
+import type { SelectNextGroupItemElement, SelectNextOptionItemElement } from '@/select/types';
+import { Tag, TagTypeEnum } from '@/tag/tag';
+import type { AutocompleteItemProps, AutocompleteOptionItemElement, AutocompleteProps } from './types';
+import { AUTOCOMPLETE_ACTIONS } from './types';
+import { useAutocompleteController } from './use-autocomplete-controller';
 import KeyboardArrowDownIcon from '@/atoms/icons/KeyboardArrowDown';
 
 const {
@@ -31,6 +31,9 @@ const {
   TOGGLE_CLEAR_BUTTON,
   SET_HIGHLIGHTED_INDEX,
   SET_VALUE,
+  TOGGLE_SELECTED_ITEM,
+  CLEAR_ALL_SELECTIONS,
+  SET_SELECTED_VALUES,
 } = AUTOCOMPLETE_ACTIONS;
 
 export const Autocomplete = forwardRef<HTMLInputElement, AutocompleteProps>((props, ref) => {
@@ -47,15 +50,21 @@ export const Autocomplete = forwardRef<HTMLInputElement, AutocompleteProps>((pro
     name,
     value,
     id,
+    multiple,
+    onSelectionChange,
+    defaultSelectedValues,
+    selectedValues,
   } = props;
   const isPointerDownOnMenu = useRef(false);
   const styles = autocompleteStyles({ freeSolo, disabled });
 
   const { state, dispatch, inputRef, getOptionLabelByValue, listRef, debouncedFilter } = useAutocompleteController({
     ...props,
+    multiple,
+    defaultSelectedValues,
     onChange: propagateOnChange(onAutocompleteChange, name),
   });
-  const srOnlyLabelId = useDomId();
+  const listboxId = useDomId();
 
   useImperativeHandle(ref, () => inputRef.current as HTMLInputElement);
 
@@ -69,6 +78,18 @@ export const Autocomplete = forwardRef<HTMLInputElement, AutocompleteProps>((pro
       dispatch({ type: TOGGLE_CLEAR_BUTTON });
     }
   }, [value]);
+
+  useEffect(() => {
+    if (multiple) {
+      onSelectionChange?.([...state.selectedValues]);
+    }
+  }, [state.selectedValues]);
+
+  useEffect(() => {
+    if (selectedValues && selectedValues.length < state.selectedValues.size) {
+      dispatch({ type: SET_SELECTED_VALUES, payload: selectedValues });
+    }
+  }, [selectedValues]);
 
   const labelText = (props as any)['aria-label'] ?? t('autocomplete.placeholder', { defaultValue: 'Type to Search' });
 
@@ -150,6 +171,20 @@ export const Autocomplete = forwardRef<HTMLInputElement, AutocompleteProps>((pro
     [children, dispatch, name, onAutocompleteChange, onSelectItem],
   );
 
+  const handleOnToggleItem = useCallback(
+    (toggleValue: string) => {
+      dispatch({ type: TOGGLE_SELECTED_ITEM, payload: toggleValue });
+      setTimeout(() => inputRef.current?.focus(), 0);
+    },
+    [dispatch],
+  );
+
+  const handleClearAll = useCallback(() => {
+    dispatch({ type: CLEAR_ALL_SELECTIONS });
+    dispatch({ type: SET_IS_OPEN, payload: false });
+    setTimeout(() => inputRef.current?.focus(), 0);
+  }, [dispatch]);
+
   const handleOnBlur = (event: any) => {
     const { relatedTarget } = event;
 
@@ -165,22 +200,25 @@ export const Autocomplete = forwardRef<HTMLInputElement, AutocompleteProps>((pro
     propagateOnBlur(onAutocompleteBlur, name)(current);
   };
 
+  const effectiveOnChange = multiple ? handleOnToggleItem : handleOnSelectItem;
+
+  const hasSelections = multiple && state.selectedValues.size > 0;
+  const CLEAR_ALL_INDEX = -2;
+
   const handleOnKeyDown = useCallback(
     (event: React.KeyboardEvent<HTMLInputElement>) => {
       switch (event.key) {
         case 'ArrowDown':
         case 'ArrowUp': {
           event.preventDefault();
-          const getStartingPoint = () => {
-            if (state.highlightedIndex === -1) {
-              return direction === -1 ? 0 : -1;
-            }
-            return state.highlightedIndex;
-          };
-
           const direction = event.key === 'ArrowDown' ? 1 : -1;
-          const newIndex = cycleEnabledIndex(state.autocompleteOptions, getStartingPoint(), direction);
-          dispatch({ type: SET_HIGHLIGHTED_INDEX, payload: newIndex });
+          const optionIndices = state.autocompleteOptions.map((_: unknown, index: number) => index);
+          const items = hasSelections ? [CLEAR_ALL_INDEX, ...optionIndices] : optionIndices;
+          const currentPos = items.indexOf(state.highlightedIndex);
+          const startPos = currentPos === -1 ? (direction === 1 ? -1 : 0) : currentPos;
+          const next = items[(startPos + direction + items.length) % items.length];
+
+          dispatch({ type: SET_HIGHLIGHTED_INDEX, payload: next });
           dispatch({ type: SET_IS_OPEN, payload: true });
           break;
         }
@@ -188,10 +226,12 @@ export const Autocomplete = forwardRef<HTMLInputElement, AutocompleteProps>((pro
         case 'NumpadEnter': {
           event.preventDefault();
           dispatch({ type: SET_IS_OPEN, payload: true });
-          if (state.highlightedIndex >= 0) {
+          if (state.highlightedIndex === CLEAR_ALL_INDEX) {
+            handleClearAll();
+          } else if (state.highlightedIndex >= 0) {
             const selected = state.autocompleteOptions[state.highlightedIndex] as AutocompleteOptionItemElement;
             if (selected && selected.props.value && !selected.props.disabled) {
-              handleOnSelectItem(selected.props.value);
+              effectiveOnChange(selected.props.value);
             }
           }
           break;
@@ -209,16 +249,13 @@ export const Autocomplete = forwardRef<HTMLInputElement, AutocompleteProps>((pro
         }
       }
     },
-    [state.highlightedIndex, state.autocompleteOptions, handleOnSelectItem],
+    [state.highlightedIndex, state.autocompleteOptions, state.isOpen, effectiveOnChange, hasSelections, handleClearAll],
   );
 
   return (
     <div aria-disabled={disabled} className={clsx(styles.root(), props.className)}>
-      <span id={srOnlyLabelId} className="gi-sr-only">
-        {labelText}
-      </span>
-
       <InputText
+        role="combobox"
         autoComplete="off"
         id={id}
         name={name}
@@ -230,10 +267,16 @@ export const Autocomplete = forwardRef<HTMLInputElement, AutocompleteProps>((pro
         clearButtonEnabled={state.isClearButtonEnabled}
         inputActionPosition="beforeSuffix"
         aria-label={labelText}
-        aria-labelledby={srOnlyLabelId}
+        aria-expanded={state.isOpen}
+        aria-controls={listboxId}
+        aria-activedescendant={
+          state.highlightedIndex >= 0 ? `${listboxId}-option-${state.highlightedIndex}` : undefined
+        }
+        aria-autocomplete="list"
         aria-disabled={disabled}
         disabled={disabled}
         placeholder={placeholder ?? t('autocomplete.placeholder', { defaultValue: 'Type to Search' })}
+        iconStart={hasSelections ? <Tag type={TagTypeEnum.Counter} text={`${state.selectedValues.size}`} /> : undefined}
         iconEndClassName={styles.iconEnd({ isOpen: state.isOpen })}
         iconEnd={
           freeSolo ? undefined : (
@@ -268,12 +311,17 @@ export const Autocomplete = forwardRef<HTMLInputElement, AutocompleteProps>((pro
         }}
       >
         <SelectMenu
-          onChange={handleOnSelectItem}
+          onChange={effectiveOnChange}
           isLoading={isLoading}
           showNoData={!state.autocompleteOptions?.length}
           ref={listRef}
+          listboxId={listboxId}
+          listboxLabel={labelText}
+          multiselectable={multiple || undefined}
+          onClearAll={hasSelections ? handleClearAll : undefined}
+          clearAllHighlighted={state.highlightedIndex === CLEAR_ALL_INDEX}
         >
-          {renderSelectMenuOptions(state.autocompleteOptions, state, handleOnSelectItem)}
+          {renderSelectMenuOptions(state.autocompleteOptions, state, effectiveOnChange, listboxId, multiple)}
         </SelectMenu>
       </Popover>
     </div>
@@ -283,17 +331,24 @@ export const Autocomplete = forwardRef<HTMLInputElement, AutocompleteProps>((pro
 export const renderSelectMenuOptions = (
   options: any[],
   state: any,
-  handleOnSelectItem: (value: string) => void,
+  handleOnChange: (value: string) => void,
+  listboxId?: string,
+  multiple?: boolean,
 ): React.ReactNode[] => {
+  const isSelected = (optionValue: string) =>
+    multiple ? state.selectedValues.has(optionValue) : state.value === optionValue;
+
   return options.map((child, index) => {
     if (state.optionType === 'AutocompleteItem') {
       return (
         <SelectMenuOption
           {...child.props}
           key={`AutocompleteItem-${child.props.value}`}
-          selected={state.value === child.props.value}
+          id={listboxId ? `${listboxId}-option-${index}` : undefined}
+          selected={isSelected(child.props.value)}
           isHighlighted={index === state.highlightedIndex}
           index={index}
+          multiple={multiple}
         />
       );
     } else if (state.optionType === 'AutocompleteGroupItem') {
@@ -306,10 +361,12 @@ export const renderSelectMenuOptions = (
           return (
             <SelectMenuOption
               key={`SelectGroupItemNext-SelectItemNext-${optionProps.value.toString()}`}
+              id={listboxId ? `${listboxId}-option-${optionProps.value}` : undefined}
               {...optionProps}
-              selected={state.value.toString() === optionProps.value.toString()}
-              onChange={handleOnSelectItem}
+              selected={isSelected(optionProps.value.toString())}
+              onChange={handleOnChange}
               index={index}
+              multiple={multiple}
             />
           );
         });

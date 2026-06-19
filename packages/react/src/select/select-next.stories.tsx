@@ -254,7 +254,7 @@ export const WithSearchEnabled: StoryObj = {
   ),
   play: async ({ canvasElement }) => {
     const canvas = within(canvasElement);
-    const input = canvas.getByRole('textbox');
+    const input = canvas.getByRole('combobox');
     await userEvent.click(input);
 
     const searchBox = canvas.getByPlaceholderText('Type to Search');
@@ -290,7 +290,7 @@ export const WithGroups = {
   ),
   play: async ({ canvasElement }: { canvasElement: HTMLCanvasElement }) => {
     const canvas = within(canvasElement);
-    const input = canvas.getByRole('textbox');
+    const input = canvas.getByRole('combobox');
     await userEvent.click(input);
 
     await waitFor(() => {
@@ -581,7 +581,7 @@ export const TestNoSubmitOnEnter: StoryObj<typeof SelectNext> = {
 
     const submitCountOn = await on.findByTestId('submit-count-on');
     const submitCountOff = await off.findByTestId('submit-count-off');
-    const inputOn = await on.findByRole('textbox', { name: /select/i });
+    const inputOn = await on.findByRole('combobox', { name: /select/i });
     const inputOff = await off.findByRole('textbox', { name: /select/i });
 
     await step('[Search ON] keyboard: Enter on focused select opens popover without submitting', async () => {
@@ -806,7 +806,7 @@ export const TestConditionallyRender: StoryObj = {
   },
   play: async ({ canvasElement, step }) => {
     const canvas = within(canvasElement);
-    const selectInput = await canvas.findByRole('textbox', { name: /select/i });
+    const selectInput = await canvas.findByRole('combobox', { name: /select/i });
     const externalInput = await canvas.findByPlaceholderText('Type something...');
 
     await step('Enter opens dropdown', async () => {

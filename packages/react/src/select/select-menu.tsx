@@ -7,18 +7,35 @@ import { InputText } from '@/input-text/input-text.js';
 import { Label } from '@/label/label.js';
 import { Spinner } from '@/spinner/spinner.js';
 import Check from '@/atoms/icons/Check.js';
+import Divider from '@/Divider.js';
+import { InputCheckbox } from '@/input-checkbox/input-checkbox.js';
 import type {
   SelectMenuGroupReactElement,
   SelectMenuOptionProps,
   SelectMenuOptionReactElement,
   SelectMenuProps,
 } from './types.js';
+import Text from '@/atoms/Text.js';
 
 export const SelectMenu = forwardRef<HTMLDivElement, SelectMenuProps>(
-  ({ children, className, onChange, enableSearch, isLoading, showNoData }, ref) => {
+  (
+    {
+      children,
+      className,
+      onChange,
+      enableSearch,
+      isLoading,
+      showNoData,
+      listboxId,
+      listboxLabel,
+      multiselectable,
+      onClearAll,
+      clearAllHighlighted,
+    },
+    ref,
+  ) => {
     const [searchTerm, setSearchTerm] = useState<string>('');
     const [filteredOptions, setFilteredOptions] = useState<any>([]);
-
     useEffect(() => {
       const validChildren = Children.toArray(children).filter((child) => isValidElement(child)) as React.ReactElement[];
 
@@ -101,7 +118,28 @@ export const SelectMenu = forwardRef<HTMLDivElement, SelectMenuProps>(
           })}
         </div>
       ) : (
-        <ul aria-label="options" role="listbox">
+        <ul
+          id={listboxId}
+          aria-label={listboxLabel || 'options'}
+          role="listbox"
+          aria-multiselectable={multiselectable || undefined}
+        >
+          {onClearAll && (
+            <>
+              <li
+                role="option"
+                aria-selected={false}
+                className={cn('gi-select-option-item', {
+                  'gi-select-option-item-highlighted': clearAllHighlighted,
+                })}
+                tabIndex={-1}
+                onClick={onClearAll}
+              >
+                <Text size="sm">{t('autocomplete.clearAll', { defaultValue: 'Clear all selections' })}</Text>
+              </li>
+              <Divider />
+            </>
+          )}
           {filteredOptions}
         </ul>
       );
@@ -122,7 +160,13 @@ export const SelectMenu = forwardRef<HTMLDivElement, SelectMenuProps>(
             />
           </div>
         )}
-        <div className="gi-select-menu-option-container">{renderData()}</div>
+        <div
+          className={cn('gi-select-menu-option-container', {
+            '!gi-pt-1': onClearAll,
+          })}
+        >
+          {renderData()}
+        </div>
       </div>
     );
   },
@@ -131,6 +175,7 @@ export const SelectMenu = forwardRef<HTMLDivElement, SelectMenuProps>(
 export const SelectMenuOption = ({
   children,
   value,
+  id,
   selected,
   onChange,
   disabled,
@@ -140,6 +185,7 @@ export const SelectMenuOption = ({
   enableSearch,
   isHighlighted,
   index,
+  multiple,
   ...props
 }: SelectMenuOptionProps) => {
   const handleOnKeyDown = (event: KeyboardEvent<HTMLLIElement>) => {
@@ -161,6 +207,7 @@ export const SelectMenuOption = ({
   return (
     <li
       role="option"
+      id={id}
       tabIndex={disabled ? -1 : 0}
       data-index={index}
       key={`${children}-${value}`}
@@ -182,8 +229,22 @@ export const SelectMenuOption = ({
       data-testid={dataTestid || `option-${value}`}
       {...props}
     >
-      <span className="gi-text-sm">{children}</span>
-      {selected && <Check className="gi-shrink-0" />}
+      {multiple ? (
+        <InputCheckbox size="sm" checked={!!selected}>
+          <span
+            className={cn('gi-cursor-pointer', {
+              'gi-font-bold': selected,
+            })}
+          >
+            {children}
+          </span>
+        </InputCheckbox>
+      ) : (
+        <>
+          <span className="gi-text-sm">{children}</span>
+          {selected && <Check className="gi-shrink-0" />}
+        </>
+      )}
     </li>
   );
 };

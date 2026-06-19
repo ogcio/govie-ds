@@ -11,6 +11,9 @@ export const AUTOCOMPLETE_ACTIONS = {
   ON_SELECT_ITEM: 'ON_SELECT_ITEM',
   SET_HIGHLIGHTED_INDEX: 'SET_HIGHLIGHTED_INDEX',
   SET_OPTION_TYPE: 'SET_OPTION_TYPE',
+  TOGGLE_SELECTED_ITEM: 'TOGGLE_SELECTED_ITEM',
+  CLEAR_ALL_SELECTIONS: 'CLEAR_ALL_SELECTIONS',
+  SET_SELECTED_VALUES: 'SET_SELECTED_VALUES',
 } as const;
 
 export type AutocompleteState = {
@@ -21,6 +24,7 @@ export type AutocompleteState = {
   autocompleteOptions: any[];
   highlightedIndex: number;
   optionType: string;
+  selectedValues: Set<string>;
 };
 
 export type AutocompleteAction =
@@ -44,7 +48,10 @@ export type AutocompleteAction =
   | {
       type: typeof AUTOCOMPLETE_ACTIONS.SET_HIGHLIGHTED_INDEX;
       payload: number;
-    };
+    }
+  | { type: typeof AUTOCOMPLETE_ACTIONS.TOGGLE_SELECTED_ITEM; payload: string }
+  | { type: typeof AUTOCOMPLETE_ACTIONS.CLEAR_ALL_SELECTIONS }
+  | { type: typeof AUTOCOMPLETE_ACTIONS.SET_SELECTED_VALUES; payload: string[] };
 
 export type AutocompleteOptionItemElement = ReactElement<
   SelectMenuOptionProps & {
@@ -73,6 +80,14 @@ export type AutocompleteProps = PropsWithChildren<{
   onClose?: () => void;
   /** Controls whether the dropdown is open (controlled mode). */
   isOpen?: boolean;
+  /** Enables multi-select mode, allowing multiple options to be selected. */
+  multiple?: boolean;
+  /** Callback providing the full array of selected values after each change in multi-select mode. */
+  onSelectionChange?: (values: string[]) => void;
+  /** Initial selected values for multi-select mode. */
+  defaultSelectedValues?: string[];
+  /** Controlled selected values for multi-select mode. */
+  selectedValues?: string[];
 
   value?: any;
 }> &

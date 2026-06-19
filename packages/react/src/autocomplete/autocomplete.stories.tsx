@@ -3,10 +3,12 @@ import { debounce } from 'lodash';
 import { useEffect, useMemo, useReducer, useState } from 'react';
 import { useForm } from 'react-hook-form';
 import { expect, within, userEvent, waitFor } from 'storybook/test';
-import { FormField, FormFieldLabel } from '@/forms/form-field/form-field.js';
-import { Label } from '@/label/label.js';
-import { Autocomplete, AutocompleteItem } from './autocomplete.js';
-import type { AutocompleteProps } from './types.js';
+import { FormField, FormFieldLabel } from '@/forms/form-field/form-field';
+import { Label } from '@/label/label';
+import { Chip } from '@/chip/chip';
+import { Autocomplete, AutocompleteItem } from './autocomplete';
+import type { AutocompleteProps } from './types';
+import { Box } from '@/Box';
 
 const meta = {
   title: 'Form/Autocomplete',
@@ -79,7 +81,7 @@ export const Default: Story = {
   },
   play: async ({ canvasElement }) => {
     const canvas = within(canvasElement);
-    const input = canvas.getByRole('textbox');
+    const input = canvas.getByRole('combobox');
     expect(input).toHaveAttribute('id', 'autocomplete-default-id');
     await userEvent.type(input, 'Backend', { delay: 100 });
     const option = await canvas.findByText('Backend Dev.');
@@ -132,7 +134,7 @@ export const WithDisabledOptions: Story = {
   ),
   play: async ({ canvasElement }) => {
     const canvas = within(canvasElement);
-    const input = canvas.getByRole('textbox');
+    const input = canvas.getByRole('combobox');
     await userEvent.type(input, 'Test', { delay: 100 });
     const disabledOption = await canvas.findByText('Tester');
     expect(disabledOption).toBeVisible();
@@ -160,7 +162,7 @@ export const WithDisabled: Story = {
   ),
   play: async ({ canvasElement }) => {
     const canvas = within(canvasElement);
-    const input = canvas.getByRole('textbox');
+    const input = canvas.getByRole('combobox');
     expect(input).toBeDisabled();
   },
 };
@@ -185,7 +187,7 @@ export const WithFreeSolo: Story = {
   ),
   play: async ({ canvasElement }) => {
     const canvas = within(canvasElement);
-    const input = canvas.getByRole('textbox');
+    const input = canvas.getByRole('combobox');
     expect(input).not.toBeDisabled();
     await userEvent.click(input);
   },
@@ -340,7 +342,7 @@ export const WithReactHookForm: StoryObj = {
   },
   play: async ({ canvasElement }) => {
     const canvas = within(canvasElement);
-    const input = canvas.getByRole('textbox');
+    const input = canvas.getByRole('combobox');
 
     await userEvent.type(input, 'Backend', { delay: 100 });
 
@@ -376,12 +378,153 @@ export const Test: Story = {
   },
   play: async ({ canvasElement }) => {
     const canvas = within(canvasElement);
-    const input = canvas.getByRole('textbox');
+    const input = canvas.getByRole('combobox');
     expect(input).toHaveAttribute('id', 'autocomplete-default-id');
     await userEvent.type(input, 'Backend', { delay: 100 });
     const option = await canvas.findByText('Backend Dev.');
     expect(option).toBeVisible();
-    await userEvent.click(document.body);
+    await userEvent.keyboard('{Escape}');
+  },
+};
+
+export const WithMultipleCount: Story = {
+  parameters: { a11y: { test: 'todo' } },
+  render: (props: AutocompleteProps) => {
+    return (
+      <FormField className="gi-w-56">
+        <FormFieldLabel>Multi Select (Count)</FormFieldLabel>
+        <Autocomplete {...props} multiple>
+          {options.map(({ value, label }) => (
+            <AutocompleteItem value={value} key={`${label}-${value}`}>
+              {label}
+            </AutocompleteItem>
+          ))}
+        </Autocomplete>
+      </FormField>
+    );
+  },
+  args: {
+    children: [],
+  },
+  play: async ({ canvasElement, step }) => {
+    const canvas = within(canvasElement);
+    const input = canvas.getByRole('combobox');
+
+    await step('Listbox has aria-multiselectable', async () => {
+      await userEvent.click(input);
+      const listbox = await canvas.findByRole('listbox');
+      expect(listbox).toHaveAttribute('aria-multiselectable', 'true');
+    });
+
+    await step('All options have aria-selected', async () => {
+      const options = canvas.getAllByRole('option');
+      for (const option of options) {
+        expect(option).toHaveAttribute('aria-selected');
+      }
+    });
+
+    await step('Clicking an option toggles aria-selected without closing', async () => {
+      const frontendOption = canvas
+        .getAllByRole('option')
+        .find((option) => option.textContent?.includes('Frontend Dev.'));
+      expect(frontendOption).toHaveAttribute('aria-selected', 'false');
+      await userEvent.click(frontendOption!);
+      await waitFor(() => {
+        const updated = canvas.getAllByRole('option').find((option) => option.textContent?.includes('Frontend Dev.'));
+        expect(updated).toHaveAttribute('aria-selected', 'true');
+      });
+      expect(canvas.getByRole('listbox')).toBeInTheDocument();
+    });
+
+    await step('Selecting multiple options updates count', async () => {
+      const backendOption = canvas
+        .getAllByRole('option')
+        .find((option) => option.textContent?.includes('Backend Dev.'));
+      await userEvent.click(backendOption!);
+      await waitFor(() => {
+        expect(canvas.getByText('2')).toBeInTheDocument();
+      });
+    });
+  },
+};
+
+export const WithMultipleChips: Story = {
+  render: function Render(props: AutocompleteProps) {
+    const [selectedValues, setSelectedValues] = useState<string[]>([]);
+
+    const getLabel = (value: string) => options.find((option) => option.value === value)?.label ?? value;
+
+    const handleRemoveChip = (valueToRemove: string) => {
+      setSelectedValues(selectedValues.filter((value) => value !== valueToRemove));
+    };
+
+    return (
+      <FormField className="gi-w-56">
+        <FormFieldLabel>Multi Select (Chips)</FormFieldLabel>
+        <Autocomplete {...props} multiple selectedValues={selectedValues} onSelectionChange={setSelectedValues}>
+          {options.map(({ value, label }) => (
+            <AutocompleteItem value={value} key={`${label}-${value}`}>
+              {label}
+            </AutocompleteItem>
+          ))}
+        </Autocomplete>
+        {selectedValues.length > 0 && (
+          <Box className="gi-flex gi-flex-wrap gi-gap-1 gi-mt-2">
+            {selectedValues.map((value) => (
+              <Chip key={value} label={getLabel(value)} onClose={() => handleRemoveChip(value)} />
+            ))}
+          </Box>
+        )}
+      </FormField>
+    );
+  },
+  args: {
+    children: [],
+  },
+  play: async ({ canvasElement, step }) => {
+    const canvas = within(canvasElement);
+    const input = canvas.getByRole('combobox');
+
+    await step('Selecting options renders chips', async () => {
+      await userEvent.click(input);
+      await waitFor(() => {
+        expect(canvas.getByRole('listbox')).toBeInTheDocument();
+      });
+      const firstOption = canvas.getByRole('option', { name: options[0].label });
+      await userEvent.click(firstOption);
+      await waitFor(() => {
+        expect(firstOption).toHaveAttribute('aria-selected', 'true');
+      });
+      const secondOption = canvas.getByRole('option', { name: options[1].label });
+      await userEvent.click(secondOption);
+      await waitFor(() => {
+        expect(secondOption).toHaveAttribute('aria-selected', 'true');
+      });
+      await userEvent.keyboard('{Escape}');
+      await waitFor(() => {
+        expect(canvas.getAllByRole('button', { name: /remove chip/i }).length).toBe(2);
+      });
+    });
+
+    await step('Chips have accessible labels', async () => {
+      const chips = canvasElement.querySelectorAll('[aria-label*="chip"]');
+      expect(chips.length).toBeGreaterThanOrEqual(2);
+    });
+
+    await step('Removing a chip deselects the option', async () => {
+      const removeButtons = canvas.getAllByRole('button', { name: /remove chip/i });
+      await userEvent.click(removeButtons[0]);
+      await waitFor(() => {
+        expect(canvas.getAllByRole('button', { name: /remove chip/i }).length).toBe(1);
+      });
+      await userEvent.click(input);
+      await waitFor(() => {
+        const option = canvas.getByRole('option', { name: options[0].label });
+        expect(option).toHaveAttribute('aria-selected', 'false');
+      });
+    });
+
+    await userEvent.keyboard('{Escape}');
   },
 };
 
@@ -405,7 +548,7 @@ export const TestKeyboardEvents: StoryObj = {
 
   play: async ({ canvasElement, step }) => {
     const canvas = within(canvasElement);
-    const input = await canvas.findByRole('textbox', { name: /select/i });
+    const input = await canvas.findByRole('combobox', { name: /select/i });
 
     const expectOpen = async () => waitFor(() => expect(canvas.getByRole('listbox')).toBeInTheDocument());
     const expectClosed = async () => waitFor(() => expect(canvas.queryByRole('listbox')).toBeNull());
