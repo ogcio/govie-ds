@@ -43,10 +43,7 @@ export function IconGridLayout() {
                   <Icon size={48} />
                 </Box>
                 <Box className="absolute bottom-1 right-1">
-                  <DownloadIconButton
-                    name={iconName}
-                    href={`/icons/${iconName}.svg`}
-                  />
+                  <DownloadIconButton name={iconName} IconComponent={Icon} />
                 </Box>
               </Box>
               <Paragraph size="sm" className="text-center">
