@@ -70,9 +70,7 @@ const reducer = (state: AutocompleteState, action: AutocompleteAction): Autocomp
     }
     case TOGGLE_SELECTED_ITEM: {
       const next = new Set(state.selectedValues);
-      if (next.has(action.payload)) {
-        next.delete(action.payload);
-      } else {
+      if (!next.delete(action.payload)) {
         next.add(action.payload);
       }
       return { ...state, selectedValues: next };

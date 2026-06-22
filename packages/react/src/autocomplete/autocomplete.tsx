@@ -51,7 +51,7 @@ export const Autocomplete = forwardRef<HTMLInputElement, AutocompleteProps>((pro
     value,
     id,
     multiple,
-    onSelectionChange,
+    onSelectChange,
     defaultSelectedValues,
     selectedValues,
   } = props;
@@ -78,12 +78,6 @@ export const Autocomplete = forwardRef<HTMLInputElement, AutocompleteProps>((pro
       dispatch({ type: TOGGLE_CLEAR_BUTTON });
     }
   }, [value]);
-
-  useEffect(() => {
-    if (multiple) {
-      onSelectionChange?.([...state.selectedValues]);
-    }
-  }, [state.selectedValues]);
 
   useEffect(() => {
     if (selectedValues && selectedValues.length < state.selectedValues.size) {
@@ -133,7 +127,7 @@ export const Autocomplete = forwardRef<HTMLInputElement, AutocompleteProps>((pro
 
     handleUpdateInput(value);
     dispatch({ type: TOGGLE_CLEAR_BUTTON });
-    setTimeout(() => inputRef.current?.focus());
+    requestAnimationFrame(() => inputRef.current?.focus());
   };
 
   const handleOnIconEndClick = () => {
@@ -174,16 +168,21 @@ export const Autocomplete = forwardRef<HTMLInputElement, AutocompleteProps>((pro
   const handleOnToggleItem = useCallback(
     (toggleValue: string) => {
       dispatch({ type: TOGGLE_SELECTED_ITEM, payload: toggleValue });
-      setTimeout(() => inputRef.current?.focus(), 0);
+      const next = new Set(state.selectedValues);
+      if (!next.delete(toggleValue)) {
+        next.add(toggleValue);
+      }
+      onSelectChange?.([...next]);
+      requestAnimationFrame(() => inputRef.current?.focus());
     },
-    [dispatch],
+    [dispatch, state.selectedValues, onSelectChange],
   );
 
   const handleClearAll = useCallback(() => {
     dispatch({ type: CLEAR_ALL_SELECTIONS });
-    dispatch({ type: SET_IS_OPEN, payload: false });
-    setTimeout(() => inputRef.current?.focus(), 0);
-  }, [dispatch]);
+    onSelectChange?.([]);
+    requestAnimationFrame(() => inputRef.current?.focus());
+  }, [dispatch, onSelectChange]);
 
   const handleOnBlur = (event: any) => {
     const { relatedTarget } = event;
@@ -212,7 +211,7 @@ export const Autocomplete = forwardRef<HTMLInputElement, AutocompleteProps>((pro
         case 'ArrowUp': {
           event.preventDefault();
           const direction = event.key === 'ArrowDown' ? 1 : -1;
-          const optionIndices = state.autocompleteOptions.map((_: unknown, index: number) => index);
+          const optionIndices = state.autocompleteOptions.map((_, index) => index);
           const items = hasSelections ? [CLEAR_ALL_INDEX, ...optionIndices] : optionIndices;
           const currentPos = items.indexOf(state.highlightedIndex);
           const startPos = currentPos === -1 ? (direction === 1 ? -1 : 0) : currentPos;

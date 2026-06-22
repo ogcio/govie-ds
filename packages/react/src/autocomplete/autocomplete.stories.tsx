@@ -28,7 +28,7 @@ const meta = {
       </div>
     );
   },
-} satisfies Meta<typeof Autocomplete>;
+} satisfies Meta;
 
 export default meta;
 type Story = StoryObj<typeof meta>;
@@ -461,7 +461,7 @@ export const WithMultipleChips: Story = {
     return (
       <FormField className="gi-w-56">
         <FormFieldLabel>Multi Select (Chips)</FormFieldLabel>
-        <Autocomplete {...props} multiple selectedValues={selectedValues} onSelectionChange={setSelectedValues}>
+        <Autocomplete {...props} multiple selectedValues={selectedValues} onSelectChange={setSelectedValues}>
           {options.map(({ value, label }) => (
             <AutocompleteItem value={value} key={`${label}-${value}`}>
               {label}

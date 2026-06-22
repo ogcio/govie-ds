@@ -57,7 +57,7 @@ component:
           ofType: 'boolean'
           description: 'When true, allows selecting multiple options. Selected items are shown as a count badge in the input field.'
           required: false
-        - name: 'onSelectionChange'
+        - name: 'onSelectChange'
           ofType: 'function'
           description: 'Callback triggered when selections change in multiple mode. Receives an array of selected values.'
           required: false
@@ -176,7 +176,7 @@ When `multiple` is enabled, users can select more than one option. A count badge
 
 ### Multi-select with Chips
 
-This example demonstrates using `onSelectionChange` and `selectedValues` to display selected items as removable chips below the autocomplete. Removing a chip deselects the corresponding option.
+This example demonstrates using `onSelectChange` and `selectedValues` to display selected items as removable chips below the autocomplete. Removing a chip deselects the corresponding option.
 
 <StorybookFrame
   heightClassName="h-[405px]"

@@ -59,7 +59,7 @@ export type AutocompleteOptionItemElement = ReactElement<
   }
 >;
 
-export type AutocompleteProps = PropsWithChildren<{
+type AutocompleteBaseProps = PropsWithChildren<{
   /** Unique identifier for the autocomplete component. */
   id?: string;
   /** Initial selected value when the component is first rendered. */
@@ -80,18 +80,30 @@ export type AutocompleteProps = PropsWithChildren<{
   onClose?: () => void;
   /** Controls whether the dropdown is open (controlled mode). */
   isOpen?: boolean;
-  /** Enables multi-select mode, allowing multiple options to be selected. */
-  multiple?: boolean;
-  /** Callback providing the full array of selected values after each change in multi-select mode. */
-  onSelectionChange?: (values: string[]) => void;
-  /** Initial selected values for multi-select mode. */
-  defaultSelectedValues?: string[];
-  /** Controlled selected values for multi-select mode. */
-  selectedValues?: string[];
 
   value?: any;
 }> &
   Omit<React.InputHTMLAttributes<HTMLInputElement>, 'onChange' | 'defaultChecked'>;
+
+type AutocompleteSingleProps = AutocompleteBaseProps & {
+  multiple?: false;
+  onSelectChange?: never;
+  defaultSelectedValues?: never;
+  selectedValues?: never;
+};
+
+type AutocompleteMultipleProps = AutocompleteBaseProps & {
+  /** Enables multi-select mode, allowing multiple options to be selected. */
+  multiple: true;
+  /** Callback providing the full array of selected values after each change in multi-select mode. */
+  onSelectChange?: (values: string[]) => void;
+  /** Initial selected values for multi-select mode. */
+  defaultSelectedValues?: string[];
+  /** Controlled selected values for multi-select mode. */
+  selectedValues?: string[];
+};
+
+export type AutocompleteProps = AutocompleteSingleProps | AutocompleteMultipleProps;
 
 export type AutocompleteItemProps = {
   children: string;
