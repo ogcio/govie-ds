@@ -1,7 +1,7 @@
 import { debounce } from 'lodash';
 import { Children, isValidElement, useEffect, useMemo, useReducer, useRef } from 'react';
-import { useScrollHighlightedItem } from '@/hooks/use-scroll-highlighted-item.js';
-import { safeCloneElement, getTextContent } from '@/utils/utilities.js';
+import { useScrollHighlightedItem } from '@/hooks/use-scroll-highlighted-item';
+import { safeCloneElement, getTextContent } from '@/utils/utilities';
 import type {
   AutocompleteAction,
   AutocompleteState,

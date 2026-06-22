@@ -130,10 +130,6 @@ export function isSpecialComponent(child: ReactNode, componentList: Array<string
  * ```
  */
 export function getTextContent(node: ReactNode): string {
-  if (node == null || typeof node === 'boolean') {
-    return '';
-  }
-
   if (typeof node === 'string' || typeof node === 'number') {
     return String(node);
   }
