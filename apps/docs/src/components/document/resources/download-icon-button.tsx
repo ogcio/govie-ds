@@ -62,8 +62,7 @@ export function DownloadIconButton({
     return () => clearTimeout(timeout);
   }, [downloaded]);
 
-  const handleClick = (e: MouseEvent<HTMLAnchorElement>) => {
-    e.preventDefault();
+  const handleClick = () => {
     const link = document.createElement('a');
     link.download = `${name}.svg`;
     if (text) {
