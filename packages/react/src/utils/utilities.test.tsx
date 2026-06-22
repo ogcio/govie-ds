@@ -1,7 +1,7 @@
 import { Fragment } from 'react';
-import { Breakpoint } from '@/hooks/use-breakpoint.js';
-import { generateSvgPlaceholderDataUrl } from './placeholder.js';
-import { getDisplayPages, getTextContent } from './utilities.js';
+import { Breakpoint } from '@/hooks/use-breakpoint';
+import { generateSvgPlaceholderDataUrl } from './placeholder';
+import { getDisplayPages, getTextContent } from './utilities';
 import { Box } from '@/Box';
 import Container from '@/atoms/Container';
 
