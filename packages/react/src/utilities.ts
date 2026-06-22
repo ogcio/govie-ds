@@ -1,4 +1,4 @@
-import type { JSX, ReactElement, ReactNode } from 'react';
+import type { ReactElement, ReactNode } from 'react';
 import { isValidElement } from 'react';
 
 /**

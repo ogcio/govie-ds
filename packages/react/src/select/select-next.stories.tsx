@@ -4,13 +4,12 @@ import { Controller, useForm } from 'react-hook-form';
 
 import { expect, userEvent, waitFor, within } from 'storybook/test';
 import Button from '@/atoms/Button';
-import { FormField, FormFieldError, FormFieldHint, FormFieldLabel } from '@/forms/form-field/form-field.js';
-import { Label } from '@/label/label.js';
-import { SelectGroupItemNext, SelectItemNext, SelectNext } from './select-next.js';
-import { Container } from '@/container/container.js';
-import { Paragraph } from '@/paragraph/paragraph.js';
-import { MenuIcon } from '@/atoms/index.js';
-import { Alert } from '@/alert/alert.js';
+import { FormField, FormFieldError, FormFieldHint, FormFieldLabel } from '@/forms/form-field/form-field';
+import { Label } from '@/label/label';
+import { SelectGroupItemNext, SelectItemNext, SelectNext } from './select-next';
+import { Container } from '@/container/container';
+import { Paragraph } from '@/paragraph/paragraph';
+import Text from '@/atoms/Text';
 
 const topics = Array.from({ length: 8 }, (_, index) => ({
   value: `topic_${index + 1}`,
@@ -948,7 +947,7 @@ export const WithRichText: StoryObj = {
       },
     },
   },
-  render: () => (
+  render: (_props) => (
     <Container className="gi-flex gi-gap-2">
       <FormField className="gi-w-56">
         <FormFieldLabel>Default</FormFieldLabel>
@@ -961,14 +960,19 @@ export const WithRichText: StoryObj = {
           </SelectItemNext>
           <SelectItemNext value="value-2">
             <Paragraph>
-              <MenuIcon className="gi-inline" /> with icon
+              <Text className="gi-italic">Inline</Text> <strong>rich</strong>{' '}
+              <Text className="gi-text-gray-600">text</Text>
             </Paragraph>
           </SelectItemNext>
           <SelectItemNext value="value-3">
             <Paragraph>
-              <Alert variant="danger" data-testid="alert-default-item">
-                Alert
-              </Alert>
+              {(() => {
+                return (
+                  <Text dataTestId="fn-call" className="gi-font-bold">
+                    Function call
+                  </Text>
+                );
+              })()}
             </Paragraph>
           </SelectItemNext>
         </SelectNext>
@@ -984,14 +988,21 @@ export const WithRichText: StoryObj = {
           </SelectItemNext>
           <SelectItemNext value="value-2">
             <Paragraph>
-              <MenuIcon className="gi-inline" /> with icon
+              <Text className="gi-italic">Inline</Text> <strong>rich</strong>{' '}
+              <Text className="gi-text-gray-600">text</Text>
             </Paragraph>
           </SelectItemNext>
           <SelectItemNext value="value-3">
             <Paragraph>
-              <Alert variant="danger" data-testid="alert-search-item">
-                Alert
-              </Alert>
+              <Paragraph>
+                {(() => {
+                  return (
+                    <Text dataTestId="fn-call" className="gi-font-bold">
+                      Function call
+                    </Text>
+                  );
+                })()}
+              </Paragraph>
             </Paragraph>
           </SelectItemNext>
         </SelectNext>
@@ -1001,36 +1012,35 @@ export const WithRichText: StoryObj = {
   play: async ({ canvasElement }) => {
     const canvas = within(canvasElement);
     const [defaultSelect, searchSelect] = canvas.getAllByRole('textbox');
-    expect(defaultSelect.getAttribute('value')).toBe(' with icon');
+    expect(defaultSelect.getAttribute('value')).toBe('Inline rich text');
+
     await userEvent.click(defaultSelect);
     await waitFor(() => {
       expect(canvas.getByRole('listbox')).toBeInTheDocument();
     });
-    const alertSelectItem = await canvas.findByTestId('option-value-3');
-    expect(alertSelectItem).toBeInTheDocument();
-    const alertComponent = await within(alertSelectItem).findByTestId('alert-default-item');
-    expect(alertComponent).toBeInTheDocument();
-    await userEvent.click(alertComponent);
-    expect(alertSelectItem).not.toBeInTheDocument();
-    expect(defaultSelect.getAttribute('value')).toBe('Alert');
+
+    const functionCallItem = await canvas.findByTestId('option-value-3');
+    expect(functionCallItem).toBeInTheDocument();
+    const functionComponent = await within(functionCallItem).findByTestId('fn-call');
+    expect(functionComponent).toBeInTheDocument();
+
+    await userEvent.click(functionComponent);
+    expect(functionCallItem).not.toBeInTheDocument();
+    expect(defaultSelect.getAttribute('value')).toBe('Function call');
+
     await userEvent.click(searchSelect);
-    const iconOption = await canvas.findByTestId('option-value-2');
-    const alertOption = await canvas.findByTestId('option-value-3');
+    const strongTextOption = await canvas.findByTestId('option-value-2');
+    const functionOption = await canvas.findByTestId('option-value-3');
     await userEvent.clear(searchSelect);
-    await userEvent.type(searchSelect, 'with', { delay: 200 });
+    await userEvent.type(searchSelect, 'Inline', { delay: 200 });
     await waitFor(() => {
-      expect(alertOption).not.toBeInTheDocument();
+      expect(functionOption).not.toBeInTheDocument();
     });
-    await userEvent.click(iconOption);
+    await userEvent.click(strongTextOption);
     await waitFor(() => {
-      // get a new snapshot of the search select
+      // check the new input value of the search select
       const searchSelect = canvas.getAllByRole('textbox')[1];
-      expect(searchSelect.getAttribute('value')).toBe(' with icon');
-    });
-    // for screenshot
-    await userEvent.click(defaultSelect);
-    await waitFor(() => {
-      expect(canvas.getByRole('listbox')).toBeInTheDocument();
+      expect(searchSelect.getAttribute('value')).toBe('Inline rich text');
     });
   },
 };

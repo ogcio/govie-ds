@@ -123,27 +123,28 @@ export function isSpecialComponent(child: ReactNode, componentList: Array<string
  * ```
  * getTextContent(
  *  <div>
- *    <p>hello</p>
+ *    <p>hello </p>
  *    there
  * </div>)
  * returns "hello there"
  * ```
  */
-export const getTextContent = (node: ReactNode, _textContent: string[] = []): string => {
-  if (isValidElement(node)) {
-    const { children } = (node as ReactElement<PropsWithChildren>).props;
-    if (Array.isArray(children)) {
-      for (const child of children) {
-        getTextContent(child, _textContent);
-      }
-    } else if (children != null && children !== false) {
-      getTextContent(children, _textContent);
-    }
-  } else if (typeof node === 'string' || typeof node === 'number') {
-    _textContent.push(String(node));
-  } else if (node != null && typeof node !== 'boolean') {
-    // if the node is not accepted silently pass empty string
-    _textContent.push('');
+export function getTextContent(node: ReactNode): string {
+  if (node == null || typeof node === 'boolean') {
+    return '';
   }
-  return _textContent.join(' ');
-};
+
+  if (typeof node === 'string' || typeof node === 'number') {
+    return String(node);
+  }
+
+  if (Array.isArray(node)) {
+    return node.map((child) => getTextContent(child)).join('');
+  }
+
+  if (isValidElement(node)) {
+    return getTextContent((node.props as { children?: ReactNode }).children);
+  }
+
+  return '';
+}

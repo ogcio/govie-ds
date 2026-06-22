@@ -99,7 +99,7 @@ describe('getTextContent', () => {
   it('Can read from sibling children', () => {
     const textContent = getTextContent(
       <div>
-        <p>text 1</p>
+        <p>text 1 </p>
         <p>text 2</p>
       </div>,
     );
@@ -108,9 +108,8 @@ describe('getTextContent', () => {
   it('can read from elements and text as siblings', () => {
     const textContent = getTextContent(
       <div>
-        <div>text 1</div>
-        text 2
-        <br />
+        <div>text 1 </div>
+        text 2 <br />
         text 3
       </div>,
     );
@@ -120,10 +119,10 @@ describe('getTextContent', () => {
     const textContent = getTextContent(
       <Container>
         <Box>
-          <Box>text 1</Box>
-          <Box>text 2</Box>
+          <Box>text 1 </Box>
+          <Box>text 2 </Box>
           <Box>
-            <Box>text 3</Box>
+            <Box>text 3 </Box>
             <Box>
               <Box>text 4</Box>
             </Box>
@@ -185,7 +184,7 @@ describe('getTextContent', () => {
     });
 
     it('joins mixed text and number siblings', () => {
-      expect(getTextContent(<div>before{42}after</div>)).toBe('before 42 after');
+      expect(getTextContent(<div>before {42} after</div>)).toBe('before 42 after');
     });
 
     it('ignores boolean true (React renders nothing)', () => {
@@ -198,8 +197,7 @@ describe('getTextContent', () => {
       expect(
         getTextContent(
           <Fragment>
-            <span>one</span>
-            <span>two</span>
+            <span>one</span> <span>two</span>
           </Fragment>,
         ),
       ).toBe('one two');
