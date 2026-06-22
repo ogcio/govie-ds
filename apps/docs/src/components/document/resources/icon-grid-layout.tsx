@@ -1,4 +1,7 @@
 'use client';
+import type { ReactElement } from 'react';
+import { useState } from 'react';
+import _ from 'lodash';
 import {
   Container,
   Paragraph,
@@ -11,9 +14,6 @@ import {
 import * as AllIcons from '@ogcio/design-system-react/icons';
 import { DownloadIconButton } from './download-icon-button';
 import { titleCase } from '@/lib/utilities';
-import { useState } from 'react';
-import _ from 'lodash';
-import type { ReactElement } from 'react';
 
 export function IconGridLayout() {
   const [iconFilter, setIconFilter] = useState('');
