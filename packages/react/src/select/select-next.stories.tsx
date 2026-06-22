@@ -947,53 +947,25 @@ export const WithRichText: StoryObj = {
       },
     },
   },
-  render: (_props) => (
-    <Container className="gi-flex gi-gap-2">
-      <FormField className="gi-w-56">
-        <FormFieldLabel>Default</FormFieldLabel>
-        <SelectNext aria-label="Select" defaultValue="value-2" data-testid="default">
-          <SelectItemNext value="select-option" hidden>
-            Select Option
-          </SelectItemNext>
-          <SelectItemNext value="value-1">
-            <code>code block</code>
-          </SelectItemNext>
-          <SelectItemNext value="value-2">
-            <Paragraph>
-              <Text className="gi-italic">Inline</Text> <strong>rich</strong>{' '}
-              <Text className="gi-text-gray-600">text</Text>
-            </Paragraph>
-          </SelectItemNext>
-          <SelectItemNext value="value-3">
-            <Paragraph>
-              {(() => {
-                return (
-                  <Text dataTestId="fn-call" className="gi-font-bold">
-                    Function call
-                  </Text>
-                );
-              })()}
-            </Paragraph>
-          </SelectItemNext>
-        </SelectNext>
-      </FormField>
-      <FormField className="gi-w-56">
-        <FormFieldLabel>Search Enabled</FormFieldLabel>
-        <SelectNext aria-label="Select" defaultValue="value-3" enableSearch>
-          <SelectItemNext value="select-option" hidden>
-            Select Option
-          </SelectItemNext>
-          <SelectItemNext value="value-1">
-            <code>code block</code>
-          </SelectItemNext>
-          <SelectItemNext value="value-2">
-            <Paragraph>
-              <Text className="gi-italic">Inline</Text> <strong>rich</strong>{' '}
-              <Text className="gi-text-gray-600">text</Text>
-            </Paragraph>
-          </SelectItemNext>
-          <SelectItemNext value="value-3">
-            <Paragraph>
+  render: function Render(_props) {
+    return (
+      <Container className="gi-flex gi-gap-2">
+        <FormField className="gi-w-56">
+          <FormFieldLabel>Default</FormFieldLabel>
+          <SelectNext aria-label="Select" defaultValue="value-2" data-testid="default">
+            <SelectItemNext value="select-option" hidden>
+              Select Option
+            </SelectItemNext>
+            <SelectItemNext value="value-1">
+              <code>code block</code>
+            </SelectItemNext>
+            <SelectItemNext value="value-2">
+              <Paragraph>
+                <Text className="gi-italic">Inline</Text> <strong>rich</strong>{' '}
+                <Text className="gi-text-gray-600">text</Text>
+              </Paragraph>
+            </SelectItemNext>
+            <SelectItemNext value="value-3">
               <Paragraph>
                 {(() => {
                   return (
@@ -1003,12 +975,42 @@ export const WithRichText: StoryObj = {
                   );
                 })()}
               </Paragraph>
-            </Paragraph>
-          </SelectItemNext>
-        </SelectNext>
-      </FormField>
-    </Container>
-  ),
+            </SelectItemNext>
+          </SelectNext>
+        </FormField>
+        <FormField className="gi-w-56">
+          <FormFieldLabel>Search Enabled</FormFieldLabel>
+          <SelectNext aria-label="Select" defaultValue="value-3" enableSearch>
+            <SelectItemNext value="select-option" hidden>
+              Select Option
+            </SelectItemNext>
+            <SelectItemNext value="value-1">
+              <code>code block</code>
+            </SelectItemNext>
+            <SelectItemNext value="value-2">
+              <Paragraph>
+                <Text className="gi-italic">Inline</Text> <strong>rich</strong>{' '}
+                <Text className="gi-text-gray-600">text</Text>
+              </Paragraph>
+            </SelectItemNext>
+            <SelectItemNext value="value-3">
+              <Paragraph>
+                <Paragraph>
+                  {(() => {
+                    return (
+                      <Text dataTestId="fn-call" className="gi-font-bold">
+                        Function call
+                      </Text>
+                    );
+                  })()}
+                </Paragraph>
+              </Paragraph>
+            </SelectItemNext>
+          </SelectNext>
+        </FormField>
+      </Container>
+    );
+  },
   play: async ({ canvasElement }) => {
     const canvas = within(canvasElement);
     const [defaultSelect, searchSelect] = canvas.getAllByRole('textbox');

@@ -96,8 +96,7 @@ export const SelectNext = forwardRef<HTMLInputElement, SelectNextProps>(
       }
 
       if (found) {
-        const foundValue = getTextContent(found);
-        setInputValue(foundValue);
+        setInputValue(getTextContent(found));
       } else {
         setInputValue('');
         if (inputRef.current) {
