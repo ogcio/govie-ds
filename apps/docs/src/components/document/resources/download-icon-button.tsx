@@ -2,7 +2,7 @@
 import { IconButton } from '@ogcio/design-system-react';
 import type { IconProps } from '@ogcio/design-system-react/icons';
 import { useEffect, useState } from 'react';
-import type { ComponentType, MouseEvent } from 'react';
+import type { ComponentType } from 'react';
 import { cn } from '@/lib/cn';
 import analytics from '@/lib/analytics';
 import { CheckIcon, DownloadIcon } from '@ogcio/design-system-react/icons';
@@ -28,21 +28,6 @@ type SourceIcon = {
   name: string;
   href?: never;
   text?: never;
-};
-
-const encodedSvgURL = (text: string) => {
-  return `data:image/svg+xml;charset=utf-8,${encodeURIComponent(text)}`;
-};
-
-const getSvgUri = (Icon: ComponentType<IconProps>) => {
-  const iconContainer = document.createElement('div');
-  const root = createRoot(iconContainer);
-  flushSync(() => {
-    root.render(<Icon size={48} />);
-  });
-  const svgUrl = encodedSvgURL(iconContainer.innerHTML);
-  root.unmount();
-  return svgUrl;
 };
 
 export function DownloadIconButton({
@@ -84,7 +69,7 @@ export function DownloadIconButton({
   return (
     <IconButton
       onClick={handleClick}
-      size="small"
+      size="sm"
       appearance="light"
       className={cn({
         'text-green-600': downloaded,
@@ -99,3 +84,17 @@ export function DownloadIconButton({
     </IconButton>
   );
 }
+
+const encodedSvgURL = (text: string) =>
+  `data:image/svg+xml;charset=utf-8,${encodeURIComponent(text)}`;
+
+const getSvgUri = (Icon: ComponentType<IconProps>) => {
+  const iconContainer = document.createElement('div');
+  const root = createRoot(iconContainer);
+  flushSync(() => {
+    root.render(<Icon size={48} />);
+  });
+  const svgUrl = encodedSvgURL(iconContainer.innerHTML);
+  root.unmount();
+  return svgUrl;
+};
