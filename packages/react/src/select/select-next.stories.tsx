@@ -960,10 +960,8 @@ export const WithRichText: StoryObj = {
               <code>code block</code>
             </SelectItemNext>
             <SelectItemNext value="value-2">
-              <Paragraph>
-                <Text className="gi-italic">Inline</Text> <strong>rich</strong>{' '}
-                <Text className="gi-text-gray-600">text</Text>
-              </Paragraph>
+              <Text className="gi-italic">Inline</Text> <strong>rich</strong>{' '}
+              <Text className="gi-text-gray-600">text</Text>
             </SelectItemNext>
             <SelectItemNext value="value-3">
               <Text dataTestId="bold-text" className="gi-font-bold">
