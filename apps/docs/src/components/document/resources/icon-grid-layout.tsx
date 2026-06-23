@@ -33,37 +33,29 @@ export function IconGridLayout() {
         />
       </FormField>
       <Grid container gap={2}>
-        {_.reduce(
-          AllIcons,
-          (acc, Icon, name) => {
-            if (!name.toLowerCase().includes(iconFilter.toLowerCase())) {
-              return acc;
-            }
-            const iconName = titleCase(name).replace('Icon', '');
-            return [
-              ...acc,
-              <Grid key={name} size={2}>
-                <Box className="h-36 w-36 flex flex-col">
-                  <Box className="grow border rounded-md relative p-1">
-                    <Box className="h-full flex items-center justify-center">
-                      <Icon size={48} />
-                    </Box>
-                    <Box className="absolute bottom-1 right-1">
-                      <DownloadIconButton
-                        name={iconName}
-                        IconComponent={Icon}
-                      />
-                    </Box>
+        {_.map(AllIcons, (Icon, name) => {
+          if (!name.toLowerCase().includes(iconFilter.toLowerCase())) {
+            return null;
+          }
+          const iconName = titleCase(name).replace('Icon', '');
+          return (
+            <Grid key={name} size={2}>
+              <Box className="h-36 w-36 flex flex-col">
+                <Box className="grow border rounded-md relative p-1">
+                  <Box className="h-full flex items-center justify-center">
+                    <Icon size={48} />
                   </Box>
-                  <Paragraph size="sm" className="text-center truncate">
-                    {iconName}
-                  </Paragraph>
+                  <Box className="absolute bottom-1 right-1">
+                    <DownloadIconButton name={iconName} IconComponent={Icon} />
+                  </Box>
                 </Box>
-              </Grid>,
-            ];
-          },
-          [] as ReactElement[],
-        )}
+                <Paragraph size="sm" className="text-center truncate">
+                  {iconName}
+                </Paragraph>
+              </Box>
+            </Grid>
+          );
+        }).filter(Boolean)}
       </Grid>
     </Container>
   );
