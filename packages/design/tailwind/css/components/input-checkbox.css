@@ -37,6 +37,16 @@
   @apply gi-flex-none gi-input-checkbox gi-w-11 gi-h-11 checked:before:gi-w-7 checked:before:gi-h-3.5 checked:before:gi-left-1.5 checked:before:gi-top-2;
 }
 
+/* Visual-only checkbox indicator for use inside interactive containers (e.g. role="option") where a real <input> would cause nested-interactive a11y violations. */
+.gi-input-checkbox-visual {
+  @apply gi-flex-none gi-rounded-sm gi-border-sm gi-border-solid gi-border-color-border-system-neutral-default gi-w-6 gi-h-6 gi-shrink-0;
+}
+
+.gi-input-checkbox-visual[data-checked='true']::before {
+  @apply gi-block gi--rotate-45 gi-relative gi-border-l-lg gi-border-b-lg gi-border-color-border-system-neutral-default gi-w-4 gi-h-2 gi-left-0.5 gi-top-1;
+  content: '';
+}
+
 .gi-input-checkbox-container {
   @apply gi-gap-3 gi-flex gi-items-center;
 }

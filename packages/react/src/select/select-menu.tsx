@@ -7,8 +7,6 @@ import { InputText } from '@/input-text/input-text.js';
 import { Label } from '@/label/label.js';
 import { Spinner } from '@/spinner/spinner.js';
 import Check from '@/atoms/icons/Check.js';
-import Divider from '@/Divider.js';
-import { InputCheckbox } from '@/input-checkbox/input-checkbox.js';
 import type {
   SelectMenuGroupReactElement,
   SelectMenuOptionProps,
@@ -16,6 +14,7 @@ import type {
   SelectMenuProps,
 } from './types.js';
 import Text from '@/atoms/Text.js';
+import { dividerStyles } from '@/atoms/Divider.js';
 
 export const SelectMenu = forwardRef<HTMLDivElement, SelectMenuProps>(
   (
@@ -137,7 +136,7 @@ export const SelectMenu = forwardRef<HTMLDivElement, SelectMenuProps>(
               >
                 <Text size="sm">{t('autocomplete.clearAll', { defaultValue: 'Clear all selections' })}</Text>
               </li>
-              <Divider />
+              <li role="presentation" className={dividerStyles()} />
             </>
           )}
           {filteredOptions}
@@ -221,6 +220,7 @@ export const SelectMenuOption = ({
         {
           'gi-select-option-item-disabled': disabled,
           'gi-select-option-item-highlighted': isHighlighted,
+          '!gi-justify-start gi-gap-3': multiple,
         },
         className,
       )}
@@ -230,15 +230,17 @@ export const SelectMenuOption = ({
       {...props}
     >
       {multiple ? (
-        <InputCheckbox size="sm" checked={!!selected}>
-          <span
+        <>
+          <span aria-hidden="true" className="gi-input-checkbox-visual" data-checked={!!selected || undefined} />
+          <Text
+            size="sm"
             className={cn('gi-cursor-pointer', {
               'gi-font-bold': selected,
             })}
           >
             {children}
-          </span>
-        </InputCheckbox>
+          </Text>
+        </>
       ) : (
         <>
           <span className="gi-text-sm">{children}</span>

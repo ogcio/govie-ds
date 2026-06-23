@@ -5,10 +5,10 @@ import { useForm } from 'react-hook-form';
 import { expect, within, userEvent, waitFor } from 'storybook/test';
 import { FormField, FormFieldLabel } from '@/forms/form-field/form-field';
 import { Label } from '@/label/label';
-import { Chip } from '@/chip/chip';
+import { ChipGroup } from '@/ChipGroup';
 import { Autocomplete, AutocompleteItem } from './autocomplete';
 import type { AutocompleteProps } from './types';
-import { Box } from '@/Box';
+import { Stack } from '@/stack/stack';
 
 const meta = {
   title: 'Form/Autocomplete',
@@ -387,15 +387,21 @@ export const Test: Story = {
   },
 };
 
-export const WithMultipleCount: Story = {
-  parameters: { a11y: { test: 'todo' } },
+const labelOptions = Array.from({ length: 8 }, (_, index) => ({
+  value: `label_${index + 1}`,
+  label: `Label ${index + 1}`,
+}));
+
+export const WithMultiple: Story = {
+  tags: ['slow'],
+
   render: (props: AutocompleteProps) => {
     return (
-      <FormField className="gi-w-56">
-        <FormFieldLabel>Multi Select (Count)</FormFieldLabel>
+      <FormField className="gi-w-[332px]">
+        <FormFieldLabel>Multi Select</FormFieldLabel>
         <Autocomplete {...props} multiple>
-          {options.map(({ value, label }) => (
-            <AutocompleteItem value={value} key={`${label}-${value}`}>
+          {labelOptions.map(({ value, label }) => (
+            <AutocompleteItem value={value} key={value}>
               {label}
             </AutocompleteItem>
           ))}
@@ -417,30 +423,26 @@ export const WithMultipleCount: Story = {
     });
 
     await step('All options have aria-selected', async () => {
-      const options = canvas.getAllByRole('option');
-      for (const option of options) {
+      const allOptions = canvas.getAllByRole('option');
+      for (const option of allOptions) {
         expect(option).toHaveAttribute('aria-selected');
       }
     });
 
     await step('Clicking an option toggles aria-selected without closing', async () => {
-      const frontendOption = canvas
-        .getAllByRole('option')
-        .find((option) => option.textContent?.includes('Frontend Dev.'));
-      expect(frontendOption).toHaveAttribute('aria-selected', 'false');
-      await userEvent.click(frontendOption!);
+      const firstOption = canvas.getByRole('option', { name: labelOptions[0].label });
+      expect(firstOption).toHaveAttribute('aria-selected', 'false');
+      await userEvent.click(firstOption);
       await waitFor(() => {
-        const updated = canvas.getAllByRole('option').find((option) => option.textContent?.includes('Frontend Dev.'));
+        const updated = canvas.getByRole('option', { name: labelOptions[0].label });
         expect(updated).toHaveAttribute('aria-selected', 'true');
       });
       expect(canvas.getByRole('listbox')).toBeInTheDocument();
     });
 
     await step('Selecting multiple options updates count', async () => {
-      const backendOption = canvas
-        .getAllByRole('option')
-        .find((option) => option.textContent?.includes('Backend Dev.'));
-      await userEvent.click(backendOption!);
+      const secondOption = canvas.getByRole('option', { name: labelOptions[1].label });
+      await userEvent.click(secondOption);
       await waitFor(() => {
         expect(canvas.getByText('2')).toBeInTheDocument();
       });
@@ -448,33 +450,32 @@ export const WithMultipleCount: Story = {
   },
 };
 
-export const WithMultipleChips: Story = {
+const getLabel = (value: string) => labelOptions.find((option) => option.value === value)?.label ?? value;
+
+export const WithMultipleChipsWrap: Story = {
+  name: 'With Multiple (Chips Wrap)',
+  tags: ['slow'],
+
   render: function Render(props: AutocompleteProps) {
     const [selectedValues, setSelectedValues] = useState<string[]>([]);
-
-    const getLabel = (value: string) => options.find((option) => option.value === value)?.label ?? value;
-
+    const chipItems = selectedValues.map((value) => ({ value, label: getLabel(value) }));
     const handleRemoveChip = (valueToRemove: string) => {
       setSelectedValues(selectedValues.filter((value) => value !== valueToRemove));
     };
 
     return (
-      <FormField className="gi-w-56">
-        <FormFieldLabel>Multi Select (Chips)</FormFieldLabel>
-        <Autocomplete {...props} multiple selectedValues={selectedValues} onSelectChange={setSelectedValues}>
-          {options.map(({ value, label }) => (
-            <AutocompleteItem value={value} key={`${label}-${value}`}>
-              {label}
-            </AutocompleteItem>
-          ))}
-        </Autocomplete>
-        {selectedValues.length > 0 && (
-          <Box className="gi-flex gi-flex-wrap gi-gap-1 gi-mt-2">
-            {selectedValues.map((value) => (
-              <Chip key={value} label={getLabel(value)} onClose={() => handleRemoveChip(value)} />
+      <FormField className="gi-w-[332px]">
+        <FormFieldLabel>Multi Select (Chips Wrap)</FormFieldLabel>
+        <Stack gap={3}>
+          <Autocomplete {...props} multiple selectedValues={selectedValues} onSelectChange={setSelectedValues}>
+            {labelOptions.map(({ value, label }) => (
+              <AutocompleteItem value={value} key={value}>
+                {label}
+              </AutocompleteItem>
             ))}
-          </Box>
-        )}
+          </Autocomplete>
+          <ChipGroup items={chipItems} onRemove={handleRemoveChip} overflow="wrap" />
+        </Stack>
       </FormField>
     );
   },
@@ -485,46 +486,93 @@ export const WithMultipleChips: Story = {
     const canvas = within(canvasElement);
     const input = canvas.getByRole('combobox');
 
-    await step('Selecting options renders chips', async () => {
+    await step('Select 6 options and keep popover open', async () => {
       await userEvent.click(input);
       await waitFor(() => {
         expect(canvas.getByRole('listbox')).toBeInTheDocument();
       });
-      const firstOption = canvas.getByRole('option', { name: options[0].label });
-      await userEvent.click(firstOption);
+
+      for (const { label } of labelOptions.slice(0, 8)) {
+        const option = canvas.getByRole('option', { name: label });
+        await userEvent.click(option);
+        await waitFor(() => {
+          expect(option).toHaveAttribute('aria-selected', 'true');
+        });
+      }
+
       await waitFor(() => {
-        expect(firstOption).toHaveAttribute('aria-selected', 'true');
-      });
-      const secondOption = canvas.getByRole('option', { name: options[1].label });
-      await userEvent.click(secondOption);
-      await waitFor(() => {
-        expect(secondOption).toHaveAttribute('aria-selected', 'true');
-      });
-      await userEvent.keyboard('{Escape}');
-      await waitFor(() => {
-        expect(canvas.getAllByRole('button', { name: /remove chip/i }).length).toBe(2);
+        expect(canvas.getByText('8')).toBeInTheDocument();
       });
     });
 
-    await step('Chips have accessible labels', async () => {
-      const chips = canvasElement.querySelectorAll('[aria-label*="chip"]');
-      expect(chips.length).toBeGreaterThanOrEqual(2);
-    });
-
-    await step('Removing a chip deselects the option', async () => {
-      const removeButtons = canvas.getAllByRole('button', { name: /remove chip/i });
-      await userEvent.click(removeButtons[0]);
+    await step('All 8 chips are visible (wrap mode)', async () => {
       await waitFor(() => {
-        expect(canvas.getAllByRole('button', { name: /remove chip/i }).length).toBe(1);
+        expect(canvas.getAllByRole('button', { name: /remove chip/i }).length).toBe(8);
       });
-      await userEvent.click(input);
-      await waitFor(() => {
-        const option = canvas.getByRole('option', { name: options[0].label });
-        expect(option).toHaveAttribute('aria-selected', 'false');
-      });
+      expect(canvas.queryByText(/more/)).not.toBeInTheDocument();
     });
 
     await userEvent.keyboard('{Escape}');
+  },
+};
+
+export const WithMultipleChipsCollapse: Story = {
+  name: 'With Multiple (Chips Collapse)',
+  tags: ['slow'],
+  render: function Render(props: AutocompleteProps) {
+    const [selectedValues, setSelectedValues] = useState<string[]>([]);
+    const chipItems = selectedValues.map((value) => ({ value, label: getLabel(value) }));
+    const handleRemoveChip = (valueToRemove: string) => {
+      setSelectedValues(selectedValues.filter((value) => value !== valueToRemove));
+    };
+
+    return (
+      <FormField className="gi-w-[332px]">
+        <FormFieldLabel>Multi Select (Chips Collapse)</FormFieldLabel>
+        <Stack gap={3}>
+          <Autocomplete {...props} multiple selectedValues={selectedValues} onSelectChange={setSelectedValues}>
+            {labelOptions.map(({ value, label }) => (
+              <AutocompleteItem value={value} key={value}>
+                {label}
+              </AutocompleteItem>
+            ))}
+          </Autocomplete>
+          <ChipGroup items={chipItems} onRemove={handleRemoveChip} />
+        </Stack>
+      </FormField>
+    );
+  },
+  args: {
+    children: [],
+  },
+  play: async ({ canvasElement, step }) => {
+    const canvas = within(canvasElement);
+    const input = canvas.getByRole('combobox');
+
+    await step('Select 6 options', async () => {
+      await userEvent.click(input);
+      await waitFor(() => {
+        expect(canvas.getByRole('listbox')).toBeInTheDocument();
+      });
+
+      for (let index = 1; index <= 6; index++) {
+        const option = canvas.getByRole('option', { name: `Label ${index}` });
+        await userEvent.click(option);
+        await waitFor(() => {
+          expect(option).toHaveAttribute('aria-selected', 'true');
+        });
+      }
+
+      await userEvent.keyboard('{Escape}');
+    });
+
+    await step('Shows 4 chips and +2 more label', async () => {
+      await waitFor(() => {
+        const chips = canvas.getAllByRole('button', { name: /remove chip/i });
+        expect(chips.length).toBe(4);
+      });
+      expect(canvas.getByText('+2 more')).toBeInTheDocument();
+    });
   },
 };
 

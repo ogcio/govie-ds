@@ -41,6 +41,7 @@ export { CheckboxGroup } from './checkbox/checkbox-group.js';
 export { Checkbox } from './checkbox/checkbox.js';
 export { type CheckboxGroupProps, type CheckboxProps } from './checkbox/types.js';
 export { Chip, type ChipProps } from './chip/chip.js';
+export { ChipGroup, ChipGroupOverflow, type ChipGroupProps } from './ChipGroup.js';
 export { Combobox } from './combo-box/combo-box.js';
 export { DropdownItem } from './combo-box/dropdown-item.js';
 export { type ComboboxProps, type DropdownItemProps } from './combo-box/types.js';

@@ -28,7 +28,7 @@ export default function Divider(props: Props) {
   );
 }
 
-const dividerStyles = tv({
+export const dividerStyles = tv({
   base: 'gi-border-color-border-system-neutral-muted gi-border-0',
   variants: {
     orientation: {

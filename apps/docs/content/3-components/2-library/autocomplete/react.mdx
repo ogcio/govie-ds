@@ -69,6 +69,28 @@ component:
           ofType: 'string[]'
           description: 'Controls the selected values in multiple mode (use for controlled mode).'
           required: false
+    - name: 'ChipGroup'
+      fields:
+        - name: 'items'
+          ofType: '{ label: string; value: string }[]'
+          description: 'The list of selected items to display as chips.'
+          required: true
+        - name: 'onRemove'
+          ofType: 'function'
+          description: 'Callback when a chip is removed. Receives the value of the removed item.'
+          required: true
+        - name: 'overflow'
+          ofType: "'collapse' | 'wrap'"
+          description: 'Controls how chips overflow. ''collapse'' shows a "+N more" label, ''wrap'' shows all chips.'
+          required: false
+        - name: 'visibleCount'
+          ofType: 'number'
+          description: 'Maximum number of visible chips before showing "+N more" in collapse mode. Defaults to 4.'
+          required: false
+        - name: 'className'
+          ofType: 'string'
+          description: 'Additional CSS class names.'
+          required: false
   stories:
     - name: 'default'
       url: '/story/form-autocomplete--default'
@@ -82,10 +104,12 @@ component:
       url: '/story/form-autocomplete--with-free-solo'
     - name: 'with-loading'
       url: '/story/form-autocomplete--with-loading'
-    - name: 'with-multiple-count'
-      url: '/story/form-autocomplete--with-multiple-count'
-    - name: 'with-multiple-chips'
-      url: '/story/form-autocomplete--with-multiple-chips'
+    - name: 'with-multiple'
+      url: '/story/form-autocomplete--with-multiple'
+    - name: 'with-multiple-chips-wrap'
+      url: '/story/form-autocomplete--with-multiple-chips-wrap'
+    - name: 'with-multiple-chips-collapse'
+      url: '/story/form-autocomplete--with-multiple-chips-collapse'
 ---
 
 # Autocomplete
@@ -164,24 +188,36 @@ The Autocomplete component allows users to search and select from a list of opti
   story="with-loading"
 />
 
-### Multi-select with Count
+### Multi-select
 
 When `multiple` is enabled, users can select more than one option. A count badge in the input field shows how many items are selected. A "Clear all selections" action is available in the dropdown.
 
 <StorybookFrame
-  heightClassName="h-[405px]"
+  heightClassName="h-[550px]"
   componentId="autocomplete-react"
-  story="with-multiple-count"
+  story="with-multiple"
 />
 
-### Multi-select with Chips
+### Multi-select with Chips (Wrap)
 
-This example demonstrates using `onSelectChange` and `selectedValues` to display selected items as removable chips below the autocomplete. Removing a chip deselects the corresponding option.
+Use the `ChipGroup` component alongside `Autocomplete` to display selected items as removable chips. `ChipGroup` is a standalone component that manages the visual display of selected items, including overflow handling.
+
+With `overflow="wrap"`, all chips are visible and wrap to the next line.
 
 <StorybookFrame
-  heightClassName="h-[405px]"
+  heightClassName="h-[550px]"
   componentId="autocomplete-react"
-  story="with-multiple-chips"
+  story="with-multiple-chips-wrap"
+/>
+
+### Multi-select with Chips (Collapse)
+
+With the default `overflow="collapse"` mode, only the first `visibleCount` chips are shown (default 4). A "+N more" label indicates the remaining hidden selections.
+
+<StorybookFrame
+  heightClassName="h-[550px]"
+  componentId="autocomplete-react"
+  story="with-multiple-chips-collapse"
 />
 
 ## Properties

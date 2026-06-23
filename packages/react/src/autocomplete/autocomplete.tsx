@@ -80,7 +80,7 @@ export const Autocomplete = forwardRef<HTMLInputElement, AutocompleteProps>((pro
   }, [value]);
 
   useEffect(() => {
-    if (selectedValues && selectedValues.length < state.selectedValues.size) {
+    if (selectedValues && selectedValues.length !== state.selectedValues.size) {
       dispatch({ type: SET_SELECTED_VALUES, payload: selectedValues });
     }
   }, [selectedValues]);
