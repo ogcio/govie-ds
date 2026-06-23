@@ -966,15 +966,9 @@ export const WithRichText: StoryObj = {
               </Paragraph>
             </SelectItemNext>
             <SelectItemNext value="value-3">
-              <Paragraph>
-                {(() => {
-                  return (
-                    <Text dataTestId="fn-call" className="gi-font-bold">
-                      Function call
-                    </Text>
-                  );
-                })()}
-              </Paragraph>
+              <Text dataTestId="bold-text" className="gi-font-bold">
+                Bold text
+              </Text>
             </SelectItemNext>
           </SelectNext>
         </FormField>
@@ -994,17 +988,9 @@ export const WithRichText: StoryObj = {
               </Paragraph>
             </SelectItemNext>
             <SelectItemNext value="value-3">
-              <Paragraph>
-                <Paragraph>
-                  {(() => {
-                    return (
-                      <Text dataTestId="fn-call" className="gi-font-bold">
-                        Function call
-                      </Text>
-                    );
-                  })()}
-                </Paragraph>
-              </Paragraph>
+              <Text dataTestId="bold-text" className="gi-font-bold">
+                Bold text
+              </Text>
             </SelectItemNext>
           </SelectNext>
         </FormField>
@@ -1021,24 +1007,24 @@ export const WithRichText: StoryObj = {
       expect(canvas.getByRole('listbox')).toBeInTheDocument();
     });
 
-    const functionCallItem = await canvas.findByTestId('option-value-3');
-    expect(functionCallItem).toBeInTheDocument();
-    const functionComponent = await within(functionCallItem).findByTestId('fn-call');
-    expect(functionComponent).toBeInTheDocument();
+    const boldTextOption = await canvas.findByTestId('option-value-3');
+    expect(boldTextOption).toBeInTheDocument();
+    const boldText = await within(boldTextOption).findByTestId('bold-text');
+    expect(boldText).toBeInTheDocument();
 
-    await userEvent.click(functionComponent);
-    expect(functionCallItem).not.toBeInTheDocument();
-    expect(defaultSelect.getAttribute('value')).toBe('Function call');
+    await userEvent.click(boldText);
+    expect(boldTextOption).not.toBeInTheDocument();
+    expect(defaultSelect.getAttribute('value')).toBe('Bold text');
 
     await userEvent.click(searchSelect);
-    const strongTextOption = await canvas.findByTestId('option-value-2');
-    const functionOption = await canvas.findByTestId('option-value-3');
+    const inlineRichTextOption = await canvas.findByTestId('option-value-2');
+    const boldTextSearchOption = await canvas.findByTestId('option-value-3');
     await userEvent.clear(searchSelect);
     await userEvent.type(searchSelect, 'Inline', { delay: 200 });
     await waitFor(() => {
-      expect(functionOption).not.toBeInTheDocument();
+      expect(boldTextSearchOption).not.toBeInTheDocument();
     });
-    await userEvent.click(strongTextOption);
+    await userEvent.click(inlineRichTextOption);
     await waitFor(() => {
       // check the new input value of the search select
       const searchSelect = canvas.getAllByRole('textbox')[1];
