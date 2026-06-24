@@ -112,3 +112,35 @@ export function getSpecialComponentType(child: ReactNode): string | null {
 export function isSpecialComponent(child: ReactNode, componentList: Array<string> = []): boolean {
   return componentList.includes(getSpecialComponentType(child) ?? '');
 }
+
+/**
+ * Synchronous Depth First Search of all text within a ReactNode, appended together with spaces in-between. Similar to textContent for HTML.
+ *
+ * @param node - ReactNode that will be traversed to gather all children with textContent.
+ * @param _textContent - internal storage of all gathered text. Leave empty.
+ * @returns concatenated string of all children that is text.
+ * @example
+ * ```
+ * getTextContent(
+ *  <div>
+ *    <p>hello </p>
+ *    there
+ * </div>)
+ * returns "hello there"
+ * ```
+ */
+export function getTextContent(node: ReactNode): string {
+  if (typeof node === 'string' || typeof node === 'number') {
+    return String(node);
+  }
+
+  if (Array.isArray(node)) {
+    return node.map((child) => getTextContent(child)).join('');
+  }
+
+  if (isValidElement(node)) {
+    return getTextContent((node.props as { children?: ReactNode }).children);
+  }
+
+  return '';
+}
