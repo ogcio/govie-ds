@@ -262,7 +262,7 @@ export const WithSearchEnabled: StoryObj = {
     await userEvent.click(input);
 
     const searchBox = canvas.getByPlaceholderText('Type to Search');
-    await userEvent.type(searchBox, 'Option 2');
+    await userEvent.type(searchBox, 'Option 2', { delay: 100 });
 
     const list = await canvas.findByRole('listbox');
 
