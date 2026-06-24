@@ -126,6 +126,7 @@ export const SelectMenu = forwardRef<HTMLDivElement, SelectMenuProps>(
           {onClearAll && (
             <>
               <li
+                id={listboxId ? `${listboxId}-clear-all` : undefined}
                 role="option"
                 aria-selected={false}
                 className={cn('gi-select-option-item', {

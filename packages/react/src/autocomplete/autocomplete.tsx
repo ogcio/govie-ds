@@ -211,8 +211,10 @@ export const Autocomplete = forwardRef<HTMLInputElement, AutocompleteProps>((pro
         case 'ArrowUp': {
           event.preventDefault();
           const direction = event.key === 'ArrowDown' ? 1 : -1;
-          const optionIndices = state.autocompleteOptions.map((_, index) => index);
-          const items = hasSelections ? [CLEAR_ALL_INDEX, ...optionIndices] : optionIndices;
+          const enabledIndices = state.autocompleteOptions.flatMap(
+            (option: AutocompleteOptionItemElement, index: number) => (option.props.disabled ? [] : [index]),
+          );
+          const items = hasSelections ? [CLEAR_ALL_INDEX, ...enabledIndices] : enabledIndices;
           const currentPos = items.indexOf(state.highlightedIndex);
           const startPos = currentPos === -1 ? (direction === 1 ? -1 : 0) : currentPos;
           const next = items[(startPos + direction + items.length) % items.length];
@@ -269,7 +271,11 @@ export const Autocomplete = forwardRef<HTMLInputElement, AutocompleteProps>((pro
         aria-expanded={state.isOpen}
         aria-controls={listboxId}
         aria-activedescendant={
-          state.highlightedIndex >= 0 ? `${listboxId}-option-${state.highlightedIndex}` : undefined
+          state.highlightedIndex === CLEAR_ALL_INDEX
+            ? `${listboxId}-clear-all`
+            : state.highlightedIndex >= 0
+              ? `${listboxId}-option-${state.highlightedIndex}`
+              : undefined
         }
         aria-autocomplete="list"
         aria-disabled={disabled}

@@ -242,6 +242,7 @@ export const DisabledItem = {
 };
 
 export const WithSearchEnabled: StoryObj = {
+  tags: ['slow'],
   render: () => (
     <FormField className="gi-w-56">
       <FormFieldLabel>Label</FormFieldLabel>
