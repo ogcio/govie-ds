@@ -1,7 +1,7 @@
 import { debounce } from 'lodash';
 import { Children, isValidElement, useEffect, useMemo, useReducer, useRef } from 'react';
 import { useScrollHighlightedItem } from '@/hooks/use-scroll-highlighted-item';
-import { safeCloneElement } from '@/utils/utilities';
+import { safeCloneElement, getTextContent } from '@/utils/utilities';
 import type { AutocompleteAction, AutocompleteState, AutocompleteOptionItemElement, AutocompleteProps } from './types';
 import { AUTOCOMPLETE_ACTIONS } from './types';
 
@@ -98,7 +98,7 @@ const isAutocompleteItem = (child: React.ReactNode): child is AutocompleteOption
 };
 
 const filterChildOption = (child: AutocompleteOptionItemElement, inputValue: string) => {
-  const label = child.props.children?.toString().toLowerCase() || '';
+  const label = getTextContent(child).toLowerCase();
   const value = child.props.value?.toLowerCase();
   const input = inputValue.toLowerCase();
   return label.includes(input) || value.includes(input);
@@ -114,7 +114,7 @@ const getOptionLabelByValue = (children: any, value: string): string => {
     const type = child.type?.componentType || child.props?.__type;
 
     if (child.props?.value === value) {
-      return child.props.children?.toString() || '';
+      return getTextContent(child);
     }
 
     if (type === 'AutocompleteGroupItem') {
@@ -122,7 +122,7 @@ const getOptionLabelByValue = (children: any, value: string): string => {
 
       for (const child of groupChildren) {
         if ((child as any).props?.value === value) {
-          return (child as any).props.children?.toString() || '';
+          return getTextContent(child);
         }
       }
     }
