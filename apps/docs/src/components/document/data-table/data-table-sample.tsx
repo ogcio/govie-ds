@@ -75,7 +75,7 @@ const fuzzySort: SortingFn<any> = (rowA, rowB, columnId) => {
     ? sortingFns.alphanumeric(rowA, rowB, columnId)
     : direction;
 };
-
+// TODO: remove - component is unused
 export function DataTableSample() {
   const columns = React.useMemo<ColumnDef<Person>[]>(
     () => [
