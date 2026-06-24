@@ -1,5 +1,25 @@
 # Changelog
 
+## [1.40.0](https://github.com/ogcio/govie-ds/compare/docs-v1.39.0...docs-v1.40.0) (2026-06-24)
+
+
+### Features
+
+* **AB#38091:** deprecate Font Material Symbols ([#984](https://github.com/ogcio/govie-ds/issues/984)) ([a2f5950](https://github.com/ogcio/govie-ds/commit/a2f5950cacd1261f7163b9211b753b837dfb2ae1))
+* **AB#39308:** use component SVG icons on the Docs webapp ([#987](https://github.com/ogcio/govie-ds/issues/987)) ([3f58fb3](https://github.com/ogcio/govie-ds/commit/3f58fb3be56d6d79ad10d922a24666796ccb9eac))
+
+
+### Bug Fixes
+
+* **AB#39664:** Prevent MDX wrapping LinkButton text in paragraph ([#990](https://github.com/ogcio/govie-ds/issues/990)) ([7b97606](https://github.com/ogcio/govie-ds/commit/7b97606f4bdd4d753850e9ace643706a0f876493))
+
+
+### Dependencies
+
+* The following workspace dependencies were updated
+  * dependencies
+    * @ogcio/design-system-react bumped to 1.41.0
+
 ## [1.39.0](https://github.com/ogcio/govie-ds/compare/docs-v1.38.0...docs-v1.39.0) (2026-06-15)
 
 
