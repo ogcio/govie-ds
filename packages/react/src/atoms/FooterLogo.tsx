@@ -6,17 +6,16 @@
 
 import * as React from 'react';
 
-type Props = {
+export type Props = {
   children: any;
   id?: string;
   className?: string;
   dataTestId?: string;
-  ariaLabel?: string;
 };
 
 import { tv } from 'tailwind-variants';
 import GiBox from './Box';
-const footerLogoStyles = tv({
+const styles = tv({
   base: 'gi-min-w-fit md:gi-ml-auto gi-mt-8 md:gi-mt-0',
 });
 
@@ -24,10 +23,10 @@ function FooterLogo(props: Readonly<Props>) {
   return (
     <GiBox
       id={props.id}
-      className={footerLogoStyles({
+      className={styles({
         class: props.className,
       })}
-      data-testid={props.dataTestId}
+      dataTestId={props.dataTestId}
     >
       {props.children}
     </GiBox>

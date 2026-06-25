@@ -8,17 +8,16 @@ import { Component, Input } from '@angular/core';
 
 import { CommonModule } from '@angular/common';
 
-type Props = {
+export type Props = {
   children: any;
   id?: string;
   className?: string;
   dataTestId?: string;
-  ariaLabel?: string;
 };
 
 import { tv } from 'tailwind-variants';
 import GiBox from './Box';
-const footerLogoStyles = tv({
+const styles = tv({
   base: 'gi-min-w-fit md:gi-ml-auto gi-mt-8 md:gi-mt-0',
 });
 
@@ -28,11 +27,11 @@ const footerLogoStyles = tv({
     <gi-box
       [id]="id"
       [className]="
-        footerLogoStyles({
+        styles({
           class: className,
         })
       "
-      [attr.data-testid]="dataTestId"
+      [dataTestId]="dataTestId"
       ><ng-content></ng-content
     ></gi-box>
   `,
@@ -47,7 +46,7 @@ const footerLogoStyles = tv({
   imports: [CommonModule, GiBox],
 })
 export default class FooterLogo {
-  footerLogoStyles = footerLogoStyles;
+  styles = styles;
 
   @Input() id!: Readonly<Props>['id'];
   @Input() className!: Readonly<Props>['className'];
