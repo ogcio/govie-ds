@@ -106,6 +106,8 @@ import {
   Tooltip,
   generateSvgPlaceholderDataUrl,
 } from '@ogcio/design-system-react';
+
+import * as Icons from '@ogcio/design-system-react/icons';
 import { MDXComponents } from 'mdx/types';
 import { useMDXComponent } from 'next-contentlayer2/hooks';
 import NextLink from 'next/link';
@@ -438,6 +440,7 @@ const documentComponents: MDXComponents = {
   HeaderComposableGovieSample,
   InsetText,
   LinkButton,
+  ...Icons,
 };
 
 export function Mdx({ code }: MdxProps) {

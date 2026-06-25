@@ -4,9 +4,12 @@ import { Controller, useForm } from 'react-hook-form';
 
 import { expect, userEvent, waitFor, within } from 'storybook/test';
 import Button from '@/atoms/Button';
-import { FormField, FormFieldError, FormFieldHint, FormFieldLabel } from '@/forms/form-field/form-field.js';
-import { Label } from '@/label/label.js';
-import { SelectGroupItemNext, SelectItemNext, SelectNext } from './select-next.js';
+import { FormField, FormFieldError, FormFieldHint, FormFieldLabel } from '@/forms/form-field/form-field';
+import { Label } from '@/label/label';
+import { SelectGroupItemNext, SelectItemNext, SelectNext } from './select-next';
+import { Container } from '@/container/container';
+import { Paragraph } from '@/paragraph/paragraph';
+import Text from '@/atoms/Text';
 
 const topics = Array.from({ length: 8 }, (_, index) => ({
   value: `topic_${index + 1}`,
@@ -930,6 +933,98 @@ export const TestToggleDropdown: StoryObj = {
     await userEvent.keyboard('{Enter}');
     await waitFor(() => {
       expect(canvas.queryByRole('listbox')).toBeNull();
+    });
+  },
+};
+
+export const WithRichText: StoryObj = {
+  tags: ['skip-playwright'],
+  parameters: {
+    docs: {
+      description: {
+        story:
+          'Rich text can be rendered within the SelectItemNext components, operating similarly to the `.textContent` HTMLElement method; traversing through the children and concatenating the content inside.',
+      },
+    },
+  },
+  render: function Render(_props) {
+    return (
+      <Container className="gi-flex gi-gap-2">
+        <FormField className="gi-w-56">
+          <FormFieldLabel>Default</FormFieldLabel>
+          <SelectNext aria-label="Select" defaultValue="value-2" data-testid="default">
+            <SelectItemNext value="select-option" hidden>
+              Select Option
+            </SelectItemNext>
+            <SelectItemNext value="value-1">
+              <code>code block</code>
+            </SelectItemNext>
+            <SelectItemNext value="value-2">
+              <Text className="gi-italic">Inline</Text> <strong>rich</strong>{' '}
+              <Text className="gi-text-gray-600">text</Text>
+            </SelectItemNext>
+            <SelectItemNext value="value-3">
+              <Text dataTestId="bold-text" className="gi-font-bold">
+                Bold text
+              </Text>
+            </SelectItemNext>
+          </SelectNext>
+        </FormField>
+        <FormField className="gi-w-56">
+          <FormFieldLabel>Search Enabled</FormFieldLabel>
+          <SelectNext aria-label="Select" defaultValue="value-3" enableSearch>
+            <SelectItemNext value="select-option" hidden>
+              Select Option
+            </SelectItemNext>
+            <SelectItemNext value="value-1">
+              <code>code block</code>
+            </SelectItemNext>
+            <SelectItemNext value="value-2">
+              <Text className="gi-italic">Inline</Text> <strong>rich</strong>{' '}
+              <Text className="gi-text-gray-600">text</Text>
+            </SelectItemNext>
+            <SelectItemNext value="value-3">
+              <Text dataTestId="bold-text" className="gi-font-bold">
+                Bold text
+              </Text>
+            </SelectItemNext>
+          </SelectNext>
+        </FormField>
+      </Container>
+    );
+  },
+  play: async ({ canvasElement }) => {
+    const canvas = within(canvasElement);
+    const [defaultSelect, searchSelect] = canvas.getAllByRole('textbox');
+    expect(defaultSelect.getAttribute('value')).toBe('Inline rich text');
+
+    await userEvent.click(defaultSelect);
+    await waitFor(() => {
+      expect(canvas.getByRole('listbox')).toBeInTheDocument();
+    });
+
+    const boldTextOption = await canvas.findByTestId('option-value-3');
+    expect(boldTextOption).toBeInTheDocument();
+    const boldText = await within(boldTextOption).findByTestId('bold-text');
+    expect(boldText).toBeInTheDocument();
+
+    await userEvent.click(boldText);
+    expect(boldTextOption).not.toBeInTheDocument();
+    expect(defaultSelect.getAttribute('value')).toBe('Bold text');
+
+    await userEvent.click(searchSelect);
+    const inlineRichTextOption = await canvas.findByTestId('option-value-2');
+    const boldTextSearchOption = await canvas.findByTestId('option-value-3');
+    await userEvent.clear(searchSelect);
+    await userEvent.type(searchSelect, 'Inline', { delay: 200 });
+    await waitFor(() => {
+      expect(boldTextSearchOption).not.toBeInTheDocument();
+    });
+    await userEvent.click(inlineRichTextOption);
+    await waitFor(() => {
+      // check the new input value of the search select
+      const searchSelect = canvas.getAllByRole('textbox')[1];
+      expect(searchSelect.getAttribute('value')).toBe('Inline rich text');
     });
   },
 };

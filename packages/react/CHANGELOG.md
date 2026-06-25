@@ -1,5 +1,19 @@
 # Changelog
 
+## [1.41.0](https://github.com/ogcio/govie-ds/compare/react-lib-v1.40.0...react-lib-v1.41.0) (2026-06-24)
+
+
+### Features
+
+* **AB#38091:** deprecate Font Material Symbols ([#984](https://github.com/ogcio/govie-ds/issues/984)) ([a2f5950](https://github.com/ogcio/govie-ds/commit/a2f5950cacd1261f7163b9211b753b837dfb2ae1))
+* **AB#38538:** Adding Footer atom ([#988](https://github.com/ogcio/govie-ds/issues/988)) ([4bd86e1](https://github.com/ogcio/govie-ds/commit/4bd86e1858faac709849c69955d159e427c4ea60))
+* **AB#39308:** use component SVG icons on the Docs webapp ([#987](https://github.com/ogcio/govie-ds/issues/987)) ([3f58fb3](https://github.com/ogcio/govie-ds/commit/3f58fb3be56d6d79ad10d922a24666796ccb9eac))
+
+
+### Bug Fixes
+
+* **AB#39533:** process React Nodes in SelectNext to support rich text ([#992](https://github.com/ogcio/govie-ds/issues/992)) ([a4b65b7](https://github.com/ogcio/govie-ds/commit/a4b65b73858d27a11f8db15d8d7f7a035f059e33))
+
 ## [1.40.0](https://github.com/ogcio/govie-ds/compare/react-lib-v1.39.0...react-lib-v1.40.0) (2026-06-15)
 
 

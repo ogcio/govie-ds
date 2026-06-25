@@ -17,6 +17,7 @@ import { translate as t } from '@/i18n/utility.js';
 import { InputText } from '@/input-text/input-text.js';
 import { Popover } from '@/popover/popover.js';
 import { cycleEnabledIndex } from '@/utilities.js';
+import { getTextContent } from '@/utils/utilities.js';
 import { SelectMenu, SelectMenuGroupItem, SelectMenuOption } from './select-menu.js';
 import { SelectSearch } from './select-search.js';
 import type {
@@ -95,8 +96,7 @@ export const SelectNext = forwardRef<HTMLInputElement, SelectNextProps>(
       }
 
       if (found) {
-        const foundValue = found.props.children?.toString() || '';
-        setInputValue(foundValue);
+        setInputValue(getTextContent(found));
       } else {
         setInputValue('');
         if (inputRef.current) {
