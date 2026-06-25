@@ -12,13 +12,14 @@ export type Props = {
   children: any;
   id?: string;
   className?: string;
+  styles?: Record<string, string>;
   dataTestId?: string;
 };
 
 import { tv } from 'tailwind-variants';
 import GiBox from './Box';
-const styles = tv({
-  base: 'gi-min-w-fit md:gi-ml-auto gi-mt-8 md:gi-mt-0',
+const footerStyles = tv({
+  base: 'gi-w-fit md:gi-ml-auto gi-mt-8 md:gi-mt-0',
 });
 
 @Component({
@@ -27,10 +28,11 @@ const styles = tv({
     <gi-box
       [id]="id"
       [className]="
-        styles({
+        footerStyles({
           class: className,
         })
       "
+      [styles]="styles"
       [dataTestId]="dataTestId"
       ><ng-content></ng-content
     ></gi-box>
@@ -46,9 +48,10 @@ const styles = tv({
   imports: [CommonModule, GiBox],
 })
 export default class FooterLogo {
-  styles = styles;
+  footerStyles = footerStyles;
 
   @Input() id!: Readonly<Props>['id'];
   @Input() className!: Readonly<Props>['className'];
+  @Input() styles!: Readonly<Props>['styles'];
   @Input() dataTestId!: Readonly<Props>['dataTestId'];
 }
