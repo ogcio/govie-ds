@@ -10,7 +10,6 @@ import { CommonModule } from '@angular/common';
 
 type Props = {
   children: any;
-  href?: string;
   id?: string;
   className?: string;
   dataTestId?: string;
@@ -18,51 +17,24 @@ type Props = {
 };
 
 import { tv } from 'tailwind-variants';
-import Box from './Box';
+import GiBox from './Box';
 const footerLogoStyles = tv({
-  base: 'gi-min-w-fit md:gi-ml-auto md:gi-mt-0',
-  variants: {
-    asLink: {
-      true: [
-        'focus:gi-rounded-sm',
-        'focus:gi-shadow-[0_0_0_2px_var(--gieds-color-gray-950),0_0_0_5px_var(--gieds-color-yellow-400)]',
-        'focus-visible:gi-shadow-[0_0_0_2px_var(--gieds-color-gray-950),0_0_0_5px_var(--gieds-color-yellow-400)]',
-        'focus-visible:gi-outline-none',
-        'focus-visible:gi-rounded-sm',
-      ],
-      false: '',
-    },
-  },
+  base: 'gi-min-w-fit md:gi-ml-auto gi-mt-8 md:gi-mt-0',
 });
 
 @Component({
   selector: 'gi-footer-logo',
   template: `
-    <ng-container *ngIf="href"
-      ><a
-        [attr.href]="href"
-        [attr.id]="id"
-        [attr.aria-label]="ariaLabel"
-        [attr.data-testid]="dataTestId"
-        [class]="
-          footerLogoStyles({
-            asLink: true,
-            class: className,
-          })
-        "
-        ><ng-content></ng-content></a></ng-container
-    ><ng-container *ngIf="!href"
-      ><box
-        [id]="id"
-        [className]="
-          footerLogoStyles({
-            asLink: false,
-            class: className,
-          })
-        "
-        [attr.data-testid]="dataTestId"
-        ><ng-content></ng-content></box
-    ></ng-container>
+    <gi-box
+      [id]="id"
+      [className]="
+        footerLogoStyles({
+          class: className,
+        })
+      "
+      [attr.data-testid]="dataTestId"
+      ><ng-content></ng-content
+    ></gi-box>
   `,
   styles: [
     `
@@ -72,14 +44,12 @@ const footerLogoStyles = tv({
     `,
   ],
   standalone: true,
-  imports: [CommonModule, Box],
+  imports: [CommonModule, GiBox],
 })
 export default class FooterLogo {
   footerLogoStyles = footerLogoStyles;
 
-  @Input() href!: Readonly<Props>['href'];
   @Input() id!: Readonly<Props>['id'];
   @Input() className!: Readonly<Props>['className'];
   @Input() dataTestId!: Readonly<Props>['dataTestId'];
-  @Input() ariaLabel!: Readonly<Props>['ariaLabel'];
 }

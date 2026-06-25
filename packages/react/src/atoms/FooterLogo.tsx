@@ -8,7 +8,6 @@ import * as React from 'react';
 
 type Props = {
   children: any;
-  href?: string;
   id?: string;
   className?: string;
   dataTestId?: string;
@@ -16,54 +15,22 @@ type Props = {
 };
 
 import { tv } from 'tailwind-variants';
-import Box from './Box';
+import GiBox from './Box';
 const footerLogoStyles = tv({
-  base: 'gi-min-w-fit md:gi-ml-auto md:gi-mt-0',
-  variants: {
-    asLink: {
-      true: [
-        'focus:gi-rounded-sm',
-        'focus:gi-shadow-[0_0_0_2px_var(--gieds-color-gray-950),0_0_0_5px_var(--gieds-color-yellow-400)]',
-        'focus-visible:gi-shadow-[0_0_0_2px_var(--gieds-color-gray-950),0_0_0_5px_var(--gieds-color-yellow-400)]',
-        'focus-visible:gi-outline-none',
-        'focus-visible:gi-rounded-sm',
-      ],
-      false: '',
-    },
-  },
+  base: 'gi-min-w-fit md:gi-ml-auto gi-mt-8 md:gi-mt-0',
 });
 
 function FooterLogo(props: Readonly<Props>) {
   return (
-    <>
-      {props.href ? (
-        <>
-          <a
-            href={props.href}
-            id={props.id}
-            aria-label={props.ariaLabel}
-            data-testid={props.dataTestId}
-            className={footerLogoStyles({
-              asLink: true,
-              class: props.className,
-            })}
-          >
-            {props.children}
-          </a>
-        </>
-      ) : (
-        <Box
-          id={props.id}
-          className={footerLogoStyles({
-            asLink: false,
-            class: props.className,
-          })}
-          data-testid={props.dataTestId}
-        >
-          {props.children}
-        </Box>
-      )}
-    </>
+    <GiBox
+      id={props.id}
+      className={footerLogoStyles({
+        class: props.className,
+      })}
+      data-testid={props.dataTestId}
+    >
+      {props.children}
+    </GiBox>
   );
 }
 
