@@ -41,7 +41,9 @@ function getLogo({ logo }: FooterProps) {
     </picture>
   );
 }
-
+/**
+ *  @deprecated Use composable Footer for better control. TODO: add more details to footer deprecation message when its decided where docs will go
+ */
 export function Footer({
   primarySlot,
   secondarySlot,

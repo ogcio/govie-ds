@@ -6,6 +6,9 @@
 
 export { default as Box } from './Box';
 export { default as Button } from './Button';
+export { default as Footer, type Props as FooterProps } from './Footer';
+export { default as FooterLogo, type Props as FooterLogoProps } from './Footer';
+export { default as FooterSection, type Props as FooterSectionProps } from './Footer';
 export { default as IconButton } from './IconButton';
 export { default as InsetText } from './InsetText';
 export { default as Link } from './Link';
