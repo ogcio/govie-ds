@@ -10,22 +10,24 @@ export type Props = {
   children: any;
   id?: string;
   className?: string;
+  styles?: Record<string, string>;
   dataTestId?: string;
 };
 
 import { tv } from 'tailwind-variants';
 import GiBox from './Box';
-const styles = tv({
-  base: 'gi-min-w-fit md:gi-ml-auto gi-mt-8 md:gi-mt-0',
+const footerStyles = tv({
+  base: 'gi-w-fit md:gi-ml-auto gi-mt-8 md:gi-mt-0',
 });
 
 function FooterLogo(props: Readonly<Props>) {
   return (
     <GiBox
       id={props.id}
-      className={styles({
+      className={footerStyles({
         class: props.className,
       })}
+      styles={props.styles}
       dataTestId={props.dataTestId}
     >
       {props.children}
