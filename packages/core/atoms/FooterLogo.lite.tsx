@@ -12,7 +12,7 @@ export type Props = {
   dataTestId?: string;
 };
 
-export default function FooterLogo(props: Readonly<Props>) {
+export default function FooterLogo(props: Props) {
   return (
     <GiBox
       id={props.id}

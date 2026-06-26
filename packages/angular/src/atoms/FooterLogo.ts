@@ -50,8 +50,8 @@ const footerStyles = tv({
 export default class FooterLogo {
   footerStyles = footerStyles;
 
-  @Input() id!: Readonly<Props>['id'];
-  @Input() className!: Readonly<Props>['className'];
-  @Input() styles!: Readonly<Props>['styles'];
-  @Input() dataTestId!: Readonly<Props>['dataTestId'];
+  @Input() id!: Props['id'];
+  @Input() className!: Props['className'];
+  @Input() styles!: Props['styles'];
+  @Input() dataTestId!: Props['dataTestId'];
 }
