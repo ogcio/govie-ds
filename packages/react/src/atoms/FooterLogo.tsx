@@ -20,7 +20,7 @@ const footerStyles = tv({
   base: 'gi-w-fit md:gi-ml-auto gi-mt-8 md:gi-mt-0',
 });
 
-function FooterLogo(props: Readonly<Props>) {
+function FooterLogo(props: Props) {
   return (
     <GiBox
       id={props.id}
