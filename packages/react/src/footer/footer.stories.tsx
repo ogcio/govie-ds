@@ -12,7 +12,7 @@ import LinkedinIcon from '@/atoms/icons/socials/Linkedin';
 
 const meta: Meta<typeof Footer> = {
   component: Footer,
-  title: 'layout/Footer',
+  title: 'layout/Footer/Footer (Legacy)',
   argTypes: {
     primarySlot: {
       control: 'object',

@@ -5,58 +5,49 @@ import { checker, enumType } from './utilities';
 
 export const footerMeta = {
   tags: ['autodocs'] as string[],
-  title: 'Layout/Footer',
+  title: 'Footer',
   args: {
-    // Footer
-    ariaLabel: 'Footer',
-    dataTestId: 'footer',
-    id: 'footer-id',
-    // FooterSection (primary)
-    sectionVariant: FooterSectionVariant.PRIMARY,
-    sectionDataTestId: 'footer-section-primary',
-    // FooterLogo
-    logoDataTestId: 'footer-logo',
-    // Optional utility section
+    footer: {
+      ariaLabel: 'Footer',
+      id: 'footer-id',
+      dataTestId: 'footer',
+    },
+    section: {
+      variant: FooterSectionVariant.PRIMARY,
+      dataTestId: 'footer-section-primary',
+    },
+    logo: {
+      dataTestId: 'footer-logo',
+    },
     showUtilitySection: true,
-    utilitySectionDataTestId: 'footer-section-utility',
+    utilitySection: {
+      dataTestId: 'footer-section-utility',
+    },
   },
   argTypes: {
     // Footer
-    ariaLabel: {
+    'footer.ariaLabel': {
       control: 'text',
       description: 'Accessible name for the `<footer>` landmark.',
-      table: { type: { summary: 'string' } },
+      table: { category: 'Footer', type: { summary: 'string' } },
     },
-    ariaLabelledBy: {
-      control: false,
-      description: 'ID of an element that labels the footer.',
-      table: { type: { summary: 'string' } },
-    },
-    className: { control: false, table: { type: { summary: 'string' } } },
-    id: { control: false, table: { type: { summary: 'string' } } },
-    dataTestId: { control: false, table: { type: { summary: 'string' } } },
-    children: { table: { disable: true } },
+    'footer.id': { control: false, table: { category: 'Footer', type: { summary: 'string' } } },
+    'footer.dataTestId': { control: false, table: { category: 'Footer', type: { summary: 'string' } } },
+    'footer.styles': { control: false, table: { category: 'Footer', type: { summary: 'object' } } },
 
     // FooterSection
-    sectionVariant: enumType(FooterSectionVariant, {
-      description: 'Variant of the primary footer section.',
+    'section.variant': enumType(FooterSectionVariant, {
+      description: 'Section background/spacing variant.',
       defaultValue: FooterSectionVariant.PRIMARY,
+      table: { category: 'FooterSection' },
     }),
-    sectionClassName: { control: false, table: { type: { summary: 'string' } } },
-    sectionId: { control: false, table: { type: { summary: 'string' } } },
-    sectionDataTestId: { control: false, table: { type: { summary: 'string' } } },
-
+    'section.dataTestId': { control: false, table: { category: 'FooterSection', type: { summary: 'string' } } },
     // FooterLogo
-    logoClassName: { control: false, table: { type: { summary: 'string' } } },
-    logoId: { control: false, table: { type: { summary: 'string' } } },
-    logoDataTestId: { control: false, table: { type: { summary: 'string' } } },
-
-    // Composition helpers (story-only, not real component props)
+    'logo.dataTestId': { control: false, table: { category: 'FooterLogo', type: { summary: 'string' } } },
     showUtilitySection: {
       control: 'boolean',
-      description: 'Whether to render a utility `FooterSection`.',
+      table: { category: 'Composition' },
     },
-    utilitySectionDataTestId: { control: false, table: { type: { summary: 'string' } } },
   } as const,
   parameters: {
     docs: {
