@@ -1,58 +1,53 @@
 import type { StoryContext, Renderer } from 'storybook/internal/types';
 import { within } from 'storybook/test';
-import { FooterSectionVariant } from '../FooterSection.lite';
-import { checker, enumType } from './utilities';
+import { checker } from './utilities';
 
 export const footerMeta = {
   tags: ['autodocs'] as string[],
   title: 'Footer',
   args: {
-    footer: {
-      ariaLabel: 'Footer',
-      id: 'footer-id',
-      dataTestId: 'footer',
-    },
-    section: {
-      variant: FooterSectionVariant.PRIMARY,
-      dataTestId: 'footer-section-primary',
-    },
-    logo: {
-      dataTestId: 'footer-logo',
-    },
-    showUtilitySection: true,
-    utilitySection: {
-      dataTestId: 'footer-section-utility',
-    },
+    ariaLabel: 'footer',
+    dataTestId: 'footer',
   },
   argTypes: {
-    // Footer
-    'footer.ariaLabel': {
+    ariaLabel: {
       control: 'text',
       description: 'Accessible name for the `<footer>` landmark.',
-      table: { category: 'Footer', type: { summary: 'string' } },
+      table: { type: { summary: 'string' } },
     },
-    'footer.id': { control: false, table: { category: 'Footer', type: { summary: 'string' } } },
-    'footer.dataTestId': { control: false, table: { category: 'Footer', type: { summary: 'string' } } },
-    'footer.styles': { control: false, table: { category: 'Footer', type: { summary: 'object' } } },
-
-    // FooterSection
-    'section.variant': enumType(FooterSectionVariant, {
-      description: 'Section background/spacing variant.',
-      defaultValue: FooterSectionVariant.PRIMARY,
-      table: { category: 'FooterSection' },
-    }),
-    'section.dataTestId': { control: false, table: { category: 'FooterSection', type: { summary: 'string' } } },
-    // FooterLogo
-    'logo.dataTestId': { control: false, table: { category: 'FooterLogo', type: { summary: 'string' } } },
-    showUtilitySection: {
-      control: 'boolean',
-      table: { category: 'Composition' },
+    ariaLabelledBy: {
+      control: { disable: true },
+      description:
+        'Points to the id of an element that labels the footer. Preferred over `ariaLabel` when a visible heading exists. Maps to `aria-labelledby`.',
+      table: { type: { summary: 'string' } },
+    },
+    className: {
+      control: { disable: true },
+      description: 'CSS classes to apply.',
+      table: { type: { summary: 'string' } },
+    },
+    id: {
+      control: { disable: true },
+      description: 'Optional id for linking/targeting and aria references.',
+      table: { type: { summary: 'string' } },
+    },
+    dataTestId: {
+      control: { disable: true },
+      description: 'Test id for targeting the element in automated tests.',
+      table: { type: { summary: 'string' } },
+    },
+    styles: {
+      control: { disable: true },
+      description:
+        'Inline styles applied directly to the footer element. Use for truly dynamic values that cannot be expressed as Tailwind classes.',
+      table: { type: { summary: 'Record<string, string>' } },
     },
   } as const,
   parameters: {
     docs: {
       description: {
-        component: 'A composable footer built from `Footer`, `FooterSection`, and `FooterLogo`.',
+        component:
+          'A composable footer built from the Footer semantic wrapper, [FooterSection](/docs/layout-footer-footersection--docs), and [FooterLogo](/docs/layout-footer-footerlogo--docs) atom components.',
       },
     },
   },
@@ -62,11 +57,10 @@ export const Default = {
   args: footerMeta.args,
   play: async ({ canvasElement, step, args }: StoryContext<Renderer>) => {
     const canvas = within(canvasElement as HTMLElement);
-    const check = checker(args.dataTestId, canvas, step);
+    const { footer } = args;
+    const check = checker(footer.dataTestId, canvas, step);
 
     await check.is('footer');
-    await check.attributes({ 'aria-label': args.ariaLabel, id: args.id });
-    await checker(args.sectionDataTestId, canvas, step).is('div');
-    await checker(args.logoDataTestId, canvas, step).is('div');
+    await check.attributes({ 'aria-label': footer.ariaLabel, id: footer.id });
   },
 };

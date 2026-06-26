@@ -19,24 +19,24 @@ import { footerMeta, Default as defaultStory } from '@/atoms/storybook/Footer.me
 const meta: Meta = {
   ...footerMeta,
   title: 'Layout/Footer/Footer',
+  component: Footer,
 };
 
 export default meta;
 type Story = StoryObj<typeof meta>;
 
-export const Default: Story = {
+export const FullyComposed: Story = {
   ...defaultStory,
   args: {
-    ...footerMeta.args,
     footer: {
       ariaLabel: 'Footer',
       id: 'footer-id',
       dataTestId: 'gi-footer',
     },
   },
-  render: ({ footer, section, logo, showUtilitySection, utilitySection }) => (
+  render: ({ footer }) => (
     <Footer {...footer}>
-      <FooterSection {...section}>
+      <FooterSection variant={FooterSectionVariant.PRIMARY} dataTestId="footer-section-primary">
         <Container className="gi-text-black">
           <Grid container columns={{ base: 4, md: 8, lg: 12 }} dataTestId="primary">
             <Grid size={{ base: 4, md: 4, lg: 3 }}>
@@ -176,39 +176,37 @@ export const Default: Story = {
                 <LinkedinIcon label="social_linkedin" />
               </Stack>
             </Stack>
-            <FooterLogo {...logo}>
+            <FooterLogo dataTestId="footer-logo">
               <LogoGoldGreen size="181" label="Gov.ie Logo" />
             </FooterLogo>
           </Stack>
         </Container>
       </FooterSection>
 
-      {showUtilitySection && (
-        <FooterSection variant={FooterSectionVariant.UTILITY} {...utilitySection}>
-          <Stack
-            wrap
-            direction={{ base: 'column', md: 'row' }}
-            gap={4}
-            justify="center"
-            align="center"
-            dataTestId="utility"
-          >
-            <Link underline="always" href="/privacy-policy">
-              Privacy Policy
-            </Link>
-            <Link underline="always" href="/cookies">
-              Cookies
-            </Link>
-            <Link underline="always" href="/accessibility">
-              Accessibility
-            </Link>
-            <Link underline="always" href="/terms-of-use">
-              Terms of Use
-            </Link>
-            <Text className="gi-text-sm">© 2026 Design System of Government of Ireland.</Text>
-          </Stack>
-        </FooterSection>
-      )}
+      <FooterSection variant={FooterSectionVariant.UTILITY} dataTestId="footer-section-utility">
+        <Stack
+          wrap
+          direction={{ base: 'column', md: 'row' }}
+          gap={4}
+          justify="center"
+          align="center"
+          dataTestId="utility"
+        >
+          <Link underline="always" href="/privacy-policy">
+            Privacy Policy
+          </Link>
+          <Link underline="always" href="/cookies">
+            Cookies
+          </Link>
+          <Link underline="always" href="/accessibility">
+            Accessibility
+          </Link>
+          <Link underline="always" href="/terms-of-use">
+            Terms of Use
+          </Link>
+          <Text className="gi-text-sm">© 2026 Design System of Government of Ireland.</Text>
+        </Stack>
+      </FooterSection>
     </Footer>
   ),
   play: async ({ canvasElement, step }) => {

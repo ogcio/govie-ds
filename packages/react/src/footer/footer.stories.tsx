@@ -39,6 +39,15 @@ const meta: Meta<typeof Footer> = {
       description: 'Test ID for automated testing',
     },
   },
+  parameters: {
+    docs: {
+      description: {
+        component:
+          // TODO: add link to migration guide
+          'Legacy Footer component, with slot-like component placement for primary & utility sections, alongside the logo. See our migration guide on migrating from this component to the new [Composable Footer](/docs/layout-footer-footer--docs) for better flexibility and support.',
+      },
+    },
+  },
 };
 
 export default meta;
