@@ -1,20 +1,21 @@
 'use client';
 import type { ChangeEvent, KeyboardEvent } from 'react';
 import { Children, cloneElement, isValidElement, useState, useEffect, forwardRef } from 'react';
-import { cn } from '@/cn.js';
-import { translate as t } from '@/i18n/utility.js';
-import { InputText } from '@/input-text/input-text.js';
-import { Label } from '@/label/label.js';
-import { Spinner } from '@/spinner/spinner.js';
-import Check from '@/atoms/icons/Check.js';
+import { cn } from '@/cn';
+import { translate as t } from '@/i18n/utility';
+import { InputText } from '@/input-text/input-text';
+import { Label } from '@/label/label';
+import { Spinner } from '@/spinner/spinner';
+import Check from '@/atoms/icons/Check';
 import type {
   SelectMenuGroupReactElement,
   SelectMenuOptionProps,
   SelectMenuOptionReactElement,
   SelectMenuProps,
-} from './types.js';
-import Text from '@/atoms/Text.js';
-import { dividerStyles } from '@/atoms/Divider.js';
+} from './types';
+import Text from '@/atoms/Text';
+import Divider from '@/atoms/Divider';
+import { CheckboxVisual } from '@/CheckboxVisual';
 
 export const SelectMenu = forwardRef<HTMLDivElement, SelectMenuProps>(
   (
@@ -117,31 +118,31 @@ export const SelectMenu = forwardRef<HTMLDivElement, SelectMenuProps>(
           })}
         </div>
       ) : (
-        <ul
-          id={listboxId}
-          aria-label={listboxLabel || 'options'}
-          role="listbox"
-          aria-multiselectable={multiselectable || undefined}
-        >
+        <>
           {onClearAll && (
             <>
-              <li
-                id={listboxId ? `${listboxId}-clear-all` : undefined}
-                role="option"
-                aria-selected={false}
+              <div
+                role="button"
+                tabIndex={-1}
                 className={cn('gi-select-option-item', {
                   'gi-select-option-item-highlighted': clearAllHighlighted,
                 })}
-                tabIndex={-1}
                 onClick={onClearAll}
               >
                 <Text size="sm">{t('autocomplete.clearAll', { defaultValue: 'Clear all selections' })}</Text>
-              </li>
-              <li role="presentation" className={dividerStyles()} />
+              </div>
+              <Divider className="gi-mt-1" />
             </>
           )}
-          {filteredOptions}
-        </ul>
+          <ul
+            id={listboxId}
+            aria-label={listboxLabel || 'options'}
+            role="listbox"
+            aria-multiselectable={multiselectable || undefined}
+          >
+            {filteredOptions}
+          </ul>
+        </>
       );
     };
 
@@ -232,7 +233,7 @@ export const SelectMenuOption = ({
     >
       {multiple ? (
         <>
-          <span aria-hidden="true" className="gi-input-checkbox-visual" data-checked={!!selected || undefined} />
+          <CheckboxVisual checked={!!selected} />
           <Text
             size="sm"
             className={cn('gi-cursor-pointer', {

@@ -69,9 +69,29 @@ export const Default: Story = {
       control: 'text',
       description: 'The default selected value.',
     },
+    freeSolo: {
+      control: 'boolean',
+      description: 'Allows typing freeform values not limited to the dropdown options.',
+    },
+    multiple: {
+      control: 'boolean',
+      description: 'Enables multi-select mode.',
+    },
+    isLoading: {
+      control: 'boolean',
+      description: 'Displays a loading spinner inside the dropdown.',
+    },
     onChange: {
       action: 'changed',
+      description: 'Callback triggered when the input value changes.',
+    },
+    onSelectItem: {
+      action: 'selected',
       description: 'Callback triggered when an option is selected.',
+    },
+    onSelectChange: {
+      action: 'selectChanged',
+      description: 'Callback providing the array of selected values in multi-select mode.',
     },
   },
   args: {
@@ -452,8 +472,8 @@ export const WithMultiple: Story = {
 
 const getLabel = (value: string) => labelOptions.find((option) => option.value === value)?.label ?? value;
 
-export const WithMultipleChipsWrap: Story = {
-  name: 'With Multiple (Chips Wrap)',
+export const WithMultipleChips: Story = {
+  name: 'With Multiple (Chips)',
   tags: ['slow'],
 
   render: function Render(props: AutocompleteProps) {
@@ -465,7 +485,7 @@ export const WithMultipleChipsWrap: Story = {
 
     return (
       <FormField className="gi-w-[332px]">
-        <FormFieldLabel>Multi Select (Chips Wrap)</FormFieldLabel>
+        <FormFieldLabel>Multi Select (Chips)</FormFieldLabel>
         <Stack gap={3}>
           <Autocomplete {...props} multiple selectedValues={selectedValues} onSelectChange={setSelectedValues}>
             {labelOptions.map(({ value, label }) => (
@@ -474,7 +494,7 @@ export const WithMultipleChipsWrap: Story = {
               </AutocompleteItem>
             ))}
           </Autocomplete>
-          <ChipGroup items={chipItems} onRemove={handleRemoveChip} overflow="wrap" />
+          <ChipGroup items={chipItems} onRemove={handleRemoveChip} ariaLabel="Selected items" />
         </Stack>
       </FormField>
     );
@@ -505,7 +525,7 @@ export const WithMultipleChipsWrap: Story = {
       });
     });
 
-    await step('All 8 chips are visible (wrap mode)', async () => {
+    await step('All 8 chips are visible', async () => {
       await waitFor(() => {
         expect(canvas.getAllByRole('button', { name: /remove chip/i }).length).toBe(8);
       });
@@ -537,7 +557,13 @@ export const WithMultipleChipsCollapse: Story = {
               </AutocompleteItem>
             ))}
           </Autocomplete>
-          <ChipGroup items={chipItems} onRemove={handleRemoveChip} />
+          <ChipGroup
+            items={chipItems}
+            onRemove={handleRemoveChip}
+            ariaLabel="Selected items"
+            maxVisible={4}
+            formatOverflow={(count) => `+${count} more`}
+          />
         </Stack>
       </FormField>
     );

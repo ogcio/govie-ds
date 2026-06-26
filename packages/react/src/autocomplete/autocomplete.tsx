@@ -1,4 +1,5 @@
 'use client';
+import { isEqual } from 'lodash';
 import type { FC, ChangeEvent } from 'react';
 import React, {
   useRef,
@@ -80,7 +81,7 @@ export const Autocomplete = forwardRef<HTMLInputElement, AutocompleteProps>((pro
   }, [value]);
 
   useEffect(() => {
-    if (selectedValues && selectedValues.length !== state.selectedValues.size) {
+    if (selectedValues && !isEqual(new Set(selectedValues), state.selectedValues)) {
       dispatch({ type: SET_SELECTED_VALUES, payload: selectedValues });
     }
   }, [selectedValues]);
@@ -210,6 +211,7 @@ export const Autocomplete = forwardRef<HTMLInputElement, AutocompleteProps>((pro
         case 'ArrowDown':
         case 'ArrowUp': {
           event.preventDefault();
+          dispatch({ type: SET_IS_OPEN, payload: true });
           const direction = event.key === 'ArrowDown' ? 1 : -1;
           const enabledIndices = state.autocompleteOptions.flatMap(
             (option: AutocompleteOptionItemElement, index: number) => (option.props.disabled ? [] : [index]),
@@ -220,7 +222,6 @@ export const Autocomplete = forwardRef<HTMLInputElement, AutocompleteProps>((pro
           const next = items[(startPos + direction + items.length) % items.length];
 
           dispatch({ type: SET_HIGHLIGHTED_INDEX, payload: next });
-          dispatch({ type: SET_IS_OPEN, payload: true });
           break;
         }
         case 'Enter':
@@ -271,11 +272,7 @@ export const Autocomplete = forwardRef<HTMLInputElement, AutocompleteProps>((pro
         aria-expanded={state.isOpen}
         aria-controls={listboxId}
         aria-activedescendant={
-          state.highlightedIndex === CLEAR_ALL_INDEX
-            ? `${listboxId}-clear-all`
-            : state.highlightedIndex >= 0
-              ? `${listboxId}-option-${state.highlightedIndex}`
-              : undefined
+          state.highlightedIndex >= 0 ? `${listboxId}-option-${state.highlightedIndex}` : undefined
         }
         aria-autocomplete="list"
         aria-disabled={disabled}
