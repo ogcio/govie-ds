@@ -8,7 +8,6 @@ import { FormField, FormFieldError, FormFieldHint, FormFieldLabel } from '@/form
 import { Label } from '@/label/label';
 import { SelectGroupItemNext, SelectItemNext, SelectNext } from './select-next';
 import { Container } from '@/container/container';
-import { Paragraph } from '@/paragraph/paragraph';
 import Text from '@/atoms/Text';
 
 const topics = Array.from({ length: 8 }, (_, index) => ({
@@ -831,7 +830,7 @@ export const TestConditionallyRender: StoryObj = {
       await userEvent.keyboard('{Tab}');
       await userEvent.keyboard('{Enter}');
       await waitFor(() => expect(canvas.getByRole('listbox')).toBeInTheDocument());
-      await userEvent.type(selectInput, 'or', { delay: 10 });
+      await userEvent.type(selectInput, 'or', { delay: 100 });
       await waitFor(() => canvas.getByRole('option', { name: /orange/i }));
       await waitFor(() => {
         const options = canvas.getAllByRole('option');
@@ -894,7 +893,7 @@ export const TestConditionallyRender: StoryObj = {
       await userEvent.clear(externalInput);
       await userEvent.type(externalInput, 'x');
       await userEvent.keyboard('{Tab}');
-      await userEvent.type(selectInput, ' ', { delay: 10 });
+      await userEvent.type(selectInput, ' ', { delay: 100 });
       await waitFor(() => expect(canvas.queryByRole('listbox')).toBeNull());
     });
   },

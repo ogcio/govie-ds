@@ -1,5 +1,4 @@
 'use client';
-import { isEqual } from 'lodash';
 import type { FC, ChangeEvent } from 'react';
 import React, {
   useRef,
@@ -81,7 +80,11 @@ export const Autocomplete = forwardRef<HTMLInputElement, AutocompleteProps>((pro
   }, [value]);
 
   useEffect(() => {
-    if (selectedValues && !isEqual(new Set(selectedValues), state.selectedValues)) {
+    if (
+      selectedValues &&
+      (selectedValues.length !== state.selectedValues.size ||
+        selectedValues.some((value) => !state.selectedValues.has(value)))
+    ) {
       dispatch({ type: SET_SELECTED_VALUES, payload: selectedValues });
     }
   }, [selectedValues]);
