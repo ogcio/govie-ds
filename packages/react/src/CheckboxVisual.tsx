@@ -1,5 +1,15 @@
 import { tv } from 'tailwind-variants';
 
+export type CheckboxVisualProps = {
+  checked?: boolean;
+  size?: 'sm' | 'md';
+  className?: string;
+};
+
+export const CheckboxVisual = ({ checked, size, className }: CheckboxVisualProps) => {
+  return <span aria-hidden="true" className={checkboxVisualStyles({ checked: !!checked, size, className })} />;
+};
+
 const checkboxVisualStyles = tv({
   base: [
     'gi-flex-none',
@@ -42,13 +52,3 @@ const checkboxVisualStyles = tv({
     size: 'sm',
   },
 });
-
-export type CheckboxVisualProps = {
-  checked?: boolean;
-  size?: 'sm' | 'md';
-  className?: string;
-};
-
-export const CheckboxVisual = ({ checked, size, className }: CheckboxVisualProps) => {
-  return <span aria-hidden="true" className={checkboxVisualStyles({ checked: !!checked, size, className })} />;
-};
