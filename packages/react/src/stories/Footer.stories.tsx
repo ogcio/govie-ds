@@ -25,7 +25,7 @@ const meta: Meta = {
 export default meta;
 type Story = StoryObj<typeof meta>;
 
-export const FullyComposed: Story = {
+export const CompleteFooter: Story = {
   ...defaultStory,
   args: {
     footer: {

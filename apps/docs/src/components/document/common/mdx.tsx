@@ -106,8 +106,14 @@ import {
   Tooltip,
   generateSvgPlaceholderDataUrl,
 } from '@ogcio/design-system-react';
-
+import {
+  Footer as FooterNext,
+  FooterSection,
+  FooterLogo,
+  Link,
+} from '@ogcio/design-system-react/next';
 import * as Icons from '@ogcio/design-system-react/icons';
+import { LogoGoldGreen } from '@ogcio/design-system-react/logos';
 import { MDXComponents } from 'mdx/types';
 import { useMDXComponent } from 'next-contentlayer2/hooks';
 import NextLink from 'next/link';
@@ -309,6 +315,9 @@ const documentComponents: MDXComponents = {
     return <FormFieldHint {...props} __type="FormFieldHint" />;
   },
   Footer,
+  FooterNext,
+  FooterSection,
+  FooterLogo,
   Grid,
   GridPrimitives,
   Header,
@@ -329,9 +338,11 @@ const documentComponents: MDXComponents = {
   LetterSpacingTable,
   LineHeightTable,
   Link: (props) => <GovieLink {...props}>{props.children}</GovieLink>,
+  LinkNext: Link,
   List,
   LoadingPattern,
   Logos,
+  LogoGoldGreen,
   Modal,
   ModalBody,
   ModalFooter: (props) => {
