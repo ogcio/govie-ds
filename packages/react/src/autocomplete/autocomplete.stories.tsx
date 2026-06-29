@@ -131,6 +131,7 @@ export const WithDefaultValue: Story = {
 };
 
 export const WithDisabledOptions: Story = {
+  tags: ['slow'],
   args: {
     defaultValue: '',
     children: [],
@@ -414,7 +415,6 @@ const labelOptions = Array.from({ length: 8 }, (_, index) => ({
 
 export const WithMultiple: Story = {
   tags: ['slow'],
-
   render: (props: AutocompleteProps) => {
     return (
       <FormField className="gi-w-[332px]">
@@ -447,6 +447,30 @@ export const WithMultiple: Story = {
       for (const option of allOptions) {
         expect(option).toHaveAttribute('aria-selected');
       }
+    });
+
+    await step('Arrow keys + Enter selects an option without closing', async () => {
+      await userEvent.keyboard('{ArrowDown}');
+      await userEvent.keyboard('{Enter}');
+      await waitFor(() => {
+        const firstOption = canvas.getByRole('option', { name: labelOptions[0].label });
+        expect(firstOption).toHaveAttribute('aria-selected', 'true');
+      });
+      expect(canvas.getByRole('listbox')).toBeInTheDocument();
+      await waitFor(() => {
+        expect(canvas.getByText('1')).toBeInTheDocument();
+      });
+    });
+
+    await step('Clear all via keyboard clears all selections', async () => {
+      await userEvent.keyboard('{ArrowUp}');
+      await userEvent.keyboard('{Enter}');
+      await waitFor(() => {
+        const allOptions = canvas.getAllByRole('option');
+        for (const option of allOptions) {
+          expect(option).toHaveAttribute('aria-selected', 'false');
+        }
+      });
     });
 
     await step('Clicking an option toggles aria-selected without closing', async () => {
@@ -506,13 +530,35 @@ export const WithMultipleChips: Story = {
     const canvas = within(canvasElement);
     const input = canvas.getByRole('combobox');
 
-    await step('Select 6 options and keep popover open', async () => {
+    await step('Removing a chip deselects option in autocomplete', async () => {
       await userEvent.click(input);
       await waitFor(() => {
         expect(canvas.getByRole('listbox')).toBeInTheDocument();
       });
 
-      for (const { label } of labelOptions.slice(0, 8)) {
+      const firstOption = canvas.getByRole('option', { name: labelOptions[0].label });
+      await userEvent.click(firstOption);
+      await waitFor(() => {
+        expect(firstOption).toHaveAttribute('aria-selected', 'true');
+        expect(canvas.getAllByRole('button', { name: /remove chip/i }).length).toBe(1);
+      });
+
+      await userEvent.keyboard('{Escape}');
+      const chips = canvas.getAllByRole('button', { name: /remove chip/i });
+      await userEvent.click(chips[0]);
+      await waitFor(() => {
+        expect(canvas.queryByRole('button', { name: /remove chip/i })).not.toBeInTheDocument();
+      });
+
+      await userEvent.click(input);
+      await waitFor(() => {
+        const option = canvas.getByRole('option', { name: labelOptions[0].label });
+        expect(option).toHaveAttribute('aria-selected', 'false');
+      });
+    });
+
+    await step('Select all 8 options and keep popover open', async () => {
+      for (const { label } of labelOptions) {
         const option = canvas.getByRole('option', { name: label });
         await userEvent.click(option);
         await waitFor(() => {

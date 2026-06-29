@@ -76,7 +76,7 @@ const reducer = (state: AutocompleteState, action: AutocompleteAction): Autocomp
       return { ...state, selectedValues: next };
     }
     case CLEAR_ALL_SELECTIONS: {
-      return { ...state, selectedValues: new Set<string>() };
+      return { ...state, selectedValues: new Set<string>(), highlightedIndex: -1 };
     }
     case SET_SELECTED_VALUES: {
       return { ...state, selectedValues: new Set(action.payload) };
