@@ -25,6 +25,14 @@
       text-underline-offset: 0.23em;
     }
   }
+
+  /* Safari (WebKit) clips descenders the same way at 0.2em; bump the offset to match Firefox.
+     `-webkit-named-image` is Safari-only, so this does not touch Chromium. */
+  @supports (background: -webkit-named-image(i)) {
+    :where(.gi-underline) {
+      text-underline-offset: 0.23em;
+    }
+  }
 }
 
 .gi-heading-xl {
