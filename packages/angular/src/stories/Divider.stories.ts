@@ -20,13 +20,13 @@ export const Horizontal: StoryObj = {
     moduleMetadata: { imports: [Box, Divider, Stack, Link] },
     template: `
       <gi-stack [gap]="2" [direction]="orientation === '${Orientation.VERTICAL}' ? 'row' : 'column'" className="gi-font-primary gi-text-sm">
-        <gi-box><gi-link href="/" variant="inline">Above</gi-link></gi-box>
+        <gi-box><gi-link href="#" variant="inline">Above</gi-link></gi-box>
         <gi-divider
           [orientation]="orientation"
           [id]="id"
           [dataTestId]="dataTestId"
         ></gi-divider>
-        <gi-box><gi-link href="/" variant="inline">Below</gi-link></gi-box>
+        <gi-box><gi-link href="#" variant="inline">Below</gi-link></gi-box>
       </gi-stack>
     `,
   }),
@@ -39,13 +39,13 @@ export const Vertical: StoryObj = {
     moduleMetadata: { imports: [Box, Divider, Stack, Link] },
     template: `
       <gi-stack [direction]="'row'" [gap]="2" className="gi-font-primary gi-text-sm">
-        <gi-box><gi-link href="/" variant="inline">Left</gi-link></gi-box>
+        <gi-box><gi-link href="#" variant="inline">Left</gi-link></gi-box>
         <gi-divider
           [orientation]="orientation"
           [id]="id"
           [dataTestId]="dataTestId"
         ></gi-divider>
-        <gi-box><gi-link href="/" variant="inline">Right</gi-link></gi-box>
+        <gi-box><gi-link href="#" variant="inline">Right</gi-link></gi-box>
       </gi-stack>
     `,
   }),

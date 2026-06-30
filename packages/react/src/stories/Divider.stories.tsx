@@ -5,6 +5,7 @@ import { Stack } from '@/stack/stack';
 import { Box } from '@/Box';
 import * as stories from '@/atoms/storybook/Divider.meta';
 import { Orientation } from '@/atoms/constants';
+import Link from '@/Link';
 
 const meta = {
   ...stories.meta,
@@ -27,9 +28,13 @@ export const Horizontal: Story = {
   ...stories.Horizontal,
   render: (props: DividerProps) => (
     <Stack gap={2} direction={props.orientation === Orientation.VERTICAL ? 'row' : 'column'}>
-      <Box>Content</Box>
+      <Box>
+        <Link href="#">Above</Link>
+      </Box>
       <Divider {...props} />
-      <Box>Content</Box>
+      <Box>
+        <Link href="#">Below</Link>
+      </Box>
     </Stack>
   ),
 };
@@ -38,9 +43,13 @@ export const Vertical: Story = {
   ...stories.Vertical,
   render: (props) => (
     <Stack direction="row" gap={2}>
-      <Box>Left</Box>
+      <Box>
+        <Link href="#">Left</Link>
+      </Box>
       <Divider {...props} />
-      <Box>Right</Box>
+      <Box>
+        <Link href="#">Right</Link>
+      </Box>
     </Stack>
   ),
 };
