@@ -25,7 +25,6 @@ export const Chip = ({ label, className, onClose = () => null }: ChipProps) => {
 
   return (
     <div
-      role="group"
       className={cn(className, chipVariants())}
       aria-label={t('chip.label', { label, defaultValue: `chip: ${label}` })}
       aria-describedby={descriptionId}

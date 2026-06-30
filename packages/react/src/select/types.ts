@@ -33,6 +33,8 @@ export type SelectMenuProps = {
   listboxLabel?: string;
   multiselectable?: boolean;
   onClearAll?: () => void;
+  clearAllLabel?: string;
+  clearAllDisabled?: boolean;
   clearAllHighlighted?: boolean;
 };
 

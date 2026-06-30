@@ -1,5 +1,5 @@
 import type { Meta, StoryObj } from '@storybook/react-vite';
-import { debounce } from 'lodash';
+import { debounce, find } from 'lodash';
 import { useEffect, useMemo, useReducer, useState } from 'react';
 import { useForm } from 'react-hook-form';
 import { expect, within, userEvent, waitFor } from 'storybook/test';
@@ -419,7 +419,7 @@ export const WithMultiple: Story = {
     return (
       <FormField className="gi-w-[332px]">
         <FormFieldLabel>Multi Select</FormFieldLabel>
-        <Autocomplete {...props} multiple>
+        <Autocomplete {...props} multiple clearAllLabel="Clear all selections">
           {labelOptions.map(({ value, label }) => (
             <AutocompleteItem value={value} key={value}>
               {label}
@@ -436,9 +436,34 @@ export const WithMultiple: Story = {
     const canvas = within(canvasElement);
     const input = canvas.getByRole('combobox');
 
-    await step('Listbox has aria-multiselectable', async () => {
+    await step('Clear all after search restores all options', async () => {
       await userEvent.click(input);
-      const listbox = await canvas.findByRole('listbox');
+      const firstOption = canvas.getByRole('option', { name: labelOptions[0].label });
+      await userEvent.click(firstOption);
+      await waitFor(() => {
+        expect(firstOption).toHaveAttribute('aria-selected', 'true');
+      });
+
+      await userEvent.type(input, 'Label 8', { delay: 100 });
+      await waitFor(() => {
+        expect(canvas.getAllByRole('option').length).toBe(1);
+      });
+
+      const clearAllButton = canvas.getByRole('button', { name: /clear all/i });
+      await userEvent.click(clearAllButton);
+      await waitFor(
+        () => {
+          expect(canvas.getAllByRole('option').length).toBe(8);
+          for (const option of canvas.getAllByRole('option')) {
+            expect(option).toHaveAttribute('aria-selected', 'false');
+          }
+        },
+        { timeout: 3000 },
+      );
+    });
+
+    await step('Listbox has aria-multiselectable', async () => {
+      const listbox = canvas.getByRole('listbox');
       expect(listbox).toHaveAttribute('aria-multiselectable', 'true');
     });
 
@@ -494,15 +519,13 @@ export const WithMultiple: Story = {
   },
 };
 
-const getLabel = (value: string) => labelOptions.find((option) => option.value === value)?.label ?? value;
-
 export const WithMultipleChips: Story = {
   name: 'With Multiple (Chips)',
   tags: ['slow'],
 
   render: function Render(props: AutocompleteProps) {
     const [selectedValues, setSelectedValues] = useState<string[]>([]);
-    const chipItems = selectedValues.map((value) => ({ value, label: getLabel(value) }));
+    const chipItems = selectedValues.map((value) => ({ value, label: find(labelOptions, { value })?.label ?? value }));
     const handleRemoveChip = (valueToRemove: string) => {
       setSelectedValues(selectedValues.filter((value) => value !== valueToRemove));
     };
@@ -511,7 +534,13 @@ export const WithMultipleChips: Story = {
       <FormField className="gi-w-[332px]">
         <FormFieldLabel>Multi Select (Chips)</FormFieldLabel>
         <Stack gap={3}>
-          <Autocomplete {...props} multiple selectedValues={selectedValues} onSelectChange={setSelectedValues}>
+          <Autocomplete
+            {...props}
+            multiple
+            selectedValues={selectedValues}
+            onSelectChange={setSelectedValues}
+            clearAllLabel="Clear all selections"
+          >
             {labelOptions.map(({ value, label }) => (
               <AutocompleteItem value={value} key={value}>
                 {label}
@@ -587,7 +616,7 @@ export const WithMultipleChipsCollapse: Story = {
   tags: ['slow'],
   render: function Render(props: AutocompleteProps) {
     const [selectedValues, setSelectedValues] = useState<string[]>([]);
-    const chipItems = selectedValues.map((value) => ({ value, label: getLabel(value) }));
+    const chipItems = selectedValues.map((value) => ({ value, label: find(labelOptions, { value })?.label ?? value }));
     const handleRemoveChip = (valueToRemove: string) => {
       setSelectedValues(selectedValues.filter((value) => value !== valueToRemove));
     };
@@ -596,7 +625,13 @@ export const WithMultipleChipsCollapse: Story = {
       <FormField className="gi-w-[332px]">
         <FormFieldLabel>Multi Select (Chips Collapse)</FormFieldLabel>
         <Stack gap={3}>
-          <Autocomplete {...props} multiple selectedValues={selectedValues} onSelectChange={setSelectedValues}>
+          <Autocomplete
+            {...props}
+            multiple
+            selectedValues={selectedValues}
+            onSelectChange={setSelectedValues}
+            clearAllLabel="Clear all selections"
+          >
             {labelOptions.map(({ value, label }) => (
               <AutocompleteItem value={value} key={value}>
                 {label}

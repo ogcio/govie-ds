@@ -1,4 +1,3 @@
-'use client';
 import { take } from 'lodash';
 import { Chip } from '@/chip/chip';
 import { Stack, type StackProps } from '@/stack/stack';

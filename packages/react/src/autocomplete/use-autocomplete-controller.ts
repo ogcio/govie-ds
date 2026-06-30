@@ -15,7 +15,7 @@ const {
   SET_VALUE,
   SET_HIGHLIGHTED_INDEX,
   SET_OPTION_TYPE,
-  TOGGLE_SELECTED_ITEM,
+
   CLEAR_ALL_SELECTIONS,
   SET_SELECTED_VALUES,
 } = AUTOCOMPLETE_ACTIONS;
@@ -67,13 +67,6 @@ const reducer = (state: AutocompleteState, action: AutocompleteAction): Autocomp
     }
     case SET_OPTION_TYPE: {
       return { ...state, optionType: action.payload };
-    }
-    case TOGGLE_SELECTED_ITEM: {
-      const next = new Set(state.selectedValues);
-      if (!next.delete(action.payload)) {
-        next.add(action.payload);
-      }
-      return { ...state, selectedValues: next };
     }
     case CLEAR_ALL_SELECTIONS: {
       return { ...state, selectedValues: new Set<string>(), highlightedIndex: -1 };
@@ -286,5 +279,6 @@ export const useAutocompleteController = ({
     listRef,
     getOptionLabelByValue,
     debouncedFilter,
+    validChildren,
   };
 };

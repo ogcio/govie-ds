@@ -69,6 +69,10 @@ component:
           ofType: 'string[]'
           description: 'Controls the selected values in multiple mode (use for controlled mode).'
           required: false
+        - name: 'clearAllLabel'
+          ofType: 'string'
+          description: 'Custom label for the "Clear all" button in multiple mode.'
+          required: false
     - name: 'ChipGroup'
       fields:
         - name: 'items'
@@ -147,7 +151,7 @@ The Autocomplete component allows users to search and select from a list of opti
 ### Default
 
 <StorybookFrame
-  heightClassName="h-[405px]"
+  className="h-[405px]"
   componentId="autocomplete-react"
   story="default"
 />
@@ -155,7 +159,7 @@ The Autocomplete component allows users to search and select from a list of opti
 ### With Default Value
 
 <StorybookFrame
-  heightClassName="h-[405px]"
+  className="h-[405px]"
   componentId="autocomplete-react"
   story="with-default-value"
 />
@@ -163,7 +167,7 @@ The Autocomplete component allows users to search and select from a list of opti
 ### With Disabled Options
 
 <StorybookFrame
-  heightClassName="h-[405px]"
+  className="h-[405px]"
   componentId="autocomplete-react"
   story="with-disabled-options"
 />
@@ -171,7 +175,7 @@ The Autocomplete component allows users to search and select from a list of opti
 ### With Disabled
 
 <StorybookFrame
-  heightClassName="h-[405px]"
+  className="h-[405px]"
   componentId="autocomplete-react"
   story="with-disabled"
 />
@@ -179,15 +183,15 @@ The Autocomplete component allows users to search and select from a list of opti
 ### With Free Solo
 
 <StorybookFrame
-  heightClassName="h-[405px]"
+  className="h-[405px]"
   componentId="autocomplete-react"
-  story="with-loading"
+  story="with-free-solo"
 />
 
 ### With Loading
 
 <StorybookFrame
-  heightClassName="h-[405px]"
+  className="h-[405px]"
   componentId="autocomplete-react"
   story="with-loading"
 />
@@ -197,7 +201,7 @@ The Autocomplete component allows users to search and select from a list of opti
 When `multiple` is enabled, users can select more than one option. A count badge in the input field shows how many items are selected. A "Clear all selections" action is available in the dropdown.
 
 <StorybookFrame
-  heightClassName="h-[550px]"
+  className="h-[550px]"
   componentId="autocomplete-react"
   story="with-multiple"
 />
@@ -207,7 +211,7 @@ When `multiple` is enabled, users can select more than one option. A count badge
 Use the `ChipGroup` component alongside `Autocomplete` to display selected items as removable chips. `ChipGroup` is a standalone component that manages the visual display of selected items. By default, all chips are visible and wrap to the next line.
 
 <StorybookFrame
-  heightClassName="h-[550px]"
+  className="h-[405px]"
   componentId="autocomplete-react"
   story="with-multiple-chips"
 />
@@ -217,7 +221,7 @@ Use the `ChipGroup` component alongside `Autocomplete` to display selected items
 When `maxVisible` is set, only that many chips are shown. A `formatOverflow` function provides the overflow label text (e.g. "+2 more").
 
 <StorybookFrame
-  heightClassName="h-[550px]"
+  className="h-[405px]"
   componentId="autocomplete-react"
   story="with-multiple-chips-collapse"
 />

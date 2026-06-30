@@ -30,6 +30,8 @@ export const SelectMenu = forwardRef<HTMLDivElement, SelectMenuProps>(
       listboxLabel,
       multiselectable,
       onClearAll,
+      clearAllLabel,
+      clearAllDisabled,
       clearAllHighlighted,
     },
     ref,
@@ -122,14 +124,20 @@ export const SelectMenu = forwardRef<HTMLDivElement, SelectMenuProps>(
           {onClearAll && (
             <>
               <div
+                id={listboxId ? `${listboxId}-clear-all` : undefined}
                 role="button"
                 tabIndex={-1}
+                aria-disabled={clearAllDisabled || undefined}
+                data-highlighted={clearAllHighlighted || undefined}
                 className={cn('gi-select-option-item', {
-                  'gi-select-option-item-highlighted': clearAllHighlighted,
+                  'gi-select-option-item-highlighted': clearAllHighlighted && !clearAllDisabled,
+                  'gi-select-option-item-disabled': clearAllDisabled,
                 })}
-                onClick={onClearAll}
+                onClick={clearAllDisabled ? undefined : onClearAll}
               >
-                <Text size="sm">{t('autocomplete.clearAll', { defaultValue: 'Clear all selections' })}</Text>
+                <Text size="sm">
+                  {clearAllLabel || t('autocomplete.clearAll', { defaultValue: 'Clear all selections' })}
+                </Text>
               </div>
               <Divider className="gi-mt-1" />
             </>
