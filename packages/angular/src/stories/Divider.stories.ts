@@ -2,9 +2,9 @@ import type { StoryObj } from '@storybook/angular';
 import Box from '@/atoms/Box';
 import Divider from '@/atoms/Divider';
 import Stack from '@/atoms/Stack';
+import Link from '@/atoms/Link';
 import * as stories from '@/atoms/storybook/Divider.meta';
 import { Orientation } from '@/atoms/constants';
-import { Link } from '@/atoms';
 
 const meta = {
   ...stories.meta,
