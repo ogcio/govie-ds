@@ -1,8 +1,8 @@
 export { default as Box } from './Box.lite';
 export { default as Button } from './Button.lite';
 export { default as Footer, type Props as FooterProps } from './Footer.lite';
-export { default as FooterLogo, type Props as FooterLogoProps } from './Footer.lite';
-export { default as FooterSection, type Props as FooterSectionProps } from './Footer.lite';
+export { default as FooterLogo, type Props as FooterLogoProps } from './FooterLogo.lite';
+export { default as FooterSection, type Props as FooterSectionProps } from './FooterSection.lite';
 export { default as IconButton } from './IconButton.lite';
 export { default as InsetText } from './InsetText.lite';
 export { default as Link } from './Link.lite';
