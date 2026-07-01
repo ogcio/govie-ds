@@ -47,7 +47,7 @@ export const Vertical: Story = {
 };
 
 export const RichText: Story = {
-  ...stories.Vertical,
+  ...stories.RichText,
   render: (props) => (
     <Stack direction="row" gap={2}>
       <Box>
