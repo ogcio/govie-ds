@@ -18,7 +18,7 @@ export default function Divider(props: Props) {
     <hr
       id={props.id}
       data-testid={props.dataTestId}
-      aria-orientation={getOrientation(props.orientation) === Orientation.VERTICAL ? Orientation.VERTICAL : undefined}
+      aria-orientation={getOrientation(props.orientation)}
       class={dividerStyles({
         orientation: getOrientation(props.orientation),
         className: props.className,

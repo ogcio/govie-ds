@@ -38,7 +38,7 @@ const dividerStyles = tv({
     <hr
       [attr.id]="id"
       [attr.data-testid]="dataTestId"
-      [attr.aria-orientation]="getOrientation(orientation) === Orientation.VERTICAL ? Orientation.VERTICAL : undefined"
+      [attr.aria-orientation]="getOrientation(orientation)"
       [class]="
         dividerStyles({
           orientation: getOrientation(orientation),
