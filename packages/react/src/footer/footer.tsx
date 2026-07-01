@@ -42,7 +42,8 @@ function getLogo({ logo }: FooterProps) {
   );
 }
 /**
- *  @deprecated Use composable Footer for better control. TODO: add more details to footer deprecation message when its decided where docs will go
+ *  @deprecated Use the new composable Footer from `@ogcio/design-system-react/next`. See the  [migration guide](https://ds.services.gov.ie/components/library/footer/react/#migration-guide) for more details.
+ *
  */
 export function Footer({
   primarySlot,

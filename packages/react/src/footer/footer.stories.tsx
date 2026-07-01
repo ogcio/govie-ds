@@ -43,8 +43,7 @@ const meta: Meta<typeof Footer> = {
     docs: {
       description: {
         component:
-          // TODO: add link to migration guide
-          'Legacy Footer component, with slot-like component placement for primary & utility sections, alongside the logo. See our migration guide on migrating from this component to the new [Composable Footer](/docs/layout-footer-footer--docs) for better flexibility and support.',
+          'Legacy Footer component, with slot-like component placement for primary & utility sections, alongside the logo. See our [migration guide](https://ds.services.gov.ie//components/library/footer/react/#migration-guide) on migrating from this component to the new [Composable Footer](/docs/layout-footer-footer--docs) for better flexibility and support.',
       },
     },
   },
