@@ -94,9 +94,9 @@ export const Horizontal = {
       const element = canvas.getByRole('separator');
       expect(element).not.toHaveAttribute('tabindex');
     });
-    await step('does not set aria-orientation for horizontal default', async () => {
+    await step(' sets aria-orientation for horizontal default', async () => {
       const element = canvas.getByRole('separator');
-      expect(element).not.toHaveAttribute('aria-orientation');
+      expect(element).toHaveAttribute('aria-orientation');
     });
   },
 };
@@ -110,5 +110,11 @@ export const Vertical = {
     await checker('divider-vertical-test', canvas, step).attributes({
       'aria-orientation': Orientation.VERTICAL,
     });
+  },
+};
+export const RichText = {
+  args: {
+    orientation: Orientation.VERTICAL,
+    dataTestId: 'divider-richtext-test',
   },
 };
