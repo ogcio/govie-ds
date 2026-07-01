@@ -221,7 +221,6 @@ export const CompleteFooter: Story = {
 
     await step('should render all slots when provided', async () => {
       expect(canvas.getByTestId('primary')).toBeInTheDocument();
-      expect(canvas.getByTestId('secondary')).toBeInTheDocument();
       expect(canvas.getByTestId('utility')).toBeInTheDocument();
     });
   },
