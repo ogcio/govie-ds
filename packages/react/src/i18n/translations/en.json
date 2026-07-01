@@ -2,6 +2,7 @@
   "en": {
     "translation": {
       "alert.dismissAlert": "Dismiss Alert",
+      "autocomplete.clearAll": "Clear all selections",
       "autocomplete.noData": "No data found.",
       "autocomplete.placeholder": "Type to Search",
       "breadcrumbs.breadcrumbs": "Breadcrumbs",
