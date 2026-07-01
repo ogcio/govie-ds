@@ -38,7 +38,7 @@ export const CompleteFooter: Story = {
     <Footer {...footer}>
       <FooterSection variant={FooterSectionVariant.PRIMARY} dataTestId="footer-section-primary">
         <Container className="gi-text-black">
-          <Grid container columns={{ base: 4, md: 8, lg: 12 }} dataTestId="primary">
+          <Grid container columns={{ base: 4, md: 8, lg: 12 }} gap={4} dataTestId="primary">
             <Grid size={{ base: 4, md: 4, lg: 3 }}>
               <H3 className="gi-my-4">Services</H3>
               <Divider className="gi-my-4" />

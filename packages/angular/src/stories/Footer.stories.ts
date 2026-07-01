@@ -65,9 +65,10 @@ export const CompleteFooter: StoryObj = {
       >
         <gi-footer-section variant="primary" dataTestId="footer-section-primary">
           <gi-container className="gi-text-black">
-            <gi-grid [container]="true" [columns]="gridColumns" dataTestId="primary">
+            <gi-grid [container]="true" [columns]="gridColumns" gap="4" dataTestId="primary">
               <gi-grid [size]="gridSize">
                 <gi-h3 className="gi-my-4">Services</gi-h3>
+                <gi-divider className="gi-my-4"></gi-divider>
                 <ul class="gi-space-y-2">
                   <li>
                     <gi-link underline="always" href="/services/public-services">Public Services</gi-link>
@@ -82,6 +83,7 @@ export const CompleteFooter: StoryObj = {
               </gi-grid>
               <gi-grid [size]="gridSize">
                 <gi-h3 className="gi-my-4">Departments</gi-h3>
+                <gi-divider className="gi-my-4"></gi-divider>
                 <ul class="gi-space-y-2">
                   <li>
                     <gi-link underline="always" href="/departments/health">Department of Health</gi-link>
@@ -96,6 +98,7 @@ export const CompleteFooter: StoryObj = {
               </gi-grid>
               <gi-grid [size]="gridSize">
                 <gi-h3 className="gi-my-4">Publications</gi-h3>
+                <gi-divider className="gi-my-4"></gi-divider>
                 <ul class="gi-space-y-2">
                   <li>
                     <gi-link underline="always" href="/publications/reports">Reports</gi-link>
@@ -110,6 +113,7 @@ export const CompleteFooter: StoryObj = {
               </gi-grid>
               <gi-grid [size]="gridSize">
                 <gi-h3 className="gi-my-4">Contact</gi-h3>
+                <gi-divider className="gi-my-4"></gi-divider>
                 <ul class="gi-space-y-2">
                   <li>
                     <gi-link underline="always" href="/contact/find-an-office">Find an Office</gi-link>
