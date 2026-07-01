@@ -1,5 +1,4 @@
 import type { Metadata } from 'next';
-import { LoadMaterialSymbols } from '@ogcio/design-system-react';
 import { Lato } from 'next/font/google';
 import './globals.css';
 import '@ogcio/design-system-react/styles.css';
