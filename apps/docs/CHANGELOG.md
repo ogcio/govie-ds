@@ -1,5 +1,21 @@
 # Changelog
 
+## [1.41.0](https://github.com/ogcio/govie-ds/compare/docs-v1.40.0...docs-v1.41.0) (2026-07-01)
+
+
+### Features
+
+* **AB#34759:** Adding "multiple" prop in Autocomplete ([#993](https://github.com/ogcio/govie-ds/issues/993)) ([ad88325](https://github.com/ogcio/govie-ds/commit/ad88325485f694e663bdd6cdf1884a467967df7b))
+
+
+### Dependencies
+
+* The following workspace dependencies were updated
+  * dependencies
+    * @ogcio/design-system-html bumped to 1.21.4
+    * @ogcio/design-system-react bumped to 1.42.0
+    * @ogcio/design-system-tailwind bumped to 1.26.2
+
 ## [1.40.0](https://github.com/ogcio/govie-ds/compare/docs-v1.39.0...docs-v1.40.0) (2026-06-24)
 
 

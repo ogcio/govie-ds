@@ -1,5 +1,26 @@
 # Changelog
 
+## [1.42.0](https://github.com/ogcio/govie-ds/compare/react-lib-v1.41.0...react-lib-v1.42.0) (2026-07-01)
+
+
+### Features
+
+* **AB#34759:** Adding "multiple" prop in Autocomplete ([#993](https://github.com/ogcio/govie-ds/issues/993)) ([ad88325](https://github.com/ogcio/govie-ds/commit/ad88325485f694e663bdd6cdf1884a467967df7b))
+* **AB#39585:** add FooterLogo component ([#996](https://github.com/ogcio/govie-ds/issues/996)) ([d7c3ef0](https://github.com/ogcio/govie-ds/commit/d7c3ef04e244fc9af79908c3e574a32938107275))
+
+
+### Bug Fixes
+
+* **AB#39751:** bump underline offset for Safari WebKit ([ee74bdb](https://github.com/ogcio/govie-ds/commit/ee74bdb5a08f63e6aee1fb0d861e2ee562a70225))
+* **AB#40245:** divider orientation ([#999](https://github.com/ogcio/govie-ds/issues/999)) ([054a1be](https://github.com/ogcio/govie-ds/commit/054a1be2c4e6b30d50370eba9ce172a80bb03e66))
+
+
+### Dependencies
+
+* The following workspace dependencies were updated
+  * devDependencies
+    * @ogcio/design-system-tailwind bumped to 1.26.2
+
 ## [1.41.0](https://github.com/ogcio/govie-ds/compare/react-lib-v1.40.0...react-lib-v1.41.0) (2026-06-24)
 
 
