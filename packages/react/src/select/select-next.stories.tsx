@@ -8,7 +8,6 @@ import { FormField, FormFieldError, FormFieldHint, FormFieldLabel } from '@/form
 import { Label } from '@/label/label';
 import { SelectGroupItemNext, SelectItemNext, SelectNext } from './select-next';
 import { Container } from '@/container/container';
-import { Paragraph } from '@/paragraph/paragraph';
 import Text from '@/atoms/Text';
 
 const topics = Array.from({ length: 8 }, (_, index) => ({
@@ -242,6 +241,7 @@ export const DisabledItem = {
 };
 
 export const WithSearchEnabled: StoryObj = {
+  tags: ['slow'],
   render: () => (
     <FormField className="gi-w-56">
       <FormFieldLabel>Label</FormFieldLabel>
@@ -257,11 +257,11 @@ export const WithSearchEnabled: StoryObj = {
   ),
   play: async ({ canvasElement }) => {
     const canvas = within(canvasElement);
-    const input = canvas.getByRole('textbox');
+    const input = canvas.getByRole('combobox');
     await userEvent.click(input);
 
     const searchBox = canvas.getByPlaceholderText('Type to Search');
-    await userEvent.type(searchBox, 'Option 2');
+    await userEvent.type(searchBox, 'Option 2', { delay: 100 });
 
     const list = await canvas.findByRole('listbox');
 
@@ -293,7 +293,7 @@ export const WithGroups = {
   ),
   play: async ({ canvasElement }: { canvasElement: HTMLCanvasElement }) => {
     const canvas = within(canvasElement);
-    const input = canvas.getByRole('textbox');
+    const input = canvas.getByRole('combobox');
     await userEvent.click(input);
 
     await waitFor(() => {
@@ -584,7 +584,7 @@ export const TestNoSubmitOnEnter: StoryObj<typeof SelectNext> = {
 
     const submitCountOn = await on.findByTestId('submit-count-on');
     const submitCountOff = await off.findByTestId('submit-count-off');
-    const inputOn = await on.findByRole('textbox', { name: /select/i });
+    const inputOn = await on.findByRole('combobox', { name: /select/i });
     const inputOff = await off.findByRole('textbox', { name: /select/i });
 
     await step('[Search ON] keyboard: Enter on focused select opens popover without submitting', async () => {
@@ -809,7 +809,7 @@ export const TestConditionallyRender: StoryObj = {
   },
   play: async ({ canvasElement, step }) => {
     const canvas = within(canvasElement);
-    const selectInput = await canvas.findByRole('textbox', { name: /select/i });
+    const selectInput = await canvas.findByRole('combobox', { name: /select/i });
     const externalInput = await canvas.findByPlaceholderText('Type something...');
 
     await step('Enter opens dropdown', async () => {
@@ -830,7 +830,7 @@ export const TestConditionallyRender: StoryObj = {
       await userEvent.keyboard('{Tab}');
       await userEvent.keyboard('{Enter}');
       await waitFor(() => expect(canvas.getByRole('listbox')).toBeInTheDocument());
-      await userEvent.type(selectInput, 'or', { delay: 10 });
+      await userEvent.type(selectInput, 'or', { delay: 100 });
       await waitFor(() => canvas.getByRole('option', { name: /orange/i }));
       await waitFor(() => {
         const options = canvas.getAllByRole('option');
@@ -893,7 +893,7 @@ export const TestConditionallyRender: StoryObj = {
       await userEvent.clear(externalInput);
       await userEvent.type(externalInput, 'x');
       await userEvent.keyboard('{Tab}');
-      await userEvent.type(selectInput, ' ', { delay: 10 });
+      await userEvent.type(selectInput, ' ', { delay: 100 });
       await waitFor(() => expect(canvas.queryByRole('listbox')).toBeNull());
     });
   },
@@ -995,7 +995,8 @@ export const WithRichText: StoryObj = {
   },
   play: async ({ canvasElement }) => {
     const canvas = within(canvasElement);
-    const [defaultSelect, searchSelect] = canvas.getAllByRole('textbox');
+    const defaultSelect = canvas.getByRole('textbox');
+    const searchSelect = canvas.getByRole('combobox');
     expect(defaultSelect.getAttribute('value')).toBe('Inline rich text');
 
     await userEvent.click(defaultSelect);
@@ -1023,8 +1024,8 @@ export const WithRichText: StoryObj = {
     await userEvent.click(inlineRichTextOption);
     await waitFor(() => {
       // check the new input value of the search select
-      const searchSelect = canvas.getAllByRole('textbox')[1];
-      expect(searchSelect.getAttribute('value')).toBe('Inline rich text');
+      const updatedSearchSelect = canvas.getByRole('combobox');
+      expect(updatedSearchSelect.getAttribute('value')).toBe('Inline rich text');
     });
   },
 };

@@ -2,13 +2,8 @@ import { debounce } from 'lodash';
 import { Children, isValidElement, useEffect, useMemo, useReducer, useRef } from 'react';
 import { useScrollHighlightedItem } from '@/hooks/use-scroll-highlighted-item';
 import { safeCloneElement, getTextContent } from '@/utils/utilities';
-import type {
-  AutocompleteAction,
-  AutocompleteState,
-  AutocompleteOptionItemElement,
-  AutocompleteProps,
-} from './types.js';
-import { AUTOCOMPLETE_ACTIONS } from './types.js';
+import type { AutocompleteAction, AutocompleteState, AutocompleteOptionItemElement, AutocompleteProps } from './types';
+import { AUTOCOMPLETE_ACTIONS } from './types';
 
 const {
   ON_RESET,
@@ -20,6 +15,9 @@ const {
   SET_VALUE,
   SET_HIGHLIGHTED_INDEX,
   SET_OPTION_TYPE,
+
+  CLEAR_ALL_SELECTIONS,
+  SET_SELECTED_VALUES,
 } = AUTOCOMPLETE_ACTIONS;
 
 const reducer = (state: AutocompleteState, action: AutocompleteAction): AutocompleteState => {
@@ -69,6 +67,12 @@ const reducer = (state: AutocompleteState, action: AutocompleteAction): Autocomp
     }
     case SET_OPTION_TYPE: {
       return { ...state, optionType: action.payload };
+    }
+    case CLEAR_ALL_SELECTIONS: {
+      return { ...state, selectedValues: new Set<string>(), highlightedIndex: -1 };
+    }
+    case SET_SELECTED_VALUES: {
+      return { ...state, selectedValues: new Set(action.payload) };
     }
     default: {
       return state;
@@ -143,10 +147,23 @@ export const useAutocompleteController = ({
   onClose,
   onChange,
   value,
+  multiple,
+  defaultSelectedValues,
 }: {
   onChange?: (input: string, name?: string) => void;
   ref?: any;
-} & Pick<AutocompleteProps, 'children' | 'defaultValue' | 'isOpen' | 'freeSolo' | 'onOpen' | 'onClose' | 'value'>) => {
+} & Pick<
+  AutocompleteProps,
+  | 'children'
+  | 'defaultValue'
+  | 'isOpen'
+  | 'freeSolo'
+  | 'onOpen'
+  | 'onClose'
+  | 'value'
+  | 'multiple'
+  | 'defaultSelectedValues'
+>) => {
   const inputRef = useRef<HTMLInputElement>(null);
   const listRef = useRef<HTMLDivElement>(null);
   const hasMountedRef = useRef(false);
@@ -163,6 +180,7 @@ export const useAutocompleteController = ({
       isClearButtonEnabled: false,
       highlightedIndex: -1,
       optionType,
+      selectedValues: new Set<string>(defaultSelectedValues || []),
     };
   });
   useScrollHighlightedItem(listRef, state.highlightedIndex);
@@ -192,18 +210,25 @@ export const useAutocompleteController = ({
       dispatch({ type: SET_OPTIONS, payload: validChildren });
     } else {
       onClose?.();
-      const label = getOptionLabelByValue(children, state.value);
-      if (label && state.value) {
-        dispatch({
-          type: SET_INPUT_VALUE,
-          payload: label,
-        });
-        dispatch({ type: SET_IS_OPEN, payload: false });
-      } else if (!freeSolo) {
-        dispatch({ type: ON_RESET });
-        onChange?.('');
+      if (multiple) {
+        dispatch({ type: SET_INPUT_VALUE, payload: '' });
+        dispatch({ type: SET_OPTIONS, payload: validChildren });
+        dispatch({ type: SET_HIGHLIGHTED_INDEX, payload: -1 });
+        dispatch({ type: TOGGLE_CLEAR_BUTTON });
+      } else {
+        const label = getOptionLabelByValue(children, state.value);
+        if (label && state.value) {
+          dispatch({
+            type: SET_INPUT_VALUE,
+            payload: label,
+          });
+          dispatch({ type: SET_IS_OPEN, payload: false });
+        } else if (!freeSolo) {
+          dispatch({ type: ON_RESET });
+          onChange?.('');
+        }
+        dispatch({ type: TOGGLE_CLEAR_BUTTON });
       }
-      dispatch({ type: TOGGLE_CLEAR_BUTTON });
     }
   }, [state.isOpen]);
 
@@ -252,8 +277,8 @@ export const useAutocompleteController = ({
     dispatch,
     inputRef,
     listRef,
-    validChildren,
     getOptionLabelByValue,
     debouncedFilter,
+    validChildren,
   };
 };

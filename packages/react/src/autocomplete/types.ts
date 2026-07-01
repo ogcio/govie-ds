@@ -11,6 +11,9 @@ export const AUTOCOMPLETE_ACTIONS = {
   ON_SELECT_ITEM: 'ON_SELECT_ITEM',
   SET_HIGHLIGHTED_INDEX: 'SET_HIGHLIGHTED_INDEX',
   SET_OPTION_TYPE: 'SET_OPTION_TYPE',
+
+  CLEAR_ALL_SELECTIONS: 'CLEAR_ALL_SELECTIONS',
+  SET_SELECTED_VALUES: 'SET_SELECTED_VALUES',
 } as const;
 
 export type AutocompleteState = {
@@ -21,6 +24,7 @@ export type AutocompleteState = {
   autocompleteOptions: any[];
   highlightedIndex: number;
   optionType: string;
+  selectedValues: Set<string>;
 };
 
 export type AutocompleteAction =
@@ -44,7 +48,9 @@ export type AutocompleteAction =
   | {
       type: typeof AUTOCOMPLETE_ACTIONS.SET_HIGHLIGHTED_INDEX;
       payload: number;
-    };
+    }
+  | { type: typeof AUTOCOMPLETE_ACTIONS.CLEAR_ALL_SELECTIONS }
+  | { type: typeof AUTOCOMPLETE_ACTIONS.SET_SELECTED_VALUES; payload: string[] };
 
 export type AutocompleteOptionItemElement = ReactElement<
   SelectMenuOptionProps & {
@@ -52,7 +58,7 @@ export type AutocompleteOptionItemElement = ReactElement<
   }
 >;
 
-export type AutocompleteProps = PropsWithChildren<{
+type AutocompleteBaseProps = PropsWithChildren<{
   /** Unique identifier for the autocomplete component. */
   id?: string;
   /** Initial selected value when the component is first rendered. */
@@ -77,6 +83,29 @@ export type AutocompleteProps = PropsWithChildren<{
   value?: any;
 }> &
   Omit<React.InputHTMLAttributes<HTMLInputElement>, 'onChange' | 'defaultChecked'>;
+
+type AutocompleteSingleProps = AutocompleteBaseProps & {
+  multiple?: false;
+  onSelectChange?: never;
+  defaultSelectedValues?: never;
+  selectedValues?: never;
+  clearAllLabel?: never;
+};
+
+type AutocompleteMultipleProps = AutocompleteBaseProps & {
+  /** Enables multi-select mode, allowing multiple options to be selected. */
+  multiple: true;
+  /** Callback providing the full array of selected values after each change in multi-select mode. */
+  onSelectChange?: (values: string[]) => void;
+  /** Initial selected values for multi-select mode. */
+  defaultSelectedValues?: string[];
+  /** Controlled selected values for multi-select mode. */
+  selectedValues?: string[];
+  /** Custom label for the "Clear all" button. Useful for client-side i18n. */
+  clearAllLabel?: string;
+};
+
+export type AutocompleteProps = AutocompleteSingleProps | AutocompleteMultipleProps;
 
 export type AutocompleteItemProps = {
   children: string;

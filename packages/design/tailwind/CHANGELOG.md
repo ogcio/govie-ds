@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.26.2](https://github.com/ogcio/govie-ds/compare/design-tailwind-v1.26.1...design-tailwind-v1.26.2) (2026-07-01)
+
+
+### Bug Fixes
+
+* **AB#39751:** bump underline offset for Safari WebKit ([ee74bdb](https://github.com/ogcio/govie-ds/commit/ee74bdb5a08f63e6aee1fb0d861e2ee562a70225))
+
 ## [1.26.1](https://github.com/ogcio/govie-ds/compare/design-tailwind-v1.26.0...design-tailwind-v1.26.1) (2026-06-09)
 
 
