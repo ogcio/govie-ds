@@ -393,7 +393,7 @@ const App = () => {
 
 The `<Container>` is a useful way of keeping horizontal padding consistent and responsive across your site. See the [Container docs](/components/library/container/design/) for more information.
 
-A `Stack` with conditional directions based on screen width is effective for controlling the flow of content, particularly for managing the positioning of the secondary content with the logo. Here we use `direction={{ base: 'column', md: 'row' }}`, which is to say, for any screen widths greater than 768px, use flex-row. Any less, and use `flex-col`. This is the recommended flow of content between the secondary links, and the logo.
+A `Stack` with conditional directions based on screen width is effective for controlling the flow of content, particularly for managing the positioning of the secondary content with the logo. Here we use `direction={{ base: 'column', md: 'row' }}`, which is to say, for any screen widths greater than `md`, use flex-row. Any less, and use `flex-col`. This is the recommended flow of content between the secondary links, and the logo.
 
 For a complete example, as show at the beginning of this page, click "Show Code" in the [Footers story](/storybook-react/docs/layout-footer-footer--docs).
 
