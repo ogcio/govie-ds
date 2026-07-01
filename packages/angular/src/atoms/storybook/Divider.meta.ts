@@ -112,3 +112,9 @@ export const Vertical = {
     });
   },
 };
+export const RichText = {
+  args: {
+    orientation: Orientation.VERTICAL,
+    dataTestId: 'divider-richtext-test',
+  },
+};

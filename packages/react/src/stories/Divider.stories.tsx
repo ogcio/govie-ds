@@ -28,13 +28,9 @@ export const Horizontal: Story = {
   ...stories.Horizontal,
   render: (props: DividerProps) => (
     <Stack gap={2} direction={props.orientation === Orientation.VERTICAL ? 'row' : 'column'}>
-      <Box>
-        <Link href="#">Content</Link>
-      </Box>
+      <Box>Content</Box>
       <Divider {...props} />
-      <Box>
-        <Link href="#">Content</Link>
-      </Box>
+      <Box>Content</Box>
     </Stack>
   ),
 };
@@ -43,19 +39,15 @@ export const Vertical: Story = {
   ...stories.Vertical,
   render: (props) => (
     <Stack direction="row" gap={2}>
-      <Box>
-        <Link href="#">Left</Link>
-      </Box>
+      <Box>Left</Box>
       <Divider {...props} />
-      <Box>
-        <Link href="#">Right</Link>
-      </Box>
+      <Box>Right</Box>
     </Stack>
   ),
 };
 
 export const RichText: Story = {
-  ...stories.Vertical,
+  ...stories.RichText,
   render: (props) => (
     <Stack direction="row" gap={2}>
       <Box>

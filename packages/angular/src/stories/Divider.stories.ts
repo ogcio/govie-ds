@@ -52,7 +52,7 @@ export const Vertical: StoryObj = {
 };
 
 export const RichText: StoryObj = {
-  ...stories.Vertical,
+  ...stories.RichText,
   render: (props) => ({
     props,
     moduleMetadata: { imports: [Box, Divider, Stack, Link] },
