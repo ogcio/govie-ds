@@ -51,14 +51,14 @@ component:
 
 The Footer component is used to render the bottom section of a web page. This component adheres to accessibility best practices with appropriate roles and aria labels.
 
-For modern frameworks such as React and Angular, a new composable Footer has been developed to enable higher level flexibility and support, replacing the slot usage from the legacy Footer. The migration guide can be found below.
+For modern frameworks, a new composable Footer has been developed to enable higher level flexibility and support, replacing the slot usage from the legacy Footer. The migration guide for React can be found below.
 
 <Section current="react">
   <ComponentPreview className="block w-full gi-not-prose">
     <FooterNext >
       <FooterSection dataTestId="footer-section-primary">
         <Container className="gi-text-gray-800">
-          <Grid container columns={{ base: 4, md: 8, lg: 12 }} dataTestId="primary">
+          <Grid container columns={{ base: 4, md: 8, lg: 12 }} gap={4} dataTestId="primary">
             <Grid size={{ base: 4, md: 4, lg: 3 }}>
               <Heading as={'h3'} className="gi-my-4">Services</Heading>
               <Divider className="gi-my-4" />
@@ -290,16 +290,18 @@ This component is a pure `<footer>` component for semantic purposes, and accepts
 
 ### FooterSection
 
-This component is a `<Box>` component, and comes in two variants
+This component is a `<Box/>`, and comes in two variants
 
 - primary (default)
 - utility
 
-Both primary and secondary slots can be placed together within one FooterSection, with a divider between the each. The utility slot can also be generated with this component, using the variant prop `utility`.
+Both primary and secondary slots can be placed together within one FooterSection, with a divider between the each. Alternatively, for semantic purposes, you may use two FooterSections representing each - the choice is yours.
+
+The utility slot can also be generated with this component, using the variant prop `utility`.
 
 ### FooterLogo
 
-This is a wrapper component for the Logo, that self-positions itself to the right of its row for screen-widths greater than `md`.
+This is a wrapper component for your logo, that self-positions itself to the right of its row for screen-widths greater than `md`. For mobile screens it aligns itself to the left of the footer.
 
 #### Migrating the `logo` prop
 
@@ -332,7 +334,7 @@ The legacy `logo` prop accepted `href`, `alt`, `imageLarge`, `imageSmall`, `widt
 </FooterSection>
 ```
 
-If you used custom `imageLarge` / `imageSmall` sources, replace `LogoGoldGreen` with your own `<img>` or `<picture>` element inside the link. `FooterLogo` handles positioning only — it does not add a link or alt text for you.
+If you used custom `imageLarge` / `imageSmall` sources, pass in a custom `size` prop to `LogoGoldGreen` (or any other logo). Alternatively, use your own `<img>` or `<picture>` element. `FooterLogo` handles positioning only — it does not add a link or alt text for you.
 
 For migrating over to the new composable footer API, we would first recommend porting over your `primarySlot`, `secondarySlot` and `utilitySlot` directly in the children of the FooterSections like below.
 
@@ -391,9 +393,9 @@ const App = () => {
 
 The `<Container>` is a useful way of keeping horizontal padding consistent and responsive across your site. See the [Container docs](/components/library/container/design/) for more information.
 
-A `Stack` with conditional directions based on screen width is highly effective at controlling the flow of content, particularly for managing the positioning of the secondary content with the logo. Here, using `column` for mobile screen widths is recommended.
+A `Stack` with conditional directions based on screen width is effective for controlling the flow of content, particularly for managing the positioning of the secondary content with the logo. Here we use `direction={{ base: 'column', md: 'row' }}`, which is to say, for any screen widths greater than 768px, use flex-row. Any less, and use `flex-col`. This is the recommended flow of content between the secondary links, and the logo.
 
-For a complete example, as show at the beginning of this page, click "Show Code" in the [Footers story](/storybook-react/docs/layout-footer-footer--docs&globals=viewport.isRotated:!false).
+For a complete example, as show at the beginning of this page, click "Show Code" in the [Footers story](/storybook-react/docs/layout-footer-footer--docs).
 
 ## Footer (Legacy)
 
