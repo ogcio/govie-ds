@@ -189,10 +189,8 @@ export const Autocomplete = forwardRef<HTMLInputElement, AutocompleteProps>((pro
   );
 
   const handleClearAll = useCallback(() => {
-    dispatch({ type: CLEAR_ALL_SELECTIONS });
-    dispatch({ type: SET_INPUT_VALUE, payload: '' });
-    dispatch({ type: TOGGLE_CLEAR_BUTTON, payload: false });
     debouncedFilter.cancel();
+    dispatch({ type: CLEAR_ALL_SELECTIONS });
     dispatch({ type: SET_OPTIONS, payload: validChildren });
     onSelectChange?.([]);
     requestAnimationFrame(() => inputRef.current?.focus());

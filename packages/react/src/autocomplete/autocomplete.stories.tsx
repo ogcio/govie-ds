@@ -457,6 +457,7 @@ export const WithMultiple: Story = {
           for (const option of canvas.getAllByRole('option')) {
             expect(option).toHaveAttribute('aria-selected', 'false');
           }
+          expect(canvas.getByRole('combobox')).toHaveValue('');
         },
         { timeout: 3000 },
       );
