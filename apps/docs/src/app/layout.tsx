@@ -102,9 +102,6 @@ export default function RootLayout({
 
   return (
     <html lang="en" suppressHydrationWarning className={lato.className}>
-      <head>
-        <LoadMaterialSymbols />
-      </head>
       <body
         className={`transition duration-500 h-screen flex flex-col bg-white`}
       >

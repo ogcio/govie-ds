@@ -24,9 +24,6 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" className={`h-full ${lato.className}`}>
-      <head>
-        <LoadMaterialSymbols />
-      </head>
       <body className="h-full">{children}</body>
     </html>
   );
