@@ -70,9 +70,9 @@ export const Horizontal = {
       expect(element).not.toHaveAttribute('tabindex');
     });
 
-    await step('does not set aria-orientation for horizontal default', async () => {
+    await step(' sets aria-orientation for horizontal default', async () => {
       const element = canvas.getByRole('separator');
-      expect(element).not.toHaveAttribute('aria-orientation');
+      expect(element).toHaveAttribute('aria-orientation');
     });
   },
 };
