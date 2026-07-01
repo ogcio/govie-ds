@@ -17,22 +17,41 @@ export const Horizontal: StoryObj = {
   ...stories.Horizontal,
   render: (props) => ({
     props,
-    moduleMetadata: { imports: [Box, Divider, Stack, Link] },
+    moduleMetadata: { imports: [Box, Divider, Stack] },
     template: `
       <gi-stack [gap]="2" [direction]="orientation === '${Orientation.VERTICAL}' ? 'row' : 'column'" className="gi-font-primary gi-text-sm">
-        <gi-box><gi-link href="#" variant="inline">Above</gi-link></gi-box>
+        <gi-box>Content</gi-box>
         <gi-divider
           [orientation]="orientation"
           [id]="id"
           [dataTestId]="dataTestId"
         ></gi-divider>
-        <gi-box><gi-link href="#" variant="inline">Below</gi-link></gi-box>
+        <gi-box>Content</gi-box>
       </gi-stack>
     `,
   }),
 };
 
 export const Vertical: StoryObj = {
+  ...stories.Vertical,
+  render: (props) => ({
+    props,
+    moduleMetadata: { imports: [Box, Divider, Stack] },
+    template: `
+      <gi-stack [direction]="'row'" [gap]="2" className="gi-font-primary gi-text-sm">
+        <gi-box>Left</gi-box>
+        <gi-divider
+          [orientation]="orientation"
+          [id]="id"
+          [dataTestId]="dataTestId"
+        ></gi-divider>
+        <gi-box>Right</gi-box>
+      </gi-stack>
+    `,
+  }),
+};
+
+export const RichText: StoryObj = {
   ...stories.Vertical,
   render: (props) => ({
     props,
