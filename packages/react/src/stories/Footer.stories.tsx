@@ -42,86 +42,62 @@ export const CompleteFooter: Story = {
             <Grid size={{ base: 4, md: 4, lg: 3 }}>
               <H3 className="gi-my-4">Services</H3>
               <Divider className="gi-my-4" />
-              <ul className="gi-space-y-2">
-                <li>
-                  <Link underline="always" href="/services/public-services">
-                    Public Services
-                  </Link>
-                </li>
-                <li>
-                  <Link underline="always" href="/services/business-services">
-                    Business Services
-                  </Link>
-                </li>
-                <li>
-                  <Link underline="always" href="/services/online-services">
-                    Online Services
-                  </Link>
-                </li>
-              </ul>
+              <Stack direction={'column'} gap={2}>
+                <Link underline="always" href="/services/public-services">
+                  Public Services
+                </Link>
+                <Link underline="always" href="/services/business-services">
+                  Business Services
+                </Link>
+                <Link underline="always" href="/services/online-services">
+                  Online Services
+                </Link>
+              </Stack>
             </Grid>
             <Grid size={{ base: 4, md: 4, lg: 3 }}>
               <H3 className="gi-my-4">Departments</H3>
               <Divider className="gi-my-4" />
-              <ul className="gi-space-y-2">
-                <li>
-                  <Link underline="always" href="/departments/health">
-                    Department of Health
-                  </Link>
-                </li>
-                <li>
-                  <Link underline="always" href="/departments/education">
-                    Department of Education
-                  </Link>
-                </li>
-                <li>
-                  <Link underline="always" href="/departments/finance">
-                    Department of Finance
-                  </Link>
-                </li>
-              </ul>
+              <Stack direction={'column'} gap={2}>
+                <Link underline="always" href="/departments/health">
+                  Department of Health
+                </Link>
+                <Link underline="always" href="/departments/education">
+                  Department of Education
+                </Link>
+                <Link underline="always" href="/departments/finance">
+                  Department of Finance
+                </Link>
+              </Stack>
             </Grid>
             <Grid size={{ base: 4, md: 4, lg: 3 }}>
               <H3 className="gi-my-4">Publications</H3>
               <Divider className="gi-my-4" />
-              <ul className="gi-space-y-2">
-                <li>
-                  <Link underline="always" href="/publications/reports">
-                    Reports
-                  </Link>
-                </li>
-                <li>
-                  <Link underline="always" href="/publications/statistics">
-                    Statistics
-                  </Link>
-                </li>
-                <li>
-                  <Link underline="always" href="/publications/legislation">
-                    Legislation
-                  </Link>
-                </li>
-              </ul>
+              <Stack direction={'column'} gap={2}>
+                <Link underline="always" href="/departments/education">
+                  Reports
+                </Link>
+                <Link underline="always" href="/departments/finance">
+                  Statistics
+                </Link>
+                <Link underline="always" href="/departments/health">
+                  Legislation
+                </Link>
+              </Stack>
             </Grid>
             <Grid size={{ base: 4, md: 4, lg: 3 }}>
               <H3 className="gi-my-4">Contact</H3>
               <Divider className="gi-my-4" />
-              <ul className="gi-space-y-2">
-                <li>
-                  <Link underline="always" href="/contact/find-an-office">
-                    Find an Office
-                  </Link>
-                </li>
-                <li>
-                  <Link underline="always" href="/contact/phone-directory">
-                    Phone Directory
-                  </Link>
-                </li>
-                <li>
-                  <Link underline="always" href="/contact/feedback">
-                    Feedback
-                  </Link>
-                </li>
-              </ul>
+              <Stack direction={'column'} gap={2}>
+                <Link underline="always" href="/departments/education">
+                  Find an Office
+                </Link>
+                <Link underline="always" href="/departments/finance">
+                  Phone Directory
+                </Link>
+                <Link underline="always" href="/departments/health">
+                  Feedback
+                </Link>
+              </Stack>
             </Grid>
           </Grid>
 
