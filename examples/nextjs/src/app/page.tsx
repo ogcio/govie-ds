@@ -26,7 +26,7 @@ import {
   DrawerBody,
   DrawerFooter,
   DropdownItem,
-  Footer,
+  Footer as FooterLegacy,
   Form,
   FormField,
   FormFieldError,
@@ -1393,7 +1393,7 @@ export default function Home() {
         </Container>
       </Container>
 
-      <Footer />
+      <FooterLegacy />
       <ToastProvider />
     </>
   );

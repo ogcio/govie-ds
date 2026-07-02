@@ -3,7 +3,7 @@ import {
   Header,
   Link,
   Paragraph,
-  Footer,
+  Footer as FooterLegacy,
   HeaderSearch,
 } from '@ogcio/design-system-react';
 
@@ -31,7 +31,7 @@ export function ServiceUnavailable() {
           make changes to your claim or speak to someone about your [service].
         </Paragraph>
       </main>
-      <Footer />
+      <FooterLegacy />
     </>
   );
 }

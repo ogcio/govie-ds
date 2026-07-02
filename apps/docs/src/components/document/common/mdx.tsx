@@ -42,7 +42,7 @@ import {
   DrawerFooter,
   DrawerWrapper,
   DropdownItem,
-  Footer,
+  Footer as FooterLegacy,
   Form,
   FormField,
   FormFieldLabel,
@@ -107,7 +107,7 @@ import {
   generateSvgPlaceholderDataUrl,
 } from '@ogcio/design-system-react';
 import {
-  Footer as FooterNext,
+  Footer,
   FooterSection,
   FooterLogo,
   Link,
@@ -314,8 +314,8 @@ const documentComponents: MDXComponents = {
   FormFieldHint: (props) => {
     return <FormFieldHint {...props} __type="FormFieldHint" />;
   },
+  FooterLegacy,
   Footer,
-  FooterNext,
   FooterSection,
   FooterLogo,
   Grid,
