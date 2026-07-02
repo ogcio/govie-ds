@@ -97,7 +97,7 @@ The Footer component is used to render the bottom section of a web page. This co
 
 The design system now provides two `Footer` components from different import paths:
 
-- **Composable Footer** (recommended): import from `>@ogcio/design-system-react/next</code>`— a semantic `<footer>` wrapper used with `FooterSection` and `FooterLogo`.
+- **Composable Footer** (recommended): import from `@ogcio/design-system-react/next`— a semantic `<footer>` wrapper used with `FooterSection` and `FooterLogo`.
 - **Legacy Footer** (deprecated): import from `@ogcio/design-system-react` — the slot-based API with `primarySlot`, `secondarySlot`, `utilitySlot`, and `logo` props.
 
 For modern frameworks, a new composable Footer architecture has been introduced for better flexibility and support, replacing the slot usage from the legacy Footer. You can now construct a footer like below from three components: `<Footer/>`, `<FooterSection/>`, and `<FooterLogo/>`. For migrating from the legacy footer, we've provided a guide below.
