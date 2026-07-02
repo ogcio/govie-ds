@@ -37,18 +37,369 @@ component:
           ofType: 'React.HTMLAttributes<HTMLDivElement>'
           description: 'Any additional props supported by a <div> element.'
           required: false
+
   stories:
+    - name: 'complete-footer'
+      url: '/story/layout-footer-footer--complete-footer'
     - name: 'simple-footer'
-      url: '/story/layout-footer--simple-footer'
+      url: '/story/layout-footer-footer-legacy--simple-footer'
     - name: 'with-utility-links'
-      url: '/story/layout-footer--minimal-footer'
+      url: '/story/layout-footer-footer-legacy--minimal-footer'
 ---
 
 # Footer
 
-The Footer component is used to render the bottom section of a web page. It supports customizable slots for content, a logo, and utility links. This component adheres to accessibility best practices with appropriate roles and aria labels.
+The Footer component is used to render the bottom section of a web page. This component adheres to accessibility best practices with appropriate roles and aria labels.
 
-<Section current="react" >
+For modern frameworks, a new composable Footer has been developed to enable higher level flexibility and support, replacing the slot usage from the legacy Footer. The migration guide for React can be found below.
+
+<Section current="react">
+  <ComponentPreview className="block w-full gi-not-prose">
+    <FooterNext >
+      <FooterSection dataTestId="footer-section-primary">
+        <Container className="gi-text-gray-800">
+          <Grid container columns={{ base: 4, md: 8, lg: 12 }} gap={4} dataTestId="primary">
+            <Grid size={{ base: 4, md: 4, lg: 3 }}>
+              <Heading as={'h3'} className="gi-my-4">Services</Heading>
+              <Divider className="gi-my-4" />
+              <ul className="gi-space-y-2">
+                <li>
+                  <LinkNext underline="always" href="/services/public-services">
+                    Public Services
+                  </LinkNext>
+                </li>
+                <li>
+                  <LinkNext underline="always" href="/services/business-services">
+                    Business Services
+                  </LinkNext>
+                </li>
+                <li>
+                  <LinkNext underline="always" href="/services/online-services">
+                    Online Services
+                  </LinkNext>
+                </li>
+              </ul>
+            </Grid>
+            <Grid size={{ base: 4, md: 4, lg: 3 }}>
+              <Heading as={'h3'} className="gi-my-4">Departments</Heading>
+              <Divider className="gi-my-4" />
+              <ul className="gi-space-y-2">
+                <li>
+                  <LinkNext underline="always" href="/departments/health">
+                    Department of Health
+                  </LinkNext>
+                </li>
+                <li>
+                  <LinkNext underline="always" href="/departments/education">
+                    Department of Education
+                  </LinkNext>
+                </li>
+                <li>
+                  <LinkNext underline="always" href="/departments/finance">
+                    Department of Finance
+                  </LinkNext>
+                </li>
+              </ul>
+            </Grid>
+            <Grid size={{ base: 4, md: 4, lg: 3 }}>
+              <Heading as={'h3'} className="gi-my-4">Publications</Heading>
+              <Divider className="gi-my-4" />
+              <ul className="gi-space-y-2">
+                <li>
+                  <LinkNext underline="always" href="/publications/reports">
+                    Reports
+                  </LinkNext>
+                </li>
+                <li>
+                  <LinkNext underline="always" href="/publications/statistics">
+                    Statistics
+                  </LinkNext>
+                </li>
+                <li>
+                  <LinkNext underline="always" href="/publications/legislation">
+                    Legislation
+                  </LinkNext>
+                </li>
+              </ul>
+            </Grid>
+            <Grid size={{ base: 4, md: 4, lg: 3 }}>
+              <Heading as={'h3'} className="gi-my-4">Contact</Heading>
+              <Divider className="gi-my-4" />
+              <ul className="gi-space-y-2">
+                <li>
+                  <LinkNext underline="always" href="/contact/find-an-office">
+                    Find an Office
+                  </LinkNext>
+                </li>
+                <li>
+                  <LinkNext underline="always" href="/contact/phone-directory">
+                    Phone Directory
+                  </LinkNext>
+                </li>
+                <li>
+                  <LinkNext underline="always" href="/contact/feedback">
+                    Feedback
+                  </LinkNext>
+                </li>
+              </ul>
+            </Grid>
+          </Grid>
+
+          <Divider className="gi-my-8" />
+          <Stack id="lower-section" direction={{ base: 'column', md: 'row' }} gap={6}>
+            <Stack id="left-side-content" direction="column" gap={6}>
+              <Stack direction={{ base: 'column', md: 'row' }} gap={4} wrap>
+                <LinkNext underline="always" href="/about-us">
+                  About Us
+                </LinkNext>
+                <LinkNext underline="always" href="/contact">
+                  Contact
+                </LinkNext>
+                <LinkNext underline="always" href="/sitemap">
+                  Sitemap
+                </LinkNext>
+                <LinkNext underline="always" href="/privacy-policy">
+                  Privacy Policy
+                </LinkNext>
+                <LinkNext underline="always" href="/terms-of-service">
+                  Terms of Service
+                </LinkNext>
+                <LinkNext underline="always" href="/careers">
+                  Careers
+                </LinkNext>
+                <LinkNext underline="always" href="/blog">
+                  Blog
+                </LinkNext>
+                <LinkNext underline="always" href="/faq">
+                  FAQ
+                </LinkNext>
+                <LinkNext underline="always" href="/support">
+                  Support
+                </LinkNext>
+                <LinkNext underline="always" href="/press">
+                  Press
+                </LinkNext>
+                <LinkNext underline="always" href="/partners">
+                  Partners
+                </LinkNext>
+                <LinkNext underline="always" href="/investors">
+                  Investors
+                </LinkNext>
+                <LinkNext underline="always" href="/events">
+                  Events
+                </LinkNext>
+              </Stack>
+              <Stack direction="row" gap={4}>
+                <XIcon label="social_x" />
+                <FacebookIcon label="social_facebook" />
+                <BlueskyIcon label="social_bluesky" />
+                <LinkedinIcon label="social_linkedin" />
+              </Stack>
+            </Stack>
+            <FooterLogo dataTestId="footer-logo">
+              <LogoGoldGreen size="181" label="Gov.ie Logo" />
+            </FooterLogo>
+          </Stack>
+        </Container>
+      </FooterSection>
+
+      <FooterSection variant="utility" dataTestId="footer-section-utility">
+        <Stack
+          wrap
+          direction={{ base: 'column', md: 'row' }}
+          gap={4}
+          justify="center"
+          align="center"
+          dataTestId="utility"
+        >
+          <LinkNext underline="always" href="/privacy-policy">
+            Privacy Policy
+          </LinkNext>
+          <LinkNext underline="always" href="/cookies">
+            Cookies
+          </LinkNext>
+          <LinkNext underline="always" href="/accessibility">
+            Accessibility
+          </LinkNext>
+          <LinkNext underline="always" href="/terms-of-use">
+            Terms of Use
+          </LinkNext>
+          <Text className="gi-text-sm">© 2026 Design System of Government of Ireland.</Text>
+        </Stack>
+      </FooterSection>
+    </FooterNext>
+
+</ComponentPreview>
+
+## Examples
+
+### Complete Footer from Storybook
+
+<StorybookFrame
+  className="h-72"
+  componentId="footer-react"
+  story="complete-footer"
+/>
+
+## Migration guide
+
+The design system provides two `Footer` components from different import paths:
+
+- **Composable Footer** (recommended): import from `@ogcio/design-system-react/next` — a semantic `<footer>` wrapper used with `FooterSection` and `FooterLogo`.
+- **Legacy Footer** (deprecated): import from `@ogcio/design-system-react` — the slot-based API with `primarySlot`, `secondarySlot`, `utilitySlot`, and `logo` props.
+
+With the legacy footer component, only one export was provided; `<Footer>` — with its content props
+
+- primarySlot
+- secondarySlot
+- utilitySlot
+
+These would directly map to the positions shown below, with the logo auto-placed in the secondary slot.
+
+<Box className="gi-w-full m-0 gi-not-prose border border-black text-black">
+  <Box
+    id="primary"
+    className="h-16 gi-bg-color-surface-system-neutral-layer1 border text-center"
+  >
+    <Text>Primary</Text>
+  </Box>
+  <Box
+    id="secondary"
+    className="flex h-16 gi-bg-color-surface-system-neutral-layer1 border text-center relative"
+  >
+    <Text className="grow">Secondary</Text>
+    <LogoGoldGreen className="absolute right-1" />
+  </Box>
+  <Box
+    id="utility"
+    className="h-10 gi-bg-color-surface-system-neutral-layer2 border text-center"
+  >
+    <Text>Utility</Text>
+  </Box>
+</Box>
+
+Now the new API allows the developer to fully control the flow. We provide 3 new components in order to achieve the same effect.
+
+- Footer
+- FooterSection
+- FooterLogo
+
+### Footer
+
+This component is a pure `<footer>` component for semantic purposes, and accepts styling, and aria attributes.
+
+### FooterSection
+
+This component is a `<Box/>`, and comes in two variants
+
+- primary (default)
+- utility
+
+Both primary and secondary slots can be placed together within one FooterSection, with a divider between the each. Alternatively, for semantic purposes, you may use two FooterSections representing each - the choice is yours.
+
+The utility slot can also be generated with this component, using the variant prop `utility`.
+
+### FooterLogo
+
+This is a wrapper component for your logo, that self-positions itself to the right of its row for screen-widths greater than `md`. For mobile screens it aligns itself to the left of the footer.
+
+#### Migrating the `logo` prop
+
+The legacy `logo` prop accepted `href`, `alt`, `imageLarge`, `imageSmall`, `width`, and `height`, and automatically rendered a linked logo in the secondary area. In the composable API, you place the logo inside `FooterLogo` and control the image yourself, placing a link within if needed:
+
+```jsx
+// Before (legacy)
+<Footer
+  logo={{
+    href: '/',
+    alt: 'Gov.ie Logo',
+    imageLarge: '/logo-desktop.svg',
+    imageSmall: '/logo-mobile.svg',
+  }}
+  secondarySlot={...}
+/>
+
+// After (composable)
+
+<FooterSection>
+  <Container>
+  ...
+    <Stack direction={{ base: 'column', md: 'row' }} gap={4} wrap>
+      {/* secondarySlot content */}
+      <FooterLogo>
+          <LogoGoldGreen size="181" label="Gov.ie Logo" />
+      </FooterLogo>
+    </Stack>
+  </Container>
+</FooterSection>
+```
+
+If you used custom `imageLarge` / `imageSmall` sources, pass in a custom `size` prop to `LogoGoldGreen` (or any other logo). Alternatively, use your own `<img>` or `<picture>` element. `FooterLogo` handles positioning only — it does not add a link or alt text for you.
+
+For migrating over to the new composable footer API, we would first recommend porting over your `primarySlot`, `secondarySlot` and `utilitySlot` directly in the children of the FooterSections like below.
+
+```jsx
+import {
+  Footer,
+  FooterSection,
+  FooterLogo,
+} from '@ogcio/design-system-react/next';
+...
+const App = () => {
+  return (
+    <Footer>
+      <FooterSection>
+        <Container>
+          Primary: used for navigational links, summaries, or descriptive blocks
+        <Divider className="gi-my-8" />
+        <Stack direction={{ base: 'column', md: 'row' }} gap={4} wrap>
+          Secondary: Optional secondary content like metadata or partner links
+          <FooterLogo>
+            <LogoGoldGreen/>
+          </FooterLogo>
+        </Stack>
+        </Container>
+      </FooterSection>
+      <FooterSection variant="utility">
+        <Container>
+          Utility: Typically used for legal links such as privacy policy, accessibility statement
+        </Container>
+      </FooterSection>
+    </Footer>
+  )
+}
+```
+
+<FooterNext className="gi-not-prose">
+  <FooterSection>
+    <Container>
+      Primary: used for navigational links, summaries, or descriptive blocks
+      <Divider className="gi-my-8" />
+      <Stack direction={{ base: 'column', md: 'row' }} gap={4} wrap>
+        Secondary: Optional secondary content like metadata or partner links
+        <FooterLogo>
+          <LogoGoldGreen />
+        </FooterLogo>
+      </Stack>
+    </Container>
+  </FooterSection>
+  <FooterSection variant="utility">
+    <Container>
+      Utility: Typically used for legal links such as privacy policy,
+      accessibility statement
+    </Container>
+  </FooterSection>
+</FooterNext>
+
+The `<Container>` is a useful way of keeping horizontal padding consistent and responsive across your site. See the [Container docs](/components/library/container/design/) for more information.
+
+A `Stack` with conditional directions based on screen width is effective for controlling the flow of content, particularly for managing the positioning of the secondary content with the logo. Here we use `direction={{ base: 'column', md: 'row' }}`, which is to say, for any screen widths greater than `md`, use flex-row. Any less, and use `flex-col`. This is the recommended flow of content between the secondary links, and the logo.
+
+For a complete example, as show at the beginning of this page, click "Show Code" in the [Footers story](/storybook-react/docs/layout-footer-footer--docs).
+
+## Footer (Legacy)
+
+The legacy footer component supports customizable slots for content, a logo, and utility links. Import it from `@ogcio/design-system-react`.
 
 <ComponentPreview className="block w-full gi-not-prose">
   <Footer

@@ -12,7 +12,7 @@ import LinkedinIcon from '@/atoms/icons/socials/Linkedin';
 
 const meta: Meta<typeof Footer> = {
   component: Footer,
-  title: 'layout/Footer',
+  title: 'layout/Footer/Footer (Legacy)',
   argTypes: {
     primarySlot: {
       control: 'object',
@@ -37,6 +37,14 @@ const meta: Meta<typeof Footer> = {
     dataTestid: {
       control: 'text',
       description: 'Test ID for automated testing',
+    },
+  },
+  parameters: {
+    docs: {
+      description: {
+        component:
+          'Legacy Footer component, with slot-like component placement for primary & utility sections, alongside the logo. See our [migration guide](https://ds.services.gov.ie//components/library/footer/react/#migration-guide) on migrating from this component to the new [Composable Footer](/docs/layout-footer-footer--docs) for better flexibility and support.',
+      },
     },
   },
 };

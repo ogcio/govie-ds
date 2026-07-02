@@ -41,7 +41,10 @@ function getLogo({ logo }: FooterProps) {
     </picture>
   );
 }
-
+/**
+ *  @deprecated Use the new composable Footer from `@ogcio/design-system-react/next`. See the  [migration guide](https://ds.services.gov.ie/components/library/footer/react/#migration-guide) for more details.
+ *
+ */
 export function Footer({
   primarySlot,
   secondarySlot,

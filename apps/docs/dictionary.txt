@@ -51,6 +51,9 @@ DropdownItemProps
 Dropdowns
 Favicon
 Figma
+FooterSection
+FooterSections
+FooterLogo
 Frontend
 GDPR
 GovTech
@@ -245,10 +248,12 @@ precompiled
 preflight
 preformatted
 preload
+primarySlot
 programmatically
 reviewable
 scalable
 secondaryLabel
+secondarySlot
 selectable
 sm
 sortable
@@ -270,6 +275,7 @@ ungrouped
 unvisited
 url
 user-centric
+utilitySlot
 viewport
 webpage
 webpages
