@@ -3,13 +3,14 @@ import { within, expect } from 'storybook/test';
 import Footer from '@/atoms/Footer';
 import FooterSection, { FooterSectionVariant } from '@/atoms/FooterSection';
 import FooterLogo from '@/atoms/FooterLogo';
-import { H3, Text } from '@/atoms';
+import Text from '@/atoms/Text';
+import H4 from '@/atoms/heading/H4';
 import Link from '@/atoms/Link';
 import Stack from '@/atoms/Stack';
-import { Grid } from '@/Grid';
+import Grid from '@/atoms/Grid';
 import Divider from '@/Divider';
-import { Container } from '@/container/container';
-import { LogoGoldGreen } from '@/atoms/icons/logos';
+import Container from '@/atoms/Container';
+import LogoGoldGreen from '@/atoms/icons/logos/LogoGoldGreen';
 import XIcon from '@/atoms/icons/socials/X';
 import FacebookIcon from '@/atoms/icons/socials/Facebook';
 import BlueskyIcon from '@/atoms/icons/socials/Bluesky';
@@ -40,7 +41,7 @@ export const CompleteFooter: Story = {
         <Container className="gi-text-black">
           <Grid container columns={{ base: 4, md: 8, lg: 12 }} gap={4} dataTestId="primary">
             <Grid size={{ base: 4, md: 4, lg: 3 }}>
-              <H3 className="gi-my-4">Services</H3>
+              <H4 className="gi-my-4">Services</H4>
               <Divider className="gi-my-4" />
               <Stack direction={'column'} gap={2}>
                 <Link underline="always" href="/services/public-services">
@@ -55,7 +56,7 @@ export const CompleteFooter: Story = {
               </Stack>
             </Grid>
             <Grid size={{ base: 4, md: 4, lg: 3 }}>
-              <H3 className="gi-my-4">Departments</H3>
+              <H4 className="gi-my-4">Departments</H4>
               <Divider className="gi-my-4" />
               <Stack direction={'column'} gap={2}>
                 <Link underline="always" href="/departments/health">
@@ -70,7 +71,7 @@ export const CompleteFooter: Story = {
               </Stack>
             </Grid>
             <Grid size={{ base: 4, md: 4, lg: 3 }}>
-              <H3 className="gi-my-4">Publications</H3>
+              <H4 className="gi-my-4">Publications</H4>
               <Divider className="gi-my-4" />
               <Stack direction={'column'} gap={2}>
                 <Link underline="always" href="/departments/education">
@@ -85,7 +86,7 @@ export const CompleteFooter: Story = {
               </Stack>
             </Grid>
             <Grid size={{ base: 4, md: 4, lg: 3 }}>
-              <H3 className="gi-my-4">Contact</H3>
+              <H4 className="gi-my-4">Contact</H4>
               <Divider className="gi-my-4" />
               <Stack direction={'column'} gap={2}>
                 <Link underline="always" href="/departments/education">

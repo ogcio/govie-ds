@@ -5,7 +5,7 @@ import { Footer, FooterSection, FooterLogo, Link, Text, Grid } from '@/atoms';
 import Container from '@/atoms/Container';
 import Divider from '@/atoms/Divider';
 import Stack from '@/atoms/Stack';
-import H3 from '@/atoms/heading/H3';
+import H4 from '@/atoms/heading/H4';
 import { LogoGoldGreen } from '@/atoms/icons/logos';
 import { XIcon, FacebookIcon, BlueskyIcon, LinkedinIcon } from '@/atoms/icons';
 
@@ -32,7 +32,7 @@ export const CompleteFooter: StoryObj = {
         FooterLogo,
         Container,
         Grid,
-        H3,
+        H4,
         Divider,
         Link,
         Stack,
@@ -54,7 +54,7 @@ export const CompleteFooter: StoryObj = {
           <gi-container className="gi-text-black">
             <gi-grid [container]="true" [columns]="{ base: 4, md: 8, lg: 12 }" gap="4" dataTestId="primary">
               <gi-grid [size]="{ base: 4, md: 4, lg: 3 }">
-                <gi-h3 className="gi-my-4">Services</gi-h3>
+                <gi-h4 className="gi-my-4">Services</gi-h4>
                 <gi-divider className="gi-my-4"></gi-divider>
                 <ul class="gi-space-y-2">
                   <li>
@@ -69,7 +69,7 @@ export const CompleteFooter: StoryObj = {
                 </ul>
               </gi-grid>
               <gi-grid [size]="{ base: 4, md: 4, lg: 3 }">
-                <gi-h3 className="gi-my-4">Departments</gi-h3>
+                <gi-h4 className="gi-my-4">Departments</gi-h4>
                 <gi-divider className="gi-my-4"></gi-divider>
                 <ul class="gi-space-y-2">
                   <li>
@@ -84,7 +84,7 @@ export const CompleteFooter: StoryObj = {
                 </ul>
               </gi-grid>
               <gi-grid [size]="{ base: 4, md: 4, lg: 3 }">
-                <gi-h3 className="gi-my-4">Publications</gi-h3>
+                <gi-h4 className="gi-my-4">Publications</gi-h4>
                 <gi-divider className="gi-my-4"></gi-divider>
                 <ul class="gi-space-y-2">
                   <li>
@@ -99,7 +99,7 @@ export const CompleteFooter: StoryObj = {
                 </ul>
               </gi-grid>
               <gi-grid [size]="{ base: 4, md: 4, lg: 3 }">
-                <gi-h3 className="gi-my-4">Contact</gi-h3>
+                <gi-h4 className="gi-my-4">Contact</gi-h4>
                 <gi-divider className="gi-my-4"></gi-divider>
                 <ul class="gi-space-y-2">
                   <li>
