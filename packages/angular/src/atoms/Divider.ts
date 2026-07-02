@@ -19,7 +19,7 @@ export type Props = {
 import { tv } from 'tailwind-variants';
 import { Orientation } from './constants';
 import { getOrientation } from './utilities';
-const dividerStyles = tv({
+export const dividerStyles = tv({
   base: 'gi-border-color-border-system-neutral-muted gi-border-0',
   variants: {
     orientation: {

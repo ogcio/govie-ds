@@ -1,0 +1,58 @@
+import { pick } from 'lodash';
+import type { StoryContext, Renderer } from 'storybook/internal/types';
+import { within } from 'storybook/test';
+import { boxMeta } from './Box.meta';
+import { checker } from './utilities';
+
+export const headerMeta = {
+  tags: ['autodocs'] as string[],
+  title: 'Navigation/Header',
+  args: {
+    children: 'Header content',
+    ariaLabel: 'Site header',
+    id: 'header-example',
+  },
+  argTypes: {
+    ...pick(boxMeta.argTypes, ['className', 'id', 'dataTestId', 'styles', 'children']),
+    ariaLabel: {
+      control: 'text',
+      description: 'Accessible label for the header landmark. Maps to `aria-label`.',
+      table: { type: { summary: 'string' } },
+    },
+    ariaLabelledBy: {
+      control: { disable: true },
+      description:
+        'Points to the id of an element that labels the header. Preferred over `ariaLabel` when a visible heading exists. Maps to `aria-labelledby`.',
+      table: { type: { summary: 'string' } },
+    },
+  },
+  parameters: {
+    docs: {
+      description: {
+        component:
+          'Header is the top-level landmark wrapper for site-wide navigation and branding. Renders a semantic `<header>` element. Compose with HeaderSection, HeaderLogo, HeaderTitle, HeaderNav, and nav item atoms.',
+      },
+    },
+  },
+};
+
+export const Default = {
+  args: {
+    ...headerMeta.args,
+    dataTestId: 'header-default',
+  },
+  play: async ({ canvasElement, step, args }: StoryContext<Renderer>) => {
+    const canvas = within(canvasElement as HTMLElement);
+    const check = checker(args.dataTestId, canvas, step);
+
+    await check.is('header');
+    await check.attributes({ 'aria-label': args.ariaLabel });
+    await check.children();
+  },
+};
+
+export const HeaderComposed = {
+  args: {
+    dataTestId: 'header-composed',
+  },
+};

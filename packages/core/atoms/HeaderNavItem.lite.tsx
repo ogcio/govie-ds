@@ -1,0 +1,88 @@
+import { useMetadata } from '@builder.io/mitosis';
+import { tv } from 'tailwind-variants';
+import { clamp } from './utilities';
+
+useMetadata({ angular: { selector: 'gi-header-nav-item' } });
+
+export const ShowItemMode = {
+  ALWAYS: 'always',
+  DESKTOP_ONLY: 'desktop-only',
+  MOBILE_ONLY: 'mobile-only',
+} as const;
+
+export type Props = {
+  children?: any;
+  ariaLabel?: string;
+  ariaExpanded?: boolean;
+  ariaControls?: string;
+  showItemMode?: (typeof ShowItemMode)[keyof typeof ShowItemMode];
+  onClick?: (event: any) => void;
+  className?: string;
+  styles?: Record<string, string>;
+  id?: string;
+  dataTestId?: string;
+};
+
+export default function HeaderNavItem(props: Props) {
+  return (
+    <li class={itemStyles({ showItemMode: getShowItemMode(props.showItemMode) })}>
+      <button
+        type="button"
+        id={props.id}
+        class={buttonStyles({ className: props.className })}
+        style={props.styles}
+        aria-label={props.ariaLabel}
+        aria-expanded={props.ariaExpanded}
+        aria-controls={props.ariaControls}
+        data-testid={props.dataTestId}
+        onClick={(event) => props.onClick && props.onClick(event)}
+      >
+        {props.children}
+      </button>
+    </li>
+  );
+}
+
+const getShowItemMode = (x: Props['showItemMode']) => clamp(x, ShowItemMode, ShowItemMode.ALWAYS);
+
+const buttonStyles = tv({
+  base: [
+    'gi-flex',
+    'gi-rounded-sm',
+    'gi-h-auto',
+    'gi-p-2',
+    'gi-items-center',
+    'gi-gap-md',
+    'gi-cursor-pointer',
+    'gi-whitespace-nowrap',
+    'gi-overflow-hidden',
+    'gi-text-ellipsis',
+    'gi-border-solid',
+    'gi-border-transparent',
+    'hover:gi-bg-black',
+    'hover:gi-bg-opacity-20',
+    'hover:gi-border-transparent',
+    'focus:gi-outline',
+    'focus:gi-outline-[2px]',
+    'focus:gi-outline-color-shadow-intent-focus-default',
+    'focus:gi-outline-offset-0',
+    'focus:gi-bg-black',
+    'focus:gi-bg-opacity-20',
+    'focus:gi-border-0',
+    'focus:gi-shadow-none',
+  ],
+});
+
+const itemStyles = tv({
+  base: '',
+  variants: {
+    showItemMode: {
+      always: '',
+      'desktop-only': 'gi-hidden lg:gi-flex',
+      'mobile-only': 'gi-flex lg:gi-hidden',
+    },
+  },
+  defaultVariants: {
+    showItemMode: 'always',
+  },
+});
