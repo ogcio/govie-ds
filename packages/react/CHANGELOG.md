@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.43.0](https://github.com/ogcio/govie-ds/compare/react-lib-v1.42.0...react-lib-v1.43.0) (2026-07-02)
+
+
+### Features
+
+* **AB#40169:** remove Material Symbols from Docs and Examples ([#1000](https://github.com/ogcio/govie-ds/issues/1000)) ([297096d](https://github.com/ogcio/govie-ds/commit/297096d41fcbebc19e4c3c9074ef4d09977a7601))
+
 ## [1.42.0](https://github.com/ogcio/govie-ds/compare/react-lib-v1.41.0...react-lib-v1.42.0) (2026-07-01)
 
 
