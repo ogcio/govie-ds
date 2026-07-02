@@ -793,6 +793,17 @@ export default function Home() {
 
                   <Box>
                     <Heading as="h5" className="font-semibold mb-2">
+                      Autocomplete (Multi-select)
+                    </Heading>
+                    <Autocomplete multiple>
+                      <AutocompleteItem value="option1">Option 1</AutocompleteItem>
+                      <AutocompleteItem value="option2">Option 2</AutocompleteItem>
+                      <AutocompleteItem value="option3">Option 3</AutocompleteItem>
+                    </Autocomplete>
+                  </Box>
+
+                  <Box>
+                    <Heading as="h5" className="font-semibold mb-2">
                       Select (New)
                     </Heading>
                     <SelectNext>

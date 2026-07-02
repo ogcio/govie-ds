@@ -1,7 +1,8 @@
 'use client';
 
 import { ColorsMapProps, resolveCssVariables } from '@/lib/theme-utils';
-import { Button, Icon } from '@ogcio/design-system-react';
+import { Button } from '@ogcio/design-system-react';
+import { DownloadIcon } from '@ogcio/design-system-react/icons';
 
 const handleDownload = ({ colors }: ColorsMapProps) => {
   const previewStyle = resolveCssVariables(colors);
@@ -25,7 +26,7 @@ export const DownloadTheme = ({ colors }: ColorsMapProps) => {
 
   return (
     <Button onClick={() => handleDownload({ colors })} className="w-fit">
-      Download <Icon icon="download" />
+      Download <DownloadIcon />
     </Button>
   );
 };

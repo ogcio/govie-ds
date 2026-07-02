@@ -29,6 +29,13 @@ export type SelectMenuProps = {
   enableSearch?: boolean;
   isLoading?: boolean;
   showNoData?: boolean;
+  listboxId?: string;
+  listboxLabel?: string;
+  multiselectable?: boolean;
+  onClearAll?: () => void;
+  clearAllLabel?: string;
+  clearAllDisabled?: boolean;
+  clearAllHighlighted?: boolean;
 };
 
 export type SelectMenuOptionReactElement = ReactElement<{
@@ -43,6 +50,7 @@ export type SelectMenuGroupReactElement = ReactElement<SelectMenuGroupOptionProp
 export type SelectMenuOptionProps = {
   children: ReactNode;
   value: string;
+  id?: string;
   selected?: boolean;
   onChange?: (value: string) => void;
   disabled?: boolean;
@@ -52,6 +60,7 @@ export type SelectMenuOptionProps = {
   enableSearch?: boolean;
   isHighlighted?: boolean;
   index: number;
+  multiple?: boolean;
 };
 export type SelectMenuGroupOptionProps = {
   children: ReactNode;
