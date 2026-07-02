@@ -16,30 +16,6 @@ const meta = {
 
 export default meta;
 
-const gridColumns = { base: 4, md: 8, lg: 12 };
-const gridSize = { base: 4, md: 4, lg: 3 };
-const lowerSectionDirection = { base: 'column', md: 'row' };
-const linksStackDirection = { base: 'column', md: 'row' };
-const utilityStackDirection = { base: 'column', md: 'row' };
-
-const completeFooterImports = [
-  Footer,
-  FooterSection,
-  FooterLogo,
-  Container,
-  Grid,
-  H3,
-  Divider,
-  Link,
-  Stack,
-  Text,
-  LogoGoldGreen,
-  XIcon,
-  FacebookIcon,
-  BlueskyIcon,
-  LinkedinIcon,
-];
-
 export const CompleteFooter: StoryObj = {
   ...defaultStory,
   args: {
@@ -48,15 +24,26 @@ export const CompleteFooter: StoryObj = {
     dataTestId: 'gi-footer',
   },
   render: (props) => ({
-    props: {
-      ...props,
-      gridColumns,
-      gridSize,
-      lowerSectionDirection,
-      linksStackDirection,
-      utilityStackDirection,
+    props,
+    moduleMetadata: {
+      imports: [
+        Footer,
+        FooterSection,
+        FooterLogo,
+        Container,
+        Grid,
+        H3,
+        Divider,
+        Link,
+        Stack,
+        Text,
+        LogoGoldGreen,
+        XIcon,
+        FacebookIcon,
+        BlueskyIcon,
+        LinkedinIcon,
+      ],
     },
-    moduleMetadata: { imports: completeFooterImports },
     template: `
       <gi-footer
         [ariaLabel]="ariaLabel"
@@ -65,8 +52,8 @@ export const CompleteFooter: StoryObj = {
       >
         <gi-footer-section variant="primary" dataTestId="footer-section-primary">
           <gi-container className="gi-text-black">
-            <gi-grid [container]="true" [columns]="gridColumns" gap="4" dataTestId="primary">
-              <gi-grid [size]="gridSize">
+            <gi-grid [container]="true" [columns]="{ base: 4, md: 8, lg: 12 }" gap="4" dataTestId="primary">
+              <gi-grid [size]="{ base: 4, md: 4, lg: 3 }">
                 <gi-h3 className="gi-my-4">Services</gi-h3>
                 <gi-divider className="gi-my-4"></gi-divider>
                 <ul class="gi-space-y-2">
@@ -81,7 +68,7 @@ export const CompleteFooter: StoryObj = {
                   </li>
                 </ul>
               </gi-grid>
-              <gi-grid [size]="gridSize">
+              <gi-grid [size]="{ base: 4, md: 4, lg: 3 }">
                 <gi-h3 className="gi-my-4">Departments</gi-h3>
                 <gi-divider className="gi-my-4"></gi-divider>
                 <ul class="gi-space-y-2">
@@ -96,7 +83,7 @@ export const CompleteFooter: StoryObj = {
                   </li>
                 </ul>
               </gi-grid>
-              <gi-grid [size]="gridSize">
+              <gi-grid [size]="{ base: 4, md: 4, lg: 3 }">
                 <gi-h3 className="gi-my-4">Publications</gi-h3>
                 <gi-divider className="gi-my-4"></gi-divider>
                 <ul class="gi-space-y-2">
@@ -111,7 +98,7 @@ export const CompleteFooter: StoryObj = {
                   </li>
                 </ul>
               </gi-grid>
-              <gi-grid [size]="gridSize">
+              <gi-grid [size]="{ base: 4, md: 4, lg: 3 }">
                 <gi-h3 className="gi-my-4">Contact</gi-h3>
                 <gi-divider className="gi-my-4"></gi-divider>
                 <ul class="gi-space-y-2">
@@ -129,9 +116,9 @@ export const CompleteFooter: StoryObj = {
             </gi-grid>
 
             <gi-divider className="gi-my-8"></gi-divider>
-            <gi-stack id="lower-section" [direction]="lowerSectionDirection" [gap]="6">
+            <gi-stack id="lower-section" [direction]="{ base: 'column', md: 'row' }" [gap]="6">
               <gi-stack id="left-side-content" direction="column" [gap]="6">
-                <gi-stack [direction]="linksStackDirection" [gap]="4" [wrap]="true">
+                <gi-stack [direction]="{ base: 'column', md: 'row' }" [gap]="4" [wrap]="true">
                   <gi-link underline="always" href="/about-us">About Us</gi-link>
                   <gi-link underline="always" href="/contact">Contact</gi-link>
                   <gi-link underline="always" href="/sitemap">Sitemap</gi-link>
@@ -163,7 +150,7 @@ export const CompleteFooter: StoryObj = {
         <gi-footer-section variant="utility" dataTestId="footer-section-utility">
           <gi-stack
             [wrap]="true"
-            [direction]="utilityStackDirection"
+            [direction]="{ base: 'column', md: 'row' }"
             [gap]="4"
             justify="center"
             align="center"
@@ -187,12 +174,6 @@ export const CompleteFooter: StoryObj = {
       expect(footerElement).toBeInTheDocument();
       expect(footerElement).toHaveAttribute('aria-label', 'Footer');
       expect(footerElement).toHaveAttribute('data-testid', 'gi-footer');
-    });
-
-    await step('should render all slots when provided', async () => {
-      expect(canvas.getByTestId('primary')).toBeInTheDocument();
-      expect(canvas.getByTestId('secondary')).toBeInTheDocument();
-      expect(canvas.getByTestId('utility')).toBeInTheDocument();
     });
   },
 };

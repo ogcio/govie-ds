@@ -4,7 +4,7 @@ import { checker } from './utilities';
 
 export const footerLogoMeta = {
   tags: ['autodocs'] as string[],
-  title: 'Layout/FooterLogo',
+  title: 'Layout/Footer/FooterLogo',
   args: {
     dataTestId: 'footer-logo',
     id: 'footer-logo-id',
