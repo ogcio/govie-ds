@@ -47,7 +47,7 @@ export const footerMeta = {
     docs: {
       description: {
         component:
-          'A composable footer built from the Footer semantic wrapper, [FooterSection](/docs/layout-footer-footersection--docs), and [FooterLogo](/docs/layout-footer-footerlogo--docs) atom components.',
+          'A composable footer built from the `Footer` semantic wrapper, `FooterSection`, and `FooterLogo` components.',
       },
     },
   },
