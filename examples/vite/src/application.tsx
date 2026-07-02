@@ -52,6 +52,7 @@ import '@ogcio/design-system-react/styles.css';
 import '@ogcio/theme-govie/theme.css';
 import { useState } from 'react';
 import { ComboBoxProps, CookieBannerProps } from './props';
+import { MenuIcon } from '@ogcio/design-system-react/icons';
 
 const toastProps: ToastProps = {
   title: 'Default',
@@ -187,7 +188,7 @@ export function App() {
           </TabPanel>
           <TabPanel value="tab2">
             <PhaseBanner level="Alpha">This is a pre-release version</PhaseBanner>
-            <span className="material-symbols-outlined">face</span>
+            <MenuIcon />
             <Card
               action={{
                 children: 'Button',

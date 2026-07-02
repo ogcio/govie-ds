@@ -409,7 +409,7 @@ export const TabsWithIcon: Story = {
     });
 
     await step('renders two icons', async () => {
-      const icons = canvasElement.querySelectorAll('svg, .material-symbols-outlined, [data-testid="govie-icon"]');
+      const icons = canvasElement.querySelectorAll('svg, [data-testid="govie-icon"]');
       expect(icons.length).toBe(2);
     });
   },
