@@ -9,33 +9,77 @@ component:
   properties:
     - name: Footer
       fields:
-        - name: 'primarySlot'
-          ofType: 'node'
-          description: 'Optional content to be displayed in the primary slot at the top of the footer.'
+        - name: ariaLabel
+          ofType: string
+          description: Accessible label for the footer landmark.
           required: false
-        - name: 'secondarySlot'
-          ofType: 'node'
-          description: 'Optional content to be displayed next to the logo in the secondary section of the footer.'
+        - name: ariaLabelledBy
+          ofType: string
+          description: ID of an element that labels the footer.
           required: false
-        - name: 'utilitySlot'
-          ofType: 'node'
-          description: 'Optional content to be displayed in the utility section of the footer, typically used for utility links.'
+        - name: children
+          ofType: node
+          description: Footer content, typically FooterSection components.
           required: false
-        - name: 'logo'
-          ofType: 'LogoProps'
-          description: 'Object defining the logo configuration including href, alt text, width, height, and image sources.'
+        - name: className
+          ofType: string
+          description: Custom class name for styling.
           required: false
-        - name: 'className'
-          ofType: 'string'
-          description: 'Custom class name for styling the footer.'
+        - name: id
+          ofType: string
+          description: Optional id for the footer element.
           required: false
-        - name: 'dataTestid'
-          ofType: 'string'
-          description: 'Optional test ID for the component.'
+        - name: dataTestId
+          ofType: string
+          description: Test id for automated tests.
           required: false
-        - name: '...props'
-          ofType: 'React.HTMLAttributes<HTMLDivElement>'
-          description: 'Any additional props supported by a <div> element.'
+        - name: styles
+          ofType: React.CSSProperties
+          description: Inline styles applied to the footer element.
+          required: false
+    - name: FooterSection
+      fields:
+        - name: variant
+          ofType: '"primary" | "utility"'
+          description: Visual variant. Defaults to primary.
+          required: false
+        - name: children
+          ofType: node
+          description: Section content.
+          required: false
+        - name: className
+          ofType: string
+          description: Custom class name.
+          required: false
+        - name: id
+          ofType: string
+          description: Optional id.
+          required: false
+        - name: dataTestId
+          ofType: string
+          description: Test id for automated tests.
+          required: false
+    - name: FooterLogo
+      fields:
+        - name: children
+          ofType: node
+          description: Logo content, e.g. LogoGoldGreen.
+          required: true
+        - name: className
+          ofType: string
+          description: Custom class name.
+          required: false
+        - name: id
+          ofType: string
+          description: Optional id.
+          required: false
+        - name: dataTestId
+          ofType: string
+          description: Test id for automated tests.
+          required: false
+        - name: styles
+          ofType: React.CSSProperties
+          description: Inline styles.
           required: false
 
   stories:
@@ -51,202 +95,33 @@ component:
 
 The Footer component is used to render the bottom section of a web page. This component adheres to accessibility best practices with appropriate roles and aria labels.
 
-For modern frameworks, a new composable Footer has been developed to enable higher level flexibility and support, replacing the slot usage from the legacy Footer. The migration guide for React can be found below.
+The design system now provides two `Footer` components from different import paths:
+
+- **Composable Footer** (recommended): import from <code>@ogcio/design-system-react/next</code> — a semantic `<footer>` wrapper used with `FooterSection` and `FooterLogo`.
+- **Legacy Footer** (deprecated): import from `@ogcio/design-system-react` — the slot-based API with `primarySlot`, `secondarySlot`, `utilitySlot`, and `logo` props.
+
+For modern frameworks, a new composable Footer architecture has been introduced for better flexibility and support, replacing the slot usage from the legacy Footer. You can now construct a footer like below from three components: `<Footer/>`, `<FooterSection/>`, and `<FooterLogo/>`. For migrating from the legacy footer, we've provided a guide below.
 
 <Section current="react">
   <ComponentPreview className="block w-full gi-not-prose">
-    <FooterNext >
-      <FooterSection dataTestId="footer-section-primary">
-        <Container className="gi-text-gray-800">
-          <Grid container columns={{ base: 4, md: 8, lg: 12 }} gap={4} dataTestId="primary">
-            <Grid size={{ base: 4, md: 4, lg: 3 }}>
-              <Heading as={'h3'} className="gi-my-4">Services</Heading>
-              <Divider className="gi-my-4" />
-              <ul className="gi-space-y-2">
-                <li>
-                  <LinkNext underline="always" href="/services/public-services">
-                    Public Services
-                  </LinkNext>
-                </li>
-                <li>
-                  <LinkNext underline="always" href="/services/business-services">
-                    Business Services
-                  </LinkNext>
-                </li>
-                <li>
-                  <LinkNext underline="always" href="/services/online-services">
-                    Online Services
-                  </LinkNext>
-                </li>
-              </ul>
-            </Grid>
-            <Grid size={{ base: 4, md: 4, lg: 3 }}>
-              <Heading as={'h3'} className="gi-my-4">Departments</Heading>
-              <Divider className="gi-my-4" />
-              <ul className="gi-space-y-2">
-                <li>
-                  <LinkNext underline="always" href="/departments/health">
-                    Department of Health
-                  </LinkNext>
-                </li>
-                <li>
-                  <LinkNext underline="always" href="/departments/education">
-                    Department of Education
-                  </LinkNext>
-                </li>
-                <li>
-                  <LinkNext underline="always" href="/departments/finance">
-                    Department of Finance
-                  </LinkNext>
-                </li>
-              </ul>
-            </Grid>
-            <Grid size={{ base: 4, md: 4, lg: 3 }}>
-              <Heading as={'h3'} className="gi-my-4">Publications</Heading>
-              <Divider className="gi-my-4" />
-              <ul className="gi-space-y-2">
-                <li>
-                  <LinkNext underline="always" href="/publications/reports">
-                    Reports
-                  </LinkNext>
-                </li>
-                <li>
-                  <LinkNext underline="always" href="/publications/statistics">
-                    Statistics
-                  </LinkNext>
-                </li>
-                <li>
-                  <LinkNext underline="always" href="/publications/legislation">
-                    Legislation
-                  </LinkNext>
-                </li>
-              </ul>
-            </Grid>
-            <Grid size={{ base: 4, md: 4, lg: 3 }}>
-              <Heading as={'h3'} className="gi-my-4">Contact</Heading>
-              <Divider className="gi-my-4" />
-              <ul className="gi-space-y-2">
-                <li>
-                  <LinkNext underline="always" href="/contact/find-an-office">
-                    Find an Office
-                  </LinkNext>
-                </li>
-                <li>
-                  <LinkNext underline="always" href="/contact/phone-directory">
-                    Phone Directory
-                  </LinkNext>
-                </li>
-                <li>
-                  <LinkNext underline="always" href="/contact/feedback">
-                    Feedback
-                  </LinkNext>
-                </li>
-              </ul>
-            </Grid>
-          </Grid>
-
-          <Divider className="gi-my-8" />
-          <Stack id="lower-section" direction={{ base: 'column', md: 'row' }} gap={6}>
-            <Stack id="left-side-content" direction="column" gap={6}>
-              <Stack direction={{ base: 'column', md: 'row' }} gap={4} wrap>
-                <LinkNext underline="always" href="/about-us">
-                  About Us
-                </LinkNext>
-                <LinkNext underline="always" href="/contact">
-                  Contact
-                </LinkNext>
-                <LinkNext underline="always" href="/sitemap">
-                  Sitemap
-                </LinkNext>
-                <LinkNext underline="always" href="/privacy-policy">
-                  Privacy Policy
-                </LinkNext>
-                <LinkNext underline="always" href="/terms-of-service">
-                  Terms of Service
-                </LinkNext>
-                <LinkNext underline="always" href="/careers">
-                  Careers
-                </LinkNext>
-                <LinkNext underline="always" href="/blog">
-                  Blog
-                </LinkNext>
-                <LinkNext underline="always" href="/faq">
-                  FAQ
-                </LinkNext>
-                <LinkNext underline="always" href="/support">
-                  Support
-                </LinkNext>
-                <LinkNext underline="always" href="/press">
-                  Press
-                </LinkNext>
-                <LinkNext underline="always" href="/partners">
-                  Partners
-                </LinkNext>
-                <LinkNext underline="always" href="/investors">
-                  Investors
-                </LinkNext>
-                <LinkNext underline="always" href="/events">
-                  Events
-                </LinkNext>
-              </Stack>
-              <Stack direction="row" gap={4}>
-                <XIcon label="social_x" />
-                <FacebookIcon label="social_facebook" />
-                <BlueskyIcon label="social_bluesky" />
-                <LinkedinIcon label="social_linkedin" />
-              </Stack>
-            </Stack>
-            <FooterLogo dataTestId="footer-logo">
-              <LogoGoldGreen size="181" label="Gov.ie Logo" />
-            </FooterLogo>
-          </Stack>
-        </Container>
-      </FooterSection>
-
-      <FooterSection variant="utility" dataTestId="footer-section-utility">
-        <Stack
-          wrap
-          direction={{ base: 'column', md: 'row' }}
-          gap={4}
-          justify="center"
-          align="center"
-          dataTestId="utility"
-        >
-          <LinkNext underline="always" href="/privacy-policy">
-            Privacy Policy
-          </LinkNext>
-          <LinkNext underline="always" href="/cookies">
-            Cookies
-          </LinkNext>
-          <LinkNext underline="always" href="/accessibility">
-            Accessibility
-          </LinkNext>
-          <LinkNext underline="always" href="/terms-of-use">
-            Terms of Use
-          </LinkNext>
-          <Text className="gi-text-sm">© 2026 Design System of Government of Ireland.</Text>
-        </Stack>
-      </FooterSection>
-    </FooterNext>
-
+    <StorybookFrame
+      className="h-[500px]"
+      componentId="footer-react"
+      story="complete-footer"
+    />
 </ComponentPreview>
 
-## Examples
+## Properties
 
-### Complete Footer from Storybook
+Click the accordion below to see each components properties.
 
-<StorybookFrame
-  className="h-72"
-  componentId="footer-react"
-  story="complete-footer"
-/>
+<Accordion>
+  <AccordionItem label="Properties">
+    <ComponentPropertiesTable componentId="footer-react" />
+  </AccordionItem>
+</Accordion>
 
 ## Migration guide
-
-The design system provides two `Footer` components from different import paths:
-
-- **Composable Footer** (recommended): import from `@ogcio/design-system-react/next` — a semantic `<footer>` wrapper used with `FooterSection` and `FooterLogo`.
-- **Legacy Footer** (deprecated): import from `@ogcio/design-system-react` — the slot-based API with `primarySlot`, `secondarySlot`, `utilitySlot`, and `logo` props.
 
 With the legacy footer component, only one export was provided; `<Footer>` — with its content props
 
@@ -396,257 +271,6 @@ The `<Container>` is a useful way of keeping horizontal padding consistent and r
 A `Stack` with conditional directions based on screen width is effective for controlling the flow of content, particularly for managing the positioning of the secondary content with the logo. Here we use `direction={{ base: 'column', md: 'row' }}`, which is to say, for any screen widths greater than `md`, use flex-row. Any less, and use `flex-col`. This is the recommended flow of content between the secondary links, and the logo.
 
 For a complete example, as show at the beginning of this page, click "Show Code" in the [Footers story](/storybook-react/docs/layout-footer-footer--docs).
-
-## Footer (Legacy)
-
-The legacy footer component supports customizable slots for content, a logo, and utility links. Import it from `@ogcio/design-system-react`.
-
-<ComponentPreview className="block w-full gi-not-prose">
-  <Footer
-    dataTestid="gi-footer"
-    primarySlot={
-      <div className="gi-grid-responsive !gi-ml-0 !gi-mr-0">
-        <div className="gi-col-span-4 md:gi-col-span-4 lg:gi-col-span-3">
-          <h3 className="gi-heading-sm gi-mb-4">Services</h3>
-          <SectionBreak
-            color="gi-border-color-border-system-neutral-subtle"
-            size="md"
-          />
-          <ul className="gi-space-y-2">
-            <li>
-              <Link
-                aria-label="Public Services"
-                href="/services/public-services"
-                noColor
-              >
-                Public Services
-              </Link>
-            </li>
-            <li>
-              <Link
-                aria-label="Business Services"
-                href="/services/business-services"
-                noColor
-              >
-                Business Services
-              </Link>
-            </li>
-            <li>
-              <Link
-                aria-label="Online Services"
-                href="/services/online-services"
-                noColor
-              >
-                Online Services
-              </Link>
-            </li>
-          </ul>
-        </div>
-        <div className="gi-col-span-4 md:gi-col-span-4 lg:gi-col-span-3">
-          <h3 className="gi-heading-sm gi-mb-4">Departments</h3>
-          <SectionBreak
-            color="gi-border-color-border-system-neutral-subtle"
-            size="md"
-          />
-          <ul className="gi-space-y-2">
-            <li>
-              <Link
-                aria-label="Department of Health"
-                href="/departments/health"
-                noColor
-              >
-                Department of Health
-              </Link>
-            </li>
-            <li>
-              <Link
-                aria-label="Department of Education"
-                href="/departments/education"
-                noColor
-              >
-                Department of Education
-              </Link>
-            </li>
-            <li>
-              <Link
-                aria-label="Department of Finance"
-                href="/departments/finance"
-                noColor
-              >
-                Department of Finance
-              </Link>
-            </li>
-          </ul>
-        </div>
-        <div className="gi-col-span-4 md:gi-col-span-4 lg:gi-col-span-3">
-          <h3 className="gi-heading-sm gi-mb-4">Publications</h3>
-          <SectionBreak
-            color="gi-border-color-border-system-neutral-subtle"
-            size="md"
-          />
-          <ul className="gi-space-y-2">
-            <li>
-              <Link aria-label="Reports" href="/publications/reports" noColor>
-                Reports
-              </Link>
-            </li>
-            <li>
-              <Link
-                aria-label="Statistics"
-                href="/publications/statistics"
-                noColor
-              >
-                Statistics
-              </Link>
-            </li>
-            <li>
-              <Link
-                aria-label="Legislation"
-                href="/publications/legislation"
-                noColor
-              >
-                Legislation
-              </Link>
-            </li>
-          </ul>
-        </div>
-        <div className="gi-col-span-4 md:gi-col-span-4 lg:gi-col-span-3">
-          <h3 className="gi-heading-sm gi-mb-4">Contact</h3>
-          <SectionBreak
-            color="gi-border-color-border-system-neutral-subtle"
-            size="md"
-          />
-          <ul className="gi-space-y-2">
-            <li>
-              <Link
-                aria-label="Find an Office"
-                href="/contact/find-an-office"
-                noColor
-              >
-                Find an Office
-              </Link>
-            </li>
-            <li>
-              <Link
-                aria-label="Phone Directory"
-                href="/contact/phone-directory"
-                noColor
-              >
-                Phone Directory
-              </Link>
-            </li>
-            <li>
-              <Link aria-label="Feedback" href="/contact/feedback" noColor>
-                Feedback
-              </Link>
-            </li>
-          </ul>
-        </div>
-      </div>
-    }
-    secondarySlot={
-      <Stack direction="column" gap={4}>
-        <Stack
-          direction={{ base: 'column', md: 'row', xs: 'column' }}
-          gap={4}
-          wrap
-        >
-          <Link aria-label="About Us" href="/about-us" noColor>
-            About Us
-          </Link>
-          <Link aria-label="Contact" href="/contact" noColor>
-            Contact
-          </Link>
-          <Link aria-label="Sitemap" href="/sitemap" noColor>
-            Sitemap
-          </Link>
-          <Link aria-label="Privacy Policy" href="/privacy-policy" noColor>
-            Privacy Policy
-          </Link>
-          <Link aria-label="Terms of Service" href="/terms-of-service" noColor>
-            Terms of Service
-          </Link>
-          <Link aria-label="Careers" href="/careers" noColor>
-            Careers
-          </Link>
-          <Link aria-label="Blog" href="/blog" noColor>
-            Blog
-          </Link>
-          <Link aria-label="FAQ" href="/faq" noColor>
-            FAQ
-          </Link>
-          <Link aria-label="Support" href="/support" noColor>
-            Support
-          </Link>
-          <Link aria-label="Press" href="/press" noColor>
-            Press
-          </Link>
-          <Link aria-label="Partners" href="/partners" noColor>
-            Partners
-          </Link>
-          <Link aria-label="Investors" href="/investors" noColor>
-            Investors
-          </Link>
-          <Link aria-label="Events" href="/events" noColor>
-            Events
-          </Link>
-        </Stack>
-        <Stack direction="row" gap={4}>
-          <XIcon />
-          <FacebookIcon />
-          <BlueskyIcon />
-          <LinkedinIcon />
-        </Stack>
-      </Stack>
-    }
-    utilitySlot={
-      <Stack
-        direction={{ base: 'column', md: 'row', xs: 'column' }}
-        gap={4}
-        itemsAlignment="center"
-        itemsDistribution="center"
-      >
-        <Link aria-label="Privacy Policy" href="/privacy-policy" noColor>
-          Privacy Policy
-        </Link>
-        <Link aria-label="Cookies" href="/cookies" noColor>
-          Cookies
-        </Link>
-        <Link aria-label="Accessibility" href="/accessibility" noColor>
-          Accessibility
-        </Link>
-        <Link aria-label="Terms of Use" href="/terms-of-use" noColor>
-          Terms of Use
-        </Link>
-        <div className="gi-text-sm">© 2025 Government of Ireland.</div>
-      </Stack>
-    }
-  />
-</ComponentPreview>
-
-## Examples
-
-### With Secondary & Utility Slots
-
-<StorybookFrame
-  className="h-96"
-  componentId="footer-react"
-  story="simple-footer"
-/>
-
-### With Utility Slot Only
-
-<StorybookFrame
-  className="h-72"
-  componentId="footer-react"
-  story="with-utility-links"
-/>
-
-## Properties
-
-This component extends the default HTML `<div>` element and includes the following additional properties:
-
-<ComponentPropertiesTable componentId="footer-react" />
 
 ## i18n Keys
 
