@@ -95,12 +95,12 @@ component:
 
 The Footer component is used to render the bottom section of a web page. This component adheres to accessibility best practices with appropriate roles and aria labels.
 
-The design system now provides two <Code>Footer</Code> components from different import paths:
+The design system now provides two `Footer` components from different import paths:
 
-- **Composable Footer** (recommended): import from <Code>@ogcio/design-system-react/next</Code> — a semantic <Code>{'<footer>'}</Code> wrapper used with <Code>FooterSection</Code> and <Code>FooterLogo</Code>.
-- **Legacy Footer** (deprecated): import from <Code>@ogcio/design-system-react</Code> — the slot-based API with <Code>primarySlot</Code>, <Code>secondarySlot</Code>, <Code>utilitySlot</Code>, and <Code>logo</Code> props.
+- **Composable Footer** (recommended): import from `>@ogcio/design-system-react/next</code>`— a semantic `<footer>` wrapper used with `FooterSection` and `FooterLogo`.
+- **Legacy Footer** (deprecated): import from `@ogcio/design-system-react` — the slot-based API with `primarySlot`, `secondarySlot`, `utilitySlot`, and `logo` props.
 
-For modern frameworks, a new composable Footer architecture has been introduced for better flexibility and support, replacing the slot usage from the legacy Footer. You can now construct a footer like below from three components: <Code>{'<Footer/>'}</Code>, <Code>{'<FooterSection/>'}</Code>, and <Code>{'<FooterLogo/>'}</Code>. For migrating from the legacy footer, we've provided a guide below.
+For modern frameworks, a new composable Footer architecture has been introduced for better flexibility and support, replacing the slot usage from the legacy Footer. You can now construct a footer like below from three components: `<Footer/>`, `<FooterSection/>`, and `<FooterLogo/>`. For migrating from the legacy footer, we've provided a guide below.
 
 <Section current="react">
   <ComponentPreview className="block w-full gi-not-prose">
@@ -123,7 +123,7 @@ Click the accordion below to see each components properties.
 
 ## Migration guide
 
-With the legacy footer component, only one export was provided; <Code>{'<Footer>'}</Code> — with its content props
+With the legacy footer component, only one export was provided; `<Footer>` — with its content props
 
 - primarySlot
 - secondarySlot
@@ -161,26 +161,26 @@ Now the new API allows the developer to fully control the flow. We provide 3 new
 
 ### Footer
 
-This component is a pure <Code>{'<footer>'}</Code> component for semantic purposes, and accepts styling, and aria attributes.
+This component is a pure `<footer>` component for semantic purposes, and accepts styling, and aria attributes.
 
 ### FooterSection
 
-This component is a <Code>{'<Box/>'}</Code>, and comes in two variants
+This component is a `<Box/>`, and comes in two variants
 
 - primary (default)
 - utility
 
 Both primary and secondary slots can be placed together within one FooterSection, with a divider between the each. Alternatively, for semantic purposes, you may use two FooterSections representing each - the choice is yours.
 
-The utility slot can also be generated with this component, using the variant prop <Code>utility</Code>.
+The utility slot can also be generated with this component, using the variant prop `utility`.
 
 ### FooterLogo
 
-This is a wrapper component for your logo, that self-positions itself to the right of its row for screen-widths greater than <Code>md</Code>. For mobile screens it aligns itself to the left of the footer.
+This is a wrapper component for your logo, that self-positions itself to the right of its row for screen-widths greater than `md`. For mobile screens it aligns itself to the left of the footer.
 
-#### Migrating the <Code>logo</Code> prop
+#### Migrating the `logo` prop
 
-The legacy <Code>logo</Code> prop accepted <Code>href</Code>, <Code>alt</Code>, <Code>imageLarge</Code>, <Code>imageSmall</Code>, <Code>width</Code>, and <Code>height</Code>, and automatically rendered a linked logo in the secondary area. In the composable API, you place the logo inside <Code>FooterLogo</Code> and control the image yourself, placing a link within if needed:
+The legacy `logo` prop accepted `href`, `alt`, `imageLarge`, `imageSmall`, `width`, and `height`, and automatically rendered a linked logo in the secondary area. In the composable API, you place the logo inside `FooterLogo` and control the image yourself, placing a link within if needed:
 
 ```jsx
 // Before (legacy)
@@ -209,9 +209,9 @@ The legacy <Code>logo</Code> prop accepted <Code>href</Code>, <Code>alt</Code>, 
 </FooterSection>
 ```
 
-If you used custom <Code>imageLarge</Code> / <Code>imageSmall</Code> sources, pass in a custom <Code>size</Code> prop to <Code>LogoGoldGreen</Code> (or any other logo). Alternatively, use your own <Code>{'<img>'}</Code> or <Code>{'<picture>'}</Code> element. <Code>FooterLogo</Code> handles positioning only — it does not add a link or alt text for you.
+If you used custom `imageLarge` / `imageSmall` sources, pass in a custom `size` prop to `LogoGoldGreen` (or any other logo). Alternatively, use your own `<img>` or `<picture>` element. `FooterLogo` handles positioning only — it does not add a link or alt text for you.
 
-For migrating over to the new composable footer API, we would first recommend porting over your <Code>primarySlot</Code>, <Code>secondarySlot</Code> and <Code>utilitySlot</Code> directly in the children of the FooterSections like below.
+For migrating over to the new composable footer API, we would first recommend porting over your `primarySlot`, `secondarySlot` and `utilitySlot` directly in the children of the FooterSections like below.
 
 ```jsx
 import {
@@ -266,9 +266,9 @@ const App = () => {
   </FooterSection>
 </Footer>
 
-The <Code>{'<Container>'}</Code> is a useful way of keeping horizontal padding consistent and responsive across your site. See the [Container docs](/components/library/container/design/) for more information.
+The `<Container>` is a useful way of keeping horizontal padding consistent and responsive across your site. See the [Container docs](/components/library/container/design/) for more information.
 
-A <Code>Stack</Code> with conditional directions based on screen width is effective for controlling the flow of content, particularly for managing the positioning of the secondary content with the logo. Here we use <Code>{'direction={{ base: \'column\', md: \'row\' }}'}</Code>, which is to say, for any screen widths greater than <Code>md</Code>, use <Code>flex-row</Code>. Any less, and use <Code>flex-col</Code>. This is the recommended flow of content between the secondary links, and the logo.
+A `Stack` with conditional directions based on screen width is effective for controlling the flow of content, particularly for managing the positioning of the secondary content with the logo. Here we use `direction={{ base: 'column', md: 'row' }}`, which is to say, for any screen widths greater than `md`, use flex-row. Any less, and use `flex-col`. This is the recommended flow of content between the secondary links, and the logo.
 
 For a complete example, as show at the beginning of this page, click "Show Code" in the [Footers story](/storybook-react/docs/layout-footer-footer--docs).
 

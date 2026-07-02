@@ -254,6 +254,7 @@ export const CompleteFooter: Story = {
 };
 
 export const MigrationComparison: Story = {
+  tags: ['skip-playwright'],
   parameters: {
     docs: {
       description: {

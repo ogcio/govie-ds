@@ -1,6 +1,5 @@
 import CookieConsentCheckbox from '@/components/cookies/cookie-consent-checkbox';
 import { ColorPrimitives } from '@/components/document/color/color-primitives';
-import { Code } from '@/components/document/components/Code';
 import { DownloadTheme } from '@/components/document/theme/download-theme';
 import { ThemeBuilder } from '@/components/document/theme/theme-builder';
 import { TwoThirds, TwoThirdsOneThird } from '@/components/layouts/two-thirds';
@@ -276,7 +275,6 @@ const documentComponents: MDXComponents = {
   ComponentPreviewLayout,
   Container,
   FigmaPreviewButton,
-  Code,
   ComponentPropertiesTable,
   ComponentStatusBlock,
   ComponentStatusTable,
