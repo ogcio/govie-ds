@@ -1,6 +1,6 @@
 import type { StoryObj } from '@storybook/angular';
 import { within, expect } from 'storybook/test';
-import { footerMeta, Default as defaultStory } from '@/atoms/storybook/Footer.meta';
+import { footerMeta, CompleteFooter as CompleteFooterStory } from '@/atoms/storybook/Footer.meta';
 import { Footer, FooterSection, FooterLogo, Link, Text, Grid } from '@/atoms';
 import Container from '@/atoms/Container';
 import Divider from '@/atoms/Divider';
@@ -17,7 +17,7 @@ const meta = {
 export default meta;
 
 export const CompleteFooter: StoryObj = {
-  ...defaultStory,
+  ...CompleteFooterStory,
   args: {
     ariaLabel: 'Footer',
     id: 'footer-id',

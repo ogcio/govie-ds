@@ -53,8 +53,7 @@ export const footerMeta = {
   },
 };
 
-export const Default = {
-  args: footerMeta.args,
+export const CompleteFooter = {
   play: async ({ canvasElement, step, args }: StoryContext<Renderer>) => {
     const canvas = within(canvasElement as HTMLElement);
     const { footer } = args;

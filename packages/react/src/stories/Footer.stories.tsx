@@ -15,7 +15,7 @@ import XIcon from '@/atoms/icons/socials/X';
 import FacebookIcon from '@/atoms/icons/socials/Facebook';
 import BlueskyIcon from '@/atoms/icons/socials/Bluesky';
 import LinkedinIcon from '@/atoms/icons/socials/Linkedin';
-import { footerMeta, Default as defaultStory } from '@/atoms/storybook/Footer.meta';
+import { footerMeta, CompleteFooter as CompleteFooterStory } from '@/atoms/storybook/Footer.meta';
 
 const meta: Meta = {
   ...footerMeta,
@@ -27,7 +27,7 @@ export default meta;
 type Story = StoryObj<typeof meta>;
 
 export const CompleteFooter: Story = {
-  ...defaultStory,
+  ...CompleteFooterStory,
   args: {
     footer: {
       ariaLabel: 'Footer',
