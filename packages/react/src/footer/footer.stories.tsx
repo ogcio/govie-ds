@@ -256,6 +256,11 @@ export const CompleteFooter: Story = {
 export const MigrationComparison: Story = {
   tags: ['skip-playwright'],
   parameters: {
+    a11y: {
+      config: {
+        rules: [{ id: 'landmark-no-duplicate-contentinfo', enabled: false }],
+      },
+    },
     docs: {
       description: {
         story:
