@@ -279,11 +279,11 @@ export const MigrationComparison: Story = {
     docs: {
       description: {
         story:
-          'This story renders the same complete footer twice: the legacy slot-based Footer on top, and the new composable Footer below. The legacy API passes content through primarySlot, secondarySlot, and utilitySlot props, while the composable API builds the equivalent layout from FooterSection and FooterLogo.<br/> Secondary links, social icons, and the Gov.ie logo move from secondarySlot (with the built-in logo renderer) into the primary FooterSection, paired with an explicit FooterLogo child. The utility bar maps directly from utilitySlot to a separate FooterSection with variant="utility". Both versions are intended to look the same. Use this side-by-side view alongside the [migration guide](https://ds.services.gov.ie/components/library/footer/react/#migration-guide) when updating existing implementations.',
+          'This story renders the same complete footer twice: the legacy slot-based Footer on top, and the new composable Footer below. The legacy API passes content through primarySlot, secondarySlot, and utilitySlot props, while the composable API builds the equivalent layout from FooterSection and FooterLogo.<br/> Secondary links, social icons, and the Gov.ie logo move from secondarySlot (with the built-in logo renderer) into the primary FooterSection, paired with an explicit FooterLogo child. The utility bar maps directly from utilitySlot to a separate FooterSection with variant="utility". Both versions are intended to look the same.',
       },
     },
   },
-  render: function Render(props) {
+  render: function Render() {
     return (
       <Stack gap={2}>
         <FooterLegacy
