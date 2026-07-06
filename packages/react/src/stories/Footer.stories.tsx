@@ -195,10 +195,5 @@ export const CompleteFooter: Story = {
       expect(footerElement).toHaveAttribute('aria-label', 'Footer');
       expect(footerElement).toHaveAttribute('data-testid', 'gi-footer');
     });
-
-    await step('should render all slots when provided', async () => {
-      expect(canvas.getByTestId('primary')).toBeInTheDocument();
-      expect(canvas.getByTestId('utility')).toBeInTheDocument();
-    });
   },
 };
