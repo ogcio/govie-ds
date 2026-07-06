@@ -44,13 +44,13 @@ export const CompleteFooter: Story = {
               <H4 className="gi-my-4">Services</H4>
               <Divider className="gi-my-4" />
               <Stack direction={'column'} gap={2}>
-                <Link underline="always" href="/services/public-services">
+                <Link variant="inline" appearance="inherit" href="/services/public-services">
                   Public Services
                 </Link>
-                <Link underline="always" href="/services/business-services">
+                <Link variant="inline" appearance="inherit" href="/services/business-services">
                   Business Services
                 </Link>
-                <Link underline="always" href="/services/online-services">
+                <Link variant="inline" appearance="inherit" href="/services/online-services">
                   Online Services
                 </Link>
               </Stack>
@@ -59,13 +59,13 @@ export const CompleteFooter: Story = {
               <H4 className="gi-my-4">Departments</H4>
               <Divider className="gi-my-4" />
               <Stack direction={'column'} gap={2}>
-                <Link underline="always" href="/departments/health">
+                <Link variant="inline" appearance="inherit" href="/departments/health">
                   Department of Health
                 </Link>
-                <Link underline="always" href="/departments/education">
+                <Link variant="inline" appearance="inherit" href="/departments/education">
                   Department of Education
                 </Link>
-                <Link underline="always" href="/departments/finance">
+                <Link variant="inline" appearance="inherit" href="/departments/finance">
                   Department of Finance
                 </Link>
               </Stack>
@@ -74,13 +74,13 @@ export const CompleteFooter: Story = {
               <H4 className="gi-my-4">Publications</H4>
               <Divider className="gi-my-4" />
               <Stack direction={'column'} gap={2}>
-                <Link underline="always" href="/departments/education">
+                <Link variant="inline" appearance="inherit" href="/departments/education">
                   Reports
                 </Link>
-                <Link underline="always" href="/departments/finance">
+                <Link variant="inline" appearance="inherit" href="/departments/finance">
                   Statistics
                 </Link>
-                <Link underline="always" href="/departments/health">
+                <Link variant="inline" appearance="inherit" href="/departments/health">
                   Legislation
                 </Link>
               </Stack>
@@ -89,13 +89,13 @@ export const CompleteFooter: Story = {
               <H4 className="gi-my-4">Contact</H4>
               <Divider className="gi-my-4" />
               <Stack direction={'column'} gap={2}>
-                <Link underline="always" href="/departments/education">
+                <Link variant="inline" appearance="inherit" href="/departments/education">
                   Find an Office
                 </Link>
-                <Link underline="always" href="/departments/finance">
+                <Link variant="inline" appearance="inherit" href="/departments/finance">
                   Phone Directory
                 </Link>
-                <Link underline="always" href="/departments/health">
+                <Link variant="inline" appearance="inherit" href="/departments/health">
                   Feedback
                 </Link>
               </Stack>
@@ -106,43 +106,43 @@ export const CompleteFooter: Story = {
           <Stack id="lower-section" direction={{ base: 'column', md: 'row' }} gap={6}>
             <Stack id="left-side-content" direction="column" gap={6}>
               <Stack direction={{ base: 'column', md: 'row' }} gap={4} wrap>
-                <Link underline="always" href="/about-us">
+                <Link variant="inline" appearance="inherit" href="/about-us">
                   About Us
                 </Link>
-                <Link underline="always" href="/contact">
+                <Link variant="inline" appearance="inherit" href="/contact">
                   Contact
                 </Link>
-                <Link underline="always" href="/sitemap">
+                <Link variant="inline" appearance="inherit" href="/sitemap">
                   Sitemap
                 </Link>
-                <Link underline="always" href="/privacy-policy">
+                <Link variant="inline" appearance="inherit" href="/privacy-policy">
                   Privacy Policy
                 </Link>
-                <Link underline="always" href="/terms-of-service">
+                <Link variant="inline" appearance="inherit" href="/terms-of-service">
                   Terms of Service
                 </Link>
-                <Link underline="always" href="/careers">
+                <Link variant="inline" appearance="inherit" href="/careers">
                   Careers
                 </Link>
-                <Link underline="always" href="/blog">
+                <Link variant="inline" appearance="inherit" href="/blog">
                   Blog
                 </Link>
-                <Link underline="always" href="/faq">
+                <Link variant="inline" appearance="inherit" href="/faq">
                   FAQ
                 </Link>
-                <Link underline="always" href="/support">
+                <Link variant="inline" appearance="inherit" href="/support">
                   Support
                 </Link>
-                <Link underline="always" href="/press">
+                <Link variant="inline" appearance="inherit" href="/press">
                   Press
                 </Link>
-                <Link underline="always" href="/partners">
+                <Link variant="inline" appearance="inherit" href="/partners">
                   Partners
                 </Link>
-                <Link underline="always" href="/investors">
+                <Link variant="inline" appearance="inherit" href="/investors">
                   Investors
                 </Link>
-                <Link underline="always" href="/events">
+                <Link variant="inline" appearance="inherit" href="/events">
                   Events
                 </Link>
               </Stack>
@@ -169,16 +169,16 @@ export const CompleteFooter: Story = {
           align="center"
           dataTestId="utility"
         >
-          <Link underline="always" href="/privacy-policy">
+          <Link variant="inline" appearance="inherit" href="/privacy-policy">
             Privacy Policy
           </Link>
-          <Link underline="always" href="/cookies">
+          <Link variant="inline" appearance="inherit" href="/cookies">
             Cookies
           </Link>
-          <Link underline="always" href="/accessibility">
+          <Link variant="inline" appearance="inherit" href="/accessibility">
             Accessibility
           </Link>
-          <Link underline="always" href="/terms-of-use">
+          <Link variant="inline" appearance="inherit" href="/terms-of-use">
             Terms of Use
           </Link>
           <Text className="gi-text-sm">© 2026 Design System of Government of Ireland.</Text>
