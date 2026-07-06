@@ -70,17 +70,22 @@ export const CompleteFooter: Story = {
           <Divider className="gi-my-4" />
           <ul className="gi-space-y-2">
             <li>
-              <Link underline="always" href="/services/public-services" aria-label="Public Services">
+              <Link variant="inline" appearance="inherit" href="/services/public-services" ariaLabel="Public Services">
                 Public Services
               </Link>
             </li>
             <li>
-              <Link underline="always" href="/services/business-services" aria-label="Business Services">
+              <Link
+                variant="inline"
+                appearance="inherit"
+                href="/services/business-services"
+                ariaLabel="Business Services"
+              >
                 Business Services
               </Link>
             </li>
             <li>
-              <Link underline="always" href="/services/online-services" aria-label="Online Services">
+              <Link variant="inline" appearance="inherit" href="/services/online-services" ariaLabel="Online Services">
                 Online Services
               </Link>
             </li>
@@ -91,17 +96,22 @@ export const CompleteFooter: Story = {
           <Divider className="gi-my-4" />
           <ul className="gi-space-y-2">
             <li>
-              <Link underline="always" href="/departments/health" aria-label="Department of Health">
+              <Link variant="inline" appearance="inherit" href="/departments/health" ariaLabel="Department of Health">
                 Department of Health
               </Link>
             </li>
             <li>
-              <Link underline="always" href="/departments/education" aria-label="Department of Education">
+              <Link
+                variant="inline"
+                appearance="inherit"
+                href="/departments/education"
+                ariaLabel="Department of Education"
+              >
                 Department of Education
               </Link>
             </li>
             <li>
-              <Link underline="always" href="/departments/finance" aria-label="Department of Finance">
+              <Link variant="inline" appearance="inherit" href="/departments/finance" ariaLabel="Department of Finance">
                 Department of Finance
               </Link>
             </li>
@@ -112,17 +122,17 @@ export const CompleteFooter: Story = {
           <Divider className="gi-my-4" />
           <ul className="gi-space-y-2">
             <li>
-              <Link underline="always" href="/publications/reports" aria-label="Reports">
+              <Link variant="inline" appearance="inherit" href="/publications/reports" ariaLabel="Reports">
                 Reports
               </Link>
             </li>
             <li>
-              <Link underline="always" href="/publications/statistics" aria-label="Statistics">
+              <Link variant="inline" appearance="inherit" href="/publications/statistics" ariaLabel="Statistics">
                 Statistics
               </Link>
             </li>
             <li>
-              <Link underline="always" href="/publications/legislation" aria-label="Legislation">
+              <Link variant="inline" appearance="inherit" href="/publications/legislation" ariaLabel="Legislation">
                 Legislation
               </Link>
             </li>
@@ -133,17 +143,17 @@ export const CompleteFooter: Story = {
           <Divider className="gi-my-4" />
           <ul className="gi-space-y-2">
             <li>
-              <Link underline="always" href="/contact/find-an-office" aria-label="Find an Office">
+              <Link variant="inline" appearance="inherit" href="/contact/find-an-office" ariaLabel="Find an Office">
                 Find an Office
               </Link>
             </li>
             <li>
-              <Link underline="always" href="/contact/phone-directory" aria-label="Phone Directory">
+              <Link variant="inline" appearance="inherit" href="/contact/phone-directory" ariaLabel="Phone Directory">
                 Phone Directory
               </Link>
             </li>
             <li>
-              <Link underline="always" href="/contact/feedback" aria-label="Feedback">
+              <Link variant="inline" appearance="inherit" href="/contact/feedback" ariaLabel="Feedback">
                 Feedback
               </Link>
             </li>
@@ -153,48 +163,48 @@ export const CompleteFooter: Story = {
     ),
     secondarySlot: (
       <Stack direction={'column'} gap={4} role="region" dataTestId="secondary">
-        <Stack aria-label="Footer Secondary Links" direction={{ base: 'column', md: 'row' }} gap={4} wrap>
-          <Link underline="always" href="/about-us" aria-label="About Us">
+        <Stack ariaLabel="Footer Secondary Links" direction={{ base: 'column', md: 'row' }} gap={4} wrap>
+          <Link variant="inline" appearance="inherit" href="/about-us" ariaLabel="About Us">
             About Us
           </Link>
-          <Link underline="always" href="/contact" aria-label="Contact">
+          <Link variant="inline" appearance="inherit" href="/contact" ariaLabel="Contact">
             Contact
           </Link>
-          <Link underline="always" href="/sitemap" aria-label="Sitemap">
+          <Link variant="inline" appearance="inherit" href="/sitemap" ariaLabel="Sitemap">
             Sitemap
           </Link>
-          <Link underline="always" href="/privacy-policy" aria-label="Privacy Policy">
+          <Link variant="inline" appearance="inherit" href="/privacy-policy" ariaLabel="Privacy Policy">
             Privacy Policy
           </Link>
-          <Link underline="always" href="/terms-of-service" aria-label="Terms of Service">
+          <Link variant="inline" appearance="inherit" href="/terms-of-service" ariaLabel="Terms of Service">
             Terms of Service
           </Link>
-          <Link underline="always" href="/careers" aria-label="Careers">
+          <Link variant="inline" appearance="inherit" href="/careers" ariaLabel="Careers">
             Careers
           </Link>
-          <Link underline="always" href="/blog" aria-label="Blog">
+          <Link variant="inline" appearance="inherit" href="/blog" ariaLabel="Blog">
             Blog
           </Link>
-          <Link underline="always" href="/faq" aria-label="FAQ">
+          <Link variant="inline" appearance="inherit" href="/faq" ariaLabel="FAQ">
             FAQ
           </Link>
-          <Link underline="always" href="/support" aria-label="Support">
+          <Link variant="inline" appearance="inherit" href="/support" ariaLabel="Support">
             Support
           </Link>
-          <Link underline="always" href="/press" aria-label="Press">
+          <Link variant="inline" appearance="inherit" href="/press" ariaLabel="Press">
             Press
           </Link>
-          <Link underline="always" href="/partners" aria-label="Partners">
+          <Link variant="inline" appearance="inherit" href="/partners" ariaLabel="Partners">
             Partners
           </Link>
-          <Link underline="always" href="/investors" aria-label="Investors">
+          <Link variant="inline" appearance="inherit" href="/investors" ariaLabel="Investors">
             Investors
           </Link>
-          <Link underline="always" href="/events" aria-label="Events">
+          <Link variant="inline" appearance="inherit" href="/events" ariaLabel="Events">
             Events
           </Link>
         </Stack>
-        <Stack direction={'row'} gap={4} aria-label="Social Media Links" role="navigation">
+        <Stack direction={'row'} gap={4} ariaLabel="Social Media Links" role="navigation">
           <XIcon label="social_x" />
           <FacebookIcon label="social_facebook" />
           <BlueskyIcon label="social_bluesky" />
@@ -204,16 +214,16 @@ export const CompleteFooter: Story = {
     ),
     utilitySlot: (
       <Stack direction={{ base: 'column', md: 'row' }} gap={4} justify="center" align="center" dataTestId="utility">
-        <Link underline="always" href="/privacy-policy" aria-label="Privacy Policy">
+        <Link variant="inline" appearance="inherit" href="/privacy-policy" ariaLabel="Privacy Policy">
           Privacy Policy
         </Link>
-        <Link underline="always" href="/cookies" aria-label="Cookies">
+        <Link variant="inline" appearance="inherit" href="/cookies" ariaLabel="Cookies">
           Cookies
         </Link>
-        <Link underline="always" href="/accessibility" aria-label="Accessibility">
+        <Link variant="inline" appearance="inherit" href="/accessibility" ariaLabel="Accessibility">
           Accessibility
         </Link>
-        <Link underline="always" href="/terms-of-use" aria-label="Terms of Use">
+        <Link variant="inline" appearance="inherit" href="/terms-of-use" ariaLabel="Terms of Use">
           Terms of Use
         </Link>
         <div className="gi-text-sm">© 2025 Government of Ireland.</div>
@@ -279,17 +289,32 @@ export const MigrationComparison: Story = {
                 <Divider className="gi-my-4" />
                 <ul className="gi-space-y-2">
                   <li>
-                    <Link underline="always" href="/services/public-services" aria-label="Public Services">
+                    <Link
+                      variant="inline"
+                      appearance="inherit"
+                      href="/services/public-services"
+                      aria-label="Public Services"
+                    >
                       Public Services
                     </Link>
                   </li>
                   <li>
-                    <Link underline="always" href="/services/business-services" aria-label="Business Services">
+                    <Link
+                      variant="inline"
+                      appearance="inherit"
+                      href="/services/business-services"
+                      aria-label="Business Services"
+                    >
                       Business Services
                     </Link>
                   </li>
                   <li>
-                    <Link underline="always" href="/services/online-services" aria-label="Online Services">
+                    <Link
+                      variant="inline"
+                      appearance="inherit"
+                      href="/services/online-services"
+                      aria-label="Online Services"
+                    >
                       Online Services
                     </Link>
                   </li>
@@ -300,17 +325,32 @@ export const MigrationComparison: Story = {
                 <Divider className="gi-my-4" />
                 <ul className="gi-space-y-2">
                   <li>
-                    <Link underline="always" href="/departments/health" aria-label="Department of Health">
+                    <Link
+                      variant="inline"
+                      appearance="inherit"
+                      href="/departments/health"
+                      aria-label="Department of Health"
+                    >
                       Department of Health
                     </Link>
                   </li>
                   <li>
-                    <Link underline="always" href="/departments/education" aria-label="Department of Education">
+                    <Link
+                      variant="inline"
+                      appearance="inherit"
+                      href="/departments/education"
+                      aria-label="Department of Education"
+                    >
                       Department of Education
                     </Link>
                   </li>
                   <li>
-                    <Link underline="always" href="/departments/finance" aria-label="Department of Finance">
+                    <Link
+                      variant="inline"
+                      appearance="inherit"
+                      href="/departments/finance"
+                      aria-label="Department of Finance"
+                    >
                       Department of Finance
                     </Link>
                   </li>
@@ -321,17 +361,22 @@ export const MigrationComparison: Story = {
                 <Divider className="gi-my-4" />
                 <ul className="gi-space-y-2">
                   <li>
-                    <Link underline="always" href="/publications/reports" aria-label="Reports">
+                    <Link variant="inline" appearance="inherit" href="/publications/reports" aria-label="Reports">
                       Reports
                     </Link>
                   </li>
                   <li>
-                    <Link underline="always" href="/publications/statistics" aria-label="Statistics">
+                    <Link variant="inline" appearance="inherit" href="/publications/statistics" ariaLabel="Statistics">
                       Statistics
                     </Link>
                   </li>
                   <li>
-                    <Link underline="always" href="/publications/legislation" aria-label="Legislation">
+                    <Link
+                      variant="inline"
+                      appearance="inherit"
+                      href="/publications/legislation"
+                      ariaLabel="Legislation"
+                    >
                       Legislation
                     </Link>
                   </li>
@@ -342,17 +387,27 @@ export const MigrationComparison: Story = {
                 <Divider className="gi-my-4" />
                 <ul className="gi-space-y-2">
                   <li>
-                    <Link underline="always" href="/contact/find-an-office" aria-label="Find an Office">
+                    <Link
+                      variant="inline"
+                      appearance="inherit"
+                      href="/contact/find-an-office"
+                      ariaLabel="Find an Office"
+                    >
                       Find an Office
                     </Link>
                   </li>
                   <li>
-                    <Link underline="always" href="/contact/phone-directory" aria-label="Phone Directory">
+                    <Link
+                      variant="inline"
+                      appearance="inherit"
+                      href="/contact/phone-directory"
+                      ariaLabel="Phone Directory"
+                    >
                       Phone Directory
                     </Link>
                   </li>
                   <li>
-                    <Link underline="always" href="/contact/feedback" aria-label="Feedback">
+                    <Link variant="inline" appearance="inherit" href="/contact/feedback" ariaLabel="Feedback">
                       Feedback
                     </Link>
                   </li>
@@ -362,48 +417,48 @@ export const MigrationComparison: Story = {
           }
           secondarySlot={
             <Stack direction={'column'} gap={4} role="region" dataTestId="secondary">
-              <Stack aria-label="Footer Secondary Links" direction={{ base: 'column', md: 'row' }} gap={4} wrap>
-                <Link underline="always" href="/about-us" aria-label="About Us">
+              <Stack ariaLabel="Footer Secondary Links" direction={{ base: 'column', md: 'row' }} gap={4} wrap>
+                <Link variant="inline" appearance="inherit" href="/about-us" ariaLabel="About Us">
                   About Us
                 </Link>
-                <Link underline="always" href="/contact" aria-label="Contact">
+                <Link variant="inline" appearance="inherit" href="/contact" ariaLabel="Contact">
                   Contact
                 </Link>
-                <Link underline="always" href="/sitemap" aria-label="Sitemap">
+                <Link variant="inline" appearance="inherit" href="/sitemap" ariaLabel="Sitemap">
                   Sitemap
                 </Link>
-                <Link underline="always" href="/privacy-policy" aria-label="Privacy Policy">
+                <Link variant="inline" appearance="inherit" href="/privacy-policy" ariaLabel="Privacy Policy">
                   Privacy Policy
                 </Link>
-                <Link underline="always" href="/terms-of-service" aria-label="Terms of Service">
+                <Link variant="inline" appearance="inherit" href="/terms-of-service" ariaLabel="Terms of Service">
                   Terms of Service
                 </Link>
-                <Link underline="always" href="/careers" aria-label="Careers">
+                <Link variant="inline" appearance="inherit" href="/careers" ariaLabel="Careers">
                   Careers
                 </Link>
-                <Link underline="always" href="/blog" aria-label="Blog">
+                <Link variant="inline" appearance="inherit" href="/blog" ariaLabel="Blog">
                   Blog
                 </Link>
-                <Link underline="always" href="/faq" aria-label="FAQ">
+                <Link variant="inline" appearance="inherit" href="/faq" ariaLabel="FAQ">
                   FAQ
                 </Link>
-                <Link underline="always" href="/support" aria-label="Support">
+                <Link variant="inline" appearance="inherit" href="/support" ariaLabel="Support">
                   Support
                 </Link>
-                <Link underline="always" href="/press" aria-label="Press">
+                <Link variant="inline" appearance="inherit" href="/press" ariaLabel="Press">
                   Press
                 </Link>
-                <Link underline="always" href="/partners" aria-label="Partners">
+                <Link variant="inline" appearance="inherit" href="/partners" ariaLabel="Partners">
                   Partners
                 </Link>
-                <Link underline="always" href="/investors" aria-label="Investors">
+                <Link variant="inline" appearance="inherit" href="/investors" ariaLabel="Investors">
                   Investors
                 </Link>
-                <Link underline="always" href="/events" aria-label="Events">
+                <Link variant="inline" appearance="inherit" href="/events" ariaLabel="Events">
                   Events
                 </Link>
               </Stack>
-              <Stack direction={'row'} gap={4} aria-label="Social Media Links" role="navigation">
+              <Stack direction={'row'} gap={4} ariaLabel="Social Media Links" role="navigation">
                 <XIcon label="social_x" />
                 <FacebookIcon label="social_facebook" />
                 <BlueskyIcon label="social_bluesky" />
@@ -419,16 +474,16 @@ export const MigrationComparison: Story = {
               align="center"
               dataTestId="utility"
             >
-              <Link underline="always" href="/privacy-policy" aria-label="Privacy Policy">
+              <Link variant="inline" appearance="inherit" href="/privacy-policy" ariaLabel="Privacy Policy">
                 Privacy Policy
               </Link>
-              <Link underline="always" href="/cookies" aria-label="Cookies">
+              <Link variant="inline" appearance="inherit" href="/cookies" ariaLabel="Cookies">
                 Cookies
               </Link>
-              <Link underline="always" href="/accessibility" aria-label="Accessibility">
+              <Link variant="inline" appearance="inherit" href="/accessibility" ariaLabel="Accessibility">
                 Accessibility
               </Link>
-              <Link underline="always" href="/terms-of-use" aria-label="Terms of Use">
+              <Link variant="inline" appearance="inherit" href="/terms-of-use" ariaLabel="Terms of Use">
                 Terms of Use
               </Link>
               <div className="gi-text-sm">© 2025 Government of Ireland.</div>
@@ -443,13 +498,13 @@ export const MigrationComparison: Story = {
                   <H4 className="gi-my-4">Services</H4>
                   <Divider className="gi-my-4" />
                   <Stack direction={'column'} gap={2}>
-                    <Link underline="always" href="/services/public-services">
+                    <Link variant="inline" appearance="inherit" href="/services/public-services">
                       Public Services
                     </Link>
-                    <Link underline="always" href="/services/business-services">
+                    <Link variant="inline" appearance="inherit" href="/services/business-services">
                       Business Services
                     </Link>
-                    <Link underline="always" href="/services/online-services">
+                    <Link variant="inline" appearance="inherit" href="/services/online-services">
                       Online Services
                     </Link>
                   </Stack>
@@ -458,13 +513,13 @@ export const MigrationComparison: Story = {
                   <H4 className="gi-my-4">Departments</H4>
                   <Divider className="gi-my-4" />
                   <Stack direction={'column'} gap={2}>
-                    <Link underline="always" href="/departments/health">
+                    <Link variant="inline" appearance="inherit" href="/departments/health">
                       Department of Health
                     </Link>
-                    <Link underline="always" href="/departments/education">
+                    <Link variant="inline" appearance="inherit" href="/departments/education">
                       Department of Education
                     </Link>
-                    <Link underline="always" href="/departments/finance">
+                    <Link variant="inline" appearance="inherit" href="/departments/finance">
                       Department of Finance
                     </Link>
                   </Stack>
@@ -473,13 +528,13 @@ export const MigrationComparison: Story = {
                   <H4 className="gi-my-4">Publications</H4>
                   <Divider className="gi-my-4" />
                   <Stack direction={'column'} gap={2}>
-                    <Link underline="always" href="/departments/education">
+                    <Link variant="inline" appearance="inherit" href="/departments/education">
                       Reports
                     </Link>
-                    <Link underline="always" href="/departments/finance">
+                    <Link variant="inline" appearance="inherit" href="/departments/finance">
                       Statistics
                     </Link>
-                    <Link underline="always" href="/departments/health">
+                    <Link variant="inline" appearance="inherit" href="/departments/health">
                       Legislation
                     </Link>
                   </Stack>
@@ -488,13 +543,13 @@ export const MigrationComparison: Story = {
                   <H4 className="gi-my-4">Contact</H4>
                   <Divider className="gi-my-4" />
                   <Stack direction={'column'} gap={2}>
-                    <Link underline="always" href="/departments/education">
+                    <Link variant="inline" appearance="inherit" href="/departments/education">
                       Find an Office
                     </Link>
-                    <Link underline="always" href="/departments/finance">
+                    <Link variant="inline" appearance="inherit" href="/departments/finance">
                       Phone Directory
                     </Link>
-                    <Link underline="always" href="/departments/health">
+                    <Link variant="inline" appearance="inherit" href="/departments/health">
                       Feedback
                     </Link>
                   </Stack>
@@ -505,43 +560,43 @@ export const MigrationComparison: Story = {
               <Stack id="lower-section" direction={{ base: 'column', md: 'row' }} gap={6}>
                 <Stack id="left-side-content" direction="column" gap={6}>
                   <Stack direction={{ base: 'column', md: 'row' }} gap={4} wrap>
-                    <Link underline="always" href="/about-us">
+                    <Link variant="inline" appearance="inherit" href="/about-us">
                       About Us
                     </Link>
-                    <Link underline="always" href="/contact">
+                    <Link variant="inline" appearance="inherit" href="/contact">
                       Contact
                     </Link>
-                    <Link underline="always" href="/sitemap">
+                    <Link variant="inline" appearance="inherit" href="/sitemap">
                       Sitemap
                     </Link>
-                    <Link underline="always" href="/privacy-policy">
+                    <Link variant="inline" appearance="inherit" href="/privacy-policy">
                       Privacy Policy
                     </Link>
-                    <Link underline="always" href="/terms-of-service">
+                    <Link variant="inline" appearance="inherit" href="/terms-of-service">
                       Terms of Service
                     </Link>
-                    <Link underline="always" href="/careers">
+                    <Link variant="inline" appearance="inherit" href="/careers">
                       Careers
                     </Link>
-                    <Link underline="always" href="/blog">
+                    <Link variant="inline" appearance="inherit" href="/blog">
                       Blog
                     </Link>
-                    <Link underline="always" href="/faq">
+                    <Link variant="inline" appearance="inherit" href="/faq">
                       FAQ
                     </Link>
-                    <Link underline="always" href="/support">
+                    <Link variant="inline" appearance="inherit" href="/support">
                       Support
                     </Link>
-                    <Link underline="always" href="/press">
+                    <Link variant="inline" appearance="inherit" href="/press">
                       Press
                     </Link>
-                    <Link underline="always" href="/partners">
+                    <Link variant="inline" appearance="inherit" href="/partners">
                       Partners
                     </Link>
-                    <Link underline="always" href="/investors">
+                    <Link variant="inline" appearance="inherit" href="/investors">
                       Investors
                     </Link>
-                    <Link underline="always" href="/events">
+                    <Link variant="inline" appearance="inherit" href="/events">
                       Events
                     </Link>
                   </Stack>
@@ -568,16 +623,16 @@ export const MigrationComparison: Story = {
               align="center"
               dataTestId="utility"
             >
-              <Link underline="always" href="/privacy-policy">
+              <Link variant="inline" appearance="inherit" href="/privacy-policy">
                 Privacy Policy
               </Link>
-              <Link underline="always" href="/cookies">
+              <Link variant="inline" appearance="inherit" href="/cookies">
                 Cookies
               </Link>
-              <Link underline="always" href="/accessibility">
+              <Link variant="inline" appearance="inherit" href="/accessibility">
                 Accessibility
               </Link>
-              <Link underline="always" href="/terms-of-use">
+              <Link variant="inline" appearance="inherit" href="/terms-of-use">
                 Terms of Use
               </Link>
               <Text className="gi-text-sm">© 2025 Government of Ireland.</Text>
@@ -592,54 +647,54 @@ export const MigrationComparison: Story = {
 export const SimpleFooter: Story = {
   args: {
     secondarySlot: (
-      <Stack direction={{ base: 'column', md: 'row' }} gap={4} wrap aria-label="Footer Secondary Links">
-        <Link underline="always" href="/about-us" aria-label="About Us">
+      <Stack direction={{ base: 'column', md: 'row' }} gap={4} wrap ariaLabel="Footer Secondary Links">
+        <Link variant="inline" appearance="inherit" href="/about-us" ariaLabel="About Us">
           About Us
         </Link>
-        <Link underline="always" href="/contact" aria-label="Contact">
+        <Link variant="inline" appearance="inherit" href="/contact" ariaLabel="Contact">
           Contact
         </Link>
-        <Link underline="always" href="/sitemap" aria-label="Sitemap">
+        <Link variant="inline" appearance="inherit" href="/sitemap" ariaLabel="Sitemap">
           Sitemap
         </Link>
-        <Link underline="always" href="/privacy-policy" aria-label="Privacy Policy">
+        <Link variant="inline" appearance="inherit" href="/privacy-policy" ariaLabel="Privacy Policy">
           Privacy Policy
         </Link>
-        <Link underline="always" href="/terms-of-service" aria-label="Terms of Service">
+        <Link variant="inline" appearance="inherit" href="/terms-of-service" ariaLabel="Terms of Service">
           Terms of Service
         </Link>
-        <Link underline="always" href="/careers" aria-label="Careers">
+        <Link variant="inline" appearance="inherit" href="/careers" ariaLabel="Careers">
           Careers
         </Link>
-        <Link underline="always" href="/blog" aria-label="Blog">
+        <Link variant="inline" appearance="inherit" href="/blog" ariaLabel="Blog">
           Blog
         </Link>
-        <Link underline="always" href="/faq" aria-label="FAQ">
+        <Link variant="inline" appearance="inherit" href="/faq" ariaLabel="FAQ">
           FAQ
         </Link>
-        <Link underline="always" href="/support" aria-label="Support">
+        <Link variant="inline" appearance="inherit" href="/support" ariaLabel="Support">
           Support
         </Link>
-        <Link underline="always" href="/press" aria-label="Press">
+        <Link variant="inline" appearance="inherit" href="/press" ariaLabel="Press">
           Press
         </Link>
-        <Link underline="always" href="/partners" aria-label="Partners">
+        <Link variant="inline" appearance="inherit" href="/partners" ariaLabel="Partners">
           Partners
         </Link>
-        <Link underline="always" href="/investors" aria-label="Investors">
+        <Link variant="inline" appearance="inherit" href="/investors" ariaLabel="Investors">
           Investors
         </Link>
-        <Link underline="always" href="/events" aria-label="Events">
+        <Link variant="inline" appearance="inherit" href="/events" ariaLabel="Events">
           Events
         </Link>
       </Stack>
     ),
     utilitySlot: (
       <Stack direction={{ base: 'column', md: 'row' }} gap={4} justify="center">
-        <Link underline="always" href="/privacy-policy" aria-label="Privacy Policy">
+        <Link variant="inline" appearance="inherit" href="/privacy-policy" ariaLabel="Privacy Policy">
           Privacy Policy
         </Link>
-        <Link underline="always" href="/accessibility" aria-label="Accessibility">
+        <Link variant="inline" appearance="inherit" href="/accessibility" ariaLabel="Accessibility">
           Accessibility
         </Link>
         <div className="gi-text-sm">© 2025 Government of Ireland.</div>
@@ -652,10 +707,10 @@ export const MinimalFooter: Story = {
   args: {
     utilitySlot: (
       <Stack direction={{ base: 'column', md: 'row' }} gap={4} justify="center">
-        <Link underline="always" href="/privacy-policy" aria-label="Privacy Policy">
+        <Link variant="inline" appearance="inherit" href="/privacy-policy" ariaLabel="Privacy Policy">
           Privacy Policy
         </Link>
-        <Link underline="always" href="/accessibility" aria-label="Accessibility">
+        <Link variant="inline" appearance="inherit" href="/accessibility" ariaLabel="Accessibility">
           Accessibility
         </Link>
         <div className="gi-text-sm">© 2025 Government of Ireland.</div>

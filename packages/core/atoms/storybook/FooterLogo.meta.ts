@@ -45,7 +45,6 @@ export const footerLogoMeta = {
 };
 
 export const Default = {
-  args: footerLogoMeta.args,
   play: async ({ canvasElement, step, args }: StoryContext<Renderer>) => {
     const canvas = within(canvasElement as HTMLElement);
     await checker(args.dataTestId, canvas, step).is('div');
