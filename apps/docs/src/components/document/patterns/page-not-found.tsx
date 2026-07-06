@@ -3,7 +3,7 @@ import {
   Header,
   Link,
   Paragraph,
-  Footer as FooterLegacy,
+  Footer,
   HeaderSearch,
 } from '@ogcio/design-system-react';
 
@@ -34,7 +34,7 @@ export function PageNotFound() {
           speak to someone about your [service].
         </Paragraph>
       </main>
-      <FooterLegacy />
+      <Footer />
     </>
   );
 }
