@@ -10,6 +10,14 @@ const meta = {
   ...stories.linkMeta,
   title: 'Navigation/Link/Link',
   component: Link,
+  // Stop the click from navigating to avoid unexpected navigation in Storybook
+  decorators: [
+    (Story) => (
+      <div onClick={(event) => event.preventDefault()}>
+        <Story />
+      </div>
+    ),
+  ],
   argTypes: {
     ...stories.linkMeta.argTypes,
     asChild: {
@@ -174,15 +182,22 @@ export const InTypography: Story = {
 export const PlainLink: Story = {
   ...stories.PlainLink,
   render: (_props) => (
-    <Box className="gi-flex gi-flex-col gi-gap-4 gi-items-start">
-      <Link href="#" ariaLabel="Home" className="gi-inline-flex gi-w-fit">
-        <HomeIcon />
-      </Link>
-      <Link asChild>
-        <a href="#" className="gi-font-primary">
-          Styled Native Anchor
-        </a>
-      </Link>
+    <Box className="gi-flex gi-flex-col gi-gap-6 gi-items-start">
+      <Box className="gi-flex gi-flex-col gi-gap-4 gi-items-start">
+        <Link href="#" ariaLabel="Home" className="gi-inline-flex gi-w-fit">
+          <HomeIcon />
+        </Link>
+        <Link asChild>
+          <a href="/" className="gi-font-primary">
+            Styled Native Anchor
+          </a>
+        </Link>
+      </Box>
+      <Box className="gi-bg-black gi-p-4 gi-rounded gi-w-fit gi-flex gi-gap-4 gi-items-center">
+        <Link href="#" appearance="light" visited="none">
+          Light Appearance
+        </Link>
+      </Box>
     </Box>
   ),
 };
@@ -196,7 +211,7 @@ export const PlainFocusState: Story = {
           <HomeIcon />
         </Link>
         <Link asChild dataTestId="link-aschild-default">
-          <a href="#" className="gi-font-primary pseudo-focus">
+          <a href="/" className="gi-font-primary pseudo-focus">
             Styled Native Anchor
           </a>
         </Link>
@@ -212,7 +227,7 @@ export const PlainFocusState: Story = {
           <HomeIcon />
         </Link>
         <Link asChild appearance="light" dataTestId="link-aschild-light">
-          <a href="#" className="gi-font-primary pseudo-focus">
+          <a href="/" className="gi-font-primary pseudo-focus">
             Styled Native Anchor
           </a>
         </Link>

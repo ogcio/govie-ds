@@ -41,7 +41,7 @@ export default function Link({
         {...rest}
         {...anchorProps}
         className={linkStyles({ ...styleProps, class: className })}
-        style={(style ?? styles) as Record<string, string>}
+        style={style ?? styles}
         aria-current={ariaCurrent}
         aria-label={ariaLabel}
         aria-labelledby={ariaLabelledBy}

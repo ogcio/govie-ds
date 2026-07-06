@@ -87,7 +87,8 @@ export const linkStyles = tv({
       ],
     },
     underline: {
-      [Underline.ALWAYS]: 'gi-underline',
+      // applied only for the inline variant
+      [Underline.ALWAYS]: '',
       [Underline.HOVER]: 'gi-no-underline hover:gi-underline',
       [Underline.NONE]: 'gi-no-underline hover:gi-no-underline',
     },
@@ -154,11 +155,6 @@ export const linkStyles = tv({
       variant: Variant.INLINE,
       appearance: Appearance.LIGHT,
       class: 'aria-[current=page]:gi-text-color-text-tone-light-disabled',
-    },
-    {
-      variant: Variant.DEFAULT,
-      appearance: Appearance.DEFAULT,
-      class: 'visited:gi-text-inherit hover:visited:gi-text-inherit',
     },
   ],
 });
