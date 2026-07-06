@@ -1,11 +1,11 @@
 import {
   Heading,
   Header,
-  Link,
   Paragraph,
   Footer,
   HeaderSearch,
 } from '@ogcio/design-system-react';
+import { Link } from '@ogcio/design-system-react/next';
 
 export function ServiceUnavailable() {
   return (
@@ -27,8 +27,11 @@ export function ServiceUnavailable() {
           We saved your answers. They will be available for 30 days
         </Paragraph>
         <Paragraph>
-          <Link href="#">Contact the [service] Helpline</Link> if you need to
-          make changes to your claim or speak to someone about your [service].
+          <Link variant="inline" href="#">
+            Contact the [service] Helpline
+          </Link>{' '}
+          if you need to make changes to your claim or speak to someone about
+          your [service].
         </Paragraph>
       </main>
       <Footer />

@@ -7,6 +7,7 @@ import {
   Link,
   Container,
   Heading,
+  LinkButton,
 } from '@ogcio/design-system-react';
 import analytics from '@/lib/analytics';
 import { config } from '@/lib/config';
@@ -49,17 +50,14 @@ export default function FeedbackForm() {
         </Heading>
         <div>
           {showSendFeedbackButton ? (
-            <Link
+            <LinkButton
               external
               onClick={handleOnFeedbackFormButtonClick}
-              className="gi-not-prose"
-              asButton={{
-                appearance: 'dark',
-              }}
               href={config.feedbackFormUrl}
+              appearance="dark"
             >
               Send feedback
-            </Link>
+            </LinkButton>
           ) : (
             <ButtonGroup
               role="radiogroup"

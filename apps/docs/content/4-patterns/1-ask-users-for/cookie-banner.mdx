@@ -48,7 +48,15 @@ It provides options for users to accept all cookies or only necessary cookies.
   >
     <>
       <Heading as="h3">A notice about cookies</Heading>
-      <Paragraph className="my-4">{'This website uses cookies to collect information about how you use this site. This information is used to make the website work as well as possible. More details available in our '}<Link href="/cookies-policy/">cookie and privacy policies</Link>.</Paragraph>
+      <Paragraph className="my-4">
+        {
+          'This website uses cookies to collect information about how you use this site. This information is used to make the website work as well as possible. More details available in our '
+        }
+        <Link variant="inline" href="/cookies-policy/">
+          cookie and privacy policies
+        </Link>
+        .
+      </Paragraph>
     </>
   </CookieBanner>
 </ComponentContainer>
@@ -101,7 +109,7 @@ It provides options for users to accept all cookies or only necessary cookies.
           This website uses cookies to collect information about how you use
           this site. This information is used to make the website work as well
           as possible. More details available in our{' '}
-          <Link href="/cookies-policy/">cookie and privacy policies</Link>.
+          <Link variant="inline" href="/cookies-policy/">cookie and privacy policies</Link>.
         </Paragraph>
       </>
     </CookieBanner>

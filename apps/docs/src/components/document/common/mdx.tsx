@@ -3,7 +3,6 @@ import { ColorPrimitives } from '@/components/document/color/color-primitives';
 import { DownloadTheme } from '@/components/document/theme/download-theme';
 import { ThemeBuilder } from '@/components/document/theme/theme-builder';
 import { TwoThirds, TwoThirdsOneThird } from '@/components/layouts/two-thirds';
-import { GovieLink } from '@/components/navigation/custom-link';
 import { cn } from '@/lib/cn';
 import {
   Autocomplete,
@@ -107,6 +106,8 @@ import {
   generateSvgPlaceholderDataUrl,
 } from '@ogcio/design-system-react';
 
+import { Link } from '@ogcio/design-system-react/next';
+
 import * as Icons from '@ogcio/design-system-react/icons';
 import { MDXComponents } from 'mdx/types';
 import { useMDXComponent } from 'next-contentlayer2/hooks';
@@ -178,7 +179,7 @@ export type MdxProps = {
 
 const standardComponents: MDXComponents = {
   a: ({ ...props }) =>
-    props['data-raw'] ? <a {...props} /> : <GovieLink {...props} />,
+    props['data-raw'] ? <a {...props} /> : <Link {...props} />,
   ul: ({ children, className }) => (
     <ul className={className || 'gi-list-bullet'}>{children}</ul>
   ),
@@ -328,7 +329,7 @@ const documentComponents: MDXComponents = {
   InputText,
   LetterSpacingTable,
   LineHeightTable,
-  Link: (props) => <GovieLink {...props}>{props.children}</GovieLink>,
+  Link,
   List,
   LoadingPattern,
   Logos,
