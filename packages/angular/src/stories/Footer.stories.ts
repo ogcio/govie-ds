@@ -58,13 +58,13 @@ export const CompleteFooter: StoryObj = {
                 <gi-divider className="gi-my-4"></gi-divider>
                 <ul class="gi-space-y-2">
                   <li>
-                    <gi-link underline="always" href="/services/public-services">Public Services</gi-link>
+                    <gi-link variant="inline" appearance="inherit" href="/services/public-services">Public Services</gi-link>
                   </li>
                   <li>
-                    <gi-link underline="always" href="/services/business-services">Business Services</gi-link>
+                    <gi-link variant="inline" appearance="inherit" href="/services/business-services">Business Services</gi-link>
                   </li>
                   <li>
-                    <gi-link underline="always" href="/services/online-services">Online Services</gi-link>
+                    <gi-link variant="inline" appearance="inherit" href="/services/online-services">Online Services</gi-link>
                   </li>
                 </ul>
               </gi-grid>
@@ -73,13 +73,13 @@ export const CompleteFooter: StoryObj = {
                 <gi-divider className="gi-my-4"></gi-divider>
                 <ul class="gi-space-y-2">
                   <li>
-                    <gi-link underline="always" href="/departments/health">Department of Health</gi-link>
+                    <gi-link variant="inline" appearance="inherit" href="/departments/health">Department of Health</gi-link>
                   </li>
                   <li>
-                    <gi-link underline="always" href="/departments/education">Department of Education</gi-link>
+                    <gi-link variant="inline" appearance="inherit" href="/departments/education">Department of Education</gi-link>
                   </li>
                   <li>
-                    <gi-link underline="always" href="/departments/finance">Department of Finance</gi-link>
+                    <gi-link variant="inline" appearance="inherit" href="/departments/finance">Department of Finance</gi-link>
                   </li>
                 </ul>
               </gi-grid>
@@ -88,13 +88,13 @@ export const CompleteFooter: StoryObj = {
                 <gi-divider className="gi-my-4"></gi-divider>
                 <ul class="gi-space-y-2">
                   <li>
-                    <gi-link underline="always" href="/publications/reports">Reports</gi-link>
+                    <gi-link variant="inline" appearance="inherit" href="/publications/reports">Reports</gi-link>
                   </li>
                   <li>
-                    <gi-link underline="always" href="/publications/statistics">Statistics</gi-link>
+                    <gi-link variant="inline" appearance="inherit" href="/publications/statistics">Statistics</gi-link>
                   </li>
                   <li>
-                    <gi-link underline="always" href="/publications/legislation">Legislation</gi-link>
+                    <gi-link variant="inline" appearance="inherit" href="/publications/legislation">Legislation</gi-link>
                   </li>
                 </ul>
               </gi-grid>
@@ -103,13 +103,13 @@ export const CompleteFooter: StoryObj = {
                 <gi-divider className="gi-my-4"></gi-divider>
                 <ul class="gi-space-y-2">
                   <li>
-                    <gi-link underline="always" href="/contact/find-an-office">Find an Office</gi-link>
+                    <gi-link variant="inline" appearance="inherit" href="/contact/find-an-office">Find an Office</gi-link>
                   </li>
                   <li>
-                    <gi-link underline="always" href="/contact/phone-directory">Phone Directory</gi-link>
+                    <gi-link variant="inline" appearance="inherit" href="/contact/phone-directory">Phone Directory</gi-link>
                   </li>
                   <li>
-                    <gi-link underline="always" href="/contact/feedback">Feedback</gi-link>
+                    <gi-link variant="inline" appearance="inherit" href="/contact/feedback">Feedback</gi-link>
                   </li>
                 </ul>
               </gi-grid>
@@ -119,19 +119,19 @@ export const CompleteFooter: StoryObj = {
             <gi-stack id="lower-section" [direction]="{ base: 'column', md: 'row' }" [gap]="6">
               <gi-stack id="left-side-content" direction="column" [gap]="6">
                 <gi-stack [direction]="{ base: 'column', md: 'row' }" [gap]="4" [wrap]="true">
-                  <gi-link underline="always" href="/about-us">About Us</gi-link>
-                  <gi-link underline="always" href="/contact">Contact</gi-link>
-                  <gi-link underline="always" href="/sitemap">Sitemap</gi-link>
-                  <gi-link underline="always" href="/privacy-policy">Privacy Policy</gi-link>
-                  <gi-link underline="always" href="/terms-of-service">Terms of Service</gi-link>
-                  <gi-link underline="always" href="/careers">Careers</gi-link>
-                  <gi-link underline="always" href="/blog">Blog</gi-link>
-                  <gi-link underline="always" href="/faq">FAQ</gi-link>
-                  <gi-link underline="always" href="/support">Support</gi-link>
-                  <gi-link underline="always" href="/press">Press</gi-link>
-                  <gi-link underline="always" href="/partners">Partners</gi-link>
-                  <gi-link underline="always" href="/investors">Investors</gi-link>
-                  <gi-link underline="always" href="/events">Events</gi-link>
+                  <gi-link variant="inline" appearance="inherit" href="/about-us">About Us</gi-link>
+                  <gi-link variant="inline" appearance="inherit" href="/contact">Contact</gi-link>
+                  <gi-link variant="inline" appearance="inherit" href="/sitemap">Sitemap</gi-link>
+                  <gi-link variant="inline" appearance="inherit" href="/privacy-policy">Privacy Policy</gi-link>
+                  <gi-link variant="inline" appearance="inherit" href="/terms-of-service">Terms of Service</gi-link>
+                  <gi-link variant="inline" appearance="inherit" href="/careers">Careers</gi-link>
+                  <gi-link variant="inline" appearance="inherit" href="/blog">Blog</gi-link>
+                  <gi-link variant="inline" appearance="inherit" href="/faq">FAQ</gi-link>
+                  <gi-link variant="inline" appearance="inherit" href="/support">Support</gi-link>
+                  <gi-link variant="inline" appearance="inherit" href="/press">Press</gi-link>
+                  <gi-link variant="inline" appearance="inherit" href="/partners">Partners</gi-link>
+                  <gi-link variant="inline" appearance="inherit" href="/investors">Investors</gi-link>
+                  <gi-link variant="inline" appearance="inherit" href="/events">Events</gi-link>
                 </gi-stack>
                 <gi-stack direction="row" [gap]="4">
                   <gi-x-icon [size]="24" label="social_x"></gi-x-icon>
@@ -156,10 +156,10 @@ export const CompleteFooter: StoryObj = {
             align="center"
             dataTestId="utility"
           >
-            <gi-link underline="always" href="/privacy-policy">Privacy Policy</gi-link>
-            <gi-link underline="always" href="/cookies">Cookies</gi-link>
-            <gi-link underline="always" href="/accessibility">Accessibility</gi-link>
-            <gi-link underline="always" href="/terms-of-use">Terms of Use</gi-link>
+            <gi-link variant="inline" appearance="inherit" href="/privacy-policy">Privacy Policy</gi-link>
+            <gi-link variant="inline" appearance="inherit" href="/cookies">Cookies</gi-link>
+            <gi-link variant="inline" appearance="inherit" href="/accessibility">Accessibility</gi-link>
+            <gi-link variant="inline" appearance="inherit" href="/terms-of-use">Terms of Use</gi-link>
             <gi-text className="gi-text-sm">© 2026 Design System of Government of Ireland.</gi-text>
           </gi-stack>
         </gi-footer-section>
