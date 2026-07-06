@@ -1,0 +1,126 @@
+import { tv } from 'tailwind-variants';
+
+export const Variant = {
+  DEFAULT: 'default',
+  INLINE: 'inline',
+} as const;
+
+export const Underline = {
+  ALWAYS: 'always',
+  HOVER: 'hover',
+  NONE: 'none',
+} as const;
+
+export const Appearance = {
+  DEFAULT: 'default',
+  LIGHT: 'light',
+  INHERIT: 'inherit',
+} as const;
+
+export const Visited = {
+  DEFAULT: 'default',
+  NONE: 'none',
+} as const;
+
+export default tv({
+  base: [
+    'focus:gi-rounded-sm',
+    'focus:gi-shadow-[0_0_0_2px_var(--gieds-color-gray-950),0_0_0_5px_var(--gieds-color-yellow-400)]',
+    'focus-visible:gi-shadow-[0_0_0_2px_var(--gieds-color-gray-950),0_0_0_5px_var(--gieds-color-yellow-400)]',
+    'focus-visible:gi-rounded-sm',
+    'focus-visible:gi-outline-none',
+  ],
+  variants: {
+    variant: {
+      [Variant.DEFAULT]: '',
+      [Variant.INLINE]: [
+        'gi-underline',
+        'hover:gi-underline',
+        'focus:gi-no-underline',
+        'focus-visible:gi-no-underline',
+        'gi-font-primary',
+        'gi-w-fit',
+        'gi-inline-flex',
+        'aria-[current=page]:gi-pointer-events-none',
+        'aria-[current=page]:gi-no-underline',
+        'aria-[current=page]:focus-visible:gi-outline-none',
+        'aria-[current=page]:focus-visible:gi-shadow-none',
+        // Firefox & Safari clip descenders at 0.2em offset — bump to 0.23em.
+        // Kept as explicit utilities (not only the :where rule in typography.css)
+        // so the offset survives even when other classes touch underline styles.
+        'supports-[-moz-appearance:none]:gi-underline-offset-[0.23em]',
+        'supports-[background:-webkit-named-image(i)]:gi-underline-offset-[0.23em]',
+      ],
+    },
+    underline: {
+      // applied only for the inline variant
+      [Underline.ALWAYS]: '',
+      [Underline.HOVER]: 'gi-no-underline hover:gi-underline',
+      [Underline.NONE]: 'gi-no-underline hover:gi-no-underline',
+    },
+    appearance: {
+      [Appearance.DEFAULT]: '',
+      [Appearance.LIGHT]: [
+        'gi-text-white',
+        'hover:gi-text-white',
+        'focus:gi-text-white',
+        'focus-visible:gi-text-white',
+        'visited:gi-text-color-text-tone-light-visited',
+        'hover:visited:gi-text-color-text-tone-light-visited',
+        'focus:gi-shadow-[0_0_0_3px_var(--gieds-color-yellow-400)]',
+        'focus-visible:gi-shadow-[0_0_0_3px_var(--gieds-color-yellow-400)]',
+      ],
+      [Appearance.INHERIT]: [
+        'gi-text-inherit',
+        'hover:gi-text-inherit',
+        'focus:gi-text-inherit',
+        'focus-visible:gi-text-inherit',
+        'visited:gi-text-inherit',
+        'hover:visited:gi-text-inherit',
+      ],
+    },
+    visited: {
+      [Visited.DEFAULT]: '',
+      [Visited.NONE]: '',
+    },
+  },
+  defaultVariants: {
+    variant: Variant.DEFAULT,
+    appearance: Appearance.DEFAULT,
+    visited: Visited.DEFAULT,
+  },
+  compoundVariants: [
+    {
+      variant: Variant.INLINE,
+      appearance: Appearance.DEFAULT,
+      class: [
+        'gi-text-color-text-tone-convention-default',
+        'hover:gi-text-color-text-tone-convention-hover',
+        'aria-[current=page]:gi-text-color-icon-tone-convention-disabled',
+      ],
+    },
+    {
+      variant: Variant.INLINE,
+      appearance: Appearance.DEFAULT,
+      visited: Visited.DEFAULT,
+      class: [
+        'visited:gi-text-color-icon-tone-convention-visited',
+        'hover:visited:gi-text-color-icon-tone-convention-visited',
+      ],
+    },
+    {
+      variant: Variant.INLINE,
+      appearance: Appearance.DEFAULT,
+      visited: Visited.NONE,
+      class: [
+        'visited:gi-text-color-text-tone-convention-default',
+        'hover:visited:gi-text-color-text-tone-convention-default',
+      ],
+    },
+    {
+      variant: Variant.INLINE,
+      appearance: Appearance.LIGHT,
+      class: 'aria-[current=page]:gi-text-color-text-tone-light-disabled',
+    },
+  ],
+});

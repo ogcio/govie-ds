@@ -1,5 +1,6 @@
 import { Slot } from '@radix-ui/react-slot';
-import GiLink, { type Props as GiLinkProps, linkStyles } from '@/atoms/Link';
+import GiLink, { type Props as GiLinkProps } from '@/atoms/Link';
+import linkStyles from '@/atoms/Link.styles';
 
 export type LinkProps =
   | (GiLinkProps & { asChild?: false; style?: React.CSSProperties })
