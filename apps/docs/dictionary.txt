@@ -8,6 +8,7 @@ AccordionItem
 AccordionItemProps
 AccordionProps
 Arial
+ariaLabelledBy
 Autocomplete
 AutocompleteItem
 BreadcrumbCurrentLinkProps
@@ -35,6 +36,7 @@ Composable
 CookieBannerProps
 Customize
 DOM
+dataTestId
 DataTableHeader
 DataTableHeaderActions
 DataTableHeaderFilter
