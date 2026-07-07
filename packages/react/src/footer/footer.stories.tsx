@@ -236,7 +236,7 @@ export const CompleteFooter: Story = {
     await step('should render the footer with default props', async () => {
       const footerElement = canvas.getByRole('contentinfo');
       expect(footerElement).toBeInTheDocument();
-      expect(footerElement).toHaveAttribute('ariaLabel', 'Footer');
+      expect(footerElement).toHaveAttribute('aria-label', 'Footer');
       expect(footerElement).toHaveAttribute('data-testid', 'gi-footer');
     });
 
