@@ -54,7 +54,7 @@ export default function CookieConsent() {
           This website uses cookies to collect information about how you use
           this site. This information is used to make the website work as well
           as possible. More details available in our{' '}
-          <Link asChild variant="inline" href="/cookies-policy/">
+          <Link asChild variant="inline">
             <NextLink href="/cookies-policy/">
               cookie and privacy policies
             </NextLink>

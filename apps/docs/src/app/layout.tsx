@@ -82,7 +82,6 @@ export default function RootLayout({
                       variant="inline"
                       appearance="inherit"
                       ariaLabel={link.label}
-                      href={link.href}
                       key={`footerlink-${index}`}
                     >
                       <NextLink href={link.href}>{link.label}</NextLink>

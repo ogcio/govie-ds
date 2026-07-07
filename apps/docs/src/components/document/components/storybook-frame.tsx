@@ -3,7 +3,7 @@ import { getComponents } from '@/lib/components';
 import { Link } from '@ogcio/design-system-react/next';
 import StorybookLogo from './storybook';
 import { cn } from '@/lib/cn';
-import { navigateExternalLink } from '@/components/analytics-provider';
+import { trackExternalLink } from '@/components/analytics-provider';
 
 export function StorybookFrame({
   componentId,
@@ -54,6 +54,7 @@ export function StorybookFrame({
           <div className="p-2 bottom-0 right-0 absolute">
             <Link
               external
+              onClick={trackExternalLink}
               underline="hover"
               href={`${baseUrl}/${docsPath}`}
               className="block"
@@ -84,7 +85,13 @@ export function StorybookFrame({
         )}
       ></iframe>
       <div className="p-2 bottom-0 right-0 absolute">
-        <Link external underline="hover" href={docsUrl} className="block">
+        <Link
+          external
+          onClick={trackExternalLink}
+          underline="hover"
+          href={docsUrl}
+          className="block"
+        >
           <StorybookLogo className="inline mr-2" /> View on Storybook
         </Link>
       </div>

@@ -1,5 +1,5 @@
 'use client';
-import { GovieLink } from '@/components/navigation/custom-link';
+import NextLink from 'next/link';
 import analytics from '@/lib/analytics';
 import { ComponentStatus } from '@/lib/components';
 import {
@@ -15,6 +15,7 @@ import Image from 'next/image';
 import { Fragment } from 'react';
 import { TagFromStatus } from './tag-from-status';
 import { getComponents } from '@/lib/helper';
+import { Link } from '@ogcio/design-system-react/next';
 
 export function ComponentStatusPill({ status }: { status: ComponentStatus }) {
   const tagProps = TagFromStatus(status);
@@ -257,14 +258,12 @@ export function ComponentStatusTable() {
         {componentStatuses.map((componentStatus) => {
           return (
             <Fragment key={componentStatus.id}>
-              <div className="row-span-3 lg:row-span-1 mb-4 lg:mb-0 w-32 lg:w-full p-2">
-                <GovieLink
-                  noUnderline
-                  noVisited
-                  href={`/${componentStatus.slug}`}
-                >
-                  {componentStatus.name}
-                </GovieLink>
+              <div className="row-span-3 lg:row-span-1 mb-4 lg:mb-0 w-32 lg:w-full p-2 gi-not-prose">
+                <Link asChild variant="inline" underline="hover" visited="none">
+                  <NextLink href={`/${componentStatus.slug}`}>
+                    {componentStatus.name}
+                  </NextLink>
+                </Link>
               </div>
               <div className="flex p-2">
                 <div className="w-32 block lg:hidden">Figma Library</div>

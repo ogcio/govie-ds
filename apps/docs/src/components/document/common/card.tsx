@@ -1,4 +1,3 @@
-'use client';
 import { cn } from '@/lib/cn';
 import { Link } from '@ogcio/design-system-react/next';
 import NextLink from 'next/link';
@@ -35,12 +34,7 @@ export function Card({
         <div>{children}</div>
         {link ? (
           <div className="flex justify-center">
-            <Link
-              asChild
-              variant="inline"
-              className="gi-not-prose"
-              href={link.href}
-            >
+            <Link asChild variant="inline" className="gi-not-prose">
               <NextLink href={link.href}>{link.label}</NextLink>
             </Link>
           </div>
