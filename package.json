@@ -37,8 +37,9 @@
   "lint-staged": {
     "packages/react/**/*.{js,ts,tsx}": "eslint --config packages/react/eslint.config.js",
     "packages/html/ds/**/*.{js,ts,tsx}": "eslint --config packages/html/ds/eslint.config.js",
+    "packages/vue/**/*.{js,ts,tsx,vue}": "eslint --config packages/vue/eslint.config.js",
     "apps/docs/**/*.{js,ts,tsx}": "eslint --config apps/docs/eslint.config.js",
-    "{packages/!(react|html),examples}/**/*.{js,ts,tsx}": "eslint",
+    "{packages/!(react|html|vue),examples}/**/*.{js,ts,tsx}": "eslint",
     "{apps,packages,examples}/**/*": "prettier --check --ignore-unknown"
   },
   "devDependencies": {
@@ -72,7 +73,7 @@
     "tsup": "^8.4.0",
     "tsx": "^4.19.3",
     "typescript": "^5.9.3",
-    "typescript-eslint": "^8.59.0",
+    "typescript-eslint": "^8.62.1",
     "vite": "^6.2.4",
     "vite-plugin-dts": "^4.5.4",
     "vite-plugin-lib-inject-css": "^2.2.2",

@@ -1,0 +1,39 @@
+{
+  "name": "@ogcio/design-system-vue",
+  "version": "0.1.0",
+  "description": "The Government of Ireland Design System Vue components.",
+  "license": "MIT",
+  "private": true,
+  "type": "module",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.js"
+    }
+  },
+  "scripts": {
+    "build": "vite build && vue-tsc -p tsconfig.build.json",
+    "typecheck": "vue-tsc -p tsconfig.json",
+    "lint": "eslint .",
+    "format": "prettier . --write",
+    "format:check": "prettier . --check"
+  },
+  "files": [
+    "dist"
+  ],
+  "peerDependencies": {
+    "vue": "^3.5.0"
+  },
+  "devDependencies": {
+    "@vitejs/plugin-vue": "6.0.7",
+    "@vue/eslint-config-typescript": "^14.9.0",
+    "@vue/tsconfig": "^0.9.1",
+    "eslint-plugin-vue": "^10.9.2",
+    "typescript": "^5.9.3",
+    "vite": "8.0.12",
+    "vue": "3.5.39",
+    "vue-tsc": "3.3.6"
+  }
+}
