@@ -5,7 +5,7 @@ import FooterSection, { FooterSectionVariant } from '@/atoms/FooterSection';
 import FooterLogo from '@/atoms/FooterLogo';
 import Text from '@/atoms/Text';
 import H4 from '@/atoms/heading/H4';
-import Link from '@/atoms/Link';
+import Link from '@/Link';
 import Stack from '@/atoms/Stack';
 import Grid from '@/atoms/Grid';
 import Divider from '@/Divider';

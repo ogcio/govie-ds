@@ -4,8 +4,8 @@ import Stack from '@/atoms/Stack.js';
 import { Footer as FooterLegacy } from './footer';
 import Footer from '@/atoms/Footer';
 import FooterSection from '@/atoms/FooterSection';
-import FooterLogo from '@/atoms/FooterLogo.js';
-import Link from '@/atoms/Link';
+import FooterLogo from '@/atoms/FooterLogo';
+import Link from '@/Link';
 import Divider from '@/Divider';
 import Text from '@/atoms/Text';
 import Grid from '@/atoms/Grid';
@@ -70,7 +70,7 @@ export const CompleteFooter: Story = {
           <Divider className="gi-my-4" />
           <ul className="gi-space-y-2">
             <li>
-              <Link variant="inline" appearance="inherit" href="/services/public-services" aria-label="Public Services">
+              <Link variant="inline" appearance="inherit" href="/services/public-services" ariaLabel="Public Services">
                 Public Services
               </Link>
             </li>
@@ -79,13 +79,13 @@ export const CompleteFooter: Story = {
                 variant="inline"
                 appearance="inherit"
                 href="/services/business-services"
-                aria-label="Business Services"
+                ariaLabel="Business Services"
               >
                 Business Services
               </Link>
             </li>
             <li>
-              <Link variant="inline" appearance="inherit" href="/services/online-services" aria-label="Online Services">
+              <Link variant="inline" appearance="inherit" href="/services/online-services" ariaLabel="Online Services">
                 Online Services
               </Link>
             </li>
@@ -96,7 +96,7 @@ export const CompleteFooter: Story = {
           <Divider className="gi-my-4" />
           <ul className="gi-space-y-2">
             <li>
-              <Link variant="inline" appearance="inherit" href="/departments/health" aria-label="Department of Health">
+              <Link variant="inline" appearance="inherit" href="/departments/health" ariaLabel="Department of Health">
                 Department of Health
               </Link>
             </li>
@@ -105,18 +105,13 @@ export const CompleteFooter: Story = {
                 variant="inline"
                 appearance="inherit"
                 href="/departments/education"
-                aria-label="Department of Education"
+                ariaLabel="Department of Education"
               >
                 Department of Education
               </Link>
             </li>
             <li>
-              <Link
-                variant="inline"
-                appearance="inherit"
-                href="/departments/finance"
-                aria-label="Department of Finance"
-              >
+              <Link variant="inline" appearance="inherit" href="/departments/finance" ariaLabel="Department of Finance">
                 Department of Finance
               </Link>
             </li>
@@ -127,17 +122,17 @@ export const CompleteFooter: Story = {
           <Divider className="gi-my-4" />
           <ul className="gi-space-y-2">
             <li>
-              <Link variant="inline" appearance="inherit" href="/publications/reports" aria-label="Reports">
+              <Link variant="inline" appearance="inherit" href="/publications/reports" ariaLabel="Reports">
                 Reports
               </Link>
             </li>
             <li>
-              <Link variant="inline" appearance="inherit" href="/publications/statistics" aria-label="Statistics">
+              <Link variant="inline" appearance="inherit" href="/publications/statistics" ariaLabel="Statistics">
                 Statistics
               </Link>
             </li>
             <li>
-              <Link variant="inline" appearance="inherit" href="/publications/legislation" aria-label="Legislation">
+              <Link variant="inline" appearance="inherit" href="/publications/legislation" ariaLabel="Legislation">
                 Legislation
               </Link>
             </li>
@@ -148,17 +143,17 @@ export const CompleteFooter: Story = {
           <Divider className="gi-my-4" />
           <ul className="gi-space-y-2">
             <li>
-              <Link variant="inline" appearance="inherit" href="/contact/find-an-office" aria-label="Find an Office">
+              <Link variant="inline" appearance="inherit" href="/contact/find-an-office" ariaLabel="Find an Office">
                 Find an Office
               </Link>
             </li>
             <li>
-              <Link variant="inline" appearance="inherit" href="/contact/phone-directory" aria-label="Phone Directory">
+              <Link variant="inline" appearance="inherit" href="/contact/phone-directory" ariaLabel="Phone Directory">
                 Phone Directory
               </Link>
             </li>
             <li>
-              <Link variant="inline" appearance="inherit" href="/contact/feedback" aria-label="Feedback">
+              <Link variant="inline" appearance="inherit" href="/contact/feedback" ariaLabel="Feedback">
                 Feedback
               </Link>
             </li>
@@ -168,48 +163,48 @@ export const CompleteFooter: Story = {
     ),
     secondarySlot: (
       <Stack direction={'column'} gap={4} role="region" dataTestId="secondary">
-        <Stack aria-label="Footer Secondary Links" direction={{ base: 'column', md: 'row' }} gap={4} wrap>
-          <Link variant="inline" appearance="inherit" href="/about-us" aria-label="About Us">
+        <Stack ariaLabel="Footer Secondary Links" direction={{ base: 'column', md: 'row' }} gap={4} wrap>
+          <Link variant="inline" appearance="inherit" href="/about-us" ariaLabel="About Us">
             About Us
           </Link>
-          <Link variant="inline" appearance="inherit" href="/contact" aria-label="Contact">
+          <Link variant="inline" appearance="inherit" href="/contact" ariaLabel="Contact">
             Contact
           </Link>
-          <Link variant="inline" appearance="inherit" href="/sitemap" aria-label="Sitemap">
+          <Link variant="inline" appearance="inherit" href="/sitemap" ariaLabel="Sitemap">
             Sitemap
           </Link>
-          <Link variant="inline" appearance="inherit" href="/privacy-policy" aria-label="Privacy Policy">
+          <Link variant="inline" appearance="inherit" href="/privacy-policy" ariaLabel="Privacy Policy">
             Privacy Policy
           </Link>
-          <Link variant="inline" appearance="inherit" href="/terms-of-service" aria-label="Terms of Service">
+          <Link variant="inline" appearance="inherit" href="/terms-of-service" ariaLabel="Terms of Service">
             Terms of Service
           </Link>
-          <Link variant="inline" appearance="inherit" href="/careers" aria-label="Careers">
+          <Link variant="inline" appearance="inherit" href="/careers" ariaLabel="Careers">
             Careers
           </Link>
-          <Link variant="inline" appearance="inherit" href="/blog" aria-label="Blog">
+          <Link variant="inline" appearance="inherit" href="/blog" ariaLabel="Blog">
             Blog
           </Link>
-          <Link variant="inline" appearance="inherit" href="/faq" aria-label="FAQ">
+          <Link variant="inline" appearance="inherit" href="/faq" ariaLabel="FAQ">
             FAQ
           </Link>
-          <Link variant="inline" appearance="inherit" href="/support" aria-label="Support">
+          <Link variant="inline" appearance="inherit" href="/support" ariaLabel="Support">
             Support
           </Link>
-          <Link variant="inline" appearance="inherit" href="/press" aria-label="Press">
+          <Link variant="inline" appearance="inherit" href="/press" ariaLabel="Press">
             Press
           </Link>
-          <Link variant="inline" appearance="inherit" href="/partners" aria-label="Partners">
+          <Link variant="inline" appearance="inherit" href="/partners" ariaLabel="Partners">
             Partners
           </Link>
-          <Link variant="inline" appearance="inherit" href="/investors" aria-label="Investors">
+          <Link variant="inline" appearance="inherit" href="/investors" ariaLabel="Investors">
             Investors
           </Link>
-          <Link variant="inline" appearance="inherit" href="/events" aria-label="Events">
+          <Link variant="inline" appearance="inherit" href="/events" ariaLabel="Events">
             Events
           </Link>
         </Stack>
-        <Stack direction={'row'} gap={4} aria-label="Social Media Links" role="navigation">
+        <Stack direction={'row'} gap={4} ariaLabel="Social Media Links" role="navigation">
           <XIcon label="social_x" />
           <FacebookIcon label="social_facebook" />
           <BlueskyIcon label="social_bluesky" />
@@ -219,16 +214,16 @@ export const CompleteFooter: Story = {
     ),
     utilitySlot: (
       <Stack direction={{ base: 'column', md: 'row' }} gap={4} justify="center" align="center" dataTestId="utility">
-        <Link variant="inline" appearance="inherit" href="/privacy-policy" aria-label="Privacy Policy">
+        <Link variant="inline" appearance="inherit" href="/privacy-policy" ariaLabel="Privacy Policy">
           Privacy Policy
         </Link>
-        <Link variant="inline" appearance="inherit" href="/cookies" aria-label="Cookies">
+        <Link variant="inline" appearance="inherit" href="/cookies" ariaLabel="Cookies">
           Cookies
         </Link>
-        <Link variant="inline" appearance="inherit" href="/accessibility" aria-label="Accessibility">
+        <Link variant="inline" appearance="inherit" href="/accessibility" ariaLabel="Accessibility">
           Accessibility
         </Link>
-        <Link variant="inline" appearance="inherit" href="/terms-of-use" aria-label="Terms of Use">
+        <Link variant="inline" appearance="inherit" href="/terms-of-use" ariaLabel="Terms of Use">
           Terms of Use
         </Link>
         <div className="gi-text-sm">© 2025 Government of Ireland.</div>
@@ -241,7 +236,7 @@ export const CompleteFooter: Story = {
     await step('should render the footer with default props', async () => {
       const footerElement = canvas.getByRole('contentinfo');
       expect(footerElement).toBeInTheDocument();
-      expect(footerElement).toHaveAttribute('aria-label', 'Footer');
+      expect(footerElement).toHaveAttribute('ariaLabel', 'Footer');
       expect(footerElement).toHaveAttribute('data-testid', 'gi-footer');
     });
 
@@ -298,7 +293,7 @@ export const MigrationComparison: Story = {
                       variant="inline"
                       appearance="inherit"
                       href="/services/public-services"
-                      aria-label="Public Services"
+                      ariaLabel="Public Services"
                     >
                       Public Services
                     </Link>
@@ -308,7 +303,7 @@ export const MigrationComparison: Story = {
                       variant="inline"
                       appearance="inherit"
                       href="/services/business-services"
-                      aria-label="Business Services"
+                      ariaLabel="Business Services"
                     >
                       Business Services
                     </Link>
@@ -318,7 +313,7 @@ export const MigrationComparison: Story = {
                       variant="inline"
                       appearance="inherit"
                       href="/services/online-services"
-                      aria-label="Online Services"
+                      ariaLabel="Online Services"
                     >
                       Online Services
                     </Link>
@@ -334,7 +329,7 @@ export const MigrationComparison: Story = {
                       variant="inline"
                       appearance="inherit"
                       href="/departments/health"
-                      aria-label="Department of Health"
+                      ariaLabel="Department of Health"
                     >
                       Department of Health
                     </Link>
@@ -344,7 +339,7 @@ export const MigrationComparison: Story = {
                       variant="inline"
                       appearance="inherit"
                       href="/departments/education"
-                      aria-label="Department of Education"
+                      ariaLabel="Department of Education"
                     >
                       Department of Education
                     </Link>
@@ -354,7 +349,7 @@ export const MigrationComparison: Story = {
                       variant="inline"
                       appearance="inherit"
                       href="/departments/finance"
-                      aria-label="Department of Finance"
+                      ariaLabel="Department of Finance"
                     >
                       Department of Finance
                     </Link>
@@ -366,12 +361,12 @@ export const MigrationComparison: Story = {
                 <Divider className="gi-my-4" />
                 <ul className="gi-space-y-2">
                   <li>
-                    <Link variant="inline" appearance="inherit" href="/publications/reports" aria-label="Reports">
+                    <Link variant="inline" appearance="inherit" href="/publications/reports" ariaLabel="Reports">
                       Reports
                     </Link>
                   </li>
                   <li>
-                    <Link variant="inline" appearance="inherit" href="/publications/statistics" aria-label="Statistics">
+                    <Link variant="inline" appearance="inherit" href="/publications/statistics" ariaLabel="Statistics">
                       Statistics
                     </Link>
                   </li>
@@ -380,7 +375,7 @@ export const MigrationComparison: Story = {
                       variant="inline"
                       appearance="inherit"
                       href="/publications/legislation"
-                      aria-label="Legislation"
+                      ariaLabel="Legislation"
                     >
                       Legislation
                     </Link>
@@ -396,7 +391,7 @@ export const MigrationComparison: Story = {
                       variant="inline"
                       appearance="inherit"
                       href="/contact/find-an-office"
-                      aria-label="Find an Office"
+                      ariaLabel="Find an Office"
                     >
                       Find an Office
                     </Link>
@@ -406,13 +401,13 @@ export const MigrationComparison: Story = {
                       variant="inline"
                       appearance="inherit"
                       href="/contact/phone-directory"
-                      aria-label="Phone Directory"
+                      ariaLabel="Phone Directory"
                     >
                       Phone Directory
                     </Link>
                   </li>
                   <li>
-                    <Link variant="inline" appearance="inherit" href="/contact/feedback" aria-label="Feedback">
+                    <Link variant="inline" appearance="inherit" href="/contact/feedback" ariaLabel="Feedback">
                       Feedback
                     </Link>
                   </li>
@@ -422,48 +417,48 @@ export const MigrationComparison: Story = {
           }
           secondarySlot={
             <Stack direction={'column'} gap={4} role="region" dataTestId="secondary">
-              <Stack aria-label="Footer Secondary Links" direction={{ base: 'column', md: 'row' }} gap={4} wrap>
-                <Link variant="inline" appearance="inherit" href="/about-us" aria-label="About Us">
+              <Stack ariaLabel="Footer Secondary Links" direction={{ base: 'column', md: 'row' }} gap={4} wrap>
+                <Link variant="inline" appearance="inherit" href="/about-us" ariaLabel="About Us">
                   About Us
                 </Link>
-                <Link variant="inline" appearance="inherit" href="/contact" aria-label="Contact">
+                <Link variant="inline" appearance="inherit" href="/contact" ariaLabel="Contact">
                   Contact
                 </Link>
-                <Link variant="inline" appearance="inherit" href="/sitemap" aria-label="Sitemap">
+                <Link variant="inline" appearance="inherit" href="/sitemap" ariaLabel="Sitemap">
                   Sitemap
                 </Link>
-                <Link variant="inline" appearance="inherit" href="/privacy-policy" aria-label="Privacy Policy">
+                <Link variant="inline" appearance="inherit" href="/privacy-policy" ariaLabel="Privacy Policy">
                   Privacy Policy
                 </Link>
-                <Link variant="inline" appearance="inherit" href="/terms-of-service" aria-label="Terms of Service">
+                <Link variant="inline" appearance="inherit" href="/terms-of-service" ariaLabel="Terms of Service">
                   Terms of Service
                 </Link>
-                <Link variant="inline" appearance="inherit" href="/careers" aria-label="Careers">
+                <Link variant="inline" appearance="inherit" href="/careers" ariaLabel="Careers">
                   Careers
                 </Link>
-                <Link variant="inline" appearance="inherit" href="/blog" aria-label="Blog">
+                <Link variant="inline" appearance="inherit" href="/blog" ariaLabel="Blog">
                   Blog
                 </Link>
-                <Link variant="inline" appearance="inherit" href="/faq" aria-label="FAQ">
+                <Link variant="inline" appearance="inherit" href="/faq" ariaLabel="FAQ">
                   FAQ
                 </Link>
-                <Link variant="inline" appearance="inherit" href="/support" aria-label="Support">
+                <Link variant="inline" appearance="inherit" href="/support" ariaLabel="Support">
                   Support
                 </Link>
-                <Link variant="inline" appearance="inherit" href="/press" aria-label="Press">
+                <Link variant="inline" appearance="inherit" href="/press" ariaLabel="Press">
                   Press
                 </Link>
-                <Link variant="inline" appearance="inherit" href="/partners" aria-label="Partners">
+                <Link variant="inline" appearance="inherit" href="/partners" ariaLabel="Partners">
                   Partners
                 </Link>
-                <Link variant="inline" appearance="inherit" href="/investors" aria-label="Investors">
+                <Link variant="inline" appearance="inherit" href="/investors" ariaLabel="Investors">
                   Investors
                 </Link>
-                <Link variant="inline" appearance="inherit" href="/events" aria-label="Events">
+                <Link variant="inline" appearance="inherit" href="/events" ariaLabel="Events">
                   Events
                 </Link>
               </Stack>
-              <Stack direction={'row'} gap={4} aria-label="Social Media Links" role="navigation">
+              <Stack direction={'row'} gap={4} ariaLabel="Social Media Links" role="navigation">
                 <XIcon label="social_x" />
                 <FacebookIcon label="social_facebook" />
                 <BlueskyIcon label="social_bluesky" />
@@ -479,16 +474,16 @@ export const MigrationComparison: Story = {
               align="center"
               dataTestId="utility"
             >
-              <Link variant="inline" appearance="inherit" href="/privacy-policy" aria-label="Privacy Policy">
+              <Link variant="inline" appearance="inherit" href="/privacy-policy" ariaLabel="Privacy Policy">
                 Privacy Policy
               </Link>
-              <Link variant="inline" appearance="inherit" href="/cookies" aria-label="Cookies">
+              <Link variant="inline" appearance="inherit" href="/cookies" ariaLabel="Cookies">
                 Cookies
               </Link>
-              <Link variant="inline" appearance="inherit" href="/accessibility" aria-label="Accessibility">
+              <Link variant="inline" appearance="inherit" href="/accessibility" ariaLabel="Accessibility">
                 Accessibility
               </Link>
-              <Link variant="inline" appearance="inherit" href="/terms-of-use" aria-label="Terms of Use">
+              <Link variant="inline" appearance="inherit" href="/terms-of-use" ariaLabel="Terms of Use">
                 Terms of Use
               </Link>
               <div className="gi-text-sm">© 2025 Government of Ireland.</div>
@@ -652,54 +647,54 @@ export const MigrationComparison: Story = {
 export const SimpleFooter: Story = {
   args: {
     secondarySlot: (
-      <Stack direction={{ base: 'column', md: 'row' }} gap={4} wrap aria-label="Footer Secondary Links">
-        <Link variant="inline" appearance="inherit" href="/about-us" aria-label="About Us">
+      <Stack direction={{ base: 'column', md: 'row' }} gap={4} wrap ariaLabel="Footer Secondary Links">
+        <Link variant="inline" appearance="inherit" href="/about-us" ariaLabel="About Us">
           About Us
         </Link>
-        <Link variant="inline" appearance="inherit" href="/contact" aria-label="Contact">
+        <Link variant="inline" appearance="inherit" href="/contact" ariaLabel="Contact">
           Contact
         </Link>
-        <Link variant="inline" appearance="inherit" href="/sitemap" aria-label="Sitemap">
+        <Link variant="inline" appearance="inherit" href="/sitemap" ariaLabel="Sitemap">
           Sitemap
         </Link>
-        <Link variant="inline" appearance="inherit" href="/privacy-policy" aria-label="Privacy Policy">
+        <Link variant="inline" appearance="inherit" href="/privacy-policy" ariaLabel="Privacy Policy">
           Privacy Policy
         </Link>
-        <Link variant="inline" appearance="inherit" href="/terms-of-service" aria-label="Terms of Service">
+        <Link variant="inline" appearance="inherit" href="/terms-of-service" ariaLabel="Terms of Service">
           Terms of Service
         </Link>
-        <Link variant="inline" appearance="inherit" href="/careers" aria-label="Careers">
+        <Link variant="inline" appearance="inherit" href="/careers" ariaLabel="Careers">
           Careers
         </Link>
-        <Link variant="inline" appearance="inherit" href="/blog" aria-label="Blog">
+        <Link variant="inline" appearance="inherit" href="/blog" ariaLabel="Blog">
           Blog
         </Link>
-        <Link variant="inline" appearance="inherit" href="/faq" aria-label="FAQ">
+        <Link variant="inline" appearance="inherit" href="/faq" ariaLabel="FAQ">
           FAQ
         </Link>
-        <Link variant="inline" appearance="inherit" href="/support" aria-label="Support">
+        <Link variant="inline" appearance="inherit" href="/support" ariaLabel="Support">
           Support
         </Link>
-        <Link variant="inline" appearance="inherit" href="/press" aria-label="Press">
+        <Link variant="inline" appearance="inherit" href="/press" ariaLabel="Press">
           Press
         </Link>
-        <Link variant="inline" appearance="inherit" href="/partners" aria-label="Partners">
+        <Link variant="inline" appearance="inherit" href="/partners" ariaLabel="Partners">
           Partners
         </Link>
-        <Link variant="inline" appearance="inherit" href="/investors" aria-label="Investors">
+        <Link variant="inline" appearance="inherit" href="/investors" ariaLabel="Investors">
           Investors
         </Link>
-        <Link variant="inline" appearance="inherit" href="/events" aria-label="Events">
+        <Link variant="inline" appearance="inherit" href="/events" ariaLabel="Events">
           Events
         </Link>
       </Stack>
     ),
     utilitySlot: (
       <Stack direction={{ base: 'column', md: 'row' }} gap={4} justify="center">
-        <Link variant="inline" appearance="inherit" href="/privacy-policy" aria-label="Privacy Policy">
+        <Link variant="inline" appearance="inherit" href="/privacy-policy" ariaLabel="Privacy Policy">
           Privacy Policy
         </Link>
-        <Link variant="inline" appearance="inherit" href="/accessibility" aria-label="Accessibility">
+        <Link variant="inline" appearance="inherit" href="/accessibility" ariaLabel="Accessibility">
           Accessibility
         </Link>
         <div className="gi-text-sm">© 2025 Government of Ireland.</div>
@@ -712,10 +707,10 @@ export const MinimalFooter: Story = {
   args: {
     utilitySlot: (
       <Stack direction={{ base: 'column', md: 'row' }} gap={4} justify="center">
-        <Link variant="inline" appearance="inherit" href="/privacy-policy" aria-label="Privacy Policy">
+        <Link variant="inline" appearance="inherit" href="/privacy-policy" ariaLabel="Privacy Policy">
           Privacy Policy
         </Link>
-        <Link variant="inline" appearance="inherit" href="/accessibility" aria-label="Accessibility">
+        <Link variant="inline" appearance="inherit" href="/accessibility" ariaLabel="Accessibility">
           Accessibility
         </Link>
         <div className="gi-text-sm">© 2025 Government of Ireland.</div>
