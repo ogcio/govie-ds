@@ -1,5 +1,5 @@
 import type { StoryObj } from '@storybook/angular';
-import { footerSectionMeta, Default as defaultStory } from '@/atoms/storybook/Footersection.meta';
+import { footerSectionMeta, Default as defaultStory } from '@/atoms/storybook/FooterSection.meta';
 import { FooterSection } from '@/atoms';
 import Container from '@/atoms/Container';
 
