@@ -11,7 +11,6 @@ import {
   ListItem,
   useToggleMap,
 } from '@ogcio/design-system-react';
-import NextLink from 'next/link';
 
 import Image from 'next/image';
 

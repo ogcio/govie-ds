@@ -1,5 +1,5 @@
 import AnalyticsProvider from '@/components/analytics-provider';
-import { Footer, HeaderProps, Stack } from '@ogcio/design-system-react';
+import { Footer, Stack } from '@ogcio/design-system-react';
 import '@ogcio/design-system-react/styles.css';
 import '@ogcio/theme-govie/theme.css';
 import type { Metadata } from 'next';

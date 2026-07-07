@@ -1,4 +1,3 @@
-'use client';
 import { Slot } from '@radix-ui/react-slot';
 import GiLink, { type Props as GiLinkProps } from '@/atoms/Link';
 import linkStyles from '@/atoms/Link.styles';
