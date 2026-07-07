@@ -28,15 +28,8 @@ type Story = StoryObj<typeof meta>;
 
 export const CompleteFooter: Story = {
   ...CompleteFooterStory,
-  args: {
-    footer: {
-      ariaLabel: 'Footer',
-      id: 'footer-id',
-      dataTestId: 'gi-footer',
-    },
-  },
-  render: ({ footer }) => (
-    <Footer {...footer}>
+  render: (props) => (
+    <Footer {...props}>
       <FooterSection variant={FooterSectionVariant.PRIMARY} dataTestId="footer-section-primary">
         <Container className="gi-text-black">
           <Grid container columns={{ base: 4, md: 8, lg: 12 }} gap={4} dataTestId="primary">
@@ -192,8 +185,8 @@ export const CompleteFooter: Story = {
     await step('should render the footer with default props', async () => {
       const footerElement = canvas.getByRole('contentinfo');
       expect(footerElement).toBeInTheDocument();
-      expect(footerElement).toHaveAttribute('aria-label', 'Footer');
-      expect(footerElement).toHaveAttribute('data-testid', 'gi-footer');
+      expect(footerElement).toHaveAttribute('aria-label', 'footer');
+      expect(footerElement).toHaveAttribute('data-testid', 'footer');
     });
   },
 };
