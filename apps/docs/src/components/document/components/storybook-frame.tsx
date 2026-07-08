@@ -54,7 +54,7 @@ export function StorybookFrame({
           <div className="p-2 bottom-0 right-0 absolute">
             <Link
               external
-              onClick={trackExternalLink}
+              onClick={trackExternalLink(`${baseUrl}/${docsPath}`)}
               underline="hover"
               href={`${baseUrl}/${docsPath}`}
               className="block"
@@ -87,7 +87,7 @@ export function StorybookFrame({
       <div className="p-2 bottom-0 right-0 absolute">
         <Link
           external
-          onClick={trackExternalLink}
+          onClick={trackExternalLink(`${baseUrl}/${docsPath}`)}
           underline="hover"
           href={docsUrl}
           className="block"

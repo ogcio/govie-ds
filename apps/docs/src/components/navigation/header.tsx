@@ -12,6 +12,9 @@ import {
   useToggleMap,
 } from '@ogcio/design-system-react';
 
+import { Link } from '@ogcio/design-system-react/next';
+import NextLink from 'next/link';
+
 import Image from 'next/image';
 
 const links = [
@@ -34,7 +37,7 @@ export const DocsHeader = () => {
   return (
     <>
       <Header fullWidth variant="default" aria-label="Site header">
-        <HeaderLogo href="/">
+        <HeaderLogo>
           <Image
             alt="govie logo"
             className="gi-block sm:gi-hidden"

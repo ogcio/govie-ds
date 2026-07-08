@@ -23,6 +23,7 @@ export function Tabs({
           const isCurrent = tab.id === current;
           return (
             <li key={tab.title} className="flex">
+              {/* TODO: use asChild with NextLink when SSR issue resolved */}
               <LinkButton
                 href={tab.href}
                 appearance="default"

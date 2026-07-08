@@ -61,6 +61,7 @@ import {
   InputRadioGroup,
   InputText,
   InsetText,
+  Link as LinkLegacy,
   LinkButton,
   List,
   Modal,
@@ -179,7 +180,11 @@ export type MdxProps = {
 
 const standardComponents: MDXComponents = {
   a: ({ ...props }) =>
-    props['data-raw'] ? <a {...props} /> : <Link {...props} />,
+    props['data-raw'] ? (
+      <a {...props} />
+    ) : (
+      <Link variant="inlinex" {...props} />
+    ),
   ul: ({ children, className }) => (
     <ul className={className || 'gi-list-bullet'}>{children}</ul>
   ),
@@ -330,6 +335,7 @@ const documentComponents: MDXComponents = {
   LetterSpacingTable,
   LineHeightTable,
   Link,
+  LinkLegacy,
   List,
   LoadingPattern,
   Logos,

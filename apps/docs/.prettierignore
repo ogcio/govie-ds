@@ -1,0 +1,3 @@
+# MDX adds <p> to every new line in the file - if Prettier formats the code - then the text-flow becomes disjointed.
+cookie-banner.mdx
+phase-banner/html.mdx

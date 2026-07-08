@@ -3,6 +3,7 @@ import NextLink from 'next/link';
 import analytics from '@/lib/analytics';
 import { ComponentStatus } from '@/lib/components';
 import {
+  Box,
   Button,
   Paragraph,
   Table,
@@ -255,33 +256,41 @@ export function ComponentStatusTable() {
           React
         </div>
 
-        {componentStatuses.map((componentStatus) => {
-          return (
-            <Fragment key={componentStatus.id}>
-              <div className="row-span-3 lg:row-span-1 mb-4 lg:mb-0 w-32 lg:w-full p-2 gi-not-prose">
-                <Link asChild variant="inline" underline="hover" visited="none">
-                  <NextLink href={`/${componentStatus.slug}`}>
-                    {componentStatus.name}
-                  </NextLink>
-                </Link>
-              </div>
-              <div className="flex p-2">
-                <div className="w-32 block lg:hidden">Figma Library</div>
-                <ComponentStatusPill status={componentStatus.figma.status} />
-              </div>
-              <div className="flex p-2">
-                <div className="w-32 block lg:hidden">Global HTML</div>
-                <ComponentStatusPill status={componentStatus.global.status} />
-              </div>
-              <div className="flex p-2">
-                <div className="w-32 block lg:hidden">React</div>
-                <ComponentStatusPill status={componentStatus.react.status} />
-              </div>
-              <hr className="block lg:hidden col-span-2" />
-            </Fragment>
-          );
-        })}
+        {componentStatuses.map((componentStatus) => (
+          <Fragment key={componentStatus.id}>
+            <Box className="row-span-3 lg:row-span-1 mb-4 lg:mb-0 w-32 lg:w-full p-2 gi-not-prose">
+              <Link asChild variant="inline" underline="hover" visited="none">
+                <NextLink href={`/${componentStatus.slug}`}>
+                  {componentStatus.name}
+                </NextLink>
+              </Link>
+            </Box>
+            <ComponentStatuses componentStatus={componentStatus} />
+            <hr className="block lg:hidden col-span-2" />
+          </Fragment>
+        ))}
       </div>
     </div>
   );
 }
+
+const resources = [
+  { title: 'Figma Library', name: 'figma' },
+  { title: 'Global HTML', name: 'global' },
+  { title: 'React', name: 'react' },
+];
+
+const ComponentStatuses = ({ componentStatus }: { componentStatus: any }) => {
+  return (
+    <Fragment>
+      {resources.map(({ title, name }) => {
+        return (
+          <Box key={title} className="flex p-2">
+            <div className="w-32 block lg:hidden">{title}</div>
+            <ComponentStatusPill status={componentStatus[name].status} />
+          </Box>
+        );
+      })}
+    </Fragment>
+  );
+};
