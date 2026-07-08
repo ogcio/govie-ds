@@ -41,7 +41,10 @@ function getLogo({ logo }: FooterProps) {
     </picture>
   );
 }
-
+/**
+ *  @deprecated Use the new Footer, FooterSection, and FooterLogo from `@ogcio/design-system-react/next`.
+ *
+ */
 export function Footer({
   primarySlot,
   secondarySlot,
