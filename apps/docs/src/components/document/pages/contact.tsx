@@ -1,4 +1,5 @@
 'use client';
+import { trackExternalLink } from '@/components/analytics-provider';
 import analytics from '@/lib/analytics';
 import { config } from '@/lib/config';
 import { Heading, Paragraph } from '@ogcio/design-system-react';
@@ -15,6 +16,7 @@ export default function ContactPage() {
           external
           href={config.signUpFormUrl}
           onClick={() => {
+            trackExternalLink(config.signUpFormUrl)();
             analytics.trackEvent({
               category: 'contact',
               action: 'click',
