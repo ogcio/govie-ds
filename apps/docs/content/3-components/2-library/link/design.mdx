@@ -15,7 +15,9 @@ Links are blue and underlined by default. If your link is at the end of a senten
 <Section current="design">
 
 <ComponentPreview>
-  <LinkLegacy href="#">Link text</LinkLegacy>
+  <Link variant="inline" href="#">
+    Link text
+  </Link>
 </ComponentPreview>
 <FigmaPreviewButton href="https://www.figma.com/design/ZEqfpXhocdZs1K5YfsE5ws/Design-system?node-id=4359-2198" />
 
@@ -24,15 +26,15 @@ Links are blue and underlined by default. If your link is at the end of a senten
 <ComponentPreviewLayout className="flex-col">
 
 <ComponentPreviewItem className="w-105">
-  <LinkLegacy href="#" external>
+  <Link variant="inline" href="#" external>
     Link text
-  </LinkLegacy>
+  </Link>
 </ComponentPreviewItem>
 
 <ComponentPreviewItem className="w-105">
-  <LinkLegacy disabled href="#" external>
+  <Link href="#" external>
     Link Disabled
-  </LinkLegacy>
+  </Link>
 </ComponentPreviewItem>
 
 </ComponentPreviewLayout>
@@ -42,25 +44,27 @@ Links are blue and underlined by default. If your link is at the end of a senten
 <ComponentPreviewLayout className="flex-col">
 
 <ComponentPreviewItem className="w-105">
-  <LinkLegacy
-    asButton={{ appearance: 'default', size: 'medium', variant: 'primary' }}
-    href="#"
-  >
-    {' '}
-    Link text
-  </LinkLegacy>
+  <LinkButton>Link text</LinkButton>
 </ComponentPreviewItem>
 <ComponentPreviewItem className="w-105">
-  <div className="gi-bg-black gi-p-4 gi-w-fit">
-    <Link appearance="light" href="/light" external>
+  <Box className="gi-bg-black gi-p-4 gi-w-fit">
+    <Link appearance="light" href="#">
       Link text
     </Link>
-  </div>
+  </Box>
 </ComponentPreviewItem>
 <ComponentPreviewItem className="w-105">
-  <LinkLegacy href="#" iconEnd="arrow_forward" iconStart="arrow_back" external>
+  <Link
+    href="#"
+    external
+    variant="inline"
+    underline="hover"
+    className="flex items-center"
+  >
+    <ArrowBackwardIcon size={16} />
     Link no underline
-  </LinkLegacy>
+    <ArrowForwardIcon size={16} />
+  </Link>
 </ComponentPreviewItem>
 
 </ComponentPreviewLayout>
@@ -72,15 +76,16 @@ Use the Link component to create consistent, accessible, and visually appealing 
 ### Do
 
 - Use for simple navigational hyperlinks (internal or external).
-- Use **external** to properly mark and secure external links (adds rel="noopener noreferrer" and target="\_blank").
+- Use **external** to properly mark and secure external links (adds `rel="noopener noreferrer"` and `target="_blank"`).
 - Use **iconStart** and **iconEnd** to enhance clarity with visual indicators.
 - Use **noUnderline**, **noVisited**, or **noColor** to match custom style requirements.
 - Use **asChild** to wrap custom components or slots while preserving semantics.
 
 <ComponentContainer>
-  <LinkLegacy href="#" external iconStart="arrow_back">
+  <Link href="#" variant="inline" className="flex items-center" external>
+    <ArrowBackwardIcon size={16} />
     Back to Docs
-  </LinkLegacy>
+  </Link>
 </ComponentContainer>
 
 ### Don't
@@ -89,8 +94,8 @@ Use the Link component to create consistent, accessible, and visually appealing 
 - Don't apply complex visual interactions (like transitions or animations) beyond its scoped styles — use a custom component instead.
 - Don't override link behaviour purely with `onClick` — use a Button if it doesn’t navigate.
 
-<LinkLegacy href="#">
+<Link variant="inline" href="#">
   <p className="gi-text-lg">Paragraph within Link</p>
-</LinkLegacy>
+</Link>
 
 </Section>
