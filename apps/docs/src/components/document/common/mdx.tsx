@@ -180,11 +180,7 @@ export type MdxProps = {
 
 const standardComponents: MDXComponents = {
   a: ({ ...props }) =>
-    props['data-raw'] ? (
-      <a {...props} />
-    ) : (
-      <Link variant="inlinex" {...props} />
-    ),
+    props['data-raw'] ? <a {...props} /> : <Link variant="inline" {...props} />,
   ul: ({ children, className }) => (
     <ul className={className || 'gi-list-bullet'}>{children}</ul>
   ),

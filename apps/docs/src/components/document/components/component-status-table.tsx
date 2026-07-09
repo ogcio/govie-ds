@@ -5,6 +5,7 @@ import { ComponentStatus } from '@/lib/components';
 import {
   Box,
   Button,
+  Divider,
   Paragraph,
   Table,
   TableBody,
@@ -265,8 +266,15 @@ export function ComponentStatusTable() {
                 </NextLink>
               </Link>
             </Box>
-            <ComponentStatuses componentStatus={componentStatus} />
-            <hr className="block lg:hidden col-span-2" />
+            {resources.map(({ title, name }) => {
+              return (
+                <Box key={title} className="flex p-2">
+                  <div className="w-32 block lg:hidden">{title}</div>
+                  <ComponentStatusPill status={componentStatus[name].status} />
+                </Box>
+              );
+            })}
+            <Divider className="lg:hidden col-span-2" />
           </Fragment>
         ))}
       </div>
@@ -278,19 +286,7 @@ const resources = [
   { title: 'Figma Library', name: 'figma' },
   { title: 'Global HTML', name: 'global' },
   { title: 'React', name: 'react' },
-];
-
-const ComponentStatuses = ({ componentStatus }: { componentStatus: any }) => {
-  return (
-    <Fragment>
-      {resources.map(({ title, name }) => {
-        return (
-          <Box key={title} className="flex p-2">
-            <div className="w-32 block lg:hidden">{title}</div>
-            <ComponentStatusPill status={componentStatus[name].status} />
-          </Box>
-        );
-      })}
-    </Fragment>
-  );
-};
+] as const satisfies readonly {
+  title: string;
+  name: 'figma' | 'global' | 'react';
+}[];

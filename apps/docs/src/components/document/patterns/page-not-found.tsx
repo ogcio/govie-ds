@@ -30,10 +30,7 @@ export function PageNotFound() {
         </Paragraph>
         <Paragraph>
           If the web address is correct or you selected a link or button,
-          contact the{' '}
-          <Link variant="inline" href="#">
-            service
-          </Link>{' '}
+          contact the <Link variant="inline" href="#">service</Link>
           Helpline if you need to speak to someone about your [service].
         </Paragraph>
       </main>
