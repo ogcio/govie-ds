@@ -61,7 +61,6 @@ import {
   InputRadioGroup,
   InputText,
   InsetText,
-  Link as LinkLegacy,
   LinkButton,
   List,
   Modal,
@@ -106,9 +105,7 @@ import {
   Tooltip,
   generateSvgPlaceholderDataUrl,
 } from '@ogcio/design-system-react';
-
 import { Link } from '@ogcio/design-system-react/next';
-
 import * as Icons from '@ogcio/design-system-react/icons';
 import { MDXComponents } from 'mdx/types';
 import { useMDXComponent } from 'next-contentlayer2/hooks';
@@ -179,8 +176,11 @@ export type MdxProps = {
 };
 
 const standardComponents: MDXComponents = {
-  a: ({ ...props }) =>
-    props['data-raw'] ? <a {...props} /> : <Link variant="inline" {...props} />,
+  a: ({ ...props }) => (
+    <Link asChild variant="inline" className="gi-not-prose">
+      <NextLink {...props} href={props.href || '#'}></NextLink>
+    </Link>
+  ),
   ul: ({ children, className }) => (
     <ul className={className || 'gi-list-bullet'}>{children}</ul>
   ),
@@ -331,7 +331,6 @@ const documentComponents: MDXComponents = {
   LetterSpacingTable,
   LineHeightTable,
   Link,
-  LinkLegacy,
   List,
   LoadingPattern,
   Logos,

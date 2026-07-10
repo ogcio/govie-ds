@@ -55,9 +55,8 @@ export function StorybookFrame({
             <Link
               external
               onClick={trackExternalLink(`${baseUrl}/${docsPath}`)}
-              underline="hover"
               href={`${baseUrl}/${docsPath}`}
-              className="block"
+              className="block gi-not-prose"
             >
               <StorybookLogo className="inline mr-2" /> View on Storybook
             </Link>
@@ -88,9 +87,8 @@ export function StorybookFrame({
         <Link
           external
           onClick={trackExternalLink(docsUrl)}
-          underline="hover"
           href={docsUrl}
-          className="block"
+          className="block gi-not-prose"
         >
           <StorybookLogo className="inline mr-2" /> View on Storybook
         </Link>
