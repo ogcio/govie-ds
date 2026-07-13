@@ -269,7 +269,7 @@ export const TestOpenOnTriggerAndCloseOnIcon: Story = {
   tags: ['skip-playwright'],
   args: {
     startsOpen: false,
-    triggerButton: <Button>Open modal</Button>,
+    triggerButton: <Button dataTestId="modal-trigger-button-container">Open modal</Button>,
     children: [
       <ModalTitle key="title">Modal Title</ModalTitle>,
       <ModalBody key="body">
@@ -319,7 +319,7 @@ export const TestCloseOnOverlayClick: Story = {
   tags: ['skip-playwright'],
   args: {
     startsOpen: false,
-    triggerButton: <Button>Open modal</Button>,
+    triggerButton: <Button dataTestId="modal-trigger-button-container">Open modal</Button>,
     children: [
       <ModalTitle key="title">Modal Title</ModalTitle>,
       <ModalBody key="body">
@@ -367,7 +367,7 @@ export const TestFooterButtonsOrder: Story = {
     </Modal>
   ),
   args: {
-    triggerButton: <Button>Open modal</Button>,
+    triggerButton: <Button dataTestId="modal-trigger-button-container">Open modal</Button>,
     children: <></>,
   },
   play: async ({ canvasElement, step }) => {
