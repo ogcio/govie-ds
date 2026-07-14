@@ -1,11 +1,11 @@
 import {
   Heading,
   Header,
-  Link,
   Paragraph,
   Footer,
   HeaderSearch,
 } from '@ogcio/design-system-react';
+import { Link } from '@ogcio/design-system-react/next';
 
 export function PageNotFound() {
   return (
@@ -30,8 +30,11 @@ export function PageNotFound() {
         </Paragraph>
         <Paragraph>
           If the web address is correct or you selected a link or button,
-          contact the <Link href="#">service</Link> Helpline if you need to
-          speak to someone about your [service].
+          contact the{' '}
+          <Link variant="inline" href="#">
+            service
+          </Link>
+          Helpline if you need to speak to someone about your [service].
         </Paragraph>
       </main>
       <Footer />

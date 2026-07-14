@@ -1,10 +1,11 @@
-import { GovieLink } from '@/components/navigation/custom-link';
-
+import { LinkButton } from '@ogcio/design-system-react';
 export type Tab = {
   id: string;
   title: string;
   href: string;
 };
+
+// TODO: remake using the <Tabs> component
 
 export function Tabs({
   tabs,
@@ -17,21 +18,20 @@ export function Tabs({
 }) {
   return (
     <div>
-      <ul className="flex gap-xl gi-not-prose">
+      <ul className="flex gi-not-prose">
         {tabs.map((tab) => {
           const isCurrent = tab.id === current;
           return (
             <li key={tab.title} className="flex">
-              <GovieLink
+              {/* TODO: use asChild with NextLink when SSR issue resolved */}
+              <LinkButton
                 href={tab.href}
-                aria-current={isCurrent ? 'page' : undefined}
-                asButton={{
-                  appearance: 'default',
-                  variant: isCurrent ? 'primary' : 'flat',
-                }}
+                appearance="default"
+                variant={isCurrent ? 'primary' : 'flat'}
+                ariaCurrent={isCurrent ? 'page' : undefined}
               >
                 {tab.title}
-              </GovieLink>
+              </LinkButton>
             </li>
           );
         })}

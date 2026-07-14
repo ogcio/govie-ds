@@ -1,6 +1,5 @@
 import AnalyticsProvider from '@/components/analytics-provider';
-import { GovieLink } from '@/components/navigation/custom-link';
-import { Footer, HeaderProps, Stack } from '@ogcio/design-system-react';
+import { Footer, Stack } from '@ogcio/design-system-react';
 import '@ogcio/design-system-react/styles.css';
 import '@ogcio/theme-govie/theme.css';
 import type { Metadata } from 'next';
@@ -9,6 +8,8 @@ import './globals.css';
 import CookieConsent from '@/components/cookies/cookie-consent';
 import { Suspense } from 'react';
 import { DocsHeader } from '@/components/navigation/header';
+import { Link } from '@ogcio/design-system-react/next';
+import NextLink from 'next/link';
 
 const lato = Lato({
   subsets: ['latin'],
@@ -28,46 +29,6 @@ export default function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
-  const headerProps: HeaderProps = {
-    fullWidth: true,
-    title: 'Design System',
-    logo: {
-      href: '/',
-    },
-    items: [
-      {
-        label: 'Get Started',
-        itemType: 'link',
-        href: '/get-started/',
-      },
-      {
-        label: 'Foundations',
-        itemType: 'link',
-        href: '/foundations/',
-      },
-      {
-        label: 'Components',
-        itemType: 'link',
-        href: '/components/',
-      },
-      {
-        label: 'Patterns',
-        itemType: 'link',
-        href: '/patterns/',
-      },
-      {
-        label: 'Themes',
-        itemType: 'link',
-        href: '/themes/',
-      },
-      {
-        label: 'Resources',
-        itemType: 'link',
-        href: '/resources/',
-      },
-    ],
-  };
-
   const footerLinks = [
     {
       label: 'Help',
@@ -103,9 +64,9 @@ export default function RootLayout({
         <Suspense>
           <AnalyticsProvider>
             <CookieConsent />
-            <a href="#main" className="sr-only">
+            <Link href="#main" className="sr-only">
               Skip to main content
-            </a>
+            </Link>
             <DocsHeader />
             {children}
             <Footer
@@ -116,14 +77,14 @@ export default function RootLayout({
                   wrap
                 >
                   {footerLinks.map((link, index) => (
-                    <GovieLink
-                      noColor
-                      aria-label={link.label}
-                      href={link.href}
+                    <Link
+                      asChild
+                      variant="inline"
+                      appearance="inherit"
                       key={`footerlink-${index}`}
                     >
-                      {link.label}
-                    </GovieLink>
+                      <NextLink href={link.href}>{link.label}</NextLink>
+                    </Link>
                   ))}
                 </Stack>
               }

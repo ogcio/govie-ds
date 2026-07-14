@@ -38,3 +38,11 @@ export default function AnalyticsProvider({
 
   return <>{children}</>;
 }
+
+export const trackExternalLink = (href: string) => (_e?: Event) => {
+  analytics.trackEvent({
+    action: 'navigate',
+    category: 'external link',
+    name: href,
+  });
+};

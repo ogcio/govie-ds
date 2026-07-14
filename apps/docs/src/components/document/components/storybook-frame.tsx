@@ -1,9 +1,9 @@
 'use client';
 import { getComponents } from '@/lib/components';
-import { Link } from '@ogcio/design-system-react';
+import { Link } from '@ogcio/design-system-react/next';
 import StorybookLogo from './storybook';
-import React from 'react';
 import { cn } from '@/lib/cn';
+import { trackExternalLink } from '@/components/analytics-provider';
 
 export function StorybookFrame({
   componentId,
@@ -54,11 +54,9 @@ export function StorybookFrame({
           <div className="p-2 bottom-0 right-0 absolute">
             <Link
               external
-              noColor
-              noUnderline
-              noVisited
+              onClick={trackExternalLink(`${baseUrl}/${docsPath}`)}
               href={`${baseUrl}/${docsPath}`}
-              className="block"
+              className="block gi-not-prose"
             >
               <StorybookLogo className="inline mr-2" /> View on Storybook
             </Link>
@@ -78,6 +76,7 @@ export function StorybookFrame({
   return (
     <div className="relative">
       <iframe
+        loading="lazy"
         src={iframeStoryUrl}
         className={cn(
           'gi-not-prose flex w-full border border-gray-200 shadow-sm shadow-gray-200 p-2 items-center justify-center h-32',
@@ -87,11 +86,9 @@ export function StorybookFrame({
       <div className="p-2 bottom-0 right-0 absolute">
         <Link
           external
-          noColor
-          noUnderline
-          noVisited
+          onClick={trackExternalLink(docsUrl)}
           href={docsUrl}
-          className="block"
+          className="block gi-not-prose"
         >
           <StorybookLogo className="inline mr-2" /> View on Storybook
         </Link>

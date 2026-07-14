@@ -3,9 +3,10 @@ import {
   Button,
   CookieBanner,
   Heading,
-  Link,
   Paragraph,
 } from '@ogcio/design-system-react';
+import NextLink from 'next/link';
+import { Link } from '@ogcio/design-system-react/next';
 import { useEffect, useState } from 'react';
 import { getConsentStatus, setConsentStatus } from '../../utils/cookieConsent';
 
@@ -53,7 +54,12 @@ export default function CookieConsent() {
           This website uses cookies to collect information about how you use
           this site. This information is used to make the website work as well
           as possible. More details available in our{' '}
-          <Link href="/cookies-policy/">cookie and privacy policies</Link>.
+          <Link asChild variant="inline">
+            <NextLink href="/cookies-policy/">
+              cookie and privacy policies
+            </NextLink>
+          </Link>
+          .
         </Paragraph>
       </>
     </CookieBanner>

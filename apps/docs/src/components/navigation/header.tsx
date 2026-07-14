@@ -12,6 +12,9 @@ import {
   useToggleMap,
 } from '@ogcio/design-system-react';
 
+import { Link } from '@ogcio/design-system-react/next';
+import NextLink from 'next/link';
+
 import Image from 'next/image';
 
 const links = [
@@ -35,27 +38,31 @@ export const DocsHeader = () => {
     <>
       <Header fullWidth variant="default" aria-label="Site header">
         <HeaderLogo>
-          <Image
-            alt="govie logo"
-            className="gi-block sm:gi-hidden"
-            decoding="async"
-            loading="eager"
-            fetchPriority="high"
-            width={25.45}
-            height={40}
-            src="/logos/general/harp-white.svg"
-          />
-          <Image
-            src="/logos/government-of-ireland/gov-white.svg"
-            alt="govie logo"
-            className="gi-hidden sm:gi-block"
-            decoding="async"
-            loading="eager"
-            fetchPriority="high"
-            width={136}
-            height={48}
-          />
-          <span className="gi-sr-only">Gov.ie logo</span>
+          <Link asChild className="focus:!shadow-none">
+            <NextLink href="/">
+              <Image
+                alt="govie logo"
+                className="gi-block sm:gi-hidden"
+                decoding="async"
+                loading="eager"
+                fetchPriority="high"
+                width={25.45}
+                height={40}
+                src="/logos/general/harp-white.svg"
+              />
+              <Image
+                src="/logos/government-of-ireland/gov-white.svg"
+                alt="govie logo"
+                className="gi-hidden sm:gi-block"
+                decoding="async"
+                loading="eager"
+                fetchPriority="high"
+                width={136}
+                height={48}
+              />
+              <span className="gi-sr-only">Gov.ie logo</span>
+            </NextLink>
+          </Link>
         </HeaderLogo>
 
         <HeaderTitle id="site-title">Design System</HeaderTitle>

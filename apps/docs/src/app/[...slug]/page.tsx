@@ -5,6 +5,7 @@ import * as documents from '@/lib/documents/documents';
 import { slugify } from '@/lib/utilities';
 import FeedbackForm from '@/components/feedback/feedback-form';
 import { TagFromStatus } from '@/components/document/components/tag-from-status';
+import { Link } from '@ogcio/design-system-react/next';
 
 type DocumentPageProps = {
   params: Promise<{
@@ -89,12 +90,14 @@ export default async function DocumentPage({ params }: DocumentPageProps) {
                       key={item.slug}
                       style={{ marginLeft: `${(item.depth - 2) * 20}px` }}
                     >
-                      <a
-                        className="gi-link gi-link-sm gi-link-no-underline gi-link-no-visited"
+                      <Link
+                        variant="inline"
+                        underline="hover"
+                        visited="none"
                         href={`#${item.slug}`}
                       >
                         {item.text}
-                      </a>
+                      </Link>
                     </li>
                   ))}
               </ul>

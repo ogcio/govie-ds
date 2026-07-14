@@ -1,5 +1,6 @@
 import { Heading, Link, Paragraph } from '@ogcio/design-system-react';
 
+// Unused
 export function ContactDeptOrService() {
   return (
     <>

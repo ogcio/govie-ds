@@ -1,7 +1,9 @@
 'use client';
+import { trackExternalLink } from '@/components/analytics-provider';
 import analytics from '@/lib/analytics';
 import { config } from '@/lib/config';
-import { Heading, Link, Paragraph } from '@ogcio/design-system-react';
+import { Heading, Paragraph } from '@ogcio/design-system-react';
+import { Link } from '@ogcio/design-system-react/next';
 
 export default function ContactPage() {
   return (
@@ -10,6 +12,7 @@ export default function ContactPage() {
       <Paragraph className="mt-2">
         You can contact the design system team using{' '}
         <Link
+          variant="inline"
           external
           href={config.signUpFormUrl}
           onClick={() => {
