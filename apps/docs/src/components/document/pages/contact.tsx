@@ -16,7 +16,6 @@ export default function ContactPage() {
           external
           href={config.signUpFormUrl}
           onClick={() => {
-            trackExternalLink(config.signUpFormUrl)();
             analytics.trackEvent({
               category: 'contact',
               action: 'click',

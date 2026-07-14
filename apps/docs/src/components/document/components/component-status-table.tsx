@@ -266,14 +266,12 @@ export function ComponentStatusTable() {
                 </NextLink>
               </Link>
             </Box>
-            {resources.map(({ title, name }) => {
-              return (
-                <Box key={title} className="flex p-2">
-                  <div className="w-32 block lg:hidden">{title}</div>
-                  <ComponentStatusPill status={componentStatus[name].status} />
-                </Box>
-              );
-            })}
+            {resources.map(({ title, name }) => (
+              <Box key={title} className="flex p-2">
+                <div className="w-32 block lg:hidden">{title}</div>
+                <ComponentStatusPill status={componentStatus[name].status} />
+              </Box>
+            ))}
             <Divider className="lg:hidden col-span-2" />
           </Fragment>
         ))}
@@ -286,7 +284,4 @@ const resources = [
   { title: 'Figma Library', name: 'figma' },
   { title: 'Global HTML', name: 'global' },
   { title: 'React', name: 'react' },
-] as const satisfies readonly {
-  title: string;
-  name: 'figma' | 'global' | 'react';
-}[];
+] as const;

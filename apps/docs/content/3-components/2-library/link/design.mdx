@@ -44,7 +44,7 @@ Links are blue and underlined by default. If your link is at the end of a senten
 <ComponentPreviewLayout className="flex-col">
 
 <ComponentPreviewItem className="w-105">
-  <LinkButton>Link text</LinkButton>
+  <LinkButton href="#">Link text</LinkButton>
 </ComponentPreviewItem>
 <ComponentPreviewItem className="w-105">
   <Box className="gi-bg-black gi-p-4 gi-w-fit">
@@ -59,11 +59,13 @@ Links are blue and underlined by default. If your link is at the end of a senten
     external
     variant="inline"
     underline="hover"
-    className="flex items-center"
   >
+  <Text className="flex items-center">
     <ArrowBackwardIcon size={16} />
     Link no underline
     <ArrowForwardIcon size={16} />
+  </Text>
+
   </Link>
 </ComponentPreviewItem>
 
@@ -82,10 +84,13 @@ Use the Link component to create consistent, accessible, and visually appealing 
 - Use **asChild** to wrap custom components or slots while preserving semantics.
 
 <ComponentContainer>
-  <Link href="#" variant="inline" className="flex items-center" external>
-    <ArrowBackwardIcon size={16} />
-    Back to Docs
+  <Link href="#" variant="inline" external>
+    <Text className="flex items-center">
+      <ArrowBackwardIcon size={16} />
+      Back to Docs
+    </Text>
   </Link>
+
 </ComponentContainer>
 
 ### Don't
