@@ -2,10 +2,10 @@
 
 import type { Fragment, ReactElement } from 'react';
 import { cloneElement, useState } from 'react';
-import type { ButtonProps } from '@/button/types.js';
-import { cn } from '@/cn.js';
-import { ModalWrapper, ModalBody, ModalFooter } from '@/modal/modal.js';
-import type { ModalProps, ModalWrapperProps } from '@/modal/types.js';
+import type { ButtonProps } from '@/button/types';
+import { cn } from '@/cn';
+import { ModalWrapper, ModalBody, ModalFooter } from '@/modal/modal';
+import type { ModalProps, ModalWrapperProps } from '@/modal/types';
 
 type DrawerChildren = Array<ReactElement<typeof DrawerBody | typeof DrawerBody>> | ReactElement<typeof Fragment>;
 
@@ -53,7 +53,6 @@ export const Drawer = ({
   const handleClose = () => setIsOpen(false);
 
   const renderCloneTrigger = cloneElement(triggerButton as ReactElement<any>, {
-    dataTestId: 'drawer-trigger-button-container',
     onClick: (event: React.MouseEvent) => {
       const existingOnClick =
         typeof (triggerButton as ReactElement<any>)?.props?.onClick === 'function'
