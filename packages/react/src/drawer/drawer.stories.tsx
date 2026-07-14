@@ -294,7 +294,7 @@ export const TestOpenCloseInteractions: Story = {
   tags: ['skip-playwright'],
   args: {
     startsOpen: false,
-    triggerButton: <Button>Open drawer</Button>,
+    triggerButton: <Button dataTestId="drawer-trigger-button-container">Open drawer</Button>,
     children: <></>,
   },
   render: (arguments_) => (

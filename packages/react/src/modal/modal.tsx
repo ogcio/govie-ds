@@ -2,14 +2,14 @@
 import type { ReactNode, ReactElement } from 'react';
 import { cloneElement, Children, isValidElement, useState, useRef, useEffect, useMemo, useId } from 'react';
 import { createPortal } from 'react-dom';
-import Heading, { type Props as HeadingProps } from '@/Heading.js';
+import Heading, { type Props as HeadingProps } from '@/Heading';
 import Button, { type Props as GiButtonProps } from '@/atoms/Button';
-import { normalizeSize } from '@/utils/normalize-size.js';
-import { cn } from '@/cn.js';
-import { useAriaHider } from '@/hooks/use-aria-hider.js';
-import { useFocusTrap } from '@/hooks/use-focus-trap.js';
-import { IconButton } from '@/icon-button/icon-button.js';
-import { splitAriaProps, getSpecialComponentType, isSpecialComponent } from '@/utils/utilities.js';
+import { normalizeSize } from '@/utils/normalize-size';
+import { cn } from '@/cn';
+import { useAriaHider } from '@/hooks/use-aria-hider';
+import { useFocusTrap } from '@/hooks/use-focus-trap';
+import { IconButton } from '@/icon-button/icon-button';
+import { splitAriaProps, getSpecialComponentType, isSpecialComponent } from '@/utils/utilities';
 
 import type {
   ModalCloseButtonProps,
@@ -18,7 +18,7 @@ import type {
   ModalProps,
   ModalWrapperProps,
   ModalHeaderProps,
-} from './types.js';
+} from './types';
 import CloseIcon from '@/atoms/icons/Close';
 
 const VARIANT_ORDER: Record<NonNullable<ModalFooterButton['variant']>, number> = {
@@ -322,7 +322,6 @@ export const Modal = ({ children, triggerButton, startsOpen, ...props }: ModalPr
   const handleClose = () => setIsOpen(false);
 
   const renderCloneTrigger = cloneElement(triggerButton as ReactElement<any>, {
-    dataTestId: 'modal-trigger-button-container',
     ariaHasPopup: 'dialog',
     onClick: handleOpen,
   });
