@@ -20,191 +20,169 @@ The Footer HTML component provides a semantic and accessible container for displ
 <Section current="html">
 
 <ComponentPreview className="block w-full gi-not-prose">
-  <FooterLegacy
-    dataTestid="gi-footer"
-    primarySlot={
-      <div className="gi-grid-responsive !gi-ml-0 !gi-mr-0">
-        <div className="gi-col-span-4 md:gi-col-span-4 lg:gi-col-span-3">
-          <h3 className="gi-heading-sm gi-mb-4">Services</h3>
-          <SectionBreak
-            color="gi-border-color-border-system-neutral-subtle"
-            size="md"
-          />
-          <ul className="gi-space-y-2">
-            <li>
-              <Link href="#" variant="inline" appearance="inherit">
-                Public Services
-              </Link>
-            </li>
-            <li>
-              <Link href="#" variant="inline" appearance="inherit">
-                Business Services
-              </Link>
-            </li>
-            <li>
-              <Link href="#" variant="inline" appearance="inherit">
-                Online Services
-              </Link>
-            </li>
-          </ul>
+  <footer className="gi-footer">
+    <div className="gi-layout-container">
+      <div
+        className="gi-footer-container custom-footer"
+        data-testid="footer-complete"
+      >
+        <div>
+          <div className="gi-grid-responsive !gi-ml-0 !gi-mr-0">
+            <div className="gi-col-span-4 md:gi-col-span-4 lg:gi-col-span-3">
+              <h3 className="gi-heading-sm gi-mb-4">Services</h3>
+              <hr
+                className="gi-section-break-md gi-border-color-border-system-neutral-subtle"
+                role="separator"
+              />
+              <ul className="gi-list gi-space-y-2">
+                {[
+                  'Public Services',
+                  'Business Services',
+                  'Online Services',
+                ].map((name) => (
+                  <li key={name}>
+                    <a className="gi-link gi-text-sm gi-link-inherit" href="#">
+                      {name}
+                    </a>
+                  </li>
+                ))}
+              </ul>
+            </div>
+            <div className="gi-col-span-4 md:gi-col-span-4 lg:gi-col-span-3">
+              <h3 className="gi-heading-sm gi-mb-4">Departments</h3>
+              <hr
+                className="gi-section-break-md gi-border-color-border-system-neutral-subtle"
+                role="separator"
+              />
+              <ul className="gi-list gi-space-y-2">
+                {[
+                  'Department of Health',
+                  'Department of Education',
+                  'Department of Finance',
+                ].map((name) => (
+                  <li key={name}>
+                    <a className="gi-link gi-text-sm gi-link-inherit" href="#">
+                      {name}
+                    </a>
+                  </li>
+                ))}
+              </ul>
+            </div>
+            <div className="gi-col-span-4 md:gi-col-span-4 lg:gi-col-span-3">
+              <h3 className="gi-heading-sm gi-mb-4">Publications</h3>
+              <hr
+                className="gi-section-break-md gi-border-color-border-system-neutral-subtle"
+                role="separator"
+              />
+              <ul className="gi-list gi-space-y-2">
+                {['Reports', 'Statistics', 'Legislation'].map((name) => (
+                  <li key={name}>
+                    <a className="gi-link gi-text-sm gi-link-inherit" href="#">
+                      {name}
+                    </a>
+                  </li>
+                ))}
+              </ul>
+            </div>
+            <div className="gi-col-span-4 md:gi-col-span-4 lg:gi-col-span-3">
+              <h3 className="gi-heading-sm gi-mb-4">Contact</h3>
+              <hr
+                className="gi-section-break-md gi-border-color-border-system-neutral-subtle"
+                role="separator"
+              />
+              <ul className="gi-list gi-space-y-2">
+                {['Find an Office', 'Phone Directory', 'Feedback'].map(
+                  (name) => (
+                    <li key={name}>
+                      <a
+                        className="gi-link gi-text-sm gi-link-inherit"
+                        href="#"
+                      >
+                        {name}
+                      </a>
+                    </li>
+                  ),
+                )}
+              </ul>
+            </div>
+          </div>
         </div>
-        <div className="gi-col-span-4 md:gi-col-span-4 lg:gi-col-span-3">
-          <h3 className="gi-heading-sm gi-mb-4">Departments</h3>
-          <SectionBreak
-            color="gi-border-color-border-system-neutral-subtle"
-            size="md"
-          />
-          <ul className="gi-space-y-2">
-            <li>
-              <Link href="#" variant="inline" appearance="inherit">
-                Department of Health
-              </Link>
-            </li>
-            <li>
-              <Link href="#" variant="inline" appearance="inherit">
-                Department of Education
-              </Link>
-            </li>
-            <li>
-              <Link href="#" variant="inline" appearance="inherit">
-                Department of Finance
-              </Link>
-            </li>
-          </ul>
-        </div>
-        <div className="gi-col-span-4 md:gi-col-span-4 lg:gi-col-span-3">
-          <h3 className="gi-heading-sm gi-mb-4">Publications</h3>
-          <SectionBreak
-            color="gi-border-color-border-system-neutral-subtle"
-            size="md"
-          />
-          <ul className="gi-space-y-2">
-            <li>
-              <Link href="#" variant="inline" appearance="inherit">
-                Reports
-              </Link>
-            </li>
-            <li>
-              <Link href="#" variant="inline" appearance="inherit">
-                Statistics
-              </Link>
-            </li>
-            <li>
-              <Link href="#" variant="inline" appearance="inherit">
-                Legislation
-              </Link>
-            </li>
-          </ul>
-        </div>
-        <div className="gi-col-span-4 md:gi-col-span-4 lg:gi-col-span-3">
-          <h3 className="gi-heading-sm gi-mb-4">Contact</h3>
-          <SectionBreak
-            color="gi-border-color-border-system-neutral-subtle"
-            size="md"
-          />
-          <ul className="gi-space-y-2">
-            <li>
-              <Link href="#" variant="inline" appearance="inherit">
-                Find an Office
-              </Link>
-            </li>
-            <li>
-              <Link href="#" variant="inline" appearance="inherit">
-                Phone Directory
-              </Link>
-            </li>
-            <li>
-              <Link href="#" variant="inline" appearance="inherit">
-                Feedback
-              </Link>
-            </li>
-          </ul>
+        <hr
+          className="gi-section-break-lg gi-border-gray-100"
+          role="separator"
+        />
+        <div className="gi-footer-secondary-slot">
+          <div className="gi-footer-logo">
+            <img
+              alt="Footer logo"
+              className="gi-h-16"
+              src="/logos/government-of-ireland/gov-std.svg"
+            />
+          </div>
+          <div className="gi-footer-secondary-slot-content">
+            <div className="gi-flex gi-w-full gi-justify-start gi-items-start gi-flex-col gi-gap-4 gi-flex-nowrap">
+              <div className="gi-flex gi-w-full gi-justify-start gi-items-start gi-flex-row gi-gap-4 gi-flex-wrap">
+                {[
+                  'About Us',
+                  'Contact',
+                  'Sitemap',
+                  'Privacy Policy',
+                  'Terms of Services',
+                  'Careers',
+                  'Blog',
+                  'FAQ',
+                  'Support',
+                  'Press',
+                  'Partners',
+                  'Investors',
+                  'Events',
+                ].map((name) => (
+                  <a key={name} className="gi-link gi-link-inherit" href="#">
+                    {name}
+                  </a>
+                ))}
+              </div>
+              <div className="gi-flex gi-w-full gi-justify-start gi-items-start gi-flex-row gi-gap-4 gi-flex-wrap">
+                <img
+                  alt="X logo"
+                  src="https://raw.githubusercontent.com/ogcio/govie-ds/refs/heads/main/assets/logos/social/X.svg"
+                />
+                <img
+                  alt="Facebook logo"
+                  src="https://raw.githubusercontent.com/ogcio/govie-ds/refs/heads/main/assets/logos/social/Facebook.svg"
+                />
+                <img
+                  alt="Bluesky logo"
+                  src="https://raw.githubusercontent.com/ogcio/govie-ds/refs/heads/main/assets/logos/social/Bluesky.svg"
+                />
+                <img
+                  alt="Linkedin logo"
+                  src="https://raw.githubusercontent.com/ogcio/govie-ds/refs/heads/main/assets/logos/social/Linkedin.svg"
+                />
+              </div>
+            </div>
+          </div>
         </div>
       </div>
-    }
-    secondarySlot={
-      <Stack direction="column" gap={4}>
-        <Stack
-          direction={{ base: 'column', md: 'row', xs: 'column' }}
-          gap={4}
-          wrap
-        >
-          <Link href="#" variant="inline" appearance="inherit">
-            About Us
-          </Link>
-          <Link href="#" variant="inline" appearance="inherit">
-            Contact
-          </Link>
-          <Link href="#" variant="inline" appearance="inherit">
-            Sitemap
-          </Link>
-          <Link href="#" variant="inline" appearance="inherit">
-            Privacy Policy
-          </Link>
-          <Link href="#" variant="inline" appearance="inherit">
-            Terms of Service
-          </Link>
-          <Link href="#" variant="inline" appearance="inherit">
-            Careers
-          </Link>
-          <Link href="#" variant="inline" appearance="inherit">
-            Blog
-          </Link>
-          <Link href="#" variant="inline" appearance="inherit">
-            FAQ
-          </Link>
-          <Link href="#" variant="inline" appearance="inherit">
-            Support
-          </Link>
-          <Link href="#" variant="inline" appearance="inherit">
-            Press
-          </Link>
-          <Link href="#" variant="inline" appearance="inherit">
-            Partners
-          </Link>
-          <Link href="#" variant="inline" appearance="inherit">
-            Investors
-          </Link>
-          <Link href="#" variant="inline" appearance="inherit">
-            Events
-          </Link>
-        </Stack>
-        <Stack direction="row" gap={4}>
-          <XIcon />
-          <FacebookIcon />
-          <BlueskyIcon />
-          <LinkedinIcon />
-        </Stack>
-      </Stack>
-    }
-    utilitySlot={
-      <Stack
-        direction={{ base: 'column', md: 'row', xs: 'column' }}
-        gap={4}
-        itemsAlignment="center"
-        itemsDistribution="center"
-      >
-        <Link href="#" variant="inline" appearance="inherit">
-          Privacy Policy
-        </Link>
-        <Link href="#" variant="inline" appearance="inherit">
-          Cookies
-        </Link>
-        <Link href="#" variant="inline" appearance="inherit">
-          Accessibility
-        </Link>
-        <Link href="#" variant="inline" appearance="inherit">
-          Terms of Use
-        </Link>
-        <div className="gi-text-sm">© 2025 Government of Ireland.</div>
-      </Stack>
-    }
-  />
+    </div>
+    <div className="gi-footer-utility">
+      <div className="gi-flex gi-w-full gi-justify-center gi-items-center gi-flex-col xs:gi-flex-col md:gi-flex-row gi-gap-4 gi-flex-nowrap">
+        {['Privacy Policy', 'Cookies', 'Accessibility', 'Terms of Use'].map(
+          (name) => (
+            <a key={name} className="gi-link gi-link-inherit" href="#">
+              {name}
+            </a>
+          ),
+        )}
+        <div className="gi-text-sm">© 2026 Government of Ireland.</div>
+      </div>
+    </div>
+  </footer>
 </ComponentPreview>
 
 ## Examples
 
-### With Secondary & Utility Slots
+### Simple Footer
 
 <StorybookFrame
   className="h-96"
@@ -212,7 +190,7 @@ The Footer HTML component provides a semantic and accessible container for displ
   story="simple-footer"
 />
 
-### With Utility Slot Only
+### With Utility Links
 
 <StorybookFrame
   className="h-72"
