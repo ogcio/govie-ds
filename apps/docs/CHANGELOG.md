@@ -1,5 +1,21 @@
 # Changelog
 
+## [1.42.0](https://github.com/ogcio/govie-ds/compare/docs-v1.41.0...docs-v1.42.0) (2026-07-14)
+
+
+### Features
+
+* **AB#39587:** add full Footer family ([#998](https://github.com/ogcio/govie-ds/issues/998)) ([da25521](https://github.com/ogcio/govie-ds/commit/da255216526a75d32c12b1fc60f160e0d024177a))
+* **AB#40156:** adopt Link components across Docs site ([#1004](https://github.com/ogcio/govie-ds/issues/1004)) ([0134b2c](https://github.com/ogcio/govie-ds/commit/0134b2c5171718d0a399efdf80d72a4c6a439c65))
+* **AB#40169:** remove Material Symbols from Docs and Examples ([#1000](https://github.com/ogcio/govie-ds/issues/1000)) ([297096d](https://github.com/ogcio/govie-ds/commit/297096d41fcbebc19e4c3c9074ef4d09977a7601))
+
+
+### Dependencies
+
+* The following workspace dependencies were updated
+  * dependencies
+    * @ogcio/design-system-react bumped to 1.43.0
+
 ## [1.41.0](https://github.com/ogcio/govie-ds/compare/docs-v1.40.0...docs-v1.41.0) (2026-07-01)
 
 
