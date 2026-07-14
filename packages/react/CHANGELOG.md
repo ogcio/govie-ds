@@ -1,5 +1,20 @@
 # Changelog
 
+## [1.43.0](https://github.com/ogcio/govie-ds/compare/react-lib-v1.42.0...react-lib-v1.43.0) (2026-07-14)
+
+
+### Features
+
+* **AB#39587:** add full Footer family ([#998](https://github.com/ogcio/govie-ds/issues/998)) ([da25521](https://github.com/ogcio/govie-ds/commit/da255216526a75d32c12b1fc60f160e0d024177a))
+* **AB#40169:** remove Material Symbols from Docs and Examples ([#1000](https://github.com/ogcio/govie-ds/issues/1000)) ([297096d](https://github.com/ogcio/govie-ds/commit/297096d41fcbebc19e4c3c9074ef4d09977a7601))
+
+
+### Bug Fixes
+
+* **AB#40337:** make the default Link variant inert to visited and underline ([0c9016c](https://github.com/ogcio/govie-ds/commit/0c9016cc5c492666ede987a186cb82e7aa2df149))
+* **AB#40372:** extract variant logic from the Link component ([7763442](https://github.com/ogcio/govie-ds/commit/7763442bb09fcad945be22e40664d6495177d609))
+* **AB#40477:** remove dataTestId from Modal triggerButton ([#1010](https://github.com/ogcio/govie-ds/issues/1010)) ([1fea197](https://github.com/ogcio/govie-ds/commit/1fea197351f0f2ebfccc4be6c5508fedfb0f7590))
+
 ## [1.42.0](https://github.com/ogcio/govie-ds/compare/react-lib-v1.41.0...react-lib-v1.42.0) (2026-07-01)
 
 
