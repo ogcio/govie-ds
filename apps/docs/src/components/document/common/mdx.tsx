@@ -41,7 +41,7 @@ import {
   DrawerFooter,
   DrawerWrapper,
   DropdownItem,
-  Footer,
+  Footer as FooterLegacy,
   Form,
   FormField,
   FormFieldLabel,
@@ -105,7 +105,13 @@ import {
   Tooltip,
   generateSvgPlaceholderDataUrl,
 } from '@ogcio/design-system-react';
-import { Link } from '@ogcio/design-system-react/next';
+import {
+  Footer,
+  FooterLogo,
+  FooterSection,
+  Link,
+} from '@ogcio/design-system-react/next';
+import { LogoGoldGreen } from '@ogcio/design-system-react/logos';
 import * as Icons from '@ogcio/design-system-react/icons';
 import { MDXComponents } from 'mdx/types';
 import { useMDXComponent } from 'next-contentlayer2/hooks';
@@ -311,6 +317,9 @@ const documentComponents: MDXComponents = {
     return <FormFieldHint {...props} __type="FormFieldHint" />;
   },
   Footer,
+  FooterLogo,
+  FooterSection,
+  FooterLegacy,
   Grid,
   GridPrimitives,
   Header,
@@ -333,6 +342,7 @@ const documentComponents: MDXComponents = {
   Link,
   List,
   LoadingPattern,
+  LogoGoldGreen,
   Logos,
   Modal,
   ModalBody,

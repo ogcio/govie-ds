@@ -274,7 +274,7 @@ export const MigrationComparison: Story = {
     docs: {
       description: {
         story:
-          'This story renders the same complete footer twice: the legacy slot-based Footer on top, and the new composable Footer below. The legacy API passes content through primarySlot, secondarySlot, and utilitySlot props, while the composable API builds the equivalent layout from FooterSection and FooterLogo.<br/> Secondary links, social icons, and the Gov.ie logo move from secondarySlot (with the built-in logo renderer) into the primary FooterSection, paired with an explicit FooterLogo child. The utility bar maps directly from utilitySlot to a separate FooterSection with variant="utility". Both versions are intended to look the same.',
+          'This story renders the same complete footer twice: the legacy slot-based Footer on top, and the new composable Footer below. The legacy API passes content through primarySlot, secondarySlot, and utilitySlot props, while the composable API builds the equivalent layout from FooterSection and FooterLogo.<br/> Secondary links, social icons, and the Gov.ie logo move from secondarySlot (with the built-in logo renderer) into the primary FooterSection, paired with an explicit FooterLogo child. The utility bar maps directly from utilitySlot to a separate FooterSection with variant="utility". Both versions are intended to look the same, with minor changes to logo positioning for small screens. See the [migration guide](/components/library/footer/react/#migration-guide) for more details',
       },
     },
   },
@@ -493,7 +493,7 @@ export const MigrationComparison: Story = {
         <Footer>
           <FooterSection variant={'primary'} dataTestId="footer-section-primary">
             <Container className="gi-text-black">
-              <Grid container columns={{ base: 4, md: 8, lg: 12 }} gap={4} dataTestId="primary">
+              <Grid container columns={{ base: 4, md: 8, lg: 12 }} gap={{ base: 4, md: 6 }} dataTestId="primary">
                 <Grid size={{ base: 4, md: 4, lg: 3 }}>
                   <H4 className="gi-my-4">Services</H4>
                   <Divider className="gi-my-4" />

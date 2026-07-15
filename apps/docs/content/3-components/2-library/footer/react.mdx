@@ -4,216 +4,225 @@ description: Footer React Component
 status: stable
 component:
   id: 'footer-react'
-  link: '/docs/layout-footer-footer-legacy--docs'
+  link: '/docs/layout-footer-footer--docs'
   status: 'stable'
   properties:
     - name: Footer
       fields:
-        - name: 'primarySlot'
-          ofType: 'node'
-          description: 'Optional content to be displayed in the primary slot at the top of the footer.'
+        - name: 'ariaLabel'
+          ofType: 'string'
+          description: 'Accessible name for the footer landmark. Set this explicitly for screen readers.'
           required: false
-        - name: 'secondarySlot'
-          ofType: 'node'
-          description: 'Optional content to be displayed next to the logo in the secondary section of the footer.'
-          required: false
-        - name: 'utilitySlot'
-          ofType: 'node'
-          description: 'Optional content to be displayed in the utility section of the footer, typically used for utility links.'
-          required: false
-        - name: 'logo'
-          ofType: 'LogoProps'
-          description: 'Object defining the logo configuration including href, alt text, width, height, and image sources.'
+        - name: 'ariaLabelledBy'
+          ofType: 'string'
+          description: 'ID of an element that labels the footer. Preferred over ariaLabel when a visible heading exists.'
           required: false
         - name: 'className'
           ofType: 'string'
           description: 'Custom class name for styling the footer.'
           required: false
-        - name: 'dataTestid'
+        - name: 'children'
+          ofType: 'ReactNode'
+          description: 'Footer content - e.g. FooterSections'
+          required: false
+        - name: 'dataTestId'
           ofType: 'string'
           description: 'Optional test ID for the component.'
           required: false
-        - name: '...props'
-          ofType: 'React.HTMLAttributes<HTMLDivElement>'
-          description: 'Any additional props supported by a <div> element.'
+        - name: 'id'
+          ofType: 'string'
+          description: 'Optional id for linking, targeting, and aria references.'
+          required: false
+        - name: 'styles'
+          ofType: 'Record<string, string>'
+          description: 'Control the `style` attribute of the `<footer>`'
+          required: false
+    - name: FooterSection
+      fields:
+        - name: 'variant'
+          ofType: '"primary" | "utility"'
+          description: 'Section background and spacing variant. Defaults to "primary".'
+          required: false
+        - name: 'children'
+          ofType: 'ReactNode'
+          description: 'FooterSection content - typically navigational links, official logo, partner links'
+          required: false
+        - name: 'className'
+          ofType: 'string'
+          description: 'Custom class name for styling the section.'
+          required: false
+        - name: 'dataTestId'
+          ofType: 'string'
+          description: 'Optional test ID for the section.'
+          required: false
+        - name: 'id'
+          ofType: 'string'
+          description: 'Optional id for linking, targeting, and aria references.'
+          required: false
+    - name: FooterLogo
+      fields:
+        - name: 'children'
+          ofType: 'ReactNode'
+          description: 'Logo content - typically a LogoGoldGreen, img, or picture element.'
+          required: true
+        - name: 'className'
+          ofType: 'string'
+          description: 'Custom class name for styling the logo container.'
+          required: false
+        - name: 'dataTestId'
+          ofType: 'string'
+          description: 'Optional test ID for the logo container.'
+          required: false
+        - name: 'id'
+          ofType: 'string'
+          description: 'Optional id for linking, targeting, and aria references.'
           required: false
   stories:
-    - name: 'simple-footer'
-      url: '/story/layout-footer-footer-legacy--simple-footer'
-    - name: 'with-utility-links'
-      url: '/story/layout-footer-footer-legacy--minimal-footer'
+    - name: 'complete-footer'
+      url: '/story/layout-footer-footer--complete-footer'
 ---
 
 # Footer
 
-The Footer component is used to render the bottom section of a web page. It supports customizable slots for content, a logo, and utility links. This component adheres to accessibility best practices with appropriate roles and aria labels.
+The Footer is a composable layout built from three primitives: `Footer`, `FooterSection`, and `FooterLogo`. Assemble them to match your service while keeping consistent Gov.ie styling by default.
 
-<Section current="react" >
+<Section current="react">
 
 <ComponentPreview className="block w-full gi-not-prose">
-  <Footer
-    dataTestid="gi-footer"
-    primarySlot={
-      <div className="gi-grid-responsive !gi-ml-0 !gi-mr-0">
-        <div className="gi-col-span-4 md:gi-col-span-4 lg:gi-col-span-3">
-          <h3 className="gi-heading-sm gi-mb-4">Services</h3>
-          <SectionBreak
-            color="gi-border-color-border-system-neutral-subtle"
-            size="md"
-          />
-          <ul className="gi-space-y-2">
-            <li>
-              <Link href="#" variant="inline" appearance="inherit">
-                Public Services
+  <Footer>
+    <FooterSection>
+      <Container className="gi-text-gray-800">
+        <Grid container columns={{ base: 4, md: 8, lg: 12 }} gap={4}>
+          <Grid size={{ base: 4, md: 4, lg: 3 }}>
+            <Heading as={'h4'} className="gi-my-4">Services</Heading>
+            <Divider className="gi-my-4" />
+            <Stack gap={2}>
+                <Link variant="inline" appearance="inherit" href="#">
+                  Public Services
+                </Link>
+                <Link variant="inline" appearance="inherit" href="#">
+                  Business Services
+                </Link>
+                <Link variant="inline" appearance="inherit" href="#">
+                  Online Services
+                </Link>
+            </Stack>
+          </Grid>
+          <Grid size={{ base: 4, md: 4, lg: 3 }}>
+            <Heading as={'h4'} className="gi-my-4">Departments</Heading>
+            <Divider className="gi-my-4" />
+            <Stack gap={2}>
+                <Link variant="inline" appearance="inherit" href="#">
+                  Department of Health
+                </Link>
+                <Link variant="inline" appearance="inherit" href="#">
+                  Department of Education
+                </Link>
+                <Link variant="inline" appearance="inherit" href="#">
+                  Department of Finance
+                </Link>
+            </Stack>
+          </Grid>
+          <Grid size={{ base: 4, md: 4, lg: 3 }}>
+            <Heading as={'h4'} className="gi-my-4">Publications</Heading>
+            <Divider className="gi-my-4" />
+            <Stack gap={2}>
+                <Link variant="inline" appearance="inherit" href="#">
+                  Reports
+                </Link>
+                <Link variant="inline" appearance="inherit" href="#">
+                  Statistics
+                </Link>
+                <Link variant="inline" appearance="inherit" href="#">
+                  Legislation
+                </Link>
+            </Stack>
+          </Grid>
+          <Grid size={{ base: 4, md: 4, lg: 3 }}>
+            <Heading as={'h4'} className="gi-my-4">Contact</Heading>
+            <Divider className="gi-my-4" />
+            <Stack gap={2}>
+                <Link variant="inline" appearance="inherit" href="#">
+                  Find an Office
+                </Link>
+                <Link variant="inline" appearance="inherit" href="#">
+                  Phone Directory
+                </Link>
+                <Link variant="inline" appearance="inherit" href="#">
+                  Feedback
+                </Link>
+            </Stack>
+          </Grid>
+        </Grid>
+        <Divider className="gi-my-8" />
+        <Stack direction={{ base: 'column', md: 'row' }} gap={{base: 0, md: 6}}>
+          <Stack direction="column" gap={6}>
+            <Stack direction={{ base: 'column', md: 'row' }} gap={4} wrap>
+              <Link variant="inline" appearance="inherit" href="#">
+                About Us
               </Link>
-            </li>
-            <li>
-              <Link href="#" variant="inline" appearance="inherit">
-                Business Services
+              <Link variant="inline" appearance="inherit" href="#">
+                Contact
               </Link>
-            </li>
-            <li>
-              <Link href="#" variant="inline" appearance="inherit">
-                Online Services
+              <Link variant="inline" appearance="inherit" href="#">
+                Sitemap
               </Link>
-            </li>
-          </ul>
-        </div>
-        <div className="gi-col-span-4 md:gi-col-span-4 lg:gi-col-span-3">
-          <h3 className="gi-heading-sm gi-mb-4">Departments</h3>
-          <SectionBreak
-            color="gi-border-color-border-system-neutral-subtle"
-            size="md"
-          />
-          <ul className="gi-space-y-2">
-            <li>
-              <Link href="#" variant="inline" appearance="inherit">
-                Department of Health
+              <Link variant="inline" appearance="inherit" href="#">
+                Privacy Policy
               </Link>
-            </li>
-            <li>
-              <Link href="#" variant="inline" appearance="inherit">
-                Department of Education
+              <Link variant="inline" appearance="inherit" href="#">
+                Terms of Service
               </Link>
-            </li>
-            <li>
-              <Link href="#" variant="inline" appearance="inherit">
-                Department of Finance
+              <Link variant="inline" appearance="inherit" href="#">
+                Careers
               </Link>
-            </li>
-          </ul>
-        </div>
-        <div className="gi-col-span-4 md:gi-col-span-4 lg:gi-col-span-3">
-          <h3 className="gi-heading-sm gi-mb-4">Publications</h3>
-          <SectionBreak
-            color="gi-border-color-border-system-neutral-subtle"
-            size="md"
-          />
-          <ul className="gi-space-y-2">
-            <li>
-              <Link href="#" variant="inline" appearance="inherit">
-                Reports
+              <Link variant="inline" appearance="inherit" href="#">
+                Blog
               </Link>
-            </li>
-            <li>
-              <Link href="#" variant="inline" appearance="inherit">
-                Statistics
+              <Link variant="inline" appearance="inherit" href="#">
+                FAQ
               </Link>
-            </li>
-            <li>
-              <Link href="#" variant="inline" appearance="inherit">
-                Legislation
+              <Link variant="inline" appearance="inherit" href="#">
+                Support
               </Link>
-            </li>
-          </ul>
-        </div>
-        <div className="gi-col-span-4 md:gi-col-span-4 lg:gi-col-span-3">
-          <h3 className="gi-heading-sm gi-mb-4">Contact</h3>
-          <SectionBreak
-            color="gi-border-color-border-system-neutral-subtle"
-            size="md"
-          />
-          <ul className="gi-space-y-2">
-            <li>
-              <Link href="#" variant="inline" appearance="inherit">
-                Find an Office
+              <Link variant="inline" appearance="inherit" href="#">
+                Press
               </Link>
-            </li>
-            <li>
-              <Link href="#" variant="inline" appearance="inherit">
-                Phone Directory
+              <Link variant="inline" appearance="inherit" href="#">
+                Partners
               </Link>
-            </li>
-            <li>
-              <Link href="#" variant="inline" appearance="inherit">
-                Feedback
+              <Link variant="inline" appearance="inherit" href="#">
+                Investors
               </Link>
-            </li>
-          </ul>
-        </div>
-      </div>
-    }
-    secondarySlot={
-      <Stack direction="column" gap={4}>
-        <Stack
-          direction={{ base: 'column', md: 'row', xs: 'column' }}
-          gap={4}
-          wrap
-        >
-          <Link href="#" variant="inline" appearance="inherit">
-            About Us
-          </Link>
-          <Link href="#" variant="inline" appearance="inherit">
-            Contact
-          </Link>
-          <Link href="#" variant="inline" appearance="inherit">
-            Sitemap
-          </Link>
-          <Link href="#" variant="inline" appearance="inherit">
-            Privacy Policy
-          </Link>
-          <Link href="#" variant="inline" appearance="inherit">
-            Terms of Service
-          </Link>
-          <Link href="#" variant="inline" appearance="inherit">
-            Careers
-          </Link>
-          <Link href="#" variant="inline" appearance="inherit">
-            Blog
-          </Link>
-          <Link href="#" variant="inline" appearance="inherit">
-            FAQ
-          </Link>
-          <Link href="#" variant="inline" appearance="inherit">
-            Support
-          </Link>
-          <Link href="#" variant="inline" appearance="inherit">
-            Press
-          </Link>
-          <Link href="#" variant="inline" appearance="inherit">
-            Partners
-          </Link>
-          <Link href="#" variant="inline" appearance="inherit">
-            Investors
-          </Link>
-          <Link href="#" variant="inline" appearance="inherit">
-            Events
+              <Link variant="inline" appearance="inherit" href="#">
+                Events
+              </Link>
+            </Stack>
+            <Stack direction="row" gap={4}>
+              <XIcon label="social_x" />
+              <FacebookIcon label="facebook" />
+              <BlueskyIcon label="bluesky" />
+              <LinkedinIcon label="linkedin" />
+            </Stack>
+          </Stack>
+          <Link href="#" asChild>
+          <NextLink href="#">
+            <FooterLogo>
+              <LogoGoldGreen size="181" label="Gov.ie Logo" />
+            </FooterLogo>
+          </NextLink>
           </Link>
         </Stack>
-        <Stack direction="row" gap={4}>
-          <XIcon />
-          <FacebookIcon />
-          <BlueskyIcon />
-          <LinkedinIcon />
-        </Stack>
-      </Stack>
-    }
-    utilitySlot={
+      </Container>
+    </FooterSection>
+
+    <FooterSection variant="utility">
       <Stack
-        direction={{ base: 'column', md: 'row', xs: 'column' }}
+        wrap
+        direction={{ base: 'column', md: 'row' }}
         gap={4}
-        itemsAlignment="center"
-        itemsDistribution="center"
+        justify="center"
+        align="center"
       >
         <Link href="#" variant="inline" appearance="inherit">
           Privacy Policy
@@ -227,50 +236,205 @@ The Footer component is used to render the bottom section of a web page. It supp
         <Link href="#" variant="inline" appearance="inherit">
           Terms of Use
         </Link>
-        <div className="gi-text-sm">© 2025 Government of Ireland.</div>
+        <Text className="gi-text-sm">© 2026 Design System of Government of Ireland.</Text>
       </Stack>
-    }
-  />
+    </FooterSection>
+
+  </Footer>
 </ComponentPreview>
+
+## Migration guide
+
+The slot-based Footer API from `@ogcio/design-system-react` is **deprecated**. Migrate to the composable primitives from `@ogcio/design-system-react/next`:
+
+```jsx
+// Before
+import { Footer } from '@ogcio/design-system-react';
+
+// After
+import {
+  Footer,
+  FooterSection,
+  FooterLogo,
+} from '@ogcio/design-system-react/next';
+```
+
+**Why migrate:**
+
+- Layout flexibility: you own dividers, container padding, grids, and logo placement.
+- Precise semantics and a11y: set `ariaLabel` and region labels yourself.
+- Clearer JSX: named children (`FooterSection`, `FooterLogo`) instead of opaque slot props.
+
+### Quick migration map
+
+<Table layout="fixed">
+  <TableHead>
+    <TableRow>
+      <TableHeader>Legacy</TableHeader>
+      <TableHeader>Composable</TableHeader>
+    </TableRow>
+  </TableHead>
+  <TableBody>
+    <TableRow>
+      <TableData>`primarySlot`</TableData>
+      <TableData>
+        Content in `<FooterSection>` (before the divider)
+      </TableData>
+    </TableRow>
+    <TableRow>
+      <TableData>`secondarySlot`</TableData>
+      <TableData>
+        Content in the same `<FooterSection>` (after the divider), beside `<FooterLogo>`
+      </TableData>
+    </TableRow>
+    <TableRow>
+      <TableData>`utilitySlot`</TableData>
+      <TableData>
+        `<FooterSection variant="utility">…</FooterSection>`
+      </TableData>
+    </TableRow>
+    <TableRow>
+      <TableData>`logo` prop</TableData>
+      <TableData>
+        `<FooterLogo>` with your logo as children
+      </TableData>
+    </TableRow>
+    <TableRow>
+      <TableData>`dataTestid`</TableData>
+      <TableData>
+        `dataTestId` on `<Footer>` (note the casing)
+      </TableData>
+    </TableRow>
+    <TableRow>
+      <TableData>Built-in `Container`, `Divider`, logo layout</TableData>
+      <TableData>
+        Add `<Container>`, `<Divider>`, and a row `<Stack>` yourself
+      </TableData>
+    </TableRow>
+    <TableRow>
+      <TableData>Built-in `aria-label` on the landmark</TableData>
+      <TableData>
+        Pass `ariaLabel` (or `ariaLabelledBy`) on `<Footer>`
+      </TableData>
+    </TableRow>
+  </TableBody>
+</Table>
+
+### Before and after
+
+**Before** - legacy slots:
+
+```jsx
+import { Footer } from '@ogcio/design-system-react';
+
+<Footer
+  primarySlot={<div>{/* primary links */}</div>}
+  secondarySlot={<div>{/* secondary links */}</div>}
+  utilitySlot={<div>{/* utility links */}</div>}
+  logo={{
+    href: '/',
+    alt: 'Gov.ie Logo',
+  }}
+  dataTestid="footer"
+/>;
+```
+
+The legacy component wrapped those slots for you (container, divider when both primary and secondary were set, logo positioning, and landmark `aria-label`).
+
+**After** - compose the equivalent structure:
+
+```jsx
+import {
+  Footer,
+  FooterSection,
+  FooterLogo,
+} from '@ogcio/design-system-react/next';
+import { LogoGoldGreen } from '@ogcio/design-system-react/logos';
+import { Container, Divider, Stack, Box } from '@ogcio/design-system-react';
+
+<Footer ariaLabel="Footer" dataTestId="footer">
+  <FooterSection>
+    <Container>
+      {/* former primarySlot */}
+      <Box>{/* primary links */}</Box>
+
+      <Divider className="gi-my-8" />
+
+      <Stack direction={{ base: 'column', md: 'row' }} gap={{ base: 0, md: 6 }}>
+        {/* former secondarySlot */}
+        <Box>{/* secondary links */}</Box>
+        <Link href="/" ariaLabel="Homepage">
+          <FooterLogo>
+            <LogoGoldGreen size="181" label="Gov.ie Logo" />
+          </FooterLogo>
+        </Link>
+      </Stack>
+    </Container>
+  </FooterSection>
+
+  <FooterSection variant="utility">
+    {/* former utilitySlot */}
+    <Box>{/* utility links */}</Box>
+  </FooterSection>
+</Footer>;
+```
+
+Key differences when transforming:
+
+1. **One primary section** - `primarySlot` and `secondarySlot` share a single `<FooterSection>`. Separate them with a `<Divider>` only when you had both slots.
+2. **Logo is a sibling** - place `<FooterLogo>` next to secondary content inside a `Stack` with `direction={{ base: 'column', md: 'row' }}`, not nested under the secondary links.
+3. **Utility stays separate** - move `utilitySlot` into `<FooterSection variant="utility">`.
+4. **Accessibility is explicit** - set `ariaLabel` on `<Footer>`. Legacy applied this automatically.
+5. **Logo placement** - For mobile screens, the logo is now positioned below any preceding content by default.
+
+### Migrating the `logo` prop
+
+Legacy accepted `href`, `alt`, `imageLarge`, `imageSmall`, `width`, `height`, and `external`, and rendered a linked logo in the secondary area when `href` was set.
+
+In the composable API, `FooterLogo` only handles positioning. Render the image yourself:
+
+```jsx
+// Before
+<Footer
+  logo={{
+    href: '/',
+    alt: 'Gov.ie Logo',
+    imageLarge: '/logo-desktop.svg',
+    imageSmall: '/logo-mobile.svg',
+    external: false,
+  }}
+  secondarySlot={…}
+/>
+
+// After
+<FooterLogo>
+  <LogoGoldGreen size="181" label="Gov.ie Logo" />
+</FooterLogo>
+```
+
+- For custom assets, use your own `<img>` or `<picture>` with `alt` text.
+- To keep a home link (optional), wrap the logo in `<Link>` yourself and set an accessible name, for example `ariaLabel="Go to the home page"`. Use `external` on `<Link>` if the destination is off-site.
+- `FooterLogo` does not add a link, alt text, or image for you.
+
+### Related layout pieces
+
+- Use [`Container`](/components/library/container/design/) for the horizontal padding the legacy footer applied by default.
+- Use a `Stack` with `direction={{ base: 'column', md: 'row' }}` for secondary links beside the logo.
+
+For a complete migrated example, see the preview at the top of this page or click "Show Code" in the [Footer story](/storybook-react/docs/layout-footer-footer--docs).
 
 ## Examples
 
-### With Secondary & Utility Slots
+### Complete footer
 
 <StorybookFrame
   className="h-96"
   componentId="footer-react"
-  story="simple-footer"
-/>
-
-### With Utility Slot Only
-
-<StorybookFrame
-  className="h-72"
-  componentId="footer-react"
-  story="with-utility-links"
+  story="complete-footer"
 />
 
 ## Properties
 
-This component extends the default HTML `<div>` element and includes the following additional properties:
-
 <ComponentPropertiesTable componentId="footer-react" />
-
-## i18n Keys
-
-The Footer component supports localisation through i18n keys in React, [find i18n setup here](/components/setup-guides/react/#internationalisation-i18n-guidelines). Below is the list of keys and their default text:
-
-```json
-{
-  "footer.goToHomePage": "Go to the home page",
-  "footer.footer": "Footer",
-  "footer.primarySlot": "Primary footer slot",
-  "footer.secondarySlot": "Secondary footer slot",
-  "footer.utilityLinks": "Utility links"
-}
-```
-
-These keys represent visible text elements. You can customise their translations for each locale to enable multilingual support.
 
 </Section>
