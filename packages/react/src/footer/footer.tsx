@@ -42,7 +42,7 @@ function getLogo({ logo }: FooterProps) {
   );
 }
 /**
- *  @deprecated Use the new Footer, FooterSection, and FooterLogo from `@ogcio/design-system-react/next`.
+ *  @deprecated Use the new Footer, FooterSection, and FooterLogo from `@ogcio/design-system-react/next`. See the [migration guide](https://ds.services.gov.ie/components/library/footer/react/#migration-guide) for more details.
  *
  */
 export function Footer({

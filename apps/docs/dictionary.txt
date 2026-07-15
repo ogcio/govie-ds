@@ -52,6 +52,9 @@ Dropdowns
 Favicon
 Figma
 Frontend
+FooterLogo
+FooterSection
+FooterSections
 GDPR
 GovTech
 Govie
@@ -75,6 +78,7 @@ Likert
 LinkButton
 LinkButtonProps
 LinkProps
+LogoGoldGreen
 Matomo
 ModalBodyProps
 ModalFooterProps
