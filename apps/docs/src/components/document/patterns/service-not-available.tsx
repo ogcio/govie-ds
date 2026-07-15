@@ -1,11 +1,17 @@
 import {
-  Heading,
+  Container,
   Header,
-  Paragraph,
-  Footer,
   HeaderSearch,
+  Heading,
+  Paragraph,
 } from '@ogcio/design-system-react';
-import { Link } from '@ogcio/design-system-react/next';
+import {
+  Footer,
+  FooterSection,
+  FooterLogo,
+  Link,
+} from '@ogcio/design-system-react/next';
+import { LogoGoldGreen } from '@ogcio/design-system-react/logos';
 
 export function ServiceUnavailable() {
   return (
@@ -34,7 +40,15 @@ export function ServiceUnavailable() {
           your [service].
         </Paragraph>
       </main>
-      <Footer />
+      <Footer>
+        <FooterSection>
+          <Container>
+            <FooterLogo>
+              <LogoGoldGreen size={181} />
+            </FooterLogo>
+          </Container>
+        </FooterSection>
+      </Footer>
     </>
   );
 }

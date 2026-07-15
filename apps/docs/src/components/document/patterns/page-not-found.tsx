@@ -2,10 +2,16 @@ import {
   Heading,
   Header,
   Paragraph,
-  Footer,
   HeaderSearch,
+  Container,
 } from '@ogcio/design-system-react';
-import { Link } from '@ogcio/design-system-react/next';
+import { LogoGoldGreen } from '@ogcio/design-system-react/logos';
+import {
+  Footer,
+  FooterSection,
+  FooterLogo,
+  Link,
+} from '@ogcio/design-system-react/next';
 
 export function PageNotFound() {
   return (
@@ -37,7 +43,15 @@ export function PageNotFound() {
           Helpline if you need to speak to someone about your [service].
         </Paragraph>
       </main>
-      <Footer />
+      <Footer>
+        <FooterSection>
+          <Container>
+            <FooterLogo>
+              <LogoGoldGreen size={181} />
+            </FooterLogo>
+          </Container>
+        </FooterSection>
+      </Footer>
     </>
   );
 }
