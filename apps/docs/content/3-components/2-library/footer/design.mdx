@@ -47,7 +47,7 @@ utility content alone.
 
 <Footer>
   <FooterSection>
-    <Container className="">
+    <Container>
       <FooterSecondaryContent />
     </Container>
   </FooterSection>
@@ -59,7 +59,7 @@ utility content alone.
 ### Don't
 
 - **Don’t place unstructured content**: Avoid dumping unrelated or ungrouped items into a section without headings, columns, or spacing.
-- **Don’t use inconsistent alignment**: Keep column widths and hierarchy aligned so the footer is scannable.
+- **Don’t use inconsistent alignment**: Keep column widths and hierarchy aligned so the footer is clear.
 - **Don’t overload the footer with excessive links**: Prioritise key navigation and legal content, not every page on the site.
 - **Don’t forget spacing and layout**: Crowded or overlapping content harms accessibility and clarity - use `Container`, `Divider`, and `Stack`/`Grid` thoughtfully.
 
@@ -73,84 +73,38 @@ utility content alone.
       <p>Latest news and updates from across departments.</p>
     </div>
     <div className="gi-w-2/3 gi-ml-2 flex flex-wrap gap-1">
-      <Link variant="inline" appearance="inherit" href="#">
-        Services
-      </Link>
-      <Link variant="inline" appearance="inherit" href="#">
-        Departments
-      </Link>
-      <Link variant="inline" appearance="inherit" href="#">
-        Publications
-      </Link>
-      <Link variant="inline" appearance="inherit" href="#">
-        Health
-      </Link>
-      <Link variant="inline" appearance="inherit" href="#">
-        Education
-      </Link>
-      <Link variant="inline" appearance="inherit" href="#">
-        Finance
-      </Link>
-      <Link variant="inline" appearance="inherit" href="#">
-        Reports
-      </Link>
-      <Link variant="inline" appearance="inherit" href="#">
-        Statistics
-      </Link>
-      <Link variant="inline" appearance="inherit" href="#">
-        Legislation
-      </Link>
-      <Link variant="inline" appearance="inherit" href="#">
-        Find an office
-      </Link>
-      <Link variant="inline" appearance="inherit" href="#">
-        Phone directory
-      </Link>
-      <Link variant="inline" appearance="inherit" href="#">
-        Feedback
-      </Link>
-      <Link variant="inline" appearance="inherit" href="#">
-        About us
-      </Link>
-      <Link variant="inline" appearance="inherit" href="#">
-        Sitemap
-      </Link>
-      <Link variant="inline" appearance="inherit" href="#">
-        Careers
-      </Link>
-      <Link variant="inline" appearance="inherit" href="#">
-        Blog
-      </Link>
-      <Link variant="inline" appearance="inherit" href="#">
-        FAQ
-      </Link>
-      <Link variant="inline" appearance="inherit" href="#">
-        Support
-      </Link>
-      <Link variant="inline" appearance="inherit" href="#">
-        Press
-      </Link>
-      <Link variant="inline" appearance="inherit" href="#">
-        Partners
-      </Link>
-      <Link variant="inline" appearance="inherit" href="#">
-        Investors
-      </Link>
-      <Link variant="inline" appearance="inherit" href="#">
-        Events
-      </Link>
-      <Link variant="inline" appearance="inherit" href="#">
-        Privacy Policy
-      </Link>
-      <Link variant="inline" appearance="inherit" href="#">
-        Cookies
-      </Link>
-      <Link variant="inline" appearance="inherit" href="#">
-        Accessibility
-      </Link>
-      <Link variant="inline" appearance="inherit" href="#">
-        Terms of Use
-      </Link>
+      {[
+        'Services',
+        'Departments',
+        'Publications',
+        'Health',
+        'Education',
+        'Finance',
+        'Reports',
+        'Statistics',
+        'Legislation',
+        'Find an Office',
+        'Phone directory',
+        'Feedback',
+        'About us',
+        'Sitemap',
+        'Careers',
+        'Blog',
+        'FAQ',
+        'Support',
+        'Press',
+        'Partners',
+        'Investors',
+        'Events',
+        'Privacy Policy',
+        'Cookies',
+        'Accessibility',
+        'Terms of Use',
+      ].map((link) => (
+        <Link key={link} variant="inline" appearance="inherit" href="#">
+          {link}
+        </Link>
+      ))}
       <span className="gi-text-sm">
         © 2026 Design System of Government of Ireland.
       </span>

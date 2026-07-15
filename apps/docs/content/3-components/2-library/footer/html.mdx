@@ -22,10 +22,7 @@ The Footer HTML component provides a semantic and accessible container for displ
 <ComponentPreview className="block w-full gi-not-prose">
   <footer className="gi-footer">
     <div className="gi-layout-container">
-      <div
-        className="gi-footer-container custom-footer"
-        data-testid="footer-complete"
-      >
+      <div className="gi-footer-container custom-footer">
         <div>
           <div className="gi-grid-responsive !gi-ml-0 !gi-mr-0">
             <div className="gi-col-span-4 md:gi-col-span-4 lg:gi-col-span-3">
@@ -39,10 +36,10 @@ The Footer HTML component provides a semantic and accessible container for displ
                   'Public Services',
                   'Business Services',
                   'Online Services',
-                ].map((name) => (
-                  <li key={name}>
+                ].map((link) => (
+                  <li key={link}>
                     <a className="gi-link gi-text-sm gi-link-inherit" href="#">
-                      {name}
+                      {link}
                     </a>
                   </li>
                 ))}
@@ -59,10 +56,10 @@ The Footer HTML component provides a semantic and accessible container for displ
                   'Department of Health',
                   'Department of Education',
                   'Department of Finance',
-                ].map((name) => (
-                  <li key={name}>
+                ].map((link) => (
+                  <li key={link}>
                     <a className="gi-link gi-text-sm gi-link-inherit" href="#">
-                      {name}
+                      {link}
                     </a>
                   </li>
                 ))}
@@ -75,10 +72,10 @@ The Footer HTML component provides a semantic and accessible container for displ
                 role="separator"
               />
               <ul className="gi-list gi-space-y-2">
-                {['Reports', 'Statistics', 'Legislation'].map((name) => (
-                  <li key={name}>
+                {['Reports', 'Statistics', 'Legislation'].map((link) => (
+                  <li key={link}>
                     <a className="gi-link gi-text-sm gi-link-inherit" href="#">
-                      {name}
+                      {link}
                     </a>
                   </li>
                 ))}
@@ -92,13 +89,13 @@ The Footer HTML component provides a semantic and accessible container for displ
               />
               <ul className="gi-list gi-space-y-2">
                 {['Find an Office', 'Phone Directory', 'Feedback'].map(
-                  (name) => (
-                    <li key={name}>
+                  (link) => (
+                    <li key={link}>
                       <a
                         className="gi-link gi-text-sm gi-link-inherit"
                         href="#"
                       >
-                        {name}
+                        {link}
                       </a>
                     </li>
                   ),
@@ -136,9 +133,9 @@ The Footer HTML component provides a semantic and accessible container for displ
                   'Partners',
                   'Investors',
                   'Events',
-                ].map((name) => (
-                  <a key={name} className="gi-link gi-link-inherit" href="#">
-                    {name}
+                ].map((link) => (
+                  <a key={link} className="gi-link gi-link-inherit" href="#">
+                    {link}
                   </a>
                 ))}
               </div>
@@ -168,9 +165,9 @@ The Footer HTML component provides a semantic and accessible container for displ
     <div className="gi-footer-utility">
       <div className="gi-flex gi-w-full gi-justify-center gi-items-center gi-flex-col xs:gi-flex-col md:gi-flex-row gi-gap-4 gi-flex-nowrap">
         {['Privacy Policy', 'Cookies', 'Accessibility', 'Terms of Use'].map(
-          (name) => (
-            <a key={name} className="gi-link gi-link-inherit" href="#">
-              {name}
+          (link) => (
+            <a key={link} className="gi-link gi-link-inherit" href="#">
+              {link}
             </a>
           ),
         )}
