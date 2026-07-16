@@ -1,5 +1,12 @@
 import AnalyticsProvider from '@/components/analytics-provider';
-import { Footer, Stack } from '@ogcio/design-system-react';
+import { Container, Stack, Text } from '@ogcio/design-system-react';
+import {
+  Footer,
+  FooterSection,
+  FooterLogo,
+  Link,
+} from '@ogcio/design-system-react/next';
+import { LogoGoldGreen } from '@ogcio/design-system-react/logos';
 import '@ogcio/design-system-react/styles.css';
 import '@ogcio/theme-govie/theme.css';
 import type { Metadata } from 'next';
@@ -8,7 +15,6 @@ import './globals.css';
 import CookieConsent from '@/components/cookies/cookie-consent';
 import { Suspense } from 'react';
 import { DocsHeader } from '@/components/navigation/header';
-import { Link } from '@ogcio/design-system-react/next';
 import NextLink from 'next/link';
 
 const lato = Lato({
@@ -29,33 +35,6 @@ export default function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
-  const footerLinks = [
-    {
-      label: 'Help',
-      href: '/help/',
-    },
-    {
-      label: 'Privacy Policy',
-      href: '/privacy-policy/',
-    },
-    {
-      label: 'Cookies',
-      href: '/cookies-policy/',
-    },
-    {
-      label: 'Accessibility statement',
-      href: '/accessibility-statement/',
-    },
-    {
-      label: 'Contact',
-      href: '/contact/',
-    },
-    {
-      label: 'Government digital service',
-      href: '/government-digital-service/',
-    },
-  ];
-
   return (
     <html lang="en" suppressHydrationWarning className={lato.className}>
       <body
@@ -69,41 +48,76 @@ export default function RootLayout({
             </Link>
             <DocsHeader />
             {children}
-            <Footer
-              secondarySlot={
-                <Stack
-                  direction={{ base: 'column', md: 'row', xs: 'column' }}
-                  gap={4}
-                  wrap
-                >
-                  {footerLinks.map((link, index) => (
-                    <Link
-                      asChild
-                      variant="inline"
-                      appearance="inherit"
-                      key={`footerlink-${index}`}
+            <Footer>
+              <FooterSection>
+                <Container>
+                  <Stack
+                    gap={{ base: 0, md: 4 }}
+                    direction={{ base: 'column', md: 'row' }}
+                  >
+                    <Stack
+                      direction={{ base: 'column', md: 'row' }}
+                      gap={4}
+                      wrap
                     >
-                      <NextLink href={link.href}>{link.label}</NextLink>
-                    </Link>
-                  ))}
-                </Stack>
-              }
-              utilitySlot={
-                <Stack
-                  direction={{ base: 'column', md: 'row', xs: 'column' }}
-                  gap={4}
-                  itemsDistribution="center"
-                >
-                  <div className="gi-text-sm">
-                    © {new Date().getFullYear()} Design System of Government of
-                    Ireland.
-                  </div>
-                </Stack>
-              }
-            />
+                      {footerLinks.map((link, index) => (
+                        <Link
+                          asChild
+                          variant="inline"
+                          appearance="inherit"
+                          key={`footerlink-${index}`}
+                        >
+                          <NextLink href={link.href}>{link.label}</NextLink>
+                        </Link>
+                      ))}
+                    </Stack>
+
+                    <FooterLogo>
+                      <LogoGoldGreen label="Gov.ie logo" size={181} />
+                    </FooterLogo>
+                  </Stack>
+                </Container>
+              </FooterSection>
+              <FooterSection
+                variant="utility"
+                className="gi-flex gi-justify-center"
+              >
+                <Text size="sm">
+                  © {new Date().getFullYear()} Design System of Government of
+                  Ireland.
+                </Text>
+              </FooterSection>
+            </Footer>
           </AnalyticsProvider>
         </Suspense>
       </body>
     </html>
   );
 }
+
+const footerLinks = [
+  {
+    label: 'Help',
+    href: '/help/',
+  },
+  {
+    label: 'Privacy Policy',
+    href: '/privacy-policy/',
+  },
+  {
+    label: 'Cookies',
+    href: '/cookies-policy/',
+  },
+  {
+    label: 'Accessibility statement',
+    href: '/accessibility-statement/',
+  },
+  {
+    label: 'Contact',
+    href: '/contact/',
+  },
+  {
+    label: 'Government digital service',
+    href: '/government-digital-service/',
+  },
+];
