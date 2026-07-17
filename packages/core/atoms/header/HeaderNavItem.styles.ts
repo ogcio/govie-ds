@@ -1,0 +1,27 @@
+import { tv } from 'tailwind-variants';
+import type { Size, ResponsiveValue, ValueOf } from '../constants';
+import { resolveResponsive } from '../utilities';
+
+export type VisibleValue = ValueOf<typeof Size> | ResponsiveValue<boolean>;
+
+export const classes = tv({
+  base: [
+    'gi-flex gi-items-center gi-gap-md',
+    'gi-h-auto gi-p-2 gi-rounded-sm',
+    'gi-cursor-pointer',
+    'gi-leading-[24px] gi-truncate',
+    'gi-border-solid gi-border-transparent',
+    'hover:gi-bg-black hover:gi-bg-opacity-20',
+    'focus:gi-bg-black focus:gi-bg-opacity-20 focus:gi-border-0 focus:gi-shadow-none',
+    'focus:gi-outline focus:gi-outline-[2px] focus:gi-outline-offset-0 focus:gi-outline-color-shadow-intent-focus-default',
+  ],
+});
+
+export const getVisibility = (visible: VisibleValue = true): string => {
+  if (typeof visible === 'boolean') {
+    return visible ? 'gi-flex' : 'gi-hidden';
+  } else if (typeof visible === 'string') {
+    return `gi-hidden ${visible}:gi-flex`;
+  }
+  return resolveResponsive(visible, (v, bp) => (v ? `${bp}gi-flex` : `${bp}gi-hidden`));
+};

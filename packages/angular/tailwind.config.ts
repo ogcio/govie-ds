@@ -16,6 +16,8 @@ const config: Config = {
       variants: ['xs', 'sm', 'md', 'lg', 'xl', '2xl'],
     },
     { pattern: /flex-(row|col)$/, variants: ['xs', 'sm', 'md', 'lg', 'xl', '2xl'] },
+    { pattern: /flex$/, variants: ['xs', 'sm', 'md', 'lg', 'xl', '2xl'] },
+    { pattern: /hidden/, variants: ['xs', 'sm', 'md', 'lg', 'xl', '2xl'] },
   ],
 };
 

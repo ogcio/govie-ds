@@ -1,10 +1,11 @@
 import { useMetadata } from '@builder.io/mitosis';
 import { tv } from 'tailwind-variants';
+import GiBox from '../Box.lite';
 
 useMetadata({ angular: { selector: 'gi-header-logo' } });
 
 export type Props = {
-  children?: any;
+  children: any;
   className?: string;
   styles?: Record<string, string>;
   id?: string;
@@ -13,17 +14,17 @@ export type Props = {
 
 export default function HeaderLogo(props: Props) {
   return (
-    <div
+    <GiBox
       id={props.id}
-      class={logoStyles({ className: props.className })}
-      style={props.styles}
-      data-testid={props.dataTestId}
+      className={classes({ className: props.className })}
+      styles={props.styles}
+      dataTestId={props.dataTestId}
     >
       {props.children}
-    </div>
+    </GiBox>
   );
 }
 
-const logoStyles = tv({
+const classes = tv({
   base: 'gi-flex-none gi-rounded-sm',
 });

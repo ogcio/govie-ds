@@ -1,10 +1,11 @@
 import { useMetadata } from '@builder.io/mitosis';
 import { tv } from 'tailwind-variants';
+import GiBox from '../Box.lite';
 
 useMetadata({ angular: { selector: 'gi-header-title' } });
 
 export type Props = {
-  children?: any;
+  children: any;
   className?: string;
   styles?: Record<string, string>;
   id?: string;
@@ -13,17 +14,22 @@ export type Props = {
 
 export default function HeaderTitle(props: Props) {
   return (
-    <div
+    <GiBox
       id={props.id}
-      class={titleStyles({ className: props.className })}
-      style={props.styles}
-      data-testid={props.dataTestId}
+      className={classes({ className: props.className })}
+      styles={props.styles}
+      dataTestId={props.dataTestId}
     >
       {props.children}
-    </div>
+    </GiBox>
   );
 }
 
-const titleStyles = tv({
-  base: 'gi-min-w-0 gi-heading-sm gi-truncate gi-overflow-hidden gi-text-ellipsis gi-ml-4 md:gi-ml-6 lg:gi-ml-12 gi-grow',
+const classes = tv({
+  base: [
+    'gi-min-w-0 gi-grow',
+    'gi-text-lg xl:gi-text-xl gi-font-bold gi-font-primary',
+    'gi-truncate',
+    'gi-ml-4 md:gi-ml-6 lg:gi-ml-12',
+  ],
 });

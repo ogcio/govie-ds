@@ -1,4 +1,6 @@
-export type BreakpointKey = (typeof Breakpoint)[keyof typeof Breakpoint];
+export type ValueOf<T> = T[keyof T];
+
+export type BreakpointKey = ValueOf<typeof Breakpoint>;
 
 export type ResponsiveValue<T> = T | Partial<Record<BreakpointKey, T>>;
 
@@ -60,4 +62,24 @@ export const Breakpoint = {
   LG: 'lg',
   XL: 'xl',
   '2XL': '2xl',
+} as const;
+
+// A surface (banded zone / region / panel) has a role variant and a theme appearance.
+export const SurfaceVariant = {
+  PRIMARY: 'primary',
+  UTILITY: 'utility',
+} as const;
+
+// Theme of a surface (band / region / panel). Descendants inherit its tone.
+export const SurfaceAppearance = {
+  DEFAULT: 'default',
+  LIGHT: 'light',
+} as const;
+
+// Tone of an element itself (Button/Link) — the inverse case (dark element on a light
+// surface, light on dark). Shared vocabulary; Button/Link own this, not surfaces.
+export const Appearance = {
+  DEFAULT: 'default',
+  DARK: 'dark',
+  LIGHT: 'light',
 } as const;
