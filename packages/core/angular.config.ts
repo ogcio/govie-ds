@@ -1,4 +1,5 @@
-import { MitosisConfig } from '@builder.io/mitosis';
+import type { MitosisConfig } from '@builder.io/mitosis';
+import stripRef from './plugins/strip-ref';
 import annotation from './plugins/annotation';
 import prettierFormat from './plugins/prettier-format';
 
@@ -15,7 +16,7 @@ export default {
       typescript: true,
       standalone: true,
       prettier: false,
-      plugins: [annotation, prettierFormat],
+      plugins: [stripRef, annotation, prettierFormat],
     },
   },
 } satisfies MitosisConfig;

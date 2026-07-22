@@ -36,7 +36,6 @@ export type Props = {
   value?: string;
   tabIndex?: number;
   dataTestId?: string;
-  ref?: any;
 };
 
 import { tv } from 'tailwind-variants';
