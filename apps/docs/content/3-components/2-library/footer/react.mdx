@@ -43,6 +43,10 @@ component:
           ofType: '"primary" | "utility"'
           description: 'Section background and spacing variant. Defaults to "primary".'
           required: false
+        - name: 'maxWidth'
+          ofType: '"sm" | "md" | "lg" | "xl" | "2xl" | "full" | "default"'
+          description: 'Caps the max width of the built-in content container. Defaults to "default".'
+          required: false
         - name: 'children'
           ofType: 'ReactNode'
           description: 'FooterSection content - typically navigational links, official logo, partner links'
@@ -90,8 +94,7 @@ The Footer is a composable layout built from three primitives: `Footer`, `Footer
 
 <ComponentPreview className="block w-full gi-not-prose">
   <Footer>
-    <FooterSection>
-      <Container className="gi-text-gray-800">
+    <FooterSection className="gi-text-gray-800">
         <Grid container columns={{ base: 4, md: 8, lg: 12 }} gap={4}>
           <Grid size={{ base: 4, md: 4, lg: 3 }}>
             <Heading as={'h4'} className="gi-my-4">Services</Heading>
@@ -213,7 +216,6 @@ The Footer is a composable layout built from three primitives: `Footer`, `Footer
           </NextLink>
           </Link>
         </Stack>
-      </Container>
     </FooterSection>
 
     <FooterSection variant="utility">
@@ -261,7 +263,7 @@ import {
 
 **Why migrate:**
 
-- Layout flexibility: you own dividers, container padding, grids, and logo placement.
+- Layout flexibility: you own dividers, grids, and logo placement.
 - Precise semantics and a11y: set `ariaLabel` and region labels yourself.
 - Clearer JSX: named children (`FooterSection`, `FooterLogo`) instead of opaque slot props.
 
@@ -308,7 +310,7 @@ import {
     <TableRow>
       <TableData>Built-in `Container`, `Divider`, logo layout</TableData>
       <TableData>
-        Add `<Container>`, `<Divider>`, and a row `<Stack>` yourself
+        `FooterSection` provides the content container; add `<Divider>` and a row `<Stack>` yourself
       </TableData>
     </TableRow>
     <TableRow>
@@ -350,26 +352,24 @@ import {
   FooterLogo,
 } from '@ogcio/design-system-react/next';
 import { LogoGoldGreen } from '@ogcio/design-system-react/logos';
-import { Container, Divider, Stack, Box } from '@ogcio/design-system-react';
+import { Divider, Stack, Box } from '@ogcio/design-system-react';
 
 <Footer ariaLabel="Footer" dataTestId="footer">
   <FooterSection>
-    <Container>
-      {/* former primarySlot */}
-      <Box>{/* primary links */}</Box>
+    {/* former primarySlot */}
+    <Box>{/* primary links */}</Box>
 
-      <Divider className="gi-my-8" />
+    <Divider className="gi-my-8" />
 
-      <Stack direction={{ base: 'column', md: 'row' }} gap={{ base: 0, md: 6 }}>
-        {/* former secondarySlot */}
-        <Box>{/* secondary links */}</Box>
-        <Link href="/" ariaLabel="Homepage">
-          <FooterLogo>
-            <LogoGoldGreen size="181" label="Gov.ie Logo" />
-          </FooterLogo>
-        </Link>
-      </Stack>
-    </Container>
+    <Stack direction={{ base: 'column', md: 'row' }} gap={{ base: 0, md: 6 }}>
+      {/* former secondarySlot */}
+      <Box>{/* secondary links */}</Box>
+      <Link href="/" ariaLabel="Homepage">
+        <FooterLogo>
+          <LogoGoldGreen size="181" label="Gov.ie Logo" />
+        </FooterLogo>
+      </Link>
+    </Stack>
   </FooterSection>
 
   <FooterSection variant="utility">
@@ -418,7 +418,7 @@ In the composable API, `FooterLogo` only handles positioning. Render the image y
 
 ### Related layout pieces
 
-- Use [`Container`](/components/library/container/design/) for the horizontal padding the legacy footer applied by default.
+- `FooterSection` centres and pads its content with a built-in [`Container`](/components/library/container/design/) — use `maxWidth` to cap the content width.
 - Use a `Stack` with `direction={{ base: 'column', md: 'row' }}` for secondary links beside the logo.
 
 For a complete migrated example, see the preview at the top of this page or click "Show Code" in the [Footer story](/storybook-react/docs/layout-footer-footer--docs).

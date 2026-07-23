@@ -5,7 +5,6 @@ import { renderToStaticMarkup } from 'react-dom/server';
 import { LogoGoldGreen as GovieLogoHarpWithText, LogoHarpWhite as GovieLogoHarp } from '@/atoms/icons/logos';
 import { cn } from '@/cn.js';
 import type { LogoProps } from '@/common/types.js';
-import Container from '@/atoms/Container.js';
 import FooterSection from '@/atoms/FooterSection';
 import { translate as t } from '@/i18n/utility.js';
 import Anchor from '@/primitives/anchor.js';
@@ -83,37 +82,35 @@ export function Footer({
       {...props}
     >
       <FooterSection>
-        <Container>
-          {primarySlot && (
-            <div
-              aria-label={t('footer.primarySlot', {
-                defaultValue: 'Footer Primary Slot',
-              })}
-            >
-              {primarySlot}
-            </div>
-          )}
-
-          {primarySlot && secondarySlot && <Divider className="gi-my-8" />}
-
+        {primarySlot && (
           <div
-            className="gi-flex gi-flex-row-reverse gi-flex-wrap-reverse gi-justify-between gi-justify-items-stretch"
-            aria-label={t('footer.secondarySlot', {
-              defaultValue: 'Footer Secondary Slot',
+            aria-label={t('footer.primarySlot', {
+              defaultValue: 'Footer Primary Slot',
             })}
           >
-            <div
-              className="
-                gi-w-fit gi-mt-8 md:gi-mt-0 lg:gi-ml-auto lg:gi-flex-none gi-rounded-sm
-                gi-focus-state-outline gi-focus-within-state-outline gi-focus-visible-state-outline"
-            >
-              {renderLogo()}
-            </div>
-            {secondarySlot && (
-              <div className="gi-grow md:gi-max-w-[calc(100%_-_var(--gieds-space-80))]">{secondarySlot}</div>
-            )}
+            {primarySlot}
           </div>
-        </Container>
+        )}
+
+        {primarySlot && secondarySlot && <Divider className="gi-my-8" />}
+
+        <div
+          className="gi-flex gi-flex-row-reverse gi-flex-wrap-reverse gi-justify-between gi-justify-items-stretch"
+          aria-label={t('footer.secondarySlot', {
+            defaultValue: 'Footer Secondary Slot',
+          })}
+        >
+          <div
+            className="
+              gi-w-fit gi-mt-8 md:gi-mt-0 lg:gi-ml-auto lg:gi-flex-none gi-rounded-sm
+              gi-focus-state-outline gi-focus-within-state-outline gi-focus-visible-state-outline"
+          >
+            {renderLogo()}
+          </div>
+          {secondarySlot && (
+            <div className="gi-grow md:gi-max-w-[calc(100%_-_var(--gieds-space-80))]">{secondarySlot}</div>
+          )}
+        </div>
       </FooterSection>
 
       {utilitySlot && <FooterSection variant="utility">{utilitySlot}</FooterSection>}

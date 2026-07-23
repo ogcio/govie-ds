@@ -91,7 +91,6 @@ const contentClasses = tv({
         classes({
           variant: getVariant(variant),
           appearance: getAppearance(appearance),
-          className: className,
         })
       "
       [styles]="styles"
@@ -103,6 +102,7 @@ const contentClasses = tv({
         [className]="
           contentClasses({
             variant: getVariant(variant),
+            className: className,
           })
         "
         ><ng-content></ng-content></gi-container
@@ -127,10 +127,10 @@ export default class HeaderSection {
   @Input() id!: Props['id'];
   @Input() variant!: Props['variant'];
   @Input() appearance!: Props['appearance'];
-  @Input() className!: Props['className'];
   @Input() styles!: Props['styles'];
   @Input() role!: Props['role'];
   @Input() ariaLabel!: Props['ariaLabel'];
   @Input() dataTestId!: Props['dataTestId'];
   @Input() maxWidth!: Props['maxWidth'];
+  @Input() className!: Props['className'];
 }
