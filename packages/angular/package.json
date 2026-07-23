@@ -5,8 +5,12 @@
   "description": "The Government of Ireland Design System Angular components.",
   "type": "module",
   "exports": {
-    "./fonts.css": "./dist/fonts.css",
-    "./styles.css": "./dist/styles.css"
+    "./fonts.css": "./fonts.css",
+    "./styles.css": "./styles.css"
+  },
+  "publishConfig": {
+    "directory": "dist",
+    "linkDirectory": true
   },
   "scripts": {
     "build": "ng-packagr -p ng-package.json -c tsconfig.lib.json && pnpm build:styles",

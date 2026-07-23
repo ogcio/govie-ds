@@ -4,5 +4,8 @@
     "rootDir": "src",
     "declaration": true
   },
+  "angularCompilerOptions": {
+    "compilationMode": "partial"
+  },
   "include": ["src"]
 }

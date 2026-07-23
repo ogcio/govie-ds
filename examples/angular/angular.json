@@ -29,7 +29,7 @@
                 "input": "public"
               }
             ],
-            "styles": ["dist/styles.css", "@ogcio/theme-govie/theme.css"]
+            "styles": ["@ogcio/design-system-angular/styles.css", "dist/styles.css", "@ogcio/theme-govie/theme.css"]
           },
           "configurations": {
             "production": {
@@ -82,7 +82,7 @@
                 "input": "public"
               }
             ],
-            "styles": ["dist/styles.css", "@ogcio/theme-govie/theme.css"],
+            "styles": ["@ogcio/design-system-angular/styles.css", "dist/styles.css", "@ogcio/theme-govie/theme.css"],
             "scripts": []
           }
         },
