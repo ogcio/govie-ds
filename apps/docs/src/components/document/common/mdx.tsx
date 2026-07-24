@@ -1,4 +1,9 @@
 import CookieConsentCheckbox from '@/components/cookies/cookie-consent-checkbox';
+import {
+  FooterSecondaryContent,
+  FooterUtilityContent,
+  FooterTemplate,
+} from '@/components/navigation/footer';
 import { ColorPrimitives } from '@/components/document/color/color-primitives';
 import { DownloadTheme } from '@/components/document/theme/download-theme';
 import { ThemeBuilder } from '@/components/document/theme/theme-builder';
@@ -319,6 +324,9 @@ const documentComponents: MDXComponents = {
   Footer,
   FooterLogo,
   FooterSection,
+  FooterTemplate,
+  FooterSecondaryContent,
+  FooterUtilityContent,
   FooterLegacy,
   Grid,
   GridPrimitives,

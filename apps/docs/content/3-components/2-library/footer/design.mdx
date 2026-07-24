@@ -10,596 +10,106 @@ component:
 
 # Footer
 
-The Footer component provides a structured area at the bottom of the page to display essential information, navigational links, branding, and utility actions. It supports customizable slots for content and branding, aligning with gov.ie standards and accessibility requirements.
+The Footer provides a structured area at the bottom of the page for essential information, navigational links, branding, and utility actions. It is assembled from composable primitives - `Footer`, `FooterSection`, and `FooterLogo` - so you control layout while keeping consistent Gov.ie styling and accessibility.
 
 <Section current="design">
 
-<ComponentPreview className="gi-not-prose">
-  <FooterLegacy
-    dataTestid="gi-footer"
-    primarySlot={
-      <div className="gi-grid-responsive !gi-ml-0 !gi-mr-0">
-        <div className="gi-col-span-4 md:gi-col-span-4 lg:gi-col-span-3">
-          <h3 className="gi-heading-sm gi-mb-4">Services</h3>
-          <SectionBreak
-            color="gi-border-color-border-system-neutral-subtle"
-            size="md"
-          />
-          <ul className="gi-space-y-2">
-            <li>
-              <Link variant="inline" appearance="inherit" href="#">
-                Public Services
-              </Link>
-            </li>
-            <li>
-              <Link variant="inline" appearance="inherit" href="#">
-                Business Services
-              </Link>
-            </li>
-            <li>
-              <Link variant="inline" appearance="inherit" href="#">
-                Online Services
-              </Link>
-            </li>
-          </ul>
-        </div>
-        <div className="gi-col-span-4 md:gi-col-span-4 lg:gi-col-span-3">
-          <h3 className="gi-heading-sm gi-mb-4">Departments</h3>
-          <SectionBreak
-            color="gi-border-color-border-system-neutral-subtle"
-            size="md"
-          />
-          <ul className="gi-space-y-2">
-            <li>
-              <Link variant="inline" appearance="inherit" href="#">
-                Department of Health
-              </Link>
-            </li>
-            <li>
-              <Link variant="inline" appearance="inherit" href="#">
-                Department of Education
-              </Link>
-            </li>
-            <li>
-              <Link variant="inline" appearance="inherit" href="#">
-                Department of Finance
-              </Link>
-            </li>
-          </ul>
-        </div>
-        <div className="gi-col-span-4 md:gi-col-span-4 lg:gi-col-span-3">
-          <h3 className="gi-heading-sm gi-mb-4">Publications</h3>
-          <SectionBreak
-            color="gi-border-color-border-system-neutral-subtle"
-            size="md"
-          />
-          <ul className="gi-space-y-2">
-            <li>
-              <Link variant="inline" appearance="inherit" href="#">
-                Reports
-              </Link>
-            </li>
-            <li>
-              <Link variant="inline" appearance="inherit" href="#">
-                Statistics
-              </Link>
-            </li>
-            <li>
-              <Link variant="inline" appearance="inherit" href="#">
-                Legislation
-              </Link>
-            </li>
-          </ul>
-        </div>
-        <div className="gi-col-span-4 md:gi-col-span-4 lg:gi-col-span-3">
-          <h3 className="gi-heading-sm gi-mb-4">Contact</h3>
-          <SectionBreak
-            color="gi-border-color-border-system-neutral-subtle"
-            size="md"
-          />
-          <ul className="gi-space-y-2">
-            <li>
-              <Link variant="inline" appearance="inherit" href="#">
-                Find an Office
-              </Link>
-            </li>
-            <li>
-              <Link variant="inline" appearance="inherit" href="#">
-                Phone Directory
-              </Link>
-            </li>
-            <li>
-              <Link variant="inline" appearance="inherit" href="#">
-                Feedback
-              </Link>
-            </li>
-          </ul>
-        </div>
-      </div>
-    }
-    secondarySlot={
-      <Stack direction="column" gap={4}>
-        <Stack
-          direction={{ base: 'column', md: 'row', xs: 'column' }}
-          gap={4}
-          wrap
-        >
-          <Link variant="inline" appearance="inherit" href="#">
-            About Us
-          </Link>
-          <Link variant="inline" appearance="inherit" href="#">
-            Contact
-          </Link>
-          <Link variant="inline" appearance="inherit" href="#">
-            Sitemap
-          </Link>
-          <Link variant="inline" appearance="inherit" href="#">
-            Privacy Policy
-          </Link>
-          <Link variant="inline" appearance="inherit" href="#">
-            Terms of Service
-          </Link>
-          <Link variant="inline" appearance="inherit" href="#">
-            Careers
-          </Link>
-          <Link variant="inline" appearance="inherit" href="#">
-            Blog
-          </Link>
-          <Link variant="inline" appearance="inherit" href="#">
-            FAQ
-          </Link>
-          <Link variant="inline" appearance="inherit" href="#">
-            Support
-          </Link>
-          <Link variant="inline" appearance="inherit" href="#">
-            Press
-          </Link>
-          <Link variant="inline" appearance="inherit" href="#">
-            Partners
-          </Link>
-          <Link variant="inline" appearance="inherit" href="#">
-            Investors
-          </Link>
-          <Link variant="inline" appearance="inherit" href="#">
-            Events
-          </Link>
-        </Stack>
-        <Stack direction="row" gap={4}>
-          <XIcon />
-          <FacebookIcon />
-          <BlueskyIcon />
-          <LinkedinIcon />
-        </Stack>
-      </Stack>
-    }
-    utilitySlot={
-      <Stack
-        direction={{ base: 'column', md: 'row', xs: 'column' }}
-        gap={4}
-        itemsAlignment="center"
-        itemsDistribution="center"
-      >
-        <Link variant="inline" appearance="inherit" href="#">
-          Privacy Policy
-        </Link>
-        <Link variant="inline" appearance="inherit" href="#">
-          Cookies
-        </Link>
-        <Link variant="inline" appearance="inherit" href="#">
-          Accessibility
-        </Link>
-        <Link variant="inline" appearance="inherit" href="#">
-          Terms of Use
-        </Link>
-        <div className="gi-text-sm">© 2025 Government of Ireland.</div>
-      </Stack>
-    }
-  />
+<ComponentPreview className="block w-full gi-not-prose">
+  <FooterTemplate />
 </ComponentPreview>
 
 <FigmaPreviewButton href="https://www.figma.com/design/ZEqfpXhocdZs1K5YfsE5ws/Design-system?node-id=4939-2662" />
 
 ## Structure
 
-The Gov.ie Design System Footer is structured into three key sections:
+Compose the Footer from these building blocks:
 
-- **Primary Slot**: Used for navigational links, summaries, or descriptive blocks.
-- **Secondary Slot**: Contains the official logo and optional secondary content like metadata or partner links.
-- **Utility Slot**: Typically used for legal links such as privacy policy, accessibility statement, etc.
+- **`Footer`**: The landmark (`<footer>`) that wraps all sections.
+- **`FooterSection` (primary)**: The main content area. Use it for navigational link columns, secondary links, social icons, and the logo. Separate primary and secondary content with a divider when both are present.
+- **`FooterSection` (utility)**: A distinct lower band for legal links such as privacy policy, accessibility statement, and copyright.
+- **`FooterLogo`**: Positions the official logo beside secondary content. Place your logo (for example `LogoGoldGreen`) as its children.
 
-## Variants
-
-<ComponentPreviewLayout className="flex-col">
-  <ComponentPreviewItem className="block h-full w-full">
-    <FooterLegacy
-      dataTestid="gi-footer"
-      primarySlot={
-        <div className="gi-grid-responsive !gi-ml-0 !gi-mr-0">
-          <div className="gi-col-span-4 md:gi-col-span-4 lg:gi-col-span-3">
-            <h3 className="gi-heading-sm gi-mb-4">Services</h3>
-            <SectionBreak
-              color="gi-border-color-border-system-neutral-subtle"
-              size="md"
-            />
-            <ul className="gi-space-y-2">
-              <li>
-                <Link variant="inline" appearance="inherit" href="#">
-                  Public Services
-                </Link>
-              </li>
-              <li>
-                <Link variant="inline" appearance="inherit" href="#">
-                  Business Services
-                </Link>
-              </li>
-              <li>
-                <Link variant="inline" appearance="inherit" href="#">
-                  Online Services
-                </Link>
-              </li>
-            </ul>
-          </div>
-          <div className="gi-col-span-4 md:gi-col-span-4 lg:gi-col-span-3">
-            <h3 className="gi-heading-sm gi-mb-4">Departments</h3>
-            <SectionBreak
-              color="gi-border-color-border-system-neutral-subtle"
-              size="md"
-            />
-            <ul className="gi-space-y-2">
-              <li>
-                <Link variant="inline" appearance="inherit" href="#">
-                  Department of Health
-                </Link>
-              </li>
-              <li>
-                <Link variant="inline" appearance="inherit" href="#">
-                  Department of Education
-                </Link>
-              </li>
-              <li>
-                <Link variant="inline" appearance="inherit" href="#">
-                  Department of Finance
-                </Link>
-              </li>
-            </ul>
-          </div>
-          <div className="gi-col-span-4 md:gi-col-span-4 lg:gi-col-span-3">
-            <h3 className="gi-heading-sm gi-mb-4">Publications</h3>
-            <SectionBreak
-              color="gi-border-color-border-system-neutral-subtle"
-              size="md"
-            />
-            <ul className="gi-space-y-2">
-              <li>
-                <Link variant="inline" appearance="inherit" href="#">
-                  Reports
-                </Link>
-              </li>
-              <li>
-                <Link variant="inline" appearance="inherit" href="#">
-                  Statistics
-                </Link>
-              </li>
-              <li>
-                <Link variant="inline" appearance="inherit" href="#">
-                  Legislation
-                </Link>
-              </li>
-            </ul>
-          </div>
-          <div className="gi-col-span-4 md:gi-col-span-4 lg:gi-col-span-3">
-            <h3 className="gi-heading-sm gi-mb-4">Contact</h3>
-            <SectionBreak
-              color="gi-border-color-border-system-neutral-subtle"
-              size="md"
-            />
-            <ul className="gi-space-y-2">
-              <li>
-                <Link variant="inline" appearance="inherit" href="#">
-                  Find an Office
-                </Link>
-              </li>
-              <li>
-                <Link variant="inline" appearance="inherit" href="#">
-                  Phone Directory
-                </Link>
-              </li>
-              <li>
-                <Link variant="inline" appearance="inherit" href="#">
-                  Feedback
-                </Link>
-              </li>
-            </ul>
-          </div>
-        </div>
-      }
-      secondarySlot={
-        <Stack direction="column" gap={4}>
-          <Stack
-            direction={{ base: 'column', md: 'row', xs: 'column' }}
-            gap={4}
-            wrap
-          >
-            <Link variant="inline" appearance="inherit" href="#">
-              About Us
-            </Link>
-            <Link variant="inline" appearance="inherit" href="#">
-              Contact
-            </Link>
-            <Link variant="inline" appearance="inherit" href="#">
-              Sitemap
-            </Link>
-            <Link variant="inline" appearance="inherit" href="#">
-              Privacy Policy
-            </Link>
-            <Link variant="inline" appearance="inherit" href="#">
-              Terms of Service
-            </Link>
-            <Link variant="inline" appearance="inherit" href="#">
-              Careers
-            </Link>
-            <Link variant="inline" appearance="inherit" href="#">
-              Blog
-            </Link>
-            <Link variant="inline" appearance="inherit" href="#">
-              FAQ
-            </Link>
-            <Link variant="inline" appearance="inherit" href="#">
-              Support
-            </Link>
-            <Link variant="inline" appearance="inherit" href="#">
-              Press
-            </Link>
-            <Link variant="inline" appearance="inherit" href="#">
-              Partners
-            </Link>
-            <Link variant="inline" appearance="inherit" href="#">
-              Investors
-            </Link>
-            <Link variant="inline" appearance="inherit" href="#">
-              Events
-            </Link>
-          </Stack>
-          <Stack direction="row" gap={4}>
-            <XIcon />
-            <FacebookIcon />
-            <BlueskyIcon />
-            <LinkedinIcon />
-          </Stack>
-        </Stack>
-      }
-      utilitySlot={
-        <Stack
-          direction={{ base: 'column', md: 'row', xs: 'column' }}
-          gap={4}
-          itemsAlignment="center"
-          itemsDistribution="center"
-        >
-          <Link variant="inline" appearance="inherit" href="#">
-            Privacy Policy
-          </Link>
-          <Link variant="inline" appearance="inherit" href="#">
-            Cookies
-          </Link>
-          <Link variant="inline" appearance="inherit" href="#">
-            Accessibility
-          </Link>
-          <Link variant="inline" appearance="inherit" href="#">
-            Terms of Use
-          </Link>
-          <div className="gi-text-sm">© 2025 Government of Ireland.</div>
-        </Stack>
-      }
-    />
-  </ComponentPreviewItem>
-  <ComponentPreviewItem className="block h-full w-full">
-    <FooterLegacy
-      secondarySlot={
-        <Stack
-          direction={{ base: 'column', md: 'row', xs: 'column' }}
-          gap={4}
-          wrap
-        >
-          <Link variant="inline" appearance="inherit" href="#">
-            About Us
-          </Link>
-          <Link variant="inline" appearance="inherit" href="#">
-            Contact
-          </Link>
-          <Link variant="inline" appearance="inherit" href="#">
-            Sitemap
-          </Link>
-          <Link variant="inline" appearance="inherit" href="#">
-            Privacy Policy
-          </Link>
-          <Link variant="inline" appearance="inherit" href="#">
-            Terms of Service
-          </Link>
-          <Link variant="inline" appearance="inherit" href="#">
-            Careers
-          </Link>
-          <Link variant="inline" appearance="inherit" href="#">
-            Blog
-          </Link>
-          <Link variant="inline" appearance="inherit" href="#">
-            FAQ
-          </Link>
-          <Link variant="inline" appearance="inherit" href="#">
-            Support
-          </Link>
-          <Link variant="inline" appearance="inherit" href="#">
-            Press
-          </Link>
-          <Link variant="inline" appearance="inherit" href="#">
-            Partners
-          </Link>
-          <Link variant="inline" appearance="inherit" href="#">
-            Investors
-          </Link>
-          <Link variant="inline" appearance="inherit" href="#">
-            Events
-          </Link>
-        </Stack>
-      }
-      utilitySlot={
-        <Stack
-          direction={{ base: 'column', md: 'row', xs: 'column' }}
-          gap={4}
-          itemsDistribution="center"
-        >
-          <Link variant="inline" appearance="inherit" href="#">
-            Privacy Policy
-          </Link>
-          <Link variant="inline" appearance="inherit" href="#">
-            Accessibility
-          </Link>
-          <div className="gi-text-sm">© 2025 Government of Ireland.</div>
-        </Stack>
-      }
-    />
-  </ComponentPreviewItem>
-  <ComponentPreviewItem className="block h-full w-full">
-    <FooterLegacy
-      utilitySlot={
-        <Stack
-          direction={{ base: 'column', md: 'row', xs: 'column' }}
-          gap={4}
-          itemsDistribution="center"
-        >
-          <Link variant="inline" appearance="inherit" href="#">
-            Privacy Policy
-          </Link>
-          <Link variant="inline" appearance="inherit" href="#">
-            Accessibility
-          </Link>
-          <div className="gi-text-sm">© 2025 Government of Ireland.</div>
-        </Stack>
-      }
-    />
-  </ComponentPreviewItem>
-</ComponentPreviewLayout>
+Use `Container`, `Grid`, `Stack`, and `Divider` inside sections to control layout - the Footer primitives do not impose a fixed grid.
 
 ## Usage
 
-Footers are used to provide consistent structure and reliable access to persistent links or brand identity at the bottom of each page.
+Footers provide consistent structure and reliable access to persistent links and
+brand identity at the bottom of each page. Include only the sections your
+service needs - a complete primary layout, secondary links with a logo, or
+utility content alone.
 
 ### Do
 
-- **Use all relevant slots**: Include meaningful, well-organized content in `primarySlot` and `secondarySlot` to improve structure and navigation.
-- **Use a grid layout or clear alignment**: Ensure items in `primarySlot` and `secondarySlot` are visually balanced and easy to scan.
-- **Group related links or information**: Organize content into columns or sections to support usability.
+- **Compose with clear sections**: Use a primary `FooterSection` for navigation and branding, and a utility `FooterSection` for legal and copyright content.
+- **Use a grid or clear alignment**: Organise link columns with `Grid` or `Stack` so content is visually balanced and easy to scan.
+- **Group related links**: Keep related links under shared headings and separate primary and secondary content with a `Divider` when both are present.
+- **Place the logo with `FooterLogo`**: Keep the official logo beside secondary links, not buried inside unstructured content.
 
-<ComponentContainer fullWidth>
-  <FooterLegacy
-    secondarySlot={
-      <Stack
-        direction={{ base: 'column', md: 'row', xs: 'column' }}
-        gap={4}
-        wrap
-      >
-        <Link variant="inline" appearance="inherit" href="#">
-          About Us
-        </Link>
-        <Link variant="inline" appearance="inherit" href="#">
-          Contact
-        </Link>
-        <Link variant="inline" appearance="inherit" href="#">
-          Sitemap
-        </Link>
-        <Link variant="inline" appearance="inherit" href="#">
-          Privacy Policy
-        </Link>
-        <Link variant="inline" appearance="inherit" href="#">
-          Terms of Service
-        </Link>
-        <Link variant="inline" appearance="inherit" href="#">
-          Careers
-        </Link>
-        <Link variant="inline" appearance="inherit" href="#">
-          Blog
-        </Link>
-        <Link variant="inline" appearance="inherit">
-          FAQ
-        </Link>
-        <Link variant="inline" appearance="inherit" href="#">
-          Support
-        </Link>
-        <Link variant="inline" appearance="inherit" href="#">
-          Press
-        </Link>
-        <Link variant="inline" appearance="inherit" href="#">
-          Partners
-        </Link>
-        <Link variant="inline" appearance="inherit" href="#">
-          Investors
-        </Link>
-        <Link variant="inline" appearance="inherit" href="#">
-          Events
-        </Link>
-      </Stack>
-    }
-    utilitySlot={
-      <Stack
-        direction={{ base: 'column', md: 'row', xs: 'column' }}
-        gap={4}
-        itemsDistribution="center"
-      >
-        <Link variant="inline" appearance="inherit" href="#">
-          Privacy Policy
-        </Link>
-        <Link variant="inline" appearance="inherit" href="#">
-          Accessibility
-        </Link>
-        <div className="gi-text-sm">© 2025 Government of Ireland.</div>
-      </Stack>
-    }
-  />
-</ComponentContainer>
+<Footer>
+  <FooterSection>
+    <Container>
+      <FooterSecondaryContent />
+    </Container>
+  </FooterSection>
+  <FooterSection variant="utility">
+    <FooterUtilityContent />
+  </FooterSection>
+</Footer>
 
 ### Don't
 
-- **Don’t place unstructured content**: Avoid dumping unrelated or ungrouped items into the footer.
-- **Don’t use inconsistent alignment**: Keep column widths and content hierarchy aligned for readability.
-- **Don’t overload the footer with excessive links**: Prioritize key navigation and legal content, not every page.
-- **Don’t forget spacing and layout**: Crowded or overlapping content negatively impacts both accessibility and design clarity.
+- **Don’t place unstructured content**: Avoid dumping unrelated or ungrouped items into a section without headings, columns, or spacing.
+- **Don’t use inconsistent alignment**: Keep column widths and hierarchy aligned so the footer is clear.
+- **Don’t overload the footer with excessive links**: Prioritise key navigation and legal content, not every page on the site.
+- **Don’t forget spacing and layout**: Crowded or overlapping content harms accessibility and clarity - use `Container`, `Divider`, and `Stack`/`Grid` thoughtfully.
 
-<ComponentContainer fullWidth>
-  <FooterLegacy
-    primarySlot={
-      <div>
-        <p>Some text</p>
-        <p>More unrelated text</p>
-        <ul>
-          <li>Random link 1</li>
-          <li>Random link 2</li>
-          <li>Random link 3</li>
-          <li>Random link 4</li>
-          <li>Random link 5</li>
-          <li>Random link 6</li>
-        </ul>
-      </div>
-    }
-    secondarySlot={
-      <div>
-        <p>This section has no alignment</p>
-        <p>And too many items stacked poorly</p>
-      </div>
-    }
-    utilitySlot={
-      <Stack
-        direction={{ base: 'column', md: 'row', xs: 'column' }}
-        gap={4}
-        itemsDistribution="center"
-      >
-        <Link href="#" variant="inline" appearance="inherit" >
-          Privacy Policy
+<Footer className="w-full gi-not-prose">
+<FooterSection>
+  <div className="gi-flex gi-flex-wrap gi-items-start">
+    <div className="gi-w-1/4">
+      <p>About this site</p>
+      <p>Contact opening hours may vary.</p>
+      <LogoGoldGreen size="181" label="Gov.ie Logo" />
+      <p>Latest news and updates from across departments.</p>
+    </div>
+    <div className="gi-w-2/3 gi-ml-2 flex flex-wrap gap-1">
+      {[
+        'Services',
+        'Departments',
+        'Publications',
+        'Health',
+        'Education',
+        'Finance',
+        'Reports',
+        'Statistics',
+        'Legislation',
+        'Find an Office',
+        'Phone directory',
+        'Feedback',
+        'About us',
+        'Sitemap',
+        'Careers',
+        'Blog',
+        'FAQ',
+        'Support',
+        'Press',
+        'Partners',
+        'Investors',
+        'Events',
+        'Privacy Policy',
+        'Cookies',
+        'Accessibility',
+        'Terms of Use',
+      ].map((link) => (
+        <Link key={link} variant="inline" appearance="inherit" href="#">
+          {link}
         </Link>
-        <Link  href="#"  variant="inline" appearance="inherit" >
-          Accessibility
-        </Link>
-        <div className="gi-text-sm">© 2025 Government of Ireland.</div>
-      </Stack>
-    }
-  />
-</ComponentContainer>
+      ))}
+      <span className="gi-text-sm">
+        © 2026 Design System of Government of Ireland.
+      </span>
+    </div>
+  </div>
+</FooterSection>
+</Footer>
 </Section>
