@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.26.3](https://github.com/ogcio/govie-ds/compare/design-tailwind-v1.26.2...design-tailwind-v1.26.3) (2026-07-24)
+
+
+### Bug Fixes
+
+* **AB#40480:** prevent background scroll when modal/drawer open ([#1014](https://github.com/ogcio/govie-ds/issues/1014)) ([ae65859](https://github.com/ogcio/govie-ds/commit/ae658598bf7a79f271bff5a47c904f66e5682ebc))
+
 ## [1.26.2](https://github.com/ogcio/govie-ds/compare/design-tailwind-v1.26.1...design-tailwind-v1.26.2) (2026-07-01)
 
 
