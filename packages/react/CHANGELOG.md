@@ -1,5 +1,21 @@
 # Changelog
 
+## [1.44.0](https://github.com/ogcio/govie-ds/compare/react-lib-v1.43.0...react-lib-v1.44.0) (2026-07-24)
+
+
+### Features
+
+* **AB#39515:** adding Header family atoms ([703f1e8](https://github.com/ogcio/govie-ds/commit/703f1e865ecb5e83299e845fcc8704566a9d7b00))
+* **AB#39515:** restructure and finalise Header family atoms ([3581b23](https://github.com/ogcio/govie-ds/commit/3581b233ad468671853c48f7e989768ee81f192c))
+* **AB#40438:** add footer migration guide for React docs ([fbe9ea0](https://github.com/ogcio/govie-ds/commit/fbe9ea083f2168d351869520cc9f8f16442354fb))
+
+
+### Dependencies
+
+* The following workspace dependencies were updated
+  * devDependencies
+    * @ogcio/design-system-tailwind bumped to 1.26.3
+
 ## [1.43.0](https://github.com/ogcio/govie-ds/compare/react-lib-v1.42.0...react-lib-v1.43.0) (2026-07-14)
 
 
