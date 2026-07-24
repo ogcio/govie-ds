@@ -1,5 +1,4 @@
 import {
-  Container,
   Header,
   HeaderSearch,
   Heading,
@@ -42,11 +41,9 @@ export function ServiceUnavailable() {
       </main>
       <Footer>
         <FooterSection>
-          <Container>
-            <FooterLogo>
-              <LogoGoldGreen size={181} />
-            </FooterLogo>
-          </Container>
+          <FooterLogo>
+            <LogoGoldGreen size={181} />
+          </FooterLogo>
         </FooterSection>
       </Footer>
     </>

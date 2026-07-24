@@ -3,7 +3,6 @@ import {
   Header,
   Paragraph,
   HeaderSearch,
-  Container,
 } from '@ogcio/design-system-react';
 import { LogoGoldGreen } from '@ogcio/design-system-react/logos';
 import {
@@ -45,11 +44,9 @@ export function PageNotFound() {
       </main>
       <Footer>
         <FooterSection>
-          <Container>
-            <FooterLogo>
-              <LogoGoldGreen size={181} />
-            </FooterLogo>
-          </Container>
+          <FooterLogo>
+            <LogoGoldGreen size={181} />
+          </FooterLogo>
         </FooterSection>
       </Footer>
     </>

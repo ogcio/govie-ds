@@ -1,7 +1,6 @@
 import type { StoryObj } from '@storybook/angular';
 import { footerSectionMeta, Default as defaultStory } from '@/atoms/storybook/FooterSection.meta';
 import { FooterSection } from '@/atoms';
-import Container from '@/atoms/Container';
 
 const meta = {
   ...footerSectionMeta,
@@ -15,15 +14,16 @@ export const Default: StoryObj = {
   render: (props) => ({
     props,
     moduleMetadata: {
-      imports: [FooterSection, Container],
+      imports: [FooterSection],
     },
     template: `
       <gi-footer-section
         [variant]="variant"
+        [maxWidth]="maxWidth"
         [id]="id"
         [dataTestId]="dataTestId"
       >
-        <gi-container>Footer section content wrapped in a Container</gi-container>
+        Footer section content
       </gi-footer-section>
     `,
   }),

@@ -8,6 +8,7 @@ import type { StoryContext, Renderer } from 'storybook/internal/types';
 import { within } from 'storybook/test';
 import { FooterSectionVariant } from '../FooterSection';
 import { checker, enumType } from './utilities';
+import { containerMeta } from './Container.meta';
 export const footerSectionMeta = {
   tags: ['autodocs'] as string[],
   title: 'Layout/FooterSection',
@@ -21,6 +22,7 @@ export const footerSectionMeta = {
       description: 'Section background/spacing variant.',
       defaultValue: FooterSectionVariant.PRIMARY,
     }),
+    maxWidth: containerMeta.argTypes.maxWidth,
     className: {
       control: {
         disable: true,

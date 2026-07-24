@@ -2,6 +2,7 @@ import type { StoryContext, Renderer } from 'storybook/internal/types';
 import { within } from 'storybook/test';
 import { FooterSectionVariant } from '../FooterSection.lite';
 import { checker, enumType } from './utilities';
+import { containerMeta } from './Container.meta';
 
 export const footerSectionMeta = {
   tags: ['autodocs'] as string[],
@@ -16,6 +17,7 @@ export const footerSectionMeta = {
       description: 'Section background/spacing variant.',
       defaultValue: FooterSectionVariant.PRIMARY,
     }),
+    maxWidth: containerMeta.argTypes.maxWidth,
     className: {
       control: { disable: true },
       description: 'CSS classes to apply. Use `gi-*` Tailwind utilities.',

@@ -87,7 +87,6 @@ function HeaderSection(props: Props) {
       className={classes({
         variant: getVariant(props.variant),
         appearance: getAppearance(props.appearance),
-        className: props.className,
       })}
       styles={props.styles}
       role={props.role}
@@ -98,6 +97,7 @@ function HeaderSection(props: Props) {
         maxWidth={props.maxWidth}
         className={contentClasses({
           variant: getVariant(props.variant),
+          className: props.className,
         })}
       >
         {props.children}

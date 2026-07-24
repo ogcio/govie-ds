@@ -1,5 +1,5 @@
 import AnalyticsProvider from '@/components/analytics-provider';
-import { Container, Stack, Text } from '@ogcio/design-system-react';
+import { Stack, Text } from '@ogcio/design-system-react';
 import {
   Footer,
   FooterSection,
@@ -50,38 +50,29 @@ export default function RootLayout({
             {children}
             <Footer>
               <FooterSection>
-                <Container>
-                  <Stack
-                    gap={{ base: 0, md: 4 }}
-                    direction={{ base: 'column', md: 'row' }}
-                  >
-                    <Stack
-                      direction={{ base: 'column', md: 'row' }}
-                      gap={4}
-                      wrap
-                    >
-                      {footerLinks.map((link, index) => (
-                        <Link
-                          asChild
-                          variant="inline"
-                          appearance="inherit"
-                          key={`footerlink-${index}`}
-                        >
-                          <NextLink href={link.href}>{link.label}</NextLink>
-                        </Link>
-                      ))}
-                    </Stack>
-
-                    <FooterLogo>
-                      <LogoGoldGreen label="Gov.ie logo" size={181} />
-                    </FooterLogo>
+                <Stack
+                  gap={{ base: 0, md: 4 }}
+                  direction={{ base: 'column', md: 'row' }}
+                >
+                  <Stack direction={{ base: 'column', md: 'row' }} gap={4} wrap>
+                    {footerLinks.map((link, index) => (
+                      <Link
+                        asChild
+                        variant="inline"
+                        appearance="inherit"
+                        key={`footerlink-${index}`}
+                      >
+                        <NextLink href={link.href}>{link.label}</NextLink>
+                      </Link>
+                    ))}
                   </Stack>
-                </Container>
+
+                  <FooterLogo>
+                    <LogoGoldGreen label="Gov.ie logo" size={181} />
+                  </FooterLogo>
+                </Stack>
               </FooterSection>
-              <FooterSection
-                variant="utility"
-                className="gi-flex gi-justify-center"
-              >
+              <FooterSection variant="utility" className="gi-text-center">
                 <Text size="sm">
                   © {new Date().getFullYear()} Design System of Government of
                   Ireland.
