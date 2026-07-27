@@ -7,6 +7,7 @@
     "build": "pnpm run build:react && pnpm run build:angular",
     "build:react": "NODE_OPTIONS='--import tsx' mitosis build --config react.config.ts",
     "build:angular": "NODE_OPTIONS='--import tsx' mitosis build --config angular.config.ts",
+    "build:vue": "NODE_OPTIONS='--import tsx' mitosis build --config vue.config.ts",
     "build:watch": "chokidar \"./atoms/**/*.{ts,tsx}\" -c \"pnpm run build\" --initial",
     "format": "prettier --write .",
     "format:check": "prettier --check ."
