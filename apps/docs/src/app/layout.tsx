@@ -74,8 +74,8 @@ export default function RootLayout({
               </FooterSection>
               <FooterSection variant="utility" className="gi-text-center">
                 <Text size="sm">
-                  © {new Date().getFullYear()} Design System of Government of
-                  Ireland.
+                  © {new Date().getFullYear()} Government of Ireland Design
+                  System.
                 </Text>
               </FooterSection>
             </Footer>

@@ -151,7 +151,7 @@ export const FooterUtilityContent = () => (
       ),
     )}
     <Text className="gi-text-sm">
-      © 2026 Design System of Government of Ireland.
+      © 2026 Government of Ireland Design System.
     </Text>
   </Stack>
 );

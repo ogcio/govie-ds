@@ -81,6 +81,10 @@ component:
           ofType: 'string'
           description: 'Optional id for linking, targeting, and aria references.'
           required: false
+        - name: 'styles'
+          ofType: 'Record<string, string>'
+          description: 'Control the `style` attribute of the logo container.'
+          required: false
   stories:
     - name: 'complete-footer'
       url: '/story/layout-footer-footer--complete-footer'
