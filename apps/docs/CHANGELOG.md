@@ -1,5 +1,25 @@
 # Changelog
 
+## [1.43.0](https://github.com/ogcio/govie-ds/compare/docs-v1.42.0...docs-v1.43.0) (2026-07-28)
+
+
+### Features
+
+* **AB#40161:** adopt Core Footer in Docs ([#1012](https://github.com/ogcio/govie-ds/issues/1012)) ([3f160e2](https://github.com/ogcio/govie-ds/commit/3f160e29e6494f8384e787b833976e2418de3e9d))
+* **AB#40438:** add footer migration guide for React docs ([fbe9ea0](https://github.com/ogcio/govie-ds/commit/fbe9ea083f2168d351869520cc9f8f16442354fb))
+* **AB#40456:** align footer copyright and document FooterLogo styles ([2ce5aa6](https://github.com/ogcio/govie-ds/commit/2ce5aa62535d59730acfddae2e0fdba1dadc654d))
+* **AB#40456:** update Footer docs ([34a90ca](https://github.com/ogcio/govie-ds/commit/34a90ca57ae5cb96f1248ec08899ee61edc585bb))
+* **AB#40896:** embed the content Container in FooterSection ([54fae0d](https://github.com/ogcio/govie-ds/commit/54fae0d32f34d48088a25e6d151a619aa396864d))
+
+
+### Dependencies
+
+* The following workspace dependencies were updated
+  * dependencies
+    * @ogcio/design-system-html bumped to 1.21.5
+    * @ogcio/design-system-react bumped to 1.44.0
+    * @ogcio/design-system-tailwind bumped to 1.26.3
+
 ## [1.42.0](https://github.com/ogcio/govie-ds/compare/docs-v1.41.0...docs-v1.42.0) (2026-07-14)
 
 
