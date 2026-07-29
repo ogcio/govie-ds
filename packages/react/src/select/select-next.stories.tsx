@@ -86,22 +86,22 @@ const meta = {
 
 export default meta;
 
-export const Default: StoryObj = {
-  render: () => {
-    return (
-      <FormField className="gi-w-56">
-        <FormFieldLabel>Label</FormFieldLabel>
-        <SelectNext aria-label="Select" defaultValue="select-option">
-          <SelectItemNext value="select-option" hidden>
-            Select Option
-          </SelectItemNext>
-          <SelectItemNext value="value-1">Option 1</SelectItemNext>
-          <SelectItemNext value="value-2">Option 2</SelectItemNext>
-          <SelectItemNext value="value-3">Option 3</SelectItemNext>
-        </SelectNext>
-      </FormField>
-    );
-  },
+type Story = StoryObj<typeof meta>;
+
+export const Default: Story = {
+  render: (_props) => (
+    <FormField className="gi-w-56">
+      <FormFieldLabel>Label</FormFieldLabel>
+      <SelectNext aria-label="Select" defaultValue="select-option">
+        <SelectItemNext value="select-option" hidden>
+          Select Option
+        </SelectItemNext>
+        <SelectItemNext value="value-1">Option 1</SelectItemNext>
+        <SelectItemNext value="value-2">Option 2</SelectItemNext>
+        <SelectItemNext value="value-3">Option 3</SelectItemNext>
+      </SelectNext>
+    </FormField>
+  ),
   play: async ({ canvasElement }) => {
     const canvas = within(canvasElement);
     const body = within(document.body);
@@ -122,7 +122,8 @@ export const Default: StoryObj = {
     });
 
     const list = await canvas.findByRole('listbox');
-    const options = within(list).getAllByRole('option');
+    // the option list is populated in an effect after the listbox mounts
+    const options = await within(list).findAllByRole('option');
     expect(options.map((opt) => opt.textContent)).toEqual(['Option 1', 'Option 2', 'Option 3']);
 
     const option = await body.findByRole('option', { name: 'Option 1' });
@@ -131,8 +132,8 @@ export const Default: StoryObj = {
   },
 };
 
-export const Focus = {
-  render: () => (
+export const Focus: Story = {
+  render: (_props) => (
     <FormField className="gi-w-56">
       <FormFieldLabel htmlFor="focus-select">Label</FormFieldLabel>
       <SelectNext id="focus-select" aria-label="Select" className="focus-select" defaultValue="value-3">
@@ -152,8 +153,8 @@ export const Focus = {
   },
 };
 
-export const WithLabelHintAndError = {
-  render: () => (
+export const WithLabelHintAndError: Story = {
+  render: (_props) => (
     <FormField className="gi-w-56">
       <FormFieldLabel htmlFor="select">Label</FormFieldLabel>
       <FormFieldHint>This is a hint</FormFieldHint>
@@ -168,15 +169,15 @@ export const WithLabelHintAndError = {
       </SelectNext>
     </FormField>
   ),
-  play: async ({ canvasElement }: { canvasElement: HTMLCanvasElement }) => {
+  play: async ({ canvasElement }) => {
     const canvas = within(canvasElement);
     expect(canvas.getByText('This is a hint')).toBeInTheDocument();
     expect(canvas.getByText('This is an error')).toBeInTheDocument();
   },
 };
 
-export const WithoutLabel = {
-  render: () => (
+export const WithoutLabel: Story = {
+  render: (_props) => (
     <FormField className="gi-w-56">
       <SelectNext aria-label="Select" defaultValue="select-option">
         <SelectItemNext value="select-option" hidden>
@@ -190,8 +191,8 @@ export const WithoutLabel = {
   ),
 };
 
-export const DisabledSelect = {
-  render: () => (
+export const DisabledSelect: Story = {
+  render: (_props) => (
     <FormField className="gi-w-56">
       <SelectNext aria-label="Select" defaultValue="select-option" disabled>
         <SelectItemNext value="select-option" hidden>
@@ -203,15 +204,15 @@ export const DisabledSelect = {
       </SelectNext>
     </FormField>
   ),
-  play: async ({ canvasElement }: { canvasElement: HTMLCanvasElement }) => {
+  play: async ({ canvasElement }) => {
     const canvas = within(canvasElement);
     const input = canvas.getByRole('textbox');
     expect(input).toBeDisabled();
   },
 };
 
-export const DisabledItem = {
-  render: () => (
+export const DisabledItem: Story = {
+  render: (_props) => (
     <FormField className="gi-w-56">
       <SelectNext aria-label="Select" defaultValue="select-option">
         <SelectItemNext value="select-option" hidden>
@@ -225,13 +226,13 @@ export const DisabledItem = {
       </SelectNext>
     </FormField>
   ),
-  play: async ({ canvasElement }: { canvasElement: HTMLCanvasElement }) => {
+  play: async ({ canvasElement }) => {
     const canvas = within(canvasElement);
     const input = canvas.getByRole('textbox');
     await userEvent.click(input);
 
     const list = await canvas.findByRole('listbox');
-    const options = within(list).getAllByRole('option');
+    const options = await within(list).findAllByRole('option');
 
     expect(options).toHaveLength(3);
     expect(options[0]).toHaveAttribute('aria-disabled', 'true');
@@ -240,9 +241,9 @@ export const DisabledItem = {
   },
 };
 
-export const WithSearchEnabled: StoryObj = {
+export const WithSearchEnabled: Story = {
   tags: ['slow'],
-  render: () => (
+  render: (_props) => (
     <FormField className="gi-w-56">
       <FormFieldLabel>Label</FormFieldLabel>
       <SelectNext aria-label="Select" enableSearch>
@@ -261,7 +262,7 @@ export const WithSearchEnabled: StoryObj = {
     await userEvent.click(input);
 
     const searchBox = canvas.getByPlaceholderText('Type to Search');
-    await userEvent.type(searchBox, 'Option 2', { delay: 100 });
+    await userEvent.type(searchBox, 'Option 2', { delay: 50 });
 
     const list = await canvas.findByRole('listbox');
 
@@ -273,8 +274,8 @@ export const WithSearchEnabled: StoryObj = {
   },
 };
 
-export const WithGroups = {
-  render: () => (
+export const WithGroups: Story = {
+  render: (_props) => (
     <FormField className="gi-w-56">
       <FormFieldLabel>Label</FormFieldLabel>
       <SelectNext aria-label="Select" data-testid="select" defaultValue="value-1" enableSearch>
@@ -291,9 +292,14 @@ export const WithGroups = {
       </SelectNext>
     </FormField>
   ),
-  play: async ({ canvasElement }: { canvasElement: HTMLCanvasElement }) => {
+  play: async ({ canvasElement }) => {
     const canvas = within(canvasElement);
-    const input = canvas.getByRole('combobox');
+    // query the input only after its label settles: the clear-button toggle remounts the input
+    const input = await waitFor(() => {
+      const combobox = canvas.getByRole('combobox');
+      expect(combobox).toHaveValue('Option 1');
+      return combobox;
+    });
     await userEvent.click(input);
 
     await waitFor(() => {
@@ -307,9 +313,9 @@ export const WithGroups = {
   },
 };
 
-export const Controlled: StoryObj = {
+export const Controlled: Story = {
   tags: ['skip-playwright'],
-  render: function Render() {
+  render: function Render(_props) {
     const [value, setValue] = useState('value-2');
 
     return (
@@ -345,7 +351,7 @@ export const Controlled: StoryObj = {
     await userEvent.click(input);
 
     const list = await canvas.findByRole('listbox');
-    const options = within(list).getAllByRole('option');
+    const options = await within(list).findAllByRole('option');
 
     await userEvent.click(options[2]);
 
@@ -355,43 +361,44 @@ export const Controlled: StoryObj = {
   },
 };
 
-export const WithLongList: StoryObj = {
-  render: () => {
-    return (
-      <FormField className="gi-w-56">
-        <FormFieldLabel>Long List Select</FormFieldLabel>
-        <SelectNext aria-label="Select" id="select-controlled">
-          {topics.map(({ label, value }) => (
-            <SelectItemNext key={value} value={value}>
-              {label}
-            </SelectItemNext>
-          ))}
-        </SelectNext>
-      </FormField>
-    );
-  },
+export const WithLongList: Story = {
+  render: (_props) => (
+    <FormField className="gi-w-56">
+      <FormFieldLabel>Long List Select</FormFieldLabel>
+      <SelectNext aria-label="Select" id="select-long-list">
+        {topics.map(({ label, value }) => (
+          <SelectItemNext key={value} value={value}>
+            {label}
+          </SelectItemNext>
+        ))}
+      </SelectNext>
+    </FormField>
+  ),
 };
 
-export const WithLongListSearchEnabled: StoryObj = {
-  render: () => {
-    return (
-      <FormField className="gi-w-56">
-        <FormFieldLabel>Long List Select Search</FormFieldLabel>
-        <SelectNext aria-label="Select" id="select-controlled" enableSearch>
-          {topics.map(({ label, value }) => (
-            <SelectItemNext key={value} value={value}>
-              {label}
-            </SelectItemNext>
-          ))}
-        </SelectNext>
-      </FormField>
-    );
-  },
+export const WithLongListSearchEnabled: Story = {
+  render: (_props) => (
+    <FormField className="gi-w-56">
+      <FormFieldLabel>Long List Select Search</FormFieldLabel>
+      <SelectNext aria-label="Select" id="select-long-list-search" enableSearch>
+        {topics.map(({ label, value }) => (
+          <SelectItemNext key={value} value={value}>
+            {label}
+          </SelectItemNext>
+        ))}
+      </SelectNext>
+    </FormField>
+  ),
 };
 
-export const WithReactHookForm: StoryObj = {
+export const WithReactHookForm: Story = {
   tags: ['skip-playwright'],
-  render: function Render() {
+  parameters: {
+    docs: {
+      source: { type: 'code' },
+    },
+  },
+  render: function Render(_props) {
     const { control, watch, reset } = useForm({
       defaultValues: { topic: '' },
       mode: 'onBlur',
@@ -423,7 +430,7 @@ export const WithReactHookForm: StoryObj = {
                   value={field.value ?? ''}
                   onChange={field.onChange}
                   onBlur={field.onBlur}
-                  ref={field.ref as any}
+                  ref={field.ref}
                 >
                   <SelectItemNext value="">Select a topic</SelectItemNext>
                   {topics.map(({ value, label }) => (
@@ -489,9 +496,9 @@ export const WithReactHookForm: StoryObj = {
   },
 };
 
-export const TestNoSubmitOnEnter: StoryObj<typeof SelectNext> = {
+export const TestNoSubmitOnEnter: Story = {
   tags: ['skip-playwright'],
-  render: function Render() {
+  render: function Render(_props) {
     const [submitCountOn, setSubmitCountOn] = useState(0);
     const [submitCountOff, setSubmitCountOff] = useState(0);
 
@@ -504,11 +511,11 @@ export const TestNoSubmitOnEnter: StoryObj<typeof SelectNext> = {
       mode: 'onBlur',
     });
 
-    const handleSubmitOn = (event: React.FormEvent<HTMLFormElement>) => {
+    const handleSubmitOn = (event: React.SubmitEvent<HTMLFormElement>) => {
       event.preventDefault();
       setSubmitCountOn((c) => c + 1);
     };
-    const handleSubmitOff = (event: React.FormEvent<HTMLFormElement>) => {
+    const handleSubmitOff = (event: React.SubmitEvent<HTMLFormElement>) => {
       event.preventDefault();
       setSubmitCountOff((c) => c + 1);
     };
@@ -530,7 +537,7 @@ export const TestNoSubmitOnEnter: StoryObj<typeof SelectNext> = {
                   value={field.value ?? ''}
                   onChange={field.onChange}
                   onBlur={field.onBlur}
-                  ref={field.ref as any}
+                  ref={field.ref}
                 >
                   <SelectItemNext value="value-1">Option 1</SelectItemNext>
                   <SelectItemNext value="value-2">Option 2</SelectItemNext>
@@ -558,7 +565,7 @@ export const TestNoSubmitOnEnter: StoryObj<typeof SelectNext> = {
                   value={field.value ?? ''}
                   onChange={field.onChange}
                   onBlur={field.onBlur}
-                  ref={field.ref as any}
+                  ref={field.ref}
                 >
                   <SelectItemNext value="value-1">Option 1</SelectItemNext>
                   <SelectItemNext value="value-2">Option 2</SelectItemNext>
@@ -665,9 +672,9 @@ export const TestNoSubmitOnEnter: StoryObj<typeof SelectNext> = {
   },
 };
 
-export const TestKeyboardEvents: StoryObj<typeof SelectNext> = {
+export const TestKeyboardEvents: Story = {
   tags: ['skip-playwright'],
-  render: function Render() {
+  render: function Render(_props) {
     const [value, setValue] = useState('');
     return (
       <FormField className="gi-w-56">
@@ -763,9 +770,9 @@ export const TestKeyboardEvents: StoryObj<typeof SelectNext> = {
   },
 };
 
-export const TestConditionallyRender: StoryObj = {
+export const TestConditionallyRender: Story = {
   tags: ['skip-playwright'],
-  render: function Render() {
+  render: function Render(_props) {
     const [inputValue, setInputValue] = useState('');
     const [selectedValue, setSelectedValue] = useState('');
     const options1 = [
@@ -777,6 +784,7 @@ export const TestConditionallyRender: StoryObj = {
     return (
       <>
         <input
+          id="conditional-render-source"
           type="text"
           placeholder="Type something..."
           value={inputValue}
@@ -846,9 +854,9 @@ export const TestConditionallyRender: StoryObj = {
       await waitFor(() => expect(canvas.getByRole('listbox')).toBeInTheDocument());
 
       const closeIcon = await canvas.findByTestId('close');
-      const clearButton = closeIcon?.closest('button');
+      const clearButton = closeIcon.closest('button') as HTMLButtonElement;
       await expect(clearButton).toBeInTheDocument();
-      await userEvent.click(clearButton!);
+      await userEvent.click(clearButton);
       await userEvent.keyboard('{Enter}');
       await waitFor(() => {
         canvas.getByRole('option', { name: /apple/i });
@@ -893,14 +901,19 @@ export const TestConditionallyRender: StoryObj = {
       await userEvent.clear(externalInput);
       await userEvent.type(externalInput, 'x');
       await userEvent.keyboard('{Tab}');
-      await userEvent.type(selectInput, ' ', { delay: 100 });
+      // re-query: the clear-button toggle has remounted the select input
+      const input = await canvas.findByRole('combobox', { name: /select/i });
+      await userEvent.type(input, ' ', { delay: 100 });
       await waitFor(() => expect(canvas.queryByRole('listbox')).toBeNull());
+      // close the "No data found" popover so the story ends settled
+      await userEvent.keyboard('{Escape}');
+      await waitFor(() => expect(input).toHaveAttribute('aria-expanded', 'false'));
     });
   },
 };
-export const TestToggleDropdown: StoryObj = {
+export const TestToggleDropdown: Story = {
   tags: ['skip-playwright'],
-  render: () => (
+  render: (_props) => (
     <FormField className="gi-w-56">
       <FormFieldLabel>Label</FormFieldLabel>
       <SelectNext aria-label="Select" defaultValue="select-option">
@@ -937,7 +950,7 @@ export const TestToggleDropdown: StoryObj = {
   },
 };
 
-export const WithRichText: StoryObj = {
+export const WithRichText: Story = {
   tags: ['skip-playwright'],
   parameters: {
     docs: {
@@ -947,57 +960,56 @@ export const WithRichText: StoryObj = {
       },
     },
   },
-  render: function Render(_props) {
-    return (
-      <Container className="gi-flex gi-gap-2">
-        <FormField className="gi-w-56">
-          <FormFieldLabel>Default</FormFieldLabel>
-          <SelectNext aria-label="Select" defaultValue="value-2" data-testid="default">
-            <SelectItemNext value="select-option" hidden>
-              Select Option
-            </SelectItemNext>
-            <SelectItemNext value="value-1">
-              <code>code block</code>
-            </SelectItemNext>
-            <SelectItemNext value="value-2">
-              <Text className="gi-italic">Inline</Text> <strong>rich</strong>{' '}
-              <Text className="gi-text-gray-600">text</Text>
-            </SelectItemNext>
-            <SelectItemNext value="value-3">
-              <Text dataTestId="bold-text" className="gi-font-bold">
-                Bold text
-              </Text>
-            </SelectItemNext>
-          </SelectNext>
-        </FormField>
-        <FormField className="gi-w-56">
-          <FormFieldLabel>Search Enabled</FormFieldLabel>
-          <SelectNext aria-label="Select" defaultValue="value-3" enableSearch>
-            <SelectItemNext value="select-option" hidden>
-              Select Option
-            </SelectItemNext>
-            <SelectItemNext value="value-1">
-              <code>code block</code>
-            </SelectItemNext>
-            <SelectItemNext value="value-2">
-              <Text className="gi-italic">Inline</Text> <strong>rich</strong>{' '}
-              <Text className="gi-text-gray-600">text</Text>
-            </SelectItemNext>
-            <SelectItemNext value="value-3">
-              <Text dataTestId="bold-text" className="gi-font-bold">
-                Bold text
-              </Text>
-            </SelectItemNext>
-          </SelectNext>
-        </FormField>
-      </Container>
-    );
-  },
+  render: (_props) => (
+    <Container className="gi-flex gi-gap-2">
+      <FormField className="gi-w-56">
+        <FormFieldLabel>Default</FormFieldLabel>
+        <SelectNext aria-label="Select" defaultValue="value-2" data-testid="default">
+          <SelectItemNext value="select-option" hidden>
+            Select Option
+          </SelectItemNext>
+          <SelectItemNext value="value-1">
+            <code>code block</code>
+          </SelectItemNext>
+          <SelectItemNext value="value-2">
+            <Text className="gi-italic">Inline</Text> <strong>rich</strong>{' '}
+            <Text className="gi-text-gray-600">text</Text>
+          </SelectItemNext>
+          <SelectItemNext value="value-3">
+            <Text dataTestId="bold-text" className="gi-font-bold">
+              Bold text
+            </Text>
+          </SelectItemNext>
+        </SelectNext>
+      </FormField>
+      <FormField className="gi-w-56">
+        <FormFieldLabel>Search Enabled</FormFieldLabel>
+        <SelectNext aria-label="Select" defaultValue="value-3" enableSearch>
+          <SelectItemNext value="select-option" hidden>
+            Select Option
+          </SelectItemNext>
+          <SelectItemNext value="value-1">
+            <code>code block</code>
+          </SelectItemNext>
+          <SelectItemNext value="value-2">
+            <Text className="gi-italic">Inline</Text> <strong>rich</strong>{' '}
+            <Text className="gi-text-gray-600">text</Text>
+          </SelectItemNext>
+          <SelectItemNext value="value-3">
+            <Text dataTestId="bold-text" className="gi-font-bold">
+              Bold text
+            </Text>
+          </SelectItemNext>
+        </SelectNext>
+      </FormField>
+    </Container>
+  ),
   play: async ({ canvasElement }) => {
     const canvas = within(canvasElement);
     const defaultSelect = canvas.getByRole('textbox');
-    const searchSelect = canvas.getByRole('combobox');
-    expect(defaultSelect.getAttribute('value')).toBe('Inline rich text');
+    await waitFor(() => {
+      expect(defaultSelect).toHaveValue('Inline rich text');
+    });
 
     await userEvent.click(defaultSelect);
     await waitFor(() => {
@@ -1011,13 +1023,21 @@ export const WithRichText: StoryObj = {
 
     await userEvent.click(boldText);
     expect(boldTextOption).not.toBeInTheDocument();
-    expect(defaultSelect.getAttribute('value')).toBe('Bold text');
+    await waitFor(() => {
+      expect(defaultSelect).toHaveValue('Bold text');
+    });
 
+    // query the search input only after its label settles: the clear-button toggle remounts the input
+    const searchSelect = await waitFor(() => {
+      const combobox = canvas.getByRole('combobox');
+      expect(combobox).toHaveValue('Bold text');
+      return combobox;
+    });
     await userEvent.click(searchSelect);
     const inlineRichTextOption = await canvas.findByTestId('option-value-2');
     const boldTextSearchOption = await canvas.findByTestId('option-value-3');
     await userEvent.clear(searchSelect);
-    await userEvent.type(searchSelect, 'Inline', { delay: 200 });
+    await userEvent.type(searchSelect, 'Inline', { delay: 50 });
     await waitFor(() => {
       expect(boldTextSearchOption).not.toBeInTheDocument();
     });
@@ -1025,7 +1045,7 @@ export const WithRichText: StoryObj = {
     await waitFor(() => {
       // check the new input value of the search select
       const updatedSearchSelect = canvas.getByRole('combobox');
-      expect(updatedSearchSelect.getAttribute('value')).toBe('Inline rich text');
+      expect(updatedSearchSelect).toHaveValue('Inline rich text');
     });
   },
 };
