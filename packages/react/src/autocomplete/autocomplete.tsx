@@ -68,6 +68,7 @@ export const Autocomplete = forwardRef<HTMLInputElement, AutocompleteProps>((pro
       onChange: propagateOnChange(onAutocompleteChange, name),
     });
   const listboxId = useDomId();
+  const inputId = useDomId();
 
   useImperativeHandle(ref, () => inputRef.current as HTMLInputElement);
 
@@ -272,7 +273,7 @@ export const Autocomplete = forwardRef<HTMLInputElement, AutocompleteProps>((pro
       <InputText
         role="combobox"
         autoComplete="off"
-        id={id}
+        id={id ?? inputId}
         name={name}
         onKeyDown={handleOnKeyDown}
         onIconEndClick={handleOnIconEndClick}
@@ -283,7 +284,7 @@ export const Autocomplete = forwardRef<HTMLInputElement, AutocompleteProps>((pro
         inputActionPosition="beforeSuffix"
         aria-label={labelText}
         aria-expanded={state.isOpen}
-        aria-controls={listboxId}
+        aria-controls={state.isOpen ? listboxId : undefined}
         aria-activedescendant={
           state.highlightedIndex === CLEAR_ALL_INDEX
             ? `${listboxId}-clear-all`
