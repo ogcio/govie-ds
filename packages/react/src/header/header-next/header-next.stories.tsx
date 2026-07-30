@@ -31,7 +31,7 @@ import CloseIcon from '@/atoms/icons/Close';
 import MenuIcon from '@/atoms/icons/Menu';
 
 const meta = {
-  title: 'layout/Header',
+  title: 'layout/Header/Legacy/HeaderNext (Legacy)',
   component: Header,
 } satisfies Meta<typeof Header>;
 

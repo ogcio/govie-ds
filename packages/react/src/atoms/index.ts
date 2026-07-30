@@ -16,5 +16,16 @@ export { default as LinkButton } from './LinkButton';
 export { default as Paragraph, type Props as ParagraphProps } from './Paragraph';
 export { default as Text, type Props as TextProps } from './Text';
 export { default as Grid, type Props as GridProps } from './Grid';
+export { default as Header, type Props as HeaderProps } from './header/Header';
+export { default as HeaderSection, type Props as HeaderSectionProps } from './header/HeaderSection';
+export { default as HeaderLogo, type Props as HeaderLogoProps } from './header/HeaderLogo';
+export { default as HeaderNav, type Props as HeaderNavProps } from './header/HeaderNav';
+export { default as HeaderNavItem, type Props as HeaderNavItemProps } from './header/HeaderNavItem';
+export { default as HeaderNavItemLink, type Props as HeaderNavItemLinkProps } from './header/HeaderNavItemLink';
+export { default as HeaderTitle, type Props as HeaderTitleProps } from './header/HeaderTitle';
+export {
+  default as HeaderNavItemSeparator,
+  type Props as HeaderNavItemSeparatorProps,
+} from './header/HeaderNavItemSeparator';
 export * from './heading';
 export * from './icons';

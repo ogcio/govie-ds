@@ -11,7 +11,7 @@ import { Header } from './header.js';
 import type { HeaderProps } from './types.js';
 
 const meta = {
-  title: 'layout/Header/Deprecated',
+  title: 'layout/Header/Legacy/Header (Legacy)',
   component: Header,
 } satisfies Meta<typeof Header>;
 
