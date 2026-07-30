@@ -8,53 +8,62 @@ import { Output, EventEmitter, Component, Input } from '@angular/core';
 
 import { CommonModule } from '@angular/common';
 
-// `onFocus`/`onBlur` omitted: Mitosis forwards a wrapper's handlers as native listeners on the child host (`<gi-link>`),
-// where focus/blur don't bubble, so they never fire in Angular.
-export type Props = Omit<LinkProps, 'onFocus' | 'onBlur'> & {
+export type Props = {
   /** Visibility: `true`/`false`, a breakpoint to show from (e.g. `"lg"`), or a per-breakpoint map like `{ base: false, lg: true }`. */
   visible?: VisibleValue;
+  id?: string;
+  href: string;
+  className?: string;
+  external?: boolean;
+  target?: '_self' | '_blank' | '_parent' | '_top';
+  rel?: string;
+  download?: string | boolean;
+  ariaCurrent?: 'page' | 'step' | 'location' | 'date' | 'time' | 'true' | 'false' | boolean;
+  ariaLabel?: string;
+  ariaLabelledBy?: string;
+  ariaDescribedBy?: string;
+  ariaHidden?: boolean | 'true' | 'false';
+  tabIndex?: number;
+  lang?: string;
+  styles?: Record<string, string>;
+  onClick?: (event: any) => void;
+  onKeyDown?: (event: any) => void;
+  onKeyUp?: (event: any) => void;
+  dataTestId?: string;
 };
 
 import classes, { getVisibility } from './HeaderNavItem.styles';
 import type { VisibleValue } from './HeaderNavItem.styles';
-import GiLink from '../Link';
-import type { Props as LinkProps } from '../Link';
-const getAppearance = (x: Props['appearance']) => x || 'inherit';
 
 @Component({
   selector: 'gi-header-nav-item-link',
   template: `
     <li [class]="getVisibility(visible)">
-      <gi-link
-        [id]="id"
-        [href]="href"
-        [className]="
+      <a
+        [attr.id]="id"
+        [attr.href]="href"
+        [class]="
           classes({
             className: ['gi-header-nav-item-link', className],
           })
         "
-        [styles]="styles"
-        [variant]="variant"
-        [underline]="underline"
-        [appearance]="getAppearance(appearance)"
-        [visited]="visited"
-        [external]="external"
-        [target]="target"
-        [rel]="rel"
-        [download]="download"
-        [ariaCurrent]="ariaCurrent"
-        [ariaLabel]="ariaLabel"
-        [ariaLabelledBy]="ariaLabelledBy"
-        [ariaDescribedBy]="ariaDescribedBy"
-        [ariaHidden]="ariaHidden"
-        [tabIndex]="tabIndex"
-        [lang]="lang"
-        [dataTestId]="dataTestId"
+        [ngStyle]="styles"
+        [attr.target]="target ?? (external ? '_blank' : undefined)"
+        [attr.rel]="rel ?? (external ? 'noreferrer noopener' : undefined)"
+        [attr.download]="download"
+        [attr.aria-current]="ariaCurrent"
+        [attr.aria-label]="ariaLabel"
+        [attr.aria-labelledby]="ariaLabelledBy"
+        [attr.aria-describedby]="ariaDescribedBy"
+        [attr.aria-hidden]="ariaHidden"
+        [attr.tabIndex]="ariaHidden ? -1 : tabIndex"
+        [attr.lang]="lang"
+        [attr.data-testid]="dataTestId"
         (click)="onClick && this.onClick.emit($event)"
         (keydown)="onKeyDown && this.onKeyDown.emit($event)"
         (keyup)="onKeyUp && this.onKeyUp.emit($event)"
         ><ng-content></ng-content
-      ></gi-link>
+      ></a>
     </li>
   `,
   styles: [
@@ -65,10 +74,9 @@ const getAppearance = (x: Props['appearance']) => x || 'inherit';
     `,
   ],
   standalone: true,
-  imports: [CommonModule, GiLink],
+  imports: [CommonModule],
 })
 export default class HeaderNavItemLink {
-  getAppearance = getAppearance;
   classes = classes;
   getVisibility = getVisibility;
 
@@ -77,12 +85,8 @@ export default class HeaderNavItemLink {
   @Input() href!: Props['href'];
   @Input() className!: Props['className'];
   @Input() styles!: Props['styles'];
-  @Input() variant!: Props['variant'];
-  @Input() underline!: Props['underline'];
-  @Input() appearance!: Props['appearance'];
-  @Input() visited!: Props['visited'];
-  @Input() external!: Props['external'];
   @Input() target!: Props['target'];
+  @Input() external!: Props['external'];
   @Input() rel!: Props['rel'];
   @Input() download!: Props['download'];
   @Input() ariaCurrent!: Props['ariaCurrent'];

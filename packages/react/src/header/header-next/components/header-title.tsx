@@ -4,6 +4,7 @@ import type { HeaderTitleProps } from '@/header/types.js';
 import { headerTitleVariants } from '@/header/variants.js';
 import { useHeaderContext } from '@/header/header-next/header-context.js';
 
+/** @deprecated Use the new composable `HeaderTitle` from `@ogcio/design-system-react/next`. */
 export const HeaderTitle = ({ children, href, className }: HeaderTitleProps) => {
   const context = useHeaderContext();
 

@@ -19,21 +19,21 @@ import { tv } from 'tailwind-variants';
 import GiDivider from '../Divider';
 import { getVisibility } from './HeaderNavItem.styles';
 import type { VisibleValue } from './HeaderNavItem.styles';
-const classes = tv({
-  base: 'gi-mx-2 gi-h-8 gi-items-stretch',
+const listClasses = tv({
+  base: 'gi-h-8',
 });
-const dividerClasses = tv({
-  base: 'gi-header-nav-item-separator !gi-border-[currentColor]' /* `!important` needed for styles to resolve correctly given Tailwind's class-merge limitations. */,
+const classes = tv({
+  base: 'gi-header-nav-item-separator !gi-border-[currentColor] gi-mx-2' /* `!important` needed for styles to resolve correctly given Tailwind's class-merge limitations. */,
 });
 function HeaderNavItemSeparator(props: Props) {
   return (
-    <li role="none" className={classes({ className: getVisibility(props.visible) })}>
+    <li role="none" aria-hidden className={listClasses({ className: getVisibility(props.visible) })}>
       <GiDivider
         orientation="vertical"
         id={props.id}
         dataTestId={props.dataTestId}
         styles={props.styles}
-        className={dividerClasses({ className: props.className })}
+        className={classes({ className: props.className })}
       />
     </li>
   );

@@ -8,6 +8,7 @@ import { type HeaderItemMode } from '@/header/types.js';
 import { useHeaderContext } from '@/header/header-next/header-context.js';
 import { HeaderMenuSectionProvider } from './header-menu-context.js';
 
+/** @deprecated Use the new composable `HeaderSection` and `HeaderNav` from `@ogcio/design-system-react/next`. */
 export const HeaderPrimaryMenu = forwardRef<HTMLElement, HeaderPrimaryMenuProps>(
   ({ children, className, 'aria-label': ariaLabel = 'Primary navigation', ...rest }, ref) => {
     const headerContext = useHeaderContext();

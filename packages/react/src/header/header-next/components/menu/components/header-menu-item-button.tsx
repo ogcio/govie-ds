@@ -20,6 +20,7 @@ const MenuButton = ({ showItemMode, children, icon, ...props }: any) => {
   );
 };
 
+/** @deprecated Use the new composable `HeaderNavItem` from `@ogcio/design-system-react/next`. */
 export const HeaderMenuItemButton = ({ asChild, children, className, ...props }: HeaderMenuItemButtonProps) => {
   const section = useHeaderMenuSection();
   const context = useHeaderContext();

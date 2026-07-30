@@ -5,6 +5,7 @@ import type { HeaderMenuSectionContextProps } from '@/header/types.js';
 
 const HeaderMenuSectionContext = createContext<HeaderMenuSectionContextProps | null>(null);
 
+/** @deprecated Use the new composable `Header` from `@ogcio/design-system-react/next`. */
 export function HeaderMenuSectionProvider({
   section,
   children,

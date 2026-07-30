@@ -19,7 +19,7 @@ export type Props = {
 
 import { tv } from 'tailwind-variants';
 const classes = tv({
-  base: 'gi-grid gi-relative gi-overflow-x-clip gi-w-full gi-font-primary',
+  base: 'gi-w-full gi-font-primary',
 });
 
 @Component({

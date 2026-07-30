@@ -1,7 +1,6 @@
 import type { Meta, StoryContext, StoryObj } from '@storybook/react-vite';
 import { useState } from 'react';
 import { within, expect, userEvent, screen, fn } from 'storybook/test';
-import clsx from 'clsx';
 import Heading from '@/Heading.js';
 import Button from '@/atoms/Button';
 import { LogoBlack, LogoGoldWhite, LogoWhite, LogoHarpBlack, LogoHarpWhite } from '@/atoms/icons/logos';
@@ -23,6 +22,18 @@ import { HeaderMenuItemSlot } from './components/menu/components/header-menu-ite
 import { HeaderPrimaryMenu } from './components/menu/header-primary-menu.js';
 import { HeaderSecondaryMenu } from './components/menu/header-secondary-menu.js';
 import { HeaderNext as Header, HeaderSlotContainer } from './header-next.js';
+import HeaderNext from '@/atoms/header/Header';
+import HeaderLogoNext from '@/atoms/header/HeaderLogo';
+import HeaderSection from '@/atoms/header/HeaderSection';
+import HeaderTitleNext from '@/atoms/header/HeaderTitle';
+import HeaderNav from '@/atoms/header/HeaderNav';
+import HeaderNavItem from '@/atoms/header/HeaderNavItem';
+import HeaderNavItemLink from '@/atoms/header/HeaderNavItemLink';
+import HeaderNavItemSeparator from '@/atoms/header/HeaderNavItemSeparator';
+import LinkAtom from '@/atoms/Link';
+import Stack from '@/atoms/Stack';
+import Text from '@/atoms/Text';
+import Divider from '@/Divider';
 import InfoIcon from '@/atoms/icons/Info';
 import LogoutIcon from '@/atoms/icons/Logout';
 import SearchIcon from '@/atoms/icons/Search';
@@ -31,7 +42,7 @@ import CloseIcon from '@/atoms/icons/Close';
 import MenuIcon from '@/atoms/icons/Menu';
 
 const meta = {
-  title: 'layout/Header',
+  title: 'layout/Header/Legacy/Header (Legacy)',
   component: Header,
 } satisfies Meta<typeof Header>;
 
@@ -283,6 +294,273 @@ export const Default: StoryObj = {
 
       await userEvent.click(canvasElement.ownerDocument.body);
     });
+  },
+};
+// TODO: after Header migration done for docs, replace link below with docs link
+
+export const MigrationComparison: StoryObj = {
+  tags: ['skip-playwright'],
+  parameters: {
+    a11y: {
+      config: {
+        rules: [
+          { id: 'landmark-no-duplicate-banner', enabled: false },
+          // Two full headers are rendered side-by-side for comparison.
+          { id: 'landmark-unique', enabled: false },
+        ],
+      },
+    },
+    docs: {
+      description: {
+        story:
+          'This story renders the same complete header twice: the legacy HeaderNext on top, and the new composable Header below. The legacy API composes HeaderLogo, HeaderTitle, HeaderSecondaryMenu, and HeaderPrimaryMenu (with HeaderMenuItemLink, HeaderMenuItemButton, and HeaderMenuItemSeparator). The composable API maps secondary links into a HeaderSection with variant="utility" and HeaderNav, while logo, title, and primary actions live in a default HeaderSection with HeaderNavItemLink, HeaderNavItem, and HeaderNavItemSeparator. showItemMode becomes the visible prop on nav items. Both versions are intended to look the same. See the [Header docs](/docs/layout-header-header--docs) for more details.\n\n A key difference to be aware of is the default spacing between navigational items, which is now 16px across all sections; in-line with the design specifications.',
+      },
+    },
+  },
+  render: function Render() {
+    return (
+      <Stack gap={8}>
+        <Header variant="default" aria-label="Site header (legacy)" data-testid="header-legacy">
+          <HeaderLogo>
+            <LogoHarpWhite label="Gov.ie logo" className="gi-block gi-h-10 gi-w-auto sm:gi-hidden" />
+            <LogoWhite label="Gov.ie logo" className="gi-hidden gi-h-12 gi-w-auto sm:gi-block" />
+          </HeaderLogo>
+          <HeaderTitle>Title</HeaderTitle>
+          <HeaderSecondaryMenu>
+            <HeaderMenuItemLink href="#" aria-label="Switch to Gaeilge">
+              Gaeilge
+            </HeaderMenuItemLink>
+            <HeaderMenuItemLink href="#" aria-label="Switch to English">
+              English
+            </HeaderMenuItemLink>
+            <HeaderMenuItemSlot className="gi-flex gi-items-center">
+              <label>Hello John &nbsp;| </label>
+              <a href="#" className="gi-header-secondary-item gi-header-secondary-item-default">
+                <LogoutIcon size={16} label="Log out" />
+              </a>
+            </HeaderMenuItemSlot>
+          </HeaderSecondaryMenu>
+          <HeaderPrimaryMenu>
+            <HeaderMenuItemLink href="#" showItemMode="desktop-only">
+              Departments
+            </HeaderMenuItemLink>
+            <HeaderMenuItemLink href="#" showItemMode="desktop-only">
+              Services
+            </HeaderMenuItemLink>
+            <HeaderMenuItemSeparator />
+            <HeaderMenuItemButton showItemMode="desktop-only" aria-label="Toggle frequently asked questions">
+              FAQ
+              <InfoIcon />
+            </HeaderMenuItemButton>
+            <HeaderMenuItemButton showItemMode="desktop-only" aria-label="Toggle site search">
+              Search
+              <SearchIcon />
+            </HeaderMenuItemButton>
+            <HeaderMenuItemButton
+              showItemMode="desktop-only"
+              aria-label="Toggle language selector"
+              aria-haspopup="listbox"
+            >
+              Language
+              <MicrophoneIcon />
+            </HeaderMenuItemButton>
+            <HeaderMenuItemButton showItemMode="mobile-only" aria-label="Toggle main menu" aria-haspopup="dialog">
+              Menu
+              <MenuIcon />
+            </HeaderMenuItemButton>
+          </HeaderPrimaryMenu>
+        </Header>
+
+        <HeaderNext ariaLabel="Site header (composable)" dataTestId="header-composable">
+          <HeaderSection variant="utility">
+            <HeaderNav ariaLabel="Utility navigation" className="gi-text-sm">
+              <HeaderNavItemLink ariaLabel="Switch to Gaeilge" href="#">
+                Gaeilge
+              </HeaderNavItemLink>
+              <HeaderNavItemLink ariaLabel="Switch to English" href="#">
+                English
+              </HeaderNavItemLink>
+            </HeaderNav>
+            <Stack direction="row" className="gi-text-center gi-items-center gi-py-1">
+              <Text size="sm" className="gi-px-1">
+                Hello Saoirse
+              </Text>
+              <Divider orientation="vertical" className="gi-my-1 gi-mx-1" />
+              <LinkAtom
+                className="gi-py-1 gi-px-2 hover:gi-bg-black hover:gi-bg-opacity-20"
+                href="#"
+                ariaLabel="Log out"
+              >
+                <LogoutIcon size={16} />
+              </LinkAtom>
+            </Stack>
+          </HeaderSection>
+          <HeaderSection>
+            <LinkAtom appearance="light" href="#" ariaLabel="Gov.ie home">
+              <HeaderLogoNext>
+                <LogoWhite className="gi-hidden sm:gi-block" />
+                <LogoHarpWhite size={32} className="gi-block sm:gi-hidden" />
+              </HeaderLogoNext>
+            </LinkAtom>
+            <HeaderTitleNext>Title</HeaderTitleNext>
+            <HeaderNav ariaLabel="Primary navigation">
+              <HeaderNavItemLink visible="lg" href="#">
+                Departments
+              </HeaderNavItemLink>
+              <HeaderNavItemLink visible="lg" href="#">
+                Services
+              </HeaderNavItemLink>
+              <HeaderNavItemSeparator visible="lg" />
+              <HeaderNavItem visible="lg" ariaLabel="Toggle frequently asked questions">
+                FAQ <InfoIcon />
+              </HeaderNavItem>
+              <HeaderNavItem visible="lg" ariaLabel="Toggle site search">
+                Search <SearchIcon />
+              </HeaderNavItem>
+              <HeaderNavItem visible="lg" ariaLabel="Toggle language selector">
+                Language <MicrophoneIcon />
+              </HeaderNavItem>
+              <HeaderNavItem visible={{ base: true, lg: false }} ariaLabel="Toggle main menu">
+                Menu <MenuIcon />
+              </HeaderNavItem>
+            </HeaderNav>
+          </HeaderSection>
+        </HeaderNext>
+      </Stack>
+    );
+  },
+};
+
+export const LightMigrationComparison: StoryObj = {
+  tags: ['skip-playwright'],
+  parameters: {
+    a11y: {
+      config: {
+        rules: [
+          { id: 'landmark-no-duplicate-banner', enabled: false },
+          // Two full headers are rendered side-by-side for comparison.
+          { id: 'landmark-unique', enabled: false },
+        ],
+      },
+    },
+    docs: {
+      description: {
+        story:
+          'This story renders the same complete light header twice: the legacy HeaderNext on top, and the new composable Header below. The legacy API uses variant="light". The composable API maps the same structure as MigrationComparison, with appearance="light" on HeaderSection (and on nav items for the light-surface focus ring) and the dark Gov.ie logos. Both versions are intended to look the same. See the [Header docs](/docs/layout-header-header--docs) for more details.\n\n A key difference to be aware of is the default spacing between navigational items, which is now 16px across all sections; in-line with the design specifications.',
+      },
+    },
+  },
+  render: function Render() {
+    return (
+      <Stack gap={8}>
+        <Header variant="light" aria-label="Site header (legacy)" data-testid="header-legacy-light">
+          <HeaderLogo>
+            <LogoHarpBlack label="Gov.ie logo" className="gi-block gi-h-10 gi-w-auto sm:gi-hidden" />
+            <LogoBlack label="Gov.ie logo" className="gi-hidden gi-h-12 gi-w-auto sm:gi-block" />
+          </HeaderLogo>
+          <HeaderTitle>Title</HeaderTitle>
+          <HeaderSecondaryMenu>
+            <HeaderMenuItemLink href="#" aria-label="Switch to Gaeilge">
+              Gaeilge
+            </HeaderMenuItemLink>
+            <HeaderMenuItemLink href="#" aria-label="Switch to English">
+              English
+            </HeaderMenuItemLink>
+            <HeaderMenuItemSlot className="gi-flex gi-items-center">
+              <label>Hello John &nbsp;| </label>
+              <a href="#" className="gi-header-secondary-item gi-header-secondary-item-light">
+                <LogoutIcon size={16} label="Log out" />
+              </a>
+            </HeaderMenuItemSlot>
+          </HeaderSecondaryMenu>
+          <HeaderPrimaryMenu>
+            <HeaderMenuItemLink href="#" showItemMode="desktop-only">
+              Departments
+            </HeaderMenuItemLink>
+            <HeaderMenuItemLink href="#" showItemMode="desktop-only">
+              Services
+            </HeaderMenuItemLink>
+            <HeaderMenuItemSeparator />
+            <HeaderMenuItemButton showItemMode="desktop-only" aria-label="Toggle frequently asked questions">
+              FAQ
+              <InfoIcon />
+            </HeaderMenuItemButton>
+            <HeaderMenuItemButton showItemMode="desktop-only" aria-label="Toggle site search">
+              Search
+              <SearchIcon />
+            </HeaderMenuItemButton>
+            <HeaderMenuItemButton
+              showItemMode="desktop-only"
+              aria-label="Toggle language selector"
+              aria-haspopup="listbox"
+            >
+              Language
+              <MicrophoneIcon />
+            </HeaderMenuItemButton>
+            <HeaderMenuItemButton showItemMode="mobile-only" aria-label="Toggle main menu" aria-haspopup="dialog">
+              Menu
+              <MenuIcon />
+            </HeaderMenuItemButton>
+          </HeaderPrimaryMenu>
+        </Header>
+
+        <HeaderNext ariaLabel="Site header (composable)" dataTestId="header-composable-light">
+          <HeaderSection variant="utility" appearance="light">
+            <HeaderNav ariaLabel="Utility navigation" className="gi-text-sm">
+              <HeaderNavItemLink ariaLabel="Switch to Gaeilge" href="#">
+                Gaeilge
+              </HeaderNavItemLink>
+              <HeaderNavItemLink ariaLabel="Switch to English" href="#">
+                English
+              </HeaderNavItemLink>
+            </HeaderNav>
+            <Stack direction="row" className="gi-text-center gi-items-center gi-py-1">
+              <Text size="sm" className="gi-px-1">
+                Hello Saoirse
+              </Text>
+              <Divider orientation="vertical" className="gi-my-1 gi-mx-1 gi-border-black" />
+              <LinkAtom
+                className="gi-py-1 gi-px-2 hover:gi-bg-black hover:gi-bg-opacity-20"
+                href="#"
+                ariaLabel="Log out"
+              >
+                <LogoutIcon size={16} />
+              </LinkAtom>
+            </Stack>
+          </HeaderSection>
+          <HeaderSection appearance="light">
+            <LinkAtom href="#" ariaLabel="Gov.ie home">
+              <HeaderLogoNext>
+                <LogoBlack size={136} className="gi-hidden sm:gi-block" />
+                <LogoHarpBlack size={32} className="gi-block sm:gi-hidden" />
+              </HeaderLogoNext>
+            </LinkAtom>
+            <HeaderTitleNext>Title</HeaderTitleNext>
+            <HeaderNav ariaLabel="Primary navigation">
+              <HeaderNavItemLink visible="lg" href="#">
+                Departments
+              </HeaderNavItemLink>
+              <HeaderNavItemLink visible="lg" href="#">
+                Services
+              </HeaderNavItemLink>
+              <HeaderNavItemSeparator visible="lg" />
+              <HeaderNavItem visible="lg" ariaLabel="Toggle frequently asked questions">
+                FAQ <InfoIcon />
+              </HeaderNavItem>
+              <HeaderNavItem visible="lg" ariaLabel="Toggle site search">
+                Search <SearchIcon />
+              </HeaderNavItem>
+              <HeaderNavItem visible="lg" ariaLabel="Toggle language selector">
+                Language <MicrophoneIcon />
+              </HeaderNavItem>
+              <HeaderNavItem visible={{ base: true, lg: false }} ariaLabel="Toggle main menu">
+                Menu <MenuIcon />
+              </HeaderNavItem>
+            </HeaderNav>
+          </HeaderSection>
+        </HeaderNext>
+      </Stack>
+    );
   },
 };
 

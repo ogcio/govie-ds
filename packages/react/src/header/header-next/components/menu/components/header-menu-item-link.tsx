@@ -19,6 +19,7 @@ const MenuAnchor = ({ icon, children, showItemMode, ...props }: any) => {
   );
 };
 
+/** @deprecated Use the new composable `HeaderNavItemLink` from `@ogcio/design-system-react/next`. */
 export const HeaderMenuItemLink = forwardRef<HTMLAnchorElement, HeaderMenuItemLinkProps>(
   ({ asChild, href, external, children, className, target, rel, ...props }, ref) => {
     const context = useHeaderContext();

@@ -1,0 +1,48 @@
+import type { StoryContext, Renderer } from 'storybook/internal/types';
+import { within } from 'storybook/test';
+import { boxMeta } from './Box.meta';
+import { checker } from './utilities';
+
+export const headerNavMeta = {
+  tags: ['autodocs'] as string[],
+  title: 'Layout/Header/HeaderNav',
+  args: {
+    children: 'Nav items',
+    className: undefined,
+    styles: undefined,
+    id: 'header-nav-id',
+    ariaLabel: 'Primary navigation',
+    dataTestId: 'header-nav',
+  },
+  argTypes: {
+    className: boxMeta.argTypes.className,
+    styles: boxMeta.argTypes.styles,
+    id: boxMeta.argTypes.id,
+    ariaLabel: {
+      control: 'text',
+      description: 'Accessible label for the navigation landmark. Maps to `aria-label`.',
+      table: { type: { summary: 'string' } },
+    },
+    dataTestId: boxMeta.argTypes.dataTestId,
+  },
+  parameters: {
+    docs: {
+      description: {
+        component:
+          'Navigation landmark for header menus. Renders a semantic `<nav>` with a list wrapper for HeaderNavItem and HeaderNavItemLink children.',
+      },
+    },
+  },
+};
+
+export const Default = {
+  args: headerNavMeta.args,
+  play: async ({ canvasElement, step, args }: StoryContext<Renderer>) => {
+    const canvas = within(canvasElement as HTMLElement);
+    const check = checker(args.dataTestId, canvas, step);
+
+    await check.is('nav');
+    await check.attributes({ id: args.id, 'aria-label': args.ariaLabel });
+    await check.children();
+  },
+};

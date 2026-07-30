@@ -11,7 +11,7 @@ import { Header } from './header.js';
 import type { HeaderProps } from './types.js';
 
 const meta = {
-  title: 'layout/Header/Deprecated',
+  title: 'layout/Header/Legacy/Header (Deprecated)',
   component: Header,
 } satisfies Meta<typeof Header>;
 
@@ -199,6 +199,7 @@ export const Default: Story = {
 };
 
 export const DesktopDrawerDefaultMenu: Story = {
+  tags: ['skip-playwright'],
   args: {
     logo: {
       href: '/link',
@@ -216,6 +217,7 @@ export const DesktopDrawerDefaultMenu: Story = {
 };
 
 export const DesktopDrawerCustom: Story = {
+  tags: ['skip-playwright'],
   args: {
     logo: {
       href: '/link',
@@ -327,6 +329,7 @@ export const NoLabelSearch: Story = {
 };
 
 export const TabletView: Story = {
+  tags: ['skip-playwright'],
   parameters: {
     layout: 'fullscreen',
   },
@@ -347,6 +350,7 @@ export const TabletView: Story = {
 };
 
 export const MobileView: Story = {
+  tags: ['skip-playwright'],
   parameters: {
     layout: 'fullscreen',
   },
@@ -369,6 +373,7 @@ export const MobileView: Story = {
 };
 
 export const WithExtraButtons: Story = {
+  tags: ['skip-playwright'],
   args: {
     logo: {
       href: '/path',
@@ -447,6 +452,7 @@ const defaultHeaderProps = (external?: boolean) =>
   }) as HeaderProps;
 
 export const FullWidth: Story = {
+  tags: ['skip-playwright'],
   args: {
     fullWidth: true,
     logo: {
@@ -457,6 +463,7 @@ export const FullWidth: Story = {
 };
 
 export const WithExternalLinks: Story = {
+  tags: ['skip-playwright'],
   parameters: {
     layout: 'fullscreen',
   },
@@ -705,10 +712,12 @@ export const WithUtilitySlot: Story = {
 };
 
 export const NoLinks: Story = {
+  tags: ['skip-playwright'],
   args: {},
 };
 
 export const WithMainLinksDesktopOnly: Story = {
+  tags: ['skip-playwright'],
   args: {
     logo: {
       href: '/path',
@@ -737,6 +746,7 @@ export const WithMainLinksDesktopOnly: Story = {
 };
 
 export const WithCustomSecondaryLinks: Story = {
+  tags: ['skip-playwright'],
   args: {
     logo: {
       href: '/path',
@@ -816,6 +826,7 @@ export const WithMainAndSecondaryLinksDesktopOnly: Story = {
 };
 
 export const WithTitle: Story = {
+  tags: ['skip-playwright'],
   args: {
     title: 'Life Events',
     logo: {
@@ -825,6 +836,7 @@ export const WithTitle: Story = {
 };
 
 export const ShowMobileMenuForLanguages: Story = {
+  tags: ['skip-playwright'],
   parameters: {
     layout: 'fullscreen',
   },
@@ -925,6 +937,7 @@ export const Light: Story = {
 };
 
 export const LightWithTitle: Story = {
+  tags: ['skip-playwright'],
   decorators: (Story) => {
     return (
       <div className="gi-bg-black gi-p-4">

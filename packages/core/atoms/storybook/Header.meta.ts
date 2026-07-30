@@ -1,6 +1,5 @@
-import { pick } from 'lodash';
 import type { ArgTypes, StoryContext, Renderer } from 'storybook/internal/types';
-import { within } from 'storybook/test';
+import { expect, within } from 'storybook/test';
 import type { Props } from '../header/Header.lite';
 import { boxMeta } from './Box.meta';
 import { checker } from './utilities';
@@ -10,11 +9,18 @@ export const headerMeta = {
   title: 'Navigation/Header',
   args: {
     children: 'Header content',
-    ariaLabel: 'Site header',
+    className: undefined,
+    styles: undefined,
     id: 'header-example',
+    ariaLabel: 'Site header',
+    ariaLabelledBy: undefined,
+    dataTestId: undefined,
   },
   argTypes: {
-    ...pick(boxMeta.argTypes, ['className', 'id', 'dataTestId', 'styles']),
+    className: boxMeta.argTypes.className,
+    styles: boxMeta.argTypes.styles,
+    id: boxMeta.argTypes.id,
+    dataTestId: boxMeta.argTypes.dataTestId,
     ariaLabel: {
       control: 'text',
       description: 'Accessible label for the header landmark. Maps to `aria-label`.',
@@ -31,7 +37,7 @@ export const headerMeta = {
     docs: {
       description: {
         component:
-          'Header is the top-level landmark wrapper for site-wide navigation and branding. Renders a semantic `<header>` element. Compose with HeaderSection, HeaderLogo, HeaderTitle, HeaderNav, and nav item atoms.',
+          'The Header is the persistent banner at the top of a government service. It identifies the service, carries primary navigation, and can include utility actions such as language switching, search, and sign out.\n\nThis Header is assembled from smaller atoms rather than a single monolithic component. `Header` renders the semantic `<header>` landmark. Nest `HeaderSection` bands for the utility bar and primary row, then add `HeaderLogo`, `HeaderTitle`, `HeaderNav`, and nav items (`HeaderNavItem`, `HeaderNavItemLink`, `HeaderNavItemSeparator`) to build the layout your service needs. Each piece can be used on its own or composed together.',
       },
     },
   },
@@ -52,8 +58,14 @@ export const Default = {
   },
 };
 
-export const HeaderComposed = {
+export const MobileView = {
   args: {
-    dataTestId: 'header-composed',
+    ...headerMeta.args,
+  },
+  play: async ({ canvasElement }: StoryContext<Renderer>) => {
+    const canvas = within(canvasElement as HTMLElement);
+    const navbar = await canvas.findByRole('navigation');
+    expect(navbar.children.length).toBe(1);
+    expect(await within(navbar).findByText('Menu')).toBeInTheDocument();
   },
 };

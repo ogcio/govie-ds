@@ -18,6 +18,7 @@ type HeaderProviderProps = {
   fullWidth?: boolean;
 };
 
+/** @deprecated Use the new composable `Header` from `@ogcio/design-system-react/next`. */
 export function HeaderProvider({ children, variant = 'default', fullWidth }: HeaderProviderProps) {
   return (
     <HeaderContext.Provider

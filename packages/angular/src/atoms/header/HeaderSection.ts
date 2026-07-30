@@ -37,7 +37,7 @@ const classes = tv({
     },
     appearance: {
       default: 'gi-text-white',
-      light: 'gi-text-gray-950',
+      light: 'gi-text-gray-950 gi-header-section-light',
     },
   },
   compoundVariants: [
@@ -71,8 +71,9 @@ const contentClasses = tv({
   base: 'gi-flex gi-items-center',
   variants: {
     variant: {
-      primary: 'gi-flex-row gi-flex-nowrap gi-justify-between gi-h-20 gi-text-md gi-font-bold',
-      utility: 'gi-justify-end gi-h-10 gi-gap-4 [&_.gi-header-nav-item]:gi-py-1 [&_.gi-header-nav-item-link]:gi-py-1',
+      primary:
+        'gi-header-section-primary gi-flex-row gi-flex-nowrap gi-justify-between gi-h-20 gi-text-md gi-font-bold gi-py-3 md:gi-py-4',
+      utility: 'gi-header-section-utility gi-justify-end gi-h-10 gi-gap-4 gi-py-1',
     },
   },
   defaultVariants: {

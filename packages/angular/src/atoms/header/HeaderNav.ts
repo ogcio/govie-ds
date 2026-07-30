@@ -35,7 +35,7 @@ const classes = tv({
       [attr.aria-label]="ariaLabel"
       [attr.data-testid]="dataTestId"
     >
-      <ul class="gi-list-none gi-flex gi-items-center gi-m-0 gi-p-0 gi-gap-2">
+      <ul class="gi-list-none gi-flex gi-items-center gi-m-0 gi-p-0 gi-gap-4">
         <ng-content></ng-content>
       </ul>
     </nav>

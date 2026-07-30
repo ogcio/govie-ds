@@ -7,6 +7,7 @@ import { headerSecondaryLinkSlotItemVariants } from '@/header/variants.js';
 import { useHeaderContext } from '@/header/header-next/header-context.js';
 import { useHeaderMenuSection } from '@/header/header-next/components/menu/header-menu-context.js';
 
+/** @deprecated Use the new composable `HeaderNavItem` or `HeaderNavItemLink` from `@ogcio/design-system-react/next`. */
 export const HeaderMenuItemSlot = forwardRef<HTMLDivElement, HeaderMenuItemSlotProps>(
   ({ children, className, ...props }, ref) => {
     const context = useHeaderContext();

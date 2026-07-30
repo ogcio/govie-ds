@@ -8,6 +8,7 @@ import { headerSecondaryLinksVariants } from '@/header/variants.js';
 import { useHeaderContext } from '@/header/header-next/header-context.js';
 import { HeaderMenuSectionProvider } from './header-menu-context.js';
 
+/** @deprecated Use the new composable `HeaderSection` with `variant="utility"` and `HeaderNav` from `@ogcio/design-system-react/next`. */
 export const HeaderSecondaryMenu = forwardRef<HTMLElement, HeaderSecondaryMenuProps>(
   ({ children, className, 'aria-label': ariaLabel = 'Secondary navigation', ...rest }, ref) => {
     const headerContext = useHeaderContext();

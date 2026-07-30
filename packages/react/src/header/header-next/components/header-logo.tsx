@@ -3,6 +3,8 @@ import type { HeaderLogoProps } from '@/header/types.js';
 import { headerLogoVariants } from '@/header/variants.js';
 import { useHeaderContext } from '@/header/header-next/header-context.js';
 
+/** @deprecated Use the new composable `HeaderLogo` from `@ogcio/design-system-react/next`. */
+
 export const HeaderLogo = ({ children, href }: HeaderLogoProps) => {
   const context = useHeaderContext();
 

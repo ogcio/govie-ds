@@ -8,6 +8,7 @@ import { useHeaderMenuSection } from '@/header/header-next/components/menu/heade
 
 export type HeaderMenuItemSeparatorProps = ComponentPropsWithoutRef<'div'>;
 
+/** @deprecated Use the new composable `HeaderNavItemSeparator` from `@ogcio/design-system-react/next`. */
 export const HeaderMenuItemSeparator = forwardRef<HTMLDivElement, HeaderMenuItemSeparatorProps>(
   ({ className, ...props }, ref) => {
     const context = useHeaderContext();

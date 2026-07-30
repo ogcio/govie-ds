@@ -18,7 +18,7 @@ import { tv } from 'tailwind-variants';
 import GiBox from '../Box';
 const classes = tv({
   base: [
-    'gi-min-w-0 gi-grow',
+    'gi-min-w-0 gi-flex-1',
     'gi-text-lg xl:gi-text-xl gi-font-bold gi-font-primary',
     'gi-truncate',
     'gi-ml-4 md:gi-ml-6 lg:gi-ml-12',
