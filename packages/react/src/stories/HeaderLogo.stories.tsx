@@ -1,0 +1,25 @@
+import type { Meta, StoryObj } from '@storybook/react-vite';
+import HeaderLogo from '@/atoms/header/HeaderLogo';
+import HeaderSection from '@/atoms/header/HeaderSection';
+import LogoWhite from '@/atoms/icons/logos/LogoWhite';
+import { headerLogoMeta, Default as defaultStory } from '@/atoms/storybook/HeaderLogo.meta';
+
+const meta = {
+  ...headerLogoMeta,
+  title: 'Layout/Header/HeaderLogo',
+  component: HeaderLogo,
+} as Meta<typeof HeaderLogo>;
+
+export default meta;
+type Story = StoryObj<typeof meta>;
+
+export const Default: Story = {
+  ...defaultStory,
+  render: (props) => (
+    <HeaderSection>
+      <HeaderLogo {...props}>
+        <LogoWhite />
+      </HeaderLogo>
+    </HeaderSection>
+  ),
+};

@@ -9,7 +9,6 @@ import { headerMenuVariants, headerSlotContainerVariants, headerVariants } from 
 import { HeaderProvider } from './header-context.js';
 import Container from '@/atoms/Container.js';
 
-/** @deprecated Use the Header family components from `@ogcio/design-system-react/next` */
 export const HeaderNext = forwardRef<HTMLElement, HeaderNextProps>(
   (
     {
