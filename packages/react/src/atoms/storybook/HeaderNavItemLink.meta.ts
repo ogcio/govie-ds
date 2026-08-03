@@ -8,7 +8,6 @@ import pick from 'lodash/pick';
 import type { StoryContext, Renderer } from 'storybook/internal/types';
 import { within } from 'storybook/test';
 import { Size } from '../constants';
-import { boxMeta } from './Box.meta';
 import { linkMeta } from './Link.meta';
 import { checker, enumType } from './utilities';
 export const headerNavItemLinkMeta = {
@@ -21,8 +20,8 @@ export const headerNavItemLinkMeta = {
     dataTestId: 'header-nav-item-link',
   },
   argTypes: {
-    ...pick(boxMeta.argTypes, ['className', 'id', 'dataTestId', 'styles', 'children']),
     ...pick(linkMeta.argTypes, [
+      'children',
       'href',
       'external',
       'target',
@@ -33,13 +32,17 @@ export const headerNavItemLinkMeta = {
       'visited',
       'underline',
       'variant',
+      'className',
+      'id',
+      'dataTestId',
+      'styles',
     ]),
     visible: {
       ...enumType(Size, {
         description:
           'Visibility: `true`/`false`, a breakpoint to show from (e.g. `"lg"`), or a per-breakpoint map like `{ base: false, lg: true }`.',
       }),
-      control: 'select',
+      control: 'select' as const,
     },
   },
   parameters: {

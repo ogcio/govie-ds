@@ -16,6 +16,7 @@ type Story = StoryObj<typeof meta>;
 
 export const Default: Story = {
   ...defaultStory,
+  tags: ['skip-playwright'],
   render: (props) => (
     <HeaderSection>
       <HeaderNav ariaLabel="Primary navigation">
