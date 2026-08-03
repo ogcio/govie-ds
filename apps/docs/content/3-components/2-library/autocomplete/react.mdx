@@ -102,22 +102,16 @@ component:
   stories:
     - name: 'default'
       url: '/story/form-autocomplete--default'
-    - name: 'with-default-value'
-      url: '/story/form-autocomplete--with-default-value'
-    - name: 'with-disabled-options'
-      url: '/story/form-autocomplete--with-disabled-options'
-    - name: 'with-disabled'
-      url: '/story/form-autocomplete--with-disabled'
-    - name: 'with-free-solo'
-      url: '/story/form-autocomplete--with-free-solo'
-    - name: 'with-loading'
-      url: '/story/form-autocomplete--with-loading'
-    - name: 'with-multiple'
-      url: '/story/form-autocomplete--with-multiple'
-    - name: 'with-multiple-chips'
-      url: '/story/form-autocomplete--with-multiple-chips'
-    - name: 'with-multiple-chips-collapse'
-      url: '/story/form-autocomplete--with-multiple-chips-collapse'
+    - name: 'disabled'
+      url: '/story/form-autocomplete--disabled'
+    - name: 'grouped'
+      url: '/story/form-autocomplete--grouped'
+    - name: 'multiple-select'
+      url: '/story/form-autocomplete--multiple-select'
+    - name: 'loading'
+      url: '/story/form-autocomplete--loading'
+    - name: 'free-solo'
+      url: '/story/form-autocomplete--free-solo'
 ---
 
 # Autocomplete
@@ -127,8 +121,7 @@ The Autocomplete component allows users to search and select from a list of opti
 <Section current="react" >
 
 <ComponentPreview>
-  <FormField className="h-56">
-    <FormFieldLabel>Label</FormFieldLabel>
+  <Box className="h-40 w-56 flex items-center">
     <Autocomplete>
       <AutocompleteItem value="frontend_dev">Frontend Dev.</AutocompleteItem>
       <AutocompleteItem value="backend_dev">Backend Dev.</AutocompleteItem>
@@ -143,7 +136,7 @@ The Autocomplete component allows users to search and select from a list of opti
       </AutocompleteItem>
       <AutocompleteItem value="data_scientist">Data Scientist</AutocompleteItem>
     </Autocomplete>
-  </FormField>
+  </Box>
 </ComponentPreview>
 
 ## Examples
@@ -156,74 +149,58 @@ The Autocomplete component allows users to search and select from a list of opti
   story="default"
 />
 
-### With Default Value
+### Disabled
+
+Disable the entire Autocomplete with the `disabled` prop — the input cannot be focused or opened, and no options can be selected.
+
+To disable individual options, set `disabled` on `AutocompleteItem`. Those options stay visible in the list but cannot be selected.
 
 <StorybookFrame
   className="h-[405px]"
   componentId="autocomplete-react"
-  story="with-default-value"
+  story="disabled"
 />
 
-### With Disabled Options
+### Grouped items
+
+Group related options with `AutocompleteGroupItem`. Pass a `label` for each group and nest `AutocompleteItem` children inside.
 
 <StorybookFrame
   className="h-[405px]"
   componentId="autocomplete-react"
-  story="with-disabled-options"
+  story="grouped"
 />
 
-### With Disabled
+### Multiple Select
+
+Enable multi-select with the `multiple` prop. The input shows a count of selected values; use `clearAllLabel` to customise the clear-all action in the dropdown.
+
+To render selections as chips, keep controlled state with `selectedValues` and `onSelectChange`, map those values into `ChipGroup` items, and wire `onRemove` so removing a chip updates the same state. For overflow, pass `maxVisible` and `formatOverflow` to `ChipGroup` to collapse excess chips into a "+N more" label.
+
+<StorybookFrame
+  className="h-[520px]"
+  componentId="autocomplete-react"
+  story="multiple-select"
+/>
+
+### Loading
+
+Use `isLoading` to show a loading state in the dropdown while async search results are fetching.
 
 <StorybookFrame
   className="h-[405px]"
   componentId="autocomplete-react"
-  story="with-disabled"
+  story="loading"
 />
 
-### With Free Solo
+### Free Solo
+
+Set `freeSolo` to allow values that are not in the dropdown. The typed text is kept in the input even when it does not match an option, and the chevron toggle is hidden.
 
 <StorybookFrame
   className="h-[405px]"
   componentId="autocomplete-react"
-  story="with-free-solo"
-/>
-
-### With Loading
-
-<StorybookFrame
-  className="h-[405px]"
-  componentId="autocomplete-react"
-  story="with-loading"
-/>
-
-### Multi-select
-
-When `multiple` is enabled, users can select more than one option. A count badge in the input field shows how many items are selected. A "Clear all selections" action is available in the dropdown.
-
-<StorybookFrame
-  className="h-[550px]"
-  componentId="autocomplete-react"
-  story="with-multiple"
-/>
-
-### Multi-select with Chips
-
-Use the `ChipGroup` component alongside `Autocomplete` to display selected items as removable chips. `ChipGroup` is a standalone component that manages the visual display of selected items. By default, all chips are visible and wrap to the next line.
-
-<StorybookFrame
-  className="h-[405px]"
-  componentId="autocomplete-react"
-  story="with-multiple-chips"
-/>
-
-### Multi-select with Chips (Collapse)
-
-When `maxVisible` is set, only that many chips are shown. A `formatOverflow` function provides the overflow label text (e.g. "+2 more").
-
-<StorybookFrame
-  className="h-[405px]"
-  componentId="autocomplete-react"
-  story="with-multiple-chips-collapse"
+  story="free-solo"
 />
 
 ## Properties

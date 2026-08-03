@@ -48,3 +48,20 @@ export const testVariantsAxe = (variants: any, renderFunction: (variant: any) =>
 };
 
 export const sleep = (ms: number) => new Promise((r) => setTimeout(r, ms));
+
+/** Storybook docs `source.transform`: show only the `Render` function body. */
+export const extractRenderBody = (code: string) => {
+  const start = code.search(/render:\s*function\s+Render\b/);
+  const open = start === -1 ? -1 : code.indexOf('{', start);
+  if (open === -1) {
+    return code;
+  }
+
+  for (let index = open, depth = 0; index < code.length; index++) {
+    depth += Number(code[index] === '{') - Number(code[index] === '}');
+    if (depth === 0) {
+      return code.slice(open + 1, index).trim();
+    }
+  }
+  return code;
+};
