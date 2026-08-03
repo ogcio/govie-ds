@@ -10,9 +10,9 @@ import { CommonModule } from '@angular/common';
 
 export type Props = {
   id?: string;
-  size?: (typeof Size)[keyof typeof Size];
-  align?: (typeof Align)[keyof typeof Align];
-  whitespace?: (typeof Whitespace)[keyof typeof Whitespace];
+  size?: ValueOf<typeof Size>;
+  align?: ValueOf<typeof Align>;
+  whitespace?: ValueOf<typeof Whitespace>;
   children?: any;
   className?: string;
   styles?: Record<string, string>;
@@ -21,11 +21,11 @@ export type Props = {
 };
 
 import { tv } from 'tailwind-variants';
-import type { Align, Size, Whitespace } from './constants';
+import type { Align, Size, ValueOf, Whitespace } from './constants';
 import { getSize, getAlign, getWhitespace } from './utilities';
-import { textVariants } from './Text';
-export const paragraphStyles = tv({
-  extend: textVariants,
+import textClasses from './Text.styles';
+const classes = tv({
+  extend: textClasses,
   base: ['gi-max-w-prose'],
   variants: {
     align: {
@@ -46,11 +46,11 @@ export const paragraphStyles = tv({
     <p
       [attr.id]="id"
       [class]="
-        paragraphStyles({
+        classes({
           size: getSize(size),
           align: getAlign(align),
           whitespace: getWhitespace(whitespace),
-          class: className,
+          className: className,
         })
       "
       [ngStyle]="styles"
@@ -71,7 +71,7 @@ export const paragraphStyles = tv({
   imports: [CommonModule],
 })
 export default class Paragraph {
-  paragraphStyles = paragraphStyles;
+  classes = classes;
   getSize = getSize;
   getAlign = getAlign;
   getWhitespace = getWhitespace;

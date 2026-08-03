@@ -7,8 +7,7 @@
 import type { ArgTypes, StoryContext, Renderer } from 'storybook/internal/types';
 import { within, expect, fn, userEvent } from 'storybook/test';
 import type { Props } from '../Button';
-import { ButtonSize } from '../Button';
-import { Variant, Appearance } from '../Button';
+import { Appearance, ButtonSize, Variant } from '../Button.styles';
 import { enumType } from './utilities';
 export const buttonMeta = {
   tags: ['autodocs'] as string[],

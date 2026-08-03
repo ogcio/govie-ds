@@ -10,9 +10,9 @@ import { CommonModule } from '@angular/common';
 
 export type Props = {
   id?: string;
-  variant?: (typeof Variant)[keyof typeof Variant];
-  appearance?: (typeof Appearance)[keyof typeof Appearance];
-  size?: (typeof IconButtonSize)[keyof typeof IconButtonSize];
+  variant?: ValueOf<typeof Variant>;
+  appearance?: ValueOf<typeof Appearance>;
+  size?: ValueOf<typeof Size>;
   children?: any;
   disabled?: boolean;
   className?: string;
@@ -37,16 +37,13 @@ export type Props = {
 };
 
 import { tv } from 'tailwind-variants';
+import { baseClasses, getAppearance, getVariant } from './Button.styles';
+import type { Appearance, Variant } from './Button.styles';
 import { Size } from './constants';
-import { Variant, Appearance, buttonBaseStyles, getVariant, getAppearance } from './Button';
-export const IconButtonSize = {
-  SM: Size.SM,
-  MD: Size.MD,
-  LG: Size.LG,
-  XL: Size.XL,
-} as const;
-export const iconButtonStyles = tv({
-  extend: buttonBaseStyles,
+import type { ValueOf } from './constants';
+import { getSize } from './utilities';
+const classes = tv({
+  extend: baseClasses,
   base: ['gi-justify-center'],
   variants: {
     size: {
@@ -57,11 +54,9 @@ export const iconButtonStyles = tv({
     },
   },
   defaultVariants: {
-    size: IconButtonSize.MD,
+    size: Size.MD,
   },
 });
-const getSize = (x: Props['size'] = IconButtonSize.MD) =>
-  Object.values(IconButtonSize).includes(x) ? x : IconButtonSize.MD;
 
 @Component({
   selector: 'gi-icon-button',
@@ -69,12 +64,12 @@ const getSize = (x: Props['size'] = IconButtonSize.MD) =>
     <button
       [attr.id]="id"
       [class]="
-        iconButtonStyles({
+        classes({
           variant: getVariant(variant),
           appearance: getAppearance(appearance),
           size: getSize(size),
           disabled: !!disabled,
-          class: className,
+          className: className,
         })
       "
       [attr.disabled]="disabled || undefined"
@@ -111,10 +106,10 @@ const getSize = (x: Props['size'] = IconButtonSize.MD) =>
   imports: [CommonModule],
 })
 export default class IconButton {
-  iconButtonStyles = iconButtonStyles;
-  getSize = getSize;
-  getVariant = getVariant;
+  classes = classes;
   getAppearance = getAppearance;
+  getVariant = getVariant;
+  getSize = getSize;
 
   @Input() id!: Props['id'];
   @Input() variant!: Props['variant'];

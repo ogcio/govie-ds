@@ -10,8 +10,9 @@ import {
   AllAppearances as allAppearances,
   AllSizes as allSizes,
 } from '@/atoms/storybook/IconButton.meta';
-import { Variant, Appearance } from '@/atoms/Button';
-import IconButton, { IconButtonSize as Size, type Props } from '@/atoms/IconButton';
+import { Variant, Appearance } from '@/atoms/Button.styles';
+import IconButton, { type Props } from '@/atoms/IconButton';
+import { Size } from '@/atoms/constants';
 
 const meta: Meta<typeof IconButton> = {
   ...iconButtonMeta,

@@ -1,6 +1,7 @@
 import { useMetadata } from '@builder.io/mitosis';
 import { tv } from 'tailwind-variants';
-import { Direction, type AlignItems, type Justify, type ResponsiveValue } from './constants';
+import { Direction } from './constants';
+import type { AlignItems, Justify, ResponsiveValue, ValueOf } from './constants';
 import type { Props as BoxProps } from './Box.lite';
 import { getAlignItems, getJustify, resolveResponsive } from './utilities';
 import GiBox from './Box.lite';
@@ -8,10 +9,10 @@ import GiBox from './Box.lite';
 useMetadata({ angular: { selector: 'gi-stack' } });
 
 export type Props = {
-  direction?: ResponsiveValue<(typeof Direction)[keyof typeof Direction]>;
+  direction?: ResponsiveValue<ValueOf<typeof Direction>>;
   gap?: ResponsiveValue<number>;
-  align?: (typeof AlignItems)[keyof typeof AlignItems];
-  justify?: (typeof Justify)[keyof typeof Justify];
+  align?: ValueOf<typeof AlignItems>;
+  justify?: ValueOf<typeof Justify>;
   wrap?: boolean;
 } & BoxProps;
 
@@ -23,11 +24,11 @@ export default function Stack(props: Props) {
       ariaLabel={props.ariaLabel}
       ariaLabelledBy={props.ariaLabelledBy}
       styles={props.styles}
-      className={stackVariants({
+      className={classes({
         align: getAlignItems(props.align),
         justify: getJustify(props.justify),
         wrap: props.wrap ?? false,
-        class: [
+        className: [
           resolveResponsive(props.direction ?? Direction.COLUMN, directionToClass),
           resolveResponsive(props.gap ?? 0, gapToClass),
           props.className,
@@ -46,7 +47,7 @@ const directionToClass = (direction: string, prefix: string): string =>
 const gapToClass = (gap: number, prefix: string): string => `${prefix}gi-gap-${gap}`;
 
 // TODO: add twMerge to enable consumer `className` to override component-default utilities
-const stackVariants = tv({
+const classes = tv({
   base: ['gi-flex'],
   variants: {
     align: {

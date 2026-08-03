@@ -1,5 +1,5 @@
 import type { Meta, StoryObj } from '@storybook/react-vite';
-import { MaxWidth } from '@/atoms/Container';
+import { MaxWidth } from '@/atoms/constants';
 import { Container } from '@/container/container.js';
 import { map } from 'lodash';
 import {

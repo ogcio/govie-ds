@@ -2,10 +2,9 @@ import { useMetadata } from '@builder.io/mitosis';
 import { tv } from 'tailwind-variants';
 import { clamp } from '../utilities';
 import { SurfaceVariant, SurfaceAppearance } from '../constants';
-import type { ValueOf } from '../constants';
+import type { MaxWidth, ValueOf } from '../constants';
 import GiBox from '../Box.lite';
 import GiContainer from '../Container.lite';
-import type { Props as ContainerProps } from '../Container.lite';
 
 useMetadata({ angular: { selector: 'gi-header-section' } });
 
@@ -13,7 +12,7 @@ export type Props = {
   children: any;
   variant?: ValueOf<typeof SurfaceVariant>;
   appearance?: ValueOf<typeof SurfaceAppearance>;
-  maxWidth?: ContainerProps['maxWidth'];
+  maxWidth?: ValueOf<typeof MaxWidth>;
   className?: string;
   styles?: Record<string, string>;
   id?: string;

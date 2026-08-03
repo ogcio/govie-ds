@@ -10,31 +10,21 @@ import * as React from 'react';
 export type Props = Omit<LinkProps, 'variant' | 'appearance' | 'underline' | 'visited'> &
   Pick<ButtonProps, 'variant' | 'appearance' | 'size'>;
 
-import { tv } from 'tailwind-variants';
-import { buttonBaseStyles, ButtonSize, buttonSizeVariants, getSize, getVariant, getAppearance } from './Button';
+import { getAppearance, getSize, getVariant } from './Button.styles';
+import classes from './LinkButton.styles';
 import type { Props as ButtonProps } from './Button';
 import type { Props as LinkProps } from './Link';
-export const linkButtonStyles = tv({
-  extend: buttonBaseStyles,
-  base: ['gi-gap-2', 'gi-no-underline', 'hover:gi-no-underline'],
-  variants: {
-    size: buttonSizeVariants,
-  },
-  defaultVariants: {
-    size: ButtonSize.MD,
-  },
-});
 
 function LinkButton(props: Props) {
   return (
     <a
       id={props.id}
       href={props.href}
-      className={linkButtonStyles({
+      className={classes({
         variant: getVariant(props.variant),
         appearance: getAppearance(props.appearance),
         size: getSize(props.size),
-        class: props.className,
+        className: props.className,
       })}
       style={props.styles}
       target={props.target ?? (props.external ? '_blank' : undefined)}

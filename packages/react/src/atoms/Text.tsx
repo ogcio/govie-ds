@@ -8,8 +8,8 @@ import * as React from 'react';
 
 export type Props = {
   children: any;
-  size?: (typeof Size)[keyof typeof Size];
-  whitespace?: (typeof Whitespace)[keyof typeof Whitespace];
+  size?: ValueOf<typeof Size>;
+  whitespace?: ValueOf<typeof Whitespace>;
   className?: string;
   id?: string;
   dataTestId?: string;
@@ -17,30 +17,9 @@ export type Props = {
   ariaHidden?: boolean;
 };
 
-import { tv } from 'tailwind-variants';
-import type { Size, Whitespace } from './constants';
+import type { Size, ValueOf, Whitespace } from './constants';
 import { getSize, getWhitespace } from './utilities';
-export const textVariants = tv({
-  base: 'gi-font-primary gi-not-prose',
-  variants: {
-    size: {
-      sm: 'gi-text-sm',
-      md: 'gi-text-md',
-      lg: 'gi-text-lg',
-      xl: 'gi-text-lg xs:gi-text-xl',
-    },
-    whitespace: {
-      normal: 'gi-whitespace-normal',
-      pre: 'gi-whitespace-pre',
-      'pre-wrap': 'gi-whitespace-pre-wrap',
-      'break-spaces': 'gi-whitespace-break-spaces',
-    },
-  },
-  defaultVariants: {
-    size: 'md',
-    whitespace: 'normal',
-  },
-});
+import classes from './Text.styles';
 
 function Text(props: Props) {
   return (
@@ -49,10 +28,10 @@ function Text(props: Props) {
       style={props.styles}
       data-testid={props.dataTestId}
       aria-hidden={props.ariaHidden}
-      className={textVariants({
+      className={classes({
         size: getSize(props.size),
         whitespace: getWhitespace(props.whitespace),
-        class: props.className,
+        className: props.className,
       })}
     >
       {props.children}

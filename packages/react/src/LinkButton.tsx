@@ -1,6 +1,7 @@
 import { Slot } from '@radix-ui/react-slot';
-import GiLinkButton, { type Props as GiLinkButtonProps, linkButtonStyles } from '@/atoms/LinkButton';
-import { getSize, getVariant, getAppearance } from '@/atoms/Button';
+import GiLinkButton, { type Props as GiLinkButtonProps } from '@/atoms/LinkButton';
+import classes from '@/atoms/LinkButton.styles';
+import { getSize, getVariant, getAppearance } from '@/atoms/Button.styles';
 
 export type LinkButtonProps =
   | (GiLinkButtonProps & { asChild?: false; style?: React.CSSProperties })
@@ -39,11 +40,11 @@ export function LinkButton({
       <Slot
         {...rest}
         {...anchorProps}
-        className={linkButtonStyles({
+        className={classes({
           variant: getVariant(variant),
           appearance: getAppearance(appearance),
           size: getSize(size),
-          class: className,
+          className,
         })}
         style={(style ?? styles) as Record<string, string>}
         aria-current={ariaCurrent}

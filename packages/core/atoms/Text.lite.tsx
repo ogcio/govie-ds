@@ -1,12 +1,12 @@
 import { useMetadata } from '@builder.io/mitosis';
-import { tv } from 'tailwind-variants';
-import type { Size, Whitespace } from './constants';
+import type { Size, ValueOf, Whitespace } from './constants';
 import { getSize, getWhitespace } from './utilities';
+import classes from './Text.styles';
 
 export type Props = {
   children: any;
-  size?: (typeof Size)[keyof typeof Size];
-  whitespace?: (typeof Whitespace)[keyof typeof Whitespace];
+  size?: ValueOf<typeof Size>;
+  whitespace?: ValueOf<typeof Whitespace>;
   className?: string;
   id?: string;
   dataTestId?: string;
@@ -19,10 +19,10 @@ useMetadata({ angular: { selector: 'gi-text' } });
 export default function Text(props: Props) {
   return (
     <span
-      className={textVariants({
+      className={classes({
         size: getSize(props.size),
         whitespace: getWhitespace(props.whitespace),
-        class: props.className,
+        className: props.className,
       })}
       id={props.id}
       style={props.styles}
@@ -33,25 +33,3 @@ export default function Text(props: Props) {
     </span>
   );
 }
-
-export const textVariants = tv({
-  base: 'gi-font-primary gi-not-prose',
-  variants: {
-    size: {
-      sm: 'gi-text-sm',
-      md: 'gi-text-md',
-      lg: 'gi-text-lg',
-      xl: 'gi-text-lg xs:gi-text-xl',
-    },
-    whitespace: {
-      normal: 'gi-whitespace-normal',
-      pre: 'gi-whitespace-pre',
-      'pre-wrap': 'gi-whitespace-pre-wrap',
-      'break-spaces': 'gi-whitespace-break-spaces',
-    },
-  },
-  defaultVariants: {
-    size: 'md',
-    whitespace: 'normal',
-  },
-});

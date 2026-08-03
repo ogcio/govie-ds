@@ -1,6 +1,6 @@
 import type { StoryContext, Renderer } from 'storybook/internal/types';
 import { within } from 'storybook/test';
-import { MaxWidth } from '../Container.lite';
+import { MaxWidth } from '../constants';
 import { checker, enumType } from './utilities';
 import { boxMeta } from './Box.meta';
 
@@ -11,7 +11,7 @@ export const containerMeta = {
     children: 'Paragraph',
     gutters: true,
     inset: false,
-    maxWidth: MaxWidth.full,
+    maxWidth: MaxWidth.FULL,
     dataTestId: 'container',
   },
   argTypes: {
@@ -28,7 +28,7 @@ export const containerMeta = {
     },
     maxWidth: enumType(MaxWidth, {
       description: 'Caps the container max width: `sm`, `md`, `lg`, `xl`, `2xl`,`full`, or `default`.',
-      defaultValue: MaxWidth.default,
+      defaultValue: MaxWidth.DEFAULT,
       table: { type: { summary: 'string' } },
     }),
   } as const,

@@ -12,7 +12,7 @@ export type Props = Omit<LinkProps, 'onFocus' | 'onBlur'> & {
   visible?: VisibleValue;
 };
 
-import { getVisibility, classes } from './HeaderNavItem.styles';
+import classes, { getVisibility } from './HeaderNavItem.styles';
 import type { VisibleValue } from './HeaderNavItem.styles';
 import GiLink from '../Link';
 import type { Props as LinkProps } from '../Link';

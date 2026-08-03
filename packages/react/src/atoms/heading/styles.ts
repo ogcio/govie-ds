@@ -5,8 +5,11 @@
  */
 
 import { tv } from 'tailwind-variants';
+import { clamp } from '../utilities';
+import { Size } from './types';
 import type { Props } from './types';
-const styles = tv({
+export const getSize = (x: Props['size'], defaultSize: NonNullable<Props['size']>) => clamp(x, Size, defaultSize);
+export default tv({
   base: 'gi-font-bold gi-font-primary',
   variants: {
     size: {
@@ -19,4 +22,3 @@ const styles = tv({
     } satisfies Record<NonNullable<Props['size']>, string>,
   },
 });
-export default styles;

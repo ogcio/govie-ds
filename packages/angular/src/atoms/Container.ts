@@ -11,21 +11,17 @@ import { CommonModule } from '@angular/common';
 export type Props = {
   inset?: boolean;
   gutters?: boolean;
-  maxWidth?: (typeof MaxWidth)[keyof typeof MaxWidth];
+  maxWidth?: ValueOf<typeof MaxWidth>;
 } & BoxProps;
 
 import { tv } from 'tailwind-variants';
+import { MaxWidth } from './constants';
+import type { ValueOf } from './constants';
 import { clamp } from './utilities';
-import { Size } from './constants';
 import type { Props as BoxProps } from './Box';
 import GiBox from './Box';
-export const MaxWidth = {
-  ...Size,
-  default: 'default',
-  '2xl': '2xl',
-  full: 'full',
-} as const;
-export const containerStyles = tv({
+const getMaxWidth = (x: Props['maxWidth']) => clamp(x, MaxWidth, MaxWidth.DEFAULT);
+const classes = tv({
   base: 'gi-container gi-mx-auto',
   variants: {
     inset: {
@@ -47,7 +43,7 @@ export const containerStyles = tv({
   defaultVariants: {
     inset: false,
     gutters: true,
-    maxWidth: 'default',
+    maxWidth: MaxWidth.DEFAULT,
   },
 });
 
@@ -62,11 +58,11 @@ export const containerStyles = tv({
       [styles]="styles"
       [dataTestId]="dataTestId"
       [className]="
-        containerStyles({
+        classes({
           inset: inset ?? false,
           gutters: gutters ?? true,
-          maxWidth: clamp(maxWidth, MaxWidth, MaxWidth.default),
-          class: className,
+          maxWidth: getMaxWidth(maxWidth),
+          className: className,
         })
       "
       ><ng-content></ng-content
@@ -83,9 +79,8 @@ export const containerStyles = tv({
   imports: [CommonModule, GiBox],
 })
 export default class Container {
-  MaxWidth = MaxWidth;
-  containerStyles = containerStyles;
-  clamp = clamp;
+  getMaxWidth = getMaxWidth;
+  classes = classes;
 
   @Input() id!: Props['id'];
   @Input() role!: Props['role'];

@@ -1,14 +1,14 @@
-import { tv } from 'tailwind-variants';
 import { useMetadata } from '@builder.io/mitosis';
-import type { Align, Size, Whitespace } from './constants';
+import { tv } from 'tailwind-variants';
+import type { Align, Size, ValueOf, Whitespace } from './constants';
 import { getSize, getAlign, getWhitespace } from './utilities';
-import { textVariants } from './Text.lite';
+import textClasses from './Text.styles';
 
 export type Props = {
   id?: string;
-  size?: (typeof Size)[keyof typeof Size];
-  align?: (typeof Align)[keyof typeof Align];
-  whitespace?: (typeof Whitespace)[keyof typeof Whitespace];
+  size?: ValueOf<typeof Size>;
+  align?: ValueOf<typeof Align>;
+  whitespace?: ValueOf<typeof Whitespace>;
   children?: any;
   className?: string;
   styles?: Record<string, string>;
@@ -22,11 +22,11 @@ export default function Paragraph(props: Props) {
   return (
     <p
       id={props.id}
-      class={paragraphStyles({
+      class={classes({
         size: getSize(props.size),
         align: getAlign(props.align),
         whitespace: getWhitespace(props.whitespace),
-        class: props.className,
+        className: props.className,
       })}
       style={props.styles}
       data-testid={props.dataTestId}
@@ -37,8 +37,8 @@ export default function Paragraph(props: Props) {
   );
 }
 
-export const paragraphStyles = tv({
-  extend: textVariants,
+const classes = tv({
+  extend: textClasses,
   base: ['gi-max-w-prose'],
   variants: {
     align: {

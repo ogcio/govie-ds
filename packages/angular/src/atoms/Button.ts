@@ -10,9 +10,9 @@ import { CommonModule } from '@angular/common';
 
 export type Props = {
   id?: string;
-  variant?: (typeof Variant)[keyof typeof Variant];
-  appearance?: (typeof Appearance)[keyof typeof Appearance];
-  size?: (typeof ButtonSize)[keyof typeof ButtonSize];
+  variant?: ValueOf<typeof Variant>;
+  appearance?: ValueOf<typeof Appearance>;
+  size?: ValueOf<typeof ButtonSize>;
   children?: any;
   disabled?: boolean;
   className?: string;
@@ -38,292 +38,9 @@ export type Props = {
   dataTestId?: string;
 };
 
-import { tv } from 'tailwind-variants';
-import { Size } from './constants';
-import { clamp } from './utilities';
-export const Variant = {
-  PRIMARY: 'primary',
-  SECONDARY: 'secondary',
-  FLAT: 'flat',
-} as const;
-export const Appearance = {
-  DEFAULT: 'default',
-  DARK: 'dark',
-  LIGHT: 'light',
-} as const;
-export const ButtonSize = {
-  SM: Size.SM,
-  MD: Size.MD,
-  LG: Size.LG,
-} as const;
-export const buttonBaseStyles = tv({
-  base: [
-    'gi-font-primary',
-    'gi-border-solid',
-    'gi-border-sm',
-    'gi-flex',
-    'gi-rounded-sm',
-    'gi-items-center',
-    'disabled:gi-cursor-not-allowed',
-    'disabled:gi-pointer-events-none',
-  ],
-  variants: {
-    variant: {
-      primary: ['gi-border-transparent'],
-      secondary: [],
-      flat: ['gi-border-base-transparent'],
-    },
-    appearance: {
-      default: '',
-      light: '',
-      dark: '',
-    },
-    disabled: {
-      true: '',
-      false: [
-        'focus:gi-outline',
-        'focus:gi-outline-sm',
-        'focus:gi-outline-color-shadow-intent-focus-default',
-        'focus:gi-outline-offset-0',
-        'focus:gi-border-solid',
-        'focus:gi-border-color-border-intent-focus-default',
-        'focus:gi-border-sm',
-        'focus:gi-rounded-sm',
-      ],
-    },
-  },
-  compoundVariants: [
-    {
-      variant: Variant.PRIMARY,
-      disabled: false,
-      class: ['focus:gi-shadow-color-border-intent-focus-light', 'focus:gi-shadow-[inset_0_0_0_2px]'],
-    },
-    {
-      variant: Variant.PRIMARY,
-      appearance: Appearance.DEFAULT,
-      disabled: false,
-      class: [
-        'gi-text-color-text-tone-primary-fill-default',
-        'gi-bg-color-surface-tone-primary-fill-default',
-        'gi-stroke-color-text-tone-primary-fill-default',
-        'hover:gi-bg-color-surface-tone-primary-fill-hover',
-        'focus:gi-bg-color-surface-tone-primary-fill-hover',
-      ],
-    },
-    {
-      variant: Variant.PRIMARY,
-      appearance: Appearance.LIGHT,
-      disabled: false,
-      class: [
-        'gi-text-color-text-tone-light-fill-default',
-        'gi-stroke-color-text-tone-light-fill-default',
-        'gi-bg-color-surface-tone-light-fill-default',
-        'hover:gi-bg-color-surface-tone-light-fill-hover',
-        'focus:gi-bg-color-surface-tone-light-fill-hover',
-      ],
-    },
-    {
-      variant: Variant.PRIMARY,
-      appearance: Appearance.DARK,
-      disabled: false,
-      class: [
-        'gi-text-color-text-tone-dark-fill-default',
-        'gi-stroke-color-text-tone-dark-fill-default',
-        'gi-bg-color-surface-tone-dark-fill-default',
-        'hover:gi-bg-color-surface-tone-dark-fill-hover',
-        'focus:gi-bg-color-surface-tone-dark-fill-hover',
-      ],
-    },
-    {
-      variant: Variant.PRIMARY,
-      appearance: Appearance.DEFAULT,
-      disabled: true,
-      class: [
-        'gi-bg-color-surface-tone-primary-fill-disabled',
-        'gi-text-color-text-tone-primary-fill-disabled',
-        'gi-stroke-color-text-tone-primary-fill-disabled',
-      ],
-    },
-    {
-      variant: Variant.PRIMARY,
-      appearance: Appearance.LIGHT,
-      disabled: true,
-      class: [
-        'gi-bg-color-surface-tone-light-fill-disabled',
-        'gi-text-color-text-tone-light-fill-disabled',
-        'gi-stroke-color-text-tone-light-fill-disabled',
-      ],
-    },
-    {
-      variant: Variant.PRIMARY,
-      appearance: Appearance.DARK,
-      disabled: true,
-      class: [
-        'gi-bg-color-surface-tone-dark-fill-disabled',
-        'gi-text-color-text-tone-dark-fill-disabled',
-        'gi-stroke-color-text-tone-dark-fill-disabled',
-      ],
-    },
-    {
-      variant: Variant.SECONDARY,
-      appearance: Appearance.DEFAULT,
-      disabled: false,
-      class: [
-        'gi-border-color-border-tone-primary-outline-default',
-        'gi-text-color-text-tone-primary-outline-default',
-        'gi-stroke-color-text-tone-primary-outline-default',
-        'hover:gi-bg-color-surface-tone-primary-outline-hover',
-        'focus:gi-bg-color-surface-tone-primary-outline-hover',
-      ],
-    },
-    {
-      variant: Variant.SECONDARY,
-      appearance: Appearance.LIGHT,
-      disabled: false,
-      class: [
-        'gi-text-color-text-tone-light-outline-default',
-        'gi-stroke-color-text-tone-light-outline-default',
-        'gi-border-color-border-tone-light-outline-default',
-        'gi-bg-base-transparent',
-        'hover:gi-bg-color-surface-tone-light-outline-hover',
-        'focus:gi-bg-color-surface-tone-dark-fill-hover',
-      ],
-    },
-    {
-      variant: Variant.SECONDARY,
-      appearance: Appearance.DARK,
-      disabled: false,
-      class: [
-        'gi-border-color-border-tone-dark-outline-default',
-        'gi-bg-color-surface-tone-dark-outline-default',
-        'hover:gi-bg-color-surface-tone-dark-outline-hover',
-        'focus:gi-bg-color-surface-tone-light-fill-hover',
-      ],
-    },
-    {
-      variant: Variant.SECONDARY,
-      appearance: Appearance.DEFAULT,
-      disabled: true,
-      class: [
-        'gi-border-color-border-tone-primary-outline-disabled',
-        'gi-bg-color-surface-tone-primary-outline-disabled',
-        'gi-text-color-text-tone-primary-outline-disabled',
-        'gi-stroke-color-text-tone-primary-outline-disabled',
-      ],
-    },
-    {
-      variant: Variant.SECONDARY,
-      appearance: Appearance.LIGHT,
-      disabled: true,
-      class: [
-        'gi-bg-color-surface-tone-light-outline-disabled',
-        'gi-border-color-border-tone-light-outline-disabled',
-        'gi-text-color-text-tone-light-outline-disabled',
-        'gi-stroke-color-text-tone-light-outline-disabled',
-      ],
-    },
-    {
-      variant: Variant.SECONDARY,
-      appearance: Appearance.DARK,
-      disabled: true,
-      class: [
-        'gi-border-color-border-tone-dark-outline-disabled',
-        'gi-bg-color-surface-tone-dark-fill-disabled',
-        'gi-text-color-text-tone-dark-outline-disabled',
-        'gi-stroke-color-text-tone-dark-outline-disabled',
-      ],
-    },
-    {
-      variant: Variant.FLAT,
-      appearance: Appearance.DEFAULT,
-      disabled: false,
-      class: [
-        'gi-text-color-text-tone-primary-flat-default',
-        'gi-stroke-color-text-tone-primary-flat-default',
-        'gi-bg-base-transparent',
-        'hover:gi-bg-color-surface-tone-primary-flat-hover',
-        'focus:gi-bg-color-surface-tone-primary-outline-hover',
-      ],
-    },
-    {
-      variant: Variant.FLAT,
-      appearance: Appearance.LIGHT,
-      disabled: false,
-      class: [
-        'gi-bg-color-surface-tone-light-flat-default',
-        'gi-text-color-text-tone-light-flat-default',
-        'gi-stroke-color-text-tone-light-flat-default',
-        'hover:gi-bg-color-surface-tone-light-flat-hover',
-        'focus:gi-bg-color-surface-tone-dark-fill-hover',
-      ],
-    },
-    {
-      variant: Variant.FLAT,
-      appearance: Appearance.DARK,
-      disabled: false,
-      class: [
-        'gi-text-color-text-tone-dark-flat-default',
-        'gi-stroke-color-text-tone-dark-flat-default',
-        'hover:gi-bg-color-surface-tone-dark-flat-hover',
-        'focus:gi-bg-color-surface-tone-light-fill-hover',
-      ],
-    },
-    {
-      variant: Variant.FLAT,
-      appearance: Appearance.DEFAULT,
-      disabled: true,
-      class: [
-        'gi-text-color-text-tone-primary-flat-disabled',
-        'gi-stroke-color-text-tone-primary-flat-disabled',
-        'gi-bg-color-surface-tone-primary-flat-disabled',
-      ],
-    },
-    {
-      variant: Variant.FLAT,
-      appearance: Appearance.LIGHT,
-      disabled: true,
-      class: [
-        'gi-bg-color-surface-tone-light-flat-disabled',
-        'gi-text-color-text-tone-light-flat-disabled',
-        'gi-stroke-color-text-tone-light-flat-disabled',
-      ],
-    },
-    {
-      variant: Variant.FLAT,
-      appearance: Appearance.DARK,
-      disabled: true,
-      class: [
-        'gi-bg-color-surface-tone-dark-flat-disabled',
-        'gi-text-color-text-tone-dark-flat-disabled',
-        'gi-stroke-color-text-tone-dark-flat-disabled',
-      ],
-    },
-  ],
-  defaultVariants: {
-    variant: Variant.PRIMARY,
-    appearance: Appearance.DEFAULT,
-    disabled: false,
-  },
-});
-export const buttonSizeVariants = {
-  sm: 'gi-h-8 gi-px-2 gi-py-1.5 gi-text-xs',
-  md: 'gi-h-10 gi-px-3 gi-py-2 gi-text-sm',
-  lg: 'gi-h-12 gi-px-4 gi-py-3 gi-text-2md',
-} as const;
-export const styles = tv({
-  extend: buttonBaseStyles,
-  base: ['gi-gap-2'],
-  variants: {
-    size: buttonSizeVariants,
-  },
-  defaultVariants: {
-    size: ButtonSize.MD,
-  },
-});
-export const getSize = (x: Props['size'] = ButtonSize.MD) => clamp(x, ButtonSize, ButtonSize.MD);
-export const getVariant = (x: (typeof Variant)[keyof typeof Variant] | undefined) => clamp(x, Variant, Variant.PRIMARY);
-export const getAppearance = (x: (typeof Appearance)[keyof typeof Appearance] | undefined) =>
-  clamp(x, Appearance, Appearance.DEFAULT);
+import classes, { getAppearance, getSize, getVariant } from './Button.styles';
+import type { Appearance, ButtonSize, Variant } from './Button.styles';
+import type { ValueOf } from './constants';
 
 @Component({
   selector: 'gi-button',
@@ -331,12 +48,12 @@ export const getAppearance = (x: (typeof Appearance)[keyof typeof Appearance] | 
     <button
       [attr.id]="id"
       [class]="
-        styles({
+        classes({
           variant: getVariant(variant),
           appearance: getAppearance(appearance),
           size: getSize(size),
           disabled: !!disabled,
-          class: className,
+          className: className,
         })
       "
       [attr.data-size]="getSize(size)"
@@ -376,10 +93,10 @@ export const getAppearance = (x: (typeof Appearance)[keyof typeof Appearance] | 
   imports: [CommonModule],
 })
 export default class Button {
-  styles = styles;
+  classes = classes;
+  getAppearance = getAppearance;
   getSize = getSize;
   getVariant = getVariant;
-  getAppearance = getAppearance;
 
   @Input() id!: Props['id'];
   @Input() variant!: Props['variant'];

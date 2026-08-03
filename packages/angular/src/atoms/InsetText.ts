@@ -9,19 +9,31 @@ import { Component, Input } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
 export type Props = {
-  id?: string;
   children: any;
   cite?: string;
+  className?: string;
+  styles?: Record<string, string>;
+  id?: string;
   describedBy?: string;
   labelledBy?: string;
 };
+
+import { tv } from 'tailwind-variants';
+const classes = tv({
+  base: 'gi-font-primary gi-p-4 gi-border-l-2xl gi-border-gray-500 gi-text-sm md:gi-text-md gi-not-prose',
+});
 
 @Component({
   selector: 'inset-text',
   template: `
     <blockquote
-      class="gi-font-primary gi-p-4 gi-border-l-2xl gi-border-gray-500 gi-text-sm md:gi-text-md gi-not-prose"
       [attr.id]="id"
+      [class]="
+        classes({
+          className: className,
+        })
+      "
+      [ngStyle]="styles"
       [attr.cite]="cite"
       [attr.aria-describedby]="describedBy || undefined"
       [attr.aria-labelledby]="labelledBy || undefined"
@@ -40,7 +52,11 @@ export type Props = {
   imports: [CommonModule],
 })
 export default class InsetText {
+  classes = classes;
+
   @Input() id!: Props['id'];
+  @Input() className!: Props['className'];
+  @Input() styles!: Props['styles'];
   @Input() cite!: Props['cite'];
   @Input() describedBy!: Props['describedBy'];
   @Input() labelledBy!: Props['labelledBy'];

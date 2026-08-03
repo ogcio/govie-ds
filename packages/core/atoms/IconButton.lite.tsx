@@ -1,20 +1,16 @@
 import { tv } from 'tailwind-variants';
 import { useMetadata } from '@builder.io/mitosis';
+import { baseClasses, getAppearance, getVariant } from './Button.styles';
+import type { Appearance, Variant } from './Button.styles';
 import { Size } from './constants';
-import { Variant, Appearance, buttonBaseStyles, getVariant, getAppearance } from './Button.lite';
-
-export const IconButtonSize = {
-  SM: Size.SM,
-  MD: Size.MD,
-  LG: Size.LG,
-  XL: Size.XL,
-} as const;
+import type { ValueOf } from './constants';
+import { getSize } from './utilities';
 
 export type Props = {
   id?: string;
-  variant?: (typeof Variant)[keyof typeof Variant];
-  appearance?: (typeof Appearance)[keyof typeof Appearance];
-  size?: (typeof IconButtonSize)[keyof typeof IconButtonSize];
+  variant?: ValueOf<typeof Variant>;
+  appearance?: ValueOf<typeof Appearance>;
+  size?: ValueOf<typeof Size>;
   children?: any;
   disabled?: boolean;
   className?: string;
@@ -49,12 +45,12 @@ export default function IconButton(props: Props) {
     <button
       ref={props.ref}
       id={props.id}
-      class={iconButtonStyles({
+      class={classes({
         variant: getVariant(props.variant),
         appearance: getAppearance(props.appearance),
         size: getSize(props.size),
         disabled: !!props.disabled,
-        class: props.className,
+        className: props.className,
       })}
       disabled={props.disabled || undefined}
       onClick={(event) => props.onClick && props.onClick(event)}
@@ -81,8 +77,8 @@ export default function IconButton(props: Props) {
   );
 }
 
-export const iconButtonStyles = tv({
-  extend: buttonBaseStyles,
+const classes = tv({
+  extend: baseClasses,
   base: ['gi-justify-center'],
   variants: {
     size: {
@@ -93,9 +89,6 @@ export const iconButtonStyles = tv({
     },
   },
   defaultVariants: {
-    size: IconButtonSize.MD,
+    size: Size.MD,
   },
 });
-
-const getSize = (x: Props['size'] = IconButtonSize.MD) =>
-  Object.values(IconButtonSize).includes(x) ? x : IconButtonSize.MD;

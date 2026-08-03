@@ -21,7 +21,7 @@ export type Props = {
   dataTestId?: string;
 };
 
-import { getVisibility, classes } from './HeaderNavItem.styles';
+import classes, { getVisibility } from './HeaderNavItem.styles';
 import type { VisibleValue } from './HeaderNavItem.styles';
 
 function HeaderNavItem(props: Props) {

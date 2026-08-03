@@ -12,4 +12,4 @@ export { default as H5 } from './H5';
 export { default as H6 } from './H6';
 export { default as headingStyles } from './styles';
 export type { Size, Props } from './types';
-export { getSize } from './utils';
+export { getSize } from './styles';

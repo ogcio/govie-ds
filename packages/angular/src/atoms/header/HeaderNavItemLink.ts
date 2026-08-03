@@ -15,7 +15,7 @@ export type Props = Omit<LinkProps, 'onFocus' | 'onBlur'> & {
   visible?: VisibleValue;
 };
 
-import { getVisibility, classes } from './HeaderNavItem.styles';
+import classes, { getVisibility } from './HeaderNavItem.styles';
 import type { VisibleValue } from './HeaderNavItem.styles';
 import GiLink from '../Link';
 import type { Props as LinkProps } from '../Link';
@@ -69,8 +69,8 @@ const getAppearance = (x: Props['appearance']) => x || 'inherit';
 })
 export default class HeaderNavItemLink {
   getAppearance = getAppearance;
-  getVisibility = getVisibility;
   classes = classes;
+  getVisibility = getVisibility;
 
   @Input() visible!: Props['visible'];
   @Input() id!: Props['id'];

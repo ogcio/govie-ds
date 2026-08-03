@@ -10,7 +10,7 @@ export type Props = {
   children: any;
   variant?: ValueOf<typeof SurfaceVariant>;
   appearance?: ValueOf<typeof SurfaceAppearance>;
-  maxWidth?: ContainerProps['maxWidth'];
+  maxWidth?: ValueOf<typeof MaxWidth>;
   className?: string;
   styles?: Record<string, string>;
   id?: string;
@@ -22,10 +22,9 @@ export type Props = {
 import { tv } from 'tailwind-variants';
 import { clamp } from '../utilities';
 import { SurfaceVariant, SurfaceAppearance } from '../constants';
-import type { ValueOf } from '../constants';
+import type { MaxWidth, ValueOf } from '../constants';
 import GiBox from '../Box';
 import GiContainer from '../Container';
-import type { Props as ContainerProps } from '../Container';
 const getVariant = (x: Props['variant']) => clamp(x, SurfaceVariant, SurfaceVariant.PRIMARY);
 const getAppearance = (x: Props['appearance']) => clamp(x, SurfaceAppearance, SurfaceAppearance.DEFAULT);
 const classes = tv({

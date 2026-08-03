@@ -8,7 +8,7 @@ import { tv } from 'tailwind-variants';
 import type { Size, ResponsiveValue, ValueOf } from '../constants';
 import { resolveResponsive } from '../utilities';
 export type VisibleValue = ValueOf<typeof Size> | ResponsiveValue<boolean>;
-export const classes = tv({
+export default tv({
   base: [
     'gi-flex gi-items-center gi-gap-md',
     'gi-h-auto gi-p-2 gi-rounded-sm',

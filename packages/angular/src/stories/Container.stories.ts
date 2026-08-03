@@ -1,14 +1,15 @@
 import { omit } from 'lodash';
 import { CommonModule } from '@angular/common';
 import type { StoryObj } from '@storybook/angular';
-import Container, { MaxWidth } from '../atoms/Container';
+import Container from '@/atoms/Container';
+import { MaxWidth } from '@/atoms/constants';
 import {
   containerMeta,
   Default as defaultStory,
   WithInset as withInset,
   GuttersOnAndOff as guttersOnAndOff,
   AllMaxWidths as allMaxWidths,
-} from '../atoms/storybook/Container.meta';
+} from '@/atoms/storybook/Container.meta';
 
 const meta = {
   ...containerMeta,

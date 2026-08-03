@@ -1,5 +1,5 @@
 import { useMetadata } from '@builder.io/mitosis';
-import { getVisibility, classes } from './HeaderNavItem.styles';
+import classes, { getVisibility } from './HeaderNavItem.styles';
 import type { VisibleValue } from './HeaderNavItem.styles';
 import GiLink from '../Link.lite';
 import type { Props as LinkProps } from '../Link.lite';

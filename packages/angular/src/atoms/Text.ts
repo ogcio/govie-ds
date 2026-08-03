@@ -10,8 +10,8 @@ import { CommonModule } from '@angular/common';
 
 export type Props = {
   children: any;
-  size?: (typeof Size)[keyof typeof Size];
-  whitespace?: (typeof Whitespace)[keyof typeof Whitespace];
+  size?: ValueOf<typeof Size>;
+  whitespace?: ValueOf<typeof Whitespace>;
   className?: string;
   id?: string;
   dataTestId?: string;
@@ -19,30 +19,9 @@ export type Props = {
   ariaHidden?: boolean;
 };
 
-import { tv } from 'tailwind-variants';
-import type { Size, Whitespace } from './constants';
+import type { Size, ValueOf, Whitespace } from './constants';
 import { getSize, getWhitespace } from './utilities';
-export const textVariants = tv({
-  base: 'gi-font-primary gi-not-prose',
-  variants: {
-    size: {
-      sm: 'gi-text-sm',
-      md: 'gi-text-md',
-      lg: 'gi-text-lg',
-      xl: 'gi-text-lg xs:gi-text-xl',
-    },
-    whitespace: {
-      normal: 'gi-whitespace-normal',
-      pre: 'gi-whitespace-pre',
-      'pre-wrap': 'gi-whitespace-pre-wrap',
-      'break-spaces': 'gi-whitespace-break-spaces',
-    },
-  },
-  defaultVariants: {
-    size: 'md',
-    whitespace: 'normal',
-  },
-});
+import classes from './Text.styles';
 
 @Component({
   selector: 'gi-text',
@@ -53,10 +32,10 @@ export const textVariants = tv({
       [attr.data-testid]="dataTestId"
       [attr.aria-hidden]="ariaHidden"
       [class]="
-        textVariants({
+        classes({
           size: getSize(size),
           whitespace: getWhitespace(whitespace),
-          class: className,
+          className: className,
         })
       "
       ><ng-content></ng-content
@@ -73,9 +52,9 @@ export const textVariants = tv({
   imports: [CommonModule],
 })
 export default class Text {
-  textVariants = textVariants;
   getSize = getSize;
   getWhitespace = getWhitespace;
+  classes = classes;
 
   @Input() id!: Props['id'];
   @Input() styles!: Props['styles'];

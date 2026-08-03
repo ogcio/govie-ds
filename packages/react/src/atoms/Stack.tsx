@@ -7,15 +7,16 @@
 import * as React from 'react';
 
 export type Props = {
-  direction?: ResponsiveValue<(typeof Direction)[keyof typeof Direction]>;
+  direction?: ResponsiveValue<ValueOf<typeof Direction>>;
   gap?: ResponsiveValue<number>;
-  align?: (typeof AlignItems)[keyof typeof AlignItems];
-  justify?: (typeof Justify)[keyof typeof Justify];
+  align?: ValueOf<typeof AlignItems>;
+  justify?: ValueOf<typeof Justify>;
   wrap?: boolean;
 } & BoxProps;
 
 import { tv } from 'tailwind-variants';
-import { Direction, AlignItems, Justify, ResponsiveValue } from './constants';
+import { Direction } from './constants';
+import type { AlignItems, Justify, ResponsiveValue, ValueOf } from './constants';
 import type { Props as BoxProps } from './Box';
 import { getAlignItems, getJustify, resolveResponsive } from './utilities';
 import GiBox from './Box';
@@ -25,7 +26,7 @@ const gapToClass = (gap: number, prefix: string): string => `${prefix}gi-gap-${g
 
 // TODO: add twMerge to enable consumer `className` to override component-default utilities
 // TODO: add twMerge to enable consumer `className` to override component-default utilities
-const stackVariants = tv({
+const classes = tv({
   base: ['gi-flex'],
   variants: {
     align: {
@@ -63,11 +64,11 @@ function Stack(props: Props) {
       ariaLabel={props.ariaLabel}
       ariaLabelledBy={props.ariaLabelledBy}
       styles={props.styles}
-      className={stackVariants({
+      className={classes({
         align: getAlignItems(props.align),
         justify: getJustify(props.justify),
         wrap: props.wrap ?? false,
-        class: [
+        className: [
           resolveResponsive(props.direction ?? Direction.COLUMN, directionToClass),
           resolveResponsive(props.gap ?? 0, gapToClass),
           props.className,

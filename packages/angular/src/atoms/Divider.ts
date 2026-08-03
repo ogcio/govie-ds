@@ -9,7 +9,7 @@ import { Component, Input } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
 export type Props = {
-  orientation?: (typeof Orientation)[keyof typeof Orientation];
+  orientation?: ValueOf<typeof Orientation>;
   className?: string;
   styles?: Record<string, string>;
   id?: string;
@@ -18,8 +18,9 @@ export type Props = {
 
 import { tv } from 'tailwind-variants';
 import { Orientation } from './constants';
+import type { ValueOf } from './constants';
 import { getOrientation } from './utilities';
-const dividerStyles = tv({
+const classes = tv({
   base: 'gi-border-color-border-system-neutral-muted gi-border-0',
   variants: {
     orientation: {
@@ -40,7 +41,7 @@ const dividerStyles = tv({
       [attr.data-testid]="dataTestId"
       [attr.aria-orientation]="getOrientation(orientation)"
       [class]="
-        dividerStyles({
+        classes({
           orientation: getOrientation(orientation),
           className: className,
         })
@@ -59,7 +60,7 @@ const dividerStyles = tv({
   imports: [CommonModule],
 })
 export default class Divider {
-  dividerStyles = dividerStyles;
+  classes = classes;
   getOrientation = getOrientation;
 
   @Input() id!: Props['id'];

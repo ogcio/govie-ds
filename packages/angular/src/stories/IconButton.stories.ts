@@ -1,6 +1,7 @@
 import type { Meta, StoryObj } from '@storybook/angular';
-import IconButton, { IconButtonSize as Size } from '../atoms/IconButton';
-import Info from '../atoms/icons/Info';
+import IconButton from '@/atoms/IconButton';
+import { Size } from '@/atoms/constants';
+import Info from '@/atoms/icons/Info';
 import {
   iconButtonMeta,
   Default as defaultStory,
@@ -9,7 +10,7 @@ import {
   AllVariants as allVariants,
   AllAppearances as allAppearances,
   AllSizes as allSizes,
-} from '../atoms/storybook/IconButton.meta';
+} from '@/atoms/storybook/IconButton.meta';
 
 const iconSize: Record<string, number> = {
   [Size.SM]: 16,

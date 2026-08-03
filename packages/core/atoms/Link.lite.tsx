@@ -1,6 +1,7 @@
 import { useMetadata } from '@builder.io/mitosis';
-import linkStyles from './Link.styles';
-import type { Variant, Underline, Appearance, Visited } from './Link.styles';
+import classes from './Link.styles';
+import type { Appearance, Underline, Variant, Visited } from './Link.styles';
+import type { ValueOf } from './constants';
 
 useMetadata({ angular: { selector: 'gi-link' } });
 
@@ -10,10 +11,10 @@ export type Props = {
   href: string;
   className?: string;
 
-  variant?: (typeof Variant)[keyof typeof Variant];
-  underline?: (typeof Underline)[keyof typeof Underline];
-  appearance?: (typeof Appearance)[keyof typeof Appearance];
-  visited?: (typeof Visited)[keyof typeof Visited];
+  variant?: ValueOf<typeof Variant>;
+  underline?: ValueOf<typeof Underline>;
+  appearance?: ValueOf<typeof Appearance>;
+  visited?: ValueOf<typeof Visited>;
 
   external?: boolean;
   target?: '_self' | '_blank' | '_parent' | '_top';
@@ -44,12 +45,12 @@ export default function Link(props: Props) {
     <a
       id={props.id}
       href={props.href}
-      class={linkStyles({
+      class={classes({
         variant: props.variant,
         underline: props.underline,
         appearance: props.appearance,
         visited: props.visited,
-        class: props.className,
+        className: props.className,
       })}
       style={props.styles}
       target={props.target ?? (props.external ? '_blank' : undefined)}

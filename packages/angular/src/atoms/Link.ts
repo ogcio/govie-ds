@@ -13,10 +13,10 @@ export type Props = {
   children: any;
   href: string;
   className?: string;
-  variant?: (typeof Variant)[keyof typeof Variant];
-  underline?: (typeof Underline)[keyof typeof Underline];
-  appearance?: (typeof Appearance)[keyof typeof Appearance];
-  visited?: (typeof Visited)[keyof typeof Visited];
+  variant?: ValueOf<typeof Variant>;
+  underline?: ValueOf<typeof Underline>;
+  appearance?: ValueOf<typeof Appearance>;
+  visited?: ValueOf<typeof Visited>;
   external?: boolean;
   target?: '_self' | '_blank' | '_parent' | '_top';
   rel?: string;
@@ -37,8 +37,9 @@ export type Props = {
   dataTestId?: string;
 };
 
-import linkStyles from './Link.styles';
-import type { Variant, Underline, Appearance, Visited } from './Link.styles';
+import classes from './Link.styles';
+import type { Appearance, Underline, Variant, Visited } from './Link.styles';
+import type { ValueOf } from './constants';
 
 @Component({
   selector: 'gi-link',
@@ -47,12 +48,12 @@ import type { Variant, Underline, Appearance, Visited } from './Link.styles';
       [attr.id]="id"
       [attr.href]="href"
       [class]="
-        linkStyles({
+        classes({
           variant: variant,
           underline: underline,
           appearance: appearance,
           visited: visited,
-          class: className,
+          className: className,
         })
       "
       [ngStyle]="styles"
@@ -86,7 +87,7 @@ import type { Variant, Underline, Appearance, Visited } from './Link.styles';
   imports: [CommonModule],
 })
 export default class Link {
-  linkStyles = linkStyles;
+  classes = classes;
 
   @Input() id!: Props['id'];
   @Input() href!: Props['href'];

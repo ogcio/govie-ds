@@ -11,20 +11,10 @@ import { CommonModule } from '@angular/common';
 export type Props = Omit<LinkProps, 'variant' | 'appearance' | 'underline' | 'visited'> &
   Pick<ButtonProps, 'variant' | 'appearance' | 'size'>;
 
-import { tv } from 'tailwind-variants';
-import { buttonBaseStyles, ButtonSize, buttonSizeVariants, getSize, getVariant, getAppearance } from './Button';
+import { getAppearance, getSize, getVariant } from './Button.styles';
+import classes from './LinkButton.styles';
 import type { Props as ButtonProps } from './Button';
 import type { Props as LinkProps } from './Link';
-export const linkButtonStyles = tv({
-  extend: buttonBaseStyles,
-  base: ['gi-gap-2', 'gi-no-underline', 'hover:gi-no-underline'],
-  variants: {
-    size: buttonSizeVariants,
-  },
-  defaultVariants: {
-    size: ButtonSize.MD,
-  },
-});
 
 @Component({
   selector: 'gi-link-button',
@@ -33,11 +23,11 @@ export const linkButtonStyles = tv({
       [attr.id]="id"
       [attr.href]="href"
       [class]="
-        linkButtonStyles({
+        classes({
           variant: getVariant(variant),
           appearance: getAppearance(appearance),
           size: getSize(size),
-          class: className,
+          className: className,
         })
       "
       [ngStyle]="styles"
@@ -71,10 +61,10 @@ export const linkButtonStyles = tv({
   imports: [CommonModule],
 })
 export default class LinkButton {
-  linkButtonStyles = linkButtonStyles;
+  getAppearance = getAppearance;
   getSize = getSize;
   getVariant = getVariant;
-  getAppearance = getAppearance;
+  classes = classes;
 
   @Input() id!: Props['id'];
   @Input() href!: Props['href'];

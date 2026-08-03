@@ -4,6 +4,7 @@
   The file source is in `packages/core/atoms/heading/types.ts`
  */
 
+import type { ValueOf } from '../constants';
 export const Size = {
   XL: 'xl',
   LG: 'lg',
@@ -14,7 +15,7 @@ export const Size = {
 } as const;
 export type Props = {
   id?: string;
-  size?: (typeof Size)[keyof typeof Size];
+  size?: ValueOf<typeof Size>;
   className?: string;
   children: any;
   dataTestId?: string;

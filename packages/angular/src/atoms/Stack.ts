@@ -9,15 +9,16 @@ import { Component, Input } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
 export type Props = {
-  direction?: ResponsiveValue<(typeof Direction)[keyof typeof Direction]>;
+  direction?: ResponsiveValue<ValueOf<typeof Direction>>;
   gap?: ResponsiveValue<number>;
-  align?: (typeof AlignItems)[keyof typeof AlignItems];
-  justify?: (typeof Justify)[keyof typeof Justify];
+  align?: ValueOf<typeof AlignItems>;
+  justify?: ValueOf<typeof Justify>;
   wrap?: boolean;
 } & BoxProps;
 
 import { tv } from 'tailwind-variants';
-import { Direction, AlignItems, Justify, ResponsiveValue } from './constants';
+import { Direction } from './constants';
+import type { AlignItems, Justify, ResponsiveValue, ValueOf } from './constants';
 import type { Props as BoxProps } from './Box';
 import { getAlignItems, getJustify, resolveResponsive } from './utilities';
 import GiBox from './Box';
@@ -27,7 +28,7 @@ const gapToClass = (gap: number, prefix: string): string => `${prefix}gi-gap-${g
 
 // TODO: add twMerge to enable consumer `className` to override component-default utilities
 // TODO: add twMerge to enable consumer `className` to override component-default utilities
-const stackVariants = tv({
+const classes = tv({
   base: ['gi-flex'],
   variants: {
     align: {
@@ -67,11 +68,11 @@ const stackVariants = tv({
       [ariaLabelledBy]="ariaLabelledBy"
       [styles]="styles"
       [className]="
-        stackVariants({
+        classes({
           align: getAlignItems(align),
           justify: getJustify(justify),
           wrap: wrap ?? false,
-          class: [
+          className: [
             resolveResponsive(direction ?? Direction.COLUMN, directionToClass),
             resolveResponsive(gap ?? 0, gapToClass),
             className,
@@ -95,7 +96,7 @@ const stackVariants = tv({
 export default class Stack {
   directionToClass = directionToClass;
   gapToClass = gapToClass;
-  stackVariants = stackVariants;
+  classes = classes;
   getAlignItems = getAlignItems;
   getJustify = getJustify;
   resolveResponsive = resolveResponsive;

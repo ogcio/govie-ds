@@ -1,6 +1,6 @@
-import { tv } from 'tailwind-variants';
 import { useMetadata } from '@builder.io/mitosis';
-import { buttonBaseStyles, ButtonSize, buttonSizeVariants, getSize, getVariant, getAppearance } from './Button.lite';
+import { getAppearance, getSize, getVariant } from './Button.styles';
+import classes from './LinkButton.styles';
 import type { Props as ButtonProps } from './Button.lite';
 import type { Props as LinkProps } from './Link.lite';
 
@@ -14,11 +14,11 @@ export default function LinkButton(props: Props) {
     <a
       id={props.id}
       href={props.href}
-      class={linkButtonStyles({
+      class={classes({
         variant: getVariant(props.variant),
         appearance: getAppearance(props.appearance),
         size: getSize(props.size),
-        class: props.className,
+        className: props.className,
       })}
       style={props.styles}
       target={props.target ?? (props.external ? '_blank' : undefined)}
@@ -42,14 +42,3 @@ export default function LinkButton(props: Props) {
     </a>
   );
 }
-
-export const linkButtonStyles = tv({
-  extend: buttonBaseStyles,
-  base: ['gi-gap-2', 'gi-no-underline', 'hover:gi-no-underline'],
-  variants: {
-    size: buttonSizeVariants,
-  },
-  defaultVariants: {
-    size: ButtonSize.MD,
-  },
-});

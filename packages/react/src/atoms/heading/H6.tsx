@@ -6,17 +6,17 @@
 
 import * as React from 'react';
 
-import styles from './styles';
-import { getSize } from './utils';
+import classes from './styles';
+import { getSize } from './styles';
 import type { Props } from './types';
 
 function H6(props: Props) {
   return (
     <h6
       id={props.id}
-      className={styles({
+      className={classes({
         size: getSize(props.size, '2xs'),
-        class: props.className,
+        className: props.className,
       })}
       data-testid={props.dataTestId}
     >

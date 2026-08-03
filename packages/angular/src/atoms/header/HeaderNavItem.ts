@@ -22,7 +22,7 @@ export type Props = {
   dataTestId?: string;
 };
 
-import { getVisibility, classes } from './HeaderNavItem.styles';
+import classes, { getVisibility } from './HeaderNavItem.styles';
 import type { VisibleValue } from './HeaderNavItem.styles';
 
 @Component({
@@ -59,8 +59,8 @@ import type { VisibleValue } from './HeaderNavItem.styles';
   imports: [CommonModule],
 })
 export default class HeaderNavItem {
-  getVisibility = getVisibility;
   classes = classes;
+  getVisibility = getVisibility;
 
   @Input() visible!: Props['visible'];
   @Input() id!: Props['id'];

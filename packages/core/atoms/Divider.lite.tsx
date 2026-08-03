@@ -1,12 +1,13 @@
 import { useMetadata } from '@builder.io/mitosis';
 import { tv } from 'tailwind-variants';
 import { Orientation } from './constants';
+import type { ValueOf } from './constants';
 import { getOrientation } from './utilities';
 
 useMetadata({ angular: { selector: 'gi-divider' } });
 
 export type Props = {
-  orientation?: (typeof Orientation)[keyof typeof Orientation];
+  orientation?: ValueOf<typeof Orientation>;
   className?: string;
   styles?: Record<string, string>;
   id?: string;
@@ -19,7 +20,7 @@ export default function Divider(props: Props) {
       id={props.id}
       data-testid={props.dataTestId}
       aria-orientation={getOrientation(props.orientation)}
-      class={dividerStyles({
+      class={classes({
         orientation: getOrientation(props.orientation),
         className: props.className,
       })}
@@ -28,7 +29,7 @@ export default function Divider(props: Props) {
   );
 }
 
-const dividerStyles = tv({
+const classes = tv({
   base: 'gi-border-color-border-system-neutral-muted gi-border-0',
   variants: {
     orientation: {

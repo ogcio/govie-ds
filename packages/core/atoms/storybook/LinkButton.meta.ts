@@ -1,7 +1,7 @@
 import type { Renderer, StoryContext } from 'storybook/internal/types';
 import { within, expect } from 'storybook/test';
 import _ from 'lodash';
-import { ButtonSize, Variant, Appearance } from '../Button.lite';
+import { Appearance, ButtonSize, Variant } from '../Button.styles';
 import { checker } from './utilities';
 import { linkMeta } from './Link.meta';
 import { buttonMeta } from './Button.meta';

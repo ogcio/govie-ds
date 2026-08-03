@@ -7,18 +7,28 @@
 import * as React from 'react';
 
 export type Props = {
-  id?: string;
   children: any;
   cite?: string;
+  className?: string;
+  styles?: Record<string, string>;
+  id?: string;
   describedBy?: string;
   labelledBy?: string;
 };
 
+import { tv } from 'tailwind-variants';
+const classes = tv({
+  base: 'gi-font-primary gi-p-4 gi-border-l-2xl gi-border-gray-500 gi-text-sm md:gi-text-md gi-not-prose',
+});
+
 function InsetText(props: Props) {
   return (
     <blockquote
-      className="gi-font-primary gi-p-4 gi-border-l-2xl gi-border-gray-500 gi-text-sm md:gi-text-md gi-not-prose"
       id={props.id}
+      className={classes({
+        className: props.className,
+      })}
+      style={props.styles}
       cite={props.cite}
       aria-describedby={props.describedBy || undefined}
       aria-labelledby={props.labelledBy || undefined}

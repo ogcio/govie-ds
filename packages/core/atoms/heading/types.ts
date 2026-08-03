@@ -1,3 +1,5 @@
+import type { ValueOf } from '../constants';
+
 export const Size = {
   XL: 'xl',
   LG: 'lg',
@@ -9,7 +11,7 @@ export const Size = {
 
 export type Props = {
   id?: string;
-  size?: (typeof Size)[keyof typeof Size];
+  size?: ValueOf<typeof Size>;
   className?: string;
   children: any;
   dataTestId?: string;

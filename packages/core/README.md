@@ -20,6 +20,7 @@ By using Mitosis, we ensure that:
 | Layer                      | Path                                                  |
 | -------------------------- | ----------------------------------------------------- |
 | Source (Mitosis)           | `packages/core/atoms/<Component>.lite.tsx`            |
+| Public styles              | `packages/core/atoms/<Component>.styles.ts`           |
 | Shared Storybook meta      | `packages/core/atoms/storybook/<Component>.meta.ts`   |
 | React output (generated)   | `packages/react/src/atoms/<Component>.tsx`            |
 | React stories              | `packages/react/src/stories/<Component>.stories.tsx`  |
@@ -30,7 +31,7 @@ By using Mitosis, we ensure that:
 
 ### 1. Author the source
 
-Components live in `packages/core/atoms/<Component>.lite.tsx`. Each component declares its typed `Props` at the top of the file and styles itself with `tailwind-variants` (`tv()`), with variants colocated in the same module. Shared helpers (enum unions, clamping utilities, constants) live next to the component or in `atoms/constants.ts` and `atoms/utilities.ts`.
+Components live in `packages/core/atoms/<Component>.lite.tsx`. Each component declares its typed `Props` at the top of the file. Reusable `tailwind-variants` (`tv()`) configurations and their variant and size vocabulary live in co-located `<Component>.styles.ts` modules so they can be imported without pulling in the component. Style configurations used only by one component stay private as `classes` in its `.lite.tsx` module. A separate `<Component>.types.ts` is reserved for reusable types when the component has no corresponding public styles module. Shared helpers and cross-component constants live in `atoms/constants.ts` and `atoms/utilities.ts`.
 
 Run `pnpm build:watch` while developing. The watcher regenerates the React and Angular outputs on every save, so the per-target shape evolves alongside the source. Generator plugins live in `packages/core/plugins/` (for example `strip-ref.ts`) and are wired through `react.config.ts` / `angular.config.ts`; reach for a plugin only when a generated output needs an across-the-board adjustment that the `.lite.tsx` source cannot express.
 

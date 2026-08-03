@@ -8,8 +8,8 @@ import { Component, Input } from '@angular/core';
 
 import { CommonModule } from '@angular/common';
 
-import styles from './styles';
-import { getSize } from './utils';
+import classes from './styles';
+import { getSize } from './styles';
 import type { Props } from './types';
 
 @Component({
@@ -18,9 +18,9 @@ import type { Props } from './types';
     <h3
       [attr.id]="id"
       [class]="
-        styles({
+        classes({
           size: getSize(size, 'md'),
-          class: className,
+          className: className,
         })
       "
       [attr.data-testid]="dataTestId"
@@ -39,7 +39,7 @@ import type { Props } from './types';
   imports: [CommonModule],
 })
 export default class H3 {
-  styles = styles;
+  classes = classes;
   getSize = getSize;
 
   @Input() id!: Props['id'];

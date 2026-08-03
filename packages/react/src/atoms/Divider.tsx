@@ -7,7 +7,7 @@
 import * as React from 'react';
 
 export type Props = {
-  orientation?: (typeof Orientation)[keyof typeof Orientation];
+  orientation?: ValueOf<typeof Orientation>;
   className?: string;
   styles?: Record<string, string>;
   id?: string;
@@ -16,8 +16,9 @@ export type Props = {
 
 import { tv } from 'tailwind-variants';
 import { Orientation } from './constants';
+import type { ValueOf } from './constants';
 import { getOrientation } from './utilities';
-const dividerStyles = tv({
+const classes = tv({
   base: 'gi-border-color-border-system-neutral-muted gi-border-0',
   variants: {
     orientation: {
@@ -36,7 +37,7 @@ function Divider(props: Props) {
       id={props.id}
       data-testid={props.dataTestId}
       aria-orientation={getOrientation(props.orientation)}
-      className={dividerStyles({
+      className={classes({
         orientation: getOrientation(props.orientation),
         className: props.className,
       })}
