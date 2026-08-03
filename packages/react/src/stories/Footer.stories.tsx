@@ -1,8 +1,9 @@
 import type { Meta, StoryObj } from '@storybook/react-vite';
 import { within, expect } from 'storybook/test';
-import Footer from '@/atoms/Footer';
-import FooterSection, { FooterSectionVariant } from '@/atoms/FooterSection';
-import FooterLogo from '@/atoms/FooterLogo';
+import Footer from '@/atoms/footer/Footer';
+import FooterSection from '@/atoms/footer/FooterSection';
+import FooterLogo from '@/atoms/footer/FooterLogo';
+import { SurfaceVariant } from '@/atoms/constants';
 import Text from '@/atoms/Text';
 import H4 from '@/atoms/heading/H4';
 import Link from '@/Link';
@@ -29,11 +30,7 @@ export const CompleteFooter: Story = {
   ...CompleteFooterStory,
   render: (props) => (
     <Footer {...props}>
-      <FooterSection
-        variant={FooterSectionVariant.PRIMARY}
-        className="gi-text-black"
-        dataTestId="footer-section-primary"
-      >
+      <FooterSection variant={SurfaceVariant.PRIMARY} className="gi-text-black" dataTestId="footer-section-primary">
         <Grid container columns={{ base: 4, md: 8, lg: 12 }} gap={4} dataTestId="primary">
           <Grid size={{ base: 4, md: 4, lg: 3 }}>
             <H4 className="gi-my-4">Services</H4>
@@ -154,7 +151,7 @@ export const CompleteFooter: Story = {
         </Stack>
       </FooterSection>
 
-      <FooterSection variant={FooterSectionVariant.UTILITY} dataTestId="footer-section-utility">
+      <FooterSection variant={SurfaceVariant.UTILITY} dataTestId="footer-section-utility">
         <Stack
           wrap
           direction={{ base: 'column', md: 'row' }}

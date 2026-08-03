@@ -1,20 +1,16 @@
 import { useMetadata } from '@builder.io/mitosis';
 import { tv } from 'tailwind-variants';
-import { clamp } from './utilities';
-import GiBox from './Box.lite';
-import GiContainer from './Container.lite';
-import type { Props as ContainerProps } from './Container.lite';
+import { SurfaceVariant } from '../constants';
+import type { MaxWidth, ValueOf } from '../constants';
+import { clamp } from '../utilities';
+import GiBox from '../Box.lite';
+import GiContainer from '../Container.lite';
 
 useMetadata({ angular: { selector: 'gi-footer-section' } });
 
-export const FooterSectionVariant = {
-  PRIMARY: 'primary',
-  UTILITY: 'utility',
-} as const;
-
 export type Props = {
-  variant?: (typeof FooterSectionVariant)[keyof typeof FooterSectionVariant];
-  maxWidth?: ContainerProps['maxWidth'];
+  variant?: ValueOf<typeof SurfaceVariant>;
+  maxWidth?: ValueOf<typeof MaxWidth>;
   children?: any;
   className?: string;
   styles?: Record<string, string>;
@@ -40,7 +36,7 @@ export default function FooterSection(props: Props) {
   );
 }
 
-const getVariant = (x: Props['variant']) => clamp(x, FooterSectionVariant, FooterSectionVariant.PRIMARY);
+const getVariant = (x: Props['variant']) => clamp(x, SurfaceVariant, SurfaceVariant.PRIMARY);
 
 const classes = tv({
   base: 'gi-footer-section gi-w-full',

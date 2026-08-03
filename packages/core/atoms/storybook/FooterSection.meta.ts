@@ -1,6 +1,6 @@
 import type { StoryContext, Renderer } from 'storybook/internal/types';
 import { within } from 'storybook/test';
-import { FooterSectionVariant } from '../FooterSection.lite';
+import { SurfaceVariant } from '../constants';
 import { checker, enumType } from './utilities';
 import { containerMeta } from './Container.meta';
 
@@ -8,14 +8,14 @@ export const footerSectionMeta = {
   tags: ['autodocs'] as string[],
   title: 'Layout/FooterSection',
   args: {
-    variant: FooterSectionVariant.PRIMARY,
+    variant: SurfaceVariant.PRIMARY,
     dataTestId: 'footer-section',
     id: 'footer-section-id',
   },
   argTypes: {
-    variant: enumType(FooterSectionVariant, {
+    variant: enumType(SurfaceVariant, {
       description: 'Section background/spacing variant.',
-      defaultValue: FooterSectionVariant.PRIMARY,
+      defaultValue: SurfaceVariant.PRIMARY,
     }),
     maxWidth: containerMeta.argTypes.maxWidth,
     className: {

@@ -1,5 +1,5 @@
 import type { Meta, StoryObj } from '@storybook/react-vite';
-import FooterSection from '@/atoms/FooterSection';
+import FooterSection from '@/atoms/footer/FooterSection';
 import { footerSectionMeta, Default as defaultStory } from '@/atoms/storybook/FooterSection.meta';
 
 const meta = {

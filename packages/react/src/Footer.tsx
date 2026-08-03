@@ -1,4 +1,4 @@
-import GiFooter, { type Props as GiFooterProps } from '@/atoms/Footer';
+import GiFooter, { type Props as GiFooterProps } from '@/atoms/footer/Footer';
 
 export type FooterProps = GiFooterProps & { style?: React.CSSProperties };
 

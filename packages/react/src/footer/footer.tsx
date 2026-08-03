@@ -5,7 +5,7 @@ import { renderToStaticMarkup } from 'react-dom/server';
 import { LogoGoldGreen as GovieLogoHarpWithText, LogoHarpWhite as GovieLogoHarp } from '@/atoms/icons/logos';
 import { cn } from '@/cn.js';
 import type { LogoProps } from '@/common/types.js';
-import FooterSection from '@/atoms/FooterSection';
+import FooterSection from '@/atoms/footer/FooterSection';
 import { translate as t } from '@/i18n/utility.js';
 import Anchor from '@/primitives/anchor.js';
 import Divider from '@/Divider';

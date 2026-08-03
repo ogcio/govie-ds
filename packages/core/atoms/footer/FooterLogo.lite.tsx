@@ -1,6 +1,6 @@
 import { useMetadata } from '@builder.io/mitosis';
 import { tv } from 'tailwind-variants';
-import GiBox from './Box.lite';
+import GiBox from '../Box.lite';
 
 useMetadata({ angular: { selector: 'gi-footer-logo' } });
 
@@ -16,7 +16,7 @@ export default function FooterLogo(props: Props) {
   return (
     <GiBox
       id={props.id}
-      className={footerStyles({ class: props.className })}
+      className={classes({ className: props.className })}
       styles={props.styles}
       dataTestId={props.dataTestId}
     >
@@ -25,6 +25,6 @@ export default function FooterLogo(props: Props) {
   );
 }
 
-const footerStyles = tv({
+const classes = tv({
   base: 'gi-w-fit md:gi-ml-auto gi-mt-8 md:gi-mt-0',
 });

@@ -13,6 +13,8 @@ export const Size = {
   XL: 'xl',
 } as const;
 
+export const MaxWidth = { ...Size, DEFAULT: 'default', '2XL': '2xl', FULL: 'full' } as const;
+
 export const Whitespace = {
   NORMAL: 'normal',
   PRE: 'pre',

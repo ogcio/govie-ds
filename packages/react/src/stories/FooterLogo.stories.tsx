@@ -1,5 +1,5 @@
 import type { Meta, StoryObj } from '@storybook/react-vite';
-import FooterLogo from '@/atoms/FooterLogo';
+import FooterLogo from '@/atoms/footer/FooterLogo';
 import { LogoGoldGreen } from '@/atoms/icons/logos';
 import { footerLogoMeta, Default as defaultStory } from '@/atoms/storybook/FooterLogo.meta';
 
