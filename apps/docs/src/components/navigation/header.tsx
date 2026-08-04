@@ -70,11 +70,11 @@ export const DocsHeader = () => {
         <HeaderPrimaryMenu aria-label="Primary navigation">
           {links.map((link) => (
             <HeaderMenuItemLink
+              asChild
               key={link.href}
-              href={link.href}
               showItemMode="desktop-only"
             >
-              {link.label}
+              <NextLink href={link.href}>{link.label}</NextLink>
             </HeaderMenuItemLink>
           ))}
 
@@ -104,7 +104,21 @@ export const DocsHeader = () => {
           <ul>
             {links.map((link, index) => (
               <li key={`${index}_${link.label}`}>
-                <ListItem {...link} />
+                <Link
+                  appearance="inherit"
+                  underline="hover"
+                  asChild
+                  className="border-b-xs py-4 block gi-border-color-border-system-neutral-subtle"
+                >
+                  <NextLink
+                    onNavigate={() => {
+                      toggle('drawer');
+                    }}
+                    href={link.href}
+                  >
+                    {link.label}
+                  </NextLink>
+                </Link>
               </li>
             ))}
           </ul>
