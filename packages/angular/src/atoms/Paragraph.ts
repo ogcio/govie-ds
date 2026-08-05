@@ -13,7 +13,6 @@ export type Props = {
   size?: ValueOf<typeof Size>;
   align?: ValueOf<typeof Align>;
   whitespace?: ValueOf<typeof Whitespace>;
-  children?: any;
   className?: string;
   styles?: Record<string, string>;
   dataTestId?: string;

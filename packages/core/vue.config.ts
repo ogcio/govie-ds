@@ -1,7 +1,7 @@
 import type { MitosisConfig } from '@builder.io/mitosis';
 import annotation from './plugins/annotation';
 import prettierFormat from './plugins/prettier-format';
-import stripRef from './plugins/strip-ref';
+import stripProps from './plugins/strip-props';
 
 export default {
   files: 'atoms/**/*',
@@ -14,7 +14,7 @@ export default {
       api: 'composition',
       typescript: true,
       prettier: false,
-      plugins: [stripRef, annotation, prettierFormat],
+      plugins: [stripProps('ref', 'children'), annotation, prettierFormat],
     },
   },
 } satisfies MitosisConfig;

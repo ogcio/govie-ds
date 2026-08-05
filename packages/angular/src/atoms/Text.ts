@@ -9,7 +9,6 @@ import { Component, Input } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
 export type Props = {
-  children: any;
   size?: ValueOf<typeof Size>;
   whitespace?: ValueOf<typeof Whitespace>;
   className?: string;

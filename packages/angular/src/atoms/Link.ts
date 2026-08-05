@@ -10,7 +10,6 @@ import { CommonModule } from '@angular/common';
 
 export type Props = {
   id?: string;
-  children: any;
   href: string;
   className?: string;
   variant?: ValueOf<typeof Variant>;

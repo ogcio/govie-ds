@@ -11,7 +11,6 @@ import { CommonModule } from '@angular/common';
 export type Props = {
   variant?: ValueOf<typeof SurfaceVariant>;
   maxWidth?: ValueOf<typeof MaxWidth>;
-  children?: any;
   className?: string;
   styles?: Record<string, string>;
   id?: string;
