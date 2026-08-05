@@ -11,10 +11,39 @@ type DrawerChildren = Array<ReactElement<typeof DrawerBody | typeof DrawerBody>>
 
 export type DrawerPosition = 'left' | 'right' | 'bottom';
 
-export type DrawerProps = Omit<ModalProps, 'closeOnClick' | 'closeOnOverlayClick' | 'size'> & {
+type DrawerControlledProps = DrawerBaseProps & {
+  open: boolean;
+  onClose?: () => void;
+  /** @deprecated Not used in controlled mode. Render your own trigger and set `open` instead. */
+  triggerButton?: never;
+  /** @deprecated Not used in controlled mode. Pass `open` to control visibility instead. */
+  startsOpen?: never;
+};
+
+type DrawerUncontrolledProps = DrawerBaseProps & {
+  open?: never;
+  onClose?: never;
+  /**
+   * @deprecated Use `open` and `onClose` with your own trigger element instead.
+   * Example: `<Button onClick={() => setOpen(true)} />` with `<Drawer open={open} onClose={() => setOpen(false)} />`.
+   */
+  triggerButton: ModalProps['triggerButton'];
+  /**
+   * @deprecated Use the controlled `open` prop instead.
+   * Example: `const [open, setOpen] = useState(true)` with `<Drawer open={open} onClose={() => setOpen(false)} />`.
+   */
+  startsOpen?: ModalProps['startsOpen'];
+};
+
+type DrawerBaseProps = Omit<
+  ModalProps,
+  'closeOnClick' | 'closeOnOverlayClick' | 'size' | 'triggerButton' | 'startsOpen'
+> & {
   position?: DrawerPosition;
   children: DrawerChildren;
 };
+
+export type DrawerProps = DrawerControlledProps | DrawerUncontrolledProps;
 
 type DrawerSectionProps = {
   children: React.ReactElement<ButtonProps> | React.ReactElement<ButtonProps>[];
@@ -42,30 +71,37 @@ export const DrawerWrapper = ({ children, className, ...props }: DrawerWrapperPr
 export const Drawer = ({
   children,
   triggerButton,
-  startsOpen,
+  startsOpen = false,
+  open,
+  onClose,
   closeButtonLabel,
   position = 'right',
   className,
 }: DrawerProps) => {
-  const [isOpen, setIsOpen] = useState(!!startsOpen);
+  const isControlled = open !== undefined;
+  const [internalOpen, setInternalOpen] = useState(startsOpen);
+  const isOpen = isControlled ? open : internalOpen;
 
-  const handleOpen = () => setIsOpen(true);
-  const handleClose = () => setIsOpen(false);
+  const handleOpen = () => setInternalOpen(true);
+  const handleClose = onClose ?? (() => setInternalOpen(false));
 
-  const renderCloneTrigger = cloneElement(triggerButton as ReactElement<any>, {
-    onClick: (event: React.MouseEvent) => {
-      const existingOnClick =
-        typeof (triggerButton as ReactElement<any>)?.props?.onClick === 'function'
-          ? (triggerButton as ReactElement<any>)?.props?.onClick
-          : undefined;
+  // only render the clone if triggerButton defined
+  const renderCloneTrigger =
+    triggerButton === undefined
+      ? null
+      : cloneElement(triggerButton as ReactElement<any>, {
+          onClick: (event: React.MouseEvent) => {
+            const existingOnClick =
+              typeof (triggerButton as ReactElement<any>)?.props?.onClick === 'function'
+                ? (triggerButton as ReactElement<any>)?.props?.onClick
+                : undefined;
 
-      if (existingOnClick) {
-        existingOnClick(event);
-      }
-      handleOpen();
-    },
-  });
-
+            if (existingOnClick) {
+              existingOnClick(event);
+            }
+            handleOpen();
+          },
+        });
   return (
     <>
       {renderCloneTrigger}

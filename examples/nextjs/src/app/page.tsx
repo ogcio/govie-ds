@@ -93,6 +93,7 @@ import {
   HeaderMenuItemSeparator,
   HeaderMenuItemButton,
   Grid,
+  useToggleMap,
 } from '@ogcio/design-system-react';
 import { Link } from '@ogcio/design-system-react/next';
 import { LogoWhite, LogoHarpWhite } from '@ogcio/design-system-react/logos';
@@ -673,6 +674,7 @@ const ValidationFormExample = () => {
 
 // Main Component
 export default function Home() {
+  const [state, { toggle }] = useToggleMap({ drawer: false });
   return (
     <>
       <HeaderComposable />
@@ -1163,8 +1165,35 @@ export default function Home() {
                           <Button variant="primary">Confirm</Button>
                         </ModalFooter>
                       </Modal>
-
-                      <Drawer triggerButton={<Button>Open Drawer</Button>}>
+                      <Drawer triggerButton={<Button>Uncontrolled Drawer Trigger (deprecated)</Button>}>
+                        <DrawerBody>
+                          <Paragraph>
+                            This is the drawer content. Drawers slide in from the side and are great for forms or
+                            additional information.
+                          </Paragraph>
+                        </DrawerBody>
+                        <DrawerFooter>
+                          <Box className="flex gap-6 justify-end">
+                            <Button variant="secondary" appearance="dark">
+                              Cancel
+                            </Button>
+                            <Button>Save</Button>
+                          </Box>
+                        </DrawerFooter>
+                      </Drawer>
+                      <Button
+                        onClick={() => {
+                          toggle('drawer');
+                        }}
+                      >
+                        Controlled drawer trigger
+                      </Button>
+                      <Drawer
+                        open={state.drawer}
+                        onClose={() => {
+                          toggle('drawer');
+                        }}
+                      >
                         <DrawerBody>
                           <Paragraph>
                             This is the drawer content. Drawers slide in from the side and are great for forms or

@@ -9,10 +9,14 @@ component:
   properties:
     - name: 'DrawerProps'
       fields:
-        - name: 'triggerButton'
-          ofType: 'ReactElement'
-          description: 'Button element that opens the drawer.'
+        - name: 'open'
+          ofType: 'boolean'
+          description: 'Controls whether the drawer is open. Manage this with local state instead of the deprecated `triggerButton` and `startsOpen` props.'
           required: true
+        - name: 'onClose'
+          ofType: 'function'
+          description: 'Callback fired when the drawer is closed (close button or overlay). Use with open to control drawer state.'
+          required: false
         - name: 'closeButtonLabel'
           ofType: 'string'
           description: 'Label for the close button. Default: Close.'
@@ -66,11 +70,15 @@ A Drawer is a temporary panel that slides in from the page edge to reveal supple
 
 <ComponentPreview>
   <StorybookFrame
-    className="h-[248px] w-[504px]"
+    className="h-[700px] lg:w-[1000px] w-full"
     componentId="drawer-react"
     story="default"
   />
 </ComponentPreview>
+
+## Properties
+
+<ComponentPropertiesTable componentId="drawer-react" />
 
 ### Drawer Right
 
@@ -121,9 +129,5 @@ A Drawer is a temporary panel that slides in from the page edge to reveal supple
     story="drawer-menu-mobile"
   />
 </ComponentPreview>
-
-## Properties
-
-<ComponentPropertiesTable componentId="drawer-react" />
 
 </Section>
