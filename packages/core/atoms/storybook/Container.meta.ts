@@ -1,5 +1,6 @@
-import type { StoryContext, Renderer } from 'storybook/internal/types';
+import type { ArgTypes, StoryContext, Renderer } from 'storybook/internal/types';
 import { within } from 'storybook/test';
+import type { Props } from '../Container.lite';
 import { MaxWidth } from '../constants';
 import { checker, enumType } from './utilities';
 import { boxMeta } from './Box.meta';
@@ -31,7 +32,7 @@ export const containerMeta = {
       defaultValue: MaxWidth.DEFAULT,
       table: { type: { summary: 'string' } },
     }),
-  } as const,
+  } satisfies ArgTypes<Props>,
   parameters: {
     docs: {
       description: {

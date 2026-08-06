@@ -4,8 +4,9 @@
   The file source is in `packages/core/atoms/storybook/Footer.meta.ts`
  */
 
-import type { StoryContext, Renderer } from 'storybook/internal/types';
+import type { ArgTypes, StoryContext, Renderer } from 'storybook/internal/types';
 import { within } from 'storybook/test';
+import type { Props } from '../footer/Footer';
 import { checker } from './utilities';
 export const footerMeta = {
   tags: ['autodocs'] as string[],
@@ -81,7 +82,7 @@ export const footerMeta = {
         },
       },
     },
-  } as const,
+  } satisfies ArgTypes<Props>,
   parameters: {
     docs: {
       description: {

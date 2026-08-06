@@ -1,5 +1,6 @@
-import type { StoryContext, Renderer } from 'storybook/internal/types';
+import type { ArgTypes, StoryContext, Renderer } from 'storybook/internal/types';
 import { within } from 'storybook/test';
+import type { Props } from '../footer/FooterLogo.lite';
 import { checker } from './utilities';
 
 export const footerLogoMeta = {
@@ -31,10 +32,7 @@ export const footerLogoMeta = {
       description: 'Test id for targeting the element in automated tests.',
       table: { type: { summary: 'string' } },
     },
-    children: {
-      table: { disable: true },
-    },
-  },
+  } satisfies ArgTypes<Props>,
   parameters: {
     docs: {
       description: {

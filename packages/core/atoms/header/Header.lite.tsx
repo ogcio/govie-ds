@@ -4,7 +4,7 @@ import { tv } from 'tailwind-variants';
 useMetadata({ angular: { selector: 'gi-header' } });
 
 export type Props = {
-  children: any;
+  children?: any;
   className?: string;
   styles?: Record<string, string>;
   id?: string;

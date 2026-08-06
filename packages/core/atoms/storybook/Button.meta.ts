@@ -39,9 +39,6 @@ export const buttonMeta = {
         type: { summary: 'boolean' },
       },
     },
-    children: {
-      table: { disable: true },
-    },
     role: {
       control: false,
       description: 'Overrides the implicit ARIA role of the element. Only set when a non-button semantic is required.',

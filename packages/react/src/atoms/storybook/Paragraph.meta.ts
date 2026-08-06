@@ -4,8 +4,9 @@
   The file source is in `packages/core/atoms/storybook/Paragraph.meta.ts`
  */
 
-import type { StoryContext, Renderer } from 'storybook/internal/types';
+import type { ArgTypes, StoryContext, Renderer } from 'storybook/internal/types';
 import { within, expect } from 'storybook/test';
+import type { Props } from '../Paragraph';
 import { enumType } from './utilities';
 import { Align, Size, Whitespace } from '../constants';
 export const paragraphMeta = {
@@ -17,11 +18,6 @@ export const paragraphMeta = {
     children: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.',
   },
   argTypes: {
-    children: {
-      table: {
-        disable: true,
-      },
-    },
     size: enumType(Size, {
       description: 'Font size of the Paragraph.',
       defaultValue: Size.MD,
@@ -69,7 +65,7 @@ export const paragraphMeta = {
       control: false,
       description: 'Value for the `data-testid` attribute, used for testing.',
     },
-  } as const,
+  } satisfies ArgTypes<Props>,
   parameters: {
     docs: {
       description: {

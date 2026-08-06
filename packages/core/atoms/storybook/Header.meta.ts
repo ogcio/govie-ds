@@ -1,6 +1,7 @@
 import { pick } from 'lodash';
-import type { StoryContext, Renderer } from 'storybook/internal/types';
+import type { ArgTypes, StoryContext, Renderer } from 'storybook/internal/types';
 import { within } from 'storybook/test';
+import type { Props } from '../header/Header.lite';
 import { boxMeta } from './Box.meta';
 import { checker } from './utilities';
 
@@ -13,7 +14,7 @@ export const headerMeta = {
     id: 'header-example',
   },
   argTypes: {
-    ...pick(boxMeta.argTypes, ['className', 'id', 'dataTestId', 'styles', 'children']),
+    ...pick(boxMeta.argTypes, ['className', 'id', 'dataTestId', 'styles']),
     ariaLabel: {
       control: 'text',
       description: 'Accessible label for the header landmark. Maps to `aria-label`.',
@@ -25,7 +26,7 @@ export const headerMeta = {
         'Points to the id of an element that labels the header. Preferred over `ariaLabel` when a visible heading exists. Maps to `aria-labelledby`.',
       table: { type: { summary: 'string' } },
     },
-  },
+  } satisfies ArgTypes<Props>,
   parameters: {
     docs: {
       description: {

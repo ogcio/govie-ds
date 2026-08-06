@@ -1,5 +1,6 @@
-import type { StoryContext, Renderer } from 'storybook/internal/types';
+import type { ArgTypes, StoryContext, Renderer } from 'storybook/internal/types';
 import { within, expect, fn, userEvent } from 'storybook/test';
+import type { Props } from '../IconButton.lite';
 import { Appearance, Variant } from '../Button.styles';
 import { Size } from '../constants';
 import { enumType } from './utilities';
@@ -95,9 +96,6 @@ export const iconButtonMeta = {
       description: 'Tab index for the button element.',
       table: { type: { summary: 'number' } },
     },
-    children: {
-      table: { disable: true },
-    },
     id: {
       control: false,
       description: 'HTML id attribute for the button element.',
@@ -113,7 +111,7 @@ export const iconButtonMeta = {
       description: 'Test id for targeting the element in automated tests.',
       table: { type: { summary: 'string' } },
     },
-  } as const,
+  } satisfies ArgTypes<Props>,
   parameters: {
     controls: { sort: 'none' },
     docs: {

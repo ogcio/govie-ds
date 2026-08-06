@@ -1,5 +1,6 @@
-import type { StoryContext, Renderer } from 'storybook/internal/types';
+import type { ArgTypes, StoryContext, Renderer } from 'storybook/internal/types';
 import { within, expect } from 'storybook/test';
+import type { Props } from '../Text.lite';
 import { Size, Whitespace } from '../constants';
 import { enumType } from './utilities';
 
@@ -15,9 +16,6 @@ export const textMeta = {
     whitespace: Whitespace.NORMAL,
   },
   argTypes: {
-    children: {
-      table: { disable: true },
-    },
     size: enumType(Size, { description: 'Font size of the Text', defaultValue: Size.MD }),
     whitespace: enumType(Whitespace, { description: 'Whitespace handling.', defaultValue: Whitespace.NORMAL }),
     className: {
@@ -52,7 +50,7 @@ export const textMeta = {
       control: false,
       description: 'Value for the `data-testid` attribute, used for testing.',
     },
-  },
+  } satisfies ArgTypes<Props>,
   parameters: {
     docs: {
       description: {

@@ -1,6 +1,7 @@
-import type { StoryContext, Renderer } from 'storybook/internal/types';
+import type { ArgTypes, StoryContext, Renderer } from 'storybook/internal/types';
 import { within, expect } from 'storybook/test';
 import { Size } from '../heading/types';
+import type { Props } from '../heading/types';
 import { enumType } from './utilities';
 
 export const headingMeta = {
@@ -35,7 +36,7 @@ export const headingMeta = {
         },
       },
     },
-  } as const,
+  } satisfies ArgTypes<Props>,
   parameters: {
     docs: {
       description: {

@@ -7,7 +7,7 @@
 import * as React from 'react';
 
 export type Props = {
-  children: any;
+  children?: any;
   id?: string;
   className?: string;
   styles?: Record<string, string>;

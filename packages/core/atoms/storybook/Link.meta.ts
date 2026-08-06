@@ -1,5 +1,6 @@
-import type { Renderer, StoryContext } from 'storybook/internal/types';
+import type { ArgTypes, Renderer, StoryContext } from 'storybook/internal/types';
 import { within, expect } from 'storybook/test';
+import type { Props } from '../Link.lite';
 import { checker } from './utilities';
 
 export const linkMeta = {
@@ -12,10 +13,6 @@ export const linkMeta = {
     dataTestId: 'link-test',
   },
   argTypes: {
-    children: {
-      control: 'text',
-      description: 'Link content — text, icons, or any HTML element.',
-    },
     href: {
       control: 'text',
       description: 'The URL the link points to. Maps to the HTML href attribute.',
@@ -150,7 +147,7 @@ export const linkMeta = {
         defaultValue: { summary: 'default' },
       },
     },
-  },
+  } satisfies ArgTypes<Props>,
   parameters: {
     docs: {
       description: {

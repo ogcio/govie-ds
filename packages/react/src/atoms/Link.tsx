@@ -9,7 +9,7 @@ import * as React from 'react';
 
 export type Props = {
   id?: string;
-  children: any;
+  children?: any;
   href: string;
   className?: string;
   variant?: ValueOf<typeof Variant>;

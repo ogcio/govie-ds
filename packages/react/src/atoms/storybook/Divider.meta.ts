@@ -4,8 +4,9 @@
   The file source is in `packages/core/atoms/storybook/Divider.meta.ts`
  */
 
-import type { StoryContext, Renderer } from 'storybook/internal/types';
+import type { ArgTypes, StoryContext, Renderer } from 'storybook/internal/types';
 import { within, expect } from 'storybook/test';
+import type { Props } from '../Divider';
 import { Orientation } from '../constants';
 import { checker, enumType } from './utilities';
 export const meta = {
@@ -66,7 +67,7 @@ export const meta = {
         },
       },
     },
-  },
+  } satisfies ArgTypes<Props>,
   parameters: {
     docs: {
       description: {

@@ -4,8 +4,9 @@
   The file source is in `packages/core/atoms/storybook/Link.meta.ts`
  */
 
-import type { Renderer, StoryContext } from 'storybook/internal/types';
+import type { ArgTypes, Renderer, StoryContext } from 'storybook/internal/types';
 import { within, expect } from 'storybook/test';
+import type { Props } from '../Link';
 import { checker } from './utilities';
 export const linkMeta = {
   tags: ['autodocs'] as string[],
@@ -17,10 +18,6 @@ export const linkMeta = {
     dataTestId: 'link-test',
   },
   argTypes: {
-    children: {
-      control: 'text',
-      description: 'Link content — text, icons, or any HTML element.',
-    },
     href: {
       control: 'text',
       description: 'The URL the link points to. Maps to the HTML href attribute.',
@@ -253,7 +250,7 @@ export const linkMeta = {
         },
       },
     },
-  },
+  } satisfies ArgTypes<Props>,
   parameters: {
     docs: {
       description: {

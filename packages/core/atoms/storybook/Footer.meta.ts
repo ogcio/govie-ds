@@ -1,5 +1,6 @@
-import type { StoryContext, Renderer } from 'storybook/internal/types';
+import type { ArgTypes, StoryContext, Renderer } from 'storybook/internal/types';
 import { within } from 'storybook/test';
+import type { Props } from '../footer/Footer.lite';
 import { checker } from './utilities';
 
 export const footerMeta = {
@@ -42,7 +43,7 @@ export const footerMeta = {
         'Inline styles applied directly to the footer element. Use for truly dynamic values that cannot be expressed as Tailwind classes.',
       table: { type: { summary: 'Record<string, string>' } },
     },
-  } as const,
+  } satisfies ArgTypes<Props>,
   parameters: {
     docs: {
       description: {
