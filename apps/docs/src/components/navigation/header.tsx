@@ -104,21 +104,22 @@ export const DocsHeader = () => {
           <ul>
             {links.map((link, index) => (
               <li key={`${index}_${link.label}`}>
-                <Link
-                  appearance="inherit"
-                  underline="hover"
-                  asChild
-                  className="border-b-xs py-4 block gi-border-color-border-system-neutral-subtle"
-                >
-                  <NextLink
-                    onNavigate={() => {
-                      toggle('drawer');
-                    }}
-                    href={link.href}
-                  >
-                    {link.label}
-                  </NextLink>
-                </Link>
+                <ListItem
+                  label={link.label}
+                  href={link.href}
+                  slot={
+                    (
+                      <NextLink
+                        href={link.href}
+                        onNavigate={() => {
+                          toggle('drawer');
+                        }}
+                      >
+                        <span className="gi-text-sm gi-ml-1">{link.label}</span>
+                      </NextLink>
+                    ) as never
+                  }
+                />
               </li>
             ))}
           </ul>
