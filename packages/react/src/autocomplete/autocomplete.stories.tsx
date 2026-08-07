@@ -1,7 +1,7 @@
 import type { Meta, StoryObj } from '@storybook/react-vite';
 import find from 'lodash/find';
 import { extractRenderBody } from '@/test-utilities';
-import { useState, type ComponentProps, type PropsWithChildren } from 'react';
+import { RefObject, useState, type ComponentProps, type PropsWithChildren } from 'react';
 import { useForm } from 'react-hook-form';
 import { expect, within, userEvent, waitFor } from 'storybook/test';
 import { FormField, FormFieldLabel } from '@/forms/form-field/form-field';

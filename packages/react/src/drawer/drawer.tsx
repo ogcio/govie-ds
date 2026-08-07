@@ -78,30 +78,25 @@ export const Drawer = ({
   position = 'right',
   className,
 }: DrawerProps) => {
-  const isControlled = open !== undefined;
+  // if triggerButton present, default to uncontrolled behaviour
+  const isUncontrolled = !!triggerButton;
   const [internalOpen, setInternalOpen] = useState(startsOpen);
-  const isOpen = isControlled ? open : internalOpen;
-
-  const handleOpen = () => setInternalOpen(true);
-  const handleClose = onClose ?? (() => setInternalOpen(false));
-
   // only render the clone if triggerButton defined
   const renderCloneTrigger =
-    triggerButton === undefined
-      ? null
-      : cloneElement(triggerButton as ReactElement<any>, {
-          onClick: (event: React.MouseEvent) => {
-            const existingOnClick =
-              typeof (triggerButton as ReactElement<any>)?.props?.onClick === 'function'
-                ? (triggerButton as ReactElement<any>)?.props?.onClick
-                : undefined;
+    isUncontrolled &&
+    cloneElement(triggerButton as ReactElement<any>, {
+      onClick: (event: React.MouseEvent) => {
+        const existingOnClick =
+          typeof (triggerButton as ReactElement<any>)?.props?.onClick === 'function'
+            ? (triggerButton as ReactElement<any>)?.props?.onClick
+            : undefined;
 
-            if (existingOnClick) {
-              existingOnClick(event);
-            }
-            handleOpen();
-          },
-        });
+        if (existingOnClick) {
+          existingOnClick(event);
+        }
+        setInternalOpen(true);
+      },
+    });
   return (
     <>
       {renderCloneTrigger}
@@ -110,8 +105,8 @@ export const Drawer = ({
         closeButtonLabel={closeButtonLabel}
         position={position}
         className={className}
-        isOpen={isOpen}
-        onClose={handleClose}
+        isOpen={isUncontrolled ? internalOpen : open}
+        onClose={onClose ?? (() => setInternalOpen(false))}
       />
     </>
   );

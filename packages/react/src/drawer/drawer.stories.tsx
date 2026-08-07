@@ -4,9 +4,11 @@ import { useState } from 'react';
 import { within, expect, waitFor, screen, userEvent } from 'storybook/test';
 import Button from '@/atoms/Button';
 import Paragraph from '@/atoms/Paragraph';
-import { extractRenderBody } from '@/test-utilities.js';
 import { DrawerMenuExample } from './drawer.content.js';
 import { Drawer, DrawerBody, DrawerFooter, type DrawerProps } from './drawer.js';
+import Stack from '@/atoms/Stack.js';
+import Heading from '@/Heading.js';
+import Divider from '@/Divider.js';
 
 type DrawerStoryProps = Extract<DrawerProps, { open: boolean }>;
 
@@ -94,12 +96,9 @@ const shouldStartOpen = () => {
 export const Default: Story = {
   parameters: {
     layout: 'fullscreen',
-    docs: {
-      source: {
-        type: 'code',
-        transform: extractRenderBody,
-      },
-    },
+  },
+  args: {
+    closeButtonLabel: 'Close',
   },
   render: function Render(props) {
     const [isOpen, setIsOpen] = useState(shouldStartOpen());
@@ -142,14 +141,6 @@ export const Default: Story = {
 };
 
 export const DrawerRight: Story = {
-  parameters: {
-    docs: {
-      source: {
-        type: 'code',
-        transform: extractRenderBody,
-      },
-    },
-  },
   render: function Render(props) {
     const [isOpen, setIsOpen] = useState(shouldStartOpen());
 
@@ -186,14 +177,6 @@ export const DrawerRight: Story = {
 export const DrawerLeft: Story = {
   args: {
     position: 'left',
-  },
-  parameters: {
-    docs: {
-      source: {
-        type: 'code',
-        transform: extractRenderBody,
-      },
-    },
   },
   render: function Render(props) {
     const [isOpen, setIsOpen] = useState(shouldStartOpen());
@@ -232,14 +215,6 @@ export const DrawerBottom: Story = {
   args: {
     position: 'bottom',
   },
-  parameters: {
-    docs: {
-      source: {
-        type: 'code',
-        transform: extractRenderBody,
-      },
-    },
-  },
   render: function Render(props) {
     const [isOpen, setIsOpen] = useState(shouldStartOpen());
 
@@ -276,12 +251,6 @@ export const DrawerBottom: Story = {
 export const DrawerMenuTablet: Story = {
   parameters: {
     layout: 'fullscreen',
-    docs: {
-      source: {
-        type: 'code',
-        transform: extractRenderBody,
-      },
-    },
   },
   globals: { viewport: { value: 'tablet' } },
   args: {
@@ -318,12 +287,6 @@ export const DrawerMenuTablet: Story = {
 export const DrawerMenuMobile: Story = {
   parameters: {
     layout: 'fullscreen',
-    docs: {
-      source: {
-        type: 'code',
-        transform: extractRenderBody,
-      },
-    },
   },
   globals: { viewport: { value: 'mobile1' } },
   args: {
@@ -360,12 +323,6 @@ export const DrawerMenuMobile: Story = {
 export const DesktopButtonStacked: Story = {
   parameters: {
     layout: 'fullscreen',
-    docs: {
-      source: {
-        type: 'code',
-        transform: extractRenderBody,
-      },
-    },
   },
   args: {
     closeButtonLabel: 'Close',
@@ -406,19 +363,13 @@ export const DesktopButtonStacked: Story = {
 
 export const TestOpenCloseInteractions: Story = {
   tags: ['skip-playwright', 'interaction'],
-  parameters: {
-    docs: {
-      source: {
-        type: 'code',
-        transform: extractRenderBody,
-      },
-    },
-  },
+
   render: function Render(props) {
     const [isOpen, setIsOpen] = useState(false);
 
     return (
-      <>
+      <Stack gap={2}>
+        <Heading as="h4">Controlled</Heading>
         <Button dataTestId="drawer-trigger-button-container" onClick={() => setIsOpen(true)}>
           Open drawer
         </Button>
@@ -433,44 +384,64 @@ export const TestOpenCloseInteractions: Story = {
             <Paragraph>Here is the body content of the drawer.</Paragraph>
           </DrawerBody>
         </Drawer>
-      </>
+        <Divider />
+        <Heading as="h4">Uncontrolled</Heading>
+        <Drawer triggerButton={<Button dataTestId="drawer-trigger-uncontrolled">Open Drawer</Button>}>
+          <DrawerBody key="body">
+            <Paragraph>Here is the body content of the drawer.</Paragraph>
+          </DrawerBody>
+        </Drawer>
+      </Stack>
     );
   },
   play: async ({ canvasElement, step }) => {
     const canvas = within(canvasElement);
 
-    await step('should open the drawer on button trigger', async () => {
+    await step('Controlled should open the drawer on button trigger', async () => {
       const triggerButtonElement = await canvas.findByTestId('drawer-trigger-button-container');
       await userEvent.click(triggerButtonElement);
+      const controlledModal = screen.getAllByTestId('modal')[0];
       await waitFor(() => {
-        const modalElement = screen.getByTestId('modal');
-        expect(modalElement.classList.contains('gi-modal-open')).toBe(true);
+        expect(controlledModal.classList.contains('gi-modal-open')).toBe(true);
       });
     });
 
-    await step('should close the drawer on icon click', async () => {
-      const modalContainerElement = await screen.findByTestId('modal-container');
-      const iconElement = modalContainerElement.querySelector('.gi-modal-icon');
+    await step('Controlled should close the drawer on icon click', async () => {
+      const controlledModal = screen.getAllByTestId('modal')[0];
+      const iconElement = controlledModal.querySelector('.gi-modal-icon');
       expect(iconElement).toBeTruthy();
       await userEvent.click(iconElement as Element);
       await waitFor(() => {
-        const modalElement = screen.getByTestId('modal');
-        expect(modalElement.classList.contains('gi-modal-open')).toBe(false);
+        expect(controlledModal.classList.contains('gi-modal-open')).toBe(false);
       });
     });
 
-    await step('should close the drawer on overlay click', async () => {
+    await step('Controlled should close the drawer on overlay click', async () => {
       const triggerButtonElement = await canvas.findByTestId('drawer-trigger-button-container');
       await userEvent.click(triggerButtonElement);
+      const controlledModal = screen.getAllByTestId('modal')[0];
       await waitFor(() => {
-        const modalElement = screen.getByTestId('modal');
-        expect(modalElement.classList.contains('gi-modal-open')).toBe(true);
+        expect(controlledModal.classList.contains('gi-modal-open')).toBe(true);
       });
-      const modalElement = await screen.findByTestId('modal');
-      await userEvent.click(modalElement);
+      await userEvent.click(controlledModal);
       await waitFor(() => {
-        const element = screen.getByTestId('modal');
-        expect(element.classList.contains('gi-modal-open')).toBe(false);
+        expect(controlledModal.classList.contains('gi-modal-open')).toBe(false);
+      });
+    });
+
+    await step('Legacy uncontrolled method should still open/close the drawer', async () => {
+      const triggerButtonElement = await canvas.findByTestId('drawer-trigger-uncontrolled');
+      await userEvent.click(triggerButtonElement);
+      const uncontrolledModal = screen.getAllByTestId('modal')[1];
+      await waitFor(() => {
+        expect(uncontrolledModal.classList.contains('gi-modal-open')).toBe(true);
+      });
+
+      const iconElement = uncontrolledModal.querySelector('.gi-modal-icon');
+      expect(iconElement).toBeTruthy();
+      await userEvent.click(iconElement as Element);
+      await waitFor(() => {
+        expect(uncontrolledModal.classList.contains('gi-modal-open')).toBe(false);
       });
     });
   },
