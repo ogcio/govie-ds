@@ -23,7 +23,7 @@ const classes = tv({
 });
 
 @Component({
-  selector: 'inset-text',
+  selector: 'gi-inset-text',
   template: `
     <blockquote
       [attr.id]="id"

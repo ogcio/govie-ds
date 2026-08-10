@@ -26,21 +26,21 @@ export const Default: StoryObj = {
       <div class="gi-flex gi-flex-wrap gi-gap-8">
         <div class="gi-flex gi-w-48 gi-flex-col gi-items-center gi-gap-3">
           <div class="gi-flex gi-min-h-16 gi-items-center gi-justify-center">
-            <logo-black [label]="label" dataTestId="logo-black"></logo-black>
+            <gi-logo-black [label]="label" dataTestId="logo-black"></gi-logo-black>
           </div>
           <span class="gi-min-h-6 gi-text-sm gi-text-center">logo-black</span>
         </div>
 
         <div class="gi-flex gi-w-48 gi-flex-col gi-items-center gi-gap-3">
           <div class="gi-flex gi-min-h-16 gi-items-center gi-justify-center">
-            <logo-gold-green [label]="label" dataTestId="logo-gold-green"></logo-gold-green>
+            <gi-logo-gold-green [label]="label" dataTestId="logo-gold-green"></gi-logo-gold-green>
           </div>
           <span class="gi-min-h-6 gi-text-sm gi-text-center">logo-gold-green</span>
         </div>
 
         <div class="gi-flex gi-w-48 gi-flex-col gi-items-center gi-gap-3">
           <div class="gi-flex gi-min-h-16 gi-items-center gi-justify-center gi-rounded gi-bg-color-surface-system-primary-default gi-p-1">
-            <logo-white [label]="label" dataTestId="logo-white"></logo-white>
+            <gi-logo-white [label]="label" dataTestId="logo-white"></gi-logo-white>
           </div>
           <span class="gi-min-h-6 gi-text-sm gi-text-center">logo-white</span>
         </div>
@@ -51,14 +51,14 @@ export const Default: StoryObj = {
       <div class="gi-flex gi-flex-wrap gi-gap-8">
         <div class="gi-flex gi-w-48 gi-flex-col gi-items-center gi-gap-3">
           <div class="gi-flex gi-min-h-16 gi-items-center gi-justify-center gi-p-1">
-            <logo-harp-black [label]="label" dataTestId="logo-harp-black"></logo-harp-black>
+            <gi-logo-harp-black [label]="label" dataTestId="logo-harp-black"></gi-logo-harp-black>
           </div>
           <span class="gi-min-h-6 gi-text-sm gi-text-center">logo-harp-black</span>
         </div>
 
         <div class="gi-flex gi-w-48 gi-flex-col gi-items-center gi-gap-3">
           <div class="gi-flex gi-min-h-16 gi-items-center gi-justify-center gi-rounded gi-bg-color-surface-system-primary-default gi-p-1">
-            <logo-harp-white [label]="label" dataTestId="logo-harp-white"></logo-harp-white>
+            <gi-logo-harp-white [label]="label" dataTestId="logo-harp-white"></gi-logo-harp-white>
           </div>
           <span class="gi-min-h-6 gi-text-sm gi-text-center">logo-harp-white</span>
         </div>
@@ -69,7 +69,7 @@ export const Default: StoryObj = {
       <div class="gi-flex gi-flex-wrap gi-gap-8">
         <div class="gi-flex gi-w-48 gi-flex-col gi-items-center gi-gap-3">
           <div class="gi-flex gi-min-h-16 gi-items-center gi-justify-center gi-rounded gi-bg-color-surface-system-primary-default gi-p-1">
-            <logo-gold-white [label]="label" dataTestId="logo-gold-white"></logo-gold-white>
+            <gi-logo-gold-white [label]="label" dataTestId="logo-gold-white"></gi-logo-gold-white>
           </div>
           <span class="gi-min-h-6 gi-text-sm gi-text-center">logo-gold-white</span>
         </div>

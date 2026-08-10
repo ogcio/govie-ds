@@ -26,6 +26,7 @@ const DEFAULT_COLUMNS: Partial<Record<BreakpointKey, SpacingScale>> = {
   md: 8,
   lg: 12,
 };
+const classes = (list: Array<string | boolean | undefined>) => _.compact(list).join(' ');
 const getGridClasses = (value: ResponsiveValue<SpacingScale> | undefined, prefix: string): string =>
   resolveResponsive(value, (v, bp) => `${bp}${prefix}-${_.clamp(v as number, 0, 12)}`);
 
@@ -39,13 +40,14 @@ const getGridClasses = (value: ResponsiveValue<SpacingScale> | undefined, prefix
       [ariaLabelledBy]="ariaLabelledBy"
       [styles]="styles"
       [className]="
-        _.compact([
-          container &&
-            \`gi-grid-container \${getGridClasses(columns ?? DEFAULT_COLUMNS, 'gi-grid-columns')}
-                \${getGridClasses(gap, 'gi-grid-gap')}\`,
-          (!_.isNil(size) || !container) && \`gi-grid-item \${getGridClasses(size, 'gi-grid-span')}\`,
+        classes([
+          container && 'gi-grid-container',
+          container && getGridClasses(columns ?? DEFAULT_COLUMNS, 'gi-grid-columns'),
+          container && getGridClasses(gap, 'gi-grid-gap'),
+          (!container || !_.isNil(size)) && 'gi-grid-item',
+          (!container || !_.isNil(size)) && getGridClasses(size, 'gi-grid-span'),
           className,
-        ]).join(' ')
+        ])
       "
       [dataTestId]="dataTestId"
       ><ng-content></ng-content
@@ -63,6 +65,7 @@ const getGridClasses = (value: ResponsiveValue<SpacingScale> | undefined, prefix
 })
 export default class Grid {
   DEFAULT_COLUMNS = DEFAULT_COLUMNS;
+  classes = classes;
   getGridClasses = getGridClasses;
   _ = _;
 

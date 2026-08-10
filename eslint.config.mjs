@@ -29,8 +29,7 @@ export default [
         'error',
         {
           selector: 'TSEnumDeclaration',
-          message:
-            'Enums are not allowed, use const objects or string literals instead.',
+          message: 'Enums are not allowed, use const objects or string literals instead.',
         },
       ],
       curly: ['error', 'all'],
@@ -46,7 +45,14 @@ export default [
       'prefer-template': 'warn',
 
       '@typescript-eslint/no-explicit-any': 'warn',
-      '@typescript-eslint/no-unused-vars': 'warn',
+      '@typescript-eslint/no-unused-vars': [
+        'warn',
+        {
+          argsIgnorePattern: '^_',
+          varsIgnorePattern: '^_',
+          caughtErrorsIgnorePattern: '^_',
+        },
+      ],
       '@typescript-eslint/no-non-null-assertion': 'warn',
       '@typescript-eslint/consistent-type-imports': 'warn',
       '@typescript-eslint/no-require-imports': 'error',
@@ -65,22 +71,7 @@ export default [
       'unicorn/no-array-reduce': 'warn',
       'unicorn/no-array-sort': 'warn',
       'unicorn/no-nested-ternary': 'off',
-      'unicorn/prevent-abbreviations': [
-        'error',
-        {
-          replacements: {
-            prop: false,
-            props: false,
-            ref: false,
-            refs: false,
-            env: false,
-            acc: false,
-            util: false,
-            utils: false,
-          },
-          ignore: ['generateStaticParams'],
-        },
-      ],
+      'unicorn/prevent-abbreviations': 'off',
       'unicorn/filename-case': 'off',
     },
   },

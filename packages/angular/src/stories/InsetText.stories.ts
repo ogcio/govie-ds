@@ -19,14 +19,14 @@ export const Default: StoryObj<InsetText & { content: string }> = {
   render: (args) => ({
     props: args,
     template: `
-      <inset-text
+      <gi-inset-text
         [id]="id"
         [cite]="cite"
         [describedBy]="describedBy"
         [labelledBy]="labelledBy"
       >
         {{content}}
-      </inset-text>
+      </gi-inset-text>
     `,
   }),
 };

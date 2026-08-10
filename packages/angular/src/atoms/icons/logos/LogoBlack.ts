@@ -8,10 +8,10 @@ import { Component, Input } from '@angular/core';
 
 import { CommonModule } from '@angular/common';
 
-import { BaseSVGProps } from '../types';
+import type { BaseSVGProps } from '../types';
 
 @Component({
-  selector: 'logo-black',
+  selector: 'gi-logo-black',
   template: `
     <svg
       viewBox="0 0 181 64"

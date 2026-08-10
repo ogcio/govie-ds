@@ -6,7 +6,7 @@
 
 import * as React from 'react';
 
-import { BaseSVGProps } from '../types';
+import type { BaseSVGProps } from '../types';
 
 function LogoGoldGreen(props: BaseSVGProps) {
   return (

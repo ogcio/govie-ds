@@ -1,4 +1,7 @@
-import { BaseSVGProps } from '../types';
+import { useMetadata } from '@builder.io/mitosis';
+import type { BaseSVGProps } from '../types';
+
+useMetadata({ angular: { selector: 'gi-logo-white' } });
 
 export default function LogoWhite(props: BaseSVGProps) {
   return (

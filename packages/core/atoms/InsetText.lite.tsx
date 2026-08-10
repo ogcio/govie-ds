@@ -1,4 +1,7 @@
+import { useMetadata } from '@builder.io/mitosis';
 import { tv } from 'tailwind-variants';
+
+useMetadata({ angular: { selector: 'gi-inset-text' } });
 
 export type Props = {
   children?: any;

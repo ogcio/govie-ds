@@ -38,8 +38,9 @@
     "packages/react/**/*.{js,ts,tsx}": "eslint --config packages/react/eslint.config.js",
     "packages/html/ds/**/*.{js,ts,tsx}": "eslint --config packages/html/ds/eslint.config.js",
     "packages/vue/**/*.{js,ts,tsx,vue}": "eslint --config packages/vue/eslint.config.js",
+    "packages/angular/**/*.{js,ts,tsx}": "eslint --config packages/angular/eslint.config.js",
     "apps/docs/**/*.{js,ts,tsx}": "eslint --config apps/docs/eslint.config.js",
-    "{packages/!(react|html|vue),examples}/**/*.{js,ts,tsx}": "eslint",
+    "{packages/!(react|html|vue|angular),examples}/**/*.{js,ts,tsx}": "eslint",
     "{apps,packages,examples}/**/*": "prettier --check --ignore-unknown"
   },
   "devDependencies": {

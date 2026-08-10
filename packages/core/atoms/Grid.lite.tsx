@@ -22,14 +22,14 @@ export default function Grid(props: Props) {
       ariaLabel={props.ariaLabel}
       ariaLabelledBy={props.ariaLabelledBy}
       styles={props.styles}
-      className={_.compact([
-        props.container &&
-          `gi-grid-container ${getGridClasses(props.columns ?? DEFAULT_COLUMNS, 'gi-grid-columns')}
-        ${getGridClasses(props.gap, 'gi-grid-gap')}`,
-
-        (!_.isNil(props.size) || !props.container) && `gi-grid-item ${getGridClasses(props.size, 'gi-grid-span')}`,
+      className={classes([
+        props.container && 'gi-grid-container',
+        props.container && getGridClasses(props.columns ?? DEFAULT_COLUMNS, 'gi-grid-columns'),
+        props.container && getGridClasses(props.gap, 'gi-grid-gap'),
+        (!props.container || !_.isNil(props.size)) && 'gi-grid-item',
+        (!props.container || !_.isNil(props.size)) && getGridClasses(props.size, 'gi-grid-span'),
         props.className,
-      ]).join(' ')}
+      ])}
       dataTestId={props.dataTestId}
     >
       {props.children}
@@ -43,6 +43,8 @@ const DEFAULT_COLUMNS: Partial<Record<BreakpointKey, SpacingScale>> = {
   md: 8,
   lg: 12,
 };
+
+const classes = (list: Array<string | boolean | undefined>) => _.compact(list).join(' ');
 
 const getGridClasses = (value: ResponsiveValue<SpacingScale> | undefined, prefix: string): string =>
   resolveResponsive(value, (v, bp) => `${bp}${prefix}-${_.clamp(v as number, 0, 12)}`);

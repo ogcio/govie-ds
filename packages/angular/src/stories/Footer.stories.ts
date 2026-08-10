@@ -138,7 +138,7 @@ export const CompleteFooter: StoryObj = {
               </gi-stack>
             </gi-stack>
             <gi-footer-logo dataTestId="footer-logo">
-              <logo-gold-green size="181" label="Gov.ie Logo"></logo-gold-green>
+              <gi-logo-gold-green size="181" label="Gov.ie Logo"></gi-logo-gold-green>
             </gi-footer-logo>
           </gi-stack>
         </gi-footer-section>

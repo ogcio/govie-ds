@@ -22,7 +22,7 @@ export const Default: StoryObj = {
         [id]="id"
         [dataTestId]="dataTestId"
       >
-        <logo-gold-green size="181" label="Gov.ie Logo"></logo-gold-green>
+        <gi-logo-gold-green size="181" label="Gov.ie Logo"></gi-logo-gold-green>
       </gi-footer-logo>
     `,
   }),
