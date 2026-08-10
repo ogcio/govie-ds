@@ -7,7 +7,7 @@
 import * as React from 'react';
 
 export type Props = {
-  children: any;
+  children?: any;
   variant?: ValueOf<typeof SurfaceVariant>;
   appearance?: ValueOf<typeof SurfaceAppearance>;
   maxWidth?: ValueOf<typeof MaxWidth>;

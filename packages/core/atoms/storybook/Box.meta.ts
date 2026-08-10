@@ -1,5 +1,6 @@
-import type { StoryContext, Renderer } from 'storybook/internal/types';
+import type { ArgTypes, StoryContext, Renderer } from 'storybook/internal/types';
 import { within } from 'storybook/test';
+import type { Props } from '../Box.lite';
 import { checker } from './utilities';
 
 export const boxMeta = {
@@ -53,10 +54,7 @@ export const boxMeta = {
         'Inline styles applied directly to the container element. Use for truly dynamic values that cannot be expressed as Tailwind classes.',
       table: { type: { summary: 'Record<string, string>' } },
     },
-    children: {
-      table: { disable: true },
-    },
-  },
+  } satisfies ArgTypes<Props>,
   parameters: {
     docs: {
       description: {

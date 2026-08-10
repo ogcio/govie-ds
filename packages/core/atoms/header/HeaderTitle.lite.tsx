@@ -5,7 +5,7 @@ import GiBox from '../Box.lite';
 useMetadata({ angular: { selector: 'gi-header-title' } });
 
 export type Props = {
-  children: any;
+  children?: any;
   className?: string;
   styles?: Record<string, string>;
   id?: string;

@@ -10,7 +10,6 @@ import { CommonModule } from '@angular/common';
 
 export type Props = {
   className?: string;
-  children?: any;
   id?: string;
   dataTestId?: string;
   role?: 'region' | 'navigation' | 'complementary' | 'search' | 'form' | 'group';

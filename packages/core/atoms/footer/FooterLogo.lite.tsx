@@ -5,7 +5,7 @@ import GiBox from '../Box.lite';
 useMetadata({ angular: { selector: 'gi-footer-logo' } });
 
 export type Props = {
-  children: any;
+  children?: any;
   id?: string;
   className?: string;
   styles?: Record<string, string>;

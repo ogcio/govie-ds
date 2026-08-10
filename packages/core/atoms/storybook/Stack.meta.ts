@@ -1,5 +1,6 @@
-import type { StoryContext, Renderer } from 'storybook/internal/types';
+import type { ArgTypes, StoryContext, Renderer } from 'storybook/internal/types';
 import { within } from 'storybook/test';
+import type { Props } from '../Stack.lite';
 import { Direction, AlignItems, Justify } from '../constants';
 import { checker, enumType } from './utilities';
 import { boxMeta } from './Box.meta';
@@ -50,7 +51,7 @@ export const stackMeta = {
         defaultValue: { summary: 'false' },
       },
     },
-  } as const,
+  } satisfies ArgTypes<Props>,
   parameters: {
     docs: {
       description: {

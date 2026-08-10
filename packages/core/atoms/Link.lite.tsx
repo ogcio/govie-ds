@@ -7,7 +7,7 @@ useMetadata({ angular: { selector: 'gi-link' } });
 
 export type Props = {
   id?: string;
-  children: any;
+  children?: any;
   href: string;
   className?: string;
 

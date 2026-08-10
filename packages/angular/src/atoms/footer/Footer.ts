@@ -11,7 +11,6 @@ import { CommonModule } from '@angular/common';
 export type Props = {
   ariaLabel?: string;
   ariaLabelledBy?: string;
-  children?: any;
   className?: string;
   styles?: Record<string, string>;
   id?: string;

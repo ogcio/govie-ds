@@ -9,7 +9,6 @@ import { Component, Input } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
 export type Props = {
-  children: any;
   variant?: ValueOf<typeof SurfaceVariant>;
   appearance?: ValueOf<typeof SurfaceAppearance>;
   maxWidth?: ValueOf<typeof MaxWidth>;

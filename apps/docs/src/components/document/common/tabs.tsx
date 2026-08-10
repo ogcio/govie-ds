@@ -1,4 +1,5 @@
 import { LinkButton } from '@ogcio/design-system-react';
+import NextLink from 'next/link';
 export type Tab = {
   id: string;
   title: string;
@@ -23,14 +24,13 @@ export function Tabs({
           const isCurrent = tab.id === current;
           return (
             <li key={tab.title} className="flex">
-              {/* TODO: use asChild with NextLink when SSR issue resolved */}
               <LinkButton
-                href={tab.href}
+                asChild
                 appearance="default"
                 variant={isCurrent ? 'primary' : 'flat'}
                 ariaCurrent={isCurrent ? 'page' : undefined}
               >
-                {tab.title}
+                <NextLink href={tab.href}>{tab.title}</NextLink>
               </LinkButton>
             </li>
           );

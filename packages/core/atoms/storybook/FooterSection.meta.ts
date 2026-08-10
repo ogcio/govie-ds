@@ -1,5 +1,6 @@
-import type { StoryContext, Renderer } from 'storybook/internal/types';
+import type { ArgTypes, StoryContext, Renderer } from 'storybook/internal/types';
 import { within } from 'storybook/test';
+import type { Props } from '../footer/FooterSection.lite';
 import { SurfaceVariant } from '../constants';
 import { checker, enumType } from './utilities';
 import { containerMeta } from './Container.meta';
@@ -33,10 +34,7 @@ export const footerSectionMeta = {
       description: 'Test id for targeting the element in automated tests.',
       table: { type: { summary: 'string' } },
     },
-    children: {
-      table: { disable: true },
-    },
-  },
+  } satisfies ArgTypes<Props>,
   parameters: {
     docs: {
       description: {

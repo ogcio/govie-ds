@@ -4,8 +4,9 @@
   The file source is in `packages/core/atoms/storybook/Container.meta.ts`
  */
 
-import type { StoryContext, Renderer } from 'storybook/internal/types';
+import type { ArgTypes, StoryContext, Renderer } from 'storybook/internal/types';
 import { within } from 'storybook/test';
+import type { Props } from '../Container';
 import { MaxWidth } from '../constants';
 import { checker, enumType } from './utilities';
 import { boxMeta } from './Box.meta';
@@ -48,7 +49,7 @@ export const containerMeta = {
         },
       },
     }),
-  } as const,
+  } satisfies ArgTypes<Props>,
   parameters: {
     docs: {
       description: {

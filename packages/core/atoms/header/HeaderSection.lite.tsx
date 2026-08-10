@@ -9,7 +9,7 @@ import GiContainer from '../Container.lite';
 useMetadata({ angular: { selector: 'gi-header-section' } });
 
 export type Props = {
-  children: any;
+  children?: any;
   variant?: ValueOf<typeof SurfaceVariant>;
   appearance?: ValueOf<typeof SurfaceAppearance>;
   maxWidth?: ValueOf<typeof MaxWidth>;

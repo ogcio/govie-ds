@@ -17,6 +17,6 @@ export type Props = {
   id?: string;
   size?: ValueOf<typeof Size>;
   className?: string;
-  children: any;
+  children?: any;
   dataTestId?: string;
 };

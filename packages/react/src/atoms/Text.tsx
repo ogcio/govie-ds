@@ -7,7 +7,7 @@
 import * as React from 'react';
 
 export type Props = {
-  children: any;
+  children?: any;
   size?: ValueOf<typeof Size>;
   whitespace?: ValueOf<typeof Whitespace>;
   className?: string;

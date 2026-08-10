@@ -4,9 +4,10 @@
   The file source is in `packages/core/atoms/storybook/LinkButton.meta.ts`
  */
 
-import type { Renderer, StoryContext } from 'storybook/internal/types';
+import type { ArgTypes, Renderer, StoryContext } from 'storybook/internal/types';
 import { within, expect } from 'storybook/test';
 import _ from 'lodash';
+import type { Props } from '../LinkButton';
 import { Appearance, ButtonSize, Variant } from '../Button.styles';
 import { checker } from './utilities';
 import { linkMeta } from './Link.meta';
@@ -26,13 +27,7 @@ export const linkButtonMeta = {
   argTypes: {
     ..._.omit(linkMeta.argTypes, ['variant', 'appearance', 'underline', 'visited']),
     ..._.pick(buttonMeta.argTypes, ['variant', 'appearance', 'size']),
-    children: {
-      control: false,
-      table: {
-        disable: true,
-      },
-    },
-  },
+  } satisfies ArgTypes<Props>,
   parameters: {
     docs: {
       description: {

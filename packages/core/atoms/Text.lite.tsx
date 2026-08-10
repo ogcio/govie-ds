@@ -4,7 +4,7 @@ import { getSize, getWhitespace } from './utilities';
 import classes from './Text.styles';
 
 export type Props = {
-  children: any;
+  children?: any;
   size?: ValueOf<typeof Size>;
   whitespace?: ValueOf<typeof Whitespace>;
   className?: string;

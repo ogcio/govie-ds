@@ -5,8 +5,9 @@
  */
 
 import { pick } from 'lodash';
-import type { StoryContext, Renderer } from 'storybook/internal/types';
+import type { ArgTypes, StoryContext, Renderer } from 'storybook/internal/types';
 import { within } from 'storybook/test';
+import type { Props } from '../header/Header';
 import { boxMeta } from './Box.meta';
 import { checker } from './utilities';
 export const headerMeta = {
@@ -18,7 +19,7 @@ export const headerMeta = {
     id: 'header-example',
   },
   argTypes: {
-    ...pick(boxMeta.argTypes, ['className', 'id', 'dataTestId', 'styles', 'children']),
+    ...pick(boxMeta.argTypes, ['className', 'id', 'dataTestId', 'styles']),
     ariaLabel: {
       control: 'text',
       description: 'Accessible label for the header landmark. Maps to `aria-label`.',
@@ -40,7 +41,7 @@ export const headerMeta = {
         },
       },
     },
-  },
+  } satisfies ArgTypes<Props>,
   parameters: {
     docs: {
       description: {

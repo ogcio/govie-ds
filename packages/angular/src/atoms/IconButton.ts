@@ -13,7 +13,6 @@ export type Props = {
   variant?: ValueOf<typeof Variant>;
   appearance?: ValueOf<typeof Appearance>;
   size?: ValueOf<typeof Size>;
-  children?: any;
   disabled?: boolean;
   className?: string;
   onClick?: (event: any) => void;

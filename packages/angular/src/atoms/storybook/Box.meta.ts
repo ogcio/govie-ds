@@ -4,8 +4,9 @@
   The file source is in `packages/core/atoms/storybook/Box.meta.ts`
  */
 
-import type { StoryContext, Renderer } from 'storybook/internal/types';
+import type { ArgTypes, StoryContext, Renderer } from 'storybook/internal/types';
 import { within } from 'storybook/test';
+import type { Props } from '../Box';
 import { checker } from './utilities';
 export const boxMeta = {
   tags: ['autodocs'] as string[],
@@ -96,12 +97,7 @@ export const boxMeta = {
         },
       },
     },
-    children: {
-      table: {
-        disable: true,
-      },
-    },
-  },
+  } satisfies ArgTypes<Props>,
   parameters: {
     docs: {
       description: {

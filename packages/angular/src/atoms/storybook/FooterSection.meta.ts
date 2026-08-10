@@ -4,8 +4,9 @@
   The file source is in `packages/core/atoms/storybook/FooterSection.meta.ts`
  */
 
-import type { StoryContext, Renderer } from 'storybook/internal/types';
+import type { ArgTypes, StoryContext, Renderer } from 'storybook/internal/types';
 import { within } from 'storybook/test';
+import type { Props } from '../footer/FooterSection';
 import { SurfaceVariant } from '../constants';
 import { checker, enumType } from './utilities';
 import { containerMeta } from './Container.meta';
@@ -56,12 +57,7 @@ export const footerSectionMeta = {
         },
       },
     },
-    children: {
-      table: {
-        disable: true,
-      },
-    },
-  },
+  } satisfies ArgTypes<Props>,
   parameters: {
     docs: {
       description: {

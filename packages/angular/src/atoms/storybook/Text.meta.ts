@@ -4,8 +4,9 @@
   The file source is in `packages/core/atoms/storybook/Text.meta.ts`
  */
 
-import type { StoryContext, Renderer } from 'storybook/internal/types';
+import type { ArgTypes, StoryContext, Renderer } from 'storybook/internal/types';
 import { within, expect } from 'storybook/test';
+import type { Props } from '../Text';
 import { Size, Whitespace } from '../constants';
 import { enumType } from './utilities';
 const loremIpsum = 'Lorem ipsum dolor sit amet.';
@@ -19,11 +20,6 @@ export const textMeta = {
     whitespace: Whitespace.NORMAL,
   },
   argTypes: {
-    children: {
-      table: {
-        disable: true,
-      },
-    },
     size: enumType(Size, {
       description: 'Font size of the Text',
       defaultValue: Size.MD,
@@ -67,7 +63,7 @@ export const textMeta = {
       control: false,
       description: 'Value for the `data-testid` attribute, used for testing.',
     },
-  },
+  } satisfies ArgTypes<Props>,
   parameters: {
     docs: {
       description: {

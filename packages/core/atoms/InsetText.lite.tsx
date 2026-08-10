@@ -1,7 +1,7 @@
 import { tv } from 'tailwind-variants';
 
 export type Props = {
-  children: any;
+  children?: any;
   cite?: string;
   className?: string;
   styles?: Record<string, string>;

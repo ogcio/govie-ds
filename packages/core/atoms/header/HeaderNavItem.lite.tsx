@@ -5,7 +5,7 @@ import type { VisibleValue } from './HeaderNavItem.styles';
 useMetadata({ angular: { selector: 'gi-header-nav-item' } });
 
 export type Props = {
-  children: any;
+  children?: any;
   /** Visibility: `true`/`false`, a breakpoint to show from (e.g. `"lg"`), or a per-breakpoint map like `{ base: false, lg: true }`. */
   visible?: VisibleValue;
   onClick?: (event: any) => void;

@@ -1,5 +1,6 @@
-import type { StoryContext, Renderer } from 'storybook/internal/types';
+import type { ArgTypes, StoryContext, Renderer } from 'storybook/internal/types';
 import { within, expect } from 'storybook/test';
+import type { Props } from '../Divider.lite';
 import { Orientation } from '../constants';
 import { checker, enumType } from './utilities';
 
@@ -37,7 +38,7 @@ export const meta = {
       description: 'Test id for targeting the element in automated tests.',
       table: { type: { summary: 'string' } },
     },
-  },
+  } satisfies ArgTypes<Props>,
   parameters: {
     docs: {
       description: {
