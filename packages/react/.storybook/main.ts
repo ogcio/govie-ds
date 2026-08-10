@@ -8,7 +8,6 @@ const config: StorybookConfig = {
     '@storybook/addon-docs',
     '@chromatic-com/storybook',
     '@storybook/addon-a11y',
-    '@storybook/addon-coverage',
     '@storybook/addon-links',
     // TODO: re-enable when we're ready to surface the doete theme switcher.
     // The addon was dropped during the Storybook 9 upgrade (commit 84e6481d)

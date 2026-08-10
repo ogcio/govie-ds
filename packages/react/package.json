@@ -79,7 +79,6 @@
     "@ogcio/theme-doete": "workspace:*",
     "@ogcio/theme-govie": "workspace:*",
     "@storybook/addon-a11y": "^10.3.5",
-    "@storybook/addon-coverage": "^3.0.1",
     "@storybook/addon-docs": "^10.3.5",
     "@storybook/addon-links": "^10.3.5",
     "@storybook/addon-themes": "^10.3.5",
@@ -91,8 +90,8 @@
     "@testing-library/react": "^16.0.1",
     "@types/lodash": "^4.17.24",
     "@vitejs/plugin-react": "5.2.0",
-    "@vitest/browser-playwright": "4.1.6",
-    "@vitest/coverage-istanbul": "4.1.6",
+    "@vitest/browser-playwright": "4.1.10",
+    "@vitest/coverage-istanbul": "4.1.10",
     "autoprefixer": "^10.4.19",
     "axe-core": "^4.11.3",
     "eslint-plugin-no-relative-import-paths": "^1.6.1",
@@ -110,6 +109,6 @@
     "vite-plugin-dts": "5.0.0",
     "vite-plugin-externalize-deps": "^0.10.0",
     "vite-plugin-lib-inject-css": "2.2.2",
-    "vitest": "4.1.6"
+    "vitest": "4.1.10"
   }
 }

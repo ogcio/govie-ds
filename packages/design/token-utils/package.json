@@ -20,6 +20,7 @@
   },
   "devDependencies": {
     "@ogcio/design-system-prettier-config": "workspace:*",
-    "@types/lodash": "^4.17.7"
+    "@types/lodash": "^4.17.7",
+    "vitest": "4.1.10"
   }
 }

@@ -41,7 +41,6 @@
     "@ogcio/design-system-tailwind": "workspace:*",
     "@ogcio/theme-govie": "workspace:*",
     "@storybook/addon-a11y": "^10.3.3",
-    "@storybook/addon-coverage": "^3.0.1",
     "@storybook/addon-docs": "^10.3.3",
     "@storybook/addon-links": "^10.3.3",
     "@storybook/angular": "^10.3.3",

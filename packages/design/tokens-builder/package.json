@@ -23,6 +23,7 @@
     "@ogcio/design-system-prettier-config": "workspace:*",
     "@ogcio/design-system-token-utils": "workspace:*",
     "@types/color": "^3.0.6",
-    "@types/lodash": "^4.17.7"
+    "@types/lodash": "^4.17.7",
+    "vitest": "4.1.10"
   }
 }
