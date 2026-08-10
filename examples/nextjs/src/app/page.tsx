@@ -673,6 +673,8 @@ const ValidationFormExample = () => {
 
 // Main Component
 export default function Home() {
+  const [drawerOpen, setDrawerOpen] = useState(false);
+
   return (
     <>
       <HeaderComposable />
@@ -1163,8 +1165,19 @@ export default function Home() {
                           <Button variant="primary">Confirm</Button>
                         </ModalFooter>
                       </Modal>
-
-                      <Drawer triggerButton={<Button>Open Drawer</Button>}>
+                      <Button
+                        onClick={() => {
+                          setDrawerOpen(true);
+                        }}
+                      >
+                        Controlled drawer trigger
+                      </Button>
+                      <Drawer
+                        open={drawerOpen}
+                        onClose={() => {
+                          setDrawerOpen(false);
+                        }}
+                      >
                         <DrawerBody>
                           <Paragraph>
                             This is the drawer content. Drawers slide in from the side and are great for forms or

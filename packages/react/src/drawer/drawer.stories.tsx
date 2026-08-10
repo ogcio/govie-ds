@@ -1,9 +1,16 @@
 import type { Meta, StoryObj } from '@storybook/react-vite';
+import type { ComponentType } from 'react';
+import { useState } from 'react';
 import { within, expect, waitFor, screen, userEvent } from 'storybook/test';
 import Button from '@/atoms/Button';
 import Paragraph from '@/atoms/Paragraph';
 import { DrawerMenuExample } from './drawer.content.js';
-import { Drawer, DrawerBody, DrawerFooter } from './drawer.js';
+import { Drawer, DrawerBody, DrawerFooter, type DrawerProps } from './drawer.js';
+import Stack from '@/atoms/Stack.js';
+import Heading from '@/Heading.js';
+import Divider from '@/Divider.js';
+
+type DrawerStoryProps = Extract<DrawerProps, { open: boolean }>;
 
 const meta = {
   title: 'Application/Drawer',
@@ -21,26 +28,7 @@ const meta = {
       },
     },
   },
-  component: Drawer,
-} satisfies Meta<typeof Drawer>;
-
-export default meta;
-type Story = StoryObj<typeof meta>;
-
-const shouldStartOpen = () => {
-  try {
-    const parameters = new URLSearchParams(globalThis.location.search);
-    const viewMode = parameters.get('viewMode');
-    const path = parameters.get('path') || '';
-
-    return viewMode === 'story' || (!viewMode && !path.includes('--docs'));
-  } catch {
-    return true;
-  }
-};
-
-export const Default: Story = {
-  parameters: { layout: 'fullscreen' },
+  component: Drawer as ComponentType<DrawerStoryProps>,
   argTypes: {
     position: {
       control: 'radio',
@@ -51,12 +39,20 @@ export const Default: Story = {
         defaultValue: { summary: 'right' },
       },
     },
-    startsOpen: {
+    open: {
       control: 'boolean',
-      description: 'If true, the drawer starts open.',
+      description:
+        'Controls the open/closed state of the drawer. Use with `onClose` and local state instead of `startsOpen` and `triggerButton`.',
       table: {
         type: { summary: 'boolean' },
-        defaultValue: { summary: 'false' },
+      },
+    },
+    onClose: {
+      control: false,
+      description:
+        'Callback fired when the drawer is closed. Used together with the controlled `open` prop to manage drawer state externally.',
+      table: {
+        type: { summary: '() => void' },
       },
     },
     closeButtonLabel: {
@@ -66,11 +62,6 @@ export const Default: Story = {
         type: { summary: 'string' },
         defaultValue: { summary: 'Close' },
       },
-    },
-    triggerButton: {
-      control: false,
-      description: 'Trigger element used to open the drawer. It is cloned to inject an onClick.',
-      table: { type: { summary: 'ReactElement' } },
     },
     children: {
       control: false,
@@ -85,26 +76,54 @@ export const Default: Story = {
       },
     },
   },
-  args: {
-    dataTestId: 'drawer',
-    triggerButton: <Button>Open drawer</Button>,
-    closeButtonLabel: 'Close',
-    children: <></>,
+} satisfies Meta<DrawerStoryProps>;
+
+export default meta;
+type Story = StoryObj<DrawerStoryProps>;
+
+const shouldStartOpen = () => {
+  try {
+    const parameters = new URLSearchParams(globalThis.location.search);
+    const viewMode = parameters.get('viewMode');
+    const path = parameters.get('path') || '';
+
+    return viewMode === 'story' || (!viewMode && !path.includes('--docs'));
+  } catch {
+    return true;
+  }
+};
+
+export const Default: Story = {
+  parameters: {
+    layout: 'fullscreen',
   },
-  render: (arguments_) => {
-    const startsOpen = shouldStartOpen();
+  args: {
+    closeButtonLabel: 'Close',
+  },
+  render: function Render(props) {
+    const [isOpen, setIsOpen] = useState(shouldStartOpen());
+
     return (
-      <Drawer {...arguments_} startsOpen={startsOpen}>
-        <DrawerBody key="body" className="gi-border-t-xs gi-border-color-border-system-neutral-subtle">
-          <DrawerMenuExample />
-        </DrawerBody>
-        <DrawerFooter key="footer">
-          <Button variant="secondary" appearance="dark" className="gi-justify-center xs:gi-justify-start">
-            Cancel
-          </Button>
-          <Button className="gi-justify-center xs:gi-justify-start">Primary</Button>
-        </DrawerFooter>
-      </Drawer>
+      <>
+        <Button onClick={() => setIsOpen(true)}>Open drawer</Button>
+        <Drawer
+          {...props}
+          open={isOpen}
+          onClose={() => {
+            setIsOpen(false);
+          }}
+        >
+          <DrawerBody key="body" className="gi-border-t-xs gi-border-color-border-system-neutral-subtle">
+            <DrawerMenuExample />
+          </DrawerBody>
+          <DrawerFooter key="footer">
+            <Button variant="secondary" appearance="dark" className="gi-justify-center xs:gi-justify-start">
+              Cancel
+            </Button>
+            <Button className="gi-justify-center xs:gi-justify-start">Primary</Button>
+          </DrawerFooter>
+        </Drawer>
+      </>
     );
   },
   play: async ({ step }) => {
@@ -122,29 +141,35 @@ export const Default: Story = {
 };
 
 export const DrawerRight: Story = {
-  args: {
-    triggerButton: <Button>Open drawer</Button>,
-    children: <></>,
-  },
-  render: (arguments_) => {
-    const startsOpen = shouldStartOpen();
+  render: function Render(props) {
+    const [isOpen, setIsOpen] = useState(shouldStartOpen());
+
     return (
-      <Drawer {...arguments_} startsOpen={startsOpen}>
-        <DrawerBody key="body">
-          <Paragraph>
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Incidunt esse magnam quis sit soluta cupiditate at
-            deserunt exercitationem voluptas doloribus asperiores.
-          </Paragraph>
-        </DrawerBody>
-        <DrawerFooter key="footer">
-          <div className="gi-flex gi-flex-col-reverse gi-gap-4 xs:gi-gap-6 xs:gi-justify-end xs:gi-flex-row">
-            <Button variant="secondary" appearance="dark" className="gi-justify-center xs:gi-justify-start">
-              Cancel
-            </Button>
-            <Button className="gi-justify-center xs:gi-justify-start">Primary</Button>
-          </div>
-        </DrawerFooter>
-      </Drawer>
+      <>
+        <Button onClick={() => setIsOpen(true)}>Open drawer</Button>
+        <Drawer
+          {...props}
+          open={isOpen}
+          onClose={() => {
+            setIsOpen(false);
+          }}
+        >
+          <DrawerBody key="body">
+            <Paragraph>
+              Lorem ipsum dolor sit amet consectetur adipisicing elit. Incidunt esse magnam quis sit soluta cupiditate
+              at deserunt exercitationem voluptas doloribus asperiores.
+            </Paragraph>
+          </DrawerBody>
+          <DrawerFooter key="footer">
+            <div className="gi-flex gi-flex-col-reverse gi-gap-4 xs:gi-gap-6 xs:gi-justify-end xs:gi-flex-row">
+              <Button variant="secondary" appearance="dark" className="gi-justify-center xs:gi-justify-start">
+                Cancel
+              </Button>
+              <Button className="gi-justify-center xs:gi-justify-start">Primary</Button>
+            </div>
+          </DrawerFooter>
+        </Drawer>
+      </>
     );
   },
 };
@@ -152,28 +177,36 @@ export const DrawerRight: Story = {
 export const DrawerLeft: Story = {
   args: {
     position: 'left',
-    triggerButton: <Button>Open drawer</Button>,
-    children: <></>,
   },
-  render: (arguments_) => {
-    const startsOpen = shouldStartOpen();
+  render: function Render(props) {
+    const [isOpen, setIsOpen] = useState(shouldStartOpen());
+
     return (
-      <Drawer {...arguments_} startsOpen={startsOpen}>
-        <DrawerBody key="body">
-          <Paragraph>
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Incidunt esse magnam quis sit soluta cupiditate at
-            deserunt exercitationem voluptas doloribus asperiores.
-          </Paragraph>
-        </DrawerBody>
-        <DrawerFooter key="footer">
-          <div className="gi-flex gi-flex-col-reverse gi-gap-4 xs:gi-gap-6 xs:gi-justify-end xs:gi-flex-row">
-            <Button variant="secondary" appearance="dark" className="gi-justify-center xs:gi-justify-start">
-              Cancel
-            </Button>
-            <Button className="gi-justify-center xs:gi-justify-start">Primary</Button>
-          </div>
-        </DrawerFooter>
-      </Drawer>
+      <>
+        <Button onClick={() => setIsOpen(true)}>Open drawer</Button>
+        <Drawer
+          {...props}
+          open={isOpen}
+          onClose={() => {
+            setIsOpen(false);
+          }}
+        >
+          <DrawerBody key="body">
+            <Paragraph>
+              Lorem ipsum dolor sit amet consectetur adipisicing elit. Incidunt esse magnam quis sit soluta cupiditate
+              at deserunt exercitationem voluptas doloribus asperiores.
+            </Paragraph>
+          </DrawerBody>
+          <DrawerFooter key="footer">
+            <div className="gi-flex gi-flex-col-reverse gi-gap-4 xs:gi-gap-6 xs:gi-justify-end xs:gi-flex-row">
+              <Button variant="secondary" appearance="dark" className="gi-justify-center xs:gi-justify-start">
+                Cancel
+              </Button>
+              <Button className="gi-justify-center xs:gi-justify-start">Primary</Button>
+            </div>
+          </DrawerFooter>
+        </Drawer>
+      </>
     );
   },
 };
@@ -181,164 +214,234 @@ export const DrawerLeft: Story = {
 export const DrawerBottom: Story = {
   args: {
     position: 'bottom',
-    triggerButton: <Button>Open drawer</Button>,
-    children: <></>,
   },
-  render: (arguments_) => {
-    const startsOpen = shouldStartOpen();
+  render: function Render(props) {
+    const [isOpen, setIsOpen] = useState(shouldStartOpen());
+
     return (
-      <Drawer {...arguments_} startsOpen={startsOpen}>
-        <DrawerBody key="body">
-          <Paragraph>
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Incidunt esse magnam quis sit soluta cupiditate at
-            deserunt exercitationem voluptas doloribus asperiores.
-          </Paragraph>
-        </DrawerBody>
-        <DrawerFooter key="footer">
-          <div className="gi-flex gi-flex-col-reverse gi-gap-4 xs:gi-gap-6 xs:gi-justify-end xs:gi-flex-row">
-            <Button variant="secondary" appearance="dark" className="gi-justify-center xs:gi-justify-start">
-              Cancel
-            </Button>
-            <Button className="gi-justify-center xs:gi-justify-start">Primary</Button>
-          </div>
-        </DrawerFooter>
-      </Drawer>
+      <>
+        <Button onClick={() => setIsOpen(true)}>Open drawer</Button>
+        <Drawer
+          {...props}
+          open={isOpen}
+          onClose={() => {
+            setIsOpen(false);
+          }}
+        >
+          <DrawerBody key="body">
+            <Paragraph>
+              Lorem ipsum dolor sit amet consectetur adipisicing elit. Incidunt esse magnam quis sit soluta cupiditate
+              at deserunt exercitationem voluptas doloribus asperiores.
+            </Paragraph>
+          </DrawerBody>
+          <DrawerFooter key="footer">
+            <div className="gi-flex gi-flex-col-reverse gi-gap-4 xs:gi-gap-6 xs:gi-justify-end xs:gi-flex-row">
+              <Button variant="secondary" appearance="dark" className="gi-justify-center xs:gi-justify-start">
+                Cancel
+              </Button>
+              <Button className="gi-justify-center xs:gi-justify-start">Primary</Button>
+            </div>
+          </DrawerFooter>
+        </Drawer>
+      </>
     );
   },
 };
 
 export const DrawerMenuTablet: Story = {
-  parameters: { layout: 'fullscreen' },
+  parameters: {
+    layout: 'fullscreen',
+  },
   globals: { viewport: { value: 'tablet' } },
   args: {
-    triggerButton: <Button>Open drawer</Button>,
     closeButtonLabel: 'Close',
-    children: <></>,
   },
-  render: (arguments_) => {
-    const startsOpen = shouldStartOpen();
+  render: function Render(props) {
+    const [isOpen, setIsOpen] = useState(shouldStartOpen());
+
     return (
-      <Drawer {...arguments_} startsOpen={startsOpen}>
-        <DrawerBody key="body" className="gi-border-t-xs gi-border-color-border-system-neutral-subtle">
-          <DrawerMenuExample />
-        </DrawerBody>
-        <DrawerFooter key="footer">
-          <Button variant="secondary" appearance="dark" className="gi-justify-center xs:gi-justify-start">
-            Cancel
-          </Button>
-          <Button className="gi-justify-center xs:gi-justify-start">Primary</Button>
-        </DrawerFooter>
-      </Drawer>
+      <>
+        <Button onClick={() => setIsOpen(true)}>Open drawer</Button>
+        <Drawer
+          {...props}
+          open={isOpen}
+          onClose={() => {
+            setIsOpen(false);
+          }}
+        >
+          <DrawerBody key="body" className="gi-border-t-xs gi-border-color-border-system-neutral-subtle">
+            <DrawerMenuExample />
+          </DrawerBody>
+          <DrawerFooter key="footer">
+            <Button variant="secondary" appearance="dark" className="gi-justify-center xs:gi-justify-start">
+              Cancel
+            </Button>
+            <Button className="gi-justify-center xs:gi-justify-start">Primary</Button>
+          </DrawerFooter>
+        </Drawer>
+      </>
     );
   },
 };
 
 export const DrawerMenuMobile: Story = {
-  parameters: { layout: 'fullscreen' },
+  parameters: {
+    layout: 'fullscreen',
+  },
   globals: { viewport: { value: 'mobile1' } },
   args: {
-    triggerButton: <Button>Open drawer</Button>,
     closeButtonLabel: 'Close',
-    children: <></>,
   },
-  render: (arguments_) => {
-    const startsOpen = shouldStartOpen();
+  render: function Render(props) {
+    const [isOpen, setIsOpen] = useState(shouldStartOpen());
+
     return (
-      <Drawer {...arguments_} startsOpen={startsOpen}>
-        <DrawerBody key="body" className="gi-border-t-xs gi-border-color-border-system-neutral-subtle">
-          <DrawerMenuExample />
-        </DrawerBody>
-        <DrawerFooter key="footer">
-          <Button variant="secondary" appearance="dark" className="gi-justify-center xs:gi-justify-start">
-            Cancel
-          </Button>
-          <Button className="gi-justify-center xs:gi-justify-start">Primary</Button>
-        </DrawerFooter>
-      </Drawer>
+      <>
+        <Button onClick={() => setIsOpen(true)}>Open drawer</Button>
+        <Drawer
+          {...props}
+          open={isOpen}
+          onClose={() => {
+            setIsOpen(false);
+          }}
+        >
+          <DrawerBody key="body" className="gi-border-t-xs gi-border-color-border-system-neutral-subtle">
+            <DrawerMenuExample />
+          </DrawerBody>
+          <DrawerFooter key="footer">
+            <Button variant="secondary" appearance="dark" className="gi-justify-center xs:gi-justify-start">
+              Cancel
+            </Button>
+            <Button className="gi-justify-center xs:gi-justify-start">Primary</Button>
+          </DrawerFooter>
+        </Drawer>
+      </>
     );
   },
 };
 
 export const DesktopButtonStacked: Story = {
-  parameters: { layout: 'fullscreen' },
-  args: {
-    triggerButton: <Button>Open drawer</Button>,
-    closeButtonLabel: 'Close',
-    children: <></>,
+  parameters: {
+    layout: 'fullscreen',
   },
-  render: (arguments_) => {
-    const startsOpen = shouldStartOpen();
+  args: {
+    closeButtonLabel: 'Close',
+  },
+  render: function Render(props) {
+    const [isOpen, setIsOpen] = useState(shouldStartOpen());
+
     return (
-      <Drawer {...arguments_} startsOpen={startsOpen}>
-        <DrawerBody key="body" className="gi-border-t-xs gi-border-color-border-system-neutral-subtle">
-          <DrawerMenuExample />
-        </DrawerBody>
-        <DrawerFooter stacked key="footer">
-          <Button>Primary</Button>
-          <Button variant="secondary" appearance="dark">
-            Cancel
-          </Button>
-          <Button variant="secondary" appearance="dark">
-            Cancel
-          </Button>
-          <Button variant="secondary" appearance="dark">
-            Cancel
-          </Button>
-        </DrawerFooter>
-      </Drawer>
+      <>
+        <Button onClick={() => setIsOpen(true)}>Open drawer</Button>
+        <Drawer
+          {...props}
+          open={isOpen}
+          onClose={() => {
+            setIsOpen(false);
+          }}
+        >
+          <DrawerBody key="body" className="gi-border-t-xs gi-border-color-border-system-neutral-subtle">
+            <DrawerMenuExample />
+          </DrawerBody>
+          <DrawerFooter stacked key="footer">
+            <Button>Primary</Button>
+            <Button variant="secondary" appearance="dark">
+              Cancel
+            </Button>
+            <Button variant="secondary" appearance="dark">
+              Cancel
+            </Button>
+            <Button variant="secondary" appearance="dark">
+              Cancel
+            </Button>
+          </DrawerFooter>
+        </Drawer>
+      </>
     );
   },
 };
 
 export const TestOpenCloseInteractions: Story = {
-  tags: ['skip-playwright'],
-  args: {
-    startsOpen: false,
-    triggerButton: <Button dataTestId="drawer-trigger-button-container">Open drawer</Button>,
-    children: <></>,
+  tags: ['skip-playwright', 'interaction'],
+
+  render: function Render(props) {
+    const [isOpen, setIsOpen] = useState(false);
+
+    return (
+      <Stack gap={2}>
+        <Heading as="h4">Controlled</Heading>
+        <Button dataTestId="drawer-trigger-button-container" onClick={() => setIsOpen(true)}>
+          Open drawer
+        </Button>
+        <Drawer
+          {...props}
+          open={isOpen}
+          onClose={() => {
+            setIsOpen(false);
+          }}
+        >
+          <DrawerBody key="body">
+            <Paragraph>Here is the body content of the drawer.</Paragraph>
+          </DrawerBody>
+        </Drawer>
+        <Divider />
+        <Heading as="h4">Uncontrolled</Heading>
+        <Drawer triggerButton={<Button dataTestId="drawer-trigger-uncontrolled">Open Drawer</Button>}>
+          <DrawerBody key="body">
+            <Paragraph>Here is the body content of the drawer.</Paragraph>
+          </DrawerBody>
+        </Drawer>
+      </Stack>
+    );
   },
-  render: (arguments_) => (
-    <Drawer {...arguments_}>
-      <DrawerBody key="body">
-        <Paragraph>Here is the body content of the drawer.</Paragraph>
-      </DrawerBody>
-    </Drawer>
-  ),
   play: async ({ canvasElement, step }) => {
     const canvas = within(canvasElement);
 
-    await step('should open the drawer on button trigger', async () => {
+    await step('Controlled should open the drawer on button trigger', async () => {
       const triggerButtonElement = await canvas.findByTestId('drawer-trigger-button-container');
       await userEvent.click(triggerButtonElement);
+      const controlledModal = screen.getAllByTestId('modal')[0];
       await waitFor(() => {
-        const modalElement = screen.getByTestId('modal');
-        expect(modalElement.classList.contains('gi-modal-open')).toBe(true);
+        expect(controlledModal.classList.contains('gi-modal-open')).toBe(true);
       });
     });
 
-    await step('should close the drawer on icon click', async () => {
-      const modalContainerElement = await screen.findByTestId('modal-container');
-      const iconElement = modalContainerElement.querySelector('.gi-modal-icon');
+    await step('Controlled should close the drawer on icon click', async () => {
+      const controlledModal = screen.getAllByTestId('modal')[0];
+      const iconElement = controlledModal.querySelector('.gi-modal-icon');
       expect(iconElement).toBeTruthy();
       await userEvent.click(iconElement as Element);
       await waitFor(() => {
-        const modalElement = screen.getByTestId('modal');
-        expect(modalElement.classList.contains('gi-modal-open')).toBe(false);
+        expect(controlledModal.classList.contains('gi-modal-open')).toBe(false);
       });
     });
 
-    await step('should close the drawer on overlay click', async () => {
+    await step('Controlled should close the drawer on overlay click', async () => {
       const triggerButtonElement = await canvas.findByTestId('drawer-trigger-button-container');
       await userEvent.click(triggerButtonElement);
+      const controlledModal = screen.getAllByTestId('modal')[0];
       await waitFor(() => {
-        const modalElement = screen.getByTestId('modal');
-        expect(modalElement.classList.contains('gi-modal-open')).toBe(true);
+        expect(controlledModal.classList.contains('gi-modal-open')).toBe(true);
       });
-      const modalElement = await screen.findByTestId('modal');
-      await userEvent.click(modalElement);
+      await userEvent.click(controlledModal);
       await waitFor(() => {
-        const element = screen.getByTestId('modal');
-        expect(element.classList.contains('gi-modal-open')).toBe(false);
+        expect(controlledModal.classList.contains('gi-modal-open')).toBe(false);
+      });
+    });
+
+    await step('Legacy uncontrolled method should still open/close the drawer', async () => {
+      const triggerButtonElement = await canvas.findByTestId('drawer-trigger-uncontrolled');
+      await userEvent.click(triggerButtonElement);
+      const uncontrolledModal = screen.getAllByTestId('modal')[1];
+      await waitFor(() => {
+        expect(uncontrolledModal.classList.contains('gi-modal-open')).toBe(true);
+      });
+
+      const iconElement = uncontrolledModal.querySelector('.gi-modal-icon');
+      expect(iconElement).toBeTruthy();
+      await userEvent.click(iconElement as Element);
+      await waitFor(() => {
+        expect(uncontrolledModal.classList.contains('gi-modal-open')).toBe(false);
       });
     });
   },
