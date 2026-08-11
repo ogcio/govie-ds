@@ -1,4 +1,5 @@
 import path from 'node:path';
+import { fileURLToPath } from 'node:url';
 import type { StorybookConfig } from '@storybook/react-vite';
 
 const config: StorybookConfig = {
@@ -19,15 +20,6 @@ const config: StorybookConfig = {
     '@storybook/addon-vitest',
   ],
 
-  core: {
-    builder: {
-      name: '@storybook/builder-vite',
-      options: {
-        viteConfigPath: path.resolve(import.meta.dirname, 'vite.config.ts'),
-      },
-    },
-  },
-
   build: {
     test: {
       disabledAddons: ['@storybook/addon-docs'],
@@ -35,8 +27,12 @@ const config: StorybookConfig = {
   },
 
   framework: {
-    name: '@storybook/react-vite',
-    options: {},
+    name: path.dirname(fileURLToPath(import.meta.resolve('@storybook/react-vite/package.json'))),
+    options: {
+      builder: {
+        viteConfigPath: path.resolve(import.meta.dirname, 'vite.config.ts'),
+      },
+    },
   },
 
   docs: {},
