@@ -1,5 +1,21 @@
 # Changelog
 
+## [1.44.0](https://github.com/ogcio/govie-ds/compare/docs-v1.43.0...docs-v1.44.0) (2026-08-11)
+
+
+### Features
+
+* **AB#40291:** update autocomplete stories for view/interaction ([a77b2d0](https://github.com/ogcio/govie-ds/commit/a77b2d08b694c4f3de4da9af0abcb2b735403d44))
+* **AB#40479:** add controlled state props to Drawer ([#1027](https://github.com/ogcio/govie-ds/issues/1027)) ([2473ffb](https://github.com/ogcio/govie-ds/commit/2473ffb5d0e56b322efface0b00ce3d661d09e16))
+* **AB#40908:** Adopt the server-renderable LinkButton in the Docs site ([#1026](https://github.com/ogcio/govie-ds/issues/1026)) ([6b7b5bf](https://github.com/ogcio/govie-ds/commit/6b7b5bf29244bf8fd4bfa631c190cd6f632586b8))
+
+
+### Dependencies
+
+* The following workspace dependencies were updated
+  * dependencies
+    * @ogcio/design-system-react bumped to 1.45.0
+
 ## [1.43.0](https://github.com/ogcio/govie-ds/compare/docs-v1.42.0...docs-v1.43.0) (2026-07-28)
 
 
