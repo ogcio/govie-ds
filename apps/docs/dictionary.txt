@@ -59,6 +59,13 @@ FooterSections
 GDPR
 GovTech
 Govie
+HeaderLogo
+HeaderNav
+HeaderNavItem
+HeaderNavItemLink
+HeaderNavItemSeparator
+HeaderSection
+HeaderTitle
 HeaderProps
 HeadingProps
 ICT
@@ -86,6 +93,7 @@ ModalFooterProps
 ModalProps
 ModalTitleProps
 ModalWrapperProps
+
 NDA
 NVDA
 NVDA's
@@ -276,6 +284,7 @@ unvisited
 url
 user-centric
 viewport
+viewports
 webpage
 webpages
 well-organized

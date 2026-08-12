@@ -4,150 +4,497 @@ description: Header React Component
 status: stable
 component:
   id: 'header-react'
-  link: '/docs/layout-header--docs'
+  link: '/docs/layout-header-header--docs'
   status: 'stable'
   stories:
     - name: 'default'
-      url: '/story/layout-header-legacy-header-legacy--default'
-    - name: 'govie'
-      url: '/story/layout-header-legacy-header-legacy--govie'
+      url: '/story/layout-header-header--default'
     - name: 'light'
-      url: '/story/layout-header-legacy-header-legacy--light'
+      url: '/story/layout-header-header--light'
+    - name: 'desktop'
+      url: '/story/layout-header-header--desktop'
   properties:
-    - name: HeaderProps
+    - name: Header
       fields:
-        - name: 'fullWidth'
-          ofType: 'boolean'
-          description: 'If true, the header will span the full width of the container.'
+        - name: 'children'
+          ofType: 'ReactNode'
+          description: 'Header content - typically HeaderSection children.'
+          required: false
+        - name: 'className'
+          ofType: 'string'
+          description: 'Custom class name for styling the header.'
+          required: false
+        - name: 'styles'
+          ofType: 'Record<string, string>'
+          description: 'Control the `style` attribute of the `<header>`.'
+          required: false
+        - name: 'id'
+          ofType: 'string'
+          description: 'Optional id for linking, targeting, and aria references.'
+          required: false
+        - name: 'ariaLabel'
+          ofType: 'string'
+          description: 'Accessible name for the header landmark. Set this explicitly for screen readers.'
+          required: false
+        - name: 'dataTestId'
+          ofType: 'string'
+          description: 'Optional test ID for the component.'
+          required: false
+    - name: HeaderSection
+      fields:
+        - name: 'children'
+          ofType: 'ReactNode'
+          description: 'Section content - logo, title, and HeaderNav.'
           required: false
         - name: 'variant'
+          ofType: '"primary" | "utility"'
+          description: 'Section layout variant. Use "utility" for the top bar (language, tools). Defaults to "primary".'
+          required: false
+        - name: 'appearance'
+          ofType: '"default" | "light"'
+          description: 'Colour appearance for the section. Defaults to "default".'
+          required: false
+        - name: 'maxWidth'
+          ofType: '"sm" | "md" | "lg" | "xl" | "2xl" | "full" | "default"'
+          description: 'Caps the max width of the built-in content container. Defaults to "default".'
+          required: false
+        - name: 'className'
           ofType: 'string'
-          description: 'Controls the visual style of the component ("default", "light").'
+          description: 'Custom class name for the section content container.'
           required: false
-        - name: '[HTMLAttributes<header>]'
-          ofType: '…'
-          description: All native header props.
+        - name: 'styles'
+          ofType: 'Record<string, string>'
+          description: 'Control the `style` attribute of the section.'
           required: false
-
-    - name: HeaderLogoProps
+        - name: 'id'
+          ofType: 'string'
+          description: 'Optional id for linking, targeting, and aria references.'
+          required: false
+        - name: 'role'
+          ofType: '"region" | "group"'
+          description: 'Optional landmark role for the section wrapper. Maps to `role`.'
+          required: false
+        - name: 'ariaLabel'
+          ofType: 'string'
+          description: 'Accessible name for the section. Maps to `aria-label`.'
+          required: false
+        - name: 'dataTestId'
+          ofType: 'string'
+          description: 'Optional test ID for the section.'
+          required: false
+    - name: HeaderLogo
       fields:
         - name: 'children'
           ofType: 'ReactNode'
-          description: Usually <img />.
-          required: false
-    - name: HeaderTitleProps
-      fields:
-        - name: 'children'
-          ofType: 'ReactNode'
-          description: Title content.
+          description: 'Logo content - typically a design-system logo, img, or picture element.'
           required: true
-        - name: '[HTMLAttributes<div>]'
-          ofType: '…'
-          description: Native div props.
+        - name: 'className'
+          ofType: 'string'
+          description: 'Custom class name for styling the logo container.'
           required: false
-    - name: HeaderSecondaryMenuProps
-      description: Secondary nav (top row). Renders a <nav>.
+        - name: 'styles'
+          ofType: 'Record<string, string>'
+          description: 'Control the `style` attribute of the logo wrapper.'
+          required: false
+        - name: 'id'
+          ofType: 'string'
+          description: 'Optional id for linking, targeting, and aria references.'
+          required: false
+        - name: 'dataTestId'
+          ofType: 'string'
+          description: 'Optional test ID for the logo container.'
+          required: false
+    - name: HeaderTitle
       fields:
         - name: 'children'
           ofType: 'ReactNode'
-          description: Only HeaderMenuItemLink or HeaderMenuItemSlot.
+          description: 'Service or application title.'
+          required: true
+        - name: 'className'
+          ofType: 'string'
+          description: 'Custom class name for styling the title.'
           required: false
-        - name: '[HTMLAttributes<nav>]'
-          ofType: '…'
-          description: All native nav props.
+        - name: 'styles'
+          ofType: 'Record<string, string>'
+          description: 'Control the `style` attribute of the title wrapper.'
           required: false
-    - name: HeaderPrimaryMenuProps
-      description: Primary nav (main actions). Renders a <nav>.
+        - name: 'id'
+          ofType: 'string'
+          description: 'Optional id for linking, targeting, and aria references.'
+          required: false
+        - name: 'dataTestId'
+          ofType: 'string'
+          description: 'Optional test ID for the title.'
+          required: false
+    - name: HeaderNav
       fields:
         - name: 'children'
           ofType: 'ReactNode'
-          description: HeaderMenuItemLink | HeaderMenuItemButton | HeaderMenuItemSeparator.
+          description: 'Navigation bar items - HeaderNavItemLink, HeaderNavItem, or HeaderNavItemSeparator.'
           required: false
-        - name: '[HTMLAttributes<nav>]'
-          ofType: '…'
-          description: All native nav props.
+        - name: 'className'
+          ofType: 'string'
+          description: 'Custom class name for styling the nav.'
           required: false
-    - name: HeaderMenuItemLinkProps
+        - name: 'styles'
+          ofType: 'Record<string, string>'
+          description: 'Control the `style` attribute of the `<nav>`.'
+          required: false
+        - name: 'id'
+          ofType: 'string'
+          description: 'Optional id for linking, targeting, and aria references.'
+          required: false
+        - name: 'ariaLabel'
+          ofType: 'string'
+          description: 'Accessible name for the navigation landmark. Required.'
+          required: true
+        - name: 'dataTestId'
+          ofType: 'string'
+          description: 'Optional test ID for the nav.'
+          required: false
+    - name: HeaderNavItemLink
       fields:
-        - name: 'showItemMode'
-          ofType: '"always" | "mobile-only" | "desktop-only"'
-          description: Visibility breakpoint behavior.
+        - name: 'children'
+          ofType: 'ReactNode'
+          description: 'Link label.'
           required: false
-        - name: 'icon'
-          ofType: 'IconId'
-          description: Optional trailing icon (primary menu).
+        - name: 'visible'
+          ofType: 'boolean | Size | ResponsiveValue<boolean>'
+          description: 'Controls responsive visibility: `true`/`false`, a breakpoint to show from (e.g. `"lg"`), or a breakpoint map like `{ base: false, lg: true }`.'
+          required: false
+        - name: 'id'
+          ofType: 'string'
+          description: 'Optional id for linking, targeting, and aria references.'
+          required: false
+        - name: 'href'
+          ofType: 'string'
+          description: 'Link destination.'
+          required: true
+        - name: 'className'
+          ofType: 'string'
+          description: 'Custom class name for styling the link.'
           required: false
         - name: 'external'
           ofType: 'boolean'
-          description: Forces external link behavior (adds target/rel).
+          description: 'Opens the link in a new tab. When true, sets `target="_blank"` and `rel="noreferrer noopener"`. Explicit `target`/`rel` props override these defaults.'
           required: false
-        - name: '[AnchorHTMLAttributes<a>]'
-          ofType: '…'
-          description: All native anchor props.
+        - name: 'target'
+          ofType: '"_self" | "_blank" | "_parent" | "_top"'
+          description: 'Browsing context for the link. Overrides the value set by `external`.'
           required: false
-
-    - name: HeaderMenuItemButtonProps
-      fields:
-        - name: 'showItemMode'
-          ofType: '"always" | "mobile-only" | "desktop-only"'
-          description: Visibility breakpoint behavior.
+        - name: 'rel'
+          ofType: 'string'
+          description: 'Link relationship. Overrides the default set by `external`.'
           required: false
-        - name: 'icon'
-          ofType: 'IconId'
-          description: Leading icon.
+        - name: 'download'
+          ofType: 'string | boolean'
+          description: 'When present, the link triggers a file download instead of navigation. A string value suggests a filename.'
           required: false
-        - name: '[ButtonHTMLAttributes<button>]'
-          ofType: '…'
-          description: All native button props.
+        - name: 'ariaCurrent'
+          ofType: '"page" | "step" | "location" | "date" | "time" | "true" | "false" | boolean'
+          description: 'Indicates the current item within a navigation set. Use `"page"` for the current-page link.'
           required: false
-
-    - name: HeaderMenuItemSeparatorProps
-      fields:
-        - name: '[HTMLAttributes<div>]'
-          ofType: '…'
-          description: All native div props".
+        - name: 'ariaLabel'
+          ofType: 'string'
+          description: 'Accessible name when the visible label is insufficient. Maps to `aria-label`.'
           required: false
-    - name: HeaderMenuItemSlotProps
+        - name: 'ariaLabelledBy'
+          ofType: 'string'
+          description: 'ID of an element that labels the link. Maps to `aria-labelledby`.'
+          required: false
+        - name: 'ariaDescribedBy'
+          ofType: 'string'
+          description: 'ID of an element that describes the link. Maps to `aria-describedby`.'
+          required: false
+        - name: 'ariaHidden'
+          ofType: 'boolean | "true" | "false"'
+          description: 'Hides the link from assistive technology. When true, `tabIndex` is set to `-1`.'
+          required: false
+        - name: 'tabIndex'
+          ofType: 'number'
+          description: 'Controls the tab order. Automatically set to `-1` when `ariaHidden` is true.'
+          required: false
+        - name: 'lang'
+          ofType: 'string'
+          description: 'Language of the link text when it differs from the surrounding content. Maps to the HTML `lang` attribute.'
+          required: false
+        - name: 'styles'
+          ofType: 'Record<string, string>'
+          description: 'Control the `style` attribute of the `<a>`.'
+          required: false
+        - name: 'dataTestId'
+          ofType: 'string'
+          description: 'Optional test ID for the link.'
+          required: false
+        - name: 'onClick'
+          ofType: '(event) => void'
+          description: 'Click handler for the nav link.'
+          required: false
+        - name: 'onKeyDown'
+          ofType: '(event) => void'
+          description: 'Key down handler for the nav link.'
+          required: false
+        - name: 'onKeyUp'
+          ofType: '(event) => void'
+          description: 'Key up handler for the nav link.'
+          required: false
+    - name: HeaderNavItem
       fields:
         - name: 'children'
           ofType: 'ReactNode'
-          description: Custom content.
-          required: true
-        - name: '[HTMLAttributes<div>]'
-          ofType: '…'
-          description: All native div props.
+          description: 'Button label and optional icon.'
+          required: false
+        - name: 'visible'
+          ofType: 'boolean | Size | ResponsiveValue<boolean>'
+          description: 'Controls responsive visibility.'
+          required: false
+        - name: 'onClick'
+          ofType: '(event) => void'
+          description: 'Click handler for the nav button.'
+          required: false
+        - name: 'className'
+          ofType: 'string'
+          description: 'Custom class name for styling the nav button.'
+          required: false
+        - name: 'styles'
+          ofType: 'Record<string, string>'
+          description: 'Control the `style` attribute of the `<button>`.'
+          required: false
+        - name: 'id'
+          ofType: 'string'
+          description: 'Optional id for linking, targeting, and aria references.'
+          required: false
+        - name: 'ariaLabel'
+          ofType: 'string'
+          description: 'Accessible name when the visible label is insufficient.'
+          required: false
+        - name: 'ariaExpanded'
+          ofType: 'boolean'
+          description: 'Expanded state for disclosure controls (e.g. search).'
+          required: false
+        - name: 'ariaControls'
+          ofType: 'string'
+          description: 'ID of the controlled region.'
+          required: false
+        - name: 'dataTestId'
+          ofType: 'string'
+          description: 'Optional test ID for the nav button.'
+          required: false
+    - name: HeaderNavItemSeparator
+      fields:
+        - name: 'visible'
+          ofType: 'boolean | Size | ResponsiveValue<boolean>'
+          description: 'Controls responsive visibility.'
+          required: false
+        - name: 'className'
+          ofType: 'string'
+          description: 'Custom class name for styling the separator.'
+          required: false
+        - name: 'styles'
+          ofType: 'Record<string, string>'
+          description: 'Control the `style` attribute of the separator.'
+          required: false
+        - name: 'id'
+          ofType: 'string'
+          description: 'Optional id for linking, targeting, and aria references.'
+          required: false
+        - name: 'dataTestId'
+          ofType: 'string'
+          description: 'Optional test ID for the separator.'
           required: false
 ---
 
 # Header
 
-The Header component functions as a top-level navigation element for digital services across government departments and public sector organisations. It offers users a consistent and recognisable interface that builds trust, supports a unified brand identity, and delivers key navigation tools. Originally referred to as the GOV.IE masthead, this component is designed to signal to users that they are engaging with an official government service while providing easy access to essential site-wide features. It is adaptable for use beyond GOV.IE, supporting a broad range of departmental and agency websites.
+The Header component functions as a top-level navigation element for digital services across government departments and public sector organisations. It offers users a consistent and recognisable interface that builds trust, supports a unified brand identity, and delivers key navigation tools. Originally referred to as the GOV.IE masthead, this component is designed to signal to users that they are engaging with an official government service while providing easy access to essential site-wide features. It is adaptable for use beyond GOV.IE, supporting a broad range of departmental and agency websites. Build it from primitives in `@ogcio/design-system-react/next` so services keep consistent Gov.ie styling while controlling structure and accessibility themselves.
 
-<Section current="react" >
+<Section current="react">
 
 <ComponentPreview className="block w-full gi-not-prose">
   <HeaderComposableSample />
 </ComponentPreview>
 
-The Header now uses explicit primitives instead of the old single `<Header items secondaryLinks />` props API. Compose the layout with:
+## Structure
 
-- `HeaderLogo`, `HeaderTitle`
-- `HeaderPrimaryMenu`, `HeaderSecondaryMenu`
-- `HeaderMenuItemLink`, `HeaderMenuItemButton`, `HeaderMenuItemSeparator`
-- `HeaderSlotContainer` (for dropdown/inline regions), `DrawerWrapper`/`DrawerBody`/`DrawerFooter` (for dialogs/drawers)
+Compose the header from these primitives:
 
-**Why this is better (vs. legacy `items/secondaryLinks`):**
+- `Header` - semantic `<header>` landmark
+- `HeaderSection` - full-width band with a built-in content container (`variant="primary"` | `"utility"`, optional `appearance`)
+- `HeaderLogo` - brand mark container
+- `HeaderTitle` - service or application name
+- `HeaderNav` - navigation list (`ariaLabel` required)
+- `HeaderNavItemLink` - navigational link
+- `HeaderNavItem` - action button (search, menu, tools)
+- `HeaderNavItemSeparator` - vertical divider between nav items
 
-- Precise semantics & a11y: direct control over roles, labels, `aria-*`, and focus order.
-- Testability: deterministic targets (IDs, roles) for testing.
-- Layout flexibility: exact ordering and responsive visibility through `showItemMode`.
+Typical layout:
 
-**Quick migration map:**
+1. **Utility section** (`variant="utility"`) - language switchers and secondary tools (hidden below the `lg` breakpoint by default).
+2. **Primary section** (default) - logo and/or title, plus primary navigation.
 
-- `items[].itemType === 'link'` ⟶ `<HeaderMenuItemLink {...} />`
-- `items[].itemType === 'divider'` ⟶ `<HeaderMenuItemSeparator />`
-- `items[].itemType === 'slot'` (e.g. search) ⟶ `<HeaderMenuItemButton ... aria-controls="X" />` + `<HeaderSlotContainer id="X">…</HeaderSlotContainer>`
-- `secondaryLinks[]` ⟶ `<HeaderSecondaryMenu>` with `<HeaderMenuItemLink>` children
+```jsx
+import {
+  Header,
+  HeaderSection,
+  HeaderLogo,
+  HeaderTitle,
+  HeaderNav,
+  HeaderNavItem,
+  HeaderNavItemLink,
+  HeaderNavItemSeparator,
+} from '@ogcio/design-system-react/next';
+import { LogoWhite } from '@ogcio/design-system-react/logos';
+import { SearchIcon } from '@ogcio/design-system-react/icons';
+
+<Header ariaLabel="Site header">
+  <HeaderSection variant="utility">
+    <HeaderNav ariaLabel="Utility navigation">
+      <HeaderNavItemLink href="#">Gaeilge</HeaderNavItemLink>
+      <HeaderNavItemLink href="#">English</HeaderNavItemLink>
+    </HeaderNav>
+  </HeaderSection>
+
+  <HeaderSection>
+    <HeaderLogo>
+      <LogoWhite />
+    </HeaderLogo>
+    <HeaderTitle>Application Title</HeaderTitle>
+    <HeaderNav ariaLabel="Primary navigation">
+      <HeaderNavItemLink href="#">News</HeaderNavItemLink>
+      <HeaderNavItemLink href="#">Departments</HeaderNavItemLink>
+      <HeaderNavItemLink href="#">Services</HeaderNavItemLink>
+      <HeaderNavItemSeparator />
+      <HeaderNavItem ariaLabel="Toggle site search">
+        Search
+        <SearchIcon />
+      </HeaderNavItem>
+    </HeaderNav>
+  </HeaderSection>
+</Header>;
+```
+
+`HeaderSection` provides the content container - use `maxWidth` to cap width, and `appearance="light"` when you need a light header band.
+
+## Examples
+
+### Default
+
+<StorybookFrame componentId="header-react" className="h-48" story="default" />
+### Light
+<StorybookFrame componentId="header-react" className="h-48" story="light" />
+
+## Usage
+
+Use the header at the top of every page on your service. Identify the service with a logo and/or short title, then add only the top-level navigation and tools users need.
+
+### Appearance
+
+Pass the same `appearance` to each `HeaderSection` so utility and primary bands stay aligned:
+
+- **Default** - dark surface, light text
+- **Light** - light surface, dark text (pair with dark logos such as `LogoBlack` / `LogoHarpBlack`)
+
+### Logo and title
+
+- Put brand assets inside `<HeaderLogo>`.
+- Keep `<HeaderTitle>` short so it truncates cleanly on smaller viewports.
+- For a home link, wrap the logo in your own link and give it an accessible name.
+
+### Navigation
+
+- Put language and secondary tools in the utility `HeaderSection`.
+- Put main links in the primary `HeaderSection` inside `<HeaderNav>`.
+- Use `HeaderNavItemLink` for destinations and `HeaderNavItem` for actions (for example search).
+- Separate groups with `HeaderNavItemSeparator` when needed.
+- Use `visible` on nav items when something should only show from a breakpoint (for example `visible="lg"`).
+
+## Do
+
+- Use one header per page.
+- Set `ariaLabel` on `<Header>`.
+- Give every `<HeaderNav>` a distinct `ariaLabel` (for example `"Primary navigation"` and `"Utility navigation"`).
+- Identify the service with a logo and/or concise title.
+- Keep primary navigation to a small set of top-level destinations.
+- Use `HeaderNavItem` for interactive tools such as search, with clear `ariaLabel` / `ariaExpanded` when they control a panel.
+
+<ComponentContainer fullWidth>
+  <HeaderComposableGovieSample />
+</ComponentContainer>
+
+## Don't
+
+- Use a long service title that crowds out navigation.
+- Cram many primary links, language options, and tools into a single undifferentiated row.
+- Put language switchers in the primary nav when a utility section is available.
+- Omit landmark labels on `<Header>` or `<HeaderNav>`.
+- Use more than one header on a page.
+- Imitate the GOV.IE header on third-party services without a clear distinction.
+
+<ComponentContainer fullWidth>
+  <HeaderComposableDontSample />
+</ComponentContainer>
+
+## Accessibility
+
+The composable Header does not inject landmark labels or translations. You own the accessible names, current-page state, and language markup.
+
+### Landmarks
+
+- Set `ariaLabel` on `<Header>` so the banner is distinguishable in the landmark list.
+- Give every `<HeaderNav>` a distinct `ariaLabel` (for example `"Primary navigation"` and `"Utility navigation"`). `ariaLabel` is required on `HeaderNav`.
+- Use one `<Header>` per page. Do not nest extra banner landmarks inside it.
+
+### Logo and title
+
+- `<HeaderLogo>` is a layout wrapper, not a link. Wrap it in your own link and give that link an accessible name, for example `ariaLabel="Gov.ie home"`.
+- Give logo images `alt` text, or mark them decorative if the wrapping link already names the destination.
+- `<HeaderTitle>` styles the service name. It is not a heading element — keep the page `<h1>` in the main content.
+
+### Navigation
+
+- Use `ariaCurrent="page"` on the `HeaderNavItemLink` for the current page.
+- For language switchers, set `lang` to the language of the link text (for example `lang="ga"` on "Gaeilge") so assistive technology pronounces it correctly.
+- Use `HeaderNavItem` for actions such as search or menu, not links.
+- When a nav item controls a panel, set `ariaExpanded` and `ariaControls` to the panel id, and keep the accessible name stable. Name the panel itself as well.
+- Provide `ariaLabel` when the visible text is missing or insufficient (icon-only controls, or "Search" that actually toggles a panel).
+- `<HeaderNavItemSeparator>` is decorative (`aria-hidden`). Do not rely on it to convey meaning.
+- `visible` and the utility section use `display: none` below their breakpoints, so hidden items leave the accessibility tree. Do not leave a destination reachable only from a hidden control.
+
+```jsx
+<Header ariaLabel="Site header">
+  <HeaderSection variant="utility">
+    <HeaderNav ariaLabel="Utility navigation">
+      <HeaderNavItemLink href="/ga" lang="ga">
+        Gaeilge
+      </HeaderNavItemLink>
+      <HeaderNavItemLink href="/en" lang="en" ariaCurrent="true">
+        English
+      </HeaderNavItemLink>
+    </HeaderNav>
+  </HeaderSection>
+
+  <HeaderSection>
+    <Link href="/" ariaLabel="Gov.ie home">
+      <HeaderLogo>
+        <LogoWhite />
+      </HeaderLogo>
+    </Link>
+    <HeaderNav ariaLabel="Primary navigation">
+      <HeaderNavItemLink href="/news" ariaCurrent="page">
+        News
+      </HeaderNavItemLink>
+      <HeaderNavItem
+        ariaLabel="Toggle site search"
+        ariaExpanded={searchOpen}
+        ariaControls="site-search"
+      >
+        Search
+        <SearchIcon />
+      </HeaderNavItem>
+    </HeaderNav>
+  </HeaderSection>
+</Header>
+```
 
 ## Examples
 
@@ -159,21 +506,17 @@ The Header now uses explicit primitives instead of the old single `<Header items
   story="default"
 />
 
-### Govie
-
-<StorybookFrame className="h-52 p-1" componentId="header-react" story="govie" />
-
-### Light
-
-<StorybookFrame className="h-52 p-1" componentId="header-react" story="light" />
-
 ## Properties
 
 <ComponentPropertiesTable componentId="header-react" />
 
+# Legacy Header
+
+> **Note:** The previous Header API from `@ogcio/design-system-react` is deprecated. Use the composable Header from `@ogcio/design-system-react/next`. This section retains only the i18n keys still used by the deprecated API.
+
 ## i18n Keys
 
-The Header component supports localisation through i18n keys in React, [find i18n setup here](/components/setup-guides/react/#internationalisation-i18n-guidelines). Below is the list of keys and their default text:
+The deprecated Header supports localisation through i18n keys in React, [find i18n setup here](/components/setup-guides/react/#internationalisation-i18n-guidelines). Below is the list of keys and their default text:
 
 ```json
 {

@@ -1,70 +1,31 @@
+'use client';
+// TODO: remove use client once HeaderNavItemLink server/client side issue resolved
+import { SearchIcon } from '@ogcio/design-system-react/icons';
 import {
-  HeaderMenuItemButton as BaseHeaderMenuItemButton,
-  HeaderMenuItemLink as BaseHeaderMenuItemLink,
-  HeaderMenuItemSeparator as BaseHeaderMenuItemSeparator,
-  HeaderPrimaryMenu as BaseHeaderPrimaryMenu,
-  HeaderSecondaryMenu as BaseHeaderSecondaryMenu,
-  HeaderTitle as BaseHeaderTitle,
-  HeaderLogo as BaseHeaderLogo,
+  LogoBlack,
+  LogoHarpBlack,
+  LogoWhite,
+} from '@ogcio/design-system-react/logos';
+import {
   Header,
-} from '@ogcio/design-system-react';
+  HeaderSection,
+  HeaderTitle,
+  HeaderLogo,
+  HeaderNav,
+  HeaderNavItem,
+  HeaderNavItemLink,
+  HeaderNavItemSeparator,
+} from '@ogcio/design-system-react/next';
 import Image from 'next/image';
-
-const HeaderMenuItemButton = (props: any) => (
-  <BaseHeaderMenuItemButton {...props} __type="HeaderMenuItemButton" />
-);
-
-const HeaderLogo = (props: any) => (
-  <BaseHeaderLogo {...props} __type="HeaderLogo" />
-);
-
-const HeaderMenuItemLink = (props: any) => (
-  <BaseHeaderMenuItemLink {...props} __type="HeaderMenuItemLink" />
-);
-
-const HeaderMenuItemSeparator = (props: any) => (
-  <BaseHeaderMenuItemSeparator {...props} __type="HeaderMenuItemSeparator" />
-);
-
-const HeaderPrimaryMenu = (props: any) => (
-  <BaseHeaderPrimaryMenu {...props} __type="HeaderPrimaryMenu" />
-);
-
-const HeaderSecondaryMenu = (props: any) => (
-  <BaseHeaderSecondaryMenu {...props} __type="HeaderSecondaryMenu" />
-);
-
-const HeaderTitle = (props: any) => (
-  <BaseHeaderTitle {...props} __type="HeaderTitle" />
-);
 
 export const HeaderComposableLightSample = () => {
   return (
     <HeaderComposableSample
-      variant="light"
+      appearance="light"
       Logo={
         <>
-          <Image
-            alt="govie logo"
-            className="gi-block sm:gi-hidden"
-            decoding="async"
-            loading="eager"
-            fetchPriority="high"
-            width={25.45}
-            height={40}
-            src="/logos/general/harp-black.svg"
-          />
-          <Image
-            src="/logos/government-of-ireland/gov-black.svg"
-            alt="govie logo"
-            className="gi-hidden sm:gi-block"
-            decoding="async"
-            loading="eager"
-            fetchPriority="high"
-            width={136}
-            height={48}
-          />
-          <span className="gi-sr-only">Gov.ie logo</span>
+          <LogoBlack className="gi-hidden sm:gi-block" />
+          <LogoHarpBlack className="gi-block sm:gi-hidden" />
         </>
       }
     />
@@ -73,7 +34,7 @@ export const HeaderComposableLightSample = () => {
 
 export const HeaderComposableDontSample = () => {
   return (
-    <Header variant="default" aria-label="Site header">
+    <Header ariaLabel="Site header">
       <HeaderLogo>
         <Image
           alt="govie logo"
@@ -100,121 +61,69 @@ export const HeaderComposableDontSample = () => {
 
       <HeaderTitle>Here is a long text title</HeaderTitle>
 
-      <HeaderPrimaryMenu>
-        <HeaderMenuItemLink href="#" showItemMode="desktop-only">
-          Item 1
-        </HeaderMenuItemLink>
-        <HeaderMenuItemLink href="#" showItemMode="desktop-only">
-          Item 2
-        </HeaderMenuItemLink>
-        <HeaderMenuItemLink href="#" showItemMode="desktop-only">
-          News
-        </HeaderMenuItemLink>
-        <HeaderMenuItemLink href="#" showItemMode="desktop-only">
-          Departments
-        </HeaderMenuItemLink>
-        <HeaderMenuItemLink href="#" showItemMode="desktop-only">
-          Services
-        </HeaderMenuItemLink>
-        <HeaderMenuItemSeparator />
-        <HeaderMenuItemLink href="#" showItemMode="always">
-          Gaelige
-        </HeaderMenuItemLink>
-      </HeaderPrimaryMenu>
+      <HeaderNav ariaLabel="Primary navigation">
+        <HeaderNavItemLink href="#">Item 1</HeaderNavItemLink>
+        <HeaderNavItemLink href="#">Item 2</HeaderNavItemLink>
+        <HeaderNavItemLink href="#">News</HeaderNavItemLink>
+        <HeaderNavItemLink href="#">Departments</HeaderNavItemLink>
+        <HeaderNavItemLink href="#">Services</HeaderNavItemLink>
+        <HeaderNavItemSeparator />
+        <HeaderNavItemLink href="#">Gaeilge</HeaderNavItemLink>
+      </HeaderNav>
     </Header>
   );
 };
 
-export const HeaderComposableSample = ({ variant, Logo }: any) => {
-  return (
-    <Header variant={variant || 'default'} aria-label="Site header">
-      <HeaderLogo>
-        {Logo || (
-          <>
-            <Image
-              alt="govie logo"
-              className="gi-block sm:gi-hidden"
-              decoding="async"
-              loading="eager"
-              fetchPriority="high"
-              width={25.45}
-              height={40}
-              src="/logos/general/harp-white.svg"
-            />
-            <Image
-              src="/logos/government-of-ireland/gov-white.svg"
-              alt="govie logo"
-              className="gi-hidden sm:gi-block"
-              decoding="async"
-              loading="eager"
-              fetchPriority="high"
-              width={136}
-              height={48}
-            />
-            <span className="gi-sr-only">Gov.ie logo</span>
-          </>
-        )}
-      </HeaderLogo>
-
+export const HeaderComposableSample = ({
+  appearance,
+  Logo,
+}: {
+  appearance: 'light' | 'default';
+  Logo: React.ReactNode;
+}) => (
+  <Header>
+    <HeaderSection appearance={appearance} variant="utility">
+      <HeaderNav ariaLabel="utility navigation">
+        <HeaderNavItem>Gaeilge</HeaderNavItem>
+        <HeaderNavItem>English</HeaderNavItem>
+      </HeaderNav>
+    </HeaderSection>
+    <HeaderSection appearance={appearance}>
+      {Logo || (
+        <HeaderLogo>
+          <LogoWhite />
+        </HeaderLogo>
+      )}
       <HeaderTitle>Application Title</HeaderTitle>
-
-      <HeaderPrimaryMenu>
-        <HeaderMenuItemLink href="#" showItemMode="desktop-only">
-          News
-        </HeaderMenuItemLink>
-        <HeaderMenuItemLink href="#" showItemMode="desktop-only">
-          Departments
-        </HeaderMenuItemLink>
-        <HeaderMenuItemLink href="#" showItemMode="desktop-only">
-          Services
-        </HeaderMenuItemLink>
-        <HeaderMenuItemSeparator />
-        <HeaderMenuItemButton
-          showItemMode="desktop-only"
-          icon="search"
-          aria-label="Toggle site search"
-        >
+      <HeaderNav ariaLabel="primary navigation">
+        <HeaderNavItemLink href="#">News</HeaderNavItemLink>
+        <HeaderNavItemLink href="#">Departments</HeaderNavItemLink>
+        <HeaderNavItemLink href="#">Services</HeaderNavItemLink>
+        <HeaderNavItemSeparator />
+        <HeaderNavItem>
           Search
-        </HeaderMenuItemButton>
-      </HeaderPrimaryMenu>
-      <HeaderSecondaryMenu>
-        <HeaderMenuItemLink href="#">Gaeilge</HeaderMenuItemLink>
-        <HeaderMenuItemLink href="#">English</HeaderMenuItemLink>
-      </HeaderSecondaryMenu>
-    </Header>
-  );
-};
+          <SearchIcon />
+        </HeaderNavItem>
+      </HeaderNav>
+    </HeaderSection>
+  </Header>
+);
 
 export const HeaderComposableGovieSample = () => {
   return (
-    <Header variant="default" aria-label="Site header">
-      <HeaderLogo>
-        <Image
-          src="https://raw.githubusercontent.com/ogcio/govie-ds/refs/heads/main/assets/logos/gov.ie/harp-gold-text-white.svg"
-          alt="govie logo"
-          decoding="async"
-          loading="eager"
-          fetchPriority="high"
-          width={136}
-          height={48}
-        />
-        <span className="gi-sr-only">Gov.ie logo</span>
-      </HeaderLogo>
-      <HeaderPrimaryMenu>
-        <HeaderMenuItemLink href="#" showItemMode="desktop-only">
-          News
-        </HeaderMenuItemLink>
-        <HeaderMenuItemLink href="#" showItemMode="desktop-only">
-          Departments
-        </HeaderMenuItemLink>
-        <HeaderMenuItemLink href="#" showItemMode="desktop-only">
-          Services
-        </HeaderMenuItemLink>
-        <HeaderMenuItemSeparator />
-        <HeaderMenuItemLink href="#" showItemMode="always">
-          Gaelige
-        </HeaderMenuItemLink>
-      </HeaderPrimaryMenu>
+    <Header aria-label="Site header">
+      <HeaderSection appearance="light">
+        <HeaderLogo>
+          <LogoBlack />
+        </HeaderLogo>
+        <HeaderNav ariaLabel="primary navigation">
+          <HeaderNavItemLink href="#">News</HeaderNavItemLink>
+          <HeaderNavItemLink href="#">Departments</HeaderNavItemLink>
+          <HeaderNavItemLink href="#">Services</HeaderNavItemLink>
+          <HeaderNavItemSeparator />
+          <HeaderNavItemLink href="#">Gaeilge</HeaderNavItemLink>
+        </HeaderNav>
+      </HeaderSection>
     </Header>
   );
 };
