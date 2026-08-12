@@ -4,15 +4,8 @@ description: Header React Component
 status: stable
 component:
   id: 'header-react'
-  link: '/docs/layout-header-header--docs'
+  link: '/docs/layout-header--docs'
   status: 'stable'
-  stories:
-    - name: 'default'
-      url: '/story/layout-header-header--default'
-    - name: 'light'
-      url: '/story/layout-header-header--light'
-    - name: 'desktop'
-      url: '/story/layout-header-header--desktop'
   properties:
     - name: Header
       fields:
@@ -290,6 +283,9 @@ component:
           ofType: 'string'
           description: 'Custom class name for styling the separator.'
           required: false
+  stories:
+    - name: 'default'
+      url: '/story/layout-header--default'
         - name: 'styles'
           ofType: 'Record<string, string>'
           description: 'Control the `style` attribute of the separator.'
@@ -375,14 +371,6 @@ import { SearchIcon } from '@ogcio/design-system-react/icons';
 
 `HeaderSection` provides the content container - use `maxWidth` to cap width, and `appearance="light"` when you need a light header band.
 
-## Examples
-
-### Default
-
-<StorybookFrame componentId="header-react" className="h-48" story="default" />
-### Light
-<StorybookFrame componentId="header-react" className="h-48" story="light" />
-
 ## Usage
 
 Use the header at the top of every page on your service. Identify the service with a logo and/or short title, then add only the top-level navigation and tools users need.
@@ -391,8 +379,8 @@ Use the header at the top of every page on your service. Identify the service wi
 
 Pass the same `appearance` to each `HeaderSection` so utility and primary bands stay aligned:
 
-- **Default** - dark surface, light text
-- **Light** - light surface, dark text (pair with dark logos such as `LogoBlack` / `LogoHarpBlack`)
+- **Default** - dark surface, light text (pair with light logos: `LogoWhite` / `LogoHarpWhite`)
+- **Light** - light surface, dark text (pair with dark logos: `LogoBlack` / `LogoHarpBlack`)
 
 ### Logo and title
 
@@ -518,23 +506,439 @@ The composable Header does not inject landmark labels or translations. You own t
 
 The deprecated Header supports localisation through i18n keys in React, [find i18n setup here](/components/setup-guides/react/#internationalisation-i18n-guidelines). Below is the list of keys and their default text:
 
-```json
-{
-  "header.headerSlot": "Slot Container {{index}}",
-  "header.toggleActionItem": "Toggle item action for {{item}}",
-  "header.search": "Search",
-  "header.searchTheWebsite": "Search the website",
-  "header.searchForm": "Search Form",
-  "header.submitSearch": "Submit search",
-  "header.closeMobileMenu": "Close Mobile Menu",
-  "header.mobileNavigationMenu": "Mobile Navigation Menu",
-  "header.siteHeader": "Site Header",
-  "header.goToHomePage": "Go to the home page",
-  "header.drawer.close": "Close",
-  "header.menu": "Menu"
-}
+## Migration guide
+
+The Header from `@ogcio/design-system-react` is **deprecated**. Migrate to the composable primitives from `@ogcio/design-system-react/next`.
+
+There were two deprecated surfaces, and `Header` from the main package switched between them:
+
+1. **Legacy** — props such as `title`, `logo`, `items`, and `secondaryLinks`.
+2. **HeaderNext** — children such as `HeaderLogo`, `HeaderTitle`, `HeaderPrimaryMenu`, and `HeaderSecondaryMenu`. `Header` used this API when you did not pass legacy props. `HeaderNext` was also exported under that name.
+
+<Alert>
+  The **Legacy** API used the following props. If you passed any of these, refer
+  to **Legacy**. Otherwise, refer to **HeaderNext** as your starting point.
+
+`title`, `logo`, `appearance`,
+`addDefaultMobileMenu`, `mobileMenuLabel`, `showMenuLabel`, `items`,
+`secondaryLinks`, and `showTitleOnMobile`.
+
+</Alert>
+
+`HeaderLogo` and `HeaderTitle` keep their names — import them from `@ogcio/design-system-react/next`, **not** from `@ogcio/design-system-react`.
+
+```jsx
+// Before (legacy or HeaderNext)
+import {
+  Header,
+  HeaderLogo,
+  HeaderTitle,
+  HeaderPrimaryMenu,
+  HeaderSecondaryMenu,
+  HeaderMenuItemLink,
+  HeaderMenuItemButton,
+  HeaderMenuItemSeparator,
+} from '@ogcio/design-system-react';
+
+// After
+import {
+  Header,
+  HeaderSection,
+  HeaderLogo,
+  HeaderTitle,
+  HeaderNav,
+  HeaderNavItem,
+  HeaderNavItemLink,
+  HeaderNavItemSeparator,
+} from '@ogcio/design-system-react/next';
 ```
 
-These keys represent visible text elements. You can customise their translations for each locale to enable multilingual support.
+**Why migrate:**
+
+- Layout flexibility: you own sections, navigation, and logo placement.
+- Precise semantics and a11y: set `ariaLabel` and navigation labels yourself.
+- Clearer JSX: named children (`HeaderSection`, `HeaderLogo`, `HeaderNav`) instead of opaque `items` / `secondaryLinks` props or HeaderNext menu primitives.
+
+### Quick migration map
+
+Find the column that matches your current API. Both land on the same composable primitives.
+
+<Table>
+  <TableHead>
+    <TableRow>
+      <TableHeader>Legacy</TableHeader>
+      <TableHeader>HeaderNext</TableHeader>
+      <TableHeader>Composable</TableHeader>
+    </TableRow>
+  </TableHead>
+  <TableBody>
+    <TableRow>
+      <TableData>
+        `Header` with `title`, `logo`, `items`, `secondaryLinks`
+      </TableData>
+      <TableData>
+        `Header` or `HeaderNext` with children
+      </TableData>
+      <TableData>
+        `Header` from `@ogcio/design-system-react/next`
+      </TableData>
+    </TableRow>
+    <TableRow>
+      <TableData>`appearance`</TableData>
+      <TableData>`variant` on `Header`</TableData>
+      <TableData>
+        `appearance` on `HeaderSection`
+      </TableData>
+    </TableRow>
+    <TableRow>
+      <TableData>`title`</TableData>
+      <TableData>`<HeaderTitle>`</TableData>
+      <TableData>
+        `<HeaderTitle>` from `/next`
+      </TableData>
+    </TableRow>
+    <TableRow>
+      <TableData>`logo` prop</TableData>
+      <TableData>
+        `<HeaderLogo>` (optional `href`)
+      </TableData>
+      <TableData>
+        `<HeaderLogo>` from `/next`; wrap in `<Link>` for a home link
+      </TableData>
+    </TableRow>
+    <TableRow>
+      <TableData>`secondaryLinks`</TableData>
+      <TableData>`<HeaderSecondaryMenu>`</TableData>
+      <TableData>
+        `<HeaderSection variant="utility">` with `<HeaderNav>`
+      </TableData>
+    </TableRow>
+    <TableRow>
+      <TableData>`{ href, label }` in `secondaryLinks`</TableData>
+      <TableData>
+        `<HeaderMenuItemLink>` in the secondary menu
+      </TableData>
+      <TableData>`<HeaderNavItemLink>` in the utility nav</TableData>
+    </TableRow>
+    <TableRow>
+      <TableData>`{ slot }` in `secondaryLinks`</TableData>
+      <TableData>`<HeaderMenuItemSlot>`</TableData>
+      <TableData>
+        Custom content in the utility `<HeaderSection>`
+      </TableData>
+    </TableRow>
+    <TableRow>
+      <TableData>`items`</TableData>
+      <TableData>`<HeaderPrimaryMenu>`</TableData>
+      <TableData>
+        `<HeaderNav>` in the primary `<HeaderSection>`
+      </TableData>
+    </TableRow>
+    <TableRow>
+      <TableData>`itemType: 'link'`</TableData>
+      <TableData>`<HeaderMenuItemLink>`</TableData>
+      <TableData>`<HeaderNavItemLink>`</TableData>
+    </TableRow>
+    <TableRow>
+      <TableData>`itemType: 'slot'` (built-in drawer or dropdown)</TableData>
+      <TableData>`<HeaderMenuItemButton>` plus your panel</TableData>
+      <TableData>
+        `<HeaderNavItem>` plus your panel
+      </TableData>
+    </TableRow>
+    <TableRow>
+      <TableData>`itemType: 'divider'`</TableData>
+      <TableData>`<HeaderMenuItemSeparator>`</TableData>
+      <TableData>`<HeaderNavItemSeparator>`</TableData>
+    </TableRow>
+    <TableRow>
+      <TableData>`itemType: 'custom-link'`</TableData>
+      <TableData>`asChild` on `<HeaderMenuItemLink>`</TableData>
+      <TableData>
+        `<HeaderNavItemLink>` with `href`
+      </TableData>
+    </TableRow>
+    <TableRow>
+      <TableData>`icon` on an item</TableData>
+      <TableData>`icon` on a menu item</TableData>
+      <TableData>
+        SVG icon as children, for example `<SearchIcon />`
+      </TableData>
+    </TableRow>
+    <TableRow>
+      <TableData>`showItemMode`</TableData>
+      <TableData>`showItemMode`</TableData>
+      <TableData>`visible` on nav items</TableData>
+    </TableRow>
+    <TableRow>
+      <TableData>`addDefaultMobileMenu`</TableData>
+      <TableData>
+        Mobile `<HeaderMenuItemButton>` plus your drawer
+      </TableData>
+      <TableData>
+        Mobile `<HeaderNavItem>` plus your drawer
+      </TableData>
+    </TableRow>
+    <TableRow>
+      <TableData>`fullWidth`</TableData>
+      <TableData>`fullWidth`</TableData>
+      <TableData>
+        `maxWidth="full"` on `<HeaderSection>`
+      </TableData>
+    </TableRow>
+    <TableRow>
+      <TableData>`dataTestid`</TableData>
+      <TableData>`data-testid`</TableData>
+      <TableData>
+        `dataTestId` on `<Header>` (note the casing)
+      </TableData>
+    </TableRow>
+    <TableRow>
+      <TableData>Built-in landmark `aria-label`</TableData>
+      <TableData>`aria-label` on `Header`</TableData>
+      <TableData>
+        `ariaLabel` (or `ariaLabelledBy`) on `<Header>`
+      </TableData>
+    </TableRow>
+    <TableRow>
+      <TableData>Built-in `Container`, secondary bar, logo link, mobile menu</TableData>
+      <TableData>
+        Built-in `Container`; HeaderNext reorders logo, title, and menus for you
+      </TableData>
+      <TableData>
+        `HeaderSection` provides the container; compose sections in visual order
+      </TableData>
+    </TableRow>
+    <TableRow>
+      <TableData>—</TableData>
+      <TableData>`<HeaderSlotContainer>`</TableData>
+      <TableData>
+        Compose your own region below the header (`HeaderSearch` still works)
+      </TableData>
+    </TableRow>
+  </TableBody>
+</Table>
+
+### Mapping `showItemMode` to `visible`
+
+Both deprecated forms used `showItemMode`. The composable API uses `visible` instead.
+
+<Table>
+  <TableHead>
+    <TableRow>
+      <TableHeader>`showItemMode`</TableHeader>
+      <TableHeader>`visible`</TableHeader>
+    </TableRow>
+  </TableHead>
+  <TableBody>
+    <TableRow>
+      <TableData>`always`</TableData>
+      <TableData>omit, or `true`</TableData>
+    </TableRow>
+    <TableRow>
+      <TableData>`desktop-only`</TableData>
+      <TableData>`"lg"`</TableData>
+    </TableRow>
+    <TableRow>
+      <TableData>`mobile-only`</TableData>
+      <TableData>`{base: true, lg: false }`</TableData>
+    </TableRow>
+  </TableBody>
+</Table>
+
+Primary items in both deprecated forms defaulted to `desktop-only`. New navigation items default to always visible, so set `visible="lg"` when you previously relied on that default.
+
+### Before and after
+
+**Before (legacy)** — props:
+
+```jsx
+import { Header } from '@ogcio/design-system-react';
+
+<Header
+  title="Application Title"
+  logo={{
+    href: '/',
+    alt: 'Gov.ie Logo',
+  }}
+  secondaryLinks={[
+    { href: '#', label: 'Gaeilge' },
+    { href: '#', label: 'English' },
+  ]}
+  items={[
+    { label: 'News', itemType: 'link', href: '#' },
+    { label: 'Departments', itemType: 'link', href: '#' },
+    { label: 'Services', itemType: 'link', href: '#' },
+    { itemType: 'divider' },
+    {
+      label: 'Search',
+      icon: 'search',
+      itemType: 'slot',
+      component: <div>{/* search panel */}</div>,
+    },
+  ]}
+  dataTestid="header"
+/>;
+```
+
+**Before (HeaderNext)** — children. `Header` from `@ogcio/design-system-react` rendered this API when you did not pass legacy props:
+
+```jsx
+import {
+  Header,
+  HeaderLogo,
+  HeaderTitle,
+  HeaderPrimaryMenu,
+  HeaderSecondaryMenu,
+  HeaderMenuItemLink,
+  HeaderMenuItemButton,
+  HeaderMenuItemSeparator,
+} from '@ogcio/design-system-react';
+import { LogoWhite } from '@ogcio/design-system-react/logos';
+import { SearchIcon } from '@ogcio/design-system-react/icons';
+
+<Header variant="default" aria-label="Site header" data-testid="header">
+  <HeaderLogo href="/">
+    <LogoWhite />
+  </HeaderLogo>
+  <HeaderTitle>Application Title</HeaderTitle>
+  <HeaderSecondaryMenu>
+    <HeaderMenuItemLink href="#">Gaeilge</HeaderMenuItemLink>
+    <HeaderMenuItemLink href="#">English</HeaderMenuItemLink>
+  </HeaderSecondaryMenu>
+  <HeaderPrimaryMenu>
+    <HeaderMenuItemLink href="#" showItemMode="desktop-only">
+      News
+    </HeaderMenuItemLink>
+    <HeaderMenuItemLink href="#" showItemMode="desktop-only">
+      Departments
+    </HeaderMenuItemLink>
+    <HeaderMenuItemLink href="#" showItemMode="desktop-only">
+      Services
+    </HeaderMenuItemLink>
+    <HeaderMenuItemSeparator />
+    <HeaderMenuItemButton
+      showItemMode="desktop-only"
+      aria-label="Toggle site search"
+    >
+      Search
+      <SearchIcon />
+    </HeaderMenuItemButton>
+  </HeaderPrimaryMenu>
+</Header>;
+```
+
+Both of those produced a utility bar, a primary bar with logo and title, and navigation. The wrappers (container, secondary bar, default landmark label, optional logo link) were built in.
+
+**After** — the same composable structure for either starting point:
+
+```jsx
+import {
+  Header,
+  HeaderSection,
+  HeaderLogo,
+  HeaderTitle,
+  HeaderNav,
+  HeaderNavItem,
+  HeaderNavItemLink,
+  HeaderNavItemSeparator,
+  Link,
+} from '@ogcio/design-system-react/next';
+import { LogoWhite } from '@ogcio/design-system-react/logos';
+import { SearchIcon } from '@ogcio/design-system-react/icons';
+
+<Header ariaLabel="Site header" dataTestId="header">
+  <HeaderSection variant="utility">
+    {/* former secondaryLinks / HeaderSecondaryMenu */}
+    <HeaderNav ariaLabel="Utility navigation">
+      <HeaderNavItemLink href="#">Gaeilge</HeaderNavItemLink>
+      <HeaderNavItemLink href="#">English</HeaderNavItemLink>
+    </HeaderNav>
+  </HeaderSection>
+
+  <HeaderSection>
+    <Link href="/" ariaLabel="Homepage">
+      <HeaderLogo>
+        <LogoWhite />
+      </HeaderLogo>
+    </Link>
+    <HeaderTitle>Application Title</HeaderTitle>
+    <HeaderNav ariaLabel="Primary navigation">
+      {/* former items / HeaderPrimaryMenu */}
+      <HeaderNavItemLink visible="lg" href="#">
+        News
+      </HeaderNavItemLink>
+      <HeaderNavItemLink visible="lg" href="#">
+        Departments
+      </HeaderNavItemLink>
+      <HeaderNavItemLink visible="lg" href="#">
+        Services
+      </HeaderNavItemLink>
+      <HeaderNavItemSeparator visible="lg" />
+      <HeaderNavItem visible="lg" ariaLabel="Toggle site search">
+        Search
+        <SearchIcon />
+      </HeaderNavItem>
+    </HeaderNav>
+  </HeaderSection>
+</Header>;
+```
+
+Key differences when transforming:
+
+1. **Two sections, in visual order** - utility content (`secondaryLinks` or `<HeaderSecondaryMenu>`) moves into `<HeaderSection variant="utility">`. Logo, title, and primary nav share the default `<HeaderSection>`. HeaderNext reordered children for you; write the utility section first.
+2. **Navigation is explicit** - replace `items` or `<HeaderPrimaryMenu>` with `<HeaderNav>` children: `HeaderNavItemLink` for links, `HeaderNavItemSeparator` for dividers, and `HeaderNavItem` for actions.
+3. **Appearance lives on sections** - Legacy `appearance` and HeaderNext `variant` become `appearance` on each `HeaderSection`. Pass the same value to every section.
+4. **Logo and title are children** - place `<HeaderLogo>` next to `<HeaderTitle>`. Neither accepts `href`; wrap in `<Link>` yourself.
+5. **Accessibility is explicit** - set `ariaLabel` on `<Header>` and a distinct `ariaLabel` on every `<HeaderNav>`. Both deprecated forms applied a default header label.
+6. **Slots and panels are your own** - Legacy `itemType: 'slot'` drawers, HeaderNext `<HeaderMenuItemButton>` panels, and `<HeaderSlotContainer>` are not built in. Use `<HeaderNavItem>` with `onClick` / `ariaExpanded` / `ariaControls` and render the panel yourself.
+7. **Mobile menu is composed** - `addDefaultMobileMenu` is gone. Add a `<HeaderNavItem>` that opens your own drawer. Use `visible` to match former `showItemMode` values (see the table above).
+8. **Navigation item spacing** - the composable API uses a 16 pixel gap between items in every section.
+
+### Migrating the logo
+
+Legacy accepted `href`, `alt`, `imageLarge`, `imageSmall`, and `external`, and rendered a linked logo when `href` was set. HeaderNext `HeaderLogo` accepted `href` and rendered an `<a>`.
+
+In the composable API, `HeaderLogo` only handles positioning. Render the image yourself:
+
+```jsx
+// Before (legacy)
+<Header
+  logo={{
+    href: '/',
+    alt: 'Gov.ie Logo',
+    imageLarge: '/logo-desktop.svg',
+    imageSmall: '/logo-mobile.svg',
+    external: false,
+  }}
+  title="Application Title"
+/>
+
+// Before (HeaderNext)
+<HeaderLogo href="/">
+  <LogoWhite />
+</HeaderLogo>
+
+// After
+<Link href="/" ariaLabel="Go to the home page">
+  <HeaderLogo>
+    <LogoWhite />
+  </HeaderLogo>
+</Link>
+```
+
+- For the default (dark) header, use `LogoWhite` / `LogoHarpWhite`. For `appearance="light"`, use `LogoBlack` / `LogoHarpBlack`.
+- For custom assets, use your own `<img>` or `<picture>` with `alt` text.
+- To keep a home link (optional), wrap the logo in `<Link>` yourself and set an accessible name. Use `external` on `<Link>` if the destination is off-site.
+- The same applies to HeaderNext `<HeaderTitle href="…">` — wrap `<HeaderTitle>` in `<Link>` instead.
+- `HeaderLogo` does not add a link, alt text, or image for you.
+
+### Related layout pieces
+
+- `HeaderSection` centres and pads its content with a built-in [Container](/components/library/container/design/) — use `maxWidth` to cap the content width (`maxWidth="full"` replaces `fullWidth`).
+- Pass the same `appearance` to each `HeaderSection` so utility and primary bands stay aligned.
+- Use `visible` on nav items when something should only show from a breakpoint (for example `visible="lg"`).
+
+For a complete migrated example, see the preview at the top of this page or click "Show Code" in the [Header story](/storybook-react/docs/layout-header--docs).
 
 </Section>
