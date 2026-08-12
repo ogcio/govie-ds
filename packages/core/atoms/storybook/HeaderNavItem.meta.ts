@@ -11,7 +11,6 @@ export const headerNavItemMeta = {
   args: {
     children: 'Search',
     visible: undefined,
-    appearance: undefined,
     onClick: undefined,
     className: undefined,
     styles: undefined,
@@ -29,11 +28,6 @@ export const headerNavItemMeta = {
       }),
       control: 'select',
     },
-    appearance: enumType(Appearance, {
-      description:
-        'Focus ring for the header surface. Use `light` on light header sections. Defaults to the dark-surface ring.',
-      defaultValue: Appearance.DEFAULT,
-    }),
     onClick: {
       action: 'clicked',
       description: 'Click handler for the button.',
