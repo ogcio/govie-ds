@@ -1,4 +1,4 @@
-import { MitosisPlugin } from '@builder.io/mitosis';
+import type { MitosisPlugin } from '@builder.io/mitosis';
 
 /**
  * Converts SVG kebab-case attributes to React camelCase equivalents.
@@ -19,14 +19,14 @@ const renameSvgAttrs: MitosisPlugin = () => ({
   code: {
     post: (code: string) =>
       code
-        .replace(/clip-path=/g, 'clipPath=')
-        .replace(/clip-rule=/g, 'clipRule=')
-        .replace(/fill-rule=/g, 'fillRule=')
-        .replace(/fill-opacity=/g, 'fillOpacity=')
-        .replace(/stroke-width=/g, 'strokeWidth=')
-        .replace(/stroke-linecap=/g, 'strokeLinecap=')
-        .replace(/stroke-linejoin=/g, 'strokeLinejoin=')
-        .replace(/stroke-opacity=/g, 'strokeOpacity='),
+        .replaceAll('clip-path=', 'clipPath=')
+        .replaceAll('clip-rule=', 'clipRule=')
+        .replaceAll('fill-rule=', 'fillRule=')
+        .replaceAll('fill-opacity=', 'fillOpacity=')
+        .replaceAll('stroke-width=', 'strokeWidth=')
+        .replaceAll('stroke-linecap=', 'strokeLinecap=')
+        .replaceAll('stroke-linejoin=', 'strokeLinejoin=')
+        .replaceAll('stroke-opacity=', 'strokeOpacity='),
   },
 });
 

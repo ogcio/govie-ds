@@ -20,6 +20,7 @@ import type { AlignItems, Justify, ResponsiveValue, ValueOf } from './constants'
 import type { Props as BoxProps } from './Box';
 import { getAlignItems, getJustify, resolveResponsive } from './utilities';
 import GiBox from './Box';
+const getDirection = (direction: Props['direction']) => direction ?? Direction.COLUMN;
 const directionToClass = (direction: string, prefix: string): string =>
   direction === 'row' ? `${prefix}gi-flex-row` : `${prefix}gi-flex-col`;
 const gapToClass = (gap: number, prefix: string): string => `${prefix}gi-gap-${gap}`;
@@ -69,7 +70,7 @@ function Stack(props: Props) {
         justify: getJustify(props.justify),
         wrap: props.wrap ?? false,
         className: [
-          resolveResponsive(props.direction ?? Direction.COLUMN, directionToClass),
+          resolveResponsive(getDirection(props.direction), directionToClass),
           resolveResponsive(props.gap ?? 0, gapToClass),
           props.className,
         ],

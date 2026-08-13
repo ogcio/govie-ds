@@ -4,6 +4,15 @@ import globals from 'globals';
 import js from '@eslint/js';
 import tseslint from 'typescript-eslint';
 
+// `no-restricted-syntax` options replace rather than merge, so a package adding its own
+// selectors has to re-state the shared ones. Export them instead of copying them.
+export const restrictedSyntax = [
+  {
+    selector: 'TSEnumDeclaration',
+    message: 'Enums are not allowed, use const objects or string literals instead.',
+  },
+];
+
 export default [
   {
     ignores: ['**/dist/**', '**/coverage/**'],
@@ -25,13 +34,7 @@ export default [
       sourceType: 'module',
     },
     rules: {
-      'no-restricted-syntax': [
-        'error',
-        {
-          selector: 'TSEnumDeclaration',
-          message: 'Enums are not allowed, use const objects or string literals instead.',
-        },
-      ],
+      'no-restricted-syntax': ['error', ...restrictedSyntax],
       curly: ['error', 'all'],
       'object-shorthand': ['error', 'always'],
       eqeqeq: ['error', 'always', { null: 'ignore' }],

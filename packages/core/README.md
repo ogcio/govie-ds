@@ -14,6 +14,8 @@ By using Mitosis, we ensure that:
 - `pnpm build:react` — React-only generation into `@ogcio/design-system-react`.
 - `pnpm build:angular` — Angular-only generation into `@ogcio/design-system-angular`.
 - `pnpm build:watch` — re-generate on every change in `atoms/`.
+- `pnpm lint` — shared repository config plus the Mitosis source rules described below.
+- `pnpm typecheck` — type-check the source without emitting.
 
 ## Where things live
 
@@ -32,6 +34,8 @@ By using Mitosis, we ensure that:
 ### 1. Author the source
 
 Components live in `packages/core/atoms/<Component>.lite.tsx`. Each component declares its typed `Props` at the top of the file. Reusable `tailwind-variants` (`tv()`) configurations and their variant and size vocabulary live in co-located `<Component>.styles.ts` modules so they can be imported without pulling in the component. Style configurations used only by one component stay private as `classes` in its `.lite.tsx` module. A separate `<Component>.types.ts` is reserved for reusable types when the component has no corresponding public styles module. Shared helpers and cross-component constants live in `atoms/constants.ts` and `atoms/utilities.ts`.
+
+`.lite.tsx` is source for a generator, not code that runs, so several constructs compile cleanly for one target and break another. `eslint.config.js` bans the ones that can be caught statically; each rule's message explains the mechanism and the fix.
 
 Run `pnpm build:watch` while developing. The watcher regenerates the React and Angular outputs on every save, so the per-target shape evolves alongside the source. Generator plugins live in `packages/core/plugins/` (for example `strip-ref.ts`) and are wired through `react.config.ts` / `angular.config.ts`; reach for a plugin only when a generated output needs an across-the-board adjustment that the `.lite.tsx` source cannot express.
 

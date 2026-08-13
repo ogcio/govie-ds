@@ -1,5 +1,5 @@
 import { useMetadata } from '@builder.io/mitosis';
-import { IconProps } from './types';
+import type { IconProps } from './types';
 
 useMetadata({ angular: { selector: 'gi-accessibility-icon' } });
 

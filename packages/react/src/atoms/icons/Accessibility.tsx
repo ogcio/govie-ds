@@ -6,7 +6,7 @@
 
 import * as React from 'react';
 
-import { IconProps } from './types';
+import type { IconProps } from './types';
 
 function Accessibility(props: IconProps) {
   return (

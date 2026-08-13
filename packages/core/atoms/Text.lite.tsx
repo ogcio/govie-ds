@@ -19,7 +19,7 @@ useMetadata({ angular: { selector: 'gi-text' } });
 export default function Text(props: Props) {
   return (
     <span
-      className={classes({
+      class={classes({
         size: getSize(props.size),
         whitespace: getWhitespace(props.whitespace),
         className: props.className,

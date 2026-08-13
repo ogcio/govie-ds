@@ -9,6 +9,8 @@
     "build:angular": "NODE_OPTIONS='--import tsx' mitosis build --config angular.config.ts",
     "build:vue": "NODE_OPTIONS='--import tsx' mitosis build --config vue.config.ts",
     "build:watch": "chokidar \"./atoms/**/*.{ts,tsx}\" -c \"pnpm run build\" --initial",
+    "lint": "eslint .",
+    "typecheck": "tsc -p tsconfig.json --noEmit",
     "format": "prettier --write .",
     "format:check": "prettier --check ."
   },
@@ -17,6 +19,7 @@
     "storybook": "^10.3.3"
   },
   "devDependencies": {
+    "@builder.io/eslint-plugin-mitosis": "^0.0.17",
     "@builder.io/mitosis": "^0.13.0",
     "@builder.io/mitosis-cli": "^0.13.0",
     "@prettier/sync": "^0.6.1",

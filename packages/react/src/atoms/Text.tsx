@@ -24,15 +24,15 @@ import classes from './Text.styles';
 function Text(props: Props) {
   return (
     <span
-      id={props.id}
-      style={props.styles}
-      data-testid={props.dataTestId}
-      aria-hidden={props.ariaHidden}
       className={classes({
         size: getSize(props.size),
         whitespace: getWhitespace(props.whitespace),
         className: props.className,
       })}
+      id={props.id}
+      style={props.styles}
+      data-testid={props.dataTestId}
+      aria-hidden={props.ariaHidden}
     >
       {props.children}
     </span>

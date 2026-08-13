@@ -1,4 +1,4 @@
-import { MitosisConfig } from '@builder.io/mitosis';
+import type { MitosisConfig } from '@builder.io/mitosis';
 import annotation from './plugins/annotation';
 import prettierFormat from './plugins/prettier-format';
 import fixForwardRef from './plugins/forward-ref';

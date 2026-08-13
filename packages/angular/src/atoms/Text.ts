@@ -26,10 +26,6 @@ import classes from './Text.styles';
   selector: 'gi-text',
   template: `
     <span
-      [attr.id]="id"
-      [ngStyle]="styles"
-      [attr.data-testid]="dataTestId"
-      [attr.aria-hidden]="ariaHidden"
       [class]="
         classes({
           size: getSize(size),
@@ -37,6 +33,10 @@ import classes from './Text.styles';
           className: className,
         })
       "
+      [attr.id]="id"
+      [ngStyle]="styles"
+      [attr.data-testid]="dataTestId"
+      [attr.aria-hidden]="ariaHidden"
       ><ng-content></ng-content
     ></span>
   `,
@@ -55,11 +55,11 @@ export default class Text {
   getWhitespace = getWhitespace;
   classes = classes;
 
+  @Input() size!: Props['size'];
+  @Input() whitespace!: Props['whitespace'];
+  @Input() className!: Props['className'];
   @Input() id!: Props['id'];
   @Input() styles!: Props['styles'];
   @Input() dataTestId!: Props['dataTestId'];
   @Input() ariaHidden!: Props['ariaHidden'];
-  @Input() size!: Props['size'];
-  @Input() whitespace!: Props['whitespace'];
-  @Input() className!: Props['className'];
 }

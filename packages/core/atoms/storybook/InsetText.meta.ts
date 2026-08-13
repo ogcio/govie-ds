@@ -1,6 +1,6 @@
 import type { ArgTypes, StoryContext, Renderer } from 'storybook/internal/types';
 import { within, expect } from 'storybook/test';
-import { Props } from '../InsetText.lite';
+import type { Props } from '../InsetText.lite';
 
 export const insetTextMeta = {
   tags: ['autodocs'] as string[],

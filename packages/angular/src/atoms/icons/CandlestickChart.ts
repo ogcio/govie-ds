@@ -8,7 +8,7 @@ import { Component, Input } from '@angular/core';
 
 import { CommonModule } from '@angular/common';
 
-import { IconProps } from './types';
+import type { IconProps } from './types';
 
 @Component({
   selector: 'gi-candlestick-chart-icon',
