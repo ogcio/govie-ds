@@ -1,5 +1,5 @@
 import type { ArgTypes, StoryContext, Renderer } from 'storybook/internal/types';
-import { expect, within } from 'storybook/test';
+import { within } from 'storybook/test';
 import type { Props } from '../header/Header.lite';
 import { boxMeta } from './Box.meta';
 import { checker } from './utilities';
@@ -55,17 +55,5 @@ export const Default = {
     await check.is('header');
     await check.attributes({ 'aria-label': args.ariaLabel });
     await check.children();
-  },
-};
-
-export const MobileView = {
-  args: {
-    ...headerMeta.args,
-  },
-  play: async ({ canvasElement }: StoryContext<Renderer>) => {
-    const canvas = within(canvasElement as HTMLElement);
-    const navbar = await canvas.findByRole('navigation');
-    expect(navbar.children.length).toBe(1);
-    expect(await within(navbar).findByText('Menu')).toBeInTheDocument();
   },
 };

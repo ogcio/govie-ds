@@ -390,6 +390,7 @@ export const MigrationComparison: StoryObj = {
                 className="gi-py-1 gi-px-2 hover:gi-bg-black hover:gi-bg-opacity-20"
                 href="#"
                 ariaLabel="Log out"
+                appearance="light"
               >
                 <LogoutIcon size={16} />
               </LinkAtom>

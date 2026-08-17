@@ -6,7 +6,6 @@
 
 import { tv } from 'tailwind-variants';
 import type { Size, ResponsiveValue, ValueOf } from '../constants';
-import { Appearance } from '../Link.styles';
 import { resolveResponsive } from '../utilities';
 export type VisibleValue = ValueOf<typeof Size> | ResponsiveValue<boolean>;
 export default tv({
@@ -17,39 +16,16 @@ export default tv({
     'gi-leading-[24px] gi-truncate',
     'gi-border-solid gi-border-transparent',
     '[.gi-header-section-utility_&]:gi-py-1',
-    '[.gi-header-section-utility_&]:gi-leading-[16px]',
+    '[.gi-header-section-utility_&]:gi-leading-[18px]',
     'hover:gi-bg-black hover:gi-bg-opacity-20',
-    'focus:gi-bg-black focus:gi-bg-opacity-20 focus:gi-border-0',
-    'focus-visible:gi-bg-black focus-visible:gi-bg-opacity-20 focus-visible:gi-border-0',
+    'focus:gi-bg-black focus:gi-bg-opacity-20',
+    'focus-visible:gi-bg-black focus-visible:gi-bg-opacity-20',
     'focus:gi-outline-none focus-visible:gi-outline-none',
     'focus:gi-rounded-sm focus-visible:gi-rounded-sm',
     'focus:gi-shadow-[0_0_0_3px_var(--gieds-color-yellow-400)]',
-    'focus-visible:gi-shadow-[0_0_0_3px_var(--gieds-color-yellow-400)]',
-    '[.gi-header-section-light_&]:focus:gi-shadow-[0_0_0_2px_var(--gieds-color-gray-950),0_0_0_5px_var(--gieds-color-yellow-400)]',
-    '[.gi-header-section-light_&]:focus-visible:gi-shadow-[0_0_0_2px_var(--gieds-color-gray-950),0_0_0_5px_var(--gieds-color-yellow-400)]',
+    '[.gi-header-section-light_&]:focus:gi-shadow-[inset_0_0_0_2px_black,0_0_0_3px_var(--gieds-color-yellow-400)]',
+    '[.gi-header-section-light_&]:focus-visible:gi-shadow-[inset_0_0_0_2px_black,0_0_0_3px_var(--gieds-color-yellow-400)]',
   ],
-  variants: {
-    appearance: {
-      // Dark header surfaces: yellow focus ring only
-      [Appearance.DEFAULT]: [
-        'focus:gi-shadow-[0_0_0_3px_var(--gieds-color-yellow-400)]',
-        'focus-visible:gi-shadow-[0_0_0_3px_var(--gieds-color-yellow-400)]',
-      ],
-      // Light header surfaces: dark + yellow double ring (matches Link default)
-      [Appearance.LIGHT]: [
-        'focus:gi-shadow-[0_0_0_2px_var(--gieds-color-gray-950),0_0_0_5px_var(--gieds-color-yellow-400)]',
-        'focus-visible:gi-shadow-[0_0_0_2px_var(--gieds-color-gray-950),0_0_0_5px_var(--gieds-color-yellow-400)]',
-      ],
-      // Inherit text from the section; use the dark-surface focus ring by default
-      [Appearance.INHERIT]: [
-        'focus:gi-shadow-[0_0_0_3px_var(--gieds-color-yellow-400)]',
-        'focus-visible:gi-shadow-[0_0_0_3px_var(--gieds-color-yellow-400)]',
-      ],
-    },
-  },
-  defaultVariants: {
-    appearance: Appearance.DEFAULT,
-  },
 });
 export const getVisibility = (visible: VisibleValue = true): string => {
   if (typeof visible === 'boolean') {
