@@ -124,7 +124,7 @@ import {
   HeaderNavItemSeparator,
   Link,
 } from '@ogcio/design-system-react/next';
-import { LogoGoldGreen } from '@ogcio/design-system-react/logos';
+import { LogoGoldGreen, LogoWhite } from '@ogcio/design-system-react/logos';
 import * as Icons from '@ogcio/design-system-react/icons';
 import { MDXComponents } from 'mdx/types';
 import { useMDXComponent } from 'next-contentlayer2/hooks';
@@ -367,6 +367,7 @@ const documentComponents: MDXComponents = {
   List,
   LoadingPattern,
   LogoGoldGreen,
+  LogoWhite,
   Logos,
   Modal,
   ModalBody,

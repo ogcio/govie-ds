@@ -296,7 +296,6 @@ export const Default: StoryObj = {
     });
   },
 };
-// TODO: after Header migration done for docs, replace link below with docs link
 
 export const MigrationComparison: StoryObj = {
   tags: ['skip-playwright'],
@@ -313,7 +312,7 @@ export const MigrationComparison: StoryObj = {
     docs: {
       description: {
         story:
-          'This story renders the same complete header twice: the legacy HeaderNext on top, and the new composable Header below. The legacy API composes HeaderLogo, HeaderTitle, HeaderSecondaryMenu, and HeaderPrimaryMenu (with HeaderMenuItemLink, HeaderMenuItemButton, and HeaderMenuItemSeparator). The composable API maps secondary links into a HeaderSection with variant="utility" and HeaderNav, while logo, title, and primary actions live in a default HeaderSection with HeaderNavItemLink, HeaderNavItem, and HeaderNavItemSeparator. showItemMode becomes the visible prop on nav items. Both versions are intended to look the same. See the [Header docs](/docs/layout-header-header--docs) for more details.\n\n A key difference to be aware of is the default spacing between navigational items, which is now 16px across all sections; in-line with the design specifications.',
+          'This story renders the same complete header twice: the legacy `Header` on top, and the new composable `Header` below. The legacy API composes `HeaderLogo`, `HeaderTitle`, `HeaderSecondaryMenu`, and `HeaderPrimaryMenu` (with `HeaderMenuItemLink`, `HeaderMenuItemButton`, and `HeaderMenuItemSeparator`). The composable API maps secondary links into a HeaderSection with `variant="utility"` and `HeaderNav`, while logo, title, and primary actions live in a default `HeaderSection` with `HeaderNavItemLink`, `HeaderNavItem`, and `HeaderNavItemSeparator`. `showItemMode` becomes the visible prop on nav items. Both versions are intended to look the same. \n\n A key difference to be aware of is the default spacing between navigational items, which is now 16px across all sections; in-line with the design specifications.\n\n See the [migration guide](/components/library/header/react/#migration-guide) for more information',
       },
     },
   },
@@ -447,7 +446,7 @@ export const LightMigrationComparison: StoryObj = {
     docs: {
       description: {
         story:
-          'This story renders the same complete light header twice: the legacy HeaderNext on top, and the new composable Header below. The legacy API uses variant="light". The composable API maps the same structure as MigrationComparison, with appearance="light" on HeaderSection (and on nav items for the light-surface focus ring) and the dark Gov.ie logos. Both versions are intended to look the same. See the [Header docs](/docs/layout-header-header--docs) for more details.\n\n A key difference to be aware of is the default spacing between navigational items, which is now 16px across all sections; in-line with the design specifications.',
+          'This story renders the same complete light header twice: the legacy `Header` on top, and the new composable `Header` below. The legacy API uses variant="light". The composable API maps the same structure as MigrationComparison, with `appearance="light"` on HeaderSection (and on nav items for the light-surface focus ring) and the dark Gov.ie logos. Both versions are intended to look the same.\n\n See the [migration guide](/components/library/header/react/#migration-guide) for more information',
       },
     },
   },

@@ -13,7 +13,7 @@ const deprecatedKeys = [
   'secondaryLinks',
   'showTitleOnMobile',
 ] as const;
-/** @deprecated Use the new composable `Header` from `@ogcio/design-system-react/next`. */
+/** @deprecated Use the new composable `Header` from `@ogcio/design-system-react/next`. See the [migration guide](https://ds.services.gov.ie/components/library/header/react/#migration-guide) for more information */
 export const Header = (props: HeaderProps | HeaderNextProps) => {
   const isLegacy = deprecatedKeys.some((key) => key in props);
 
