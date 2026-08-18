@@ -4,7 +4,7 @@ description: Header React Component
 status: stable
 component:
   id: 'header-react'
-  link: '/docs/layout-header--docs'
+  link: '/docs/layout-header-header--docs'
   status: 'stable'
   properties:
     - name: Header
@@ -283,9 +283,6 @@ component:
           ofType: 'string'
           description: 'Custom class name for styling the separator.'
           required: false
-  stories:
-    - name: 'default'
-      url: '/story/layout-header--default'
         - name: 'styles'
           ofType: 'Record<string, string>'
           description: 'Control the `style` attribute of the separator.'
@@ -298,6 +295,9 @@ component:
           ofType: 'string'
           description: 'Optional test ID for the separator.'
           required: false
+  stories:
+    - name: 'default'
+      url: '/story/layout-header-header--default'
 ---
 
 # Header
@@ -497,14 +497,6 @@ The composable Header does not inject landmark labels or translations. You own t
 ## Properties
 
 <ComponentPropertiesTable componentId="header-react" />
-
-# Legacy Header
-
-> **Note:** The previous Header API from `@ogcio/design-system-react` is deprecated. Use the composable Header from `@ogcio/design-system-react/next`. This section retains only the i18n keys still used by the deprecated API.
-
-## i18n Keys
-
-The deprecated Header supports localisation through i18n keys in React, [find i18n setup here](/components/setup-guides/react/#internationalisation-i18n-guidelines). Below is the list of keys and their default text:
 
 ## Migration guide
 
@@ -939,6 +931,33 @@ In the composable API, `HeaderLogo` only handles positioning. Render the image y
 - Pass the same `appearance` to each `HeaderSection` so utility and primary bands stay aligned.
 - Use `visible` on nav items when something should only show from a breakpoint (for example `visible="lg"`).
 
-For a complete migrated example, see the preview at the top of this page or click "Show Code" in the [Header story](/storybook-react/docs/layout-header--docs).
+For a complete migrated example, see the preview at the top of this page or click "Show Code" in the [Header story](/storybook-react/docs/layout-header-header--docs).
+
+# Legacy Header
+
+> **Note:** The previous Header API from `@ogcio/design-system-react` is deprecated. Use the composable Header from `@ogcio/design-system-react/next`. This section retains only the i18n keys still used by the deprecated API.
+
+## i18n Keys
+
+The deprecated Header supports localisation through i18n keys in React, [find i18n setup here](/components/setup-guides/react/#internationalisation-i18n-guidelines). Below is the list of keys and their default text:
+
+```json
+{
+  "header.headerSlot": "Slot Container {{index}}",
+  "header.toggleActionItem": "Toggle item action for {{item}}",
+  "header.search": "Search",
+  "header.searchTheWebsite": "Search the website",
+  "header.searchForm": "Search Form",
+  "header.submitSearch": "Submit search",
+  "header.closeMobileMenu": "Close Mobile Menu",
+  "header.mobileNavigationMenu": "Mobile Navigation Menu",
+  "header.siteHeader": "Site Header",
+  "header.goToHomePage": "Go to the home page",
+  "header.drawer.close": "Close",
+  "header.menu": "Menu"
+}
+```
+
+These keys represent visible text elements. You can customise their translations for each locale to enable multilingual support.
 
 </Section>
