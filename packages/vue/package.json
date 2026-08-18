@@ -11,7 +11,8 @@
     ".": {
       "types": "./dist/index.d.ts",
       "import": "./dist/index.js"
-    }
+    },
+    "./fonts.css": "./fonts.css"
   },
   "scripts": {
     "build": "vite build && vue-tsc -p tsconfig.build.json",
@@ -21,10 +22,14 @@
     "format:check": "prettier . --check"
   },
   "files": [
-    "dist"
+    "dist",
+    "fonts.css"
   ],
   "peerDependencies": {
     "vue": "^3.5.0"
+  },
+  "dependencies": {
+    "@fontsource/lato": "^5.1.1"
   },
   "devDependencies": {
     "@vitejs/plugin-vue": "6.0.7",
