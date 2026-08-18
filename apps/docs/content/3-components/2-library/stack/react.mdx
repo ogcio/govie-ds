@@ -14,8 +14,8 @@ component:
           description: 'Defines the direction of the stack. Options: column, row. Can also accept an object with responsive breakpoints (base, xs, sm, md, lg, xl, 2xl).'
           required: false
         - name: 'gap'
-          ofType: 'number | ResponsiveValue'
-          description: 'Specifies the space between stack items. Can be a number or a responsive object with breakpoints.'
+          ofType: 'number 0–12 | ResponsiveValue<0–12>'
+          description: 'Specifies the space between stack items using the spacing scale (0–12). Can be a number or a responsive object with breakpoints.'
           required: false
         - name: 'align'
           ofType: '"start" | "center" | "end" | "stretch" | "baseline"'

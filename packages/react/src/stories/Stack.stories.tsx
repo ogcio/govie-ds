@@ -2,6 +2,7 @@ import type { Meta, StoryObj } from '@storybook/react-vite';
 import _ from 'lodash';
 import { Stack } from '@/stack/stack';
 import { Direction, AlignItems, Justify } from '@/atoms/constants';
+import type { SpacingScale } from '@/atoms/constants';
 import {
   stackMeta,
   Default as stackDefault,
@@ -101,7 +102,7 @@ export const GapScale: Story = {
   ...stackGapScale,
   render: () => (
     <div className="gi-flex gi-flex-col gi-gap-6">
-      {_.map([0, 1, 2, 4, 6, 8], (gap) => (
+      {_.map([0, 1, 2, 4, 6, 8] as SpacingScale[], (gap) => (
         <div key={gap}>
           <p className="gi-text-sm gi-font-bold gi-mb-2">gap={gap}</p>
           <Stack dataTestId={`stack-gap-${gap}`} direction="row" gap={gap}>

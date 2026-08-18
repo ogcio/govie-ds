@@ -1,7 +1,7 @@
 import { useMetadata } from '@builder.io/mitosis';
 import { tv } from 'tailwind-variants';
 import { Direction } from './constants';
-import type { AlignItems, Justify, ResponsiveValue, ValueOf } from './constants';
+import type { AlignItems, Justify, ResponsiveValue, SpacingScale, ValueOf } from './constants';
 import type { Props as BoxProps } from './Box.lite';
 import { getAlignItems, getJustify, resolveResponsive } from './utilities';
 import GiBox from './Box.lite';
@@ -10,7 +10,7 @@ useMetadata({ angular: { selector: 'gi-stack' } });
 
 export type Props = {
   direction?: ResponsiveValue<ValueOf<typeof Direction>>;
-  gap?: ResponsiveValue<number>;
+  gap?: ResponsiveValue<SpacingScale>;
   align?: ValueOf<typeof AlignItems>;
   justify?: ValueOf<typeof Justify>;
   wrap?: boolean;
@@ -46,7 +46,7 @@ const getDirection = (direction: Props['direction']) => direction ?? Direction.C
 const directionToClass = (direction: string, prefix: string): string =>
   direction === 'row' ? `${prefix}gi-flex-row` : `${prefix}gi-flex-col`;
 
-const gapToClass = (gap: number, prefix: string): string => `${prefix}gi-gap-${gap}`;
+const gapToClass = (gap: SpacingScale, prefix: string): string => `${prefix}gi-gap-${gap}`;
 
 // TODO: add twMerge to enable consumer `className` to override component-default utilities
 const classes = tv({

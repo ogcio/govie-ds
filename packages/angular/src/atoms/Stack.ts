@@ -10,7 +10,7 @@ import { CommonModule } from '@angular/common';
 
 export type Props = {
   direction?: ResponsiveValue<ValueOf<typeof Direction>>;
-  gap?: ResponsiveValue<number>;
+  gap?: ResponsiveValue<SpacingScale>;
   align?: ValueOf<typeof AlignItems>;
   justify?: ValueOf<typeof Justify>;
   wrap?: boolean;
@@ -18,14 +18,14 @@ export type Props = {
 
 import { tv } from 'tailwind-variants';
 import { Direction } from './constants';
-import type { AlignItems, Justify, ResponsiveValue, ValueOf } from './constants';
+import type { AlignItems, Justify, ResponsiveValue, SpacingScale, ValueOf } from './constants';
 import type { Props as BoxProps } from './Box';
 import { getAlignItems, getJustify, resolveResponsive } from './utilities';
 import GiBox from './Box';
 const getDirection = (direction: Props['direction']) => direction ?? Direction.COLUMN;
 const directionToClass = (direction: string, prefix: string): string =>
   direction === 'row' ? `${prefix}gi-flex-row` : `${prefix}gi-flex-col`;
-const gapToClass = (gap: number, prefix: string): string => `${prefix}gi-gap-${gap}`;
+const gapToClass = (gap: SpacingScale, prefix: string): string => `${prefix}gi-gap-${gap}`;
 
 // TODO: add twMerge to enable consumer `className` to override component-default utilities
 // TODO: add twMerge to enable consumer `className` to override component-default utilities
