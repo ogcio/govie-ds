@@ -11,7 +11,7 @@ export default defineConfig({
       fileName: 'index',
     },
     rolldownOptions: {
-      external: ['vue'],
+      external: ['vue', 'lodash', 'tailwind-variants'],
     },
   },
 });
