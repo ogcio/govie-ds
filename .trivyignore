@@ -1,15 +1,7 @@
-# OpenSSL June 2026 advisory batch (libssl3/libcrypto3 3.5.6-r1, fixed in 3.5.7-r0).
-# Not exploitable - the affected code paths are PKCS#7/S/MIME verification,
-# CMS decryption, ASN.1 message parsing and the QUIC server: nginx in this image
-# serves static files only and does not terminate TLS (the OpenShift router does),
-# so none of these paths are reachable with attacker-controlled input.
-# Remove this block once the base image ships OpenSSL >= 3.5.7-r0.
-CVE-2026-45447
-CVE-2026-9076
-CVE-2026-7383
-CVE-2026-34180
-CVE-2026-42764
-CVE-2026-45445
-CVE-2026-34183
-CVE-2026-34182
-CVE-2026-34181
+# CVE-2026-14456 (OpenSSL, libssl3/libcrypto3 3.5.7-r1, fixed upstream in 3.5.8).
+# Not exploitable - unbounded memory growth in the OpenSSL QUIC server's incoming
+# channel queue. nginx in this image serves static files over plain HTTP on 8080,
+# does not terminate TLS (the OpenShift router does) and never opens an OpenSSL
+# QUIC listener, so the affected path does not exist at runtime.
+# Remove this block once the base image ships OpenSSL >= 3.5.8-r0.
+CVE-2026-14456
