@@ -23,8 +23,12 @@ export default tv({
     'focus:gi-outline-none focus-visible:gi-outline-none',
     'focus:gi-rounded-sm focus-visible:gi-rounded-sm',
     'focus:gi-shadow-[0_0_0_3px_var(--gieds-color-yellow-400)]',
+    '[.gi-header-section-utility_&]:focus:gi-shadow-[0_0_0_2px_var(--gieds-color-yellow-400)]',
+    '[.gi-header-section-utility_&]:focus-visible:gi-shadow-[0_0_0_2px_var(--gieds-color-yellow-400)]',
     '[.gi-header-section-light_&]:focus:gi-shadow-[inset_0_0_0_2px_black,0_0_0_3px_var(--gieds-color-yellow-400)]',
     '[.gi-header-section-light_&]:focus-visible:gi-shadow-[inset_0_0_0_2px_black,0_0_0_3px_var(--gieds-color-yellow-400)]',
+    '[.gi-header-section-light_.gi-header-section-utility_&]:focus:gi-shadow-[inset_0_0_0_2px_black,0_0_0_3px_var(--gieds-color-yellow-400)]',
+    '[.gi-header-section-light_.gi-header-section-utility_&]:focus-visible:gi-shadow-[inset_0_0_0_2px_black,0_0_0_3px_var(--gieds-color-yellow-400)]',
   ],
 });
 export const getVisibility = (visible: VisibleValue = true): string => {
