@@ -1,8 +1,13 @@
 import { defineConfigWithVueTs, vueTsConfigs } from '@vue/eslint-config-typescript';
+import storybook from 'eslint-plugin-storybook';
 import pluginVue from 'eslint-plugin-vue';
 import baseConfig from '../../eslint.config.mjs';
 
 export default [
+  {
+    ignores: ['**/storybook-static/**'],
+  },
+  ...storybook.configs['flat/recommended'],
   ...baseConfig,
   ...defineConfigWithVueTs(
     pluginVue.configs['flat/essential'],
