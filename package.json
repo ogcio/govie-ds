@@ -18,6 +18,7 @@
     "examples:nextjs": "pnpm -F @ogcio/examples-nextjs^... build && pnpm --F @ogcio/examples-nextjs dev",
     "examples:angular": "pnpm -F @ogcio/examples-angular^... build && pnpm --F @ogcio/examples-angular start",
     "examples:html": "pnpm -F @ogcio/examples-html^... build && pnpm --F @ogcio/examples-html dev",
+    "examples:vue": "pnpm -F @ogcio/examples-vue^... build && pnpm --F @ogcio/examples-vue dev",
     "format": "pnpm -r format",
     "format:check": "pnpm -r format:check",
     "lint": "pnpm -r --no-bail lint",

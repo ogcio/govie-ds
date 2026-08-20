@@ -77,6 +77,7 @@ pnpm ds
 | `pnpm examples:nextjs`       | Run Next.js example                     |
 | `pnpm examples:angular`      | Run Angular example                     |
 | `pnpm examples:html`         | Run HTML example                        |
+| `pnpm examples:vue`          | Run Vue example                         |
 | `pnpm format:check`          | Check formatting on all projects        |
 | `pnpm lint`                  | Check linting on all projects           |
 | `pnpm test`                  | Run tests on all projects               |
