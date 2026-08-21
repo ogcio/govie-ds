@@ -1,12 +1,10 @@
 <script setup lang="ts">
 import { ref } from 'vue';
 import {
-  BlueskyIcon,
   Box,
   Button,
   Container,
   Divider,
-  FacebookIcon,
   Footer,
   FooterLogo,
   FooterSection,
@@ -26,24 +24,26 @@ import {
   HeaderSection,
   HeaderTitle,
   IconButton,
-  InfoIcon,
   InsetText,
   Link,
   LinkButton,
-  LinkedinIcon,
-  LogoGoldGreen,
-  LogoHarpWhite,
-  LogoWhite,
-  LogoutIcon,
-  MenuIcon,
   Paragraph,
-  SearchIcon,
-  SendIcon,
   Stack,
   Text,
+} from '@ogcio/design-system-vue';
+
+import {
+  InfoIcon,
+  LinkedinIcon,
+  LogoutIcon,
+  SearchIcon,
+  SendIcon,
   ThumbUpIcon,
   XIcon,
-} from '@ogcio/design-system-vue';
+  FacebookIcon,
+  BlueskyIcon,
+} from '@ogcio/design-system-vue/icons';
+import { LogoGoldGreen, LogoHarpWhite, LogoWhite } from '@ogcio/design-system-vue/logos';
 
 const searchOpen = ref(false);
 </script>
