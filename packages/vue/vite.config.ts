@@ -6,9 +6,12 @@ export default defineConfig({
   build: {
     copyPublicDir: false,
     lib: {
-      entry: 'src/index.ts',
+      entry: {
+        index: 'src/index.ts',
+        icons: 'src/icons.ts',
+        logos: 'src/logos.ts',
+      },
       formats: ['es'],
-      fileName: 'index',
     },
     rolldownOptions: {
       external: ['vue', 'lodash', 'tailwind-variants'],
