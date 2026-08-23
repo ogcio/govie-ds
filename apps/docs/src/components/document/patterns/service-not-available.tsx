@@ -1,30 +1,27 @@
+import { Heading, Paragraph } from '@ogcio/design-system-react';
 import {
   Header,
-  HeaderSearch,
-  Heading,
-  Paragraph,
-} from '@ogcio/design-system-react';
-import {
+  HeaderSection,
+  HeaderLogo,
   Footer,
   FooterSection,
   FooterLogo,
   Link,
 } from '@ogcio/design-system-react/next';
-import { LogoGoldGreen } from '@ogcio/design-system-react/logos';
+import { LogoGoldGreen, LogoWhite } from '@ogcio/design-system-react/logos';
 
 export function ServiceUnavailable() {
   return (
     <>
-      <Header
-        logo={{ href: '/' }}
-        items={[
-          {
-            itemType: 'slot',
-            component: <HeaderSearch />,
-            slotAppearance: 'dropdown',
-          },
-        ]}
-      />
+      <Header>
+        <HeaderSection>
+          <HeaderLogo>
+            <Link href="/" appearance="light">
+              <LogoWhite />
+            </Link>
+          </HeaderLogo>
+        </HeaderSection>
+      </Header>
       <main>
         <Heading as="h2">Sorry, the service is unavailable</Heading>
         <Paragraph>You will be able to use the service later.</Paragraph>

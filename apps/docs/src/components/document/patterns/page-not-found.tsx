@@ -1,10 +1,10 @@
+import { Heading, Paragraph } from '@ogcio/design-system-react';
 import {
-  Heading,
+  HeaderLogo,
   Header,
-  Paragraph,
-  HeaderSearch,
-} from '@ogcio/design-system-react';
-import { LogoGoldGreen } from '@ogcio/design-system-react/logos';
+  HeaderSection,
+} from '@ogcio/design-system-react/next';
+import { LogoGoldGreen, LogoWhite } from '@ogcio/design-system-react/logos';
 import {
   Footer,
   FooterSection,
@@ -15,16 +15,15 @@ import {
 export function PageNotFound() {
   return (
     <>
-      <Header
-        logo={{ href: '/' }}
-        items={[
-          {
-            itemType: 'slot',
-            component: <HeaderSearch />,
-            slotAppearance: 'dropdown',
-          },
-        ]}
-      />
+      <Header>
+        <HeaderSection>
+          <HeaderLogo>
+            <Link href="/" appearance="light">
+              <LogoWhite />
+            </Link>
+          </HeaderLogo>
+        </HeaderSection>
+      </Header>
       <main>
         <Heading as="h2">Page not found</Heading>
         <Paragraph>

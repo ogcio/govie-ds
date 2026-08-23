@@ -1,15 +1,15 @@
 import { ColorsMapProps, resolveCssVariables } from '@/lib/theme-utils';
+import { Button, SideNav, SideNavItem } from '@ogcio/design-system-react';
+import { LogoWhite } from '@ogcio/design-system-react/logos';
 import {
-  Alert,
-  Button,
   Header,
-  Link,
-  Paragraph,
-  SideNav,
-  SideNavItem,
-  Tag,
-} from '@ogcio/design-system-react';
-import React from 'react';
+  HeaderSection,
+  HeaderNav,
+  HeaderLogo,
+  HeaderTitle,
+  HeaderNavItem,
+  HeaderNavItemLink,
+} from '@ogcio/design-system-react/next';
 
 export const ThemePreview = ({ colors }: ColorsMapProps) => {
   return (
@@ -18,33 +18,25 @@ export const ThemePreview = ({ colors }: ColorsMapProps) => {
       className="p-4 border rounded shadow"
     >
       <div className="flex flex-col gap-8">
-        <Header
-          title="Example"
-          secondaryLinks={[
-            {
-              href: '#',
-              label: 'English',
-            },
-            {
-              href: '#',
-              label: 'Gaeilge',
-            },
-          ]}
-          items={[
-            {
-              itemType: 'link',
-              label: 'Link 1',
-            },
-            {
-              itemType: 'link',
-              label: 'Link 2',
-            },
-            {
-              itemType: 'link',
-              label: 'Link 3',
-            },
-          ]}
-        />
+        <Header>
+          <HeaderSection variant="utility">
+            <HeaderNav ariaLabel="Utilities">
+              <HeaderNavItem>English</HeaderNavItem>
+              <HeaderNavItem>Gaeilge</HeaderNavItem>
+            </HeaderNav>
+          </HeaderSection>
+          <HeaderSection>
+            <HeaderLogo>
+              <LogoWhite />
+            </HeaderLogo>
+            <HeaderTitle>Example</HeaderTitle>
+            <HeaderNav ariaLabel="Primary">
+              <HeaderNavItemLink href="#">Link 1</HeaderNavItemLink>
+              <HeaderNavItemLink href="#">Link 2</HeaderNavItemLink>
+              <HeaderNavItemLink href="#">Link 3</HeaderNavItemLink>
+            </HeaderNav>
+          </HeaderSection>
+        </Header>
         <div className="flex gap-4">
           <Button className="w-fit" variant="primary">
             Primary

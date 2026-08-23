@@ -2,20 +2,23 @@
 import {
   DrawerBody,
   DrawerWrapper,
-  Header,
-  HeaderLogo,
-  HeaderMenuItemButton,
-  HeaderMenuItemLink,
-  HeaderPrimaryMenu,
-  HeaderTitle,
   ListItem,
-  useToggleMap,
 } from '@ogcio/design-system-react';
-
-import { Link } from '@ogcio/design-system-react/next';
+import {
+  Header,
+  HeaderSection,
+  HeaderLogo,
+  HeaderTitle,
+  HeaderNav,
+  HeaderNavItem,
+  Link,
+  HeaderNavItemLink,
+} from '@ogcio/design-system-react/next';
 import NextLink from 'next/link';
 
-import Image from 'next/image';
+import { LogoHarpWhite, LogoWhite } from '@ogcio/design-system-react/logos';
+import { MenuIcon } from '@ogcio/design-system-react/icons';
+import { useState } from 'react';
 
 const links = [
   { label: 'Get Started', href: '/get-started/' },
@@ -27,75 +30,49 @@ const links = [
 ];
 
 export const DocsHeader = () => {
-  const [{ drawer }, { toggle, closeAll }] = useToggleMap({
-    drawer: false,
-  });
-
-  const menuIcon = drawer ? 'close' : 'menu';
+  const [drawerOpen, setDrawerOpen] = useState(false);
   const drawerId = 'GoivieDocsMobileDrawer';
 
   return (
     <>
-      <Header fullWidth variant="default" aria-label="Site header">
-        <HeaderLogo>
-          <Link asChild className="focus:!shadow-none">
-            <NextLink href="/">
-              <Image
-                alt="govie logo"
-                className="gi-block sm:gi-hidden"
-                decoding="async"
-                loading="eager"
-                fetchPriority="high"
-                width={25.45}
-                height={40}
-                src="/logos/general/harp-white.svg"
-              />
-              <Image
-                src="/logos/government-of-ireland/gov-white.svg"
-                alt="govie logo"
-                className="gi-hidden sm:gi-block"
-                decoding="async"
-                loading="eager"
-                fetchPriority="high"
-                width={136}
-                height={48}
-              />
-              <span className="gi-sr-only">Gov.ie logo</span>
-            </NextLink>
-          </Link>
-        </HeaderLogo>
-
-        <HeaderTitle id="site-title">Design System</HeaderTitle>
-
-        <HeaderPrimaryMenu aria-label="Primary navigation">
-          {links.map((link) => (
-            <HeaderMenuItemLink
-              asChild
-              key={link.href}
-              showItemMode="desktop-only"
+      <Header>
+        <HeaderSection>
+          <HeaderLogo>
+            <Link ariaLabel="Homepage" asChild appearance="light">
+              <NextLink href="/">
+                <LogoWhite className="gi-hidden sm:gi-block" />
+                <LogoHarpWhite size={25} className="sm:gi-hidden" />
+              </NextLink>
+            </Link>
+          </HeaderLogo>
+          <HeaderTitle>Design System</HeaderTitle>
+          <HeaderNav ariaLabel="Primary navigation">
+            {links.map(({ label, href }) => (
+              <HeaderNavItemLink asChild key={href} visible="xl">
+                <NextLink href={href}>{label}</NextLink>
+              </HeaderNavItemLink>
+            ))}
+            <HeaderNavItem
+              onClick={() => {
+                setDrawerOpen(true);
+              }}
+              visible={{ base: true, xl: false }}
+              ariaControls={drawerId}
+              ariaExpanded={drawerOpen}
+              ariaLabel="Open navigation menu"
             >
-              <NextLink href={link.href}>{link.label}</NextLink>
-            </HeaderMenuItemLink>
-          ))}
-
-          <HeaderMenuItemButton
-            showItemMode="mobile-only"
-            icon={menuIcon}
-            aria-label="Open navigation menu"
-            aria-haspopup="dialog"
-            aria-expanded={drawer}
-            aria-controls={drawerId}
-            onClick={() => toggle('drawer')}
-          >
-            Menu
-          </HeaderMenuItemButton>
-        </HeaderPrimaryMenu>
+              Menu
+              <MenuIcon />
+            </HeaderNavItem>
+          </HeaderNav>
+        </HeaderSection>
       </Header>
-
       <DrawerWrapper
         id={drawerId}
-        isOpen={drawer}
-        onClose={closeAll}
+        isOpen={drawerOpen}
+        onClose={() => {
+          setDrawerOpen(false);
+        }}
         position="right"
         closeButtonSize="large"
         aria-label="Navigation menu"
@@ -112,7 +89,7 @@ export const DocsHeader = () => {
                       <NextLink
                         href={link.href}
                         onNavigate={() => {
-                          toggle('drawer');
+                          setDrawerOpen(false);
                         }}
                       >
                         <span className="gi-text-sm gi-ml-1">{link.label}</span>
