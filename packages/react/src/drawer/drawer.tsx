@@ -13,7 +13,7 @@ export type DrawerPosition = 'left' | 'right' | 'bottom';
 
 type DrawerControlledProps = DrawerBaseProps & {
   open: boolean;
-  onClose?: () => void;
+  onClose: () => void;
   /** @deprecated Not used in controlled mode. Render your own trigger and set `open` instead. */
   triggerButton?: never;
   /** @deprecated Not used in controlled mode. Pass `open` to control visibility instead. */
@@ -77,6 +77,7 @@ export const Drawer = ({
   closeButtonLabel,
   position = 'right',
   className,
+  dataTestId,
 }: DrawerProps) => {
   // if triggerButton present, default to uncontrolled behaviour
   const isUncontrolled = !!triggerButton;
@@ -107,6 +108,7 @@ export const Drawer = ({
         className={className}
         isOpen={isUncontrolled ? internalOpen : open}
         onClose={onClose ?? (() => setInternalOpen(false))}
+        dataTestId={dataTestId}
       />
     </>
   );

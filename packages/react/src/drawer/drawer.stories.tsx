@@ -40,20 +40,30 @@ const meta = {
       },
     },
     open: {
-      control: 'boolean',
+      required: true,
       description:
         'Controls the open/closed state of the drawer. Use with `onClose` and local state instead of `startsOpen` and `triggerButton`.',
       table: {
         type: { summary: 'boolean' },
       },
+      control: false,
+      type: { name: 'boolean', required: true },
     },
     onClose: {
+      required: true,
       control: false,
       description:
         'Callback fired when the drawer is closed. Used together with the controlled `open` prop to manage drawer state externally.',
       table: {
         type: { summary: '() => void' },
       },
+      type: { name: 'function', required: true },
+    },
+    triggerButton: {
+      control: false,
+      description:
+        '**Deprecated** - use `open` and `onClose` instead. Trigger element used to open the drawer. It is cloned to inject an onClick.',
+      table: { type: { summary: 'ReactElement' } },
     },
     closeButtonLabel: {
       control: 'text',
@@ -361,6 +371,8 @@ export const DesktopButtonStacked: Story = {
   },
 };
 
+const drawerOpen = (drawer: HTMLElement) => drawer.classList.contains('gi-modal-open');
+
 export const TestOpenCloseInteractions: Story = {
   tags: ['skip-playwright', 'interaction'],
 
@@ -370,11 +382,12 @@ export const TestOpenCloseInteractions: Story = {
     return (
       <Stack gap={2}>
         <Heading as="h4">Controlled</Heading>
-        <Button dataTestId="drawer-trigger-button-container" onClick={() => setIsOpen(true)}>
+        <Button dataTestId="controlled-trigger" onClick={() => setIsOpen(true)}>
           Open drawer
         </Button>
         <Drawer
           {...props}
+          dataTestId="controlled-drawer"
           open={isOpen}
           onClose={() => {
             setIsOpen(false);
@@ -386,7 +399,10 @@ export const TestOpenCloseInteractions: Story = {
         </Drawer>
         <Divider />
         <Heading as="h4">Uncontrolled</Heading>
-        <Drawer triggerButton={<Button dataTestId="drawer-trigger-uncontrolled">Open Drawer</Button>}>
+        <Drawer
+          dataTestId="uncontrolled-drawer"
+          triggerButton={<Button dataTestId="uncontrolled-trigger">Open Drawer</Button>}
+        >
           <DrawerBody key="body">
             <Paragraph>Here is the body content of the drawer.</Paragraph>
           </DrawerBody>
@@ -396,52 +412,51 @@ export const TestOpenCloseInteractions: Story = {
   },
   play: async ({ canvasElement, step }) => {
     const canvas = within(canvasElement);
+    const controlledTrigger = canvas.getByTestId('controlled-trigger');
+    const uncontrolledTrigger = canvas.getByTestId('uncontrolled-trigger');
 
     await step('Controlled should open the drawer on button trigger', async () => {
-      const triggerButtonElement = await canvas.findByTestId('drawer-trigger-button-container');
-      await userEvent.click(triggerButtonElement);
-      const controlledModal = screen.getAllByTestId('modal')[0];
+      await userEvent.click(controlledTrigger);
+      const controlledDrawer = screen.getByTestId('controlled-drawer');
       await waitFor(() => {
-        expect(controlledModal.classList.contains('gi-modal-open')).toBe(true);
+        expect(drawerOpen(controlledDrawer)).toBe(true);
       });
     });
 
     await step('Controlled should close the drawer on icon click', async () => {
-      const controlledModal = screen.getAllByTestId('modal')[0];
-      const iconElement = controlledModal.querySelector('.gi-modal-icon');
+      const controlledDrawer = screen.getByTestId('controlled-drawer');
+      const iconElement = controlledDrawer.querySelector('.gi-modal-icon');
       expect(iconElement).toBeTruthy();
       await userEvent.click(iconElement as Element);
       await waitFor(() => {
-        expect(controlledModal.classList.contains('gi-modal-open')).toBe(false);
+        expect(drawerOpen(controlledDrawer)).toBe(false);
       });
     });
 
     await step('Controlled should close the drawer on overlay click', async () => {
-      const triggerButtonElement = await canvas.findByTestId('drawer-trigger-button-container');
-      await userEvent.click(triggerButtonElement);
-      const controlledModal = screen.getAllByTestId('modal')[0];
+      await userEvent.click(controlledTrigger);
+      const controlledDrawer = screen.getByTestId('controlled-drawer');
       await waitFor(() => {
-        expect(controlledModal.classList.contains('gi-modal-open')).toBe(true);
+        expect(drawerOpen(controlledDrawer)).toBe(true);
       });
-      await userEvent.click(controlledModal);
+      await userEvent.click(controlledDrawer);
       await waitFor(() => {
-        expect(controlledModal.classList.contains('gi-modal-open')).toBe(false);
+        expect(drawerOpen(controlledDrawer)).toBe(false);
       });
     });
 
     await step('Legacy uncontrolled method should still open/close the drawer', async () => {
-      const triggerButtonElement = await canvas.findByTestId('drawer-trigger-uncontrolled');
-      await userEvent.click(triggerButtonElement);
-      const uncontrolledModal = screen.getAllByTestId('modal')[1];
+      await userEvent.click(uncontrolledTrigger);
+      const uncontrolledDrawer = screen.getByTestId('uncontrolled-drawer');
       await waitFor(() => {
-        expect(uncontrolledModal.classList.contains('gi-modal-open')).toBe(true);
+        expect(drawerOpen(uncontrolledDrawer)).toBe(true);
       });
 
-      const iconElement = uncontrolledModal.querySelector('.gi-modal-icon');
+      const iconElement = uncontrolledDrawer.querySelector('.gi-modal-icon');
       expect(iconElement).toBeTruthy();
       await userEvent.click(iconElement as Element);
       await waitFor(() => {
-        expect(uncontrolledModal.classList.contains('gi-modal-open')).toBe(false);
+        expect(drawerOpen(uncontrolledDrawer)).toBe(false);
       });
     });
   },
