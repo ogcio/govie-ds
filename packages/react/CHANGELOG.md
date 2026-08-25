@@ -1,5 +1,24 @@
 # Changelog
 
+## [1.46.0](https://github.com/ogcio/govie-ds/compare/react-lib-v1.45.0...react-lib-v1.46.0) (2026-08-21)
+
+
+### Features
+
+* **AB#40841:** expose header, add storybook ([84fd550](https://github.com/ogcio/govie-ds/commit/84fd5501a3b44996fe53e42b46f1e8dd11556769))
+* **AB#41375:** set up ESLint in the Mitosis core package ([a9e2fa1](https://github.com/ogcio/govie-ds/commit/a9e2fa14601acc75da39c9303fbfc410fd7d8225))
+* **AB#41816:** add examples ([096da95](https://github.com/ogcio/govie-ds/commit/096da95dae8ba047f4732b81f9d019c189dbf0b8))
+* **AB#41816:** add react docs and composable header to example ([096da95](https://github.com/ogcio/govie-ds/commit/096da95dae8ba047f4732b81f9d019c189dbf0b8))
+* **AB#41816:** remove changes to headertitle ([096da95](https://github.com/ogcio/govie-ds/commit/096da95dae8ba047f4732b81f9d019c189dbf0b8))
+* **AB#41816:** spelling ([096da95](https://github.com/ogcio/govie-ds/commit/096da95dae8ba047f4732b81f9d019c189dbf0b8))
+* **AB#41972:** Improve the utility bar focus visuals to match the legacy header design ([#1037](https://github.com/ogcio/govie-ds/issues/1037)) ([2f33dfc](https://github.com/ogcio/govie-ds/commit/2f33dfcf14c3059d5f06db364b8f9ae45c65dfbd))
+* **AB#41972:** update navlink styles ([ca57c86](https://github.com/ogcio/govie-ds/commit/ca57c8640ac4879cc9bb2b246c1f5fdabd35c726))
+
+
+### Bug Fixes
+
+* **AB#40510:** bound the Stack gap prop to the spacing scale ([7cb01d1](https://github.com/ogcio/govie-ds/commit/7cb01d125ca454cc2664b5622dbeee5dcfc55560))
+
 ## [1.45.0](https://github.com/ogcio/govie-ds/compare/react-lib-v1.44.0...react-lib-v1.45.0) (2026-08-11)
 
 

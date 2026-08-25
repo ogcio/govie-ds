@@ -1,5 +1,28 @@
 # Changelog
 
+## [1.45.0](https://github.com/ogcio/govie-ds/compare/docs-v1.44.0...docs-v1.45.0) (2026-08-21)
+
+
+### Features
+
+* **AB#40841:** expose header, add storybook ([84fd550](https://github.com/ogcio/govie-ds/commit/84fd5501a3b44996fe53e42b46f1e8dd11556769))
+* **AB#41816:** add examples ([096da95](https://github.com/ogcio/govie-ds/commit/096da95dae8ba047f4732b81f9d019c189dbf0b8))
+* **AB#41816:** add react docs and composable header to example ([096da95](https://github.com/ogcio/govie-ds/commit/096da95dae8ba047f4732b81f9d019c189dbf0b8))
+* **AB#41816:** remove changes to headertitle ([096da95](https://github.com/ogcio/govie-ds/commit/096da95dae8ba047f4732b81f9d019c189dbf0b8))
+* **AB#41816:** spelling ([096da95](https://github.com/ogcio/govie-ds/commit/096da95dae8ba047f4732b81f9d019c189dbf0b8))
+
+
+### Bug Fixes
+
+* **AB#40510:** bound the Stack gap prop to the spacing scale ([7cb01d1](https://github.com/ogcio/govie-ds/commit/7cb01d125ca454cc2664b5622dbeee5dcfc55560))
+
+
+### Dependencies
+
+* The following workspace dependencies were updated
+  * dependencies
+    * @ogcio/design-system-react bumped to 1.46.0
+
 ## [1.44.0](https://github.com/ogcio/govie-ds/compare/docs-v1.43.0...docs-v1.44.0) (2026-08-11)
 
 
