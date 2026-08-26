@@ -26,5 +26,5 @@ export default function HeaderLogo(props: Props) {
 }
 
 const classes = tv({
-  base: 'gi-flex-none gi-rounded-sm',
+  base: 'gi-flex gi-flex-none gi-rounded-sm',
 });
