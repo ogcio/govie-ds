@@ -312,6 +312,14 @@ export function createTheme(
     },
     extend: {
       colors: {
+        focus: meta
+          ? meta.light.resolved.semantic.color.shadow.intent.focus.default
+              .$value
+          : variables.semantic.color.shadow.intent.focus.default,
+        'focus-contrast': meta
+          ? meta.light.resolved.semantic.color.border.intent.focus.default
+              .$value
+          : variables.semantic.color.border.intent.focus.default,
         color: {
           ...(meta
             ? convertColors(meta.light.resolved.semantic.color)
