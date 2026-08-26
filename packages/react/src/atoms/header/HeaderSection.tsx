@@ -35,8 +35,8 @@ const classes = tv({
       utility: 'gi-hidden lg:gi-block',
     },
     appearance: {
-      default: 'gi-text-white',
-      light: 'gi-text-gray-950 gi-header-section-light',
+      default: 'gi-text-color-text-tone-light-default',
+      light: 'gi-text-color-text-system-neutral-default gi-header-section-light',
     },
   },
   compoundVariants: [
@@ -53,12 +53,12 @@ const classes = tv({
     {
       variant: 'primary',
       appearance: 'light',
-      class: 'gi-bg-white',
+      class: 'gi-bg-color-surface-system-neutral-default',
     },
     {
       variant: 'utility',
       appearance: 'light',
-      class: 'gi-bg-gray-50',
+      class: 'gi-bg-color-surface-system-neutral-layer1',
     },
   ],
   defaultVariants: {
