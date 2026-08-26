@@ -2823,6 +2823,16 @@ describe('createTheme', () => {
                       },
                     },
                   },
+                  shadow: {
+                    intent: {
+                      focus: {
+                        default: {
+                          $type: 'color',
+                          $value: '#ffdd00',
+                        },
+                      },
+                    },
+                  },
                 },
                 typography: {
                   default: {
