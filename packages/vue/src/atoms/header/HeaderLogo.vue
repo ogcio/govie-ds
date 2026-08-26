@@ -22,7 +22,7 @@
 import { tv } from 'tailwind-variants';
 import GiBox from '../Box.vue';
 const classes = tv({
-  base: 'gi-flex-none gi-rounded-sm',
+  base: 'gi-flex gi-flex-none gi-rounded-sm',
 });
 
 export type Props = {
