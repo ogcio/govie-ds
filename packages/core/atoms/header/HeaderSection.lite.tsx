@@ -55,15 +55,15 @@ const classes = tv({
       utility: 'gi-hidden lg:gi-block',
     },
     appearance: {
-      default: 'gi-text-white',
-      light: 'gi-text-gray-950 gi-header-section-light',
+      default: 'gi-text-color-text-tone-light-default',
+      light: 'gi-text-color-text-system-neutral-default gi-header-section-light',
     },
   },
   compoundVariants: [
     { variant: 'primary', appearance: 'default', class: 'gi-bg-color-surface-system-primary-default' },
     { variant: 'utility', appearance: 'default', class: 'gi-bg-color-surface-system-primary-subtle' },
-    { variant: 'primary', appearance: 'light', class: 'gi-bg-white' },
-    { variant: 'utility', appearance: 'light', class: 'gi-bg-gray-50' },
+    { variant: 'primary', appearance: 'light', class: 'gi-bg-color-surface-system-neutral-default' },
+    { variant: 'utility', appearance: 'light', class: 'gi-bg-color-surface-system-neutral-layer1' },
   ],
   defaultVariants: {
     variant: 'primary',

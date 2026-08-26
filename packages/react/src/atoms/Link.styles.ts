@@ -26,8 +26,8 @@ export const Visited = {
 export default tv({
   base: [
     'focus:gi-rounded-sm',
-    'focus:gi-shadow-[0_0_0_2px_var(--gieds-color-gray-950),0_0_0_5px_var(--gieds-color-yellow-400)]',
-    'focus-visible:gi-shadow-[0_0_0_2px_var(--gieds-color-gray-950),0_0_0_5px_var(--gieds-color-yellow-400)]',
+    'focus:gi-ring-[3px] focus:gi-ring-focus',
+    'focus-visible:gi-ring-[3px] focus-visible:gi-ring-focus',
     'focus-visible:gi-rounded-sm',
     'focus-visible:gi-outline-none',
   ],
@@ -60,16 +60,17 @@ export default tv({
       [Underline.NONE]: 'gi-no-underline hover:gi-no-underline',
     },
     appearance: {
-      [Appearance.DEFAULT]: '',
+      [Appearance.DEFAULT]: [
+        'focus:gi-ring-offset-2 focus:gi-ring-offset-focus-contrast',
+        'focus-visible:gi-ring-offset-2 focus-visible:gi-ring-offset-focus-contrast',
+      ],
       [Appearance.LIGHT]: [
-        'gi-text-white',
-        'hover:gi-text-white',
-        'focus:gi-text-white',
-        'focus-visible:gi-text-white',
+        'gi-text-color-text-tone-light-default',
+        'hover:gi-text-color-text-tone-light-hover',
+        'focus:gi-text-color-text-tone-light-focus',
+        'focus-visible:gi-text-color-text-tone-light-focus',
         'visited:gi-text-color-text-tone-light-visited',
         'hover:visited:gi-text-color-text-tone-light-visited',
-        'focus:gi-shadow-[0_0_0_3px_var(--gieds-color-yellow-400)]',
-        'focus-visible:gi-shadow-[0_0_0_3px_var(--gieds-color-yellow-400)]',
       ],
       [Appearance.INHERIT]: [
         'gi-text-inherit',
@@ -78,6 +79,8 @@ export default tv({
         'focus-visible:gi-text-inherit',
         'visited:gi-text-inherit',
         'hover:visited:gi-text-inherit',
+        'focus:gi-ring-offset-2 focus:gi-ring-offset-focus-contrast',
+        'focus-visible:gi-ring-offset-2 focus-visible:gi-ring-offset-focus-contrast',
       ],
     },
     visited: {
