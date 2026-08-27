@@ -1,5 +1,3 @@
-'use client';
-// TODO: remove use client once HeaderNavItemLink server/client side issue resolved
 import { SearchIcon } from '@ogcio/design-system-react/icons';
 import {
   LogoBlack,
