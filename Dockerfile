@@ -25,7 +25,8 @@ RUN corepack enable pnpm && \
     pnpm docs:build && \
     pnpm storybook:build:html && \
     pnpm storybook:build:react && \
-    pnpm storybook:build:angular
+    pnpm storybook:build:angular && \
+    pnpm storybook:build:vue
 
 # Production image
 FROM ${NGINX_IMAGE}
@@ -36,6 +37,7 @@ COPY --from=builder --chown=nginx /build/apps/docs/out /usr/share/nginx/html/doc
 COPY --from=builder --chown=nginx /build/packages/react/storybook-static /usr/share/nginx/html/storybook-react
 COPY --from=builder --chown=nginx /build/packages/html/ds/storybook-static /usr/share/nginx/html/storybook-html
 COPY --from=builder --chown=nginx /build/packages/angular/storybook-static /usr/share/nginx/html/storybook-angular
+COPY --from=builder --chown=nginx /build/packages/vue/storybook-static /usr/share/nginx/html/storybook-vue
 
 # Copy nginx configuration
 COPY nginx.conf /etc/nginx/nginx.conf
