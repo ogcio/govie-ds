@@ -28,7 +28,8 @@
     "lodash": "^4.0.0"
   },
   "dependencies": {
-    "tslib": "^2.3.0"
+    "@fontsource/lato": "^5.1.1",
+    "tailwind-variants": "0.2.1"
   },
   "devDependencies": {
     "@angular-devkit/build-angular": "~21.2.0",
@@ -37,7 +38,6 @@
     "@angular/compiler": "^21.2.0",
     "@angular/compiler-cli": "^21.2.0",
     "@angular/core": "^21.2.0",
-    "@fontsource/lato": "^5.1.1",
     "@ogcio/design-system-tailwind": "workspace:*",
     "@ogcio/theme-govie": "workspace:*",
     "@storybook/addon-a11y": "^10.3.3",
