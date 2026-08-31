@@ -1,23 +1,21 @@
 import { createTheme } from '@ogcio/design-system-tailwind';
-import typography from '@tailwindcss/typography';
 import type { Config } from 'tailwindcss';
+
+const breakpoints = ['xs', 'sm', 'md', 'lg', 'xl', '2xl'];
 
 const config: Config = {
   prefix: 'gi-',
   content: ['./src/**/*.{ts,html}'],
   theme: createTheme(),
-  plugins: [typography],
   safelist: [
-    'gi-prose',
-    'gi-not-prose',
-    { pattern: /gap-./, variants: ['xs', 'sm', 'md', 'lg', 'xl', '2xl'] },
-    {
-      pattern: /gi-grid-(columns|gap|span)-\d+/,
-      variants: ['xs', 'sm', 'md', 'lg', 'xl', '2xl'],
-    },
-    { pattern: /flex-(row|col)$/, variants: ['xs', 'sm', 'md', 'lg', 'xl', '2xl'] },
-    { pattern: /flex$/, variants: ['xs', 'sm', 'md', 'lg', 'xl', '2xl'] },
-    { pattern: /hidden/, variants: ['xs', 'sm', 'md', 'lg', 'xl', '2xl'] },
+    // Stack: `directionToClass`
+    { pattern: /^gi-flex-(row|col)$/, variants: breakpoints },
+    // Stack: `gapToClass`
+    { pattern: /^gi-gap-(\d|1[0-2])$/, variants: breakpoints },
+    // HeaderNavItem: `getVisibility`
+    { pattern: /^gi-(flex|hidden)$/, variants: breakpoints },
+    // Grid: `getGridClasses`
+    { pattern: /^gi-grid-(columns|gap|span)-(\d|1[0-2])$/, variants: breakpoints },
   ],
 };
 

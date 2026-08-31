@@ -44,7 +44,6 @@
     "@storybook/addon-docs": "^10.3.3",
     "@storybook/addon-links": "^10.3.3",
     "@storybook/angular": "^10.3.3",
-    "@tailwindcss/typography": "^0.5.16",
     "@types/lodash": "^4.17.7",
     "@types/postcss-import": "^14.0.3",
     "angular-eslint": "^21.4.0",
