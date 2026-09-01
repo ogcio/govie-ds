@@ -22,6 +22,7 @@ import { getSize, getWhitespace } from './utilities';
 import classes from './Text.styles';
 
 function Text(props: Props) {
+  props = { ariaHidden: undefined, ...props };
   return (
     <span
       className={classes({

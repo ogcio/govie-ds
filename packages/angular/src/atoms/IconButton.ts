@@ -34,6 +34,7 @@ export type Props = {
   tabIndex?: number;
   dataTestId?: string;
 };
+const defaultProps: any = { ariaPressed: undefined, ariaExpanded: undefined };
 
 import { tv } from 'tailwind-variants';
 import { baseClasses, getAppearance, getVariant } from './Button.styles';
@@ -119,8 +120,8 @@ export default class IconButton {
   @Input() ariaLabel!: Props['ariaLabel'];
   @Input() ariaLabelledBy!: Props['ariaLabelledBy'];
   @Input() ariaDescribedBy!: Props['ariaDescribedBy'];
-  @Input() ariaExpanded!: Props['ariaExpanded'];
-  @Input() ariaPressed!: Props['ariaPressed'];
+  @Input() ariaExpanded: Props['ariaExpanded'] = defaultProps['ariaExpanded'];
+  @Input() ariaPressed: Props['ariaPressed'] = defaultProps['ariaPressed'];
   @Input() ariaHasPopup!: Props['ariaHasPopup'];
   @Input() ariaControls!: Props['ariaControls'];
   @Input() ariaBusy!: Props['ariaBusy'];

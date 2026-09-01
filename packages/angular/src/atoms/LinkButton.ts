@@ -10,6 +10,7 @@ import { CommonModule } from '@angular/common';
 
 export type Props = Omit<LinkProps, 'variant' | 'appearance' | 'underline' | 'visited'> &
   Pick<ButtonProps, 'variant' | 'appearance' | 'size'>;
+const defaultProps: any = { download: undefined, ariaHidden: undefined };
 
 import { getAppearance, getSize, getVariant } from './Button.styles';
 import classes from './LinkButton.styles';
@@ -76,12 +77,12 @@ export default class LinkButton {
   @Input() target!: Props['target'];
   @Input() external!: Props['external'];
   @Input() rel!: Props['rel'];
-  @Input() download!: Props['download'];
+  @Input() download: Props['download'] = defaultProps['download'];
   @Input() ariaCurrent!: Props['ariaCurrent'];
   @Input() ariaLabel!: Props['ariaLabel'];
   @Input() ariaLabelledBy!: Props['ariaLabelledBy'];
   @Input() ariaDescribedBy!: Props['ariaDescribedBy'];
-  @Input() ariaHidden!: Props['ariaHidden'];
+  @Input() ariaHidden: Props['ariaHidden'] = defaultProps['ariaHidden'];
   @Input() tabIndex!: Props['tabIndex'];
   @Input() lang!: Props['lang'];
   @Input() dataTestId!: Props['dataTestId'];

@@ -62,5 +62,27 @@ export type Props = {
   dataTestId?: string;
 };
 
-const props = defineProps<Props>();
+const props = withDefaults(defineProps<Props>(), {
+  visible: true,
+  id: undefined,
+  href: undefined,
+  className: undefined,
+  styles: undefined,
+  target: undefined,
+  external: undefined,
+  rel: undefined,
+  download: undefined,
+  ariaCurrent: undefined,
+  ariaLabel: undefined,
+  ariaLabelledBy: undefined,
+  ariaDescribedBy: undefined,
+  ariaHidden: undefined,
+  tabIndex: undefined,
+  lang: undefined,
+  dataTestId: undefined,
+  onClick: undefined,
+  onKeyDown: undefined,
+  onKeyUp: undefined,
+  children: undefined,
+});
 </script>

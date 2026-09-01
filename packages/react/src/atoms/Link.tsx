@@ -41,6 +41,7 @@ import type { Appearance, Underline, Variant, Visited } from './Link.styles';
 import type { ValueOf } from './constants';
 
 function Link(props: Props) {
+  props = { download: undefined, ariaHidden: undefined, ...props };
   return (
     <a
       id={props.id}

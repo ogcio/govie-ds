@@ -1,5 +1,5 @@
 import { tv } from 'tailwind-variants';
-import { useMetadata } from '@builder.io/mitosis';
+import { useDefaultProps, useMetadata } from '@builder.io/mitosis';
 import { baseClasses, getAppearance, getVariant } from './Button.styles';
 import type { Appearance, Variant } from './Button.styles';
 import { Size } from './constants';
@@ -39,6 +39,11 @@ export type Props = {
 };
 
 useMetadata({ angular: { selector: 'gi-icon-button' } });
+
+useDefaultProps({
+  ariaPressed: undefined,
+  ariaExpanded: undefined,
+});
 
 export default function IconButton(props: Props) {
   return (

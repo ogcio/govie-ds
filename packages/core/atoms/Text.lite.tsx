@@ -1,4 +1,4 @@
-import { useMetadata } from '@builder.io/mitosis';
+import { useDefaultProps, useMetadata } from '@builder.io/mitosis';
 import type { Size, ValueOf, Whitespace } from './constants';
 import { getSize, getWhitespace } from './utilities';
 import classes from './Text.styles';
@@ -15,6 +15,10 @@ export type Props = {
 };
 
 useMetadata({ angular: { selector: 'gi-text' } });
+
+useDefaultProps({
+  ariaHidden: undefined,
+});
 
 export default function Text(props: Props) {
   return (

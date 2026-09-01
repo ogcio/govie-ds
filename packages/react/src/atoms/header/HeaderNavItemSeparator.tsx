@@ -22,20 +22,33 @@ import type { VisibleValue } from './HeaderNavItem.styles';
 const listClasses = tv({
   base: 'gi-h-8',
 });
+
+// !important is needed for styles to resolve correctly given Tailwind's class-merge limitations. // !important is needed for styles to resolve correctly given Tailwind's class-merge limitations.
 const classes = tv({
-  base: 'gi-header-nav-item-separator !gi-border-[currentColor] gi-mx-2' /* `!important` needed for styles to resolve correctly given Tailwind's class-merge limitations. */,
+  base: 'gi-header-nav-item-separator !gi-border-[currentColor] gi-mx-2',
 });
+
 function HeaderNavItemSeparator(props: Props) {
+  props = { visible: true, ...props };
   return (
-    <li role="none" aria-hidden className={listClasses({ className: getVisibility(props.visible) })}>
+    <li
+      role="none"
+      aria-hidden
+      className={listClasses({
+        className: getVisibility(props.visible),
+      })}
+    >
       <GiDivider
         orientation="vertical"
         id={props.id}
         dataTestId={props.dataTestId}
         styles={props.styles}
-        className={classes({ className: props.className })}
+        className={classes({
+          className: props.className,
+        })}
       />
     </li>
   );
 }
+
 export default HeaderNavItemSeparator;

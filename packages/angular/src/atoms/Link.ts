@@ -35,6 +35,7 @@ export type Props = {
   onKeyUp?: (event: any) => void;
   dataTestId?: string;
 };
+const defaultProps: any = { download: undefined, ariaHidden: undefined };
 
 import classes from './Link.styles';
 import type { Appearance, Underline, Variant, Visited } from './Link.styles';
@@ -99,12 +100,12 @@ export default class Link {
   @Input() target!: Props['target'];
   @Input() external!: Props['external'];
   @Input() rel!: Props['rel'];
-  @Input() download!: Props['download'];
+  @Input() download: Props['download'] = defaultProps['download'];
   @Input() ariaCurrent!: Props['ariaCurrent'];
   @Input() ariaLabel!: Props['ariaLabel'];
   @Input() ariaLabelledBy!: Props['ariaLabelledBy'];
   @Input() ariaDescribedBy!: Props['ariaDescribedBy'];
-  @Input() ariaHidden!: Props['ariaHidden'];
+  @Input() ariaHidden: Props['ariaHidden'] = defaultProps['ariaHidden'];
   @Input() tabIndex!: Props['tabIndex'];
   @Input() lang!: Props['lang'];
   @Input() dataTestId!: Props['dataTestId'];

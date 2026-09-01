@@ -43,5 +43,16 @@ export type Props = {
   dataTestId?: string;
 };
 
-const props = defineProps<Props>();
+const props = withDefaults(defineProps<Props>(), {
+  visible: true,
+  id: undefined,
+  className: undefined,
+  styles: undefined,
+  ariaLabel: undefined,
+  ariaExpanded: undefined,
+  ariaControls: undefined,
+  dataTestId: undefined,
+  onClick: undefined,
+  children: undefined,
+});
 </script>

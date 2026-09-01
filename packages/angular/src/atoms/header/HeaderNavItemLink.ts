@@ -31,6 +31,7 @@ export type Props = {
   onKeyUp?: (event: any) => void;
   dataTestId?: string;
 };
+const defaultProps: any = { visible: true, download: undefined, ariaHidden: undefined };
 
 import classes, { getVisibility } from './HeaderNavItem.styles';
 import type { VisibleValue } from './HeaderNavItem.styles';
@@ -80,7 +81,7 @@ export default class HeaderNavItemLink {
   classes = classes;
   getVisibility = getVisibility;
 
-  @Input() visible!: Props['visible'];
+  @Input() visible: Props['visible'] = defaultProps['visible'];
   @Input() id!: Props['id'];
   @Input() href!: Props['href'];
   @Input() className!: Props['className'];
@@ -88,12 +89,12 @@ export default class HeaderNavItemLink {
   @Input() target!: Props['target'];
   @Input() external!: Props['external'];
   @Input() rel!: Props['rel'];
-  @Input() download!: Props['download'];
+  @Input() download: Props['download'] = defaultProps['download'];
   @Input() ariaCurrent!: Props['ariaCurrent'];
   @Input() ariaLabel!: Props['ariaLabel'];
   @Input() ariaLabelledBy!: Props['ariaLabelledBy'];
   @Input() ariaDescribedBy!: Props['ariaDescribedBy'];
-  @Input() ariaHidden!: Props['ariaHidden'];
+  @Input() ariaHidden: Props['ariaHidden'] = defaultProps['ariaHidden'];
   @Input() tabIndex!: Props['tabIndex'];
   @Input() lang!: Props['lang'];
   @Input() dataTestId!: Props['dataTestId'];

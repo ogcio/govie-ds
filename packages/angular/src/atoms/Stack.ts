@@ -72,7 +72,7 @@ const classes = tv({
         classes({
           align: getAlignItems(align),
           justify: getJustify(justify),
-          wrap: wrap ?? false,
+          wrap: !!wrap,
           className: [
             resolveResponsive(getDirection(direction), directionToClass),
             resolveResponsive(gap ?? 0, gapToClass),

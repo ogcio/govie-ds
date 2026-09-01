@@ -27,7 +27,7 @@ export default function Stack(props: Props) {
       className={classes({
         align: getAlignItems(props.align),
         justify: getJustify(props.justify),
-        wrap: props.wrap ?? false,
+        wrap: !!props.wrap,
         className: [
           resolveResponsive(getDirection(props.direction), directionToClass),
           resolveResponsive(props.gap ?? 0, gapToClass),

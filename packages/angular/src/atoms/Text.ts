@@ -17,6 +17,7 @@ export type Props = {
   styles?: Record<string, string>;
   ariaHidden?: boolean;
 };
+const defaultProps: any = { ariaHidden: undefined };
 
 import type { Size, ValueOf, Whitespace } from './constants';
 import { getSize, getWhitespace } from './utilities';
@@ -61,5 +62,5 @@ export default class Text {
   @Input() id!: Props['id'];
   @Input() styles!: Props['styles'];
   @Input() dataTestId!: Props['dataTestId'];
-  @Input() ariaHidden!: Props['ariaHidden'];
+  @Input() ariaHidden: Props['ariaHidden'] = defaultProps['ariaHidden'];
 }

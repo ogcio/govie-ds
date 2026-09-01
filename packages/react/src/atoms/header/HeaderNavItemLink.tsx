@@ -36,6 +36,7 @@ import classes, { getVisibility } from './HeaderNavItem.styles';
 import type { VisibleValue } from './HeaderNavItem.styles';
 
 function HeaderNavItemLink(props: Props) {
+  props = { visible: true, download: undefined, ariaHidden: undefined, ...props };
   return (
     <li className={getVisibility(props.visible)}>
       <a

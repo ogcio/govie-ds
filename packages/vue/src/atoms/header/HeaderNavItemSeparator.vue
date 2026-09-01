@@ -36,8 +36,11 @@ import type { VisibleValue } from './HeaderNavItem.styles';
 const listClasses = tv({
   base: 'gi-h-8',
 });
+
+// !important is needed for styles to resolve correctly given Tailwind's class-merge limitations.
+// !important is needed for styles to resolve correctly given Tailwind's class-merge limitations.
 const classes = tv({
-  base: 'gi-header-nav-item-separator !gi-border-[currentColor] gi-mx-2' /* `!important` needed for styles to resolve correctly given Tailwind's class-merge limitations. */,
+  base: 'gi-header-nav-item-separator !gi-border-[currentColor] gi-mx-2',
 });
 
 export type Props = {
@@ -49,5 +52,11 @@ export type Props = {
   dataTestId?: string;
 };
 
-const props = defineProps<Props>();
+const props = withDefaults(defineProps<Props>(), {
+  visible: true,
+  id: undefined,
+  dataTestId: undefined,
+  styles: undefined,
+  className: undefined,
+});
 </script>

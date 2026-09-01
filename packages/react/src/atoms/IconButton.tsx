@@ -61,6 +61,7 @@ const classes = tv({
 });
 
 const IconButton = forwardRef<Props['ref'], Props>(function IconButton(props: Props, ref) {
+  props = { ariaPressed: undefined, ariaExpanded: undefined, ...props };
   return (
     <button
       ref={ref}

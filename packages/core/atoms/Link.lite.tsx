@@ -1,9 +1,14 @@
-import { useMetadata } from '@builder.io/mitosis';
+import { useDefaultProps, useMetadata } from '@builder.io/mitosis';
 import classes from './Link.styles';
 import type { Appearance, Underline, Variant, Visited } from './Link.styles';
 import type { ValueOf } from './constants';
 
 useMetadata({ angular: { selector: 'gi-link' } });
+
+useDefaultProps({
+  download: undefined,
+  ariaHidden: undefined,
+});
 
 export type Props = {
   id?: string;

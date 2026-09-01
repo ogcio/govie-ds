@@ -1,8 +1,14 @@
-import { useMetadata } from '@builder.io/mitosis';
+import { useDefaultProps, useMetadata } from '@builder.io/mitosis';
 import classes, { getVisibility } from './HeaderNavItem.styles';
 import type { VisibleValue } from './HeaderNavItem.styles';
 
 useMetadata({ angular: { selector: 'gi-header-nav-item-link' } });
+
+useDefaultProps({
+  visible: true,
+  download: undefined,
+  ariaHidden: undefined,
+});
 
 export type Props = {
   children?: any;

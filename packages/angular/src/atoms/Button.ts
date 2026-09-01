@@ -36,6 +36,7 @@ export type Props = {
   tabIndex?: number;
   dataTestId?: string;
 };
+const defaultProps: any = { ariaChecked: undefined, ariaPressed: undefined, ariaExpanded: undefined };
 
 import classes, { getAppearance, getSize, getVariant } from './Button.styles';
 import type { Appearance, ButtonSize, Variant } from './Button.styles';
@@ -106,9 +107,9 @@ export default class Button {
   @Input() ariaLabel!: Props['ariaLabel'];
   @Input() ariaLabelledBy!: Props['ariaLabelledBy'];
   @Input() ariaDescribedBy!: Props['ariaDescribedBy'];
-  @Input() ariaChecked!: Props['ariaChecked'];
-  @Input() ariaPressed!: Props['ariaPressed'];
-  @Input() ariaExpanded!: Props['ariaExpanded'];
+  @Input() ariaChecked: Props['ariaChecked'] = defaultProps['ariaChecked'];
+  @Input() ariaPressed: Props['ariaPressed'] = defaultProps['ariaPressed'];
+  @Input() ariaExpanded: Props['ariaExpanded'] = defaultProps['ariaExpanded'];
   @Input() ariaControls!: Props['ariaControls'];
   @Input() ariaHasPopup!: Props['ariaHasPopup'];
   @Input() ariaBusy!: Props['ariaBusy'];
