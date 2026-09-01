@@ -15,7 +15,7 @@
       classes({
         align: getAlignItems(align),
         justify: getJustify(justify),
-        wrap: wrap ?? false,
+        wrap: wrap,
         className: [
           resolveResponsive(getDirection(direction), directionToClass),
           resolveResponsive(gap ?? 0, gapToClass),
@@ -80,5 +80,19 @@ export type Props = {
   wrap?: boolean;
 } & BoxProps;
 
-const props = defineProps<Props>();
+const props = withDefaults(defineProps<Props>(), {
+  id: undefined,
+  role: undefined,
+  ariaLabel: undefined,
+  ariaLabelledBy: undefined,
+  styles: undefined,
+  align: undefined,
+  justify: undefined,
+  wrap: false,
+  direction: undefined,
+  gap: undefined,
+  className: undefined,
+  dataTestId: undefined,
+  children: undefined,
+});
 </script>

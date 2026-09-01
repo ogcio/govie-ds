@@ -1,4 +1,4 @@
-import { useMetadata } from '@builder.io/mitosis';
+import { useDefaultProps, useMetadata } from '@builder.io/mitosis';
 import { tv } from 'tailwind-variants';
 import { Direction } from './constants';
 import type { AlignItems, Justify, ResponsiveValue, SpacingScale, ValueOf } from './constants';
@@ -7,6 +7,10 @@ import { getAlignItems, getJustify, resolveResponsive } from './utilities';
 import GiBox from './Box.lite';
 
 useMetadata({ angular: { selector: 'gi-stack' } });
+
+useDefaultProps({
+  wrap: false,
+});
 
 export type Props = {
   direction?: ResponsiveValue<ValueOf<typeof Direction>>;
@@ -27,7 +31,7 @@ export default function Stack(props: Props) {
       className={classes({
         align: getAlignItems(props.align),
         justify: getJustify(props.justify),
-        wrap: props.wrap ?? false,
+        wrap: props.wrap,
         className: [
           resolveResponsive(getDirection(props.direction), directionToClass),
           resolveResponsive(props.gap ?? 0, gapToClass),

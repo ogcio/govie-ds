@@ -46,5 +46,31 @@ import type { Props as LinkProps } from './Link.vue';
 export type Props = Omit<LinkProps, 'variant' | 'appearance' | 'underline' | 'visited'> &
   Pick<ButtonProps, 'variant' | 'appearance' | 'size'>;
 
-const props = defineProps<Props>();
+const props = withDefaults(defineProps<Props>(), {
+  id: undefined,
+  href: undefined,
+  variant: undefined,
+  appearance: undefined,
+  size: undefined,
+  className: undefined,
+  styles: undefined,
+  target: undefined,
+  external: undefined,
+  rel: undefined,
+  download: undefined,
+  ariaCurrent: undefined,
+  ariaLabel: undefined,
+  ariaLabelledBy: undefined,
+  ariaDescribedBy: undefined,
+  ariaHidden: undefined,
+  tabIndex: undefined,
+  lang: undefined,
+  onClick: undefined,
+  onFocus: undefined,
+  onBlur: undefined,
+  onKeyDown: undefined,
+  onKeyUp: undefined,
+  dataTestId: undefined,
+  children: undefined,
+});
 </script>

@@ -55,5 +55,15 @@ export type Props = {
   ariaHidden?: boolean;
 };
 
-const props = defineProps<Props>();
+const props = withDefaults(defineProps<Props>(), {
+  id: undefined,
+  size: undefined,
+  align: undefined,
+  whitespace: undefined,
+  className: undefined,
+  styles: undefined,
+  dataTestId: undefined,
+  ariaHidden: undefined,
+  children: undefined,
+});
 </script>

@@ -1,4 +1,4 @@
-import { useMetadata } from '@builder.io/mitosis';
+import { useDefaultProps, useMetadata } from '@builder.io/mitosis';
 import classes, { getAppearance, getSize, getVariant } from './Button.styles';
 import type { Appearance, ButtonSize, Variant } from './Button.styles';
 import type { ValueOf } from './constants';
@@ -38,6 +38,15 @@ export type Props = {
 };
 
 useMetadata({ angular: { selector: 'gi-button' } });
+
+useDefaultProps({
+  disabled: undefined,
+  ariaChecked: undefined,
+  ariaPressed: undefined,
+  ariaExpanded: undefined,
+  ariaHasPopup: false,
+  ariaBusy: false,
+});
 
 export default function Button(props: Props) {
   return (

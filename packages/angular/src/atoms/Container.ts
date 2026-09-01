@@ -13,6 +13,7 @@ export type Props = {
   gutters?: boolean;
   maxWidth?: ValueOf<typeof MaxWidth>;
 } & BoxProps;
+const defaultProps: any = { inset: false, gutters: true };
 
 import { tv } from 'tailwind-variants';
 import { MaxWidth } from './constants';
@@ -59,8 +60,8 @@ const classes = tv({
       [dataTestId]="dataTestId"
       [className]="
         classes({
-          inset: inset ?? false,
-          gutters: gutters ?? true,
+          inset: inset,
+          gutters: gutters,
           maxWidth: getMaxWidth(maxWidth),
           className: className,
         })
@@ -88,8 +89,8 @@ export default class Container {
   @Input() ariaLabelledBy!: Props['ariaLabelledBy'];
   @Input() styles!: Props['styles'];
   @Input() dataTestId!: Props['dataTestId'];
-  @Input() inset!: Props['inset'];
-  @Input() gutters!: Props['gutters'];
+  @Input() inset: Props['inset'] = defaultProps['inset'];
+  @Input() gutters: Props['gutters'] = defaultProps['gutters'];
   @Input() maxWidth!: Props['maxWidth'];
   @Input() className!: Props['className'];
 }

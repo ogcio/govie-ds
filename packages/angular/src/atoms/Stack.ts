@@ -15,6 +15,7 @@ export type Props = {
   justify?: ValueOf<typeof Justify>;
   wrap?: boolean;
 } & BoxProps;
+const defaultProps: any = { wrap: false };
 
 import { tv } from 'tailwind-variants';
 import { Direction } from './constants';
@@ -72,7 +73,7 @@ const classes = tv({
         classes({
           align: getAlignItems(align),
           justify: getJustify(justify),
-          wrap: wrap ?? false,
+          wrap: wrap,
           className: [
             resolveResponsive(getDirection(direction), directionToClass),
             resolveResponsive(gap ?? 0, gapToClass),
@@ -110,7 +111,7 @@ export default class Stack {
   @Input() styles!: Props['styles'];
   @Input() align!: Props['align'];
   @Input() justify!: Props['justify'];
-  @Input() wrap!: Props['wrap'];
+  @Input() wrap: Props['wrap'] = defaultProps['wrap'];
   @Input() direction!: Props['direction'];
   @Input() gap!: Props['gap'];
   @Input() className!: Props['className'];

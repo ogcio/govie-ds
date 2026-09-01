@@ -45,6 +45,15 @@ import type { Appearance, ButtonSize, Variant } from './Button.styles';
 import type { ValueOf } from './constants';
 
 const Button = forwardRef<Props['ref'], Props>(function Button(props: Props, ref) {
+  props = {
+    disabled: undefined,
+    ariaChecked: undefined,
+    ariaPressed: undefined,
+    ariaExpanded: undefined,
+    ariaHasPopup: false,
+    ariaBusy: false,
+    ...props,
+  };
   return (
     <button
       ref={ref}

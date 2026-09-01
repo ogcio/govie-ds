@@ -1,5 +1,5 @@
 import { tv } from 'tailwind-variants';
-import { useMetadata } from '@builder.io/mitosis';
+import { useDefaultProps, useMetadata } from '@builder.io/mitosis';
 import { baseClasses, getAppearance, getVariant } from './Button.styles';
 import type { Appearance, Variant } from './Button.styles';
 import { Size } from './constants';
@@ -40,6 +40,14 @@ export type Props = {
 
 useMetadata({ angular: { selector: 'gi-icon-button' } });
 
+useDefaultProps({
+  disabled: false,
+  ariaExpanded: undefined,
+  ariaPressed: undefined,
+  ariaHasPopup: false,
+  ariaBusy: false,
+});
+
 export default function IconButton(props: Props) {
   return (
     <button
@@ -49,7 +57,7 @@ export default function IconButton(props: Props) {
         variant: getVariant(props.variant),
         appearance: getAppearance(props.appearance),
         size: getSize(props.size),
-        disabled: !!props.disabled,
+        disabled: props.disabled,
         className: props.className,
       })}
       disabled={props.disabled || undefined}

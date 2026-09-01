@@ -18,6 +18,7 @@ export type Props = {
   dataTestId?: string;
   ariaHidden?: boolean;
 };
+const defaultProps: any = { ariaHidden: undefined };
 
 import { tv } from 'tailwind-variants';
 import type { Align, Size, ValueOf, Whitespace } from './constants';
@@ -82,5 +83,5 @@ export default class Paragraph {
   @Input() className!: Props['className'];
   @Input() styles!: Props['styles'];
   @Input() dataTestId!: Props['dataTestId'];
-  @Input() ariaHidden!: Props['ariaHidden'];
+  @Input() ariaHidden: Props['ariaHidden'] = defaultProps['ariaHidden'];
 }

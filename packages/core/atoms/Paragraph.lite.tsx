@@ -1,4 +1,4 @@
-import { useMetadata } from '@builder.io/mitosis';
+import { useDefaultProps, useMetadata } from '@builder.io/mitosis';
 import { tv } from 'tailwind-variants';
 import type { Align, Size, ValueOf, Whitespace } from './constants';
 import { getSize, getAlign, getWhitespace } from './utilities';
@@ -17,6 +17,10 @@ export type Props = {
 };
 
 useMetadata({ angular: { selector: 'gi-paragraph' } });
+
+useDefaultProps({
+  ariaHidden: undefined,
+});
 
 export default function Paragraph(props: Props) {
   return (

@@ -71,5 +71,32 @@ export type Props = {
   dataTestId?: string;
 };
 
-const props = defineProps<Props>();
+const props = withDefaults(defineProps<Props>(), {
+  id: undefined,
+  href: undefined,
+  variant: undefined,
+  underline: undefined,
+  appearance: undefined,
+  visited: undefined,
+  className: undefined,
+  styles: undefined,
+  target: undefined,
+  external: undefined,
+  rel: undefined,
+  download: undefined,
+  ariaCurrent: false,
+  ariaLabel: undefined,
+  ariaLabelledBy: undefined,
+  ariaDescribedBy: undefined,
+  ariaHidden: undefined,
+  tabIndex: undefined,
+  lang: undefined,
+  onClick: undefined,
+  onFocus: undefined,
+  onBlur: undefined,
+  onKeyDown: undefined,
+  onKeyUp: undefined,
+  dataTestId: undefined,
+  children: undefined,
+});
 </script>

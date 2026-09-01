@@ -14,8 +14,8 @@
     :dataTestId="dataTestId"
     :className="
       classes({
-        inset: inset ?? false,
-        gutters: gutters ?? true,
+        inset: inset,
+        gutters: gutters,
         maxWidth: getMaxWidth(maxWidth),
         className: className,
       })
@@ -64,5 +64,17 @@ export type Props = {
   maxWidth?: ValueOf<typeof MaxWidth>;
 } & BoxProps;
 
-const props = defineProps<Props>();
+const props = withDefaults(defineProps<Props>(), {
+  id: undefined,
+  role: undefined,
+  ariaLabel: undefined,
+  ariaLabelledBy: undefined,
+  styles: undefined,
+  dataTestId: undefined,
+  inset: false,
+  gutters: true,
+  maxWidth: undefined,
+  className: undefined,
+  children: undefined,
+});
 </script>

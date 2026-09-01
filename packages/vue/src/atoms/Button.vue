@@ -77,5 +77,33 @@ export type Props = {
   dataTestId?: string;
 };
 
-const props = defineProps<Props>();
+const props = withDefaults(defineProps<Props>(), {
+  id: undefined,
+  variant: undefined,
+  appearance: undefined,
+  size: undefined,
+  disabled: undefined,
+  className: undefined,
+  onClick: undefined,
+  onFocus: undefined,
+  onBlur: undefined,
+  onKeyDown: undefined,
+  onKeyUp: undefined,
+  ariaLabel: undefined,
+  ariaLabelledBy: undefined,
+  ariaDescribedBy: undefined,
+  ariaChecked: undefined,
+  ariaPressed: undefined,
+  ariaExpanded: undefined,
+  ariaControls: undefined,
+  ariaHasPopup: false,
+  ariaBusy: false,
+  role: undefined,
+  type: undefined,
+  form: undefined,
+  value: undefined,
+  tabIndex: undefined,
+  dataTestId: undefined,
+  children: undefined,
+});
 </script>

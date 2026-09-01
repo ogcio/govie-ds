@@ -16,6 +16,7 @@ export type Props = {
   id?: string;
   dataTestId?: string;
 };
+const defaultProps: any = { visible: true };
 
 import { tv } from 'tailwind-variants';
 import GiDivider from '../Divider';
@@ -24,8 +25,11 @@ import type { VisibleValue } from './HeaderNavItem.styles';
 const listClasses = tv({
   base: 'gi-h-8',
 });
+
+// !important is needed for styles to resolve correctly given Tailwind's class-merge limitations.
+// !important is needed for styles to resolve correctly given Tailwind's class-merge limitations.
 const classes = tv({
-  base: 'gi-header-nav-item-separator !gi-border-[currentColor] gi-mx-2' /* `!important` needed for styles to resolve correctly given Tailwind's class-merge limitations. */,
+  base: 'gi-header-nav-item-separator !gi-border-[currentColor] gi-mx-2',
 });
 
 @Component({
@@ -68,7 +72,7 @@ export default class HeaderNavItemSeparator {
   classes = classes;
   getVisibility = getVisibility;
 
-  @Input() visible!: Props['visible'];
+  @Input() visible: Props['visible'] = defaultProps['visible'];
   @Input() id!: Props['id'];
   @Input() dataTestId!: Props['dataTestId'];
   @Input() styles!: Props['styles'];
