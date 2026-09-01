@@ -102,12 +102,12 @@ export const Default: StoryObj = {
           </gi-stack>
         </gi-header-section>
         <gi-header-section>
-          <gi-link appearance="light" href="#" ariaLabel="Gov.ie home">
-            <gi-header-logo>
+          <gi-header-logo>
+            <gi-link appearance="light" href="#" ariaLabel="Gov.ie home">
               <gi-logo-white [size]="132" className="gi-hidden md:gi-block"></gi-logo-white>
               <gi-logo-harp-white [size]="32" className="gi-block md:gi-hidden"></gi-logo-harp-white>
-            </gi-header-logo>
-          </gi-link>
+            </gi-link>
+          </gi-header-logo>
           <gi-header-title>Title</gi-header-title>
           <gi-header-nav ariaLabel="Primary navigation">
             <gi-header-nav-item-link visible="lg" href="#">
@@ -182,12 +182,12 @@ export const Light: StoryObj = {
           </gi-stack>
         </gi-header-section>
         <gi-header-section appearance="light">
-          <gi-link href="#" ariaLabel="Gov.ie home">
-            <gi-header-logo>
+          <gi-header-logo>
+            <gi-link href="#" ariaLabel="Gov.ie home">
               <gi-logo-black [size]="132" className="gi-hidden md:gi-block"></gi-logo-black>
               <gi-logo-harp-black [size]="32" className="gi-block md:gi-hidden"></gi-logo-harp-black>
-            </gi-header-logo>
-          </gi-link>
+            </gi-link>
+          </gi-header-logo>
           <gi-header-title>Light Mode Title</gi-header-title>
           <gi-header-nav ariaLabel="Primary navigation">
             <gi-header-nav-item-link visible="lg" href="#">
@@ -235,7 +235,7 @@ export const TitleAndLogoAsLinks: StoryObj = {
     docs: {
       description: {
         story:
-          'Wrap `HeaderLogo` in a `Link`, and use a custom `<Link/>` instead of `HeaderTitle`s to make the branding and service name navigable. Use this when both should return the user to the service home page.',
+          'Wrap a `Link` in `HeaderLogo` and in `HeaderTitle` to make the branding and service name navigable. Use this when both should return the user to the service home page.',
       },
     },
   },
@@ -252,14 +252,16 @@ export const TitleAndLogoAsLinks: StoryObj = {
         [dataTestId]="dataTestId"
       >
         <gi-header-section className="!gi-justify-start">
-          <gi-link href="#" appearance="light" ariaLabel="Gov.ie home">
-            <gi-header-logo>
+          <gi-header-logo>
+            <gi-link href="#" appearance="light" ariaLabel="Gov.ie home">
               <gi-logo-white [size]="132"></gi-logo-white>
-            </gi-header-logo>
-          </gi-link>
-          <gi-link className="gi-ml-8 gi-p-1 gi-text-xl" href="#" appearance="light">
-            Title as a link
-          </gi-link>
+            </gi-link>
+          </gi-header-logo>
+          <gi-header-title>
+            <gi-link href="#" appearance="light">
+              Title as a link
+            </gi-link>
+          </gi-header-title>
         </gi-header-section>
       </gi-header>
     `,
@@ -333,11 +335,11 @@ export const Desktop: StoryObj = {
           </gi-stack>
         </gi-header-section>
         <gi-header-section>
-          <gi-link appearance="light" href="#" ariaLabel="Gov.ie home">
-            <gi-header-logo>
+          <gi-header-logo>
+            <gi-link appearance="light" href="#" ariaLabel="Gov.ie home">
               <gi-logo-white [size]="132"></gi-logo-white>
-            </gi-header-logo>
-          </gi-link>
+            </gi-link>
+          </gi-header-logo>
           <gi-header-title>Title</gi-header-title>
           <gi-header-nav ariaLabel="Primary navigation">
             <gi-header-nav-item-link href="#">Departments</gi-header-nav-item-link>
@@ -436,11 +438,11 @@ export const MobileView: StoryObj = {
           </gi-stack>
         </gi-header-section>
         <gi-header-section>
-          <gi-link appearance="light" href="#" ariaLabel="Gov.ie home">
-            <gi-header-logo>
+          <gi-header-logo>
+            <gi-link appearance="light" href="#" ariaLabel="Gov.ie home">
               <gi-logo-harp-white className="gi-h-10"></gi-logo-harp-white>
-            </gi-header-logo>
-          </gi-link>
+            </gi-link>
+          </gi-header-logo>
           <gi-header-title>Title</gi-header-title>
           <gi-header-nav ariaLabel="Primary navigation">
             <gi-header-nav-item>

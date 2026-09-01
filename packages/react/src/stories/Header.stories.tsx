@@ -85,12 +85,12 @@ export const Default: Story = {
         </Stack>
       </HeaderSection>
       <HeaderSection>
-        <Link appearance="light" href="#" ariaLabel="Gov.ie home">
-          <HeaderLogo>
+        <HeaderLogo>
+          <Link appearance="light" href="#" ariaLabel="Gov.ie home">
             <LogoWhite size={132} className="gi-hidden md:gi-block" />
             <LogoHarpWhite size={32} className="gi-block md:gi-hidden" />
-          </HeaderLogo>
-        </Link>
+          </Link>
+        </HeaderLogo>
         <HeaderTitle>Title</HeaderTitle>
         <HeaderNav ariaLabel="Primary navigation">
           <HeaderNavItemLink visible="lg" href="#">
@@ -111,7 +111,7 @@ export const Default: Story = {
             Language
             <MicIcon />
           </HeaderNavItem>
-          <HeaderNavItem visible={{ xs: true, md: false }}>
+          <HeaderNavItem visible={{ base: true, md: false }}>
             Menu
             <MenuIcon />
           </HeaderNavItem>
@@ -153,12 +153,12 @@ export const Light: Story = {
         </Stack>
       </HeaderSection>
       <HeaderSection appearance="light">
-        <Link href="#" ariaLabel="Gov.ie home">
-          <HeaderLogo>
+        <HeaderLogo>
+          <Link href="#" ariaLabel="Gov.ie home">
             <LogoBlack size={132} className="gi-hidden md:gi-block" />
             <LogoHarpBlack size={32} className="gi-block md:gi-hidden" />
-          </HeaderLogo>
-        </Link>
+          </Link>
+        </HeaderLogo>
         <HeaderTitle>Light Mode Title</HeaderTitle>
         <HeaderNav ariaLabel="Primary navigation">
           <HeaderNavItemLink visible="lg" href="#">
@@ -179,7 +179,7 @@ export const Light: Story = {
             Language
             <MicIcon />
           </HeaderNavItem>
-          <HeaderNavItem visible={{ xs: true, md: false }}>
+          <HeaderNavItem visible={{ base: true, md: false }}>
             Menu
             <MenuIcon />
           </HeaderNavItem>
@@ -205,7 +205,7 @@ export const TitleAndLogoAsLinks: Story = {
     docs: {
       description: {
         story:
-          'Wrap `HeaderLogo` in a `Link`, and use a custom `<Link/>` instead of `HeaderTitle`s to make the branding and service name navigable. Use this when both should return the user to the service home page.',
+          'Wrap a `Link` in `HeaderLogo`, and use a custom `<Link/>` instead of `HeaderTitle` to make the branding and service name navigable. Use this when both should return the user to the service home page.',
       },
     },
   },
@@ -213,14 +213,16 @@ export const TitleAndLogoAsLinks: Story = {
   render: (_props) => (
     <Header {..._props}>
       <HeaderSection className="!gi-justify-start">
-        <Link href="#" appearance="light" ariaLabel="Gov.ie home">
-          <HeaderLogo>
+        <HeaderLogo>
+          <Link href="#" appearance="light" ariaLabel="Gov.ie home">
             <LogoWhite size={132} />
-          </HeaderLogo>
-        </Link>
-        <Link className="gi-ml-8 gi-p-1 gi-text-xl" href="#" appearance="light">
-          Title as a link
-        </Link>
+          </Link>
+        </HeaderLogo>
+        <HeaderTitle>
+          <Link href="#" appearance="light">
+            Title as a link
+          </Link>
+        </HeaderTitle>
       </HeaderSection>
     </Header>
   ),
@@ -279,11 +281,11 @@ export const Desktop: Story = {
         </Stack>
       </HeaderSection>
       <HeaderSection>
-        <Link appearance="light" href="#" ariaLabel="Gov.ie home">
-          <HeaderLogo>
+        <HeaderLogo>
+          <Link appearance="light" href="#" ariaLabel="Gov.ie home">
             <LogoWhite size={132} />
-          </HeaderLogo>
-        </Link>
+          </Link>
+        </HeaderLogo>
         <HeaderTitle>Title</HeaderTitle>
         <HeaderNav ariaLabel="Primary navigation">
           <HeaderNavItemLink href="#">Departments</HeaderNavItemLink>
@@ -372,11 +374,11 @@ export const MobileView: Story = {
             </Stack>
           </HeaderSection>
           <HeaderSection>
-            <Link appearance="light" href="#" ariaLabel="Gov.ie home">
-              <HeaderLogo>
+            <HeaderLogo>
+              <Link appearance="light" href="#" ariaLabel="Gov.ie home">
                 <LogoHarpWhite className="gi-h-10" />
-              </HeaderLogo>
-            </Link>
+              </Link>
+            </HeaderLogo>
             <HeaderTitle>Title</HeaderTitle>
             <HeaderNav ariaLabel="Primary navigation">
               <HeaderNavItem onClick={() => toggle('drawer')} ariaExpanded={state.drawer}>
@@ -444,11 +446,11 @@ export const WithSearchAndDrawer: Story = {
       <>
         <Header {..._props}>
           <HeaderSection>
-            <Link appearance="light" href="#" ariaLabel="Gov.ie home">
-              <HeaderLogo>
+            <HeaderLogo>
+              <Link appearance="light" href="#" ariaLabel="Gov.ie home">
                 <LogoWhite size={132} />
-              </HeaderLogo>
-            </Link>
+              </Link>
+            </HeaderLogo>
             <HeaderTitle>Title</HeaderTitle>
             <HeaderNav ariaLabel="Primary navigation">
               <HeaderNavItem
