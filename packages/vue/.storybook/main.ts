@@ -10,7 +10,7 @@ const config: StorybookConfig = {
   framework: {
     name: path.dirname(fileURLToPath(import.meta.resolve('@storybook/vue3-vite/package.json'))),
     options: {
-      docgen: 'vue-component-meta',
+      docgen: false,
       builder: {
         viteConfigPath: path.resolve(import.meta.dirname, 'vite.config.ts'),
       },
