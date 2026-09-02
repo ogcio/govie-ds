@@ -82,6 +82,11 @@
       "component": "html-lib",
       "release-type": "node"
     },
+    "packages/angular": {
+      "component": "angular",
+      "release-type": "node",
+      "prerelease": true
+    },
     "packages/react": {
       "component": "react-lib",
       "release-type": "node"
