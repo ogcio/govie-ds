@@ -82,6 +82,11 @@
       "component": "html-lib",
       "release-type": "node"
     },
+    "packages/vue": {
+      "component": "vue",
+      "release-type": "node",
+      "prerelease": true
+    },
     "packages/angular": {
       "component": "angular",
       "release-type": "node",

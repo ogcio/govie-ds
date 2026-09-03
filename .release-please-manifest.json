@@ -8,6 +8,7 @@
   "packages/themes/govie": "1.21.7",
   "packages/design/tailwind": "1.26.3",
   "packages/html/ds": "1.21.5",
+  "packages/vue": "0.1.0",
   "packages/angular": "0.1.0",
   "packages/react": "1.46.0"
 }
