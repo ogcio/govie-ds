@@ -1,4 +1,4 @@
-import { SectionBreakProps } from '../section-break/section-break.schema';
+import type { SectionBreakProps } from '../section-break/section-break.schema';
 
 export const createSectionBreak = (arguments_: SectionBreakProps) => {
   const container = document.createElement('div');

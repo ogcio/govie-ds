@@ -1,6 +1,6 @@
-import { ErrorTextProps } from '../error-text/types';
-import { HintTextProps } from '../hint-text/types';
-import { LabelProps } from '../label/types';
+import type { ErrorTextProps } from '../error-text/types';
+import type { HintTextProps } from '../hint-text/types';
+import type { LabelProps } from '../label/types';
 
 export const CheckboxSizeEnum = {
   Medium: 'md',

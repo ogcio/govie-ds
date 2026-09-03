@@ -1,4 +1,4 @@
-import { ComboBoxProps } from '../combo-box/types';
+import type { ComboBoxProps } from '../combo-box/types';
 import { createIconButton } from './buttons';
 import { createCheckbox, createTextInput } from './forms';
 import { createIcon } from './icons';

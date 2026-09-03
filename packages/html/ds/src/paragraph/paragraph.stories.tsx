@@ -2,7 +2,7 @@ import type { Meta, StoryObj } from '@storybook/react-vite';
 import parse from 'html-react-parser';
 import { expect, within } from 'storybook/test';
 import { createParagraph } from '../helpers/typography';
-import { ParagraphProps } from './types';
+import type { ParagraphProps } from './types';
 
 const meta: Meta<ParagraphProps> = {
   title: 'Typography/Paragraph',

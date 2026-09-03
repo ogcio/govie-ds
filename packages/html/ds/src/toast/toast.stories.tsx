@@ -4,7 +4,7 @@ import { createButton, createIconButton } from '../helpers/buttons';
 import { createIcon } from '../helpers/icons';
 import { createLink } from '../helpers/links';
 import { createParagraph } from '../helpers/typography';
-import { ToastProps } from './types';
+import type { ToastProps } from './types';
 
 const meta: Meta<ToastProps> = {
   title: 'Application/Toast',

@@ -1,5 +1,5 @@
-import { DrawerWrapperProps } from '../drawer/types';
-import { ModalWrapperPropsExtension } from '../modal/types';
+import type { DrawerWrapperProps } from '../drawer/types';
+import type { ModalWrapperPropsExtension } from '../modal/types';
 import { beautifyHtmlNode } from '../storybook/storybook';
 import { createButton, createIconButton } from './buttons';
 import { createIcon } from './icons';

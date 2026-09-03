@@ -1,7 +1,7 @@
 import {
   BaseComponent,
-  BaseComponentOptions,
   initialiseModule,
+  type BaseComponentOptions,
 } from '../common/component';
 
 export type DetailsOptions = BaseComponentOptions;

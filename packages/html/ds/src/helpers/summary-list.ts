@@ -1,4 +1,4 @@
-import { SummaryListProps } from '../summary-list/summary-list.schema';
+import type { SummaryListProps } from '../summary-list/summary-list.schema';
 
 let summaryListRowIdCounter = 0;
 function createUniqueRowId(): string {

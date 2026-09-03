@@ -1,4 +1,4 @@
-import { PaginationProps } from '../pagination/pagination.schema';
+import type { PaginationProps } from '../pagination/pagination.schema';
 import { createButton } from './buttons';
 import { createIcon } from './icons';
 

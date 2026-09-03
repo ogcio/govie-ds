@@ -1,4 +1,4 @@
-import { ProgressStepperProps } from '../progress-stepper/types';
+import type { ProgressStepperProps } from '../progress-stepper/types';
 import { createIcon } from './icons';
 
 const getVerticalConnectorHeight = (gap: number): string => {

@@ -1,7 +1,7 @@
 import type { Meta, StoryObj } from '@storybook/react-vite';
 import parse from 'html-react-parser';
 import { createButton } from '../helpers/buttons';
-import { ButtonProps } from './types';
+import type { ButtonProps } from './types';
 
 const meta: Meta<ButtonProps> = {
   title: 'Form/Button',

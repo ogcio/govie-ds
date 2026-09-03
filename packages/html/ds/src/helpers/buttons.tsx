@@ -1,6 +1,6 @@
 import { clsx } from 'clsx';
-import { ButtonProps } from '../button/types';
-import { IconButtonProps } from '../icon-button/types';
+import type { ButtonProps } from '../button/types';
+import type { IconButtonProps } from '../icon-button/types';
 import { createIcon } from './icons';
 
 export const getButtonSizeClass = (size?: string) => {

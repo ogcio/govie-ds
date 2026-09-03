@@ -3,7 +3,7 @@ import parse from 'html-react-parser';
 import { expect, within } from 'storybook/test';
 import { createCard } from '../helpers/card';
 import { IconId, IconSize } from '../icon/icon.schema';
-import { CardProps } from './types';
+import type { CardProps } from './types';
 
 const meta: Meta<CardProps> = {
   title: 'Components/Card',

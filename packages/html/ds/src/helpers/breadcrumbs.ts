@@ -1,6 +1,6 @@
 // src/utils/createBreadcrumbs.ts
 
-import { BreadcrumbsProps } from '../breadcrumbs/breadcrumbs.schema';
+import type { BreadcrumbsProps } from '../breadcrumbs/breadcrumbs.schema';
 import { createIcon } from './icons';
 import { createLink } from './links';
 

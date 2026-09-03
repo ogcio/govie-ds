@@ -1,7 +1,7 @@
 import { createPopper } from '@popperjs/core';
 import {
   BaseComponent,
-  BaseComponentOptions,
+  type BaseComponentOptions,
   initialiseModule,
 } from '../common/component';
 

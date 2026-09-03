@@ -1,7 +1,7 @@
 import type { Meta, StoryObj } from '@storybook/react-vite';
 import parse from 'html-react-parser';
 import { createDetails } from '../helpers/details';
-import { DetailsProps } from './types';
+import type { DetailsProps } from './types';
 
 const meta: Meta<DetailsProps> = {
   title: 'Typography/Details',

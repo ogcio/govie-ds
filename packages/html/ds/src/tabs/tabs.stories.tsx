@@ -2,7 +2,7 @@ import type { Meta, StoryObj } from '@storybook/react-vite';
 import parse from 'html-react-parser';
 import { expect, within, userEvent, waitFor } from 'storybook/test';
 import { createTabs } from '../helpers/tabs';
-import { TabsProps } from './tabs.schema';
+import type { TabsProps } from './tabs.schema';
 
 const meta: Meta<TabsProps> = {
   title: 'navigation/Tabs',

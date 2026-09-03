@@ -1,4 +1,4 @@
-import { TablePropsExtension } from '../table/types';
+import type { TablePropsExtension } from '../table/types';
 
 export const createTable = (arguments_: TablePropsExtension) => {
   const table = document.createElement('table');

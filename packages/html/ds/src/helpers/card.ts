@@ -1,4 +1,4 @@
-import { CardProps } from '../card/types';
+import type { CardProps } from '../card/types';
 import { createButton } from './buttons';
 import { createIcon } from './icons';
 import { createLink } from './links';

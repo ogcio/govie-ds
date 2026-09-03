@@ -2,7 +2,7 @@ import type { Meta, StoryObj } from '@storybook/react-vite';
 import parse from 'html-react-parser';
 import { expect, within } from 'storybook/test';
 import { createHintText } from '../helpers/forms';
-import { HintSize, HintTextProps } from './types';
+import { HintSize, type HintTextProps } from './types';
 
 const meta: Meta<HintTextProps> = {
   title: 'Typography/HintText',

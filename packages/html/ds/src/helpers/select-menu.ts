@@ -1,4 +1,4 @@
-import { SelectGroupItemProps, SelectItemProps } from '../select/types';
+import type { SelectGroupItemProps, SelectItemProps } from '../select/types';
 import { createLabel } from './forms';
 
 const createListItem = (

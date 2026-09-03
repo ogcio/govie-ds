@@ -1,4 +1,4 @@
-import { PhaseBannerProps } from '../phase-banner/types';
+import type { PhaseBannerProps } from '../phase-banner/types';
 import { createContainer } from './container';
 import { createTag } from './typography';
 

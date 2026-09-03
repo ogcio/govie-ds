@@ -1,7 +1,7 @@
 import type { Meta, StoryObj } from '@storybook/react-vite';
 import parse from 'html-react-parser';
 import { createIcon } from '../helpers/icons';
-import { AccordionProps } from './types';
+import type { AccordionProps } from './types';
 
 const meta: Meta<AccordionProps> = {
   title: 'Layout/Accordion',

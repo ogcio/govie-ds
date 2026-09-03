@@ -1,5 +1,9 @@
-import { ButtonAppearance, ButtonSize, ButtonVariant } from '../button/types';
-import { IconIdType } from '../icon/icon.schema';
+import type {
+  ButtonAppearance,
+  ButtonSize,
+  ButtonVariant,
+} from '../button/types';
+import type { IconIdType } from '../icon/icon.schema';
 
 export type AnchorProps = {
   content?: string;

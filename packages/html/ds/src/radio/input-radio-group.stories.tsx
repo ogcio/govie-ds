@@ -2,7 +2,7 @@ import type { Meta, StoryObj } from '@storybook/react-vite';
 import parse from 'html-react-parser';
 import { createInputRadioGroup } from '../helpers/input-radio-group';
 import { createParagraph } from '../helpers/typography';
-import { RadioGroupProps } from './types';
+import type { RadioGroupProps } from './types';
 
 const meta: Meta<RadioGroupProps> = {
   title: 'form/Radio/InputRadioGroup',

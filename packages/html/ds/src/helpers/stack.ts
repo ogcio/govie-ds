@@ -1,4 +1,4 @@
-import { StackProps } from '../stack/types';
+import type { StackProps } from '../stack/types';
 
 export const createStack = (
   arguments_: StackProps,

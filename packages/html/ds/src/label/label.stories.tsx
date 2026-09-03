@@ -2,7 +2,7 @@ import type { Meta, StoryObj } from '@storybook/react-vite';
 import parse from 'html-react-parser';
 import { expect, within } from 'storybook/test';
 import { createLabel } from '../helpers/forms';
-import { LabelProps, LabelSize } from './types';
+import { type LabelProps, LabelSize } from './types';
 
 const meta: Meta<LabelProps> = {
   title: 'Typography/Label',

@@ -2,7 +2,7 @@ import type { Meta, StoryObj } from '@storybook/react-vite';
 import parse from 'html-react-parser';
 import { expect, within } from 'storybook/test';
 import { createFormField } from '../helpers/forms';
-import { InputFileProps } from './types';
+import type { InputFileProps } from './types';
 
 const meta: Meta<InputFileProps> = {
   title: 'Form/InputFile',

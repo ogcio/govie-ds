@@ -1,7 +1,7 @@
 import type { Meta, StoryObj } from '@storybook/react-vite';
 import parse from 'html-react-parser';
 import { getLogoContainer } from './footer.helpers.js';
-import { FooterProps } from './footer.schema.js';
+import type { FooterProps } from './footer.schema.js';
 
 const meta: Meta<FooterProps> = {
   title: 'Layout/Footer',

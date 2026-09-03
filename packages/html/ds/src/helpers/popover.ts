@@ -1,4 +1,4 @@
-import { PopoverProps } from '../popover/types';
+import type { PopoverProps } from '../popover/types';
 
 export const createPopover = (arguments_: PopoverProps) => {
   const container = document.createElement('div');

@@ -2,7 +2,7 @@ import type { Meta, StoryObj } from '@storybook/react-vite';
 import parse from 'html-react-parser';
 import { expect, within } from 'storybook/test';
 import { createSelect } from '../helpers/forms';
-import { SelectProps } from './types';
+import type { SelectProps } from './types';
 
 const meta: Meta<SelectProps> = {
   title: 'Form/Select/SelectNative',

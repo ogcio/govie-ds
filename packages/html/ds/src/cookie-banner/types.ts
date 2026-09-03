@@ -1,5 +1,5 @@
-import { ButtonProps } from '../button/types';
-import { LinkProps } from '../link/types';
+import type { ButtonProps } from '../button/types';
+import type { LinkProps } from '../link/types';
 
 export type CookieBannerProps = {
   content: string;

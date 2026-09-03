@@ -1,4 +1,4 @@
-import { TabsProps } from '../tabs/tabs.schema';
+import type { TabsProps } from '../tabs/tabs.schema';
 import { generateRandomId } from '.';
 
 export const createTabs = (arguments_: TabsProps) => {

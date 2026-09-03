@@ -5,7 +5,7 @@ import { createLink } from '../helpers/links';
 import { createList } from '../helpers/list';
 
 import { beautifyHtmlNode } from '../storybook/storybook';
-import { ListProps } from './types';
+import type { ListProps } from './types';
 
 const meta: Meta<ListProps> = {
   title: 'Typography/List',

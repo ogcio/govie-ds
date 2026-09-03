@@ -1,15 +1,18 @@
-import { ErrorTextProps } from '../error-text/types';
-import { HintTextProps } from '../hint-text/types';
-import { CheckboxGroupProps, CheckboxProps } from '../input-checkbox/types';
-import { TextInputProps } from '../input-text/types';
-import { LabelProps } from '../label/types';
-import { RadioProps } from '../radio/types';
-import {
+import type { ErrorTextProps } from '../error-text/types';
+import type { HintTextProps } from '../hint-text/types';
+import type {
+  CheckboxGroupProps,
+  CheckboxProps,
+} from '../input-checkbox/types';
+import type { TextInputProps } from '../input-text/types';
+import type { LabelProps } from '../label/types';
+import type { RadioProps } from '../radio/types';
+import type {
   SelectGroupItemProps,
   SelectItemProps,
   SelectProps,
 } from '../select/types';
-import { TextAreaProps } from '../textarea/types';
+import type { TextAreaProps } from '../textarea/types';
 import { createIconButton } from './buttons';
 import { createIcon } from './icons';
 import { createPopover } from './popover';

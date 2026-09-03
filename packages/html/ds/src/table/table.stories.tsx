@@ -7,7 +7,7 @@ import { createLink } from '../helpers/links';
 import { createTable, createTableCell } from '../helpers/table';
 import { createTag } from '../helpers/typography';
 import { beautifyHtmlNode } from '../storybook/storybook';
-import { TablePropsExtension } from './types';
+import type { TablePropsExtension } from './types';
 
 const basicTableRows = [
   [

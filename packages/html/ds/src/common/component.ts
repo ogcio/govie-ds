@@ -1,5 +1,5 @@
-import { ComponentRegistryKey, createInstance } from './instances';
-import { createQuery, Query } from './query';
+import { type ComponentRegistryKey, createInstance } from './instances';
+import { createQuery, type Query } from './query';
 
 export type BaseComponentOptions = {
   element: Element;

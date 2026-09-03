@@ -2,7 +2,7 @@ import type { Meta, StoryObj } from '@storybook/react-vite';
 import parse from 'html-react-parser';
 import { expect, within } from 'storybook/test';
 import { IconSize } from '../icon/icon.schema';
-import { SpinnerProps } from './spinner.schema';
+import type { SpinnerProps } from './spinner.schema';
 
 const meta: Meta<SpinnerProps> = {
   title: 'Indicators/Spinner',

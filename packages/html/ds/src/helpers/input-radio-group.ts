@@ -1,4 +1,4 @@
-import { RadioGroupProps } from '../radio/types';
+import type { RadioGroupProps } from '../radio/types';
 import { createFormField, createRadio } from './forms';
 
 export const createInputRadioGroup = (arguments_: RadioGroupProps) => {

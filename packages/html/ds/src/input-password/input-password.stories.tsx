@@ -4,7 +4,7 @@ import { ErrorSize } from '../error-text/types';
 import { createInputPassword } from '../helpers/forms';
 import { HintSize } from '../hint-text/types';
 import { LabelSize } from '../label/types';
-import { InputPasswordProps } from './types';
+import type { InputPasswordProps } from './types';
 
 const meta: Meta<InputPasswordProps> = {
   title: 'Form/InputPassword',

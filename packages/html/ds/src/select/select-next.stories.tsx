@@ -1,7 +1,7 @@
 import type { Meta, StoryObj } from '@storybook/react-vite';
 import parse from 'html-react-parser';
 import { createSelectNext } from '../helpers/forms';
-import { SelectProps } from './types';
+import type { SelectProps } from './types';
 
 const meta: Meta<SelectProps> = {
   title: 'Form/Select/SelectNext',

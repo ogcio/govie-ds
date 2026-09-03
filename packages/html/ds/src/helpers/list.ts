@@ -1,4 +1,4 @@
-import { ListProps } from '../list/types';
+import type { ListProps } from '../list/types';
 
 export const createList = (arguments_: ListProps) => {
   const container = document.createElement('div');

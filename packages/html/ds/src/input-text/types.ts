@@ -1,8 +1,8 @@
-import { ErrorTextProps } from '../error-text/types';
-import { HintTextProps } from '../hint-text/types';
-import { IconIdType } from '../icon/icon.schema';
-import { IconButtonProps } from '../icon-button/types';
-import { LabelProps } from '../label/types';
+import type { ErrorTextProps } from '../error-text/types';
+import type { HintTextProps } from '../hint-text/types';
+import type { IconIdType } from '../icon/icon.schema';
+import type { IconButtonProps } from '../icon-button/types';
+import type { LabelProps } from '../label/types';
 
 export type TextInputProps = {
   id?: string;

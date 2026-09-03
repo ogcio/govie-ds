@@ -1,7 +1,7 @@
 import type { Meta, StoryObj } from '@storybook/react-vite';
 import parse from 'html-react-parser';
 import { expect, within } from 'storybook/test';
-import { SideNavItemProps, SideNavProps } from './types';
+import type { SideNavItemProps, SideNavProps } from './types';
 
 const meta: Meta<SideNavProps> = {
   title: 'Navigation/SideNav',

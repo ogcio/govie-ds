@@ -8,7 +8,7 @@ import {
   childrenDefault,
   childrenRejected,
 } from './cookie-banner.content';
-import { CookieBannerProps } from './types';
+import type { CookieBannerProps } from './types';
 
 const meta: Meta<CookieBannerProps> = {
   title: 'application/CookieBanner',

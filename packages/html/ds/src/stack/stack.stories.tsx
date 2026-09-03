@@ -3,7 +3,7 @@ import parse from 'html-react-parser';
 import { createButton } from '../helpers/buttons';
 import { createLink } from '../helpers/links';
 import { createStack } from '../helpers/stack';
-import { StackProps } from './types';
+import type { StackProps } from './types';
 const meta: Meta<StackProps> = {
   title: 'layout/Stack',
 };

@@ -1,7 +1,7 @@
 import type { Meta, StoryObj } from '@storybook/react-vite';
 import parse from 'html-react-parser';
 import { expect, within } from 'storybook/test';
-import { ProgressBarProps } from './types';
+import type { ProgressBarProps } from './types';
 
 const meta: Meta<ProgressBarProps> = {
   title: 'indicators/ProgressBar',

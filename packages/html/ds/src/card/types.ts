@@ -1,7 +1,7 @@
-import { ButtonProps } from '../button/types';
-import { IconProps } from '../icon/icon.schema';
-import { LinkProps } from '../link/types';
-import { TagProps } from '../tag/types';
+import type { ButtonProps } from '../button/types';
+import type { IconProps } from '../icon/icon.schema';
+import type { LinkProps } from '../link/types';
+import type { TagProps } from '../tag/types';
 
 type Action =
   | (ButtonProps & { type: 'button' })

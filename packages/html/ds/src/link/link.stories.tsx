@@ -1,7 +1,7 @@
 import type { Meta, StoryObj } from '@storybook/react-vite';
 import parse from 'html-react-parser';
 import { createLink } from '../helpers/links';
-import { LinkProps } from './types';
+import type { LinkProps } from './types';
 
 const meta: Meta<LinkProps> = {
   title: 'Navigation/Link',

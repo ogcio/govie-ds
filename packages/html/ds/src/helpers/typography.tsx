@@ -1,6 +1,6 @@
-import { HeadingProps } from '../heading/types';
-import { ParagraphProps } from '../paragraph/types';
-import { TagProps } from '../tag/types';
+import type { HeadingProps } from '../heading/types';
+import type { ParagraphProps } from '../paragraph/types';
+import type { TagProps } from '../tag/types';
 
 export const createHeading = (arguments_: HeadingProps) => {
   let classSize = '';

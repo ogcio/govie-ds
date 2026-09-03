@@ -3,7 +3,7 @@ import parse from 'html-react-parser';
 import { expect, within } from 'storybook/test';
 import { createTextArea } from '../helpers/forms';
 import { LabelSize } from '../label/types';
-import { TextAreaProps } from './types';
+import type { TextAreaProps } from './types';
 
 const meta: Meta<TextAreaProps> = {
   title: 'Form/Textarea',

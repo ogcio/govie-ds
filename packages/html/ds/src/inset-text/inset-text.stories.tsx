@@ -1,7 +1,7 @@
 import type { Meta, StoryObj } from '@storybook/react-vite';
 import parse from 'html-react-parser';
 import { within, expect } from 'storybook/test';
-import { InsetTextProps } from './types';
+import type { InsetTextProps } from './types';
 
 const meta: Meta<InsetTextProps> = {
   title: 'Typography/InsetText',

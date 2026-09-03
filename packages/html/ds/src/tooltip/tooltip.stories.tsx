@@ -1,7 +1,7 @@
 import type { Meta, StoryObj } from '@storybook/react-vite';
 import React from 'react';
 import { beautifyHtmlNode } from '../storybook/storybook';
-import { TooltipProps } from './types';
+import type { TooltipProps } from './types';
 
 const meta: Meta<TooltipProps> = {
   title: 'Application/Tooltip',

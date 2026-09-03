@@ -1,4 +1,4 @@
-import { ContainerProps } from '../container/types';
+import type { ContainerProps } from '../container/types';
 
 export const createContainer = (arguments_: ContainerProps) => {
   const {

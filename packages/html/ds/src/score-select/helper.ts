@@ -1,5 +1,5 @@
 import { createButton } from '../helpers/buttons';
-import { ScoreSelectProps } from './types';
+import type { ScoreSelectProps } from './types';
 
 export const createScoreSelect = ({
   name,

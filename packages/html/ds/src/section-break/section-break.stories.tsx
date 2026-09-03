@@ -2,7 +2,7 @@ import type { Meta, StoryObj } from '@storybook/react-vite';
 import parse from 'html-react-parser';
 import { expect, within } from 'storybook/test';
 import { createSectionBreak } from '../helpers/section-break';
-import { SectionBreakProps, SizeEnum } from './section-break.schema';
+import { type SectionBreakProps, SizeEnum } from './section-break.schema';
 
 const meta: Meta<SectionBreakProps> = {
   title: 'Typography/SectionBreak',

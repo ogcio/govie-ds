@@ -1,7 +1,7 @@
-import { createFocusTrap, FocusTrap } from 'focus-trap';
+import { createFocusTrap, type FocusTrap } from 'focus-trap';
 import {
   BaseComponent,
-  BaseComponentOptions,
+  type BaseComponentOptions,
   initialiseModule,
 } from '../common/component';
 

@@ -1,5 +1,5 @@
-import { ButtonProps, ButtonSize } from '../button/types.js';
-import { HeadingProps } from '../heading/types.js';
+import type { ButtonProps, ButtonSize } from '../button/types.js';
+import type { HeadingProps } from '../heading/types.js';
 
 export type ModalPositions = 'center' | 'left' | 'right' | 'bottom';
 

@@ -1,4 +1,4 @@
-import { ChipProps } from '../chip/types';
+import type { ChipProps } from '../chip/types';
 
 export const createChip = (arguments_: ChipProps) => {
   const container = document.createElement('div');

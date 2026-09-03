@@ -2,7 +2,7 @@ import type { Meta, StoryObj } from '@storybook/react-vite';
 import parse from 'html-react-parser';
 import { expect, within } from 'storybook/test';
 import { createErrorText } from '../helpers/forms';
-import { ErrorSize, ErrorTextProps } from './types';
+import { ErrorSize, type ErrorTextProps } from './types';
 
 const meta: Meta<ErrorTextProps> = {
   title: 'Typography/ErrorText',

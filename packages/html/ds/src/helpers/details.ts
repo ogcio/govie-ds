@@ -1,4 +1,4 @@
-import { DetailsProps } from '../details/types';
+import type { DetailsProps } from '../details/types';
 import { createIcon } from './icons';
 
 export const createDetails = (arguments_: DetailsProps) => {

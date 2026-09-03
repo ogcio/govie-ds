@@ -2,7 +2,7 @@ import type { Meta, StoryObj } from '@storybook/react-vite';
 import parse from 'html-react-parser';
 import { expect, within } from 'storybook/test';
 import { createBreadcrumbs } from '../helpers/breadcrumbs';
-import { BreadcrumbsProps } from './breadcrumbs.schema';
+import type { BreadcrumbsProps } from './breadcrumbs.schema';
 
 const meta: Meta<BreadcrumbsProps> = {
   title: 'Navigation/Breadcrumbs',

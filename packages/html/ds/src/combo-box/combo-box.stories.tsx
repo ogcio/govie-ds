@@ -7,7 +7,7 @@ import {
   topicOptions,
 } from '../../../../react/src/combo-box/combo-box.content';
 import { createComboBox } from '../helpers/combobox';
-import { ComboBoxProps } from './types';
+import type { ComboBoxProps } from './types';
 
 const meta: Meta<ComboBoxProps> = {
   title: 'Form/ComboBox',

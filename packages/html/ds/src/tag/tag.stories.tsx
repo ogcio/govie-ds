@@ -1,7 +1,7 @@
 import type { Meta, StoryObj } from '@storybook/react-vite';
 import parse from 'html-react-parser';
 import { createTag } from '../helpers/typography';
-import { TagProps } from './types';
+import type { TagProps } from './types';
 
 const meta: Meta<TagProps> = {
   title: 'Typography/Tag',

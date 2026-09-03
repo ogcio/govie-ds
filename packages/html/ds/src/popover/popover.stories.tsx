@@ -4,7 +4,7 @@ import { createButton } from '../helpers/buttons';
 import { createPopover } from '../helpers/popover';
 import { createSelectMenu } from '../helpers/select-menu';
 import { beautifyHtmlNode } from '../storybook/storybook';
-import { PopoverProps } from './types';
+import type { PopoverProps } from './types';
 
 const meta: Meta<PopoverProps> = {
   title: 'Application/Popover',

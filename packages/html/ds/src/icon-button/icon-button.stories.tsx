@@ -2,7 +2,7 @@ import type { Meta, StoryObj } from '@storybook/react-vite';
 import parse from 'html-react-parser';
 import { createIconButton } from '../helpers/buttons';
 import { IconId } from '../icon/icon.schema';
-import { IconButtonProps } from './types';
+import type { IconButtonProps } from './types';
 
 const meta: Meta<IconButtonProps> = {
   title: 'Form/IconButton',

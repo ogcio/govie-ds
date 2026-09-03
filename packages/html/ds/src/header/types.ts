@@ -1,4 +1,4 @@
-import { DrawerPosition } from '../drawer/types';
+import type { DrawerPosition } from '../drawer/types';
 
 export type HeaderItemMode = 'always' | 'mobile-only' | 'desktop-only';
 export type HeaderItemAppearance = 'dropdown' | 'drawer';

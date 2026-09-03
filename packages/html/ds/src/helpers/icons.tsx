@@ -1,4 +1,4 @@
-import { IconProps, IconSize } from '../icon/icon.schema';
+import { type IconProps, IconSize } from '../icon/icon.schema';
 
 type IconSizeKey = (typeof IconSize)[keyof typeof IconSize];
 

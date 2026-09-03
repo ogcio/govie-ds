@@ -6,7 +6,7 @@ import { createIcon } from '../helpers/icons';
 import { createLink } from '../helpers/links';
 import { LabelSize } from '../label/types';
 import { beautifyHtmlNode } from '../storybook/storybook';
-import { TextInputProps } from './types';
+import type { TextInputProps } from './types';
 
 const meta: Meta<TextInputProps> = {
   title: 'Form/InputText',

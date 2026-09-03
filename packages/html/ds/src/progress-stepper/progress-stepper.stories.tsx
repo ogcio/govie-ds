@@ -2,7 +2,7 @@ import type { Meta, StoryObj } from '@storybook/react-vite';
 import parse from 'html-react-parser';
 import { createProgressStepper } from '../helpers/progress-stepper';
 import { formSlot1, formSlot2, formSlot3 } from './progress-stepper.content';
-import { ProgressStepperProps } from './types';
+import type { ProgressStepperProps } from './types';
 
 const meta: Meta<ProgressStepperProps> = {
   title: 'Application/ProgressStepper',

@@ -6,5 +6,9 @@ export default defineConfig([
   {
     files: ['**/*.ts', '**/*.tsx'],
     extends: [eslintConfig],
+    rules: {
+      '@typescript-eslint/consistent-type-imports': 'error',
+      '@typescript-eslint/no-import-type-side-effects': 'error',
+    },
   },
 ]);

@@ -15,7 +15,7 @@ import { Tabs } from '../tabs/tabs';
 import { Textarea } from '../textarea/textarea';
 import { Toast } from '../toast/toast';
 import { Tooltip } from '../tooltip/tooltip';
-import { BaseComponent, BaseComponentOptions } from './component';
+import type { BaseComponent, BaseComponentOptions } from './component';
 
 function generateRandomId() {
   return Math.random().toString(36).slice(2, 11);

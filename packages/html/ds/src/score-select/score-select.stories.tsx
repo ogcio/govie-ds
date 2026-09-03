@@ -2,7 +2,7 @@ import type { Meta, StoryObj } from '@storybook/react-vite';
 import parse from 'html-react-parser';
 import { expect, within } from 'storybook/test';
 import { createScoreSelect } from './helper';
-import { ScoreSelectProps } from './types';
+import type { ScoreSelectProps } from './types';
 
 const meta: Meta<ScoreSelectProps> = {
   title: 'Components/ScoreSelect',

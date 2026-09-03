@@ -11,7 +11,7 @@ import {
   modalFooterWithCloseAction,
   modalTitle,
 } from './modal.content';
-import { ModalWrapperPropsExtension } from './types';
+import type { ModalWrapperPropsExtension } from './types';
 
 const meta: Meta<ModalWrapperPropsExtension> = {
   title: 'Application/Modal',

@@ -2,7 +2,7 @@ import type { Meta, StoryObj } from '@storybook/react-vite';
 import parse from 'html-react-parser';
 import { expect } from 'storybook/test';
 import { createIcon } from '../helpers/icons';
-import { IconId, IconProps, IconSize } from './icon.schema';
+import { IconId, type IconProps, IconSize } from './icon.schema';
 
 const meta: Meta<IconProps> = {
   title: 'components/Icon',

@@ -2,7 +2,7 @@ import type { Meta, StoryObj } from '@storybook/react-vite';
 import parse from 'html-react-parser';
 import { expect, within } from 'storybook/test';
 import { createContainer } from '../helpers/container';
-import { ContainerInsetSizeEnum, ContainerProps } from './types';
+import { ContainerInsetSizeEnum, type ContainerProps } from './types';
 
 const meta: Meta<ContainerProps> = {
   title: 'Layout/Container',

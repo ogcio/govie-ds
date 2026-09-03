@@ -1,7 +1,7 @@
 import type { Meta, StoryObj } from '@storybook/react-vite';
 import parse from 'html-react-parser';
 import { createChip } from '../helpers/chip';
-import { ChipProps } from './types';
+import type { ChipProps } from './types';
 
 const meta: Meta<ChipProps> = {
   title: 'Components/Chip',

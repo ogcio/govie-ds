@@ -1,7 +1,7 @@
 import type { Meta, StoryObj } from '@storybook/react-vite';
 import parse from 'html-react-parser';
 import { userEvent, within } from 'storybook/test';
-import { ButtonSize } from '../button/types';
+import type { ButtonSize } from '../button/types';
 import { createButton } from '../helpers/buttons';
 
 type ButtonOption = {

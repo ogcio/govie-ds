@@ -2,7 +2,7 @@ import type { Meta, StoryObj } from '@storybook/react-vite';
 import parse from 'html-react-parser';
 import { expect, within } from 'storybook/test';
 import { createPagination } from '../helpers/pagination';
-import { PaginationProps } from './pagination.schema';
+import type { PaginationProps } from './pagination.schema';
 
 const meta: Meta<PaginationProps> = {
   title: 'Navigation/Pagination',

@@ -1,11 +1,11 @@
 import type { Meta, StoryObj } from '@storybook/react-vite';
 import parse from 'html-react-parser';
-import { ButtonProps } from '../button/types.ts';
+import type { ButtonProps } from '../button/types.ts';
 import { createDrawer } from '../helpers/modal.ts';
 import { createParagraph } from '../helpers/typography.tsx';
 import { beautifyHtmlNode } from '../storybook/storybook.tsx';
 import { drawerBody, drawerFooter } from './drawer.content.ts';
-import { DrawerWrapperProps } from './types.ts';
+import type { DrawerWrapperProps } from './types.ts';
 
 type DrawerWrapperPropsExtension = DrawerWrapperProps & {
   triggerButton?: ButtonProps;
