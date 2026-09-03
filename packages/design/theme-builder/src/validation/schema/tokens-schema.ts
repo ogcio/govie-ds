@@ -2,10 +2,8 @@ import { z } from 'zod';
 import { brandSchema } from './brand/brand-schema.js';
 import { primitiveSchema } from './primitive/primitive-schema.js';
 import { semanticSchema } from './semantic/semantic-schema.js';
-import {
-  TokenError,
-  TokensValidationError,
-} from './tokens-validation-error.js';
+import type { TokenError } from './tokens-validation-error.js';
+import { TokensValidationError } from './tokens-validation-error.js';
 
 export const tokensSchema = z
   .object({

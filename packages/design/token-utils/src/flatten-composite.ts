@@ -1,5 +1,5 @@
 import { objectKeys } from 'ts-extras';
-import { CompositeToken, Token } from './types.js';
+import type { CompositeToken, Token } from './types.js';
 
 export function flattenComposite({
   value,

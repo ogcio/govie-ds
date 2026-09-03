@@ -1,5 +1,5 @@
-import { Token } from 'style-dictionary';
-import { OutputReferences } from 'style-dictionary/types';
+import type { Token } from 'style-dictionary';
+import type { OutputReferences } from 'style-dictionary/types';
 import { usesReferences } from 'style-dictionary/utils';
 
 // Adapted from https://github.com/amzn/style-dictionary/blob/main/lib/common/formatHelpers/minifyDictionary.js

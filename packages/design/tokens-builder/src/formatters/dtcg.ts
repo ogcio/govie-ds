@@ -1,4 +1,4 @@
-import { FormatFnArguments } from 'style-dictionary/types';
+import type { FormatFnArguments } from 'style-dictionary/types';
 import { minifyDictionary } from './minify-dictionary.js';
 
 // TODO: type

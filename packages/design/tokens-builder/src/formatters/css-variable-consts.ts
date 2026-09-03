@@ -1,4 +1,4 @@
-import { FormatFnArguments } from 'style-dictionary/types';
+import type { FormatFnArguments } from 'style-dictionary/types';
 import { createPropertyFormatter, fileHeader } from 'style-dictionary/utils';
 import { getTokens } from './typescript-consts.js';
 

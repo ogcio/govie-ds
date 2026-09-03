@@ -1,4 +1,5 @@
-import { TokensValidationError, validateDesignTokens } from './schema/index.js';
+import type { TokensValidationError } from './schema/index.js';
+import { validateDesignTokens } from './schema/index.js';
 
 describe('validateDesignTokensSchema', () => {
   it('should fail with no primitives', () => {

@@ -1,5 +1,5 @@
 import { buildTokens } from '@ogcio/design-system-tokens-builder';
-import {
+import type {
   FigmaManifestCollection,
   FigmaTokenCollections,
   FigmaTokenModes,

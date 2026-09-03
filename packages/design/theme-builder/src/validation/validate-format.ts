@@ -1,5 +1,5 @@
 import { validate } from '@animaapp/design-tokens-validator';
-import { Tokens } from '@animaapp/design-tokens-validator/src/types.js';
+import type { Tokens } from '@animaapp/design-tokens-validator/src/types.js';
 import { mergeDesignTokens } from './merge-tokens.js';
 
 export class DesignTokenValidationError extends Error {

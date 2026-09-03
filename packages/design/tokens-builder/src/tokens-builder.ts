@@ -1,6 +1,7 @@
 import camelCase from 'camelcase';
-import StyleDictionary, { PlatformConfig, Token } from 'style-dictionary';
-import { Config } from 'style-dictionary/types';
+import type { PlatformConfig, Token } from 'style-dictionary';
+import StyleDictionary from 'style-dictionary';
+import type { Config } from 'style-dictionary/types';
 import { cssVariableConstsFormatter } from './formatters/css-variable-consts.js';
 import { cssVariableObjectFormatter } from './formatters/css-variable-object.js';
 import { dtcgFormatter } from './formatters/dtcg.js';

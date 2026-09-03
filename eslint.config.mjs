@@ -57,7 +57,8 @@ export default [
         },
       ],
       '@typescript-eslint/no-non-null-assertion': 'warn',
-      '@typescript-eslint/consistent-type-imports': 'warn',
+      '@typescript-eslint/consistent-type-imports': 'error',
+      '@typescript-eslint/no-import-type-side-effects': 'error',
       '@typescript-eslint/no-require-imports': 'error',
 
       'regexp/no-super-linear-backtracking': 'error',

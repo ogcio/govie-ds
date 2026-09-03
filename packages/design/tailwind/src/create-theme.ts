@@ -1,7 +1,7 @@
 import { variables } from '@ogcio/design-system-tokens';
 import merge from 'deepmerge';
 import tailwindTheme from 'tailwindcss/defaultTheme.js';
-import { CustomThemeConfig } from 'tailwindcss/types/config.js';
+import type { CustomThemeConfig } from 'tailwindcss/types/config.js';
 import { convertColors, toFont } from './utilities.js';
 
 export type CreateThemeOptions = {

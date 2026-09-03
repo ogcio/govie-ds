@@ -1,6 +1,6 @@
 import cloneDeepWith from 'lodash/cloneDeepWith.js';
-import { Dictionary, TransformedToken } from 'style-dictionary';
-import { DesignToken, FormatFnArguments } from 'style-dictionary/types';
+import type { Dictionary, TransformedToken } from 'style-dictionary';
+import type { DesignToken, FormatFnArguments } from 'style-dictionary/types';
 import { fileHeader } from 'style-dictionary/utils';
 
 export type TestToken = {
