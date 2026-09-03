@@ -87,12 +87,4 @@ export default defineConfig([
       '@typescript-eslint/no-explicit-any': 'off',
     },
   },
-  {
-    // `@vue/tsconfig` sets `verbatimModuleSyntax`, so a value import of a type is TS1484 in the SFC.
-    basePath: import.meta.dirname,
-    files: ['atoms/**/*.{ts,tsx}'],
-    rules: {
-      '@typescript-eslint/consistent-type-imports': 'error',
-    },
-  },
 ]);

@@ -20,13 +20,6 @@ export default defineConfig([
     },
   },
   {
-    // Mitosis output — rules whose only fix is rewriting emitted TypeScript belong to packages/core.
-    files: ['src/atoms/**/*.ts'],
-    rules: {
-      '@typescript-eslint/consistent-type-imports': 'off',
-    },
-  },
-  {
     files: ['**/*.html'],
     extends: [angular.configs.templateRecommended, angular.configs.templateAccessibility],
     rules: {

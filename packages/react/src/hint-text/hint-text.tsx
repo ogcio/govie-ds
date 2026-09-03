@@ -1,5 +1,5 @@
 import { tv } from 'tailwind-variants';
-import { type HintTextProps } from './types.js';
+import type { HintTextProps } from './types.js';
 
 export const HintSize = {
   Small: 'sm',

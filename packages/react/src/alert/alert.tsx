@@ -9,7 +9,7 @@ import WarningIcon from '@/atoms/icons/Warning';
 import { cn } from '@/cn.js';
 import { translate as t } from '@/i18n/utility.js';
 import { IconButton } from '@/icon-button/icon-button.js';
-import { type AlertProps } from './types.js';
+import type { AlertProps } from './types.js';
 import { alertVariants } from './variants.js';
 
 export const ALERT_VARIANT_ICONS: Record<string, ComponentType<IconProps>> = {

@@ -1,5 +1,5 @@
 import type { ReactNode } from 'react';
-import { type Props as HeadingProps } from '@/Heading.js';
+import type { Props as HeadingProps } from '@/Heading.js';
 import type { IconId } from '@/icon/icon.js';
 
 export type SideNavItemProps = {

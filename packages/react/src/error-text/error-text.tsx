@@ -1,5 +1,5 @@
 import { tv } from 'tailwind-variants';
-import { type ErrorTextProps } from './types.js';
+import type { ErrorTextProps } from './types.js';
 
 export const ErrorSize = {
   Small: 'sm',

@@ -1,6 +1,6 @@
 import { forwardRef } from 'react';
 import { tv } from 'tailwind-variants';
-import { type LabelTextProps } from './types.js';
+import type { LabelTextProps } from './types.js';
 
 export const LabelSize = {
   Small: 'sm',

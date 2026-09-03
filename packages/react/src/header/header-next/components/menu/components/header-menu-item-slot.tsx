@@ -2,7 +2,7 @@
 
 import { forwardRef } from 'react';
 import { cn } from '@/cn.js';
-import { type HeaderMenuItemSlotProps } from '@/header/types.js';
+import type { HeaderMenuItemSlotProps } from '@/header/types.js';
 import { headerSecondaryLinkSlotItemVariants } from '@/header/variants.js';
 import { useHeaderContext } from '@/header/header-next/header-context.js';
 import { useHeaderMenuSection } from '@/header/header-next/components/menu/header-menu-context.js';
