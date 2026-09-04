@@ -13,7 +13,7 @@ import Send from '@/atoms/icons/Send';
 import Settings from '@/atoms/icons/Settings';
 
 const meta = {
-  title: 'Navigation/SideNav',
+  title: 'Navigation/SideNav (Legacy)',
   component: SideNavItem,
   parameters: {
     docs: {
