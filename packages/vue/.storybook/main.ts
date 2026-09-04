@@ -4,6 +4,13 @@ import type { StorybookConfig } from '@storybook/vue3-vite';
 
 const config: StorybookConfig = {
   stories: ['../src/**/*.stories.ts'],
+  tags: {
+    exclude: {
+      excludeFromDocsStories: true,
+      excludeFromSidebar: true,
+      defaultFilterSelection: 'exclude',
+    },
+  },
 
   addons: ['@storybook/addon-docs', '@storybook/addon-a11y', 'storybook-addon-pseudo-states'],
 
