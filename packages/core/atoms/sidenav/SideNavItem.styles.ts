@@ -1,0 +1,54 @@
+import { tv } from 'tailwind-variants';
+import { baseClasses } from '../Button.styles';
+
+export default tv({
+  extend: baseClasses,
+  base: [
+    'gi-px-3 gi-py-2',
+    'gi-font-bold',
+    'gi-text-md',
+    'gi-w-full',
+    'aria-[current=page]:gi-shadow-[inset_4px_0_0_var(--gieds-color-border-tone-primary-accent-selected)]',
+    'aria-[current=page]:gi-bg-color-surface-system-neutral-interactive-selected-subtle',
+    'aria-[current=page]:focus:gi-bg-color-surface-tone-light-fill-hover',
+    'aria-[current=page]:focus-visible:gi-bg-color-surface-tone-light-fill-hover',
+    '[.gi-side-nav-group_&]:gi-font-normal',
+  ],
+  variants: {
+    hasAction: {
+      true: 'gi-pr-[84px]',
+      false: 'gi-pr-12',
+    },
+  },
+  defaultVariants: {
+    variant: 'flat',
+    appearance: 'dark',
+    disabled: false,
+    hasAction: false,
+  },
+});
+
+export const trailingPosition = tv({
+  base: 'gi-absolute gi-top-1/2 -gi-translate-y-1/2',
+});
+
+export const arrowClasses = tv({
+  extend: trailingPosition,
+  base: 'gi-right-3 gi-pointer-events-none motion-safe:gi-transition-transform motion-safe:gi-duration-100',
+  variants: {
+    open: {
+      true: 'gi-rotate-180',
+      false: 'gi-rotate-0',
+    },
+  },
+});
+
+export const actionClasses = tv({
+  extend: trailingPosition,
+  variants: {
+    expandable: {
+      true: 'gi-right-12',
+      false: 'gi-right-3',
+    },
+  },
+});
