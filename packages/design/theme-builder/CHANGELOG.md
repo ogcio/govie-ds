@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.24.3](https://github.com/ogcio/govie-ds/compare/design-theme-builder-v1.24.2...design-theme-builder-v1.24.3) (2026-09-04)
+
+
+### Miscellaneous Chores
+
+* **AB#41262:** update node packages and eslint for full format checks ([d34a285](https://github.com/ogcio/govie-ds/commit/d34a28503d4b39e688ea94763955aa003dc52f0a))
+
 ## [1.24.2](https://github.com/ogcio/govie-ds/compare/design-theme-builder-v1.24.1...design-theme-builder-v1.24.2) (2026-06-09)
 
 

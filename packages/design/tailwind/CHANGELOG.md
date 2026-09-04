@@ -1,5 +1,17 @@
 # Changelog
 
+## [1.27.0](https://github.com/ogcio/govie-ds/compare/design-tailwind-v1.26.3...design-tailwind-v1.27.0) (2026-09-04)
+
+
+### Features
+
+* **AB#42305:** add semantic focus colour aliases to the Tailwind preset ([3154b4c](https://github.com/ogcio/govie-ds/commit/3154b4caf06dfccc2ab3d6e043f3e3482f3eaa4b))
+
+
+### Miscellaneous Chores
+
+* **AB#41262:** update node packages and eslint for full format checks ([d34a285](https://github.com/ogcio/govie-ds/commit/d34a28503d4b39e688ea94763955aa003dc52f0a))
+
 ## [1.26.3](https://github.com/ogcio/govie-ds/compare/design-tailwind-v1.26.2...design-tailwind-v1.26.3) (2026-07-28)
 
 

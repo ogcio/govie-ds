@@ -1,5 +1,29 @@
 # Changelog
 
+## [1.47.0](https://github.com/ogcio/govie-ds/compare/react-lib-v1.46.0...react-lib-v1.47.0) (2026-09-04)
+
+
+### Features
+
+* **AB#41262:** add verbatimModuleSyntax and type-side-effects rule ([377312f](https://github.com/ogcio/govie-ds/commit/377312f4cc137064317f8323330be6c2334d3223))
+* **AB#41817:** Header docs migration guide ([#1043](https://github.com/ogcio/govie-ds/issues/1043)) ([1a95cdd](https://github.com/ogcio/govie-ds/commit/1a95cdd01fcbf5a3984b1ac03a8dd9f3f7846904))
+* **AB#41826:** focus style fixes for HeaderLogo & HeaderTitle ([eb6f39b](https://github.com/ogcio/govie-ds/commit/eb6f39be7de302ca22e6f3c6bb7c65158563d74d))
+* **AB#42216:** Add asChild support to HeaderNavItemLink ([#1046](https://github.com/ogcio/govie-ds/issues/1046)) ([b4a8e46](https://github.com/ogcio/govie-ds/commit/b4a8e465a6d4fb9e7456c92e66acc4528f02e8a7))
+* **AB#42305:** move Core focus styling onto semantic tokens and ring utilities ([bfca2d8](https://github.com/ogcio/govie-ds/commit/bfca2d89b72907f3bb3e421e49d9b4996b7b5e25))
+
+
+### Bug Fixes
+
+* **AB#42108:** require onClose, add testid, improve  stories ([#1045](https://github.com/ogcio/govie-ds/issues/1045)) ([7041476](https://github.com/ogcio/govie-ds/commit/7041476e057181d78cdefc52399eb2ccbbb91024))
+
+
+### Dependencies
+
+* The following workspace dependencies were updated
+  * devDependencies
+    * @ogcio/design-system-tailwind bumped to 1.27.0
+    * @ogcio/theme-govie bumped to 1.21.8
+
 ## [1.46.0](https://github.com/ogcio/govie-ds/compare/react-lib-v1.45.0...react-lib-v1.46.0) (2026-08-21)
 
 

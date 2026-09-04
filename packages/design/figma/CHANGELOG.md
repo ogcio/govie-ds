@@ -1,5 +1,19 @@
 # Changelog
 
+## [1.0.8](https://github.com/ogcio/govie-ds/compare/figma-v1.0.7...figma-v1.0.8) (2026-09-04)
+
+
+### Miscellaneous Chores
+
+* **AB#41262:** update node packages and eslint for full format checks ([d34a285](https://github.com/ogcio/govie-ds/commit/d34a28503d4b39e688ea94763955aa003dc52f0a))
+
+
+### Dependencies
+
+* The following workspace dependencies were updated
+  * dependencies
+    * @ogcio/theme-govie bumped to 1.21.8
+
 ## [1.0.7](https://github.com/ogcio/govie-ds/compare/figma-v1.0.6...figma-v1.0.7) (2026-06-09)
 
 
