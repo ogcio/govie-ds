@@ -61,6 +61,14 @@ const classes = tv({
 });
 
 const IconButton = forwardRef<Props['ref'], Props>(function IconButton(props: Props, ref) {
+  props = {
+    disabled: false,
+    ariaExpanded: undefined,
+    ariaPressed: undefined,
+    ariaHasPopup: false,
+    ariaBusy: false,
+    ...props,
+  };
   return (
     <button
       ref={ref}
@@ -69,7 +77,7 @@ const IconButton = forwardRef<Props['ref'], Props>(function IconButton(props: Pr
         variant: getVariant(props.variant),
         appearance: getAppearance(props.appearance),
         size: getSize(props.size),
-        disabled: !!props.disabled,
+        disabled: props.disabled,
         className: props.className,
       })}
       disabled={props.disabled || undefined}

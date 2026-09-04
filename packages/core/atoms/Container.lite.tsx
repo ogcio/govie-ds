@@ -1,4 +1,4 @@
-import { useMetadata } from '@builder.io/mitosis';
+import { useDefaultProps, useMetadata } from '@builder.io/mitosis';
 import { tv } from 'tailwind-variants';
 import { MaxWidth } from './constants';
 import type { ValueOf } from './constants';
@@ -14,6 +14,11 @@ export type Props = {
 
 useMetadata({ angular: { selector: 'gi-container' } });
 
+useDefaultProps({
+  inset: false,
+  gutters: true,
+});
+
 export default function Container(props: Props) {
   return (
     <GiBox
@@ -24,8 +29,8 @@ export default function Container(props: Props) {
       styles={props.styles}
       dataTestId={props.dataTestId}
       className={classes({
-        inset: props.inset ?? false,
-        gutters: props.gutters ?? true,
+        inset: props.inset,
+        gutters: props.gutters,
         maxWidth: getMaxWidth(props.maxWidth),
         className: props.className,
       })}

@@ -39,6 +39,7 @@ const classes = tv({
 });
 
 function Paragraph(props: Props) {
+  props = { ariaHidden: undefined, ...props };
   return (
     <p
       id={props.id}

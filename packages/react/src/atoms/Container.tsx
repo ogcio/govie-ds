@@ -46,6 +46,7 @@ const classes = tv({
 });
 
 function Container(props: Props) {
+  props = { inset: false, gutters: true, ...props };
   return (
     <GiBox
       id={props.id}
@@ -55,8 +56,8 @@ function Container(props: Props) {
       styles={props.styles}
       dataTestId={props.dataTestId}
       className={classes({
-        inset: props.inset ?? false,
-        gutters: props.gutters ?? true,
+        inset: props.inset,
+        gutters: props.gutters,
         maxWidth: getMaxWidth(props.maxWidth),
         className: props.className,
       })}

@@ -20,6 +20,7 @@ export type Props = {
   ariaControls?: string;
   dataTestId?: string;
 };
+const defaultProps: any = { visible: undefined, ariaExpanded: false };
 
 import classes, { getVisibility } from './HeaderNavItem.styles';
 import type { VisibleValue } from './HeaderNavItem.styles';
@@ -61,12 +62,12 @@ export default class HeaderNavItem {
   classes = classes;
   getVisibility = getVisibility;
 
-  @Input() visible!: Props['visible'];
+  @Input() visible: Props['visible'] = defaultProps['visible'];
   @Input() id!: Props['id'];
   @Input() className!: Props['className'];
   @Input() styles!: Props['styles'];
   @Input() ariaLabel!: Props['ariaLabel'];
-  @Input() ariaExpanded!: Props['ariaExpanded'];
+  @Input() ariaExpanded: Props['ariaExpanded'] = defaultProps['ariaExpanded'];
   @Input() ariaControls!: Props['ariaControls'];
   @Input() dataTestId!: Props['dataTestId'];
   @Output() onClick = new EventEmitter<any>();

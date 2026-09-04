@@ -25,6 +25,7 @@ import classes, { getVisibility } from './HeaderNavItem.styles';
 import type { VisibleValue } from './HeaderNavItem.styles';
 
 function HeaderNavItem(props: Props) {
+  props = { visible: undefined, ariaExpanded: false, ...props };
   return (
     <li className={getVisibility(props.visible)}>
       <button
