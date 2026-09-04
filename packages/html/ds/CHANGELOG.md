@@ -1,5 +1,20 @@
 # Changelog
 
+## [1.21.6](https://github.com/ogcio/govie-ds/compare/html-lib-v1.21.5...html-lib-v1.21.6) (2026-09-04)
+
+
+### Miscellaneous Chores
+
+* **AB#41262:** update HTML packages to use import type ([7168065](https://github.com/ogcio/govie-ds/commit/716806561e0ea2cb7fe68ccabdc304552e534c94))
+
+
+### Dependencies
+
+* The following workspace dependencies were updated
+  * devDependencies
+    * @ogcio/design-system-tailwind bumped to 1.27.0
+    * @ogcio/theme-govie bumped to 1.21.8
+
 ## [1.21.5](https://github.com/ogcio/govie-ds/compare/html-lib-v1.21.4...html-lib-v1.21.5) (2026-07-28)
 
 

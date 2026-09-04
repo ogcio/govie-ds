@@ -1,5 +1,25 @@
 # Changelog
 
+## [1.46.0](https://github.com/ogcio/govie-ds/compare/docs-v1.45.0...docs-v1.46.0) (2026-09-04)
+
+
+### Features
+
+* **AB#41817:** Header docs migration guide ([#1043](https://github.com/ogcio/govie-ds/issues/1043)) ([1a95cdd](https://github.com/ogcio/govie-ds/commit/1a95cdd01fcbf5a3984b1ac03a8dd9f3f7846904))
+* **AB#41826:** focus style fixes for HeaderLogo & HeaderTitle ([eb6f39b](https://github.com/ogcio/govie-ds/commit/eb6f39be7de302ca22e6f3c6bb7c65158563d74d))
+* **AB#41826:** use new  &lt;Header&gt; used in docs ([b7d5f53](https://github.com/ogcio/govie-ds/commit/b7d5f53d9ae71893addc7b874a5a4b42cc10e95b))
+* **AB#42216:** Add asChild support to HeaderNavItemLink ([#1046](https://github.com/ogcio/govie-ds/issues/1046)) ([b4a8e46](https://github.com/ogcio/govie-ds/commit/b4a8e465a6d4fb9e7456c92e66acc4528f02e8a7))
+
+
+### Dependencies
+
+* The following workspace dependencies were updated
+  * dependencies
+    * @ogcio/design-system-html bumped to 1.21.6
+    * @ogcio/design-system-react bumped to 1.47.0
+    * @ogcio/design-system-tailwind bumped to 1.27.0
+    * @ogcio/theme-govie bumped to 1.21.8
+
 ## [1.45.0](https://github.com/ogcio/govie-ds/compare/docs-v1.44.0...docs-v1.45.0) (2026-08-21)
 
 
