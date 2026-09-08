@@ -20,7 +20,7 @@
     :style="styles"
     :target="target ?? (external ? '_blank' : undefined)"
     :rel="rel ?? (external ? 'noreferrer noopener' : undefined)"
-    :download="download"
+    :download="download || undefined"
     :aria-current="ariaCurrent"
     :aria-label="ariaLabel"
     :aria-labelledby="ariaLabelledBy"

@@ -28,7 +28,7 @@ export default function LinkButton(props: Props) {
       style={props.styles}
       target={props.target ?? (props.external ? '_blank' : undefined)}
       rel={props.rel ?? (props.external ? 'noreferrer noopener' : undefined)}
-      download={props.download}
+      download={props.download || undefined}
       aria-current={props.ariaCurrent}
       aria-label={props.ariaLabel}
       aria-labelledby={props.ariaLabelledBy}

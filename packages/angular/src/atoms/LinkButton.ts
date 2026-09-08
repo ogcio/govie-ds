@@ -34,7 +34,7 @@ import type { Props as LinkProps } from './Link';
       [ngStyle]="styles"
       [attr.target]="target ?? (external ? '_blank' : undefined)"
       [attr.rel]="rel ?? (external ? 'noreferrer noopener' : undefined)"
-      [attr.download]="download"
+      [attr.download]="download || undefined"
       [attr.aria-current]="ariaCurrent"
       [attr.aria-label]="ariaLabel"
       [attr.aria-labelledby]="ariaLabelledBy"
