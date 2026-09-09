@@ -13,6 +13,52 @@ export const restrictedSyntax = [
   },
 ];
 
+export const sharedRules = {
+  'no-restricted-syntax': ['error', ...restrictedSyntax],
+  curly: ['error', 'all'],
+  'object-shorthand': ['error', 'always'],
+  eqeqeq: ['error', 'always', { null: 'ignore' }],
+  'no-console': ['error', { allow: ['warn', 'error'] }],
+  'no-eval': 'error',
+  'no-implied-eval': 'error',
+  'no-new-func': 'error',
+  'no-param-reassign': 'warn',
+  'no-return-assign': 'error',
+  'no-throw-literal': 'error',
+  'prefer-template': 'warn',
+
+  '@typescript-eslint/no-explicit-any': 'warn',
+  '@typescript-eslint/no-unused-vars': [
+    'warn',
+    {
+      argsIgnorePattern: '^_',
+      varsIgnorePattern: '^_',
+      caughtErrorsIgnorePattern: '^_',
+    },
+  ],
+  '@typescript-eslint/no-non-null-assertion': 'warn',
+  '@typescript-eslint/consistent-type-imports': 'error',
+  '@typescript-eslint/no-import-type-side-effects': 'error',
+  '@typescript-eslint/no-require-imports': 'error',
+
+  'regexp/no-super-linear-backtracking': 'error',
+  'regexp/no-misleading-capturing-group': 'warn',
+  'regexp/no-unused-capturing-group': 'warn',
+  'regexp/optimal-quantifier-concatenation': 'warn',
+  'regexp/no-useless-flag': 'warn',
+  'regexp/use-ignore-case': 'warn',
+  'regexp/strict': 'warn',
+  'regexp/prefer-escape-replacement-dollar-char': 'warn',
+
+  'unicorn/switch-case-braces': 'off',
+  'unicorn/no-null': 'off',
+  'unicorn/no-array-reduce': 'warn',
+  'unicorn/no-array-sort': 'warn',
+  'unicorn/no-nested-ternary': 'off',
+  'unicorn/prevent-abbreviations': 'off',
+  'unicorn/filename-case': 'off',
+};
+
 export default [
   {
     ignores: ['**/dist/**', '**/coverage/**'],
@@ -33,50 +79,6 @@ export default [
       ecmaVersion: 'latest',
       sourceType: 'module',
     },
-    rules: {
-      'no-restricted-syntax': ['error', ...restrictedSyntax],
-      curly: ['error', 'all'],
-      'object-shorthand': ['error', 'always'],
-      eqeqeq: ['error', 'always', { null: 'ignore' }],
-      'no-console': ['error', { allow: ['warn', 'error'] }],
-      'no-eval': 'error',
-      'no-implied-eval': 'error',
-      'no-new-func': 'error',
-      'no-param-reassign': 'warn',
-      'no-return-assign': 'error',
-      'no-throw-literal': 'error',
-      'prefer-template': 'warn',
-
-      '@typescript-eslint/no-explicit-any': 'warn',
-      '@typescript-eslint/no-unused-vars': [
-        'warn',
-        {
-          argsIgnorePattern: '^_',
-          varsIgnorePattern: '^_',
-          caughtErrorsIgnorePattern: '^_',
-        },
-      ],
-      '@typescript-eslint/no-non-null-assertion': 'warn',
-      '@typescript-eslint/consistent-type-imports': 'error',
-      '@typescript-eslint/no-import-type-side-effects': 'error',
-      '@typescript-eslint/no-require-imports': 'error',
-
-      'regexp/no-super-linear-backtracking': 'error',
-      'regexp/no-misleading-capturing-group': 'warn',
-      'regexp/no-unused-capturing-group': 'warn',
-      'regexp/optimal-quantifier-concatenation': 'warn',
-      'regexp/no-useless-flag': 'warn',
-      'regexp/use-ignore-case': 'warn',
-      'regexp/strict': 'warn',
-      'regexp/prefer-escape-replacement-dollar-char': 'warn',
-
-      'unicorn/switch-case-braces': 'off',
-      'unicorn/no-null': 'off',
-      'unicorn/no-array-reduce': 'warn',
-      'unicorn/no-array-sort': 'warn',
-      'unicorn/no-nested-ternary': 'off',
-      'unicorn/prevent-abbreviations': 'off',
-      'unicorn/filename-case': 'off',
-    },
+    rules: sharedRules,
   },
 ];

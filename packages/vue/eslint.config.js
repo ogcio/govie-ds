@@ -1,7 +1,9 @@
 import { defineConfigWithVueTs, vueTsConfigs } from '@vue/eslint-config-typescript';
+import prettierConfig from 'eslint-config-prettier/flat';
 import storybook from 'eslint-plugin-storybook';
 import pluginVue from 'eslint-plugin-vue';
-import baseConfig from '../../eslint.config.mjs';
+import vueA11y from 'eslint-plugin-vuejs-accessibility';
+import baseConfig, { sharedRules } from '../../eslint.config.mjs';
 
 export default [
   {
@@ -10,7 +12,8 @@ export default [
   ...storybook.configs['flat/recommended'],
   ...baseConfig,
   ...defineConfigWithVueTs(
-    pluginVue.configs['flat/essential'],
+    pluginVue.configs['flat/recommended'],
+    vueA11y.configs['flat/recommended'],
     vueTsConfigs.recommended,
     {
       // Typed linting: anchor the project service to this package, not the repo root.
@@ -23,11 +26,14 @@ export default [
     {
       files: ['**/*.vue'],
       rules: {
+        ...sharedRules,
         'unicorn/filename-case': ['error', { case: 'pascalCase' }],
-        // The base config scopes its rule block to `.{js,mjs,cjs,ts,tsx}`, so `.vue` misses this.
-        'unicorn/prevent-abbreviations': 'off',
-        // Design System components are single-word by design (Button, Card, …).
+        'vue/block-order': ['error', { order: ['template', 'script', 'style'] }],
+        'vue/component-api-style': ['error', ['script-setup', 'composition']],
+        'vue/define-emits-declaration': 'error',
+        'vue/define-props-declaration': 'error',
         'vue/multi-word-component-names': 'off',
+        'vue/no-unused-refs': 'error',
       },
     },
     {
@@ -44,7 +50,18 @@ export default [
             caughtErrorsIgnorePattern: '^_',
           },
         ],
+        'vue/attribute-hyphenation': 'off',
+        'vue/attributes-order': 'off',
+        'vue/no-required-prop-with-default': 'off',
       },
     },
   ),
+  // Last, so it can switch off the whitespace rules `vue/recommended` brings in.
+  prettierConfig,
+  {
+    rules: {
+      // eslint-config-prettier also drops `curly`, which the shared base sets deliberately.
+      curly: ['error', 'all'],
+    },
+  },
 ];
