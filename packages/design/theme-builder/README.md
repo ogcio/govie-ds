@@ -2,4 +2,4 @@
 
 ## Overview
 
-This package provides tool creating and managing themes
+This package provides a tool for creating and managing themes

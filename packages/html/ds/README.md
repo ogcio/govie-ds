@@ -10,7 +10,7 @@ Package that contains the components and the styles of the <strong>HTML global c
 
 | Script                        | Description                                                                                  |
 | ------------------------------| ---------------------------------------------------------------------------------------------|
-| `pnpm format`                 | Formats the code and and rewrites all processed files in place                               |
+| `pnpm format`                 | Formats the code and rewrites all processed files in place                               |
 | `pnpm format:check`           | Verifies if the files are formatted accordingly                                              |
 | `pnpm lint`                   | Identify and report on patterns found in ECMAScript/JavaScript code                          |
 | `pnpm build`                  | Runs ``pnpm build:properties`` , ``pnpm build:ts`` and ``pnpm build:styles``  in succession  |
@@ -28,7 +28,7 @@ Package that contains the storybook for the HTML global components
 ### Getting Started
 1. Ensure you have Node installed on your machine
 2. Install pnpm by using `npm install -g pnpm` or `corepack enable pnpm`
-2. Run `pnpm install` to install the required packages
+3. Run `pnpm install` to install the required packages
 
 ### Scripts
 
