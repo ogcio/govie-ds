@@ -1,5 +1,6 @@
 import eslintPluginUnicorn from 'eslint-plugin-unicorn';
 import eslintPluginRegexp from 'eslint-plugin-regexp';
+import eslintPluginUnusedImports from 'eslint-plugin-unused-imports';
 import globals from 'globals';
 import js from '@eslint/js';
 import tseslint from 'typescript-eslint';
@@ -14,6 +15,8 @@ export const restrictedSyntax = [
 ];
 
 export const sharedRules = {
+  'unused-imports/no-unused-imports': 'error',
+  '@typescript-eslint/no-unused-vars': 'off',
   'no-restricted-syntax': ['error', ...restrictedSyntax],
   curly: ['error', 'all'],
   'object-shorthand': ['error', 'always'],
@@ -28,8 +31,8 @@ export const sharedRules = {
   'prefer-template': 'warn',
 
   '@typescript-eslint/no-explicit-any': 'warn',
-  '@typescript-eslint/no-unused-vars': [
-    'warn',
+  'unused-imports/no-unused-vars': [
+    'error',
     {
       argsIgnorePattern: '^_',
       varsIgnorePattern: '^_',
@@ -73,6 +76,7 @@ export default [
   ...tseslint.configs.recommended,
   eslintPluginUnicorn.configs['recommended'],
   eslintPluginRegexp.configs['flat/recommended'],
+  { plugins: { 'unused-imports': eslintPluginUnusedImports } },
   {
     files: ['**/*.{js,mjs,cjs,ts,tsx}'],
     languageOptions: {

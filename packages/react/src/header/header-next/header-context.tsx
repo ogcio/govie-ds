@@ -1,6 +1,6 @@
 'use client';
 
-import { createContext, useCallback, useContext, useMemo, useState } from 'react';
+import { createContext, useContext } from 'react';
 import type { HeaderVariant } from '@/header/types.js';
 
 type DrawerPosition = 'left' | 'right';

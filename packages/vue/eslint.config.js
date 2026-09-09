@@ -27,6 +27,7 @@ export default [
       files: ['**/*.vue'],
       rules: {
         ...sharedRules,
+        '@typescript-eslint/no-explicit-any': 'error',
         'unicorn/filename-case': ['error', { case: 'pascalCase' }],
         'vue/block-order': ['error', { order: ['template', 'script', 'style'] }],
         'vue/component-api-style': ['error', ['script-setup', 'composition']],
@@ -42,14 +43,7 @@ export default [
       files: ['src/atoms/**/*.{ts,vue}'],
       rules: {
         '@typescript-eslint/no-explicit-any': 'off',
-        '@typescript-eslint/no-unused-vars': [
-          'warn',
-          {
-            argsIgnorePattern: '^_',
-            varsIgnorePattern: '^_|^props$',
-            caughtErrorsIgnorePattern: '^_',
-          },
-        ],
+        'unused-imports/no-unused-vars': 'off',
         'vue/attribute-hyphenation': 'off',
         'vue/attributes-order': 'off',
         'vue/no-required-prop-with-default': 'off',
@@ -60,6 +54,7 @@ export default [
   prettierConfig,
   {
     rules: {
+      '@typescript-eslint/no-unused-vars': 'off',
       // eslint-config-prettier also drops `curly`, which the shared base sets deliberately.
       curly: ['error', 'all'],
     },

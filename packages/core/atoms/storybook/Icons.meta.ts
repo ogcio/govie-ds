@@ -2,7 +2,6 @@ import type { ArgTypes, StoryContext, Renderer } from 'storybook/internal/types'
 import { within, expect } from 'storybook/test';
 import type { IconProps } from '../icons/types';
 import * as icons from '../icons';
-import _ from 'lodash';
 
 export const iconList = {
   base: [

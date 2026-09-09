@@ -49,7 +49,9 @@ export default defineConfig([
   },
   {
     rules: {
-      'no-console': 'warn', // TODO: ESLINT remove this after error fixes
+      // TODO: ESLINT remove these after error fixes
+      'unused-imports/no-unused-vars': 'warn',
+      'no-console': 'warn',
     },
   },
 ]);

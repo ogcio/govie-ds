@@ -1,7 +1,6 @@
 import type { StoryContext, Renderer } from 'storybook/internal/types';
 import { within } from 'storybook/test';
 import { Size } from '../constants';
-import { Appearance } from '../Link.styles';
 import { boxMeta } from './Box.meta';
 import { checker, enumType } from './utilities';
 
