@@ -11,6 +11,7 @@ import { CommonModule } from '@angular/common';
 export type Props = {
   id?: string;
   open?: boolean;
+  actions?: any;
   label?: any;
   disabled?: boolean;
   className?: string;
@@ -28,7 +29,7 @@ export type Props = {
 };
 const defaultProps: any = { ariaHidden: undefined };
 
-import classes, { arrowClasses } from './SideNavItem.styles';
+import classes, { actionClasses, arrowClasses, rowClasses, trailingClasses } from './SideNavItem.styles';
 import GiKeyboardArrowDownIcon from '../icons/KeyboardArrowDown';
 import { tv } from 'tailwind-variants';
 const contentClasses = tv({
@@ -47,8 +48,8 @@ const contentClasses = tv({
 @Component({
   selector: 'gi-side-nav-group',
   template: `
-    <li class="gi-list-none gi-mt-1 gi-relative gi-side-nav-list" [attr.aria-hidden]="ariaHidden">
-      <div class="gi-relative">
+    <li class="gi-list-none gi-mt-1 gi-side-nav-list" [attr.aria-hidden]="ariaHidden">
+      <div [class]="rowClasses()">
         <button
           type="button"
           [attr.id]="id"
@@ -74,13 +75,24 @@ const contentClasses = tv({
         >
           <ng-content select="[label]"></ng-content>
         </button>
-        <gi-keyboard-arrow-down-icon
-          [className]="
-            arrowClasses({
-              open: !!open,
-            })
-          "
-        ></gi-keyboard-arrow-down-icon>
+        <div [class]="trailingClasses()">
+          <div
+            [class]="
+              actionClasses({
+                overlay: false,
+              })
+            "
+          >
+            <ng-content select="[actions]"></ng-content>
+          </div>
+          <gi-keyboard-arrow-down-icon
+            [className]="
+              arrowClasses({
+                open: !!open,
+              })
+            "
+          ></gi-keyboard-arrow-down-icon>
+        </div>
       </div>
       <ul
         [attr.id]="ariaControls"
@@ -107,7 +119,10 @@ const contentClasses = tv({
 export default class SideNavGroup {
   contentClasses = contentClasses;
   classes = classes;
+  actionClasses = actionClasses;
   arrowClasses = arrowClasses;
+  rowClasses = rowClasses;
+  trailingClasses = trailingClasses;
 
   @Input() ariaHidden: Props['ariaHidden'] = defaultProps['ariaHidden'];
   @Input() id!: Props['id'];

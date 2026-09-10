@@ -5,8 +5,8 @@
 -->
 
 <template>
-  <li class="gi-list-none gi-mt-1 gi-relative gi-side-nav-list" :aria-hidden="ariaHidden">
-    <div class="gi-relative">
+  <li class="gi-list-none gi-mt-1 gi-side-nav-list" :aria-hidden="ariaHidden">
+    <div :class="rowClasses()">
       <button
         type="button"
         :id="id"
@@ -30,14 +30,26 @@
         :tabIndex="ariaHidden ? -1 : tabIndex"
         :data-testid="dataTestId"
       >
-        <slot name="label"></slot></button
-      ><GiKeyboardArrowDownIcon
-        :className="
-          arrowClasses({
-            open: !!open,
-          })
-        "
-      ></GiKeyboardArrowDownIcon>
+        <slot name="label"></slot>
+      </button>
+      <div :class="trailingClasses()">
+        <div
+          :class="
+            actionClasses({
+              overlay: false,
+            })
+          "
+        >
+          <slot name="actions"></slot>
+        </div>
+        <GiKeyboardArrowDownIcon
+          :className="
+            arrowClasses({
+              open: !!open,
+            })
+          "
+        ></GiKeyboardArrowDownIcon>
+      </div>
     </div>
     <ul
       :id="ariaControls"
@@ -53,7 +65,7 @@
 </template>
 
 <script setup lang="ts">
-import classes, { arrowClasses } from './SideNavItem.styles';
+import classes, { actionClasses, arrowClasses, rowClasses, trailingClasses } from './SideNavItem.styles';
 import GiKeyboardArrowDownIcon from '../icons/KeyboardArrowDown.vue';
 import { tv } from 'tailwind-variants';
 const contentClasses = tv({
@@ -72,6 +84,7 @@ const contentClasses = tv({
 export type Props = {
   id?: string;
   open?: boolean;
+  actions?: any;
   label?: any;
   disabled?: boolean;
   className?: string;

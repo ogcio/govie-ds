@@ -9,6 +9,8 @@ import { Tag } from '@/tag/tag';
 import { useState } from 'react';
 import SideNavGroup from '@/atoms/sidenav/SideNavGroup';
 import SideNavItemLink from '@/atoms/sidenav/SideNavItemLink';
+import { IconButton } from '@/atoms';
+import MoreVertical from '@/atoms/icons/MoreVertical';
 
 const meta = {
   ...stories.sideNavMeta,
@@ -64,6 +66,90 @@ export const Default: Story = {
         <SideNavItem {...itemProps('reports')}>Reports</SideNavItem>
         <SideNavItem {...itemProps('settings')}>Settings</SideNavItem>
       </SideNav>
+    );
+  },
+};
+
+export const WithActions: Story = {
+  ...stories.WithActions,
+  tags: ['!dev', '!autodocs', 'skip-playwright'], // exclude story until Storybook examples complete
+  render: function Render() {
+    const [current, setCurrent] = useState('');
+    const [inboxOpen, setInboxOpen] = useState(true);
+    const [lastTriggered, setLastTriggered] = useState('none');
+    return (
+      <div>
+        <p data-testid="last-triggered">{lastTriggered}</p>
+        <SideNav dataTestId="sidenav-with-actions">
+          <SideNavGroup
+            open={inboxOpen}
+            onClick={() => {
+              setInboxOpen((open) => !open);
+              setLastTriggered('inbox');
+            }}
+            label="Inbox"
+            actions={
+              <div className="gi-flex gi-items-center">
+                <Tag text="3" type="counter" />
+                <IconButton
+                  variant="flat"
+                  appearance="dark"
+                  size="sm"
+                  ariaLabel="Inbox action"
+                  onClick={() => setLastTriggered('inbox-action')}
+                >
+                  <MoreVertical />
+                </IconButton>
+              </div>
+            }
+          >
+            <SideNavItem>Primary</SideNavItem>
+          </SideNavGroup>
+          <SideNavItem
+            selected={current === 'overview'}
+            ariaCurrent={current === 'overview' ? 'page' : undefined}
+            onClick={() => {
+              setCurrent('overview');
+              setLastTriggered('overview');
+            }}
+            actions={
+              <IconButton
+                variant="flat"
+                appearance="dark"
+                size="sm"
+                ariaLabel="Overview action"
+                onClick={() => setLastTriggered('overview-action')}
+              >
+                <MoreVertical />
+              </IconButton>
+            }
+          >
+            Overview
+          </SideNavItem>
+          <SideNavItemLink
+            selected={current === 'homepage'}
+            ariaCurrent={current === 'homepage' ? 'page' : undefined}
+            href="#"
+            onClick={() => {
+              setCurrent('homepage');
+              setLastTriggered('homepage');
+            }}
+            actions={
+              <IconButton
+                variant="flat"
+                appearance="dark"
+                size="sm"
+                ariaLabel="Homepage action"
+                onClick={() => setLastTriggered('homepage-action')}
+              >
+                <MoreVertical />
+              </IconButton>
+            }
+          >
+            Homepage
+          </SideNavItemLink>
+        </SideNav>
+      </div>
     );
   },
 };
