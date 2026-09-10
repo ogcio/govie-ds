@@ -1,5 +1,5 @@
 import { Slot, useDefaultProps, useMetadata } from '@builder.io/mitosis';
-import classes, { arrowClasses } from './SideNavItem.styles';
+import classes, { actionClasses, arrowClasses, chevronClasses, rowClasses } from './SideNavItem.styles';
 import GiKeyboardArrowDownIcon from '../icons/KeyboardArrowDown.lite';
 import { tv } from 'tailwind-variants';
 
@@ -13,6 +13,7 @@ export type Props = {
   id?: string;
   children: any;
   open?: boolean;
+  actions?: any;
   label?: any;
   disabled?: boolean;
   className?: string;
@@ -31,14 +32,13 @@ export type Props = {
 
 export default function SideNavGroup(props: Props) {
   return (
-    <li class="gi-list-none gi-mt-1 gi-relative gi-side-nav-list" aria-hidden={props.ariaHidden}>
-      <div class="gi-relative">
+    <li class="gi-list-none gi-mt-1 gi-side-nav-list" aria-hidden={props.ariaHidden}>
+      <div class={rowClasses()}>
         <button
           type="button"
           id={props.id}
           class={classes({
             disabled: !!props.disabled,
-            expandable: true,
             className: props.className,
           })}
           style={props.styles}
@@ -56,7 +56,12 @@ export default function SideNavGroup(props: Props) {
         >
           <Slot name="label" />
         </button>
-        <GiKeyboardArrowDownIcon className={arrowClasses({ open: !!props.open })} />
+        <div class={actionClasses({ last: false })}>
+          <Slot name="actions" />
+        </div>
+        <div class={chevronClasses()} aria-hidden="true">
+          <GiKeyboardArrowDownIcon className={arrowClasses({ open: !!props.open })} />
+        </div>
       </div>
       <ul id={props.ariaControls} class={contentClasses({ open: !!props.open })}>
         {props.children}

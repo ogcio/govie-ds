@@ -11,6 +11,7 @@ export type Props = {
   id?: string;
   children: any;
   open?: boolean;
+  actions?: any;
   label?: any;
   disabled?: boolean;
   className?: string;
@@ -27,7 +28,7 @@ export type Props = {
   dataTestId?: string;
 };
 
-import classes, { arrowClasses } from './SideNavItem.styles';
+import classes, { actionClasses, arrowClasses, chevronClasses, rowClasses } from './SideNavItem.styles';
 import GiKeyboardArrowDownIcon from '../icons/KeyboardArrowDown';
 import { tv } from 'tailwind-variants';
 const contentClasses = tv({
@@ -46,14 +47,13 @@ const contentClasses = tv({
 function SideNavGroup(props: Props) {
   props = { ariaHidden: undefined, ...props };
   return (
-    <li className="gi-list-none gi-mt-1 gi-relative gi-side-nav-list" aria-hidden={props.ariaHidden}>
-      <div className="gi-relative">
+    <li className="gi-list-none gi-mt-1 gi-side-nav-list" aria-hidden={props.ariaHidden}>
+      <div className={rowClasses()}>
         <button
           type="button"
           id={props.id}
           className={classes({
             disabled: !!props.disabled,
-            expandable: true,
             className: props.className,
           })}
           style={props.styles}
@@ -71,11 +71,20 @@ function SideNavGroup(props: Props) {
         >
           <>{props.label}</>
         </button>
-        <GiKeyboardArrowDownIcon
-          className={arrowClasses({
-            open: !!props.open,
+        <div
+          className={actionClasses({
+            last: false,
           })}
-        />
+        >
+          <>{props.actions}</>
+        </div>
+        <div aria-hidden="true" className={chevronClasses()}>
+          <GiKeyboardArrowDownIcon
+            className={arrowClasses({
+              open: !!props.open,
+            })}
+          />
+        </div>
       </div>
       <ul
         id={props.ariaControls}
