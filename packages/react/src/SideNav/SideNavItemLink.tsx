@@ -1,7 +1,7 @@
 import { Slot } from '@radix-ui/react-slot';
 import GiSideNavItemLink from '@/atoms/sidenav/SideNavItemLink';
 import type { Props } from '@/atoms/sidenav/SideNavItemLink';
-import classes from '@/atoms/sidenav/SideNavItem.styles';
+import classes, { actionClasses, listItemClasses } from '@/atoms/sidenav/SideNavItem.styles';
 
 export type SideNavItemLinkAsChild = Omit<Props, 'href'> & {
   asChild: true;
@@ -20,6 +20,7 @@ export default function SideNavItemLink({
   className,
   styles,
   children,
+  actions,
   target,
   rel,
   external,
@@ -39,11 +40,11 @@ export default function SideNavItemLink({
       tabIndex: ariaHidden ? -1 : tabIndex,
     };
     return (
-      <li className="gi-list-none gi-mt-1 gi-relative" aria-hidden={ariaHidden}>
+      <li className={listItemClasses()} aria-hidden={ariaHidden}>
         <Slot
           {...rest}
           {...anchorProps}
-          className={classes({ selected, className })}
+          className={classes({ selected: !!selected, className })}
           aria-current={ariaCurrent}
           aria-label={ariaLabel}
           aria-labelledby={ariaLabelledBy}
@@ -54,6 +55,7 @@ export default function SideNavItemLink({
         >
           {children}
         </Slot>
+        <div className={actionClasses()}>{actions}</div>
       </li>
     );
   }
@@ -66,6 +68,7 @@ export default function SideNavItemLink({
       external={external}
       className={className}
       styles={styles}
+      actions={actions}
       ariaHidden={ariaHidden}
       ariaCurrent={ariaCurrent}
       ariaLabel={ariaLabel}

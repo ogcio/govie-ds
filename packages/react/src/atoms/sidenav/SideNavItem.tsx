@@ -11,6 +11,7 @@ export type Props = {
   id?: string;
   children?: any;
   selected?: boolean;
+  actions?: any;
   disabled?: boolean;
   className?: string;
   styles?: Record<string, string>;
@@ -26,12 +27,12 @@ export type Props = {
   dataTestId?: string;
 };
 
-import classes from './SideNavItem.styles';
+import classes, { actionClasses, listItemClasses } from './SideNavItem.styles';
 
 function SideNavItem(props: Props) {
   props = { ariaHidden: undefined, ariaCurrent: undefined, ...props };
   return (
-    <li className="gi-list-none gi-mt-1 gi-relative gi-side-nav-list" aria-hidden={props.ariaHidden}>
+    <li className={listItemClasses()} aria-hidden={props.ariaHidden}>
       <button
         type="button"
         id={props.id}
@@ -54,6 +55,9 @@ function SideNavItem(props: Props) {
       >
         {props.children}
       </button>
+      <div className={actionClasses()}>
+        <>{props.actions}</>
+      </div>
     </li>
   );
 }
