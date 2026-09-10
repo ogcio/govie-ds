@@ -1,7 +1,7 @@
 import type { StoryObj } from '@storybook/angular';
 import * as stories from '@/atoms/storybook/SideNav.meta';
 import Box from '@/atoms/Box';
-import { MailIcon } from '@/atoms';
+import { IconButton, MailIcon, MoreVerticalIcon } from '@/atoms';
 import SideNav from '@/atoms/sidenav/SideNav';
 import SideNavHeading from '@/atoms/sidenav/SideNavHeading';
 import SideNavItem from '@/atoms/sidenav/SideNavItem';
@@ -16,7 +16,17 @@ const meta = {
 export default meta;
 type Story = StoryObj;
 
-const sideNavImports = [SideNav, SideNavHeading, SideNavItem, SideNavItemLink, SideNavGroup, Box, MailIcon];
+const sideNavImports = [
+  SideNav,
+  SideNavHeading,
+  SideNavItem,
+  SideNavItemLink,
+  SideNavGroup,
+  Box,
+  MailIcon,
+  IconButton,
+  MoreVerticalIcon,
+];
 
 type SideNavStoryState = {
   current: string;
@@ -58,6 +68,9 @@ export const Default: Story = {
             </gi-box>
             <strong class="gi-tag gi-tag-counter gi-tag-size-default">3</strong>
           </gi-box>
+          <gi-icon-button ngProjectAs="[actions]" variant="flat" appearance="dark" size="sm" ariaLabel="More actions">
+            <gi-more-vertical-icon></gi-more-vertical-icon>
+          </gi-icon-button>
           <gi-side-nav-item
             [selected]="current === 'primary'"
             (onClick)="selectItem('primary')"

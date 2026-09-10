@@ -31,16 +31,18 @@
       :data-testid="dataTestId"
       ><slot
     /></a>
+    <div :class="actionClasses()"><slot name="actions"></slot></div>
   </li>
 </template>
 
 <script setup lang="ts">
-import classes from './SideNavItem.styles';
+import classes, { actionClasses } from './SideNavItem.styles';
 
 export type Props = {
   id?: string;
   href: string;
   selected?: boolean;
+  actions?: any;
   className?: string;
   external?: boolean;
   target?: '_self' | '_blank' | '_parent' | '_top';

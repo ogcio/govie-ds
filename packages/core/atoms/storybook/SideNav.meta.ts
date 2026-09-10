@@ -54,6 +54,9 @@ export const Default = {
       expect(canvas.getByText('Social')).toBeVisible();
       expect(canvas.getByText(/Promotions/)).toBeVisible();
     });
+    await step('renders inbox action button', async () => {
+      expect(canvas.getByRole('button', { name: 'More actions' })).toBeVisible();
+    });
     await step('renders top-level items', async () => {
       expect(canvas.getByText('Overview')).toBeVisible();
       expect(canvas.getByText('Reports')).toBeVisible();

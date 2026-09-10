@@ -11,6 +11,7 @@ import { CommonModule } from '@angular/common';
 export type Props = {
   id?: string;
   selected?: boolean;
+  actions?: any;
   disabled?: boolean;
   className?: string;
   styles?: Record<string, string>;
@@ -27,7 +28,7 @@ export type Props = {
 };
 const defaultProps: any = { ariaHidden: undefined, ariaCurrent: undefined };
 
-import classes from './SideNavItem.styles';
+import classes, { actionClasses } from './SideNavItem.styles';
 
 @Component({
   selector: 'gi-side-nav-item',
@@ -57,6 +58,7 @@ import classes from './SideNavItem.styles';
       >
         <ng-content></ng-content>
       </button>
+      <div [class]="actionClasses()"><ng-content select="[actions]"></ng-content></div>
     </li>
   `,
   styles: [
@@ -71,6 +73,7 @@ import classes from './SideNavItem.styles';
 })
 export default class SideNavItem {
   classes = classes;
+  actionClasses = actionClasses;
 
   @Input() ariaHidden: Props['ariaHidden'] = defaultProps['ariaHidden'];
   @Input() id!: Props['id'];
