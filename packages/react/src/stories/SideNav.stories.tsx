@@ -9,6 +9,8 @@ import { Tag } from '@/tag/tag';
 import { useState } from 'react';
 import SideNavGroup from '@/atoms/sidenav/SideNavGroup';
 import SideNavItemLink from '@/atoms/sidenav/SideNavItemLink';
+import { IconButton } from '@/atoms';
+import MoreVertical from '@/atoms/icons/MoreVertical';
 
 const meta = {
   ...stories.sideNavMeta,
@@ -39,6 +41,11 @@ export const Default: Story = {
           }}
           selected={current === 'inbox'}
           ariaCurrent={current === 'inbox' ? 'page' : 'false'}
+          actions={
+            <IconButton variant="flat" appearance="dark" size="sm" ariaLabel="More actions">
+              <MoreVertical />
+            </IconButton>
+          }
           label={
             <GiBox className="gi-flex gi-w-full gi-justify-between">
               <GiBox className="gi-flex gi-gap-1">

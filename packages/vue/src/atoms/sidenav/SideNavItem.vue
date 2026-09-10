@@ -27,15 +27,17 @@
     >
       <slot />
     </button>
+    <div :class="actionClasses()"><slot name="actions"></slot></div>
   </li>
 </template>
 
 <script setup lang="ts">
-import classes from './SideNavItem.styles';
+import classes, { actionClasses } from './SideNavItem.styles';
 
 export type Props = {
   id?: string;
   selected?: boolean;
+  actions?: any;
   disabled?: boolean;
   className?: string;
   styles?: Record<string, string>;

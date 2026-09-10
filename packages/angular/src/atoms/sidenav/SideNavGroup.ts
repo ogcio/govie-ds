@@ -11,6 +11,7 @@ import { CommonModule } from '@angular/common';
 export type Props = {
   id?: string;
   open?: boolean;
+  actions?: any;
   selected?: boolean;
   label: any;
   disabled?: boolean;
@@ -30,7 +31,7 @@ const defaultProps: any = {
   ariaCurrent: undefined,
 };
 
-import classes, { arrowClasses } from './SideNavItem.styles';
+import classes, { actionClasses, arrowClasses } from './SideNavItem.styles';
 import GiKeyboardArrowDownIcon from '../icons/KeyboardArrowDown';
 import { tv } from 'tailwind-variants';
 const contentClasses = tv({
@@ -71,6 +72,15 @@ const contentClasses = tv({
         >
           <ng-content select="[label]"></ng-content>
         </button>
+        <div
+          [class]="
+            actionClasses({
+              expandable: true,
+            })
+          "
+        >
+          <ng-content select="[actions]"></ng-content>
+        </div>
         <gi-keyboard-arrow-down-icon
           [className]="
             arrowClasses({
@@ -104,6 +114,7 @@ const contentClasses = tv({
 export default class SideNavGroup {
   contentClasses = contentClasses;
   classes = classes;
+  actionClasses = actionClasses;
   arrowClasses = arrowClasses;
 
   @Input() ariaHidden: Props['ariaHidden'] = defaultProps['ariaHidden'];

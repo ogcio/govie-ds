@@ -25,8 +25,18 @@
         :tabIndex="ariaHidden ? -1 : tabIndex"
         :data-testid="dataTestId"
       >
-        <slot name="label"></slot></button
-      ><GiKeyboardArrowDownIcon
+        <slot name="label"></slot>
+      </button>
+      <div
+        :class="
+          actionClasses({
+            expandable: true,
+          })
+        "
+      >
+        <slot name="actions"></slot>
+      </div>
+      <GiKeyboardArrowDownIcon
         :className="
           arrowClasses({
             open: !!open,
@@ -48,7 +58,7 @@
 </template>
 
 <script setup lang="ts">
-import classes, { arrowClasses } from './SideNavItem.styles';
+import classes, { actionClasses, arrowClasses } from './SideNavItem.styles';
 import GiKeyboardArrowDownIcon from '../icons/KeyboardArrowDown.vue';
 import { tv } from 'tailwind-variants';
 const contentClasses = tv({
@@ -67,6 +77,7 @@ const contentClasses = tv({
 export type Props = {
   id?: string;
   open?: boolean;
+  actions?: any;
   selected?: boolean;
   label: any;
   disabled?: boolean;

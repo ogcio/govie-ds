@@ -1,7 +1,17 @@
 import type { StoryObj } from '@storybook/vue3-vite';
 import { ref } from 'vue';
 import * as stories from '../atoms/storybook/SideNav.meta';
-import { Box, MailIcon, SideNav, SideNavGroup, SideNavHeading, SideNavItem, SideNavItemLink } from '../atoms';
+import {
+  Box,
+  IconButton,
+  MailIcon,
+  MoreVerticalIcon,
+  SideNav,
+  SideNavGroup,
+  SideNavHeading,
+  SideNavItem,
+  SideNavItemLink,
+} from '../atoms';
 
 const meta = {
   ...stories.sideNavMeta,
@@ -17,7 +27,9 @@ export const Default: Story = {
   render: (args) => ({
     components: {
       Box,
+      IconButton,
       MailIcon,
+      MoreVerticalIcon,
       SideNav,
       SideNavGroup,
       SideNavHeading,
@@ -54,6 +66,11 @@ export const Default: Story = {
               </Box>
               <strong class="gi-tag gi-tag-counter gi-tag-size-default">3</strong>
             </Box>
+          </template>
+          <template #actions>
+            <IconButton variant="flat" appearance="dark" size="sm" ariaLabel="More actions">
+              <MoreVerticalIcon />
+            </IconButton>
           </template>
           <SideNavItem
             :selected="current === 'primary'"

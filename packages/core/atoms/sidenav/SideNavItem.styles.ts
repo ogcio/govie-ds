@@ -13,8 +13,8 @@ export default tv({
   ],
   variants: {
     expandable: {
-      true: 'gi-pr-12',
-      false: '',
+      false: '[.gi-side-nav-list:has(.gi-side-nav-actions_*)_&]:gi-pr-12',
+      true: 'gi-pr-12 [.gi-side-nav-list:has(.gi-side-nav-actions_*)_&]:gi-pr-[84px]',
     },
     selected: {
       true: 'gi-shadow-[inset_4px_0_0_var(--gieds-color-border-tone-primary-accent-selected)]',

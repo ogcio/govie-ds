@@ -1,5 +1,5 @@
 import { Slot, useDefaultProps, useMetadata } from '@builder.io/mitosis';
-import classes, { arrowClasses } from './SideNavItem.styles';
+import classes, { actionClasses, arrowClasses } from './SideNavItem.styles';
 import GiKeyboardArrowDownIcon from '../icons/KeyboardArrowDown.lite';
 import { tv } from 'tailwind-variants';
 
@@ -17,6 +17,7 @@ export type Props = {
   id?: string;
   children: any;
   open?: boolean;
+  actions?: any;
   selected?: boolean;
   label: any;
   disabled?: boolean;
@@ -51,6 +52,9 @@ export default function SideNavGroup(props: Props) {
         >
           <Slot name="label" />
         </button>
+        <div class={actionClasses({ expandable: true })}>
+          <Slot name="actions" />
+        </div>
         <GiKeyboardArrowDownIcon className={arrowClasses({ open: !!props.open })} />
       </div>
       <ul aria-expanded={!!props.open} class={contentClasses({ open: !!props.open })}>
