@@ -10,9 +10,11 @@ import type { Props } from '../sidenav/SideNav.vue';
 import { boxMeta } from './Box.meta';
 import { checker } from './utilities';
 export const sideNavMeta = {
+  tags: ['autodocs'] as string[],
   title: 'Navigation/SideNav',
   args: {
     dataTestId: 'basic-nav',
+    ariaLabel: 'Side navigation',
   },
   argTypes: {
     className: boxMeta.argTypes.className,
@@ -45,13 +47,21 @@ export const sideNavMeta = {
     docs: {
       description: {
         component:
-          'SideNav is a composable navigation landmark. Nest SideNavHeading, SideNavSection, and SideNavItem to build grouped, expandable side navigation.',
+          'SideNav is a composable navigation landmark. Nest `SideNavHeading`, `SideNavGroup`, `SideNavItem`, and `SideNavItemLink` to build grouped, expandable side navigation.\n\n`SideNav` renders the semantic `<nav>` landmark. Use `SideNavHeading` to label groups of items, `SideNavGroup` for disclosure (expandable) sections, `SideNavItem` for button-style destinations, and `SideNavItemLink` for URL destinations.',
       },
     },
   },
 };
 export const Default = {
   args: sideNavMeta.args,
+  parameters: {
+    docs: {
+      description: {
+        story:
+          'Full SideNav composition with section headings, an expandable group, button items, a link item, a disabled item, and a trailing action.',
+      },
+    },
+  },
   play: async ({ canvasElement, step, args }: StoryContext<Renderer>) => {
     const canvas = within(canvasElement as HTMLElement);
     const check = checker(args.dataTestId, canvas, step);
@@ -68,12 +78,44 @@ export const Default = {
       expect(canvas.getByText(/Promotions/)).toBeVisible();
     });
     await step('renders inbox action button', async () => {
-      expect(canvas.getByRole('button', { name: 'More actions' })).toBeVisible();
+      expect(
+        canvas.getByRole('button', {
+          name: 'More actions',
+        }),
+      ).toBeVisible();
     });
     await step('renders top-level items', async () => {
       expect(canvas.getByText('Overview')).toBeVisible();
+      expect(canvas.getByText('Homepage')).toBeVisible();
       expect(canvas.getByText('Reports')).toBeVisible();
       expect(canvas.getByText('Settings')).toBeVisible();
+    });
+  },
+};
+export const Expandable = {
+  args: {
+    ...sideNavMeta.args,
+    dataTestId: 'expandable-nav',
+  },
+  parameters: {
+    docs: {
+      description: {
+        story:
+          'Disclosure pattern using `SideNavGroup`. Each group is controlled through `open` and `onClick`. One group starts open and another starts closed; toggling a header reveals or hides its nested items.',
+      },
+    },
+  },
+  play: async ({ canvasElement, step, args }: StoryContext<Renderer>) => {
+    const canvas = within(canvasElement as HTMLElement);
+    const check = checker(args.dataTestId, canvas, step);
+    await check.is('nav');
+    await step('inbox starts open with nested items visible', async () => {
+      expect(canvas.getByText('Primary')).toBeVisible();
+      expect(canvas.getByText('Social')).toBeVisible();
+    });
+    await step('projects starts closed with nested items hidden', async () => {
+      expect(canvas.getByText('Active')).not.toBeVisible();
+      expect(canvas.getByText('Archived')).not.toBeVisible();
     });
     await step('clicking inbox collapses its children', async () => {
       await userEvent.click(
@@ -83,7 +125,46 @@ export const Default = {
       );
       expect(canvas.getByText('Primary')).not.toBeVisible();
       expect(canvas.getByText('Social')).not.toBeVisible();
-      expect(canvas.getByText(/Promotions/)).not.toBeVisible();
+    });
+    await step('clicking projects expands its children', async () => {
+      await userEvent.click(
+        canvas.getByRole('button', {
+          name: /projects/i,
+        }),
+      );
+      expect(canvas.getByText('Active')).toBeVisible();
+      expect(canvas.getByText('Archived')).toBeVisible();
+    });
+  },
+};
+export const MultiSection = {
+  args: {
+    ...sideNavMeta.args,
+    dataTestId: 'multi-section-nav',
+  },
+  parameters: {
+    docs: {
+      description: {
+        story:
+          'Multiple `SideNavHeading` labels divide the list into sections. Headings are siblings of items and groups inside the same `SideNav` list.',
+      },
+    },
+  },
+  play: async ({ canvasElement, step, args }: StoryContext<Renderer>) => {
+    const canvas = within(canvasElement as HTMLElement);
+    const check = checker(args.dataTestId, canvas, step);
+    await check.is('nav');
+    await step('renders each section heading', async () => {
+      expect(canvas.getByText('Messages')).toBeInTheDocument();
+      expect(canvas.getByText('Workspace')).toBeInTheDocument();
+      expect(canvas.getByText('Account')).toBeInTheDocument();
+    });
+    await step('renders items in every section', async () => {
+      expect(canvas.getByText('Inbox')).toBeVisible();
+      expect(canvas.getByText('Sent')).toBeVisible();
+      expect(canvas.getByText('Overview')).toBeVisible();
+      expect(canvas.getByText('Reports')).toBeVisible();
+      expect(canvas.getByText('Settings')).toBeVisible();
     });
   },
 };
