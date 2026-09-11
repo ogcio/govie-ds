@@ -12,6 +12,7 @@ export type Props = {
   id?: string;
   href: string;
   selected?: boolean;
+  actions?: any;
   className?: string;
   external?: boolean;
   target?: '_self' | '_blank' | '_parent' | '_top';
@@ -32,7 +33,7 @@ export type Props = {
 };
 const defaultProps: any = { download: undefined, ariaHidden: undefined, ariaCurrent: undefined };
 
-import classes from './SideNavItem.styles';
+import classes, { actionClasses } from './SideNavItem.styles';
 
 @Component({
   selector: 'gi-side-nav-item-link',
@@ -63,6 +64,7 @@ import classes from './SideNavItem.styles';
         [attr.data-testid]="dataTestId"
         ><ng-content></ng-content
       ></a>
+      <div [class]="actionClasses()"><ng-content select="[actions]"></ng-content></div>
     </li>
   `,
   styles: [
@@ -77,6 +79,7 @@ import classes from './SideNavItem.styles';
 })
 export default class SideNavItemLink {
   classes = classes;
+  actionClasses = actionClasses;
 
   @Input() ariaHidden: Props['ariaHidden'] = defaultProps['ariaHidden'];
   @Input() id!: Props['id'];

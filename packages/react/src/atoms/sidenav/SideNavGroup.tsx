@@ -11,6 +11,7 @@ export type Props = {
   id?: string;
   children: any;
   open?: boolean;
+  actions?: any;
   selected?: boolean;
   label?: any;
   disabled?: boolean;
@@ -28,7 +29,7 @@ export type Props = {
   dataTestId?: string;
 };
 
-import classes, { arrowClasses } from './SideNavItem.styles';
+import classes, { actionClasses, arrowClasses } from './SideNavItem.styles';
 import GiKeyboardArrowDownIcon from '../icons/KeyboardArrowDown';
 import { tv } from 'tailwind-variants';
 const contentClasses = tv({
@@ -72,6 +73,13 @@ function SideNavGroup(props: Props) {
         >
           <>{props.label}</>
         </button>
+        <div
+          className={actionClasses({
+            expandable: true,
+          })}
+        >
+          <>{props.actions}</>
+        </div>
         <GiKeyboardArrowDownIcon
           className={arrowClasses({
             open: !!props.open,
