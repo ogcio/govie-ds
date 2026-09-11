@@ -54,7 +54,7 @@ export const chevronClasses = tv({
 });
 
 export const actionClasses = tv({
-  base: 'gi-side-nav-actions gi-hidden [&:has(*)]:gi-block gi-col-start-2 gi-row-start-1 gi-z-1 gi-ml-3 gi-pointer-events-auto',
+  base: 'gi-side-nav-actions gi-hidden [&:has(>*:not(:empty))]:gi-block gi-col-start-2 gi-row-start-1 gi-z-1 gi-ml-3 gi-pointer-events-auto',
   variants: {
     last: {
       true: 'gi-pr-3',

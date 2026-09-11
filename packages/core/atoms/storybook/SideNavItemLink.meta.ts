@@ -1,0 +1,64 @@
+import type { ArgTypes, StoryContext, Renderer } from 'storybook/internal/types';
+import { within } from 'storybook/test';
+import type { Props } from '../sidenav/SideNavItemLink.lite';
+import { linkMeta } from './Link.meta';
+import { checker } from './utilities';
+import { sideNavItemMeta } from './SideNavItem.meta';
+
+export const sideNavItemLinkMeta = {
+  title: 'Navigation/SideNav/SideNavItemLink',
+  args: {
+    children: 'Homepage',
+    href: '#',
+    selected: false,
+    id: 'side-nav-item-link-id',
+    dataTestId: 'side-nav-item-link',
+  },
+  argTypes: {
+    selected: sideNavItemMeta.argTypes.selected,
+    actions: sideNavItemMeta.argTypes.actions,
+    id: linkMeta.argTypes.id,
+    href: linkMeta.argTypes.href,
+    className: linkMeta.argTypes.className,
+    external: linkMeta.argTypes.external,
+    target: linkMeta.argTypes.target,
+    rel: linkMeta.argTypes.rel,
+    download: linkMeta.argTypes.download,
+    ariaCurrent: linkMeta.argTypes.ariaCurrent,
+    ariaLabel: linkMeta.argTypes.ariaLabel,
+    ariaLabelledBy: linkMeta.argTypes.ariaLabelledBy,
+    ariaDescribedBy: linkMeta.argTypes.ariaDescribedBy,
+    ariaHidden: linkMeta.argTypes.ariaHidden,
+    tabIndex: linkMeta.argTypes.tabIndex,
+    lang: linkMeta.argTypes.lang,
+    styles: linkMeta.argTypes.styles,
+    dataTestId: linkMeta.argTypes.dataTestId,
+    onClick: sideNavItemMeta.argTypes.onClick,
+    onKeyDown: sideNavItemMeta.argTypes.onKeyDown,
+    onKeyUp: {
+      action: 'keyup',
+      description: 'Key up handler for the link.',
+      table: { type: { summary: '(event) => void' } },
+    },
+  } satisfies ArgTypes<Props>,
+  parameters: {
+    docs: {
+      description: {
+        component:
+          'Link-style navigation item for SideNav. Renders an anchor in a list item with SideNav item styling. Use for destinations that navigate to a URL.',
+      },
+    },
+  },
+};
+
+export const Default = {
+  args: sideNavItemLinkMeta.args,
+  play: async ({ canvasElement, step, args }: StoryContext<Renderer>) => {
+    const canvas = within(canvasElement as HTMLElement);
+    const check = checker(args.dataTestId, canvas, step);
+
+    await check.is('a');
+    await check.attributes({ id: args.id, href: args.href });
+    await check.children();
+  },
+};

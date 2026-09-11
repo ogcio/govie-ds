@@ -29,7 +29,7 @@ const classes = tv({
     'gi-font-bold',
     'gi-mt-2',
     'gi-text-color-text-system-neutral-muted',
-    'gi-py-2',
+    'gi-px-3 gi-py-2',
     'gi-border-transparent',
   ],
 });
