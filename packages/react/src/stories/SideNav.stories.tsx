@@ -8,7 +8,7 @@ import SideNavItem from '@/atoms/sidenav/SideNavItem';
 import { Tag } from '@/tag/tag';
 import { useState } from 'react';
 import SideNavGroup from '@/atoms/sidenav/SideNavGroup';
-import SideNavItemLink from '@/atoms/sidenav/SideNavItemLink';
+import SideNavItemLink from '@/SideNavItemLink';
 import { IconButton } from '@/atoms';
 import MoreVertical from '@/atoms/icons/MoreVertical';
 

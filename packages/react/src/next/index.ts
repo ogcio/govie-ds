@@ -22,6 +22,6 @@ export {
 //  SideNav
 export { default as SideNav, type Props as SideNavProps } from '@/atoms/sidenav/SideNav';
 export { default as SideNavItem, type Props as SideNavItemProps } from '@/atoms/sidenav/SideNavItem';
-export { default as SideNavItemLink, type Props as SideNavItemLinkProps } from '@/atoms/sidenav/SideNavItemLink';
+export { default as SideNavItemLink, type SideNavItemLinkProps } from '@/SideNavItemLink';
 export { default as SideNavHeading, type Props as SideNavHeadingProps } from '@/atoms/sidenav/SideNavHeading';
 export { default as SideNavGroup, type Props as SideNavGroupProps } from '@/atoms/sidenav/SideNavGroup';
