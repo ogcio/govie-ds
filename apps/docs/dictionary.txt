@@ -248,6 +248,7 @@ md
 minimizing
 nav
 navigation-sidenav
+navigation-sidenav-legacy-sidenav-legacy
 no-color
 noColor
 noUnderline

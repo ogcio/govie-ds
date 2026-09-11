@@ -8,6 +8,7 @@ export const sideNavMeta = {
   title: 'Navigation/SideNav',
   args: {
     dataTestId: 'basic-nav',
+    ariaLabel: 'Side navigation',
   },
   argTypes: {
     className: boxMeta.argTypes.className,
@@ -30,7 +31,7 @@ export const sideNavMeta = {
     docs: {
       description: {
         component:
-          'SideNav is a composable navigation landmark. Nest SideNavHeading, SideNavSection, and SideNavItem to build grouped, expandable side navigation.',
+          'SideNav is a composable navigation landmark. Nest `SideNavHeading`, `SideNavGroup`, `SideNavItem`, and `SideNavItemLink` to build grouped, expandable side navigation.\n\n`SideNav` renders the semantic `<nav>` landmark. Use `SideNavHeading` to label groups of items, `SideNavGroup` for disclosure (expandable) sections, `SideNavItem` for button-style destinations, and `SideNavItemLink` for URL destinations.',
       },
     },
   },
@@ -38,6 +39,14 @@ export const sideNavMeta = {
 
 export const Default = {
   args: sideNavMeta.args,
+  parameters: {
+    docs: {
+      description: {
+        story:
+          'Full SideNav composition with section headings, an expandable group, button items, a link item, a disabled item, and a trailing action.',
+      },
+    },
+  },
   play: async ({ canvasElement, step, args }: StoryContext<Renderer>) => {
     const canvas = within(canvasElement as HTMLElement);
     const check = checker(args.dataTestId, canvas, step);
@@ -46,7 +55,7 @@ export const Default = {
     await check.children();
     await step('renders section headings', async () => {
       expect(canvas.getByText('Messages')).toBeInTheDocument();
-      expect(canvas.getByText('Side Nav Heading')).toBeInTheDocument();
+      expect(canvas.getByText('Utilities')).toBeInTheDocument();
     });
     await step('renders open inbox section with children', async () => {
       expect(canvas.getByText('Inbox')).toBeVisible();
@@ -56,14 +65,48 @@ export const Default = {
     });
     await step('renders top-level items', async () => {
       expect(canvas.getByText('Overview')).toBeVisible();
+      expect(canvas.getByText('Homepage')).toBeVisible();
       expect(canvas.getByText('Reports')).toBeVisible();
       expect(canvas.getByText('Settings')).toBeVisible();
+    });
+  },
+};
+
+export const Expandable = {
+  args: {
+    ...sideNavMeta.args,
+    dataTestId: 'expandable-nav',
+  },
+  parameters: {
+    docs: {
+      description: {
+        story:
+          'Disclosure pattern using `SideNavGroup`. Each group is controlled through `open` and `onClick`. One group starts open and another starts closed; toggling a header reveals or hides its nested items.',
+      },
+    },
+  },
+  play: async ({ canvasElement, step, args }: StoryContext<Renderer>) => {
+    const canvas = within(canvasElement as HTMLElement);
+    const check = checker(args.dataTestId, canvas, step);
+
+    await check.is('nav');
+    await step('inbox starts open with nested items visible', async () => {
+      expect(canvas.getByText('Primary')).toBeVisible();
+      expect(canvas.getByText('Social')).toBeVisible();
+    });
+    await step('projects starts closed with nested items hidden', async () => {
+      expect(canvas.getByText('Active')).not.toBeVisible();
+      expect(canvas.getByText('Archived')).not.toBeVisible();
     });
     await step('clicking inbox collapses its children', async () => {
       await userEvent.click(canvas.getByRole('button', { name: /inbox/i }));
       expect(canvas.getByText('Primary')).not.toBeVisible();
       expect(canvas.getByText('Social')).not.toBeVisible();
-      expect(canvas.getByText(/Promotions/)).not.toBeVisible();
+    });
+    await step('clicking projects expands its children', async () => {
+      await userEvent.click(canvas.getByRole('button', { name: /projects/i }));
+      expect(canvas.getByText('Active')).toBeVisible();
+      expect(canvas.getByText('Archived')).toBeVisible();
     });
   },
 };
@@ -72,6 +115,14 @@ export const WithActions = {
   args: {
     ...sideNavMeta.args,
     dataTestId: 'sidenav-with-actions',
+  },
+  parameters: {
+    docs: {
+      description: {
+        story:
+          'Trailing `actions` slots on a group, an item, and a link. Actions render beside the navigation control rather than inside it, so activating one runs its own handler without toggling the group or selecting the destination.',
+      },
+    },
   },
   play: async ({ canvasElement, step }: StoryContext<Renderer>) => {
     const canvas = within(canvasElement as HTMLElement);
@@ -88,6 +139,13 @@ export const WithActions = {
       expect(canvas.getByText('Primary')).toBeVisible();
     });
 
+    await step('empty actions slot stays hidden', async () => {
+      const primary = canvas.getByRole('button', { name: 'Primary' });
+      const actions = primary.parentElement?.querySelector('.gi-side-nav-actions');
+      expect(actions).toBeInTheDocument();
+      expect(actions).not.toBeVisible();
+    });
+
     await step('clicking the item action does not select the item', async () => {
       await userEvent.click(canvas.getByRole('button', { name: 'Overview action' }));
       expect(canvas.getByTestId('last-triggered')).toHaveTextContent('overview-action');
@@ -99,5 +157,30 @@ export const WithActions = {
       expect(canvas.getByTestId('last-triggered')).toHaveTextContent('homepage-action');
       expect(canvas.getByRole('link', { name: 'Homepage' })).not.toHaveAttribute('aria-current', 'page');
     });
+  },
+};
+
+export const WithHeadings = {
+  args: {
+    ...sideNavMeta.args,
+    dataTestId: 'sidenav-with-headings',
+    ariaLabel: undefined,
+    ariaLabelledBy: 'sidenav-with-headings-label',
+  },
+  parameters: {
+    a11y: {
+      config: {
+        rules: [
+          // SideNavHeading is a fixed h5, and this story labels the landmark with an h2 above the nav.
+          { id: 'heading-order', enabled: false },
+        ],
+      },
+    },
+    docs: {
+      description: {
+        story:
+          '`SideNavHeading` entries label the items and groups that follow them. Each heading is a sibling in the same `SideNav` list.\n\nA visible heading sits above the nav, so this story labels the landmark with `ariaLabelledBy` pointing at that heading instead of duplicating the text in `ariaLabel`.',
+      },
+    },
   },
 };
