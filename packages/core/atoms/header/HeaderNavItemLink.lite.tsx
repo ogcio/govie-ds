@@ -7,6 +7,7 @@ useMetadata({ angular: { selector: 'gi-header-nav-item-link' } });
 useDefaultProps({
   visible: true,
   download: undefined,
+  ariaCurrent: undefined,
   ariaHidden: undefined,
 });
 

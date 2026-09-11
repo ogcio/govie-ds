@@ -16,7 +16,7 @@ import type { Props as ButtonProps } from './Button';
 import type { Props as LinkProps } from './Link';
 
 function LinkButton(props: Props) {
-  props = { download: undefined, ariaHidden: undefined, ...props };
+  props = { download: undefined, ariaCurrent: undefined, ariaHidden: undefined, ...props };
   return (
     <a
       id={props.id}

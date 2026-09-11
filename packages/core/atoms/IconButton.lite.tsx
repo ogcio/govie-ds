@@ -43,6 +43,8 @@ useMetadata({ angular: { selector: 'gi-icon-button' } });
 useDefaultProps({
   ariaPressed: undefined,
   ariaExpanded: undefined,
+  ariaHasPopup: undefined,
+  ariaBusy: undefined,
 });
 
 export default function IconButton(props: Props) {

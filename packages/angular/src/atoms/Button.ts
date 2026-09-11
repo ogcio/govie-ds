@@ -36,7 +36,13 @@ export type Props = {
   tabIndex?: number;
   dataTestId?: string;
 };
-const defaultProps: any = { ariaChecked: undefined, ariaPressed: undefined, ariaExpanded: undefined };
+const defaultProps: any = {
+  ariaChecked: undefined,
+  ariaPressed: undefined,
+  ariaExpanded: undefined,
+  ariaHasPopup: undefined,
+  ariaBusy: undefined,
+};
 
 import classes, { getAppearance, getSize, getVariant } from './Button.styles';
 import type { Appearance, ButtonSize, Variant } from './Button.styles';
@@ -111,8 +117,8 @@ export default class Button {
   @Input() ariaPressed: Props['ariaPressed'] = defaultProps['ariaPressed'];
   @Input() ariaExpanded: Props['ariaExpanded'] = defaultProps['ariaExpanded'];
   @Input() ariaControls!: Props['ariaControls'];
-  @Input() ariaHasPopup!: Props['ariaHasPopup'];
-  @Input() ariaBusy!: Props['ariaBusy'];
+  @Input() ariaHasPopup: Props['ariaHasPopup'] = defaultProps['ariaHasPopup'];
+  @Input() ariaBusy: Props['ariaBusy'] = defaultProps['ariaBusy'];
   @Input() role!: Props['role'];
   @Input() type!: Props['type'];
   @Input() form!: Props['form'];

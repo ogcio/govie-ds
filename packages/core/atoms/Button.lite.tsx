@@ -43,6 +43,8 @@ useDefaultProps({
   ariaChecked: undefined,
   ariaPressed: undefined,
   ariaExpanded: undefined,
+  ariaHasPopup: undefined,
+  ariaBusy: undefined,
 });
 
 export default function Button(props: Props) {

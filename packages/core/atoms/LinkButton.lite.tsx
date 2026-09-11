@@ -8,6 +8,7 @@ useMetadata({ angular: { selector: 'gi-link-button' } });
 
 useDefaultProps({
   download: undefined,
+  ariaCurrent: undefined,
   ariaHidden: undefined,
 });
 

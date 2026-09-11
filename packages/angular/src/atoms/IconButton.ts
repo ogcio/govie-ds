@@ -34,7 +34,12 @@ export type Props = {
   tabIndex?: number;
   dataTestId?: string;
 };
-const defaultProps: any = { ariaPressed: undefined, ariaExpanded: undefined };
+const defaultProps: any = {
+  ariaPressed: undefined,
+  ariaExpanded: undefined,
+  ariaHasPopup: undefined,
+  ariaBusy: undefined,
+};
 
 import { tv } from 'tailwind-variants';
 import { baseClasses, getAppearance, getVariant } from './Button.styles';
@@ -122,9 +127,9 @@ export default class IconButton {
   @Input() ariaDescribedBy!: Props['ariaDescribedBy'];
   @Input() ariaExpanded: Props['ariaExpanded'] = defaultProps['ariaExpanded'];
   @Input() ariaPressed: Props['ariaPressed'] = defaultProps['ariaPressed'];
-  @Input() ariaHasPopup!: Props['ariaHasPopup'];
+  @Input() ariaHasPopup: Props['ariaHasPopup'] = defaultProps['ariaHasPopup'];
   @Input() ariaControls!: Props['ariaControls'];
-  @Input() ariaBusy!: Props['ariaBusy'];
+  @Input() ariaBusy: Props['ariaBusy'] = defaultProps['ariaBusy'];
   @Input() role!: Props['role'];
   @Input() type!: Props['type'];
   @Input() form!: Props['form'];
