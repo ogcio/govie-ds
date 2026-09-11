@@ -1,5 +1,13 @@
 # Changelog
 
+## [0.2.1](https://github.com/ogcio/govie-ds/compare/angular-v0.2.0...angular-v0.2.1) (2026-09-11)
+
+
+### Miscellaneous Chores
+
+* **AB#41179:** make unused imports an error ([87da4ad](https://github.com/ogcio/govie-ds/commit/87da4adf741e8cd3dcf4d609a4989f2b857859a5))
+* **AB#42189:** name every boolean ARIA prop in useDefaultProps ([ee64f0d](https://github.com/ogcio/govie-ds/commit/ee64f0db2599711912549bd67caa82b8ee23bacc))
+
 ## [0.2.0](https://github.com/ogcio/govie-ds/compare/angular-v0.1.0...angular-v0.2.0) (2026-09-08)
 
 

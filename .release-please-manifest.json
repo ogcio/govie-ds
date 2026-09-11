@@ -4,11 +4,11 @@
   "packages/design/figma": "1.0.8",
   "packages/design/theme-builder": "1.24.3",
   "packages/design/tokens": "1.22.3",
-  "apps/docs": "1.46.0",
+  "apps/docs": "1.46.1",
   "packages/themes/govie": "1.21.8",
   "packages/design/tailwind": "1.27.0",
   "packages/html/ds": "1.21.6",
-  "packages/vue": "0.2.0",
-  "packages/angular": "0.2.0",
-  "packages/react": "1.47.0"
+  "packages/vue": "0.2.1",
+  "packages/angular": "0.2.1",
+  "packages/react": "1.47.1"
 }
