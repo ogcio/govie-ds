@@ -1,5 +1,13 @@
 # Changelog
 
+## [0.2.1](https://github.com/ogcio/govie-ds/compare/vue-v0.2.0...vue-v0.2.1) (2026-09-11)
+
+
+### Miscellaneous Chores
+
+* **AB#41179:** make unused imports an error ([87da4ad](https://github.com/ogcio/govie-ds/commit/87da4adf741e8cd3dcf4d609a4989f2b857859a5))
+* **AB#41179:** strengthen Vue linting and accessibility checks ([01bf27d](https://github.com/ogcio/govie-ds/commit/01bf27d188f31579788de3312b6df8b1f0a182ea))
+
 ## [0.2.0](https://github.com/ogcio/govie-ds/compare/vue-v0.1.0...vue-v0.2.0) (2026-09-08)
 
 
