@@ -17,10 +17,12 @@ export default defineConfig([
   ...storybook.configs['flat/recommended'],
   ...baseConfig,
   {
+    basePath: import.meta.dirname,
     files: ['src/**/*.{js,jsx,ts,tsx}'],
     ...reactHooks.configs.flat.recommended,
   },
   {
+    basePath: import.meta.dirname,
     files: ['src/**/*.{js,jsx,ts,tsx}'],
     plugins: { 'no-relative-import-paths': noRelativeImportPaths },
     rules: {
@@ -32,6 +34,7 @@ export default defineConfig([
   },
   {
     // TODO: ESLINT remove this after error fixes
+    basePath: import.meta.dirname,
     files: ['src/**/*.{js,jsx,ts,tsx}'],
     rules: {
       'react-hooks/set-state-in-effect': 'warn',
