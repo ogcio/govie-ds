@@ -1,7 +1,17 @@
 import type { StoryObj } from '@storybook/vue3-vite';
 import { ref } from 'vue';
 import * as stories from '../atoms/storybook/SideNav.meta';
-import { Box, MailIcon, SideNav, SideNavGroup, SideNavHeading, SideNavItem, SideNavItemLink } from '../atoms';
+import {
+  Box,
+  IconButton,
+  MailIcon,
+  MoreVerticalIcon,
+  SideNav,
+  SideNavGroup,
+  SideNavHeading,
+  SideNavItem,
+  SideNavItemLink,
+} from '../atoms';
 
 const meta = {
   ...stories.sideNavMeta,
@@ -21,7 +31,9 @@ export const Default: Story = {
   render: (args) => ({
     components: {
       Box,
+      IconButton,
       MailIcon,
+      MoreVerticalIcon,
       SideNav,
       SideNavGroup,
       SideNavHeading,
@@ -39,7 +51,7 @@ export const Default: Story = {
       };
       return { args, current, inboxOpen, selectItem, toggleInbox };
     },
-    template: /*html*/ `
+    template: /* html*/ `
       <SideNav :dataTestId="args.dataTestId">
         <SideNavHeading>Messages</SideNavHeading>
         <SideNavGroup
@@ -54,6 +66,11 @@ export const Default: Story = {
               </Box>
               <strong class="gi-tag gi-tag-counter gi-tag-size-default">3</strong>
             </Box>
+          </template>
+          <template #actions>
+            <IconButton variant="flat" appearance="dark" size="sm" ariaLabel="More actions">
+              <MoreVerticalIcon />
+            </IconButton>
           </template>
           <SideNavItem
             :selected="current === 'primary'"
@@ -101,6 +118,100 @@ export const Default: Story = {
           Settings
         </SideNavItem>
       </SideNav>
+    `,
+  }),
+};
+
+export const WithActions: Story = {
+  ...stories.WithActions,
+  tags: ['!dev', '!autodocs'], // exclude story until Storybook examples complete
+  render: (args) => ({
+    components: {
+      IconButton,
+      MoreVerticalIcon,
+      SideNav,
+      SideNavGroup,
+      SideNavItem,
+      SideNavItemLink,
+    },
+    setup() {
+      const current = ref('');
+      const inboxOpen = ref(true);
+      const lastTriggered = ref('none');
+      const triggerAction = (value: string) => {
+        lastTriggered.value = value;
+      };
+      const selectItem = (value: string) => {
+        current.value = value;
+        lastTriggered.value = value;
+      };
+      const toggleInbox = () => {
+        inboxOpen.value = !inboxOpen.value;
+        lastTriggered.value = 'inbox';
+      };
+      return { args, current, inboxOpen, lastTriggered, triggerAction, selectItem, toggleInbox };
+    },
+    template: /*html*/ `
+      <div>
+        <p data-testid="last-triggered">{{ lastTriggered }}</p>
+        <SideNav :dataTestId="args.dataTestId">
+          <SideNavGroup
+            :open="inboxOpen"
+            :onClick="toggleInbox"
+          >
+            <template #label>Inbox</template>
+            <template #actions>
+              <IconButton
+                variant="flat"
+                appearance="dark"
+                size="sm"
+                ariaLabel="Inbox action"
+                :onClick="() => triggerAction('inbox-action')"
+              >
+                <MoreVerticalIcon />
+              </IconButton>
+            </template>
+            <SideNavItem>Primary</SideNavItem>
+          </SideNavGroup>
+          <SideNavItem
+            :selected="current === 'overview'"
+            :ariaCurrent="current === 'overview' ? 'page' : undefined"
+            :onClick="() => selectItem('overview')"
+          >
+            <template #actions>
+              <IconButton
+                variant="flat"
+                appearance="dark"
+                size="sm"
+                ariaLabel="Overview action"
+                :onClick="() => triggerAction('overview-action')"
+              >
+                <MoreVerticalIcon />
+              </IconButton>
+            </template>
+            Overview
+          </SideNavItem>
+          <SideNavItemLink
+            :selected="current === 'homepage'"
+            :ariaCurrent="current === 'homepage' ? 'page' : undefined"
+            :onClick="() => selectItem('homepage')"
+            href="#"
+          >
+            <template #actions>
+              <IconButton
+                variant="flat"
+                appearance="dark"
+                size="sm"
+                ariaLabel="Homepage action"
+                :onClick="() => triggerAction('homepage-action')"
+              >
+                <MoreVerticalIcon />
+              </IconButton>
+            </template>
+            Homepage
+          </SideNavItemLink>
+        </SideNav>
+      </div>
     `,
   }),
 };

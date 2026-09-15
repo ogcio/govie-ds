@@ -13,13 +13,14 @@ export default tv({
     'gi-font-bold',
     'gi-text-md',
     'gi-w-full',
+    'gi-col-span-full gi-row-start-1',
     '[.gi-side-nav-group_&]:gi-font-normal',
     '[.gi-side-nav-group_&]:gi-px-6',
   ],
   variants: {
     expandable: {
-      true: 'gi-pr-12',
-      false: '',
+      false: '[.gi-side-nav-list:has(.gi-side-nav-actions>*)_&]:gi-pr-12',
+      true: 'gi-pr-12 [.gi-side-nav-list:has(.gi-side-nav-actions>*)_&]:gi-pr-[84px]',
     },
     selected: {
       true: 'gi-shadow-[inset_4px_0_0_var(--gieds-color-border-tone-primary-accent-selected)]',
@@ -34,12 +35,18 @@ export default tv({
     expandable: false,
   },
 });
-export const trailingPosition = tv({
-  base: 'gi-absolute gi-top-1/2 -gi-translate-y-1/2',
+export const rowClasses = tv({
+  base: 'gi-grid gi-grid-cols-[minmax(0,1fr)_auto] gi-items-center',
+});
+export const listItemClasses = tv({
+  extend: rowClasses,
+  base: 'gi-list-none gi-mt-1 gi-side-nav-list',
+});
+export const trailingClasses = tv({
+  base: 'gi-col-start-2 gi-row-start-1 gi-z-1 gi-flex gi-items-center gi-gap-3 gi-pr-3 gi-pointer-events-none',
 });
 export const arrowClasses = tv({
-  extend: trailingPosition,
-  base: 'gi-right-3 gi-pointer-events-none motion-safe:gi-transition-transform motion-safe:gi-duration-100',
+  base: 'gi-pointer-events-none motion-safe:gi-transition-transform motion-safe:gi-duration-100',
   variants: {
     open: {
       true: 'gi-rotate-180',
@@ -48,5 +55,17 @@ export const arrowClasses = tv({
   },
   defaultVariants: {
     open: false,
+  },
+});
+export const actionClasses = tv({
+  base: 'gi-side-nav-actions gi-hidden [&:has(*)]:gi-block gi-pointer-events-auto',
+  variants: {
+    overlay: {
+      true: 'gi-col-start-2 gi-row-start-1 gi-z-1 gi-pr-3',
+      false: '',
+    },
+  },
+  defaultVariants: {
+    overlay: true,
   },
 });
