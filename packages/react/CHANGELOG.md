@@ -1,5 +1,20 @@
 # Changelog
 
+## [1.48.0](https://github.com/ogcio/govie-ds/compare/react-lib-v1.47.0...react-lib-v1.48.0) (2026-09-16)
+
+
+### Features
+
+* **AB#38913:** Introduce SideNav component family ([#1058](https://github.com/ogcio/govie-ds/issues/1058)) ([810d33f](https://github.com/ogcio/govie-ds/commit/810d33f34669d8b1c96225c1b6a721129140825a))
+* **AB#42644:** add asChild to SideNavLink ([#1062](https://github.com/ogcio/govie-ds/issues/1062)) ([35af6bf](https://github.com/ogcio/govie-ds/commit/35af6bfcad532dec983626a2e946b89f470edacc))
+
+
+### Miscellaneous Chores
+
+* **AB#41179:** make unused imports an error ([87da4ad](https://github.com/ogcio/govie-ds/commit/87da4adf741e8cd3dcf4d609a4989f2b857859a5))
+* **AB#42189:** name every boolean ARIA prop in useDefaultProps ([ee64f0d](https://github.com/ogcio/govie-ds/commit/ee64f0db2599711912549bd67caa82b8ee23bacc))
+* **AB#43002:** scope the React config's own blocks with basePath ([c6bd37b](https://github.com/ogcio/govie-ds/commit/c6bd37ba8c6d2d9fba32e932206382821332611c))
+
 ## [1.47.0](https://github.com/ogcio/govie-ds/compare/react-lib-v1.46.0...react-lib-v1.47.0) (2026-09-08)
 
 
