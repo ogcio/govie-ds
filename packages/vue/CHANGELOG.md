@@ -1,5 +1,18 @@
 # Changelog
 
+## [0.3.0](https://github.com/ogcio/govie-ds/compare/vue-v0.2.0...vue-v0.3.0) (2026-09-16)
+
+
+### Features
+
+* **AB#38913:** Introduce SideNav component family ([#1058](https://github.com/ogcio/govie-ds/issues/1058)) ([810d33f](https://github.com/ogcio/govie-ds/commit/810d33f34669d8b1c96225c1b6a721129140825a))
+
+
+### Miscellaneous Chores
+
+* **AB#41179:** make unused imports an error ([87da4ad](https://github.com/ogcio/govie-ds/commit/87da4adf741e8cd3dcf4d609a4989f2b857859a5))
+* **AB#41179:** strengthen Vue linting and accessibility checks ([01bf27d](https://github.com/ogcio/govie-ds/commit/01bf27d188f31579788de3312b6df8b1f0a182ea))
+
 ## [0.2.0](https://github.com/ogcio/govie-ds/compare/vue-v0.1.0...vue-v0.2.0) (2026-09-08)
 
 
