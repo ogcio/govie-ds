@@ -24,7 +24,7 @@ export function App() {
 }
 ```
 
-> Note that you should typically run some form of CSS reset or normalisation of styles as part of your application entry point, depending on your application styling solution. For example Tailwind includes [preflight](https://tailwindcss.com/docs/preflight), an optinionated set of base styles.
+> Note that you should typically run some form of CSS reset or normalisation of styles as part of your application entry point, depending on your application styling solution. For example Tailwind includes [preflight](https://tailwindcss.com/docs/preflight), an opinionated set of base styles.
 
 Use components within your application from the `@ogcio/design-system-react` component package:
 
@@ -143,7 +143,7 @@ resources: {
   fr: {
     translation: {
       pagination: {
-        previous: 'Précédent:,
+        previous: 'Précédent',
         next: 'Suivant',
         page: 'Page {{currentPage}} sur {{totalPages}}',
         goToPage: 'Aller à la page {{page}}',
@@ -155,4 +155,4 @@ resources: {
 }
 ```
 
-Note: Each component in the design system documents its relevant i18n keys under an **i18n Keys** heading, if available, for example [Pagination i18n Keys](http://ds.blocks.gov.ie/components/library/pagination/#i18n-keys). Be sure to refer to this section when using or implementing a component to ensure all necessary translations are provided.
+Note: Each component in the design system documents its relevant i18n keys under an **i18n Keys** heading, if available, for example [Pagination i18n Keys](https://ds.services.gov.ie/components/library/pagination/#i18n-keys). Be sure to refer to this section when using or implementing a component to ensure all necessary translations are provided.
