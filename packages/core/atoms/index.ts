@@ -21,6 +21,10 @@ export {
   default as HeaderNavItemSeparator,
   type Props as HeaderNavItemSeparatorProps,
 } from './header/HeaderNavItemSeparator.lite';
-
+export { default as SideNav, type Props as SideNavProps } from './sidenav/SideNav.lite';
+export { default as SideNavItem, type Props as SideNavItemProps } from './sidenav/SideNavItem.lite';
+export { default as SideNavItemLink, type Props as SideNavItemLinkProps } from './sidenav/SideNavItemLink.lite';
+export { default as SideNavHeading, type Props as SideNavHeadingProps } from './sidenav/SideNavHeading.lite';
+export { default as SideNavGroup, type Props as SideNavGroupProps } from './sidenav/SideNavGroup.lite';
 export * from './heading';
 export * from './icons';
