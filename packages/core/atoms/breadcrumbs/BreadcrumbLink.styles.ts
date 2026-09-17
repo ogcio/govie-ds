@@ -1,0 +1,28 @@
+import { tv } from 'tailwind-variants';
+import classes from '../Link.styles';
+
+export const listItemClasses = tv({
+  base: 'gi-flex gi-items-center',
+});
+
+export const breadcrumbClasses = tv({
+  extend: classes,
+  base: [
+    'aria-[current=page]:gi-text-color-icon-tone-convention-disabled',
+    'gi-truncate',
+    'aria-[current=page]:gi-pointer-events-auto',
+  ],
+  defaultVariants: {
+    variant: 'inline',
+    appearance: 'inherit',
+  },
+});
+
+export const listClasses = tv({
+  base: [
+    'gi-flex gi-list-none gi-flex-wrap',
+    '[&>*:not(:last-child)]:after:gi-content-["/"]',
+    '[&>*:not(:last-child)]:after:gi-px-3',
+    '[&>*:not(:last-child)]:after:gi-text-gray-500',
+  ],
+});
