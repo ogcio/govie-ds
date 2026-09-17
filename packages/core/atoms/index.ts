@@ -26,5 +26,11 @@ export { default as SideNavItem, type Props as SideNavItemProps } from './sidena
 export { default as SideNavItemLink, type Props as SideNavItemLinkProps } from './sidenav/SideNavItemLink.lite';
 export { default as SideNavHeading, type Props as SideNavHeadingProps } from './sidenav/SideNavHeading.lite';
 export { default as SideNavGroup, type Props as SideNavGroupProps } from './sidenav/SideNavGroup.lite';
+export { default as Breadcrumbs, type Props as BreadcrumbsProps } from './breadcrumbs/Breadcrumbs.lite';
+export { default as BreadcrumbLink, type Props as BreadcrumbLinkProps } from './breadcrumbs/BreadcrumbLink.lite';
+export {
+  default as BreadcrumbEllipsis,
+  type Props as BreadcrumbEllipsisProps,
+} from './breadcrumbs/BreadcrumbEllipsis.lite';
 export * from './heading';
 export * from './icons';
