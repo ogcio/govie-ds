@@ -22,10 +22,6 @@ const meta = {
 export default meta;
 type Story = StoryObj<typeof SideNav>;
 
-/**
- * This is a DRAFT Storybook for the SideNav component. Implementation is still being finalised
- */
-
 export const Default: Story = {
   ...stories.Default,
   render: (args) => ({
@@ -49,8 +45,8 @@ export const Default: Story = {
       };
       return { args, current, inboxOpen, selectItem, toggleInbox };
     },
-    template: `
-      <SideNav :dataTestId="args.dataTestId">
+    template: /*html*/ `
+      <SideNav v-bind="args" className="gi-max-w-xs">
         <SideNavHeading>Messages</SideNavHeading>
         <SideNavGroup
           :open="inboxOpen"
@@ -81,10 +77,10 @@ export const Default: Story = {
             :selected="current === 'promotions'"
             :disabled="true"
           >
-            Promotions (disabled)
+            Promotions
           </SideNavItem>
         </SideNavGroup>
-        <SideNavHeading>Side Nav Heading</SideNavHeading>
+        <SideNavHeading>Utilities</SideNavHeading>
         <SideNavItem
           :selected="current === 'overview'"
           :onClick="() => selectItem('overview')"
@@ -119,6 +115,7 @@ export const WithActions: Story = {
   ...stories.WithActions,
   render: (args) => ({
     components: {
+      Box,
       IconButton,
       MoreVerticalIcon,
       SideNav,
@@ -146,7 +143,7 @@ export const WithActions: Story = {
     template: /*html*/ `
       <div>
         <p data-testid="last-triggered">{{ lastTriggered }}</p>
-        <SideNav :dataTestId="args.dataTestId">
+        <SideNav v-bind="args" className="gi-max-w-xs">
           <SideNavGroup
             :open="inboxOpen"
             :onClick="toggleInbox"
@@ -207,6 +204,103 @@ export const WithActions: Story = {
           </SideNavItemLink>
         </SideNav>
       </div>
+    `,
+  }),
+};
+
+export const Expandable: Story = {
+  ...stories.Expandable,
+  render: (args) => ({
+    components: {
+      SideNav,
+      SideNavGroup,
+      SideNavItem,
+    },
+    setup() {
+      const inboxOpen = ref(true);
+      const projectsOpen = ref(false);
+      const toggleInbox = () => {
+        inboxOpen.value = !inboxOpen.value;
+      };
+      const toggleProjects = () => {
+        projectsOpen.value = !projectsOpen.value;
+      };
+      return { args, inboxOpen, projectsOpen, toggleInbox, toggleProjects };
+    },
+    template: /*html*/ `
+      <SideNav v-bind="args" className="gi-max-w-xs">
+        <SideNavGroup
+          :open="inboxOpen"
+          :onClick="toggleInbox"
+        >
+          <template #label>Inbox</template>
+          <SideNavItem>Primary</SideNavItem>
+          <SideNavItem>Social</SideNavItem>
+        </SideNavGroup>
+        <SideNavGroup
+          :open="projectsOpen"
+          :onClick="toggleProjects"
+        >
+          <template #label>Projects</template>
+          <SideNavItem>Active</SideNavItem>
+          <SideNavItem>Archived</SideNavItem>
+        </SideNavGroup>
+      </SideNav>
+    `,
+  }),
+};
+
+export const MultiSection: Story = {
+  ...stories.MultiSection,
+  render: (args) => ({
+    components: {
+      SideNav,
+      SideNavHeading,
+      SideNavItem,
+    },
+    setup() {
+      const current = ref('overview');
+      const selectItem = (value: string) => {
+        current.value = value;
+      };
+      return { args, current, selectItem };
+    },
+    template: /*html*/ `
+      <SideNav v-bind="args" className="gi-max-w-xs">
+        <SideNavHeading>Messages</SideNavHeading>
+        <SideNavItem
+          :selected="current === 'inbox'"
+          :onClick="() => selectItem('inbox')"
+        >
+          Inbox
+        </SideNavItem>
+        <SideNavItem
+          :selected="current === 'sent'"
+          :onClick="() => selectItem('sent')"
+        >
+          Sent
+        </SideNavItem>
+        <SideNavHeading>Workspace</SideNavHeading>
+        <SideNavItem
+          :selected="current === 'overview'"
+          :onClick="() => selectItem('overview')"
+        >
+          Overview
+        </SideNavItem>
+        <SideNavItem
+          :selected="current === 'reports'"
+          :onClick="() => selectItem('reports')"
+        >
+          Reports
+        </SideNavItem>
+        <SideNavHeading>Account</SideNavHeading>
+        <SideNavItem
+          :selected="current === 'settings'"
+          :onClick="() => selectItem('settings')"
+        >
+          Settings
+        </SideNavItem>
+      </SideNav>
     `,
   }),
 };

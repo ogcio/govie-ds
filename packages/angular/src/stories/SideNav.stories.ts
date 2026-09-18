@@ -32,12 +32,9 @@ const sideNavImports = [
 type SideNavStoryState = {
   current: string;
   inboxOpen: boolean;
+  projectsOpen: boolean;
   lastTriggered: string;
 };
-
-/**
- * This is a DRAFT Storybook for the SideNav component. Implementation is still being finalised
- */
 
 export const Default: Story = {
   ...stories.Default,
@@ -56,8 +53,8 @@ export const Default: Story = {
     moduleMetadata: {
       imports: sideNavImports,
     },
-    template: `
-      <gi-side-nav [dataTestId]="dataTestId">
+    template: /*html*/ `
+      <gi-side-nav [dataTestId]="dataTestId" [ariaLabel]="ariaLabel" [className]="'gi-max-w-xs'">
         <gi-side-nav-heading>Messages</gi-side-nav-heading>
         <gi-side-nav-group
           [open]="inboxOpen"
@@ -84,10 +81,10 @@ export const Default: Story = {
             [selected]="current === 'promotions'"
             [disabled]="true"
           >
-            Promotions (disabled)
+            Promotions
           </gi-side-nav-item>
         </gi-side-nav-group>
-        <gi-side-nav-heading>Side Nav Heading</gi-side-nav-heading>
+        <gi-side-nav-heading>Utilities</gi-side-nav-heading>
         <gi-side-nav-item
           [selected]="current === 'overview'"
           (click)="selectItem('overview')"
@@ -141,10 +138,10 @@ export const WithActions: Story = {
     moduleMetadata: {
       imports: sideNavImports,
     },
-    template: `
+    template: /*html*/ `
       <div>
         <p data-testid="last-triggered">{{ lastTriggered }}</p>
-        <gi-side-nav [dataTestId]="dataTestId">
+        <gi-side-nav [dataTestId]="dataTestId" [ariaLabel]="ariaLabel" [className]="'gi-max-w-xs'">
           <gi-side-nav-group
             [open]="inboxOpen"
             (onClick)="toggleInbox()"
@@ -201,6 +198,99 @@ export const WithActions: Story = {
           </gi-side-nav-item-link>
         </gi-side-nav>
       </div>
+    `,
+  }),
+};
+
+export const Expandable: Story = {
+  ...stories.Expandable,
+  render: (props) => ({
+    props: {
+      ...props,
+      inboxOpen: true,
+      projectsOpen: false,
+      toggleInbox(this: SideNavStoryState) {
+        this.inboxOpen = !this.inboxOpen;
+      },
+      toggleProjects(this: SideNavStoryState) {
+        this.projectsOpen = !this.projectsOpen;
+      },
+    },
+    moduleMetadata: {
+      imports: sideNavImports,
+    },
+    template: /*html*/ `
+      <gi-side-nav [dataTestId]="dataTestId" [ariaLabel]="ariaLabel" [className]="'gi-max-w-xs'">
+        <gi-side-nav-group
+          [open]="inboxOpen"
+          (onClick)="toggleInbox()"
+        >
+          <span ngProjectAs="[label]">Inbox</span>
+          <gi-side-nav-item>Primary</gi-side-nav-item>
+          <gi-side-nav-item>Social</gi-side-nav-item>
+        </gi-side-nav-group>
+        <gi-side-nav-group
+          [open]="projectsOpen"
+          (onClick)="toggleProjects()"
+        >
+          <span ngProjectAs="[label]">Projects</span>
+          <gi-side-nav-item>Active</gi-side-nav-item>
+          <gi-side-nav-item>Archived</gi-side-nav-item>
+        </gi-side-nav-group>
+      </gi-side-nav>
+    `,
+  }),
+};
+
+export const MultiSection: Story = {
+  ...stories.MultiSection,
+  render: (props) => ({
+    props: {
+      ...props,
+      current: 'overview',
+      selectItem(this: SideNavStoryState, value: string) {
+        this.current = value;
+      },
+    },
+    moduleMetadata: {
+      imports: sideNavImports,
+    },
+    template: /*html*/ `
+      <gi-side-nav [dataTestId]="dataTestId" [ariaLabel]="ariaLabel" [className]="'gi-max-w-xs'">
+        <gi-side-nav-heading>Messages</gi-side-nav-heading>
+        <gi-side-nav-item
+          [selected]="current === 'inbox'"
+          (click)="selectItem('inbox')"
+        >
+          Inbox
+        </gi-side-nav-item>
+        <gi-side-nav-item
+          [selected]="current === 'sent'"
+          (click)="selectItem('sent')"
+        >
+          Sent
+        </gi-side-nav-item>
+        <gi-side-nav-heading>Workspace</gi-side-nav-heading>
+        <gi-side-nav-item
+          [selected]="current === 'overview'"
+          (click)="selectItem('overview')"
+        >
+          Overview
+        </gi-side-nav-item>
+        <gi-side-nav-item
+          [selected]="current === 'reports'"
+          (click)="selectItem('reports')"
+        >
+          Reports
+        </gi-side-nav-item>
+        <gi-side-nav-heading>Account</gi-side-nav-heading>
+        <gi-side-nav-item
+          [selected]="current === 'settings'"
+          (click)="selectItem('settings')"
+        >
+          Settings
+        </gi-side-nav-item>
+      </gi-side-nav>
     `,
   }),
 };
