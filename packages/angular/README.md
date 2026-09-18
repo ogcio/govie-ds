@@ -34,28 +34,36 @@ The package includes a compiled stylesheet, so you do not need to configure Tail
 
 ## Usage
 
-All components are standalone and use the `gi-` selector prefix. Import them by name, add them to your component’s `imports` array and use their selectors in your template. For example, import `Button` and use `<gi-button>`:
+All components are standalone and use the `gi-` selector prefix. Import them by name, add them to your component’s `imports` array and use their selectors in your template. For example, import `Container`, `H1` and `Paragraph`:
 
 ```ts
 import { Component } from '@angular/core';
-import { Button, H1 } from '@ogcio/design-system-angular';
+import { Container, H1, Paragraph } from '@ogcio/design-system-angular';
 
 @Component({
   selector: 'app-root',
-  imports: [Button, H1],
+  imports: [Container, H1, Paragraph],
   template: `
-    <gi-h1>Apply for a passport</gi-h1>
-    <gi-button variant="primary" (onClick)="submit()">Continue</gi-button>
+    <gi-container>
+      <gi-h1>Apply for a passport</gi-h1>
+      <gi-paragraph>Check what you need before you start.</gi-paragraph>
+    </gi-container>
   `,
 })
-export class AppComponent {
-  submit() {}
-}
+export class AppComponent {}
 ```
+
+The package currently exports the layout primitives (`Box`, `Container`, `Grid`, `Stack`, `Divider`) and the typography components (`Text`, `Paragraph`, `InsetText`, `H1`–`H6`). Interactive and composite components are built but not yet exported while their Angular API is settled.
 
 ### Icons
 
-Import icons in the same way as other components. For example, use `SearchIcon` as `<gi-search-icon>` in your template. It accepts inputs including `size`, `color`, `className` and `label`. Set `label` to give the icon an accessible name; without a label, it is hidden from assistive technology. The full set of icons is catalogued on the [icons page](https://ds.services.gov.ie/resources/icons/).
+Icons ship from the `/icons` subpath and are used like any other component. For example, import `SearchIcon` and use `<gi-search-icon>`:
+
+```ts
+import { SearchIcon } from '@ogcio/design-system-angular/icons';
+```
+
+Each icon accepts inputs including `size`, `color`, `className` and `label`. Set `label` to give the icon an accessible name; without a label, it is hidden from assistive technology. The full set of icons is catalogued on the [icons page](https://ds.services.gov.ie/resources/icons/).
 
 ## Documentation
 
