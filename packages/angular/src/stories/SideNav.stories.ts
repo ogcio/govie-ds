@@ -1,7 +1,7 @@
 import type { StoryObj } from '@storybook/angular';
 import * as stories from '@/atoms/storybook/SideNav.meta';
 import Box from '@/atoms/Box';
-import { MailIcon } from '@/atoms';
+import { IconButton, MailIcon, MoreVerticalIcon } from '@/atoms';
 import SideNav from '@/atoms/sidenav/SideNav';
 import SideNavHeading from '@/atoms/sidenav/SideNavHeading';
 import SideNavItem from '@/atoms/sidenav/SideNavItem';
@@ -11,16 +11,28 @@ import SideNavGroup from '@/atoms/sidenav/SideNavGroup';
 const meta = {
   ...stories.sideNavMeta,
   title: 'Navigation/SideNav',
+  tags: ['!dev', '!autodocs'], // exclude story until Storybook examples complete
 };
 
 export default meta;
 type Story = StoryObj<SideNav>;
 
-const sideNavImports = [SideNav, SideNavHeading, SideNavItem, SideNavItemLink, SideNavGroup, Box, MailIcon];
+const sideNavImports = [
+  SideNav,
+  SideNavHeading,
+  SideNavItem,
+  SideNavItemLink,
+  SideNavGroup,
+  Box,
+  MailIcon,
+  IconButton,
+  MoreVerticalIcon,
+];
 
 type SideNavStoryState = {
   current: string;
   inboxOpen: boolean;
+  lastTriggered: string;
 };
 
 /**
@@ -29,7 +41,6 @@ type SideNavStoryState = {
 
 export const Default: Story = {
   ...stories.Default,
-  tags: ['!dev', '!autodocs'], // exclude story until Storybook examples complete
   render: (props) => ({
     props: {
       ...props,
@@ -52,13 +63,11 @@ export const Default: Story = {
           [open]="inboxOpen"
           (onClick)="toggleInbox()"
         >
-          <gi-box ngProjectAs="[label]" className="gi-flex gi-w-full gi-justify-between">
-            <gi-box className="gi-flex gi-gap-1">
-              <gi-mail-icon></gi-mail-icon>
-              Inbox
-            </gi-box>
-            <strong class="gi-tag gi-tag-counter gi-tag-size-default">3</strong>
+          <gi-box ngProjectAs="[label]" className="gi-flex gi-gap-1">
+            <gi-mail-icon></gi-mail-icon>
+            Inbox
           </gi-box>
+          <strong ngProjectAs="[actions]" class="gi-tag gi-tag-counter gi-tag-size-default">3</strong>
           <gi-side-nav-item
             [selected]="current === 'primary'"
             (click)="selectItem('primary')"
@@ -105,6 +114,93 @@ export const Default: Story = {
           Settings
         </gi-side-nav-item>
       </gi-side-nav>
+    `,
+  }),
+};
+
+export const WithActions: Story = {
+  ...stories.WithActions,
+  render: (props) => ({
+    props: {
+      ...props,
+      current: '',
+      inboxOpen: true,
+      lastTriggered: 'none',
+      triggerAction(this: SideNavStoryState, value: string) {
+        this.lastTriggered = value;
+      },
+      selectItem(this: SideNavStoryState, value: string) {
+        this.current = value;
+        this.lastTriggered = value;
+      },
+      toggleInbox(this: SideNavStoryState) {
+        this.inboxOpen = !this.inboxOpen;
+        this.lastTriggered = 'inbox';
+      },
+    },
+    moduleMetadata: {
+      imports: sideNavImports,
+    },
+    template: `
+      <div>
+        <p data-testid="last-triggered">{{ lastTriggered }}</p>
+        <gi-side-nav [dataTestId]="dataTestId">
+          <gi-side-nav-group
+            [open]="inboxOpen"
+            (onClick)="toggleInbox()"
+          >
+            <span ngProjectAs="[label]">Inbox</span>
+            <div ngProjectAs="[actions]" class="gi-flex gi-items-center">
+              <strong class="gi-tag gi-tag-counter gi-tag-size-default">3</strong>
+              <gi-icon-button
+                variant="flat"
+                appearance="dark"
+                size="sm"
+                ariaLabel="Inbox action"
+                (onClick)="triggerAction('inbox-action')"
+              >
+                <gi-more-vertical-icon></gi-more-vertical-icon>
+              </gi-icon-button>
+            </div>
+            <gi-side-nav-item>Primary</gi-side-nav-item>
+          </gi-side-nav-group>
+          <gi-side-nav-item
+            [selected]="current === 'overview'"
+            [ariaCurrent]="current === 'overview' ? 'page' : undefined"
+            (click)="selectItem('overview')"
+          >
+            <gi-icon-button
+              ngProjectAs="[actions]"
+              variant="flat"
+              appearance="dark"
+              size="sm"
+              ariaLabel="Overview action"
+              (onClick)="triggerAction('overview-action')"
+            >
+              <gi-more-vertical-icon></gi-more-vertical-icon>
+            </gi-icon-button>
+            Overview
+          </gi-side-nav-item>
+          <gi-side-nav-item-link
+            [selected]="current === 'homepage'"
+            [ariaCurrent]="current === 'homepage' ? 'page' : undefined"
+            (click)="selectItem('homepage')"
+            href="#"
+          >
+            <gi-icon-button
+              ngProjectAs="[actions]"
+              variant="flat"
+              appearance="dark"
+              size="sm"
+              ariaLabel="Homepage action"
+              (onClick)="triggerAction('homepage-action')"
+            >
+              <gi-more-vertical-icon></gi-more-vertical-icon>
+            </gi-icon-button>
+            Homepage
+          </gi-side-nav-item-link>
+        </gi-side-nav>
+      </div>
     `,
   }),
 };

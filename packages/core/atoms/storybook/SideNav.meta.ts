@@ -67,3 +67,37 @@ export const Default = {
     });
   },
 };
+
+export const WithActions = {
+  args: {
+    ...sideNavMeta.args,
+    dataTestId: 'sidenav-with-actions',
+  },
+  play: async ({ canvasElement, step }: StoryContext<Renderer>) => {
+    const canvas = within(canvasElement as HTMLElement);
+
+    await step('renders action buttons on group, item, and link', async () => {
+      expect(canvas.getByRole('button', { name: 'Inbox action' })).toBeVisible();
+      expect(canvas.getByRole('button', { name: 'Overview action' })).toBeVisible();
+      expect(canvas.getByRole('button', { name: 'Homepage action' })).toBeVisible();
+    });
+
+    await step('clicking the group action does not toggle the group', async () => {
+      await userEvent.click(canvas.getByRole('button', { name: 'Inbox action' }));
+      expect(canvas.getByTestId('last-triggered')).toHaveTextContent('inbox-action');
+      expect(canvas.getByText('Primary')).toBeVisible();
+    });
+
+    await step('clicking the item action does not select the item', async () => {
+      await userEvent.click(canvas.getByRole('button', { name: 'Overview action' }));
+      expect(canvas.getByTestId('last-triggered')).toHaveTextContent('overview-action');
+      expect(canvas.getByRole('button', { name: 'Overview' })).not.toHaveAttribute('aria-current', 'page');
+    });
+
+    await step('clicking the link action does not activate the link', async () => {
+      await userEvent.click(canvas.getByRole('button', { name: 'Homepage action' }));
+      expect(canvas.getByTestId('last-triggered')).toHaveTextContent('homepage-action');
+      expect(canvas.getByRole('link', { name: 'Homepage' })).not.toHaveAttribute('aria-current', 'page');
+    });
+  },
+};

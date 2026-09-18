@@ -1,5 +1,5 @@
-import { useDefaultProps, useMetadata } from '@builder.io/mitosis';
-import classes from './SideNavItem.styles';
+import { Slot, useDefaultProps, useMetadata } from '@builder.io/mitosis';
+import classes, { actionClasses, listItemClasses } from './SideNavItem.styles';
 
 useMetadata({ angular: { selector: 'gi-side-nav-item-link' } });
 
@@ -14,6 +14,7 @@ export type Props = {
   id?: string;
   href: string;
   selected?: boolean;
+  actions?: any;
   className?: string;
   external?: boolean;
   target?: '_self' | '_blank' | '_parent' | '_top';
@@ -35,7 +36,7 @@ export type Props = {
 
 export default function SideNavItemLink(props: Props) {
   return (
-    <li class="gi-list-none gi-mt-1 gi-relative gi-side-nav-list" aria-hidden={props.ariaHidden}>
+    <li class={listItemClasses()} aria-hidden={props.ariaHidden}>
       <a
         id={props.id}
         href={props.href}
@@ -60,6 +61,9 @@ export default function SideNavItemLink(props: Props) {
       >
         {props.children}
       </a>
+      <div class={actionClasses()}>
+        <Slot name="actions" />
+      </div>
     </li>
   );
 }
