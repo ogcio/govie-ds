@@ -1,10 +1,10 @@
 import { Component } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
-import { Button } from '@ogcio/design-system-angular';
+import { Box } from '@ogcio/design-system-angular';
 
 @Component({
   selector: 'app-root',
-  imports: [RouterOutlet, Button],
+  imports: [RouterOutlet, Box],
   templateUrl: './app.component.html',
   styleUrl: './app.component.scss',
 })
