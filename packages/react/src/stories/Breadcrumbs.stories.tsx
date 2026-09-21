@@ -1,25 +1,40 @@
-import type { StoryObj } from '@storybook/react-vite';
+import type { Meta, StoryObj } from '@storybook/react-vite';
 import * as stories from '@/atoms/storybook/Breadcrumbs.meta';
-import { BreadcrumbEllipsis, BreadcrumbLink, Breadcrumbs } from '@/atoms';
+import Breadcrumbs from '@/breadcrumbs/Breadcrumbs';
+import BreadcrumbLink from '@/breadcrumbs/BreadcrumbLink';
+import BreadcrumbEllipsis from '@/breadcrumbs/BreadcrumbEllipsis';
+import HomeIcon from '@/atoms/icons/Home';
+import { importNext } from './helpers';
+import omit from 'lodash/omit';
 
 const meta = {
-  ...stories.breadcrumbsMeta,
-  title: 'Navigation/Breadcrumbs (alpha)',
-  tags: ['!dev', '!autodocs', 'skip-playwright'],
-};
+  ...stories.meta,
+  title: 'Navigation/Breadcrumbs/Breadcrumbs',
+  argTypes: {
+    ...omit(stories.meta.argTypes, 'styles'),
+    style: stories.meta.argTypes.styles,
+  },
+  parameters: {
+    ...stories.meta.parameters,
+    docs: {
+      description: {
+        component: `${stories.meta.parameters.docs.description.component} ${importNext('Breadcrumbs')}`,
+      },
+    },
+  },
+} satisfies Meta<typeof Breadcrumbs>;
 
 export default meta;
-type Story = StoryObj<typeof Breadcrumbs>;
 
-/**
- * This is a DRAFT Storybook for the Breadcrumb component. Implementation is still being finalised
- */
+type Story = StoryObj<typeof Breadcrumbs>;
 
 export const Default: Story = {
   ...stories.Default,
   render: (props) => (
     <Breadcrumbs {...props}>
-      <BreadcrumbLink href="#">Home</BreadcrumbLink>
+      <BreadcrumbLink href="#" ariaLabel="Home">
+        <HomeIcon />
+      </BreadcrumbLink>
       <BreadcrumbEllipsis />
       <BreadcrumbLink href="#">Travel</BreadcrumbLink>
       <BreadcrumbLink href="#" current>

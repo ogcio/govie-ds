@@ -4,13 +4,13 @@
   The file source is in `packages/core/atoms/storybook/Breadcrumbs.meta.ts`
  */
 
-import type { ArgTypes, StoryContext, Renderer } from 'storybook/internal/types';
 import { within, expect } from 'storybook/test';
-import type { Props } from '../breadcrumbs/Breadcrumbs';
 import { boxMeta } from './Box.meta';
 import { checker } from './utilities';
-export const breadcrumbsMeta = {
-  title: 'Navigation/Breadcrumbs',
+import type { Props } from '../breadcrumbs/Breadcrumbs';
+import type { Meta, Story } from './types';
+export const meta = {
+  title: 'Navigation/Breadcrumbs/Breadcrumbs',
   args: {
     ariaLabel: 'Breadcrumbs',
     id: 'breadcrumbs-id',
@@ -42,7 +42,7 @@ export const breadcrumbsMeta = {
         },
       },
     },
-  } satisfies ArgTypes<Props>,
+  },
   parameters: {
     docs: {
       description: {
@@ -51,12 +51,12 @@ export const breadcrumbsMeta = {
       },
     },
   },
-};
+} satisfies Meta<Props>;
 export const Default = {
-  args: breadcrumbsMeta.args,
-  play: async ({ canvasElement, step, args }: StoryContext<Renderer>) => {
+  play: async ({ canvasElement, step, args }) => {
+    const dataTestId = args.dataTestId as string;
     const canvas = within(canvasElement as HTMLElement);
-    const check = checker(args.dataTestId, canvas, step);
+    const check = checker(dataTestId, canvas, step);
     await check.is('nav');
     await check.attributes({
       id: args.id,
@@ -64,13 +64,13 @@ export const Default = {
     });
     await check.children();
     await step('renders an ordered list of breadcrumb items', async () => {
-      const nav = canvas.getByTestId(args.dataTestId);
+      const nav = canvas.getByTestId(dataTestId);
       expect(nav.querySelector('ol')).toBeInTheDocument();
       const items = canvas.getAllByRole('listitem', {
         hidden: true,
       });
       expect(items).toHaveLength(4);
-      expect(items[0]).toHaveTextContent('Home');
+      expect(items[0].querySelector('[data-testid="home"]')).toBeInTheDocument();
       expect(items[2]).toHaveTextContent('Travel');
       expect(items[3]).toHaveTextContent('Documentation');
     });
@@ -87,4 +87,4 @@ export const Default = {
       ).toHaveAttribute('aria-current', 'page');
     });
   },
-};
+} satisfies Story<Props>;
