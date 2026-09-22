@@ -1,8 +1,16 @@
-# CVE-2026-14456 (OpenSSL, libssl3/libcrypto3 3.5.7-r1, fixed upstream in 3.5.8).
-# Not exploitable - unbounded memory growth in the OpenSSL QUIC server's incoming
-# channel queue. nginx in this image serves static files over plain HTTP on 8080,
-# does not terminate TLS (the OpenShift router does) and never opens an OpenSSL
-# QUIC listener, so the affected path does not exist at runtime.
-# Remove this block once the base image ships OpenSSL >= 3.5.8-r0.
 ignore:
+  # CVE-2026-14456 (OpenSSL, libssl3/libcrypto3 3.5.7-r1, fixed upstream in 3.5.8).
+  # Not exploitable - unbounded memory growth in the OpenSSL QUIC server's incoming
+  # channel queue. nginx in this image serves static files over plain HTTP on 8080,
+  # does not terminate TLS (the OpenShift router does) and never opens an OpenSSL
+  # QUIC listener, so the affected path does not exist at runtime.
+  # Remove this block once the base image ships OpenSSL >= 3.5.8-r0.
   - vulnerability: CVE-2026-14456
+
+  # CVE-2026-85091 (zlib 1.3.2-r0, no fixed package in Alpine v3.23 or edge).
+  # Not exploitable - heap buffer overflow in gz_vacate() on a stalled non-blocking
+  # gzwrite(), reachable only through zlib's gz* file-handle API. nginx compresses
+  # responses through the deflate stream API and never calls gzprintf()/gzvprintf();
+  # this image does not enable gzip at all.
+  # Remove this block once the base image ships a fixed zlib.
+  - vulnerability: CVE-2026-85091
