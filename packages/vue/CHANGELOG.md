@@ -1,5 +1,20 @@
 # Changelog
 
+## [0.3.0](https://github.com/ogcio/govie-ds/compare/vue-v0.2.0...vue-v0.3.0) (2026-09-22)
+
+
+### Features
+
+* **AB#38913:** Introduce SideNav component family ([#1058](https://github.com/ogcio/govie-ds/issues/1058)) ([810d33f](https://github.com/ogcio/govie-ds/commit/810d33f34669d8b1c96225c1b6a721129140825a))
+* **AB#42936:** Add trailing action slot to SideNav family ([#1061](https://github.com/ogcio/govie-ds/issues/1061)) ([346c16f](https://github.com/ogcio/govie-ds/commit/346c16ff48c280f6867ef4599ecfebaf0d0b819e))
+
+
+### Miscellaneous Chores
+
+* **AB#41179:** make unused imports an error ([87da4ad](https://github.com/ogcio/govie-ds/commit/87da4adf741e8cd3dcf4d609a4989f2b857859a5))
+* **AB#41179:** strengthen Vue linting and accessibility checks ([01bf27d](https://github.com/ogcio/govie-ds/commit/01bf27d188f31579788de3312b6df8b1f0a182ea))
+* **AB#43002:** scope the React config's own blocks with basePath ([c6bd37b](https://github.com/ogcio/govie-ds/commit/c6bd37ba8c6d2d9fba32e932206382821332611c))
+
 ## [0.2.0](https://github.com/ogcio/govie-ds/compare/vue-v0.1.0...vue-v0.2.0) (2026-09-08)
 
 
