@@ -12,6 +12,7 @@ export type Props = {
   id?: string;
   href: string;
   selected?: boolean;
+  actions?: any;
   className?: string;
   external?: boolean;
   target?: '_self' | '_blank' | '_parent' | '_top';
@@ -31,12 +32,12 @@ export type Props = {
   dataTestId?: string;
 };
 
-import classes from './SideNavItem.styles';
+import classes, { actionClasses, listItemClasses } from './SideNavItem.styles';
 
 function SideNavItemLink(props: Props) {
   props = { download: undefined, ariaHidden: undefined, ariaCurrent: undefined, ...props };
   return (
-    <li className="gi-list-none gi-mt-1 gi-relative gi-side-nav-list" aria-hidden={props.ariaHidden}>
+    <li className={listItemClasses()} aria-hidden={props.ariaHidden}>
       <a
         id={props.id}
         href={props.href}
@@ -61,6 +62,9 @@ function SideNavItemLink(props: Props) {
       >
         {props.children}
       </a>
+      <div className={actionClasses()}>
+        <>{props.actions}</>
+      </div>
     </li>
   );
 }
