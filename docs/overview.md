@@ -30,6 +30,7 @@ Government of Ireland Design System provides code and assets to build consistent
     - `figma` — Scripts and configuration to produce Figma variable import files from tokens
   - [`html/ds`](../packages/html/ds/README.md) — HTML components and styles for the global components, plus Storybook for development
   - [`react`](../packages/react/README.md) — React component library implementing the design system components
+  - [`angular`](../packages/angular/README.md) — Angular component library implementing the design system components
   - `themes/`
     - `govie` — Government of Ireland core theme package (exports `theme.css`, variables, and assets)
     - `doete` — DOETE theme package aligning look-and-feel with that organisation’s branding
