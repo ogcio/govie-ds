@@ -1,6 +1,5 @@
 {
   "name": "@ogcio/design-system-angular",
-  "private": true,
   "version": "0.2.0",
   "description": "The Government of Ireland Design System Angular components.",
   "keywords": [
