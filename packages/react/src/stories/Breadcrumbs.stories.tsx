@@ -1,19 +1,23 @@
 import type { StoryObj } from '@storybook/react-vite';
 import * as stories from '@/atoms/storybook/Breadcrumbs.meta';
 import { BreadcrumbEllipsis, BreadcrumbLink, Breadcrumbs } from '@/atoms';
+import { importDisclaimer } from './helpers';
 
 const meta = {
   ...stories.breadcrumbsMeta,
-  title: 'Navigation/Breadcrumbs (alpha)',
-  tags: ['!dev', '!autodocs', 'skip-playwright'],
+  title: 'Navigation/Breadcrumbs/Breadcrumbs',
+  parameters: {
+    ...stories.breadcrumbsMeta.parameters,
+    docs: {
+      description: {
+        component: `${stories.breadcrumbsMeta.parameters.docs.description.component} ${importDisclaimer('Breadcrumbs')}`,
+      },
+    },
+  },
 };
 
 export default meta;
 type Story = StoryObj<typeof Breadcrumbs>;
-
-/**
- * This is a DRAFT Storybook for the Breadcrumb component. Implementation is still being finalised
- */
 
 export const Default: Story = {
   ...stories.Default,
