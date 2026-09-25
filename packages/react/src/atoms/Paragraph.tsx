@@ -18,25 +18,9 @@ export type Props = {
   ariaHidden?: boolean;
 };
 
-import { tv } from 'tailwind-variants';
 import type { Align, Size, ValueOf, Whitespace } from './constants';
 import { getSize, getAlign, getWhitespace } from './utilities';
-import textClasses from './Text.styles';
-const classes = tv({
-  extend: textClasses,
-  base: ['gi-max-w-prose'],
-  variants: {
-    align: {
-      start: 'gi-text-start',
-      center: 'gi-text-center',
-      end: 'gi-text-end',
-      justify: 'gi-text-justify',
-    },
-  },
-  defaultVariants: {
-    align: 'start',
-  },
-});
+import classes from './Paragraph.styles';
 
 function Paragraph(props: Props) {
   props = { ariaHidden: undefined, ...props };
