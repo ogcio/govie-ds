@@ -1,13 +1,13 @@
 // Typography
-export { GiText } from './Text';
-export { GiParagraph } from './Paragraph';
-export { GiInsetText } from './InsetText';
-export { GiH1 } from './heading/H1';
-export { GiH2 } from './heading/H2';
-export { GiH3 } from './heading/H3';
-export { GiH4 } from './heading/H4';
-export { GiH5 } from './heading/H5';
-export { GiH6 } from './heading/H6';
+export { GiText, GiTextDirective } from './Text';
+export { GiParagraph, GiParagraphDirective } from './Paragraph';
+export { GiInsetText, GiInsetTextDirective } from './InsetText';
+export { GiH1, GiH1Directive } from './heading/H1';
+export { GiH2, GiH2Directive } from './heading/H2';
+export { GiH3, GiH3Directive } from './heading/H3';
+export { GiH4, GiH4Directive } from './heading/H4';
+export { GiH5, GiH5Directive } from './heading/H5';
+export { GiH6, GiH6Directive } from './heading/H6';
 
 // Layout
 export { default as Box, type Props as BoxProps } from './atoms/Box';

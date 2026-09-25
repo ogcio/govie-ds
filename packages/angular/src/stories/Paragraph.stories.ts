@@ -1,5 +1,6 @@
 import type { StoryObj } from '@storybook/angular-vite';
-import { GiParagraph } from '@/Paragraph';
+import Stack from '@/atoms/Stack';
+import { GiParagraph, GiParagraphDirective } from '@/Paragraph';
 import {
   paragraphMeta,
   Default as defaultStory,
@@ -105,6 +106,27 @@ export const AllAlignments: StoryObj = {
           <gi-paragraph align="justify" [dataTestId]="'paragraph-align-justify'">{{content}}</gi-paragraph>
         </div>
       </div>
+    `,
+  }),
+};
+
+export const Directive: StoryObj = {
+  parameters: {
+    docs: {
+      description: {
+        story:
+          'Adds the `gi-paragraph` styling to a plain `p`, with the same sizes, alignment and whitespace handling.',
+      },
+    },
+  },
+  render: () => ({
+    props: { content: paragraphMeta.loremIpsum },
+    moduleMetadata: { imports: [Stack, GiParagraphDirective] },
+    template: `
+      <gi-stack [gap]="2">
+        <p giParagraph size="sm">{{content}}</p>
+        <p giParagraph align="center">{{content}}</p>
+      </gi-stack>
     `,
   }),
 };

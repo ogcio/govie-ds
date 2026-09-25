@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component, Directive, Input } from '@angular/core';
 import classes from './atoms/InsetText.styles';
 import type { Props } from './atoms/InsetText';
 
@@ -29,5 +29,16 @@ export class GiInsetText {
 
   get classes(): string {
     return classes({ className: this.class });
+  }
+}
+
+@Directive({
+  selector: 'blockquote[giInsetText]',
+  standalone: true,
+  host: { '[class]': 'classes' },
+})
+export class GiInsetTextDirective {
+  get classes(): string {
+    return classes();
   }
 }
