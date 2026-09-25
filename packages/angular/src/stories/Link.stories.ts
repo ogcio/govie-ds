@@ -1,15 +1,16 @@
 import type { StoryObj } from '@storybook/angular-vite';
-import Link from '../atoms/Link';
-import Box from '../atoms/Box';
-import Paragraph from '../atoms/Paragraph';
-import { H1, H2 } from '../atoms/heading';
-import HomeIcon from '../atoms/icons/Home';
+import Link from '@/atoms/Link';
+import Box from '@/atoms/Box';
+import { GiParagraph } from '@/Paragraph';
+import { GiH1 } from '@/heading/H1';
+import { GiH2 } from '@/heading/H2';
+import HomeIcon from '@/atoms/icons/Home';
 import {
   linkMeta,
   InlineLink as linkInline,
   PlainFocusState as linkPlainFocus,
   PlainLink as linkPlain,
-} from '../atoms/storybook/Link.meta';
+} from '@/atoms/storybook/Link.meta';
 
 const meta = {
   ...linkMeta,
@@ -63,7 +64,7 @@ export const InTypography: StoryObj = {
     },
   },
   render: (_props) => ({
-    moduleMetadata: { imports: [Link, Box, Paragraph, H1, H2] },
+    moduleMetadata: { imports: [Link, Box, GiParagraph, GiH1, GiH2] },
     template: `
       <gi-box className="gi-flex gi-flex-col gi-gap-8 gi-max-w-prose">
 

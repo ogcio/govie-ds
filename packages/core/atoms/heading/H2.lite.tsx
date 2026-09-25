@@ -3,7 +3,7 @@ import classes from './styles';
 import { getSize } from './styles';
 import type { Props } from './types';
 
-useMetadata({ angular: { selector: 'gi-h2' } });
+useMetadata({ angular: { selector: 'gi-h2-core' } });
 
 export default function H2(props: Props) {
   return (

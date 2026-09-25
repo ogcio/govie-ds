@@ -1,16 +1,16 @@
 import type { Meta, StoryObj } from '@storybook/angular-vite';
-import InsetText from '../atoms/InsetText';
-import { insetTextMeta, Default as insetTextDefault } from '../atoms/storybook/InsetText.meta';
+import { GiInsetText } from '@/InsetText';
+import { insetTextMeta, Default as insetTextDefault } from '@/atoms/storybook/InsetText.meta';
 
-const meta: Meta<InsetText> = {
+const meta: Meta<GiInsetText> = {
   ...insetTextMeta,
   title: 'Typography/InsetText',
-  component: InsetText,
+  component: GiInsetText,
 };
 
 export default meta;
 
-export const Default: StoryObj<InsetText & { content: string }> = {
+export const Default: StoryObj<GiInsetText & { content: string }> = {
   ...insetTextDefault,
   args: {
     ...insetTextDefault.args,

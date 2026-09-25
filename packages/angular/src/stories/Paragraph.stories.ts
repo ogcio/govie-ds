@@ -1,12 +1,12 @@
 import type { StoryObj } from '@storybook/angular-vite';
-import Paragraph from '../atoms/Paragraph';
+import { GiParagraph } from '@/Paragraph';
 import {
   paragraphMeta,
   Default as defaultStory,
   AllParagraphSizes as allSizes,
   AllWhitespaces as allWhitespaces,
   AllAlignments as allAlignments,
-} from '../atoms/storybook/Paragraph.meta';
+} from '@/atoms/storybook/Paragraph.meta';
 
 const meta = {
   ...paragraphMeta,
@@ -23,7 +23,7 @@ export const Default: StoryObj = {
   render: (args) => ({
     props: { ...args, content: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.' },
     moduleMetadata: {
-      imports: [Paragraph],
+      imports: [GiParagraph],
     },
     template: `
       <gi-paragraph [id]="id" [dataTestId]="dataTestId" [size]="size" [align]="align" [whitespace]="whitespace">{{content}}</gi-paragraph>
@@ -36,7 +36,7 @@ export const AllParagraphSizes: StoryObj = {
   render: (args) => ({
     props: args,
     moduleMetadata: {
-      imports: [Paragraph],
+      imports: [GiParagraph],
     },
     template: `
     <gi-paragraph [dataTestId]="'paragraph-sm'" size="sm">Paragraph sm</gi-paragraph>
@@ -53,7 +53,7 @@ export const AllWhitespaces: StoryObj = {
   render: (args) => ({
     props: args,
     moduleMetadata: {
-      imports: [Paragraph],
+      imports: [GiParagraph],
     },
     template: `
       <div class="gi-flex gi-flex-col gi-gap-6">
@@ -84,7 +84,7 @@ export const AllAlignments: StoryObj = {
   render: (args) => ({
     props: args,
     moduleMetadata: {
-      imports: [Paragraph],
+      imports: [GiParagraph],
     },
     template: `
       <div class="gi-flex gi-flex-col gi-gap-6">
