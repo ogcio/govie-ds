@@ -15,7 +15,7 @@ export type Props = {
   ariaHidden?: boolean;
 };
 
-useMetadata({ angular: { selector: 'gi-paragraph' } });
+useMetadata({ angular: { selector: 'gi-paragraph-core' } });
 
 useDefaultProps({
   ariaHidden: undefined,

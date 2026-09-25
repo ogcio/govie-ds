@@ -1,17 +1,17 @@
 import type { Meta, StoryObj } from '@storybook/angular-vite';
-import { Text } from '../atoms';
-import * as TextStoryMeta from '../atoms/storybook/Text.meta';
+import { GiText } from '@/Text';
+import * as TextStoryMeta from '@/atoms/storybook/Text.meta';
 
-const meta: Meta<Text> = {
+const meta: Meta<GiText> = {
   ...TextStoryMeta.textMeta,
   title: 'Typography/Text',
-  component: Text,
+  component: GiText,
 };
 
 export default meta;
 const loremIpsum = 'Lorem ipsum dolor sit amet.';
 
-type Story = StoryObj<Text & { content: string }>;
+type Story = StoryObj<GiText & { content: string }>;
 
 export const Default: Story = {
   ...TextStoryMeta.Default,
@@ -21,10 +21,8 @@ export const Default: Story = {
       <gi-text
         [id]="id"
         [dataTestId]="dataTestId"
-        [styles]="styles"
         [size]="size"
         [whitespace]="whitespace"
-        [className]="className"
         [ariaHidden]="ariaHidden"
       >
         {{ content }}

@@ -20,7 +20,7 @@ export type Props = {
 import classes from './InsetText.styles';
 
 @Component({
-  selector: 'gi-inset-text',
+  selector: 'gi-inset-text-core',
   template: `
     <blockquote
       [attr.id]="id"

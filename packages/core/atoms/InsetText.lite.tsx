@@ -1,7 +1,7 @@
 import { useMetadata } from '@builder.io/mitosis';
 import classes from './InsetText.styles';
 
-useMetadata({ angular: { selector: 'gi-inset-text' } });
+useMetadata({ angular: { selector: 'gi-inset-text-core' } });
 
 export type Props = {
   children?: any;

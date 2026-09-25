@@ -13,7 +13,7 @@ import { getSize } from './styles';
 import type { Props } from './types';
 
 @Component({
-  selector: 'gi-h2',
+  selector: 'gi-h2-core',
   template: `
     <h2
       [attr.id]="id"

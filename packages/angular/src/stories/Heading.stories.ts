@@ -1,15 +1,15 @@
 import type { Meta, StoryObj } from '@storybook/angular-vite';
-import H1 from '../atoms/heading/H1';
-import H2 from '../atoms/heading/H2';
-import H3 from '../atoms/heading/H3';
-import H4 from '../atoms/heading/H4';
-import H5 from '../atoms/heading/H5';
-import H6 from '../atoms/heading/H6';
+import { GiH1 } from '@/heading/H1';
+import { GiH2 } from '@/heading/H2';
+import { GiH3 } from '@/heading/H3';
+import { GiH4 } from '@/heading/H4';
+import { GiH5 } from '@/heading/H5';
+import { GiH6 } from '@/heading/H6';
 import {
   headingMeta,
   Default as headingDefault,
   AllHeadingLevels as headingAllLevels,
-} from '../atoms/storybook/Heading.meta';
+} from '@/atoms/storybook/Heading.meta';
 
 const meta: Meta = {
   ...headingMeta,
@@ -29,7 +29,7 @@ export const Default: StoryObj = {
   render: (args) => ({
     props: args,
     moduleMetadata: {
-      imports: [H1],
+      imports: [GiH1],
     },
     template: `
       <gi-h1 [id]="heading-id" [size]="size">Heading</gi-h1>
@@ -42,7 +42,7 @@ export const AllHeadingLevels: StoryObj = {
   render: (args) => ({
     props: args,
     moduleMetadata: {
-      imports: [H1, H2, H3, H4, H5, H6],
+      imports: [GiH1, GiH2, GiH3, GiH4, GiH5, GiH6],
     },
     template: `
       <gi-h1 [dataTestId]="'heading-1'">Heading 1</gi-h1>
