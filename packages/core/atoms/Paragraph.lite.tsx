@@ -1,8 +1,7 @@
 import { useDefaultProps, useMetadata } from '@builder.io/mitosis';
-import { tv } from 'tailwind-variants';
 import type { Align, Size, ValueOf, Whitespace } from './constants';
 import { getSize, getAlign, getWhitespace } from './utilities';
-import textClasses from './Text.styles';
+import classes from './Paragraph.styles';
 
 export type Props = {
   id?: string;
@@ -40,19 +39,3 @@ export default function Paragraph(props: Props) {
     </p>
   );
 }
-
-const classes = tv({
-  extend: textClasses,
-  base: ['gi-max-w-prose'],
-  variants: {
-    align: {
-      start: 'gi-text-start',
-      center: 'gi-text-center',
-      end: 'gi-text-end',
-      justify: 'gi-text-justify',
-    },
-  },
-  defaultVariants: {
-    align: 'start',
-  },
-});

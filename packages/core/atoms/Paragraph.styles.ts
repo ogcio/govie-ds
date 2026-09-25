@@ -1,0 +1,18 @@
+import { tv } from 'tailwind-variants';
+import textClasses from './Text.styles';
+
+export default tv({
+  extend: textClasses,
+  base: ['gi-max-w-prose'],
+  variants: {
+    align: {
+      start: 'gi-text-start',
+      center: 'gi-text-center',
+      end: 'gi-text-end',
+      justify: 'gi-text-justify',
+    },
+  },
+  defaultVariants: {
+    align: 'start',
+  },
+});

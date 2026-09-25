@@ -20,25 +20,9 @@ export type Props = {
 };
 const defaultProps: any = { ariaHidden: undefined };
 
-import { tv } from 'tailwind-variants';
 import type { Align, Size, ValueOf, Whitespace } from './constants';
 import { getSize, getAlign, getWhitespace } from './utilities';
-import textClasses from './Text.styles';
-const classes = tv({
-  extend: textClasses,
-  base: ['gi-max-w-prose'],
-  variants: {
-    align: {
-      start: 'gi-text-start',
-      center: 'gi-text-center',
-      end: 'gi-text-end',
-      justify: 'gi-text-justify',
-    },
-  },
-  defaultVariants: {
-    align: 'start',
-  },
-});
+import classes from './Paragraph.styles';
 
 @Component({
   selector: 'gi-paragraph',
@@ -71,10 +55,10 @@ const classes = tv({
   imports: [CommonModule],
 })
 export default class Paragraph {
-  classes = classes;
   getSize = getSize;
   getAlign = getAlign;
   getWhitespace = getWhitespace;
+  classes = classes;
 
   @Input() id!: Props['id'];
   @Input() size!: Props['size'];

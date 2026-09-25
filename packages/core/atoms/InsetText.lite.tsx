@@ -1,5 +1,5 @@
 import { useMetadata } from '@builder.io/mitosis';
-import { tv } from 'tailwind-variants';
+import classes from './InsetText.styles';
 
 useMetadata({ angular: { selector: 'gi-inset-text' } });
 
@@ -27,7 +27,3 @@ export default function InsetText(props: Props) {
     </blockquote>
   );
 }
-
-const classes = tv({
-  base: 'gi-font-primary gi-p-4 gi-border-l-2xl gi-border-gray-500 gi-text-sm md:gi-text-md gi-not-prose',
-});
