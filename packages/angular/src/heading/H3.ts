@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component, Directive, Input } from '@angular/core';
 import classes, { getSize } from '../atoms/heading/styles';
 import { Size, type Props } from '../atoms/heading/types';
 
@@ -21,5 +21,18 @@ export class GiH3 {
 
   get classes(): string {
     return classes({ size: getSize(this.size, Size.MD), className: this.class });
+  }
+}
+
+@Directive({
+  selector: 'h3[giHeading]',
+  standalone: true,
+  host: { '[class]': 'classes' },
+})
+export class GiH3Directive {
+  @Input() size: Props['size'];
+
+  get classes(): string {
+    return classes({ size: getSize(this.size, Size.MD) });
   }
 }

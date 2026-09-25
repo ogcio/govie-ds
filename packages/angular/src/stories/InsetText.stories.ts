@@ -1,5 +1,5 @@
 import type { Meta, StoryObj } from '@storybook/angular-vite';
-import { GiInsetText } from '@/InsetText';
+import { GiInsetText, GiInsetTextDirective } from '@/InsetText';
 import { insetTextMeta, Default as insetTextDefault } from '@/atoms/storybook/InsetText.meta';
 
 const meta: Meta<GiInsetText> = {
@@ -28,5 +28,20 @@ export const Default: StoryObj<GiInsetText & { content: string }> = {
         {{content}}
       </gi-inset-text>
     `,
+  }),
+};
+
+export const Directive: StoryObj = {
+  parameters: {
+    docs: {
+      description: {
+        story: 'Adds the `gi-inset-text` styling to a plain `blockquote`.',
+      },
+    },
+  },
+  render: () => ({
+    props: { content: insetTextMeta.args.children },
+    moduleMetadata: { imports: [GiInsetTextDirective] },
+    template: `<blockquote giInsetText>{{content}}</blockquote>`,
   }),
 };

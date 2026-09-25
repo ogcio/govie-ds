@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component, Directive, Input } from '@angular/core';
 import classes from './atoms/Text.styles';
 import type { Props } from './atoms/Text';
 import { getSize, getWhitespace } from './atoms/utilities';
@@ -33,5 +33,19 @@ export class GiText {
       whitespace: getWhitespace(this.whitespace),
       className: this.class,
     });
+  }
+}
+
+@Directive({
+  selector: 'span[giText]',
+  standalone: true,
+  host: { '[class]': 'classes' },
+})
+export class GiTextDirective {
+  @Input() size: Props['size'];
+  @Input() whitespace: Props['whitespace'];
+
+  get classes(): string {
+    return classes({ size: getSize(this.size), whitespace: getWhitespace(this.whitespace) });
   }
 }
