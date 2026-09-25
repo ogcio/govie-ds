@@ -1,4 +1,4 @@
-import type { Meta, StoryObj } from '@storybook/angular';
+import type { Meta, StoryObj } from '@storybook/angular-vite';
 import InsetText from '../atoms/InsetText';
 import { insetTextMeta, Default as insetTextDefault } from '../atoms/storybook/InsetText.meta';
 

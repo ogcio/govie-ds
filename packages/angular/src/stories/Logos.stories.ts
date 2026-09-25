@@ -1,4 +1,4 @@
-import type { Meta, StoryObj } from '@storybook/angular';
+import type { Meta, StoryObj } from '@storybook/angular-vite';
 import LogoBlack from '../atoms/icons/logos/LogoBlack';
 import LogoGoldGreen from '../atoms/icons/logos/LogoGoldGreen';
 import LogoGoldWhite from '../atoms/icons/logos/LogoGoldWhite';

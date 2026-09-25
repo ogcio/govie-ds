@@ -1,4 +1,4 @@
-import type { StoryObj } from '@storybook/angular';
+import type { StoryObj } from '@storybook/angular-vite';
 import { footerLogoMeta, Default as defaultStory } from '@/atoms/storybook/FooterLogo.meta';
 import { FooterLogo } from '@/atoms';
 import { LogoGoldGreen } from '@/atoms/icons/logos';

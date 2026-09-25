@@ -1,4 +1,4 @@
-import type { StoryObj } from '@storybook/angular';
+import type { StoryObj } from '@storybook/angular-vite';
 import { footerSectionMeta, Default as defaultStory } from '@/atoms/storybook/FooterSection.meta';
 import { FooterSection } from '@/atoms';
 

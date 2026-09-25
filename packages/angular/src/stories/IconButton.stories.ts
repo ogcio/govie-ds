@@ -1,4 +1,4 @@
-import type { Meta, StoryObj } from '@storybook/angular';
+import type { Meta, StoryObj } from '@storybook/angular-vite';
 import IconButton from '@/atoms/IconButton';
 import { Size } from '@/atoms/constants';
 import Info from '@/atoms/icons/Info';

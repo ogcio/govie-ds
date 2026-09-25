@@ -1,6 +1,6 @@
 import { omit } from 'lodash';
 import { CommonModule } from '@angular/common';
-import type { StoryObj } from '@storybook/angular';
+import type { StoryObj } from '@storybook/angular-vite';
 import Container from '@/atoms/Container';
 import { MaxWidth } from '@/atoms/constants';
 import {

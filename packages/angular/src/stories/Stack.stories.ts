@@ -1,5 +1,5 @@
 import { omit } from 'lodash';
-import type { StoryObj } from '@storybook/angular';
+import type { StoryObj } from '@storybook/angular-vite';
 import Stack from '../atoms/Stack';
 import {
   stackMeta,

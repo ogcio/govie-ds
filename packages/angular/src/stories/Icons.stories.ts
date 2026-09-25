@@ -1,5 +1,5 @@
 import _ from 'lodash';
-import type { Meta, StoryObj } from '@storybook/angular';
+import type { Meta, StoryObj } from '@storybook/angular-vite';
 import { iconsMeta, Default as iconsDefault, iconList } from '../atoms/storybook/Icons.meta';
 
 const meta: Meta = {

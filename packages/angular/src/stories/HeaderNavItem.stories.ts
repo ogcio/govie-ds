@@ -1,4 +1,4 @@
-import type { StoryObj } from '@storybook/angular';
+import type { StoryObj } from '@storybook/angular-vite';
 import { headerNavItemMeta, Default as defaultStory } from '@/atoms/storybook/HeaderNavItem.meta';
 import { HeaderNav, HeaderNavItem, HeaderSection, SearchIcon } from '@/atoms';
 

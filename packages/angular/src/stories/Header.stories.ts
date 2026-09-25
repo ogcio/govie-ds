@@ -1,4 +1,4 @@
-import type { StoryObj } from '@storybook/angular';
+import type { StoryObj } from '@storybook/angular-vite';
 import { within, expect } from 'storybook/test';
 import { headerMeta, Default as defaultStory } from '@/atoms/storybook/Header.meta';
 import {

@@ -1,4 +1,4 @@
-import type { StoryObj } from '@storybook/angular';
+import type { StoryObj } from '@storybook/angular-vite';
 import * as stories from '@/atoms/storybook/SideNav.meta';
 import Box from '@/atoms/Box';
 import { IconButton, MailIcon, MoreVerticalIcon } from '@/atoms';

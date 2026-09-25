@@ -1,4 +1,4 @@
-import type { StoryObj } from '@storybook/angular';
+import type { StoryObj } from '@storybook/angular-vite';
 import Paragraph from '../atoms/Paragraph';
 import {
   paragraphMeta,

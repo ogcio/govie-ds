@@ -1,4 +1,4 @@
-import type { Meta, StoryObj } from '@storybook/angular';
+import type { Meta, StoryObj } from '@storybook/angular-vite';
 import H1 from '../atoms/heading/H1';
 import H2 from '../atoms/heading/H2';
 import H3 from '../atoms/heading/H3';

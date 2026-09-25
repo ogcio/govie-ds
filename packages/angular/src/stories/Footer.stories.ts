@@ -1,4 +1,4 @@
-import type { StoryObj } from '@storybook/angular';
+import type { StoryObj } from '@storybook/angular-vite';
 import { within, expect } from 'storybook/test';
 import { footerMeta, CompleteFooter as CompleteFooterStory } from '@/atoms/storybook/Footer.meta';
 import { Footer, FooterSection, FooterLogo, Link, Text, Grid } from '@/atoms';

@@ -1,4 +1,4 @@
-import type { StoryObj } from '@storybook/angular';
+import type { StoryObj } from '@storybook/angular-vite';
 import Box from '@/atoms/Box';
 import Divider from '@/atoms/Divider';
 import Stack from '@/atoms/Stack';

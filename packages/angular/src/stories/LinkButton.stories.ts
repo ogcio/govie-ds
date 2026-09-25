@@ -1,4 +1,4 @@
-import type { StoryObj } from '@storybook/angular';
+import type { StoryObj } from '@storybook/angular-vite';
 import LinkButton from '../atoms/LinkButton';
 import Box from '../atoms/Box';
 import { linkButtonMeta, Default as defaultStory } from '../atoms/storybook/LinkButton.meta';

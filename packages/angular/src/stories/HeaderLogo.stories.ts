@@ -1,4 +1,4 @@
-import type { StoryObj } from '@storybook/angular';
+import type { StoryObj } from '@storybook/angular-vite';
 import { headerLogoMeta, Default as defaultStory } from '@/atoms/storybook/HeaderLogo.meta';
 import { HeaderLogo, HeaderSection } from '@/atoms';
 import { LogoWhite } from '@/atoms/icons/logos';

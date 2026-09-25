@@ -1,4 +1,4 @@
-import type { Meta, StoryObj } from '@storybook/angular';
+import type { Meta, StoryObj } from '@storybook/angular-vite';
 import { Text } from '../atoms';
 import * as TextStoryMeta from '../atoms/storybook/Text.meta';
 

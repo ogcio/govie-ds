@@ -16,24 +16,17 @@
           }
         },
         "storybook": {
-          "builder": "@storybook/angular:start-storybook",
+          "builder": "@storybook/angular-vite:start-storybook",
           "options": {
             "configDir": ".storybook",
-            "browserTarget": "design-system-angular:build",
-            "tsConfig": ".storybook/tsconfig.json",
-            "port": 6006,
-            "compodoc": false,
-            "styles": ["fonts.css", "styles.css", ".storybook/global.css", "@ogcio/theme-govie/theme.css"]
+            "port": 6006
           }
         },
         "build-storybook": {
-          "builder": "@storybook/angular:build-storybook",
+          "builder": "@storybook/angular-vite:build-storybook",
           "options": {
             "configDir": ".storybook",
-            "browserTarget": "design-system-angular:build",
-            "tsConfig": ".storybook/tsconfig.json",
-            "compodoc": false,
-            "styles": ["fonts.css", "styles.css", ".storybook/global.css", "@ogcio/theme-govie/theme.css"]
+            "outputDir": "storybook-static"
           }
         }
       }
