@@ -71,6 +71,7 @@
     "@storybook/angular-vite": "10.6.0",
     "@types/lodash": "^4.17.7",
     "@vitest/browser-playwright": "4.1.10",
+    "@vitest/coverage-istanbul": "4.1.10",
     "angular-eslint": "^21.4.0",
     "autoprefixer": "^10.4.23",
     "eslint-config-prettier": "^10.1.8",

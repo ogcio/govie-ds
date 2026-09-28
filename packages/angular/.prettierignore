@@ -1,5 +1,6 @@
 .angular
 dist
+coverage
 storybook-static
 CHANGELOG.md
 
