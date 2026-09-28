@@ -36,7 +36,7 @@ export const Default: StoryObj = {
     props,
     moduleMetadata: { imports: [Stack] },
     template: `
-      <gi-stack [dataTestId]="dataTestId" [direction]="direction" [gap]="gap" [align]="align" [justify]="justify" [wrap]="wrap">
+      <gi-stack [dataTestId]="dataTestId" [id]="id" [role]="role" [ariaLabel]="ariaLabel" [direction]="direction" [gap]="gap" [align]="align" [justify]="justify" [wrap]="wrap">
         <div class="${itemClasses}">Item 1</div>
         <div class="${itemClasses}">Item 2</div>
         <div class="${itemClasses}">Item 3</div>
@@ -247,7 +247,7 @@ export const Responsive: StoryObj = {
     props,
     moduleMetadata: { imports: [Stack] },
     template: `
-      <gi-stack [dataTestId]="dataTestId" [direction]="direction" [gap]="gap" [align]="align" [justify]="justify" [role]="role" [ariaLabel]="ariaLabel">
+      <gi-stack [dataTestId]="dataTestId" [direction]="direction" [gap]="gap" [align]="align" [justify]="justify" [id]="id" [role]="role" [ariaLabel]="ariaLabel">
         <div class="${itemClasses}">Item 1</div>
         <div class="${itemClasses}">Item 2</div>
         <div class="${itemClasses}">Item 3</div>

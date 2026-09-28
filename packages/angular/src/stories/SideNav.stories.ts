@@ -167,7 +167,7 @@ export const WithActions: Story = {
           <gi-side-nav-item
             [selected]="current === 'overview'"
             [ariaCurrent]="current === 'overview' ? 'page' : undefined"
-            (click)="selectItem('overview')"
+            (onClick)="selectItem('overview')"
           >
             <gi-icon-button
               ngProjectAs="[actions]"
@@ -184,7 +184,7 @@ export const WithActions: Story = {
           <gi-side-nav-item-link
             [selected]="current === 'homepage'"
             [ariaCurrent]="current === 'homepage' ? 'page' : undefined"
-            (click)="selectItem('homepage')"
+            (onClick)="selectItem('homepage')"
             href="#"
           >
             <gi-icon-button

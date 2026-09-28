@@ -24,7 +24,6 @@ export const Default: StoryObj = {
             [id]="id"
             [dataTestId]="dataTestId"
             [visible]="visible"
-            [appearance]="appearance"
             [external]="external"
             [ariaLabel]="ariaLabel"
             [ariaCurrent]="ariaCurrent"

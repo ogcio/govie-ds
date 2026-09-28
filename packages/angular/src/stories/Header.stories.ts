@@ -224,7 +224,7 @@ export const Light: StoryObj = {
       const headerElement = canvas.getByRole('banner');
       expect(headerElement).toBeInTheDocument();
       expect(headerElement).toHaveAttribute('aria-label', 'Site header');
-      expect(headerElement).toHaveAttribute('data-testid', 'header-composed');
+      expect(headerElement).toHaveAttribute('data-testid', 'header-default');
     });
   },
 };
@@ -368,7 +368,7 @@ export const Desktop: StoryObj = {
       const headerElement = canvas.getByRole('banner');
       expect(headerElement).toBeInTheDocument();
       expect(headerElement).toHaveAttribute('aria-label', 'Site header');
-      expect(headerElement).toHaveAttribute('data-testid', 'header-composed');
+      expect(headerElement).toHaveAttribute('data-testid', 'header-default');
     });
   },
 };
