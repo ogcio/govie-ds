@@ -10,15 +10,17 @@
       "prefix": "lib",
       "architect": {
         "build": {
-          "builder": "@angular-devkit/build-angular:ng-packagr",
+          "builder": "@angular/build:ng-packagr",
           "options": {
-            "project": "ng-package.json"
+            "project": "ng-package.json",
+            "tsConfig": "tsconfig.lib.json"
           }
         },
         "storybook": {
           "builder": "@storybook/angular-vite:start-storybook",
           "options": {
             "configDir": ".storybook",
+            "browserTarget": "design-system-angular:build",
             "port": 6006
           }
         },
@@ -26,6 +28,7 @@
           "builder": "@storybook/angular-vite:build-storybook",
           "options": {
             "configDir": ".storybook",
+            "browserTarget": "design-system-angular:build",
             "outputDir": "storybook-static"
           }
         }
