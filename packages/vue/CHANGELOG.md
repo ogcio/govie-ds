@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.3.1](https://github.com/ogcio/govie-ds/compare/vue-v0.3.0...vue-v0.3.1) (2026-09-30)
+
+
+### Miscellaneous Chores
+
+* **AB#43755:** extract Paragraph and InsetText styles into their own modules ([80af6c8](https://github.com/ogcio/govie-ds/commit/80af6c80bd1130e36478ff1dc254f05a43dc912a))
+
 ## [0.3.0](https://github.com/ogcio/govie-ds/compare/vue-v0.2.0...vue-v0.3.0) (2026-09-22)
 
 
