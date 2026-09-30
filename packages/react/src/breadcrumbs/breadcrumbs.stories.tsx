@@ -3,7 +3,7 @@ import { within, expect } from 'storybook/test';
 import { Breadcrumbs, BreadcrumbCurrentLink, BreadcrumbLink, BreadcrumbEllipsis } from './breadcrumbs.js';
 
 const meta = {
-  title: 'Navigation/Breadcrumbs',
+  title: 'Navigation/Breadcrumbs/Legacy',
   parameters: {
     docs: {
       description: {
