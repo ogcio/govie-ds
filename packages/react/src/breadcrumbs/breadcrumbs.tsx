@@ -3,13 +3,17 @@ import { translate as t } from '@/i18n/utility.js';
 import { Link } from '@/link/link.js';
 import type { BreadcrumbLinkProps, BreadcrumbProps } from './types.js';
 import MoreHorizontal from '@/atoms/icons/MoreHorizontal';
-
+/**
+ * @deprecated Use the new BreadcrumbEllipsis from `@ogcio/design-system-react/next`
+ */
 export const BreadcrumbEllipsis = () => (
   <div aria-hidden="true">
     <MoreHorizontal className="gi-text-gray-700 gi-shrink-0" />
   </div>
 );
-
+/**
+ * @deprecated Use the new BreadcrumbLink from `@ogcio/design-system-react/next`
+ */
 export const BreadcrumbLink = ({ href, children, asChild, ...ariaProps }: BreadcrumbLinkProps) => (
   <Link
     noColor
@@ -24,10 +28,19 @@ export const BreadcrumbLink = ({ href, children, asChild, ...ariaProps }: Breadc
   </Link>
 );
 
+/**
+ * @deprecated Use the new BreadcrumbLink with `current=true` from `@ogcio/design-system-react/next`
+ */
 export const BreadcrumbCurrentLink = (props: BreadcrumbLinkProps) => <BreadcrumbLink {...props} aria-current="page" />;
 
+/**
+ * @deprecated Use the new Breadcrumb components from `@ogcio/design-system-react/next`
+ */
 const BreadcrumbSeparator = () => <span className="gi-px-3 gi-text-gray-500">/</span>;
 
+/**
+ * @deprecated Use the new Breadcrumb from `@ogcio/design-system-react/next`
+ */
 export const Breadcrumbs = ({ children, iconStart }: BreadcrumbProps) => {
   const items = Array.isArray(children) ? children : [children];
 

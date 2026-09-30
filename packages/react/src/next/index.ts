@@ -25,3 +25,11 @@ export { default as SideNavItem, type Props as SideNavItemProps } from '@/atoms/
 export { default as SideNavItemLink, type SideNavItemLinkProps } from '@/SideNav/SideNavItemLink';
 export { default as SideNavHeading, type Props as SideNavHeadingProps } from '@/atoms/sidenav/SideNavHeading';
 export { default as SideNavGroup, type Props as SideNavGroupProps } from '@/atoms/sidenav/SideNavGroup';
+
+// Breadcrumbs
+export { default as Breadcrumbs, type Props as BreadcrumbsProps } from '@/atoms/breadcrumbs/Breadcrumbs';
+export { default as BreadcrumbLink, type Props as BreadcrumbLinkProps } from '@/atoms/breadcrumbs/BreadcrumbLink';
+export {
+  default as BreadcrumbEllipsis,
+  type Props as BreadcrumbEllipsisProps,
+} from '@/atoms/breadcrumbs/BreadcrumbEllipsis';

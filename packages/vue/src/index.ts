@@ -50,3 +50,11 @@ export { default as SideNavItem, type Props as SideNavItemProps } from './atoms/
 export { default as SideNavItemLink, type Props as SideNavItemLinkProps } from './atoms/sidenav/SideNavItemLink.vue';
 export { default as SideNavHeading, type Props as SideNavHeadingProps } from './atoms/sidenav/SideNavHeading.vue';
 export { default as SideNavGroup, type Props as SideNavGroupProps } from './atoms/sidenav/SideNavGroup.vue';
+
+// Breadcrumbs
+export { default as Breadcrumbs, type Props as BreadcrumbsProps } from './atoms/breadcrumbs/Breadcrumbs.vue';
+export { default as BreadcrumbLink, type Props as BreadcrumbLinkProps } from './atoms/breadcrumbs/BreadcrumbLink.vue';
+export {
+  default as BreadcrumbEllipsis,
+  type Props as BreadcrumbEllipsisProps,
+} from './atoms/breadcrumbs/BreadcrumbEllipsis.vue';
