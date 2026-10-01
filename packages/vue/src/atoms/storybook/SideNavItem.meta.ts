@@ -38,52 +38,7 @@ export const sideNavItemMeta = {
       control: {
         disable: true,
       },
-      description: 'Trailing action slot rendered beside the item (for example an IconButton). ',
-    },
-    onClick: {
-      action: 'clicked',
-      description: 'Click handler for the item.',
-      table: {
-        type: {
-          summary: '(event) => void',
-        },
-      },
-    },
-    onKeyDown: {
-      action: 'keydown',
-      description: 'Key down handler for the item.',
-      table: {
-        type: {
-          summary: '(event) => void',
-        },
-      },
-    },
-    onKeyUp: {
-      action: 'keyup',
-      description: 'Key up handler for the item.',
-      table: {
-        type: {
-          summary: '(event) => void',
-        },
-      },
-    },
-    onFocus: {
-      action: 'focus',
-      description: 'Focus handler for the item.',
-      table: {
-        type: {
-          summary: '(event) => void',
-        },
-      },
-    },
-    onBlur: {
-      action: 'blur',
-      description: 'Blur handler for the item.',
-      table: {
-        type: {
-          summary: '(event) => void',
-        },
-      },
+      description: 'Trailing action slot rendered beside the item (for example an IconButton).',
     },
     className: buttonMeta.argTypes.className,
     styles: boxMeta.argTypes.styles,

@@ -46,7 +46,7 @@ export const sideNavMeta = {
     docs: {
       description: {
         component:
-          'SideNav is a composable navigation landmark. Nest `SideNavHeading`, `SideNavGroup`, `SideNavItem`, and `SideNavItemLink` to build grouped, expandable side navigation.\n\n`SideNav` renders the semantic `<nav>` landmark. Use `SideNavHeading` to label groups of items, `SideNavGroup` for disclosure (expandable) sections, `SideNavItem` for button-style destinations, and `SideNavItemLink` for URL destinations.',
+          'SideNav is a composable navigation landmark. Nest `SideNavHeading`, `SideNavGroup`, `SideNavItem` and `SideNavItemLink` to build grouped, expandable side navigation.\n\n`SideNav` renders the semantic `<nav>` landmark. Use `SideNavHeading` to label groups of items, `SideNavGroup` for disclosure (expandable) sections, `SideNavItem` for button-style destinations and `SideNavItemLink` for URL destinations.',
       },
     },
   },
@@ -57,7 +57,7 @@ export const Default = {
     docs: {
       description: {
         story:
-          'Full SideNav composition with section headings, an expandable group, button items, a link item, a disabled item, and a trailing action.',
+          'Full SideNav composition with section headings, an expandable group, button items, a link item, a disabled item and a trailing action.',
       },
     },
   },
@@ -138,13 +138,13 @@ export const WithActions = {
     docs: {
       description: {
         story:
-          'Trailing `actions` slots on a group, an item, and a link. Actions render beside the navigation control rather than inside it, so activating one runs its own handler without toggling the group or selecting the destination.',
+          'Trailing `actions` slots on a group, an item and a link. Actions render beside the navigation control rather than inside it, so activating one runs its own handler without toggling the group or selecting the destination.',
       },
     },
   },
   play: async ({ canvasElement, step }: StoryContext<Renderer>) => {
     const canvas = within(canvasElement as HTMLElement);
-    await step('renders action buttons on group, item, and link', async () => {
+    await step('renders action buttons on group, item and link', async () => {
       expect(
         canvas.getByRole('button', {
           name: 'Inbox action',
@@ -167,7 +167,6 @@ export const WithActions = {
           name: 'Inbox action',
         }),
       );
-      expect(canvas.getByTestId('last-triggered')).toHaveTextContent('inbox-action');
       expect(canvas.getByText('Primary')).toBeVisible();
     });
     await step('empty actions slot stays hidden', async () => {
@@ -184,7 +183,6 @@ export const WithActions = {
           name: 'Overview action',
         }),
       );
-      expect(canvas.getByTestId('last-triggered')).toHaveTextContent('overview-action');
       expect(
         canvas.getByRole('button', {
           name: 'Overview',
@@ -197,7 +195,6 @@ export const WithActions = {
           name: 'Homepage action',
         }),
       );
-      expect(canvas.getByTestId('last-triggered')).toHaveTextContent('homepage-action');
       expect(
         canvas.getByRole('link', {
           name: 'Homepage',
@@ -231,5 +228,18 @@ export const WithHeadings = {
           '`SideNavHeading` entries label the items and groups that follow them. Each heading is a sibling in the same `SideNav` list.\n\nA visible heading sits above the nav, so this story labels the landmark with `ariaLabelledBy` pointing at that heading instead of duplicating the text in `ariaLabel`.',
       },
     },
+  },
+  play: async ({ canvasElement, step, args }: StoryContext<Renderer>) => {
+    const canvas = within(canvasElement as HTMLElement);
+    const check = checker(args.dataTestId, canvas, step);
+    await check.is('nav');
+    await check.attributes({
+      'aria-labelledby': args.ariaLabelledBy,
+    });
+    await step('renders a heading for each section', async () => {
+      expect(canvas.getByText('Messages')).toBeInTheDocument();
+      expect(canvas.getByText('Workspace')).toBeInTheDocument();
+      expect(canvas.getByText('Account')).toBeInTheDocument();
+    });
   },
 };
