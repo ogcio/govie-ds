@@ -24,34 +24,8 @@ export const sideNavItemMeta = {
     disabled: buttonMeta.argTypes.disabled,
     actions: {
       control: { disable: true },
-      description: 'Trailing action slot rendered beside the item (for example an IconButton). ',
+      description: 'Trailing action slot rendered beside the item (for example an IconButton).',
     },
-    onClick: {
-      action: 'clicked',
-      description: 'Click handler for the item.',
-      table: { type: { summary: '(event) => void' } },
-    },
-    onKeyDown: {
-      action: 'keydown',
-      description: 'Key down handler for the item.',
-      table: { type: { summary: '(event) => void' } },
-    },
-    onKeyUp: {
-      action: 'keyup',
-      description: 'Key up handler for the item.',
-      table: { type: { summary: '(event) => void' } },
-    },
-    onFocus: {
-      action: 'focus',
-      description: 'Focus handler for the item.',
-      table: { type: { summary: '(event) => void' } },
-    },
-    onBlur: {
-      action: 'blur',
-      description: 'Blur handler for the item.',
-      table: { type: { summary: '(event) => void' } },
-    },
-
     className: buttonMeta.argTypes.className,
     styles: boxMeta.argTypes.styles,
     id: boxMeta.argTypes.id,
@@ -71,7 +45,6 @@ export const sideNavItemMeta = {
       description: 'Overrides the default tab order. Automatically set to `-1` when `ariaHidden` is true.',
       table: { type: { summary: 'number' } },
     },
-
     dataTestId: boxMeta.argTypes.dataTestId,
   } satisfies ArgTypes<Props>,
   parameters: {

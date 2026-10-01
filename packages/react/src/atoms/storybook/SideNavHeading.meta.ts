@@ -25,7 +25,7 @@ export const sideNavHeadingMeta = {
     docs: {
       description: {
         component:
-          'Extra description in a SideNav list. It sits beside `SideNavItem`, `SideNavItemLink`, and `SideNavGroup` siblings and draws a visual break. Nest items with `SideNavGroup`.',
+          'Non-interactive heading that labels the items following it in a SideNav list. It is a visual separator between sibling `SideNavItem`, `SideNavItemLink` and `SideNavGroup` entries, not a container: use `SideNavGroup` to nest items.',
       },
     },
   },

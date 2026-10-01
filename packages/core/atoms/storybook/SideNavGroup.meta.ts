@@ -32,31 +32,6 @@ export const sideNavGroupMeta = {
       control: { disable: true },
       description: 'Trailing action slot rendered beside the group header (for example an IconButton).',
     },
-    onClick: {
-      action: 'clicked',
-      description: 'Click handler for the group header. Use this to toggle `open`.',
-      table: { type: { summary: '(event) => void' } },
-    },
-    onKeyDown: {
-      action: 'keydown',
-      description: 'Key down handler for the group header.',
-      table: { type: { summary: '(event) => void' } },
-    },
-    onKeyUp: {
-      action: 'keyup',
-      description: 'Key up handler for the group header.',
-      table: { type: { summary: '(event) => void' } },
-    },
-    onFocus: {
-      action: 'focus',
-      description: 'Focus handler for the group header.',
-      table: { type: { summary: '(event) => void' } },
-    },
-    onBlur: {
-      action: 'blur',
-      description: 'Blur handler for the group header.',
-      table: { type: { summary: '(event) => void' } },
-    },
     className: boxMeta.argTypes.className,
     styles: boxMeta.argTypes.styles,
     id: boxMeta.argTypes.id,
@@ -119,7 +94,8 @@ export const ControlledOpen = {
   parameters: {
     docs: {
       description: {
-        story: 'Open disclosure state. Nested items are visible and the chevron points up.',
+        story:
+          'Group that starts open. The parent toggles `open` from `onClick`, so activating the header hides and shows the nested items.',
       },
     },
   },
@@ -128,15 +104,19 @@ export const ControlledOpen = {
     const check = checker(args.dataTestId, canvas, step);
     await check.is('button');
 
-    await step('Toggling open closes the group', async () => {
-      const group = canvas.getByTestId('side-nav-group-open');
-      await userEvent.click(group);
-      expect(canvas.getByText('Primary')).not.toBeVisible();
-      expect(canvas.getByText('Social')).not.toBeVisible();
-      await userEvent.click(group);
+    await step('nested items are visible when open', async () => {
+      expect(canvas.getByText('Primary')).toBeVisible();
+      expect(canvas.getByText('Social')).toBeVisible();
     });
 
-    await step('nested items are visible when open', async () => {
+    await step('clicking the header closes the group', async () => {
+      await userEvent.click(canvas.getByTestId(args.dataTestId));
+      expect(canvas.getByText('Primary')).not.toBeVisible();
+      expect(canvas.getByText('Social')).not.toBeVisible();
+    });
+
+    await step('clicking the header again reopens the group', async () => {
+      await userEvent.click(canvas.getByTestId(args.dataTestId));
       expect(canvas.getByText('Primary')).toBeVisible();
       expect(canvas.getByText('Social')).toBeVisible();
     });

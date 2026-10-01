@@ -33,13 +33,6 @@ export const sideNavItemLinkMeta = {
     lang: linkMeta.argTypes.lang,
     styles: linkMeta.argTypes.styles,
     dataTestId: linkMeta.argTypes.dataTestId,
-    onClick: sideNavItemMeta.argTypes.onClick,
-    onKeyDown: sideNavItemMeta.argTypes.onKeyDown,
-    onKeyUp: {
-      action: 'keyup',
-      description: 'Key up handler for the link.',
-      table: { type: { summary: '(event) => void' } },
-    },
   } satisfies ArgTypes<Props>,
   parameters: {
     docs: {
