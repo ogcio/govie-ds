@@ -14,7 +14,7 @@
       })
     "
   >
-    <GiDivider
+    <CoreDivider
       orientation="vertical"
       :id="id"
       :dataTestId="dataTestId"
@@ -24,13 +24,13 @@
           className: className,
         })
       "
-    ></GiDivider>
+    ></CoreDivider>
   </li>
 </template>
 
 <script setup lang="ts">
 import { tv } from 'tailwind-variants';
-import GiDivider from '../Divider.vue';
+import CoreDivider from '../Divider.vue';
 import { getVisibility } from './HeaderNavItem.styles';
 import type { VisibleValue } from './HeaderNavItem.styles';
 const listClasses = tv({

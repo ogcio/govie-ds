@@ -2,7 +2,7 @@ import type { StoryObj } from '@storybook/angular-vite';
 import { within, expect } from 'storybook/test';
 import { footerMeta, CompleteFooter as CompleteFooterStory } from '@/atoms/storybook/Footer.meta';
 import { Footer, FooterSection, FooterLogo, Link, Grid } from '@/atoms';
-import Divider from '@/atoms/Divider';
+import { GiDivider } from '@/Divider';
 import Stack from '@/atoms/Stack';
 import { GiText } from '@/Text';
 import { GiH4 } from '@/heading/H4';
@@ -32,7 +32,7 @@ export const CompleteFooter: StoryObj = {
         FooterLogo,
         Grid,
         GiH4,
-        Divider,
+        GiDivider,
         Link,
         Stack,
         GiText,
@@ -53,7 +53,7 @@ export const CompleteFooter: StoryObj = {
           <gi-grid [container]="true" [columns]="{ base: 4, md: 8, lg: 12 }" gap="4" dataTestId="primary">
             <gi-grid [size]="{ base: 4, md: 4, lg: 3 }">
               <gi-h4 class="gi-my-4">Services</gi-h4>
-              <gi-divider className="gi-my-4"></gi-divider>
+              <gi-divider class="gi-my-4"></gi-divider>
               <ul class="gi-space-y-2">
                 <li>
                   <gi-link variant="inline" appearance="inherit" href="/services/public-services">Public Services</gi-link>
@@ -68,7 +68,7 @@ export const CompleteFooter: StoryObj = {
             </gi-grid>
             <gi-grid [size]="{ base: 4, md: 4, lg: 3 }">
               <gi-h4 class="gi-my-4">Departments</gi-h4>
-              <gi-divider className="gi-my-4"></gi-divider>
+              <gi-divider class="gi-my-4"></gi-divider>
               <ul class="gi-space-y-2">
                 <li>
                   <gi-link variant="inline" appearance="inherit" href="/departments/health">Department of Health</gi-link>
@@ -83,7 +83,7 @@ export const CompleteFooter: StoryObj = {
             </gi-grid>
             <gi-grid [size]="{ base: 4, md: 4, lg: 3 }">
               <gi-h4 class="gi-my-4">Publications</gi-h4>
-              <gi-divider className="gi-my-4"></gi-divider>
+              <gi-divider class="gi-my-4"></gi-divider>
               <ul class="gi-space-y-2">
                 <li>
                   <gi-link variant="inline" appearance="inherit" href="/publications/reports">Reports</gi-link>
@@ -98,7 +98,7 @@ export const CompleteFooter: StoryObj = {
             </gi-grid>
             <gi-grid [size]="{ base: 4, md: 4, lg: 3 }">
               <gi-h4 class="gi-my-4">Contact</gi-h4>
-              <gi-divider className="gi-my-4"></gi-divider>
+              <gi-divider class="gi-my-4"></gi-divider>
               <ul class="gi-space-y-2">
                 <li>
                   <gi-link variant="inline" appearance="inherit" href="/contact/find-an-office">Find an Office</gi-link>
@@ -113,7 +113,7 @@ export const CompleteFooter: StoryObj = {
             </gi-grid>
           </gi-grid>
 
-          <gi-divider className="gi-my-8"></gi-divider>
+          <gi-divider class="gi-my-8"></gi-divider>
           <gi-stack id="lower-section" [direction]="{ base: 'column', md: 'row' }" [gap]="6">
             <gi-stack id="left-side-content" direction="column" [gap]="6">
               <gi-stack [direction]="{ base: 'column', md: 'row' }" [gap]="4" [wrap]="true">

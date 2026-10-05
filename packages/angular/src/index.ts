@@ -14,4 +14,4 @@ export { GiBox } from './Box';
 export { default as Container, type Props as ContainerProps } from './atoms/Container';
 export { default as Grid, type Props as GridProps } from './atoms/Grid';
 export { default as Stack, type Props as StackProps } from './atoms/Stack';
-export { default as Divider, type Props as DividerProps } from './atoms/Divider';
+export { GiDivider, GiDividerDirective } from './Divider';

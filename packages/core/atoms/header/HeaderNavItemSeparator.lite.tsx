@@ -1,6 +1,6 @@
 import { useDefaultProps, useMetadata } from '@builder.io/mitosis';
 import { tv } from 'tailwind-variants';
-import GiDivider from '../Divider.lite';
+import CoreDivider from '../Divider.lite';
 import { getVisibility } from './HeaderNavItem.styles';
 import type { VisibleValue } from './HeaderNavItem.styles';
 
@@ -22,7 +22,7 @@ export type Props = {
 export default function HeaderNavItemSeparator(props: Props) {
   return (
     <li role="none" aria-hidden={true} class={listClasses({ className: getVisibility(props.visible) })}>
-      <GiDivider
+      <CoreDivider
         orientation="vertical"
         id={props.id}
         dataTestId={props.dataTestId}
