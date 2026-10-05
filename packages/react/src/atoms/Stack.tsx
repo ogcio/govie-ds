@@ -19,7 +19,7 @@ import { Direction } from './constants';
 import type { AlignItems, Justify, ResponsiveValue, SpacingScale, ValueOf } from './constants';
 import type { Props as BoxProps } from './Box';
 import { getAlignItems, getJustify, resolveResponsive } from './utilities';
-import GiBox from './Box';
+import CoreBox from './Box';
 const getDirection = (direction: Props['direction']) => direction ?? Direction.COLUMN;
 const directionToClass = (direction: string, prefix: string): string =>
   direction === 'row' ? `${prefix}gi-flex-row` : `${prefix}gi-flex-col`;
@@ -59,7 +59,7 @@ const classes = tv({
 
 function Stack(props: Props) {
   return (
-    <GiBox
+    <CoreBox
       id={props.id}
       role={props.role}
       ariaLabel={props.ariaLabel}
@@ -78,7 +78,7 @@ function Stack(props: Props) {
       dataTestId={props.dataTestId}
     >
       {props.children}
-    </GiBox>
+    </CoreBox>
   );
 }
 

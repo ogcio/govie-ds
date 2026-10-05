@@ -20,6 +20,12 @@ export default defineConfig([
     },
   },
   {
+    files: ['**/src/atoms/**/*.ts'],
+    rules: {
+      '@angular-eslint/component-selector': ['error', { type: 'element', prefix: ['gi', 'core'], style: 'kebab-case' }],
+    },
+  },
+  {
     files: ['**/*.html'],
     extends: [angular.configs.templateRecommended, angular.configs.templateAccessibility],
     rules: {

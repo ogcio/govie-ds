@@ -10,7 +10,7 @@ export { GiH5, GiH5Directive } from './heading/H5';
 export { GiH6, GiH6Directive } from './heading/H6';
 
 // Layout
-export { default as Box, type Props as BoxProps } from './atoms/Box';
+export { GiBox } from './Box';
 export { default as Container, type Props as ContainerProps } from './atoms/Container';
 export { default as Grid, type Props as GridProps } from './atoms/Grid';
 export { default as Stack, type Props as StackProps } from './atoms/Stack';

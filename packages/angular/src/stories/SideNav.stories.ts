@@ -1,6 +1,6 @@
 import type { StoryObj } from '@storybook/angular-vite';
 import * as stories from '@/atoms/storybook/SideNav.meta';
-import Box from '@/atoms/Box';
+import { GiBox } from '@/Box';
 import { IconButton, MailIcon, MoreVerticalIcon } from '@/atoms';
 import { GiText } from '@/Text';
 import { GiH2 } from '@/heading/H2';
@@ -25,7 +25,7 @@ const sideNavImports = [
   SideNavItem,
   SideNavItemLink,
   SideNavGroup,
-  Box,
+  GiBox,
   GiH2,
   MailIcon,
   IconButton,
@@ -67,7 +67,7 @@ export const Default: Story = {
           [open]="inboxOpen"
           (onClick)="toggleInbox()"
         >
-          <gi-box ngProjectAs="[label]" className="gi-flex gi-gap-1">
+          <gi-box ngProjectAs="[label]" class="gi-flex gi-gap-1">
             <gi-mail-icon></gi-mail-icon>
             Inbox
           </gi-box>
@@ -159,7 +159,7 @@ export const WithActions: Story = {
           [open]="inboxOpen"
           (onClick)="toggleInbox()"
         >
-          <gi-box ngProjectAs="[label]" className="gi-flex gi-justify-between gi-items-center">
+          <gi-box ngProjectAs="[label]" class="gi-flex gi-justify-between gi-items-center">
             <gi-text>Inbox</gi-text>
             <strong class="gi-tag gi-tag-counter gi-tag-size-default">3</strong>
           </gi-box>

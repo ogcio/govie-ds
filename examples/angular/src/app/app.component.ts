@@ -1,10 +1,10 @@
 import { Component } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
-import { Box } from '@ogcio/design-system-angular';
+import { GiBox } from '@ogcio/design-system-angular';
 
 @Component({
   selector: 'app-root',
-  imports: [RouterOutlet, Box],
+  imports: [RouterOutlet, GiBox],
   templateUrl: './app.component.html',
   styleUrl: './app.component.scss',
 })

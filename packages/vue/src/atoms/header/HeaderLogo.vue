@@ -5,7 +5,7 @@
 -->
 
 <template>
-  <GiBox
+  <CoreBox
     :id="id"
     :className="
       classes({
@@ -15,12 +15,12 @@
     :styles="styles"
     :dataTestId="dataTestId"
     ><slot
-  /></GiBox>
+  /></CoreBox>
 </template>
 
 <script setup lang="ts">
 import { tv } from 'tailwind-variants';
-import GiBox from '../Box.vue';
+import CoreBox from '../Box.vue';
 const classes = tv({
   base: 'gi-flex gi-flex-none gi-rounded-sm',
 });

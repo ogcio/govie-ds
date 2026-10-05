@@ -19,7 +19,7 @@ import _ from 'lodash';
 import type { ResponsiveValue, BreakpointKey, SpacingScale } from './constants';
 import type { Props as BoxProps } from './Box';
 import { resolveResponsive } from './utilities';
-import GiBox from './Box';
+import CoreBox from './Box';
 const DEFAULT_COLUMNS: Partial<Record<BreakpointKey, SpacingScale>> = {
   base: 4,
   sm: 6,
@@ -33,7 +33,7 @@ const getGridClasses = (value: ResponsiveValue<SpacingScale> | undefined, prefix
 @Component({
   selector: 'gi-grid',
   template: `
-    <gi-box
+    <core-box
       [id]="id"
       [role]="role"
       [ariaLabel]="ariaLabel"
@@ -51,7 +51,7 @@ const getGridClasses = (value: ResponsiveValue<SpacingScale> | undefined, prefix
       "
       [dataTestId]="dataTestId"
       ><ng-content></ng-content
-    ></gi-box>
+    ></core-box>
   `,
   styles: [
     `
@@ -61,7 +61,7 @@ const getGridClasses = (value: ResponsiveValue<SpacingScale> | undefined, prefix
     `,
   ],
   standalone: true,
-  imports: [CommonModule, GiBox],
+  imports: [CommonModule, CoreBox],
 })
 export default class Grid {
   DEFAULT_COLUMNS = DEFAULT_COLUMNS;

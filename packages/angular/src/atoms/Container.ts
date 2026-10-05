@@ -20,7 +20,7 @@ import { MaxWidth } from './constants';
 import type { ValueOf } from './constants';
 import { clamp } from './utilities';
 import type { Props as BoxProps } from './Box';
-import GiBox from './Box';
+import CoreBox from './Box';
 const getMaxWidth = (x: Props['maxWidth']) => clamp(x, MaxWidth, MaxWidth.DEFAULT);
 const classes = tv({
   base: 'gi-container gi-mx-auto',
@@ -51,7 +51,7 @@ const classes = tv({
 @Component({
   selector: 'gi-container',
   template: `
-    <gi-box
+    <core-box
       [id]="id"
       [role]="role"
       [ariaLabel]="ariaLabel"
@@ -67,7 +67,7 @@ const classes = tv({
         })
       "
       ><ng-content></ng-content
-    ></gi-box>
+    ></core-box>
   `,
   styles: [
     `
@@ -77,7 +77,7 @@ const classes = tv({
     `,
   ],
   standalone: true,
-  imports: [CommonModule, GiBox],
+  imports: [CommonModule, CoreBox],
 })
 export default class Container {
   getMaxWidth = getMaxWidth;

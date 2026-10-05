@@ -1,5 +1,5 @@
 import type { StoryObj } from '@storybook/angular-vite';
-import Box from '@/atoms/Box';
+import { GiBox } from '@/Box';
 import Divider from '@/atoms/Divider';
 import Stack from '@/atoms/Stack';
 import Link from '@/atoms/Link';
@@ -17,7 +17,7 @@ export const Horizontal: StoryObj = {
   ...stories.Horizontal,
   render: (props) => ({
     props,
-    moduleMetadata: { imports: [Box, Divider, Stack] },
+    moduleMetadata: { imports: [GiBox, Divider, Stack] },
     template: `
       <gi-stack [gap]="2" [direction]="orientation === '${Orientation.VERTICAL}' ? 'row' : 'column'" className="gi-font-primary gi-text-sm">
         <gi-box>Content</gi-box>
@@ -36,7 +36,7 @@ export const Vertical: StoryObj = {
   ...stories.Vertical,
   render: (props) => ({
     props,
-    moduleMetadata: { imports: [Box, Divider, Stack] },
+    moduleMetadata: { imports: [GiBox, Divider, Stack] },
     template: `
       <gi-stack [direction]="'row'" [gap]="2" className="gi-font-primary gi-text-sm">
         <gi-box>Left</gi-box>
@@ -55,7 +55,7 @@ export const RichText: StoryObj = {
   ...stories.RichText,
   render: (props) => ({
     props,
-    moduleMetadata: { imports: [Box, Divider, Stack, Link] },
+    moduleMetadata: { imports: [GiBox, Divider, Stack, Link] },
     template: `
       <gi-stack [direction]="'row'" [gap]="2" className="gi-font-primary gi-text-sm">
         <gi-box><gi-link href="#" variant="inline">Left</gi-link></gi-box>

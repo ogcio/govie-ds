@@ -15,7 +15,7 @@ export type Props = {
 };
 
 import { tv } from 'tailwind-variants';
-import GiBox from '../Box';
+import CoreBox from '../Box';
 const classes = tv({
   base: [
     'gi-min-w-0 gi-flex-1 gi-p-2',
@@ -27,7 +27,7 @@ const classes = tv({
 
 function HeaderTitle(props: Props) {
   return (
-    <GiBox
+    <CoreBox
       id={props.id}
       className={classes({
         className: props.className,
@@ -36,7 +36,7 @@ function HeaderTitle(props: Props) {
       dataTestId={props.dataTestId}
     >
       {props.children}
-    </GiBox>
+    </CoreBox>
   );
 }
 

@@ -5,7 +5,7 @@
 -->
 
 <template>
-  <GiBox
+  <CoreBox
     :id="id"
     :role="role"
     :ariaLabel="ariaLabel"
@@ -21,7 +21,7 @@
       })
     "
     ><slot
-  /></GiBox>
+  /></CoreBox>
 </template>
 
 <script setup lang="ts">
@@ -30,7 +30,7 @@ import { MaxWidth } from './constants';
 import type { ValueOf } from './constants';
 import { clamp } from './utilities';
 import type { Props as BoxProps } from './Box.vue';
-import GiBox from './Box.vue';
+import CoreBox from './Box.vue';
 const getMaxWidth = (x: Props['maxWidth']) => clamp(x, MaxWidth, MaxWidth.DEFAULT);
 const classes = tv({
   base: 'gi-container gi-mx-auto',
