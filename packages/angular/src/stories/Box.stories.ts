@@ -1,7 +1,7 @@
 import type { StoryObj } from '@storybook/angular-vite';
 import { GiBox } from '@/Box';
 import { GiContainer } from '@/Container';
-import Stack from '../atoms/Stack';
+import { GiStack } from '@/Stack';
 import {
   boxMeta,
   Default as boxDefault,
@@ -38,7 +38,7 @@ export const Default: StoryObj = {
 export const WithContainerAndStack: StoryObj = {
   ...boxWithContainerAndStack,
   render: () => ({
-    moduleMetadata: { imports: [GiBox, GiContainer, Stack] },
+    moduleMetadata: { imports: [GiBox, GiContainer, GiStack] },
     template: `
       <gi-container>
         <gi-stack [direction]="'row'" [gap]="4">

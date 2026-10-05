@@ -14,48 +14,11 @@ export type Props = {
   wrap?: boolean;
 } & BoxProps;
 
-import { tv } from 'tailwind-variants';
-import { Direction } from './constants';
-import type { AlignItems, Justify, ResponsiveValue, SpacingScale, ValueOf } from './constants';
+import type { AlignItems, Direction, Justify, ResponsiveValue, SpacingScale, ValueOf } from './constants';
 import type { Props as BoxProps } from './Box';
-import { getAlignItems, getJustify, resolveResponsive } from './utilities';
+import { getAlignItems, getJustify } from './utilities';
+import classes, { getDirectionClasses, getGapClasses } from './Stack.styles';
 import CoreBox from './Box';
-const getDirection = (direction: Props['direction']) => direction ?? Direction.COLUMN;
-const directionToClass = (direction: string, prefix: string): string =>
-  direction === 'row' ? `${prefix}gi-flex-row` : `${prefix}gi-flex-col`;
-const gapToClass = (gap: SpacingScale, prefix: string): string => `${prefix}gi-gap-${gap}`;
-
-// TODO: add twMerge to enable consumer `className` to override component-default utilities
-// TODO: add twMerge to enable consumer `className` to override component-default utilities
-const classes = tv({
-  base: ['gi-flex'],
-  variants: {
-    align: {
-      start: 'gi-items-start',
-      center: 'gi-items-center',
-      end: 'gi-items-end',
-      stretch: 'gi-items-stretch',
-      baseline: 'gi-items-baseline',
-    },
-    justify: {
-      start: 'gi-justify-start',
-      center: 'gi-justify-center',
-      end: 'gi-justify-end',
-      between: 'gi-justify-between',
-      around: 'gi-justify-around',
-      evenly: 'gi-justify-evenly',
-    },
-    wrap: {
-      true: 'gi-flex-wrap',
-      false: 'gi-flex-nowrap',
-    },
-  },
-  defaultVariants: {
-    align: 'start',
-    justify: 'start',
-    wrap: false,
-  },
-});
 
 function Stack(props: Props) {
   return (
@@ -69,11 +32,7 @@ function Stack(props: Props) {
         align: getAlignItems(props.align),
         justify: getJustify(props.justify),
         wrap: !!props.wrap,
-        className: [
-          resolveResponsive(getDirection(props.direction), directionToClass),
-          resolveResponsive(props.gap ?? 0, gapToClass),
-          props.className,
-        ],
+        className: [getDirectionClasses(props.direction), getGapClasses(props.gap), props.className],
       })}
       dataTestId={props.dataTestId}
     >

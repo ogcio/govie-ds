@@ -1,5 +1,5 @@
 import type { Meta, StoryObj } from '@storybook/angular-vite';
-import Stack from '@/atoms/Stack';
+import { GiStack } from '@/Stack';
 import { GiText, GiTextDirective } from '@/Text';
 import * as TextStoryMeta from '@/atoms/storybook/Text.meta';
 
@@ -56,7 +56,7 @@ export const Directive: Story = {
     },
   },
   render: () => ({
-    moduleMetadata: { imports: [Stack, GiTextDirective] },
+    moduleMetadata: { imports: [GiStack, GiTextDirective] },
     template: `
       <gi-stack [gap]="2">
         <span giText size="sm">Text sm</span>

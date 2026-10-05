@@ -18,7 +18,7 @@ import {
   MenuIcon,
 } from '@/atoms';
 import { GiText } from '@/Text';
-import Stack from '@/atoms/Stack';
+import { GiStack } from '@/Stack';
 import { GiDivider } from '@/Divider';
 import { LogoBlack, LogoHarpBlack, LogoHarpWhite, LogoWhite } from '@/atoms/icons/logos';
 
@@ -45,7 +45,7 @@ const headerImports = [
   HeaderNavItemSeparator,
   Link,
   GiText,
-  Stack,
+  GiStack,
   GiDivider,
   LogoWhite,
   LogoHarpWhite,
@@ -88,7 +88,7 @@ export const Default: StoryObj = {
               English
             </gi-header-nav-item-link>
           </gi-header-nav>
-          <gi-stack direction="row" className="gi-text-center gi-items-center gi-py-1">
+          <gi-stack direction="row" class="gi-text-center gi-items-center gi-py-1">
             <gi-text size="sm" class="gi-px-1">Hello Saoirse</gi-text>
             <gi-divider orientation="vertical" class="gi-my-1 gi-mx-1"></gi-divider>
             <gi-link
@@ -169,7 +169,7 @@ export const Light: StoryObj = {
               English
             </gi-header-nav-item-link>
           </gi-header-nav>
-          <gi-stack direction="row" className="gi-text-center gi-items-center gi-py-1">
+          <gi-stack direction="row" class="gi-text-center gi-items-center gi-py-1">
             <gi-text size="sm" class="gi-px-1">Hello Saoirse</gi-text>
             <gi-divider orientation="vertical" class="gi-my-1 gi-mx-1"></gi-divider>
             <gi-link
@@ -322,7 +322,7 @@ export const Desktop: StoryObj = {
               English
             </gi-header-nav-item-link>
           </gi-header-nav>
-          <gi-stack direction="row" className="gi-text-center gi-items-center gi-py-1">
+          <gi-stack direction="row" class="gi-text-center gi-items-center gi-py-1">
             <gi-text size="sm" class="gi-px-1">Hello Saoirse</gi-text>
             <gi-divider orientation="vertical" class="gi-my-1 gi-mx-1"></gi-divider>
             <gi-header-nav-item-link
@@ -424,7 +424,7 @@ export const MobileView: StoryObj = {
               English
             </gi-header-nav-item-link>
           </gi-header-nav>
-          <gi-stack direction="row" className="gi-text-center gi-items-center gi-py-1">
+          <gi-stack direction="row" class="gi-text-center gi-items-center gi-py-1">
             <gi-text size="sm" class="gi-px-1">Hello Saoirse</gi-text>
             <gi-divider orientation="vertical" class="gi-my-1 gi-mx-1"></gi-divider>
             <gi-link

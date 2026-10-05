@@ -4,7 +4,7 @@ import { footerMeta, CompleteFooter as CompleteFooterStory } from '@/atoms/story
 import { Footer, FooterSection, FooterLogo, Link } from '@/atoms';
 import { GiGrid } from '@/Grid';
 import { GiDivider } from '@/Divider';
-import Stack from '@/atoms/Stack';
+import { GiStack } from '@/Stack';
 import { GiText } from '@/Text';
 import { GiH4 } from '@/heading/H4';
 import { LogoGoldGreen } from '@/atoms/icons/logos';
@@ -35,7 +35,7 @@ export const CompleteFooter: StoryObj = {
         GiH4,
         GiDivider,
         Link,
-        Stack,
+        GiStack,
         GiText,
         LogoGoldGreen,
         XIcon,
