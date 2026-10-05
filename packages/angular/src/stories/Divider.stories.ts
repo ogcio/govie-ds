@@ -1,7 +1,7 @@
 import type { StoryObj } from '@storybook/angular-vite';
 import { GiBox } from '@/Box';
 import { GiDivider, GiDividerDirective } from '@/Divider';
-import Stack from '@/atoms/Stack';
+import { GiStack, GiStackDirective } from '@/Stack';
 import Link from '@/atoms/Link';
 import * as stories from '@/atoms/storybook/Divider.meta';
 import { Orientation } from '@/atoms/constants';
@@ -17,9 +17,9 @@ export const Horizontal: StoryObj = {
   ...stories.Horizontal,
   render: (props) => ({
     props,
-    moduleMetadata: { imports: [GiBox, GiDivider, Stack] },
+    moduleMetadata: { imports: [GiBox, GiDivider, GiStack] },
     template: `
-      <gi-stack [gap]="2" [direction]="orientation === '${Orientation.VERTICAL}' ? 'row' : 'column'" className="gi-font-primary gi-text-sm">
+      <gi-stack [gap]="2" [direction]="orientation === '${Orientation.VERTICAL}' ? 'row' : 'column'" class="gi-font-primary gi-text-sm">
         <gi-box>Content</gi-box>
         <gi-divider
           [orientation]="orientation"
@@ -36,9 +36,9 @@ export const Vertical: StoryObj = {
   ...stories.Vertical,
   render: (props) => ({
     props,
-    moduleMetadata: { imports: [GiBox, GiDivider, Stack] },
+    moduleMetadata: { imports: [GiBox, GiDivider, GiStack] },
     template: `
-      <gi-stack [direction]="'row'" [gap]="2" className="gi-font-primary gi-text-sm">
+      <gi-stack [direction]="'row'" [gap]="2" class="gi-font-primary gi-text-sm">
         <gi-box>Left</gi-box>
         <gi-divider
           [orientation]="orientation"
@@ -55,9 +55,9 @@ export const RichText: StoryObj = {
   ...stories.RichText,
   render: (props) => ({
     props,
-    moduleMetadata: { imports: [GiBox, GiDivider, Stack, Link] },
+    moduleMetadata: { imports: [GiBox, GiDivider, GiStack, Link] },
     template: `
-      <gi-stack [direction]="'row'" [gap]="2" className="gi-font-primary gi-text-sm">
+      <gi-stack [direction]="'row'" [gap]="2" class="gi-font-primary gi-text-sm">
         <gi-box><gi-link href="#" variant="inline">Left</gi-link></gi-box>
         <gi-divider
           [orientation]="orientation"
@@ -79,13 +79,13 @@ export const Directive: StoryObj = {
     },
   },
   render: () => ({
-    moduleMetadata: { imports: [Stack, GiDividerDirective] },
+    moduleMetadata: { imports: [GiStackDirective, GiDividerDirective] },
     template: `
-      <gi-stack direction="row" [gap]="2" className="gi-font-primary gi-text-sm">
+      <div giStack direction="row" [gap]="2" class="gi-font-primary gi-text-sm">
         <span>Left</span>
         <hr giDivider orientation="vertical" />
         <span>Right</span>
-      </gi-stack>
+      </div>
     `,
   }),
 };

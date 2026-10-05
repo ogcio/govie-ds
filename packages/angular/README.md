@@ -53,7 +53,7 @@ import { GiContainer, GiH1, GiParagraph } from '@ogcio/design-system-angular';
 export class AppComponent {}
 ```
 
-The package currently exports the layout primitives (`GiBox`, `GiContainer`, `GiGrid`, `Stack`, `GiDivider`) and the typography components (`GiText`, `GiParagraph`, `GiInsetText`, `GiH1`–`GiH6`). Interactive and composite components are built but not yet exported while their Angular API is settled.
+The package currently exports the layout primitives (`GiBox`, `GiContainer`, `GiGrid`, `GiStack`, `GiDivider`) and the typography components (`GiText`, `GiParagraph`, `GiInsetText`, `GiH1`–`GiH6`). Interactive and composite components are built but not yet exported while their Angular API is settled.
 
 ### Icons
 

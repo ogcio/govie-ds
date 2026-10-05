@@ -1,5 +1,5 @@
 import type { StoryObj } from '@storybook/angular-vite';
-import Stack from '@/atoms/Stack';
+import { GiStack } from '@/Stack';
 import { GiParagraph, GiParagraphDirective } from '@/Paragraph';
 import {
   paragraphMeta,
@@ -121,7 +121,7 @@ export const Directive: StoryObj = {
   },
   render: () => ({
     props: { content: paragraphMeta.loremIpsum },
-    moduleMetadata: { imports: [Stack, GiParagraphDirective] },
+    moduleMetadata: { imports: [GiStack, GiParagraphDirective] },
     template: `
       <gi-stack [gap]="2">
         <p giParagraph size="sm">{{content}}</p>

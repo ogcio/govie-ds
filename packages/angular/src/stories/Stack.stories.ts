@@ -1,6 +1,6 @@
 import { omit } from 'lodash';
 import type { StoryObj } from '@storybook/angular-vite';
-import Stack from '../atoms/Stack';
+import { GiStack, GiStackDirective } from '@/Stack';
 import {
   stackMeta,
   Default as stackDefault,
@@ -34,7 +34,7 @@ export const Default: StoryObj = {
   ...stackDefault,
   render: (props) => ({
     props,
-    moduleMetadata: { imports: [Stack] },
+    moduleMetadata: { imports: [GiStack] },
     template: `
       <gi-stack [dataTestId]="dataTestId" [id]="id" [role]="role" [ariaLabel]="ariaLabel" [direction]="direction" [gap]="gap" [align]="align" [justify]="justify" [wrap]="wrap">
         <div class="${itemClasses}">Item 1</div>
@@ -48,7 +48,7 @@ export const Default: StoryObj = {
 export const Directions: StoryObj = {
   ...stackDirections,
   render: () => ({
-    moduleMetadata: { imports: [Stack] },
+    moduleMetadata: { imports: [GiStack] },
     template: `
       <div class="gi-flex gi-flex-col gi-gap-6">
         <div>
@@ -75,12 +75,12 @@ export const Directions: StoryObj = {
 export const Alignments: StoryObj = {
   ...stackAlignments,
   render: () => ({
-    moduleMetadata: { imports: [Stack] },
+    moduleMetadata: { imports: [GiStack] },
     template: `
       <div class="gi-flex gi-flex-col gi-gap-6">
         <div>
           <p class="gi-text-sm gi-font-bold gi-mb-2 gi-font-primary">start</p>
-          <gi-stack [dataTestId]="'stack-align-start'" direction="row" [gap]="2" align="start" [className]="'gi-h-[120px]'">
+          <gi-stack [dataTestId]="'stack-align-start'" direction="row" [gap]="2" align="start" [class]="'gi-h-[120px]'">
             <div class="${itemClasses}">Item 1</div>
             <div class="gi-bg-gray-300 gi-p-2 gi-h-[80px] gi-w-[100px] gi-flex gi-items-center gi-justify-center">Tall</div>
             <div class="${itemClasses}">Item 3</div>
@@ -88,7 +88,7 @@ export const Alignments: StoryObj = {
         </div>
         <div>
           <p class="gi-text-sm gi-font-bold gi-mb-2 gi-font-primary">center</p>
-          <gi-stack [dataTestId]="'stack-align-center'" direction="row" [gap]="2" align="center" [className]="'gi-h-[120px]'">
+          <gi-stack [dataTestId]="'stack-align-center'" direction="row" [gap]="2" align="center" [class]="'gi-h-[120px]'">
             <div class="${itemClasses}">Item 1</div>
             <div class="gi-bg-gray-300 gi-p-2 gi-h-[80px] gi-w-[100px] gi-flex gi-items-center gi-justify-center">Tall</div>
             <div class="${itemClasses}">Item 3</div>
@@ -96,7 +96,7 @@ export const Alignments: StoryObj = {
         </div>
         <div>
           <p class="gi-text-sm gi-font-bold gi-mb-2 gi-font-primary">end</p>
-          <gi-stack [dataTestId]="'stack-align-end'" direction="row" [gap]="2" align="end" [className]="'gi-h-[120px]'">
+          <gi-stack [dataTestId]="'stack-align-end'" direction="row" [gap]="2" align="end" [class]="'gi-h-[120px]'">
             <div class="${itemClasses}">Item 1</div>
             <div class="gi-bg-gray-300 gi-p-2 gi-h-[80px] gi-w-[100px] gi-flex gi-items-center gi-justify-center">Tall</div>
             <div class="${itemClasses}">Item 3</div>
@@ -104,7 +104,7 @@ export const Alignments: StoryObj = {
         </div>
         <div>
           <p class="gi-text-sm gi-font-bold gi-mb-2 gi-font-primary">stretch</p>
-          <gi-stack [dataTestId]="'stack-align-stretch'" direction="row" [gap]="2" align="stretch" [className]="'gi-h-[120px]'">
+          <gi-stack [dataTestId]="'stack-align-stretch'" direction="row" [gap]="2" align="stretch" [class]="'gi-h-[120px]'">
             <div class="${itemClasses}">Item 1</div>
             <div class="gi-bg-gray-300 gi-p-2 gi-h-[80px] gi-w-[100px] gi-flex gi-items-center gi-justify-center">Tall</div>
             <div class="${itemClasses}">Item 3</div>
@@ -112,7 +112,7 @@ export const Alignments: StoryObj = {
         </div>
         <div>
           <p class="gi-text-sm gi-font-bold gi-mb-2 gi-font-primary">baseline</p>
-          <gi-stack [dataTestId]="'stack-align-baseline'" direction="row" [gap]="2" align="baseline" [className]="'gi-h-[120px]'">
+          <gi-stack [dataTestId]="'stack-align-baseline'" direction="row" [gap]="2" align="baseline" [class]="'gi-h-[120px]'">
             <div class="${itemClasses}">Item 1</div>
             <div class="gi-bg-gray-300 gi-p-2 gi-h-[80px] gi-w-[100px] gi-flex gi-items-center gi-justify-center">Tall</div>
             <div class="${itemClasses}">Item 3</div>
@@ -126,7 +126,7 @@ export const Alignments: StoryObj = {
 export const Justifications: StoryObj = {
   ...stackJustifications,
   render: () => ({
-    moduleMetadata: { imports: [Stack] },
+    moduleMetadata: { imports: [GiStack] },
     template: `
       <div class="gi-flex gi-flex-col gi-gap-6">
         <div>
@@ -185,7 +185,7 @@ export const Justifications: StoryObj = {
 export const GapScale: StoryObj = {
   ...stackGapScale,
   render: () => ({
-    moduleMetadata: { imports: [Stack] },
+    moduleMetadata: { imports: [GiStack] },
     template: `
       <div class="gi-flex gi-flex-col gi-gap-6">
         <div>
@@ -245,7 +245,7 @@ export const Responsive: StoryObj = {
   ...stackResponsive,
   render: (props) => ({
     props,
-    moduleMetadata: { imports: [Stack] },
+    moduleMetadata: { imports: [GiStack] },
     template: `
       <gi-stack [dataTestId]="dataTestId" [direction]="direction" [gap]="gap" [align]="align" [justify]="justify" [id]="id" [role]="role" [ariaLabel]="ariaLabel">
         <div class="${itemClasses}">Item 1</div>
@@ -259,7 +259,7 @@ export const Responsive: StoryObj = {
 export const Wrapped: StoryObj = {
   ...stackWrapped,
   render: () => ({
-    moduleMetadata: { imports: [Stack] },
+    moduleMetadata: { imports: [GiStack] },
     template: `
       <gi-stack [dataTestId]="'stack-wrap-test'" direction="row" [gap]="2" [wrap]="true">
         <div class="${itemClasses}">Item 1</div>
@@ -275,6 +275,26 @@ export const Wrapped: StoryObj = {
         <div class="${itemClasses}">Item 11</div>
         <div class="${itemClasses}">Item 12</div>
       </gi-stack>
+    `,
+  }),
+};
+
+export const Directive: StoryObj = {
+  parameters: {
+    docs: {
+      description: {
+        story: 'Adds the `gi-stack` layout to an element you own, such as a list.',
+      },
+    },
+  },
+  render: () => ({
+    moduleMetadata: { imports: [GiStackDirective] },
+    template: `
+      <ul giStack direction="row" [gap]="2">
+        <li class="${itemClasses}">Item 1</li>
+        <li class="${itemClasses}">Item 2</li>
+        <li class="${itemClasses}">Item 3</li>
+      </ul>
     `,
   }),
 };
