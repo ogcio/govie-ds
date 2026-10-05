@@ -13,8 +13,9 @@ import { getSize, getWhitespace } from './atoms/utilities';
       [attr.id]="id"
       [attr.data-testid]="dataTestId"
       [attr.aria-hidden]="ariaHidden"
-      ><ng-content></ng-content
-    ></span>
+    >
+      <ng-content></ng-content>
+    </span>
   `,
   styles: [':host { display: contents; }'],
 })
