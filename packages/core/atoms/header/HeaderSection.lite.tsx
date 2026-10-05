@@ -4,7 +4,7 @@ import { clamp } from '../utilities';
 import { SurfaceVariant, SurfaceAppearance } from '../constants';
 import type { MaxWidth, ValueOf } from '../constants';
 import CoreBox from '../Box.lite';
-import GiContainer from '../Container.lite';
+import CoreContainer from '../Container.lite';
 
 useMetadata({ angular: { selector: 'gi-header-section' } });
 
@@ -34,12 +34,12 @@ export default function HeaderSection(props: Props) {
       ariaLabel={props.ariaLabel}
       dataTestId={props.dataTestId}
     >
-      <GiContainer
+      <CoreContainer
         maxWidth={props.maxWidth}
         className={contentClasses({ variant: getVariant(props.variant), className: props.className })}
       >
         {props.children}
-      </GiContainer>
+      </CoreContainer>
     </CoreBox>
   );
 }

@@ -21,7 +21,7 @@ import { SurfaceVariant } from '../constants';
 import type { MaxWidth, ValueOf } from '../constants';
 import { clamp } from '../utilities';
 import CoreBox from '../Box';
-import GiContainer from '../Container';
+import CoreContainer from '../Container';
 const getVariant = (x: Props['variant']) => clamp(x, SurfaceVariant, SurfaceVariant.PRIMARY);
 const classes = tv({
   base: 'gi-footer-section gi-w-full',
@@ -58,7 +58,7 @@ function FooterSection(props: Props) {
       styles={props.styles}
       dataTestId={props.dataTestId}
     >
-      <GiContainer
+      <CoreContainer
         maxWidth={props.maxWidth}
         className={contentClasses({
           variant: getVariant(props.variant),
@@ -66,7 +66,7 @@ function FooterSection(props: Props) {
         })}
       >
         {props.children}
-      </GiContainer>
+      </CoreContainer>
     </CoreBox>
   );
 }
