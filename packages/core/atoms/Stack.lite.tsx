@@ -4,7 +4,7 @@ import { Direction } from './constants';
 import type { AlignItems, Justify, ResponsiveValue, SpacingScale, ValueOf } from './constants';
 import type { Props as BoxProps } from './Box.lite';
 import { getAlignItems, getJustify, resolveResponsive } from './utilities';
-import GiBox from './Box.lite';
+import CoreBox from './Box.lite';
 
 useMetadata({ angular: { selector: 'gi-stack' } });
 
@@ -18,7 +18,7 @@ export type Props = {
 
 export default function Stack(props: Props) {
   return (
-    <GiBox
+    <CoreBox
       id={props.id}
       role={props.role}
       ariaLabel={props.ariaLabel}
@@ -37,7 +37,7 @@ export default function Stack(props: Props) {
       dataTestId={props.dataTestId}
     >
       {props.children}
-    </GiBox>
+    </CoreBox>
   );
 }
 

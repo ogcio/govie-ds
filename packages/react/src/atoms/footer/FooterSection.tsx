@@ -20,7 +20,7 @@ import { tv } from 'tailwind-variants';
 import { SurfaceVariant } from '../constants';
 import type { MaxWidth, ValueOf } from '../constants';
 import { clamp } from '../utilities';
-import GiBox from '../Box';
+import CoreBox from '../Box';
 import GiContainer from '../Container';
 const getVariant = (x: Props['variant']) => clamp(x, SurfaceVariant, SurfaceVariant.PRIMARY);
 const classes = tv({
@@ -50,7 +50,7 @@ const contentClasses = tv({
 
 function FooterSection(props: Props) {
   return (
-    <GiBox
+    <CoreBox
       id={props.id}
       className={classes({
         variant: getVariant(props.variant),
@@ -67,7 +67,7 @@ function FooterSection(props: Props) {
       >
         {props.children}
       </GiContainer>
-    </GiBox>
+    </CoreBox>
   );
 }
 

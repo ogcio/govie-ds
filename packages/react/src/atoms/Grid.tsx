@@ -17,7 +17,7 @@ import _ from 'lodash';
 import type { ResponsiveValue, BreakpointKey, SpacingScale } from './constants';
 import type { Props as BoxProps } from './Box';
 import { resolveResponsive } from './utilities';
-import GiBox from './Box';
+import CoreBox from './Box';
 const DEFAULT_COLUMNS: Partial<Record<BreakpointKey, SpacingScale>> = {
   base: 4,
   sm: 6,
@@ -30,7 +30,7 @@ const getGridClasses = (value: ResponsiveValue<SpacingScale> | undefined, prefix
 
 function Grid(props: Props) {
   return (
-    <GiBox
+    <CoreBox
       id={props.id}
       role={props.role}
       ariaLabel={props.ariaLabel}
@@ -47,7 +47,7 @@ function Grid(props: Props) {
       dataTestId={props.dataTestId}
     >
       {props.children}
-    </GiBox>
+    </CoreBox>
   );
 }
 

@@ -4,7 +4,7 @@ import { MaxWidth } from './constants';
 import type { ValueOf } from './constants';
 import { clamp } from './utilities';
 import type { Props as BoxProps } from './Box.lite';
-import GiBox from './Box.lite';
+import CoreBox from './Box.lite';
 
 export type Props = {
   inset?: boolean;
@@ -20,7 +20,7 @@ useDefaultProps({
 
 export default function Container(props: Props) {
   return (
-    <GiBox
+    <CoreBox
       id={props.id}
       role={props.role}
       ariaLabel={props.ariaLabel}
@@ -35,7 +35,7 @@ export default function Container(props: Props) {
       })}
     >
       {props.children}
-    </GiBox>
+    </CoreBox>
   );
 }
 

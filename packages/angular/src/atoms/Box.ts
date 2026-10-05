@@ -19,7 +19,7 @@ export type Props = {
 };
 
 @Component({
-  selector: 'gi-box',
+  selector: 'core-box',
   template: `
     <div
       [attr.id]="id"

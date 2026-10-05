@@ -5,7 +5,7 @@
 -->
 
 <template>
-  <GiBox
+  <CoreBox
     :id="id"
     :role="role"
     :ariaLabel="ariaLabel"
@@ -23,7 +23,7 @@
     "
     :dataTestId="dataTestId"
     ><slot
-  /></GiBox>
+  /></CoreBox>
 </template>
 
 <script setup lang="ts">
@@ -31,7 +31,7 @@ import _ from 'lodash';
 import type { ResponsiveValue, BreakpointKey, SpacingScale } from './constants';
 import type { Props as BoxProps } from './Box.vue';
 import { resolveResponsive } from './utilities';
-import GiBox from './Box.vue';
+import CoreBox from './Box.vue';
 const DEFAULT_COLUMNS: Partial<Record<BreakpointKey, SpacingScale>> = {
   base: 4,
   sm: 6,

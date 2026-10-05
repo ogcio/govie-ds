@@ -21,7 +21,7 @@ import { Direction } from './constants';
 import type { AlignItems, Justify, ResponsiveValue, SpacingScale, ValueOf } from './constants';
 import type { Props as BoxProps } from './Box';
 import { getAlignItems, getJustify, resolveResponsive } from './utilities';
-import GiBox from './Box';
+import CoreBox from './Box';
 const getDirection = (direction: Props['direction']) => direction ?? Direction.COLUMN;
 const directionToClass = (direction: string, prefix: string): string =>
   direction === 'row' ? `${prefix}gi-flex-row` : `${prefix}gi-flex-col`;
@@ -62,7 +62,7 @@ const classes = tv({
 @Component({
   selector: 'gi-stack',
   template: `
-    <gi-box
+    <core-box
       [id]="id"
       [role]="role"
       [ariaLabel]="ariaLabel"
@@ -82,7 +82,7 @@ const classes = tv({
       "
       [dataTestId]="dataTestId"
       ><ng-content></ng-content
-    ></gi-box>
+    ></core-box>
   `,
   styles: [
     `
@@ -92,7 +92,7 @@ const classes = tv({
     `,
   ],
   standalone: true,
-  imports: [CommonModule, GiBox],
+  imports: [CommonModule, CoreBox],
 })
 export default class Stack {
   getDirection = getDirection;

@@ -17,7 +17,7 @@ import { MaxWidth } from './constants';
 import type { ValueOf } from './constants';
 import { clamp } from './utilities';
 import type { Props as BoxProps } from './Box';
-import GiBox from './Box';
+import CoreBox from './Box';
 const getMaxWidth = (x: Props['maxWidth']) => clamp(x, MaxWidth, MaxWidth.DEFAULT);
 const classes = tv({
   base: 'gi-container gi-mx-auto',
@@ -48,7 +48,7 @@ const classes = tv({
 function Container(props: Props) {
   props = { gutters: true, ...props };
   return (
-    <GiBox
+    <CoreBox
       id={props.id}
       role={props.role}
       ariaLabel={props.ariaLabel}
@@ -63,7 +63,7 @@ function Container(props: Props) {
       })}
     >
       {props.children}
-    </GiBox>
+    </CoreBox>
   );
 }
 

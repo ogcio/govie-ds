@@ -3,7 +3,7 @@ import { useMetadata } from '@builder.io/mitosis';
 import type { ResponsiveValue, BreakpointKey, SpacingScale } from './constants';
 import type { Props as BoxProps } from './Box.lite';
 import { resolveResponsive } from './utilities';
-import GiBox from './Box.lite';
+import CoreBox from './Box.lite';
 
 useMetadata({ angular: { selector: 'gi-grid' } });
 
@@ -16,7 +16,7 @@ export type Props = {
 
 export default function Grid(props: Props) {
   return (
-    <GiBox
+    <CoreBox
       id={props.id}
       role={props.role}
       ariaLabel={props.ariaLabel}
@@ -33,7 +33,7 @@ export default function Grid(props: Props) {
       dataTestId={props.dataTestId}
     >
       {props.children}
-    </GiBox>
+    </CoreBox>
   );
 }
 

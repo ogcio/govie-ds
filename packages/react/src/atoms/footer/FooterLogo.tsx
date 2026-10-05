@@ -15,14 +15,14 @@ export type Props = {
 };
 
 import { tv } from 'tailwind-variants';
-import GiBox from '../Box';
+import CoreBox from '../Box';
 const classes = tv({
   base: 'gi-w-fit md:gi-ml-auto gi-mt-8 md:gi-mt-0',
 });
 
 function FooterLogo(props: Props) {
   return (
-    <GiBox
+    <CoreBox
       id={props.id}
       className={classes({
         className: props.className,
@@ -31,7 +31,7 @@ function FooterLogo(props: Props) {
       dataTestId={props.dataTestId}
     >
       {props.children}
-    </GiBox>
+    </CoreBox>
   );
 }
 

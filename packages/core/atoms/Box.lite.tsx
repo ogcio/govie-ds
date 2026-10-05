@@ -1,6 +1,6 @@
 import { useMetadata } from '@builder.io/mitosis';
 
-useMetadata({ angular: { selector: 'gi-box' } });
+useMetadata({ angular: { selector: 'core-box' } });
 
 export type Props = {
   className?: string;

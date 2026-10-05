@@ -5,7 +5,7 @@
 -->
 
 <template>
-  <GiBox
+  <CoreBox
     :id="id"
     :role="role"
     :ariaLabel="ariaLabel"
@@ -25,7 +25,7 @@
     "
     :dataTestId="dataTestId"
     ><slot
-  /></GiBox>
+  /></CoreBox>
 </template>
 
 <script setup lang="ts">
@@ -34,7 +34,7 @@ import { Direction } from './constants';
 import type { AlignItems, Justify, ResponsiveValue, SpacingScale, ValueOf } from './constants';
 import type { Props as BoxProps } from './Box.vue';
 import { getAlignItems, getJustify, resolveResponsive } from './utilities';
-import GiBox from './Box.vue';
+import CoreBox from './Box.vue';
 const getDirection = (direction: Props['direction']) => direction ?? Direction.COLUMN;
 const directionToClass = (direction: string, prefix: string): string =>
   direction === 'row' ? `${prefix}gi-flex-row` : `${prefix}gi-flex-col`;

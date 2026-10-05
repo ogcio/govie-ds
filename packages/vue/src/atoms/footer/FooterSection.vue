@@ -5,7 +5,7 @@
 -->
 
 <template>
-  <GiBox
+  <CoreBox
     :id="id"
     :className="
       classes({
@@ -23,7 +23,7 @@
         })
       "
       ><slot /></GiContainer
-  ></GiBox>
+  ></CoreBox>
 </template>
 
 <script setup lang="ts">
@@ -31,7 +31,7 @@ import { tv } from 'tailwind-variants';
 import { SurfaceVariant } from '../constants';
 import type { MaxWidth, ValueOf } from '../constants';
 import { clamp } from '../utilities';
-import GiBox from '../Box.vue';
+import CoreBox from '../Box.vue';
 import GiContainer from '../Container.vue';
 const getVariant = (x: Props['variant']) => clamp(x, SurfaceVariant, SurfaceVariant.PRIMARY);
 const classes = tv({
