@@ -34,15 +34,15 @@ The package includes a compiled stylesheet, so you do not need to configure Tail
 
 ## Usage
 
-All components are standalone and use the `gi-` selector prefix. Import them by name, add them to your component’s `imports` array and use their selectors in your template. For example, import `Container`, `GiH1` and `GiParagraph`:
+All components are standalone and use the `gi-` selector prefix. Import them by name, add them to your component’s `imports` array and use their selectors in your template. For example, import `GiContainer`, `GiH1` and `GiParagraph`:
 
 ```ts
 import { Component } from '@angular/core';
-import { Container, GiH1, GiParagraph } from '@ogcio/design-system-angular';
+import { GiContainer, GiH1, GiParagraph } from '@ogcio/design-system-angular';
 
 @Component({
   selector: 'app-root',
-  imports: [Container, GiH1, GiParagraph],
+  imports: [GiContainer, GiH1, GiParagraph],
   template: `
     <gi-container>
       <gi-h1>Apply for a passport</gi-h1>
@@ -53,7 +53,7 @@ import { Container, GiH1, GiParagraph } from '@ogcio/design-system-angular';
 export class AppComponent {}
 ```
 
-The package currently exports the layout primitives (`GiBox`, `Container`, `Grid`, `Stack`, `GiDivider`) and the typography components (`GiText`, `GiParagraph`, `GiInsetText`, `GiH1`–`GiH6`). Interactive and composite components are built but not yet exported while their Angular API is settled.
+The package currently exports the layout primitives (`GiBox`, `GiContainer`, `Grid`, `Stack`, `GiDivider`) and the typography components (`GiText`, `GiParagraph`, `GiInsetText`, `GiH1`–`GiH6`). Interactive and composite components are built but not yet exported while their Angular API is settled.
 
 ### Icons
 

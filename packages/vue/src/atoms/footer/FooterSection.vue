@@ -14,7 +14,7 @@
     "
     :styles="styles"
     :dataTestId="dataTestId"
-    ><GiContainer
+    ><CoreContainer
       :maxWidth="maxWidth"
       :className="
         contentClasses({
@@ -22,7 +22,7 @@
           className: className,
         })
       "
-      ><slot /></GiContainer
+      ><slot /></CoreContainer
   ></CoreBox>
 </template>
 
@@ -32,7 +32,7 @@ import { SurfaceVariant } from '../constants';
 import type { MaxWidth, ValueOf } from '../constants';
 import { clamp } from '../utilities';
 import CoreBox from '../Box.vue';
-import GiContainer from '../Container.vue';
+import CoreContainer from '../Container.vue';
 const getVariant = (x: Props['variant']) => clamp(x, SurfaceVariant, SurfaceVariant.PRIMARY);
 const classes = tv({
   base: 'gi-footer-section gi-w-full',

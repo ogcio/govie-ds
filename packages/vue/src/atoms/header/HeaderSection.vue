@@ -17,7 +17,7 @@
     :role="role"
     :ariaLabel="ariaLabel"
     :dataTestId="dataTestId"
-    ><GiContainer
+    ><CoreContainer
       :maxWidth="maxWidth"
       :className="
         contentClasses({
@@ -25,7 +25,7 @@
           className: className,
         })
       "
-      ><slot /></GiContainer
+      ><slot /></CoreContainer
   ></CoreBox>
 </template>
 
@@ -35,7 +35,7 @@ import { clamp } from '../utilities';
 import { SurfaceVariant, SurfaceAppearance } from '../constants';
 import type { MaxWidth, ValueOf } from '../constants';
 import CoreBox from '../Box.vue';
-import GiContainer from '../Container.vue';
+import CoreContainer from '../Container.vue';
 const getVariant = (x: Props['variant']) => clamp(x, SurfaceVariant, SurfaceVariant.PRIMARY);
 const getAppearance = (x: Props['appearance']) => clamp(x, SurfaceAppearance, SurfaceAppearance.DEFAULT);
 const classes = tv({

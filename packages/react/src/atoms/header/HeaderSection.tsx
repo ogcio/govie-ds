@@ -24,7 +24,7 @@ import { clamp } from '../utilities';
 import { SurfaceVariant, SurfaceAppearance } from '../constants';
 import type { MaxWidth, ValueOf } from '../constants';
 import CoreBox from '../Box';
-import GiContainer from '../Container';
+import CoreContainer from '../Container';
 const getVariant = (x: Props['variant']) => clamp(x, SurfaceVariant, SurfaceVariant.PRIMARY);
 const getAppearance = (x: Props['appearance']) => clamp(x, SurfaceAppearance, SurfaceAppearance.DEFAULT);
 const classes = tv({
@@ -93,7 +93,7 @@ function HeaderSection(props: Props) {
       ariaLabel={props.ariaLabel}
       dataTestId={props.dataTestId}
     >
-      <GiContainer
+      <CoreContainer
         maxWidth={props.maxWidth}
         className={contentClasses({
           variant: getVariant(props.variant),
@@ -101,7 +101,7 @@ function HeaderSection(props: Props) {
         })}
       >
         {props.children}
-      </GiContainer>
+      </CoreContainer>
     </CoreBox>
   );
 }

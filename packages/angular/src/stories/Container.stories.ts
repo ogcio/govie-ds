@@ -1,7 +1,7 @@
 import { omit } from 'lodash';
 import { CommonModule } from '@angular/common';
 import type { StoryObj } from '@storybook/angular-vite';
-import Container from '@/atoms/Container';
+import { GiContainer, GiContainerDirective } from '@/Container';
 import { MaxWidth } from '@/atoms/constants';
 import {
   containerMeta,
@@ -32,7 +32,7 @@ const renderWithProjectedText = (props: Record<string, unknown>) => ({
     content: props['children'] as string,
   },
   moduleMetadata: {
-    imports: [Container],
+    imports: [GiContainer],
   },
   template: `
     <gi-container
@@ -42,7 +42,7 @@ const renderWithProjectedText = (props: Record<string, unknown>) => ({
       [id]="id"
       [role]="role"
       [ariaLabel]="ariaLabel"
-      [className]="className"
+      [class]="className"
       [dataTestId]="dataTestId"
     >
       {{ content }}
@@ -65,7 +65,7 @@ export const GuttersOnAndOff: StoryObj = {
   render: (props) => ({
     props,
     moduleMetadata: {
-      imports: [Container, CommonModule],
+      imports: [GiContainer, CommonModule],
     },
     template: `
       <div class="gi-flex gi-flex-col gi-gap-8">
@@ -94,7 +94,7 @@ export const AllMaxWidths: StoryObj = {
       maxWidths: Object.values(MaxWidth),
     },
     moduleMetadata: {
-      imports: [Container, CommonModule],
+      imports: [GiContainer, CommonModule],
     },
     template: `
       <div class="gi-flex gi-flex-col gi-gap-8">
@@ -103,12 +103,29 @@ export const AllMaxWidths: StoryObj = {
           <gi-container
             [maxWidth]="maxWidth"
             [inset]="false"
-            className="gi-border-sm gi-border-solid gi-border-color-border-system-neutral-subtle"
+            class="gi-border-sm gi-border-solid gi-border-color-border-system-neutral-subtle"
           >
             Sample content for max width {{ maxWidth }}.
           </gi-container>
         </div>
       </div>
+    `,
+  }),
+};
+
+export const Directive: StoryObj = {
+  parameters: {
+    docs: {
+      description: {
+        story:
+          'Adds the `gi-container` layout to an element you own, such as a `section`, with the same inset, gutters and max width.',
+      },
+    },
+  },
+  render: () => ({
+    moduleMetadata: { imports: [GiContainerDirective] },
+    template: `
+      <section giContainer inset maxWidth="md">Sample content in a section you own.</section>
     `,
   }),
 };

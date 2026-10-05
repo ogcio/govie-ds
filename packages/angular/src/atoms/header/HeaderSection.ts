@@ -25,7 +25,7 @@ import { clamp } from '../utilities';
 import { SurfaceVariant, SurfaceAppearance } from '../constants';
 import type { MaxWidth, ValueOf } from '../constants';
 import CoreBox from '../Box';
-import GiContainer from '../Container';
+import CoreContainer from '../Container';
 const getVariant = (x: Props['variant']) => clamp(x, SurfaceVariant, SurfaceVariant.PRIMARY);
 const getAppearance = (x: Props['appearance']) => clamp(x, SurfaceAppearance, SurfaceAppearance.DEFAULT);
 const classes = tv({
@@ -96,7 +96,7 @@ const contentClasses = tv({
       [role]="role"
       [ariaLabel]="ariaLabel"
       [dataTestId]="dataTestId"
-      ><gi-container
+      ><core-container
         [maxWidth]="maxWidth"
         [className]="
           contentClasses({
@@ -104,7 +104,7 @@ const contentClasses = tv({
             className: className,
           })
         "
-        ><ng-content></ng-content></gi-container
+        ><ng-content></ng-content></core-container
     ></core-box>
   `,
   styles: [
@@ -115,7 +115,7 @@ const contentClasses = tv({
     `,
   ],
   standalone: true,
-  imports: [CommonModule, CoreBox, GiContainer],
+  imports: [CommonModule, CoreBox, CoreContainer],
 })
 export default class HeaderSection {
   getVariant = getVariant;
