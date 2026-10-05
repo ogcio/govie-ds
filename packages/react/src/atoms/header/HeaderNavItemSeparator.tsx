@@ -16,7 +16,7 @@ export type Props = {
 };
 
 import { tv } from 'tailwind-variants';
-import GiDivider from '../Divider';
+import CoreDivider from '../Divider';
 import { getVisibility } from './HeaderNavItem.styles';
 import type { VisibleValue } from './HeaderNavItem.styles';
 const listClasses = tv({
@@ -38,7 +38,7 @@ function HeaderNavItemSeparator(props: Props) {
         className: getVisibility(props.visible),
       })}
     >
-      <GiDivider
+      <CoreDivider
         orientation="vertical"
         id={props.id}
         dataTestId={props.dataTestId}

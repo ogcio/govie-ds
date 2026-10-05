@@ -19,7 +19,7 @@ import {
 } from '@/atoms';
 import { GiText } from '@/Text';
 import Stack from '@/atoms/Stack';
-import Divider from '@/atoms/Divider';
+import { GiDivider } from '@/Divider';
 import { LogoBlack, LogoHarpBlack, LogoHarpWhite, LogoWhite } from '@/atoms/icons/logos';
 
 const meta = {
@@ -46,7 +46,7 @@ const headerImports = [
   Link,
   GiText,
   Stack,
-  Divider,
+  GiDivider,
   LogoWhite,
   LogoHarpWhite,
   LogoBlack,
@@ -90,7 +90,7 @@ export const Default: StoryObj = {
           </gi-header-nav>
           <gi-stack direction="row" className="gi-text-center gi-items-center gi-py-1">
             <gi-text size="sm" class="gi-px-1">Hello Saoirse</gi-text>
-            <gi-divider orientation="vertical" className="gi-my-1 gi-mx-1"></gi-divider>
+            <gi-divider orientation="vertical" class="gi-my-1 gi-mx-1"></gi-divider>
             <gi-link
               className="gi-py-1 gi-px-2 hover:gi-bg-black hover:gi-bg-opacity-20"
               href="#"
@@ -171,7 +171,7 @@ export const Light: StoryObj = {
           </gi-header-nav>
           <gi-stack direction="row" className="gi-text-center gi-items-center gi-py-1">
             <gi-text size="sm" class="gi-px-1">Hello Saoirse</gi-text>
-            <gi-divider orientation="vertical" className="gi-my-1 gi-mx-1"></gi-divider>
+            <gi-divider orientation="vertical" class="gi-my-1 gi-mx-1"></gi-divider>
             <gi-link
               className="gi-py-1 gi-px-2 hover:gi-bg-black hover:gi-bg-opacity-10"
               href="#"
@@ -324,7 +324,7 @@ export const Desktop: StoryObj = {
           </gi-header-nav>
           <gi-stack direction="row" className="gi-text-center gi-items-center gi-py-1">
             <gi-text size="sm" class="gi-px-1">Hello Saoirse</gi-text>
-            <gi-divider orientation="vertical" className="gi-my-1 gi-mx-1"></gi-divider>
+            <gi-divider orientation="vertical" class="gi-my-1 gi-mx-1"></gi-divider>
             <gi-header-nav-item-link
               className="gi-py-1 gi-px-2 hover:gi-bg-black hover:gi-bg-opacity-20"
               href="#"
@@ -426,7 +426,7 @@ export const MobileView: StoryObj = {
           </gi-header-nav>
           <gi-stack direction="row" className="gi-text-center gi-items-center gi-py-1">
             <gi-text size="sm" class="gi-px-1">Hello Saoirse</gi-text>
-            <gi-divider orientation="vertical" className="gi-my-1 gi-mx-1"></gi-divider>
+            <gi-divider orientation="vertical" class="gi-my-1 gi-mx-1"></gi-divider>
             <gi-link
               className="gi-py-1 gi-px-2 hover:gi-bg-black hover:gi-bg-opacity-20"
               appearance="light"

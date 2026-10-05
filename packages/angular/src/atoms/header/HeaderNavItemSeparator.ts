@@ -19,7 +19,7 @@ export type Props = {
 const defaultProps: any = { visible: true };
 
 import { tv } from 'tailwind-variants';
-import GiDivider from '../Divider';
+import CoreDivider from '../Divider';
 import { getVisibility } from './HeaderNavItem.styles';
 import type { VisibleValue } from './HeaderNavItem.styles';
 const listClasses = tv({
@@ -44,7 +44,7 @@ const classes = tv({
         })
       "
     >
-      <gi-divider
+      <core-divider
         orientation="vertical"
         [id]="id"
         [dataTestId]="dataTestId"
@@ -54,7 +54,7 @@ const classes = tv({
             className: className,
           })
         "
-      ></gi-divider>
+      ></core-divider>
     </li>
   `,
   styles: [
@@ -65,7 +65,7 @@ const classes = tv({
     `,
   ],
   standalone: true,
-  imports: [CommonModule, GiDivider],
+  imports: [CommonModule, CoreDivider],
 })
 export default class HeaderNavItemSeparator {
   listClasses = listClasses;

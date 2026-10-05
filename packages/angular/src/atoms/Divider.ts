@@ -16,25 +16,12 @@ export type Props = {
   dataTestId?: string;
 };
 
-import { tv } from 'tailwind-variants';
-import { Orientation } from './constants';
-import type { ValueOf } from './constants';
+import type { Orientation, ValueOf } from './constants';
 import { getOrientation } from './utilities';
-const classes = tv({
-  base: 'gi-border-color-border-system-neutral-muted gi-border-0',
-  variants: {
-    orientation: {
-      [Orientation.HORIZONTAL]: 'gi-border-t-xs gi-w-full',
-      [Orientation.VERTICAL]: 'gi-border-l-xs gi-self-stretch gi-h-auto',
-    },
-  },
-  defaultVariants: {
-    orientation: Orientation.HORIZONTAL,
-  },
-});
+import classes from './Divider.styles';
 
 @Component({
-  selector: 'gi-divider',
+  selector: 'core-divider',
   template: `
     <hr
       [attr.id]="id"
@@ -60,8 +47,8 @@ const classes = tv({
   imports: [CommonModule],
 })
 export default class Divider {
-  classes = classes;
   getOrientation = getOrientation;
+  classes = classes;
 
   @Input() id!: Props['id'];
   @Input() dataTestId!: Props['dataTestId'];
