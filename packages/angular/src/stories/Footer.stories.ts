@@ -1,7 +1,8 @@
 import type { StoryObj } from '@storybook/angular-vite';
 import { within, expect } from 'storybook/test';
 import { footerMeta, CompleteFooter as CompleteFooterStory } from '@/atoms/storybook/Footer.meta';
-import { Footer, FooterSection, FooterLogo, Link, Grid } from '@/atoms';
+import { Footer, FooterSection, FooterLogo, Link } from '@/atoms';
+import { GiGrid } from '@/Grid';
 import { GiDivider } from '@/Divider';
 import Stack from '@/atoms/Stack';
 import { GiText } from '@/Text';
@@ -30,7 +31,7 @@ export const CompleteFooter: StoryObj = {
         Footer,
         FooterSection,
         FooterLogo,
-        Grid,
+        GiGrid,
         GiH4,
         GiDivider,
         Link,

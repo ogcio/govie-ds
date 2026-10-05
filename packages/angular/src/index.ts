@@ -12,6 +12,6 @@ export { GiH6, GiH6Directive } from './heading/H6';
 // Layout
 export { GiBox } from './Box';
 export { GiContainer, GiContainerDirective } from './Container';
-export { default as Grid, type Props as GridProps } from './atoms/Grid';
+export { GiGrid, GiGridDirective } from './Grid';
 export { default as Stack, type Props as StackProps } from './atoms/Stack';
 export { GiDivider, GiDividerDirective } from './Divider';

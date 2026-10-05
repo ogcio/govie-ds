@@ -12,14 +12,13 @@
     :ariaLabelledBy="ariaLabelledBy"
     :styles="styles"
     :className="
-      classes([
-        container && 'gi-grid-container',
-        container && getGridClasses(columns ?? DEFAULT_COLUMNS, 'gi-grid-columns'),
-        container && getGridClasses(gap, 'gi-grid-gap'),
-        (!container || !_.isNil(size)) && 'gi-grid-item',
-        (!container || !_.isNil(size)) && getGridClasses(size, 'gi-grid-span'),
-        className,
-      ])
+      classes({
+        container: container,
+        columns: columns,
+        gap: gap,
+        size: size,
+        className: className,
+      })
     "
     :dataTestId="dataTestId"
     ><slot
@@ -27,20 +26,10 @@
 </template>
 
 <script setup lang="ts">
-import _ from 'lodash';
-import type { ResponsiveValue, BreakpointKey, SpacingScale } from './constants';
+import type { ResponsiveValue, SpacingScale } from './constants';
 import type { Props as BoxProps } from './Box.vue';
-import { resolveResponsive } from './utilities';
+import classes from './Grid.styles';
 import CoreBox from './Box.vue';
-const DEFAULT_COLUMNS: Partial<Record<BreakpointKey, SpacingScale>> = {
-  base: 4,
-  sm: 6,
-  md: 8,
-  lg: 12,
-};
-const classes = (list: Array<string | boolean | undefined>) => _.compact(list).join(' ');
-const getGridClasses = (value: ResponsiveValue<SpacingScale> | undefined, prefix: string): string =>
-  resolveResponsive(value, (v, bp) => `${bp}${prefix}-${_.clamp(v as number, 0, 12)}`);
 
 export type Props = {
   container?: boolean;
