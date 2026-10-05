@@ -12,6 +12,7 @@ export default tv({
     inset: {
       true: 'gi-py-4 md:gi-py-6 lg:gi-py-8',
     },
+    // `gi-container` already applies the responsive gutters (16px, 24px at md, 32px at lg) from `@ogcio/design-system-tailwind`, so only the opt-out variant is needed
     gutters: {
       false: 'gi-px-0',
     },
