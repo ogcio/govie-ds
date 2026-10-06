@@ -63,8 +63,9 @@ import type { VisibleValue } from './HeaderNavItem.styles';
         (click)="onClick && this.onClick.emit($event)"
         (keydown)="onKeyDown && this.onKeyDown.emit($event)"
         (keyup)="onKeyUp && this.onKeyUp.emit($event)"
-        ><ng-content></ng-content
-      ></a>
+      >
+        <ng-content></ng-content>
+      </a>
     </li>
   `,
   styles: [

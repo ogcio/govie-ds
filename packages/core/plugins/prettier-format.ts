@@ -11,7 +11,9 @@ import { postProcess } from './post-process';
  */
 const prettierFormat: MitosisPlugin = () => ({
   build: {
-    post: postProcess((code, { path }) => prettier.format(code, { filepath: path, ...(config as Options) })),
+    post: postProcess((code, { path }) =>
+      prettier.format(code, { filepath: path, ...(config as Options), ...prettier.resolveConfig(path) }),
+    ),
   },
 });
 

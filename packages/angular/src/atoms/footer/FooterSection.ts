@@ -61,7 +61,8 @@ const contentClasses = tv({
       "
       [styles]="styles"
       [dataTestId]="dataTestId"
-      ><core-container
+    >
+      <core-container
         [maxWidth]="maxWidth"
         [className]="
           contentClasses({
@@ -69,8 +70,10 @@ const contentClasses = tv({
             className: className,
           })
         "
-        ><ng-content></ng-content></core-container
-    ></core-box>
+      >
+        <ng-content></ng-content>
+      </core-container>
+    </core-box>
   `,
   styles: [
     `

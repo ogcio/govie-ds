@@ -5,13 +5,5 @@
   "semi": true,
   "arrowParens": "always",
   "tabWidth": 2,
-  "useTabs": false,
-  "overrides": [
-    {
-      "files": "packages/angular/**",
-      "options": {
-        "htmlWhitespaceSensitivity": "ignore"
-      }
-    }
-  ]
+  "useTabs": false
 }

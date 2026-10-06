@@ -38,8 +38,9 @@ import classes from './Text.styles';
       [ngStyle]="styles"
       [attr.data-testid]="dataTestId"
       [attr.aria-hidden]="ariaHidden"
-      ><ng-content></ng-content
-    ></span>
+    >
+      <ng-content></ng-content>
+    </span>
   `,
   styles: [
     `
