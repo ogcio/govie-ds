@@ -62,8 +62,9 @@ import classes, { actionClasses, listItemClasses } from './SideNavItem.styles';
         [attr.tabIndex]="ariaHidden ? -1 : tabIndex"
         [attr.lang]="lang"
         [attr.data-testid]="dataTestId"
-        ><ng-content></ng-content
-      ></a>
+      >
+        <ng-content></ng-content>
+      </a>
       <div [class]="actionClasses()"><ng-content select="[actions]"></ng-content></div>
     </li>
   `,

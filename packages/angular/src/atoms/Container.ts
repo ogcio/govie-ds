@@ -39,8 +39,9 @@ import CoreBox from './Box';
           className: className,
         })
       "
-      ><ng-content></ng-content
-    ></core-box>
+    >
+      <ng-content></ng-content>
+    </core-box>
   `,
   styles: [
     `

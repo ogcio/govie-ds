@@ -40,8 +40,9 @@ import CoreBox from './Box';
         })
       "
       [dataTestId]="dataTestId"
-      ><ng-content></ng-content
-    ></core-box>
+    >
+      <ng-content></ng-content>
+    </core-box>
   `,
   styles: [
     `

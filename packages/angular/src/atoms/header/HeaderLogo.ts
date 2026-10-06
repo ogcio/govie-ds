@@ -33,8 +33,9 @@ const classes = tv({
       "
       [styles]="styles"
       [dataTestId]="dataTestId"
-      ><ng-content></ng-content
-    ></core-box>
+    >
+      <ng-content></ng-content>
+    </core-box>
   `,
   styles: [
     `

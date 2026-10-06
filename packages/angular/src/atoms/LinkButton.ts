@@ -48,8 +48,9 @@ import type { Props as LinkProps } from './Link';
       (keydown)="onKeyDown && this.onKeyDown.emit($event)"
       (keyup)="onKeyUp && this.onKeyUp.emit($event)"
       [attr.data-testid]="dataTestId"
-      ><ng-content></ng-content
-    ></a>
+    >
+      <ng-content></ng-content>
+    </a>
   `,
   styles: [
     `
