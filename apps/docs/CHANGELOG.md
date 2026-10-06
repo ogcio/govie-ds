@@ -1,5 +1,24 @@
 # Changelog
 
+## [1.47.0](https://github.com/ogcio/govie-ds/compare/docs-v1.46.1...docs-v1.47.0) (2026-10-06)
+
+
+### Features
+
+* **AB#41718:** add stories for sidenav family ([5f2a39d](https://github.com/ogcio/govie-ds/commit/5f2a39d8daa6de82ea805a3fb3fce11384c95801))
+
+
+### Miscellaneous Chores
+
+* **AB#41718:** align SideNav stories with their args and public API ([e051e7a](https://github.com/ogcio/govie-ds/commit/e051e7a41edd38e2e445c5d7e17617aa14608e50))
+
+
+### Dependencies
+
+* The following workspace dependencies were updated
+  * dependencies
+    * @ogcio/design-system-react bumped to 1.49.0
+
 ## [1.46.1](https://github.com/ogcio/govie-ds/compare/docs-v1.46.0...docs-v1.46.1) (2026-09-22)
 
 

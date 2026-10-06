@@ -1,5 +1,30 @@
 # Changelog
 
+## [0.4.0](https://github.com/ogcio/govie-ds/compare/vue-v0.3.0...vue-v0.4.0) (2026-10-06)
+
+
+### Features
+
+* **AB#39576:** implement breadcrumbs in mitosis-core ([a87ed7b](https://github.com/ogcio/govie-ds/commit/a87ed7b95982291936c6cc8e8e563619755ac817))
+* **AB#41718:** add stories for sidenav family ([5f2a39d](https://github.com/ogcio/govie-ds/commit/5f2a39d8daa6de82ea805a3fb3fce11384c95801))
+* **AB#44009:** add Angular Box wrapper with a native public API ([d44a29b](https://github.com/ogcio/govie-ds/commit/d44a29b23c13f5066cd18049b0ff8aa2cfdf38e7))
+* **AB#44009:** add Angular Container wrapper with a native public API ([93a8c51](https://github.com/ogcio/govie-ds/commit/93a8c51a99022db003f64b9b2f0b66a3e34d250f))
+* **AB#44009:** add Angular Divider wrapper with a native public API ([18cd15f](https://github.com/ogcio/govie-ds/commit/18cd15f098771888386719f93a6b04c00430bef1))
+* **AB#44009:** add Angular Grid wrapper with a native public API ([0012b75](https://github.com/ogcio/govie-ds/commit/0012b751babe3e5d34a75be657a08cdf6eb98106))
+* **AB#44009:** add Angular Stack wrapper with a native public API ([a06a8a3](https://github.com/ogcio/govie-ds/commit/a06a8a3e88036d97be4614acd128e6648c3d1dbe))
+
+
+### Bug Fixes
+
+* **AB#41718:** align SideNavHeading inset with items ([7b2eb69](https://github.com/ogcio/govie-ds/commit/7b2eb69cab75282c79a38e058a32bc3b46f7fe0b))
+
+
+### Miscellaneous Chores
+
+* **AB#41718:** align SideNav stories with their args and public API ([e051e7a](https://github.com/ogcio/govie-ds/commit/e051e7a41edd38e2e445c5d7e17617aa14608e50))
+* **AB#43755:** extract Paragraph and InsetText styles into their own modules ([80af6c8](https://github.com/ogcio/govie-ds/commit/80af6c80bd1130e36478ff1dc254f05a43dc912a))
+* **container:** note where the default gutters come from ([bcc0ea6](https://github.com/ogcio/govie-ds/commit/bcc0ea61056667ec9e8acf9e36eda434cefe4668))
+
 ## [0.3.0](https://github.com/ogcio/govie-ds/compare/vue-v0.2.0...vue-v0.3.0) (2026-09-22)
 
 
