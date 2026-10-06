@@ -25,7 +25,7 @@ import { getSize, getAlign, getWhitespace } from './utilities';
 import classes from './Paragraph.styles';
 
 @Component({
-  selector: 'gi-paragraph-core',
+  selector: 'core-paragraph',
   template: `
     <p
       [attr.id]="id"

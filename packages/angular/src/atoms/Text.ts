@@ -24,7 +24,7 @@ import { getSize, getWhitespace } from './utilities';
 import classes from './Text.styles';
 
 @Component({
-  selector: 'gi-text-core',
+  selector: 'core-text',
   template: `
     <span
       [class]="

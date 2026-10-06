@@ -3,7 +3,7 @@ import classes from './styles';
 import { getSize } from './styles';
 import type { Props } from './types';
 
-useMetadata({ angular: { selector: 'gi-h4-core' } });
+useMetadata({ angular: { selector: 'core-h4' } });
 
 export default function H4(props: Props) {
   return (
