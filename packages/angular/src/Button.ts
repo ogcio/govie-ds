@@ -16,6 +16,7 @@ import type { Props } from './atoms/Button';
       [attr.aria-labelledby]="ariaLabelledBy"
       [attr.aria-describedby]="ariaDescribedBy"
       [attr.aria-checked]="ariaChecked"
+      [attr.aria-current]="ariaCurrent"
       [attr.aria-pressed]="ariaPressed"
       [attr.aria-expanded]="ariaExpanded"
       [attr.aria-controls]="ariaControls"
@@ -41,6 +42,7 @@ import type { Props } from './atoms/Button';
     '[attr.arialabelledby]': 'null',
     '[attr.ariadescribedby]': 'null',
     '[attr.ariachecked]': 'null',
+    '[attr.ariacurrent]': 'null',
     '[attr.ariapressed]': 'null',
     '[attr.ariaexpanded]': 'null',
     '[attr.ariacontrols]': 'null',
@@ -62,6 +64,7 @@ export class GiButton {
   @Input() ariaLabelledBy: Props['ariaLabelledBy'];
   @Input() ariaDescribedBy: Props['ariaDescribedBy'];
   @Input() ariaChecked: Props['ariaChecked'];
+  @Input() ariaCurrent: Props['ariaCurrent'];
   @Input() ariaPressed: Props['ariaPressed'];
   @Input() ariaExpanded: Props['ariaExpanded'];
   @Input() ariaControls: Props['ariaControls'];
