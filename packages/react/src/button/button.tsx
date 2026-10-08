@@ -24,6 +24,7 @@ export const Button = forwardRef<HTMLButtonElement, ButtonProps>(
       ariaChecked,
       ariaPressed,
       ariaExpanded,
+      ariaCurrent,
       ariaControls,
       ariaHasPopup,
       ariaBusy,
@@ -71,6 +72,7 @@ export const Button = forwardRef<HTMLButtonElement, ButtonProps>(
         ariaControls={ariaControls ?? nativeAriaControls}
         ariaHasPopup={(ariaHasPopup ?? nativeAriaHasPopup) as GiButtonProps['ariaHasPopup']}
         ariaBusy={(ariaBusy ?? nativeAriaBusy) as boolean | undefined}
+        ariaCurrent={ariaCurrent}
         role={role}
         type={type}
         form={form}
