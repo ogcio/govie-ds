@@ -145,6 +145,16 @@ export const buttonMeta = {
         },
       },
     },
+    ariaCurrent: {
+      control: false,
+      description:
+        'Indicates that this element represents the current item within a container or set of related elements. Maps to `aria-current`.',
+      table: {
+        type: {
+          summary: '"page" | "step" | "location" | "date" | "time" | boolean',
+        },
+      },
+    },
     ariaPressed: {
       control: false,
       description:
