@@ -10,7 +10,7 @@ By using Mitosis, we ensure that:
 
 ## Scripts
 
-- `pnpm build` — full generation process for all supported frameworks.
+- `pnpm build:all` — full generation process for all supported frameworks.
 - `pnpm build:react` — React-only generation into `@ogcio/design-system-react`.
 - `pnpm build:angular` — Angular-only generation into `@ogcio/design-system-angular`.
 - `pnpm build:watch` — re-generate on every change in `atoms/`.
@@ -47,7 +47,7 @@ Every prop entry needs a `description` and a `table.type.summary`. Autodocs buil
 
 ### 3. Generate
 
-Run `pnpm build`. The generator emits React output to `packages/react/src/atoms/<Component>.tsx` and Angular output to `packages/angular/src/atoms/<Component>.ts`. Inspect both: generation can be quietly wrong in one target while clean in another, and the output is part of the review surface.
+Run `pnpm build:all`. The generator emits React output to `packages/react/src/atoms/<Component>.tsx` and Angular output to `packages/angular/src/atoms/<Component>.ts`. Inspect both: generation can be quietly wrong in one target while clean in another, and the output is part of the review surface.
 
 ### 4. Write per-target stories
 
