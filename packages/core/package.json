@@ -4,11 +4,11 @@
   "version": "0.1.0",
   "type": "module",
   "scripts": {
-    "build": "pnpm run build:react && pnpm run build:angular && pnpm run build:vue",
+    "build:all": "pnpm run build:react && pnpm run build:angular && pnpm run build:vue",
     "build:react": "NODE_OPTIONS='--import tsx' mitosis build --config react.config.ts",
     "build:angular": "NODE_OPTIONS='--import tsx' mitosis build --config angular.config.ts",
     "build:vue": "NODE_OPTIONS='--import tsx' mitosis build --config vue.config.ts",
-    "build:watch": "chokidar \"./atoms/**/*.{ts,tsx}\" -c \"pnpm run build\" --initial",
+    "build:watch": "chokidar \"./atoms/**/*.{ts,tsx}\" -c \"pnpm run build:all\" --initial",
     "lint": "eslint .",
     "typecheck": "tsc -p tsconfig.json --noEmit",
     "format": "prettier --write .",
