@@ -1,0 +1,44 @@
+type PaginationListProps = {
+  current: number;
+  total: number;
+  range: number;
+};
+
+/**
+ * Clamps a numerical value inclusively within the min and max
+ */
+const clamp = (value: number, min: number, max: number): number => Math.min(Math.max(value, min), max);
+
+export const getPaginationList = ({ current, total, range }: PaginationListProps): number[] => {
+  // clamp the current value
+  const curr = clamp(current, 1, total);
+
+  const pages: number[] = [];
+
+  // Handles edge case for page-number <=3 and returns all pages
+  if (total <= 3) {
+    for (let i = 1; i <= total; i++) {
+      pages.push(i);
+    }
+    return pages;
+  }
+  for (let i = curr - range; i <= curr + range; i++) {
+    // clamp the ends to 2 -> total -1. 1 & total are added later.
+    const page = clamp(i, 2, total - 1);
+    // only add unique values
+    if (pages.at(-1) !== page) {
+      pages.push(page);
+    }
+  }
+  // -1 mark the ellipsis locations
+  if (pages[0] > 2) {
+    pages.unshift(-1);
+  }
+  pages.unshift(1);
+
+  if ((pages.at(-1) as number) < total - 1) {
+    pages.push(-1);
+  }
+  pages.push(total);
+  return pages;
+};
