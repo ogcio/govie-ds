@@ -16,17 +16,22 @@ COPY apps/docs/.env.${DEPLOY_ENV} ./apps/docs/.env.production
 
 ENV DEPLOY_ENV=${DEPLOY_ENV}
 ENV NEXT_EXPORT=true
-ENV NX_DAEMON=false
 
 # Ignore KICS warning. `--frozen-lockfile` ensures pinned versions from lockfile
 # kics-scan ignore-line
 RUN corepack enable pnpm && \
     pnpm install --frozen-lockfile && \
-    pnpm docs:build && \
-    pnpm storybook:build:html && \
-    pnpm storybook:build:react && \
-    pnpm storybook:build:angular && \
-    pnpm storybook:build:vue
+    pnpm --filter "@ogcio/design-system-docs..." \
+      --filter "@ogcio/design-system-html..." \
+      --filter "@ogcio/design-system-react^..." \
+      --filter "@ogcio/design-system-angular^..." \
+      --filter "@ogcio/design-system-vue^..." \
+      run build && \
+    pnpm --filter @ogcio/design-system-html \
+      --filter @ogcio/design-system-react \
+      --filter @ogcio/design-system-angular \
+      --filter @ogcio/design-system-vue \
+      run storybook:build
 
 # Production image
 FROM ${NGINX_IMAGE}
