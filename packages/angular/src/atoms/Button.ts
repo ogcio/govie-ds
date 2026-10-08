@@ -24,6 +24,7 @@ export type Props = {
   ariaLabelledBy?: string;
   ariaDescribedBy?: string;
   ariaChecked?: boolean;
+  ariaCurrent?: 'page' | 'step' | 'location' | 'date' | 'time' | boolean;
   ariaPressed?: boolean | 'mixed';
   ariaExpanded?: boolean;
   ariaControls?: string;
@@ -38,6 +39,7 @@ export type Props = {
 };
 const defaultProps: any = {
   ariaChecked: undefined,
+  ariaCurrent: undefined,
   ariaPressed: undefined,
   ariaExpanded: undefined,
   ariaHasPopup: undefined,
@@ -73,6 +75,7 @@ import type { ValueOf } from './constants';
       [attr.aria-labelledby]="ariaLabelledBy"
       [attr.aria-describedby]="ariaDescribedBy"
       [attr.aria-checked]="ariaChecked"
+      [attr.aria-current]="ariaCurrent"
       [attr.aria-pressed]="ariaPressed"
       [attr.aria-expanded]="ariaExpanded"
       [attr.aria-controls]="ariaControls"
@@ -114,6 +117,7 @@ export default class Button {
   @Input() ariaLabelledBy!: Props['ariaLabelledBy'];
   @Input() ariaDescribedBy!: Props['ariaDescribedBy'];
   @Input() ariaChecked: Props['ariaChecked'] = defaultProps['ariaChecked'];
+  @Input() ariaCurrent: Props['ariaCurrent'] = defaultProps['ariaCurrent'];
   @Input() ariaPressed: Props['ariaPressed'] = defaultProps['ariaPressed'];
   @Input() ariaExpanded: Props['ariaExpanded'] = defaultProps['ariaExpanded'];
   @Input() ariaControls!: Props['ariaControls'];
