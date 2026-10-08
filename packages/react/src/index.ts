@@ -6,8 +6,13 @@ export { alertVariants } from './alert/variants.js';
 export { Autocomplete, AutocompleteItem } from './autocomplete/autocomplete.js';
 export type { AutocompleteItemProps, AutocompleteProps } from './autocomplete/types.js';
 export { Blockquote, type BlockquoteProps } from './blockquote/blockquote.js';
-export { BreadcrumbCurrentLink, BreadcrumbEllipsis, BreadcrumbLink, Breadcrumbs } from './breadcrumbs/breadcrumbs.js';
-export { type BreadcrumbLinkProps, type BreadcrumbProps } from './breadcrumbs/types.js';
+export {
+  BreadcrumbCurrentLink,
+  BreadcrumbEllipsis,
+  BreadcrumbLink,
+  Breadcrumbs,
+} from './legacy/breadcrumbs/breadcrumbs.js';
+export { type BreadcrumbLinkProps, type BreadcrumbProps } from './legacy/breadcrumbs/types.js';
 export { ButtonGroup, ButtonGroupItem } from './button-group/button-group.js';
 export * from './button-group/types.js';
 export { Button } from './button/button.js';
