@@ -28,6 +28,7 @@
     "ds:storybook": "pnpm build:libs && pnpm --filter @ogcio/design-system-docs storybook",
     "build": "pnpm -r --filter \"./apps/**\" --filter \"./packages/**\" build",
     "build:libs": "pnpm -r --filter \"./packages/**\" build",
+    "build:test": "pnpm --filter \"@ogcio/design-system-html...\" --filter \"@ogcio/design-system-react^...\" --filter \"@ogcio/design-system-angular^...\" --filter \"@ogcio/design-system-tailwind^...\" --filter \"@ogcio/theme-builder^...\" --filter \"@ogcio/design-system-tokens-builder^...\" --filter \"@ogcio/design-system-token-utils^...\" build",
     "dist": "pnpm -r --filter \"./apps/**\" --filter \"./packages/**\" dist",
     "test": "pnpm -r --filter \"./apps/**\" --filter \"./packages/**\" test",
     "html:test": "pnpm build:libs && pnpm --filter @ogcio/design-system-html test",
