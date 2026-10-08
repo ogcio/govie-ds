@@ -26,6 +26,7 @@ export type Props = {
   ariaLabelledBy?: string;
   ariaDescribedBy?: string;
   ariaChecked?: boolean;
+  ariaCurrent?: 'page' | 'step' | 'location' | 'date' | 'time' | boolean;
   ariaPressed?: boolean | 'mixed';
   ariaExpanded?: boolean;
   ariaControls?: string;
@@ -75,6 +76,7 @@ const Button = forwardRef<Props['ref'], Props>(function Button(props: Props, ref
       aria-labelledby={props.ariaLabelledBy}
       aria-describedby={props.ariaDescribedBy}
       aria-checked={props.ariaChecked}
+      aria-current={props.ariaCurrent}
       aria-pressed={props.ariaPressed}
       aria-expanded={props.ariaExpanded}
       aria-controls={props.ariaControls}

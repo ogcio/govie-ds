@@ -27,6 +27,7 @@
     :aria-labelledby="ariaLabelledBy"
     :aria-describedby="ariaDescribedBy"
     :aria-checked="ariaChecked"
+    :aria-current="ariaCurrent"
     :aria-pressed="ariaPressed"
     :aria-expanded="ariaExpanded"
     :aria-controls="ariaControls"
@@ -64,6 +65,7 @@ export type Props = {
   ariaLabelledBy?: string;
   ariaDescribedBy?: string;
   ariaChecked?: boolean;
+  ariaCurrent?: 'page' | 'step' | 'location' | 'date' | 'time' | boolean;
   ariaPressed?: boolean | 'mixed';
   ariaExpanded?: boolean;
   ariaControls?: string;
@@ -93,6 +95,7 @@ const props = withDefaults(defineProps<Props>(), {
   ariaLabelledBy: undefined,
   ariaDescribedBy: undefined,
   ariaChecked: undefined,
+  ariaCurrent: undefined,
   ariaPressed: undefined,
   ariaExpanded: undefined,
   ariaControls: undefined,
