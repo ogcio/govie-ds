@@ -6,7 +6,9 @@
 
 import * as React from 'react';
 
-export type Props = Omit<IconProps, 'label'>;
+export type Props = Omit<IconProps, 'label'> & {
+  styles: Record<string, string>;
+};
 
 import GiMoreHorizontalIcon from '../icons/MoreHorizontal';
 import { listItemClasses } from './BreadcrumbLink.styles';
@@ -18,7 +20,7 @@ const classes = tv({
 
 function BreadcrumbEllipsis(props: Props) {
   return (
-    <li className={listItemClasses()} aria-hidden>
+    <li className={listItemClasses()} style={props.styles} aria-hidden>
       <GiMoreHorizontalIcon
         id={props.id}
         className={classes({

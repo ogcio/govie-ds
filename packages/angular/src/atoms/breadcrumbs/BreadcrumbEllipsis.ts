@@ -8,7 +8,9 @@ import { Component, Input } from '@angular/core';
 
 import { CommonModule } from '@angular/common';
 
-export type Props = Omit<IconProps, 'label'>;
+export type Props = Omit<IconProps, 'label'> & {
+  styles: Record<string, string>;
+};
 
 import GiMoreHorizontalIcon from '../icons/MoreHorizontal';
 import { listItemClasses } from './BreadcrumbLink.styles';
@@ -21,7 +23,7 @@ const classes = tv({
 @Component({
   selector: 'core-breadcrumb-ellipsis',
   template: `
-    <li [class]="listItemClasses()" [attr.aria-hidden]="true">
+    <li [class]="listItemClasses()" [ngStyle]="styles" [attr.aria-hidden]="true">
       <gi-more-horizontal-icon
         [id]="id"
         [className]="
@@ -49,6 +51,7 @@ export default class BreadcrumbEllipsis {
   classes = classes;
   listItemClasses = listItemClasses;
 
+  @Input() styles!: Props['styles'];
   @Input() id!: Props['id'];
   @Input() className!: Props['className'];
   @Input() size!: Props['size'];
