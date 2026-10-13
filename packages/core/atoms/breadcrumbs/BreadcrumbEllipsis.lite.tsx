@@ -6,11 +6,13 @@ import { tv } from 'tailwind-variants';
 
 useMetadata({ angular: { selector: 'core-breadcrumb-ellipsis' } });
 
-export type Props = Omit<IconProps, 'label'>;
+export type Props = Omit<IconProps, 'label'> & {
+  styles: Record<string, string>;
+};
 
 export default function BreadcrumbEllipsis(props: Props) {
   return (
-    <li class={listItemClasses()} aria-hidden={true}>
+    <li class={listItemClasses()} style={props.styles} aria-hidden={true}>
       <GiMoreHorizontalIcon
         id={props.id}
         className={classes({ className: props.className })}

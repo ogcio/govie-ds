@@ -5,7 +5,7 @@
 -->
 
 <template>
-  <li :class="listItemClasses()" :aria-hidden="true">
+  <li :class="listItemClasses()" :style="styles" :aria-hidden="true">
     <GiMoreHorizontalIcon
       :id="id"
       :className="
@@ -29,7 +29,9 @@ const classes = tv({
   base: 'gi-text-gray-700 gi-shrink-0',
 });
 
-export type Props = Omit<IconProps, 'label'>;
+export type Props = Omit<IconProps, 'label'> & {
+  styles: Record<string, string>;
+};
 
 const props = defineProps<Props>();
 </script>
