@@ -4,7 +4,7 @@ import classes from './LinkButton.styles';
 import type { Props as ButtonProps } from './Button.lite';
 import type { Props as LinkProps } from './Link.lite';
 
-useMetadata({ angular: { selector: 'gi-link-button' } });
+useMetadata({ angular: { selector: 'core-link-button' } });
 
 useDefaultProps({
   download: undefined,

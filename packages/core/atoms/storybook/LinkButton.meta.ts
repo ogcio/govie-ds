@@ -35,26 +35,26 @@ export const linkButtonMeta = {
 
 export const Default = {
   args: linkButtonMeta.args,
-  play: async ({ canvasElement, step }: StoryContext<Renderer>) => {
+  play: async ({ canvasElement, step, args }: StoryContext<Renderer>) => {
     const canvas = within(canvasElement as HTMLElement);
-    const check = checker('link-button-test', canvas, step);
+    const check = checker(args.dataTestId, canvas, step);
 
     await check.is('a');
-    await check.attributes({ href: 'https://ds.services.gov.ie/' });
+    await check.attributes({ href: args.href });
     await check.children();
 
     await step('has implicit link role', async () => {
-      const element = canvas.getByRole('link', { name: 'LinkButton' });
+      const element = canvas.getByRole('link', { name: args.children });
       expect(element).toBeInTheDocument();
     });
 
     await step('has accessible name from children', async () => {
-      const element = canvas.getByTestId('link-button-test');
-      expect(element).toHaveAccessibleName('LinkButton');
+      const element = canvas.getByTestId(args.dataTestId);
+      expect(element).toHaveAccessibleName(args.children);
     });
 
     await step('omits aria-current when not set', async () => {
-      const element = canvas.getByTestId('link-button-test');
+      const element = canvas.getByTestId(args.dataTestId);
       expect(element).not.toHaveAttribute('aria-current');
     });
   },

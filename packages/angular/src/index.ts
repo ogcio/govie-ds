@@ -18,3 +18,4 @@ export { GiDivider, GiDividerDirective } from './Divider';
 
 // Actions
 export { GiLink, GiLinkDirective } from './Link';
+export { GiLinkButton, GiLinkButtonDirective } from './LinkButton';
