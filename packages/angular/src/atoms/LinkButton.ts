@@ -18,7 +18,7 @@ import type { Props as ButtonProps } from './Button';
 import type { Props as LinkProps } from './Link';
 
 @Component({
-  selector: 'gi-link-button',
+  selector: 'core-link-button',
   template: `
     <a
       [attr.id]="id"
