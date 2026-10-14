@@ -10,13 +10,13 @@ import {
   HeaderNavItem,
   HeaderNavItemLink,
   HeaderNavItemSeparator,
-  Link,
   InfoIcon,
   SearchIcon,
   MicIcon,
   LogoutIcon,
   MenuIcon,
 } from '@/atoms';
+import { GiLink } from '@/Link';
 import { GiText } from '@/Text';
 import { GiStack } from '@/Stack';
 import { GiDivider } from '@/Divider';
@@ -43,7 +43,7 @@ const headerImports = [
   HeaderNavItem,
   HeaderNavItemLink,
   HeaderNavItemSeparator,
-  Link,
+  GiLink,
   GiText,
   GiStack,
   GiDivider,
@@ -90,22 +90,22 @@ export const Default: StoryObj = {
           </gi-header-nav>
           <gi-stack direction="row" class="gi-text-center gi-items-center gi-py-1">
             <gi-text size="sm" class="gi-px-1">Hello Saoirse</gi-text>
-            <gi-divider orientation="vertical" class="gi-my-1 gi-mx-1"></gi-divider>
+            <gi-divider orientation="vertical" class="gi-my-1 gi-mx-1" />
             <gi-link
-              className="gi-py-1 gi-px-2 hover:gi-bg-black hover:gi-bg-opacity-20"
+              class="gi-py-1 gi-px-2 hover:gi-bg-black hover:gi-bg-opacity-20"
               href="#"
               appearance="light"
               ariaLabel="Log out"
             >
-              <gi-logout-icon [size]="16"></gi-logout-icon>
+              <gi-logout-icon [size]="16" />
             </gi-link>
           </gi-stack>
         </gi-header-section>
         <gi-header-section>
           <gi-header-logo>
             <gi-link appearance="light" href="#" ariaLabel="Gov.ie home">
-              <gi-logo-white [size]="132" className="gi-hidden md:gi-block"></gi-logo-white>
-              <gi-logo-harp-white [size]="32" className="gi-block md:gi-hidden"></gi-logo-harp-white>
+              <gi-logo-white [size]="132" className="gi-hidden md:gi-block" />
+              <gi-logo-harp-white [size]="32" className="gi-block md:gi-hidden" />
             </gi-link>
           </gi-header-logo>
           <gi-header-title>Title</gi-header-title>
@@ -116,21 +116,21 @@ export const Default: StoryObj = {
             <gi-header-nav-item-link visible="lg" href="#">
               Services
             </gi-header-nav-item-link>
-            <gi-header-nav-item-separator visible="md"></gi-header-nav-item-separator>
+            <gi-header-nav-item-separator visible="md" />
             <gi-header-nav-item visible="md">
-              FAQ <gi-info-icon></gi-info-icon>
+              FAQ <gi-info-icon />
             </gi-header-nav-item>
             <gi-header-nav-item visible="md">
               Search
-              <gi-search-icon></gi-search-icon>
+              <gi-search-icon />
             </gi-header-nav-item>
             <gi-header-nav-item visible="md">
               Language
-              <gi-mic-icon></gi-mic-icon>
+              <gi-mic-icon />
             </gi-header-nav-item>
             <gi-header-nav-item [visible]="{ xs: true, md: false }">
               Menu
-              <gi-menu-icon></gi-menu-icon>
+              <gi-menu-icon />
             </gi-header-nav-item>
           </gi-header-nav>
         </gi-header-section>
@@ -171,21 +171,21 @@ export const Light: StoryObj = {
           </gi-header-nav>
           <gi-stack direction="row" class="gi-text-center gi-items-center gi-py-1">
             <gi-text size="sm" class="gi-px-1">Hello Saoirse</gi-text>
-            <gi-divider orientation="vertical" class="gi-my-1 gi-mx-1"></gi-divider>
+            <gi-divider orientation="vertical" class="gi-my-1 gi-mx-1" />
             <gi-link
-              className="gi-py-1 gi-px-2 hover:gi-bg-black hover:gi-bg-opacity-10"
+              class="gi-py-1 gi-px-2 hover:gi-bg-black hover:gi-bg-opacity-10"
               href="#"
               ariaLabel="Log out"
             >
-              <gi-logout-icon [size]="16"></gi-logout-icon>
+              <gi-logout-icon [size]="16" />
             </gi-link>
           </gi-stack>
         </gi-header-section>
         <gi-header-section appearance="light">
           <gi-header-logo>
             <gi-link href="#" ariaLabel="Gov.ie home">
-              <gi-logo-black [size]="132" className="gi-hidden md:gi-block"></gi-logo-black>
-              <gi-logo-harp-black [size]="32" className="gi-block md:gi-hidden"></gi-logo-harp-black>
+              <gi-logo-black [size]="132" className="gi-hidden md:gi-block" />
+              <gi-logo-harp-black [size]="32" className="gi-block md:gi-hidden" />
             </gi-link>
           </gi-header-logo>
           <gi-header-title>Light Mode Title</gi-header-title>
@@ -196,21 +196,21 @@ export const Light: StoryObj = {
             <gi-header-nav-item-link visible="lg" href="#">
               Services
             </gi-header-nav-item-link>
-            <gi-header-nav-item-separator visible="md"></gi-header-nav-item-separator>
+            <gi-header-nav-item-separator visible="md" />
             <gi-header-nav-item visible="md">
-              FAQ <gi-info-icon></gi-info-icon>
+              FAQ <gi-info-icon />
             </gi-header-nav-item>
             <gi-header-nav-item visible="md">
               Search
-              <gi-search-icon></gi-search-icon>
+              <gi-search-icon />
             </gi-header-nav-item>
             <gi-header-nav-item visible="md">
               Language
-              <gi-mic-icon></gi-mic-icon>
+              <gi-mic-icon />
             </gi-header-nav-item>
             <gi-header-nav-item [visible]="{ xs: true, md: false }">
               Menu
-              <gi-menu-icon></gi-menu-icon>
+              <gi-menu-icon />
             </gi-header-nav-item>
           </gi-header-nav>
         </gi-header-section>
@@ -254,7 +254,7 @@ export const TitleAndLogoAsLinks: StoryObj = {
         <gi-header-section className="!gi-justify-start">
           <gi-header-logo>
             <gi-link href="#" appearance="light" ariaLabel="Gov.ie home">
-              <gi-logo-white [size]="132"></gi-logo-white>
+              <gi-logo-white [size]="132" />
             </gi-link>
           </gi-header-logo>
           <gi-header-title>
@@ -324,37 +324,37 @@ export const Desktop: StoryObj = {
           </gi-header-nav>
           <gi-stack direction="row" class="gi-text-center gi-items-center gi-py-1">
             <gi-text size="sm" class="gi-px-1">Hello Saoirse</gi-text>
-            <gi-divider orientation="vertical" class="gi-my-1 gi-mx-1"></gi-divider>
+            <gi-divider orientation="vertical" class="gi-my-1 gi-mx-1" />
             <gi-header-nav-item-link
               className="gi-py-1 gi-px-2 hover:gi-bg-black hover:gi-bg-opacity-20"
               href="#"
               ariaLabel="Log out"
             >
-              <gi-logout-icon [size]="16"></gi-logout-icon>
+              <gi-logout-icon [size]="16" />
             </gi-header-nav-item-link>
           </gi-stack>
         </gi-header-section>
         <gi-header-section>
           <gi-header-logo>
             <gi-link appearance="light" href="#" ariaLabel="Gov.ie home">
-              <gi-logo-white [size]="132"></gi-logo-white>
+              <gi-logo-white [size]="132" />
             </gi-link>
           </gi-header-logo>
           <gi-header-title>Title</gi-header-title>
           <gi-header-nav ariaLabel="Primary navigation">
             <gi-header-nav-item-link href="#">Departments</gi-header-nav-item-link>
             <gi-header-nav-item-link href="#">Services</gi-header-nav-item-link>
-            <gi-header-nav-item-separator></gi-header-nav-item-separator>
+            <gi-header-nav-item-separator />
             <gi-header-nav-item>
-              FAQ <gi-info-icon></gi-info-icon>
+              FAQ <gi-info-icon />
             </gi-header-nav-item>
             <gi-header-nav-item>
               Search
-              <gi-search-icon></gi-search-icon>
+              <gi-search-icon />
             </gi-header-nav-item>
             <gi-header-nav-item>
               Language
-              <gi-mic-icon></gi-mic-icon>
+              <gi-mic-icon />
             </gi-header-nav-item>
           </gi-header-nav>
         </gi-header-section>
@@ -426,27 +426,27 @@ export const MobileView: StoryObj = {
           </gi-header-nav>
           <gi-stack direction="row" class="gi-text-center gi-items-center gi-py-1">
             <gi-text size="sm" class="gi-px-1">Hello Saoirse</gi-text>
-            <gi-divider orientation="vertical" class="gi-my-1 gi-mx-1"></gi-divider>
+            <gi-divider orientation="vertical" class="gi-my-1 gi-mx-1" />
             <gi-link
-              className="gi-py-1 gi-px-2 hover:gi-bg-black hover:gi-bg-opacity-20"
+              class="gi-py-1 gi-px-2 hover:gi-bg-black hover:gi-bg-opacity-20"
               appearance="light"
               href="#"
               ariaLabel="Log out"
             >
-              <gi-logout-icon [size]="16"></gi-logout-icon>
+              <gi-logout-icon [size]="16" />
             </gi-link>
           </gi-stack>
         </gi-header-section>
         <gi-header-section>
           <gi-header-logo>
             <gi-link appearance="light" href="#" ariaLabel="Gov.ie home">
-              <gi-logo-harp-white className="gi-h-10"></gi-logo-harp-white>
+              <gi-logo-harp-white className="gi-h-10" />
             </gi-link>
           </gi-header-logo>
           <gi-header-title>Title</gi-header-title>
           <gi-header-nav ariaLabel="Primary navigation">
             <gi-header-nav-item>
-              Menu <gi-menu-icon></gi-menu-icon>
+              Menu <gi-menu-icon />
             </gi-header-nav-item>
           </gi-header-nav>
         </gi-header-section>

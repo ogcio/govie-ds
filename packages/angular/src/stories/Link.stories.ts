@@ -1,7 +1,9 @@
-import type { StoryObj } from '@storybook/angular-vite';
-import Link from '@/atoms/Link';
+import omit from 'lodash/omit';
+import { componentWrapperDecorator, type Meta, type StoryObj } from '@storybook/angular-vite';
+import { GiLink, GiLinkDirective } from '@/Link';
 import { GiBox } from '@/Box';
-import { GiParagraph } from '@/Paragraph';
+import { GiParagraph, GiParagraphDirective } from '@/Paragraph';
+import { GiStack, GiStackDirective } from '@/Stack';
 import { GiH1 } from '@/heading/H1';
 import { GiH2 } from '@/heading/H2';
 import HomeIcon from '@/atoms/icons/Home';
@@ -12,29 +14,36 @@ import {
   PlainLink as linkPlain,
 } from '@/atoms/storybook/Link.meta';
 
-const meta = {
+const meta: Meta<GiLink> = {
   ...linkMeta,
   title: 'Navigation/Link',
-  component: Link,
-  // Stop the click from navigating to avoid unexpected navigation in Storybook
-  decorators: [
-    (story: () => { template?: string }) => {
-      const rendered = story();
-      return {
-        ...rendered,
-        template: `<div (click)="$event.preventDefault()">${rendered.template ?? ''}</div>`,
-      };
+  component: GiLink,
+  argTypes: {
+    ...omit(linkMeta.argTypes, ['className', 'styles']),
+    class: {
+      control: false,
+      description: 'Additional CSS classes applied to the link element.',
+      table: { type: { summary: 'string' } },
     },
-  ],
+    style: {
+      control: false,
+      description: 'Inline styles applied to the link element.',
+      table: { type: { summary: 'string' } },
+    },
+  },
+  // Stop the click from navigating to avoid unexpected navigation in Storybook
+  decorators: [componentWrapperDecorator((story) => `<div (click)="$event.preventDefault()">${story}</div>`)],
 };
 
 export default meta;
 
-export const InlineLink: StoryObj = {
+type Story = StoryObj<GiLink>;
+
+export const InlineLink: Story = {
   ...linkInline,
   render: (props) => ({
     props,
-    moduleMetadata: { imports: [Link] },
+    moduleMetadata: { imports: [GiLink] },
     template: `
       <gi-link
         [href]="href"
@@ -44,6 +53,7 @@ export const InlineLink: StoryObj = {
         [underline]="underline"
         [appearance]="appearance"
         [visited]="visited"
+        [external]="external"
       >
         {{ children }}
       </gi-link>
@@ -51,7 +61,7 @@ export const InlineLink: StoryObj = {
   }),
 };
 
-export const InTypography: StoryObj = {
+export const InTypography: Story = {
   parameters: {
     docs: {
       description: {
@@ -64,98 +74,125 @@ export const InTypography: StoryObj = {
     },
   },
   render: (_props) => ({
-    moduleMetadata: { imports: [Link, GiBox, GiParagraph, GiH1, GiH2] },
+    moduleMetadata: { imports: [GiLink, GiBox, GiStack, GiParagraph, GiH1, GiH2] },
     template: `
-      <gi-box class="gi-flex gi-flex-col gi-gap-8 gi-max-w-prose">
+      <gi-stack direction="column" [gap]="8" class="gi-max-w-prose">
 
-        <gi-box class="gi-flex gi-flex-col gi-gap-4">
+        <gi-stack direction="column" [gap]="4">
           <gi-h1>Heading with an <gi-link href="#" variant="inline">inline link</gi-link></gi-h1>
           <gi-paragraph>
             Government services are available on <gi-link href="#" variant="inline">gov.ie</gi-link>.
             You can also check <gi-link href="#" variant="inline">your application status</gi-link>
             or contact the <gi-link href="#" variant="inline">support team</gi-link> for help.
           </gi-paragraph>
-        </gi-box>
+        </gi-stack>
 
-        <gi-box class="gi-flex gi-flex-col gi-gap-4">
+        <gi-stack direction="column" [gap]="4">
           <gi-h2>Underlines</gi-h2>
           <gi-paragraph>Always underlined: <gi-link href="#" variant="inline" underline="always">apply online</gi-link></gi-paragraph>
           <gi-paragraph>Hover only: <gi-link href="#" variant="inline" underline="hover">check status</gi-link></gi-paragraph>
           <gi-paragraph>No underline: <gi-link href="#" variant="inline" underline="none">learn more</gi-link></gi-paragraph>
-        </gi-box>
+        </gi-stack>
 
-        <gi-box class="gi-flex gi-flex-col gi-gap-4">
+        <gi-stack direction="column" [gap]="4">
           <gi-h2>Visited</gi-h2>
           <gi-paragraph>Default visited colour: <gi-link href="#" variant="inline">visited link</gi-link></gi-paragraph>
           <gi-paragraph>No visited colour: <gi-link href="#" variant="inline" visited="none">always same colour</gi-link></gi-paragraph>
-        </gi-box>
+        </gi-stack>
 
-        <gi-box class="gi-flex gi-flex-col gi-gap-4">
+        <gi-stack direction="column" [gap]="4">
           <gi-h2>Appearances</gi-h2>
           <gi-box class="gi-bg-black gi-p-4 gi-rounded gi-w-fit">
-            <gi-paragraph className="gi-text-white">Light on dark: <gi-link href="#" variant="inline" appearance="light">gov.ie services</gi-link></gi-paragraph>
+            <gi-paragraph class="gi-text-white">Light on dark: <gi-link href="#" variant="inline" appearance="light">gov.ie services</gi-link></gi-paragraph>
           </gi-box>
-          <gi-paragraph className="gi-text-gray-700 gi-pl-4">Inherit parent colour: <gi-link href="#" variant="inline" appearance="inherit">inherited link</gi-link></gi-paragraph>
-        </gi-box>
+          <gi-paragraph class="gi-text-gray-700 gi-pl-4">Inherit parent colour: <gi-link href="#" variant="inline" appearance="inherit">inherited link</gi-link></gi-paragraph>
+        </gi-stack>
 
-        <gi-box class="gi-flex gi-flex-col gi-gap-4">
+        <gi-stack direction="column" [gap]="4">
           <gi-h2>Interaction states</gi-h2>
-          <gi-paragraph className="gi-flex gi-gap-4 gi-pl-4">
+          <gi-paragraph class="gi-flex gi-gap-4 gi-pl-4">
             <gi-link href="#" variant="inline">default</gi-link>
-            <gi-link href="#" variant="inline" className="pseudo-hover">hover</gi-link>
-            <gi-link href="#" variant="inline" className="pseudo-focus">focus</gi-link>
+            <gi-link href="#" variant="inline" class="pseudo-hover">hover</gi-link>
+            <gi-link href="#" variant="inline" class="pseudo-focus">focus</gi-link>
           </gi-paragraph>
           <gi-box class="gi-bg-black gi-p-4 gi-rounded gi-w-fit">
-            <gi-paragraph className="gi-text-white gi-flex gi-gap-4">
+            <gi-paragraph class="gi-text-white gi-flex gi-gap-4">
               <gi-link href="#" variant="inline" appearance="light">light</gi-link>
-              <gi-link href="#" variant="inline" appearance="light" className="pseudo-hover">hover</gi-link>
-              <gi-link href="#" variant="inline" appearance="light" className="pseudo-focus">focus</gi-link>
+              <gi-link href="#" variant="inline" appearance="light" class="pseudo-hover">hover</gi-link>
+              <gi-link href="#" variant="inline" appearance="light" class="pseudo-focus">focus</gi-link>
             </gi-paragraph>
           </gi-box>
-        </gi-box>
+        </gi-stack>
 
-      </gi-box>
+      </gi-stack>
     `,
   }),
 };
 
-export const PlainLink: StoryObj = {
+export const PlainLink: Story = {
   ...linkPlain,
   render: (_props) => ({
-    moduleMetadata: { imports: [Link, GiBox, HomeIcon] },
+    moduleMetadata: { imports: [GiLink, GiBox, GiStack, HomeIcon] },
     template: `
-      <gi-box class="gi-flex gi-flex-col gi-gap-6 gi-items-start">
-        <gi-box class="gi-flex gi-flex-col gi-gap-4 gi-items-start">
-          <gi-link href="#" ariaLabel="Home" className="gi-inline-flex gi-w-fit">
-            <gi-home-icon></gi-home-icon>
+      <gi-stack direction="column" [gap]="6" align="start">
+        <gi-stack direction="column" [gap]="4" align="start">
+          <gi-link href="#" ariaLabel="Home" class="gi-inline-flex gi-w-fit">
+            <gi-home-icon />
           </gi-link>
-          <gi-link href="#" className="gi-font-primary">Styled Link</gi-link>
+          <gi-link href="#" class="gi-italic">Styled Link</gi-link>
+        </gi-stack>
+        <gi-box class="gi-bg-black gi-p-4 gi-rounded">
+          <gi-link href="#" appearance="light" visited="none">Light appearance</gi-link>
         </gi-box>
-        <gi-box class="gi-bg-black gi-p-4 gi-rounded gi-w-fit gi-flex gi-gap-4 gi-items-center">
-          <gi-link href="#" appearance="light" visited="none">Light Appearance</gi-link>
-        </gi-box>
-      </gi-box>
+      </gi-stack>
     `,
   }),
 };
 
-export const PlainFocusState: StoryObj = {
+export const PlainFocusState: Story = {
   ...linkPlainFocus,
   render: (_props) => ({
-    moduleMetadata: { imports: [Link, GiBox, HomeIcon] },
+    moduleMetadata: { imports: [GiLink, GiBox, GiStack, HomeIcon] },
     template: `
-      <gi-box class="gi-flex gi-flex-col gi-gap-6">
-        <gi-box class="gi-flex gi-gap-4 gi-items-center">
-          <gi-link href="#" ariaLabel="Home" dataTestId="link-icon-default" className="gi-inline-flex gi-w-fit pseudo-focus">
-            <gi-home-icon></gi-home-icon>
+      <gi-stack direction="column" [gap]="6" align="start">
+        <gi-link href="#" ariaLabel="Home" dataTestId="link-icon-default" class="gi-inline-flex gi-w-fit pseudo-focus">
+          <gi-home-icon />
+        </gi-link>
+        <gi-box class="gi-bg-black gi-p-4 gi-rounded">
+          <gi-link href="#" appearance="light" ariaLabel="Home light" dataTestId="link-icon-light" class="gi-inline-flex gi-w-fit pseudo-focus">
+            <gi-home-icon />
           </gi-link>
         </gi-box>
-        <gi-box class="gi-bg-black gi-p-4 gi-rounded gi-w-fit gi-flex gi-gap-4 gi-items-center">
-          <gi-link href="#" appearance="light" ariaLabel="Home light" dataTestId="link-icon-light" className="gi-inline-flex gi-w-fit pseudo-focus">
-            <gi-home-icon></gi-home-icon>
-          </gi-link>
-        </gi-box>
-      </gi-box>
+      </gi-stack>
+    `,
+  }),
+};
+
+export const Directive: StoryObj<GiLinkDirective> = {
+  parameters: {
+    controls: { disable: true },
+    docs: {
+      description: {
+        story:
+          'Adds the `gi-link` styling to a plain `a`, with the same variants, underline, appearance and visited handling.',
+      },
+    },
+  },
+  render: (_props) => ({
+    moduleMetadata: { imports: [GiStackDirective, GiParagraphDirective, GiLinkDirective, HomeIcon] },
+    template: `
+      <div giStack direction="column" [gap]="6" align="start">
+        <div giStack direction="column" [gap]="4" align="start">
+          <a giLink href="#" aria-label="Home" class="gi-inline-flex gi-w-fit">
+            <gi-home-icon />
+          </a>
+          <a giLink href="#" class="gi-italic">Styled Link</a>
+          <p giParagraph>Government services are available on <a giLink href="#" variant="inline">gov.ie</a>.</p>
+        </div>
+        <div giStack class="gi-bg-black gi-p-4">
+          <a giLink href="#" appearance="light" visited="none">Light appearance</a>
+        </div>
+      </div>
     `,
   }),
 };

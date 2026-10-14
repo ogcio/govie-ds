@@ -42,7 +42,7 @@ import type { Appearance, Underline, Variant, Visited } from './Link.styles';
 import type { ValueOf } from './constants';
 
 @Component({
-  selector: 'gi-link',
+  selector: 'core-link',
   template: `
     <a
       [attr.id]="id"

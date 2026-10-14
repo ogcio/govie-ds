@@ -15,3 +15,6 @@ export { GiContainer, GiContainerDirective } from './Container';
 export { GiGrid, GiGridDirective } from './Grid';
 export { GiStack, GiStackDirective } from './Stack';
 export { GiDivider, GiDividerDirective } from './Divider';
+
+// Actions
+export { GiLink, GiLinkDirective } from './Link';

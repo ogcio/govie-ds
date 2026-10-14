@@ -2,7 +2,7 @@ import type { StoryObj } from '@storybook/angular-vite';
 import { GiBox } from '@/Box';
 import { GiDivider, GiDividerDirective } from '@/Divider';
 import { GiStack, GiStackDirective } from '@/Stack';
-import Link from '@/atoms/Link';
+import { GiLink } from '@/Link';
 import * as stories from '@/atoms/storybook/Divider.meta';
 import { Orientation } from '@/atoms/constants';
 
@@ -25,7 +25,7 @@ export const Horizontal: StoryObj = {
           [orientation]="orientation"
           [id]="id"
           [dataTestId]="dataTestId"
-        ></gi-divider>
+        />
         <gi-box>Content</gi-box>
       </gi-stack>
     `,
@@ -44,7 +44,7 @@ export const Vertical: StoryObj = {
           [orientation]="orientation"
           [id]="id"
           [dataTestId]="dataTestId"
-        ></gi-divider>
+        />
         <gi-box>Right</gi-box>
       </gi-stack>
     `,
@@ -55,7 +55,7 @@ export const RichText: StoryObj = {
   ...stories.RichText,
   render: (props) => ({
     props,
-    moduleMetadata: { imports: [GiBox, GiDivider, GiStack, Link] },
+    moduleMetadata: { imports: [GiBox, GiDivider, GiStack, GiLink] },
     template: `
       <gi-stack [direction]="'row'" [gap]="2" class="gi-font-primary gi-text-sm">
         <gi-box><gi-link href="#" variant="inline">Left</gi-link></gi-box>
@@ -63,7 +63,7 @@ export const RichText: StoryObj = {
           [orientation]="orientation"
           [id]="id"
           [dataTestId]="dataTestId"
-        ></gi-divider>
+        />
         <gi-box><gi-link href="#" variant="inline">Right</gi-link></gi-box>
       </gi-stack>
     `,

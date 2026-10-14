@@ -1,7 +1,8 @@
 import type { StoryObj } from '@storybook/angular-vite';
 import { within, expect } from 'storybook/test';
 import { footerMeta, CompleteFooter as CompleteFooterStory } from '@/atoms/storybook/Footer.meta';
-import { Footer, FooterSection, FooterLogo, Link } from '@/atoms';
+import { Footer, FooterSection, FooterLogo } from '@/atoms';
+import { GiLink } from '@/Link';
 import { GiGrid } from '@/Grid';
 import { GiDivider } from '@/Divider';
 import { GiStack } from '@/Stack';
@@ -34,7 +35,7 @@ export const CompleteFooter: StoryObj = {
         GiGrid,
         GiH4,
         GiDivider,
-        Link,
+        GiLink,
         GiStack,
         GiText,
         LogoGoldGreen,
@@ -54,7 +55,7 @@ export const CompleteFooter: StoryObj = {
           <gi-grid [container]="true" [columns]="{ base: 4, md: 8, lg: 12 }" gap="4" dataTestId="primary">
             <gi-grid [size]="{ base: 4, md: 4, lg: 3 }">
               <gi-h4 class="gi-my-4">Services</gi-h4>
-              <gi-divider class="gi-my-4"></gi-divider>
+              <gi-divider class="gi-my-4" />
               <ul class="gi-space-y-2">
                 <li>
                   <gi-link variant="inline" appearance="inherit" href="/services/public-services">Public Services</gi-link>
@@ -69,7 +70,7 @@ export const CompleteFooter: StoryObj = {
             </gi-grid>
             <gi-grid [size]="{ base: 4, md: 4, lg: 3 }">
               <gi-h4 class="gi-my-4">Departments</gi-h4>
-              <gi-divider class="gi-my-4"></gi-divider>
+              <gi-divider class="gi-my-4" />
               <ul class="gi-space-y-2">
                 <li>
                   <gi-link variant="inline" appearance="inherit" href="/departments/health">Department of Health</gi-link>
@@ -84,7 +85,7 @@ export const CompleteFooter: StoryObj = {
             </gi-grid>
             <gi-grid [size]="{ base: 4, md: 4, lg: 3 }">
               <gi-h4 class="gi-my-4">Publications</gi-h4>
-              <gi-divider class="gi-my-4"></gi-divider>
+              <gi-divider class="gi-my-4" />
               <ul class="gi-space-y-2">
                 <li>
                   <gi-link variant="inline" appearance="inherit" href="/publications/reports">Reports</gi-link>
@@ -99,7 +100,7 @@ export const CompleteFooter: StoryObj = {
             </gi-grid>
             <gi-grid [size]="{ base: 4, md: 4, lg: 3 }">
               <gi-h4 class="gi-my-4">Contact</gi-h4>
-              <gi-divider class="gi-my-4"></gi-divider>
+              <gi-divider class="gi-my-4" />
               <ul class="gi-space-y-2">
                 <li>
                   <gi-link variant="inline" appearance="inherit" href="/contact/find-an-office">Find an Office</gi-link>
@@ -114,7 +115,7 @@ export const CompleteFooter: StoryObj = {
             </gi-grid>
           </gi-grid>
 
-          <gi-divider class="gi-my-8"></gi-divider>
+          <gi-divider class="gi-my-8" />
           <gi-stack id="lower-section" [direction]="{ base: 'column', md: 'row' }" [gap]="6">
             <gi-stack id="left-side-content" direction="column" [gap]="6">
               <gi-stack [direction]="{ base: 'column', md: 'row' }" [gap]="4" [wrap]="true">
@@ -133,14 +134,14 @@ export const CompleteFooter: StoryObj = {
                 <gi-link variant="inline" appearance="inherit" href="/events">Events</gi-link>
               </gi-stack>
               <gi-stack direction="row" [gap]="4">
-                <gi-x-icon [size]="24" label="social_x"></gi-x-icon>
-                <gi-facebook-icon label="social_facebook"></gi-facebook-icon>
-                <gi-bluesky-icon label="social_bluesky"></gi-bluesky-icon>
-                <gi-linkedin-icon label="social_linkedin"></gi-linkedin-icon>
+                <gi-x-icon [size]="24" label="social_x" />
+                <gi-facebook-icon label="social_facebook" />
+                <gi-bluesky-icon label="social_bluesky" />
+                <gi-linkedin-icon label="social_linkedin" />
               </gi-stack>
             </gi-stack>
             <gi-footer-logo dataTestId="footer-logo">
-              <gi-logo-gold-green size="181" label="Gov.ie Logo"></gi-logo-gold-green>
+              <gi-logo-gold-green size="181" label="Gov.ie Logo" />
             </gi-footer-logo>
           </gi-stack>
         </gi-footer-section>

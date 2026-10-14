@@ -3,7 +3,7 @@ import classes from './Link.styles';
 import type { Appearance, Underline, Variant, Visited } from './Link.styles';
 import type { ValueOf } from './constants';
 
-useMetadata({ angular: { selector: 'gi-link' } });
+useMetadata({ angular: { selector: 'core-link' } });
 
 useDefaultProps({
   download: undefined,
