@@ -1,6 +1,9 @@
+import { RouterLink, RouterLinkActive } from '@angular/router';
 import omit from 'lodash/omit';
 import { componentWrapperDecorator, type Meta, type StoryObj } from '@storybook/angular-vite';
+import { expect, userEvent, waitFor, within } from 'storybook/test';
 import { GiLink, GiLinkDirective } from '@/Link';
+import { withRouter } from '@/stories/router';
 import { GiBox } from '@/Box';
 import { GiParagraph, GiParagraphDirective } from '@/Paragraph';
 import { GiStack, GiStackDirective } from '@/Stack';
@@ -195,4 +198,47 @@ export const Directive: StoryObj<GiLinkDirective> = {
       </div>
     `,
   }),
+};
+
+export const WithRouter: StoryObj<GiLinkDirective> = {
+  decorators: [withRouter(['', 'about', 'contact'])],
+  parameters: {
+    controls: { disable: true },
+    docs: {
+      description: {
+        story:
+          '`giLink` supports the native Angular router: use it together with `routerLink` and `routerLinkActive` on the same `<a>`, and the router marks the active link with `aria-current`.',
+      },
+    },
+  },
+  render: (_props) => ({
+    moduleMetadata: { imports: [GiStackDirective, RouterLink, RouterLinkActive, GiLinkDirective] },
+    template: `
+      <div giStack direction="row" [gap]="6" align="center">
+        <a giLink routerLink="/" routerLinkActive [routerLinkActiveOptions]="{ exact: true }" ariaCurrentWhenActive="page">Home</a>
+        <a giLink routerLink="/about" routerLinkActive ariaCurrentWhenActive="page">About</a>
+        <a giLink variant="inline" class="gi-italic" routerLink="/contact" routerLinkActive ariaCurrentWhenActive="page">Contact</a>
+      </div>
+    `,
+  }),
+  play: async ({ canvasElement, step }) => {
+    const canvas = within(canvasElement);
+    const about = canvas.getByRole('link', { name: 'About' });
+
+    await step('the consumer anchor carries the router href', async () => {
+      expect(about.getAttribute('href')).toBe('#/about');
+    });
+
+    await step('clicking navigates through the router and marks the active link', async () => {
+      await userEvent.click(about);
+      await waitFor(() => expect(about.getAttribute('aria-current')).toBe('page'));
+      expect(canvas.getByRole('link', { name: 'Home' }).getAttribute('aria-current')).toBeNull();
+    });
+
+    await step('directive classes merge with the consumer class', async () => {
+      const contact = canvas.getByRole('link', { name: 'Contact' });
+      expect(contact.classList).toContain('gi-italic');
+      expect(contact.classList).toContain('gi-underline');
+    });
+  },
 };

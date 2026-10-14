@@ -1,8 +1,11 @@
+import { RouterLink, RouterLinkActive } from '@angular/router';
 import omit from 'lodash/omit';
 import { componentWrapperDecorator, type Meta, type StoryObj } from '@storybook/angular-vite';
+import { expect, userEvent, waitFor, within } from 'storybook/test';
 import { GiBox } from '@/Box';
 import { GiLinkButton, GiLinkButtonDirective } from '@/LinkButton';
 import { GiStackDirective } from '@/Stack';
+import { withRouter } from '@/stories/router';
 import { linkButtonMeta, Default as defaultStory } from '@/atoms/storybook/LinkButton.meta';
 
 const meta: Meta<GiLinkButton> = {
@@ -74,4 +77,40 @@ export const Directive: StoryObj<GiLinkButtonDirective> = {
       </div>
     `,
   }),
+};
+
+export const WithRouter: StoryObj<GiLinkButtonDirective> = {
+  decorators: [withRouter(['', 'apply', 'status'])],
+  parameters: {
+    controls: { disable: true },
+    docs: {
+      description: {
+        story:
+          '`giButton` supports the native Angular router: use it together with `routerLink` and `routerLinkActive` on the same `<a>`, and the router marks the active link with `aria-current`.',
+      },
+    },
+  },
+  render: (_props) => ({
+    moduleMetadata: { imports: [GiStackDirective, RouterLink, RouterLinkActive, GiLinkButtonDirective] },
+    template: `
+      <div giStack direction="row" [gap]="4">
+        <a giButton routerLink="/apply" routerLinkActive ariaCurrentWhenActive="page">Apply</a>
+        <a giButton variant="secondary" routerLink="/status" routerLinkActive ariaCurrentWhenActive="page">Check status</a>
+      </div>
+    `,
+  }),
+  play: async ({ canvasElement, step }) => {
+    const canvas = within(canvasElement);
+    const apply = canvas.getByRole('link', { name: 'Apply' });
+
+    await step('the consumer anchor carries the router href', async () => {
+      expect(apply.getAttribute('href')).toBe('#/apply');
+    });
+
+    await step('clicking navigates through the router and marks the active link', async () => {
+      await userEvent.click(apply);
+      await waitFor(() => expect(apply.getAttribute('aria-current')).toBe('page'));
+      expect(canvas.getByRole('link', { name: 'Check status' }).getAttribute('aria-current')).toBeNull();
+    });
+  },
 };
