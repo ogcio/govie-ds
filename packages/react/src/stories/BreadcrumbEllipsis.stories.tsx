@@ -7,6 +7,7 @@ import omit from 'lodash/omit';
 const meta = {
   ...stories.meta,
   title: 'Navigation/Breadcrumbs/BreadcrumbEllipsis',
+  component: BreadcrumbEllipsis,
   argTypes: {
     ...omit(stories.meta.argTypes, 'styles'),
     style: stories.meta.argTypes.styles,

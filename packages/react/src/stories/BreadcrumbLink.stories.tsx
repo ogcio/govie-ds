@@ -6,10 +6,11 @@ import SettingsIcon from '@/atoms/icons/Settings';
 import HomeIcon from '@/atoms/icons/Home';
 import PersonIcon from '@/atoms/icons/Person';
 import { importNext } from './helpers';
-import { omit } from 'lodash';
+import omit from 'lodash/omit';
 
 const meta = {
   ...stories.meta,
+  title: 'Navigation/Breadcrumbs/BreadcrumbLink',
   component: BreadcrumbLink,
   argTypes: {
     ...omit(stories.meta.argTypes, 'styles'),
@@ -51,7 +52,6 @@ const meta = {
       },
     },
   },
-  title: 'Navigation/Breadcrumbs/BreadcrumbLink',
   parameters: {
     ...stories.meta.parameters,
     docs: {

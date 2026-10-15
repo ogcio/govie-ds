@@ -9,12 +9,13 @@ import { boxMeta } from './Box.meta';
 import { checker } from './utilities';
 import type { Props } from '../breadcrumbs/Breadcrumbs';
 import type { Meta, Story } from './types';
+export const BREADCRUMBS_TEST_ID = 'breadcrumbs';
 export const meta = {
   title: 'Navigation/Breadcrumbs/Breadcrumbs',
   args: {
     ariaLabel: 'Breadcrumbs',
     id: 'breadcrumbs-id',
-    dataTestId: 'breadcrumbs',
+    dataTestId: BREADCRUMBS_TEST_ID,
   },
   argTypes: {
     className: boxMeta.argTypes.className,
@@ -54,9 +55,8 @@ export const meta = {
 } satisfies Meta<Props>;
 export const Default = {
   play: async ({ canvasElement, step, args }) => {
-    const dataTestId = args.dataTestId as string;
     const canvas = within(canvasElement as HTMLElement);
-    const check = checker(dataTestId, canvas, step);
+    const check = checker(BREADCRUMBS_TEST_ID, canvas, step);
     await check.is('nav');
     await check.attributes({
       id: args.id,
@@ -64,7 +64,7 @@ export const Default = {
     });
     await check.children();
     await step('renders an ordered list of breadcrumb items', async () => {
-      const nav = canvas.getByTestId(dataTestId);
+      const nav = canvas.getByTestId(BREADCRUMBS_TEST_ID);
       expect(nav.querySelector('ol')).toBeInTheDocument();
       const items = canvas.getAllByRole('listitem', {
         hidden: true,
