@@ -1,9 +1,13 @@
 import { within, expect } from 'storybook/test';
 import { linkMeta } from './Link.meta';
 import { checker } from './utilities';
-import type { Renderer, StoryContext } from 'storybook/internal/types';
 import type { Props } from '../breadcrumbs/BreadcrumbLink.lite';
 import type { Meta, Story } from './types';
+
+// Args every framework passes to these stories: React drops `href` when `asChild` is set.
+type SharedArgs = Omit<Props, 'href'> & { href?: string };
+
+export const CURRENT_LINK_TEST_ID = 'breadcrumb-link-current';
 
 // Matches the icon breadcrumbs rendered by the WithIcons story in each framework.
 export const ICON_BREADCRUMB_LABELS = ['Go to Home page', 'Go to Settings page', 'Go to Accounts page'];
@@ -38,13 +42,12 @@ export const meta = {
   },
 } satisfies Meta<Props>;
 
-export const Default = {} satisfies Story<Props>;
+export const Default = {} satisfies Story<SharedArgs>;
 
 export const CurrentLink = {
   args: {
-    ...meta.args,
     current: true,
-    dataTestId: 'breadcrumb-link-current',
+    dataTestId: CURRENT_LINK_TEST_ID,
   },
   parameters: {
     docs: {
@@ -54,22 +57,22 @@ export const CurrentLink = {
       },
     },
   },
-  play: async ({ canvasElement, step, args }: StoryContext<Renderer>) => {
+  play: async ({ canvasElement, step, args }) => {
     const canvas = within(canvasElement as HTMLElement);
-    const check = checker(args.dataTestId, canvas, step);
+    const check = checker(CURRENT_LINK_TEST_ID, canvas, step);
 
     await check.is('a');
     await check.attributes({ href: args.href, 'aria-current': 'page' });
     await check.children();
 
     await step('stays a focusable link', async () => {
-      const element = canvas.getByTestId(args.dataTestId);
+      const element = canvas.getByTestId(CURRENT_LINK_TEST_ID);
       element.focus();
       expect(element).toHaveFocus();
       element.blur();
     });
   },
-} satisfies Story<Props>;
+} satisfies Story<SharedArgs>;
 
 export const WithIcons = {
   parameters: {
@@ -80,7 +83,7 @@ export const WithIcons = {
       },
     },
   },
-  play: async ({ canvasElement, step }: StoryContext<Renderer>) => {
+  play: async ({ canvasElement, step }) => {
     const canvas = within(canvasElement as HTMLElement);
 
     await step('renders a link for each level', async () => {
@@ -103,4 +106,4 @@ export const WithIcons = {
       }
     });
   },
-} satisfies Story<Props>;
+} satisfies Story<SharedArgs>;
