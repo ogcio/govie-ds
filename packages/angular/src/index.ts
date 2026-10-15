@@ -17,5 +17,6 @@ export { GiStack, GiStackDirective } from './Stack';
 export { GiDivider, GiDividerDirective } from './Divider';
 
 // Actions
+export { GiButton, GiButtonDirective } from './Button';
 export { GiLink, GiLinkDirective } from './Link';
 export { GiLinkButton, GiLinkButtonDirective } from './LinkButton';

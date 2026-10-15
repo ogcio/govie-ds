@@ -37,7 +37,7 @@ export type Props = {
   ref?: any;
 };
 
-useMetadata({ angular: { selector: 'gi-button' } });
+useMetadata({ angular: { selector: 'core-button' } });
 
 useDefaultProps({
   ariaChecked: undefined,

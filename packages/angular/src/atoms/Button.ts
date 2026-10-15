@@ -49,7 +49,7 @@ import type { Appearance, ButtonSize, Variant } from './Button.styles';
 import type { ValueOf } from './constants';
 
 @Component({
-  selector: 'gi-button',
+  selector: 'core-button',
   template: `
     <button
       [attr.id]="id"
