@@ -13,7 +13,7 @@ export default defineConfig({
       reporter: ['lcov', 'cobertura'],
       clean: true,
       include: ['src/**/*.{ts,vue}'],
-      exclude: [...coverageConfigDefaults.exclude, 'src/**/*.stories.ts', 'src/**/storybook/**'],
+      exclude: [...coverageConfigDefaults.exclude, 'src/**/*.stories.ts', 'src/**/storybook/**', 'src/atoms/icons/**'],
     },
     projects: [
       {

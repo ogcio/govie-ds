@@ -24,6 +24,7 @@ export default mergeConfig(
           '../src/**/*.stories.*',
           // 👇 This pattern must align with the output directory of `storybook build`
           '**/storybook-static/**',
+          'src/atoms/icons/**',
         ],
       },
       projects: [
