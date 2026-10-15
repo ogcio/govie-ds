@@ -1,0 +1,10 @@
+import { tv } from 'tailwind-variants';
+import { baseClasses } from '../Button.styles';
+
+export default tv({
+  extend: baseClasses,
+  base: 'gi-h-12 gi-min-w-12 gi-p-3 gi-text-2md gi-justify-center',
+  defaultVariants: {
+    appearance: 'dark',
+  },
+});
