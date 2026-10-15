@@ -38,27 +38,11 @@ export type Props = {
   ref?: any;
 };
 
-import { tv } from 'tailwind-variants';
-import { baseClasses, getAppearance, getVariant } from './Button.styles';
+import { getAppearance, getVariant } from './Button.styles';
+import classes from './IconButton.styles';
 import type { Appearance, Variant } from './Button.styles';
-import { Size } from './constants';
-import type { ValueOf } from './constants';
+import type { Size, ValueOf } from './constants';
 import { getSize } from './utilities';
-const classes = tv({
-  extend: baseClasses,
-  base: ['gi-justify-center'],
-  variants: {
-    size: {
-      sm: 'gi-h-8 gi-w-8',
-      md: 'gi-h-10 gi-w-10',
-      lg: 'gi-h-12 gi-w-12',
-      xl: 'gi-h-14 gi-w-14',
-    },
-  },
-  defaultVariants: {
-    size: Size.MD,
-  },
-});
 
 const IconButton = forwardRef<Props['ref'], Props>(function IconButton(props: Props, ref) {
   props = { ariaPressed: undefined, ariaExpanded: undefined, ariaHasPopup: undefined, ariaBusy: undefined, ...props };
