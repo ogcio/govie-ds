@@ -2,21 +2,13 @@ import type { Meta, StoryObj } from '@storybook/react-vite';
 import _ from 'lodash';
 import { Button } from '@/button/button';
 import { ButtonSize, Variant, Appearance } from '@/atoms/Button.styles';
-import {
-  buttonMeta,
-  Default as buttonDefault,
-  AllVariants as buttonAllVariants,
-  AllAppearances as buttonAllAppearances,
-  AllSizes as buttonAllSizes,
-  InteractionStates as buttonInteractionStates,
-  Disabled as buttonDisabled,
-} from '@/atoms/storybook/Button.meta';
+import * as stories from '@/atoms/storybook/Button.meta';
 
 const meta: Meta<typeof Button> = {
-  ...buttonMeta,
+  ...stories.meta,
   title: 'Components/Button',
   argTypes: {
-    ...buttonMeta.argTypes,
+    ...stories.meta.argTypes,
     onClick: {
       control: false,
       description: 'Click event handler.',
@@ -57,12 +49,12 @@ export default meta;
 type Story = StoryObj<typeof meta>;
 
 export const Default: Story = {
-  ...buttonDefault,
+  ...stories.Default,
   render: (props) => <Button {...props} />,
 };
 
 export const AllVariants: Story = {
-  ...buttonAllVariants,
+  ...stories.AllVariants,
   render: () => (
     <div className="gi-flex gi-flex-col gi-gap-2 gi-items-start">
       {_.map(Variant, (variant) => (
@@ -75,7 +67,7 @@ export const AllVariants: Story = {
 };
 
 export const AllAppearances: Story = {
-  ...buttonAllAppearances,
+  ...stories.AllAppearances,
   render: () => (
     <div className="gi-flex gi-flex-col gi-gap-2 gi-items-start">
       {_.map(Appearance, (appearance) => (
@@ -90,7 +82,7 @@ export const AllAppearances: Story = {
 };
 
 export const AllSizes: Story = {
-  ...buttonAllSizes,
+  ...stories.AllSizes,
   render: () => (
     <div className="gi-flex gi-flex-col gi-gap-2 gi-items-start">
       {_.map(ButtonSize, (size) => (
@@ -103,7 +95,7 @@ export const AllSizes: Story = {
 };
 
 export const Disabled: Story = {
-  ...buttonDisabled,
+  ...stories.Disabled,
   render: () => (
     <div className="gi-flex gi-flex-col gi-gap-4 gi-items-start">
       {_.map(Variant, (variant) =>
@@ -134,7 +126,7 @@ export const Disabled: Story = {
 };
 
 export const InteractionStates: Story = {
-  ...buttonInteractionStates,
+  ...stories.InteractionStates,
   render: () => (
     <div className="gi-flex gi-flex-col gi-gap-4 gi-items-start">
       {_.map(Variant, (variant) =>

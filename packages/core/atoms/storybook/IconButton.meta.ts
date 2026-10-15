@@ -5,7 +5,7 @@ import { Appearance, Variant } from '../Button.styles';
 import { Size } from '../constants';
 import { enumType } from './utilities';
 
-export const iconButtonMeta = {
+export const meta = {
   tags: ['autodocs'] as string[],
   title: 'Components/IconButton',
   args: {
@@ -85,10 +85,10 @@ export const iconButtonMeta = {
     },
     type: {
       control: false,
-      description: 'HTML button type attribute.',
+      description:
+        'HTML button type attribute. Accepts `"button"`, `"submit"`, or `"reset"`. Without it, a button inside a form submits the form.',
       table: {
         type: { summary: "'button' | 'submit' | 'reset'" },
-        defaultValue: { summary: 'button' },
       },
     },
     tabIndex: {
@@ -124,7 +124,6 @@ export const iconButtonMeta = {
 };
 
 export const Default = {
-  args: iconButtonMeta.args,
   play: async ({ canvasElement, step }: StoryContext<Renderer>) => {
     const canvas = within(canvasElement as HTMLElement);
 
@@ -147,7 +146,6 @@ export const Default = {
 };
 
 export const InteractionStates = {
-  args: iconButtonMeta.args,
   parameters: {
     pseudo: {
       hover: '.pseudo-hover',

@@ -9,7 +9,7 @@ import { within, expect, fn, userEvent } from 'storybook/test';
 import type { Props } from '../Button.vue';
 import { Appearance, ButtonSize, Variant } from '../Button.styles';
 import { enumType } from './utilities';
-export const buttonMeta = {
+export const meta = {
   tags: ['autodocs'] as string[],
   title: 'Components/Button',
   args: {
@@ -72,7 +72,7 @@ export const buttonMeta = {
     type: {
       control: false,
       description:
-        'HTML button type attribute. Defaults to `"button"` to prevent accidental form submission. Accepts `"button"`, `"submit"`, or `"reset"`.',
+        'HTML button type attribute. Accepts `"button"`, `"submit"`, or `"reset"`. Without it, a button inside a form submits the form.',
       table: {
         type: {
           summary: '"button" | "submit" | "reset"',
@@ -215,7 +215,6 @@ export const buttonMeta = {
 };
 export const Default = {
   tags: ['skip-playwright'],
-  args: buttonMeta.args,
   play: async ({ canvasElement, step }: StoryContext<Renderer>) => {
     const canvas = within(canvasElement as HTMLElement);
     await step('renders a button element', async () => {

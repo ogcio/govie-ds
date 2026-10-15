@@ -11,7 +11,7 @@ import type { Props } from '../LinkButton.vue';
 import { Appearance, ButtonSize, Variant } from '../Button.styles';
 import { checker } from './utilities';
 import { linkMeta } from './Link.meta';
-import { buttonMeta } from './Button.meta';
+import { meta as buttonMeta } from './Button.meta';
 export const linkButtonMeta = {
   tags: ['autodocs'] as string[],
   title: 'Navigation/LinkButton',

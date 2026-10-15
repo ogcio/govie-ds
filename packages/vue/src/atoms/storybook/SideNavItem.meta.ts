@@ -10,7 +10,7 @@ import type { Props } from '../sidenav/SideNavItem.vue';
 import { boxMeta } from './Box.meta';
 import { linkMeta } from './Link.meta';
 import { checker } from './utilities';
-import { buttonMeta } from './Button.meta';
+import { meta as buttonMeta } from './Button.meta';
 export const sideNavItemMeta = {
   title: 'Navigation/SideNav/SideNavItem',
   args: {
