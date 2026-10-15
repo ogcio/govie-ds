@@ -48,7 +48,7 @@ import type { Size, ValueOf } from './constants';
 import { getSize } from './utilities';
 
 @Component({
-  selector: 'gi-icon-button',
+  selector: 'core-icon-button',
   template: `
     <button
       [attr.id]="id"

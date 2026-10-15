@@ -1,16 +1,9 @@
+import omit from 'lodash/omit';
 import type { Meta, StoryObj } from '@storybook/angular-vite';
-import IconButton from '@/atoms/IconButton';
+import { GiIconButton, GiIconButtonDirective } from '@/IconButton';
 import { Size } from '@/atoms/constants';
 import Info from '@/atoms/icons/Info';
-import {
-  iconButtonMeta,
-  Default as defaultStory,
-  InteractionStates as interactionStates,
-  Disabled as disabledStory,
-  AllVariants as allVariants,
-  AllAppearances as allAppearances,
-  AllSizes as allSizes,
-} from '@/atoms/storybook/IconButton.meta';
+import * as stories from '@/atoms/storybook/IconButton.meta';
 
 const iconSize: Record<string, number> = {
   [Size.SM]: 16,
@@ -19,10 +12,11 @@ const iconSize: Record<string, number> = {
   [Size.XL]: 32,
 };
 
-const meta: Meta<IconButton> = {
-  ...iconButtonMeta,
+const meta: Meta<GiIconButton> = {
+  ...stories.iconButtonMeta,
   title: 'Components/IconButton',
-  component: IconButton,
+  component: GiIconButton,
+  argTypes: omit(stories.iconButtonMeta.argTypes, ['className']),
   decorators: [
     (story, context) => {
       const isLight = context?.args?.['appearance'] === 'light' ? 'gi-bg-black' : '';
@@ -36,12 +30,12 @@ const meta: Meta<IconButton> = {
 
 export default meta;
 
-type Story = StoryObj<IconButton>;
+type Story = StoryObj<GiIconButton>;
 
 export const Default: Story = {
-  ...defaultStory,
+  ...stories.Default,
   args: {
-    ...iconButtonMeta.args,
+    ...stories.iconButtonMeta.args,
   },
   render: (props) => ({
     props: { ...props, iconSize: iconSize[props.size ?? Size.MD] },
@@ -51,7 +45,7 @@ export const Default: Story = {
 };
 
 export const AllVariants: Story = {
-  ...allVariants,
+  ...stories.AllVariants,
   render: () => ({
     props: { iconSize: iconSize[Size.MD] },
     moduleMetadata: { imports: [Info] },
@@ -66,7 +60,7 @@ export const AllVariants: Story = {
 };
 
 export const AllAppearances: Story = {
-  ...allAppearances,
+  ...stories.AllAppearances,
   render: () => ({
     props: { iconSize: iconSize[Size.MD] },
     moduleMetadata: { imports: [Info] },
@@ -87,7 +81,7 @@ export const AllAppearances: Story = {
 };
 
 export const AllSizes: Story = {
-  ...allSizes,
+  ...stories.AllSizes,
   render: () => ({
     props: { iconSize },
     moduleMetadata: { imports: [Info] },
@@ -103,56 +97,56 @@ export const AllSizes: Story = {
 };
 
 export const Disabled: Story = {
-  ...disabledStory,
+  ...stories.Disabled,
   render: (props) => ({
     props: { ...props, iconSize: iconSize[Size.MD] },
     moduleMetadata: { imports: [Info] },
     template: `
       <div class="gi-flex gi-flex-col gi-gap-4 gi-items-start">
         <div class="gi-flex gi-flex-col gi-gap-2 sm:gi-flex-row">
-          <gi-icon-button variant="primary" appearance="default" [disabled]="true" ariaLabel="primary default disabled" dataTestId="icon-button-disabled-primary-default" (onClick)="onClick && onClick($event)" (onFocus)="onFocus && onFocus($event)"><gi-info-icon [size]="iconSize"></gi-info-icon></gi-icon-button>
-          <gi-icon-button variant="primary" appearance="default" [disabled]="true" ariaLabel="primary default disabled hover" [className]="'pseudo-hover'"><gi-info-icon [size]="iconSize"></gi-info-icon></gi-icon-button>
-          <gi-icon-button variant="primary" appearance="default" [disabled]="true" ariaLabel="primary default disabled focus" [className]="'pseudo-focus'"><gi-info-icon [size]="iconSize"></gi-info-icon></gi-icon-button>
+          <gi-icon-button variant="primary" appearance="default" [disabled]="true" ariaLabel="primary default disabled" dataTestId="icon-button-disabled-primary-default"><gi-info-icon [size]="iconSize"></gi-info-icon></gi-icon-button>
+          <gi-icon-button variant="primary" appearance="default" [disabled]="true" ariaLabel="primary default disabled hover" class="pseudo-hover"><gi-info-icon [size]="iconSize"></gi-info-icon></gi-icon-button>
+          <gi-icon-button variant="primary" appearance="default" [disabled]="true" ariaLabel="primary default disabled focus" class="pseudo-focus"><gi-info-icon [size]="iconSize"></gi-info-icon></gi-icon-button>
         </div>
         <div class="gi-flex gi-flex-col gi-gap-2 gi-p-4 gi-bg-black sm:gi-flex-row">
-          <gi-icon-button variant="primary" appearance="light" [disabled]="true" ariaLabel="primary light disabled" dataTestId="icon-button-disabled-primary-light" (onClick)="onClick && onClick($event)" (onFocus)="onFocus && onFocus($event)"><gi-info-icon [size]="iconSize"></gi-info-icon></gi-icon-button>
-          <gi-icon-button variant="primary" appearance="light" [disabled]="true" ariaLabel="primary light disabled hover" [className]="'pseudo-hover'"><gi-info-icon [size]="iconSize"></gi-info-icon></gi-icon-button>
-          <gi-icon-button variant="primary" appearance="light" [disabled]="true" ariaLabel="primary light disabled focus" [className]="'pseudo-focus'"><gi-info-icon [size]="iconSize"></gi-info-icon></gi-icon-button>
+          <gi-icon-button variant="primary" appearance="light" [disabled]="true" ariaLabel="primary light disabled" dataTestId="icon-button-disabled-primary-light"><gi-info-icon [size]="iconSize"></gi-info-icon></gi-icon-button>
+          <gi-icon-button variant="primary" appearance="light" [disabled]="true" ariaLabel="primary light disabled hover" class="pseudo-hover"><gi-info-icon [size]="iconSize"></gi-info-icon></gi-icon-button>
+          <gi-icon-button variant="primary" appearance="light" [disabled]="true" ariaLabel="primary light disabled focus" class="pseudo-focus"><gi-info-icon [size]="iconSize"></gi-info-icon></gi-icon-button>
         </div>
         <div class="gi-flex gi-flex-col gi-gap-2 sm:gi-flex-row">
-          <gi-icon-button variant="primary" appearance="dark" [disabled]="true" ariaLabel="primary dark disabled" dataTestId="icon-button-disabled-primary-dark" (onClick)="onClick && onClick($event)" (onFocus)="onFocus && onFocus($event)"><gi-info-icon [size]="iconSize"></gi-info-icon></gi-icon-button>
-          <gi-icon-button variant="primary" appearance="dark" [disabled]="true" ariaLabel="primary dark disabled hover" [className]="'pseudo-hover'"><gi-info-icon [size]="iconSize"></gi-info-icon></gi-icon-button>
-          <gi-icon-button variant="primary" appearance="dark" [disabled]="true" ariaLabel="primary dark disabled focus" [className]="'pseudo-focus'"><gi-info-icon [size]="iconSize"></gi-info-icon></gi-icon-button>
+          <gi-icon-button variant="primary" appearance="dark" [disabled]="true" ariaLabel="primary dark disabled" dataTestId="icon-button-disabled-primary-dark"><gi-info-icon [size]="iconSize"></gi-info-icon></gi-icon-button>
+          <gi-icon-button variant="primary" appearance="dark" [disabled]="true" ariaLabel="primary dark disabled hover" class="pseudo-hover"><gi-info-icon [size]="iconSize"></gi-info-icon></gi-icon-button>
+          <gi-icon-button variant="primary" appearance="dark" [disabled]="true" ariaLabel="primary dark disabled focus" class="pseudo-focus"><gi-info-icon [size]="iconSize"></gi-info-icon></gi-icon-button>
         </div>
         <div class="gi-flex gi-flex-col gi-gap-2 sm:gi-flex-row">
-          <gi-icon-button variant="secondary" appearance="default" [disabled]="true" ariaLabel="secondary default disabled" dataTestId="icon-button-disabled-secondary-default" (onClick)="onClick && onClick($event)" (onFocus)="onFocus && onFocus($event)"><gi-info-icon [size]="iconSize"></gi-info-icon></gi-icon-button>
-          <gi-icon-button variant="secondary" appearance="default" [disabled]="true" ariaLabel="secondary default disabled hover" [className]="'pseudo-hover'"><gi-info-icon [size]="iconSize"></gi-info-icon></gi-icon-button>
-          <gi-icon-button variant="secondary" appearance="default" [disabled]="true" ariaLabel="secondary default disabled focus" [className]="'pseudo-focus'"><gi-info-icon [size]="iconSize"></gi-info-icon></gi-icon-button>
+          <gi-icon-button variant="secondary" appearance="default" [disabled]="true" ariaLabel="secondary default disabled" dataTestId="icon-button-disabled-secondary-default"><gi-info-icon [size]="iconSize"></gi-info-icon></gi-icon-button>
+          <gi-icon-button variant="secondary" appearance="default" [disabled]="true" ariaLabel="secondary default disabled hover" class="pseudo-hover"><gi-info-icon [size]="iconSize"></gi-info-icon></gi-icon-button>
+          <gi-icon-button variant="secondary" appearance="default" [disabled]="true" ariaLabel="secondary default disabled focus" class="pseudo-focus"><gi-info-icon [size]="iconSize"></gi-info-icon></gi-icon-button>
         </div>
         <div class="gi-flex gi-flex-col gi-gap-2 gi-p-4 gi-bg-black sm:gi-flex-row">
-          <gi-icon-button variant="secondary" appearance="light" [disabled]="true" ariaLabel="secondary light disabled" dataTestId="icon-button-disabled-secondary-light" (onClick)="onClick && onClick($event)" (onFocus)="onFocus && onFocus($event)"><gi-info-icon [size]="iconSize"></gi-info-icon></gi-icon-button>
-          <gi-icon-button variant="secondary" appearance="light" [disabled]="true" ariaLabel="secondary light disabled hover" [className]="'pseudo-hover'"><gi-info-icon [size]="iconSize"></gi-info-icon></gi-icon-button>
-          <gi-icon-button variant="secondary" appearance="light" [disabled]="true" ariaLabel="secondary light disabled focus" [className]="'pseudo-focus'"><gi-info-icon [size]="iconSize"></gi-info-icon></gi-icon-button>
+          <gi-icon-button variant="secondary" appearance="light" [disabled]="true" ariaLabel="secondary light disabled" dataTestId="icon-button-disabled-secondary-light"><gi-info-icon [size]="iconSize"></gi-info-icon></gi-icon-button>
+          <gi-icon-button variant="secondary" appearance="light" [disabled]="true" ariaLabel="secondary light disabled hover" class="pseudo-hover"><gi-info-icon [size]="iconSize"></gi-info-icon></gi-icon-button>
+          <gi-icon-button variant="secondary" appearance="light" [disabled]="true" ariaLabel="secondary light disabled focus" class="pseudo-focus"><gi-info-icon [size]="iconSize"></gi-info-icon></gi-icon-button>
         </div>
         <div class="gi-flex gi-flex-col gi-gap-2 sm:gi-flex-row">
-          <gi-icon-button variant="secondary" appearance="dark" [disabled]="true" ariaLabel="secondary dark disabled" dataTestId="icon-button-disabled-secondary-dark" (onClick)="onClick && onClick($event)" (onFocus)="onFocus && onFocus($event)"><gi-info-icon [size]="iconSize"></gi-info-icon></gi-icon-button>
-          <gi-icon-button variant="secondary" appearance="dark" [disabled]="true" ariaLabel="secondary dark disabled hover" [className]="'pseudo-hover'"><gi-info-icon [size]="iconSize"></gi-info-icon></gi-icon-button>
-          <gi-icon-button variant="secondary" appearance="dark" [disabled]="true" ariaLabel="secondary dark disabled focus" [className]="'pseudo-focus'"><gi-info-icon [size]="iconSize"></gi-info-icon></gi-icon-button>
+          <gi-icon-button variant="secondary" appearance="dark" [disabled]="true" ariaLabel="secondary dark disabled" dataTestId="icon-button-disabled-secondary-dark"><gi-info-icon [size]="iconSize"></gi-info-icon></gi-icon-button>
+          <gi-icon-button variant="secondary" appearance="dark" [disabled]="true" ariaLabel="secondary dark disabled hover" class="pseudo-hover"><gi-info-icon [size]="iconSize"></gi-info-icon></gi-icon-button>
+          <gi-icon-button variant="secondary" appearance="dark" [disabled]="true" ariaLabel="secondary dark disabled focus" class="pseudo-focus"><gi-info-icon [size]="iconSize"></gi-info-icon></gi-icon-button>
         </div>
         <div class="gi-flex gi-flex-col gi-gap-2 sm:gi-flex-row">
-          <gi-icon-button variant="flat" appearance="default" [disabled]="true" ariaLabel="flat default disabled" dataTestId="icon-button-disabled-flat-default" (onClick)="onClick && onClick($event)" (onFocus)="onFocus && onFocus($event)"><gi-info-icon [size]="iconSize"></gi-info-icon></gi-icon-button>
-          <gi-icon-button variant="flat" appearance="default" [disabled]="true" ariaLabel="flat default disabled hover" [className]="'pseudo-hover'"><gi-info-icon [size]="iconSize"></gi-info-icon></gi-icon-button>
-          <gi-icon-button variant="flat" appearance="default" [disabled]="true" ariaLabel="flat default disabled focus" [className]="'pseudo-focus'"><gi-info-icon [size]="iconSize"></gi-info-icon></gi-icon-button>
+          <gi-icon-button variant="flat" appearance="default" [disabled]="true" ariaLabel="flat default disabled" dataTestId="icon-button-disabled-flat-default"><gi-info-icon [size]="iconSize"></gi-info-icon></gi-icon-button>
+          <gi-icon-button variant="flat" appearance="default" [disabled]="true" ariaLabel="flat default disabled hover" class="pseudo-hover"><gi-info-icon [size]="iconSize"></gi-info-icon></gi-icon-button>
+          <gi-icon-button variant="flat" appearance="default" [disabled]="true" ariaLabel="flat default disabled focus" class="pseudo-focus"><gi-info-icon [size]="iconSize"></gi-info-icon></gi-icon-button>
         </div>
         <div class="gi-flex gi-flex-col gi-gap-2 gi-p-4 gi-bg-black sm:gi-flex-row">
-          <gi-icon-button variant="flat" appearance="light" [disabled]="true" ariaLabel="flat light disabled" dataTestId="icon-button-disabled-flat-light" (onClick)="onClick && onClick($event)" (onFocus)="onFocus && onFocus($event)"><gi-info-icon [size]="iconSize"></gi-info-icon></gi-icon-button>
-          <gi-icon-button variant="flat" appearance="light" [disabled]="true" ariaLabel="flat light disabled hover" [className]="'pseudo-hover'"><gi-info-icon [size]="iconSize"></gi-info-icon></gi-icon-button>
-          <gi-icon-button variant="flat" appearance="light" [disabled]="true" ariaLabel="flat light disabled focus" [className]="'pseudo-focus'"><gi-info-icon [size]="iconSize"></gi-info-icon></gi-icon-button>
+          <gi-icon-button variant="flat" appearance="light" [disabled]="true" ariaLabel="flat light disabled" dataTestId="icon-button-disabled-flat-light"><gi-info-icon [size]="iconSize"></gi-info-icon></gi-icon-button>
+          <gi-icon-button variant="flat" appearance="light" [disabled]="true" ariaLabel="flat light disabled hover" class="pseudo-hover"><gi-info-icon [size]="iconSize"></gi-info-icon></gi-icon-button>
+          <gi-icon-button variant="flat" appearance="light" [disabled]="true" ariaLabel="flat light disabled focus" class="pseudo-focus"><gi-info-icon [size]="iconSize"></gi-info-icon></gi-icon-button>
         </div>
         <div class="gi-flex gi-flex-col gi-gap-2 sm:gi-flex-row">
-          <gi-icon-button variant="flat" appearance="dark" [disabled]="true" ariaLabel="flat dark disabled" dataTestId="icon-button-disabled-flat-dark" (onClick)="onClick && onClick($event)" (onFocus)="onFocus && onFocus($event)"><gi-info-icon [size]="iconSize"></gi-info-icon></gi-icon-button>
-          <gi-icon-button variant="flat" appearance="dark" [disabled]="true" ariaLabel="flat dark disabled hover" [className]="'pseudo-hover'"><gi-info-icon [size]="iconSize"></gi-info-icon></gi-icon-button>
-          <gi-icon-button variant="flat" appearance="dark" [disabled]="true" ariaLabel="flat dark disabled focus" [className]="'pseudo-focus'"><gi-info-icon [size]="iconSize"></gi-info-icon></gi-icon-button>
+          <gi-icon-button variant="flat" appearance="dark" [disabled]="true" ariaLabel="flat dark disabled" dataTestId="icon-button-disabled-flat-dark"><gi-info-icon [size]="iconSize"></gi-info-icon></gi-icon-button>
+          <gi-icon-button variant="flat" appearance="dark" [disabled]="true" ariaLabel="flat dark disabled hover" class="pseudo-hover"><gi-info-icon [size]="iconSize"></gi-info-icon></gi-icon-button>
+          <gi-icon-button variant="flat" appearance="dark" [disabled]="true" ariaLabel="flat dark disabled focus" class="pseudo-focus"><gi-info-icon [size]="iconSize"></gi-info-icon></gi-icon-button>
         </div>
       </div>
     `,
@@ -160,7 +154,7 @@ export const Disabled: Story = {
 };
 
 export const InteractionStates: Story = {
-  ...interactionStates,
+  ...stories.InteractionStates,
   render: () => ({
     props: { iconSize: iconSize[Size.MD] },
     moduleMetadata: { imports: [Info] },
@@ -168,48 +162,77 @@ export const InteractionStates: Story = {
       <div class="gi-flex gi-flex-col gi-gap-2 gi-items-start">
         <div class="gi-flex gi-flex-col gi-gap-2 sm:gi-flex-row">
           <gi-icon-button variant="primary" appearance="default" ariaLabel="primary default"><gi-info-icon [size]="iconSize"></gi-info-icon></gi-icon-button>
-          <gi-icon-button variant="primary" appearance="default" ariaLabel="primary default hover" className="pseudo-hover"><gi-info-icon [size]="iconSize"></gi-info-icon></gi-icon-button>
-          <gi-icon-button variant="primary" appearance="default" ariaLabel="primary default focus" className="pseudo-focus"><gi-info-icon [size]="iconSize"></gi-info-icon></gi-icon-button>
+          <gi-icon-button variant="primary" appearance="default" ariaLabel="primary default hover" class="pseudo-hover"><gi-info-icon [size]="iconSize"></gi-info-icon></gi-icon-button>
+          <gi-icon-button variant="primary" appearance="default" ariaLabel="primary default focus" class="pseudo-focus"><gi-info-icon [size]="iconSize"></gi-info-icon></gi-icon-button>
         </div>
         <div class="gi-flex gi-flex-col gi-gap-2 sm:gi-flex-row gi-p-4 gi-bg-black">
           <gi-icon-button variant="primary" appearance="light" ariaLabel="primary light"><gi-info-icon [size]="iconSize"></gi-info-icon></gi-icon-button>
-          <gi-icon-button variant="primary" appearance="light" ariaLabel="primary light hover" className="pseudo-hover"><gi-info-icon [size]="iconSize"></gi-info-icon></gi-icon-button>
-          <gi-icon-button variant="primary" appearance="light" ariaLabel="primary light focus" className="pseudo-focus"><gi-info-icon [size]="iconSize"></gi-info-icon></gi-icon-button>
+          <gi-icon-button variant="primary" appearance="light" ariaLabel="primary light hover" class="pseudo-hover"><gi-info-icon [size]="iconSize"></gi-info-icon></gi-icon-button>
+          <gi-icon-button variant="primary" appearance="light" ariaLabel="primary light focus" class="pseudo-focus"><gi-info-icon [size]="iconSize"></gi-info-icon></gi-icon-button>
         </div>
         <div class="gi-flex gi-flex-col gi-gap-2 sm:gi-flex-row">
           <gi-icon-button variant="primary" appearance="dark" ariaLabel="primary dark"><gi-info-icon [size]="iconSize"></gi-info-icon></gi-icon-button>
-          <gi-icon-button variant="primary" appearance="dark" ariaLabel="primary dark hover" className="pseudo-hover"><gi-info-icon [size]="iconSize"></gi-info-icon></gi-icon-button>
-          <gi-icon-button variant="primary" appearance="dark" ariaLabel="primary dark focus" className="pseudo-focus"><gi-info-icon [size]="iconSize"></gi-info-icon></gi-icon-button>
+          <gi-icon-button variant="primary" appearance="dark" ariaLabel="primary dark hover" class="pseudo-hover"><gi-info-icon [size]="iconSize"></gi-info-icon></gi-icon-button>
+          <gi-icon-button variant="primary" appearance="dark" ariaLabel="primary dark focus" class="pseudo-focus"><gi-info-icon [size]="iconSize"></gi-info-icon></gi-icon-button>
         </div>
         <div class="gi-flex gi-flex-col gi-gap-2 sm:gi-flex-row">
           <gi-icon-button variant="secondary" appearance="default" ariaLabel="secondary default"><gi-info-icon [size]="iconSize"></gi-info-icon></gi-icon-button>
-          <gi-icon-button variant="secondary" appearance="default" ariaLabel="secondary default hover" className="pseudo-hover"><gi-info-icon [size]="iconSize"></gi-info-icon></gi-icon-button>
-          <gi-icon-button variant="secondary" appearance="default" ariaLabel="secondary default focus" className="pseudo-focus"><gi-info-icon [size]="iconSize"></gi-info-icon></gi-icon-button>
+          <gi-icon-button variant="secondary" appearance="default" ariaLabel="secondary default hover" class="pseudo-hover"><gi-info-icon [size]="iconSize"></gi-info-icon></gi-icon-button>
+          <gi-icon-button variant="secondary" appearance="default" ariaLabel="secondary default focus" class="pseudo-focus"><gi-info-icon [size]="iconSize"></gi-info-icon></gi-icon-button>
         </div>
         <div class="gi-flex gi-flex-col gi-gap-2 sm:gi-flex-row gi-p-4 gi-bg-black">
           <gi-icon-button variant="secondary" appearance="light" ariaLabel="secondary light"><gi-info-icon [size]="iconSize"></gi-info-icon></gi-icon-button>
-          <gi-icon-button variant="secondary" appearance="light" ariaLabel="secondary light hover" className="pseudo-hover"><gi-info-icon [size]="iconSize"></gi-info-icon></gi-icon-button>
-          <gi-icon-button variant="secondary" appearance="light" ariaLabel="secondary light focus" className="pseudo-focus"><gi-info-icon [size]="iconSize"></gi-info-icon></gi-icon-button>
+          <gi-icon-button variant="secondary" appearance="light" ariaLabel="secondary light hover" class="pseudo-hover"><gi-info-icon [size]="iconSize"></gi-info-icon></gi-icon-button>
+          <gi-icon-button variant="secondary" appearance="light" ariaLabel="secondary light focus" class="pseudo-focus"><gi-info-icon [size]="iconSize"></gi-info-icon></gi-icon-button>
         </div>
         <div class="gi-flex gi-flex-col gi-gap-2 sm:gi-flex-row">
           <gi-icon-button variant="secondary" appearance="dark" ariaLabel="secondary dark"><gi-info-icon [size]="iconSize"></gi-info-icon></gi-icon-button>
-          <gi-icon-button variant="secondary" appearance="dark" ariaLabel="secondary dark hover" className="pseudo-hover"><gi-info-icon [size]="iconSize"></gi-info-icon></gi-icon-button>
-          <gi-icon-button variant="secondary" appearance="dark" ariaLabel="secondary dark focus" className="pseudo-focus"><gi-info-icon [size]="iconSize"></gi-info-icon></gi-icon-button>
+          <gi-icon-button variant="secondary" appearance="dark" ariaLabel="secondary dark hover" class="pseudo-hover"><gi-info-icon [size]="iconSize"></gi-info-icon></gi-icon-button>
+          <gi-icon-button variant="secondary" appearance="dark" ariaLabel="secondary dark focus" class="pseudo-focus"><gi-info-icon [size]="iconSize"></gi-info-icon></gi-icon-button>
         </div>
         <div class="gi-flex gi-flex-col gi-gap-2 sm:gi-flex-row">
           <gi-icon-button variant="flat" appearance="default" ariaLabel="flat default"><gi-info-icon [size]="iconSize"></gi-info-icon></gi-icon-button>
-          <gi-icon-button variant="flat" appearance="default" ariaLabel="flat default hover" className="pseudo-hover"><gi-info-icon [size]="iconSize"></gi-info-icon></gi-icon-button>
-          <gi-icon-button variant="flat" appearance="default" ariaLabel="flat default focus" className="pseudo-focus"><gi-info-icon [size]="iconSize"></gi-info-icon></gi-icon-button>
+          <gi-icon-button variant="flat" appearance="default" ariaLabel="flat default hover" class="pseudo-hover"><gi-info-icon [size]="iconSize"></gi-info-icon></gi-icon-button>
+          <gi-icon-button variant="flat" appearance="default" ariaLabel="flat default focus" class="pseudo-focus"><gi-info-icon [size]="iconSize"></gi-info-icon></gi-icon-button>
         </div>
         <div class="gi-flex gi-flex-col gi-gap-2 sm:gi-flex-row gi-p-4 gi-bg-black">
           <gi-icon-button variant="flat" appearance="light" ariaLabel="flat light"><gi-info-icon [size]="iconSize"></gi-info-icon></gi-icon-button>
-          <gi-icon-button variant="flat" appearance="light" ariaLabel="flat light hover" className="pseudo-hover"><gi-info-icon [size]="iconSize"></gi-info-icon></gi-icon-button>
-          <gi-icon-button variant="flat" appearance="light" ariaLabel="flat light focus" className="pseudo-focus"><gi-info-icon [size]="iconSize"></gi-info-icon></gi-icon-button>
+          <gi-icon-button variant="flat" appearance="light" ariaLabel="flat light hover" class="pseudo-hover"><gi-info-icon [size]="iconSize"></gi-info-icon></gi-icon-button>
+          <gi-icon-button variant="flat" appearance="light" ariaLabel="flat light focus" class="pseudo-focus"><gi-info-icon [size]="iconSize"></gi-info-icon></gi-icon-button>
         </div>
         <div class="gi-flex gi-flex-col gi-gap-2 sm:gi-flex-row">
           <gi-icon-button variant="flat" appearance="dark" ariaLabel="flat dark"><gi-info-icon [size]="iconSize"></gi-info-icon></gi-icon-button>
-          <gi-icon-button variant="flat" appearance="dark" ariaLabel="flat dark hover" className="pseudo-hover"><gi-info-icon [size]="iconSize"></gi-info-icon></gi-icon-button>
-          <gi-icon-button variant="flat" appearance="dark" ariaLabel="flat dark focus" className="pseudo-focus"><gi-info-icon [size]="iconSize"></gi-info-icon></gi-icon-button>
+          <gi-icon-button variant="flat" appearance="dark" ariaLabel="flat dark hover" class="pseudo-hover"><gi-info-icon [size]="iconSize"></gi-info-icon></gi-icon-button>
+          <gi-icon-button variant="flat" appearance="dark" ariaLabel="flat dark focus" class="pseudo-focus"><gi-info-icon [size]="iconSize"></gi-info-icon></gi-icon-button>
+        </div>
+      </div>
+    `,
+  }),
+};
+
+export const Directive: StoryObj<GiIconButtonDirective> = {
+  parameters: {
+    controls: { disable: true },
+    docs: {
+      description: {
+        story:
+          'Adds the `gi-icon-button` styling to a plain `button`, with the same variants, appearances, sizes and disabled state.',
+      },
+    },
+  },
+  render: () => ({
+    props: { iconSize: iconSize[Size.MD] },
+    moduleMetadata: { imports: [Info, GiIconButtonDirective] },
+    template: `
+      <div class="gi-flex gi-flex-col gi-gap-4 gi-items-start">
+        <div class="gi-flex gi-gap-4 gi-items-center">
+          <button giIconButton type="button" aria-label="Primary"><gi-info-icon [size]="iconSize" /></button>
+          <button giIconButton variant="secondary" type="button" aria-label="Secondary"><gi-info-icon [size]="iconSize" /></button>
+          <button giIconButton variant="flat" type="button" aria-label="Flat"><gi-info-icon [size]="iconSize" /></button>
+        </div>
+        <div class="gi-flex gi-gap-4 gi-items-center">
+          <button giIconButton disabled type="button" aria-label="Disabled"><gi-info-icon [size]="iconSize" /></button>
+          <button giIconButton variant="secondary" [disabled]="true" type="button" aria-label="Disabled secondary"><gi-info-icon [size]="iconSize" /></button>
         </div>
       </div>
     `,

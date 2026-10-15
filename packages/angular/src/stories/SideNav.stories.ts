@@ -1,7 +1,8 @@
 import type { StoryObj } from '@storybook/angular-vite';
 import * as stories from '@/atoms/storybook/SideNav.meta';
 import { GiBox } from '@/Box';
-import { IconButton, MailIcon, MoreVerticalIcon } from '@/atoms';
+import { MailIcon, MoreVerticalIcon } from '@/atoms';
+import { GiIconButton } from '@/IconButton';
 import { GiText } from '@/Text';
 import { GiH2 } from '@/heading/H2';
 import SideNav from '@/atoms/sidenav/SideNav';
@@ -28,7 +29,7 @@ const sideNavImports = [
   GiBox,
   GiH2,
   MailIcon,
-  IconButton,
+  GiIconButton,
   MoreVerticalIcon,
   GiText,
 ];
@@ -68,7 +69,7 @@ export const Default: Story = {
           (onClick)="toggleInbox()"
         >
           <gi-box ngProjectAs="[label]" class="gi-flex gi-gap-1">
-            <gi-mail-icon></gi-mail-icon>
+            <gi-mail-icon />
             Inbox
           </gi-box>
           <strong ngProjectAs="[actions]" class="gi-tag gi-tag-counter gi-tag-size-default">3</strong>
@@ -128,7 +129,7 @@ export const Default: Story = {
             size="sm"
             ariaLabel="Settings action"
           >
-            <gi-more-vertical-icon></gi-more-vertical-icon>
+            <gi-more-vertical-icon />
           </gi-icon-button>
         </gi-side-nav-item>
       </gi-side-nav>
@@ -170,7 +171,7 @@ export const WithActions: Story = {
             size="sm"
             ariaLabel="Inbox action"
           >
-            <gi-more-vertical-icon></gi-more-vertical-icon>
+            <gi-more-vertical-icon />
           </gi-icon-button>
           <gi-side-nav-item>Primary</gi-side-nav-item>
         </gi-side-nav-group>
@@ -186,7 +187,7 @@ export const WithActions: Story = {
             size="sm"
             ariaLabel="Overview action"
           >
-            <gi-more-vertical-icon></gi-more-vertical-icon>
+            <gi-more-vertical-icon />
           </gi-icon-button>
           Overview
         </gi-side-nav-item>
@@ -203,7 +204,7 @@ export const WithActions: Story = {
             size="sm"
             ariaLabel="Homepage action"
           >
-            <gi-more-vertical-icon></gi-more-vertical-icon>
+            <gi-more-vertical-icon />
           </gi-icon-button>
           Homepage
         </gi-side-nav-item-link>
