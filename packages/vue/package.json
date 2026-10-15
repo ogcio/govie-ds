@@ -58,6 +58,7 @@
     "@types/lodash": "^4.17.24",
     "@vitejs/plugin-vue": "6.0.7",
     "@vitest/browser-playwright": "4.1.10",
+    "@vitest/coverage-istanbul": "4.1.10",
     "@vue/eslint-config-typescript": "^14.9.0",
     "@vue/tsconfig": "^0.9.1",
     "autoprefixer": "^10.4.23",
