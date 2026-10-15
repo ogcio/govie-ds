@@ -104,7 +104,7 @@ export const AllSizes: Story = {
 
 export const Disabled: Story = {
   ...buttonDisabled,
-  render: ({ onClick, onFocus }) => (
+  render: () => (
     <div className="gi-flex gi-flex-col gi-gap-4 gi-items-start">
       {_.map(Variant, (variant) =>
         _.map(Appearance, (appearance) => (
@@ -116,8 +116,6 @@ export const Disabled: Story = {
               variant={variant}
               appearance={appearance}
               disabled
-              onClick={onClick}
-              onFocus={onFocus}
               dataTestId={`button-disabled-${variant}-${appearance}`}
             >
               {variant} {appearance}

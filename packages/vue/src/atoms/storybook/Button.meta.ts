@@ -274,33 +274,33 @@ export const AllSizes = {
   },
 };
 export const Disabled = {
-  args: {
-    onClick: fn(),
-    onFocus: fn(),
-  },
-  play: async ({ canvasElement, args, step }: StoryContext<Renderer>) => {
+  play: async ({ canvasElement, step }: StoryContext<Renderer>) => {
     const canvas = within(canvasElement as HTMLElement);
+    const button = canvas.getByTestId(`button-disabled-${Variant.PRIMARY}-${Appearance.DEFAULT}`);
     await step('renders all disabled buttons with disabled attribute', async () => {
       for (const variant of Object.values(Variant)) {
         for (const appearance of Object.values(Appearance)) {
-          const button = canvas.getByTestId(`button-disabled-${variant}-${appearance}`);
-          expect(button).toBeInTheDocument();
-          expect(button.tagName).toBe('BUTTON');
-          expect(button).toBeDisabled();
+          const disabledButton = canvas.getByTestId(`button-disabled-${variant}-${appearance}`);
+          expect(disabledButton).toBeInTheDocument();
+          expect(disabledButton.tagName).toBe('BUTTON');
+          expect(disabledButton).toBeDisabled();
         }
       }
     });
-    await step('click on a disabled button does not fire onClick handler', async () => {
-      const button = canvas.getByTestId(`button-disabled-${Variant.PRIMARY}-${Appearance.DEFAULT}`);
+    await step('a disabled button ignores pointer events', async () => {
+      expect(getComputedStyle(button).pointerEvents).toBe('none');
+    });
+    await step('click on a disabled button dispatches no click event', async () => {
+      const onClick = fn();
+      canvasElement.addEventListener('click', onClick);
       await userEvent.click(button, {
         pointerEventsCheck: 0,
       });
-      expect(args.onClick).not.toHaveBeenCalled();
+      canvasElement.removeEventListener('click', onClick);
+      expect(onClick).not.toHaveBeenCalled();
     });
-    await step('focus on a disabled button does not fire onFocus handler', async () => {
-      const button = canvas.getByTestId(`button-disabled-${Variant.PRIMARY}-${Appearance.DEFAULT}`);
+    await step('a disabled button cannot take focus', async () => {
       button.focus();
-      expect(args.onFocus).not.toHaveBeenCalled();
       expect(document.activeElement).not.toBe(button);
     });
   },

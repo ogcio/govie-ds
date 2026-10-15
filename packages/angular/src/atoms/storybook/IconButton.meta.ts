@@ -228,32 +228,32 @@ export const InteractionStates = {
   },
 };
 export const Disabled = {
-  args: {
-    onClick: fn(),
-    onFocus: fn(),
-  },
-  play: async ({ canvasElement, step, args }: StoryContext<Renderer>) => {
+  play: async ({ canvasElement, step }: StoryContext<Renderer>) => {
     const canvas = within(canvasElement as HTMLElement);
+    const button = canvas.getByTestId(`icon-button-disabled-${Variant.PRIMARY}-${Appearance.DEFAULT}`);
     for (const variant of Object.values(Variant)) {
       for (const appearance of Object.values(Appearance)) {
         await step(`${variant} ${appearance} button is disabled`, async () => {
-          const button = canvas.getByTestId(`icon-button-disabled-${variant}-${appearance}`);
-          expect(button).toBeInTheDocument();
-          expect(button).toBeDisabled();
+          const disabledButton = canvas.getByTestId(`icon-button-disabled-${variant}-${appearance}`);
+          expect(disabledButton).toBeInTheDocument();
+          expect(disabledButton).toBeDisabled();
         });
       }
     }
-    await step('click on a disabled icon button does not fire onClick handler', async () => {
-      const button = canvas.getByTestId(`icon-button-disabled-${Variant.PRIMARY}-${Appearance.DEFAULT}`);
+    await step('a disabled icon button ignores pointer events', async () => {
+      expect(getComputedStyle(button).pointerEvents).toBe('none');
+    });
+    await step('click on a disabled icon button dispatches no click event', async () => {
+      const onClick = fn();
+      canvasElement.addEventListener('click', onClick);
       await userEvent.click(button, {
         pointerEventsCheck: 0,
       });
-      expect(args.onClick).not.toHaveBeenCalled();
+      canvasElement.removeEventListener('click', onClick);
+      expect(onClick).not.toHaveBeenCalled();
     });
-    await step('focus on a disabled icon button does not fire onFocus handler', async () => {
-      const button = canvas.getByTestId(`icon-button-disabled-${Variant.PRIMARY}-${Appearance.DEFAULT}`);
+    await step('a disabled icon button cannot take focus', async () => {
       button.focus();
-      expect(args.onFocus).not.toHaveBeenCalled();
       expect(document.activeElement).not.toBe(button);
     });
   },

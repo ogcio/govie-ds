@@ -11,7 +11,7 @@ import {
   AllSizes as allSizes,
 } from '@/atoms/storybook/IconButton.meta';
 import { Variant, Appearance } from '@/atoms/Button.styles';
-import IconButton, { type Props } from '@/atoms/IconButton';
+import IconButton from '@/atoms/IconButton';
 import { Size } from '@/atoms/constants';
 
 const meta: Meta<typeof IconButton> = {
@@ -124,7 +124,7 @@ export const AllSizes: Story = {
 
 export const Disabled: Story = {
   ...disabledStory,
-  render: ({ onClick, onFocus }: Props) => (
+  render: () => (
     <div className="gi-flex gi-flex-col gi-gap-4 gi-items-start">
       {_.map(Variant, (variant) =>
         _.map(Appearance, (appearance) => (
@@ -136,8 +136,6 @@ export const Disabled: Story = {
               variant={variant}
               appearance={appearance}
               disabled
-              onClick={onClick}
-              onFocus={onFocus}
               ariaLabel={`${variant} ${appearance} disabled`}
               dataTestId={`icon-button-disabled-${variant}-${appearance}`}
             >
