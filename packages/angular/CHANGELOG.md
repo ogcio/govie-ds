@@ -1,5 +1,27 @@
 # Changelog
 
+## [0.5.0](https://github.com/ogcio/govie-ds/compare/angular-v0.4.0...angular-v0.5.0) (2026-10-16)
+
+
+### Features
+
+* **AB#41725:** add breadcrumb family to react storybook ([7f1b416](https://github.com/ogcio/govie-ds/commit/7f1b416fc4da41b4cbdeef823bc69d6fe8e3e4e2))
+* **AB#44010:** add Angular Button wrapper and directive ([bbfbe15](https://github.com/ogcio/govie-ds/commit/bbfbe158f3862970b92e65af2cb53610f3dfb437))
+* **AB#44010:** add Angular IconButton wrapper and directive ([9e396b7](https://github.com/ogcio/govie-ds/commit/9e396b7bb395c02316e74ee7189000761e1e2845))
+* **AB#44010:** add Angular Link wrapper and directive ([b60add2](https://github.com/ogcio/govie-ds/commit/b60add2becd1e33b19468dbcd02fdf2f6138e310))
+* **AB#44010:** add Angular LinkButton wrapper and directive ([ffcc56c](https://github.com/ogcio/govie-ds/commit/ffcc56ce358c4a5c5fdcf3a38290b6f7a8a60d42))
+* **AB#44010:** add Angular router examples for Link and LinkButton ([8b3093f](https://github.com/ogcio/govie-ds/commit/8b3093f5b20df0c4c06577b83e5e78bb8027767c))
+* **AB#44210:** add 'styles' prop to BreadcrumbEllipsis ([816e784](https://github.com/ogcio/govie-ds/commit/816e784c156af270c1a8bc0dae7f6f3b23f37cb9))
+* **AB#44210:** deprecate legacy breadcrumbs & export new ([d84ae19](https://github.com/ogcio/govie-ds/commit/d84ae195683ef01f5ebc1e4ee5f37737a657efde))
+
+
+### Miscellaneous Chores
+
+* **AB#41198:** exclude generated icons from test coverage ([a42fe78](https://github.com/ogcio/govie-ds/commit/a42fe7812136f867de0eea40dc164c1c7f779a00))
+* **AB#41725:** type shared breadcrumb story args explicitly ([f3b04c7](https://github.com/ogcio/govie-ds/commit/f3b04c745e05cfafc047a7d919c311a9c02d7122))
+* **AB#44010:** clean up Button and IconButton stories ([22dd10d](https://github.com/ogcio/govie-ds/commit/22dd10d3fb81278725bb8d38dde5c3d7b36e560b))
+* **AB#44010:** extract IconButton styles into their own module ([d50f50d](https://github.com/ogcio/govie-ds/commit/d50f50d571b9766c5d45bb5556dc042af5f905fc))
+
 ## [0.4.0](https://github.com/ogcio/govie-ds/compare/angular-v0.3.0...angular-v0.4.0) (2026-10-06)
 
 
