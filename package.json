@@ -60,7 +60,7 @@
     "@types/react-color": "^3.0.13",
     "@types/react-dom": "^19.0.4",
     "@types/tinycolor2": "^1.4.6",
-    "chromatic": "13.1.2",
+    "chromatic": "18.12.2",
     "eslint": "^9.39.4",
     "eslint-plugin-regexp": "^2.10.0",
     "eslint-plugin-unicorn": "^64.0.0",
