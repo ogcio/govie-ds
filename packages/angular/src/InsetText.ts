@@ -18,6 +18,14 @@ import type { Props } from './atoms/InsetText';
     </blockquote>
   `,
   styles: [':host { display: contents; }'],
+  host: {
+    '[attr.id]': 'null',
+    '[attr.class]': 'null',
+    '[attr.style]': 'null',
+    '[attr.cite]': 'null',
+    '[attr.describedby]': 'null',
+    '[attr.labelledby]': 'null',
+  },
 })
 export class GiInsetText {
   @Input() class = '';

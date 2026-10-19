@@ -1,4 +1,5 @@
 import type { Meta, StoryObj } from '@storybook/angular-vite';
+import { expect } from 'storybook/test';
 import { GiInsetText, GiInsetTextDirective } from '@/InsetText';
 import { insetTextMeta, Default as insetTextDefault } from '@/atoms/storybook/InsetText.meta';
 
@@ -44,4 +45,16 @@ export const Directive: StoryObj = {
     moduleMetadata: { imports: [GiInsetTextDirective] },
     template: `<blockquote giInsetText>{{content}}</blockquote>`,
   }),
+};
+
+export const TestStaticId: StoryObj = {
+  tags: ['!dev', '!autodocs', 'skip-playwright'],
+  render: () => ({
+    template: `<gi-inset-text id="inset-text-static-id">Inset text</gi-inset-text>`,
+  }),
+  play: async ({ canvasElement }) => {
+    const matches = canvasElement.querySelectorAll('#inset-text-static-id');
+    await expect(matches).toHaveLength(1);
+    await expect(matches[0].tagName).toBe('BLOCKQUOTE');
+  },
 };

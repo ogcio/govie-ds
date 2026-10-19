@@ -18,6 +18,16 @@ import { getAlign, getSize, getWhitespace } from './atoms/utilities';
     </p>
   `,
   styles: [':host { display: contents; }'],
+  host: {
+    '[attr.id]': 'null',
+    '[attr.class]': 'null',
+    '[attr.style]': 'null',
+    '[attr.size]': 'null',
+    '[attr.align]': 'null',
+    '[attr.whitespace]': 'null',
+    '[attr.datatestid]': 'null',
+    '[attr.ariahidden]': 'null',
+  },
 })
 export class GiParagraph {
   @Input() class = '';

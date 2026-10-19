@@ -1,5 +1,6 @@
 import { omit } from 'lodash';
 import type { StoryObj } from '@storybook/angular-vite';
+import { expect, within } from 'storybook/test';
 import { GiStack, GiStackDirective } from '@/Stack';
 import {
   stackMeta,
@@ -121,6 +122,14 @@ export const Alignments: StoryObj = {
       </div>
     `,
   }),
+  play: async (context) => {
+    await stackAlignments.play(context);
+
+    await context.step('align does not centre the text inside', async () => {
+      const stack = within(context.canvasElement).getByTestId('stack-align-center');
+      expect(getComputedStyle(stack).textAlign).toBe('start');
+    });
+  },
 };
 
 export const Justifications: StoryObj = {
@@ -290,11 +299,16 @@ export const Directive: StoryObj = {
   render: () => ({
     moduleMetadata: { imports: [GiStackDirective] },
     template: `
-      <ul giStack direction="row" [gap]="2">
+      <ul giStack direction="row" [gap]="2" align="center">
         <li class="${itemClasses}">Item 1</li>
         <li class="${itemClasses}">Item 2</li>
         <li class="${itemClasses}">Item 3</li>
       </ul>
     `,
   }),
+  play: async ({ canvasElement, step }) => {
+    await step('align does not centre the text inside', async () => {
+      expect(getComputedStyle(within(canvasElement).getByRole('list')).textAlign).toBe('start');
+    });
+  },
 };
