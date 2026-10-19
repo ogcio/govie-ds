@@ -18,6 +18,15 @@ import { getSize, getWhitespace } from './atoms/utilities';
     </span>
   `,
   styles: [':host { display: contents; }'],
+  host: {
+    '[attr.id]': 'null',
+    '[attr.class]': 'null',
+    '[attr.style]': 'null',
+    '[attr.size]': 'null',
+    '[attr.whitespace]': 'null',
+    '[attr.datatestid]': 'null',
+    '[attr.ariahidden]': 'null',
+  },
 })
 export class GiText {
   @Input() class = '';

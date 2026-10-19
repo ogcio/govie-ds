@@ -34,6 +34,7 @@ import { getAlignItems, getJustify } from './atoms/utilities';
     '[attr.arialabel]': 'null',
     '[attr.arialabelledby]': 'null',
     '[attr.datatestid]': 'null',
+    '[attr.align]': 'null',
   },
 })
 export class GiStack {
@@ -54,7 +55,7 @@ export class GiStack {
 @Directive({
   selector: '[giStack]',
   standalone: true,
-  host: { '[class]': 'classes' },
+  host: { '[class]': 'classes', '[attr.align]': 'null' },
 })
 export class GiStackDirective {
   @Input() direction: Props['direction'];

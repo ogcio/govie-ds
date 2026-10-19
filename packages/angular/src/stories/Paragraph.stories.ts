@@ -1,6 +1,8 @@
 import type { StoryObj } from '@storybook/angular-vite';
+import { expect } from 'storybook/test';
 import { GiStack } from '@/Stack';
 import { GiParagraph, GiParagraphDirective } from '@/Paragraph';
+import { Size } from '@/atoms/constants';
 import {
   paragraphMeta,
   Default as defaultStory,
@@ -40,12 +42,21 @@ export const AllParagraphSizes: StoryObj = {
       imports: [GiParagraph],
     },
     template: `
-    <gi-paragraph [dataTestId]="'paragraph-sm'" size="sm">Paragraph sm</gi-paragraph>
-    <gi-paragraph [dataTestId]="'paragraph-md'" size="md">Paragraph md</gi-paragraph>
-    <gi-paragraph [dataTestId]="'paragraph-lg'" size="lg">Paragraph lg</gi-paragraph>
-    <gi-paragraph [dataTestId]="'paragraph-xl'" size="xl">Paragraph xl</gi-paragraph>
+    <gi-paragraph id="paragraph-sm" [dataTestId]="'paragraph-sm'" size="sm">Paragraph sm</gi-paragraph>
+    <gi-paragraph id="paragraph-md" [dataTestId]="'paragraph-md'" size="md">Paragraph md</gi-paragraph>
+    <gi-paragraph id="paragraph-lg" [dataTestId]="'paragraph-lg'" size="lg">Paragraph lg</gi-paragraph>
+    <gi-paragraph id="paragraph-xl" [dataTestId]="'paragraph-xl'" size="xl">Paragraph xl</gi-paragraph>
     `,
   }),
+  play: async (context) => {
+    await allSizes.play(context);
+
+    await context.step('renders each static id once', async () => {
+      for (const size of Object.values(Size)) {
+        expect(context.canvasElement.querySelectorAll(`#paragraph-${size}`)).toHaveLength(1);
+      }
+    });
+  },
 };
 
 export const AllWhitespaces: StoryObj = {

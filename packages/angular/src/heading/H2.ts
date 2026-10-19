@@ -11,6 +11,13 @@ import { Size, type Props } from '../atoms/heading/types';
     </h2>
   `,
   styles: [':host { display: contents; }'],
+  host: {
+    '[attr.id]': 'null',
+    '[attr.class]': 'null',
+    '[attr.style]': 'null',
+    '[attr.size]': 'null',
+    '[attr.datatestid]': 'null',
+  },
 })
 export class GiH2 {
   @Input() class = '';
