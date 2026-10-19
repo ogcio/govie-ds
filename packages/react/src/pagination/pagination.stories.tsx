@@ -1,9 +1,9 @@
 import type { Meta, StoryObj } from '@storybook/react-vite';
 import { expect, within, userEvent, waitFor, fn } from 'storybook/test';
-import { Pagination } from './pagination.js';
+import { Pagination } from './pagination-composed';
 
 const meta: Meta<typeof Pagination> = {
-  title: 'Navigation/Pagination',
+  title: 'Navigation/Pagination/Pagination',
   component: Pagination,
   parameters: {
     docs: {
