@@ -30,3 +30,13 @@ export { default as SideNavGroup, type Props as SideNavGroupProps } from '@/atom
 export { default as Breadcrumbs, type BreadcrumbProps } from '@/breadcrumbs/Breadcrumbs';
 export { default as BreadcrumbLink, type BreadcrumbLinkProps } from '@/breadcrumbs/BreadcrumbLink';
 export { default as BreadcrumbEllipsis, type BreadcrumbEllipsisProps } from '@/breadcrumbs/BreadcrumbEllipsis';
+
+// Pagination
+export { default as Pagination, type Props as PaginationProps } from '@/atoms/pagination/Pagination';
+export { default as PaginationLink, type Props as PaginationLinkProps } from '@/atoms/pagination/PaginationLink';
+export { default as PaginationButton, type Props as PaginationButtonProps } from '@/atoms/pagination/PaginationButton';
+export {
+  default as PaginationEllipsis,
+  type Props as PaginationEllipsisProps,
+} from '@/atoms/pagination/PaginationEllipsis';
+export { getPaginationList } from '@/atoms/pagination/utils';
