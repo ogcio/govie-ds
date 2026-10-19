@@ -4,7 +4,7 @@ description: Pagination React Component
 status: stable
 component:
   id: 'pagination-react'
-  link: '/docs/navigation-pagination--docs'
+  link: '/docs/navigation-pagination-pagination--docs'
   status: 'stable'
   properties:
     - name: PaginationProps
@@ -23,7 +23,7 @@ component:
           required: true
   stories:
     - name: 'default'
-      url: '/story/navigation-pagination--default'
+      url: '/story/navigation-pagination-pagination--default'
 ---
 
 # Pagination
@@ -40,7 +40,11 @@ The Pagination component provides a user interface for navigating through multip
 
 ### Default
 
-<StorybookFrame className="h-28" componentId="pagination-react" story="default" />
+<StorybookFrame
+  className="h-28"
+  componentId="pagination-react"
+  story="default"
+/>
 
 ## Properties
 
@@ -62,6 +66,7 @@ The Pagination component supports localisation through i18n keys in React, [find
 ```
 
 These keys are used for screen reader accessibility (aria-label) and visible button text.
+
 - You can override these translations per locale to support multilingual experiences.
 - Ensure placeholders like `{{ currentPage }}`, `{{ totalPages }}`, and `{{ page }}` are preserved when translating.
 
