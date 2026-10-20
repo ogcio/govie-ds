@@ -1,7 +1,7 @@
 import { Slot } from '@radix-ui/react-slot';
 import CoreBreadcrumbLink from '@/atoms/breadcrumbs/BreadcrumbLink';
 import type { Props } from '@/atoms/breadcrumbs/BreadcrumbLink';
-import { breadcrumbClasses } from '@/atoms/breadcrumbs/BreadcrumbLink.styles';
+import { breadcrumbClasses, listItemClasses } from '@/atoms/breadcrumbs/BreadcrumbLink.styles';
 
 type BaseProps = Omit<Props, 'styles'> & { style?: React.CSSProperties };
 
@@ -24,7 +24,7 @@ export default function BreadcrumbLink({
 }: BreadcrumbLinkProps) {
   if (asChild) {
     return (
-      <li>
+      <li className={listItemClasses()}>
         <Slot
           {...rest}
           className={breadcrumbClasses({ className })}
