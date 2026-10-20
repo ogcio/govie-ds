@@ -1,5 +1,31 @@
 # Changelog
 
+## [0.5.0](https://github.com/ogcio/govie-ds/compare/vue-v0.4.0...vue-v0.5.0) (2026-10-20)
+
+
+### Features
+
+* **AB#39577:** implement Pagination atoms in core ([2b09518](https://github.com/ogcio/govie-ds/commit/2b09518f192fa97f95ad9ff4e73b8f6d7d7ad3c7))
+* **AB#41198:** run Vue Storybook play functions as Vitest tests ([5c7ade4](https://github.com/ogcio/govie-ds/commit/5c7ade46c26e856dd44d83b8998603cbb27b2aed))
+* **AB#41725:** add breadcrumb family to react storybook ([7f1b416](https://github.com/ogcio/govie-ds/commit/7f1b416fc4da41b4cbdeef823bc69d6fe8e3e4e2))
+* **AB#44010:** add Angular LinkButton wrapper and directive ([ffcc56c](https://github.com/ogcio/govie-ds/commit/ffcc56ce358c4a5c5fdcf3a38290b6f7a8a60d42))
+* **AB#44010:** add Angular router examples for Link and LinkButton ([8b3093f](https://github.com/ogcio/govie-ds/commit/8b3093f5b20df0c4c06577b83e5e78bb8027767c))
+* **AB#44210:** add 'styles' prop to BreadcrumbEllipsis ([816e784](https://github.com/ogcio/govie-ds/commit/816e784c156af270c1a8bc0dae7f6f3b23f37cb9))
+* **AB#44210:** deprecate legacy breadcrumbs & export new ([d84ae19](https://github.com/ogcio/govie-ds/commit/d84ae195683ef01f5ebc1e4ee5f37737a657efde))
+
+
+### Bug Fixes
+
+* **AB#44263:** add aria-current to Button ([a371e64](https://github.com/ogcio/govie-ds/commit/a371e64bea709762ed88c1b5be0b5ee45be89761))
+
+
+### Miscellaneous Chores
+
+* **AB#41198:** exclude generated icons from test coverage ([a42fe78](https://github.com/ogcio/govie-ds/commit/a42fe7812136f867de0eea40dc164c1c7f779a00))
+* **AB#41725:** type shared breadcrumb story args explicitly ([f3b04c7](https://github.com/ogcio/govie-ds/commit/f3b04c745e05cfafc047a7d919c311a9c02d7122))
+* **AB#44010:** clean up Button and IconButton stories ([22dd10d](https://github.com/ogcio/govie-ds/commit/22dd10d3fb81278725bb8d38dde5c3d7b36e560b))
+* **AB#44010:** extract IconButton styles into their own module ([d50f50d](https://github.com/ogcio/govie-ds/commit/d50f50d571b9766c5d45bb5556dc042af5f905fc))
+
 ## [0.4.0](https://github.com/ogcio/govie-ds/compare/vue-v0.3.0...vue-v0.4.0) (2026-10-06)
 
 
