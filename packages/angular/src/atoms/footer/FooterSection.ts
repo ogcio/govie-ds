@@ -50,7 +50,7 @@ const contentClasses = tv({
 });
 
 @Component({
-  selector: 'gi-footer-section',
+  selector: 'core-footer-section',
   template: `
     <core-box
       [id]="id"

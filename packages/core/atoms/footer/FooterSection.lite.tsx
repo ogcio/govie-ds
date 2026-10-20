@@ -6,7 +6,7 @@ import { clamp } from '../utilities';
 import CoreBox from '../Box.lite';
 import CoreContainer from '../Container.lite';
 
-useMetadata({ angular: { selector: 'gi-footer-section' } });
+useMetadata({ angular: { selector: 'core-footer-section' } });
 
 export type Props = {
   variant?: ValueOf<typeof SurfaceVariant>;

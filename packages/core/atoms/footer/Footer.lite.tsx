@@ -1,6 +1,6 @@
 import { useMetadata } from '@builder.io/mitosis';
 
-useMetadata({ angular: { selector: 'gi-footer' } });
+useMetadata({ angular: { selector: 'core-footer' } });
 
 export type Props = {
   ariaLabel?: string;

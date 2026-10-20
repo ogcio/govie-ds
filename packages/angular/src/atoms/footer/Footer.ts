@@ -18,7 +18,7 @@ export type Props = {
 };
 
 @Component({
-  selector: 'gi-footer',
+  selector: 'core-footer',
   template: `
     <footer
       [attr.id]="id"

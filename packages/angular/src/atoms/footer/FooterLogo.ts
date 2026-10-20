@@ -22,7 +22,7 @@ const classes = tv({
 });
 
 @Component({
-  selector: 'gi-footer-logo',
+  selector: 'core-footer-logo',
   template: `
     <core-box
       [id]="id"

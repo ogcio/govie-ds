@@ -1,9 +1,15 @@
 import type { StoryObj } from '@storybook/angular-vite';
 import { footerSectionMeta, Default as defaultStory } from '@/atoms/storybook/FooterSection.meta';
-import { FooterSection } from '@/atoms';
+import { GiFooterSection } from '@/footer/FooterSection';
+import omit from 'lodash/omit';
 
 const meta = {
   ...footerSectionMeta,
+  argTypes: {
+    ...omit(footerSectionMeta.argTypes, 'styles', 'className'),
+    class: footerSectionMeta.argTypes.className,
+    style: footerSectionMeta.argTypes.styles,
+  },
   title: 'Layout/Footer/FooterSection',
 };
 
@@ -14,7 +20,7 @@ export const Default: StoryObj = {
   render: (props) => ({
     props,
     moduleMetadata: {
-      imports: [FooterSection],
+      imports: [GiFooterSection],
     },
     template: `
       <gi-footer-section

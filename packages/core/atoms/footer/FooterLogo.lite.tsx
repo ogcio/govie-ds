@@ -2,7 +2,7 @@ import { useMetadata } from '@builder.io/mitosis';
 import { tv } from 'tailwind-variants';
 import CoreBox from '../Box.lite';
 
-useMetadata({ angular: { selector: 'gi-footer-logo' } });
+useMetadata({ angular: { selector: 'core-footer-logo' } });
 
 export type Props = {
   children?: any;
