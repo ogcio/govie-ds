@@ -1,10 +1,5 @@
 import type { Meta, StoryObj } from '@storybook/angular-vite';
-import LogoBlack from '../atoms/icons/logos/LogoBlack';
-import LogoGoldGreen from '../atoms/icons/logos/LogoGoldGreen';
-import LogoGoldWhite from '../atoms/icons/logos/LogoGoldWhite';
-import LogoHarpBlack from '../atoms/icons/logos/LogoHarpBlack';
-import LogoHarpWhite from '../atoms/icons/logos/LogoHarpWhite';
-import LogoWhite from '../atoms/icons/logos/LogoWhite';
+import { LogoBlack, LogoGoldGreen, LogoGoldWhite, LogoHarpBlack, LogoHarpWhite, LogoWhite } from '@/logos';
 import { logosMeta, Default as logosDefault } from '../atoms/storybook/Logos.meta';
 
 const meta: Meta = {

@@ -65,6 +65,16 @@ import { SearchIcon } from '@ogcio/design-system-angular/icons';
 
 Each icon accepts inputs including `size`, `color`, `className` and `label`. Set `label` to give the icon an accessible name; without a label, it is hidden from assistive technology. The full set of icons is catalogued on the [icons page](https://ds.services.gov.ie/resources/icons/).
 
+### Logos
+
+The Government of Ireland logos ship from the `/logos` subpath. For example, import `LogoGoldGreen` and use `<gi-logo-gold-green>`:
+
+```ts
+import { LogoGoldGreen } from '@ogcio/design-system-angular/logos';
+```
+
+Each logo accepts inputs including `size`, `className` and `label`. Set `label` to give the logo an accessible name; without a label, it is hidden from assistive technology. The logos are shown on the [logos page](https://ds.services.gov.ie/resources/logos/).
+
 ## Documentation
 
 See the [design system documentation](https://ds.services.gov.ie/components/) for component guidance and accessibility notes. For Angular examples and component inputs, [run Storybook locally](#storybook). Some components shown in Storybook are not yet exported by the package. Check the package’s type declarations for available exports and inputs.
