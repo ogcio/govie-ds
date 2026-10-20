@@ -1,0 +1,5 @@
+{
+  "lib": {
+    "entryFile": "../src/logos.ts"
+  }
+}
