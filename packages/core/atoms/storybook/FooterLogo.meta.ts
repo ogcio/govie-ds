@@ -1,38 +1,23 @@
-import type { ArgTypes, StoryContext, Renderer } from 'storybook/internal/types';
 import { within } from 'storybook/test';
 import type { Props } from '../footer/FooterLogo.lite';
 import { checker } from './utilities';
+import { boxMeta } from './Box.meta';
+import type { Meta, Story } from './types';
 
-export const footerLogoMeta = {
-  tags: ['autodocs'] as string[],
+const FOOTER_LOGO_TESTID = 'footer-logo';
+
+export const meta = {
   title: 'Layout/Footer/FooterLogo',
   args: {
-    dataTestId: 'footer-logo',
+    dataTestId: FOOTER_LOGO_TESTID,
     id: 'footer-logo-id',
   },
   argTypes: {
-    id: {
-      control: { disable: true },
-      description: 'Optional id for linking/targeting and aria references.',
-      table: { type: { summary: 'string' } },
-    },
-    className: {
-      control: { disable: true },
-      description: 'CSS classes to apply. Use `gi-*` Tailwind utilities.',
-      table: { type: { summary: 'string' } },
-    },
-    styles: {
-      control: { disable: true },
-      description:
-        'Inline styles applied directly to the element. Use for truly dynamic values that cannot be expressed as Tailwind classes.',
-      table: { type: { summary: 'Record<string, string>' } },
-    },
-    dataTestId: {
-      control: { disable: true },
-      description: 'Test id for targeting the element in automated tests.',
-      table: { type: { summary: 'string' } },
-    },
-  } satisfies ArgTypes<Props>,
+    id: boxMeta.argTypes.id,
+    className: boxMeta.argTypes.className,
+    styles: boxMeta.argTypes.styles,
+    dataTestId: boxMeta.argTypes.dataTestId,
+  },
   parameters: {
     docs: {
       description: {
@@ -40,12 +25,13 @@ export const footerLogoMeta = {
       },
     },
   },
-};
+} satisfies Meta<Props>;
 
 export const Default = {
-  play: async ({ canvasElement, step, args }: StoryContext<Renderer>) => {
-    const canvas = within(canvasElement as HTMLElement);
-    await checker(args.dataTestId, canvas, step).is('div');
-    await checker(args.dataTestId, canvas, step).attributes({ id: args.id });
+  play: async ({ canvasElement, step, args }) => {
+    const canvas = within(canvasElement);
+    const footerLogo = checker(FOOTER_LOGO_TESTID, canvas, step);
+    await footerLogo.is('div');
+    await footerLogo.attributes({ id: args.id });
   },
-};
+} satisfies Story<Props>;

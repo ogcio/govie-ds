@@ -4,18 +4,19 @@
   The file source is in `packages/core/atoms/storybook/FooterSection.meta.ts`
  */
 
-import type { ArgTypes, StoryContext, Renderer } from 'storybook/internal/types';
 import { within } from 'storybook/test';
 import type { Props } from '../footer/FooterSection.vue';
 import { SurfaceVariant } from '../constants';
 import { checker, enumType } from './utilities';
 import { containerMeta } from './Container.meta';
-export const footerSectionMeta = {
-  tags: ['autodocs'] as string[],
+import type { Meta, Story } from './types';
+import { boxMeta } from './Box.meta';
+const FOOTER_SECTION_TESTID = 'footer-section';
+export const meta = {
   title: 'Layout/FooterSection',
   args: {
     variant: SurfaceVariant.PRIMARY,
-    dataTestId: 'footer-section',
+    dataTestId: FOOTER_SECTION_TESTID,
     id: 'footer-section-id',
   },
   argTypes: {
@@ -28,7 +29,7 @@ export const footerSectionMeta = {
       control: {
         disable: true,
       },
-      description: 'CSS classes to apply. Use `gi-*` Tailwind utilities.',
+      description: 'CSS classes to apply to the inner container. Use `gi-*` Tailwind utilities.',
       table: {
         type: {
           summary: 'string',
@@ -57,22 +58,23 @@ export const footerSectionMeta = {
         },
       },
     },
-  } satisfies ArgTypes<Props>,
+    styles: boxMeta.argTypes.styles,
+  },
   parameters: {
     docs: {
       description: {
-        component: 'A themed section within a footer, with primary or utility background variants.',
+        component: 'A themed section within a footer, with primary or utility background variants. ',
       },
     },
   },
-};
+} satisfies Meta<Props>;
 export const Default = {
-  args: footerSectionMeta.args,
-  play: async ({ canvasElement, step, args }: StoryContext<Renderer>) => {
-    const canvas = within(canvasElement as HTMLElement);
-    await checker(args.dataTestId, canvas, step).is('div');
-    await checker(args.dataTestId, canvas, step).attributes({
+  play: async ({ canvasElement, step, args }) => {
+    const canvas = within(canvasElement);
+    const footerSection = checker(FOOTER_SECTION_TESTID, canvas, step);
+    await footerSection.is('div');
+    await footerSection.attributes({
       id: args.id,
     });
   },
-};
+} satisfies Story<Props>;

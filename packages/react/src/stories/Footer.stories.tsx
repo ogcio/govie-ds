@@ -15,10 +15,10 @@ import XIcon from '@/atoms/icons/socials/X';
 import FacebookIcon from '@/atoms/icons/socials/Facebook';
 import BlueskyIcon from '@/atoms/icons/socials/Bluesky';
 import LinkedinIcon from '@/atoms/icons/socials/Linkedin';
-import { footerMeta, CompleteFooter as CompleteFooterStory } from '@/atoms/storybook/Footer.meta';
+import * as stories from '@/atoms/storybook/Footer.meta';
 
 const meta: Meta = {
-  ...footerMeta,
+  ...stories.meta,
   title: 'Layout/Footer/Footer',
   component: Footer,
 };
@@ -27,7 +27,7 @@ export default meta;
 type Story = StoryObj<typeof meta>;
 
 export const CompleteFooter: Story = {
-  ...CompleteFooterStory,
+  ...stories.CompleteFooter,
   render: (props) => (
     <Footer {...props}>
       <FooterSection variant={SurfaceVariant.PRIMARY} className="gi-text-black" dataTestId="footer-section-primary">
