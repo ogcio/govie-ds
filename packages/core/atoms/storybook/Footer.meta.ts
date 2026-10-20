@@ -1,14 +1,16 @@
-import type { ArgTypes, StoryContext, Renderer } from 'storybook/internal/types';
 import { within } from 'storybook/test';
 import type { Props } from '../footer/Footer.lite';
 import { checker } from './utilities';
+import type { Meta, Story } from './types';
 
-export const footerMeta = {
-  tags: ['autodocs'] as string[],
+const FOOTER_TESTID = 'footer';
+
+export const meta = {
   title: 'Footer',
   args: {
     ariaLabel: 'footer',
-    dataTestId: 'footer',
+    dataTestId: FOOTER_TESTID,
+    id: 'footer-id',
   },
   argTypes: {
     ariaLabel: {
@@ -43,7 +45,7 @@ export const footerMeta = {
         'Inline styles applied directly to the footer element. Use for truly dynamic values that cannot be expressed as Tailwind classes.',
       table: { type: { summary: 'Record<string, string>' } },
     },
-  } satisfies ArgTypes<Props>,
+  },
   parameters: {
     docs: {
       description: {
@@ -52,15 +54,13 @@ export const footerMeta = {
       },
     },
   },
-};
+} satisfies Meta<Props>;
 
 export const CompleteFooter = {
-  play: async ({ canvasElement, step, args }: StoryContext<Renderer>) => {
-    const canvas = within(canvasElement as HTMLElement);
-    const { footer } = args;
-    const check = checker(footer.dataTestId, canvas, step);
-
+  play: async ({ canvasElement, step, args }) => {
+    const canvas = within(canvasElement);
+    const check = checker(FOOTER_TESTID, canvas, step);
     await check.is('footer');
-    await check.attributes({ 'aria-label': footer.ariaLabel, id: footer.id });
+    await check.attributes({ 'aria-label': args.ariaLabel, id: args.id });
   },
-};
+} satisfies Story<Props>;

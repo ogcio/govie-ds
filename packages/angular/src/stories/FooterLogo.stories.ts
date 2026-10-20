@@ -1,15 +1,15 @@
 import type { StoryObj } from '@storybook/angular-vite';
-import { footerLogoMeta, Default as defaultStory } from '@/atoms/storybook/FooterLogo.meta';
+import * as stories from '@/atoms/storybook/FooterLogo.meta';
 import { GiFooterLogo } from '@/footer/FooterLogo';
 import { LogoGoldGreen } from '@/atoms/icons/logos';
 import omit from 'lodash/omit';
 
 const meta = {
-  ...footerLogoMeta,
+  ...stories.meta,
   argTypes: {
-    ...omit(footerLogoMeta.argTypes, 'styles', 'className'),
-    class: footerLogoMeta.argTypes.className,
-    style: footerLogoMeta.argTypes.styles,
+    ...omit(stories.meta.argTypes, 'styles', 'className'),
+    class: stories.meta.argTypes.className,
+    style: stories.meta.argTypes.styles,
   },
   title: 'Layout/Footer/FooterLogo',
 };
@@ -17,7 +17,7 @@ const meta = {
 export default meta;
 
 export const Default: StoryObj = {
-  ...defaultStory,
+  ...stories.Default,
   render: (props) => ({
     props,
     moduleMetadata: {

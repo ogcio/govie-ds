@@ -1,6 +1,5 @@
 import type { StoryObj } from '@storybook/angular-vite';
-import { within, expect } from 'storybook/test';
-import { footerMeta, CompleteFooter as CompleteFooterStory } from '@/atoms/storybook/Footer.meta';
+import * as stories from '@/atoms/storybook/Footer.meta';
 import { GiFooter } from '@/footer/Footer';
 import { GiFooterSection } from '@/footer/FooterSection';
 import { GiFooterLogo } from '@/footer/FooterLogo';
@@ -15,11 +14,11 @@ import { XIcon, FacebookIcon, BlueskyIcon, LinkedinIcon } from '@/atoms/icons';
 import omit from 'lodash/omit';
 
 const meta = {
-  ...footerMeta,
+  ...stories.meta,
   argTypes: {
-    ...omit(footerMeta.argTypes, 'styles', 'className'),
-    class: footerMeta.argTypes.className,
-    style: footerMeta.argTypes.styles,
+    ...omit(stories.meta.argTypes, 'styles', 'className'),
+    class: stories.meta.argTypes.className,
+    style: stories.meta.argTypes.styles,
   },
   title: 'Layout/Footer',
 };
@@ -27,12 +26,7 @@ const meta = {
 export default meta;
 
 export const CompleteFooter: StoryObj = {
-  ...CompleteFooterStory,
-  args: {
-    ariaLabel: 'Footer',
-    id: 'footer-id',
-    dataTestId: 'gi-footer',
-  },
+  ...stories.CompleteFooter,
   render: (props) => ({
     props,
     moduleMetadata: {
@@ -173,14 +167,4 @@ export const CompleteFooter: StoryObj = {
       </gi-footer>
     `,
   }),
-  play: async ({ canvasElement, step }) => {
-    const canvas = within(canvasElement);
-
-    await step('should render the footer with default props', async () => {
-      const footerElement = canvas.getByRole('contentinfo');
-      expect(footerElement).toBeInTheDocument();
-      expect(footerElement).toHaveAttribute('aria-label', 'Footer');
-      expect(footerElement).toHaveAttribute('data-testid', 'gi-footer');
-    });
-  },
 };

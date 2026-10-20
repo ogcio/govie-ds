@@ -1,9 +1,9 @@
 import type { Meta, StoryObj } from '@storybook/react-vite';
 import FooterSection from '@/atoms/footer/FooterSection';
-import { footerSectionMeta, Default as defaultStory } from '@/atoms/storybook/FooterSection.meta';
+import * as stories from '@/atoms/storybook/FooterSection.meta';
 
 const meta = {
-  ...footerSectionMeta,
+  ...stories.meta,
   title: 'Layout/Footer/FooterSection',
   component: FooterSection,
 } satisfies Meta<typeof FooterSection>;
@@ -12,6 +12,6 @@ export default meta;
 type Story = StoryObj<typeof meta>;
 
 export const Default: Story = {
-  ...defaultStory,
+  ...stories.Default,
   render: (props) => <FooterSection {...props}>Footer section content</FooterSection>,
 };
