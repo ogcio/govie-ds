@@ -1,5 +1,24 @@
 # Changelog
 
+## [1.48.0](https://github.com/ogcio/govie-ds/compare/docs-v1.47.0...docs-v1.48.0) (2026-10-20)
+
+
+### Features
+
+* **AB#41725:** add breadcrumb family to react storybook ([7f1b416](https://github.com/ogcio/govie-ds/commit/7f1b416fc4da41b4cbdeef823bc69d6fe8e3e4e2))
+
+
+### Miscellaneous Chores
+
+* **AB#41725:** type shared breadcrumb story args explicitly ([f3b04c7](https://github.com/ogcio/govie-ds/commit/f3b04c745e05cfafc047a7d919c311a9c02d7122))
+
+
+### Dependencies
+
+* The following workspace dependencies were updated
+  * dependencies
+    * @ogcio/design-system-react bumped to 1.50.0
+
 ## [1.47.0](https://github.com/ogcio/govie-ds/compare/docs-v1.46.1...docs-v1.47.0) (2026-10-06)
 
 
