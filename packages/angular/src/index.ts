@@ -21,3 +21,8 @@ export { GiButton, GiButtonDirective } from './Button';
 export { GiIconButton, GiIconButtonDirective } from './IconButton';
 export { GiLink, GiLinkDirective } from './Link';
 export { GiLinkButton, GiLinkButtonDirective } from './LinkButton';
+
+// Footer
+export { GiFooter } from './footer/Footer';
+export { GiFooterSection } from './footer/FooterSection';
+export { GiFooterLogo } from './footer/FooterLogo';

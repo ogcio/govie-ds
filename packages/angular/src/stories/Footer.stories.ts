@@ -1,7 +1,9 @@
 import type { StoryObj } from '@storybook/angular-vite';
 import { within, expect } from 'storybook/test';
 import { footerMeta, CompleteFooter as CompleteFooterStory } from '@/atoms/storybook/Footer.meta';
-import { Footer, FooterSection, FooterLogo } from '@/atoms';
+import { GiFooter } from '@/footer/Footer';
+import { GiFooterSection } from '@/footer/FooterSection';
+import { GiFooterLogo } from '@/footer/FooterLogo';
 import { GiLink } from '@/Link';
 import { GiGrid } from '@/Grid';
 import { GiDivider } from '@/Divider';
@@ -10,9 +12,15 @@ import { GiText } from '@/Text';
 import { GiH4 } from '@/heading/H4';
 import { LogoGoldGreen } from '@/atoms/icons/logos';
 import { XIcon, FacebookIcon, BlueskyIcon, LinkedinIcon } from '@/atoms/icons';
+import omit from 'lodash/omit';
 
 const meta = {
   ...footerMeta,
+  argTypes: {
+    ...omit(footerMeta.argTypes, 'styles', 'className'),
+    class: footerMeta.argTypes.className,
+    style: footerMeta.argTypes.styles,
+  },
   title: 'Layout/Footer',
 };
 
@@ -29,9 +37,9 @@ export const CompleteFooter: StoryObj = {
     props,
     moduleMetadata: {
       imports: [
-        Footer,
-        FooterSection,
-        FooterLogo,
+        GiFooter,
+        GiFooterSection,
+        GiFooterLogo,
         GiGrid,
         GiH4,
         GiDivider,
@@ -51,7 +59,7 @@ export const CompleteFooter: StoryObj = {
         [id]="id"
         [dataTestId]="dataTestId"
       >
-        <gi-footer-section variant="primary" className="gi-text-black" dataTestId="footer-section-primary">
+        <gi-footer-section variant="primary" class="gi-text-black" dataTestId="footer-section-primary">
           <gi-grid [container]="true" [columns]="{ base: 4, md: 8, lg: 12 }" gap="4" dataTestId="primary">
             <gi-grid [size]="{ base: 4, md: 4, lg: 3 }">
               <gi-h4 class="gi-my-4">Services</gi-h4>
