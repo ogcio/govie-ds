@@ -7,7 +7,7 @@ import { tv } from 'tailwind-variants';
 useMetadata({ angular: { selector: 'core-breadcrumb-ellipsis' } });
 
 export type Props = Omit<IconProps, 'label'> & {
-  styles: Record<string, string>;
+  styles?: Record<string, string>;
 };
 
 export default function BreadcrumbEllipsis(props: Props) {
