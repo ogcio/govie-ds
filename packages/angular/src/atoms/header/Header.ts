@@ -23,7 +23,7 @@ const classes = tv({
 });
 
 @Component({
-  selector: 'gi-header',
+  selector: 'core-header',
   template: `
     <header
       [attr.id]="id"

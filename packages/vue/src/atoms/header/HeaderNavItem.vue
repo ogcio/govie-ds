@@ -5,20 +5,35 @@
 -->
 
 <template>
-  <li :class="getVisibility(visible)"><slot /></li>
+  <li
+    :class="
+      classes({
+        className: [getVisibility(visible), className],
+      })
+    "
+    :style="styles"
+  >
+    <slot />
+  </li>
 </template>
 
 <script setup lang="ts">
+import { tv } from 'tailwind-variants';
 import { getVisibility } from './HeaderNavItem.styles';
 import type { VisibleValue } from './HeaderNavItem.styles';
+const classes = tv({});
 
 export type Props = {
   /** Visibility: `true`/`false`, a breakpoint to show from (e.g. `"lg"`), or a per-breakpoint map like `{ base: false, lg: true }`. */
   visible?: VisibleValue;
+  className?: string;
+  styles?: Record<string, string>;
 };
 
 const props = withDefaults(defineProps<Props>(), {
   visible: true,
+  className: undefined,
+  styles: undefined,
   children: undefined,
 });
 </script>

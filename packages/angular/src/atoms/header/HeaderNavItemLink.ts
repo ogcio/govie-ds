@@ -31,6 +31,7 @@ export type Props = {
 };
 const defaultProps: any = { download: undefined, ariaCurrent: undefined, ariaHidden: undefined };
 
+import { getDownload } from '../utilities';
 import { linkClasses } from './HeaderNavItem.styles';
 
 @Component({
@@ -47,7 +48,7 @@ import { linkClasses } from './HeaderNavItem.styles';
       [ngStyle]="styles"
       [attr.target]="target ?? (external ? '_blank' : undefined)"
       [attr.rel]="rel ?? (external ? 'noreferrer noopener' : undefined)"
-      [attr.download]="download || undefined"
+      [attr.download]="getDownload(download)"
       [attr.aria-current]="ariaCurrent"
       [attr.aria-label]="ariaLabel"
       [attr.aria-labelledby]="ariaLabelledBy"
@@ -74,6 +75,7 @@ import { linkClasses } from './HeaderNavItem.styles';
   imports: [CommonModule],
 })
 export default class HeaderNavItemLink {
+  getDownload = getDownload;
   linkClasses = linkClasses;
 
   @Input() id!: Props['id'];

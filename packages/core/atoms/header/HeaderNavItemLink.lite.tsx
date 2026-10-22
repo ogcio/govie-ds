@@ -1,4 +1,5 @@
 import { useDefaultProps, useMetadata } from '@builder.io/mitosis';
+import { getDownload } from '../utilities';
 import { linkClasses } from './HeaderNavItem.styles';
 
 useMetadata({ angular: { selector: 'core-header-nav-item-link' } });
@@ -41,7 +42,7 @@ export default function HeaderNavItemLink(props: Props) {
       style={props.styles}
       target={props.target ?? (props.external ? '_blank' : undefined)}
       rel={props.rel ?? (props.external ? 'noreferrer noopener' : undefined)}
-      download={props.download || undefined}
+      download={getDownload(props.download)}
       aria-current={props.ariaCurrent}
       aria-label={props.ariaLabel}
       aria-labelledby={props.ariaLabelledBy}

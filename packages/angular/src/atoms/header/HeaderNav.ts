@@ -22,7 +22,7 @@ const classes = tv({
 });
 
 @Component({
-  selector: 'gi-header-nav',
+  selector: 'core-header-nav',
   template: `
     <nav
       [attr.id]="id"

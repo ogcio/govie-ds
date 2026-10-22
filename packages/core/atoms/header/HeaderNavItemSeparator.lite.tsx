@@ -4,7 +4,7 @@ import CoreDivider from '../Divider.lite';
 import { getVisibility } from './HeaderNavItem.styles';
 import type { VisibleValue } from './HeaderNavItem.styles';
 
-useMetadata({ angular: { selector: 'gi-header-nav-item-separator' } });
+useMetadata({ angular: { selector: 'core-header-nav-item-separator' } });
 
 useDefaultProps({
   visible: true,

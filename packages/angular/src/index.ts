@@ -21,3 +21,14 @@ export { GiButton, GiButtonDirective } from './Button';
 export { GiIconButton, GiIconButtonDirective } from './IconButton';
 export { GiLink, GiLinkDirective } from './Link';
 export { GiLinkButton, GiLinkButtonDirective } from './LinkButton';
+
+// Header
+export { GiHeader } from './header/Header';
+export { GiHeaderSection } from './header/HeaderSection';
+export { GiHeaderLogo } from './header/HeaderLogo';
+export { GiHeaderTitle } from './header/HeaderTitle';
+export { GiHeaderNav } from './header/HeaderNav';
+export { GiHeaderNavItem, GiHeaderNavItemDirective } from './header/HeaderNavItem';
+export { GiHeaderNavItemButton, GiHeaderNavItemButtonDirective } from './header/HeaderNavItemButton';
+export { GiHeaderNavItemLink, GiHeaderNavItemLinkDirective } from './header/HeaderNavItemLink';
+export { GiHeaderNavItemSeparator } from './header/HeaderNavItemSeparator';

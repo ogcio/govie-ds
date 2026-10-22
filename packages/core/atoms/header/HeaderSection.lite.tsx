@@ -6,7 +6,7 @@ import type { MaxWidth, ValueOf } from '../constants';
 import CoreBox from '../Box.lite';
 import CoreContainer from '../Container.lite';
 
-useMetadata({ angular: { selector: 'gi-header-section' } });
+useMetadata({ angular: { selector: 'core-header-section' } });
 
 export type Props = {
   children?: any;
