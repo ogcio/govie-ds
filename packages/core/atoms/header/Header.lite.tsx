@@ -1,7 +1,7 @@
 import { useMetadata } from '@builder.io/mitosis';
 import { tv } from 'tailwind-variants';
 
-useMetadata({ angular: { selector: 'gi-header' } });
+useMetadata({ angular: { selector: 'core-header' } });
 
 export type Props = {
   children?: any;

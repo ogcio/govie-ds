@@ -11,16 +11,29 @@ import { CommonModule } from '@angular/common';
 export type Props = {
   /** Visibility: `true`/`false`, a breakpoint to show from (e.g. `"lg"`), or a per-breakpoint map like `{ base: false, lg: true }`. */
   visible?: VisibleValue;
+  className?: string;
+  styles?: Record<string, string>;
 };
 const defaultProps: any = { visible: true };
 
+import { tv } from 'tailwind-variants';
 import { getVisibility } from './HeaderNavItem.styles';
 import type { VisibleValue } from './HeaderNavItem.styles';
+const classes = tv({});
 
 @Component({
   selector: 'core-header-nav-item',
   template: `
-    <li [class]="getVisibility(visible)"><ng-content></ng-content></li>
+    <li
+      [class]="
+        classes({
+          className: [getVisibility(visible), className],
+        })
+      "
+      [ngStyle]="styles"
+    >
+      <ng-content></ng-content>
+    </li>
   `,
   styles: [
     `
@@ -33,7 +46,10 @@ import type { VisibleValue } from './HeaderNavItem.styles';
   imports: [CommonModule],
 })
 export default class HeaderNavItem {
+  classes = classes;
   getVisibility = getVisibility;
 
   @Input() visible: Props['visible'] = defaultProps['visible'];
+  @Input() className!: Props['className'];
+  @Input() styles!: Props['styles'];
 }

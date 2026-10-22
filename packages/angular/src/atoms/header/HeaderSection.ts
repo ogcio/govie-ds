@@ -82,7 +82,7 @@ const contentClasses = tv({
 });
 
 @Component({
-  selector: 'gi-header-section',
+  selector: 'core-header-section',
   template: `
     <core-box
       [id]="id"

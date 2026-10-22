@@ -10,14 +10,27 @@ export type Props = {
   children?: any;
   /** Visibility: `true`/`false`, a breakpoint to show from (e.g. `"lg"`), or a per-breakpoint map like `{ base: false, lg: true }`. */
   visible?: VisibleValue;
+  className?: string;
+  styles?: Record<string, string>;
 };
 
+import { tv } from 'tailwind-variants';
 import { getVisibility } from './HeaderNavItem.styles';
 import type { VisibleValue } from './HeaderNavItem.styles';
+const classes = tv({});
 
 function HeaderNavItem(props: Props) {
   props = { visible: true, ...props };
-  return <li className={getVisibility(props.visible)}>{props.children}</li>;
+  return (
+    <li
+      className={classes({
+        className: [getVisibility(props.visible), props.className],
+      })}
+      style={props.styles}
+    >
+      {props.children}
+    </li>
+  );
 }
 
 export default HeaderNavItem;
