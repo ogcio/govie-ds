@@ -4,11 +4,12 @@ import {
   Default as defaultStory,
   Utility as utilityStory,
 } from '@/atoms/storybook/HeaderSection.meta';
-import { HeaderSection } from '@/atoms';
+import { GiHeaderSection } from '@/header/HeaderSection';
 
 const meta = {
   ...headerSectionMeta,
   title: 'Layout/Header/HeaderSection',
+  component: GiHeaderSection,
 };
 
 export default meta;
@@ -16,7 +17,7 @@ export default meta;
 const renderHeaderSection = (props: Record<string, unknown>) => ({
   props,
   moduleMetadata: {
-    imports: [HeaderSection],
+    imports: [GiHeaderSection],
   },
   template: `
     <gi-header-section

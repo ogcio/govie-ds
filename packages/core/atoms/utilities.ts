@@ -53,3 +53,5 @@ export const resolveResponsive = <T>(
     .map((bp) => toClass(entries[bp] as T, bp === Breakpoint.BASE ? '' : `${bp}:`))
     .join(' ');
 };
+
+export const getDownload = (x: string | boolean | undefined) => (x === true || x === '' ? '' : x || undefined);
