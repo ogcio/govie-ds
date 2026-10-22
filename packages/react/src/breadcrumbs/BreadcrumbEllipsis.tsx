@@ -1,10 +1,14 @@
-import CoreEllipsis from '@/atoms/breadcrumbs/BreadcrumbEllipsis';
-import type { Props } from '@/atoms/breadcrumbs/BreadcrumbEllipsis';
+import CoreBreadcrumbEllipsis, { type Props } from '@/atoms/breadcrumbs/BreadcrumbEllipsis';
+import CoreBreadcrumbItem from '@/atoms/breadcrumbs/BreadcrumbItem';
 
-export type BreadcrumbEllipsisProps = Omit<Props, 'styles'> & {
+export type BreadcrumbEllipsisProps = Props & {
   style?: React.CSSProperties;
 };
 
 export default function BreadcrumbEllipsis({ style, ...props }: BreadcrumbEllipsisProps) {
-  return <CoreEllipsis {...props} styles={style as Record<string, string>} />;
+  return (
+    <CoreBreadcrumbItem styles={style as Record<string, string>} ariaHidden={!props.label || undefined}>
+      <CoreBreadcrumbEllipsis {...props} />
+    </CoreBreadcrumbItem>
+  );
 }

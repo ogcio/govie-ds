@@ -5,29 +5,27 @@
 -->
 
 <template>
-  <li :class="listItemClasses()">
-    <a
-      :id="id"
-      :href="href"
-      :class="
-        breadcrumbClasses({
-          className: className,
-        })
-      "
-      :style="styles"
-      @click="async (event) => onClick && onClick(event)"
-      @keydown="async (event) => onKeyDown && onKeyDown(event)"
-      @keyup="async (event) => onKeyUp && onKeyUp(event)"
-      :aria-current="current ? 'page' : undefined"
-      :aria-label="ariaLabel"
-      :data-testid="dataTestId"
-      ><slot
-    /></a>
-  </li>
+  <a
+    :id="id"
+    :href="href"
+    :class="
+      breadcrumbClasses({
+        className: className,
+      })
+    "
+    :style="styles"
+    @click="async (event) => onClick && onClick(event)"
+    @keydown="async (event) => onKeyDown && onKeyDown(event)"
+    @keyup="async (event) => onKeyUp && onKeyUp(event)"
+    :aria-current="current ? 'page' : undefined"
+    :aria-label="ariaLabel"
+    :data-testid="dataTestId"
+    ><slot
+  /></a>
 </template>
 
 <script setup lang="ts">
-import { listItemClasses, breadcrumbClasses } from './BreadcrumbLink.styles';
+import { breadcrumbClasses } from './BreadcrumbLink.styles';
 
 export type Props = {
   id?: string;

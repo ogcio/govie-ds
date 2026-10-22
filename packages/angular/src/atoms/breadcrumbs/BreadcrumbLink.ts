@@ -21,31 +21,29 @@ export type Props = {
   onKeyUp?: (event: any) => void;
 };
 
-import { listItemClasses, breadcrumbClasses } from './BreadcrumbLink.styles';
+import { breadcrumbClasses } from './BreadcrumbLink.styles';
 
 @Component({
   selector: 'core-breadcrumb-link',
   template: `
-    <li [class]="listItemClasses()">
-      <a
-        [attr.id]="id"
-        [attr.href]="href"
-        [class]="
-          breadcrumbClasses({
-            className: className,
-          })
-        "
-        [ngStyle]="styles"
-        (click)="onClick && this.onClick.emit($event)"
-        (keydown)="onKeyDown && this.onKeyDown.emit($event)"
-        (keyup)="onKeyUp && this.onKeyUp.emit($event)"
-        [attr.aria-current]="current ? 'page' : undefined"
-        [attr.aria-label]="ariaLabel"
-        [attr.data-testid]="dataTestId"
-      >
-        <ng-content></ng-content>
-      </a>
-    </li>
+    <a
+      [attr.id]="id"
+      [attr.href]="href"
+      [class]="
+        breadcrumbClasses({
+          className: className,
+        })
+      "
+      [ngStyle]="styles"
+      (click)="onClick && this.onClick.emit($event)"
+      (keydown)="onKeyDown && this.onKeyDown.emit($event)"
+      (keyup)="onKeyUp && this.onKeyUp.emit($event)"
+      [attr.aria-current]="current ? 'page' : undefined"
+      [attr.aria-label]="ariaLabel"
+      [attr.data-testid]="dataTestId"
+    >
+      <ng-content></ng-content>
+    </a>
   `,
   styles: [
     `
@@ -58,7 +56,6 @@ import { listItemClasses, breadcrumbClasses } from './BreadcrumbLink.styles';
   imports: [CommonModule],
 })
 export default class BreadcrumbLink {
-  listItemClasses = listItemClasses;
   breadcrumbClasses = breadcrumbClasses;
 
   @Input() id!: Props['id'];

@@ -1,7 +1,8 @@
 import { Slot } from '@radix-ui/react-slot';
 import CoreBreadcrumbLink from '@/atoms/breadcrumbs/BreadcrumbLink';
+import CoreBreadcrumbItem from '@/atoms/breadcrumbs/BreadcrumbItem';
 import type { Props } from '@/atoms/breadcrumbs/BreadcrumbLink';
-import { breadcrumbClasses, listItemClasses } from '@/atoms/breadcrumbs/BreadcrumbLink.styles';
+import { breadcrumbClasses } from '@/atoms/breadcrumbs/BreadcrumbLink.styles';
 
 type BaseProps = Omit<Props, 'styles'> & { style?: React.CSSProperties };
 
@@ -24,7 +25,7 @@ export default function BreadcrumbLink({
 }: BreadcrumbLinkProps) {
   if (asChild) {
     return (
-      <li className={listItemClasses()}>
+      <CoreBreadcrumbItem>
         <Slot
           {...rest}
           className={breadcrumbClasses({ className })}
@@ -35,20 +36,22 @@ export default function BreadcrumbLink({
         >
           {children}
         </Slot>
-      </li>
+      </CoreBreadcrumbItem>
     );
   }
   return (
-    <CoreBreadcrumbLink
-      href={href}
-      className={className}
-      styles={style as Record<string, string>}
-      current={current}
-      ariaLabel={ariaLabel}
-      dataTestId={dataTestId}
-      {...rest}
-    >
-      {children}
-    </CoreBreadcrumbLink>
+    <CoreBreadcrumbItem>
+      <CoreBreadcrumbLink
+        href={href}
+        className={className}
+        styles={style as Record<string, string>}
+        current={current}
+        ariaLabel={ariaLabel}
+        dataTestId={dataTestId}
+        {...rest}
+      >
+        {children}
+      </CoreBreadcrumbLink>
+    </CoreBreadcrumbItem>
   );
 }
