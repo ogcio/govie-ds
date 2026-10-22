@@ -33,11 +33,8 @@ export { default as Header, type Props as HeaderProps } from './atoms/header/Hea
 export { default as HeaderSection, type Props as HeaderSectionProps } from './atoms/header/HeaderSection.vue';
 export { default as HeaderLogo, type Props as HeaderLogoProps } from './atoms/header/HeaderLogo.vue';
 export { default as HeaderNav, type Props as HeaderNavProps } from './atoms/header/HeaderNav.vue';
-export { default as HeaderNavItem, type Props as HeaderNavItemProps } from './atoms/header/HeaderNavItem.vue';
-export {
-  default as HeaderNavItemLink,
-  type Props as HeaderNavItemLinkProps,
-} from './atoms/header/HeaderNavItemLink.vue';
+export { default as HeaderNavItem, type Props as HeaderNavItemProps } from './HeaderNavItem.vue';
+export { default as HeaderNavItemLink, type Props as HeaderNavItemLinkProps } from './HeaderNavItemLink.vue';
 export {
   default as HeaderNavItemSeparator,
   type Props as HeaderNavItemSeparatorProps,
