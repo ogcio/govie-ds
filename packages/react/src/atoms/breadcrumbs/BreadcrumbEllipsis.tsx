@@ -6,12 +6,9 @@
 
 import * as React from 'react';
 
-export type Props = Omit<IconProps, 'label'> & {
-  styles: Record<string, string>;
-};
+export type Props = IconProps;
 
 import GiMoreHorizontalIcon from '../icons/MoreHorizontal';
-import { listItemClasses } from './BreadcrumbLink.styles';
 import type { IconProps } from '../icons/types';
 import { tv } from 'tailwind-variants';
 const classes = tv({
@@ -20,17 +17,16 @@ const classes = tv({
 
 function BreadcrumbEllipsis(props: Props) {
   return (
-    <li className={listItemClasses()} style={props.styles} aria-hidden>
-      <GiMoreHorizontalIcon
-        id={props.id}
-        className={classes({
-          className: props.className,
-        })}
-        size={props.size}
-        color={props.color}
-        dataTestId={props.dataTestId}
-      />
-    </li>
+    <GiMoreHorizontalIcon
+      id={props.id}
+      className={classes({
+        className: props.className,
+      })}
+      label={props.label}
+      size={props.size}
+      color={props.color}
+      dataTestId={props.dataTestId}
+    />
   );
 }
 

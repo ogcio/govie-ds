@@ -5,8 +5,10 @@
  */
 
 import { boxMeta } from './Box.meta';
-import type { Props } from '../breadcrumbs/BreadcrumbEllipsis.vue';
+import type { Props as EllipsisProps } from '../breadcrumbs/BreadcrumbEllipsis.vue';
+import type { Props as ItemProps } from '../breadcrumbs/BreadcrumbItem.vue';
 import type { Meta, Story } from './types';
+type Props = EllipsisProps & Pick<ItemProps, 'styles'>;
 export const meta = {
   title: 'Navigation/Breadcrumbs/BreadcrumbEllipsis',
   args: {

@@ -21,28 +21,26 @@ export type Props = {
   onKeyUp?: (event: any) => void;
 };
 
-import { listItemClasses, breadcrumbClasses } from './BreadcrumbLink.styles';
+import { breadcrumbClasses } from './BreadcrumbLink.styles';
 
 function BreadcrumbLink(props: Props) {
   return (
-    <li className={listItemClasses()}>
-      <a
-        id={props.id}
-        href={props.href}
-        className={breadcrumbClasses({
-          className: props.className,
-        })}
-        style={props.styles}
-        onClick={(event) => props.onClick && props.onClick(event)}
-        onKeyDown={(event) => props.onKeyDown && props.onKeyDown(event)}
-        onKeyUp={(event) => props.onKeyUp && props.onKeyUp(event)}
-        aria-current={props.current ? 'page' : undefined}
-        aria-label={props.ariaLabel}
-        data-testid={props.dataTestId}
-      >
-        {props.children}
-      </a>
-    </li>
+    <a
+      id={props.id}
+      href={props.href}
+      className={breadcrumbClasses({
+        className: props.className,
+      })}
+      style={props.styles}
+      onClick={(event) => props.onClick && props.onClick(event)}
+      onKeyDown={(event) => props.onKeyDown && props.onKeyDown(event)}
+      onKeyUp={(event) => props.onKeyUp && props.onKeyUp(event)}
+      aria-current={props.current ? 'page' : undefined}
+      aria-label={props.ariaLabel}
+      data-testid={props.dataTestId}
+    >
+      {props.children}
+    </a>
   );
 }
 

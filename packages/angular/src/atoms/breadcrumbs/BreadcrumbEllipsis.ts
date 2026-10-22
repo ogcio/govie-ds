@@ -8,12 +8,9 @@ import { Component, Input } from '@angular/core';
 
 import { CommonModule } from '@angular/common';
 
-export type Props = Omit<IconProps, 'label'> & {
-  styles: Record<string, string>;
-};
+export type Props = IconProps;
 
 import GiMoreHorizontalIcon from '../icons/MoreHorizontal';
-import { listItemClasses } from './BreadcrumbLink.styles';
 import type { IconProps } from '../icons/types';
 import { tv } from 'tailwind-variants';
 const classes = tv({
@@ -23,19 +20,18 @@ const classes = tv({
 @Component({
   selector: 'core-breadcrumb-ellipsis',
   template: `
-    <li [class]="listItemClasses()" [ngStyle]="styles" [attr.aria-hidden]="true">
-      <gi-more-horizontal-icon
-        [id]="id"
-        [className]="
-          classes({
-            className: className,
-          })
-        "
-        [size]="size"
-        [color]="color"
-        [dataTestId]="dataTestId"
-      ></gi-more-horizontal-icon>
-    </li>
+    <gi-more-horizontal-icon
+      [id]="id"
+      [className]="
+        classes({
+          className: className,
+        })
+      "
+      [label]="label"
+      [size]="size"
+      [color]="color"
+      [dataTestId]="dataTestId"
+    ></gi-more-horizontal-icon>
   `,
   styles: [
     `
@@ -49,11 +45,10 @@ const classes = tv({
 })
 export default class BreadcrumbEllipsis {
   classes = classes;
-  listItemClasses = listItemClasses;
 
-  @Input() styles!: Props['styles'];
   @Input() id!: Props['id'];
   @Input() className!: Props['className'];
+  @Input() label!: Props['label'];
   @Input() size!: Props['size'];
   @Input() color!: Props['color'];
   @Input() dataTestId!: Props['dataTestId'];

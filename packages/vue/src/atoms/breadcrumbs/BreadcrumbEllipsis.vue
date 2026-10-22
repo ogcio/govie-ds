@@ -5,33 +5,29 @@
 -->
 
 <template>
-  <li :class="listItemClasses()" :style="styles" :aria-hidden="true">
-    <GiMoreHorizontalIcon
-      :id="id"
-      :className="
-        classes({
-          className: className,
-        })
-      "
-      :size="size"
-      :color="color"
-      :dataTestId="dataTestId"
-    ></GiMoreHorizontalIcon>
-  </li>
+  <GiMoreHorizontalIcon
+    :id="id"
+    :className="
+      classes({
+        className: className,
+      })
+    "
+    :label="label"
+    :size="size"
+    :color="color"
+    :dataTestId="dataTestId"
+  ></GiMoreHorizontalIcon>
 </template>
 
 <script setup lang="ts">
 import GiMoreHorizontalIcon from '../icons/MoreHorizontal.vue';
-import { listItemClasses } from './BreadcrumbLink.styles';
 import type { IconProps } from '../icons/types';
 import { tv } from 'tailwind-variants';
 const classes = tv({
   base: 'gi-text-gray-700 gi-shrink-0',
 });
 
-export type Props = Omit<IconProps, 'label'> & {
-  styles: Record<string, string>;
-};
+export type Props = IconProps;
 
 const props = defineProps<Props>();
 </script>

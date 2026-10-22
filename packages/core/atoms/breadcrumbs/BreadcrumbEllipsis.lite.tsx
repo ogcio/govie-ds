@@ -1,26 +1,22 @@
 import { useMetadata } from '@builder.io/mitosis';
 import GiMoreHorizontalIcon from '../icons/MoreHorizontal.lite';
-import { listItemClasses } from './BreadcrumbLink.styles';
 import type { IconProps } from '../icons/types';
 import { tv } from 'tailwind-variants';
 
 useMetadata({ angular: { selector: 'core-breadcrumb-ellipsis' } });
 
-export type Props = Omit<IconProps, 'label'> & {
-  styles: Record<string, string>;
-};
+export type Props = IconProps;
 
 export default function BreadcrumbEllipsis(props: Props) {
   return (
-    <li class={listItemClasses()} style={props.styles} aria-hidden={true}>
-      <GiMoreHorizontalIcon
-        id={props.id}
-        className={classes({ className: props.className })}
-        size={props.size}
-        color={props.color}
-        dataTestId={props.dataTestId}
-      />
-    </li>
+    <GiMoreHorizontalIcon
+      id={props.id}
+      className={classes({ className: props.className })}
+      label={props.label}
+      size={props.size}
+      color={props.color}
+      dataTestId={props.dataTestId}
+    />
   );
 }
 

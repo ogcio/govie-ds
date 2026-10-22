@@ -36,3 +36,8 @@ export { GiHeaderNavItemDirective } from './header/HeaderNavItem';
 export { GiHeaderNavItemButton, GiHeaderNavButtonDirective } from './header/HeaderNavItemButton';
 export { GiHeaderNavItemLink, GiHeaderNavLinkDirective } from './header/HeaderNavItemLink';
 export { GiHeaderNavItemSeparator } from './header/HeaderNavItemSeparator';
+
+export { GiBreadcrumbs } from './breadcrumbs/Breadcrumbs';
+export { GiBreadcrumbItemLink, GiBreadcrumbLinkDirective } from './breadcrumbs/BreadcrumbItemLink';
+export { GiBreadcrumbItemDirective } from './breadcrumbs/BreadcrumbItem';
+export { GiBreadcrumbItemEllipsis } from './breadcrumbs/BreadcrumbItemEllipsis';

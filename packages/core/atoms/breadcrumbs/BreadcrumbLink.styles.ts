@@ -20,7 +20,7 @@ export const breadcrumbClasses = tv({
 
 export const listClasses = tv({
   base: [
-    'gi-flex gi-list-none gi-flex-wrap',
+    'gi-flex gi-list-none gi-flex-wrap gi-items-center',
     '[&>*:not(:last-child)]:after:gi-content-["/"]',
     '[&>*:not(:last-child)]:after:gi-px-3',
     '[&>*:not(:last-child)]:after:gi-text-gray-500',
