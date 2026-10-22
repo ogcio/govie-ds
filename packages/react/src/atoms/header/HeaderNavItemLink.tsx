@@ -9,8 +9,6 @@ import * as React from 'react';
 
 export type Props = {
   children?: any;
-  /** Visibility: `true`/`false`, a breakpoint to show from (e.g. `"lg"`), or a per-breakpoint map like `{ base: false, lg: true }`. */
-  visible?: VisibleValue;
   id?: string;
   href: string;
   className?: string;
@@ -32,38 +30,35 @@ export type Props = {
   dataTestId?: string;
 };
 
-import classes, { getVisibility } from './HeaderNavItem.styles';
-import type { VisibleValue } from './HeaderNavItem.styles';
+import { linkClasses } from './HeaderNavItem.styles';
 
 function HeaderNavItemLink(props: Props) {
-  props = { visible: true, download: undefined, ariaCurrent: undefined, ariaHidden: undefined, ...props };
+  props = { download: undefined, ariaCurrent: undefined, ariaHidden: undefined, ...props };
   return (
-    <li className={getVisibility(props.visible)}>
-      <a
-        id={props.id}
-        href={props.href}
-        className={classes({
-          className: ['gi-header-nav-item-link', props.className],
-        })}
-        style={props.styles}
-        target={props.target ?? (props.external ? '_blank' : undefined)}
-        rel={props.rel ?? (props.external ? 'noreferrer noopener' : undefined)}
-        download={props.download || undefined}
-        aria-current={props.ariaCurrent}
-        aria-label={props.ariaLabel}
-        aria-labelledby={props.ariaLabelledBy}
-        aria-describedby={props.ariaDescribedBy}
-        aria-hidden={props.ariaHidden}
-        tabIndex={props.ariaHidden ? -1 : props.tabIndex}
-        lang={props.lang}
-        data-testid={props.dataTestId}
-        onClick={(event) => props.onClick && props.onClick(event)}
-        onKeyDown={(event) => props.onKeyDown && props.onKeyDown(event)}
-        onKeyUp={(event) => props.onKeyUp && props.onKeyUp(event)}
-      >
-        {props.children}
-      </a>
-    </li>
+    <a
+      id={props.id}
+      href={props.href}
+      className={linkClasses({
+        className: props.className,
+      })}
+      style={props.styles}
+      target={props.target ?? (props.external ? '_blank' : undefined)}
+      rel={props.rel ?? (props.external ? 'noreferrer noopener' : undefined)}
+      download={props.download || undefined}
+      aria-current={props.ariaCurrent}
+      aria-label={props.ariaLabel}
+      aria-labelledby={props.ariaLabelledBy}
+      aria-describedby={props.ariaDescribedBy}
+      aria-hidden={props.ariaHidden}
+      tabIndex={props.ariaHidden ? -1 : props.tabIndex}
+      lang={props.lang}
+      data-testid={props.dataTestId}
+      onClick={(event) => props.onClick && props.onClick(event)}
+      onKeyDown={(event) => props.onKeyDown && props.onKeyDown(event)}
+      onKeyUp={(event) => props.onKeyUp && props.onKeyUp(event)}
+    >
+      {props.children}
+    </a>
   );
 }
 
