@@ -5,54 +5,20 @@
 -->
 
 <template>
-  <li :class="getVisibility(visible)">
-    <button
-      type="button"
-      :id="id"
-      :class="
-        classes({
-          className: ['gi-header-nav-item', className],
-        })
-      "
-      :style="styles"
-      :aria-label="ariaLabel"
-      :aria-expanded="ariaExpanded"
-      :aria-controls="ariaControls"
-      :data-testid="dataTestId"
-      @click="async (event) => onClick && onClick(event)"
-    >
-      <slot />
-    </button>
-  </li>
+  <li :class="getVisibility(visible)"><slot /></li>
 </template>
 
 <script setup lang="ts">
-import classes, { getVisibility } from './HeaderNavItem.styles';
+import { getVisibility } from './HeaderNavItem.styles';
 import type { VisibleValue } from './HeaderNavItem.styles';
 
 export type Props = {
   /** Visibility: `true`/`false`, a breakpoint to show from (e.g. `"lg"`), or a per-breakpoint map like `{ base: false, lg: true }`. */
   visible?: VisibleValue;
-  onClick?: (event: any) => void;
-  className?: string;
-  styles?: Record<string, string>;
-  id?: string;
-  ariaLabel?: string;
-  ariaExpanded?: boolean;
-  ariaControls?: string;
-  dataTestId?: string;
 };
 
 const props = withDefaults(defineProps<Props>(), {
   visible: true,
-  id: undefined,
-  className: undefined,
-  styles: undefined,
-  ariaLabel: undefined,
-  ariaExpanded: undefined,
-  ariaControls: undefined,
-  dataTestId: undefined,
-  onClick: undefined,
   children: undefined,
 });
 </script>

@@ -4,49 +4,23 @@
   The file source is in `packages/core/atoms/header/HeaderNavItem.lite.tsx`
  */
 
-import { Output, EventEmitter, Component, Input } from '@angular/core';
+import { Component, Input } from '@angular/core';
 
 import { CommonModule } from '@angular/common';
 
 export type Props = {
   /** Visibility: `true`/`false`, a breakpoint to show from (e.g. `"lg"`), or a per-breakpoint map like `{ base: false, lg: true }`. */
   visible?: VisibleValue;
-  onClick?: (event: any) => void;
-  className?: string;
-  styles?: Record<string, string>;
-  id?: string;
-  ariaLabel?: string;
-  ariaExpanded?: boolean;
-  ariaControls?: string;
-  dataTestId?: string;
 };
-const defaultProps: any = { visible: true, ariaExpanded: undefined };
+const defaultProps: any = { visible: true };
 
-import classes, { getVisibility } from './HeaderNavItem.styles';
+import { getVisibility } from './HeaderNavItem.styles';
 import type { VisibleValue } from './HeaderNavItem.styles';
 
 @Component({
-  selector: 'gi-header-nav-item',
+  selector: 'core-header-nav-item',
   template: `
-    <li [class]="getVisibility(visible)">
-      <button
-        type="button"
-        [attr.id]="id"
-        [class]="
-          classes({
-            className: ['gi-header-nav-item', className],
-          })
-        "
-        [ngStyle]="styles"
-        [attr.aria-label]="ariaLabel"
-        [attr.aria-expanded]="ariaExpanded"
-        [attr.aria-controls]="ariaControls"
-        [attr.data-testid]="dataTestId"
-        (click)="onClick && this.onClick.emit($event)"
-      >
-        <ng-content></ng-content>
-      </button>
-    </li>
+    <li [class]="getVisibility(visible)"><ng-content></ng-content></li>
   `,
   styles: [
     `
@@ -59,16 +33,7 @@ import type { VisibleValue } from './HeaderNavItem.styles';
   imports: [CommonModule],
 })
 export default class HeaderNavItem {
-  classes = classes;
   getVisibility = getVisibility;
 
   @Input() visible: Props['visible'] = defaultProps['visible'];
-  @Input() id!: Props['id'];
-  @Input() className!: Props['className'];
-  @Input() styles!: Props['styles'];
-  @Input() ariaLabel!: Props['ariaLabel'];
-  @Input() ariaExpanded: Props['ariaExpanded'] = defaultProps['ariaExpanded'];
-  @Input() ariaControls!: Props['ariaControls'];
-  @Input() dataTestId!: Props['dataTestId'];
-  @Output() onClick = new EventEmitter<any>();
 }

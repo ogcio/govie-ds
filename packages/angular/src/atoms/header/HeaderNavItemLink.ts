@@ -9,8 +9,6 @@ import { Output, EventEmitter, Component, Input } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
 export type Props = {
-  /** Visibility: `true`/`false`, a breakpoint to show from (e.g. `"lg"`), or a per-breakpoint map like `{ base: false, lg: true }`. */
-  visible?: VisibleValue;
   id?: string;
   href: string;
   className?: string;
@@ -31,42 +29,39 @@ export type Props = {
   onKeyUp?: (event: any) => void;
   dataTestId?: string;
 };
-const defaultProps: any = { visible: true, download: undefined, ariaCurrent: undefined, ariaHidden: undefined };
+const defaultProps: any = { download: undefined, ariaCurrent: undefined, ariaHidden: undefined };
 
-import classes, { getVisibility } from './HeaderNavItem.styles';
-import type { VisibleValue } from './HeaderNavItem.styles';
+import { linkClasses } from './HeaderNavItem.styles';
 
 @Component({
-  selector: 'gi-header-nav-item-link',
+  selector: 'core-header-nav-item-link',
   template: `
-    <li [class]="getVisibility(visible)">
-      <a
-        [attr.id]="id"
-        [attr.href]="href"
-        [class]="
-          classes({
-            className: ['gi-header-nav-item-link', className],
-          })
-        "
-        [ngStyle]="styles"
-        [attr.target]="target ?? (external ? '_blank' : undefined)"
-        [attr.rel]="rel ?? (external ? 'noreferrer noopener' : undefined)"
-        [attr.download]="download || undefined"
-        [attr.aria-current]="ariaCurrent"
-        [attr.aria-label]="ariaLabel"
-        [attr.aria-labelledby]="ariaLabelledBy"
-        [attr.aria-describedby]="ariaDescribedBy"
-        [attr.aria-hidden]="ariaHidden"
-        [attr.tabIndex]="ariaHidden ? -1 : tabIndex"
-        [attr.lang]="lang"
-        [attr.data-testid]="dataTestId"
-        (click)="onClick && this.onClick.emit($event)"
-        (keydown)="onKeyDown && this.onKeyDown.emit($event)"
-        (keyup)="onKeyUp && this.onKeyUp.emit($event)"
-      >
-        <ng-content></ng-content>
-      </a>
-    </li>
+    <a
+      [attr.id]="id"
+      [attr.href]="href"
+      [class]="
+        linkClasses({
+          className: className,
+        })
+      "
+      [ngStyle]="styles"
+      [attr.target]="target ?? (external ? '_blank' : undefined)"
+      [attr.rel]="rel ?? (external ? 'noreferrer noopener' : undefined)"
+      [attr.download]="download || undefined"
+      [attr.aria-current]="ariaCurrent"
+      [attr.aria-label]="ariaLabel"
+      [attr.aria-labelledby]="ariaLabelledBy"
+      [attr.aria-describedby]="ariaDescribedBy"
+      [attr.aria-hidden]="ariaHidden"
+      [attr.tabIndex]="ariaHidden ? -1 : tabIndex"
+      [attr.lang]="lang"
+      [attr.data-testid]="dataTestId"
+      (click)="onClick && this.onClick.emit($event)"
+      (keydown)="onKeyDown && this.onKeyDown.emit($event)"
+      (keyup)="onKeyUp && this.onKeyUp.emit($event)"
+    >
+      <ng-content></ng-content>
+    </a>
   `,
   styles: [
     `
@@ -79,10 +74,8 @@ import type { VisibleValue } from './HeaderNavItem.styles';
   imports: [CommonModule],
 })
 export default class HeaderNavItemLink {
-  classes = classes;
-  getVisibility = getVisibility;
+  linkClasses = linkClasses;
 
-  @Input() visible: Props['visible'] = defaultProps['visible'];
   @Input() id!: Props['id'];
   @Input() href!: Props['href'];
   @Input() className!: Props['className'];

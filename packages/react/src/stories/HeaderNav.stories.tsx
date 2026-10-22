@@ -1,6 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/react-vite';
 import HeaderNav from '@/atoms/header/HeaderNav';
-import HeaderNavItemLink from '@/atoms/header/HeaderNavItemLink';
+import HeaderNavItemLink from '@/HeaderNavItemLink';
 import HeaderSection from '@/atoms/header/HeaderSection';
 import { headerNavMeta, Default as defaultStory } from '@/atoms/storybook/HeaderNav.meta';
 
