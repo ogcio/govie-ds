@@ -21,3 +21,8 @@ export { GiButton, GiButtonDirective } from './Button';
 export { GiIconButton, GiIconButtonDirective } from './IconButton';
 export { GiLink, GiLinkDirective } from './Link';
 export { GiLinkButton, GiLinkButtonDirective } from './LinkButton';
+
+// Navigation
+export { GiBreadcrumbs } from './breadcrumbs/Breadcrumbs';
+export { GiBreadcrumbLink } from './breadcrumbs/BreadcrumbLink';
+export { GiBreadcrumbEllipsis } from './breadcrumbs/BreadcrumbEllipsis';
