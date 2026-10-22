@@ -24,5 +24,5 @@ export { GiLinkButton, GiLinkButtonDirective } from './LinkButton';
 
 // Navigation
 export { GiBreadcrumbs } from './breadcrumbs/Breadcrumbs';
-export { GiBreadcrumbLink } from './breadcrumbs/BreadcrumbLink';
+export { GiBreadcrumbLink, GiBreadcrumbLinkDirective } from './breadcrumbs/BreadcrumbLink';
 export { GiBreadcrumbEllipsis } from './breadcrumbs/BreadcrumbEllipsis';
