@@ -24,7 +24,6 @@ export const headerNavItemLinkMeta = {
     ariaHidden: undefined,
     tabIndex: undefined,
     lang: undefined,
-    styles: undefined,
     dataTestId: 'header-nav-item-link',
     onClick: undefined,
     onKeyDown: undefined,
@@ -52,7 +51,6 @@ export const headerNavItemLinkMeta = {
     ariaHidden: linkMeta.argTypes.ariaHidden,
     tabIndex: linkMeta.argTypes.tabIndex,
     lang: linkMeta.argTypes.lang,
-    styles: linkMeta.argTypes.styles,
     dataTestId: linkMeta.argTypes.dataTestId,
     onClick: {
       action: 'clicked',

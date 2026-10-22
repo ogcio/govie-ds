@@ -4,47 +4,20 @@
   The file source is in `packages/core/atoms/header/HeaderNavItem.lite.tsx`
  */
 
-'use client';
 import * as React from 'react';
 
 export type Props = {
   children?: any;
   /** Visibility: `true`/`false`, a breakpoint to show from (e.g. `"lg"`), or a per-breakpoint map like `{ base: false, lg: true }`. */
   visible?: VisibleValue;
-  onClick?: (event: any) => void;
-  className?: string;
-  styles?: Record<string, string>;
-  id?: string;
-  ariaLabel?: string;
-  ariaExpanded?: boolean;
-  ariaControls?: string;
-  dataTestId?: string;
 };
 
-import classes, { getVisibility } from './HeaderNavItem.styles';
+import { getVisibility } from './HeaderNavItem.styles';
 import type { VisibleValue } from './HeaderNavItem.styles';
 
 function HeaderNavItem(props: Props) {
-  props = { visible: true, ariaExpanded: undefined, ...props };
-  return (
-    <li className={getVisibility(props.visible)}>
-      <button
-        type="button"
-        id={props.id}
-        className={classes({
-          className: ['gi-header-nav-item', props.className],
-        })}
-        style={props.styles}
-        aria-label={props.ariaLabel}
-        aria-expanded={props.ariaExpanded}
-        aria-controls={props.ariaControls}
-        data-testid={props.dataTestId}
-        onClick={(event) => props.onClick && props.onClick(event)}
-      >
-        {props.children}
-      </button>
-    </li>
-  );
+  props = { visible: true, ...props };
+  return <li className={getVisibility(props.visible)}>{props.children}</li>;
 }
 
 export default HeaderNavItem;

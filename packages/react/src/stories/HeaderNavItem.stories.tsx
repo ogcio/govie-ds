@@ -1,12 +1,20 @@
 import type { Meta, StoryObj } from '@storybook/react-vite';
 import HeaderNav from '@/atoms/header/HeaderNav';
-import HeaderNavItem from '@/atoms/header/HeaderNavItem';
+import HeaderNavItem from '@/HeaderNavItem';
 import HeaderSection from '@/atoms/header/HeaderSection';
 import SearchIcon from '@/atoms/icons/Search';
 import { headerNavItemMeta, Default as defaultStory } from '@/atoms/storybook/HeaderNavItem.meta';
 
 const meta = {
   ...headerNavItemMeta,
+  argTypes: {
+    ...headerNavItemMeta.argTypes,
+    style: {
+      control: false,
+      description: 'Inline styles. Prefer className with gi-* Tailwind utilities.',
+      table: { type: { summary: 'React.CSSProperties' } },
+    },
+  },
   title: 'Layout/Header/HeaderNavItem',
   component: HeaderNavItem,
   parameters: {

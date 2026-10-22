@@ -10,6 +10,11 @@ const meta = {
   ...headerNavItemLinkMeta,
   argTypes: {
     ...headerNavItemLinkMeta.argTypes,
+    style: {
+      control: false,
+      description: 'Inline styles. Prefer className with gi-* Tailwind utilities.',
+      table: { type: { summary: 'React.CSSProperties' } },
+    },
     asChild: {
       control: false,
       description:

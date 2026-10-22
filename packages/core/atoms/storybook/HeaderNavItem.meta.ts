@@ -12,7 +12,6 @@ export const headerNavItemMeta = {
     visible: undefined,
     onClick: undefined,
     className: undefined,
-    styles: undefined,
     id: 'header-nav-item-id',
     ariaLabel: undefined,
     ariaExpanded: undefined,
@@ -33,7 +32,6 @@ export const headerNavItemMeta = {
       table: { type: { summary: '(event) => void' } },
     },
     className: boxMeta.argTypes.className,
-    styles: boxMeta.argTypes.styles,
     id: boxMeta.argTypes.id,
     ariaLabel: {
       control: 'text',
