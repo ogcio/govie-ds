@@ -26,3 +26,13 @@ export { GiLinkButton, GiLinkButtonDirective } from './LinkButton';
 export { GiFooter } from './footer/Footer';
 export { GiFooterSection } from './footer/FooterSection';
 export { GiFooterLogo } from './footer/FooterLogo';
+
+export { GiHeader } from './header/Header';
+export { GiHeaderSection } from './header/HeaderSection';
+export { GiHeaderLogo } from './header/HeaderLogo';
+export { GiHeaderTitle } from './header/HeaderTitle';
+export { GiHeaderNav } from './header/HeaderNav';
+export { GiHeaderNavItem, GiHeaderNavItemDirective } from './header/HeaderNavItem';
+export { GiHeaderNavItemButton, GiHeaderNavItemButtonDirective } from './header/HeaderNavItemButton';
+export { GiHeaderNavItemLink, GiHeaderNavItemLinkDirective } from './header/HeaderNavItemLink';
+export { GiHeaderNavItemSeparator } from './header/HeaderNavItemSeparator';

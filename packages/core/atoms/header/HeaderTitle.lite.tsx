@@ -2,7 +2,7 @@ import { useMetadata } from '@builder.io/mitosis';
 import { tv } from 'tailwind-variants';
 import CoreBox from '../Box.lite';
 
-useMetadata({ angular: { selector: 'gi-header-title' } });
+useMetadata({ angular: { selector: 'core-header-title' } });
 
 export type Props = {
   children?: any;

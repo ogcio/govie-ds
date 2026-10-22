@@ -1,10 +1,12 @@
 import type { StoryObj } from '@storybook/angular-vite';
 import { headerTitleMeta, Default as defaultStory } from '@/atoms/storybook/HeaderTitle.meta';
-import { HeaderTitle, HeaderSection } from '@/atoms';
+import { GiHeaderTitle } from '@/header/HeaderTitle';
+import { GiHeaderSection } from '@/header/HeaderSection';
 
 const meta = {
   ...headerTitleMeta,
   title: 'Layout/Header/HeaderTitle',
+  component: GiHeaderTitle,
 };
 
 export default meta;
@@ -14,7 +16,7 @@ export const Default: StoryObj = {
   render: (props) => ({
     props,
     moduleMetadata: {
-      imports: [HeaderTitle, HeaderSection],
+      imports: [GiHeaderTitle, GiHeaderSection],
     },
     template: `
       <gi-header-section>

@@ -27,7 +27,7 @@ const classes = tv({
 });
 
 @Component({
-  selector: 'gi-header-title',
+  selector: 'core-header-title',
   template: `
     <core-box
       [id]="id"

@@ -16,7 +16,7 @@
     :style="styles"
     :target="target ?? (external ? '_blank' : undefined)"
     :rel="rel ?? (external ? 'noreferrer noopener' : undefined)"
-    :download="download || undefined"
+    :download="getDownload(download)"
     :aria-current="ariaCurrent"
     :aria-label="ariaLabel"
     :aria-labelledby="ariaLabelledBy"
@@ -33,6 +33,7 @@
 </template>
 
 <script setup lang="ts">
+import { getDownload } from '../utilities';
 import { linkClasses } from './HeaderNavItem.styles';
 
 export type Props = {
