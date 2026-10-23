@@ -1,5 +1,19 @@
 # Changelog
 
+## [0.6.0](https://github.com/ogcio/govie-ds/compare/angular-v0.5.0...angular-v0.6.0) (2026-10-23)
+
+
+### Features
+
+* **AB#44011:** create footer family native wrappers ([6b23595](https://github.com/ogcio/govie-ds/commit/6b23595d4fa8f54af17ee7abb3fdc16c3efe3a81))
+* **AB#44791:** publish logos from the Angular /logos entry point ([1f2990c](https://github.com/ogcio/govie-ds/commit/1f2990c9b35c61d17bc75d452ab00be979dd1f44))
+
+
+### Miscellaneous Chores
+
+* **AB#44011:** cleanup footer stories ([d0719e6](https://github.com/ogcio/govie-ds/commit/d0719e67f4a72e5c1b011a1d88402edcd5ce3412))
+* **angular:** drop the path alias from the library build ([5e2259e](https://github.com/ogcio/govie-ds/commit/5e2259efd0bf74192b305e166e5b84f943d3bf4f))
+
 ## [0.5.0](https://github.com/ogcio/govie-ds/compare/angular-v0.4.0...angular-v0.5.0) (2026-10-20)
 
 
