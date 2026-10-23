@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.50.1](https://github.com/ogcio/govie-ds/compare/react-lib-v1.50.0...react-lib-v1.50.1) (2026-10-23)
+
+
+### Miscellaneous Chores
+
+* **AB#44011:** cleanup footer stories ([d0719e6](https://github.com/ogcio/govie-ds/commit/d0719e67f4a72e5c1b011a1d88402edcd5ce3412))
+
 ## [1.50.0](https://github.com/ogcio/govie-ds/compare/react-lib-v1.49.0...react-lib-v1.50.0) (2026-10-20)
 
 
