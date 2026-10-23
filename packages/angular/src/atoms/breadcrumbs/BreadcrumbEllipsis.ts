@@ -9,7 +9,7 @@ import { Component, Input } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
 export type Props = Omit<IconProps, 'label'> & {
-  styles: Record<string, string>;
+  styles?: Record<string, string>;
 };
 
 import GiMoreHorizontalIcon from '../icons/MoreHorizontal';

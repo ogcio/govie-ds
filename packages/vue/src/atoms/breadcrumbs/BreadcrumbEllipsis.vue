@@ -30,7 +30,7 @@ const classes = tv({
 });
 
 export type Props = Omit<IconProps, 'label'> & {
-  styles: Record<string, string>;
+  styles?: Record<string, string>;
 };
 
 const props = defineProps<Props>();
