@@ -5,42 +5,38 @@
 -->
 
 <template>
-  <li :class="getVisibility(visible)">
-    <a
-      :id="id"
-      :href="href"
-      :class="
-        classes({
-          className: ['gi-header-nav-item-link', className],
-        })
-      "
-      :style="styles"
-      :target="target ?? (external ? '_blank' : undefined)"
-      :rel="rel ?? (external ? 'noreferrer noopener' : undefined)"
-      :download="download || undefined"
-      :aria-current="ariaCurrent"
-      :aria-label="ariaLabel"
-      :aria-labelledby="ariaLabelledBy"
-      :aria-describedby="ariaDescribedBy"
-      :aria-hidden="ariaHidden"
-      :tabIndex="ariaHidden ? -1 : tabIndex"
-      :lang="lang"
-      :data-testid="dataTestId"
-      @click="async (event) => onClick && onClick(event)"
-      @keydown="async (event) => onKeyDown && onKeyDown(event)"
-      @keyup="async (event) => onKeyUp && onKeyUp(event)"
-      ><slot
-    /></a>
-  </li>
+  <a
+    :id="id"
+    :href="href"
+    :class="
+      linkClasses({
+        className: className,
+      })
+    "
+    :style="styles"
+    :target="target ?? (external ? '_blank' : undefined)"
+    :rel="rel ?? (external ? 'noreferrer noopener' : undefined)"
+    :download="getDownload(download)"
+    :aria-current="ariaCurrent"
+    :aria-label="ariaLabel"
+    :aria-labelledby="ariaLabelledBy"
+    :aria-describedby="ariaDescribedBy"
+    :aria-hidden="ariaHidden"
+    :tabIndex="ariaHidden ? -1 : tabIndex"
+    :lang="lang"
+    :data-testid="dataTestId"
+    @click="async (event) => onClick && onClick(event)"
+    @keydown="async (event) => onKeyDown && onKeyDown(event)"
+    @keyup="async (event) => onKeyUp && onKeyUp(event)"
+    ><slot
+  /></a>
 </template>
 
 <script setup lang="ts">
-import classes, { getVisibility } from './HeaderNavItem.styles';
-import type { VisibleValue } from './HeaderNavItem.styles';
+import { getDownload } from '../utilities';
+import { linkClasses } from './HeaderNavItem.styles';
 
 export type Props = {
-  /** Visibility: `true`/`false`, a breakpoint to show from (e.g. `"lg"`), or a per-breakpoint map like `{ base: false, lg: true }`. */
-  visible?: VisibleValue;
   id?: string;
   href: string;
   className?: string;
@@ -63,7 +59,6 @@ export type Props = {
 };
 
 const props = withDefaults(defineProps<Props>(), {
-  visible: true,
   id: undefined,
   href: undefined,
   className: undefined,

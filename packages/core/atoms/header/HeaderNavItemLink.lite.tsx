@@ -1,11 +1,10 @@
 import { useDefaultProps, useMetadata } from '@builder.io/mitosis';
-import classes, { getVisibility } from './HeaderNavItem.styles';
-import type { VisibleValue } from './HeaderNavItem.styles';
+import { getDownload } from '../utilities';
+import { linkClasses } from './HeaderNavItem.styles';
 
-useMetadata({ angular: { selector: 'gi-header-nav-item-link' } });
+useMetadata({ angular: { selector: 'core-header-nav-item-link' } });
 
 useDefaultProps({
-  visible: true,
   download: undefined,
   ariaCurrent: undefined,
   ariaHidden: undefined,
@@ -13,8 +12,6 @@ useDefaultProps({
 
 export type Props = {
   children?: any;
-  /** Visibility: `true`/`false`, a breakpoint to show from (e.g. `"lg"`), or a per-breakpoint map like `{ base: false, lg: true }`. */
-  visible?: VisibleValue;
   id?: string;
   href: string;
   className?: string;
@@ -38,31 +35,27 @@ export type Props = {
 
 export default function HeaderNavItemLink(props: Props) {
   return (
-    <li class={getVisibility(props.visible)}>
-      <a
-        id={props.id}
-        href={props.href}
-        class={classes({
-          className: ['gi-header-nav-item-link', props.className],
-        })}
-        style={props.styles}
-        target={props.target ?? (props.external ? '_blank' : undefined)}
-        rel={props.rel ?? (props.external ? 'noreferrer noopener' : undefined)}
-        download={props.download || undefined}
-        aria-current={props.ariaCurrent}
-        aria-label={props.ariaLabel}
-        aria-labelledby={props.ariaLabelledBy}
-        aria-describedby={props.ariaDescribedBy}
-        aria-hidden={props.ariaHidden}
-        tabIndex={props.ariaHidden ? -1 : props.tabIndex}
-        lang={props.lang}
-        data-testid={props.dataTestId}
-        onClick={(event) => props.onClick && props.onClick(event)}
-        onKeyDown={(event) => props.onKeyDown && props.onKeyDown(event)}
-        onKeyUp={(event) => props.onKeyUp && props.onKeyUp(event)}
-      >
-        {props.children}
-      </a>
-    </li>
+    <a
+      id={props.id}
+      href={props.href}
+      class={linkClasses({ className: props.className })}
+      style={props.styles}
+      target={props.target ?? (props.external ? '_blank' : undefined)}
+      rel={props.rel ?? (props.external ? 'noreferrer noopener' : undefined)}
+      download={getDownload(props.download)}
+      aria-current={props.ariaCurrent}
+      aria-label={props.ariaLabel}
+      aria-labelledby={props.ariaLabelledBy}
+      aria-describedby={props.ariaDescribedBy}
+      aria-hidden={props.ariaHidden}
+      tabIndex={props.ariaHidden ? -1 : props.tabIndex}
+      lang={props.lang}
+      data-testid={props.dataTestId}
+      onClick={(event) => props.onClick && props.onClick(event)}
+      onKeyDown={(event) => props.onKeyDown && props.onKeyDown(event)}
+      onKeyUp={(event) => props.onKeyUp && props.onKeyUp(event)}
+    >
+      {props.children}
+    </a>
   );
 }

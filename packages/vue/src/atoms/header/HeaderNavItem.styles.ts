@@ -8,7 +8,7 @@ import { tv } from 'tailwind-variants';
 import type { Size, ResponsiveValue, ValueOf } from '../constants';
 import { resolveResponsive } from '../utilities';
 export type VisibleValue = ValueOf<typeof Size> | ResponsiveValue<boolean>;
-export default tv({
+const base = tv({
   base: [
     'gi-flex gi-items-center gi-gap-md',
     'gi-h-auto gi-p-2 gi-rounded-sm',
@@ -30,6 +30,14 @@ export default tv({
     '[.gi-header-section-light_.gi-header-section-utility_&]:focus:gi-ring-[3px]',
     '[.gi-header-section-light_.gi-header-section-utility_&]:focus-visible:gi-ring-[3px]',
   ],
+});
+export const buttonClasses = tv({
+  extend: base,
+  base: 'gi-header-nav-item',
+});
+export const linkClasses = tv({
+  extend: base,
+  base: 'gi-header-nav-item-link',
 });
 export const getVisibility = (visible: VisibleValue = true): string => {
   if (typeof visible === 'boolean') {

@@ -1,7 +1,11 @@
 import { Slot } from '@radix-ui/react-slot';
+import GiHeaderNavItem from '@/atoms/header/HeaderNavItem';
+import type { Props as ItemProps } from '@/atoms/header/HeaderNavItem';
 import GiHeaderNavItemLink from '@/atoms/header/HeaderNavItemLink';
-import type { Props } from '@/atoms/header/HeaderNavItemLink';
-import classes, { getVisibility } from '@/atoms/header/HeaderNavItem.styles';
+import type { Props as LinkProps } from '@/atoms/header/HeaderNavItemLink';
+import { linkClasses } from '@/atoms/header/HeaderNavItem.styles';
+
+type Props = LinkProps & Pick<ItemProps, 'visible'>;
 
 type HeaderNavItemLinkAsChild = Omit<Props, 'href'> & {
   asChild: true;
@@ -38,13 +42,11 @@ export default function HeaderNavItemLink({
       tabIndex: ariaHidden ? -1 : tabIndex,
     };
     return (
-      <li className={getVisibility(visible)}>
+      <GiHeaderNavItem visible={visible}>
         <Slot
           {...rest}
           {...anchorProps}
-          className={classes({
-            className: ['gi-header-nav-item-link', className],
-          })}
+          className={linkClasses({ className })}
           style={styles}
           aria-current={ariaCurrent}
           aria-label={ariaLabel}
@@ -55,28 +57,29 @@ export default function HeaderNavItemLink({
         >
           {children}
         </Slot>
-      </li>
+      </GiHeaderNavItem>
     );
   }
   return (
-    <GiHeaderNavItemLink
-      {...rest}
-      href={href}
-      visible={visible}
-      className={className}
-      styles={styles}
-      target={target}
-      external={external}
-      rel={rel}
-      tabIndex={tabIndex}
-      dataTestId={dataTestId}
-      ariaCurrent={ariaCurrent}
-      ariaLabel={ariaLabel}
-      ariaLabelledBy={ariaLabelledBy}
-      ariaDescribedBy={ariaDescribedBy}
-      ariaHidden={ariaHidden}
-    >
-      {children}
-    </GiHeaderNavItemLink>
+    <GiHeaderNavItem visible={visible}>
+      <GiHeaderNavItemLink
+        {...rest}
+        href={href}
+        className={className}
+        styles={styles}
+        target={target}
+        external={external}
+        rel={rel}
+        tabIndex={tabIndex}
+        dataTestId={dataTestId}
+        ariaCurrent={ariaCurrent}
+        ariaLabel={ariaLabel}
+        ariaLabelledBy={ariaLabelledBy}
+        ariaDescribedBy={ariaDescribedBy}
+        ariaHidden={ariaHidden}
+      >
+        {children}
+      </GiHeaderNavItemLink>
+    </GiHeaderNavItem>
   );
 }

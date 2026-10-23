@@ -33,7 +33,7 @@ const classes = tv({
 });
 
 @Component({
-  selector: 'gi-header-nav-item-separator',
+  selector: 'core-header-nav-item-separator',
   template: `
     <li
       role="none"
