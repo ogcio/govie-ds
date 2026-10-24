@@ -1,5 +1,5 @@
-ARG NODE_IMAGE=docker.io/node:24.14.1-alpine3.23@sha256:01743339035a5c3c11a373cd7c83aeab6ed1457b55da6a69e014a95ac4e4700b
-ARG NGINX_IMAGE=docker.io/nginxinc/nginx-unprivileged:1-alpine3.23-slim@sha256:b5831ee7f7aa827cbae87df4a30a642f62c747d8525f5674365389f3adab278d
+ARG NODE_IMAGE=docker.io/node:24.22.1-alpine3.24@sha256:06d7adf3e0ef61a13f1d28682726366f97a15aa1888c934d3ecec86c33918b53
+ARG NGINX_IMAGE=docker.io/nginxinc/nginx-unprivileged:1-alpine3.24-slim@sha256:a8cb0f33d51fa107c96fd2bd3a71aaf564ec131e9d2bdf8700944f0ed8b170d7
 
 # Build image (run from root)
 FROM ${NODE_IMAGE} AS builder
