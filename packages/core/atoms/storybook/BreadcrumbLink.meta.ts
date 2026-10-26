@@ -28,8 +28,6 @@ export const meta = {
         defaultValue: { summary: 'false' },
       },
     },
-    className: linkMeta.argTypes.className,
-    styles: linkMeta.argTypes.styles,
     ariaLabel: linkMeta.argTypes.ariaLabel,
     dataTestId: linkMeta.argTypes.dataTestId,
   },

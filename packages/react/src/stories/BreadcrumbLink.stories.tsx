@@ -6,15 +6,30 @@ import SettingsIcon from '@/atoms/icons/Settings';
 import HomeIcon from '@/atoms/icons/Home';
 import PersonIcon from '@/atoms/icons/Person';
 import { importNext } from './helpers';
-import omit from 'lodash/omit';
 
 const meta = {
   ...stories.meta,
   title: 'Navigation/Breadcrumbs/BreadcrumbLink',
   component: BreadcrumbLink,
   argTypes: {
-    ...omit(stories.meta.argTypes, 'styles'),
-    style: stories.meta.argTypes.styles,
+    ...stories.meta.argTypes,
+    className: {
+      control: false,
+      description: 'Additional CSS classes applied to the anchor element.',
+      table: { type: { summary: 'string' } },
+    },
+    style: {
+      control: {
+        disable: true,
+      },
+      description:
+        'Inline styles applied directly to the anchor element. Use for truly dynamic values that cannot be expressed as Tailwind classes.',
+      table: {
+        type: {
+          summary: 'React.CSSProperties',
+        },
+      },
+    },
     asChild: {
       control: false,
       description:

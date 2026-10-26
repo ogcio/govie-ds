@@ -38,8 +38,6 @@ export const meta = {
         },
       },
     },
-    className: linkMeta.argTypes.className,
-    styles: linkMeta.argTypes.styles,
     ariaLabel: linkMeta.argTypes.ariaLabel,
     dataTestId: linkMeta.argTypes.dataTestId,
   },
