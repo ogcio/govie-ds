@@ -2,15 +2,24 @@ import type { Meta, StoryObj } from '@storybook/react-vite';
 import * as stories from '@/atoms/storybook/BreadcrumbEllipsis.meta';
 import BreadcrumbEllipsis from '@/breadcrumbs/BreadcrumbEllipsis';
 import { importNext } from './helpers';
-import omit from 'lodash/omit';
 
 const meta = {
   ...stories.meta,
   title: 'Navigation/Breadcrumbs/BreadcrumbEllipsis',
   component: BreadcrumbEllipsis,
   argTypes: {
-    ...omit(stories.meta.argTypes, 'styles'),
-    style: stories.meta.argTypes.styles,
+    ...stories.meta.argTypes,
+    className: {
+      control: false,
+      description: 'Additional CSS classes applied to the icon.',
+      table: { type: { summary: 'string' } },
+    },
+    style: {
+      control: { disable: true },
+      description:
+        'Inline styles applied directly to the list-item parent of the icon. Use for truly dynamic values that cannot be expressed as Tailwind classes.',
+      table: { type: { summary: 'React.CSSProperties' } },
+    },
   },
   parameters: {
     ...stories.meta.parameters,
