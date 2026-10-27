@@ -1,22 +1,16 @@
 import type { StoryContext, Renderer } from 'storybook/internal/types';
-import { within } from 'storybook/test';
+import { expect, within } from 'storybook/test';
 import { Size } from '../constants';
 import { boxMeta } from './Box.meta';
-import { checker, enumType } from './utilities';
+import { enumType } from './utilities';
 
-export const headerNavItemMeta = {
+export const meta = {
   tags: ['autodocs'] as string[],
   title: 'Layout/Header/HeaderNavItem',
   args: {
     children: 'Search',
     visible: undefined,
-    onClick: undefined,
     className: undefined,
-    id: 'header-nav-item-id',
-    ariaLabel: undefined,
-    ariaExpanded: undefined,
-    ariaControls: undefined,
-    dataTestId: 'header-nav-item',
   },
   argTypes: {
     visible: {
@@ -26,48 +20,24 @@ export const headerNavItemMeta = {
       }),
       control: 'select',
     },
-    onClick: {
-      action: 'clicked',
-      description: 'Click handler for the button.',
-      table: { type: { summary: '(event) => void' } },
-    },
     className: boxMeta.argTypes.className,
-    id: boxMeta.argTypes.id,
-    ariaLabel: {
-      control: 'text',
-      description: 'Accessible label for the button. Maps to `aria-label`.',
-      table: { type: { summary: 'string' } },
-    },
-    ariaExpanded: {
-      control: 'boolean',
-      description: 'Indicates whether a related panel is expanded. Maps to `aria-expanded`.',
-      table: { type: { summary: 'boolean' } },
-    },
-    ariaControls: {
-      control: { disable: true },
-      description: 'ID of the element controlled by this button. Maps to `aria-controls`.',
-      table: { type: { summary: 'string' } },
-    },
-    dataTestId: boxMeta.argTypes.dataTestId,
   },
   parameters: {
     docs: {
       description: {
         component:
-          'Button-style navigation item for header menus. Use for actions that open panels or drawers rather than navigating to a URL.',
+          'Header navigation item. Controls responsive visibility and holds a `HeaderNavItemButton` or a `HeaderNavItemLink`.',
       },
     },
   },
 };
 
 export const Default = {
-  args: headerNavItemMeta.args,
   play: async ({ canvasElement, step, args }: StoryContext<Renderer>) => {
     const canvas = within(canvasElement as HTMLElement);
-    const check = checker(args.dataTestId, canvas, step);
 
-    await check.is('button');
-    await check.attributes({ id: args.id });
-    await check.children();
+    await step('renders a list item with its content', async () => {
+      expect(canvas.getByRole('listitem')).toHaveTextContent(String(args.children));
+    });
   },
 };

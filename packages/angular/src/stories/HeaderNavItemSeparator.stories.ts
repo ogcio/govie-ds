@@ -1,5 +1,5 @@
 import type { StoryObj } from '@storybook/angular-vite';
-import { headerNavItemSeparatorMeta, Default as defaultStory } from '@/atoms/storybook/HeaderNavItemSeparator.meta';
+import * as stories from '@/atoms/storybook/HeaderNavItemSeparator.meta';
 import { GiHeaderNav } from '@/header/HeaderNav';
 import { GiHeaderNavItem } from '@/header/HeaderNavItem';
 import { GiHeaderNavItemLink } from '@/header/HeaderNavItemLink';
@@ -7,7 +7,7 @@ import { GiHeaderNavItemSeparator } from '@/header/HeaderNavItemSeparator';
 import { GiHeaderSection } from '@/header/HeaderSection';
 
 const meta = {
-  ...headerNavItemSeparatorMeta,
+  ...stories.meta,
   title: 'Layout/Header/HeaderNavItemSeparator',
   component: GiHeaderNavItemSeparator,
 };
@@ -15,7 +15,7 @@ const meta = {
 export default meta;
 
 export const Default: StoryObj = {
-  ...defaultStory,
+  ...stories.Default,
   render: (props) => ({
     props,
     moduleMetadata: {
@@ -42,9 +42,8 @@ export const Default: StoryObj = {
 };
 
 export const Light: StoryObj = {
-  ...defaultStory,
+  ...stories.Default,
   args: {
-    ...defaultStory.args,
     id: 'header-nav-item-separator-light-id',
     dataTestId: 'header-nav-item-separator-light',
   },

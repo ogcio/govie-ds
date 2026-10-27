@@ -3,18 +3,18 @@ import HeaderNav from '@/atoms/header/HeaderNav';
 import HeaderNavItemLink from '@/HeaderNavItemLink';
 import HeaderNavItemSeparator from '@/atoms/header/HeaderNavItemSeparator';
 import HeaderSection from '@/atoms/header/HeaderSection';
-import { headerNavItemSeparatorMeta, Default as defaultStory } from '@/atoms/storybook/HeaderNavItemSeparator.meta';
+import * as stories from '@/atoms/storybook/HeaderNavItemSeparator.meta';
 
 const meta = {
-  ...headerNavItemSeparatorMeta,
+  ...stories.meta,
   title: 'Layout/Header/HeaderNavItemSeparator',
   component: HeaderNavItemSeparator,
   parameters: {
-    ...headerNavItemSeparatorMeta.parameters,
+    ...stories.meta.parameters,
     docs: {
-      ...headerNavItemSeparatorMeta.parameters.docs,
+      ...stories.meta.parameters.docs,
       description: {
-        component: `${headerNavItemSeparatorMeta.parameters.docs.description.component}\n\nThis is the recommended HeaderNavItemSeparator component for new projects. It is available via the \`next\` entry point of the React package:\n\n\`\`\`tsx\nimport { HeaderNavItemSeparator } from "@ogcio/design-system-react/next";\n\`\`\``,
+        component: `${stories.meta.parameters.docs.description.component}\n\nThis is the recommended HeaderNavItemSeparator component for new projects. It is available via the \`next\` entry point of the React package:\n\n\`\`\`tsx\nimport { HeaderNavItemSeparator } from "@ogcio/design-system-react/next";\n\`\`\``,
       },
     },
   },
@@ -24,7 +24,7 @@ export default meta;
 type Story = StoryObj<typeof meta>;
 
 export const Default: Story = {
-  ...defaultStory,
+  ...stories.Default,
   tags: ['skip-playwright'],
   render: (props) => (
     <HeaderSection>
@@ -38,10 +38,9 @@ export const Default: Story = {
 };
 
 export const Light: Story = {
-  ...defaultStory,
+  ...stories.Default,
   tags: ['skip-playwright'],
   args: {
-    ...defaultStory.args,
     id: 'header-nav-item-separator-light-id',
     dataTestId: 'header-nav-item-separator-light',
   },

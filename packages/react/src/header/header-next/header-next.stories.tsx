@@ -3,7 +3,7 @@ import { useState } from 'react';
 import { within, expect, userEvent, screen, fn } from 'storybook/test';
 import Heading from '@/Heading.js';
 import Button from '@/atoms/Button';
-import { LogoBlack, LogoGoldWhite, LogoWhite, LogoHarpBlack, LogoHarpWhite } from '@/atoms/icons/logos';
+import { LogoBlack, LogoGoldWhite, LogoWhite, LogoHarpBlack, LogoHarpWhite } from '@/logos';
 import { DrawerMenuExample } from '@/drawer/drawer.content.js';
 import { DrawerBody, DrawerFooter, DrawerWrapper } from '@/drawer/drawer.js';
 import { FormField, FormFieldLabel } from '@/forms/form-field/form-field.js';
@@ -34,12 +34,7 @@ import LinkAtom from '@/atoms/Link';
 import Stack from '@/atoms/Stack';
 import Text from '@/atoms/Text';
 import Divider from '@/Divider';
-import InfoIcon from '@/atoms/icons/Info';
-import LogoutIcon from '@/atoms/icons/Logout';
-import SearchIcon from '@/atoms/icons/Search';
-import MicrophoneIcon from '@/atoms/icons/Mic';
-import CloseIcon from '@/atoms/icons/Close';
-import MenuIcon from '@/atoms/icons/Menu';
+import { CloseIcon, InfoIcon, LogoutIcon, MenuIcon, MicIcon as MicrophoneIcon, SearchIcon } from '@/icons';
 
 const meta = {
   title: 'layout/Header/Legacy/Header (Legacy)',

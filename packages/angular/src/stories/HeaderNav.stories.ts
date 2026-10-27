@@ -1,12 +1,12 @@
 import type { StoryObj } from '@storybook/angular-vite';
-import { headerNavMeta, Default as defaultStory } from '@/atoms/storybook/HeaderNav.meta';
+import * as stories from '@/atoms/storybook/HeaderNav.meta';
 import { GiHeaderNav } from '@/header/HeaderNav';
 import { GiHeaderNavItem } from '@/header/HeaderNavItem';
 import { GiHeaderNavItemLink } from '@/header/HeaderNavItemLink';
 import { GiHeaderSection } from '@/header/HeaderSection';
 
 const meta = {
-  ...headerNavMeta,
+  ...stories.meta,
   title: 'Layout/Header/HeaderNav',
   component: GiHeaderNav,
 };
@@ -14,7 +14,7 @@ const meta = {
 export default meta;
 
 export const Default: StoryObj = {
-  ...defaultStory,
+  ...stories.Default,
   render: (props) => ({
     props,
     moduleMetadata: {

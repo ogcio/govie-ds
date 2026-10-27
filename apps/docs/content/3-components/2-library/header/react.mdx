@@ -216,8 +216,8 @@ component:
           ofType: 'string'
           description: 'Language of the link text when it differs from the surrounding content. Maps to the HTML `lang` attribute.'
           required: false
-        - name: 'styles'
-          ofType: 'Record<string, string>'
+        - name: 'style'
+          ofType: 'React.CSSProperties'
           description: 'Control the `style` attribute of the `<a>`.'
           required: false
         - name: 'dataTestId'
@@ -254,8 +254,8 @@ component:
           ofType: 'string'
           description: 'Custom class name for styling the nav button.'
           required: false
-        - name: 'styles'
-          ofType: 'Record<string, string>'
+        - name: 'style'
+          ofType: 'React.CSSProperties'
           description: 'Control the `style` attribute of the `<button>`.'
           required: false
         - name: 'id'
