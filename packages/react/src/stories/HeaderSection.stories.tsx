@@ -1,21 +1,17 @@
 import type { Meta, StoryObj } from '@storybook/react-vite';
 import HeaderSection from '@/atoms/header/HeaderSection';
-import {
-  headerSectionMeta,
-  Default as defaultStory,
-  Utility as utilityStory,
-} from '@/atoms/storybook/HeaderSection.meta';
+import * as stories from '@/atoms/storybook/HeaderSection.meta';
 
 const meta = {
-  ...headerSectionMeta,
+  ...stories.meta,
   title: 'Layout/Header/HeaderSection',
   component: HeaderSection,
   parameters: {
-    ...headerSectionMeta.parameters,
+    ...stories.meta.parameters,
     docs: {
-      ...headerSectionMeta.parameters.docs,
+      ...stories.meta.parameters.docs,
       description: {
-        component: `${headerSectionMeta.parameters.docs.description.component}\n\nThis is the recommended HeaderSection component for new projects. It is available via the \`next\` entry point of the React package:\n\n\`\`\`tsx\nimport { HeaderSection } from "@ogcio/design-system-react/next";\n\`\`\``,
+        component: `${stories.meta.parameters.docs.description.component}\n\nThis is the recommended HeaderSection component for new projects. It is available via the \`next\` entry point of the React package:\n\n\`\`\`tsx\nimport { HeaderSection } from "@ogcio/design-system-react/next";\n\`\`\``,
       },
     },
   },
@@ -25,13 +21,13 @@ export default meta;
 type Story = StoryObj<typeof meta>;
 
 export const Default: Story = {
-  ...defaultStory,
+  ...stories.Default,
   tags: ['skip-playwright'],
   render: (props) => <HeaderSection {...props}>{props.children}</HeaderSection>,
 };
 
 export const Utility: Story = {
-  ...utilityStory,
+  ...stories.Utility,
   tags: ['skip-playwright'],
   render: (props) => <HeaderSection {...props}>{props.children}</HeaderSection>,
 };

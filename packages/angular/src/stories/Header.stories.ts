@@ -1,11 +1,7 @@
 import type { StoryObj } from '@storybook/angular-vite';
 import { within, expect } from 'storybook/test';
-import { headerMeta, Default as defaultStory } from '@/atoms/storybook/Header.meta';
-import InfoIcon from '@/atoms/icons/Info';
-import SearchIcon from '@/atoms/icons/Search';
-import MicIcon from '@/atoms/icons/Mic';
-import LogoutIcon from '@/atoms/icons/Logout';
-import MenuIcon from '@/atoms/icons/Menu';
+import * as stories from '@/atoms/storybook/Header.meta';
+import { InfoIcon, LogoutIcon, MenuIcon, MicIcon, SearchIcon } from '@/icons';
 import { GiHeader } from '@/header/Header';
 import { GiHeaderSection } from '@/header/HeaderSection';
 import { GiHeaderLogo } from '@/header/HeaderLogo';
@@ -19,14 +15,14 @@ import { GiLink } from '@/Link';
 import { GiText } from '@/Text';
 import { GiStack } from '@/Stack';
 import { GiDivider } from '@/Divider';
-import { LogoBlack, LogoHarpBlack, LogoHarpWhite, LogoWhite } from '@/atoms/icons/logos';
+import { LogoBlack, LogoHarpBlack, LogoHarpWhite, LogoWhite } from '@/logos';
 
 const meta = {
-  ...headerMeta,
+  ...stories.meta,
   title: 'Layout/Header/Header',
   component: GiHeader,
   parameters: {
-    ...headerMeta.parameters,
+    ...stories.meta.parameters,
     layout: 'fullscreen',
   },
 };
@@ -59,7 +55,7 @@ const headerImports = [
 ];
 
 export const Default: StoryObj = {
-  ...defaultStory,
+  ...stories.Default,
   parameters: {
     docs: {
       description: {
@@ -145,7 +141,7 @@ export const Default: StoryObj = {
 };
 
 export const Light: StoryObj = {
-  ...defaultStory,
+  ...stories.Default,
   parameters: {
     docs: {
       description: {
@@ -240,7 +236,7 @@ export const Light: StoryObj = {
 };
 
 export const TitleAndLogoAsLinks: StoryObj = {
-  ...defaultStory,
+  ...stories.Default,
   parameters: {
     docs: {
       description: {
@@ -287,7 +283,7 @@ export const TitleAndLogoAsLinks: StoryObj = {
 };
 
 export const Desktop: StoryObj = {
-  ...defaultStory,
+  ...stories.Default,
   tags: ['skip-playwright'],
   parameters: {
     docs: {
@@ -393,7 +389,7 @@ export const Desktop: StoryObj = {
 };
 
 export const MobileView: StoryObj = {
-  ...defaultStory,
+  ...stories.Default,
   tags: ['skip-playwright'],
   parameters: {
     docs: {

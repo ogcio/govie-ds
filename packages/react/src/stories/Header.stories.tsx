@@ -1,6 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/react-vite';
 import { within, expect } from 'storybook/test';
-import { headerMeta, Default as defaultStory } from '@/atoms/storybook/Header.meta';
+import * as stories from '@/atoms/storybook/Header.meta';
 import Header from '@/atoms/header/Header';
 import HeaderLogo from '@/atoms/header/HeaderLogo';
 import HeaderSection from '@/atoms/header/HeaderSection';
@@ -9,15 +9,8 @@ import HeaderNav from '@/atoms/header/HeaderNav';
 import HeaderNavItem from '@/HeaderNavItem';
 import HeaderNavItemLink from '@/HeaderNavItemLink';
 import HeaderNavItemSeparator from '@/atoms/header/HeaderNavItemSeparator';
-import LogoWhite from '@/atoms/icons/logos/LogoWhite';
-import LogoBlack from '@/atoms/icons/logos/LogoBlack';
 import Link from '@/atoms/Link';
-import InfoIcon from '@/atoms/icons/Info';
-import SearchIcon from '@/atoms/icons/Search';
-import MicIcon from '@/atoms/icons/Mic';
-import CloseIcon from '@/atoms/icons/Close';
-import LogoutIcon from '@/atoms/icons/Logout';
-import MenuIcon from '@/atoms/icons/Menu';
+import { CloseIcon, InfoIcon, LogoutIcon, MenuIcon, MicIcon, SearchIcon } from '@/icons';
 import Button from '@/atoms/Button';
 import Text from '@/atoms/Text';
 import Stack from '@/atoms/Stack';
@@ -26,19 +19,19 @@ import { useToggleMap } from '@/hooks/use-toggle-map';
 import { HeaderSearch } from '@/header/components/header-search';
 import { DrawerBody, DrawerFooter, DrawerWrapper } from '@/drawer/drawer';
 import { DrawerMenuExample } from '@/drawer/drawer.content';
-import { LogoHarpBlack, LogoHarpWhite } from '@/logos';
+import { LogoBlack, LogoHarpBlack, LogoHarpWhite, LogoWhite } from '@/logos';
 import Divider from '@/Divider';
 
 const meta = {
-  ...headerMeta,
+  ...stories.meta,
   title: 'Layout/Header/Header',
   component: Header,
   parameters: {
-    ...headerMeta.parameters,
+    ...stories.meta.parameters,
     docs: {
-      ...headerMeta.parameters.docs,
+      ...stories.meta.parameters.docs,
       description: {
-        component: `${headerMeta.parameters.docs.description.component}\n\nThis is the recommended Header component for new projects. It is available via the \`next\` entry point of the React package:\n\n\`\`\`tsx\nimport { Header } from "@ogcio/design-system-react/next";\n\`\`\``,
+        component: `${stories.meta.parameters.docs.description.component}\n\nThis is the recommended Header component for new projects. It is available via the \`next\` entry point of the React package:\n\n\`\`\`tsx\nimport { Header } from "@ogcio/design-system-react/next";\n\`\`\``,
       },
     },
     layout: 'fullscreen',
@@ -49,7 +42,7 @@ export default meta;
 type Story = StoryObj<typeof meta>;
 
 export const Default: Story = {
-  ...defaultStory,
+  ...stories.Default,
   parameters: {
     docs: {
       description: {
@@ -122,7 +115,7 @@ export const Default: Story = {
 };
 
 export const Light: Story = {
-  ...defaultStory,
+  ...stories.Default,
   parameters: {
     docs: {
       description: {
@@ -200,7 +193,7 @@ export const Light: Story = {
 };
 
 export const TitleAndLogoAsLinks: Story = {
-  ...defaultStory,
+  ...stories.Default,
   parameters: {
     docs: {
       description: {
@@ -237,7 +230,7 @@ export const TitleAndLogoAsLinks: Story = {
 };
 
 export const Desktop: Story = {
-  ...defaultStory,
+  ...stories.Default,
   tags: ['skip-playwright'],
   parameters: {
     docs: {
@@ -319,7 +312,7 @@ export const Desktop: Story = {
 };
 
 export const MobileView: Story = {
-  ...defaultStory,
+  ...stories.Default,
   tags: ['skip-playwright'],
   parameters: {
     docs: {
@@ -426,7 +419,7 @@ export const MobileView: Story = {
 };
 
 export const WithSearchAndDrawer: Story = {
-  ...defaultStory,
+  ...stories.Default,
   tags: ['skip-playwright'],
   parameters: {
     docs: {

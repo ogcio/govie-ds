@@ -4,7 +4,7 @@ import type { Props } from '../header/Header.lite';
 import { boxMeta } from './Box.meta';
 import { checker } from './utilities';
 
-export const headerMeta = {
+export const meta = {
   tags: ['autodocs'] as string[],
   title: 'Navigation/Header',
   args: {
@@ -45,7 +45,6 @@ export const headerMeta = {
 
 export const Default = {
   args: {
-    ...headerMeta.args,
     dataTestId: 'header-default',
   },
   play: async ({ canvasElement, step, args }: StoryContext<Renderer>) => {

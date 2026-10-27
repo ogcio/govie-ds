@@ -1,7 +1,7 @@
 import { RouterLink, RouterLinkActive } from '@angular/router';
 import type { StoryObj } from '@storybook/angular-vite';
 import { expect, userEvent, waitFor, within } from 'storybook/test';
-import { headerNavItemLinkMeta, Default as defaultStory } from '@/atoms/storybook/HeaderNavItemLink.meta';
+import * as stories from '@/atoms/storybook/HeaderNavItemLink.meta';
 import { GiHeaderNav } from '@/header/HeaderNav';
 import { GiHeaderNavItem, GiHeaderNavItemDirective } from '@/header/HeaderNavItem';
 import { GiHeaderNavItemLink, GiHeaderNavItemLinkDirective } from '@/header/HeaderNavItemLink';
@@ -9,7 +9,7 @@ import { GiHeaderSection } from '@/header/HeaderSection';
 import { withRouter } from '@/stories/router';
 
 const meta = {
-  ...headerNavItemLinkMeta,
+  ...stories.meta,
   title: 'Layout/Header/HeaderNavItemLink',
   component: GiHeaderNavItemLink,
 };
@@ -17,7 +17,7 @@ const meta = {
 export default meta;
 
 export const Default: StoryObj = {
-  ...defaultStory,
+  ...stories.Default,
   render: (props) => ({
     props,
     moduleMetadata: {
@@ -26,7 +26,7 @@ export const Default: StoryObj = {
     template: `
       <gi-header-section>
         <gi-header-nav ariaLabel="Primary navigation">
-          <gi-header-nav-item [visible]="visible">
+          <gi-header-nav-item>
             <gi-header-nav-item-link
               [href]="href"
               [id]="id"

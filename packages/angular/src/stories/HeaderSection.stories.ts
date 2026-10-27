@@ -1,13 +1,9 @@
 import type { StoryObj } from '@storybook/angular-vite';
-import {
-  headerSectionMeta,
-  Default as defaultStory,
-  Utility as utilityStory,
-} from '@/atoms/storybook/HeaderSection.meta';
+import * as stories from '@/atoms/storybook/HeaderSection.meta';
 import { GiHeaderSection } from '@/header/HeaderSection';
 
 const meta = {
-  ...headerSectionMeta,
+  ...stories.meta,
   title: 'Layout/Header/HeaderSection',
   component: GiHeaderSection,
 };
@@ -35,11 +31,11 @@ const renderHeaderSection = (props: Record<string, unknown>) => ({
 });
 
 export const Default: StoryObj = {
-  ...defaultStory,
+  ...stories.Default,
   render: renderHeaderSection,
 };
 
 export const Utility: StoryObj = {
-  ...utilityStory,
+  ...stories.Utility,
   render: renderHeaderSection,
 };

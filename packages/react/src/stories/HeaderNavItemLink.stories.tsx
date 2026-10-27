@@ -3,13 +3,15 @@ import { expect } from 'storybook/test';
 import HeaderNav from '@/atoms/header/HeaderNav';
 import HeaderNavItemLink from '@/HeaderNavItemLink';
 import HeaderSection from '@/atoms/header/HeaderSection';
-import { headerNavItemLinkMeta, Default as defaultStory } from '@/atoms/storybook/HeaderNavItemLink.meta';
+import * as itemStories from '@/atoms/storybook/HeaderNavItem.meta';
+import * as stories from '@/atoms/storybook/HeaderNavItemLink.meta';
 import { checker } from '@/atoms/storybook/utilities';
 
 const meta = {
-  ...headerNavItemLinkMeta,
+  ...stories.meta,
   argTypes: {
-    ...headerNavItemLinkMeta.argTypes,
+    ...stories.meta.argTypes,
+    visible: itemStories.meta.argTypes.visible,
     style: {
       control: false,
       description: 'Inline styles. Prefer className with gi-* Tailwind utilities.',
@@ -28,11 +30,11 @@ const meta = {
   title: 'Layout/Header/HeaderNavItemLink',
   component: HeaderNavItemLink,
   parameters: {
-    ...headerNavItemLinkMeta.parameters,
+    ...stories.meta.parameters,
     docs: {
-      ...headerNavItemLinkMeta.parameters.docs,
+      ...stories.meta.parameters.docs,
       description: {
-        component: `${headerNavItemLinkMeta.parameters.docs.description.component}\n\nThis is the recommended HeaderNavItemLink component for new projects. It is available via the \`next\` entry point of the React package:\n\n\`\`\`tsx\nimport { HeaderNavItemLink } from "@ogcio/design-system-react/next";\n\`\`\``,
+        component: `Link-style navigation item for header menus, with header-specific styling and visibility controls.\n\nThis is the recommended HeaderNavItemLink component for new projects. It is available via the \`next\` entry point of the React package:\n\n\`\`\`tsx\nimport { HeaderNavItemLink } from "@ogcio/design-system-react/next";\n\`\`\``,
       },
     },
   },
@@ -43,7 +45,7 @@ export default meta;
 type Story = StoryObj<typeof HeaderNavItemLink>;
 
 export const Default: Story = {
-  ...defaultStory,
+  ...stories.Default,
   tags: ['skip-playwright'],
   render: (props) => (
     <HeaderSection>
