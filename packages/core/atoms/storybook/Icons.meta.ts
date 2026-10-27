@@ -92,7 +92,6 @@ export const iconList = {
 };
 
 export const iconsMeta = {
-  tags: ['autodocs'] as string[],
   title: 'Foundation/Icons',
   args: {
     size: 48,

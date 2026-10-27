@@ -3,7 +3,6 @@ import { within, expect } from 'storybook/test';
 import { boxMeta } from './Box.meta';
 
 export const meta = {
-  tags: ['autodocs'] as string[],
   title: 'Layout/Header/HeaderTitle',
   args: {
     children: 'Title',

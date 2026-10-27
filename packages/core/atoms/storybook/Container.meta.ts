@@ -6,7 +6,6 @@ import { checker, enumType } from './utilities';
 import { boxMeta } from './Box.meta';
 
 export const containerMeta = {
-  tags: ['autodocs'] as string[],
   title: 'Layout/Container',
   args: {
     children: 'Paragraph',

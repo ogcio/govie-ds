@@ -3,7 +3,6 @@ import { within, expect } from 'storybook/test';
 import type { BaseSVGProps } from '../icons/types';
 
 export const logosMeta = {
-  tags: ['autodocs'] as string[],
   title: 'Foundation/Logos',
   args: {
     label: '',

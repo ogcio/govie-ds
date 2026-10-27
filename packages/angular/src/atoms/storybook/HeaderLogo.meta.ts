@@ -8,7 +8,6 @@ import type { StoryContext, Renderer } from 'storybook/internal/types';
 import { within, expect } from 'storybook/test';
 import { boxMeta } from './Box.meta';
 export const meta = {
-  tags: ['autodocs'] as string[],
   title: 'Layout/Header/HeaderLogo',
   args: {
     children: undefined,

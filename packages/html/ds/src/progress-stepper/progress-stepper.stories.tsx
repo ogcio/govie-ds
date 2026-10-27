@@ -6,7 +6,6 @@ import type { ProgressStepperProps } from './types';
 
 const meta: Meta<ProgressStepperProps> = {
   title: 'Application/ProgressStepper',
-  tags: ['autodocs'],
 };
 
 export default meta;

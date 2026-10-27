@@ -10,7 +10,6 @@ import type { Props } from '../Paragraph.vue';
 import { enumType } from './utilities';
 import { Align, Size, Whitespace } from '../constants';
 export const paragraphMeta = {
-  tags: ['autodocs'] as string[],
   title: 'Typography/Paragraph',
   args: {
     id: 'paragraph-default',

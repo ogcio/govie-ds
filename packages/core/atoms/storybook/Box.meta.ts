@@ -4,7 +4,6 @@ import type { Props } from '../Box.lite';
 import { checker } from './utilities';
 
 export const boxMeta = {
-  tags: ['autodocs'] as string[],
   title: 'Layout/Box',
   args: {
     children: 'Box content',

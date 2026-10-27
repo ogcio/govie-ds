@@ -11,7 +11,6 @@ import { Appearance, Variant } from '../Button.styles';
 import { Size } from '../constants';
 import { enumType } from './utilities';
 export const meta = {
-  tags: ['autodocs'] as string[],
   title: 'Components/IconButton',
   args: {
     id: 'icon-button-default',

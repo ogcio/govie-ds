@@ -13,7 +13,6 @@ import { checker } from './utilities';
 import { linkMeta } from './Link.meta';
 import { meta as buttonMeta } from './Button.meta';
 export const linkButtonMeta = {
-  tags: ['autodocs'] as string[],
   title: 'Navigation/LinkButton',
   args: {
     children: 'LinkButton',

@@ -9,7 +9,6 @@ import { within } from 'storybook/test';
 import { boxMeta } from './Box.meta';
 import { checker } from './utilities';
 export const meta = {
-  tags: ['autodocs'] as string[],
   title: 'Layout/Header/HeaderNav',
   args: {
     children: 'Nav items',

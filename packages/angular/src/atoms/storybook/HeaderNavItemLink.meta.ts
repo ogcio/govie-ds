@@ -9,7 +9,6 @@ import { within } from 'storybook/test';
 import { linkMeta } from './Link.meta';
 import { checker } from './utilities';
 export const meta = {
-  tags: ['autodocs'] as string[],
   title: 'Layout/Header/HeaderNavItemLink',
   args: {
     children: 'Departments',

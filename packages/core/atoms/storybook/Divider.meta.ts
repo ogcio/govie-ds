@@ -5,7 +5,6 @@ import { Orientation } from '../constants';
 import { checker, enumType } from './utilities';
 
 export const meta = {
-  tags: ['autodocs'] as string[],
   title: 'Layout/Divider',
   args: {
     orientation: Orientation.HORIZONTAL,

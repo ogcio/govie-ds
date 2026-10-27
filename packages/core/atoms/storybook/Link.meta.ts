@@ -4,7 +4,6 @@ import type { Props } from '../Link.lite';
 import { checker } from './utilities';
 
 export const linkMeta = {
-  tags: ['autodocs'] as string[],
   title: 'Navigation/Link',
   args: {
     children: 'Link',

@@ -9,7 +9,6 @@ import { within } from 'storybook/test';
 import type { Props } from '../Box.vue';
 import { checker } from './utilities';
 export const boxMeta = {
-  tags: ['autodocs'] as string[],
   title: 'Layout/Box',
   args: {
     children: 'Box content',

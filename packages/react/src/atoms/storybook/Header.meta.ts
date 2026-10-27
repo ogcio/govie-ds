@@ -10,7 +10,6 @@ import type { Props } from '../header/Header';
 import { boxMeta } from './Box.meta';
 import { checker } from './utilities';
 export const meta = {
-  tags: ['autodocs'] as string[],
   title: 'Navigation/Header',
   args: {
     children: 'Header content',

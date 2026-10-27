@@ -10,7 +10,6 @@ import type { Props } from '../Button.vue';
 import { Appearance, ButtonSize, Variant } from '../Button.styles';
 import { enumType } from './utilities';
 export const meta = {
-  tags: ['autodocs'] as string[],
   title: 'Components/Button',
   args: {
     children: 'Button',

@@ -8,7 +8,6 @@ import type { ArgTypes, StoryContext, Renderer } from 'storybook/internal/types'
 import { within, expect } from 'storybook/test';
 import type { BaseSVGProps } from '../icons/types';
 export const logosMeta = {
-  tags: ['autodocs'] as string[],
   title: 'Foundation/Logos',
   args: {
     label: '',

@@ -5,7 +5,6 @@ import { boxMeta } from './Box.meta';
 import { checker } from './utilities';
 
 export const gridMeta = {
-  tags: ['autodocs'] as string[],
   title: 'Layout/Grid',
   args: {
     container: true,

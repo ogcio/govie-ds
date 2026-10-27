@@ -11,7 +11,6 @@ import { Size, Whitespace } from '../constants';
 import { enumType } from './utilities';
 const loremIpsum = 'Lorem ipsum dolor sit amet.';
 export const textMeta = {
-  tags: ['autodocs'] as string[],
   title: 'Typography/Text',
   args: {
     id: 'text-default',

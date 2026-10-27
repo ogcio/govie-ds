@@ -5,7 +5,6 @@ import type { Props } from '../heading/types';
 import { enumType } from './utilities';
 
 export const headingMeta = {
-  tags: ['autodocs'] as string[],
   title: 'Typography/Heading',
   args: {
     id: 'heading-id',

@@ -16,7 +16,6 @@ import { StepStatus, StepFillLevel } from './types.js';
 const meta = {
   title: 'Application/ProgressStepper',
   component: ProgressStepper,
-  tags: ['autodocs'],
 } satisfies Meta<typeof ProgressStepper>;
 
 export default meta;

@@ -10,7 +10,6 @@ import { Orientation, Size } from '../constants';
 import { boxMeta } from './Box.meta';
 import { checker, enumType } from './utilities';
 export const meta = {
-  tags: ['autodocs'] as string[],
   title: 'Layout/Header/HeaderNavItemSeparator',
   args: {
     visible: undefined,

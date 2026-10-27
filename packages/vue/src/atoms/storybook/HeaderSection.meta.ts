@@ -11,7 +11,6 @@ import { boxMeta } from './Box.meta';
 import { containerMeta } from './Container.meta';
 import { enumType } from './utilities';
 export const meta = {
-  tags: ['autodocs'] as string[],
   title: 'Layout/Header/HeaderSection',
   args: {
     children: 'Header section content',

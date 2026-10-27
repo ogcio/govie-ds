@@ -6,7 +6,6 @@ import { checker, enumType } from './utilities';
 import { boxMeta } from './Box.meta';
 
 export const stackMeta = {
-  tags: ['autodocs'] as string[],
   title: 'Layout/Stack',
   args: {
     direction: Direction.COLUMN,
