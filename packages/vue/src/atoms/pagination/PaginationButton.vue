@@ -5,31 +5,29 @@
 -->
 
 <template>
-  <li>
-    <button
-      type="button"
-      :id="id"
-      :class="
-        classes({
-          variant: current ? 'primary' : 'flat',
-          disabled: !!disabled,
-          className: className,
-        })
-      "
-      :style="styles"
-      :disabled="disabled || undefined"
-      :aria-label="ariaLabel"
-      :aria-current="current"
-      @click="async (event) => onClick && onClick(event)"
-      @focus="async (event) => onFocus && onFocus(event)"
-      @blur="async (event) => onBlur && onBlur(event)"
-      @keydown="async (event) => onKeyDown && onKeyDown(event)"
-      @keyup="async (event) => onKeyUp && onKeyUp(event)"
-      :data-testid="dataTestId"
-    >
-      <slot />
-    </button>
-  </li>
+  <button
+    type="button"
+    :id="id"
+    :class="
+      classes({
+        variant: current ? 'primary' : 'flat',
+        disabled: !!disabled,
+        className: className,
+      })
+    "
+    :style="styles"
+    :disabled="disabled || undefined"
+    :aria-label="ariaLabel"
+    :aria-current="current || undefined"
+    @click="async (event) => onClick && onClick(event)"
+    @focus="async (event) => onFocus && onFocus(event)"
+    @blur="async (event) => onBlur && onBlur(event)"
+    @keydown="async (event) => onKeyDown && onKeyDown(event)"
+    @keyup="async (event) => onKeyUp && onKeyUp(event)"
+    :data-testid="dataTestId"
+  >
+    <slot />
+  </button>
 </template>
 
 <script setup lang="ts">

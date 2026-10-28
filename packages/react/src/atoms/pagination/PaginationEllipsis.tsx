@@ -19,18 +19,16 @@ const classes = tv({
 
 function PaginationEllipsis(props: Props) {
   return (
-    <li aria-hidden={!props.label} style={props.styles}>
-      <GiMoreHorizontalIcon
-        id={props.id}
-        className={classes({
-          className: props.className,
-        })}
-        size={props.size}
-        color={props.color}
-        label={props.label}
-        dataTestId={props.dataTestId}
-      />
-    </li>
+    <GiMoreHorizontalIcon
+      id={props.id}
+      className={classes({
+        className: props.className,
+      })}
+      size={props.size}
+      color={props.color}
+      label={props.label}
+      dataTestId={props.dataTestId}
+    />
   );
 }
 
