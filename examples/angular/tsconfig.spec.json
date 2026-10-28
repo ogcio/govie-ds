@@ -1,9 +1,0 @@
-{
-  "extends": "./tsconfig.json",
-  "compilerOptions": {
-    "outDir": "./out-tsc/spec",
-    "types": ["jasmine"],
-    "lib": ["ES2022", "DOM"]
-  },
-  "include": ["src/**/*.spec.ts", "src/**/*.d.ts"]
-}
