@@ -35,6 +35,8 @@
     "storybook:build": "ng run design-system-angular:build-storybook",
     "test": "vitest run",
     "test:watch": "vitest",
+    "playwright:test": "playwright test",
+    "playwright:update-snapshots": "playwright test --update-snapshots",
     "typecheck": "tsc -p tsconfig.json --noEmit",
     "lint": "eslint .",
     "format": "prettier --write .",

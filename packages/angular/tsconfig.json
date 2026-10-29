@@ -14,5 +14,5 @@
     "strictInputAccessModifiers": true,
     "strictTemplates": true
   },
-  "include": ["src", ".storybook/**/*", "*.ts"]
+  "include": ["src", "e2e", ".storybook/**/*", "*.ts"]
 }
