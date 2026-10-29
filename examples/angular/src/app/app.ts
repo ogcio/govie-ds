@@ -1,78 +1,45 @@
-import { Component } from '@angular/core';
-import {
-  GiContainer,
-  GiFooter,
-  GiFooterLogo,
-  GiFooterSection,
-  GiH1Directive,
-  GiHeader,
-  GiHeaderLogo,
-  GiHeaderSection,
-  GiHeaderTitle,
-  GiParagraphDirective,
-  GiStack,
-  GiTextDirective,
-} from '@ogcio/design-system-angular';
-import { LogoGoldGreen, LogoHarpWhite, LogoWhite } from '@ogcio/design-system-angular/logos';
+import type { ElementRef } from '@angular/core';
+import { Component, inject, viewChild } from '@angular/core';
+import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
+import { NavigationEnd, Router, RouterLink, RouterOutlet } from '@angular/router';
+import { GiLinkDirective } from '@ogcio/design-system-angular';
+import { filter, skip } from 'rxjs';
+import { SiteFooter } from './shared/site-footer';
+import { SiteHeader } from './shared/site-header';
 
 @Component({
   selector: 'app-root',
-  imports: [
-    GiContainer,
-    GiStack,
-    GiHeader,
-    GiHeaderSection,
-    GiHeaderLogo,
-    GiHeaderTitle,
-    GiFooter,
-    GiFooterSection,
-    GiFooterLogo,
-    GiH1Directive,
-    GiParagraphDirective,
-    GiTextDirective,
-    LogoWhite,
-    LogoHarpWhite,
-    LogoGoldGreen,
-  ],
+  imports: [RouterOutlet, RouterLink, GiLinkDirective, SiteHeader, SiteFooter],
   template: `
+    <a
+      giLink
+      [routerLink]="[]"
+      fragment="main-content"
+      class="sr-only focus:not-sr-only focus:absolute focus:left-4 focus:top-4 focus:z-100 focus:p-2 focus:bg-color-surface-system-neutral-default"
+    >
+      Skip to main content
+    </a>
     <div class="flex min-h-screen flex-col">
-      <gi-header ariaLabel="Site header">
-        <gi-header-section>
-          <gi-header-logo>
-            <gi-logo-white [size]="132" className="hidden md:block" />
-            <gi-logo-harp-white [size]="32" className="block md:hidden" />
-          </gi-header-logo>
-          <gi-header-title>Department of Engagement</gi-header-title>
-        </gi-header-section>
-      </gi-header>
-
-      <main class="flex-1 py-12">
-        <gi-container>
-          <gi-stack direction="column" [gap]="4">
-            <h1 giHeading size="xl">Department of Engagement</h1>
-            <p giParagraph size="lg">This website is built with the Government of Ireland Design System for Angular.</p>
-          </gi-stack>
-        </gi-container>
+      <app-site-header />
+      <main #main id="main-content" tabindex="-1" class="flex-1 focus:outline-none">
+        <router-outlet />
       </main>
-
-      <gi-footer ariaLabel="Site footer">
-        <gi-footer-section variant="primary">
-          <gi-stack [direction]="{ base: 'column', md: 'row' }" [gap]="6" justify="between">
-            <p giParagraph size="sm">The Department of Engagement is a fictional department.</p>
-            <gi-footer-logo>
-              <gi-logo-gold-green size="181" label="Government of Ireland" />
-            </gi-footer-logo>
-          </gi-stack>
-        </gi-footer-section>
-        <gi-footer-section variant="utility">
-          <gi-stack direction="row" justify="center">
-            <span giText size="sm" class="text-center">© {{ year }} Department of Engagement</span>
-          </gi-stack>
-        </gi-footer-section>
-      </gi-footer>
+      <app-site-footer />
     </div>
   `,
 })
 export class App {
-  protected readonly year = new Date().getFullYear();
+  private readonly main = viewChild.required<ElementRef<HTMLElement>>('main');
+
+  constructor() {
+    const router = inject(Router);
+    router.events
+      .pipe(
+        filter((event) => event instanceof NavigationEnd),
+        skip(1),
+        filter((event) => !router.parseUrl(event.urlAfterRedirects).fragment),
+        takeUntilDestroyed(),
+      )
+      .subscribe(() => this.main().nativeElement.focus({ preventScroll: true }));
+  }
 }
