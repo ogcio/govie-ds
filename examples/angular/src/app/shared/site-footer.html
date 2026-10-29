@@ -1,0 +1,100 @@
+<gi-footer ariaLabel="Site footer">
+  <gi-footer-section variant="primary">
+    <gi-stack direction="column" [gap]="8" align="stretch">
+      <gi-grid container [columns]="{ base: 4, md: 8, lg: 12 }" [gap]="6">
+        <gi-grid [size]="{ base: 4, md: 4, lg: 3 }">
+          <gi-stack direction="column" [gap]="4" align="stretch">
+            <h2 giHeading size="xs">
+              <a giLink variant="inline" appearance="inherit" routerLink="/services">Services</a>
+            </h2>
+            <hr giDivider />
+            <ul class="space-y-2">
+              <li><a giLink variant="inline" appearance="inherit" routerLink="/services/onboarding">Onboarding</a></li>
+              <li>
+                <a giLink variant="inline" appearance="inherit" routerLink="/services/design-review">Design reviews</a>
+              </li>
+              <li>
+                <a giLink variant="inline" appearance="inherit" routerLink="/services/accessibility-audit"
+                  >Accessibility audits</a
+                >
+              </li>
+              <li><a giLink variant="inline" appearance="inherit" routerLink="/services/training">Training</a></li>
+            </ul>
+          </gi-stack>
+        </gi-grid>
+        <gi-grid [size]="{ base: 4, md: 4, lg: 3 }">
+          <gi-stack direction="column" [gap]="4" align="stretch">
+            <h2 giHeading size="xs">
+              <a giLink variant="inline" appearance="inherit" routerLink="/design-system">Design System</a>
+            </h2>
+            <hr giDivider />
+            <ul class="space-y-2">
+              <li>
+                <a giLink variant="inline" appearance="inherit" routerLink="/design-system/principles">Principles</a>
+              </li>
+              <li><a giLink variant="inline" appearance="inherit" routerLink="/design-system/benefits">Benefits</a></li>
+              <li>
+                <a giLink variant="inline" appearance="inherit" routerLink="/design-system/frameworks"
+                  >Tools and frameworks</a
+                >
+              </li>
+              <li><a giLink variant="inline" appearance="inherit" routerLink="/design-system/adoption">Adoption</a></li>
+            </ul>
+          </gi-stack>
+        </gi-grid>
+        <gi-grid [size]="{ base: 4, md: 4, lg: 3 }">
+          <gi-stack direction="column" [gap]="4" align="stretch">
+            <h2 giHeading size="xs">
+              <a giLink variant="inline" appearance="inherit" routerLink="/about">About us</a>
+            </h2>
+            <hr giDivider />
+            <ul class="space-y-2">
+              <li><a giLink variant="inline" appearance="inherit" routerLink="/about/strategy">Strategy</a></li>
+              <li><a giLink variant="inline" appearance="inherit" routerLink="/about/structure">Structure</a></li>
+            </ul>
+          </gi-stack>
+        </gi-grid>
+        <gi-grid [size]="{ base: 4, md: 4, lg: 3 }">
+          <gi-stack direction="column" [gap]="4" align="stretch">
+            <h2 giHeading size="xs">
+              <a giLink variant="inline" appearance="inherit" routerLink="/help">Help</a>
+            </h2>
+            <hr giDivider />
+            <ul class="space-y-2">
+              <li>
+                <a giLink variant="inline" appearance="inherit" routerLink="/help/accessibility"
+                  >Accessibility statement</a
+                >
+              </li>
+              <li><a giLink variant="inline" appearance="inherit" routerLink="/help/privacy">Privacy notice</a></li>
+              <li><a giLink variant="inline" appearance="inherit" routerLink="/help/cookies">Cookies</a></li>
+            </ul>
+          </gi-stack>
+        </gi-grid>
+      </gi-grid>
+
+      <hr giDivider />
+
+      <gi-stack [direction]="{ base: 'column', md: 'row' }" [gap]="6" justify="between">
+        <gi-stack direction="column" [gap]="4">
+          <a giLink variant="inline" appearance="inherit" routerLink="/contact" class="self-start">Contact</a>
+          <p giParagraph size="sm">
+            The Department of Engagement is a fictional department. This website demonstrates the Government of Ireland
+            Design System for Angular.
+          </p>
+        </gi-stack>
+        <gi-footer-logo>
+          <gi-logo-gold-green [size]="181" label="Government of Ireland" />
+        </gi-footer-logo>
+      </gi-stack>
+    </gi-stack>
+  </gi-footer-section>
+
+  <gi-footer-section variant="utility">
+    <gi-stack direction="row" justify="center">
+      <span giText size="sm" class="text-center">
+        © {{ year }} Department of Engagement. Built with the Government of Ireland Design System.
+      </span>
+    </gi-stack>
+  </gi-footer-section>
+</gi-footer>
