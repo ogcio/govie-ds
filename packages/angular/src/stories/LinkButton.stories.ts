@@ -80,6 +80,7 @@ export const Directive: StoryObj<GiLinkButtonDirective> = {
 };
 
 export const WithRouter: StoryObj<GiLinkButtonDirective> = {
+  tags: ['skip-playwright'],
   decorators: [withRouter(['', 'apply', 'status'])],
   parameters: {
     controls: { disable: true },

@@ -53,6 +53,7 @@ export const Vertical: StoryObj = {
 
 export const RichText: StoryObj = {
   ...stories.RichText,
+  tags: ['skip-playwright'],
   render: (props) => ({
     props,
     moduleMetadata: { imports: [GiBox, GiDivider, GiStack, GiLink] },

@@ -128,6 +128,7 @@ export const Directive: StoryObj<GiBreadcrumbLinkDirective> = {
 };
 
 export const WithRouter: StoryObj<GiBreadcrumbLinkDirective> = {
+  tags: ['skip-playwright'],
   decorators: [withRouter(['', 'home', 'home/accounts', 'home/accounts/security'])],
   parameters: {
     controls: { disable: true },

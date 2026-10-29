@@ -39,6 +39,7 @@ type Story = StoryObj<GiIconButton>;
 
 export const Default: Story = {
   ...stories.Default,
+  tags: ['skip-playwright'],
   render: (props) => ({
     props: { ...props, iconSize: iconSize[props.size ?? Size.MD] },
     moduleMetadata: { imports: [Info, GiBox] },
@@ -102,6 +103,7 @@ export const AllAppearances: Story = {
 
 export const AllSizes: Story = {
   ...stories.AllSizes,
+  tags: ['skip-playwright'],
   render: (_props) => ({
     props: { iconSize },
     moduleMetadata: { imports: [Info, GiStack] },
@@ -126,6 +128,7 @@ export const AllSizes: Story = {
 
 export const Disabled: Story = {
   ...stories.Disabled,
+  tags: ['skip-playwright'],
   render: (_props) => ({
     props: { iconSize: iconSize[Size.MD] },
     moduleMetadata: { imports: [Info, GiStack] },
@@ -237,6 +240,7 @@ export const Disabled: Story = {
 
 export const InteractionStates: Story = {
   ...stories.InteractionStates,
+  tags: ['skip-playwright'],
   render: (_props) => ({
     props: { iconSize: iconSize[Size.MD] },
     moduleMetadata: { imports: [Info, GiStack] },

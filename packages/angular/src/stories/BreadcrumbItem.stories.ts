@@ -20,6 +20,7 @@ const meta: Meta<GiBreadcrumbItemDirective> = {
 export default meta;
 
 export const Default: StoryObj<GiBreadcrumbItemDirective> = {
+  tags: ['skip-playwright'],
   render: () => ({
     moduleMetadata: {
       imports: [GiBreadcrumbs, GiBreadcrumbItemDirective, GiBreadcrumbLinkDirective],

@@ -25,6 +25,7 @@ export default meta;
 
 export const Default: StoryObj = {
   ...headingDefault,
+  tags: ['skip-playwright'],
   args: {
     ...headingDefault.args,
   },

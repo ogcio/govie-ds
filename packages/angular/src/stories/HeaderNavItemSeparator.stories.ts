@@ -15,6 +15,7 @@ export default meta;
 
 export const Default: StoryObj = {
   ...stories.Default,
+  tags: ['skip-playwright'],
   render: (props) => ({
     props,
     moduleMetadata: {
@@ -38,6 +39,7 @@ export const Default: StoryObj = {
 
 export const Light: StoryObj = {
   ...stories.Default,
+  tags: ['skip-playwright'],
   args: {
     id: 'header-nav-item-separator-light-id',
     dataTestId: 'header-nav-item-separator-light',

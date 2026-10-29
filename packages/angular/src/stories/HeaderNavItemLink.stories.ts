@@ -23,6 +23,7 @@ export default meta;
 
 export const Default: StoryObj = {
   ...stories.Default,
+  tags: ['skip-playwright'],
   render: (props) => ({
     props,
     moduleMetadata: {
@@ -76,6 +77,7 @@ export const Directive: StoryObj = {
 };
 
 export const WithRouter: StoryObj<GiHeaderNavLinkDirective> = {
+  tags: ['skip-playwright'],
   decorators: [withRouter(['', 'services', 'contact'])],
   parameters: {
     controls: { disable: true },

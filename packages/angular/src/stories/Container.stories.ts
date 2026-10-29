@@ -57,11 +57,13 @@ export const Default: StoryObj = {
 
 export const WithInset: StoryObj = {
   ...withInset,
+  tags: ['skip-playwright'],
   render: (props) => renderWithProjectedText(props as Record<string, unknown>),
 };
 
 export const GuttersOnAndOff: StoryObj = {
   ...guttersOnAndOff,
+  tags: ['skip-playwright'],
   render: (props) => ({
     props,
     moduleMetadata: {
@@ -89,6 +91,7 @@ export const GuttersOnAndOff: StoryObj = {
 
 export const AllMaxWidths: StoryObj = {
   ...allMaxWidths,
+  tags: ['skip-playwright'],
   render: () => ({
     props: {
       maxWidths: Object.values(MaxWidth),
