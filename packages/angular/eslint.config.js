@@ -5,7 +5,7 @@ import baseConfig from '../../eslint.config.mjs';
 
 export default defineConfig([
   {
-    ignores: ['**/storybook-static/**', '**/.angular/**'],
+    ignores: ['**/storybook-static/**', '**/.angular/**', '**/playwright-report/**', '**/test-results/**'],
   },
   ...baseConfig,
   {
