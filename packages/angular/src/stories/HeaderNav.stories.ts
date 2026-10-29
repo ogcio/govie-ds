@@ -1,7 +1,6 @@
 import type { StoryObj } from '@storybook/angular-vite';
 import * as stories from '@/atoms/storybook/HeaderNav.meta';
 import { GiHeaderNav } from '@/header/HeaderNav';
-import { GiHeaderNavItem } from '@/header/HeaderNavItem';
 import { GiHeaderNavItemLink } from '@/header/HeaderNavItemLink';
 import { GiHeaderSection } from '@/header/HeaderSection';
 
@@ -18,7 +17,7 @@ export const Default: StoryObj = {
   render: (props) => ({
     props,
     moduleMetadata: {
-      imports: [GiHeaderNav, GiHeaderNavItem, GiHeaderNavItemLink, GiHeaderSection],
+      imports: [GiHeaderNav, GiHeaderNavItemLink, GiHeaderSection],
     },
     template: `
       <gi-header-section>
@@ -27,12 +26,8 @@ export const Default: StoryObj = {
           [id]="id"
           [dataTestId]="dataTestId"
         >
-          <gi-header-nav-item>
-            <gi-header-nav-item-link href="#">Departments</gi-header-nav-item-link>
-          </gi-header-nav-item>
-          <gi-header-nav-item>
-            <gi-header-nav-item-link href="#">Services</gi-header-nav-item-link>
-          </gi-header-nav-item>
+          <gi-header-nav-item-link href="#">Departments</gi-header-nav-item-link>
+          <gi-header-nav-item-link href="#">Services</gi-header-nav-item-link>
         </gi-header-nav>
       </gi-header-section>
     `,

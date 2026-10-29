@@ -7,7 +7,6 @@ import { GiHeaderSection } from '@/header/HeaderSection';
 import { GiHeaderLogo } from '@/header/HeaderLogo';
 import { GiHeaderTitle } from '@/header/HeaderTitle';
 import { GiHeaderNav } from '@/header/HeaderNav';
-import { GiHeaderNavItem } from '@/header/HeaderNavItem';
 import { GiHeaderNavItemButton } from '@/header/HeaderNavItemButton';
 import { GiHeaderNavItemLink } from '@/header/HeaderNavItemLink';
 import { GiHeaderNavItemSeparator } from '@/header/HeaderNavItemSeparator';
@@ -35,7 +34,6 @@ const headerImports = [
   GiHeaderLogo,
   GiHeaderTitle,
   GiHeaderNav,
-  GiHeaderNavItem,
   GiHeaderNavItemButton,
   GiHeaderNavItemLink,
   GiHeaderNavItemSeparator,
@@ -77,12 +75,8 @@ export const Default: StoryObj = {
       >
         <gi-header-section variant="utility">
           <gi-header-nav ariaLabel="Utility navigation" class="gi-text-sm">
-            <gi-header-nav-item>
-              <gi-header-nav-item-link href="#" ariaLabel="Switch to Gaeilge">Gaeilge</gi-header-nav-item-link>
-            </gi-header-nav-item>
-            <gi-header-nav-item>
-              <gi-header-nav-item-link href="#" ariaLabel="Switch to English">English</gi-header-nav-item-link>
-            </gi-header-nav-item>
+            <gi-header-nav-item-link href="#" ariaLabel="Switch to Gaeilge">Gaeilge</gi-header-nav-item-link>
+            <gi-header-nav-item-link href="#" ariaLabel="Switch to English">English</gi-header-nav-item-link>
           </gi-header-nav>
           <gi-stack direction="row" class="gi-text-center gi-items-center gi-py-1">
             <gi-text size="sm" class="gi-px-1">Hello Saoirse</gi-text>
@@ -106,33 +100,21 @@ export const Default: StoryObj = {
           </gi-header-logo>
           <gi-header-title>Title</gi-header-title>
           <gi-header-nav ariaLabel="Primary navigation">
-            <gi-header-nav-item visible="lg">
-              <gi-header-nav-item-link href="#">Departments</gi-header-nav-item-link>
-            </gi-header-nav-item>
-            <gi-header-nav-item visible="lg">
-              <gi-header-nav-item-link href="#">Services</gi-header-nav-item-link>
-            </gi-header-nav-item>
+            <gi-header-nav-item-link visible="lg" href="#">Departments</gi-header-nav-item-link>
+            <gi-header-nav-item-link visible="lg" href="#">Services</gi-header-nav-item-link>
             <gi-header-nav-item-separator visible="md" />
-            <gi-header-nav-item visible="md">
-              <gi-header-nav-item-button>
-                FAQ <gi-info-icon />
-              </gi-header-nav-item-button>
-            </gi-header-nav-item>
-            <gi-header-nav-item visible="md">
-              <gi-header-nav-item-button>
-                Search <gi-search-icon />
-              </gi-header-nav-item-button>
-            </gi-header-nav-item>
-            <gi-header-nav-item visible="md">
-              <gi-header-nav-item-button>
-                Language <gi-mic-icon />
-              </gi-header-nav-item-button>
-            </gi-header-nav-item>
-            <gi-header-nav-item [visible]="{ xs: true, md: false }">
-              <gi-header-nav-item-button>
-                Menu <gi-menu-icon />
-              </gi-header-nav-item-button>
-            </gi-header-nav-item>
+            <gi-header-nav-item-button visible="md">
+              FAQ <gi-info-icon />
+            </gi-header-nav-item-button>
+            <gi-header-nav-item-button visible="md">
+              Search <gi-search-icon />
+            </gi-header-nav-item-button>
+            <gi-header-nav-item-button visible="md">
+              Language <gi-mic-icon />
+            </gi-header-nav-item-button>
+            <gi-header-nav-item-button [visible]="{ xs: true, md: false }">
+              Menu <gi-menu-icon />
+            </gi-header-nav-item-button>
           </gi-header-nav>
         </gi-header-section>
       </gi-header>
@@ -163,12 +145,8 @@ export const Light: StoryObj = {
       >
         <gi-header-section variant="utility" appearance="light">
           <gi-header-nav ariaLabel="Utility navigation" class="gi-text-sm">
-            <gi-header-nav-item>
-              <gi-header-nav-item-link href="#" ariaLabel="Switch to Gaeilge">Gaeilge</gi-header-nav-item-link>
-            </gi-header-nav-item>
-            <gi-header-nav-item>
-              <gi-header-nav-item-link href="#" ariaLabel="Switch to English">English</gi-header-nav-item-link>
-            </gi-header-nav-item>
+            <gi-header-nav-item-link href="#" ariaLabel="Switch to Gaeilge">Gaeilge</gi-header-nav-item-link>
+            <gi-header-nav-item-link href="#" ariaLabel="Switch to English">English</gi-header-nav-item-link>
           </gi-header-nav>
           <gi-stack direction="row" class="gi-text-center gi-items-center gi-py-1">
             <gi-text size="sm" class="gi-px-1">Hello Saoirse</gi-text>
@@ -191,33 +169,21 @@ export const Light: StoryObj = {
           </gi-header-logo>
           <gi-header-title>Light Mode Title</gi-header-title>
           <gi-header-nav ariaLabel="Primary navigation">
-            <gi-header-nav-item visible="lg">
-              <gi-header-nav-item-link href="#">Departments</gi-header-nav-item-link>
-            </gi-header-nav-item>
-            <gi-header-nav-item visible="lg">
-              <gi-header-nav-item-link href="#">Services</gi-header-nav-item-link>
-            </gi-header-nav-item>
+            <gi-header-nav-item-link visible="lg" href="#">Departments</gi-header-nav-item-link>
+            <gi-header-nav-item-link visible="lg" href="#">Services</gi-header-nav-item-link>
             <gi-header-nav-item-separator visible="md" />
-            <gi-header-nav-item visible="md">
-              <gi-header-nav-item-button>
-                FAQ <gi-info-icon />
-              </gi-header-nav-item-button>
-            </gi-header-nav-item>
-            <gi-header-nav-item visible="md">
-              <gi-header-nav-item-button>
-                Search <gi-search-icon />
-              </gi-header-nav-item-button>
-            </gi-header-nav-item>
-            <gi-header-nav-item visible="md">
-              <gi-header-nav-item-button>
-                Language <gi-mic-icon />
-              </gi-header-nav-item-button>
-            </gi-header-nav-item>
-            <gi-header-nav-item [visible]="{ xs: true, md: false }">
-              <gi-header-nav-item-button>
-                Menu <gi-menu-icon />
-              </gi-header-nav-item-button>
-            </gi-header-nav-item>
+            <gi-header-nav-item-button visible="md">
+              FAQ <gi-info-icon />
+            </gi-header-nav-item-button>
+            <gi-header-nav-item-button visible="md">
+              Search <gi-search-icon />
+            </gi-header-nav-item-button>
+            <gi-header-nav-item-button visible="md">
+              Language <gi-mic-icon />
+            </gi-header-nav-item-button>
+            <gi-header-nav-item-button [visible]="{ xs: true, md: false }">
+              Menu <gi-menu-icon />
+            </gi-header-nav-item-button>
           </gi-header-nav>
         </gi-header-section>
       </gi-header>
@@ -321,12 +287,8 @@ export const Desktop: StoryObj = {
       >
         <gi-header-section variant="utility">
           <gi-header-nav ariaLabel="Utility navigation" class="gi-text-sm">
-            <gi-header-nav-item>
-              <gi-header-nav-item-link href="#" ariaLabel="Switch to Gaeilge">Gaeilge</gi-header-nav-item-link>
-            </gi-header-nav-item>
-            <gi-header-nav-item>
-              <gi-header-nav-item-link href="#" ariaLabel="Switch to English">English</gi-header-nav-item-link>
-            </gi-header-nav-item>
+            <gi-header-nav-item-link href="#" ariaLabel="Switch to Gaeilge">Gaeilge</gi-header-nav-item-link>
+            <gi-header-nav-item-link href="#" ariaLabel="Switch to English">English</gi-header-nav-item-link>
           </gi-header-nav>
           <gi-stack direction="row" class="gi-text-center gi-items-center gi-py-1">
             <gi-text size="sm" class="gi-px-1">Hello Saoirse</gi-text>
@@ -349,28 +311,18 @@ export const Desktop: StoryObj = {
           </gi-header-logo>
           <gi-header-title>Title</gi-header-title>
           <gi-header-nav ariaLabel="Primary navigation">
-            <gi-header-nav-item>
-              <gi-header-nav-item-link href="#">Departments</gi-header-nav-item-link>
-            </gi-header-nav-item>
-            <gi-header-nav-item>
-              <gi-header-nav-item-link href="#">Services</gi-header-nav-item-link>
-            </gi-header-nav-item>
+            <gi-header-nav-item-link href="#">Departments</gi-header-nav-item-link>
+            <gi-header-nav-item-link href="#">Services</gi-header-nav-item-link>
             <gi-header-nav-item-separator />
-            <gi-header-nav-item>
-              <gi-header-nav-item-button>
-                FAQ <gi-info-icon />
-              </gi-header-nav-item-button>
-            </gi-header-nav-item>
-            <gi-header-nav-item>
-              <gi-header-nav-item-button>
-                Search <gi-search-icon />
-              </gi-header-nav-item-button>
-            </gi-header-nav-item>
-            <gi-header-nav-item>
-              <gi-header-nav-item-button>
-                Language <gi-mic-icon />
-              </gi-header-nav-item-button>
-            </gi-header-nav-item>
+            <gi-header-nav-item-button>
+              FAQ <gi-info-icon />
+            </gi-header-nav-item-button>
+            <gi-header-nav-item-button>
+              Search <gi-search-icon />
+            </gi-header-nav-item-button>
+            <gi-header-nav-item-button>
+              Language <gi-mic-icon />
+            </gi-header-nav-item-button>
           </gi-header-nav>
         </gi-header-section>
       </gi-header>
@@ -432,12 +384,8 @@ export const MobileView: StoryObj = {
       >
         <gi-header-section variant="utility">
           <gi-header-nav ariaLabel="Utility navigation" class="gi-text-sm">
-            <gi-header-nav-item>
-              <gi-header-nav-item-link href="#" ariaLabel="Switch to Gaeilge">Gaeilge</gi-header-nav-item-link>
-            </gi-header-nav-item>
-            <gi-header-nav-item>
-              <gi-header-nav-item-link href="#" ariaLabel="Switch to English">English</gi-header-nav-item-link>
-            </gi-header-nav-item>
+            <gi-header-nav-item-link href="#" ariaLabel="Switch to Gaeilge">Gaeilge</gi-header-nav-item-link>
+            <gi-header-nav-item-link href="#" ariaLabel="Switch to English">English</gi-header-nav-item-link>
           </gi-header-nav>
           <gi-stack direction="row" class="gi-text-center gi-items-center gi-py-1">
             <gi-text size="sm" class="gi-px-1">Hello Saoirse</gi-text>
@@ -460,11 +408,9 @@ export const MobileView: StoryObj = {
           </gi-header-logo>
           <gi-header-title>Title</gi-header-title>
           <gi-header-nav ariaLabel="Primary navigation">
-            <gi-header-nav-item>
-              <gi-header-nav-item-button>
-                Menu <gi-menu-icon />
-              </gi-header-nav-item-button>
-            </gi-header-nav-item>
+            <gi-header-nav-item-button>
+              Menu <gi-menu-icon />
+            </gi-header-nav-item-button>
           </gi-header-nav>
         </gi-header-section>
       </gi-header>
