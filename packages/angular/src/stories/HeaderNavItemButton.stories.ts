@@ -1,14 +1,19 @@
 import type { StoryObj } from '@storybook/angular-vite';
 import { expect, fn, userEvent, within } from 'storybook/test';
+import * as itemStories from '@/atoms/storybook/HeaderNavItem.meta';
 import * as stories from '@/atoms/storybook/HeaderNavItemButton.meta';
 import { SearchIcon } from '@/icons';
 import { GiHeaderNav } from '@/header/HeaderNav';
-import { GiHeaderNavItem, GiHeaderNavItemDirective } from '@/header/HeaderNavItem';
-import { GiHeaderNavItemButton, GiHeaderNavItemButtonDirective } from '@/header/HeaderNavItemButton';
+import { GiHeaderNavItemDirective } from '@/header/HeaderNavItem';
+import { GiHeaderNavItemButton, GiHeaderNavButtonDirective } from '@/header/HeaderNavItemButton';
 import { GiHeaderSection } from '@/header/HeaderSection';
 
 const meta = {
   ...stories.meta,
+  argTypes: {
+    ...stories.meta.argTypes,
+    visible: itemStories.meta.argTypes.visible,
+  },
   title: 'Layout/Header/HeaderNavItemButton',
   component: GiHeaderNavItemButton,
 };
@@ -20,25 +25,24 @@ export const Default: StoryObj = {
   render: (props) => ({
     props,
     moduleMetadata: {
-      imports: [GiHeaderNav, GiHeaderNavItem, GiHeaderNavItemButton, GiHeaderSection, SearchIcon],
+      imports: [GiHeaderNav, GiHeaderNavItemButton, GiHeaderSection, SearchIcon],
     },
     template: `
       <gi-header-section>
         <gi-header-nav ariaLabel="Primary navigation">
-          <gi-header-nav-item>
-            <gi-header-nav-item-button
-              [id]="id"
-              [dataTestId]="dataTestId"
-              [class]="className"
-              [ariaLabel]="ariaLabel"
-              [ariaExpanded]="ariaExpanded"
-              [ariaControls]="ariaControls"
-              (click)="onClick?.($event)"
-            >
-              {{ children }}
-              <gi-search-icon />
-            </gi-header-nav-item-button>
-          </gi-header-nav-item>
+          <gi-header-nav-item-button
+            [visible]="visible"
+            [id]="id"
+            [dataTestId]="dataTestId"
+            [class]="className"
+            [ariaLabel]="ariaLabel"
+            [ariaExpanded]="ariaExpanded"
+            [ariaControls]="ariaControls"
+            (click)="onClick?.($event)"
+          >
+            {{ children }}
+            <gi-search-icon />
+          </gi-header-nav-item-button>
         </gi-header-nav>
       </gi-header-section>
     `,
@@ -46,26 +50,26 @@ export const Default: StoryObj = {
 };
 
 export const Directive: StoryObj = {
-  args: { onClick: fn() },
+  args: { onClick: fn(), visible: true },
   parameters: {
-    controls: { disable: true },
+    controls: { include: ['visible'] },
     docs: {
       description: {
         story:
-          'Adds the header nav item styling to a plain `button` inside an `li` marked with `giHeaderNavItem`, so the button keeps its native `(click)` and attributes.',
+          'Builds a nav entry from your own elements: `li[giHeaderNavItem]` renders the list item and takes the `visible` input, and `button[giHeaderNavButton]` styles the button inside it, which keeps its native `(click)` and attributes. `visible` accepts `true`/`false`, a breakpoint to show from (e.g. `"md"`), or a per-breakpoint map like `{ base: false, lg: true }`.',
       },
     },
   },
   render: (props) => ({
     props,
     moduleMetadata: {
-      imports: [GiHeaderSection, GiHeaderNav, GiHeaderNavItemDirective, GiHeaderNavItemButtonDirective, SearchIcon],
+      imports: [GiHeaderSection, GiHeaderNav, GiHeaderNavItemDirective, GiHeaderNavButtonDirective, SearchIcon],
     },
     template: `
       <gi-header-section>
         <gi-header-nav ariaLabel="Primary navigation">
-          <li giHeaderNavItem>
-            <button giHeaderNavItemButton type="button" aria-expanded="false" (click)="onClick($event)">
+          <li giHeaderNavItem [visible]="visible">
+            <button giHeaderNavButton type="button" aria-expanded="false" (click)="onClick($event)">
               Search <gi-search-icon />
             </button>
           </li>
