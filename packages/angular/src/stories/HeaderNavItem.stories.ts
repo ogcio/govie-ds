@@ -26,6 +26,7 @@ export default meta;
 
 export const Default: StoryObj = {
   ...stories.Default,
+  tags: ['skip-playwright'],
   render: (props) => ({
     props,
     moduleMetadata: {

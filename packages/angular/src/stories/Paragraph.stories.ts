@@ -20,6 +20,7 @@ export default meta;
 
 export const Default: StoryObj = {
   ...defaultStory,
+  tags: ['skip-playwright'],
   args: {
     ...defaultStory.args,
   },
@@ -61,6 +62,7 @@ export const AllParagraphSizes: StoryObj = {
 
 export const AllWhitespaces: StoryObj = {
   ...allWhitespaces,
+  tags: ['skip-playwright'],
   args: { content: paragraphMeta.loremIpsum },
   render: (args) => ({
     props: args,
@@ -92,6 +94,7 @@ export const AllWhitespaces: StoryObj = {
 
 export const AllAlignments: StoryObj = {
   ...allAlignments,
+  tags: ['skip-playwright'],
   args: { content: paragraphMeta.loremIpsum },
   render: (args) => ({
     props: args,

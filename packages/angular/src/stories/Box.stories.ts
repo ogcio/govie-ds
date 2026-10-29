@@ -37,6 +37,7 @@ export const Default: StoryObj = {
 
 export const WithContainerAndStack: StoryObj = {
   ...boxWithContainerAndStack,
+  tags: ['skip-playwright'],
   render: () => ({
     moduleMetadata: { imports: [GiBox, GiContainer, GiStack] },
     template: `

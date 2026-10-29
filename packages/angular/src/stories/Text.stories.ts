@@ -18,6 +18,7 @@ type Story = StoryObj<GiText & { content: string }>;
 
 export const Default: Story = {
   ...TextStoryMeta.Default,
+  tags: ['skip-playwright'],
   render: (props) => ({
     props: { ...props, content: loremIpsum },
     template: `

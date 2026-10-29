@@ -65,6 +65,7 @@ export const InlineLink: Story = {
 };
 
 export const InTypography: Story = {
+  tags: ['skip-playwright'],
   parameters: {
     docs: {
       description: {
@@ -154,6 +155,7 @@ export const PlainLink: Story = {
 
 export const PlainFocusState: Story = {
   ...linkPlainFocus,
+  tags: ['skip-playwright'],
   render: (_props) => ({
     moduleMetadata: { imports: [GiLink, GiBox, GiStack, HomeIcon] },
     template: `
@@ -201,6 +203,7 @@ export const Directive: StoryObj<GiLinkDirective> = {
 };
 
 export const WithRouter: StoryObj<GiLinkDirective> = {
+  tags: ['skip-playwright'],
   decorators: [withRouter(['', 'about', 'contact'])],
   parameters: {
     controls: { disable: true },

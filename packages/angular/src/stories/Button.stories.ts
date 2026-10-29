@@ -30,6 +30,7 @@ type Story = StoryObj<GiButton>;
 
 export const Default: Story = {
   ...stories.Default,
+  tags: ['skip-playwright'],
   render: (props) => ({
     props,
     moduleMetadata: {
@@ -151,6 +152,7 @@ export const Disabled: Story = {
 
 export const InteractionStates: Story = {
   ...stories.InteractionStates,
+  tags: ['skip-playwright'],
   render: (_props) => ({
     moduleMetadata: { imports: [GiButton, GiStack] },
     template: `

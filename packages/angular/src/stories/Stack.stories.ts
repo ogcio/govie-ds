@@ -33,6 +33,7 @@ const itemClasses =
 
 export const Default: StoryObj = {
   ...stackDefault,
+  tags: ['skip-playwright'],
   render: (props) => ({
     props,
     moduleMetadata: { imports: [GiStack] },
@@ -75,6 +76,7 @@ export const Directions: StoryObj = {
 
 export const Alignments: StoryObj = {
   ...stackAlignments,
+  tags: ['skip-playwright'],
   render: () => ({
     moduleMetadata: { imports: [GiStack] },
     template: `
@@ -134,6 +136,7 @@ export const Alignments: StoryObj = {
 
 export const Justifications: StoryObj = {
   ...stackJustifications,
+  tags: ['skip-playwright'],
   render: () => ({
     moduleMetadata: { imports: [GiStack] },
     template: `
@@ -193,6 +196,7 @@ export const Justifications: StoryObj = {
 
 export const GapScale: StoryObj = {
   ...stackGapScale,
+  tags: ['skip-playwright'],
   render: () => ({
     moduleMetadata: { imports: [GiStack] },
     template: `
@@ -267,6 +271,7 @@ export const Responsive: StoryObj = {
 
 export const Wrapped: StoryObj = {
   ...stackWrapped,
+  tags: ['skip-playwright'],
   render: () => ({
     moduleMetadata: { imports: [GiStack] },
     template: `

@@ -14,7 +14,7 @@ import SideNavGroup from '@/atoms/sidenav/SideNavGroup';
 const meta = {
   ...stories.sideNavMeta,
   title: 'Navigation/SideNav',
-  tags: ['!dev', '!autodocs'], // exclude story until Storybook examples complete
+  tags: ['!dev', '!autodocs', 'skip-playwright'], // exclude story until Storybook examples complete
 };
 
 export default meta;

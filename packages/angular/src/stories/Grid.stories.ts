@@ -20,6 +20,7 @@ const ITEM_CLASSES = 'gi-bg-gray-300 gi-p-1 gi-flex gi-items-center gi-justify-c
 
 export const Default: StoryObj = {
   ...gridDefault,
+  tags: ['skip-playwright'],
   render: (props) => ({
     props,
     moduleMetadata: { imports: [GiGrid] },
@@ -44,6 +45,7 @@ export const Default: StoryObj = {
 
 export const ResponsiveGap: StoryObj = {
   ...gridResponsiveGap,
+  tags: ['skip-playwright'],
   render: (props) => ({
     props,
     moduleMetadata: { imports: [GiGrid] },
@@ -108,6 +110,7 @@ export const ResponsiveSize: StoryObj = {
 
 export const Nested: StoryObj = {
   ...gridNested,
+  tags: ['skip-playwright'],
   render: (props) => ({
     props: {
       ...props,

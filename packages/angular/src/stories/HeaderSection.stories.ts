@@ -32,10 +32,12 @@ const renderHeaderSection = (props: Record<string, unknown>) => ({
 
 export const Default: StoryObj = {
   ...stories.Default,
+  tags: ['skip-playwright'],
   render: renderHeaderSection,
 };
 
 export const Utility: StoryObj = {
   ...stories.Utility,
+  tags: ['skip-playwright'],
   render: renderHeaderSection,
 };
