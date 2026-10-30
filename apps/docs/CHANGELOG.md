@@ -1,5 +1,20 @@
 # Changelog
 
+## [1.49.0](https://github.com/ogcio/govie-ds/compare/docs-v1.48.0...docs-v1.49.0) (2026-10-30)
+
+
+### Features
+
+* **AB#44012:** update Header Storybook ([e178f99](https://github.com/ogcio/govie-ds/commit/e178f9907905d292c390ce94a72bfcbf19ea8ef7))
+
+
+### Dependencies
+
+* The following workspace dependencies were updated
+  * dependencies
+    * @ogcio/design-system-html bumped to 1.21.7
+    * @ogcio/design-system-react bumped to 1.51.0
+
 ## [1.48.0](https://github.com/ogcio/govie-ds/compare/docs-v1.47.0...docs-v1.48.0) (2026-10-20)
 
 
