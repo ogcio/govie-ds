@@ -1,20 +1,24 @@
+import { RouterLink, RouterLinkActive } from '@angular/router';
 import type { StoryObj } from '@storybook/angular-vite';
 import { within, expect } from 'storybook/test';
 import * as stories from '@/atoms/storybook/Header.meta';
 import { InfoIcon, LogoutIcon, MenuIcon, MicIcon, SearchIcon } from '@/icons';
+import { GiBox } from '@/Box';
 import { GiHeader } from '@/header/Header';
 import { GiHeaderSection } from '@/header/HeaderSection';
 import { GiHeaderLogo } from '@/header/HeaderLogo';
 import { GiHeaderTitle } from '@/header/HeaderTitle';
 import { GiHeaderNav } from '@/header/HeaderNav';
-import { GiHeaderNavItemButton } from '@/header/HeaderNavItemButton';
-import { GiHeaderNavItemLink } from '@/header/HeaderNavItemLink';
+import { GiHeaderNavItemDirective } from '@/header/HeaderNavItem';
+import { GiHeaderNavItemButton, GiHeaderNavButtonDirective } from '@/header/HeaderNavItemButton';
+import { GiHeaderNavItemLink, GiHeaderNavLinkDirective } from '@/header/HeaderNavItemLink';
 import { GiHeaderNavItemSeparator } from '@/header/HeaderNavItemSeparator';
-import { GiLink } from '@/Link';
+import { GiLink, GiLinkDirective } from '@/Link';
 import { GiText } from '@/Text';
 import { GiStack } from '@/Stack';
 import { GiDivider } from '@/Divider';
 import { LogoBlack, LogoHarpBlack, LogoHarpWhite, LogoWhite } from '@/logos';
+import { withRouter } from '@/stories/router';
 
 const meta = {
   ...stories.meta,
@@ -425,4 +429,87 @@ export const MobileView: StoryObj = {
       expect(canvas.getByRole('button', { name: /menu/i })).toBeInTheDocument();
     });
   },
+};
+
+export const WithRouter: StoryObj = {
+  ...stories.Default,
+  decorators: [withRouter(['', 'departments', 'services'])],
+  parameters: {
+    docs: {
+      description: {
+        story:
+          'Complete header with nav items built from native elements and wired to the Angular router. `routerLink` and `routerLinkActive` sit on the same `a giHeaderNavLink`, and the router marks the active link with `aria-current`.',
+      },
+    },
+  },
+  render: (props) => ({
+    props,
+    moduleMetadata: {
+      imports: [
+        GiHeader,
+        GiHeaderSection,
+        GiHeaderLogo,
+        GiHeaderTitle,
+        GiHeaderNav,
+        GiHeaderNavItemDirective,
+        GiHeaderNavLinkDirective,
+        GiHeaderNavButtonDirective,
+        GiHeaderNavItemSeparator,
+        GiBox,
+        GiLinkDirective,
+        LogoWhite,
+        InfoIcon,
+        SearchIcon,
+        MicIcon,
+        RouterLink,
+        RouterLinkActive,
+      ],
+    },
+    template: `
+      <gi-box class="gi-min-w-max">
+        <gi-header
+          [ariaLabel]="ariaLabel"
+          [id]="id"
+          [dataTestId]="dataTestId"
+        >
+          <gi-header-section variant="utility">
+            <gi-header-nav ariaLabel="Utility navigation" class="gi-text-sm">
+              <li giHeaderNavItem>
+                <a giHeaderNavLink routerLink="." [queryParams]="{ lang: 'ga' }" aria-label="Switch to Gaeilge">Gaeilge</a>
+              </li>
+              <li giHeaderNavItem>
+                <a giHeaderNavLink routerLink="." [queryParams]="{ lang: 'en' }" aria-label="Switch to English">English</a>
+              </li>
+            </gi-header-nav>
+          </gi-header-section>
+          <gi-header-section>
+            <gi-header-logo>
+              <a giLink appearance="light" routerLink="/" aria-label="Gov.ie home">
+                <gi-logo-white [size]="132" />
+              </a>
+            </gi-header-logo>
+            <gi-header-title>Title</gi-header-title>
+            <gi-header-nav ariaLabel="Primary navigation">
+              <li giHeaderNavItem>
+                <a giHeaderNavLink routerLink="/departments" routerLinkActive ariaCurrentWhenActive="page">Departments</a>
+              </li>
+              <li giHeaderNavItem>
+                <a giHeaderNavLink routerLink="/services" routerLinkActive ariaCurrentWhenActive="page">Services</a>
+              </li>
+              <gi-header-nav-item-separator />
+              <li giHeaderNavItem>
+                <button giHeaderNavButton type="button">FAQ <gi-info-icon /></button>
+              </li>
+              <li giHeaderNavItem>
+                <button giHeaderNavButton type="button">Search <gi-search-icon /></button>
+              </li>
+              <li giHeaderNavItem>
+                <button giHeaderNavButton type="button">Language <gi-mic-icon /></button>
+              </li>
+            </gi-header-nav>
+          </gi-header-section>
+        </gi-header>
+      </gi-box>
+    `,
+  }),
 };

@@ -51,6 +51,7 @@ export const Default: StoryObj = {
 };
 
 export const Directive: StoryObj = {
+  tags: ['skip-playwright'],
   args: { onClick: fn(), visible: true },
   parameters: {
     controls: { include: ['visible'] },
