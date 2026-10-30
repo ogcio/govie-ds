@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.21.7](https://github.com/ogcio/govie-ds/compare/html-lib-v1.21.6...html-lib-v1.21.7) (2026-10-30)
+
+
+### Miscellaneous Chores
+
+* **storybook:** drop redundant autodocs tags ([d2dc2f4](https://github.com/ogcio/govie-ds/commit/d2dc2f478cbf8b87935a98a91a5f3a7b8bcf4de4))
+
 ## [1.21.6](https://github.com/ogcio/govie-ds/compare/html-lib-v1.21.5...html-lib-v1.21.6) (2026-09-08)
 
 
