@@ -9,31 +9,31 @@ export const PAGINATION_LINK_LABEL = '5';
 export const meta = {
   title: 'Navigation/Pagination/PaginationLink',
   args: {
+    current: false,
     href: '#',
     id: 'pagination-link-id',
   },
   argTypes: {
     current: {
       control: 'boolean',
-      description: 'Marks this page as the current page. Applies the primary style and sets `aria-current="page"`.',
-      table: { type: { summary: 'boolean' } },
+      description: 'Marks the link as the current page. Applies the dark primary style and sets `aria-current="page"`.',
+      table: { type: { summary: 'boolean' }, defaultValue: { summary: 'false' } },
     },
-    styles: linkMeta.argTypes.styles,
     href: linkMeta.argTypes.href,
     id: linkMeta.argTypes.id,
-    className: linkMeta.argTypes.className,
     ariaLabel: {
       control: 'text',
       description:
         'Accessible name when the visible label is not enough, for example "Go to page 5". Maps to `aria-label`.',
       table: { type: { summary: 'string' } },
     },
+    dataTestId: linkMeta.argTypes.dataTestId,
   },
   parameters: {
     docs: {
       description: {
         component:
-          'Page link for Pagination. Renders a large transparent link inside a list item. The link becomes dark when it is the current item. Use for pages that change in place, and for previous and next. Set `current` to mark the current page.',
+          'A page link for Pagination. Use it when each page has its own URL, and for the Previous and Next links that go with it. It renders a transparent link that turns dark when it is the current page. Set `current` on the page the user is on. Links have no disabled state, so use page buttons if Previous and Next need to be disabled.',
       },
     },
   },
@@ -48,7 +48,7 @@ export const Default = {
       expect(link.tagName).toBe('A');
       expect(link).toHaveAttribute('href', args.href);
       expect(link).toHaveAttribute('id', args.id);
-      expect(link.parentElement?.tagName).toBe('LI');
+      expect(link.closest('li')).toBeInTheDocument();
       expect(link).not.toHaveAttribute('aria-current');
     });
   },
@@ -64,7 +64,7 @@ export const Current = {
     docs: {
       description: {
         story:
-          'Use the `current` prop to denote the currently open tab/page. This applies the primary style and `aria-current` onto the item.',
+          'Set `current` on the link for the page the user is on. It gets the dark primary style and `aria-current="page"`.',
       },
     },
   },

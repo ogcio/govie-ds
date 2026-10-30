@@ -20,14 +20,10 @@ const meta = {
       table: { type: { summary: 'string' } },
     },
     style: {
-      control: { disable: true },
+      control: false,
       description:
-        'Inline styles applied directly to the parent element of the icon. Use for truly dynamic values that cannot be expressed as Tailwind classes.',
-      table: {
-        type: {
-          summary: 'React.CSSProperties',
-        },
-      },
+        'Inline styles applied to the list item that wraps the icon. Use for truly dynamic values that cannot be expressed as Tailwind classes.',
+      table: { type: { summary: 'React.CSSProperties' } },
     },
   },
   parameters: {

@@ -9,9 +9,7 @@ import { useState } from 'react';
 import ArrowBackward from '@/atoms/icons/ArrowBackward';
 import ArrowForward from '@/atoms/icons/ArrowForward';
 import { extractRenderBody } from '@/test-utilities';
-import { PAGINATION_TESTID } from '@/atoms/storybook/Pagination.meta';
 import { importNext } from './helpers';
-import omit from 'lodash/omit';
 import Stack from '@/atoms/Stack';
 
 const meta = {
@@ -20,8 +18,22 @@ const meta = {
   title: 'Navigation/Pagination/Pagination (Next)',
   component: Pagination,
   argTypes: {
-    ...omit(stories.meta.argTypes, 'styles'),
-    style: stories.meta.argTypes.styles,
+    children: {
+      control: false,
+      description: 'The `PaginationLink`, `PaginationButton` and `PaginationEllipsis` items.',
+      table: { type: { summary: 'ReactNode' } },
+    },
+    ...stories.meta.argTypes,
+    className: {
+      control: false,
+      description: 'Additional CSS classes applied to the nav element.',
+      table: { type: { summary: 'string' } },
+    },
+    style: {
+      control: false,
+      description: 'Inline styles applied to the nav element. Prefer className with gi-* Tailwind utilities.',
+      table: { type: { summary: 'React.CSSProperties' } },
+    },
   },
   parameters: {
     ...stories.meta.parameters,
@@ -29,7 +41,7 @@ const meta = {
       ...stories.meta.parameters.docs,
       description: {
         ...stories.meta.parameters.docs.description,
-        component: `The recommended, flexible way to build pagination. You put the control together from its parts, so you choose the labels, icons, which pages appear, and whether each page is a link or a button. It replaces the earlier all-in-one \`Pagination\`.\n\n${stories.meta.parameters.docs.description.component}\n\n${importNext('Pagination')}`,
+        component: `The recommended, flexible way to build pagination. You put the control together from its parts, so you choose the labels, icons, which pages appear, and whether each page is a link or a button. It replaces the earlier all-in-one \`Pagination\`.\n\n${stories.meta.parameters.docs.description.component}\n\nThe parts are \`PaginationLink\`, \`PaginationButton\` and \`PaginationEllipsis\`. Place them directly inside \`Pagination\`.\n\n${importNext('Pagination')}`,
       },
     },
   },
@@ -53,7 +65,7 @@ export const Default: Story = {
     const [currentPage, setCurrentPage] = useState(5);
     const pages = getPaginationList({ current: currentPage, total: 10, size: 7 });
     return (
-      <Pagination {...props} dataTestId={PAGINATION_TESTID}>
+      <Pagination {...props}>
         <PaginationButton
           className="gi-flex gi-gap-2"
           onClick={() => {
