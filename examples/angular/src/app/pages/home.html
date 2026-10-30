@@ -1,0 +1,223 @@
+<gi-container class="py-12 md:py-16">
+  <gi-stack direction="column" [gap]="12" align="stretch">
+    <gi-grid container [columns]="{ base: 4, md: 8, lg: 12 }" [gap]="8">
+      <gi-grid [size]="{ base: 4, md: 8, lg: 7 }">
+        <gi-stack direction="column" [gap]="6">
+          <gi-stack direction="column" [gap]="2">
+            <span giText lang="ga" class="text-color-text-system-neutral-muted">An Roinn Rannpháirtíochta</span>
+            <h1 giHeading size="xl">Department of Engagement</h1>
+          </gi-stack>
+          <p giParagraph size="lg">
+            We help public bodies build digital services that people recognise, trust and can use without help, by
+            bringing every department onto the Government of Ireland Design System.
+          </p>
+          <gi-stack direction="row" [gap]="4" wrap>
+            <a giButton size="lg" routerLink="/services">Explore our services</a>
+            <a giButton size="lg" variant="secondary" routerLink="/design-system">About the Design System</a>
+          </gi-stack>
+        </gi-stack>
+      </gi-grid>
+
+      <gi-grid [size]="{ base: 4, md: 8, lg: 5 }">
+        <gi-box class="p-6 rounded bg-color-surface-system-neutral-layer1">
+          <gi-stack direction="column" [gap]="6">
+            <h2 giHeading size="sm">The Design System at a glance</h2>
+            <dl class="grid grid-cols-2 gap-6">
+              @for (fact of facts; track fact.label) {
+                <div class="flex flex-col-reverse">
+                  <dt>
+                    <span giText size="sm">{{ fact.label }}</span>
+                  </dt>
+                  <dd class="text-4xl font-bold leading-tight text-color-text-tone-primary-flat-default">
+                    {{ fact.value }}
+                  </dd>
+                </div>
+              }
+            </dl>
+          </gi-stack>
+        </gi-box>
+      </gi-grid>
+    </gi-grid>
+
+    <blockquote giInsetText>
+      <p giParagraph>
+        This is a demonstration website. The Department of Engagement is fictional: the site shows how a department
+        website looks and works when it is built with the Government of Ireland Design System for Angular.
+      </p>
+    </blockquote>
+
+    <gi-box class="p-6 md:p-10 rounded bg-color-surface-system-neutral-layer1">
+      <gi-stack direction="column" [gap]="10" align="stretch">
+        <gi-stack direction="column" [gap]="4">
+          <h2 giHeading size="lg">What the Design System gives your department</h2>
+          <p giParagraph size="lg">
+            Every government website should look and work the same way, so that people can trust what they see and focus
+            on the task they came to do.
+          </p>
+        </gi-stack>
+
+        <gi-grid container [columns]="{ base: 4, md: 8, lg: 12 }" [gap]="6">
+          @for (benefit of benefits; track benefit.id) {
+            <gi-grid [size]="{ base: 4, md: 4, lg: 4 }">
+              <article
+                giStack
+                direction="column"
+                [gap]="3"
+                align="stretch"
+                class="h-full p-6 border-xs border-color-border-system-neutral-subtle rounded"
+              >
+                <span class="text-color-icon-tone-primary-flat-default" aria-hidden="true">
+                  @switch (benefit.icon) {
+                    @case ('efficiency') {
+                      <gi-space-dashboard-icon [size]="32" />
+                    }
+                    @case ('consistency') {
+                      <gi-apps-icon [size]="32" />
+                    }
+                    @case ('accessibility') {
+                      <gi-accessibility-icon [size]="32" />
+                    }
+                    @case ('performance') {
+                      <gi-candlestick-chart-icon [size]="32" />
+                    }
+                    @case ('responsive') {
+                      <gi-swap-vertical-icon [size]="32" />
+                    }
+                    @case ('compliance') {
+                      <gi-check-circle-icon [size]="32" />
+                    }
+                  }
+                </span>
+                <h3 giHeading size="sm">{{ benefit.title }}</h3>
+                <p giParagraph class="flex-1">{{ benefit.text }}</p>
+              </article>
+            </gi-grid>
+          }
+        </gi-grid>
+
+        <a giLink routerLink="/design-system/benefits" class="self-start inline-flex items-center gap-1 font-bold">
+          Benefits
+          <gi-arrow-right-icon [size]="20" />
+        </a>
+      </gi-stack>
+    </gi-box>
+
+    <gi-grid container [columns]="{ base: 4, md: 8, lg: 12 }" [gap]="10">
+      <gi-grid [size]="{ base: 4, md: 8, lg: 7 }">
+        <gi-stack direction="column" [gap]="6" align="stretch">
+          <h2 giHeading size="lg">Services for public bodies</h2>
+          <ul>
+            <li
+              giStack
+              direction="column"
+              [gap]="1"
+              class="py-4 border-b-xs border-color-border-system-neutral-muted first:pt-0"
+            >
+              <h3 giHeading size="xs"><a giLink routerLink="/services/onboarding">Onboarding</a></h3>
+              <p giParagraph>
+                Onboarding gives your team everything it needs to start building with the Design System, with our team
+                alongside you for the first release.
+              </p>
+            </li>
+            <li
+              giStack
+              direction="column"
+              [gap]="1"
+              class="py-4 border-b-xs border-color-border-system-neutral-muted first:pt-0"
+            >
+              <h3 giHeading size="xs"><a giLink routerLink="/services/design-review">Design reviews</a></h3>
+              <p giParagraph>
+                A design review checks that your service meets government design standards before it reaches the public.
+              </p>
+            </li>
+            <li
+              giStack
+              direction="column"
+              [gap]="1"
+              class="py-4 border-b-xs border-color-border-system-neutral-muted first:pt-0"
+            >
+              <h3 giHeading size="xs"><a giLink routerLink="/services/accessibility-audit">Accessibility audits</a></h3>
+              <p giParagraph>
+                Our accessibility specialists test your service with assistive technology and against WCAG 2.1 AA.
+              </p>
+            </li>
+            <li
+              giStack
+              direction="column"
+              [gap]="1"
+              class="py-4 border-b-xs border-color-border-system-neutral-muted first:pt-0"
+            >
+              <h3 giHeading size="xs"><a giLink routerLink="/services/training">Training</a></h3>
+              <p giParagraph>Practical training helps your team make the most of the Design System from day one.</p>
+            </li>
+            <li
+              giStack
+              direction="column"
+              [gap]="1"
+              class="py-4 border-b-xs border-color-border-system-neutral-muted first:pt-0"
+            >
+              <h3 giHeading size="xs"><a giLink routerLink="/services/support">Support</a></h3>
+              <p giParagraph>Delivery teams can reach our team while they build, whatever stage the service is at.</p>
+            </li>
+          </ul>
+          <a giLink routerLink="/services" class="self-start inline-flex items-center gap-1 font-bold">
+            All services
+            <gi-arrow-right-icon [size]="20" />
+          </a>
+        </gi-stack>
+      </gi-grid>
+
+      <gi-grid [size]="{ base: 4, md: 8, lg: 5 }">
+        <gi-stack direction="column" [gap]="6" align="stretch">
+          <h2 giHeading size="lg">Latest news</h2>
+          <article giStack direction="column" [gap]="1">
+            <span giText size="sm" class="text-color-text-system-neutral-muted">
+              <time datetime="2026-10-14">14 October 2026</time>
+            </span>
+            <h3 giHeading size="xs">
+              <a giLink routerLink="/news/new-website-on-the-design-system"
+                >Department of Engagement launches its new website on the Design System</a
+              >
+            </h3>
+          </article>
+          <article giStack direction="column" [gap]="1">
+            <span giText size="sm" class="text-color-text-system-neutral-muted">
+              <time datetime="2026-09-30">30 September 2026</time>
+            </span>
+            <h3 giHeading size="xs">
+              <a giLink routerLink="/news/angular-library-joins-the-design-system"
+                >Angular component library joins HTML, React and Vue</a
+              >
+            </h3>
+          </article>
+          <article giStack direction="column" [gap]="1">
+            <span giText size="sm" class="text-color-text-system-neutral-muted">
+              <time datetime="2026-09-12">12 September 2026</time>
+            </span>
+            <h3 giHeading size="xs">
+              <a giLink routerLink="/news/accessibility-audits-for-every-department"
+                >Accessibility audits now available to every department</a
+              >
+            </h3>
+          </article>
+          <a giLink routerLink="/news" class="self-start inline-flex items-center gap-1 font-bold">
+            All news
+            <gi-arrow-right-icon [size]="20" />
+          </a>
+        </gi-stack>
+      </gi-grid>
+    </gi-grid>
+
+    <gi-box class="p-6 md:p-10 rounded bg-color-surface-system-primary-default text-color-text-tone-light-default">
+      <gi-stack [direction]="{ base: 'column', lg: 'row' }" [gap]="8" justify="between">
+        <gi-stack direction="column" [gap]="4" class="max-w-prose">
+          <h2 giHeading size="lg">Ready to move your service to the Design System?</h2>
+          <p giParagraph size="lg">
+            Onboarding gives your team a guided start, from the first workshop to the first release.
+          </p>
+        </gi-stack>
+        <a giButton size="lg" appearance="light" routerLink="/services/onboarding">Start onboarding</a>
+      </gi-stack>
+    </gi-box>
+  </gi-stack>
+</gi-container>

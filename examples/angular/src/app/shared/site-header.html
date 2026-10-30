@@ -1,0 +1,89 @@
+<gi-header ariaLabel="Site header">
+  <gi-header-section variant="utility">
+    <gi-header-nav ariaLabel="Language">
+      <li giHeaderNavItem>
+        <a giHeaderNavLink lang="ga" routerLink="/gaeilge" routerLinkActive ariaCurrentWhenActive="page"> Gaeilge </a>
+      </li>
+      <li giHeaderNavItem>
+        <a giHeaderNavLink lang="en" routerLink="/">English</a>
+      </li>
+    </gi-header-nav>
+  </gi-header-section>
+
+  <gi-header-section>
+    <gi-header-logo>
+      <a giLink appearance="light" routerLink="/" aria-label="Department of Engagement home">
+        <gi-logo-white [size]="132" className="hidden md:block" />
+        <gi-logo-harp-white [size]="32" className="block md:hidden" />
+      </a>
+    </gi-header-logo>
+    <gi-header-title>
+      <a giLink appearance="light" underline="none" routerLink="/">Department of Engagement</a>
+    </gi-header-title>
+    <gi-header-nav ariaLabel="Primary navigation">
+      @for (item of navigation; track item.url) {
+        <li giHeaderNavItem visible="lg">
+          <a giHeaderNavLink [routerLink]="item.url" routerLinkActive [ariaCurrentWhenActive]="true">
+            {{ item.label }}
+          </a>
+        </li>
+      }
+      <li giHeaderNavItem [visible]="{ base: true, lg: false }">
+        <button
+          giHeaderNavButton
+          type="button"
+          aria-controls="mobile-navigation"
+          [attr.aria-expanded]="menuOpen()"
+          (click)="toggleMenu()"
+        >
+          @if (menuOpen()) {
+            Close
+            <gi-close-icon />
+          } @else {
+            Menu
+            <gi-menu-icon />
+          }
+        </button>
+      </li>
+    </gi-header-nav>
+  </gi-header-section>
+
+  @if (menuOpen()) {
+    <div
+      id="mobile-navigation"
+      class="py-4 border-b-xs border-color-border-system-neutral-subtle bg-color-surface-system-neutral-default lg:hidden"
+    >
+      <gi-container>
+        <gi-side-nav ariaLabel="Mobile navigation">
+          @for (item of navigation; track item.url) {
+            <li giSideNavItem>
+              <a
+                giSideNavLink
+                [routerLink]="item.url"
+                routerLinkActive
+                [ariaCurrentWhenActive]="true"
+                #rla="routerLinkActive"
+                [selected]="rla.isActive"
+              >
+                {{ item.label }}
+              </a>
+            </li>
+          }
+          <li giSideNavItem>
+            <a
+              giSideNavLink
+              lang="ga"
+              routerLink="/gaeilge"
+              routerLinkActive
+              ariaCurrentWhenActive="page"
+              #gaeilge="routerLinkActive"
+              [selected]="gaeilge.isActive"
+            >
+              Gaeilge
+            </a>
+          </li>
+        </gi-side-nav>
+      </gi-container>
+    </div>
+  }
+</gi-header>

@@ -12,6 +12,7 @@ COPY package.json pnpm-workspace.yaml pnpm-lock.yaml ./
 COPY tsconfig.node.json tsconfig.bundler.json ./
 COPY apps/ ./apps
 COPY packages/ ./packages
+COPY examples/angular/ ./examples/angular
 COPY apps/docs/.env.${DEPLOY_ENV} ./apps/docs/.env.production
 
 ENV DEPLOY_ENV=${DEPLOY_ENV}
@@ -26,7 +27,9 @@ RUN corepack enable pnpm && \
       --filter "@ogcio/design-system-react^..." \
       --filter "@ogcio/design-system-angular^..." \
       --filter "@ogcio/design-system-vue^..." \
+      --filter "@ogcio/examples-angular^..." \
       run build && \
+    pnpm --filter @ogcio/examples-angular run build --base-href /examples/angular/ && \
     pnpm --filter @ogcio/design-system-html \
       --filter @ogcio/design-system-react \
       --filter @ogcio/design-system-angular \
@@ -43,6 +46,7 @@ COPY --from=builder --chown=nginx /build/packages/react/storybook-static /usr/sh
 COPY --from=builder --chown=nginx /build/packages/html/ds/storybook-static /usr/share/nginx/html/storybook-html
 COPY --from=builder --chown=nginx /build/packages/angular/storybook-static /usr/share/nginx/html/storybook-angular
 COPY --from=builder --chown=nginx /build/packages/vue/storybook-static /usr/share/nginx/html/storybook-vue
+COPY --from=builder --chown=nginx /build/examples/angular/dist/ogcio-demo/browser /usr/share/nginx/html/examples/angular
 
 # Copy nginx configuration
 COPY nginx.conf /etc/nginx/nginx.conf

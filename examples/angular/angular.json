@@ -29,7 +29,12 @@
                 "input": "public"
               }
             ],
-            "styles": ["@ogcio/design-system-angular/styles.css", "dist/styles.css", "@ogcio/theme-govie/theme.css"]
+            "styles": [
+              "@ogcio/theme-govie/theme.css",
+              "@ogcio/design-system-angular/styles.css",
+              "@ogcio/design-system-angular/fonts.css",
+              "src/styles.css"
+            ]
           },
           "configurations": {
             "production": {
@@ -69,22 +74,6 @@
         },
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n"
-        },
-        "test": {
-          "builder": "@angular-devkit/build-angular:karma",
-          "options": {
-            "polyfills": ["zone.js", "zone.js/testing"],
-            "tsConfig": "tsconfig.spec.json",
-            "inlineStyleLanguage": "scss",
-            "assets": [
-              {
-                "glob": "**/*",
-                "input": "public"
-              }
-            ],
-            "styles": ["@ogcio/design-system-angular/styles.css", "dist/styles.css", "@ogcio/theme-govie/theme.css"],
-            "scripts": []
-          }
         },
         "lint": {
           "builder": "@angular-eslint/builder:lint",

@@ -1,59 +1,44 @@
-# OgcioDemo
+# Department of Engagement – Angular demo
 
-This project was generated using [Angular CLI](https://github.com/angular/angular-cli) version 19.2.4.
+A demonstration website for a fictional government department, built with the Angular library of the [Government of Ireland Design System](https://ds.services.gov.ie/). It follows the layout of the Design System website: header, primary navigation, section pages with side navigation and breadcrumbs, and footer.
 
-## Development server
+Every Design System element comes from the public API of `@ogcio/design-system-angular`. The side navigation comes from the `@ogcio/design-system-angular/preview` entry point until its curated wrappers ship. The site loads the theme, the compiled library stylesheet and fonts, and builds its own page-level utilities with Tailwind and `createTheme()` from `@ogcio/design-system-tailwind`. The application utilities have no prefix, so they never collide with the library's `gi-` classes.
 
-To start a local development server, run:
+## Run locally
 
-```bash
-ng serve
-```
-
-Once the server is running, open your browser and navigate to `http://localhost:4200/`. The application will automatically reload whenever you modify any of the source files.
-
-## Code scaffolding
-
-Angular CLI includes powerful code scaffolding tools. To generate a new component, run:
+Build the workspace dependencies and start the development server from the repository root:
 
 ```bash
-ng generate component component-name
+pnpm examples:angular
 ```
 
-For a complete list of available schematics (such as `components`, `directives`, or `pipes`), run:
+The site runs at `http://localhost:4200/`.
+
+## Build
 
 ```bash
-ng generate --help
+pnpm --filter "@ogcio/examples-angular^..." build && pnpm --filter @ogcio/examples-angular build
 ```
 
-## Building
+The static site is written to `dist/ogcio-demo/browser`.
 
-To build the project run:
+## Deploy
 
-```bash
-ng build
+The site uses the Angular router with path-based URLs, so the web server must serve the site's `index.html` for any path under its base href that does not match a file. With nginx, for a site built with `ng build --base-href /demo/`:
+
+```nginx
+location /demo/ {
+  try_files $uri $uri/ /demo/index.html;
+}
 ```
 
-This will compile your project and store the build artifacts in the `dist/` directory. By default, the production build optimizes your application for performance and speed.
+## Structure
 
-## Running unit tests
+The application follows the structure of the Angular Material documentation site: routed screens live in `pages`, reusable components in `shared`, and file and class names follow the Angular CLI without suffixes.
 
-To execute unit tests with the [Karma](https://karma-runner.github.io) test runner, use the following command:
+| Path             | Contents                                                                                                |
+| ---------------- | ------------------------------------------------------------------------------------------------------- |
+| `src/app/pages`  | Routed pages; each site section has its own folder with a layout that adds the side navigation          |
+| `src/app/shared` | Site header and footer, page, page section, section layout, side navigation link and article components |
 
-```bash
-ng test
-```
-
-## Running end-to-end tests
-
-For end-to-end (e2e) testing, run:
-
-```bash
-ng e2e
-```
-
-Angular CLI does not come with an end-to-end testing framework by default. You can choose one that suits your needs.
-
-## Additional Resources
-
-For more information on using the Angular CLI, including detailed command references, visit the [Angular CLI Overview and Command Reference](https://angular.dev/tools/cli) page.
+Page text lives in the page templates.
