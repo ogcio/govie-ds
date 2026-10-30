@@ -97,7 +97,7 @@ export { ListItem, type ListItemProps } from './list-item/list-item.js';
 export { List, type ListProps } from './list/list.js';
 export { Modal, ModalBody, ModalFooter, ModalTitle, ModalWrapper } from './modal/modal.js';
 export type * from './modal/types.js';
-export { Pagination, type PaginationProps } from './pagination/pagination.js';
+export { Pagination, type PaginationProps } from './pagination/pagination-composed.js';
 export { Paragraph, type ParagraphProps } from './paragraph/paragraph.js';
 export { PhaseBanner, type PhaseBannerProps } from './phase-banner/phase-banner.js';
 export { Popover } from './popover/popover.js';
