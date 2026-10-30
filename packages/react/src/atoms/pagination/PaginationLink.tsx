@@ -27,27 +27,25 @@ import classes from './PaginationButton.styles';
 
 function PaginationLink(props: Props) {
   return (
-    <li>
-      <a
-        href={props.href}
-        id={props.id}
-        className={classes({
-          variant: props.current ? 'primary' : 'flat',
-          className: props.className,
-        })}
-        style={props.styles}
-        aria-current={props.current ? 'page' : undefined}
-        aria-label={props.ariaLabel}
-        onClick={(event) => props.onClick && props.onClick(event)}
-        onFocus={(event) => props.onFocus && props.onFocus(event)}
-        onBlur={(event) => props.onBlur && props.onBlur(event)}
-        onKeyDown={(event) => props.onKeyDown && props.onKeyDown(event)}
-        onKeyUp={(event) => props.onKeyUp && props.onKeyUp(event)}
-        data-testid={props.dataTestId}
-      >
-        {props.children}
-      </a>
-    </li>
+    <a
+      href={props.href}
+      id={props.id}
+      className={classes({
+        variant: props.current ? 'primary' : 'flat',
+        className: props.className,
+      })}
+      style={props.styles}
+      aria-current={props.current ? 'page' : undefined}
+      aria-label={props.ariaLabel}
+      onClick={(event) => props.onClick && props.onClick(event)}
+      onFocus={(event) => props.onFocus && props.onFocus(event)}
+      onBlur={(event) => props.onBlur && props.onBlur(event)}
+      onKeyDown={(event) => props.onKeyDown && props.onKeyDown(event)}
+      onKeyUp={(event) => props.onKeyUp && props.onKeyUp(event)}
+      data-testid={props.dataTestId}
+    >
+      {props.children}
+    </a>
   );
 }
 

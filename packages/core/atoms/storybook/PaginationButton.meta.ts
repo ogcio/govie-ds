@@ -1,0 +1,109 @@
+import { within, expect } from 'storybook/test';
+import type { Props } from '../pagination/PaginationButton.lite';
+import { meta as buttonMeta } from './Button.meta';
+import type { Meta, Story } from './types';
+
+// Label rendered inside the button by the Default and Current stories in each framework.
+export const PAGINATION_BUTTON_LABEL = '5';
+
+export const meta = {
+  title: 'Navigation/Pagination/PaginationButton',
+  args: {
+    disabled: false,
+    id: 'pagination-button-id',
+  },
+  argTypes: {
+    current: {
+      control: 'boolean',
+      description: 'Marks this page as the current page. Applies the primary style and sets `aria-current`.',
+      table: { type: { summary: 'boolean' } },
+    },
+    disabled: buttonMeta.argTypes.disabled,
+    id: buttonMeta.argTypes.id,
+    ariaLabel: {
+      control: 'text',
+      description:
+        'Accessible name when the visible label is not enough, for example "Go to previous" or "Go to page 5". Maps to `aria-label`.',
+      table: { type: { summary: 'string' } },
+    },
+  },
+  parameters: {
+    docs: {
+      description: {
+        component:
+          'Page button for Pagination. Renders a large transparent button inside a list item. The button becomes dark when it is the current item. Use for pages that change in place, and for previous and next. Set `current` to mark the current page, and `disabled` when a control cannot be used, such as previous on the first page.',
+      },
+    },
+  },
+} satisfies Meta<Props>;
+
+export const Default = {
+  play: async ({ canvasElement, step, args }) => {
+    const canvas = within(canvasElement);
+
+    await step('renders a page button inside a list item', async () => {
+      const button = canvas.getByRole('button', { name: PAGINATION_BUTTON_LABEL });
+      expect(button.tagName).toBe('BUTTON');
+      expect(button).toHaveAttribute('id', args.id);
+      expect(button.closest('li')).toBeInTheDocument();
+      expect(button).toBeEnabled();
+      expect(button).not.toHaveAttribute('aria-current');
+    });
+  },
+} satisfies Story<Props>;
+
+export const Current = {
+  args: {
+    ...meta.args,
+    current: true,
+    id: 'pagination-button-current-id',
+  },
+  parameters: {
+    docs: {
+      description: {
+        story:
+          'Use the `current` prop to identify the current item. This applies the primary style and `aria-current` onto the element.',
+      },
+    },
+  },
+  play: async ({ canvasElement, step }) => {
+    const canvas = within(canvasElement);
+
+    await step('marks the button as the current page', async () => {
+      const button = canvas.getByRole('button', { name: PAGINATION_BUTTON_LABEL });
+      expect(button).toHaveAttribute('aria-current', 'true');
+    });
+  },
+} satisfies Story<Props>;
+
+export const Disabled = {
+  args: {
+    disabled: true,
+  },
+  parameters: {
+    docs: {
+      description: {
+        story: 'Previous and Next are disabled when the current page is the first or last page.',
+      },
+    },
+  },
+  play: async ({ canvasElement, step }) => {
+    const canvas = within(canvasElement);
+
+    await step('disables previous and next around the current page', async () => {
+      const previous = canvas.getByRole('button', { name: 'Previous' });
+      expect(previous).toBeDisabled();
+      expect(previous).toHaveTextContent('Previous');
+      expect(within(previous).getByTestId('arrow-backward')).toBeInTheDocument();
+
+      const current = canvas.getByRole('button', { name: '1' });
+      expect(current).toBeEnabled();
+      expect(current).toHaveAttribute('aria-current', 'true');
+
+      const next = canvas.getByRole('button', { name: 'Next' });
+      expect(next).toBeDisabled();
+      expect(next).toHaveTextContent('Next');
+      expect(within(next).getByTestId('arrow-forward')).toBeInTheDocument();
+    });
+  },
+} satisfies Story<Props>;

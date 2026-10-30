@@ -1,0 +1,43 @@
+import { within, expect } from 'storybook/test';
+import type { Props } from '../pagination/PaginationEllipsis.lite';
+import { boxMeta } from './Box.meta';
+import { iconsMeta } from './Icons.meta';
+import type { Meta, Story } from './types';
+
+export const ELLIPSIS_TESTID = 'pagination-ellipsis';
+
+export const meta = {
+  title: 'Navigation/Pagination/PaginationEllipsis',
+  args: {
+    id: 'pagination-ellipsis-id',
+    dataTestId: ELLIPSIS_TESTID,
+  },
+  argTypes: {
+    id: boxMeta.argTypes.id,
+    size: iconsMeta.argTypes.size,
+    color: iconsMeta.argTypes.color,
+    label: iconsMeta.argTypes.label,
+    dataTestId: boxMeta.argTypes.dataTestId,
+  },
+  parameters: {
+    docs: {
+      description: {
+        component:
+          'Use PaginationEllipsis to collapse the page range between the current item, and the first/last page. Renders a more-horizontal icon inside a list item. Leave `label` unset to keep the icon decorative and hidden from assistive technologies, or set it to announce the skipped range.',
+      },
+    },
+  },
+} satisfies Meta<Props>;
+
+export const Default = {
+  play: async ({ canvasElement, step, args }) => {
+    const canvas = within(canvasElement);
+
+    await step('renders a decorative icon inside a list item', async () => {
+      const icon = canvas.getByTestId(ELLIPSIS_TESTID);
+      expect(icon).toHaveAttribute('id', args.id);
+      expect(icon).toHaveAttribute('aria-hidden', 'true');
+      expect(icon.closest('li')).toBeInTheDocument();
+    });
+  },
+} satisfies Story<Props>;

@@ -5,20 +5,18 @@
 -->
 
 <template>
-  <li :aria-hidden="!label" :style="styles">
-    <GiMoreHorizontalIcon
-      :id="id"
-      :className="
-        classes({
-          className: className,
-        })
-      "
-      :size="size"
-      :color="color"
-      :label="label"
-      :dataTestId="dataTestId"
-    ></GiMoreHorizontalIcon>
-  </li>
+  <GiMoreHorizontalIcon
+    :id="id"
+    :className="
+      classes({
+        className: className,
+      })
+    "
+    :size="size"
+    :color="color"
+    :label="label"
+    :dataTestId="dataTestId"
+  ></GiMoreHorizontalIcon>
 </template>
 
 <script setup lang="ts">
@@ -29,9 +27,7 @@ const classes = tv({
   base: 'gi-text-gray-700 gi-shrink-0 gi-w-12',
 });
 
-export type Props = IconProps & {
-  styles?: Record<string, string>;
-};
+export type Props = IconProps;
 
 const props = defineProps<Props>();
 </script>
