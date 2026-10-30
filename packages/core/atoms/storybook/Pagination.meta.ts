@@ -14,19 +14,17 @@ export const meta = {
     dataTestId: PAGINATION_TESTID,
   },
   argTypes: {
-    className: boxMeta.argTypes.className,
-    styles: boxMeta.argTypes.styles,
     id: boxMeta.argTypes.id,
     dataTestId: boxMeta.argTypes.dataTestId,
     ariaLabel: {
       control: 'text',
-      description: 'Accessible label for the nav landmark. Maps to `aria-label`.',
+      description: 'Accessible name for the `nav` landmark, for example "Pagination". Maps to `aria-label`.',
       table: { type: { summary: 'string' } },
     },
     ariaLabelledBy: {
       control: { disable: true },
       description:
-        'Points to the id of an element that labels the nav. Preferred over `ariaLabel` when a visible heading exists. Maps to `aria-labelledby`.',
+        'Id of a visible element, such as a heading, that names the `nav` landmark. Use instead of `ariaLabel` when that element exists. Maps to `aria-labelledby`.',
       table: { type: { summary: 'string' } },
     },
   },
@@ -34,7 +32,7 @@ export const meta = {
     docs: {
       description: {
         component:
-          'Pagination helps users move through content that is split across multiple pages.\n\n`Pagination` renders the semantic `<nav>` landmark and an ordered list. Nest `PaginationLink` for pages that navigate to a URL and `PaginationButton` for pages that change in place, including previous and next. Use `PaginationEllipsis` to collapse skipped page ranges. Mark the current page with `current` on `PaginationLink` or `PaginationButton`.\n\nThe logic collapsing the page list can be accessed via the utility function `getPaginationList`.',
+          'Pagination lets users move through a large set of content that is split into pages. Use it when they need to go backward and forward, or jump to a specific page, and the total number of pages is known.\n\nUse page links when each page has its own URL, or page buttons when the page changes in place. Use the same kind for Previous and Next. Collapse skipped ranges with an ellipsis, and set `current` on the page the user is on. Use `getPaginationList` to work out which pages to show.',
       },
     },
   },
@@ -67,10 +65,11 @@ export const Default = {
 
 export const PaginationList = {
   parameters: {
+    controls: { disable: true },
     docs: {
       description: {
         story:
-          'Shown at the first, middle, and last page of 10, using `getPaginationList` with the default `size` of 7.\n\n`size` is how many page items appear, including the ellipses. It defaults to 7 and is never smaller than 5. If there are fewer pages than `size`, every page is shown. If there are more, the list stays the same length: the first and last pages stay visible, nearby pages stay around the current page, and skipped ranges appear as `PaginationEllipsis`.',
+          'The first, middle and last of 10 pages, built with `getPaginationList` and its default `size` of 7.\n\n`size` is the number of page items shown, including ellipses. It defaults to 7 and is never less than 5. When there are fewer pages than `size`, every page is shown. Otherwise the list keeps the same length: the first and last pages are always shown, the pages next to the current page are shown, and each skipped range becomes an ellipsis.',
       },
     },
   },

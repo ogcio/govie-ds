@@ -3,7 +3,6 @@ import Pagination from '@/pagination/Pagination';
 import PaginationLink from '@/pagination/PaginationLink';
 import * as stories from '@/atoms/storybook/PaginationLink.meta';
 import { importNext } from './helpers';
-import omit from 'lodash/omit';
 
 const meta = {
   ...stories.meta,
@@ -16,11 +15,20 @@ const meta = {
   argTypes: {
     children: {
       control: 'text',
-      description: 'Visible label, usually the page number.',
+      description: 'Visible label, usually the page number or "Previous" / "Next".',
       table: { type: { summary: 'ReactNode' } },
     },
-    ...omit(stories.meta.argTypes, 'styles'),
-    style: stories.meta.argTypes.styles,
+    ...stories.meta.argTypes,
+    className: {
+      control: false,
+      description: 'Additional CSS classes applied to the link element.',
+      table: { type: { summary: 'string' } },
+    },
+    style: {
+      control: false,
+      description: 'Inline styles applied to the link element. Prefer className with gi-* Tailwind utilities.',
+      table: { type: { summary: 'React.CSSProperties' } },
+    },
     onClick: {
       action: 'clicked',
       description: 'Click handler for the page link.',

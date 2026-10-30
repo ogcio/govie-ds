@@ -9,30 +9,36 @@ export const PAGINATION_BUTTON_LABEL = '5';
 export const meta = {
   title: 'Navigation/Pagination/PaginationButton',
   args: {
+    current: false,
     disabled: false,
     id: 'pagination-button-id',
   },
   argTypes: {
     current: {
       control: 'boolean',
-      description: 'Marks this page as the current page. Applies the primary style and sets `aria-current`.',
-      table: { type: { summary: 'boolean' } },
+      description:
+        'Marks the button as the current page. Applies the dark primary style and sets `aria-current="true"`.',
+      table: { type: { summary: 'boolean' }, defaultValue: { summary: 'false' } },
     },
-    disabled: buttonMeta.argTypes.disabled,
+    disabled: {
+      control: 'boolean',
+      description: 'Disables the button, for example Previous on the first page or Next on the last page.',
+      table: { type: { summary: 'boolean' }, defaultValue: { summary: 'false' } },
+    },
     id: buttonMeta.argTypes.id,
-    className: buttonMeta.argTypes.className,
     ariaLabel: {
       control: 'text',
       description:
-        'Accessible name when the visible label is not enough, for example "Go to previous" or "Go to page 5". Maps to `aria-label`.',
+        'Accessible name when the visible label is not enough, for example "Go to previous page" or "Go to page 5". Maps to `aria-label`.',
       table: { type: { summary: 'string' } },
     },
+    dataTestId: buttonMeta.argTypes.dataTestId,
   },
   parameters: {
     docs: {
       description: {
         component:
-          'Page button for Pagination. Renders a large transparent button inside a list item. The button becomes dark when it is the current item. Use for pages that change in place, and for previous and next. Set `current` to mark the current page, and `disabled` when a control cannot be used, such as previous on the first page.',
+          'A page button for Pagination. Use it when the page changes in place without loading a new URL, and for the Previous and Next controls that go with it. It renders a transparent button that turns dark when it is the current page. Set `current` on the page the user is on, and `disabled` on a control that cannot be used.',
       },
     },
   },
@@ -46,7 +52,7 @@ export const Default = {
       const button = canvas.getByRole('button', { name: PAGINATION_BUTTON_LABEL });
       expect(button.tagName).toBe('BUTTON');
       expect(button).toHaveAttribute('id', args.id);
-      expect(button.parentElement?.tagName).toBe('LI');
+      expect(button.closest('li')).toBeInTheDocument();
       expect(button).toBeEnabled();
       expect(button).not.toHaveAttribute('aria-current');
     });
@@ -63,7 +69,7 @@ export const Current = {
     docs: {
       description: {
         story:
-          'Use the `current` prop to identify the current item. This applies the primary style and `aria-current` onto the element.',
+          'Set `current` on the button for the page the user is on. It gets the dark primary style and `aria-current="true"`.',
       },
     },
   },
@@ -84,7 +90,8 @@ export const Disabled = {
   parameters: {
     docs: {
       description: {
-        story: 'Previous and Next are disabled when the current page is the first or last page.',
+        story:
+          'Set `disabled` on Previous when the user is on the first page, and on Next when they are on the last page. This example has a single page, so both are disabled.',
       },
     },
   },
