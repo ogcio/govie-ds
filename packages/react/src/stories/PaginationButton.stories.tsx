@@ -21,6 +21,16 @@ const meta = {
       table: { type: { summary: 'ReactNode' } },
     },
     ...stories.meta.argTypes,
+    className: {
+      control: false,
+      description: 'Additional CSS classes applied to the button element.',
+      table: { type: { summary: 'string' } },
+    },
+    style: {
+      control: false,
+      description: 'Inline styles applied to the button element. Prefer className with gi-* Tailwind utilities.',
+      table: { type: { summary: 'React.CSSProperties' } },
+    },
     onClick: {
       action: 'clicked',
       description: 'Click handler for the page button.',

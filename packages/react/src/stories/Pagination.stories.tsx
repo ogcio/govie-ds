@@ -10,7 +10,6 @@ import ArrowForward from '@/atoms/icons/ArrowForward';
 import { extractRenderBody } from '@/test-utilities';
 import { PAGINATION_TESTID } from '@/atoms/storybook/Pagination.meta';
 import { importNext } from './helpers';
-import omit from 'lodash/omit';
 import Stack from '@/atoms/Stack';
 
 const meta = {
@@ -19,8 +18,17 @@ const meta = {
   title: 'Navigation/Pagination/Pagination (Next)',
   component: Pagination,
   argTypes: {
-    ...omit(stories.meta.argTypes, 'styles'),
-    style: stories.meta.argTypes.styles,
+    ...stories.meta.argTypes,
+    className: {
+      control: false,
+      description: 'Additional CSS classes applied to the nav element.',
+      table: { type: { summary: 'string' } },
+    },
+    style: {
+      control: false,
+      description: 'Inline styles applied to the nav element. Prefer className with gi-* Tailwind utilities.',
+      table: { type: { summary: 'React.CSSProperties' } },
+    },
   },
   parameters: {
     ...stories.meta.parameters,

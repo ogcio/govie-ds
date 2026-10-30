@@ -6,7 +6,6 @@ import PaginationButton from '@/pagination/PaginationButton';
 import ArrowBackwardIcon from '@/atoms/icons/ArrowBackward';
 import ArrowForwardIcon from '@/atoms/icons/ArrowForward';
 import { importNext } from './helpers';
-import omit from 'lodash/omit';
 
 const meta = {
   ...stories.meta,
@@ -14,8 +13,18 @@ const meta = {
   title: 'Navigation/Pagination/PaginationEllipsis',
   component: PaginationEllipsis,
   argTypes: {
-    ...omit(stories.meta.argTypes, 'styles'),
-    style: stories.meta.argTypes.styles,
+    ...stories.meta.argTypes,
+    className: {
+      control: false,
+      description: 'Additional CSS classes applied to the icon element.',
+      table: { type: { summary: 'string' } },
+    },
+    style: {
+      control: false,
+      description:
+        'Inline styles applied to the list item that wraps the icon. Use for truly dynamic values that cannot be expressed as Tailwind classes.',
+      table: { type: { summary: 'React.CSSProperties' } },
+    },
   },
   parameters: {
     ...stories.meta.parameters,

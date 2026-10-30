@@ -6,9 +6,7 @@
 
 import * as React from 'react';
 
-export type Props = IconProps & {
-  styles?: Record<string, string>;
-};
+export type Props = IconProps;
 
 import GiMoreHorizontalIcon from '../icons/MoreHorizontal';
 import type { IconProps } from '../icons/types';

@@ -27,9 +27,7 @@ const classes = tv({
   base: 'gi-text-gray-700 gi-shrink-0 gi-w-12',
 });
 
-export type Props = IconProps & {
-  styles?: Record<string, string>;
-};
+export type Props = IconProps;
 
 const props = defineProps<Props>();
 </script>

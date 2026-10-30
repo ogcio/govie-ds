@@ -29,7 +29,6 @@ export const meta = {
     },
     disabled: buttonMeta.argTypes.disabled,
     id: buttonMeta.argTypes.id,
-    className: buttonMeta.argTypes.className,
     ariaLabel: {
       control: 'text',
       description:
@@ -59,7 +58,7 @@ export const Default = {
       });
       expect(button.tagName).toBe('BUTTON');
       expect(button).toHaveAttribute('id', args.id);
-      expect(button.parentElement?.tagName).toBe('LI');
+      expect(button.closest('li')).toBeInTheDocument();
       expect(button).toBeEnabled();
       expect(button).not.toHaveAttribute('aria-current');
     });

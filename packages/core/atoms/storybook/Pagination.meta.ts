@@ -14,8 +14,6 @@ export const meta = {
     dataTestId: PAGINATION_TESTID,
   },
   argTypes: {
-    className: boxMeta.argTypes.className,
-    styles: boxMeta.argTypes.styles,
     id: boxMeta.argTypes.id,
     dataTestId: boxMeta.argTypes.dataTestId,
     ariaLabel: {

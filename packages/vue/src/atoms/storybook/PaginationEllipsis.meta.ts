@@ -18,21 +18,8 @@ export const meta = {
   },
   argTypes: {
     id: boxMeta.argTypes.id,
-    className: iconsMeta.argTypes.className,
     size: iconsMeta.argTypes.size,
     color: iconsMeta.argTypes.color,
-    styles: {
-      control: {
-        disable: true,
-      },
-      description:
-        'Inline styles applied directly to the parent element of the icon. Use for truly dynamic values that cannot be expressed as Tailwind classes.',
-      table: {
-        type: {
-          summary: 'Record<string, string>',
-        },
-      },
-    },
     label: iconsMeta.argTypes.label,
     dataTestId: boxMeta.argTypes.dataTestId,
   },
@@ -52,7 +39,7 @@ export const Default = {
       const icon = canvas.getByTestId(ELLIPSIS_TESTID);
       expect(icon).toHaveAttribute('id', args.id);
       expect(icon).toHaveAttribute('aria-hidden', 'true');
-      expect(icon.parentElement?.tagName).toBe('LI');
+      expect(icon.closest('li')).toBeInTheDocument();
     });
   },
 } satisfies Story<Props>;

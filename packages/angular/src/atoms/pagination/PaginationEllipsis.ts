@@ -8,9 +8,7 @@ import { Component, Input } from '@angular/core';
 
 import { CommonModule } from '@angular/common';
 
-export type Props = IconProps & {
-  styles?: Record<string, string>;
-};
+export type Props = IconProps;
 
 import GiMoreHorizontalIcon from '../icons/MoreHorizontal';
 import type { IconProps } from '../icons/types';

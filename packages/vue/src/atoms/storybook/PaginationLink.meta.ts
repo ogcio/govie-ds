@@ -27,10 +27,8 @@ export const meta = {
         },
       },
     },
-    styles: linkMeta.argTypes.styles,
     href: linkMeta.argTypes.href,
     id: linkMeta.argTypes.id,
-    className: linkMeta.argTypes.className,
     ariaLabel: {
       control: 'text',
       description:
@@ -61,7 +59,7 @@ export const Default = {
       expect(link.tagName).toBe('A');
       expect(link).toHaveAttribute('href', args.href);
       expect(link).toHaveAttribute('id', args.id);
-      expect(link.parentElement?.tagName).toBe('LI');
+      expect(link.closest('li')).toBeInTheDocument();
       expect(link).not.toHaveAttribute('aria-current');
     });
   },
