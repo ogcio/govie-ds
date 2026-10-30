@@ -5,20 +5,18 @@
 -->
 
 <template>
-  <li :aria-hidden="!label" :style="styles">
-    <GiMoreHorizontalIcon
-      :id="id"
-      :className="
-        classes({
-          className: className,
-        })
-      "
-      :size="size"
-      :color="color"
-      :label="label"
-      :dataTestId="dataTestId"
-    ></GiMoreHorizontalIcon>
-  </li>
+  <GiMoreHorizontalIcon
+    :id="id"
+    :className="
+      classes({
+        className: className,
+      })
+    "
+    :size="size"
+    :color="color"
+    :label="label"
+    :dataTestId="dataTestId"
+  ></GiMoreHorizontalIcon>
 </template>
 
 <script setup lang="ts">

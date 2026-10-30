@@ -22,20 +22,18 @@ const classes = tv({
 @Component({
   selector: 'core-pagination-ellipsis',
   template: `
-    <li [attr.aria-hidden]="!label" [ngStyle]="styles">
-      <gi-more-horizontal-icon
-        [id]="id"
-        [className]="
-          classes({
-            className: className,
-          })
-        "
-        [size]="size"
-        [color]="color"
-        [label]="label"
-        [dataTestId]="dataTestId"
-      ></gi-more-horizontal-icon>
-    </li>
+    <gi-more-horizontal-icon
+      [id]="id"
+      [className]="
+        classes({
+          className: className,
+        })
+      "
+      [size]="size"
+      [color]="color"
+      [label]="label"
+      [dataTestId]="dataTestId"
+    ></gi-more-horizontal-icon>
   `,
   styles: [
     `
@@ -50,11 +48,10 @@ const classes = tv({
 export default class PaginationEllipsis {
   classes = classes;
 
-  @Input() label!: Props['label'];
-  @Input() styles!: Props['styles'];
   @Input() id!: Props['id'];
   @Input() className!: Props['className'];
   @Input() size!: Props['size'];
   @Input() color!: Props['color'];
+  @Input() label!: Props['label'];
   @Input() dataTestId!: Props['dataTestId'];
 }
