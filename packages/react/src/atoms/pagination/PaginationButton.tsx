@@ -28,29 +28,27 @@ import classes from './PaginationButton.styles';
 function PaginationButton(props: Props) {
   props = { current: undefined, ...props };
   return (
-    <li>
-      <button
-        type="button"
-        id={props.id}
-        className={classes({
-          variant: props.current ? 'primary' : 'flat',
-          disabled: !!props.disabled,
-          className: props.className,
-        })}
-        style={props.styles}
-        disabled={props.disabled || undefined}
-        aria-label={props.ariaLabel}
-        aria-current={props.current}
-        onClick={(event) => props.onClick && props.onClick(event)}
-        onFocus={(event) => props.onFocus && props.onFocus(event)}
-        onBlur={(event) => props.onBlur && props.onBlur(event)}
-        onKeyDown={(event) => props.onKeyDown && props.onKeyDown(event)}
-        onKeyUp={(event) => props.onKeyUp && props.onKeyUp(event)}
-        data-testid={props.dataTestId}
-      >
-        {props.children}
-      </button>
-    </li>
+    <button
+      type="button"
+      id={props.id}
+      className={classes({
+        variant: props.current ? 'primary' : 'flat',
+        disabled: !!props.disabled,
+        className: props.className,
+      })}
+      style={props.styles}
+      disabled={props.disabled || undefined}
+      aria-label={props.ariaLabel}
+      aria-current={props.current || undefined}
+      onClick={(event) => props.onClick && props.onClick(event)}
+      onFocus={(event) => props.onFocus && props.onFocus(event)}
+      onBlur={(event) => props.onBlur && props.onBlur(event)}
+      onKeyDown={(event) => props.onKeyDown && props.onKeyDown(event)}
+      onKeyUp={(event) => props.onKeyUp && props.onKeyUp(event)}
+      data-testid={props.dataTestId}
+    >
+      {props.children}
+    </button>
   );
 }
 

@@ -28,29 +28,27 @@ import classes from './PaginationButton.styles';
 @Component({
   selector: 'core-pagination-link',
   template: `
-    <li>
-      <a
-        [attr.href]="href"
-        [attr.id]="id"
-        [class]="
-          classes({
-            variant: current ? 'primary' : 'flat',
-            className: className,
-          })
-        "
-        [ngStyle]="styles"
-        [attr.aria-current]="current ? 'page' : undefined"
-        [attr.aria-label]="ariaLabel"
-        (click)="onClick && this.onClick.emit($event)"
-        (focus)="onFocus && this.onFocus.emit($event)"
-        (blur)="onBlur && this.onBlur.emit($event)"
-        (keydown)="onKeyDown && this.onKeyDown.emit($event)"
-        (keyup)="onKeyUp && this.onKeyUp.emit($event)"
-        [attr.data-testid]="dataTestId"
-      >
-        <ng-content></ng-content>
-      </a>
-    </li>
+    <a
+      [attr.href]="href"
+      [attr.id]="id"
+      [class]="
+        classes({
+          variant: current ? 'primary' : 'flat',
+          className: className,
+        })
+      "
+      [ngStyle]="styles"
+      [attr.aria-current]="current ? 'page' : undefined"
+      [attr.aria-label]="ariaLabel"
+      (click)="onClick && this.onClick.emit($event)"
+      (focus)="onFocus && this.onFocus.emit($event)"
+      (blur)="onBlur && this.onBlur.emit($event)"
+      (keydown)="onKeyDown && this.onKeyDown.emit($event)"
+      (keyup)="onKeyUp && this.onKeyUp.emit($event)"
+      [attr.data-testid]="dataTestId"
+    >
+      <ng-content></ng-content>
+    </a>
   `,
   styles: [
     `
