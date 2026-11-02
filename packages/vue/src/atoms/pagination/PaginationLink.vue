@@ -5,28 +5,26 @@
 -->
 
 <template>
-  <li>
-    <a
-      :href="href"
-      :id="id"
-      :class="
-        classes({
-          variant: current ? 'primary' : 'flat',
-          className: className,
-        })
-      "
-      :style="styles"
-      :aria-current="current ? 'page' : undefined"
-      :aria-label="ariaLabel"
-      @click="async (event) => onClick && onClick(event)"
-      @focus="async (event) => onFocus && onFocus(event)"
-      @blur="async (event) => onBlur && onBlur(event)"
-      @keydown="async (event) => onKeyDown && onKeyDown(event)"
-      @keyup="async (event) => onKeyUp && onKeyUp(event)"
-      :data-testid="dataTestId"
-      ><slot
-    /></a>
-  </li>
+  <a
+    :href="href"
+    :id="id"
+    :class="
+      classes({
+        variant: current ? 'primary' : 'flat',
+        className: className,
+      })
+    "
+    :style="styles"
+    :aria-current="current ? 'page' : undefined"
+    :aria-label="ariaLabel"
+    @click="async (event) => onClick && onClick(event)"
+    @focus="async (event) => onFocus && onFocus(event)"
+    @blur="async (event) => onBlur && onBlur(event)"
+    @keydown="async (event) => onKeyDown && onKeyDown(event)"
+    @keyup="async (event) => onKeyUp && onKeyUp(event)"
+    :data-testid="dataTestId"
+    ><slot
+  /></a>
 </template>
 
 <script setup lang="ts">

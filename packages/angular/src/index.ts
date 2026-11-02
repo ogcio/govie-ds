@@ -41,3 +41,10 @@ export { GiBreadcrumbs } from './breadcrumbs/Breadcrumbs';
 export { GiBreadcrumbItemLink, GiBreadcrumbLinkDirective } from './breadcrumbs/BreadcrumbItemLink';
 export { GiBreadcrumbItemDirective } from './breadcrumbs/BreadcrumbItem';
 export { GiBreadcrumbItemEllipsis } from './breadcrumbs/BreadcrumbItemEllipsis';
+
+export { GiPagination } from './pagination/Pagination';
+export { GiPaginationItemLink, GiPaginationLinkDirective } from './pagination/PaginationItemLink';
+export { GiPaginationItemButton, GiPaginationButtonDirective } from './pagination/PaginationItemButton';
+export { GiPaginationItemDirective } from './pagination/PaginationItem';
+export { GiPaginationItemEllipsis } from './pagination/PaginationItemEllipsis';
+export { getPaginationList } from './atoms/pagination/utils';

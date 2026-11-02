@@ -5,22 +5,18 @@ import { tv } from 'tailwind-variants';
 
 useMetadata({ angular: { selector: 'core-pagination-ellipsis' } });
 
-export type Props = IconProps & {
-  styles?: Record<string, string>;
-};
+export type Props = IconProps;
 
 export default function PaginationEllipsis(props: Props) {
   return (
-    <li aria-hidden={!props.label} style={props.styles}>
-      <GiMoreHorizontalIcon
-        id={props.id}
-        className={classes({ className: props.className })}
-        size={props.size}
-        color={props.color}
-        label={props.label}
-        dataTestId={props.dataTestId}
-      />
-    </li>
+    <GiMoreHorizontalIcon
+      id={props.id}
+      className={classes({ className: props.className })}
+      size={props.size}
+      color={props.color}
+      label={props.label}
+      dataTestId={props.dataTestId}
+    />
   );
 }
 const classes = tv({

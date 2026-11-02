@@ -21,18 +21,6 @@ export const meta = {
     className: iconsMeta.argTypes.className,
     size: iconsMeta.argTypes.size,
     color: iconsMeta.argTypes.color,
-    styles: {
-      control: {
-        disable: true,
-      },
-      description:
-        'Inline styles applied directly to the parent element of the icon. Use for truly dynamic values that cannot be expressed as Tailwind classes.',
-      table: {
-        type: {
-          summary: 'Record<string, string>',
-        },
-      },
-    },
     label: iconsMeta.argTypes.label,
     dataTestId: boxMeta.argTypes.dataTestId,
   },

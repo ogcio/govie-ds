@@ -29,31 +29,29 @@ import classes from './PaginationButton.styles';
 @Component({
   selector: 'core-pagination-button',
   template: `
-    <li>
-      <button
-        type="button"
-        [attr.id]="id"
-        [class]="
-          classes({
-            variant: current ? 'primary' : 'flat',
-            disabled: !!disabled,
-            className: className,
-          })
-        "
-        [ngStyle]="styles"
-        [attr.disabled]="disabled || undefined"
-        [attr.aria-label]="ariaLabel"
-        [attr.aria-current]="current"
-        (click)="onClick && this.onClick.emit($event)"
-        (focus)="onFocus && this.onFocus.emit($event)"
-        (blur)="onBlur && this.onBlur.emit($event)"
-        (keydown)="onKeyDown && this.onKeyDown.emit($event)"
-        (keyup)="onKeyUp && this.onKeyUp.emit($event)"
-        [attr.data-testid]="dataTestId"
-      >
-        <ng-content></ng-content>
-      </button>
-    </li>
+    <button
+      type="button"
+      [attr.id]="id"
+      [class]="
+        classes({
+          variant: current ? 'primary' : 'flat',
+          disabled: !!disabled,
+          className: className,
+        })
+      "
+      [ngStyle]="styles"
+      [attr.disabled]="disabled || undefined"
+      [attr.aria-label]="ariaLabel"
+      [attr.aria-current]="current || undefined"
+      (click)="onClick && this.onClick.emit($event)"
+      (focus)="onFocus && this.onFocus.emit($event)"
+      (blur)="onBlur && this.onBlur.emit($event)"
+      (keydown)="onKeyDown && this.onKeyDown.emit($event)"
+      (keyup)="onKeyUp && this.onKeyUp.emit($event)"
+      [attr.data-testid]="dataTestId"
+    >
+      <ng-content></ng-content>
+    </button>
   `,
   styles: [
     `
