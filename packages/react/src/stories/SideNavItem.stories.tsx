@@ -2,6 +2,7 @@ import type { Meta, StoryObj } from '@storybook/react-vite';
 import SideNav from '@/atoms/sidenav/SideNav';
 import SideNavItem from '@/atoms/sidenav/SideNavItem';
 import * as stories from '@/atoms/storybook/SideNavItem.meta';
+import { importNext } from './helpers';
 
 const meta = {
   ...stories.sideNavItemMeta,
@@ -19,7 +20,7 @@ const meta = {
     docs: {
       ...stories.sideNavItemMeta.parameters.docs,
       description: {
-        component: `${stories.sideNavItemMeta.parameters.docs.description.component}\n\nThis is the recommended SideNavItem component for new projects. It is available via the \`next\` entry point of the React package:\n\n\`\`\`tsx\nimport { SideNavItem } from "@ogcio/design-system-react/next";\n\`\`\``,
+        component: `${stories.sideNavItemMeta.parameters.docs.description.component}${importNext('SideNavItem')}`,
       },
     },
   },

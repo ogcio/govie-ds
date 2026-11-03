@@ -3,6 +3,7 @@ import SideNav from '@/atoms/sidenav/SideNav';
 import SideNavHeading from '@/atoms/sidenav/SideNavHeading';
 import SideNavItem from '@/atoms/sidenav/SideNavItem';
 import * as stories from '@/atoms/storybook/SideNavHeading.meta';
+import { importNext } from './helpers';
 
 const meta = {
   ...stories.sideNavHeadingMeta,
@@ -13,7 +14,7 @@ const meta = {
     docs: {
       ...stories.sideNavHeadingMeta.parameters.docs,
       description: {
-        component: `${stories.sideNavHeadingMeta.parameters.docs.description.component}\n\nThis is the recommended SideNavHeading component for new projects. It is available via the \`next\` entry point of the React package:\n\n\`\`\`tsx\nimport { SideNavHeading } from "@ogcio/design-system-react/next";\n\`\`\``,
+        component: `${stories.sideNavHeadingMeta.parameters.docs.description.component}${importNext('SideNavHeading')}`,
       },
     },
   },

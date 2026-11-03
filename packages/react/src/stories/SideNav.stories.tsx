@@ -14,6 +14,7 @@ import SideNavItem from '@/atoms/sidenav/SideNavItem';
 import { Tag } from '@/tag/tag';
 import SideNavItemLink from '@/SideNav/SideNavItemLink';
 import { extractRenderBody } from '@/test-utilities';
+import { importNext } from './helpers';
 
 const meta = {
   ...stories.sideNavMeta,
@@ -24,7 +25,7 @@ const meta = {
     docs: {
       ...stories.sideNavMeta.parameters.docs,
       description: {
-        component: `${stories.sideNavMeta.parameters.docs.description.component}\n\nThis is the recommended SideNav component for new projects. It is available via the \`next\` entry point of the React package:\n\n\`\`\`tsx\nimport { SideNav } from "@ogcio/design-system-react/next";\n\`\`\``,
+        component: `${stories.sideNavMeta.parameters.docs.description.component}${importNext('SideNav')}`,
       },
       source: {
         type: 'code',

@@ -4,6 +4,7 @@ import SideNav from '@/atoms/sidenav/SideNav';
 import SideNavGroup from '@/atoms/sidenav/SideNavGroup';
 import SideNavItem from '@/atoms/sidenav/SideNavItem';
 import * as stories from '@/atoms/storybook/SideNavGroup.meta';
+import { importNext } from './helpers';
 
 const meta = {
   ...stories.sideNavGroupMeta,
@@ -25,7 +26,7 @@ const meta = {
     docs: {
       ...stories.sideNavGroupMeta.parameters.docs,
       description: {
-        component: `${stories.sideNavGroupMeta.parameters.docs.description.component}\n\nThis is the recommended SideNavGroup component for new projects. It is available via the \`next\` entry point of the React package:\n\n\`\`\`tsx\nimport { SideNavGroup } from "@ogcio/design-system-react/next";\n\`\`\``,
+        component: `${stories.sideNavGroupMeta.parameters.docs.description.component}${importNext('SideNavGroup')}`,
       },
     },
   },
