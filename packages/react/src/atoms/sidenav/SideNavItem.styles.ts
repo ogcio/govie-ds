@@ -20,7 +20,7 @@ export default tv({
   ],
   variants: {
     selected: {
-      true: 'gi-shadow-[inset_4px_0_0_var(--gieds-color-border-tone-primary-accent-selected)]',
+      true: 'gi-shadow-[inset_4px_0_0_var(--gieds-color-border-tone-primary-accent-selected)] gi-bg-color-surface-system-neutral-interactive-selected-subtle',
       false: '',
     },
   },
