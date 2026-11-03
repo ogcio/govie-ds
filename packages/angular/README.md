@@ -53,7 +53,9 @@ import { GiContainer, GiH1, GiParagraph } from '@ogcio/design-system-angular';
 export class AppComponent {}
 ```
 
-The package currently exports the layout primitives (`GiBox`, `GiContainer`, `GiGrid`, `GiStack`, `GiDivider`) and the typography components (`GiText`, `GiParagraph`, `GiInsetText`, `GiH1`–`GiH6`). Interactive and composite components are built but not yet exported while their Angular API is settled.
+The main entry point carries the full component set: layout primitives, typography, actions, and the Header, Footer and Breadcrumbs families.
+
+Most of them also ship as a directive that styles a native element instead of wrapping it: `GiTextDirective` on `<span giText>`, `GiH1Directive` on `<h1 giHeading>`, `GiStackDirective` on `<div giStack>`. Import the directive alongside the component and use whichever suits the markup.
 
 ### Icons
 
