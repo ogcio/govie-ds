@@ -1,5 +1,26 @@
 # Changelog
 
+## [1.51.0](https://github.com/ogcio/govie-ds/compare/react-lib-v1.50.0...react-lib-v1.51.0) (2026-11-03)
+
+
+### Features
+
+* **AB#42647:** export React Pagination family and stories ([57204ef](https://github.com/ogcio/govie-ds/commit/57204ef522ccb284b5fd62d142829b1265612408))
+* **AB#44012:** publish the header family with a native Angular API ([051c3e2](https://github.com/ogcio/govie-ds/commit/051c3e230ae98643fa994c2e033e7289e0e72d46))
+* **AB#44012:** rework header nav links into granular parts ([72fcf8a](https://github.com/ogcio/govie-ds/commit/72fcf8abdf409c7dd2a3a35d888ac9ad3df4df94))
+* **AB#44012:** update Header Storybook ([e178f99](https://github.com/ogcio/govie-ds/commit/e178f9907905d292c390ce94a72bfcbf19ea8ef7))
+* **AB#44123:** rework pagination for native angular ([d0b10c8](https://github.com/ogcio/govie-ds/commit/d0b10c8d7f48df5e1fa9465e8354d8878511a041))
+* **AB#44124:** rework breadcrumb items into granular parts ([ee9a351](https://github.com/ogcio/govie-ds/commit/ee9a3512ebfae65c79ee4090e10bf6e83cbbc7b4))
+* **AB#44653:** add angular and react stories for breadcrumbs ([0e34d8c](https://github.com/ogcio/govie-ds/commit/0e34d8cafe39c957eaded3de7ac3e85321a58c80))
+* **AB#44654:** add angular stories for pagination ([171241f](https://github.com/ogcio/govie-ds/commit/171241f62705a369174d4e81d57e283c98cdaada))
+
+
+### Miscellaneous Chores
+
+* **AB#44011:** cleanup footer stories ([d0719e6](https://github.com/ogcio/govie-ds/commit/d0719e67f4a72e5c1b011a1d88402edcd5ce3412))
+* **AB#45007:** regenerate visual baselines for playwright 1.64.1 ([ca74e1d](https://github.com/ogcio/govie-ds/commit/ca74e1dc78829b58389e2846ea1bcb1e7680b04c))
+* **storybook:** drop redundant autodocs tags ([d2dc2f4](https://github.com/ogcio/govie-ds/commit/d2dc2f478cbf8b87935a98a91a5f3a7b8bcf4de4))
+
 ## [1.50.0](https://github.com/ogcio/govie-ds/compare/react-lib-v1.49.0...react-lib-v1.50.0) (2026-10-20)
 
 
