@@ -46,7 +46,7 @@ export const meta = {
     docs: {
       description: {
         component:
-          'Pagination lets users move through a large set of content that is split into pages. Use it when they need to go backward and forward, or jump to a specific page, and the total number of pages is known.\n\nUse page links when each page has its own URL, or page buttons when the page changes in place. Use the same kind for Previous and Next. Collapse skipped ranges with an ellipsis, and set `current` on the page the user is on. Use `getPaginationList` to work out which pages to show.',
+          'Pagination lets users move through a large set of content that is split into pages. Use it when they need to go backward and forward, or jump to a specific page, and the total number of pages is known.\n\nUse page links when each page has its own URL, or page buttons when the page changes in place. Previous and Next use that same component. A link has no disabled state, so when the pages are links, Previous on the first page and Next on the last page should be disabled page buttons. Collapse skipped ranges with an ellipsis, and set `current` on the page the user is on. Use `getPaginationList` to work out which pages to show.',
       },
     },
   },
@@ -85,7 +85,7 @@ export const PaginationList = {
     docs: {
       description: {
         story:
-          'The first, middle and last of 10 pages, built with `getPaginationList` and its default `size` of 7.\n\n`size` is the number of page items shown, including ellipses. It defaults to 7 and is never less than 5. When there are fewer pages than `size`, every page is shown. Otherwise the list keeps the same length: the first and last pages are always shown, the pages next to the current page are shown, and each skipped range becomes an ellipsis.',
+          'The first, middle and last of 10 pages, built with `getPaginationList` and its default `size` of 7.\n\nThe pages are links, so Previous and Next are links too, except at the bounds: on the first page Previous is a disabled page button, and on the last page Next is a disabled page button.\n\n`size` is the number of page items shown, including ellipses. It defaults to 7 and is never less than 5. When there are fewer pages than `size`, every page is shown. Otherwise the list keeps the same length: the first and last pages are always shown, the pages next to the current page are shown, and each skipped range becomes an ellipsis.',
       },
     },
   },
@@ -98,6 +98,39 @@ export const PaginationList = {
       for (const list of lists) {
         expect(list.childElementCount).toBe(size + 2);
       }
+    });
+    await step('previous and next are links, and disabled buttons at the bounds', async () => {
+      const [first, middle, last] = canvas.getAllByRole('list').map((list) => within(list));
+      expect(
+        first.getByRole('button', {
+          name: 'Previous',
+        }),
+      ).toBeDisabled();
+      expect(
+        first.getByRole('link', {
+          name: 'Next',
+        }),
+      ).toBeInTheDocument();
+      expect(
+        middle.getByRole('link', {
+          name: 'Previous',
+        }),
+      ).toBeInTheDocument();
+      expect(
+        middle.getByRole('link', {
+          name: 'Next',
+        }),
+      ).toBeInTheDocument();
+      expect(
+        last.getByRole('link', {
+          name: 'Previous',
+        }),
+      ).toBeInTheDocument();
+      expect(
+        last.getByRole('button', {
+          name: 'Next',
+        }),
+      ).toBeDisabled();
     });
   },
 } satisfies Story<Props>;

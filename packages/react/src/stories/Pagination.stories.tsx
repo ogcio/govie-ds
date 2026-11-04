@@ -121,7 +121,7 @@ export const PaginationList: Story = {
   render: function Render() {
     const total = 10;
     const size = 7;
-    const currentPages = [1, 5, 10];
+    const currentPages = [1, 5, total];
 
     return (
       <Stack align="center" gap={2}>
@@ -130,10 +130,17 @@ export const PaginationList: Story = {
 
           return (
             <Pagination key={currentPage} ariaLabel={`Page ${currentPage} of ${total}`}>
-              <PaginationLink href="#" className="gi-flex gi-gap-2">
-                <ArrowBackward />
-                Previous
-              </PaginationLink>
+              {currentPage === 1 ? (
+                <PaginationButton disabled className="gi-flex gi-gap-2">
+                  <ArrowBackward />
+                  Previous
+                </PaginationButton>
+              ) : (
+                <PaginationLink href="#" className="gi-flex gi-gap-2">
+                  <ArrowBackward />
+                  Previous
+                </PaginationLink>
+              )}
               {pages.map((page, index) =>
                 page === -1 ? (
                   <PaginationEllipsis key={`${index}-ellipsis`} />
@@ -143,10 +150,17 @@ export const PaginationList: Story = {
                   </PaginationLink>
                 ),
               )}
-              <PaginationLink href="#" className="gi-flex gi-gap-2">
-                Next
-                <ArrowForward />
-              </PaginationLink>
+              {currentPage === total ? (
+                <PaginationButton disabled className="gi-flex gi-gap-2">
+                  Next
+                  <ArrowForward />
+                </PaginationButton>
+              ) : (
+                <PaginationLink href="#" className="gi-flex gi-gap-2">
+                  Next
+                  <ArrowForward />
+                </PaginationLink>
+              )}
             </Pagination>
           );
         })}
