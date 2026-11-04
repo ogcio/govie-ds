@@ -111,7 +111,7 @@ export const PaginationList: Story = {
   render: () => {
     const total = 10;
     const size = 7;
-    const lists = [1, 5, 10].map((currentPage) => ({
+    const lists = [1, 5, total].map((currentPage) => ({
       currentPage,
       pages: getPaginationList({ current: currentPage, total, size }),
     }));
@@ -119,16 +119,31 @@ export const PaginationList: Story = {
     return {
       props: { total, lists },
       moduleMetadata: {
-        imports: [GiPagination, GiPaginationItemLink, GiPaginationItemEllipsis, GiStack, ArrowBackward, ArrowForward],
+        imports: [
+          GiPagination,
+          GiPaginationItemLink,
+          GiPaginationItemButton,
+          GiPaginationItemEllipsis,
+          GiStack,
+          ArrowBackward,
+          ArrowForward,
+        ],
       },
       template: `
         <gi-stack align="center" [gap]="2">
           @for (list of lists; track list.currentPage) {
             <gi-pagination [ariaLabel]="'Page ' + list.currentPage + ' of ' + total">
-              <gi-pagination-item-link href="#" class="gi-flex gi-gap-2">
-                <gi-arrow-backward-icon />
-                Previous
-              </gi-pagination-item-link>
+              @if (list.currentPage === 1) {
+                <gi-pagination-item-button disabled class="gi-flex gi-gap-2">
+                  <gi-arrow-backward-icon />
+                  Previous
+                </gi-pagination-item-button>
+              } @else {
+                <gi-pagination-item-link href="#" class="gi-flex gi-gap-2">
+                  <gi-arrow-backward-icon />
+                  Previous
+                </gi-pagination-item-link>
+              }
               @for (page of list.pages; track $index) {
                 @if (page === -1) {
                   <gi-pagination-item-ellipsis />
@@ -136,10 +151,17 @@ export const PaginationList: Story = {
                   <gi-pagination-item-link href="#" [current]="page === list.currentPage">{{ page }}</gi-pagination-item-link>
                 }
               }
-              <gi-pagination-item-link href="#" class="gi-flex gi-gap-2">
-                Next
-                <gi-arrow-forward-icon />
-              </gi-pagination-item-link>
+              @if (list.currentPage === total) {
+                <gi-pagination-item-button disabled class="gi-flex gi-gap-2">
+                  Next
+                  <gi-arrow-forward-icon />
+                </gi-pagination-item-button>
+              } @else {
+                <gi-pagination-item-link href="#" class="gi-flex gi-gap-2">
+                  Next
+                  <gi-arrow-forward-icon />
+                </gi-pagination-item-link>
+              }
             </gi-pagination>
           }
         </gi-stack>
@@ -154,7 +176,7 @@ export const Directive: StoryObj<GiPaginationLinkDirective> = {
     docs: {
       description: {
         story:
-          'Use the directives when you need to own the element. `giPaginationLink` styles an `a` and `giPaginationButton` styles a `button`. Both take `current`, and `giPaginationButton` also takes `disabled`. Unlike the components, the directives do not render a list item, so wrap each element in an `li` marked with `giPaginationItem`. `gi-pagination-item-ellipsis` renders its own list item, so place it directly inside `gi-pagination`.',
+          'Use the directives when you need to own the element. `giPaginationLink` styles an `a` and `giPaginationButton` styles a `button`. Both take `current`, and `giPaginationButton` also takes `disabled`. Unlike the components, the directives do not render a list item, so wrap each element in an `li` marked with `giPaginationItem`. There is no directive for the ellipses - use `gi-pagination-item-ellipsis` directly.',
       },
     },
   },
@@ -206,6 +228,11 @@ export const Directive: StoryObj<GiPaginationLinkDirective> = {
       </gi-pagination>
     `,
   }),
+};
+
+export const TestDirective: StoryObj<GiPaginationLinkDirective> = {
+  ...Directive,
+  tags: ['skip-playwright', '!autodocs', '!dev'],
   play: async ({ canvasElement, step }) => {
     const canvas = within(canvasElement);
 
@@ -232,13 +259,13 @@ export const Directive: StoryObj<GiPaginationLinkDirective> = {
 
 export const WithRouter: StoryObj<GiPaginationLinkDirective> = {
   tags: ['skip-playwright'],
-  decorators: [withRouter(['', 'page/1', 'page/2', 'page/3'])],
+  decorators: [withRouter(['', 'page/1', 'page/2', 'page/3'], { initialUrl: '/page/1' })],
   parameters: {
     controls: { disable: true },
     docs: {
       description: {
         story:
-          '`giPaginationLink` works with the native Angular router: put it on the same `a` as `routerLink`, inside an `li` marked with `giPaginationItem`. Bind `current` to `routerLinkActive` so the active route sets `aria-current="page"`.',
+          '`giPaginationLink` works with the native Angular router: put it on the same `a` as `routerLink`, inside an `li` marked with `giPaginationItem`. Bind `current` to `routerLinkActive` so the active route sets `aria-current="page"`. Previous and Next are links to the adjacent page, and become a disabled `giPaginationButton` at the first and last page, because a link cannot be disabled.',
       },
     },
   },
@@ -248,6 +275,7 @@ export const WithRouter: StoryObj<GiPaginationLinkDirective> = {
         GiPagination,
         GiPaginationItemDirective,
         GiPaginationLinkDirective,
+        GiPaginationButtonDirective,
         RouterLink,
         RouterLinkActive,
         ArrowBackward,
@@ -257,10 +285,17 @@ export const WithRouter: StoryObj<GiPaginationLinkDirective> = {
     template: `
       <gi-pagination ariaLabel="Pagination">
         <li giPaginationItem>
-          <a giPaginationLink class="gi-flex gi-gap-2" routerLink="/page/1">
-            <gi-arrow-backward-icon />
-            Previous
-          </a>
+          @if (!page1.isActive) {
+            <a giPaginationLink [routerLink]="['/page', page3.isActive ? 2 : 1]" class="gi-flex gi-gap-2">
+              <gi-arrow-backward-icon />
+              Previous
+            </a>
+          } @else {
+            <button giPaginationButton type="button" disabled class="gi-flex gi-gap-2">
+              <gi-arrow-backward-icon />
+              Previous
+            </button>
+          }
         </li>
         <li giPaginationItem>
           <a giPaginationLink routerLink="/page/1" routerLinkActive #page1="routerLinkActive" [current]="page1.isActive">1</a>
@@ -272,14 +307,26 @@ export const WithRouter: StoryObj<GiPaginationLinkDirective> = {
           <a giPaginationLink routerLink="/page/3" routerLinkActive #page3="routerLinkActive" [current]="page3.isActive">3</a>
         </li>
         <li giPaginationItem>
-          <a giPaginationLink class="gi-flex gi-gap-2" routerLink="/page/3">
-            Next
-            <gi-arrow-forward-icon />
-          </a>
+          @if (!page3.isActive) {
+            <a giPaginationLink [routerLink]="['/page', page1.isActive ? 2 : 3]" class="gi-flex gi-gap-2">
+              Next
+              <gi-arrow-forward-icon />
+            </a>
+          } @else {
+            <button giPaginationButton type="button" disabled class="gi-flex gi-gap-2">
+              Next
+              <gi-arrow-forward-icon />
+            </button>
+          }
         </li>
       </gi-pagination>
     `,
   }),
+};
+
+export const TestWithRouter: StoryObj<GiPaginationLinkDirective> = {
+  ...WithRouter,
+  tags: ['skip-playwright', '!autodocs', '!dev'],
   play: async ({ canvasElement, step }) => {
     const canvas = within(canvasElement);
     const page1 = canvas.getByRole('link', { name: '1' });
@@ -299,10 +346,24 @@ export const WithRouter: StoryObj<GiPaginationLinkDirective> = {
       expect(page3.getAttribute('aria-current')).toBeNull();
     });
 
-    await step('moving to another page moves current with the route', async () => {
+    await step('previous and next are router links to the adjacent pages', async () => {
+      expect(canvas.getByRole('link', { name: 'Previous' }).getAttribute('href')).toBe('#/page/1');
+      expect(canvas.getByRole('link', { name: 'Next' }).getAttribute('href')).toBe('#/page/3');
+    });
+
+    await step('next navigates and becomes a disabled button on the last page', async () => {
       await userEvent.click(canvas.getByRole('link', { name: 'Next' }));
       await waitFor(() => expect(page3.getAttribute('aria-current')).toBe('page'));
       expect(page2.getAttribute('aria-current')).toBeNull();
+      expect(canvas.getByRole('button', { name: 'Next' })).toBeDisabled();
+    });
+
+    await step('previous navigates and becomes a disabled button on the first page', async () => {
+      await userEvent.click(canvas.getByRole('link', { name: 'Previous' }));
+      await waitFor(() => expect(page2.getAttribute('aria-current')).toBe('page'));
+      await userEvent.click(canvas.getByRole('link', { name: 'Previous' }));
+      await waitFor(() => expect(page1.getAttribute('aria-current')).toBe('page'));
+      expect(canvas.getByRole('button', { name: 'Previous' })).toBeDisabled();
     });
   },
 };
