@@ -2,7 +2,7 @@ import { Slot, useDefaultProps, useMetadata } from '@builder.io/mitosis';
 import { getDownload, isAriaHidden } from '../utilities';
 import classes, { actionClasses, listItemClasses } from './SideNavItem.styles';
 
-useMetadata({ angular: { selector: 'gi-side-nav-item-link' } });
+useMetadata({ angular: { selector: 'core-side-nav-item-link' } });
 
 useDefaultProps({
   download: undefined,

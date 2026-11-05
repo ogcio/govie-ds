@@ -4,7 +4,7 @@ import GiKeyboardArrowDownIcon from '../icons/KeyboardArrowDown.lite';
 import { isAriaHidden } from '../utilities';
 import { tv } from 'tailwind-variants';
 
-useMetadata({ angular: { selector: 'gi-side-nav-group' } });
+useMetadata({ angular: { selector: 'core-side-nav-group' } });
 
 useDefaultProps({
   ariaHidden: undefined,

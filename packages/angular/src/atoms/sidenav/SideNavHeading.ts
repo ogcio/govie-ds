@@ -32,7 +32,7 @@ const listItemClasses = tv({
 });
 
 @Component({
-  selector: 'gi-side-nav-heading',
+  selector: 'core-side-nav-heading',
   template: `
     <li [class]="listItemClasses()">
       <h5
