@@ -1,0 +1,120 @@
+/*
+ * Compiled into the shadow root: the page's stylesheets never reach the inspector, so it carries
+ * the utilities of the Design System components it uses plus its own few styles below.
+ * Theme tokens arrive through CSS custom property inheritance from the page.
+ */
+@import 'tailwindcss/base';
+@import 'tailwindcss/components';
+@import 'tailwindcss/utilities';
+
+:host {
+  --primary: var(--gieds-color-surface-system-primary-default, #004d44);
+  --accent: var(--gieds-color-gold-500, #a39161);
+  --highlight: var(--gieds-color-emerald-500, #00b089);
+  --surface: var(--gieds-color-surface-system-neutral-default, #ffffff);
+  --text: var(--gieds-color-text-system-neutral-default, #0b0c0c);
+  --text-muted: var(--gieds-color-text-system-neutral-muted, #686d78);
+  --focus: var(--gieds-color-shadow-intent-focus-default, #ffdd00);
+  --shadow: var(--gieds-shadow-400, 0 10px 15px -3px #0000001a);
+
+  all: initial;
+  font-family: var(--gieds-font-family-primary, Lato, Arial, sans-serif);
+  color: var(--text);
+}
+
+.highlight {
+  position: fixed;
+  z-index: 2147483646;
+  pointer-events: none;
+  border: 2px solid var(--highlight);
+  border-radius: 2px;
+  background: color-mix(in srgb, var(--highlight) 12%, transparent);
+}
+
+.highlight.pinned {
+  border-color: var(--primary);
+  background: color-mix(in srgb, var(--primary) 12%, transparent);
+}
+
+.card {
+  position: fixed;
+  z-index: 2147483647;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  width: max-content;
+  max-width: min(340px, calc(100vw - 16px));
+  padding: 12px 14px;
+  border-top: 4px solid var(--primary);
+  border-radius: 6px;
+  background: var(--surface);
+  box-shadow: var(--shadow);
+  /* Hovering passes through to the page. Only the documentation link of a pinned card takes clicks. */
+  pointer-events: none;
+}
+
+.ancestors {
+  font-size: 0.75rem;
+  color: var(--text-muted);
+}
+
+.selector {
+  font-family: var(--gieds-font-family-tertiary, ui-monospace, monospace);
+  font-size: 0.75rem;
+  color: var(--primary);
+}
+
+/* Same box whether it is plain text or, once pinned, a link: only the colour changes. */
+.docs {
+  font-size: 0.875rem;
+  line-height: 1.5;
+  color: var(--text-muted);
+}
+
+.docs:not([inert]) a {
+  pointer-events: auto;
+}
+
+/* Until the card is pinned, the link is inert and reads as plain grey text. */
+.docs[inert] a {
+  color: var(--text-muted);
+  text-decoration: none;
+}
+
+.toggle {
+  position: fixed;
+  z-index: 2147483647;
+  right: 16px;
+  bottom: 16px;
+  cursor: pointer;
+  border: 0;
+  border-radius: 6px;
+  padding: 10px 16px;
+  font: inherit;
+  font-size: 0.875rem;
+  font-weight: 700;
+  color: var(--surface);
+  background: var(--primary);
+  /* The white ring keeps the button visible over dark parts of the page too. */
+  box-shadow:
+    0 0 0 2px var(--surface),
+    var(--shadow);
+}
+
+.toggle:hover {
+  background: color-mix(in srgb, var(--primary) 85%, black);
+}
+
+.toggle.active {
+  color: var(--text);
+  background: var(--accent);
+}
+
+.toggle.active:hover {
+  background: color-mix(in srgb, var(--accent) 85%, white);
+}
+
+.toggle:focus-visible {
+  outline: 3px solid var(--focus);
+  outline-offset: 2px;
+}
