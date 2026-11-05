@@ -6,16 +6,17 @@ export { default as Stack, type Props as StackProps } from './atoms/Stack.vue';
 export { default as Divider, type Props as DividerProps } from './atoms/Divider.vue';
 
 // Typography
-export { default as Text, type Props as TextProps } from './atoms/Text.vue';
-export { default as Paragraph, type Props as ParagraphProps } from './atoms/Paragraph.vue';
-export { default as InsetText, type Props as InsetTextProps } from './atoms/InsetText.vue';
-export { default as H1 } from './atoms/heading/H1.vue';
-export { default as H2 } from './atoms/heading/H2.vue';
-export { default as H3 } from './atoms/heading/H3.vue';
-export { default as H4 } from './atoms/heading/H4.vue';
-export { default as H5 } from './atoms/heading/H5.vue';
-export { default as H6 } from './atoms/heading/H6.vue';
-export type { Props as HeadingProps, Size as HeadingSize } from './atoms/heading/types';
+export { default as Text, type Props as TextProps } from './Text.vue';
+export { default as Paragraph, type Props as ParagraphProps } from './Paragraph.vue';
+export { default as InsetText, type Props as InsetTextProps } from './InsetText.vue';
+export { default as H1 } from './H1.vue';
+export { default as H2 } from './H2.vue';
+export { default as H3 } from './H3.vue';
+export { default as H4 } from './H4.vue';
+export { default as H5 } from './H5.vue';
+export { default as H6 } from './H6.vue';
+export { HeadingSize, type Props as HeadingProps } from './heading';
+export { Align, Size, Whitespace } from './constants';
 
 // Actions
 export { default as Button, type Props as ButtonProps } from './atoms/Button.vue';
