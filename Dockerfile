@@ -29,7 +29,7 @@ RUN corepack enable pnpm && \
       --filter "@ogcio/design-system-vue^..." \
       --filter "@ogcio/examples-angular^..." \
       run build && \
-    pnpm --filter @ogcio/examples-angular run build --base-href /examples/angular/ && \
+    pnpm --filter @ogcio/examples-angular run build:showcase --base-href /examples/angular/ && \
     pnpm --filter @ogcio/design-system-html \
       --filter @ogcio/design-system-react \
       --filter @ogcio/design-system-angular \
