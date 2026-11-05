@@ -308,6 +308,9 @@ importers:
       '@angular/compiler-cli':
         specifier: ~21.2.0
         version: 21.2.12(@angular/compiler@21.2.12)(typescript@5.9.3)
+      '@ogcio/design-system-inspector':
+        specifier: workspace:*
+        version: link:../../packages/inspector
       '@ogcio/design-system-tailwind':
         specifier: workspace:*
         version: link:../../packages/design/tailwind

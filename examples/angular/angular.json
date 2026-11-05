@@ -56,6 +56,21 @@
               "optimization": false,
               "extractLicenses": false,
               "sourceMap": true
+            },
+            "showcase": {
+              "scripts": ["node_modules/@ogcio/design-system-inspector/dist/inspector.js"],
+              "budgets": [
+                {
+                  "type": "initial",
+                  "maximumWarning": "1.5MB",
+                  "maximumError": "2MB"
+                },
+                {
+                  "type": "anyComponentStyle",
+                  "maximumWarning": "4kB",
+                  "maximumError": "8kB"
+                }
+              ]
             }
           },
           "defaultConfiguration": "production"
@@ -68,6 +83,9 @@
             },
             "development": {
               "buildTarget": "ogcio-demo:build:development"
+            },
+            "showcase": {
+              "buildTarget": "ogcio-demo:build:development,showcase"
             }
           },
           "defaultConfiguration": "development"
