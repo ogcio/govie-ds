@@ -79,7 +79,7 @@ Each logo accepts inputs including `size`, `className` and `label`. Set `label` 
 
 ## Documentation
 
-See the [design system documentation](https://ds.services.gov.ie/components/) for component guidance and accessibility notes. For Angular examples and component inputs, visit the[Angular Storybook](https://ds.services.gov.ie/storybook-angular), or [run Storybook locally](#storybook). Some components shown in Storybook are not yet exported by the package. Check the package’s type declarations for available exports and inputs.
+See the [design system documentation](https://ds.services.gov.ie/components/) for component guidance and accessibility notes. For Angular examples and component inputs, visit the[Angular Storybook](https://ds.services.gov.ie/storybook/angular), or [run Storybook locally](#storybook). Some components shown in Storybook are not yet exported by the package. Check the package’s type declarations for available exports and inputs.
 
 ## Local development
 
