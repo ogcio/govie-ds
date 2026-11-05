@@ -44,7 +44,8 @@
     "packages/angular/**/*.{js,ts,tsx}": "eslint --config packages/angular/eslint.config.js",
     "packages/core/**/*.{js,ts,tsx}": "eslint --config packages/core/eslint.config.js",
     "apps/docs/**/*.{js,ts,tsx}": "eslint --config apps/docs/eslint.config.js",
-    "{packages/!(react|html|vue|angular|core),examples}/**/*.{js,ts,tsx}": "eslint",
+    "packages/inspector/**/*.{js,ts,tsx}": "eslint --config packages/inspector/eslint.config.js",
+    "{packages/!(react|html|vue|angular|core|inspector),examples}/**/*.{js,ts,tsx}": "eslint",
     "{apps,packages,examples}/**/*": "prettier --check --ignore-unknown"
   },
   "devDependencies": {

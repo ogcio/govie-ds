@@ -843,6 +843,39 @@ importers:
         specifier: 3.24.1
         version: 3.24.1
 
+  packages/inspector:
+    devDependencies:
+      '@ogcio/design-system-react':
+        specifier: workspace:*
+        version: link:../react
+      '@ogcio/design-system-tailwind':
+        specifier: workspace:*
+        version: link:../design/tailwind
+      '@types/react':
+        specifier: 19.2.14
+        version: 19.2.14
+      '@types/react-dom':
+        specifier: 19.2.3
+        version: 19.2.3(@types/react@19.2.14)
+      eslint-plugin-react-hooks:
+        specifier: ^7.1.1
+        version: 7.1.1(eslint@9.39.4(jiti@2.6.1))
+      react:
+        specifier: 19.2.4
+        version: 19.2.4
+      react-dom:
+        specifier: 19.2.4
+        version: 19.2.4(react@19.2.4)
+      tailwindcss:
+        specifier: 3.4.14
+        version: 3.4.14
+      typescript:
+        specifier: ^5.9.3
+        version: 5.9.3
+      vite:
+        specifier: 8.0.12
+        version: 8.0.12(@types/node@22.10.5)(esbuild@0.27.4)(jiti@2.6.1)(less@4.6.4)(sass@1.98.0)(terser@5.46.1)(tsx@4.21.0)(yaml@2.8.3)
+
   packages/react:
     dependencies:
       '@fontsource/lato':
