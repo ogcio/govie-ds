@@ -36,7 +36,7 @@ export type Props = {
   className?: string;
   styles?: Record<string, string>;
   dataTestId?: string;
-  ariaHidden?: boolean;
+  ariaHidden?: boolean | 'true' | 'false';
 };
 
 const props = withDefaults(defineProps<Props>(), {

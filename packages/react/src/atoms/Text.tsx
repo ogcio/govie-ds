@@ -14,7 +14,7 @@ export type Props = {
   id?: string;
   dataTestId?: string;
   styles?: Record<string, string>;
-  ariaHidden?: boolean;
+  ariaHidden?: boolean | 'true' | 'false';
 };
 
 import type { Size, ValueOf, Whitespace } from './constants';
