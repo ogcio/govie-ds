@@ -14,6 +14,7 @@ import { getAppearance, getSize, getVariant } from './Button.styles';
 import classes from './LinkButton.styles';
 import type { Props as ButtonProps } from './Button';
 import type { Props as LinkProps } from './Link';
+import { isAriaHidden } from './utilities';
 
 function LinkButton(props: Props) {
   props = { download: undefined, ariaCurrent: undefined, ariaHidden: undefined, ...props };
@@ -36,7 +37,7 @@ function LinkButton(props: Props) {
       aria-labelledby={props.ariaLabelledBy}
       aria-describedby={props.ariaDescribedBy}
       aria-hidden={props.ariaHidden}
-      tabIndex={props.ariaHidden ? -1 : props.tabIndex}
+      tabIndex={isAriaHidden(props.ariaHidden) ? -1 : props.tabIndex}
       lang={props.lang}
       onClick={(event) => props.onClick && props.onClick(event)}
       onFocus={(event) => props.onFocus && props.onFocus(event)}

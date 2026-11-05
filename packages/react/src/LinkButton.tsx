@@ -2,6 +2,7 @@ import { Slot } from '@radix-ui/react-slot';
 import GiLinkButton, { type Props as GiLinkButtonProps } from '@/atoms/LinkButton';
 import classes from '@/atoms/LinkButton.styles';
 import { getSize, getVariant, getAppearance } from '@/atoms/Button.styles';
+import { isAriaHidden } from '@/atoms/utilities';
 
 export type LinkButtonProps =
   | (GiLinkButtonProps & { asChild?: false; style?: React.CSSProperties })
@@ -32,7 +33,7 @@ export function LinkButton({
   const anchorProps = {
     target: target ?? (external ? '_blank' : undefined),
     rel: rel ?? (external ? 'noreferrer noopener' : undefined),
-    tabIndex: ariaHidden ? -1 : tabIndex,
+    tabIndex: isAriaHidden(ariaHidden) ? -1 : tabIndex,
   };
 
   if (asChild) {

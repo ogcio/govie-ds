@@ -26,7 +26,7 @@
     :aria-labelledby="ariaLabelledBy"
     :aria-describedby="ariaDescribedBy"
     :aria-hidden="ariaHidden"
-    :tabIndex="ariaHidden ? -1 : tabIndex"
+    :tabIndex="isAriaHidden(ariaHidden) ? -1 : tabIndex"
     :lang="lang"
     @click="async (event) => onClick && onClick(event)"
     @focus="async (event) => onFocus && onFocus(event)"
@@ -42,6 +42,7 @@
 import classes from './Link.styles';
 import type { Appearance, Underline, Variant, Visited } from './Link.styles';
 import type { ValueOf } from './constants';
+import { isAriaHidden } from './utilities';
 
 export type Props = {
   id?: string;
