@@ -29,7 +29,7 @@ const classes = tv({
 });
 
 @Component({
-  selector: 'gi-side-nav-heading',
+  selector: 'core-side-nav-heading',
   template: `
     <li class="gi-list-none">
       <h5

@@ -36,7 +36,7 @@ const defaultProps: any = { download: undefined, ariaHidden: undefined, ariaCurr
 import classes, { actionClasses, listItemClasses } from './SideNavItem.styles';
 
 @Component({
-  selector: 'gi-side-nav-item-link',
+  selector: 'core-side-nav-item-link',
   template: `
     <li [class]="listItemClasses()" [attr.aria-hidden]="ariaHidden">
       <a

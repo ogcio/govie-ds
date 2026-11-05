@@ -1,6 +1,6 @@
 import { useMetadata } from '@builder.io/mitosis';
 
-useMetadata({ angular: { selector: 'gi-side-nav' } });
+useMetadata({ angular: { selector: 'core-side-nav' } });
 
 export type Props = {
   children?: any;

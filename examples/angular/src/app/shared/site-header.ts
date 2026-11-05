@@ -14,7 +14,7 @@ import {
   GiLinkDirective,
 } from '@ogcio/design-system-angular';
 import { LogoHarpWhite, LogoWhite } from '@ogcio/design-system-angular/logos';
-import { GiSideNavItemDirective, GiSideNavLinkDirective, SideNav } from '@ogcio/design-system-angular/preview';
+import { GiSideNavItemDirective, GiSideNavLinkDirective, GiSideNav } from '@ogcio/design-system-angular/preview';
 import { CloseIcon, MenuIcon } from '@ogcio/design-system-angular/icons';
 import { filter } from 'rxjs';
 
@@ -33,7 +33,7 @@ import { filter } from 'rxjs';
     GiHeaderNavItemDirective,
     GiHeaderNavLinkDirective,
     GiHeaderNavButtonDirective,
-    SideNav,
+    GiSideNav,
     GiSideNavItemDirective,
     GiSideNavLinkDirective,
     LogoWhite,
