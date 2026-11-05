@@ -23,7 +23,7 @@ const listClasses = tv({
 });
 
 @Component({
-  selector: 'gi-side-nav',
+  selector: 'core-side-nav',
   template: `
     <nav
       [attr.id]="id"

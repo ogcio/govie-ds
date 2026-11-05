@@ -50,7 +50,7 @@ const listItemClasses = tv({
 });
 
 @Component({
-  selector: 'gi-side-nav-group',
+  selector: 'core-side-nav-group',
   template: `
     <li [class]="listItemClasses()" [attr.aria-hidden]="ariaHidden">
       <div [class]="rowClasses()">

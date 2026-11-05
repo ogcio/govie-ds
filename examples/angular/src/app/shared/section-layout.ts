@@ -1,11 +1,11 @@
 import { Component, input } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
 import { GiContainer, GiGrid } from '@ogcio/design-system-angular';
-import { SideNav } from '@ogcio/design-system-angular/preview';
+import { GiSideNav } from '@ogcio/design-system-angular/preview';
 
 @Component({
   selector: 'app-section-layout',
-  imports: [RouterOutlet, GiContainer, GiGrid, SideNav],
+  imports: [RouterOutlet, GiContainer, GiGrid, GiSideNav],
   template: `
     <gi-container class="py-8 lg:py-12">
       <gi-grid container [columns]="{ base: 4, md: 8, lg: 12 }" [gap]="8">
