@@ -22,7 +22,7 @@
     :aria-labelledby="ariaLabelledBy"
     :aria-describedby="ariaDescribedBy"
     :aria-hidden="ariaHidden"
-    :tabIndex="ariaHidden ? -1 : tabIndex"
+    :tabIndex="isAriaHidden(ariaHidden) ? -1 : tabIndex"
     :lang="lang"
     :data-testid="dataTestId"
     @click="async (event) => onClick && onClick(event)"
@@ -33,7 +33,7 @@
 </template>
 
 <script setup lang="ts">
-import { getDownload } from '../utilities';
+import { getDownload, isAriaHidden } from '../utilities';
 import { linkClasses } from './HeaderNavItem.styles';
 
 export type Props = {

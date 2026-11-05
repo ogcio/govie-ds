@@ -1,4 +1,5 @@
 import { Slot, useDefaultProps, useMetadata } from '@builder.io/mitosis';
+import { isAriaHidden } from '../utilities';
 import classes, { actionClasses, listItemClasses } from './SideNavItem.styles';
 
 useMetadata({ angular: { selector: 'gi-side-nav-item-link' } });
@@ -55,7 +56,7 @@ export default function SideNavItemLink(props: Props) {
         aria-label={props.ariaLabel}
         aria-labelledby={props.ariaLabelledBy}
         aria-describedby={props.ariaDescribedBy}
-        tabIndex={props.ariaHidden ? -1 : props.tabIndex}
+        tabIndex={isAriaHidden(props.ariaHidden) ? -1 : props.tabIndex}
         lang={props.lang}
         data-testid={props.dataTestId}
       >

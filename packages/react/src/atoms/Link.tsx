@@ -39,6 +39,7 @@ export type Props = {
 import classes from './Link.styles';
 import type { Appearance, Underline, Variant, Visited } from './Link.styles';
 import type { ValueOf } from './constants';
+import { isAriaHidden } from './utilities';
 
 function Link(props: Props) {
   props = { download: undefined, ariaCurrent: undefined, ariaHidden: undefined, ...props };
@@ -62,7 +63,7 @@ function Link(props: Props) {
       aria-labelledby={props.ariaLabelledBy}
       aria-describedby={props.ariaDescribedBy}
       aria-hidden={props.ariaHidden}
-      tabIndex={props.ariaHidden ? -1 : props.tabIndex}
+      tabIndex={isAriaHidden(props.ariaHidden) ? -1 : props.tabIndex}
       lang={props.lang}
       onClick={(event) => props.onClick && props.onClick(event)}
       onFocus={(event) => props.onFocus && props.onFocus(event)}

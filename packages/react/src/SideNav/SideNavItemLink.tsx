@@ -2,6 +2,7 @@ import { Slot } from '@radix-ui/react-slot';
 import GiSideNavItemLink from '@/atoms/sidenav/SideNavItemLink';
 import type { Props } from '@/atoms/sidenav/SideNavItemLink';
 import classes, { actionClasses, listItemClasses } from '@/atoms/sidenav/SideNavItem.styles';
+import { isAriaHidden } from '@/atoms/utilities';
 
 export type SideNavItemLinkAsChild = Omit<Props, 'href'> & {
   asChild: true;
@@ -37,7 +38,7 @@ export default function SideNavItemLink({
     const anchorProps = {
       target: target ?? (external ? '_blank' : undefined),
       rel: rel ?? (external ? 'noreferrer noopener' : undefined),
-      tabIndex: ariaHidden ? -1 : tabIndex,
+      tabIndex: isAriaHidden(ariaHidden) ? -1 : tabIndex,
     };
     return (
       <li className={listItemClasses()} aria-hidden={ariaHidden}>

@@ -26,7 +26,7 @@
         :aria-label="ariaLabel"
         :aria-expanded="!!open"
         :aria-controls="ariaControls"
-        :tabIndex="ariaHidden ? -1 : tabIndex"
+        :tabIndex="isAriaHidden(ariaHidden) ? -1 : tabIndex"
         :data-testid="dataTestId"
       >
         <slot name="label"></slot>
@@ -66,6 +66,7 @@
 <script setup lang="ts">
 import classes, { actionClasses, arrowClasses, chevronClasses, rowClasses } from './SideNavItem.styles';
 import GiKeyboardArrowDownIcon from '../icons/KeyboardArrowDown.vue';
+import { isAriaHidden } from '../utilities';
 import { tv } from 'tailwind-variants';
 const contentClasses = tv({
   base: 'gi-side-nav-group',
@@ -93,7 +94,7 @@ export type Props = {
   onBlur?: (event: any) => void;
   onKeyDown?: (event: any) => void;
   onKeyUp?: (event: any) => void;
-  ariaHidden?: boolean;
+  ariaHidden?: boolean | 'true' | 'false';
   ariaLabel?: string;
   ariaControls?: string;
   tabIndex?: number;

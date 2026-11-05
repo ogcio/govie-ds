@@ -33,6 +33,7 @@ export type Props = {
 };
 const defaultProps: any = { download: undefined, ariaHidden: undefined, ariaCurrent: undefined };
 
+import { isAriaHidden } from '../utilities';
 import classes, { actionClasses, listItemClasses } from './SideNavItem.styles';
 
 @Component({
@@ -59,7 +60,7 @@ import classes, { actionClasses, listItemClasses } from './SideNavItem.styles';
         [attr.aria-label]="ariaLabel"
         [attr.aria-labelledby]="ariaLabelledBy"
         [attr.aria-describedby]="ariaDescribedBy"
-        [attr.tabIndex]="ariaHidden ? -1 : tabIndex"
+        [attr.tabIndex]="isAriaHidden(ariaHidden) ? -1 : tabIndex"
         [attr.lang]="lang"
         [attr.data-testid]="dataTestId"
       >
@@ -79,6 +80,7 @@ import classes, { actionClasses, listItemClasses } from './SideNavItem.styles';
   imports: [CommonModule],
 })
 export default class SideNavItemLink {
+  isAriaHidden = isAriaHidden;
   classes = classes;
   actionClasses = actionClasses;
   listItemClasses = listItemClasses;

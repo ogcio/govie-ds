@@ -1,6 +1,7 @@
 import { Slot } from '@radix-ui/react-slot';
 import GiLink, { type Props as GiLinkProps } from '@/atoms/Link';
 import linkStyles from '@/atoms/Link.styles';
+import { isAriaHidden } from '@/atoms/utilities';
 
 export type LinkProps =
   | (GiLinkProps & { asChild?: false; style?: React.CSSProperties })
@@ -33,7 +34,7 @@ export default function Link({
   const anchorProps = {
     target: target ?? (external ? '_blank' : undefined),
     rel: rel ?? (external ? 'noreferrer noopener' : undefined),
-    tabIndex: ariaHidden ? -1 : tabIndex,
+    tabIndex: isAriaHidden(ariaHidden) ? -1 : tabIndex,
   };
 
   if (asChild) {

@@ -25,7 +25,7 @@
       @keyup="async (event) => onKeyUp && onKeyUp(event)"
       :aria-current="ariaCurrent"
       :aria-label="ariaLabel"
-      :tabIndex="ariaHidden ? -1 : tabIndex"
+      :tabIndex="isAriaHidden(ariaHidden) ? -1 : tabIndex"
       :data-testid="dataTestId"
     >
       <slot />
@@ -35,6 +35,7 @@
 </template>
 
 <script setup lang="ts">
+import { isAriaHidden } from '../utilities';
 import classes, { actionClasses, listItemClasses } from './SideNavItem.styles';
 
 export type Props = {

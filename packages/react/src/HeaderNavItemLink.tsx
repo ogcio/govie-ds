@@ -4,6 +4,7 @@ import type { Props as ItemProps } from '@/atoms/header/HeaderNavItem';
 import GiHeaderNavItemLink from '@/atoms/header/HeaderNavItemLink';
 import type { Props as LinkProps } from '@/atoms/header/HeaderNavItemLink';
 import { linkClasses } from '@/atoms/header/HeaderNavItem.styles';
+import { isAriaHidden } from '@/atoms/utilities';
 
 type Props = Omit<LinkProps, 'styles'> & {
   visible?: ItemProps['visible'];
@@ -42,7 +43,7 @@ export default function HeaderNavItemLink({
     const anchorProps = {
       target: target ?? (external ? '_blank' : undefined),
       rel: rel ?? (external ? 'noreferrer noopener' : undefined),
-      tabIndex: ariaHidden ? -1 : tabIndex,
+      tabIndex: isAriaHidden(ariaHidden) ? -1 : tabIndex,
     };
     return (
       <GiHeaderNavItem visible={visible}>
