@@ -1,5 +1,5 @@
 import type { Meta, StoryObj } from '@storybook/react-vite';
-import { Text } from '@/atoms';
+import Text from '@/atoms/Text';
 import { textMeta, Default as defaultStory, AllTextSizes as allTextSizes } from '@/atoms/storybook/Text.meta';
 import { Size } from '@/atoms/constants';
 

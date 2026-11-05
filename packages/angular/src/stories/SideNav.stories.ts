@@ -1,7 +1,7 @@
 import type { StoryObj } from '@storybook/angular-vite';
 import * as stories from '@/atoms/storybook/SideNav.meta';
 import { GiBox } from '@/Box';
-import { MailIcon, MoreVerticalIcon } from '@/atoms';
+import { MailIcon, MoreVerticalIcon } from '@/icons';
 import { GiIconButton } from '@/IconButton';
 import { GiText } from '@/Text';
 import { GiH2 } from '@/heading/H2';

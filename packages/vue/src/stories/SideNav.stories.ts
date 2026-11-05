@@ -5,15 +5,14 @@ import {
   Box,
   H2,
   IconButton,
-  MailIcon,
-  MoreVerticalIcon,
   Text,
   SideNav,
   SideNavGroup,
   SideNavHeading,
   SideNavItem,
   SideNavItemLink,
-} from '../atoms';
+} from '../index';
+import { MailIcon, MoreVerticalIcon } from '../icons';
 
 const meta = {
   ...stories.sideNavMeta,
