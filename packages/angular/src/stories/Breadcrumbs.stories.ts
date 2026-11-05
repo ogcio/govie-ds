@@ -1,6 +1,6 @@
 import omit from 'lodash/omit';
 import type { Meta, StoryObj } from '@storybook/angular-vite';
-import { HomeIcon } from '@/atoms';
+import { HomeIcon } from '@/icons';
 import { GiBreadcrumbItemEllipsis } from '@/breadcrumbs/BreadcrumbItemEllipsis';
 import { GiBreadcrumbItemLink } from '@/breadcrumbs/BreadcrumbItemLink';
 import { GiBreadcrumbs } from '@/breadcrumbs/Breadcrumbs';

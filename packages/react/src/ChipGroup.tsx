@@ -1,7 +1,7 @@
 import { take } from 'lodash';
 import { Chip } from '@/chip/chip';
 import { Stack, type StackProps } from '@/stack/stack';
-import { Text } from './atoms';
+import Text from '@/atoms/Text';
 
 export type ChipGroupProps = Omit<StackProps, 'direction' | 'gap' | 'wrap' | 'align' | 'role' | 'children'> & {
   items: { label: string; value: string }[];

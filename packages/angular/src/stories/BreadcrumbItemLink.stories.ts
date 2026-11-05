@@ -2,7 +2,7 @@ import type { Meta, StoryObj } from '@storybook/angular-vite';
 import { withRouter } from '@/stories/router';
 import { RouterLink, RouterLinkActive } from '@angular/router';
 import * as stories from '@/atoms/storybook/BreadcrumbLink.meta';
-import { HomeIcon, PersonIcon, SettingsIcon } from '@/atoms';
+import { HomeIcon, PersonIcon, SettingsIcon } from '@/icons';
 import { GiBreadcrumbItemLink, GiBreadcrumbLinkDirective } from '@/breadcrumbs/BreadcrumbItemLink';
 import { GiBreadcrumbs } from '@/breadcrumbs/Breadcrumbs';
 import { GiBreadcrumbItemDirective } from '@/breadcrumbs/BreadcrumbItem';

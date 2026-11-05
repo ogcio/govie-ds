@@ -1,6 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/react-vite';
 import { within, expect } from 'storybook/test';
-import { H1 } from '@/atoms/index.js';
+import Heading from '@/Heading.js';
 import { Paragraph } from '@/paragraph/paragraph.js';
 import type { LinkProps } from './link.js';
 import { Link } from './link.js';
@@ -155,9 +155,9 @@ export const Default: Story = {
 export const InTypographyContext: Story = {
   render: () => (
     <div className="gi-flex gi-flex-col gi-gap-6 gi-p-4 gi-max-w-prose">
-      <H1 className="gi-text-black">
+      <Heading className="gi-text-black">
         Heading with an <Link href="#">inline link</Link>
-      </H1>
+      </Heading>
       <Paragraph as="span" size="md" className="gi-block gi-text-black">
         Paragraph with several links: <Link href="#">first link</Link>, <Link href="#">typography link</Link>,{' '}
         <Link href="#">quivery</Link>, and <Link href="#">jet</Link> to show wrapping and descenders.
