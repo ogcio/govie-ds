@@ -1,6 +1,7 @@
 import { Slot, useDefaultProps, useMetadata } from '@builder.io/mitosis';
 import classes, { actionClasses, arrowClasses, chevronClasses, rowClasses } from './SideNavItem.styles';
 import GiKeyboardArrowDownIcon from '../icons/KeyboardArrowDown.lite';
+import { isAriaHidden } from '../utilities';
 import { tv } from 'tailwind-variants';
 
 useMetadata({ angular: { selector: 'gi-side-nav-group' } });
@@ -23,7 +24,7 @@ export type Props = {
   onBlur?: (event: any) => void;
   onKeyDown?: (event: any) => void;
   onKeyUp?: (event: any) => void;
-  ariaHidden?: boolean;
+  ariaHidden?: boolean | 'true' | 'false';
   ariaLabel?: string;
   ariaControls?: string;
   tabIndex?: number;
@@ -51,7 +52,7 @@ export default function SideNavGroup(props: Props) {
           aria-label={props.ariaLabel}
           aria-expanded={!!props.open}
           aria-controls={props.ariaControls}
-          tabIndex={props.ariaHidden ? -1 : props.tabIndex}
+          tabIndex={isAriaHidden(props.ariaHidden) ? -1 : props.tabIndex}
           data-testid={props.dataTestId}
         >
           <Slot name="label" />

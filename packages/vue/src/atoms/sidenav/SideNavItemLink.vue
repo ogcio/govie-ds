@@ -26,7 +26,7 @@
       :aria-label="ariaLabel"
       :aria-labelledby="ariaLabelledBy"
       :aria-describedby="ariaDescribedBy"
-      :tabIndex="ariaHidden ? -1 : tabIndex"
+      :tabIndex="isAriaHidden(ariaHidden) ? -1 : tabIndex"
       :lang="lang"
       :data-testid="dataTestId"
       ><slot
@@ -36,6 +36,7 @@
 </template>
 
 <script setup lang="ts">
+import { isAriaHidden } from '../utilities';
 import classes, { actionClasses, listItemClasses } from './SideNavItem.styles';
 
 export type Props = {

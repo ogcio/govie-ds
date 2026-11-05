@@ -27,6 +27,7 @@ export type Props = {
   dataTestId?: string;
 };
 
+import { isAriaHidden } from '../utilities';
 import classes, { actionClasses, listItemClasses } from './SideNavItem.styles';
 
 function SideNavItem(props: Props) {
@@ -50,7 +51,7 @@ function SideNavItem(props: Props) {
         onKeyUp={(event) => props.onKeyUp && props.onKeyUp(event)}
         aria-current={props.ariaCurrent}
         aria-label={props.ariaLabel}
-        tabIndex={props.ariaHidden ? -1 : props.tabIndex}
+        tabIndex={isAriaHidden(props.ariaHidden) ? -1 : props.tabIndex}
         data-testid={props.dataTestId}
       >
         {props.children}

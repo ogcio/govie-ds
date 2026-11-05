@@ -1,5 +1,5 @@
 import { useDefaultProps, useMetadata } from '@builder.io/mitosis';
-import { getDownload } from '../utilities';
+import { getDownload, isAriaHidden } from '../utilities';
 import { linkClasses } from './HeaderNavItem.styles';
 
 useMetadata({ angular: { selector: 'core-header-nav-item-link' } });
@@ -48,7 +48,7 @@ export default function HeaderNavItemLink(props: Props) {
       aria-labelledby={props.ariaLabelledBy}
       aria-describedby={props.ariaDescribedBy}
       aria-hidden={props.ariaHidden}
-      tabIndex={props.ariaHidden ? -1 : props.tabIndex}
+      tabIndex={isAriaHidden(props.ariaHidden) ? -1 : props.tabIndex}
       lang={props.lang}
       data-testid={props.dataTestId}
       onClick={(event) => props.onClick && props.onClick(event)}

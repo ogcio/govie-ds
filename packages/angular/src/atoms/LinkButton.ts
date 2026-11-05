@@ -16,6 +16,7 @@ import { getAppearance, getSize, getVariant } from './Button.styles';
 import classes from './LinkButton.styles';
 import type { Props as ButtonProps } from './Button';
 import type { Props as LinkProps } from './Link';
+import { isAriaHidden } from './utilities';
 
 @Component({
   selector: 'core-link-button',
@@ -40,7 +41,7 @@ import type { Props as LinkProps } from './Link';
       [attr.aria-labelledby]="ariaLabelledBy"
       [attr.aria-describedby]="ariaDescribedBy"
       [attr.aria-hidden]="ariaHidden"
-      [attr.tabIndex]="ariaHidden ? -1 : tabIndex"
+      [attr.tabIndex]="isAriaHidden(ariaHidden) ? -1 : tabIndex"
       [attr.lang]="lang"
       (click)="onClick && this.onClick.emit($event)"
       (focus)="onFocus && this.onFocus.emit($event)"
@@ -67,6 +68,7 @@ export default class LinkButton {
   getSize = getSize;
   getVariant = getVariant;
   classes = classes;
+  isAriaHidden = isAriaHidden;
 
   @Input() id!: Props['id'];
   @Input() href!: Props['href'];

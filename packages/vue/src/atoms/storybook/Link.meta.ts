@@ -5,7 +5,7 @@
  */
 
 import type { ArgTypes, Renderer, StoryContext } from 'storybook/internal/types';
-import { within, expect } from 'storybook/test';
+import { within, expect, userEvent } from 'storybook/test';
 import type { Props } from '../Link.vue';
 import { checker } from './utilities';
 export const linkMeta = {
@@ -321,5 +321,18 @@ export const PlainLink = {
           'The default variant renders a bare anchor with no design-system styles. Use it to wrap components like icons, or compose with asChild to style a native anchor.',
       },
     },
+  },
+};
+export const AriaHiddenFalse = {
+  args: {
+    ...linkMeta.args,
+    ariaHidden: 'false' as const,
+    dataTestId: 'link-aria-hidden-false',
+  },
+  tags: ['!dev', '!autodocs', 'skip-playwright'],
+  play: async ({ canvasElement }: StoryContext<Renderer>) => {
+    const link = within(canvasElement as HTMLElement).getByTestId('link-aria-hidden-false');
+    await userEvent.tab();
+    await expect(link).toHaveFocus();
   },
 };

@@ -31,7 +31,7 @@ export type Props = {
 };
 const defaultProps: any = { download: undefined, ariaCurrent: undefined, ariaHidden: undefined };
 
-import { getDownload } from '../utilities';
+import { getDownload, isAriaHidden } from '../utilities';
 import { linkClasses } from './HeaderNavItem.styles';
 
 @Component({
@@ -54,7 +54,7 @@ import { linkClasses } from './HeaderNavItem.styles';
       [attr.aria-labelledby]="ariaLabelledBy"
       [attr.aria-describedby]="ariaDescribedBy"
       [attr.aria-hidden]="ariaHidden"
-      [attr.tabIndex]="ariaHidden ? -1 : tabIndex"
+      [attr.tabIndex]="isAriaHidden(ariaHidden) ? -1 : tabIndex"
       [attr.lang]="lang"
       [attr.data-testid]="dataTestId"
       (click)="onClick && this.onClick.emit($event)"
@@ -76,6 +76,7 @@ import { linkClasses } from './HeaderNavItem.styles';
 })
 export default class HeaderNavItemLink {
   getDownload = getDownload;
+  isAriaHidden = isAriaHidden;
   linkClasses = linkClasses;
 
   @Input() id!: Props['id'];

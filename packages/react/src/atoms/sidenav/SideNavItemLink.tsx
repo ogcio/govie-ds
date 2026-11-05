@@ -32,6 +32,7 @@ export type Props = {
   dataTestId?: string;
 };
 
+import { isAriaHidden } from '../utilities';
 import classes, { actionClasses, listItemClasses } from './SideNavItem.styles';
 
 function SideNavItemLink(props: Props) {
@@ -56,7 +57,7 @@ function SideNavItemLink(props: Props) {
         aria-label={props.ariaLabel}
         aria-labelledby={props.ariaLabelledBy}
         aria-describedby={props.ariaDescribedBy}
-        tabIndex={props.ariaHidden ? -1 : props.tabIndex}
+        tabIndex={isAriaHidden(props.ariaHidden) ? -1 : props.tabIndex}
         lang={props.lang}
         data-testid={props.dataTestId}
       >

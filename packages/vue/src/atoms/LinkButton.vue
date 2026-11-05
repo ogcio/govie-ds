@@ -25,7 +25,7 @@
     :aria-labelledby="ariaLabelledBy"
     :aria-describedby="ariaDescribedBy"
     :aria-hidden="ariaHidden"
-    :tabIndex="ariaHidden ? -1 : tabIndex"
+    :tabIndex="isAriaHidden(ariaHidden) ? -1 : tabIndex"
     :lang="lang"
     @click="async (event) => onClick && onClick(event)"
     @focus="async (event) => onFocus && onFocus(event)"
@@ -42,6 +42,7 @@ import { getAppearance, getSize, getVariant } from './Button.styles';
 import classes from './LinkButton.styles';
 import type { Props as ButtonProps } from './Button.vue';
 import type { Props as LinkProps } from './Link.vue';
+import { isAriaHidden } from './utilities';
 
 export type Props = Omit<LinkProps, 'variant' | 'appearance' | 'underline' | 'visited'> &
   Pick<ButtonProps, 'variant' | 'appearance' | 'size'>;

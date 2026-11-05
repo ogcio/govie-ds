@@ -28,6 +28,7 @@ export type Props = {
 };
 const defaultProps: any = { ariaHidden: undefined, ariaCurrent: undefined };
 
+import { isAriaHidden } from '../utilities';
 import classes, { actionClasses, listItemClasses } from './SideNavItem.styles';
 
 @Component({
@@ -53,7 +54,7 @@ import classes, { actionClasses, listItemClasses } from './SideNavItem.styles';
         (keyup)="onKeyUp && this.onKeyUp.emit($event)"
         [attr.aria-current]="ariaCurrent"
         [attr.aria-label]="ariaLabel"
-        [attr.tabIndex]="ariaHidden ? -1 : tabIndex"
+        [attr.tabIndex]="isAriaHidden(ariaHidden) ? -1 : tabIndex"
         [attr.data-testid]="dataTestId"
       >
         <ng-content></ng-content>
@@ -72,6 +73,7 @@ import classes, { actionClasses, listItemClasses } from './SideNavItem.styles';
   imports: [CommonModule],
 })
 export default class SideNavItem {
+  isAriaHidden = isAriaHidden;
   classes = classes;
   actionClasses = actionClasses;
   listItemClasses = listItemClasses;
