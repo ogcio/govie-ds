@@ -15,7 +15,7 @@ export type Props = {
   className?: string;
   styles?: Record<string, string>;
   dataTestId?: string;
-  ariaHidden?: boolean;
+  ariaHidden?: boolean | 'true' | 'false';
 };
 
 import type { Align, Size, ValueOf, Whitespace } from './constants';

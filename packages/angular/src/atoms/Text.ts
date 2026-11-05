@@ -15,7 +15,7 @@ export type Props = {
   id?: string;
   dataTestId?: string;
   styles?: Record<string, string>;
-  ariaHidden?: boolean;
+  ariaHidden?: boolean | 'true' | 'false';
 };
 const defaultProps: any = { ariaHidden: undefined };
 
