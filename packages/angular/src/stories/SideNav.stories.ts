@@ -5,11 +5,11 @@ import { MailIcon, MoreVerticalIcon } from '@/atoms';
 import { GiIconButton } from '@/IconButton';
 import { GiText } from '@/Text';
 import { GiH2 } from '@/heading/H2';
-import SideNav from '@/atoms/sidenav/SideNav';
-import SideNavHeading from '@/atoms/sidenav/SideNavHeading';
-import SideNavItem from '@/atoms/sidenav/SideNavItem';
-import SideNavItemLink from '@/atoms/sidenav/SideNavItemLink';
-import SideNavGroup from '@/atoms/sidenav/SideNavGroup';
+import { GiSideNav } from '@/sidenav/SideNav';
+import { GiSideNavItemButton } from '@/sidenav/SideNavItemButton';
+import { GiSideNavHeading } from '@/sidenav/SideNavHeading';
+import { GiSideNavItemLink } from '@/sidenav/SideNavItemLink';
+import { GiSideNavGroup } from '@/sidenav/SideNavGroup';
 
 const meta = {
   ...stories.sideNavMeta,
@@ -18,14 +18,14 @@ const meta = {
 };
 
 export default meta;
-type Story = StoryObj<SideNav>;
+type Story = StoryObj<GiSideNav>;
 
 const sideNavImports = [
-  SideNav,
-  SideNavHeading,
-  SideNavItem,
-  SideNavItemLink,
-  SideNavGroup,
+  GiSideNav,
+  GiSideNavHeading,
+  GiSideNavItemButton,
+  GiSideNavItemLink,
+  GiSideNavGroup,
   GiBox,
   GiH2,
   MailIcon,
@@ -54,72 +54,68 @@ export const Default: Story = {
       selectItem(this: SideNavStoryState, value: string) {
         this.current = value;
       },
-      toggleInbox(this: SideNavStoryState) {
-        this.inboxOpen = !this.inboxOpen;
-      },
     },
     moduleMetadata: {
       imports: sideNavImports,
     },
     template: `
-      <gi-side-nav [dataTestId]="dataTestId" [ariaLabel]="ariaLabel" [className]="'gi-max-w-xs'">
+      <gi-side-nav [dataTestId]="dataTestId" [ariaLabel]="ariaLabel" class="gi-max-w-sm">
         <gi-side-nav-heading>Messages</gi-side-nav-heading>
         <gi-side-nav-group
-          [open]="inboxOpen"
-          (onClick)="toggleInbox()"
+          [(open)]="inboxOpen"
         >
           <gi-box ngProjectAs="[label]" class="gi-flex gi-gap-1">
             <gi-mail-icon />
             Inbox
           </gi-box>
           <strong ngProjectAs="[actions]" class="gi-tag gi-tag-counter gi-tag-size-default">3</strong>
-          <gi-side-nav-item
+          <gi-side-nav-item-button
             [selected]="current === 'primary'"
             [ariaCurrent]="current === 'primary' ? 'page' : undefined"
-            (click)="selectItem('primary')"
+            (itemSelect)="selectItem('primary')"
           >
             Primary
-          </gi-side-nav-item>
-          <gi-side-nav-item
+          </gi-side-nav-item-button>
+          <gi-side-nav-item-button
             [selected]="current === 'social'"
             [ariaCurrent]="current === 'social' ? 'page' : undefined"
-            (click)="selectItem('social')"
+            (itemSelect)="selectItem('social')"
           >
             Social
-          </gi-side-nav-item>
-          <gi-side-nav-item
-            [disabled]="true"
+          </gi-side-nav-item-button>
+          <gi-side-nav-item-button
+            disabled
           >
             Promotions
-          </gi-side-nav-item>
+          </gi-side-nav-item-button>
         </gi-side-nav-group>
         <gi-side-nav-heading>Utilities</gi-side-nav-heading>
-        <gi-side-nav-item
+        <gi-side-nav-item-button
           [selected]="current === 'overview'"
           [ariaCurrent]="current === 'overview' ? 'page' : undefined"
-          (click)="selectItem('overview')"
+          (itemSelect)="selectItem('overview')"
         >
           Overview
-        </gi-side-nav-item>
+        </gi-side-nav-item-button>
         <gi-side-nav-item-link
           [selected]="current === 'link'"
           [ariaCurrent]="current === 'link' ? 'page' : undefined"
-          (click)="selectItem('link')"
+          (itemSelect)="selectItem('link')"
           href="#"
         >
           Homepage
         </gi-side-nav-item-link>
-        <gi-side-nav-item
+        <gi-side-nav-item-button
           [selected]="current === 'reports'"
           [ariaCurrent]="current === 'reports' ? 'page' : undefined"
-          (click)="selectItem('reports')"
+          (itemSelect)="selectItem('reports')"
         >
           Reports
-        </gi-side-nav-item>
-        <gi-side-nav-item
+        </gi-side-nav-item-button>
+        <gi-side-nav-item-button
           [selected]="current === 'settings'"
           [ariaCurrent]="current === 'settings' ? 'page' : undefined"
-          (click)="selectItem('settings')"
+          (itemSelect)="selectItem('settings')"
         >
           Settings
           <gi-icon-button
@@ -131,7 +127,7 @@ export const Default: Story = {
           >
             <gi-more-vertical-icon />
           </gi-icon-button>
-        </gi-side-nav-item>
+        </gi-side-nav-item-button>
       </gi-side-nav>
     `,
   }),
@@ -147,18 +143,14 @@ export const WithActions: Story = {
       selectItem(this: SideNavStoryState, value: string) {
         this.current = value;
       },
-      toggleInbox(this: SideNavStoryState) {
-        this.inboxOpen = !this.inboxOpen;
-      },
     },
     moduleMetadata: {
       imports: sideNavImports,
     },
     template: `
-      <gi-side-nav [dataTestId]="dataTestId" [ariaLabel]="ariaLabel" [className]="'gi-max-w-xs'">
+      <gi-side-nav [dataTestId]="dataTestId" [ariaLabel]="ariaLabel" class="gi-max-w-xs">
         <gi-side-nav-group
-          [open]="inboxOpen"
-          (onClick)="toggleInbox()"
+          [(open)]="inboxOpen"
         >
           <gi-box ngProjectAs="[label]" class="gi-flex gi-justify-between gi-items-center">
             <gi-text>Inbox</gi-text>
@@ -173,13 +165,17 @@ export const WithActions: Story = {
           >
             <gi-more-vertical-icon />
           </gi-icon-button>
-          <gi-side-nav-item>Primary</gi-side-nav-item>
+          <gi-side-nav-item-button [selected]="current === 'primary'" [ariaCurrent]="current === 'primary' ? 'page' : undefined"
+          (itemSelect)="selectItem('primary')">
+            Primary
+          </gi-side-nav-item-button>
         </gi-side-nav-group>
-        <gi-side-nav-item
+        <gi-side-nav-item-button
           [selected]="current === 'overview'"
           [ariaCurrent]="current === 'overview' ? 'page' : undefined"
-          (onClick)="selectItem('overview')"
+          (itemSelect)="selectItem('overview')"
         >
+          Overview
           <gi-icon-button
             ngProjectAs="[actions]"
             variant="flat"
@@ -189,14 +185,14 @@ export const WithActions: Story = {
           >
             <gi-more-vertical-icon />
           </gi-icon-button>
-          Overview
-        </gi-side-nav-item>
+        </gi-side-nav-item-button>
         <gi-side-nav-item-link
           [selected]="current === 'homepage'"
           [ariaCurrent]="current === 'homepage' ? 'page' : undefined"
-          (onClick)="selectItem('homepage')"
+          (itemSelect)="selectItem('homepage')"
           href="#"
         >
+          Homepage
           <gi-icon-button
             ngProjectAs="[actions]"
             variant="flat"
@@ -206,7 +202,6 @@ export const WithActions: Story = {
           >
             <gi-more-vertical-icon />
           </gi-icon-button>
-          Homepage
         </gi-side-nav-item-link>
       </gi-side-nav>
     `,
@@ -220,33 +215,29 @@ export const Expandable: Story = {
       ...props,
       inboxOpen: true,
       projectsOpen: false,
-      toggleInbox(this: SideNavStoryState) {
-        this.inboxOpen = !this.inboxOpen;
-      },
-      toggleProjects(this: SideNavStoryState) {
-        this.projectsOpen = !this.projectsOpen;
+      toggleProjects(this: SideNavStoryState, state: boolean) {
+        this.projectsOpen = state;
       },
     },
     moduleMetadata: {
       imports: sideNavImports,
     },
     template: `
-      <gi-side-nav [dataTestId]="dataTestId" [ariaLabel]="ariaLabel" [className]="'gi-max-w-xs'">
+      <gi-side-nav [dataTestId]="dataTestId" [ariaLabel]="ariaLabel" class="gi-max-w-xs">
         <gi-side-nav-group
-          [open]="inboxOpen"
-          (onClick)="toggleInbox()"
+          label="Inbox"
+          [(open)]="inboxOpen"
         >
-          <span ngProjectAs="[label]">Inbox</span>
-          <gi-side-nav-item>Primary</gi-side-nav-item>
-          <gi-side-nav-item>Social</gi-side-nav-item>
+          <gi-side-nav-item-button>Primary</gi-side-nav-item-button>
+          <gi-side-nav-item-button>Social</gi-side-nav-item-button>
         </gi-side-nav-group>
         <gi-side-nav-group
+          label="Projects"
           [open]="projectsOpen"
-          (onClick)="toggleProjects()"
+          (openChange)="toggleProjects($event)"
         >
-          <span ngProjectAs="[label]">Projects</span>
-          <gi-side-nav-item>Active</gi-side-nav-item>
-          <gi-side-nav-item>Archived</gi-side-nav-item>
+          <gi-side-nav-item-button>Active</gi-side-nav-item-button>
+          <gi-side-nav-item-button>Archived</gi-side-nav-item-button>
         </gi-side-nav-group>
       </gi-side-nav>
     `,
@@ -268,45 +259,45 @@ export const WithHeadings: Story = {
     },
     template: `
       <gi-h2 id="sidenav-with-headings-label" size="sm">Service navigation</gi-h2>
-      <gi-side-nav [dataTestId]="dataTestId" [ariaLabelledBy]="ariaLabelledBy" [className]="'gi-max-w-xs'">
+      <gi-side-nav [dataTestId]="dataTestId" [ariaLabelledBy]="ariaLabelledBy" class="gi-max-w-xs">
         <gi-side-nav-heading>Messages</gi-side-nav-heading>
-        <gi-side-nav-item
+        <gi-side-nav-item-button
           [selected]="current === 'inbox'"
           [ariaCurrent]="current === 'inbox' ? 'page' : undefined"
-          (click)="selectItem('inbox')"
+          (itemSelect)="selectItem('inbox')"
         >
           Inbox
-        </gi-side-nav-item>
-        <gi-side-nav-item
+        </gi-side-nav-item-button>
+        <gi-side-nav-item-button
           [selected]="current === 'sent'"
           [ariaCurrent]="current === 'sent' ? 'page' : undefined"
-          (click)="selectItem('sent')"
+          (itemSelect)="selectItem('sent')"
         >
           Sent
-        </gi-side-nav-item>
+        </gi-side-nav-item-button>
         <gi-side-nav-heading>Workspace</gi-side-nav-heading>
-        <gi-side-nav-item
+        <gi-side-nav-item-button
           [selected]="current === 'overview'"
           [ariaCurrent]="current === 'overview' ? 'page' : undefined"
-          (click)="selectItem('overview')"
+          (itemSelect)="selectItem('overview')"
         >
           Overview
-        </gi-side-nav-item>
-        <gi-side-nav-item
+        </gi-side-nav-item-button>
+        <gi-side-nav-item-button
           [selected]="current === 'reports'"
           [ariaCurrent]="current === 'reports' ? 'page' : undefined"
-          (click)="selectItem('reports')"
+          (itemSelect)="selectItem('reports')"
         >
           Reports
-        </gi-side-nav-item>
+        </gi-side-nav-item-button>
         <gi-side-nav-heading>Account</gi-side-nav-heading>
-        <gi-side-nav-item
+        <gi-side-nav-item-button
           [selected]="current === 'settings'"
           [ariaCurrent]="current === 'settings' ? 'page' : undefined"
-          (click)="selectItem('settings')"
+          (itemSelect)="selectItem('settings')"
         >
           Settings
-        </gi-side-nav-item>
+        </gi-side-nav-item-button>
       </gi-side-nav>
     `,
   }),

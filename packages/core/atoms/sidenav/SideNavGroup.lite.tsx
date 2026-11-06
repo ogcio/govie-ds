@@ -3,7 +3,7 @@ import classes, { actionClasses, arrowClasses, chevronClasses, rowClasses } from
 import GiKeyboardArrowDownIcon from '../icons/KeyboardArrowDown.lite';
 import { tv } from 'tailwind-variants';
 
-useMetadata({ angular: { selector: 'gi-side-nav-group' } });
+useMetadata({ angular: { selector: 'core-side-nav-group' } });
 
 useDefaultProps({
   ariaHidden: undefined,

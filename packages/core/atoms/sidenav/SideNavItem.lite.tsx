@@ -1,7 +1,7 @@
 import { Slot, useDefaultProps, useMetadata } from '@builder.io/mitosis';
 import classes, { actionClasses, listItemClasses } from './SideNavItem.styles';
 
-useMetadata({ angular: { selector: 'gi-side-nav-item' } });
+useMetadata({ angular: { selector: 'core-side-nav-item' } });
 
 useDefaultProps({
   ariaHidden: undefined,

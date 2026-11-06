@@ -31,7 +31,7 @@ const defaultProps: any = { ariaHidden: undefined, ariaCurrent: undefined };
 import classes, { actionClasses, listItemClasses } from './SideNavItem.styles';
 
 @Component({
-  selector: 'gi-side-nav-item',
+  selector: 'core-side-nav-item',
   template: `
     <li [class]="listItemClasses()" [attr.aria-hidden]="ariaHidden">
       <button

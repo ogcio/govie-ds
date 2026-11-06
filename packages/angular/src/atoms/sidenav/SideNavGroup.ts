@@ -46,7 +46,7 @@ const contentClasses = tv({
 });
 
 @Component({
-  selector: 'gi-side-nav-group',
+  selector: 'core-side-nav-group',
   template: `
     <li class="gi-list-none gi-mt-1 gi-side-nav-list" [attr.aria-hidden]="ariaHidden">
       <div [class]="rowClasses()">
