@@ -13,7 +13,7 @@ export type Props = {
   appearance?: ValueOf<typeof SurfaceAppearance>;
   maxWidth?: ValueOf<typeof MaxWidth>;
   className?: string;
-  styles?: Record<string, string>;
+  styles?: string | Record<string, string | number | null | undefined>;
   id?: string;
   role?: 'region' | 'group';
   ariaLabel?: string;

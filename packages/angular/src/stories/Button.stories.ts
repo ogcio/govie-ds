@@ -18,7 +18,7 @@ const meta: Meta<GiButton> = {
     style: {
       control: false,
       description: 'Inline styles applied to the button element.',
-      table: { type: { summary: 'string' } },
+      table: { type: { summary: 'string | Record<string, string | number | null | undefined>' } },
     },
   },
 };

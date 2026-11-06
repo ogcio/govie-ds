@@ -12,7 +12,7 @@ export type Props = {
   /** Visibility: `true`/`false`, a breakpoint to show from (e.g. `"lg"`), or a per-breakpoint map like `{ base: false, lg: true }`. */
   visible?: VisibleValue;
   className?: string;
-  styles?: Record<string, string>;
+  styles?: string | Record<string, string | number | null | undefined>;
   id?: string;
   dataTestId?: string;
 };

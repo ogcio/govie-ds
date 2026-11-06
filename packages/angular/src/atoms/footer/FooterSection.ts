@@ -12,7 +12,7 @@ export type Props = {
   variant?: ValueOf<typeof SurfaceVariant>;
   maxWidth?: ValueOf<typeof MaxWidth>;
   className?: string;
-  styles?: Record<string, string>;
+  styles?: string | Record<string, string | number | null | undefined>;
   id?: string;
   dataTestId?: string;
 };

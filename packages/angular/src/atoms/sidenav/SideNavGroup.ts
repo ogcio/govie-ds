@@ -15,7 +15,7 @@ export type Props = {
   label?: any;
   disabled?: boolean;
   className?: string;
-  styles?: Record<string, string>;
+  styles?: string | Record<string, string | number | null | undefined>;
   onClick?: (event: any) => void;
   onFocus?: (event: any) => void;
   onBlur?: (event: any) => void;
@@ -63,7 +63,7 @@ const listItemClasses = tv({
               className: className,
             })
           "
-          [ngStyle]="styles"
+          [style]="styles"
           [attr.disabled]="disabled || undefined"
           (click)="onClick && this.onClick.emit($event)"
           (focus)="onFocus && this.onFocus.emit($event)"

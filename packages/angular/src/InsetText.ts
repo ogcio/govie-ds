@@ -1,6 +1,7 @@
 import { Component, Directive, Input } from '@angular/core';
 import classes from './atoms/InsetText.styles';
 import type { Props } from './atoms/InsetText';
+import type { Style } from './types';
 
 @Component({
   selector: 'gi-inset-text',
@@ -8,7 +9,7 @@ import type { Props } from './atoms/InsetText';
   template: `
     <blockquote
       [class]="classes"
-      [attr.style]="style"
+      [style]="style"
       [attr.id]="id"
       [attr.cite]="cite"
       [attr.aria-describedby]="describedBy || undefined"
@@ -29,7 +30,7 @@ import type { Props } from './atoms/InsetText';
 })
 export class GiInsetText {
   @Input() class = '';
-  @Input() style?: string;
+  @Input() style?: Style;
   @Input() cite: Props['cite'];
   @Input() id: Props['id'];
   @Input() describedBy: Props['describedBy'];

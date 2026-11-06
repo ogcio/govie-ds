@@ -15,7 +15,7 @@ export type Props = {
   onKeyDown?: (event: any) => void;
   onKeyUp?: (event: any) => void;
   className?: string;
-  styles?: Record<string, string>;
+  styles?: string | Record<string, string | number | null | undefined>;
   id?: string;
   ariaLabel?: string;
   ariaExpanded?: boolean;
@@ -37,7 +37,7 @@ import { buttonClasses } from './HeaderNavItem.styles';
           className: className,
         })
       "
-      [ngStyle]="styles"
+      [style]="styles"
       [attr.aria-label]="ariaLabel"
       [attr.aria-expanded]="ariaExpanded"
       [attr.aria-controls]="ariaControls"

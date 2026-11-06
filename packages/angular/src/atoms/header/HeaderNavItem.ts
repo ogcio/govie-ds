@@ -12,7 +12,7 @@ export type Props = {
   /** Visibility: `true`/`false`, a breakpoint to show from (e.g. `"lg"`), or a per-breakpoint map like `{ base: false, lg: true }`. */
   visible?: VisibleValue;
   className?: string;
-  styles?: Record<string, string>;
+  styles?: string | Record<string, string | number | null | undefined>;
 };
 const defaultProps: any = { visible: true };
 
@@ -30,7 +30,7 @@ const classes = tv({});
           className: [getVisibility(visible), className],
         })
       "
-      [ngStyle]="styles"
+      [style]="styles"
     >
       <ng-content></ng-content>
     </li>

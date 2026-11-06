@@ -12,7 +12,7 @@ export type Props = {
   ariaLabel?: string;
   ariaLabelledBy?: string;
   className?: string;
-  styles?: Record<string, string>;
+  styles?: string | Record<string, string | number | null | undefined>;
   id?: string;
   dataTestId?: string;
 };
@@ -23,7 +23,7 @@ export type Props = {
     <footer
       [attr.id]="id"
       [class]="className"
-      [ngStyle]="styles"
+      [style]="styles"
       [attr.aria-label]="ariaLabel"
       [attr.aria-labelledby]="ariaLabelledBy"
       [attr.data-testid]="dataTestId"

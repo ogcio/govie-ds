@@ -2,18 +2,13 @@ import { Component, Directive, Input } from '@angular/core';
 import classes from './atoms/Paragraph.styles';
 import type { Props } from './atoms/Paragraph';
 import { getAlign, getSize, getWhitespace } from './atoms/utilities';
+import type { Style } from './types';
 
 @Component({
   selector: 'gi-paragraph',
   standalone: true,
   template: `
-    <p
-      [class]="classes"
-      [attr.style]="style"
-      [attr.id]="id"
-      [attr.data-testid]="dataTestId"
-      [attr.aria-hidden]="ariaHidden"
-    >
+    <p [class]="classes" [style]="style" [attr.id]="id" [attr.data-testid]="dataTestId" [attr.aria-hidden]="ariaHidden">
       <ng-content></ng-content>
     </p>
   `,
@@ -31,7 +26,7 @@ import { getAlign, getSize, getWhitespace } from './atoms/utilities';
 })
 export class GiParagraph {
   @Input() class = '';
-  @Input() style?: string;
+  @Input() style?: Style;
   @Input() size: Props['size'];
   @Input() align: Props['align'];
   @Input() whitespace: Props['whitespace'];

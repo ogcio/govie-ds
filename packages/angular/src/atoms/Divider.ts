@@ -11,7 +11,7 @@ import { CommonModule } from '@angular/common';
 export type Props = {
   orientation?: ValueOf<typeof Orientation>;
   className?: string;
-  styles?: Record<string, string>;
+  styles?: string | Record<string, string | number | null | undefined>;
   id?: string;
   dataTestId?: string;
 };
@@ -33,7 +33,7 @@ import classes from './Divider.styles';
           className: className,
         })
       "
-      [ngStyle]="styles"
+      [style]="styles"
     />
   `,
   styles: [

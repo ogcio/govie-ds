@@ -14,7 +14,7 @@ export type Props = {
   align?: ValueOf<typeof Align>;
   whitespace?: ValueOf<typeof Whitespace>;
   className?: string;
-  styles?: Record<string, string>;
+  styles?: string | Record<string, string | number | null | undefined>;
   dataTestId?: string;
   ariaHidden?: boolean | 'true' | 'false';
 };
@@ -37,7 +37,7 @@ import classes from './Paragraph.styles';
           className: className,
         })
       "
-      [ngStyle]="styles"
+      [style]="styles"
       [attr.data-testid]="dataTestId"
       [attr.aria-hidden]="ariaHidden"
     >

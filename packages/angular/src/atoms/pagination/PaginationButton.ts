@@ -12,7 +12,7 @@ export type Props = {
   current?: boolean;
   id?: string;
   className?: string;
-  styles?: Record<string, string>;
+  styles?: string | Record<string, string | number | null | undefined>;
   disabled?: boolean;
   onClick?: (event: any) => void;
   onFocus?: (event: any) => void;
@@ -39,7 +39,7 @@ import classes from './PaginationButton.styles';
           className: className,
         })
       "
-      [ngStyle]="styles"
+      [style]="styles"
       [attr.disabled]="disabled || undefined"
       [attr.aria-label]="ariaLabel"
       [attr.aria-current]="current || undefined"

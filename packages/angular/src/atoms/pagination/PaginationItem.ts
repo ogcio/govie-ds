@@ -9,7 +9,7 @@ import { Component, Input } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
 export type Props = {
-  styles?: Record<string, string>;
+  styles?: string | Record<string, string | number | null | undefined>;
   ariaHidden?: boolean;
 };
 const defaultProps: any = { ariaHidden: undefined };
@@ -17,7 +17,7 @@ const defaultProps: any = { ariaHidden: undefined };
 @Component({
   selector: 'core-pagination-item',
   template: `
-    <li [attr.aria-hidden]="ariaHidden || undefined" [ngStyle]="styles"><ng-content></ng-content></li>
+    <li [attr.aria-hidden]="ariaHidden || undefined" [style]="styles"><ng-content></ng-content></li>
   `,
   styles: [
     `

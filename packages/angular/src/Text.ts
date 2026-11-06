@@ -2,6 +2,7 @@ import { Component, Directive, Input } from '@angular/core';
 import classes from './atoms/Text.styles';
 import type { Props } from './atoms/Text';
 import { getSize, getWhitespace } from './atoms/utilities';
+import type { Style } from './types';
 
 @Component({
   selector: 'gi-text',
@@ -9,7 +10,7 @@ import { getSize, getWhitespace } from './atoms/utilities';
   template: `
     <span
       [class]="classes"
-      [attr.style]="style"
+      [style]="style"
       [attr.id]="id"
       [attr.data-testid]="dataTestId"
       [attr.aria-hidden]="ariaHidden"
@@ -30,7 +31,7 @@ import { getSize, getWhitespace } from './atoms/utilities';
 })
 export class GiText {
   @Input() class = '';
-  @Input() style?: string;
+  @Input() style?: Style;
   @Input() size: Props['size'];
   @Input() whitespace: Props['whitespace'];
   @Input() id: Props['id'];

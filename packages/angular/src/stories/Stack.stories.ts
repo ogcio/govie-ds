@@ -17,11 +17,11 @@ const meta = {
   ...stackMeta,
   title: 'Layout/Stack',
   argTypes: {
-    ...omit(stackMeta.argTypes, 'style'),
-    styles: {
+    ...omit(stackMeta.argTypes, 'styles'),
+    style: {
       control: false,
       description: 'Inline styles applied directly to the container element.',
-      table: { type: { summary: 'Record<string, string>' } },
+      table: { type: { summary: 'string | Record<string, string | number | null | undefined>' } },
     },
   },
 };

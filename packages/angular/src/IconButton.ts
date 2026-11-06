@@ -3,6 +3,7 @@ import classes from './atoms/IconButton.styles';
 import type { Props } from './atoms/IconButton';
 import { getAppearance, getVariant } from './atoms/Button.styles';
 import { getSize } from './atoms/utilities';
+import type { Style } from './types';
 
 @Component({
   selector: 'gi-icon-button',
@@ -10,7 +11,7 @@ import { getSize } from './atoms/utilities';
   template: `
     <button
       [class]="classes"
-      [attr.style]="style"
+      [style]="style"
       [attr.id]="id"
       [disabled]="disabled"
       [attr.aria-label]="ariaLabel"
@@ -50,7 +51,7 @@ import { getSize } from './atoms/utilities';
 })
 export class GiIconButton {
   @Input() class = '';
-  @Input() style?: string;
+  @Input() style?: Style;
   @Input() variant: Props['variant'];
   @Input() appearance: Props['appearance'];
   @Input() size: Props['size'];

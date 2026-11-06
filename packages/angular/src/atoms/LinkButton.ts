@@ -32,7 +32,7 @@ import { getDownload, isAriaHidden } from './utilities';
           className: className,
         })
       "
-      [ngStyle]="styles"
+      [style]="styles"
       [attr.target]="target ?? (external ? '_blank' : undefined)"
       [attr.rel]="rel ?? (external ? 'noreferrer noopener' : undefined)"
       [attr.download]="getDownload(download)"
