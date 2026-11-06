@@ -40,6 +40,7 @@ const defaultProps: any = { download: undefined, ariaCurrent: undefined, ariaHid
 import classes from './Link.styles';
 import type { Appearance, Underline, Variant, Visited } from './Link.styles';
 import type { ValueOf } from './constants';
+import { isAriaHidden } from './utilities';
 
 @Component({
   selector: 'core-link',
@@ -65,7 +66,7 @@ import type { ValueOf } from './constants';
       [attr.aria-labelledby]="ariaLabelledBy"
       [attr.aria-describedby]="ariaDescribedBy"
       [attr.aria-hidden]="ariaHidden"
-      [attr.tabIndex]="ariaHidden ? -1 : tabIndex"
+      [attr.tabIndex]="isAriaHidden(ariaHidden) ? -1 : tabIndex"
       [attr.lang]="lang"
       (click)="onClick && this.onClick.emit($event)"
       (focus)="onFocus && this.onFocus.emit($event)"
@@ -89,6 +90,7 @@ import type { ValueOf } from './constants';
 })
 export default class Link {
   classes = classes;
+  isAriaHidden = isAriaHidden;
 
   @Input() id!: Props['id'];
   @Input() href!: Props['href'];

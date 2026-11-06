@@ -53,3 +53,4 @@ export const resolveResponsive = <T>(
     .join(' ');
 };
 export const getDownload = (x: string | boolean | undefined) => (x === true || x === '' ? '' : x || undefined);
+export const isAriaHidden = (x: boolean | 'true' | 'false' | undefined) => x === true || x === 'true';

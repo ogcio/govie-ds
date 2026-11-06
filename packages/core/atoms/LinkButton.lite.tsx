@@ -3,6 +3,7 @@ import { getAppearance, getSize, getVariant } from './Button.styles';
 import classes from './LinkButton.styles';
 import type { Props as ButtonProps } from './Button.lite';
 import type { Props as LinkProps } from './Link.lite';
+import { isAriaHidden } from './utilities';
 
 useMetadata({ angular: { selector: 'core-link-button' } });
 
@@ -35,7 +36,7 @@ export default function LinkButton(props: Props) {
       aria-labelledby={props.ariaLabelledBy}
       aria-describedby={props.ariaDescribedBy}
       aria-hidden={props.ariaHidden}
-      tabIndex={props.ariaHidden ? -1 : props.tabIndex}
+      tabIndex={isAriaHidden(props.ariaHidden) ? -1 : props.tabIndex}
       lang={props.lang}
       onClick={(event) => props.onClick && props.onClick(event)}
       onFocus={(event) => props.onFocus && props.onFocus(event)}

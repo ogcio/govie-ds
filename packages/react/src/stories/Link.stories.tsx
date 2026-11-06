@@ -235,3 +235,8 @@ export const PlainFocusState: Story = {
     </Box>
   ),
 };
+
+export const AriaHiddenFalse: Story = {
+  ...stories.AriaHiddenFalse,
+  tags: ['!dev', '!autodocs', 'skip-playwright'],
+};

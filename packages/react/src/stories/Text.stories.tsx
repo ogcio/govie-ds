@@ -9,6 +9,19 @@ const meta: Meta<typeof Text> = {
   ...textMeta,
   title: 'Typography/Text',
   component: Text,
+  argTypes: {
+    ...textMeta.argTypes,
+    className: {
+      control: false,
+      description: 'Additional CSS classes applied to the root `<span>` element.',
+      table: { type: { summary: 'string' } },
+    },
+    styles: {
+      control: false,
+      description: 'Inline CSS styles applied to the root `<span>` element.',
+      table: { type: { summary: 'Record<string, string>' } },
+    },
+  },
 };
 
 export default meta;
@@ -18,7 +31,7 @@ type Story = StoryObj<typeof Text>;
 export const Default: Story = {
   tags: ['skip-playwright'],
   ...defaultStory,
-  args: { ...defaultStory.args, children: loremIpsum },
+  args: { children: loremIpsum },
 };
 
 export const AllTextSizes: Story = {
