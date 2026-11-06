@@ -49,8 +49,16 @@
   border-radius: 6px;
   background: var(--surface);
   box-shadow: var(--shadow);
-  /* Hovering passes through to the page. Only the documentation link of a pinned card takes clicks. */
+}
+
+/* Until the card is pinned, hovering passes through it to the page and its link reads as plain grey text. */
+.card[inert] {
   pointer-events: none;
+}
+
+.card[inert] .docs a {
+  color: var(--text-muted);
+  text-decoration: none;
 }
 
 .ancestors {
@@ -69,16 +77,6 @@
   font-size: 0.875rem;
   line-height: 1.5;
   color: var(--text-muted);
-}
-
-.docs:not([inert]) a {
-  pointer-events: auto;
-}
-
-/* Until the card is pinned, the link is inert and reads as plain grey text. */
-.docs[inert] a {
-  color: var(--text-muted);
-  text-decoration: none;
 }
 
 .toggle {

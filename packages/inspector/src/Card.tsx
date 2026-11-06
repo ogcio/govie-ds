@@ -40,7 +40,7 @@ export function Card({ rect, component, ancestors, pinned, keyboardPin }: CardPr
   }, [keyboardPin]);
 
   return (
-    <div ref={ref} className="card">
+    <div ref={ref} className="card" inert={!pinned}>
       {ancestors && <p className="ancestors">{ancestors} ›</p>}
       <Heading as="h2" size="xs">
         {component.name}
@@ -48,7 +48,7 @@ export function Card({ rect, component, ancestors, pinned, keyboardPin }: CardPr
       <code className="selector">{component.selector}</code>
       {component.description && <Paragraph size="sm">{component.description}</Paragraph>}
       {component.docsUrl && (
-        <p className="docs" inert={!pinned}>
+        <p className="docs">
           <Link href={component.docsUrl} variant="inline" external>
             Documentation<span className="gi-sr-only"> (opens in a new tab)</span>
           </Link>
