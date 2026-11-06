@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.6.1](https://github.com/ogcio/govie-ds/compare/vue-v0.6.0...vue-v0.6.1) (2026-11-06)
+
+
+### Bug Fixes
+
+* **AB#44292:** add background to side-nav-item selected ([f3eb2f6](https://github.com/ogcio/govie-ds/commit/f3eb2f668b77001b05b72df05a1336cc901701d6))
+
 ## [0.6.0](https://github.com/ogcio/govie-ds/compare/vue-v0.5.0...vue-v0.6.0) (2026-11-03)
 
 
