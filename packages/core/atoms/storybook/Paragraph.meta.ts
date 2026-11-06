@@ -42,7 +42,7 @@ export const paragraphMeta = {
       description: 'When true, sets `aria-hidden` on the element to hide it from assistive technologies.',
       table: {
         type: {
-          summary: 'boolean',
+          summary: "boolean | 'true' | 'false'",
         },
       },
     },
