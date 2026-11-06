@@ -4,8 +4,6 @@ import type { Props } from '../Text.lite';
 import { Size, Whitespace } from '../constants';
 import { enumType } from './utilities';
 
-const loremIpsum = 'Lorem ipsum dolor sit amet.';
-
 export const textMeta = {
   title: 'Typography/Text',
   args: {
@@ -17,30 +15,12 @@ export const textMeta = {
   argTypes: {
     size: enumType(Size, { description: 'Font size of the Text', defaultValue: Size.MD }),
     whitespace: enumType(Whitespace, { description: 'Whitespace handling.', defaultValue: Whitespace.NORMAL }),
-    className: {
-      control: false,
-      description: 'Additional CSS classes applied to the paragraph element.',
-      table: {
-        type: {
-          summary: 'string',
-        },
-      },
-    },
-    styles: {
-      control: false,
-      description: 'Inline CSS styles applied to the root `<span>` element.',
-      table: {
-        type: {
-          summary: 'Record<string, string>',
-        },
-      },
-    },
     ariaHidden: {
       control: false,
       description: 'When true, sets `aria-hidden` on the element to hide it from assistive technologies.',
       table: {
         type: {
-          summary: 'boolean',
+          summary: "boolean | 'true' | 'false'",
         },
       },
     },
@@ -61,7 +41,6 @@ export const textMeta = {
 } as const;
 
 export const Default = {
-  args: textMeta.args,
   play: async ({ canvasElement }: StoryContext<Renderer>) => {
     const canvas = within(canvasElement as HTMLElement);
     const textNode = canvas.getByTestId('text-default');
@@ -71,11 +50,6 @@ export const Default = {
 };
 
 export const AllTextSizes = {
-  args: {
-    ...textMeta.args,
-    dataTestId: 'text-all-sizes',
-    children: loremIpsum,
-  },
   play: async ({ canvasElement }: StoryContext<Renderer>) => {
     const canvas = within(canvasElement as HTMLElement);
     const textNode = canvas.getByTestId(`text-all-sizes-${Size.MD}`);

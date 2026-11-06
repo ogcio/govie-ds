@@ -10,7 +10,7 @@ const meta: Meta<typeof Text> = {
   component: Text,
   args: omit(stories.textMeta.args, ['dataTestId']),
   argTypes: {
-    ...omit(stories.textMeta.argTypes, ['className', 'styles', 'dataTestId']),
+    ...omit(stories.textMeta.argTypes, ['dataTestId']),
     class: {
       control: false,
       description: 'Additional CSS classes, merged with the classes of the root `<span>` element.',
@@ -29,7 +29,7 @@ export default meta;
 type Story = StoryObj<typeof Text>;
 
 export const Default: Story = {
-  play: stories.Default.play,
+  ...stories.Default,
   render: (args) => ({
     components: { Text },
     setup: () => ({ args }),
@@ -38,7 +38,7 @@ export const Default: Story = {
 };
 
 export const AllTextSizes: Story = {
-  play: stories.AllTextSizes.play,
+  ...stories.AllTextSizes,
   render: () => ({
     components: { Text },
     setup: () => ({ sizes: Object.values(Size) }),
