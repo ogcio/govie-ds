@@ -1,5 +1,17 @@
 # Changelog
 
+## [1.51.1](https://github.com/ogcio/govie-ds/compare/react-lib-v1.51.0...react-lib-v1.51.1) (2026-11-06)
+
+
+### Bug Fixes
+
+* **AB#44292:** add background to side-nav-item selected ([f3eb2f6](https://github.com/ogcio/govie-ds/commit/f3eb2f668b77001b05b72df05a1336cc901701d6))
+
+
+### Miscellaneous Chores
+
+* **AB#44292:** cleanup sidenav descriptions ([0a399f8](https://github.com/ogcio/govie-ds/commit/0a399f862379008b0ee87cc24600fa1afe08aeca))
+
 ## [1.51.0](https://github.com/ogcio/govie-ds/compare/react-lib-v1.50.0...react-lib-v1.51.0) (2026-11-03)
 
 
