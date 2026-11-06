@@ -17,7 +17,7 @@ const meta: Meta = {
     style: {
       control: false,
       description: 'Inline styles applied to the `li` element that wraps the ellipsis.',
-      table: { type: { summary: 'Record<string, string>' } },
+      table: { type: { summary: 'string | Record<string, string | number | null | undefined>' } },
     },
   },
 };

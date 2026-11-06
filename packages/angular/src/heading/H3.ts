@@ -1,12 +1,13 @@
 import { Component, Directive, Input } from '@angular/core';
 import classes, { getSize } from '../atoms/heading/styles';
 import { Size, type Props } from '../atoms/heading/types';
+import type { Style } from '../types';
 
 @Component({
   selector: 'gi-h3',
   standalone: true,
   template: `
-    <h3 [class]="classes" [attr.style]="style" [attr.id]="id" [attr.data-testid]="dataTestId">
+    <h3 [class]="classes" [style]="style" [attr.id]="id" [attr.data-testid]="dataTestId">
       <ng-content></ng-content>
     </h3>
   `,
@@ -21,7 +22,7 @@ import { Size, type Props } from '../atoms/heading/types';
 })
 export class GiH3 {
   @Input() class = '';
-  @Input() style?: string;
+  @Input() style?: Style;
   @Input() size: Props['size'];
   @Input() id: Props['id'];
   @Input() dataTestId: Props['dataTestId'];

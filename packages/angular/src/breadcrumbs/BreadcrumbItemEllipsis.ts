@@ -1,6 +1,7 @@
 import { Component, Input } from '@angular/core';
 import CoreBreadcrumbEllipsis, { type Props } from '../atoms/breadcrumbs/BreadcrumbEllipsis';
 import CoreBreadcrumbItem from '../atoms/breadcrumbs/BreadcrumbItem';
+import type { Style } from '../types';
 @Component({
   selector: 'gi-breadcrumb-item-ellipsis',
   standalone: true,
@@ -31,7 +32,7 @@ import CoreBreadcrumbItem from '../atoms/breadcrumbs/BreadcrumbItem';
 export class GiBreadcrumbItemEllipsis {
   @Input() class = '';
   @Input() label: Props['label'];
-  @Input() style: Record<string, string> | undefined;
+  @Input() style: Style | undefined;
   @Input() id: Props['id'];
   @Input() size: Props['size'];
   @Input() color: Props['color'];

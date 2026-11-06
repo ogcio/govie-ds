@@ -25,7 +25,7 @@ export type Props = {
   ariaDescribedBy?: string;
   tabIndex?: number;
   lang?: string;
-  styles?: Record<string, string>;
+  styles?: string | Record<string, string | number | null | undefined>;
   onClick?: (event: any) => void;
   onKeyDown?: (event: any) => void;
   onKeyUp?: (event: any) => void;
@@ -52,7 +52,7 @@ import classes, { actionClasses, listItemClasses } from './SideNavItem.styles';
             className: className,
           })
         "
-        [ngStyle]="styles"
+        [style]="styles"
         (click)="onClick && this.onClick.emit($event)"
         (keydown)="onKeyDown && this.onKeyDown.emit($event)"
         (keyup)="onKeyUp && this.onKeyUp.emit($event)"

@@ -1,6 +1,7 @@
 import { Component, Input } from '@angular/core';
 import CorePaginationEllipsis, { type Props } from '../atoms/pagination/PaginationEllipsis';
 import CorePaginationItem from '../atoms/pagination/PaginationItem';
+import type { Style } from '../types';
 
 @Component({
   selector: 'gi-pagination-item-ellipsis',
@@ -31,7 +32,7 @@ import CorePaginationItem from '../atoms/pagination/PaginationItem';
 })
 export class GiPaginationItemEllipsis {
   @Input() class = '';
-  @Input() style: Record<string, string> | undefined;
+  @Input() style: Style | undefined;
   @Input() id: Props['id'];
   @Input() size: Props['size'];
   @Input() color: Props['color'];

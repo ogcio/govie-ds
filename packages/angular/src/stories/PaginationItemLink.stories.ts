@@ -27,7 +27,7 @@ const meta = {
       control: false,
       description:
         'Inline styles applied to the link element. Use for truly dynamic values that cannot be expressed as Tailwind classes.',
-      table: { type: { summary: 'Record<string, string>' } },
+      table: { type: { summary: 'string | Record<string, string | number | null | undefined>' } },
     },
   },
   parameters: {

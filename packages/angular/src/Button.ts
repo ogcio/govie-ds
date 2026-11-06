@@ -1,6 +1,7 @@
 import { booleanAttribute, Component, Directive, Input } from '@angular/core';
 import classes, { getAppearance, getSize, getVariant } from './atoms/Button.styles';
 import type { Props } from './atoms/Button';
+import type { Style } from './types';
 
 @Component({
   selector: 'gi-button',
@@ -8,7 +9,7 @@ import type { Props } from './atoms/Button';
   template: `
     <button
       [class]="classes"
-      [attr.style]="style"
+      [style]="style"
       [attr.id]="id"
       [attr.data-size]="sizeValue"
       [disabled]="disabled"
@@ -54,7 +55,7 @@ import type { Props } from './atoms/Button';
 })
 export class GiButton {
   @Input() class = '';
-  @Input() style?: string;
+  @Input() style?: Style;
   @Input() variant: Props['variant'];
   @Input() appearance: Props['appearance'];
   @Input() size: Props['size'];

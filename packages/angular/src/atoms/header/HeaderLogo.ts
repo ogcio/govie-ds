@@ -10,7 +10,7 @@ import { CommonModule } from '@angular/common';
 
 export type Props = {
   className?: string;
-  styles?: Record<string, string>;
+  styles?: string | Record<string, string | number | null | undefined>;
   id?: string;
   dataTestId?: string;
 };

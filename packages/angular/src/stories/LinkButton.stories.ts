@@ -20,7 +20,7 @@ const meta: Meta<GiLinkButton> = {
     style: {
       control: false,
       description: 'Inline styles applied to the link element.',
-      table: { type: { summary: 'string' } },
+      table: { type: { summary: 'string | Record<string, string | number | null | undefined>' } },
     },
   },
   title: 'Navigation/LinkButton',

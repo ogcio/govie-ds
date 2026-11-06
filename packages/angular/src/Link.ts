@@ -2,6 +2,7 @@ import { booleanAttribute, Component, Directive, Input } from '@angular/core';
 import classes from './atoms/Link.styles';
 import type { Props } from './atoms/Link';
 import { getDownload } from './atoms/utilities';
+import type { Style } from './types';
 
 @Component({
   selector: 'gi-link',
@@ -9,7 +10,7 @@ import { getDownload } from './atoms/utilities';
   template: `
     <a
       [class]="classes"
-      [attr.style]="style"
+      [style]="style"
       [attr.id]="id"
       [attr.href]="href"
       [attr.target]="target ?? (external ? '_blank' : undefined)"
@@ -43,7 +44,7 @@ import { getDownload } from './atoms/utilities';
 })
 export class GiLink {
   @Input() class = '';
-  @Input() style?: string;
+  @Input() style?: Style;
   @Input({ required: true }) href!: Props['href'];
   @Input() variant: Props['variant'];
   @Input() underline: Props['underline'];

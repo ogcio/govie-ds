@@ -11,7 +11,7 @@ import { CommonModule } from '@angular/common';
 export type Props = {
   cite?: string;
   className?: string;
-  styles?: Record<string, string>;
+  styles?: string | Record<string, string | number | null | undefined>;
   id?: string;
   describedBy?: string;
   labelledBy?: string;
@@ -29,7 +29,7 @@ import classes from './InsetText.styles';
           className: className,
         })
       "
-      [ngStyle]="styles"
+      [style]="styles"
       [attr.cite]="cite"
       [attr.aria-describedby]="describedBy || undefined"
       [attr.aria-labelledby]="labelledBy || undefined"

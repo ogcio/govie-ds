@@ -9,7 +9,7 @@ import { Component, Input } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
 export type Props = {
-  styles?: Record<string, string>;
+  styles?: string | Record<string, string | number | null | undefined>;
   ariaHidden?: boolean;
 };
 const defaultProps: any = { ariaHidden: undefined };
@@ -19,7 +19,7 @@ import { listItemClasses } from './BreadcrumbLink.styles';
 @Component({
   selector: 'core-breadcrumb-item',
   template: `
-    <li [class]="listItemClasses()" [attr.aria-hidden]="ariaHidden" [ngStyle]="styles"><ng-content></ng-content></li>
+    <li [class]="listItemClasses()" [attr.aria-hidden]="ariaHidden" [style]="styles"><ng-content></ng-content></li>
   `,
   styles: [
     `

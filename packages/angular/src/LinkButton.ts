@@ -3,6 +3,7 @@ import classes from './atoms/LinkButton.styles';
 import type { Props } from './atoms/LinkButton';
 import { getAppearance, getSize, getVariant } from './atoms/Button.styles';
 import { getDownload } from './atoms/utilities';
+import type { Style } from './types';
 
 @Component({
   selector: 'gi-link-button',
@@ -10,7 +11,7 @@ import { getDownload } from './atoms/utilities';
   template: `
     <a
       [class]="classes"
-      [attr.style]="style"
+      [style]="style"
       [attr.id]="id"
       [attr.href]="href"
       [attr.target]="target ?? (external ? '_blank' : undefined)"
@@ -44,7 +45,7 @@ import { getDownload } from './atoms/utilities';
 })
 export class GiLinkButton {
   @Input() class = '';
-  @Input() style?: string;
+  @Input() style?: Style;
   @Input({ required: true }) href!: Props['href'];
   @Input() variant: Props['variant'];
   @Input() appearance: Props['appearance'];

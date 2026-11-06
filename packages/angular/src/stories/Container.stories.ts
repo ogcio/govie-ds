@@ -15,11 +15,11 @@ const meta = {
   ...containerMeta,
   title: 'Layout/Container',
   argTypes: {
-    ...omit(containerMeta.argTypes, 'style'),
-    styles: {
+    ...omit(containerMeta.argTypes, 'styles'),
+    style: {
       control: false,
       description: 'Inline styles applied directly to the container element.',
-      table: { type: { summary: 'Record<string, string>' } },
+      table: { type: { summary: 'string | Record<string, string | number | null | undefined>' } },
     },
   },
 };

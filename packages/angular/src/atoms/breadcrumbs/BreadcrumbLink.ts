@@ -13,7 +13,7 @@ export type Props = {
   href: string;
   current?: boolean;
   className?: string;
-  styles?: Record<string, string>;
+  styles?: string | Record<string, string | number | null | undefined>;
   ariaLabel?: string;
   dataTestId?: string;
   onClick?: (event: any) => void;
@@ -34,7 +34,7 @@ import { breadcrumbClasses } from './BreadcrumbLink.styles';
           className: className,
         })
       "
-      [ngStyle]="styles"
+      [style]="styles"
       (click)="onClick && this.onClick.emit($event)"
       (keydown)="onKeyDown && this.onKeyDown.emit($event)"
       (keyup)="onKeyUp && this.onKeyUp.emit($event)"

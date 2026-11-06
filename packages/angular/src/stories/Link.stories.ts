@@ -30,7 +30,7 @@ const meta: Meta<GiLink> = {
     style: {
       control: false,
       description: 'Inline styles applied to the link element.',
-      table: { type: { summary: 'string' } },
+      table: { type: { summary: 'string | Record<string, string | number | null | undefined>' } },
     },
   },
   // Stop the click from navigating to avoid unexpected navigation in Storybook

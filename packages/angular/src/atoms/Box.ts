@@ -15,7 +15,7 @@ export type Props = {
   role?: 'region' | 'navigation' | 'complementary' | 'search' | 'form' | 'group';
   ariaLabel?: string;
   ariaLabelledBy?: string;
-  styles?: Record<string, string>;
+  styles?: string | Record<string, string | number | null | undefined>;
 };
 
 @Component({
@@ -27,7 +27,7 @@ export type Props = {
       [attr.role]="role"
       [attr.aria-label]="role ? ariaLabel : undefined"
       [attr.aria-labelledby]="role ? ariaLabelledBy : undefined"
-      [ngStyle]="styles"
+      [style]="styles"
       [attr.data-testid]="dataTestId"
     >
       <ng-content></ng-content>

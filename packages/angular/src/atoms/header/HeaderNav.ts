@@ -10,7 +10,7 @@ import { CommonModule } from '@angular/common';
 
 export type Props = {
   className?: string;
-  styles?: Record<string, string>;
+  styles?: string | Record<string, string | number | null | undefined>;
   id?: string;
   ariaLabel: string;
   dataTestId?: string;
@@ -34,7 +34,7 @@ const listClasses = tv({
           className: className,
         })
       "
-      [ngStyle]="styles"
+      [style]="styles"
       [attr.aria-label]="ariaLabel"
       [attr.data-testid]="dataTestId"
     >

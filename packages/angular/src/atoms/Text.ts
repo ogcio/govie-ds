@@ -14,7 +14,7 @@ export type Props = {
   className?: string;
   id?: string;
   dataTestId?: string;
-  styles?: Record<string, string>;
+  styles?: string | Record<string, string | number | null | undefined>;
   ariaHidden?: boolean | 'true' | 'false';
 };
 const defaultProps: any = { ariaHidden: undefined };
@@ -35,7 +35,7 @@ import classes from './Text.styles';
         })
       "
       [attr.id]="id"
-      [ngStyle]="styles"
+      [style]="styles"
       [attr.data-testid]="dataTestId"
       [attr.aria-hidden]="ariaHidden"
     >

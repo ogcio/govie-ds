@@ -23,7 +23,7 @@ export type Props = {
   ariaHidden?: boolean | 'true' | 'false';
   tabIndex?: number;
   lang?: string;
-  styles?: Record<string, string>;
+  styles?: string | Record<string, string | number | null | undefined>;
   onClick?: (event: any) => void;
   onKeyDown?: (event: any) => void;
   onKeyUp?: (event: any) => void;
@@ -45,7 +45,7 @@ import { linkClasses } from './HeaderNavItem.styles';
           className: className,
         })
       "
-      [ngStyle]="styles"
+      [style]="styles"
       [attr.target]="target ?? (external ? '_blank' : undefined)"
       [attr.rel]="rel ?? (external ? 'noreferrer noopener' : undefined)"
       [attr.download]="getDownload(download)"
