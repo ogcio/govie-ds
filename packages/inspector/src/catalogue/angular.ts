@@ -220,7 +220,7 @@ export const ANGULAR_COMPONENTS: CatalogueEntry[] = [
 
 export const ANGULAR_SKIPPED_TAGS = ['gi-header-section', 'gi-footer-section', 'gi-stack', 'gi-box'];
 
-/** A docs page of the Angular Storybook, which is only deployed to the development environment. */
+/** A docs page of the Angular Storybook, served from the same host as the demo. */
 function toStorybook(id: string): string {
-  return `https://ds.dev.services.gov.ie/storybook-angular/?path=/docs/${id}--docs`;
+  return `/storybook/angular/?path=/docs/${id}--docs`;
 }
