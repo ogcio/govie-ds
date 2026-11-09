@@ -11,7 +11,7 @@
       :href="href"
       :target="target ?? (external ? '_blank' : undefined)"
       :rel="rel ?? (external ? 'noreferrer noopener' : undefined)"
-      :download="download"
+      :download="getDownload(download)"
       :class="
         classes({
           selected: !!selected,
@@ -36,7 +36,7 @@
 </template>
 
 <script setup lang="ts">
-import { isAriaHidden } from '../utilities';
+import { getDownload, isAriaHidden } from '../utilities';
 import classes, { actionClasses, listItemClasses } from './SideNavItem.styles';
 
 export type Props = {

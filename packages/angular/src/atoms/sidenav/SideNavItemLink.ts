@@ -33,7 +33,7 @@ export type Props = {
 };
 const defaultProps: any = { download: undefined, ariaHidden: undefined, ariaCurrent: undefined };
 
-import { isAriaHidden } from '../utilities';
+import { getDownload, isAriaHidden } from '../utilities';
 import classes, { actionClasses, listItemClasses } from './SideNavItem.styles';
 
 @Component({
@@ -45,7 +45,7 @@ import classes, { actionClasses, listItemClasses } from './SideNavItem.styles';
         [attr.href]="href"
         [attr.target]="target ?? (external ? '_blank' : undefined)"
         [attr.rel]="rel ?? (external ? 'noreferrer noopener' : undefined)"
-        [attr.download]="download"
+        [attr.download]="getDownload(download)"
         [class]="
           classes({
             selected: !!selected,
@@ -80,6 +80,7 @@ import classes, { actionClasses, listItemClasses } from './SideNavItem.styles';
   imports: [CommonModule],
 })
 export default class SideNavItemLink {
+  getDownload = getDownload;
   isAriaHidden = isAriaHidden;
   classes = classes;
   actionClasses = actionClasses;

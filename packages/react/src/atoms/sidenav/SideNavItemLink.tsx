@@ -32,7 +32,7 @@ export type Props = {
   dataTestId?: string;
 };
 
-import { isAriaHidden } from '../utilities';
+import { getDownload, isAriaHidden } from '../utilities';
 import classes, { actionClasses, listItemClasses } from './SideNavItem.styles';
 
 function SideNavItemLink(props: Props) {
@@ -44,7 +44,7 @@ function SideNavItemLink(props: Props) {
         href={props.href}
         target={props.target ?? (props.external ? '_blank' : undefined)}
         rel={props.rel ?? (props.external ? 'noreferrer noopener' : undefined)}
-        download={props.download}
+        download={getDownload(props.download)}
         className={classes({
           selected: !!props.selected,
           className: props.className,

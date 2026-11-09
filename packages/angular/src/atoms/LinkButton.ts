@@ -16,7 +16,7 @@ import { getAppearance, getSize, getVariant } from './Button.styles';
 import classes from './LinkButton.styles';
 import type { Props as ButtonProps } from './Button';
 import type { Props as LinkProps } from './Link';
-import { isAriaHidden } from './utilities';
+import { getDownload, isAriaHidden } from './utilities';
 
 @Component({
   selector: 'core-link-button',
@@ -35,7 +35,7 @@ import { isAriaHidden } from './utilities';
       [ngStyle]="styles"
       [attr.target]="target ?? (external ? '_blank' : undefined)"
       [attr.rel]="rel ?? (external ? 'noreferrer noopener' : undefined)"
-      [attr.download]="download || undefined"
+      [attr.download]="getDownload(download)"
       [attr.aria-current]="ariaCurrent"
       [attr.aria-label]="ariaLabel"
       [attr.aria-labelledby]="ariaLabelledBy"
@@ -68,6 +68,7 @@ export default class LinkButton {
   getSize = getSize;
   getVariant = getVariant;
   classes = classes;
+  getDownload = getDownload;
   isAriaHidden = isAriaHidden;
 
   @Input() id!: Props['id'];

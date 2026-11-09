@@ -2,7 +2,7 @@ import { booleanAttribute, Component, Directive, Input } from '@angular/core';
 import classes from './atoms/LinkButton.styles';
 import type { Props } from './atoms/LinkButton';
 import { getAppearance, getSize, getVariant } from './atoms/Button.styles';
-import { downloadAttribute } from './utils';
+import { getDownload } from './atoms/utilities';
 
 @Component({
   selector: 'gi-link-button',
@@ -52,7 +52,7 @@ export class GiLinkButton {
   @Input({ transform: booleanAttribute }) external = false;
   @Input() target: Props['target'];
   @Input() rel: Props['rel'];
-  @Input({ transform: downloadAttribute }) download?: string;
+  @Input({ transform: (value: string | boolean | undefined) => getDownload(value) }) download?: string;
   @Input() id: Props['id'];
   @Input() ariaCurrent: Props['ariaCurrent'];
   @Input() ariaLabel: Props['ariaLabel'];
