@@ -20,7 +20,7 @@
     :style="styles"
     :target="target ?? (external ? '_blank' : undefined)"
     :rel="rel ?? (external ? 'noreferrer noopener' : undefined)"
-    :download="download || undefined"
+    :download="getDownload(download)"
     :aria-current="ariaCurrent"
     :aria-label="ariaLabel"
     :aria-labelledby="ariaLabelledBy"
@@ -42,7 +42,7 @@
 import classes from './Link.styles';
 import type { Appearance, Underline, Variant, Visited } from './Link.styles';
 import type { ValueOf } from './constants';
-import { isAriaHidden } from './utilities';
+import { getDownload, isAriaHidden } from './utilities';
 
 export type Props = {
   id?: string;

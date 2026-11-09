@@ -40,7 +40,7 @@ const defaultProps: any = { download: undefined, ariaCurrent: undefined, ariaHid
 import classes from './Link.styles';
 import type { Appearance, Underline, Variant, Visited } from './Link.styles';
 import type { ValueOf } from './constants';
-import { isAriaHidden } from './utilities';
+import { getDownload, isAriaHidden } from './utilities';
 
 @Component({
   selector: 'core-link',
@@ -60,7 +60,7 @@ import { isAriaHidden } from './utilities';
       [ngStyle]="styles"
       [attr.target]="target ?? (external ? '_blank' : undefined)"
       [attr.rel]="rel ?? (external ? 'noreferrer noopener' : undefined)"
-      [attr.download]="download || undefined"
+      [attr.download]="getDownload(download)"
       [attr.aria-current]="ariaCurrent"
       [attr.aria-label]="ariaLabel"
       [attr.aria-labelledby]="ariaLabelledBy"
@@ -90,6 +90,7 @@ import { isAriaHidden } from './utilities';
 })
 export default class Link {
   classes = classes;
+  getDownload = getDownload;
   isAriaHidden = isAriaHidden;
 
   @Input() id!: Props['id'];

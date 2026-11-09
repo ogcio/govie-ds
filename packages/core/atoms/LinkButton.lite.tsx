@@ -3,7 +3,7 @@ import { getAppearance, getSize, getVariant } from './Button.styles';
 import classes from './LinkButton.styles';
 import type { Props as ButtonProps } from './Button.lite';
 import type { Props as LinkProps } from './Link.lite';
-import { isAriaHidden } from './utilities';
+import { getDownload, isAriaHidden } from './utilities';
 
 useMetadata({ angular: { selector: 'core-link-button' } });
 
@@ -30,7 +30,7 @@ export default function LinkButton(props: Props) {
       style={props.styles}
       target={props.target ?? (props.external ? '_blank' : undefined)}
       rel={props.rel ?? (props.external ? 'noreferrer noopener' : undefined)}
-      download={props.download || undefined}
+      download={getDownload(props.download)}
       aria-current={props.ariaCurrent}
       aria-label={props.ariaLabel}
       aria-labelledby={props.ariaLabelledBy}

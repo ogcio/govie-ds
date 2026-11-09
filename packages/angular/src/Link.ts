@@ -1,7 +1,7 @@
 import { booleanAttribute, Component, Directive, Input } from '@angular/core';
 import classes from './atoms/Link.styles';
 import type { Props } from './atoms/Link';
-import { downloadAttribute } from './utils';
+import { getDownload } from './atoms/utilities';
 
 @Component({
   selector: 'gi-link',
@@ -52,7 +52,7 @@ export class GiLink {
   @Input({ transform: booleanAttribute }) external = false;
   @Input() target: Props['target'];
   @Input() rel: Props['rel'];
-  @Input({ transform: downloadAttribute }) download?: string;
+  @Input({ transform: (value: string | boolean | undefined) => getDownload(value) }) download?: string;
   @Input() id: Props['id'];
   @Input() ariaCurrent: Props['ariaCurrent'];
   @Input() ariaLabel: Props['ariaLabel'];

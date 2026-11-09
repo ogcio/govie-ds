@@ -39,7 +39,7 @@ export type Props = {
 import classes from './Link.styles';
 import type { Appearance, Underline, Variant, Visited } from './Link.styles';
 import type { ValueOf } from './constants';
-import { isAriaHidden } from './utilities';
+import { getDownload, isAriaHidden } from './utilities';
 
 function Link(props: Props) {
   props = { download: undefined, ariaCurrent: undefined, ariaHidden: undefined, ...props };
@@ -57,7 +57,7 @@ function Link(props: Props) {
       style={props.styles}
       target={props.target ?? (props.external ? '_blank' : undefined)}
       rel={props.rel ?? (props.external ? 'noreferrer noopener' : undefined)}
-      download={props.download || undefined}
+      download={getDownload(props.download)}
       aria-current={props.ariaCurrent}
       aria-label={props.ariaLabel}
       aria-labelledby={props.ariaLabelledBy}

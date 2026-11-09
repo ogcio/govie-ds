@@ -19,7 +19,7 @@
     :style="styles"
     :target="target ?? (external ? '_blank' : undefined)"
     :rel="rel ?? (external ? 'noreferrer noopener' : undefined)"
-    :download="download || undefined"
+    :download="getDownload(download)"
     :aria-current="ariaCurrent"
     :aria-label="ariaLabel"
     :aria-labelledby="ariaLabelledBy"
@@ -42,7 +42,7 @@ import { getAppearance, getSize, getVariant } from './Button.styles';
 import classes from './LinkButton.styles';
 import type { Props as ButtonProps } from './Button.vue';
 import type { Props as LinkProps } from './Link.vue';
-import { isAriaHidden } from './utilities';
+import { getDownload, isAriaHidden } from './utilities';
 
 export type Props = Omit<LinkProps, 'variant' | 'appearance' | 'underline' | 'visited'> &
   Pick<ButtonProps, 'variant' | 'appearance' | 'size'>;
