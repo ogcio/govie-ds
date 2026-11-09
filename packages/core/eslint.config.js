@@ -53,6 +53,12 @@ export default defineConfig([
             '`class` on a component styles its host tag, which is `display: contents` and paints nothing — the classes silently disappear. Use the `className` prop; it reaches the element inside.',
         },
         {
+          selector:
+            "JSXOpeningElement[name.name=/^[A-Z]/] > JSXAttribute[name.name='className']:matches([value.type='Literal'], [value.expression.type='Literal'])",
+          message:
+            'The Vue generator drops a string-literal `className` on a component as the React alias for `class` — the classes silently disappear. Put them in a `tv()` config and pass its call here.',
+        },
+        {
           selector: "JSXOpeningElement[name.name=/^[a-z]/] > JSXAttribute[name.name='className']",
           message:
             'Write `class` on native elements — the canonical Mitosis spelling. `className` is the prop name of Gi* components.',
