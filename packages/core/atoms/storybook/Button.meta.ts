@@ -20,11 +20,6 @@ export const meta = {
       description: 'Optional id for linking/targeting and aria references.',
       table: { type: { summary: 'string' } },
     },
-    className: {
-      control: false,
-      description: 'Additional CSS classes to apply to the button element.',
-      table: { type: { summary: 'string' } },
-    },
     variant: enumType(Variant, { description: 'Visual style variant of the button.', defaultValue: Variant.PRIMARY }),
     appearance: enumType(Appearance, {
       description: 'Colour appearance of the button.',
@@ -85,7 +80,7 @@ export const meta = {
       control: false,
       description:
         'Indicates the current checked state of the button when used in a toggle or checkbox role. Maps to `aria-checked`.',
-      table: { type: { summary: 'boolean' } },
+      table: { type: { summary: "boolean | 'true' | 'false'" } },
     },
     ariaCurrent: {
       control: false,
@@ -105,7 +100,7 @@ export const meta = {
       control: false,
       description:
         'Indicates whether a controlled element (e.g. a menu or disclosure) is expanded or collapsed. Maps to `aria-expanded`.',
-      table: { type: { summary: 'boolean' } },
+      table: { type: { summary: "boolean | 'true' | 'false'" } },
     },
     ariaControls: {
       control: false,
@@ -122,7 +117,7 @@ export const meta = {
     ariaBusy: {
       control: false,
       description: 'Indicates that the button or its associated region is being updated. Maps to `aria-busy`.',
-      table: { type: { summary: 'boolean' } },
+      table: { type: { summary: "boolean | 'true' | 'false'" } },
     },
     dataTestId: {
       control: false,

@@ -12,6 +12,11 @@ const meta: Meta<typeof IconButton> = {
   component: IconButton,
   argTypes: {
     ...stories.meta.argTypes,
+    className: {
+      control: false,
+      description: 'Additional CSS classes applied to the button element.',
+      table: { type: { summary: 'string' } },
+    },
     onClick: {
       control: false,
       description: 'Click event handler.',

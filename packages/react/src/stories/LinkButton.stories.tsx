@@ -9,6 +9,15 @@ const meta = {
   component: LinkButton,
   argTypes: {
     ...linkButtonMeta.argTypes,
+    className: {
+      control: { disable: true },
+      description: 'CSS classes to apply. Use gi-* Tailwind utilities for additional styling.',
+      table: { type: { summary: 'string' } },
+    },
+    styles: {
+      control: false,
+      table: { disable: true },
+    },
     onClick: {
       control: false,
       description: 'Click event handler.',

@@ -7,6 +7,7 @@
 import type { ArgTypes, StoryContext, Renderer } from 'storybook/internal/types';
 import { within } from 'storybook/test';
 import type { Props } from '../sidenav/SideNavItemLink';
+import argTypes from './argTypes';
 import { linkMeta } from './Link.meta';
 import { checker } from './utilities';
 import { sideNavItemMeta } from './SideNavItem.meta';
@@ -24,7 +25,7 @@ export const sideNavItemLinkMeta = {
     actions: sideNavItemMeta.argTypes.actions,
     id: linkMeta.argTypes.id,
     href: linkMeta.argTypes.href,
-    className: linkMeta.argTypes.className,
+    className: argTypes.className,
     external: linkMeta.argTypes.external,
     target: linkMeta.argTypes.target,
     rel: linkMeta.argTypes.rel,
@@ -36,7 +37,7 @@ export const sideNavItemLinkMeta = {
     ariaHidden: linkMeta.argTypes.ariaHidden,
     tabIndex: linkMeta.argTypes.tabIndex,
     lang: linkMeta.argTypes.lang,
-    styles: linkMeta.argTypes.styles,
+    styles: argTypes.styles,
     dataTestId: linkMeta.argTypes.dataTestId,
   } satisfies ArgTypes<Props>,
   parameters: {

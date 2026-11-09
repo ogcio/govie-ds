@@ -48,7 +48,7 @@ export const meta = {
     ariaExpanded: {
       control: false,
       description: 'Indicates whether a controlled element is expanded.',
-      table: { type: { summary: 'boolean' } },
+      table: { type: { summary: "boolean | 'true' | 'false'" } },
     },
     ariaPressed: {
       control: false,
@@ -69,7 +69,7 @@ export const meta = {
       control: false,
       description:
         'Indicates the element is being modified and assistive technologies may want to wait until changes are complete.',
-      table: { type: { summary: 'boolean' } },
+      table: { type: { summary: "boolean | 'true' | 'false'" } },
     },
     role: {
       control: false,
@@ -98,11 +98,6 @@ export const meta = {
     id: {
       control: false,
       description: 'HTML id attribute for the button element.',
-      table: { type: { summary: 'string' } },
-    },
-    className: {
-      control: false,
-      description: 'Additional CSS classes applied to the button element.',
       table: { type: { summary: 'string' } },
     },
     dataTestId: {

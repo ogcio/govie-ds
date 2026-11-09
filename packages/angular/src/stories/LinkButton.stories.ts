@@ -1,5 +1,4 @@
 import { RouterLink, RouterLinkActive } from '@angular/router';
-import omit from 'lodash/omit';
 import { componentWrapperDecorator, type Meta, type StoryObj } from '@storybook/angular-vite';
 import { expect, userEvent, waitFor, within } from 'storybook/test';
 import { GiBox } from '@/Box';
@@ -12,7 +11,7 @@ const meta: Meta<GiLinkButton> = {
   ...linkButtonMeta,
   component: GiLinkButton,
   argTypes: {
-    ...omit(linkButtonMeta.argTypes, ['className', 'styles']),
+    ...linkButtonMeta.argTypes,
     class: {
       control: false,
       description: 'Additional CSS classes applied to the link element.',

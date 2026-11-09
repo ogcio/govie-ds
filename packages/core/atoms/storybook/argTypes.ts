@@ -1,0 +1,14 @@
+import type { InputType } from 'storybook/internal/types';
+
+export default {
+  className: {
+    control: false,
+    description: 'Additional CSS classes, merged with the classes of the root element. Use `gi-*` Tailwind utilities.',
+    table: { type: { summary: 'string' } },
+  },
+  styles: {
+    control: false,
+    description: 'Inline styles applied to the root element.',
+    table: { type: { summary: 'Record<string, string>' } },
+  },
+} satisfies Record<string, InputType>;

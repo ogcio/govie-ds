@@ -157,17 +157,6 @@ export const linkMeta = {
         },
       },
     },
-    className: {
-      control: {
-        disable: true,
-      },
-      description: 'CSS classes to apply. Use gi-* Tailwind utilities for additional styling.',
-      table: {
-        type: {
-          summary: 'string',
-        },
-      },
-    },
     id: {
       control: {
         disable: true,
@@ -188,12 +177,6 @@ export const linkMeta = {
         type: {
           summary: 'string',
         },
-      },
-    },
-    styles: {
-      control: false,
-      table: {
-        disable: true,
       },
     },
     variant: {

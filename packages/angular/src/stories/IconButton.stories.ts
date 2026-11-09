@@ -1,4 +1,3 @@
-import omit from 'lodash/omit';
 import type { Meta, StoryObj } from '@storybook/angular-vite';
 import { GiBox } from '@/Box';
 import { GiIconButton, GiIconButtonDirective } from '@/IconButton';
@@ -19,7 +18,7 @@ const meta: Meta<GiIconButton> = {
   title: 'Components/IconButton',
   component: GiIconButton,
   argTypes: {
-    ...omit(stories.meta.argTypes, ['className']),
+    ...stories.meta.argTypes,
     class: {
       control: false,
       description: 'Additional CSS classes applied to the button element.',

@@ -37,7 +37,6 @@ export const linkButtonMeta = {
   },
 };
 export const Default = {
-  args: linkButtonMeta.args,
   play: async ({ canvasElement, step, args }: StoryContext<Renderer>) => {
     const canvas = within(canvasElement as HTMLElement);
     const check = checker(args.dataTestId, canvas, step);

@@ -20,6 +20,15 @@ const meta = {
   ],
   argTypes: {
     ...stories.linkMeta.argTypes,
+    className: {
+      control: { disable: true },
+      description: 'CSS classes to apply. Use gi-* Tailwind utilities for additional styling.',
+      table: { type: { summary: 'string' } },
+    },
+    styles: {
+      control: false,
+      table: { disable: true },
+    },
     asChild: {
       control: false,
       description:

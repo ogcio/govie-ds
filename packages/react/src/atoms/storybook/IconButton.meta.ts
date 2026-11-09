@@ -75,7 +75,7 @@ export const meta = {
       description: 'Indicates whether a controlled element is expanded.',
       table: {
         type: {
-          summary: 'boolean',
+          summary: "boolean | 'true' | 'false'",
         },
       },
     },
@@ -112,7 +112,7 @@ export const meta = {
         'Indicates the element is being modified and assistive technologies may want to wait until changes are complete.',
       table: {
         type: {
-          summary: 'boolean',
+          summary: "boolean | 'true' | 'false'",
         },
       },
     },
@@ -157,15 +157,6 @@ export const meta = {
     id: {
       control: false,
       description: 'HTML id attribute for the button element.',
-      table: {
-        type: {
-          summary: 'string',
-        },
-      },
-    },
-    className: {
-      control: false,
-      description: 'Additional CSS classes applied to the button element.',
       table: {
         type: {
           summary: 'string',
