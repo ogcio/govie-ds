@@ -18,7 +18,7 @@ export type Props = {
   styles?: string | Record<string, string | number | null | undefined>;
   id?: string;
   ariaLabel?: string;
-  ariaExpanded?: boolean;
+  ariaExpanded?: boolean | 'true' | 'false';
   ariaControls?: string;
   dataTestId?: string;
 };
