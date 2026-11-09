@@ -21,11 +21,15 @@ export default function HeaderNav(props: Props) {
       aria-label={props.ariaLabel}
       data-testid={props.dataTestId}
     >
-      <ul class="gi-list-none gi-flex gi-items-center gi-m-0 gi-p-0 gi-gap-4">{props.children}</ul>
+      <ul class={listClasses()}>{props.children}</ul>
     </nav>
   );
 }
 
 const classes = tv({
   base: 'gi-flex gi-items-center gi-flex-none',
+});
+
+const listClasses = tv({
+  base: 'gi-list-none gi-flex gi-items-center gi-m-0 gi-p-0 gi-gap-4',
 });

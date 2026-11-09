@@ -13,13 +13,18 @@
     :aria-labelledby="ariaLabelledBy"
     :data-testid="dataTestId"
   >
-    <ol class="gi-pagination-list gi-list-none gi-flex gi-items-center gi-justify-center gi-gap-2">
+    <ol :class="listClasses()">
       <slot />
     </ol>
   </nav>
 </template>
 
 <script setup lang="ts">
+import { tv } from 'tailwind-variants';
+const listClasses = tv({
+  base: 'gi-pagination-list gi-list-none gi-flex gi-items-center gi-justify-center gi-gap-2',
+});
+
 export type Props = {
   id?: string;
   className?: string;

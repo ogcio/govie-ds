@@ -12,7 +12,7 @@ export type Props = {
 
 export default function SideNavHeading(props: Props) {
   return (
-    <li class="gi-list-none">
+    <li class={listItemClasses()}>
       <h5 id={props.id} data-testid={props.dataTestId} class={classes({ class: props.className })}>
         {props.children}
       </h5>
@@ -31,4 +31,8 @@ const classes = tv({
     'gi-py-2',
     'gi-border-transparent',
   ],
+});
+
+const listItemClasses = tv({
+  base: 'gi-list-none',
 });

@@ -26,10 +26,13 @@ const classes = tv({
     'gi-border-transparent',
   ],
 });
+const listItemClasses = tv({
+  base: 'gi-list-none',
+});
 
 function SideNavHeading(props: Props) {
   return (
-    <li className="gi-list-none">
+    <li className={listItemClasses()}>
       <h5
         id={props.id}
         data-testid={props.dataTestId}

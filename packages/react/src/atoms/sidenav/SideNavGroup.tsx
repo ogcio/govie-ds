@@ -44,11 +44,14 @@ const contentClasses = tv({
     open: false,
   },
 });
+const listItemClasses = tv({
+  base: 'gi-list-none gi-mt-1 gi-side-nav-list',
+});
 
 function SideNavGroup(props: Props) {
   props = { ariaHidden: undefined, ...props };
   return (
-    <li className="gi-list-none gi-mt-1 gi-side-nav-list" aria-hidden={props.ariaHidden}>
+    <li className={listItemClasses()} aria-hidden={props.ariaHidden}>
       <div className={rowClasses()}>
         <button
           type="button"

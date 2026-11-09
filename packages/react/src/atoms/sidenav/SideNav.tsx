@@ -16,6 +16,11 @@ export type Props = {
   dataTestId?: string;
 };
 
+import { tv } from 'tailwind-variants';
+const listClasses = tv({
+  base: 'gi-list-none gi-p-0 gi-m-0',
+});
+
 function SideNav(props: Props) {
   return (
     <nav
@@ -26,7 +31,7 @@ function SideNav(props: Props) {
       aria-labelledby={props.ariaLabelledBy}
       data-testid={props.dataTestId}
     >
-      <ul className="gi-list-none gi-p-0 gi-m-0">{props.children}</ul>
+      <ul className={listClasses()}>{props.children}</ul>
     </nav>
   );
 }

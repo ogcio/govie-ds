@@ -16,6 +16,11 @@ export type Props = {
   dataTestId?: string;
 };
 
+import { tv } from 'tailwind-variants';
+const listClasses = tv({
+  base: 'gi-pagination-list gi-list-none gi-flex gi-items-center gi-justify-center gi-gap-2',
+});
+
 function Pagination(props: Props) {
   return (
     <nav
@@ -26,9 +31,7 @@ function Pagination(props: Props) {
       aria-labelledby={props.ariaLabelledBy}
       data-testid={props.dataTestId}
     >
-      <ol className="gi-pagination-list gi-list-none gi-flex gi-items-center gi-justify-center gi-gap-2">
-        {props.children}
-      </ol>
+      <ol className={listClasses()}>{props.children}</ol>
     </nav>
   );
 }

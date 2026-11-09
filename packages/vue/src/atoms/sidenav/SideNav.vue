@@ -13,13 +13,18 @@
     :aria-labelledby="ariaLabelledBy"
     :data-testid="dataTestId"
   >
-    <ul class="gi-list-none gi-p-0 gi-m-0">
+    <ul :class="listClasses()">
       <slot />
     </ul>
   </nav>
 </template>
 
 <script setup lang="ts">
+import { tv } from 'tailwind-variants';
+const listClasses = tv({
+  base: 'gi-list-none gi-p-0 gi-m-0',
+});
+
 export type Props = {
   className?: string;
   styles?: Record<string, string>;

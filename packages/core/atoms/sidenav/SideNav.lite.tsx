@@ -1,4 +1,5 @@
 import { useMetadata } from '@builder.io/mitosis';
+import { tv } from 'tailwind-variants';
 
 useMetadata({ angular: { selector: 'gi-side-nav' } });
 
@@ -22,7 +23,11 @@ export default function SideNav(props: Props) {
       aria-labelledby={props.ariaLabelledBy}
       data-testid={props.dataTestId}
     >
-      <ul class="gi-list-none gi-p-0 gi-m-0">{props.children}</ul>
+      <ul class={listClasses()}>{props.children}</ul>
     </nav>
   );
 }
+
+const listClasses = tv({
+  base: 'gi-list-none gi-p-0 gi-m-0',
+});

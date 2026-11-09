@@ -1,4 +1,5 @@
 import { useMetadata } from '@builder.io/mitosis';
+import { tv } from 'tailwind-variants';
 
 useMetadata({ angular: { selector: 'core-pagination' } });
 
@@ -22,9 +23,11 @@ export default function Pagination(props: Props) {
       aria-labelledby={props.ariaLabelledBy}
       data-testid={props.dataTestId}
     >
-      <ol class="gi-pagination-list gi-list-none gi-flex gi-items-center gi-justify-center gi-gap-2">
-        {props.children}
-      </ol>
+      <ol class={listClasses()}>{props.children}</ol>
     </nav>
   );
 }
+
+const listClasses = tv({
+  base: 'gi-pagination-list gi-list-none gi-flex gi-items-center gi-justify-center gi-gap-2',
+});

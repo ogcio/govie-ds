@@ -33,7 +33,7 @@ export type Props = {
 
 export default function SideNavGroup(props: Props) {
   return (
-    <li class="gi-list-none gi-mt-1 gi-side-nav-list" aria-hidden={props.ariaHidden}>
+    <li class={listItemClasses()} aria-hidden={props.ariaHidden}>
       <div class={rowClasses()}>
         <button
           type="button"
@@ -82,4 +82,8 @@ const contentClasses = tv({
   defaultVariants: {
     open: false,
   },
+});
+
+const listItemClasses = tv({
+  base: 'gi-list-none gi-mt-1 gi-side-nav-list',
 });
