@@ -64,13 +64,13 @@ export type Props = {
   ariaLabel?: string;
   ariaLabelledBy?: string;
   ariaDescribedBy?: string;
-  ariaChecked?: boolean;
+  ariaChecked?: boolean | 'true' | 'false';
   ariaCurrent?: 'page' | 'step' | 'location' | 'date' | 'time' | boolean;
   ariaPressed?: boolean | 'mixed';
-  ariaExpanded?: boolean;
+  ariaExpanded?: boolean | 'true' | 'false';
   ariaControls?: string;
   ariaHasPopup?: 'menu' | 'listbox' | 'dialog' | 'grid' | 'tree' | boolean;
-  ariaBusy?: boolean;
+  ariaBusy?: boolean | 'true' | 'false';
   role?: string;
   type?: 'button' | 'submit' | 'reset';
   form?: string;
