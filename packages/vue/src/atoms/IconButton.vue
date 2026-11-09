@@ -62,11 +62,11 @@ export type Props = {
   ariaLabel?: string;
   ariaLabelledBy?: string;
   ariaDescribedBy?: string;
-  ariaExpanded?: boolean;
+  ariaExpanded?: boolean | 'true' | 'false';
   ariaPressed?: boolean | 'mixed';
   ariaHasPopup?: 'menu' | 'listbox' | 'dialog' | 'grid' | 'tree' | boolean;
   ariaControls?: string;
-  ariaBusy?: boolean;
+  ariaBusy?: boolean | 'true' | 'false';
   role?: string;
   type?: 'button' | 'submit' | 'reset';
   form?: string;
