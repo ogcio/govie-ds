@@ -27,11 +27,14 @@ const classes = tv({
     'gi-border-transparent',
   ],
 });
+const listItemClasses = tv({
+  base: 'gi-list-none',
+});
 
 @Component({
   selector: 'gi-side-nav-heading',
   template: `
-    <li class="gi-list-none">
+    <li [class]="listItemClasses()">
       <h5
         [attr.id]="id"
         [attr.data-testid]="dataTestId"
@@ -57,6 +60,7 @@ const classes = tv({
 })
 export default class SideNavHeading {
   classes = classes;
+  listItemClasses = listItemClasses;
 
   @Input() id!: Props['id'];
   @Input() dataTestId!: Props['dataTestId'];

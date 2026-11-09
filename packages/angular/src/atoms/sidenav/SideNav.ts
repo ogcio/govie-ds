@@ -17,6 +17,11 @@ export type Props = {
   dataTestId?: string;
 };
 
+import { tv } from 'tailwind-variants';
+const listClasses = tv({
+  base: 'gi-list-none gi-p-0 gi-m-0',
+});
+
 @Component({
   selector: 'gi-side-nav',
   template: `
@@ -28,7 +33,7 @@ export type Props = {
       [attr.aria-labelledby]="ariaLabelledBy"
       [attr.data-testid]="dataTestId"
     >
-      <ul class="gi-list-none gi-p-0 gi-m-0">
+      <ul [class]="listClasses()">
         <ng-content></ng-content>
       </ul>
     </nav>
@@ -44,6 +49,8 @@ export type Props = {
   imports: [CommonModule],
 })
 export default class SideNav {
+  listClasses = listClasses;
+
   @Input() id!: Props['id'];
   @Input() className!: Props['className'];
   @Input() styles!: Props['styles'];

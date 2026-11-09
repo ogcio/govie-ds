@@ -5,7 +5,7 @@
 -->
 
 <template>
-  <li class="gi-list-none">
+  <li :class="listItemClasses()">
     <h5
       :id="id"
       :data-testid="dataTestId"
@@ -33,6 +33,9 @@ const classes = tv({
     'gi-py-2',
     'gi-border-transparent',
   ],
+});
+const listItemClasses = tv({
+  base: 'gi-list-none',
 });
 
 export type Props = {

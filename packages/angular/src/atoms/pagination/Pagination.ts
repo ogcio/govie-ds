@@ -17,6 +17,11 @@ export type Props = {
   dataTestId?: string;
 };
 
+import { tv } from 'tailwind-variants';
+const listClasses = tv({
+  base: 'gi-pagination-list gi-list-none gi-flex gi-items-center gi-justify-center gi-gap-2',
+});
+
 @Component({
   selector: 'core-pagination',
   template: `
@@ -28,7 +33,7 @@ export type Props = {
       [attr.aria-labelledby]="ariaLabelledBy"
       [attr.data-testid]="dataTestId"
     >
-      <ol class="gi-pagination-list gi-list-none gi-flex gi-items-center gi-justify-center gi-gap-2">
+      <ol [class]="listClasses()">
         <ng-content></ng-content>
       </ol>
     </nav>
@@ -44,6 +49,8 @@ export type Props = {
   imports: [CommonModule],
 })
 export default class Pagination {
+  listClasses = listClasses;
+
   @Input() id!: Props['id'];
   @Input() className!: Props['className'];
   @Input() styles!: Props['styles'];
