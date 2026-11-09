@@ -19,10 +19,10 @@ export { HeadingSize, type Props as HeadingProps } from './heading';
 export { Align, Size, Whitespace } from './constants';
 
 // Actions
-export { default as Button, type Props as ButtonProps } from './atoms/Button.vue';
-export { default as IconButton, type Props as IconButtonProps } from './atoms/IconButton.vue';
-export { default as Link, type Props as LinkProps } from './atoms/Link.vue';
-export { default as LinkButton, type Props as LinkButtonProps } from './atoms/LinkButton.vue';
+export { default as Button, type Props as ButtonProps } from './Button.vue';
+export { default as IconButton, type Props as IconButtonProps } from './IconButton.vue';
+export { default as Link, type Props as LinkProps } from './Link.vue';
+export { default as LinkButton, type Props as LinkButtonProps } from './LinkButton.vue';
 
 // Footer
 export { default as Footer, type Props as FooterProps } from './atoms/footer/Footer.vue';
