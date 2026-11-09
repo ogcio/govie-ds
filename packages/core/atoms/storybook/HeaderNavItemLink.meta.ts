@@ -1,5 +1,6 @@
 import type { StoryContext, Renderer } from 'storybook/internal/types';
 import { within } from 'storybook/test';
+import argTypes from './argTypes';
 import { linkMeta } from './Link.meta';
 import { checker } from './utilities';
 
@@ -29,7 +30,7 @@ export const meta = {
   argTypes: {
     id: linkMeta.argTypes.id,
     href: linkMeta.argTypes.href,
-    className: linkMeta.argTypes.className,
+    className: argTypes.className,
     external: linkMeta.argTypes.external,
     target: linkMeta.argTypes.target,
     rel: linkMeta.argTypes.rel,

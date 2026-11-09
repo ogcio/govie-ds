@@ -9,6 +9,11 @@ const meta: Meta<typeof Button> = {
   title: 'Components/Button',
   argTypes: {
     ...stories.meta.argTypes,
+    className: {
+      control: false,
+      description: 'Additional CSS classes to apply to the button element.',
+      table: { type: { summary: 'string' } },
+    },
     onClick: {
       control: false,
       description: 'Click event handler.',

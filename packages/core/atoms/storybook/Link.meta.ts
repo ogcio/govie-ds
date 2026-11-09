@@ -88,11 +88,6 @@ export const linkMeta = {
         'Language of the link text, when it differs from the surrounding content. Maps to the HTML lang attribute.',
       table: { type: { summary: 'string' } },
     },
-    className: {
-      control: { disable: true },
-      description: 'CSS classes to apply. Use gi-* Tailwind utilities for additional styling.',
-      table: { type: { summary: 'string' } },
-    },
     id: {
       control: { disable: true },
       description: 'Optional id for linking/targeting and aria references.',
@@ -102,10 +97,6 @@ export const linkMeta = {
       control: { disable: true },
       description: 'Test id for targeting the element in automated tests.',
       table: { type: { summary: 'string' } },
-    },
-    styles: {
-      control: false,
-      table: { disable: true },
     },
     variant: {
       control: 'select',

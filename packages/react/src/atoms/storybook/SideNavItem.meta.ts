@@ -8,6 +8,7 @@ import type { ArgTypes, StoryContext, Renderer } from 'storybook/internal/types'
 import { within } from 'storybook/test';
 import type { Props } from '../sidenav/SideNavItem';
 import { boxMeta } from './Box.meta';
+import argTypes from './argTypes';
 import { linkMeta } from './Link.meta';
 import { checker } from './utilities';
 import { meta as buttonMeta } from './Button.meta';
@@ -40,8 +41,8 @@ export const sideNavItemMeta = {
       },
       description: 'Trailing action slot rendered beside the item (for example an IconButton).',
     },
-    className: buttonMeta.argTypes.className,
-    styles: boxMeta.argTypes.styles,
+    className: argTypes.className,
+    styles: argTypes.styles,
     id: boxMeta.argTypes.id,
     ariaLabel: {
       control: 'text',
