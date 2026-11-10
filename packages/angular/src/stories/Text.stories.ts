@@ -1,5 +1,5 @@
 import type { Meta, StoryObj } from '@storybook/angular-vite';
-import { expect } from 'storybook/test';
+import { expect, within } from 'storybook/test';
 import { GiStack } from '@/Stack';
 import { GiText, GiTextDirective } from '@/Text';
 import { Size } from '@/atoms/constants';
@@ -78,4 +78,38 @@ export const Directive: Story = {
       </gi-stack>
     `,
   }),
+};
+
+export const TestInlineStyle: StoryObj = {
+  tags: ['!dev', '!autodocs', 'skip-playwright'],
+  render: () => ({
+    props: { objectStyle: { marginTop: '8px', 'padding-top': '2px', opacity: 0.5, color: null } },
+    template: `
+      <gi-text dataTestId="string-style" style="margin-top: 4px; color: red !important">String form</gi-text>
+      <gi-text dataTestId="object-style" [style]="objectStyle">Object form</gi-text>
+    `,
+  }),
+  play: async ({ canvasElement, step }) => {
+    const canvas = within(canvasElement);
+
+    await step('accepts a style string', async () => {
+      const { style } = canvas.getByTestId('string-style');
+      await expect(style.marginTop).toBe('4px');
+      await expect(style.getPropertyPriority('color')).toBe('important');
+    });
+
+    await step('accepts a style object', async () => {
+      const { style } = canvas.getByTestId('object-style');
+      await expect(style.marginTop).toBe('8px');
+      await expect(style.paddingTop).toBe('2px');
+      await expect(style.opacity).toBe('0.5');
+      await expect(style.color).toBe('');
+    });
+
+    await step('leaves the host element unstyled', async () => {
+      for (const host of canvasElement.querySelectorAll('gi-text')) {
+        await expect(host.hasAttribute('style')).toBe(false);
+      }
+    });
+  },
 };
