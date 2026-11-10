@@ -135,7 +135,7 @@ export const WithRouter: StoryObj<GiBreadcrumbLinkDirective> = {
     docs: {
       description: {
         story:
-          '`giBreadcrumbLink` works with the native Angular router: put it on the same `a` as `routerLink`, inside an `li` marked with `giBreadcrumbItem`. Bind `current` to `routerLinkActive` so the active route sets `aria-current="page"`. Use an exact match so only the page the user is on is current.',
+          '`giBreadcrumbLink` works with the native Angular router: put it on the same `a` as `routerLink`, inside an `li` marked with `giBreadcrumbItem`. The style to visually distinguish the active page is only applied when the `aria-current="page"` attribute is set on the link. The boolean `[current]` prop - when true, applies this attribute state. This can be integrated with `routerLinkActive`; setting `current` to the `isActive` property of the `#link` as shown below.\n\nAlternatively, using the `ariaCurrentWhenActive="page"` property applies the same styles as binding `current` to `isActive`. You can use either implementation to achieve the correct visual design, as shown below. Ensure you use an exact match for the active options so only the page the user is on is current.',
       },
     },
   },
@@ -152,7 +152,7 @@ export const WithRouter: StoryObj<GiBreadcrumbLinkDirective> = {
           <a giBreadcrumbLink routerLink="/home/accounts" routerLinkActive #accountsLink="routerLinkActive" [routerLinkActiveOptions]="{ exact: true }" [current]="accountsLink.isActive">Accounts</a>
         </li>
         <li giBreadcrumbItem>
-          <a giBreadcrumbLink routerLink="/home/accounts/security" routerLinkActive #securityLink="routerLinkActive" [routerLinkActiveOptions]="{ exact: true }" [current]="securityLink.isActive">Security</a>
+          <a giBreadcrumbLink routerLink="/home/accounts/security" routerLinkActive  [routerLinkActiveOptions]="{ exact: true }" ariaCurrentWhenActive="page">Security</a>
         </li>
       </gi-breadcrumbs>
     `,
