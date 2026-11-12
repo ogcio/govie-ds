@@ -135,7 +135,7 @@ export const WithRouter: StoryObj<GiBreadcrumbLinkDirective> = {
     docs: {
       description: {
         story:
-          '`giBreadcrumbLink` works with the native Angular router: put it on the same `a` as `routerLink`, inside an `li` marked with `giBreadcrumbItem`. Bind `current` to `routerLinkActive` so the active route sets `aria-current="page"`. Use an exact match so only the page the user is on is current.',
+          '`giBreadcrumbLink` works with the native Angular router: put it on the same `a` as `routerLink`, inside an `li` marked with `giBreadcrumbItem`. You can either bind `current` to `routerLinkActive` so the active route sets `aria-current="page"`, or use `ariaCurrentWhenActive="page"`, as shown in [Breadcrumbs](/docs/navigation-breadcrumbs-breadcrumbs--docs#with-router). Use an exact match so only the page the user is on is current.',
       },
     },
   },
