@@ -1,5 +1,25 @@
 # Changelog
 
+## [1.50.0](https://github.com/ogcio/govie-ds/compare/docs-v1.49.0...docs-v1.50.0) (2026-11-12)
+
+
+### Features
+
+* **AB#45734:** add a References page to Resources ([b079c65](https://github.com/ogcio/govie-ds/commit/b079c65aec05f9cb40d678889082ffae8da52859))
+
+
+### Bug Fixes
+
+* **AB#45391:** update example & docs to next@16.4.1 ([8133121](https://github.com/ogcio/govie-ds/commit/8133121eb3fbdb0c7804bff804cc5be3f0c15fe3))
+* **AB#45797:** link React Storybook docs pages through the ?path= query ([000bf77](https://github.com/ogcio/govie-ds/commit/000bf7775f080e6d943d700157a5e0f599b5ffd5))
+
+
+### Dependencies
+
+* The following workspace dependencies were updated
+  * dependencies
+    * @ogcio/design-system-react bumped to 1.52.0
+
 ## [1.49.0](https://github.com/ogcio/govie-ds/compare/docs-v1.48.0...docs-v1.49.0) (2026-11-03)
 
 
