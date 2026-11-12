@@ -64,3 +64,6 @@ export const actionClasses = tv({
     last: true,
   },
 });
+export const headingListItemClasses = tv({
+  base: 'gi-list-none',
+});

@@ -9,6 +9,7 @@ import * as React from 'react';
 export type Props = {
   children?: any;
   className?: string;
+  styles?: Record<string, string>;
   id?: string;
   dataTestId?: string;
 };
@@ -26,23 +27,19 @@ const classes = tv({
     'gi-border-transparent',
   ],
 });
-const listItemClasses = tv({
-  base: 'gi-list-none',
-});
 
 function SideNavHeading(props: Props) {
   return (
-    <li className={listItemClasses()}>
-      <h5
-        id={props.id}
-        data-testid={props.dataTestId}
-        className={classes({
-          class: props.className,
-        })}
-      >
-        {props.children}
-      </h5>
-    </li>
+    <h5
+      id={props.id}
+      data-testid={props.dataTestId}
+      className={classes({
+        class: props.className,
+      })}
+      style={props.styles}
+    >
+      {props.children}
+    </h5>
   );
 }
 

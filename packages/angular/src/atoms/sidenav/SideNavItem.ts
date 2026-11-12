@@ -4,63 +4,22 @@
   The file source is in `packages/core/atoms/sidenav/SideNavItem.lite.tsx`
  */
 
-import { Output, EventEmitter, Component, Input } from '@angular/core';
+import { Component, Input } from '@angular/core';
 
 import { CommonModule } from '@angular/common';
 
 export type Props = {
-  id?: string;
-  selected?: boolean;
-  actions?: any;
-  disabled?: boolean;
-  className?: string;
-  styles?: string | Record<string, string | number | null | undefined>;
-  onClick?: (event: any) => void;
-  onFocus?: (event: any) => void;
-  onBlur?: (event: any) => void;
-  onKeyDown?: (event: any) => void;
-  onKeyUp?: (event: any) => void;
   ariaHidden?: boolean | 'true' | 'false';
-  ariaCurrent?: 'page' | 'step' | 'location' | 'date' | 'time' | 'true' | 'false' | boolean;
-  ariaLabel?: string;
-  tabIndex?: number;
-  dataTestId?: string;
 };
-const defaultProps: any = { ariaHidden: undefined, ariaCurrent: undefined };
+const defaultProps: any = { ariaHidden: undefined };
 
+import { listItemClasses } from './SideNavItem.styles';
 import { isAriaHidden } from '../utilities';
-import classes, { actionClasses, listItemClasses } from './SideNavItem.styles';
 
 @Component({
   selector: 'core-side-nav-item',
   template: `
-    <li [class]="listItemClasses()" [attr.aria-hidden]="ariaHidden">
-      <button
-        type="button"
-        [attr.id]="id"
-        [class]="
-          classes({
-            selected: !!selected,
-            disabled: !!disabled,
-            className: className,
-          })
-        "
-        [style]="styles"
-        [attr.disabled]="disabled || undefined"
-        (click)="onClick && this.onClick.emit($event)"
-        (focus)="onFocus && this.onFocus.emit($event)"
-        (blur)="onBlur && this.onBlur.emit($event)"
-        (keydown)="onKeyDown && this.onKeyDown.emit($event)"
-        (keyup)="onKeyUp && this.onKeyUp.emit($event)"
-        [attr.aria-current]="ariaCurrent"
-        [attr.aria-label]="ariaLabel"
-        [attr.tabIndex]="isAriaHidden(ariaHidden) ? -1 : tabIndex"
-        [attr.data-testid]="dataTestId"
-      >
-        <ng-content></ng-content>
-      </button>
-      <div [class]="actionClasses()"><ng-content select="[actions]"></ng-content></div>
-    </li>
+    <li [class]="listItemClasses()" [attr.aria-hidden]="isAriaHidden(ariaHidden)"><ng-content></ng-content></li>
   `,
   styles: [
     `
@@ -73,24 +32,8 @@ import classes, { actionClasses, listItemClasses } from './SideNavItem.styles';
   imports: [CommonModule],
 })
 export default class SideNavItem {
-  isAriaHidden = isAriaHidden;
-  classes = classes;
-  actionClasses = actionClasses;
   listItemClasses = listItemClasses;
+  isAriaHidden = isAriaHidden;
 
   @Input() ariaHidden: Props['ariaHidden'] = defaultProps['ariaHidden'];
-  @Input() id!: Props['id'];
-  @Input() selected!: Props['selected'];
-  @Input() disabled!: Props['disabled'];
-  @Input() className!: Props['className'];
-  @Input() styles!: Props['styles'];
-  @Input() ariaCurrent: Props['ariaCurrent'] = defaultProps['ariaCurrent'];
-  @Input() ariaLabel!: Props['ariaLabel'];
-  @Input() tabIndex!: Props['tabIndex'];
-  @Input() dataTestId!: Props['dataTestId'];
-  @Output() onClick = new EventEmitter<any>();
-  @Output() onFocus = new EventEmitter<any>();
-  @Output() onBlur = new EventEmitter<any>();
-  @Output() onKeyDown = new EventEmitter<any>();
-  @Output() onKeyUp = new EventEmitter<any>();
 }

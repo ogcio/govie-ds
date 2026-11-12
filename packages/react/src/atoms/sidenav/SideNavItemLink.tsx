@@ -33,40 +33,35 @@ export type Props = {
 };
 
 import { getDownload, isAriaHidden } from '../utilities';
-import classes, { actionClasses, listItemClasses } from './SideNavItem.styles';
+import classes from './SideNavItem.styles';
 
 function SideNavItemLink(props: Props) {
   props = { download: undefined, ariaHidden: undefined, ariaCurrent: undefined, ...props };
   return (
-    <li className={listItemClasses()} aria-hidden={props.ariaHidden}>
-      <a
-        id={props.id}
-        href={props.href}
-        target={props.target ?? (props.external ? '_blank' : undefined)}
-        rel={props.rel ?? (props.external ? 'noreferrer noopener' : undefined)}
-        download={getDownload(props.download)}
-        className={classes({
-          selected: !!props.selected,
-          className: props.className,
-        })}
-        style={props.styles}
-        onClick={(event) => props.onClick && props.onClick(event)}
-        onKeyDown={(event) => props.onKeyDown && props.onKeyDown(event)}
-        onKeyUp={(event) => props.onKeyUp && props.onKeyUp(event)}
-        aria-current={props.ariaCurrent}
-        aria-label={props.ariaLabel}
-        aria-labelledby={props.ariaLabelledBy}
-        aria-describedby={props.ariaDescribedBy}
-        tabIndex={isAriaHidden(props.ariaHidden) ? -1 : props.tabIndex}
-        lang={props.lang}
-        data-testid={props.dataTestId}
-      >
-        {props.children}
-      </a>
-      <div className={actionClasses()}>
-        <>{props.actions}</>
-      </div>
-    </li>
+    <a
+      id={props.id}
+      href={props.href}
+      target={props.target ?? (props.external ? '_blank' : undefined)}
+      rel={props.rel ?? (props.external ? 'noreferrer noopener' : undefined)}
+      download={getDownload(props.download)}
+      className={classes({
+        selected: !!props.selected,
+        className: props.className,
+      })}
+      style={props.styles}
+      onClick={(event) => props.onClick && props.onClick(event)}
+      onKeyDown={(event) => props.onKeyDown && props.onKeyDown(event)}
+      onKeyUp={(event) => props.onKeyUp && props.onKeyUp(event)}
+      aria-current={props.ariaCurrent}
+      aria-label={props.ariaLabel}
+      aria-labelledby={props.ariaLabelledBy}
+      aria-describedby={props.ariaDescribedBy}
+      tabIndex={isAriaHidden(props.ariaHidden) ? -1 : props.tabIndex}
+      lang={props.lang}
+      data-testid={props.dataTestId}
+    >
+      {props.children}
+    </a>
   );
 }
 

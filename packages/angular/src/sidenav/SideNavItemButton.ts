@@ -1,29 +1,33 @@
 import { booleanAttribute, Component, Directive, EventEmitter, Input, Output } from '@angular/core';
-import CoreSideNavItem, { type Props } from '../atoms/sidenav/SideNavItem';
+import CoreSideNavItem from '../atoms/sidenav/SideNavItem';
+import CoreSideNavItemButton, { type Props } from '../atoms/sidenav/SideNavItemButton';
+import CoreSideNavItemAction from '../atoms/sidenav/SideNavItemAction';
 import classes from '../atoms/sidenav/SideNavItem.styles';
 
 @Component({
   selector: 'gi-side-nav-item-button',
   standalone: true,
-  imports: [CoreSideNavItem],
+  imports: [CoreSideNavItem, CoreSideNavItemButton, CoreSideNavItemAction],
   template: `
-    <core-side-nav-item
-      [className]="class"
-      [styles]="style"
-      [id]="id"
-      [selected]="selected"
-      [disabled]="disabled"
-      [ariaCurrent]="ariaCurrent"
-      [ariaLabel]="ariaLabel"
-      [ariaHidden]="ariaHidden || undefined"
-      [tabIndex]="tabIndex"
-      [dataTestId]="dataTestId"
-      (onClick)="itemClick.emit($event)"
-    >
-      <ng-content />
-      <ng-container ngProjectAs="[actions]">
+    <core-side-nav-item>
+      <core-side-nav-item-button
+        [className]="class"
+        [styles]="style"
+        [id]="id"
+        [selected]="selected"
+        [disabled]="disabled"
+        [ariaCurrent]="ariaCurrent"
+        [ariaLabel]="ariaLabel"
+        [ariaHidden]="ariaHidden || undefined"
+        [tabIndex]="tabIndex"
+        [dataTestId]="dataTestId"
+        (onClick)="itemClick.emit($event)"
+      >
+        <ng-content />
+      </core-side-nav-item-button>
+      <core-side-nav-item-action>
         <ng-content select="[actions]" />
-      </ng-container>
+      </core-side-nav-item-action>
     </core-side-nav-item>
   `,
   styles: [':host { display: contents; }'],

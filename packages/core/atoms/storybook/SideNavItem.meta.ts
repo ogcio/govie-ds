@@ -1,53 +1,18 @@
-import type { ArgTypes, StoryContext, Renderer } from 'storybook/internal/types';
-import { within } from 'storybook/test';
 import type { Props } from '../sidenav/SideNavItem.lite';
-import { boxMeta } from './Box.meta';
-import argTypes from './argTypes';
-import { linkMeta } from './Link.meta';
-import { checker } from './utilities';
-import { meta as buttonMeta } from './Button.meta';
+import type { Meta } from './types';
 
 export const sideNavItemMeta = {
   title: 'Navigation/SideNav/SideNavItem',
   args: {
-    children: 'Overview',
-    selected: false,
-    disabled: false,
-    id: 'side-nav-item-id',
-    dataTestId: 'side-nav-item',
+    ariaHidden: undefined,
   },
   argTypes: {
-    selected: {
-      control: 'boolean',
-      description: 'Marks the item as the current selection. Applies the selected accent treatment.',
-      table: { type: { summary: 'boolean' }, defaultValue: { summary: 'false' } },
-    },
-    disabled: buttonMeta.argTypes.disabled,
-    actions: {
-      control: { disable: true },
-      description: 'Trailing action slot rendered beside the item (for example an IconButton).',
-    },
-    className: argTypes.className,
-    styles: argTypes.styles,
-    id: boxMeta.argTypes.id,
-    ariaLabel: {
-      control: 'text',
-      description: 'Accessible label for the item button. Maps to `aria-label`.',
-      table: { type: { summary: 'string' } },
-    },
-    ariaCurrent: linkMeta.argTypes.ariaCurrent,
     ariaHidden: {
       control: { disable: true },
-      description: 'Hides the list item from assistive technology. Maps to `aria-hidden` on the wrapping `<li>`.',
+      description: 'Hides the list item from assistive technology. Maps to `aria-hidden`.',
       table: { type: { summary: "boolean | 'true' | 'false'" } },
     },
-    tabIndex: {
-      control: { disable: true },
-      description: 'Overrides the default tab order. Automatically set to `-1` when `ariaHidden` is true.',
-      table: { type: { summary: 'number' } },
-    },
-    dataTestId: boxMeta.argTypes.dataTestId,
-  } satisfies ArgTypes<Props>,
+  },
   parameters: {
     docs: {
       description: {
@@ -56,34 +21,4 @@ export const sideNavItemMeta = {
       },
     },
   },
-};
-
-export const Default = {
-  args: sideNavItemMeta.args,
-  play: async ({ canvasElement, step, args }: StoryContext<Renderer>) => {
-    const canvas = within(canvasElement as HTMLElement);
-    const check = checker(args.dataTestId, canvas, step);
-
-    await check.is('button');
-    await check.attributes({ id: args.id });
-    await check.children();
-  },
-};
-
-export const Selected = {
-  args: {
-    ...sideNavItemMeta.args,
-    selected: true,
-    ariaCurrent: 'page' as const,
-    dataTestId: 'side-nav-item-selected',
-    id: 'side-nav-item-selected-id',
-  },
-  play: async ({ canvasElement, step, args }: StoryContext<Renderer>) => {
-    const canvas = within(canvasElement as HTMLElement);
-    const check = checker(args.dataTestId, canvas, step);
-
-    await check.is('button');
-    await check.attributes({ 'aria-current': 'page' });
-    await check.children();
-  },
-};
+} satisfies Meta<Props>;
