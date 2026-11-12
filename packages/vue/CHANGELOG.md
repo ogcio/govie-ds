@@ -1,5 +1,31 @@
 # Changelog
 
+## [0.7.0](https://github.com/ogcio/govie-ds/compare/vue-v0.6.0...vue-v0.7.0) (2026-11-12)
+
+
+### Features
+
+* **AB#44733:** expose typography through native Vue wrappers ([b5987f0](https://github.com/ogcio/govie-ds/commit/b5987f04b5d53cf3e2cabee345686aac1caa506a))
+* **AB#44736:** expose actions through native Vue wrappers ([a13a770](https://github.com/ogcio/govie-ds/commit/a13a770852785a77cdb0973fdff75fc61343ad4b))
+* **AB#45449:** document disabled pattern ([ab4c5b0](https://github.com/ogcio/govie-ds/commit/ab4c5b0848d7ec02780d1c81eb04502678b53cb6))
+
+
+### Bug Fixes
+
+* **AB#38397:** keep links focusable when aria-hidden is "false" ([cab750f](https://github.com/ogcio/govie-ds/commit/cab750fd692c912e74d4efc7da76e18f7eb31daf))
+* **AB#44292:** add background to side-nav-item selected ([f3eb2f6](https://github.com/ogcio/govie-ds/commit/f3eb2f668b77001b05b72df05a1336cc901701d6))
+* **AB#44733:** accept string aria-hidden values on text and paragraph atoms ([4e75cb2](https://github.com/ogcio/govie-ds/commit/4e75cb229fe27d6be654a925db62d35de79ecc82))
+* **AB#44733:** document className and styles only in the React Text story ([dfe8320](https://github.com/ogcio/govie-ds/commit/dfe83207fb7afe9298cab6e414eb4417540c9fa8))
+* **AB#44736:** accept string values on button aria state props ([b231390](https://github.com/ogcio/govie-ds/commit/b231390179b3e25adf6291f61cc24d2cedb76e9f))
+* **AB#44736:** document className and styles only in the React action stories ([844ec27](https://github.com/ogcio/govie-ds/commit/844ec27efa37d6e676818909fd9aaa0e39a6707e))
+* **AB#44736:** normalise the download attribute on links and link buttons ([79ae07c](https://github.com/ogcio/govie-ds/commit/79ae07caddfbd96ad0a6ae5d24d16f6f84cf4593))
+
+
+### Miscellaneous Chores
+
+* **AB#43036:** compose static list classes through tv ([749264b](https://github.com/ogcio/govie-ds/commit/749264b2489562532f04984dc2b9c5d4446a1464))
+* **AB#45671:** remove the generated atoms barrel ([aaa00fc](https://github.com/ogcio/govie-ds/commit/aaa00fc02d86fecfe1b5f2825831b7a9530a70e4))
+
 ## [0.6.0](https://github.com/ogcio/govie-ds/compare/vue-v0.5.0...vue-v0.6.0) (2026-11-03)
 
 
