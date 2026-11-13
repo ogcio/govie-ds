@@ -2,6 +2,7 @@ import type { Meta, StoryObj } from '@storybook/vue3-vite';
 import omit from 'lodash/omit';
 import { ref } from 'vue';
 import * as stories from '../atoms/storybook/Header.meta';
+import argTypes from '../atoms/storybook/argTypes';
 import {
   Divider,
   Header,
@@ -27,13 +28,11 @@ const meta: Meta = {
   argTypes: {
     ...stories.meta.argTypes,
     class: {
-      control: false,
-      description: 'Additional CSS classes, merged with the classes of the root `<header>` element.',
+      ...argTypes.class,
       table: { type: { summary: 'string | object | array' } },
     },
     style: {
-      control: false,
-      description: 'Inline CSS styles applied to the root `<header>` element.',
+      ...argTypes.style,
       table: { type: { summary: 'string | object | array' } },
     },
     // The shared play reads `dataTestId` from the story args; the template binds it as `data-testid`.

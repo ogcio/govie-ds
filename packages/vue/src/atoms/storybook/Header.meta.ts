@@ -7,23 +7,20 @@
 import type { ArgTypes, StoryContext, Renderer } from 'storybook/internal/types';
 import { within } from 'storybook/test';
 import type { Props } from '../header/Header.vue';
+import argTypes from './argTypes';
 import { boxMeta } from './Box.meta';
 import { checker } from './utilities';
 export const meta = {
   title: 'Navigation/Header',
   args: {
     children: 'Header content',
-    className: undefined,
-    styles: undefined,
     id: 'header-example',
     ariaLabel: 'Site header',
     ariaLabelledBy: undefined,
     dataTestId: undefined,
   },
   argTypes: {
-    className: boxMeta.argTypes.className,
-    styles: boxMeta.argTypes.styles,
-    id: boxMeta.argTypes.id,
+    id: argTypes.id,
     dataTestId: boxMeta.argTypes.dataTestId,
     ariaLabel: {
       control: 'text',

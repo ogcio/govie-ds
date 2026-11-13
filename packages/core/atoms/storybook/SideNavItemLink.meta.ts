@@ -20,7 +20,7 @@ export const sideNavItemLinkMeta = {
     actions: sideNavItemMeta.argTypes.actions,
     id: linkMeta.argTypes.id,
     href: linkMeta.argTypes.href,
-    className: argTypes.className,
+    className: argTypes.class,
     external: linkMeta.argTypes.external,
     target: linkMeta.argTypes.target,
     rel: linkMeta.argTypes.rel,
@@ -32,7 +32,7 @@ export const sideNavItemLinkMeta = {
     ariaHidden: linkMeta.argTypes.ariaHidden,
     tabIndex: linkMeta.argTypes.tabIndex,
     lang: linkMeta.argTypes.lang,
-    styles: argTypes.styles,
+    styles: argTypes.style,
     dataTestId: linkMeta.argTypes.dataTestId,
   } satisfies ArgTypes<Props>,
   parameters: {
