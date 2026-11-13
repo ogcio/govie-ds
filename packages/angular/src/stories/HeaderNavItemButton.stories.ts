@@ -35,7 +35,6 @@ export const Default: StoryObj = {
             [visible]="visible"
             [id]="id"
             [dataTestId]="dataTestId"
-            [class]="className"
             [ariaLabel]="ariaLabel"
             [ariaExpanded]="ariaExpanded"
             [ariaControls]="ariaControls"

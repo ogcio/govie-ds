@@ -3,9 +3,15 @@ import HeaderNav from '@/atoms/header/HeaderNav';
 import HeaderNavItemLink from '@/HeaderNavItemLink';
 import HeaderSection from '@/atoms/header/HeaderSection';
 import * as stories from '@/atoms/storybook/HeaderNav.meta';
+import argTypes from '@/atoms/storybook/argTypes';
 
 const meta = {
   ...stories.meta,
+  argTypes: {
+    ...stories.meta.argTypes,
+    className: argTypes.class,
+    styles: argTypes.style,
+  },
   title: 'Layout/Header/HeaderNav',
   component: HeaderNav,
   parameters: {

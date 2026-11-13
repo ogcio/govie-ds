@@ -1,20 +1,17 @@
 import type { StoryContext, Renderer } from 'storybook/internal/types';
 import { within, expect } from 'storybook/test';
+import argTypes from './argTypes';
 import { boxMeta } from './Box.meta';
 
 export const meta = {
   title: 'Layout/Header/HeaderTitle',
   args: {
     children: 'Title',
-    className: undefined,
-    styles: undefined,
     id: 'header-title-id',
     dataTestId: 'header-title',
   },
   argTypes: {
-    className: boxMeta.argTypes.className,
-    styles: boxMeta.argTypes.styles,
-    id: boxMeta.argTypes.id,
+    id: argTypes.id,
     dataTestId: boxMeta.argTypes.dataTestId,
   },
   parameters: {

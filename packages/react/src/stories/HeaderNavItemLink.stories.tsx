@@ -5,6 +5,7 @@ import HeaderNavItemLink from '@/HeaderNavItemLink';
 import HeaderSection from '@/atoms/header/HeaderSection';
 import * as itemStories from '@/atoms/storybook/HeaderNavItem.meta';
 import * as stories from '@/atoms/storybook/HeaderNavItemLink.meta';
+import argTypes from '@/atoms/storybook/argTypes';
 import { checker } from '@/atoms/storybook/utilities';
 
 const meta = {
@@ -12,6 +13,11 @@ const meta = {
   argTypes: {
     ...stories.meta.argTypes,
     visible: itemStories.meta.argTypes.visible,
+    className: {
+      ...argTypes.class,
+      description:
+        'Additional CSS classes, merged with the classes of the `<a>` element. Use `gi-*` Tailwind utilities.',
+    },
     style: {
       control: false,
       description: 'Inline styles. Prefer className with gi-* Tailwind utilities.',

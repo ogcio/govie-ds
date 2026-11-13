@@ -2,9 +2,15 @@ import type { Meta, StoryObj } from '@storybook/react-vite';
 import HeaderTitle from '@/atoms/header/HeaderTitle';
 import HeaderSection from '@/atoms/header/HeaderSection';
 import * as stories from '@/atoms/storybook/HeaderTitle.meta';
+import argTypes from '@/atoms/storybook/argTypes';
 
 const meta = {
   ...stories.meta,
+  argTypes: {
+    ...stories.meta.argTypes,
+    className: argTypes.class,
+    styles: argTypes.style,
+  },
   title: 'Layout/Header/HeaderTitle',
   component: HeaderTitle,
   parameters: {

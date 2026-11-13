@@ -15,7 +15,6 @@ export const meta = {
     children: 'Departments',
     id: 'header-nav-item-link-id',
     href: '#',
-    className: undefined,
     external: undefined,
     target: undefined,
     rel: undefined,
@@ -33,9 +32,8 @@ export const meta = {
     onKeyUp: undefined,
   },
   argTypes: {
-    id: linkMeta.argTypes.id,
+    id: argTypes.id,
     href: linkMeta.argTypes.href,
-    className: argTypes.className,
     external: linkMeta.argTypes.external,
     target: linkMeta.argTypes.target,
     rel: linkMeta.argTypes.rel,

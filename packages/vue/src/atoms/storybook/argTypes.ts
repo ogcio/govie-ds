@@ -6,7 +6,7 @@
 
 import type { InputType } from 'storybook/internal/types';
 export default {
-  className: {
+  class: {
     control: false,
     description: 'Additional CSS classes, merged with the classes of the root element. Use `gi-*` Tailwind utilities.',
     table: {
@@ -15,12 +15,23 @@ export default {
       },
     },
   },
-  styles: {
+  style: {
     control: false,
     description: 'Inline styles applied to the root element.',
     table: {
       type: {
         summary: 'Record<string, string>',
+      },
+    },
+  },
+  id: {
+    control: {
+      disable: true,
+    },
+    description: 'Optional id for linking/targeting and aria references.',
+    table: {
+      type: {
+        summary: 'string',
       },
     },
   },

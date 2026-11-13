@@ -1,6 +1,7 @@
 import type { Meta, StoryObj } from '@storybook/react-vite';
 import { within, expect } from 'storybook/test';
 import * as stories from '@/atoms/storybook/Header.meta';
+import argTypes from '@/atoms/storybook/argTypes';
 import Header from '@/atoms/header/Header';
 import HeaderLogo from '@/atoms/header/HeaderLogo';
 import HeaderSection from '@/atoms/header/HeaderSection';
@@ -24,6 +25,11 @@ import Divider from '@/Divider';
 
 const meta = {
   ...stories.meta,
+  argTypes: {
+    ...stories.meta.argTypes,
+    className: argTypes.class,
+    styles: argTypes.style,
+  },
   title: 'Layout/Header/Header',
   component: Header,
   parameters: {

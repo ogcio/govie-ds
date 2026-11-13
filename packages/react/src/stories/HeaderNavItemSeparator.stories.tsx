@@ -4,9 +4,22 @@ import HeaderNavItemLink from '@/HeaderNavItemLink';
 import HeaderNavItemSeparator from '@/atoms/header/HeaderNavItemSeparator';
 import HeaderSection from '@/atoms/header/HeaderSection';
 import * as stories from '@/atoms/storybook/HeaderNavItemSeparator.meta';
+import argTypes from '@/atoms/storybook/argTypes';
 
 const meta = {
   ...stories.meta,
+  argTypes: {
+    ...stories.meta.argTypes,
+    className: {
+      ...argTypes.class,
+      description:
+        'Additional CSS classes, merged with the classes of the divider `<hr>` element. Use `gi-*` Tailwind utilities.',
+    },
+    styles: {
+      ...argTypes.style,
+      description: 'Inline styles applied to the divider `<hr>` element.',
+    },
+  },
   title: 'Layout/Header/HeaderNavItemSeparator',
   component: HeaderNavItemSeparator,
   parameters: {

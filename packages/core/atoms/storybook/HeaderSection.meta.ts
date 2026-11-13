@@ -1,6 +1,7 @@
 import type { StoryContext, Renderer } from 'storybook/internal/types';
 import { within, expect } from 'storybook/test';
 import { SurfaceVariant, SurfaceAppearance } from '../constants';
+import argTypes from './argTypes';
 import { boxMeta } from './Box.meta';
 import { containerMeta } from './Container.meta';
 import { enumType } from './utilities';
@@ -12,8 +13,6 @@ export const meta = {
     variant: SurfaceVariant.PRIMARY,
     appearance: SurfaceAppearance.DEFAULT,
     maxWidth: undefined,
-    className: undefined,
-    styles: undefined,
     id: 'header-section-id',
     role: undefined,
     ariaLabel: undefined,
@@ -29,9 +28,7 @@ export const meta = {
       defaultValue: SurfaceAppearance.DEFAULT,
     }),
     maxWidth: containerMeta.argTypes.maxWidth,
-    className: boxMeta.argTypes.className,
-    styles: boxMeta.argTypes.styles,
-    id: boxMeta.argTypes.id,
+    id: argTypes.id,
     role: {
       control: { disable: true },
       description: 'Optional landmark role for the section wrapper. Maps to `role`.',

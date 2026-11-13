@@ -3,9 +3,15 @@ import HeaderLogo from '@/atoms/header/HeaderLogo';
 import HeaderSection from '@/atoms/header/HeaderSection';
 import { LogoWhite } from '@/logos';
 import * as stories from '@/atoms/storybook/HeaderLogo.meta';
+import argTypes from '@/atoms/storybook/argTypes';
 
 const meta = {
   ...stories.meta,
+  argTypes: {
+    ...stories.meta.argTypes,
+    className: argTypes.class,
+    styles: argTypes.style,
+  },
   title: 'Layout/Header/HeaderLogo',
   component: HeaderLogo,
   parameters: {

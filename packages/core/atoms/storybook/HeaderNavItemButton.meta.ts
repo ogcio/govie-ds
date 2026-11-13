@@ -1,5 +1,6 @@
 import type { StoryContext, Renderer } from 'storybook/internal/types';
 import { within } from 'storybook/test';
+import argTypes from './argTypes';
 import { boxMeta } from './Box.meta';
 import { checker } from './utilities';
 
@@ -8,7 +9,6 @@ export const meta = {
   args: {
     children: 'Search',
     onClick: undefined,
-    className: undefined,
     id: 'header-nav-item-id',
     ariaLabel: undefined,
     ariaExpanded: undefined,
@@ -21,8 +21,7 @@ export const meta = {
       description: 'Click handler for the button.',
       table: { type: { summary: '(event) => void' } },
     },
-    className: boxMeta.argTypes.className,
-    id: boxMeta.argTypes.id,
+    id: argTypes.id,
     ariaLabel: {
       control: 'text',
       description: 'Accessible label for the button. Maps to `aria-label`.',
@@ -31,7 +30,7 @@ export const meta = {
     ariaExpanded: {
       control: 'boolean',
       description: 'Indicates whether a related panel is expanded. Maps to `aria-expanded`.',
-      table: { type: { summary: 'boolean' } },
+      table: { type: { summary: "boolean | 'true' | 'false'" } },
     },
     ariaControls: {
       control: { disable: true },

@@ -1,7 +1,6 @@
 import type { StoryContext, Renderer } from 'storybook/internal/types';
 import { expect, within } from 'storybook/test';
 import { Size } from '../constants';
-import { boxMeta } from './Box.meta';
 import { enumType } from './utilities';
 
 export const meta = {
@@ -9,7 +8,6 @@ export const meta = {
   args: {
     children: 'Search',
     visible: undefined,
-    className: undefined,
   },
   argTypes: {
     visible: {
@@ -19,7 +17,6 @@ export const meta = {
       }),
       control: 'select',
     },
-    className: boxMeta.argTypes.className,
   },
   parameters: {
     docs: {
