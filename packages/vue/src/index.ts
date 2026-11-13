@@ -30,17 +30,17 @@ export { default as FooterLogo, type Props as FooterLogoProps } from './atoms/fo
 export { default as FooterSection, type Props as FooterSectionProps } from './atoms/footer/FooterSection.vue';
 
 // Header
-export { default as Header, type Props as HeaderProps } from './atoms/header/Header.vue';
-export { default as HeaderSection, type Props as HeaderSectionProps } from './atoms/header/HeaderSection.vue';
-export { default as HeaderLogo, type Props as HeaderLogoProps } from './atoms/header/HeaderLogo.vue';
-export { default as HeaderNav, type Props as HeaderNavProps } from './atoms/header/HeaderNav.vue';
+export { default as Header } from './Header.vue';
+export { default as HeaderSection, type Props as HeaderSectionProps } from './HeaderSection.vue';
+export { default as HeaderLogo } from './HeaderLogo.vue';
+export { default as HeaderNav } from './HeaderNav.vue';
 export { default as HeaderNavItem, type Props as HeaderNavItemProps } from './HeaderNavItem.vue';
 export { default as HeaderNavItemLink, type Props as HeaderNavItemLinkProps } from './HeaderNavItemLink.vue';
 export {
   default as HeaderNavItemSeparator,
   type Props as HeaderNavItemSeparatorProps,
-} from './atoms/header/HeaderNavItemSeparator.vue';
-export { default as HeaderTitle, type Props as HeaderTitleProps } from './atoms/header/HeaderTitle.vue';
+} from './HeaderNavItemSeparator.vue';
+export { default as HeaderTitle } from './HeaderTitle.vue';
 
 // SideNav
 export { default as SideNav, type Props as SideNavProps } from './atoms/sidenav/SideNav.vue';
