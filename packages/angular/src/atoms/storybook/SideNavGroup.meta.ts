@@ -104,7 +104,7 @@ export const sideNavGroupMeta = {
     docs: {
       description: {
         component:
-          'Expandable section within a SideNav. Renders a disclosure header with a chevron and a nested list of `SideNavItem` or `SideNavItemLink` children. Open state is fully controlled through `open` and `onClick`.',
+          'Expandable section within a SideNav. Renders a disclosure header with a chevron and a nested list of `SideNavItem` or `SideNavItemLink` children. Open state is fully controlled through `open`.',
       },
     },
   },
@@ -136,7 +136,7 @@ export const ControlledOpen = {
     docs: {
       description: {
         story:
-          'Group that starts open. The parent toggles `open` from `onClick`, so activating the header hides and shows the nested items.',
+          'Group that starts open. The parent toggles `open` from the click event, so activating the header hides and shows the nested items.',
       },
     },
   },

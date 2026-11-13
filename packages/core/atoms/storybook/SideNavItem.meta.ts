@@ -16,8 +16,7 @@ export const sideNavItemMeta = {
   parameters: {
     docs: {
       description: {
-        component:
-          'Button-style navigation item for SideNav. Use for destinations that select in place rather than navigating to a URL. Nest inside `SideNav` or `SideNavGroup`.',
+        component: 'Navigational list item for SideNav. Nest inside `SideNav` or `SideNavGroup`.',
       },
     },
   },
