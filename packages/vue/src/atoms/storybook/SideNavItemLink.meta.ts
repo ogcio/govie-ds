@@ -62,3 +62,4 @@ export const Default = {
     await check.children();
   },
 } satisfies Story<Props>;
+export { Selected } from './SideNavItemButton.meta';

@@ -97,9 +97,17 @@ export const Selected = {
   args: {
     ...sideNavItemButtonMeta.args,
     selected: true,
-    ariaCurrent: 'page' as const,
+    ariaCurrent: 'page',
     dataTestId: 'side-nav-item-selected',
     id: 'side-nav-item-selected-id',
+  },
+  parameters: {
+    docs: {
+      description: {
+        story:
+          'Setting either `ariaCurrent` to page, or `selected` to `true`, you can visually indicate the active item within the side navigation.',
+      },
+    },
   },
   play: async ({ canvasElement, step, args }: StoryContext<Renderer>) => {
     const canvas = within(canvasElement as HTMLElement);
