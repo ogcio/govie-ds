@@ -147,7 +147,7 @@ export const WithActions: Story = {
     moduleMetadata: {
       imports: sideNavImports,
     },
-    template: `
+    template: /*html*/ `
       <gi-side-nav [dataTestId]="dataTestId" [ariaLabel]="ariaLabel" class="gi-max-w-xs">
         <gi-side-nav-group
           [(open)]="inboxOpen"

@@ -3,6 +3,7 @@ import { within, expect, userEvent } from 'storybook/test';
 import type { Props } from '../sidenav/SideNav.lite';
 import { boxMeta } from './Box.meta';
 import { checker } from './utilities';
+import argTypes from './argTypes';
 
 export const sideNavMeta = {
   title: 'Navigation/SideNav',
@@ -11,8 +12,8 @@ export const sideNavMeta = {
     ariaLabel: 'Side navigation',
   },
   argTypes: {
-    className: boxMeta.argTypes.className,
-    styles: boxMeta.argTypes.styles,
+    className: argTypes.className,
+    styles: argTypes.styles,
     id: boxMeta.argTypes.id,
     dataTestId: boxMeta.argTypes.dataTestId,
     ariaLabel: {
@@ -81,7 +82,7 @@ export const Expandable = {
     docs: {
       description: {
         story:
-          'Disclosure pattern using `SideNavGroup`. Each group is controlled through `open` and `onClick`. One group starts open and another starts closed; toggling a header reveals or hides its nested items.',
+          'Disclosure pattern using `SideNavGroup`. Each group is controlled through the `open` prop. One group starts open and another starts closed; toggling `open` reveals or hides its nested items.',
       },
     },
   },
@@ -120,7 +121,7 @@ export const WithActions = {
     docs: {
       description: {
         story:
-          'Trailing `actions` slots on a group, an item and a link. Actions render beside the navigation control rather than inside it, so activating one runs its own handler without toggling the group or selecting the destination.',
+          'Trailing `actions` slots on a group, a button and a link. Actions render beside the navigation control rather than inside it, so activating one runs its own handler without toggling the group or selecting the destination.',
       },
     },
   },
@@ -140,7 +141,8 @@ export const WithActions = {
 
     await step('empty actions slot stays hidden', async () => {
       const primary = canvas.getByRole('button', { name: 'Primary' });
-      const actions = primary.parentElement?.querySelector('.gi-side-nav-actions');
+      const listItemParent = primary.closest('li') as HTMLElement;
+      const actions = listItemParent.querySelector('.gi-side-nav-actions');
       expect(actions).toBeInTheDocument();
       expect(actions).not.toBeVisible();
     });

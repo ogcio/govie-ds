@@ -4,11 +4,13 @@
   The file source is in `packages/core/atoms/storybook/SideNavHeading.meta.ts`
  */
 
-import type { ArgTypes, StoryContext, Renderer } from 'storybook/internal/types';
+import type { StoryContext, Renderer } from 'storybook/internal/types';
 import { within } from 'storybook/test';
 import type { Props } from '../sidenav/SideNavHeading';
 import { boxMeta } from './Box.meta';
 import { checker } from './utilities';
+import type { Meta, Story } from './types';
+import argTypes from './argTypes';
 export const sideNavHeadingMeta = {
   title: 'Navigation/SideNav/SideNavHeading',
   args: {
@@ -17,10 +19,11 @@ export const sideNavHeadingMeta = {
     dataTestId: 'side-nav-heading',
   },
   argTypes: {
-    className: boxMeta.argTypes.className,
+    className: argTypes.className,
+    styles: argTypes.styles,
     id: boxMeta.argTypes.id,
     dataTestId: boxMeta.argTypes.dataTestId,
-  } satisfies ArgTypes<Props>,
+  },
   parameters: {
     docs: {
       description: {
@@ -29,7 +32,7 @@ export const sideNavHeadingMeta = {
       },
     },
   },
-};
+} satisfies Meta<Props>;
 export const Default = {
   args: sideNavHeadingMeta.args,
   play: async ({ canvasElement, step, args }: StoryContext<Renderer>) => {
@@ -41,4 +44,4 @@ export const Default = {
     });
     await check.children();
   },
-};
+} satisfies Story<Props>;

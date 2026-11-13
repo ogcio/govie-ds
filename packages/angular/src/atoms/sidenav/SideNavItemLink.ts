@@ -34,40 +34,37 @@ export type Props = {
 const defaultProps: any = { download: undefined, ariaHidden: undefined, ariaCurrent: undefined };
 
 import { getDownload, isAriaHidden } from '../utilities';
-import classes, { actionClasses, listItemClasses } from './SideNavItem.styles';
+import classes from './SideNavItem.styles';
 
 @Component({
   selector: 'core-side-nav-item-link',
   template: `
-    <li [class]="listItemClasses()" [attr.aria-hidden]="ariaHidden">
-      <a
-        [attr.id]="id"
-        [attr.href]="href"
-        [attr.target]="target ?? (external ? '_blank' : undefined)"
-        [attr.rel]="rel ?? (external ? 'noreferrer noopener' : undefined)"
-        [attr.download]="getDownload(download)"
-        [class]="
-          classes({
-            selected: !!selected,
-            className: className,
-          })
-        "
-        [style]="styles"
-        (click)="onClick && this.onClick.emit($event)"
-        (keydown)="onKeyDown && this.onKeyDown.emit($event)"
-        (keyup)="onKeyUp && this.onKeyUp.emit($event)"
-        [attr.aria-current]="ariaCurrent"
-        [attr.aria-label]="ariaLabel"
-        [attr.aria-labelledby]="ariaLabelledBy"
-        [attr.aria-describedby]="ariaDescribedBy"
-        [attr.tabIndex]="isAriaHidden(ariaHidden) ? -1 : tabIndex"
-        [attr.lang]="lang"
-        [attr.data-testid]="dataTestId"
-      >
-        <ng-content></ng-content>
-      </a>
-      <div [class]="actionClasses()"><ng-content select="[actions]"></ng-content></div>
-    </li>
+    <a
+      [attr.id]="id"
+      [attr.href]="href"
+      [attr.target]="target ?? (external ? '_blank' : undefined)"
+      [attr.rel]="rel ?? (external ? 'noreferrer noopener' : undefined)"
+      [attr.download]="getDownload(download)"
+      [class]="
+        classes({
+          selected: !!selected,
+          className: className,
+        })
+      "
+      [style]="styles"
+      (click)="onClick && this.onClick.emit($event)"
+      (keydown)="onKeyDown && this.onKeyDown.emit($event)"
+      (keyup)="onKeyUp && this.onKeyUp.emit($event)"
+      [attr.aria-current]="ariaCurrent"
+      [attr.aria-label]="ariaLabel"
+      [attr.aria-labelledby]="ariaLabelledBy"
+      [attr.aria-describedby]="ariaDescribedBy"
+      [attr.tabIndex]="isAriaHidden(ariaHidden) ? -1 : tabIndex"
+      [attr.lang]="lang"
+      [attr.data-testid]="dataTestId"
+    >
+      <ng-content></ng-content>
+    </a>
   `,
   styles: [
     `
@@ -83,10 +80,7 @@ export default class SideNavItemLink {
   getDownload = getDownload;
   isAriaHidden = isAriaHidden;
   classes = classes;
-  actionClasses = actionClasses;
-  listItemClasses = listItemClasses;
 
-  @Input() ariaHidden: Props['ariaHidden'] = defaultProps['ariaHidden'];
   @Input() id!: Props['id'];
   @Input() href!: Props['href'];
   @Input() target!: Props['target'];
@@ -100,6 +94,7 @@ export default class SideNavItemLink {
   @Input() ariaLabel!: Props['ariaLabel'];
   @Input() ariaLabelledBy!: Props['ariaLabelledBy'];
   @Input() ariaDescribedBy!: Props['ariaDescribedBy'];
+  @Input() ariaHidden: Props['ariaHidden'] = defaultProps['ariaHidden'];
   @Input() tabIndex!: Props['tabIndex'];
   @Input() lang!: Props['lang'];
   @Input() dataTestId!: Props['dataTestId'];

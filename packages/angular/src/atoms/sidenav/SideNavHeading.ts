@@ -10,6 +10,7 @@ import { CommonModule } from '@angular/common';
 
 export type Props = {
   className?: string;
+  styles?: string | Record<string, string | number | null | undefined>;
   id?: string;
   dataTestId?: string;
 };
@@ -27,26 +28,22 @@ const classes = tv({
     'gi-border-transparent',
   ],
 });
-const listItemClasses = tv({
-  base: 'gi-list-none',
-});
 
 @Component({
   selector: 'core-side-nav-heading',
   template: `
-    <li [class]="listItemClasses()">
-      <h5
-        [attr.id]="id"
-        [attr.data-testid]="dataTestId"
-        [class]="
-          classes({
-            class: className,
-          })
-        "
-      >
-        <ng-content></ng-content>
-      </h5>
-    </li>
+    <h5
+      [attr.id]="id"
+      [attr.data-testid]="dataTestId"
+      [class]="
+        classes({
+          class: className,
+        })
+      "
+      [style]="styles"
+    >
+      <ng-content></ng-content>
+    </h5>
   `,
   styles: [
     `
@@ -60,9 +57,9 @@ const listItemClasses = tv({
 })
 export default class SideNavHeading {
   classes = classes;
-  listItemClasses = listItemClasses;
 
   @Input() id!: Props['id'];
   @Input() dataTestId!: Props['dataTestId'];
   @Input() className!: Props['className'];
+  @Input() styles!: Props['styles'];
 }

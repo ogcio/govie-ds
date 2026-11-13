@@ -1,15 +1,20 @@
 import type { Meta, StoryObj } from '@storybook/react-vite';
-import SideNav from '@/atoms/sidenav/SideNav';
-import SideNavItem from '@/atoms/sidenav/SideNavItem';
+import SideNav from '@/SideNav/SideNav';
+import SideNavItem from '@/SideNav/SideNavItem';
 import * as stories from '@/atoms/storybook/SideNavItem.meta';
+import * as buttonStories from '@/atoms/storybook/SideNavItemButton.meta';
 import { importNext } from './helpers';
+import omit from 'lodash/omit';
 
 const meta = {
   ...stories.sideNavItemMeta,
+  args: { ...stories.sideNavItemMeta.args, ...buttonStories.sideNavItemButtonMeta.args },
   title: 'Navigation/SideNav/SideNavItem',
   component: SideNavItem,
   argTypes: {
     ...stories.sideNavItemMeta.argTypes,
+    ...omit(buttonStories.sideNavItemButtonMeta.argTypes, 'styles'),
+    style: buttonStories.sideNavItemButtonMeta.argTypes.styles,
     actions: {
       ...stories.sideNavItemMeta.argTypes.actions,
       table: { type: { summary: 'React.ReactNode' } },
@@ -24,13 +29,13 @@ const meta = {
       },
     },
   },
-} as Meta<typeof SideNavItem>;
+} satisfies Meta<typeof SideNavItem>;
 
 export default meta;
 type Story = StoryObj<typeof meta>;
 
 export const Default: Story = {
-  ...stories.Default,
+  ...buttonStories.Default,
   tags: ['skip-playwright'],
   render: (props) => (
     <SideNav className="gi-max-w-xs" ariaLabel="Side navigation">
@@ -40,7 +45,7 @@ export const Default: Story = {
 };
 
 export const Selected: Story = {
-  ...stories.Selected,
+  ...buttonStories.Selected,
   tags: ['skip-playwright'],
   render: (props) => (
     <SideNav className="gi-max-w-xs" ariaLabel="Side navigation">

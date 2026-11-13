@@ -1,8 +1,14 @@
 import { Slot } from '@radix-ui/react-slot';
-import GiSideNavItemLink from '@/atoms/sidenav/SideNavItemLink';
-import type { Props } from '@/atoms/sidenav/SideNavItemLink';
-import classes, { actionClasses, listItemClasses } from '@/atoms/sidenav/SideNavItem.styles';
+import CoreSideNavItemLink, { type Props as BaseProps } from '@/atoms/sidenav/SideNavItemLink';
+import CoreSideNavItem from '@/atoms/sidenav/SideNavItem';
+import CoreSideNavItemAction from '@/atoms/sidenav/SideNavItemAction';
+import classes from '@/atoms/sidenav/SideNavItem.styles';
 import { isAriaHidden } from '@/atoms/utilities';
+
+type Props = Omit<BaseProps, 'actions'> & {
+  actions?: React.ReactNode;
+  style?: React.CSSProperties;
+};
 
 export type SideNavItemLinkAsChild = Omit<Props, 'href'> & {
   asChild: true;
@@ -19,6 +25,7 @@ export default function SideNavItemLink({
   href,
   selected,
   className,
+  style,
   styles,
   children,
   actions,
@@ -41,7 +48,7 @@ export default function SideNavItemLink({
       tabIndex: isAriaHidden(ariaHidden) ? -1 : tabIndex,
     };
     return (
-      <li className={listItemClasses()} aria-hidden={ariaHidden}>
+      <CoreSideNavItem ariaHidden={ariaHidden}>
         <Slot
           {...rest}
           {...anchorProps}
@@ -52,34 +59,36 @@ export default function SideNavItemLink({
           aria-describedby={ariaDescribedBy}
           aria-hidden={ariaHidden}
           data-testid={dataTestId}
-          style={styles}
+          style={style ?? styles}
         >
           {children}
         </Slot>
-        <div className={actionClasses()}>{actions}</div>
-      </li>
+        {actions && <CoreSideNavItemAction>{actions}</CoreSideNavItemAction>}
+      </CoreSideNavItem>
     );
   }
   return (
-    <GiSideNavItemLink
-      href={href}
-      selected={selected}
-      target={target}
-      rel={rel}
-      external={external}
-      className={className}
-      styles={styles}
-      actions={actions}
-      ariaHidden={ariaHidden}
-      ariaCurrent={ariaCurrent}
-      ariaLabel={ariaLabel}
-      ariaLabelledBy={ariaLabelledBy}
-      ariaDescribedBy={ariaDescribedBy}
-      dataTestId={dataTestId}
-      tabIndex={tabIndex}
-      {...rest}
-    >
-      {children}
-    </GiSideNavItemLink>
+    <CoreSideNavItem ariaHidden={ariaHidden}>
+      <CoreSideNavItemLink
+        href={href}
+        selected={selected}
+        target={target}
+        rel={rel}
+        external={external}
+        className={className}
+        styles={(style as Props['styles']) ?? styles}
+        ariaHidden={ariaHidden}
+        ariaCurrent={ariaCurrent}
+        ariaLabel={ariaLabel}
+        ariaLabelledBy={ariaLabelledBy}
+        ariaDescribedBy={ariaDescribedBy}
+        dataTestId={dataTestId}
+        tabIndex={tabIndex}
+        {...rest}
+      >
+        {children}
+      </CoreSideNavItemLink>
+      <CoreSideNavItemAction>{actions}</CoreSideNavItemAction>
+    </CoreSideNavItem>
   );
 }

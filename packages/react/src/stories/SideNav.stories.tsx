@@ -7,12 +7,12 @@ import H2 from '@/atoms/heading/H2';
 import IconButton from '@/atoms/IconButton';
 import MoreVerticalIcon from '@/atoms/icons/MoreVertical';
 import Text from '@/atoms/Text';
-import SideNav from '@/atoms/sidenav/SideNav';
-import SideNavGroup from '@/atoms/sidenav/SideNavGroup';
-import SideNavHeading from '@/atoms/sidenav/SideNavHeading';
-import SideNavItem from '@/atoms/sidenav/SideNavItem';
-import { Tag } from '@/tag/tag';
+import SideNav from '@/SideNav/SideNav';
+import SideNavGroup from '@/SideNav/SideNavGroup';
+import SideNavHeading from '@/SideNav/SideNavHeading';
+import SideNavItem from '@/SideNav/SideNavItem';
 import SideNavItemLink from '@/SideNav/SideNavItemLink';
+import { Tag } from '@/tag/tag';
 import { extractRenderBody } from '@/test-utilities';
 import { importNext } from './helpers';
 
@@ -20,6 +20,14 @@ const meta = {
   ...stories.sideNavMeta,
   title: 'Navigation/SideNav/SideNav',
   component: SideNav,
+  argTypes: {
+    ...stories.sideNavMeta.argTypes,
+    style: {
+      control: false,
+      description: 'Inline styles. Prefer className with gi-* Tailwind utilities.',
+      table: { type: { summary: 'React.CSSProperties' } },
+    },
+  },
   parameters: {
     ...stories.sideNavMeta.parameters,
     docs: {
@@ -33,11 +41,11 @@ const meta = {
       },
     },
   },
-} as Meta<typeof SideNav>;
+} satisfies Meta<typeof SideNav>;
 
 export default meta;
 
-type Story = StoryObj<typeof SideNav>;
+type Story = StoryObj<typeof meta>;
 
 export const Default: Story = {
   ...stories.Default,

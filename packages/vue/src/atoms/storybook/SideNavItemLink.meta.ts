@@ -4,13 +4,14 @@
   The file source is in `packages/core/atoms/storybook/SideNavItemLink.meta.ts`
  */
 
-import type { ArgTypes, StoryContext, Renderer } from 'storybook/internal/types';
+import type { StoryContext, Renderer } from 'storybook/internal/types';
 import { within } from 'storybook/test';
 import type { Props } from '../sidenav/SideNavItemLink.vue';
 import argTypes from './argTypes';
 import { linkMeta } from './Link.meta';
 import { checker } from './utilities';
-import { sideNavItemMeta } from './SideNavItem.meta';
+import { sideNavItemButtonMeta } from './SideNavItemButton.meta';
+import type { Meta, Story } from './types';
 export const sideNavItemLinkMeta = {
   title: 'Navigation/SideNav/SideNavItemLink',
   args: {
@@ -21,11 +22,11 @@ export const sideNavItemLinkMeta = {
     dataTestId: 'side-nav-item-link',
   },
   argTypes: {
-    selected: sideNavItemMeta.argTypes.selected,
-    actions: sideNavItemMeta.argTypes.actions,
+    selected: sideNavItemButtonMeta.argTypes.selected,
     id: linkMeta.argTypes.id,
     href: linkMeta.argTypes.href,
     className: argTypes.className,
+    styles: argTypes.styles,
     external: linkMeta.argTypes.external,
     target: linkMeta.argTypes.target,
     rel: linkMeta.argTypes.rel,
@@ -37,9 +38,8 @@ export const sideNavItemLinkMeta = {
     ariaHidden: linkMeta.argTypes.ariaHidden,
     tabIndex: linkMeta.argTypes.tabIndex,
     lang: linkMeta.argTypes.lang,
-    styles: argTypes.styles,
     dataTestId: linkMeta.argTypes.dataTestId,
-  } satisfies ArgTypes<Props>,
+  },
   parameters: {
     docs: {
       description: {
@@ -48,7 +48,7 @@ export const sideNavItemLinkMeta = {
       },
     },
   },
-};
+} satisfies Meta<Props>;
 export const Default = {
   args: sideNavItemLinkMeta.args,
   play: async ({ canvasElement, step, args }: StoryContext<Renderer>) => {
@@ -61,4 +61,5 @@ export const Default = {
     });
     await check.children();
   },
-};
+} satisfies Story<Props>;
+export { Selected } from './SideNavItemButton.meta';

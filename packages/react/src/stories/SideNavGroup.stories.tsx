@@ -1,17 +1,19 @@
 import type { Meta, StoryObj } from '@storybook/react-vite';
 import { useState } from 'react';
-import SideNav from '@/atoms/sidenav/SideNav';
-import SideNavGroup from '@/atoms/sidenav/SideNavGroup';
-import SideNavItem from '@/atoms/sidenav/SideNavItem';
+import SideNav from '@/SideNav/SideNav';
+import SideNavGroup from '@/SideNav/SideNavGroup';
+import SideNavItem from '@/SideNav/SideNavItem';
 import * as stories from '@/atoms/storybook/SideNavGroup.meta';
 import { importNext } from './helpers';
+import omit from 'lodash/omit';
 
 const meta = {
   ...stories.sideNavGroupMeta,
   title: 'Navigation/SideNav/SideNavGroup',
   component: SideNavGroup,
   argTypes: {
-    ...stories.sideNavGroupMeta.argTypes,
+    ...omit(stories.sideNavGroupMeta.argTypes, 'styles'),
+    style: stories.sideNavGroupMeta.argTypes.styles,
     actions: {
       ...stories.sideNavGroupMeta.argTypes.actions,
       table: { type: { summary: 'React.ReactNode' } },
@@ -30,7 +32,7 @@ const meta = {
       },
     },
   },
-} as Meta<typeof SideNavGroup>;
+} satisfies Meta<typeof SideNavGroup>;
 
 export default meta;
 type Story = StoryObj<typeof meta>;

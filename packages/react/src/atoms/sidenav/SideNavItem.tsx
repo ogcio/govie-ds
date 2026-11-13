@@ -4,61 +4,21 @@
   The file source is in `packages/core/atoms/sidenav/SideNavItem.lite.tsx`
  */
 
-'use client';
 import * as React from 'react';
 
 export type Props = {
-  id?: string;
   children?: any;
-  selected?: boolean;
-  actions?: any;
-  disabled?: boolean;
-  className?: string;
-  styles?: Record<string, string>;
-  onClick?: (event: any) => void;
-  onFocus?: (event: any) => void;
-  onBlur?: (event: any) => void;
-  onKeyDown?: (event: any) => void;
-  onKeyUp?: (event: any) => void;
   ariaHidden?: boolean | 'true' | 'false';
-  ariaCurrent?: 'page' | 'step' | 'location' | 'date' | 'time' | 'true' | 'false' | boolean;
-  ariaLabel?: string;
-  tabIndex?: number;
-  dataTestId?: string;
 };
 
+import { listItemClasses } from './SideNavItem.styles';
 import { isAriaHidden } from '../utilities';
-import classes, { actionClasses, listItemClasses } from './SideNavItem.styles';
 
 function SideNavItem(props: Props) {
-  props = { ariaHidden: undefined, ariaCurrent: undefined, ...props };
+  props = { ariaHidden: undefined, ...props };
   return (
-    <li className={listItemClasses()} aria-hidden={props.ariaHidden}>
-      <button
-        type="button"
-        id={props.id}
-        className={classes({
-          selected: !!props.selected,
-          disabled: !!props.disabled,
-          className: props.className,
-        })}
-        style={props.styles}
-        disabled={props.disabled || undefined}
-        onClick={(event) => props.onClick && props.onClick(event)}
-        onFocus={(event) => props.onFocus && props.onFocus(event)}
-        onBlur={(event) => props.onBlur && props.onBlur(event)}
-        onKeyDown={(event) => props.onKeyDown && props.onKeyDown(event)}
-        onKeyUp={(event) => props.onKeyUp && props.onKeyUp(event)}
-        aria-current={props.ariaCurrent}
-        aria-label={props.ariaLabel}
-        tabIndex={isAriaHidden(props.ariaHidden) ? -1 : props.tabIndex}
-        data-testid={props.dataTestId}
-      >
-        {props.children}
-      </button>
-      <div className={actionClasses()}>
-        <>{props.actions}</>
-      </div>
+    <li className={listItemClasses()} aria-hidden={isAriaHidden(props.ariaHidden)}>
+      {props.children}
     </li>
   );
 }

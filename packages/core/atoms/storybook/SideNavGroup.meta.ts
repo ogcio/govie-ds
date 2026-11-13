@@ -1,8 +1,10 @@
-import type { ArgTypes, StoryContext, Renderer } from 'storybook/internal/types';
+import type { StoryContext, Renderer } from 'storybook/internal/types';
 import { within, expect, userEvent } from 'storybook/test';
 import type { Props } from '../sidenav/SideNavGroup.lite';
 import { boxMeta } from './Box.meta';
 import { checker } from './utilities';
+import type { Meta, Story } from './types';
+import argTypes from './argTypes';
 
 export const sideNavGroupMeta = {
   title: 'Navigation/SideNav/SideNavGroup',
@@ -32,8 +34,8 @@ export const sideNavGroupMeta = {
       control: { disable: true },
       description: 'Trailing action slot rendered beside the group header (for example an IconButton).',
     },
-    className: boxMeta.argTypes.className,
-    styles: boxMeta.argTypes.styles,
+    className: argTypes.className,
+    styles: argTypes.styles,
     id: boxMeta.argTypes.id,
     ariaLabel: {
       control: 'text',
@@ -57,16 +59,16 @@ export const sideNavGroupMeta = {
       table: { type: { summary: 'number' } },
     },
     dataTestId: boxMeta.argTypes.dataTestId,
-  } satisfies ArgTypes<Omit<Props, 'children'>>,
+  },
   parameters: {
     docs: {
       description: {
         component:
-          'Expandable section within a SideNav. Renders a disclosure header with a chevron and a nested list of `SideNavItem` or `SideNavItemLink` children. Open state is fully controlled through `open` and `onClick`.',
+          'Expandable section within a SideNav. Renders a disclosure header with a chevron and a nested list of `SideNavItem` or `SideNavItemLink` children. Open state is fully controlled through `open`.',
       },
     },
   },
-};
+} satisfies Meta<Props>;
 
 export const Default = {
   args: sideNavGroupMeta.args,
@@ -82,7 +84,7 @@ export const Default = {
       expect(canvas.getByText('Social')).not.toBeVisible();
     });
   },
-};
+} satisfies Story<Props>;
 
 export const ControlledOpen = {
   args: {
@@ -95,7 +97,7 @@ export const ControlledOpen = {
     docs: {
       description: {
         story:
-          'Group that starts open. The parent toggles `open` from `onClick`, so activating the header hides and shows the nested items.',
+          'Group that starts open. The parent toggles `open` from the click event, so activating the header hides and shows the nested items.',
       },
     },
   },
@@ -121,4 +123,4 @@ export const ControlledOpen = {
       expect(canvas.getByText('Social')).toBeVisible();
     });
   },
-};
+} satisfies Story<Props>;

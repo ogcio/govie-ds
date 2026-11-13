@@ -5,74 +5,21 @@
 -->
 
 <template>
-  <li :class="listItemClasses()" :aria-hidden="ariaHidden">
-    <button
-      type="button"
-      :id="id"
-      :class="
-        classes({
-          selected: !!selected,
-          disabled: !!disabled,
-          className: className,
-        })
-      "
-      :style="styles"
-      :disabled="disabled || undefined"
-      @click="async (event) => onClick && onClick(event)"
-      @focus="async (event) => onFocus && onFocus(event)"
-      @blur="async (event) => onBlur && onBlur(event)"
-      @keydown="async (event) => onKeyDown && onKeyDown(event)"
-      @keyup="async (event) => onKeyUp && onKeyUp(event)"
-      :aria-current="ariaCurrent"
-      :aria-label="ariaLabel"
-      :tabIndex="isAriaHidden(ariaHidden) ? -1 : tabIndex"
-      :data-testid="dataTestId"
-    >
-      <slot />
-    </button>
-    <div :class="actionClasses()"><slot name="actions"></slot></div>
+  <li :class="listItemClasses()" :aria-hidden="isAriaHidden(ariaHidden)">
+    <slot />
   </li>
 </template>
 
 <script setup lang="ts">
+import { listItemClasses } from './SideNavItem.styles';
 import { isAriaHidden } from '../utilities';
-import classes, { actionClasses, listItemClasses } from './SideNavItem.styles';
 
 export type Props = {
-  id?: string;
-  selected?: boolean;
-  actions?: any;
-  disabled?: boolean;
-  className?: string;
-  styles?: Record<string, string>;
-  onClick?: (event: any) => void;
-  onFocus?: (event: any) => void;
-  onBlur?: (event: any) => void;
-  onKeyDown?: (event: any) => void;
-  onKeyUp?: (event: any) => void;
   ariaHidden?: boolean | 'true' | 'false';
-  ariaCurrent?: 'page' | 'step' | 'location' | 'date' | 'time' | 'true' | 'false' | boolean;
-  ariaLabel?: string;
-  tabIndex?: number;
-  dataTestId?: string;
 };
 
 const props = withDefaults(defineProps<Props>(), {
   ariaHidden: undefined,
-  id: undefined,
-  selected: undefined,
-  disabled: undefined,
-  className: undefined,
-  styles: undefined,
-  onClick: undefined,
-  onFocus: undefined,
-  onBlur: undefined,
-  onKeyDown: undefined,
-  onKeyUp: undefined,
-  ariaCurrent: undefined,
-  ariaLabel: undefined,
-  tabIndex: undefined,
-  dataTestId: undefined,
   children: undefined,
 });
 </script>

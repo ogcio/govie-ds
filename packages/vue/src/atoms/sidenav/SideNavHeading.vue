@@ -5,19 +5,18 @@
 -->
 
 <template>
-  <li :class="listItemClasses()">
-    <h5
-      :id="id"
-      :data-testid="dataTestId"
-      :class="
-        classes({
-          class: className,
-        })
-      "
-    >
-      <slot />
-    </h5>
-  </li>
+  <h5
+    :id="id"
+    :data-testid="dataTestId"
+    :class="
+      classes({
+        class: className,
+      })
+    "
+    :style="styles"
+  >
+    <slot />
+  </h5>
 </template>
 
 <script setup lang="ts">
@@ -34,12 +33,10 @@ const classes = tv({
     'gi-border-transparent',
   ],
 });
-const listItemClasses = tv({
-  base: 'gi-list-none',
-});
 
 export type Props = {
   className?: string;
+  styles?: Record<string, string>;
   id?: string;
   dataTestId?: string;
 };

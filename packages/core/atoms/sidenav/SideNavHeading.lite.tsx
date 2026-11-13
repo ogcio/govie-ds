@@ -6,17 +6,16 @@ useMetadata({ angular: { selector: 'core-side-nav-heading' } });
 export type Props = {
   children?: any;
   className?: string;
+  styles?: Record<string, string>;
   id?: string;
   dataTestId?: string;
 };
 
 export default function SideNavHeading(props: Props) {
   return (
-    <li class={listItemClasses()}>
-      <h5 id={props.id} data-testid={props.dataTestId} class={classes({ class: props.className })}>
-        {props.children}
-      </h5>
-    </li>
+    <h5 id={props.id} data-testid={props.dataTestId} class={classes({ class: props.className })} style={props.styles}>
+      {props.children}
+    </h5>
   );
 }
 
@@ -31,8 +30,4 @@ const classes = tv({
     'gi-py-2',
     'gi-border-transparent',
   ],
-});
-
-const listItemClasses = tv({
-  base: 'gi-list-none',
 });
