@@ -4,6 +4,7 @@ import HeaderNavItem from '@/HeaderNavItem';
 import HeaderSection from '@/atoms/header/HeaderSection';
 import { SearchIcon } from '@/icons';
 import * as stories from '@/atoms/storybook/HeaderNavItem.meta';
+import argTypes from '@/atoms/storybook/argTypes';
 import * as buttonStories from '@/atoms/storybook/HeaderNavItemButton.meta';
 
 const meta = {
@@ -12,6 +13,11 @@ const meta = {
   argTypes: {
     ...stories.meta.argTypes,
     ...buttonStories.meta.argTypes,
+    className: {
+      ...argTypes.class,
+      description:
+        'Additional CSS classes, merged with the classes of the `<button>` element. Use `gi-*` Tailwind utilities.',
+    },
     style: {
       control: false,
       description: 'Inline styles. Prefer className with gi-* Tailwind utilities.',

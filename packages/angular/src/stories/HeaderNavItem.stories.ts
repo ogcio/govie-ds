@@ -35,7 +35,7 @@ export const Default: StoryObj = {
     template: `
       <gi-header-section>
         <gi-header-nav ariaLabel="Primary navigation">
-          <li giHeaderNavItem [visible]="visible" [class]="className">
+          <li giHeaderNavItem [visible]="visible">
             <button giHeaderNavButton type="button">
               {{ children }}
               <gi-search-icon />

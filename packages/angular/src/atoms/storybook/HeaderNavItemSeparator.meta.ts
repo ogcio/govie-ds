@@ -7,14 +7,13 @@
 import type { StoryContext, Renderer } from 'storybook/internal/types';
 import { within } from 'storybook/test';
 import { Orientation, Size } from '../constants';
+import argTypes from './argTypes';
 import { boxMeta } from './Box.meta';
 import { checker, enumType } from './utilities';
 export const meta = {
   title: 'Layout/Header/HeaderNavItemSeparator',
   args: {
     visible: undefined,
-    className: undefined,
-    styles: undefined,
     id: 'header-nav-item-separator-id',
     dataTestId: 'header-nav-item-separator',
   },
@@ -26,9 +25,7 @@ export const meta = {
       }),
       control: 'select' as const,
     },
-    className: boxMeta.argTypes.className,
-    styles: boxMeta.argTypes.styles,
-    id: boxMeta.argTypes.id,
+    id: argTypes.id,
     dataTestId: boxMeta.argTypes.dataTestId,
   },
   parameters: {

@@ -41,8 +41,8 @@ export const sideNavItemMeta = {
       },
       description: 'Trailing action slot rendered beside the item (for example an IconButton).',
     },
-    className: argTypes.className,
-    styles: argTypes.styles,
+    className: argTypes.class,
+    styles: argTypes.style,
     id: boxMeta.argTypes.id,
     ariaLabel: {
       control: 'text',

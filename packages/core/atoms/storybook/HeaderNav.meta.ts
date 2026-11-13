@@ -1,5 +1,6 @@
 import type { StoryContext, Renderer } from 'storybook/internal/types';
 import { within } from 'storybook/test';
+import argTypes from './argTypes';
 import { boxMeta } from './Box.meta';
 import { checker } from './utilities';
 
@@ -7,16 +8,12 @@ export const meta = {
   title: 'Layout/Header/HeaderNav',
   args: {
     children: 'Nav items',
-    className: undefined,
-    styles: undefined,
     id: 'header-nav-id',
     ariaLabel: 'Primary navigation',
     dataTestId: 'header-nav',
   },
   argTypes: {
-    className: boxMeta.argTypes.className,
-    styles: boxMeta.argTypes.styles,
-    id: boxMeta.argTypes.id,
+    id: argTypes.id,
     ariaLabel: {
       control: 'text',
       description: 'Accessible label for the navigation landmark. Maps to `aria-label`.',
