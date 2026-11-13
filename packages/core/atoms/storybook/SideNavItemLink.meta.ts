@@ -25,7 +25,7 @@ export const sideNavItemLinkMeta = {
     target: linkMeta.argTypes.target,
     rel: linkMeta.argTypes.rel,
     download: linkMeta.argTypes.download,
-    ariaCurrent: linkMeta.argTypes.ariaCurrent,
+    ariaCurrent: sideNavItemMeta.argTypes.ariaCurrent,
     ariaLabel: linkMeta.argTypes.ariaLabel,
     ariaLabelledBy: linkMeta.argTypes.ariaLabelledBy,
     ariaDescribedBy: linkMeta.argTypes.ariaDescribedBy,
