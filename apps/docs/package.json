@@ -56,8 +56,8 @@
     "@next/eslint-plugin-next": "^15.5.9",
     "@ogcio/design-system-eslint-config": "workspace:*",
     "@ogcio/design-system-prettier-config": "workspace:*",
-    "@storybook/addon-docs": "^10.3.3",
-    "@storybook/nextjs-vite": "^10.3.3",
+    "@storybook/addon-docs": "10.6.6",
+    "@storybook/nextjs-vite": "10.6.6",
     "@types/color-convert": "^2.0.3",
     "@types/lodash": "^4.17.7",
     "@types/mdx": "^2.0.13",
@@ -69,7 +69,7 @@
     "prettier": "^3.3.3",
     "rehype-slug": "^6.0.0",
     "spellchecker-cli": "^7.0.2",
-    "storybook": "^10.3.3",
+    "storybook": "10.6.6",
     "vite": "6.4.1",
     "vitest": "4.1.10"
   }
