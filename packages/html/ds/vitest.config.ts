@@ -1,22 +1,19 @@
 import path from 'node:path';
 import { storybookTest } from '@storybook/addon-vitest/vitest-plugin';
+import { playwright } from '@vitest/browser-playwright';
 import {
   coverageConfigDefaults,
   defineConfig,
   defineProject,
   mergeConfig,
 } from 'vitest/config';
-
 import viteConfig from './vite.config';
 
 export default mergeConfig(
   viteConfig,
   defineConfig({
     test: {
-      reporters: [
-        'default',
-        ['junit', { outputFile: 'coverage/results.xml' }],
-      ],
+      reporters: ['default', ['junit', { outputFile: 'coverage/results.xml' }]],
       coverage: {
         enabled: true,
         provider: 'v8',
@@ -53,7 +50,7 @@ export default mergeConfig(
             browser: {
               enabled: true,
               headless: true,
-              provider: 'playwright',
+              provider: playwright(),
               instances: [{ browser: 'chromium' }],
             },
             setupFiles: ['./vitest-storybook.setup.ts'],
