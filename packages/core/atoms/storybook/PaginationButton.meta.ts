@@ -88,6 +88,7 @@ export const Disabled = {
     disabled: true,
   },
   parameters: {
+    controls: { exclude: ['current'] },
     docs: {
       description: {
         story:

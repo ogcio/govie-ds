@@ -27,7 +27,7 @@ export const meta = {
     docs: {
       description: {
         component:
-          'An ellipsis for Pagination. Use it in place of the pages skipped between the first or last page and the pages around the current page. It renders a more-horizontal icon. Leave `label` empty to keep the icon decorative and hidden from assistive technology, or set it to describe the skipped range.',
+          'An ellipsis for Pagination. Use it in place of a range of skipped pages. Leave `label` empty to keep the icon decorative and hidden from assistive technology, or set it to describe the skipped range.',
       },
     },
   },

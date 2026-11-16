@@ -1,6 +1,8 @@
 import type { StoryObj } from '@storybook/angular-vite';
+import { expect, within } from 'storybook/test';
 import { GiPagination } from '@/pagination/Pagination';
-import { GiPaginationItemButton } from '@/pagination/PaginationItemButton';
+import { GiPaginationItemButton, GiPaginationButtonDirective } from '@/pagination/PaginationItemButton';
+import { GiPaginationItemDirective } from '@/pagination/PaginationItem';
 import ArrowBackward from '@/atoms/icons/ArrowBackward';
 import ArrowForward from '@/atoms/icons/ArrowForward';
 import * as stories from '@/atoms/storybook/PaginationButton.meta';
@@ -38,7 +40,7 @@ const meta = {
       ...stories.meta.parameters.docs,
       description: {
         ...stories.meta.parameters.docs.description,
-        component: `${stories.meta.parameters.docs.description.component}\n\nPlace \`gi-pagination-item-button\` directly inside \`gi-pagination\`. To use your own \`button\`, use the \`giPaginationButton\` directive instead (see the Directive story in Pagination).`,
+        component: `${stories.meta.parameters.docs.description.component}\n\nPlace \`gi-pagination-item-button\` directly inside \`gi-pagination\`. To use your own \`button\`, use the \`giPaginationButton\` directive instead (see the [Directive](#directive) story).`,
       },
     },
   },
@@ -126,4 +128,45 @@ export const Disabled: Story = {
       </gi-pagination>
     `,
   }),
+};
+
+export const Directive: Story = {
+  tags: ['skip-playwright'],
+  args: {
+    current: false,
+    disabled: false,
+  },
+  parameters: {
+    controls: { include: ['children', 'current', 'disabled'] },
+    docs: {
+      description: {
+        story:
+          'Put `giPaginationButton` on your own `button` to give it the page button styles. It takes `current` and `disabled`, and sets `type="button"`. The directive does not render a list item, so wrap the `button` in an `li` marked with `giPaginationItem`.',
+      },
+    },
+  },
+  render: (props) => ({
+    props,
+    moduleMetadata: { imports: [GiPagination, GiPaginationItemDirective, GiPaginationButtonDirective] },
+    template: `
+      <gi-pagination>
+        <li giPaginationItem>
+          <button giPaginationButton [current]="current" [disabled]="disabled">{{ children }}</button>
+        </li>
+      </gi-pagination>
+    `,
+  }),
+  play: async ({ canvasElement, step }) => {
+    const canvas = within(canvasElement);
+
+    await step('styles the consumer button inside a list item', async () => {
+      const button = canvas.getByRole('button', { name: stories.PAGINATION_BUTTON_LABEL });
+      expect(button.tagName).toBe('BUTTON');
+      expect(button).toHaveAttribute('type', 'button');
+      expect(button.closest('li')).toBeInTheDocument();
+      expect(button.className).not.toBe('');
+      expect(button).not.toBeDisabled();
+      expect(button).not.toHaveAttribute('aria-current');
+    });
+  },
 };

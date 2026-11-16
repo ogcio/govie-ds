@@ -5,7 +5,7 @@
  */
 
 import clamp from 'lodash/clamp';
-type PaginationListProps = {
+export type PaginationListProps = {
   current: number;
   total: number;
   size?: number;
