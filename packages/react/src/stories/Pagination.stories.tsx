@@ -41,7 +41,7 @@ const meta = {
       ...stories.meta.parameters.docs,
       description: {
         ...stories.meta.parameters.docs.description,
-        component: `The recommended, flexible way to build pagination. You put the control together from its parts, so you choose the labels, icons, which pages appear, and whether each page is a link or a button. It replaces the earlier all-in-one \`Pagination\`.\n\n${stories.meta.parameters.docs.description.component}\n\nThe parts are \`PaginationLink\`, \`PaginationButton\` and \`PaginationEllipsis\`. Place them directly inside \`Pagination\`.\n\n${importNext('Pagination')}`,
+        component: `The recommended, flexible way to build pagination. You put the control together from its parts, so you choose the labels, icons, which pages appear, and whether each page is a link or a button. It replaces the all-in-one \`Pagination\` from the main entry point.\n\n${stories.meta.parameters.docs.description.component}\n\nThe parts are \`PaginationLink\`, \`PaginationButton\` and \`PaginationEllipsis\`. Place them directly inside \`Pagination\`.\n\n${importNext('Pagination')}`,
       },
     },
   },

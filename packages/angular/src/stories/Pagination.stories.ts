@@ -43,7 +43,7 @@ const meta: Meta = {
       ...stories.meta.parameters.docs,
       description: {
         ...stories.meta.parameters.docs.description,
-        component: `${stories.meta.parameters.docs.description.component}\n\nThe parts are \`gi-pagination-item-link\`, \`gi-pagination-item-button\` and \`gi-pagination-item-ellipsis\`. Place them directly inside \`gi-pagination\`. To use your own \`a\` or \`button\`, for example with \`routerLink\`, use the directives instead (see the Directive and WithRouter stories).`,
+        component: `${stories.meta.parameters.docs.description.component}\n\nThe parts are \`gi-pagination-item-link\`, \`gi-pagination-item-button\` and \`gi-pagination-item-ellipsis\`. Place them directly inside \`gi-pagination\`. To use your own \`a\` or \`button\`, for example with \`routerLink\`, use the directives instead (see the [Directive](#directive) and [WithRouter](#with-router) stories).`,
       },
     },
   },
@@ -170,13 +170,13 @@ export const PaginationList: Story = {
   },
 };
 
-export const Directive: StoryObj<GiPaginationLinkDirective> = {
+export const Directive: Story = {
   parameters: {
     controls: { disable: true },
     docs: {
       description: {
         story:
-          'Use the directives when you need to own the element. `giPaginationLink` styles an `a` and `giPaginationButton` styles a `button`. Both take `current`, and `giPaginationButton` also takes `disabled`. Unlike the components, the directives do not render a list item, so wrap each element in an `li` marked with `giPaginationItem`. There is no directive for the ellipses - use `gi-pagination-item-ellipsis` directly.',
+          'Use the directives when you need to own the element. `giPaginationLink` styles an `a` and `giPaginationButton` styles a `button`. Both take `current`, and `giPaginationButton` also takes `disabled`. Unlike the components, the directives do not render a list item, so wrap each element in an `li` marked with `giPaginationItem`. There is no directive for the ellipsis: use `gi-pagination-item-ellipsis` directly.',
       },
     },
   },
@@ -205,7 +205,7 @@ export const Directive: StoryObj<GiPaginationLinkDirective> = {
     template: `
       <gi-pagination ariaLabel="Pagination" dataTestId="pagination-directive">
         <li giPaginationItem>
-          <button giPaginationButton type="button" class="gi-flex gi-gap-2" [disabled]="currentPage === 1" (click)="select(currentPage - 1)">
+          <button giPaginationButton class="gi-flex gi-gap-2" [disabled]="currentPage === 1" (click)="select(currentPage - 1)">
             <gi-arrow-backward-icon />
             Previous
           </button>
@@ -220,7 +220,7 @@ export const Directive: StoryObj<GiPaginationLinkDirective> = {
           }
         }
         <li giPaginationItem>
-          <button giPaginationButton type="button" class="gi-flex gi-gap-2" [disabled]="currentPage === totalPages" (click)="select(currentPage + 1)">
+          <button giPaginationButton class="gi-flex gi-gap-2" [disabled]="currentPage === totalPages" (click)="select(currentPage + 1)">
             Next
             <gi-arrow-forward-icon />
           </button>
@@ -230,7 +230,7 @@ export const Directive: StoryObj<GiPaginationLinkDirective> = {
   }),
 };
 
-export const TestDirective: StoryObj<GiPaginationLinkDirective> = {
+export const TestDirective: Story = {
   ...Directive,
   tags: ['skip-playwright', '!autodocs', '!dev'],
   play: async ({ canvasElement, step }) => {
@@ -257,7 +257,7 @@ export const TestDirective: StoryObj<GiPaginationLinkDirective> = {
   },
 };
 
-export const WithRouter: StoryObj<GiPaginationLinkDirective> = {
+export const WithRouter: Story = {
   tags: ['skip-playwright'],
   decorators: [withRouter(['', 'page/1', 'page/2', 'page/3'], { initialUrl: '/page/1' })],
   parameters: {
@@ -265,7 +265,7 @@ export const WithRouter: StoryObj<GiPaginationLinkDirective> = {
     docs: {
       description: {
         story:
-          '`giPaginationLink` works with the native Angular router: put it on the same `a` as `routerLink`, inside an `li` marked with `giPaginationItem`. Bind `current` to `routerLinkActive` so the active route sets `aria-current="page"`. Previous and Next are links to the adjacent page, and become a disabled `giPaginationButton` at the first and last page, because a link cannot be disabled.',
+          'The `giPaginationLink` directive works with the native Angular router: put it on the same `a` as `routerLink`, inside an `li` marked with `giPaginationItem`. Bind `current` to the `isActive` property of `routerLinkActive`, so the link for the active route gets the current page style and `aria-current="page"`. Previous and Next link to the adjacent page, and become a disabled `giPaginationButton` at the first and last page.',
       },
     },
   },
@@ -291,7 +291,7 @@ export const WithRouter: StoryObj<GiPaginationLinkDirective> = {
               Previous
             </a>
           } @else {
-            <button giPaginationButton type="button" disabled class="gi-flex gi-gap-2">
+            <button giPaginationButton disabled class="gi-flex gi-gap-2">
               <gi-arrow-backward-icon />
               Previous
             </button>
@@ -313,7 +313,7 @@ export const WithRouter: StoryObj<GiPaginationLinkDirective> = {
               <gi-arrow-forward-icon />
             </a>
           } @else {
-            <button giPaginationButton type="button" disabled class="gi-flex gi-gap-2">
+            <button giPaginationButton disabled class="gi-flex gi-gap-2">
               Next
               <gi-arrow-forward-icon />
             </button>
@@ -324,7 +324,7 @@ export const WithRouter: StoryObj<GiPaginationLinkDirective> = {
   }),
 };
 
-export const TestWithRouter: StoryObj<GiPaginationLinkDirective> = {
+export const TestWithRouter: Story = {
   ...WithRouter,
   tags: ['skip-playwright', '!autodocs', '!dev'],
   play: async ({ canvasElement, step }) => {
