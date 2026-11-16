@@ -20,6 +20,7 @@ export default mergeConfig(
         reportsDirectory: 'coverage',
         reporter: ['lcov', 'cobertura'],
         clean: true,
+        include: ['src/**/*.{ts,tsx}'],
         exclude: [
           ...coverageConfigDefaults.exclude,
           '**/{postcss,tailwind}.config.*',
