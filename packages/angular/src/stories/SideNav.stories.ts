@@ -8,8 +8,12 @@ import { GiH2 } from '@/heading/H2';
 import { GiSideNav } from '@/sidenav/SideNav';
 import { GiSideNavItemButton } from '@/sidenav/SideNavItemButton';
 import { GiSideNavHeading } from '@/sidenav/SideNavHeading';
-import { GiSideNavItemLink } from '@/sidenav/SideNavItemLink';
+import { GiSideNavItemLink, GiSideNavLinkDirective } from '@/sidenav/SideNavItemLink';
+import { GiSideNavItemDirective } from '@/sidenav/SideNavItem';
 import { GiSideNavGroup } from '@/sidenav/SideNavGroup';
+import { RouterLink, RouterLinkActive } from '@angular/router';
+import { expect, userEvent, waitFor, within } from 'storybook/test';
+import { withRouter } from './router';
 
 const meta = {
   ...stories.sideNavMeta,
@@ -206,6 +210,120 @@ export const WithActions: Story = {
       </gi-side-nav>
     `,
   }),
+};
+
+export const WithRouter: Story = {
+  decorators: [withRouter(['', 'inbox', 'sent', 'drafts', 'promotions'], { initialUrl: 'inbox' })],
+  args: {
+    dataTestId: 'sidenav-with-router',
+    ariaLabel: undefined,
+    ariaLabelledBy: 'sidenav-with-router-label',
+  },
+  parameters: {
+    controls: { disable: true },
+    docs: {
+      description: {
+        story:
+          '`giSideNavLink` works with the native Angular router: put it on the same `a` as `routerLink`, inside an `li` marked with `giSideNavItem`. The recommended way to mark the active page is `routerLinkActive` with `ariaCurrentWhenActive="page"`. The router sets `aria-current="page"` on the active link, which applies the selected style and tells assistive technologies which page the user is on.\n\nAlternatively, you can bind the boolean `[selected]` input to the `isActive` property of `routerLinkActive`, using a template reference such as `#draftsLink="routerLinkActive"`. This only applies the selected style and does not set `aria-current`, so prefer `ariaCurrentWhenActive="page"` where possible.',
+      },
+    },
+  },
+  render: (props) => ({
+    props,
+    moduleMetadata: {
+      imports: [GiSideNav, GiSideNavItemDirective, GiSideNavLinkDirective, RouterLink, RouterLinkActive, GiH2],
+    },
+    template: `
+      <gi-h2 id="sidenav-with-router-label" size="sm">Service navigation</gi-h2>
+      <gi-side-nav [dataTestId]="dataTestId" [ariaLabelledBy]="ariaLabelledBy" class="gi-max-w-xs">
+        <li giSideNavItem>
+          <a giSideNavLink routerLink="/inbox" routerLinkActive ariaCurrentWhenActive="page">Inbox</a>
+        </li>
+        <li giSideNavItem>
+          <a giSideNavLink routerLink="/sent" routerLinkActive ariaCurrentWhenActive="page">Sent</a>
+        </li>
+        <li giSideNavItem>
+          <a giSideNavLink routerLink="/drafts" routerLinkActive ariaCurrentWhenActive="page">Drafts</a>
+        </li>
+        <li giSideNavItem>
+          <a giSideNavLink routerLink="/promotions" routerLinkActive ariaCurrentWhenActive="page">Promotions</a>
+        </li>
+      </gi-side-nav>
+    `,
+  }),
+  play: async ({ canvasElement, step }) => {
+    const canvas = within(canvasElement);
+    await step('URLs from routerLink match', () => {
+      for (const name of ['Inbox', 'Sent', 'Drafts', 'Promotions']) {
+        const link = canvas.getByRole('link', { name });
+        expect(link).toHaveAttribute('href', `#/${name.toLowerCase()}`);
+      }
+    });
+    await step('aria-current set to initial url', async () => {
+      for (const name of ['Inbox', 'Sent', 'Drafts', 'Promotions']) {
+        const link = canvas.getByRole('link', { name });
+        await waitFor(async () => {
+          // eslint-disable-next-line unicorn/prefer-ternary
+          if (name === 'Inbox') {
+            await expect(link).toHaveAttribute('aria-current', 'page');
+          } else {
+            await expect(link).not.toHaveAttribute('aria-current');
+          }
+        });
+      }
+    });
+  },
+};
+
+export const TestWithRouter: Story = {
+  ...WithRouter,
+  tags: ['!autodocs', '!dev', 'skip-playwright'],
+  render: (props) => ({
+    props,
+    moduleMetadata: {
+      imports: [GiSideNav, GiSideNavItemDirective, GiSideNavLinkDirective, RouterLink, RouterLinkActive, GiH2],
+    },
+    template: `
+      <gi-h2 id="sidenav-with-router-label" size="sm">Service navigation</gi-h2>
+      <gi-side-nav [dataTestId]="dataTestId" [ariaLabelledBy]="ariaLabelledBy" class="gi-max-w-xs">
+        <li giSideNavItem>
+          <a giSideNavLink routerLink="/inbox" routerLinkActive ariaCurrentWhenActive="page">Inbox</a>
+        </li>
+        <li giSideNavItem>
+          <a giSideNavLink routerLink="/sent" routerLinkActive ariaCurrentWhenActive="page">Sent</a>
+        </li>
+        <li giSideNavItem>
+          <a giSideNavLink routerLink="/drafts" routerLinkActive #draftsLink="routerLinkActive" [selected]="draftsLink.isActive">Drafts</a>
+        </li>
+        <li giSideNavItem>
+          <a giSideNavLink routerLink="/promotions" routerLinkActive ariaCurrentWhenActive="page">Promotions</a>
+        </li>
+      </gi-side-nav>
+    `,
+  }),
+  play: async ({ canvasElement, step }) => {
+    const canvas = within(canvasElement);
+    const nav = await canvas.findByRole('navigation', { name: 'Service navigation' });
+    const scoped = within(nav);
+
+    await step('click moves aria-current', async () => {
+      await userEvent.click(scoped.getByRole('link', { name: 'Sent' }));
+      await waitFor(() => expect(scoped.getByRole('link', { name: 'Sent' })).toHaveAttribute('aria-current', 'page'));
+      await expect(scoped.getByRole('link', { name: 'Inbox' })).not.toHaveAttribute('aria-current');
+      await expect(scoped.getAllByRole('link', { current: 'page' })).toHaveLength(1);
+    });
+    await step('keyboard activation', async () => {
+      const promotions = scoped.getByRole('link', { name: 'Promotions' });
+      promotions.focus();
+      await expect(promotions).toHaveFocus();
+      await userEvent.keyboard('{Enter}');
+      await waitFor(() => expect(promotions).toHaveAttribute('aria-current', 'page'));
+    });
+    await step('[selected] binding does not set aria-current', async () => {
+      await userEvent.click(scoped.getByRole('link', { name: 'Drafts' }));
+      await waitFor(() => expect(scoped.queryAllByRole('link', { current: 'page' })).toHaveLength(0));
+    });
+  },
 };
 
 export const Expandable: Story = {
