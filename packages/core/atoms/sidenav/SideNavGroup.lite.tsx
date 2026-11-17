@@ -12,7 +12,7 @@ useDefaultProps({
 
 export type Props = {
   id?: string;
-  children: any;
+  children?: any;
   open?: boolean;
   actions?: any;
   label?: any;
