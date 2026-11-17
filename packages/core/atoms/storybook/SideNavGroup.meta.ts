@@ -57,7 +57,7 @@ export const sideNavGroupMeta = {
       table: { type: { summary: 'number' } },
     },
     dataTestId: boxMeta.argTypes.dataTestId,
-  } satisfies ArgTypes<Omit<Props, 'children'>>,
+  } satisfies ArgTypes<Props>,
   parameters: {
     docs: {
       description: {
