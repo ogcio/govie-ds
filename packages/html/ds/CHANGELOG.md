@@ -1,5 +1,18 @@
 # Changelog
 
+## [1.21.8](https://github.com/ogcio/govie-ds/compare/html-lib-v1.21.7...html-lib-v1.21.8) (2026-11-17)
+
+
+### Bug Fixes
+
+* **AB#45392:** update storybook to 10.6.6 ([1b96958](https://github.com/ogcio/govie-ds/commit/1b969588b39f06bd053b2170a3ee3e471b7aeece))
+* **AB#45392:** update vitest to 4.1.10 on html package ([f698c82](https://github.com/ogcio/govie-ds/commit/f698c8263261c50816465c4127a4c92c3acaf8d4))
+
+
+### Miscellaneous Chores
+
+* **AB#45392:** report coverage for all html sources ([122fa4c](https://github.com/ogcio/govie-ds/commit/122fa4cf92377a5a9ebbf2545c636942419c26ca))
+
 ## [1.21.7](https://github.com/ogcio/govie-ds/compare/html-lib-v1.21.6...html-lib-v1.21.7) (2026-11-03)
 
 
