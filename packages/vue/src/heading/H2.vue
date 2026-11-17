@@ -5,9 +5,9 @@
 </template>
 
 <script setup lang="ts">
-import CoreH2 from './atoms/heading/H2.vue';
-import { useCoreAttrs } from './attrs';
-import type { Props } from './heading';
+import CoreH2 from '../atoms/heading/H2.vue';
+import { useCoreAttrs } from '../attrs';
+import type { Props } from './types';
 
 defineOptions({ inheritAttrs: false });
 
