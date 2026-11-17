@@ -1,5 +1,7 @@
 import type { StoryObj } from '@storybook/vue3-vite';
-import { ref } from 'vue';
+import { onMounted, ref } from 'vue';
+import { RouterLink, useRouter } from 'vue-router';
+import { expect, userEvent, waitFor, within } from 'storybook/test';
 import * as stories from '../atoms/storybook/SideNav.meta';
 import {
   Box,
@@ -214,6 +216,86 @@ export const WithActions: Story = {
       </SideNav>
     `,
   }),
+};
+
+export const WithRouter: Story = {
+  args: {
+    dataTestId: 'sidenav-with-router',
+    ariaLabel: undefined,
+    ariaLabelledBy: 'sidenav-with-router-label',
+  },
+  parameters: {
+    controls: { disable: true },
+    docs: {
+      description: {
+        story:
+          '`SideNavItemLink` works with Vue Router through `RouterLink custom`: the slot hands `href`, `navigate` and the active state to the design system item. The recommended way to mark the active page is to bind `aria-current` to `isExactActive ? \'page\' : undefined`. This sets `aria-current="page"` on the active link, which applies the selected style and tells assistive technologies which page the user is on.\n\nAlternatively, you can bind the boolean `selected` prop to `isExactActive`. This only applies the selected style and does not set `aria-current`, so prefer `aria-current` where possible.',
+      },
+    },
+  },
+  render: (args) => ({
+    components: { H2, RouterLink, SideNav, SideNavItemLink },
+    setup() {
+      const router = useRouter();
+      onMounted(() => router.replace('/inbox'));
+      return { args };
+    },
+    template: `
+      <H2 id="sidenav-with-router-label" size="sm">Service navigation</H2>
+      <SideNav v-bind="args" className="gi-max-w-xs">
+        <RouterLink to="/inbox" custom v-slot="{ href, navigate, isExactActive }">
+          <SideNavItemLink :href="href" :aria-current="isExactActive ? 'page' : undefined" @click="navigate">Inbox</SideNavItemLink>
+        </RouterLink>
+        <RouterLink to="/sent" custom v-slot="{ href, navigate, isExactActive }">
+          <SideNavItemLink :href="href" :aria-current="isExactActive ? 'page' : undefined" @click="navigate">Sent</SideNavItemLink>
+        </RouterLink>
+        <RouterLink to="/drafts" custom v-slot="{ href, navigate, isExactActive }">
+          <SideNavItemLink :href="href" :aria-current="isExactActive ? 'page' : undefined" @click="navigate">Drafts</SideNavItemLink>
+        </RouterLink>
+        <RouterLink to="/promotions" custom v-slot="{ href, navigate, isExactActive }">
+          <SideNavItemLink :href="href" :aria-current="isExactActive ? 'page' : undefined" @click="navigate">Promotions</SideNavItemLink>
+        </RouterLink>
+      </SideNav>
+    `,
+  }),
+  play: async ({ canvasElement, step }) => {
+    const canvas = within(canvasElement);
+    await step('URLs from RouterLink match', () => {
+      for (const name of ['Inbox', 'Sent', 'Drafts', 'Promotions']) {
+        const link = canvas.getByRole('link', { name });
+        expect(link).toHaveAttribute('href', `/${name.toLowerCase()}`);
+      }
+    });
+    await step('aria-current set to initial url', async () => {
+      await waitFor(() => expect(canvas.getByRole('link', { current: 'page' })).toHaveAccessibleName('Inbox'));
+    });
+  },
+};
+
+export const TestWithRouter: Story = {
+  ...WithRouter,
+  tags: ['!autodocs', '!dev', 'skip-playwright'],
+  play: async ({ canvasElement, step }) => {
+    const canvas = within(canvasElement);
+    const nav = await canvas.findByRole('navigation', { name: 'Service navigation' });
+    const scoped = within(nav);
+
+    await waitFor(() => expect(scoped.getByRole('link', { name: 'Inbox' })).toHaveAttribute('aria-current', 'page'));
+
+    await step('click moves aria-current', async () => {
+      await userEvent.click(scoped.getByRole('link', { name: 'Sent' }));
+      await waitFor(() => expect(scoped.getByRole('link', { name: 'Sent' })).toHaveAttribute('aria-current', 'page'));
+      await expect(scoped.getByRole('link', { name: 'Inbox' })).not.toHaveAttribute('aria-current');
+      await expect(scoped.getAllByRole('link', { current: 'page' })).toHaveLength(1);
+    });
+    await step('keyboard activation', async () => {
+      const promotions = scoped.getByRole('link', { name: 'Promotions' });
+      promotions.focus();
+      await expect(promotions).toHaveFocus();
+      await userEvent.keyboard('{Enter}');
+      await waitFor(() => expect(promotions).toHaveAttribute('aria-current', 'page'));
+    });
+  },
 };
 
 export const Expandable: Story = {
