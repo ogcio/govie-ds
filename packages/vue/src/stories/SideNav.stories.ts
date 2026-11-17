@@ -15,11 +15,26 @@ import {
   SideNavItemLink,
 } from '../index';
 import { MailIcon, MoreVerticalIcon } from '../icons';
+import omit from 'lodash/omit';
 
 const meta = {
   ...stories.sideNavMeta,
   title: 'Navigation/SideNav',
   tags: ['!dev', '!autodocs'], // exclude story until Storybook examples complete
+  component: SideNav,
+  argTypes: {
+    ...omit(stories.sideNavMeta.argTypes, ['className', 'styles']),
+    class: {
+      control: false,
+      description: 'Additional CSS classes, merged with the classes of the `<nav>` element.',
+      table: { type: { summary: 'string | object | array' } },
+    },
+    style: {
+      control: false,
+      description: 'Inline CSS styles applied to the `<nav>` element.',
+      table: { type: { summary: 'string | object | array' } },
+    },
+  },
 };
 
 export default meta;
@@ -49,18 +64,12 @@ export const Default: Story = {
       const selectItem = (value: string) => {
         current.value = value;
       };
-      const toggleInbox = () => {
-        inboxOpen.value = !inboxOpen.value;
-      };
-      return { args, current, inboxOpen, selectItem, toggleInbox };
+      return { args, current, inboxOpen, selectItem };
     },
     template: `
-      <SideNav v-bind="args" className="gi-max-w-xs">
+      <SideNav v-bind="args" class="gi-max-w-xs">
         <SideNavHeading>Messages</SideNavHeading>
-        <SideNavGroup
-          :open="inboxOpen"
-          :onClick="toggleInbox"
-        >
+        <SideNavGroup v-model:open="inboxOpen">
           <template #label>
             <Box class="gi-flex gi-gap-1">
               <MailIcon />
@@ -73,14 +82,14 @@ export const Default: Story = {
           <SideNavItem
             :selected="current === 'primary'"
             :ariaCurrent="current === 'primary' ? 'page' : undefined"
-            :onClick="() => selectItem('primary')"
+            @click="selectItem('primary')"
           >
             Primary
           </SideNavItem>
           <SideNavItem
             :selected="current === 'social'"
             :ariaCurrent="current === 'social' ? 'page' : undefined"
-            :onClick="() => selectItem('social')"
+            @click="selectItem('social')"
           >
             Social
           </SideNavItem>
@@ -94,14 +103,14 @@ export const Default: Story = {
         <SideNavItem
           :selected="current === 'overview'"
           :ariaCurrent="current === 'overview' ? 'page' : undefined"
-          :onClick="() => selectItem('overview')"
+          @click="selectItem('overview')"
         >
           Overview
         </SideNavItem>
         <SideNavItemLink
           :selected="current === 'link'"
           :ariaCurrent="current === 'link' ? 'page' : undefined"
-          :onClick="() => selectItem('link')"
+          @click="selectItem('link')"
           href="#"
         >
           Homepage
@@ -109,14 +118,14 @@ export const Default: Story = {
         <SideNavItem
           :selected="current === 'reports'"
           :ariaCurrent="current === 'reports' ? 'page' : undefined"
-          :onClick="() => selectItem('reports')"
+          @click="selectItem('reports')"
         >
           Reports
         </SideNavItem>
         <SideNavItem
           :selected="current === 'settings'"
           :ariaCurrent="current === 'settings' ? 'page' : undefined"
-          :onClick="() => selectItem('settings')"
+          @click="selectItem('settings')"
         >
           Settings
           <template #actions>
@@ -149,17 +158,11 @@ export const WithActions: Story = {
       const selectItem = (value: string) => {
         current.value = value;
       };
-      const toggleInbox = () => {
-        inboxOpen.value = !inboxOpen.value;
-      };
-      return { args, current, inboxOpen, selectItem, toggleInbox };
+      return { args, current, inboxOpen, selectItem };
     },
     template: `
-      <SideNav v-bind="args" className="gi-max-w-xs">
-        <SideNavGroup
-          :open="inboxOpen"
-          :onClick="toggleInbox"
-        >
+      <SideNav v-bind="args" class="gi-max-w-xs">
+        <SideNavGroup v-model:open="inboxOpen">
           <template #label>
             <Box class="gi-flex gi-justify-between gi-items-center">
               <Text>Inbox</Text>
@@ -181,7 +184,7 @@ export const WithActions: Story = {
         <SideNavItem
           :selected="current === 'overview'"
           :ariaCurrent="current === 'overview' ? 'page' : undefined"
-          :onClick="() => selectItem('overview')"
+          @click="selectItem('overview')"
         >
           <template #actions>
             <IconButton
@@ -198,7 +201,7 @@ export const WithActions: Story = {
         <SideNavItemLink
           :selected="current === 'homepage'"
           :ariaCurrent="current === 'homepage' ? 'page' : undefined"
-          :onClick="() => selectItem('homepage')"
+          @click="selectItem('homepage')"
           href="#"
         >
           <template #actions>
@@ -242,7 +245,7 @@ export const WithRouter: Story = {
     },
     template: `
       <H2 id="sidenav-with-router-label" size="sm">Service navigation</H2>
-      <SideNav v-bind="args" className="gi-max-w-xs">
+      <SideNav v-bind="args" class="gi-max-w-xs">
         <RouterLink to="/inbox" custom v-slot="{ href, navigate, isExactActive }">
           <SideNavItemLink :href="href" :aria-current="isExactActive ? 'page' : undefined" @click="navigate">Inbox</SideNavItemLink>
         </RouterLink>
@@ -309,28 +312,16 @@ export const Expandable: Story = {
     setup() {
       const inboxOpen = ref(true);
       const projectsOpen = ref(false);
-      const toggleInbox = () => {
-        inboxOpen.value = !inboxOpen.value;
-      };
-      const toggleProjects = () => {
-        projectsOpen.value = !projectsOpen.value;
-      };
-      return { args, inboxOpen, projectsOpen, toggleInbox, toggleProjects };
+      return { args, inboxOpen, projectsOpen };
     },
     template: `
-      <SideNav v-bind="args" className="gi-max-w-xs">
-        <SideNavGroup
-          :open="inboxOpen"
-          :onClick="toggleInbox"
-        >
+      <SideNav v-bind="args" class="gi-max-w-xs">
+        <SideNavGroup v-model:open="inboxOpen">
           <template #label>Inbox</template>
           <SideNavItem>Primary</SideNavItem>
           <SideNavItem>Social</SideNavItem>
         </SideNavGroup>
-        <SideNavGroup
-          :open="projectsOpen"
-          :onClick="toggleProjects"
-        >
+        <SideNavGroup :open="projectsOpen" @update:open="projectsOpen = $event">
           <template #label>Projects</template>
           <SideNavItem>Active</SideNavItem>
           <SideNavItem>Archived</SideNavItem>
@@ -358,19 +349,19 @@ export const WithHeadings: Story = {
     },
     template: `
       <H2 id="sidenav-with-headings-label" size="sm">Service navigation</H2>
-      <SideNav v-bind="args" className="gi-max-w-xs">
+      <SideNav v-bind="args" class="gi-max-w-xs">
         <SideNavHeading>Messages</SideNavHeading>
         <SideNavItem
           :selected="current === 'inbox'"
           :ariaCurrent="current === 'inbox' ? 'page' : undefined"
-          :onClick="() => selectItem('inbox')"
+          @click="selectItem('inbox')"
         >
           Inbox
         </SideNavItem>
         <SideNavItem
           :selected="current === 'sent'"
           :ariaCurrent="current === 'sent' ? 'page' : undefined"
-          :onClick="() => selectItem('sent')"
+          @click="selectItem('sent')"
         >
           Sent
         </SideNavItem>
@@ -378,14 +369,14 @@ export const WithHeadings: Story = {
         <SideNavItem
           :selected="current === 'overview'"
           :ariaCurrent="current === 'overview' ? 'page' : undefined"
-          :onClick="() => selectItem('overview')"
+          @click="selectItem('overview')"
         >
           Overview
         </SideNavItem>
         <SideNavItem
           :selected="current === 'reports'"
           :ariaCurrent="current === 'reports' ? 'page' : undefined"
-          :onClick="() => selectItem('reports')"
+          @click="selectItem('reports')"
         >
           Reports
         </SideNavItem>
@@ -393,7 +384,7 @@ export const WithHeadings: Story = {
         <SideNavItem
           :selected="current === 'settings'"
           :ariaCurrent="current === 'settings' ? 'page' : undefined"
-          :onClick="() => selectItem('settings')"
+          @click="selectItem('settings')"
         >
           Settings
         </SideNavItem>
