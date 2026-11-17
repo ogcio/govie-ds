@@ -6,8 +6,8 @@
 
 <script setup lang="ts">
 import type { ComputedRef } from 'vue';
-import CoreHeaderNav, { type Props as CoreProps } from './atoms/header/HeaderNav.vue';
-import { useCoreAttrs } from './attrs';
+import CoreHeaderNav, { type Props as CoreProps } from '../atoms/header/HeaderNav.vue';
+import { useCoreAttrs } from '../attrs';
 
 defineOptions({ inheritAttrs: false });
 

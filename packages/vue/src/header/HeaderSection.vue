@@ -5,9 +5,9 @@
 </template>
 
 <script setup lang="ts">
-import CoreHeaderSection from './atoms/header/HeaderSection.vue';
-import type { MaxWidth, SurfaceAppearance, SurfaceVariant, ValueOf } from './atoms/constants';
-import { useCoreAttrs } from './attrs';
+import CoreHeaderSection from '../atoms/header/HeaderSection.vue';
+import type { MaxWidth, SurfaceAppearance, SurfaceVariant, ValueOf } from '../atoms/constants';
+import { useCoreAttrs } from '../attrs';
 
 defineOptions({ inheritAttrs: false });
 

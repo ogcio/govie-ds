@@ -3,9 +3,9 @@
 </template>
 
 <script setup lang="ts">
-import CoreHeaderNavItemSeparator from './atoms/header/HeaderNavItemSeparator.vue';
-import type { VisibleValue } from './atoms/header/HeaderNavItem.styles';
-import { useCoreAttrs } from './attrs';
+import CoreHeaderNavItemSeparator from '../atoms/header/HeaderNavItemSeparator.vue';
+import type { VisibleValue } from '../atoms/header/HeaderNavItem.styles';
+import { useCoreAttrs } from '../attrs';
 
 defineOptions({ inheritAttrs: false });
 
