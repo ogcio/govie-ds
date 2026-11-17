@@ -1,28 +1,29 @@
 import { booleanAttribute, Component, EventEmitter, Input, Output } from '@angular/core';
-import CoreSideNavGroup, { type Props } from '../atoms/sidenav/SideNavGroup';
-
+import CoreSideNavGroup from '../atoms/sidenav/SideNavGroup';
+import CoreSideNavItemButton, { type Props } from '../atoms/sidenav/SideNavItemButton';
 @Component({
   selector: 'gi-side-nav-group',
   standalone: true,
-  imports: [CoreSideNavGroup],
+  imports: [CoreSideNavGroup, CoreSideNavItemButton],
   template: `
-    <core-side-nav-group
-      [open]="open"
-      [disabled]="disabled"
-      [className]="class"
-      [styles]="style"
-      [id]="id"
-      [ariaLabel]="ariaLabel"
-      [ariaControls]="ariaControls"
-      [ariaHidden]="ariaHidden || undefined"
-      [tabIndex]="tabIndex"
-      [dataTestId]="dataTestId"
-      (onClick)="openChange.emit(!open)"
-    >
-      <ng-container ngProjectAs="[label]">
+    <core-side-nav-group [open]="open" [listId]="ariaControls" [ariaHidden]="ariaHidden || undefined">
+      <core-side-nav-item-button
+        trigger
+        [className]="class"
+        [styles]="style"
+        [id]="id"
+        [disabled]="disabled"
+        [ariaExpanded]="open"
+        [ariaControls]="ariaControls"
+        [ariaLabel]="ariaLabel"
+        [ariaHidden]="ariaHidden || undefined"
+        [tabIndex]="tabIndex"
+        [dataTestId]="dataTestId"
+        (onClick)="openChange.emit(!open)"
+      >
         {{ label }}
         <ng-content select="[label]" />
-      </ng-container>
+      </core-side-nav-item-button>
       <ng-container ngProjectAs="[actions]">
         <ng-content select="[actions]" />
       </ng-container>

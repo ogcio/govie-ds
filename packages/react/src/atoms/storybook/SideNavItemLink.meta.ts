@@ -4,25 +4,25 @@
   The file source is in `packages/core/atoms/storybook/SideNavItemLink.meta.ts`
  */
 
-import type { ArgTypes, StoryContext, Renderer } from 'storybook/internal/types';
+import type { StoryContext, Renderer } from 'storybook/internal/types';
 import { within } from 'storybook/test';
 import type { Props } from '../sidenav/SideNavItemLink';
 import argTypes from './argTypes';
 import { linkMeta } from './Link.meta';
 import { checker } from './utilities';
-import { sideNavItemMeta } from './SideNavItem.meta';
+import { sideNavItemButtonMeta } from './SideNavItemButton.meta';
+import type { Meta, Story } from './types';
 export const sideNavItemLinkMeta = {
   title: 'Navigation/SideNav/SideNavItemLink',
   args: {
-    children: 'Homepage',
     href: '#',
     selected: false,
     id: 'side-nav-item-link-id',
     dataTestId: 'side-nav-item-link',
   },
   argTypes: {
-    selected: sideNavItemMeta.argTypes.selected,
-    actions: sideNavItemMeta.argTypes.actions,
+    selected: sideNavItemButtonMeta.argTypes.selected,
+    actions: sideNavItemButtonMeta.argTypes.actions,
     id: linkMeta.argTypes.id,
     href: linkMeta.argTypes.href,
     className: argTypes.class,
@@ -30,16 +30,25 @@ export const sideNavItemLinkMeta = {
     target: linkMeta.argTypes.target,
     rel: linkMeta.argTypes.rel,
     download: linkMeta.argTypes.download,
-    ariaCurrent: sideNavItemMeta.argTypes.ariaCurrent,
+    ariaCurrent: sideNavItemButtonMeta.argTypes.ariaCurrent,
     ariaLabel: linkMeta.argTypes.ariaLabel,
     ariaLabelledBy: linkMeta.argTypes.ariaLabelledBy,
     ariaDescribedBy: linkMeta.argTypes.ariaDescribedBy,
-    ariaHidden: linkMeta.argTypes.ariaHidden,
+    ariaHidden: {
+      ...linkMeta.argTypes.ariaHidden,
+      description:
+        'Hides the item from assistive technology. Maps to `aria-hidden` on the link and its list item. Use only for duplicate or decorative links that are not the primary interactive path.',
+      table: {
+        type: {
+          summary: "boolean | 'true' | 'false'",
+        },
+      },
+    },
     tabIndex: linkMeta.argTypes.tabIndex,
     lang: linkMeta.argTypes.lang,
     styles: argTypes.style,
     dataTestId: linkMeta.argTypes.dataTestId,
-  } satisfies ArgTypes<Props>,
+  },
   parameters: {
     docs: {
       description: {
@@ -48,7 +57,11 @@ export const sideNavItemLinkMeta = {
       },
     },
   },
-};
+} satisfies Meta<
+  Props & {
+    actions?: any;
+  }
+>;
 export const Default = {
   args: sideNavItemLinkMeta.args,
   play: async ({ canvasElement, step, args }: StoryContext<Renderer>) => {
@@ -61,4 +74,4 @@ export const Default = {
     });
     await check.children();
   },
-};
+} satisfies Story<Props>;

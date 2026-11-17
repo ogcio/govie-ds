@@ -35,9 +35,13 @@ export const rowClasses = tv({
   base: 'gi-grid gi-grid-cols-[minmax(0,1fr)_auto_auto] gi-items-center',
 });
 
-export const listItemClasses = tv({
-  extend: rowClasses,
+export const baseListItemClasses = tv({
   base: 'gi-list-none gi-mt-1 gi-side-nav-list',
+});
+
+export const listItemClasses = tv({
+  extend: baseListItemClasses,
+  base: rowClasses.base,
 });
 
 export const arrowClasses = tv({
@@ -60,12 +64,16 @@ export const chevronClasses = tv({
 export const actionClasses = tv({
   base: 'gi-side-nav-actions gi-hidden [&:has(*)]:gi-block gi-col-start-2 gi-row-start-1 gi-z-1 gi-ml-3 gi-pointer-events-auto',
   variants: {
-    last: {
-      true: 'gi-pr-3',
-      false: '',
+    group: {
+      true: '',
+      false: 'gi-pr-3',
     },
   },
   defaultVariants: {
-    last: true,
+    group: false,
   },
+});
+
+export const headingListItemClasses = tv({
+  base: 'gi-list-none',
 });

@@ -1,8 +1,8 @@
 import { Slot, useDefaultProps, useMetadata } from '@builder.io/mitosis';
-import classes, { actionClasses, arrowClasses, chevronClasses, rowClasses } from './SideNavItem.styles';
 import GiKeyboardArrowDownIcon from '../icons/KeyboardArrowDown.lite';
-import { isAriaHidden } from '../utilities';
+import CoreSideNavItemAction from './SideNavItemAction.lite';
 import { tv } from 'tailwind-variants';
+import { arrowClasses, baseListItemClasses, chevronClasses, rowClasses } from './SideNavItem.styles';
 
 useMetadata({ angular: { selector: 'core-side-nav-group' } });
 
@@ -11,67 +11,34 @@ useDefaultProps({
 });
 
 export type Props = {
-  id?: string;
   children?: any;
-  open?: boolean;
+  trigger?: any;
   actions?: any;
-  label?: any;
-  disabled?: boolean;
-  className?: string;
-  styles?: Record<string, string>;
-  onClick?: (event: any) => void;
-  onFocus?: (event: any) => void;
-  onBlur?: (event: any) => void;
-  onKeyDown?: (event: any) => void;
-  onKeyUp?: (event: any) => void;
+  open?: boolean;
+  listId?: string;
   ariaHidden?: boolean | 'true' | 'false';
-  ariaLabel?: string;
-  ariaControls?: string;
-  tabIndex?: number;
-  dataTestId?: string;
 };
 
 export default function SideNavGroup(props: Props) {
   return (
-    <li class={listItemClasses()} aria-hidden={props.ariaHidden}>
+    <li class={baseListItemClasses()} aria-hidden={props.ariaHidden}>
       <div class={rowClasses()}>
-        <button
-          type="button"
-          id={props.id}
-          class={classes({
-            disabled: !!props.disabled,
-            className: props.className,
-          })}
-          style={props.styles}
-          disabled={props.disabled || undefined}
-          onClick={(event) => props.onClick && props.onClick(event)}
-          onFocus={(event) => props.onFocus && props.onFocus(event)}
-          onBlur={(event) => props.onBlur && props.onBlur(event)}
-          onKeyDown={(event) => props.onKeyDown && props.onKeyDown(event)}
-          onKeyUp={(event) => props.onKeyUp && props.onKeyUp(event)}
-          aria-label={props.ariaLabel}
-          aria-expanded={!!props.open}
-          aria-controls={props.ariaControls}
-          tabIndex={isAriaHidden(props.ariaHidden) ? -1 : props.tabIndex}
-          data-testid={props.dataTestId}
-        >
-          <Slot name="label" />
-        </button>
-        <div class={actionClasses({ last: false })}>
+        <Slot name="trigger" />
+        <CoreSideNavItemAction group={true}>
           <Slot name="actions" />
-        </div>
+        </CoreSideNavItemAction>
         <div class={chevronClasses()} aria-hidden="true">
           <GiKeyboardArrowDownIcon className={arrowClasses({ open: !!props.open })} />
         </div>
       </div>
-      <ul id={props.ariaControls} class={contentClasses({ open: !!props.open })}>
+      <ul id={props.listId} class={listClasses({ open: !!props.open })}>
         {props.children}
       </ul>
     </li>
   );
 }
 
-const contentClasses = tv({
+const listClasses = tv({
   base: 'gi-side-nav-group',
   variants: {
     open: {
@@ -82,8 +49,4 @@ const contentClasses = tv({
   defaultVariants: {
     open: false,
   },
-});
-
-const listItemClasses = tv({
-  base: 'gi-list-none gi-mt-1 gi-side-nav-list',
 });
