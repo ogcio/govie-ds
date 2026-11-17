@@ -98,7 +98,7 @@ export const sideNavGroupMeta = {
       },
     },
     dataTestId: boxMeta.argTypes.dataTestId,
-  } satisfies ArgTypes<Omit<Props, 'children'>>,
+  } satisfies ArgTypes<Props>,
   parameters: {
     docs: {
       description: {
