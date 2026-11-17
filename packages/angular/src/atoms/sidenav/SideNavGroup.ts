@@ -4,36 +4,24 @@
   The file source is in `packages/core/atoms/sidenav/SideNavGroup.lite.tsx`
  */
 
-import { Output, EventEmitter, Component, Input } from '@angular/core';
+import { Component, Input } from '@angular/core';
 
 import { CommonModule } from '@angular/common';
 
 export type Props = {
-  id?: string;
-  open?: boolean;
+  trigger?: any;
   actions?: any;
-  label?: any;
-  disabled?: boolean;
-  className?: string;
-  styles?: string | Record<string, string | number | null | undefined>;
-  onClick?: (event: any) => void;
-  onFocus?: (event: any) => void;
-  onBlur?: (event: any) => void;
-  onKeyDown?: (event: any) => void;
-  onKeyUp?: (event: any) => void;
+  open?: boolean;
+  listId?: string;
   ariaHidden?: boolean | 'true' | 'false';
-  ariaLabel?: string;
-  ariaControls?: string;
-  tabIndex?: number;
-  dataTestId?: string;
 };
 const defaultProps: any = { ariaHidden: undefined };
 
-import classes, { actionClasses, arrowClasses, chevronClasses, rowClasses } from './SideNavItem.styles';
 import GiKeyboardArrowDownIcon from '../icons/KeyboardArrowDown';
-import { isAriaHidden } from '../utilities';
+import CoreSideNavItemAction from './SideNavItemAction';
 import { tv } from 'tailwind-variants';
-const contentClasses = tv({
+import { arrowClasses, baseListItemClasses, chevronClasses, rowClasses } from './SideNavItem.styles';
+const listClasses = tv({
   base: 'gi-side-nav-group',
   variants: {
     open: {
@@ -45,48 +33,16 @@ const contentClasses = tv({
     open: false,
   },
 });
-const listItemClasses = tv({
-  base: 'gi-list-none gi-mt-1 gi-side-nav-list',
-});
 
 @Component({
   selector: 'core-side-nav-group',
   template: `
-    <li [class]="listItemClasses()" [attr.aria-hidden]="ariaHidden">
+    <li [class]="baseListItemClasses()" [attr.aria-hidden]="ariaHidden">
       <div [class]="rowClasses()">
-        <button
-          type="button"
-          [attr.id]="id"
-          [class]="
-            classes({
-              disabled: !!disabled,
-              className: className,
-            })
-          "
-          [style]="styles"
-          [attr.disabled]="disabled || undefined"
-          (click)="onClick && this.onClick.emit($event)"
-          (focus)="onFocus && this.onFocus.emit($event)"
-          (blur)="onBlur && this.onBlur.emit($event)"
-          (keydown)="onKeyDown && this.onKeyDown.emit($event)"
-          (keyup)="onKeyUp && this.onKeyUp.emit($event)"
-          [attr.aria-label]="ariaLabel"
-          [attr.aria-expanded]="!!open"
-          [attr.aria-controls]="ariaControls"
-          [attr.tabIndex]="isAriaHidden(ariaHidden) ? -1 : tabIndex"
-          [attr.data-testid]="dataTestId"
-        >
-          <ng-content select="[label]"></ng-content>
-        </button>
-        <div
-          [class]="
-            actionClasses({
-              last: false,
-            })
-          "
-        >
+        <ng-content select="[trigger]"></ng-content>
+        <core-side-nav-item-action [group]="true">
           <ng-content select="[actions]"></ng-content>
-        </div>
+        </core-side-nav-item-action>
         <div aria-hidden="true" [class]="chevronClasses()">
           <gi-keyboard-arrow-down-icon
             [className]="
@@ -98,9 +54,9 @@ const listItemClasses = tv({
         </div>
       </div>
       <ul
-        [attr.id]="ariaControls"
+        [attr.id]="listId"
         [class]="
-          contentClasses({
+          listClasses({
             open: !!open,
           })
         "
@@ -117,31 +73,16 @@ const listItemClasses = tv({
     `,
   ],
   standalone: true,
-  imports: [CommonModule, GiKeyboardArrowDownIcon],
+  imports: [CommonModule, CoreSideNavItemAction, GiKeyboardArrowDownIcon],
 })
 export default class SideNavGroup {
-  contentClasses = contentClasses;
-  listItemClasses = listItemClasses;
-  classes = classes;
-  actionClasses = actionClasses;
+  listClasses = listClasses;
   arrowClasses = arrowClasses;
+  baseListItemClasses = baseListItemClasses;
   chevronClasses = chevronClasses;
   rowClasses = rowClasses;
-  isAriaHidden = isAriaHidden;
 
   @Input() ariaHidden: Props['ariaHidden'] = defaultProps['ariaHidden'];
-  @Input() id!: Props['id'];
-  @Input() disabled!: Props['disabled'];
-  @Input() className!: Props['className'];
-  @Input() styles!: Props['styles'];
-  @Input() ariaLabel!: Props['ariaLabel'];
   @Input() open!: Props['open'];
-  @Input() ariaControls!: Props['ariaControls'];
-  @Input() tabIndex!: Props['tabIndex'];
-  @Input() dataTestId!: Props['dataTestId'];
-  @Output() onClick = new EventEmitter<any>();
-  @Output() onFocus = new EventEmitter<any>();
-  @Output() onBlur = new EventEmitter<any>();
-  @Output() onKeyDown = new EventEmitter<any>();
-  @Output() onKeyUp = new EventEmitter<any>();
+  @Input() listId!: Props['listId'];
 }

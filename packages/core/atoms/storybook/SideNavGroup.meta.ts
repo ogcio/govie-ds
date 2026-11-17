@@ -1,9 +1,28 @@
 import type { ArgTypes, StoryContext, Renderer } from 'storybook/internal/types';
 import { within, expect, userEvent } from 'storybook/test';
-import type { Props } from '../sidenav/SideNavGroup.lite';
+import type { Props as ItemButtonProps } from '../sidenav/SideNavItemButton.lite';
 import argTypes from './argTypes';
 import { boxMeta } from './Box.meta';
 import { checker } from './utilities';
+
+/**
+ * Public SideNavGroup API shared by the React, Vue and Angular wrappers. The core `SideNavGroup` atom is
+ * only a layout shell; the wrappers render the trigger button and forward these props to it.
+ */
+type SideNavGroupArgs = {
+  id?: ItemButtonProps['id'];
+  label?: any;
+  actions?: any;
+  open?: boolean;
+  disabled?: ItemButtonProps['disabled'];
+  className?: ItemButtonProps['className'];
+  styles?: ItemButtonProps['styles'];
+  ariaLabel?: ItemButtonProps['ariaLabel'];
+  ariaControls?: ItemButtonProps['ariaControls'];
+  ariaHidden?: ItemButtonProps['ariaHidden'];
+  tabIndex?: ItemButtonProps['tabIndex'];
+  dataTestId?: ItemButtonProps['dataTestId'];
+};
 
 export const sideNavGroupMeta = {
   title: 'Navigation/SideNav/SideNavGroup',
@@ -12,12 +31,14 @@ export const sideNavGroupMeta = {
     open: false,
     disabled: false,
     id: 'side-nav-group-id',
+    ariaControls: 'side-nav-group-list',
     dataTestId: 'side-nav-group',
   },
   argTypes: {
     label: {
       control: 'text',
       description: 'Content of the expandable group header button.',
+      table: { type: { summary: 'slot' } },
     },
     open: {
       control: 'boolean',
@@ -32,6 +53,7 @@ export const sideNavGroupMeta = {
     actions: {
       control: { disable: true },
       description: 'Trailing action slot rendered beside the group header (for example an IconButton).',
+      table: { type: { summary: 'slot' } },
     },
     className: argTypes.class,
     styles: argTypes.style,
@@ -49,8 +71,9 @@ export const sideNavGroupMeta = {
     },
     ariaHidden: {
       control: { disable: true },
-      description: 'Hides the list item from assistive technology. Maps to `aria-hidden` on the wrapping `<li>`.',
-      table: { type: { summary: 'boolean' } },
+      description:
+        'Hides the group from assistive technology. Maps to `aria-hidden` on the header button and its wrapping `<li>`.',
+      table: { type: { summary: "boolean | 'true' | 'false'" } },
     },
     tabIndex: {
       control: { disable: true },
@@ -58,12 +81,12 @@ export const sideNavGroupMeta = {
       table: { type: { summary: 'number' } },
     },
     dataTestId: boxMeta.argTypes.dataTestId,
-  } satisfies ArgTypes<Props>,
+  } satisfies ArgTypes<SideNavGroupArgs>,
   parameters: {
     docs: {
       description: {
         component:
-          'Expandable section within a SideNav. Renders a disclosure header with a chevron and a nested list of `SideNavItem` or `SideNavItemLink` children. Open state is fully controlled through `open` and `onClick`.',
+          'Expandable section within a SideNav. Renders a disclosure header with a chevron and a nested list of `SideNavItem` or `SideNavItemLink` children. Open state is fully controlled: the group never toggles itself, it reports header activation and the parent updates `open`.',
       },
     },
   },
@@ -78,6 +101,12 @@ export const Default = {
     await check.is('button');
     await check.attributes({ id: args.id });
     await check.children();
+    await check.attributes({ 'aria-expanded': 'false', 'aria-controls': args.ariaControls });
+    await step('header controls the nested list', async () => {
+      const list = (canvasElement as HTMLElement).querySelector(`#${args.ariaControls}`);
+      expect(list?.tagName).toBe('UL');
+      expect(within(list as HTMLElement).getByText('Primary')).toBeInTheDocument();
+    });
     await step('nested items are hidden when closed', async () => {
       expect(canvas.getByText('Primary')).not.toBeVisible();
       expect(canvas.getByText('Social')).not.toBeVisible();
@@ -91,12 +120,13 @@ export const ControlledOpen = {
     open: true,
     dataTestId: 'side-nav-group-open',
     id: 'side-nav-group-open-id',
+    ariaControls: 'side-nav-group-open-list',
   },
   parameters: {
     docs: {
       description: {
         story:
-          'Group that starts open. The parent toggles `open` from `onClick`, so activating the header hides and shows the nested items.',
+          'Group that starts open. The parent flips `open` when the header is activated, so activating the header hides and shows the nested items.',
       },
     },
   },
@@ -104,6 +134,7 @@ export const ControlledOpen = {
     const canvas = within(canvasElement as HTMLElement);
     const check = checker(args.dataTestId, canvas, step);
     await check.is('button');
+    await check.attributes({ 'aria-expanded': 'true' });
 
     await step('nested items are visible when open', async () => {
       expect(canvas.getByText('Primary')).toBeVisible();
@@ -112,12 +143,14 @@ export const ControlledOpen = {
 
     await step('clicking the header closes the group', async () => {
       await userEvent.click(canvas.getByTestId(args.dataTestId));
+      expect(canvas.getByTestId(args.dataTestId)).toHaveAttribute('aria-expanded', 'false');
       expect(canvas.getByText('Primary')).not.toBeVisible();
       expect(canvas.getByText('Social')).not.toBeVisible();
     });
 
     await step('clicking the header again reopens the group', async () => {
       await userEvent.click(canvas.getByTestId(args.dataTestId));
+      expect(canvas.getByTestId(args.dataTestId)).toHaveAttribute('aria-expanded', 'true');
       expect(canvas.getByText('Primary')).toBeVisible();
       expect(canvas.getByText('Social')).toBeVisible();
     });

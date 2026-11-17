@@ -94,7 +94,7 @@ export const Expandable = {
     docs: {
       description: {
         story:
-          'Disclosure pattern using `SideNavGroup`. Each group is controlled through `open` and `onClick`. One group starts open and another starts closed; toggling a header reveals or hides its nested items.',
+          'Disclosure pattern using `SideNavGroup`. Each group is controlled: the parent owns `open` and flips it when the header is activated. One group starts open and another starts closed; toggling a header reveals or hides its nested items.',
       },
     },
   },
@@ -174,7 +174,8 @@ export const WithActions = {
       const primary = canvas.getByRole('button', {
         name: 'Primary',
       });
-      const actions = primary.parentElement?.querySelector('.gi-side-nav-actions');
+      const listItemParent = primary.closest('li') as HTMLElement;
+      const actions = listItemParent.querySelector('.gi-side-nav-actions');
       expect(actions).toBeInTheDocument();
       expect(actions).not.toBeVisible();
     });

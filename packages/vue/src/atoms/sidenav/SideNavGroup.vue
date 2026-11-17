@@ -5,41 +5,10 @@
 -->
 
 <template>
-  <li :class="listItemClasses()" :aria-hidden="ariaHidden">
+  <li :class="baseListItemClasses()" :aria-hidden="ariaHidden">
     <div :class="rowClasses()">
-      <button
-        type="button"
-        :id="id"
-        :class="
-          classes({
-            disabled: !!disabled,
-            className: className,
-          })
-        "
-        :style="styles"
-        :disabled="disabled || undefined"
-        @click="async (event) => onClick && onClick(event)"
-        @focus="async (event) => onFocus && onFocus(event)"
-        @blur="async (event) => onBlur && onBlur(event)"
-        @keydown="async (event) => onKeyDown && onKeyDown(event)"
-        @keyup="async (event) => onKeyUp && onKeyUp(event)"
-        :aria-label="ariaLabel"
-        :aria-expanded="!!open"
-        :aria-controls="ariaControls"
-        :tabIndex="isAriaHidden(ariaHidden) ? -1 : tabIndex"
-        :data-testid="dataTestId"
-      >
-        <slot name="label"></slot>
-      </button>
-      <div
-        :class="
-          actionClasses({
-            last: false,
-          })
-        "
-      >
-        <slot name="actions"></slot>
-      </div>
+      <slot name="trigger"></slot
+      ><CoreSideNavItemAction :group="true"><slot name="actions"></slot></CoreSideNavItemAction>
       <div aria-hidden="true" :class="chevronClasses()">
         <GiKeyboardArrowDownIcon
           :className="
@@ -51,9 +20,9 @@
       </div>
     </div>
     <ul
-      :id="ariaControls"
+      :id="listId"
       :class="
-        contentClasses({
+        listClasses({
           open: !!open,
         })
       "
@@ -64,11 +33,11 @@
 </template>
 
 <script setup lang="ts">
-import classes, { actionClasses, arrowClasses, chevronClasses, rowClasses } from './SideNavItem.styles';
 import GiKeyboardArrowDownIcon from '../icons/KeyboardArrowDown.vue';
-import { isAriaHidden } from '../utilities';
+import CoreSideNavItemAction from './SideNavItemAction.vue';
 import { tv } from 'tailwind-variants';
-const contentClasses = tv({
+import { arrowClasses, baseListItemClasses, chevronClasses, rowClasses } from './SideNavItem.styles';
+const listClasses = tv({
   base: 'gi-side-nav-group',
   variants: {
     open: {
@@ -80,46 +49,19 @@ const contentClasses = tv({
     open: false,
   },
 });
-const listItemClasses = tv({
-  base: 'gi-list-none gi-mt-1 gi-side-nav-list',
-});
 
 export type Props = {
-  id?: string;
-  open?: boolean;
+  trigger?: any;
   actions?: any;
-  label?: any;
-  disabled?: boolean;
-  className?: string;
-  styles?: Record<string, string>;
-  onClick?: (event: any) => void;
-  onFocus?: (event: any) => void;
-  onBlur?: (event: any) => void;
-  onKeyDown?: (event: any) => void;
-  onKeyUp?: (event: any) => void;
+  open?: boolean;
+  listId?: string;
   ariaHidden?: boolean | 'true' | 'false';
-  ariaLabel?: string;
-  ariaControls?: string;
-  tabIndex?: number;
-  dataTestId?: string;
 };
 
 const props = withDefaults(defineProps<Props>(), {
   ariaHidden: undefined,
-  id: undefined,
-  disabled: undefined,
-  className: undefined,
-  styles: undefined,
-  onClick: undefined,
-  onFocus: undefined,
-  onBlur: undefined,
-  onKeyDown: undefined,
-  onKeyUp: undefined,
-  ariaLabel: undefined,
   open: undefined,
-  ariaControls: undefined,
-  tabIndex: undefined,
-  dataTestId: undefined,
+  listId: undefined,
   children: undefined,
 });
 </script>

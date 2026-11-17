@@ -1,7 +1,7 @@
 import type { Meta, StoryObj } from '@storybook/react-vite';
-import SideNav from '@/atoms/sidenav/SideNav';
-import SideNavHeading from '@/atoms/sidenav/SideNavHeading';
-import SideNavItem from '@/atoms/sidenav/SideNavItem';
+import SideNav from '@/SideNav/SideNav';
+import SideNavHeading from '@/SideNav/SideNavHeading';
+import SideNavItem from '@/SideNav/SideNavItem';
 import * as stories from '@/atoms/storybook/SideNavHeading.meta';
 import { importNext } from './helpers';
 
@@ -18,7 +18,7 @@ const meta = {
       },
     },
   },
-} as Meta<typeof SideNavHeading>;
+} satisfies Meta<typeof SideNavHeading>;
 
 export default meta;
 type Story = StoryObj<typeof meta>;
