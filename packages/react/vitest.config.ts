@@ -34,7 +34,6 @@ export default mergeConfig(
             name: 'unit',
             globals: true,
             environment: 'jsdom',
-            css: true,
             setupFiles: ['./vitest-unit.setup.ts'],
             exclude: [...configDefaults.exclude, 'tests/*.spec.ts'],
           },
