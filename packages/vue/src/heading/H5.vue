@@ -5,9 +5,9 @@
 </template>
 
 <script setup lang="ts">
-import CoreH5 from './atoms/heading/H5.vue';
-import { useCoreAttrs } from './attrs';
-import type { Props } from './heading';
+import CoreH5 from '../atoms/heading/H5.vue';
+import { useCoreAttrs } from '../attrs';
+import type { Props } from './types';
 
 defineOptions({ inheritAttrs: false });
 

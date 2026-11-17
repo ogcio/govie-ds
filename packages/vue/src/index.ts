@@ -9,13 +9,13 @@ export { default as Divider, type Props as DividerProps } from './atoms/Divider.
 export { default as Text, type Props as TextProps } from './Text.vue';
 export { default as Paragraph, type Props as ParagraphProps } from './Paragraph.vue';
 export { default as InsetText, type Props as InsetTextProps } from './InsetText.vue';
-export { default as H1 } from './H1.vue';
-export { default as H2 } from './H2.vue';
-export { default as H3 } from './H3.vue';
-export { default as H4 } from './H4.vue';
-export { default as H5 } from './H5.vue';
-export { default as H6 } from './H6.vue';
-export { HeadingSize, type Props as HeadingProps } from './heading';
+export { default as H1 } from './heading/H1.vue';
+export { default as H2 } from './heading/H2.vue';
+export { default as H3 } from './heading/H3.vue';
+export { default as H4 } from './heading/H4.vue';
+export { default as H5 } from './heading/H5.vue';
+export { default as H6 } from './heading/H6.vue';
+export { HeadingSize, type Props as HeadingProps } from './heading/types';
 export { Align, Size, Whitespace } from './constants';
 
 // Actions
