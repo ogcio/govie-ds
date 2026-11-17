@@ -20,11 +20,11 @@ export {
 } from '@/atoms/header/HeaderNavItemSeparator';
 
 //  SideNav
-export { default as SideNav, type Props as SideNavProps } from '@/atoms/sidenav/SideNav';
-export { default as SideNavItem, type Props as SideNavItemProps } from '@/atoms/sidenav/SideNavItem';
+export { default as SideNav, type SideNavProps } from '@/SideNav/SideNav';
+export { default as SideNavItem, type SideNavItemProps } from '@/SideNav/SideNavItem';
 export { default as SideNavItemLink, type SideNavItemLinkProps } from '@/SideNav/SideNavItemLink';
-export { default as SideNavHeading, type Props as SideNavHeadingProps } from '@/atoms/sidenav/SideNavHeading';
-export { default as SideNavGroup, type Props as SideNavGroupProps } from '@/atoms/sidenav/SideNavGroup';
+export { default as SideNavHeading, type SideNavHeadingProps } from '@/SideNav/SideNavHeading';
+export { default as SideNavGroup, type SideNavGroupProps } from '@/SideNav/SideNavGroup';
 
 // Breadcrumbs
 export { default as Breadcrumbs, type BreadcrumbProps } from '@/breadcrumbs/Breadcrumbs';

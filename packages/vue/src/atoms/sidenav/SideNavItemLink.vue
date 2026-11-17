@@ -5,45 +5,42 @@
 -->
 
 <template>
-  <li :class="listItemClasses()" :aria-hidden="ariaHidden">
-    <a
-      :id="id"
-      :href="href"
-      :target="target ?? (external ? '_blank' : undefined)"
-      :rel="rel ?? (external ? 'noreferrer noopener' : undefined)"
-      :download="getDownload(download)"
-      :class="
-        classes({
-          selected: !!selected,
-          className: className,
-        })
-      "
-      :style="styles"
-      @click="async (event) => onClick && onClick(event)"
-      @keydown="async (event) => onKeyDown && onKeyDown(event)"
-      @keyup="async (event) => onKeyUp && onKeyUp(event)"
-      :aria-current="ariaCurrent"
-      :aria-label="ariaLabel"
-      :aria-labelledby="ariaLabelledBy"
-      :aria-describedby="ariaDescribedBy"
-      :tabIndex="isAriaHidden(ariaHidden) ? -1 : tabIndex"
-      :lang="lang"
-      :data-testid="dataTestId"
-      ><slot
-    /></a>
-    <div :class="actionClasses()"><slot name="actions"></slot></div>
-  </li>
+  <a
+    :id="id"
+    :href="href"
+    :target="target ?? (external ? '_blank' : undefined)"
+    :rel="rel ?? (external ? 'noreferrer noopener' : undefined)"
+    :download="getDownload(download)"
+    :class="
+      classes({
+        selected: !!selected,
+        className: className,
+      })
+    "
+    :style="styles"
+    @click="async (event) => onClick && onClick(event)"
+    @keydown="async (event) => onKeyDown && onKeyDown(event)"
+    @keyup="async (event) => onKeyUp && onKeyUp(event)"
+    :aria-current="ariaCurrent"
+    :aria-label="ariaLabel"
+    :aria-hidden="ariaHidden"
+    :aria-labelledby="ariaLabelledBy"
+    :aria-describedby="ariaDescribedBy"
+    :tabIndex="isAriaHidden(ariaHidden) ? -1 : tabIndex"
+    :lang="lang"
+    :data-testid="dataTestId"
+    ><slot
+  /></a>
 </template>
 
 <script setup lang="ts">
 import { getDownload, isAriaHidden } from '../utilities';
-import classes, { actionClasses, listItemClasses } from './SideNavItem.styles';
+import classes from './SideNavItem.styles';
 
 export type Props = {
   id?: string;
   href: string;
   selected?: boolean;
-  actions?: any;
   className?: string;
   external?: boolean;
   target?: '_self' | '_blank' | '_parent' | '_top';
@@ -64,7 +61,6 @@ export type Props = {
 };
 
 const props = withDefaults(defineProps<Props>(), {
-  ariaHidden: undefined,
   id: undefined,
   href: undefined,
   target: undefined,
@@ -79,6 +75,7 @@ const props = withDefaults(defineProps<Props>(), {
   onKeyUp: undefined,
   ariaCurrent: undefined,
   ariaLabel: undefined,
+  ariaHidden: undefined,
   ariaLabelledBy: undefined,
   ariaDescribedBy: undefined,
   tabIndex: undefined,
