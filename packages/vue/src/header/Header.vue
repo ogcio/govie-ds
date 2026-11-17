@@ -5,8 +5,8 @@
 </template>
 
 <script setup lang="ts">
-import CoreHeader from './atoms/header/Header.vue';
-import { useCoreAttrs } from './attrs';
+import CoreHeader from '../atoms/header/Header.vue';
+import { useCoreAttrs } from '../attrs';
 
 defineOptions({ inheritAttrs: false });
 

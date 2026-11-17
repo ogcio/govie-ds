@@ -5,8 +5,8 @@
 </template>
 
 <script setup lang="ts">
-import CoreHeaderLogo from './atoms/header/HeaderLogo.vue';
-import { useCoreAttrs } from './attrs';
+import CoreHeaderLogo from '../atoms/header/HeaderLogo.vue';
+import { useCoreAttrs } from '../attrs';
 
 defineOptions({ inheritAttrs: false });
 
