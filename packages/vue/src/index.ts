@@ -43,8 +43,8 @@ export {
 export { default as HeaderTitle } from './header/HeaderTitle.vue';
 
 // SideNav
-export { default as SideNav, type Props as SideNavProps } from './atoms/sidenav/SideNav.vue';
-export { default as SideNavItem, type Props as SideNavItemProps } from './atoms/sidenav/SideNavItem.vue';
-export { default as SideNavItemLink, type Props as SideNavItemLinkProps } from './atoms/sidenav/SideNavItemLink.vue';
-export { default as SideNavHeading, type Props as SideNavHeadingProps } from './atoms/sidenav/SideNavHeading.vue';
-export { default as SideNavGroup, type Props as SideNavGroupProps } from './atoms/sidenav/SideNavGroup.vue';
+export { default as SideNav, type Props as SideNavProps } from './sidenav/SideNav.vue';
+export { default as SideNavItem, type Props as SideNavItemProps } from './sidenav/SideNavItem.vue';
+export { default as SideNavItemLink, type Props as SideNavItemLinkProps } from './sidenav/SideNavItemLink.vue';
+export { default as SideNavHeading, type Props as SideNavHeadingProps } from './sidenav/SideNavHeading.vue';
+export { default as SideNavGroup, type Props as SideNavGroupProps } from './sidenav/SideNavGroup.vue';
