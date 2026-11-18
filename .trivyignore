@@ -5,3 +5,11 @@
 # this image does not enable gzip at all.
 # Remove this block once the base image ships a fixed zlib.
 CVE-2026-85091
+
+# OpenSSL 3.5.9 batch: not exploitable, nginx here serves plain HTTP without TLS.
+# Remove once Alpine v3.23 ships a fixed openssl.
+CVE-2026-95692
+CVE-2026-107496
+CVE-2026-95691
+CVE-2026-88823
+CVE-2026-88822
