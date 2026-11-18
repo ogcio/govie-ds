@@ -14,7 +14,7 @@ export default defineConfig({
       formats: ['es'],
     },
     rolldownOptions: {
-      external: ['vue', 'lodash', 'tailwind-variants'],
+      external: ['vue', 'tailwind-variants', /^lodash(\/.*)?$/],
     },
   },
 });
