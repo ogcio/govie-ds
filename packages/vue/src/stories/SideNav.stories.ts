@@ -62,7 +62,7 @@ export const Default: Story = {
           :onClick="toggleInbox"
         >
           <template #label>
-            <Box className="gi-flex gi-gap-1">
+            <Box class="gi-flex gi-gap-1">
               <MailIcon />
               Inbox
             </Box>
@@ -161,7 +161,7 @@ export const WithActions: Story = {
           :onClick="toggleInbox"
         >
           <template #label>
-            <Box className="gi-flex gi-justify-between gi-items-center">
+            <Box class="gi-flex gi-justify-between gi-items-center">
               <Text>Inbox</Text>
               <strong class="gi-tag gi-tag-counter gi-tag-size-default">3</strong>
             </Box>

@@ -3,7 +3,7 @@ import omit from 'lodash/omit';
 import { RouterLink } from 'vue-router';
 import { expect, userEvent, waitFor, within } from 'storybook/test';
 import Link from '../Link.vue';
-import Stack from '../atoms/Stack.vue';
+import Stack from '../Stack.vue';
 import * as stories from '../atoms/storybook/Link.meta';
 
 const meta: Meta<typeof Link> = {

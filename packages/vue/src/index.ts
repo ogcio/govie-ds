@@ -1,9 +1,9 @@
 // Layout
-export { default as Box, type Props as BoxProps } from './atoms/Box.vue';
-export { default as Container, type Props as ContainerProps } from './atoms/Container.vue';
-export { default as Grid, type Props as GridProps } from './atoms/Grid.vue';
-export { default as Stack, type Props as StackProps } from './atoms/Stack.vue';
-export { default as Divider, type Props as DividerProps } from './atoms/Divider.vue';
+export { default as Box } from './Box.vue';
+export { default as Container, type Props as ContainerProps } from './Container.vue';
+export { default as Grid, type Props as GridProps } from './Grid.vue';
+export { default as Stack, type Props as StackProps } from './Stack.vue';
+export { default as Divider, type Props as DividerProps } from './Divider.vue';
 
 // Typography
 export { default as Text, type Props as TextProps } from './Text.vue';
