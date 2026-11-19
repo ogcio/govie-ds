@@ -1,6 +1,7 @@
 import type { ArgTypes, StoryContext, Renderer } from 'storybook/internal/types';
 import { within, expect, userEvent } from 'storybook/test';
 import type { Props } from '../sidenav/SideNavGroup.lite';
+import argTypes from './argTypes';
 import { boxMeta } from './Box.meta';
 import { checker } from './utilities';
 
@@ -32,8 +33,8 @@ export const sideNavGroupMeta = {
       control: { disable: true },
       description: 'Trailing action slot rendered beside the group header (for example an IconButton).',
     },
-    className: boxMeta.argTypes.className,
-    styles: boxMeta.argTypes.styles,
+    className: argTypes.class,
+    styles: argTypes.style,
     id: boxMeta.argTypes.id,
     ariaLabel: {
       control: 'text',

@@ -28,7 +28,7 @@ type Story = StoryObj<typeof meta>;
 
 export const Default: Story = {
   ...boxDefault,
-  render: (props) => <Box {...props} />,
+  render: (props) => <Box className="gi-p-4" {...props} />,
 };
 
 export const WithContainerAndStack: Story = {
