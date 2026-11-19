@@ -29,24 +29,6 @@ export const paragraphMeta = {
       description: 'Whitespace handling.',
       defaultValue: Whitespace.NORMAL,
     }),
-    className: {
-      control: false,
-      description: 'Additional CSS classes applied to the paragraph element.',
-      table: {
-        type: {
-          summary: 'string',
-        },
-      },
-    },
-    styles: {
-      control: false,
-      description: 'Inline CSS styles applied to the root `<p>` element.',
-      table: {
-        type: {
-          summary: 'Record<string, string>',
-        },
-      },
-    },
     id: {
       control: false,
       description: 'Optional id for linking/targeting and aria references.',
@@ -80,7 +62,6 @@ export const paragraphMeta = {
 };
 export const Default = {
   tags: ['skip-playwright'],
-  args: paragraphMeta.args,
   play: async ({ canvasElement, step }: StoryContext<Renderer>) => {
     const canvas = within(canvasElement as HTMLElement);
     await step('renders a <p> element', async () => {
