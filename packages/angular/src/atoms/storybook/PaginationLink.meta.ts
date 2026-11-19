@@ -9,6 +9,12 @@ import type { Props } from '../pagination/PaginationLink';
 import { linkMeta } from './Link.meta';
 import type { Meta, Story } from './types';
 
+// Args every framework passes to these stories. `href` is optional because a story can set it on
+// its own child link instead of on the pagination link.
+type SharedArgs = Omit<Props, 'href'> & {
+  href?: string;
+};
+
 // Label rendered inside the link by the Default and Current stories in each framework.
 export const PAGINATION_LINK_LABEL = '5';
 export const meta = {
@@ -68,7 +74,7 @@ export const Default = {
       expect(link).not.toHaveAttribute('aria-current');
     });
   },
-} satisfies Story<Props>;
+} satisfies Story<SharedArgs>;
 export const Current = {
   args: {
     current: true,
@@ -91,4 +97,4 @@ export const Current = {
       expect(link).toHaveAttribute('aria-current', 'page');
     });
   },
-} satisfies Story<Props>;
+} satisfies Story<SharedArgs>;

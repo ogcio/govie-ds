@@ -168,3 +168,51 @@ export const PaginationList: Story = {
     );
   },
 };
+
+// Stand-in for a router link component such as Next.js `<Link>`.
+const CustomLink = (props: React.ComponentProps<'a'>) => <a {...props} />;
+
+export const AsChild: Story = {
+  parameters: {
+    docs: {
+      description: {
+        story:
+          "To use your router's link component, such as Next.js `<Link>`, set `asChild` on each `PaginationLink` and place your link inside it. See the AsChild example in [`PaginationLink`](?path=/docs/navigation-pagination-paginationlink--docs) for which props go where.",
+      },
+      source: {
+        type: 'code',
+        transform: extractRenderBody,
+      },
+    },
+  },
+  render: function Render(props) {
+    const currentPage = 5;
+    const pages = getPaginationList({ current: currentPage, total: 10, size: 7 });
+
+    return (
+      <Pagination {...props}>
+        <PaginationLink asChild className="gi-flex gi-gap-2">
+          <CustomLink href="#">
+            <ArrowBackward />
+            Previous
+          </CustomLink>
+        </PaginationLink>
+        {pages.map((page, index) =>
+          page === -1 ? (
+            <PaginationEllipsis key={`${index}-ellipsis`} />
+          ) : (
+            <PaginationLink asChild key={page} current={page === currentPage}>
+              <CustomLink href="#">{page}</CustomLink>
+            </PaginationLink>
+          ),
+        )}
+        <PaginationLink asChild className="gi-flex gi-gap-2">
+          <CustomLink href="#">
+            Next
+            <ArrowForward />
+          </CustomLink>
+        </PaginationLink>
+      </Pagination>
+    );
+  },
+};
