@@ -1,4 +1,3 @@
-import { omit } from 'lodash';
 import { CommonModule } from '@angular/common';
 import type { StoryObj } from '@storybook/angular-vite';
 import { GiContainer, GiContainerDirective } from '@/Container';
@@ -10,12 +9,14 @@ import {
   GuttersOnAndOff as guttersOnAndOff,
   AllMaxWidths as allMaxWidths,
 } from '@/atoms/storybook/Container.meta';
+import argTypes from '@/atoms/storybook/argTypes';
 
 const meta = {
   ...containerMeta,
   title: 'Layout/Container',
   argTypes: {
-    ...omit(containerMeta.argTypes, 'styles'),
+    ...containerMeta.argTypes,
+    class: argTypes.class,
     style: {
       control: false,
       description: 'Inline styles applied directly to the container element.',

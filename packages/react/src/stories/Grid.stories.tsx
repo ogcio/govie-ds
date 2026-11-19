@@ -9,10 +9,20 @@ import {
   ResponsiveSize as gridResponsiveSize,
   Nested as gridNested,
 } from '@/atoms/storybook/Grid.meta';
+import argTypes from '@/atoms/storybook/argTypes';
 
 const meta: Meta<typeof Grid> = {
   ...gridMeta,
   title: 'Layout/Grid',
+  argTypes: {
+    ...gridMeta.argTypes,
+    className: argTypes.class,
+    style: {
+      control: { disable: true },
+      description: 'Inline styles applied directly to the container element.',
+      table: { type: { summary: 'React.CSSProperties' } },
+    },
+  },
 };
 
 export default meta;

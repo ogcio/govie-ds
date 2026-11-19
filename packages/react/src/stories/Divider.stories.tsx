@@ -1,9 +1,9 @@
 import type { Meta, StoryObj } from '@storybook/react-vite';
-import { omit } from 'lodash';
 import Divider, { type DividerProps } from '@/Divider';
 import { Stack } from '@/stack/stack';
 import { Box } from '@/Box';
 import * as stories from '@/atoms/storybook/Divider.meta';
+import argTypes from '@/atoms/storybook/argTypes';
 import { Orientation } from '@/atoms/constants';
 import Link from '@/Link';
 
@@ -11,11 +11,11 @@ const meta = {
   ...stories.meta,
   title: 'Layout/Divider',
   argTypes: {
-    ...omit(stories.meta.argTypes, 'styles'),
+    ...stories.meta.argTypes,
+    className: argTypes.class,
     style: {
       control: { disable: true },
-      description:
-        'Inline styles applied directly to the element. Use for truly dynamic values that cannot be expressed as Tailwind classes. Alias: `styles`.',
+      description: 'Inline styles applied directly to the element.',
       table: { type: { summary: 'React.CSSProperties' } },
     },
   },

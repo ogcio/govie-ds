@@ -8,10 +8,21 @@ import {
   Default as boxDefault,
   WithContainerAndStack as boxWithContainerAndStack,
 } from '../atoms/storybook/Box.meta';
+import argTypes from '@/atoms/storybook/argTypes';
 
 const meta = {
   ...boxMeta,
   title: 'Layout/Box',
+  argTypes: {
+    ...boxMeta.argTypes,
+    className: { table: { disable: true } },
+    class: argTypes.class,
+    style: {
+      control: false,
+      description: 'Inline styles applied directly to the container element.',
+      table: { type: { summary: 'string | Record<string, string | number | null | undefined>' } },
+    },
+  },
 };
 
 export default meta;
