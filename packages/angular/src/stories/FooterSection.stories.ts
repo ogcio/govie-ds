@@ -1,14 +1,17 @@
 import type { StoryObj } from '@storybook/angular-vite';
 import * as stories from '@/atoms/storybook/FooterSection.meta';
+import argTypes from '@/atoms/storybook/argTypes';
 import { GiFooterSection } from '@/footer/FooterSection';
-import omit from 'lodash/omit';
 
 const meta = {
   ...stories.meta,
   argTypes: {
-    ...omit(stories.meta.argTypes, 'styles', 'className'),
-    class: stories.meta.argTypes.className,
-    style: stories.meta.argTypes.styles,
+    ...stories.meta.argTypes,
+    class: {
+      ...argTypes.class,
+      description: 'Additional CSS classes, merged with the classes of the inner content container.',
+    },
+    style: argTypes.style,
   },
   title: 'Layout/Footer/FooterSection',
 };

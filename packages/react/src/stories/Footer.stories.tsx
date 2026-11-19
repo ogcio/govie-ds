@@ -16,9 +16,14 @@ import FacebookIcon from '@/atoms/icons/socials/Facebook';
 import BlueskyIcon from '@/atoms/icons/socials/Bluesky';
 import LinkedinIcon from '@/atoms/icons/socials/Linkedin';
 import * as stories from '@/atoms/storybook/Footer.meta';
+import argTypes from '@/atoms/storybook/argTypes';
 
 const meta: Meta = {
   ...stories.meta,
+  argTypes: {
+    ...stories.meta.argTypes,
+    className: argTypes.class,
+  },
   title: 'Layout/Footer/Footer',
   component: Footer,
 };

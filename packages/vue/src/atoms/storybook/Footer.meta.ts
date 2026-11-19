@@ -6,6 +6,7 @@
 
 import { within } from 'storybook/test';
 import type { Props } from '../footer/Footer.vue';
+import argTypes from './argTypes';
 import { checker } from './utilities';
 import type { Meta, Story } from './types';
 const FOOTER_TESTID = 'footer';
@@ -38,28 +39,7 @@ export const meta = {
         },
       },
     },
-    className: {
-      control: {
-        disable: true,
-      },
-      description: 'CSS classes to apply.',
-      table: {
-        type: {
-          summary: 'string',
-        },
-      },
-    },
-    id: {
-      control: {
-        disable: true,
-      },
-      description: 'Optional id for linking/targeting and aria references.',
-      table: {
-        type: {
-          summary: 'string',
-        },
-      },
-    },
+    id: argTypes.id,
     dataTestId: {
       control: {
         disable: true,
@@ -68,18 +48,6 @@ export const meta = {
       table: {
         type: {
           summary: 'string',
-        },
-      },
-    },
-    styles: {
-      control: {
-        disable: true,
-      },
-      description:
-        'Inline styles applied directly to the footer element. Use for truly dynamic values that cannot be expressed as Tailwind classes.',
-      table: {
-        type: {
-          summary: 'Record<string, string>',
         },
       },
     },
