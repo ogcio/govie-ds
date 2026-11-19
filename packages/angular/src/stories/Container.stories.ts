@@ -43,7 +43,7 @@ const renderWithProjectedText = (props: Record<string, unknown>) => ({
       [id]="id"
       [role]="role"
       [ariaLabel]="ariaLabel"
-      [class]="className"
+      [class]="class"
       [dataTestId]="dataTestId"
     >
       {{ content }}

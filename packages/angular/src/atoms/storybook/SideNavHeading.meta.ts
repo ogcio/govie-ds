@@ -7,6 +7,7 @@
 import type { ArgTypes, StoryContext, Renderer } from 'storybook/internal/types';
 import { within } from 'storybook/test';
 import type { Props } from '../sidenav/SideNavHeading';
+import argTypes from './argTypes';
 import { boxMeta } from './Box.meta';
 import { checker } from './utilities';
 export const sideNavHeadingMeta = {
@@ -17,7 +18,7 @@ export const sideNavHeadingMeta = {
     dataTestId: 'side-nav-heading',
   },
   argTypes: {
-    className: boxMeta.argTypes.className,
+    className: argTypes.class,
     id: boxMeta.argTypes.id,
     dataTestId: boxMeta.argTypes.dataTestId,
   } satisfies ArgTypes<Props>,

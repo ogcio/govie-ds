@@ -1,6 +1,7 @@
 import { within } from 'storybook/test';
 import type { Props } from '../footer/FooterLogo.lite';
 import { checker } from './utilities';
+import argTypes from './argTypes';
 import { boxMeta } from './Box.meta';
 import type { Meta, Story } from './types';
 
@@ -14,8 +15,8 @@ export const meta = {
   },
   argTypes: {
     id: boxMeta.argTypes.id,
-    className: boxMeta.argTypes.className,
-    styles: boxMeta.argTypes.styles,
+    className: argTypes.class,
+    styles: argTypes.style,
     dataTestId: boxMeta.argTypes.dataTestId,
   },
   parameters: {

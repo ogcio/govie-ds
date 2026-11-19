@@ -7,15 +7,9 @@ export const boxMeta = {
   title: 'Layout/Box',
   args: {
     children: 'Box content',
-    className: 'gi-p-4',
     id: 'box-example',
   },
   argTypes: {
-    className: {
-      control: { disable: true },
-      description: 'CSS classes to apply. Use `gi-*` Tailwind utilities for spacing, backgrounds, sizing, etc.',
-      table: { type: { summary: 'string' } },
-    },
     id: {
       control: { disable: true },
       description: 'Optional id for linking/targeting and aria references.',
@@ -46,12 +40,6 @@ export const boxMeta = {
       description:
         'Points to the id of an element that labels the container. Preferred over `ariaLabel` when a visible heading exists. Only applied when `role` is set. Maps to `aria-labelledby`.',
       table: { type: { summary: 'string' } },
-    },
-    styles: {
-      control: { disable: true },
-      description:
-        'Inline styles applied directly to the container element. Use for truly dynamic values that cannot be expressed as Tailwind classes.',
-      table: { type: { summary: 'Record<string, string>' } },
     },
   } satisfies ArgTypes<Props>,
   parameters: {

@@ -4,7 +4,7 @@ import { SurfaceVariant } from '../constants';
 import { checker, enumType } from './utilities';
 import { containerMeta } from './Container.meta';
 import type { Meta, Story } from './types';
-import { boxMeta } from './Box.meta';
+import argTypes from './argTypes';
 
 const FOOTER_SECTION_TESTID = 'footer-section';
 
@@ -36,7 +36,7 @@ export const meta = {
       description: 'Test id for targeting the element in automated tests.',
       table: { type: { summary: 'string' } },
     },
-    styles: boxMeta.argTypes.styles,
+    styles: argTypes.style,
   },
   parameters: {
     docs: {

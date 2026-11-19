@@ -15,7 +15,6 @@ const meta = {
   title: 'Layout/Box',
   argTypes: {
     ...boxMeta.argTypes,
-    className: { table: { disable: true } },
     class: argTypes.class,
     style: {
       control: false,
@@ -34,7 +33,7 @@ export const Default: StoryObj = {
     moduleMetadata: { imports: [GiBox] },
     template: `
       <gi-box
-        [class]="className"
+        class="gi-p-4"
         [id]="id"
         [dataTestId]="dataTestId"
         [role]="role"
