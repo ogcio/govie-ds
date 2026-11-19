@@ -1,4 +1,3 @@
-import { omit } from 'lodash';
 import type { StoryObj } from '@storybook/angular-vite';
 import { expect, within } from 'storybook/test';
 import { GiStack, GiStackDirective } from '@/Stack';
@@ -12,12 +11,14 @@ import {
   Responsive as stackResponsive,
   Wrapped as stackWrapped,
 } from '../atoms/storybook/Stack.meta';
+import argTypes from '@/atoms/storybook/argTypes';
 
 const meta = {
   ...stackMeta,
   title: 'Layout/Stack',
   argTypes: {
-    ...omit(stackMeta.argTypes, 'styles'),
+    ...stackMeta.argTypes,
+    class: argTypes.class,
     style: {
       control: false,
       description: 'Inline styles applied directly to the container element.',

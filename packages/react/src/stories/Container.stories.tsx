@@ -9,10 +9,20 @@ import {
   GuttersOnAndOff as guttersOnAndOff,
   AllMaxWidths as allMaxWidths,
 } from '@/atoms/storybook/Container.meta';
+import argTypes from '@/atoms/storybook/argTypes';
 
 const meta: Meta<typeof Container> = {
   ...containerMeta,
   title: 'Layout/Container',
+  argTypes: {
+    ...containerMeta.argTypes,
+    className: argTypes.class,
+    style: {
+      control: { disable: true },
+      description: 'Inline styles applied directly to the container element.',
+      table: { type: { summary: 'React.CSSProperties' } },
+    },
+  },
 };
 
 export default meta;
