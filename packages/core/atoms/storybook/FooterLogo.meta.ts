@@ -14,9 +14,7 @@ export const meta = {
     id: 'footer-logo-id',
   },
   argTypes: {
-    id: boxMeta.argTypes.id,
-    className: argTypes.class,
-    styles: argTypes.style,
+    id: argTypes.id,
     dataTestId: boxMeta.argTypes.dataTestId,
   },
   parameters: {

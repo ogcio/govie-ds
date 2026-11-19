@@ -8,7 +8,7 @@ import type { InputType } from 'storybook/internal/types';
 export default {
   class: {
     control: false,
-    description: 'Additional CSS classes, merged with the classes of the root element. Use `gi-*` Tailwind utilities.',
+    description: 'Additional CSS classes, merged with the classes of the root element.',
     table: {
       type: {
         summary: 'string',

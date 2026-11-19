@@ -1,5 +1,6 @@
 import type { StoryObj } from '@storybook/angular-vite';
 import * as stories from '@/atoms/storybook/Footer.meta';
+import argTypes from '@/atoms/storybook/argTypes';
 import { GiFooter } from '@/footer/Footer';
 import { GiFooterSection } from '@/footer/FooterSection';
 import { GiFooterLogo } from '@/footer/FooterLogo';
@@ -11,14 +12,13 @@ import { GiText } from '@/Text';
 import { GiH4 } from '@/heading/H4';
 import { LogoGoldGreen } from '@/atoms/icons/logos';
 import { XIcon, FacebookIcon, BlueskyIcon, LinkedinIcon } from '@/atoms/icons';
-import omit from 'lodash/omit';
 
 const meta = {
   ...stories.meta,
   argTypes: {
-    ...omit(stories.meta.argTypes, 'styles', 'className'),
-    class: stories.meta.argTypes.className,
-    style: stories.meta.argTypes.styles,
+    ...stories.meta.argTypes,
+    class: argTypes.class,
+    style: argTypes.style,
   },
   title: 'Layout/Footer',
 };

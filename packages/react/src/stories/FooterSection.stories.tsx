@@ -1,9 +1,17 @@
 import type { Meta, StoryObj } from '@storybook/react-vite';
 import FooterSection from '@/atoms/footer/FooterSection';
 import * as stories from '@/atoms/storybook/FooterSection.meta';
+import argTypes from '@/atoms/storybook/argTypes';
 
 const meta = {
   ...stories.meta,
+  argTypes: {
+    ...stories.meta.argTypes,
+    className: {
+      ...argTypes.class,
+      description: 'Additional CSS classes, merged with the classes of the inner content container.',
+    },
+  },
   title: 'Layout/Footer/FooterSection',
   component: FooterSection,
 } satisfies Meta<typeof FooterSection>;

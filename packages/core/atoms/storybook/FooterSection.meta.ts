@@ -21,22 +21,12 @@ export const meta = {
       defaultValue: SurfaceVariant.PRIMARY,
     }),
     maxWidth: containerMeta.argTypes.maxWidth,
-    className: {
-      control: { disable: true },
-      description: 'CSS classes to apply to the inner container. Use `gi-*` Tailwind utilities.',
-      table: { type: { summary: 'string' } },
-    },
-    id: {
-      control: { disable: true },
-      description: 'Optional id for linking/targeting and aria references.',
-      table: { type: { summary: 'string' } },
-    },
+    id: argTypes.id,
     dataTestId: {
       control: { disable: true },
       description: 'Test id for targeting the element in automated tests.',
       table: { type: { summary: 'string' } },
     },
-    styles: argTypes.style,
   },
   parameters: {
     docs: {

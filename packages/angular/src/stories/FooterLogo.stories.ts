@@ -1,15 +1,15 @@
 import type { StoryObj } from '@storybook/angular-vite';
 import * as stories from '@/atoms/storybook/FooterLogo.meta';
+import argTypes from '@/atoms/storybook/argTypes';
 import { GiFooterLogo } from '@/footer/FooterLogo';
 import { LogoGoldGreen } from '@/atoms/icons/logos';
-import omit from 'lodash/omit';
 
 const meta = {
   ...stories.meta,
   argTypes: {
-    ...omit(stories.meta.argTypes, 'styles', 'className'),
-    class: stories.meta.argTypes.className,
-    style: stories.meta.argTypes.styles,
+    ...stories.meta.argTypes,
+    class: argTypes.class,
+    style: argTypes.style,
   },
   title: 'Layout/Footer/FooterLogo',
 };
