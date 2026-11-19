@@ -10,10 +10,20 @@ import {
   AllWhitespaces as allWhitespaces,
   AllAlignments as allAlignments,
 } from '@/atoms/storybook/Paragraph.meta';
+import argTypes from '@/atoms/storybook/argTypes';
 
 const meta = {
   ...paragraphMeta,
   title: 'Typography/Paragraph',
+  argTypes: {
+    ...paragraphMeta.argTypes,
+    class: argTypes.class,
+    style: {
+      control: false,
+      description: 'Inline styles applied directly to the paragraph element.',
+      table: { type: { summary: 'string | Record<string, string | number | null | undefined>' } },
+    },
+  },
 };
 
 export default meta;
@@ -21,9 +31,6 @@ export default meta;
 export const Default: StoryObj = {
   ...defaultStory,
   tags: ['skip-playwright'],
-  args: {
-    ...defaultStory.args,
-  },
   render: (args) => ({
     props: { ...args, content: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.' },
     moduleMetadata: {

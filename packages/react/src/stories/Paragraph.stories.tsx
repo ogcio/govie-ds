@@ -1,5 +1,5 @@
 import type { Meta, StoryObj } from '@storybook/react-vite';
-import Paragraph from '@/atoms/Paragraph';
+import { Paragraph } from '@/paragraph/paragraph';
 import { Align } from '@/atoms/constants';
 import {
   paragraphMeta,
@@ -8,12 +8,22 @@ import {
   AllWhitespaces as allWhitespaces,
   AllAlignments as allAlignments,
 } from '@/atoms/storybook/Paragraph.meta';
+import argTypes from '@/atoms/storybook/argTypes';
 import { Size, Whitespace } from '@/atoms/constants';
 
 const meta: Meta<typeof Paragraph> = {
   ...paragraphMeta,
   title: 'Typography/Paragraph',
   component: Paragraph,
+  argTypes: {
+    ...paragraphMeta.argTypes,
+    className: argTypes.class,
+    style: {
+      control: { disable: true },
+      description: 'Inline styles applied directly to the paragraph element.',
+      table: { type: { summary: 'React.CSSProperties' } },
+    },
+  },
 };
 
 export default meta;
