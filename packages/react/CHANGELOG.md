@@ -1,5 +1,18 @@
 # Changelog
 
+## [1.53.0](https://github.com/ogcio/govie-ds/compare/react-lib-v1.52.0...react-lib-v1.53.0) (2026-11-20)
+
+
+### Features
+
+* **AB#44526:** enable aria-current=page to visually distinguish active sidenavitem ([c13a555](https://github.com/ogcio/govie-ds/commit/c13a5553d14e85fe0df151afd71edb27d70952e2))
+* **AB#44526:** generate native router story for SideNavItemLink ([f783c8c](https://github.com/ogcio/govie-ds/commit/f783c8c481b6633ed81cdfe07ac073cfa22d1894))
+
+
+### Miscellaneous Chores
+
+* **AB#46250:** stop loading the stylesheet in the jsdom unit project ([1d8c141](https://github.com/ogcio/govie-ds/commit/1d8c1413d8494c58506301488779c8eb617abd70))
+
 ## [1.52.0](https://github.com/ogcio/govie-ds/compare/react-lib-v1.51.0...react-lib-v1.52.0) (2026-11-17)
 
 
