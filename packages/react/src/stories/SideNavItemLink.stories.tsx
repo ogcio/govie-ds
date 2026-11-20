@@ -1,15 +1,17 @@
 import type { Meta, StoryObj } from '@storybook/react-vite';
 import { expect, fn, userEvent } from 'storybook/test';
 import { checker } from '@/atoms/storybook/utilities';
-import SideNav from '@/atoms/sidenav/SideNav';
+import SideNav from '@/SideNav/SideNav';
 import SideNavItemLink from '@/SideNav/SideNavItemLink';
 import * as stories from '@/atoms/storybook/SideNavItemLink.meta';
 import { importNext } from './helpers';
+import omit from 'lodash/omit';
 
 const meta = {
   ...stories.sideNavItemLinkMeta,
   argTypes: {
-    ...stories.sideNavItemLinkMeta.argTypes,
+    ...omit(stories.sideNavItemLinkMeta.argTypes, 'styles'),
+    style: stories.sideNavItemLinkMeta.argTypes.styles,
     asChild: {
       control: false,
       description:
@@ -35,17 +37,17 @@ const meta = {
       },
     },
   },
-} as Meta<typeof SideNavItemLink>;
+} satisfies Meta<typeof SideNavItemLink>;
 
 export default meta;
-type Story = StoryObj<typeof SideNavItemLink>;
+type Story = StoryObj<typeof meta>;
 
 export const Default: Story = {
   ...stories.Default,
   tags: ['skip-playwright'],
   render: (props) => (
     <SideNav className="gi-max-w-xs" ariaLabel="Side navigation">
-      <SideNavItemLink {...props}>{props.children}</SideNavItemLink>
+      <SideNavItemLink {...props}>Homepage</SideNavItemLink>
     </SideNav>
   ),
 };
