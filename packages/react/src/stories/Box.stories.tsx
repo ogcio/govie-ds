@@ -1,5 +1,4 @@
 import type { Meta, StoryObj } from '@storybook/react-vite';
-import { omit } from 'lodash';
 import { Box } from '@/Box';
 import { Container } from '@/container/container';
 import { Stack } from '@/stack/stack';
@@ -8,16 +7,17 @@ import {
   Default as boxDefault,
   WithContainerAndStack as boxWithContainerAndStack,
 } from '@/atoms/storybook/Box.meta';
+import argTypes from '@/atoms/storybook/argTypes';
 
 const meta: Meta<typeof Box> = {
   ...boxMeta,
   title: 'Layout/Box',
   argTypes: {
-    ...omit(boxMeta.argTypes, 'styles'),
+    ...boxMeta.argTypes,
+    className: argTypes.class,
     style: {
       control: { disable: true },
-      description:
-        'Inline styles applied directly to the container element. Use for truly dynamic values that cannot be expressed as Tailwind classes. Alias: `styles`.',
+      description: 'Inline styles applied directly to the container element.',
       table: { type: { summary: 'React.CSSProperties' } },
     },
   },
@@ -28,7 +28,7 @@ type Story = StoryObj<typeof meta>;
 
 export const Default: Story = {
   ...boxDefault,
-  render: (props) => <Box {...props} />,
+  render: (props) => <Box className="gi-p-4" {...props} />,
 };
 
 export const WithContainerAndStack: Story = {

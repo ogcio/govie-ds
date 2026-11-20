@@ -21,29 +21,6 @@ export const meta = {
       description: 'Axis along which the divider draws its line.',
       defaultValue: Orientation.HORIZONTAL,
     }),
-    className: {
-      control: {
-        disable: true,
-      },
-      description: 'CSS classes to apply. Use `gi-*` Tailwind utilities.',
-      table: {
-        type: {
-          summary: 'string',
-        },
-      },
-    },
-    styles: {
-      control: {
-        disable: true,
-      },
-      description:
-        'Inline styles applied directly to the element. Use for truly dynamic values that cannot be expressed as Tailwind classes.',
-      table: {
-        type: {
-          summary: 'Record<string, string>',
-        },
-      },
-    },
     id: {
       control: {
         disable: true,

@@ -13,10 +13,20 @@ import {
   Responsive as stackResponsive,
   Wrapped as stackWrapped,
 } from '@/atoms/storybook/Stack.meta';
+import argTypes from '@/atoms/storybook/argTypes';
 
 const meta: Meta<typeof Stack> = {
   ...stackMeta,
   title: 'Layout/Stack',
+  argTypes: {
+    ...stackMeta.argTypes,
+    className: argTypes.class,
+    style: {
+      control: { disable: true },
+      description: 'Inline styles applied directly to the container element.',
+      table: { type: { summary: 'React.CSSProperties' } },
+    },
+  },
 };
 
 export default meta;
