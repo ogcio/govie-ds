@@ -3,7 +3,6 @@ import { within } from 'storybook/test';
 import type { Props } from '../sidenav/SideNavItem.lite';
 import { boxMeta } from './Box.meta';
 import argTypes from './argTypes';
-import { linkMeta } from './Link.meta';
 import { checker } from './utilities';
 import { meta as buttonMeta } from './Button.meta';
 
@@ -19,7 +18,8 @@ export const sideNavItemMeta = {
   argTypes: {
     selected: {
       control: 'boolean',
-      description: 'Marks the item as the current selection. Applies the selected accent treatment.',
+      description:
+        'Applies an accent bar on the left and a selected background to visually distinguish the active item. Acts as a manual alternative for `ariaCurrent` styling.',
       table: { type: { summary: 'boolean' }, defaultValue: { summary: 'false' } },
     },
     disabled: buttonMeta.argTypes.disabled,
@@ -35,7 +35,15 @@ export const sideNavItemMeta = {
       description: 'Accessible label for the item button. Maps to `aria-label`.',
       table: { type: { summary: 'string' } },
     },
-    ariaCurrent: linkMeta.argTypes.ariaCurrent,
+    ariaCurrent: {
+      control: false,
+      description:
+        'Marks the item as current for ARIA purposes. Maps to `aria-current`. When set to `"page"`, applies an accent bar on the left and a selected background to visually distinguish the active item.',
+      table: {
+        type: { summary: "'page' | 'step' | 'location' | 'date' | 'time' | 'true' | 'false' | boolean" },
+        defaultValue: { summary: 'undefined' },
+      },
+    },
     ariaHidden: {
       control: { disable: true },
       description: 'Hides the list item from assistive technology. Maps to `aria-hidden` on the wrapping `<li>`.',

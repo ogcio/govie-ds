@@ -12,6 +12,10 @@ export default tv({
     '[&>*]:gi-col-start-1 [&>*]:gi-min-w-0',
     '[.gi-side-nav-group_&]:gi-font-normal',
     '[.gi-side-nav-group_&]:gi-px-6',
+    'aria-[current=page]:gi-shadow-[inset_4px_0_0_var(--gieds-color-border-tone-primary-accent-selected)]',
+    'aria-[current=page]:gi-bg-color-surface-system-neutral-interactive-selected-subtle',
+    'aria-[current=page]:hover:gi-bg-color-surface-tone-dark-flat-hover',
+    'aria-[current=page]:focus:gi-bg-color-surface-tone-light-fill-hover',
   ],
   variants: {
     selected: {

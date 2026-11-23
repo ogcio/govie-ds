@@ -1,5 +1,5 @@
 import type { ArgTypes, StoryContext, Renderer } from 'storybook/internal/types';
-import { within } from 'storybook/test';
+import { expect, within } from 'storybook/test';
 import type { Props } from '../Box.lite';
 import { checker } from './utilities';
 
@@ -7,15 +7,9 @@ export const boxMeta = {
   title: 'Layout/Box',
   args: {
     children: 'Box content',
-    className: 'gi-p-4',
     id: 'box-example',
   },
   argTypes: {
-    className: {
-      control: { disable: true },
-      description: 'CSS classes to apply. Use `gi-*` Tailwind utilities for spacing, backgrounds, sizing, etc.',
-      table: { type: { summary: 'string' } },
-    },
     id: {
       control: { disable: true },
       description: 'Optional id for linking/targeting and aria references.',
@@ -47,18 +41,12 @@ export const boxMeta = {
         'Points to the id of an element that labels the container. Preferred over `ariaLabel` when a visible heading exists. Only applied when `role` is set. Maps to `aria-labelledby`.',
       table: { type: { summary: 'string' } },
     },
-    styles: {
-      control: { disable: true },
-      description:
-        'Inline styles applied directly to the container element. Use for truly dynamic values that cannot be expressed as Tailwind classes.',
-      table: { type: { summary: 'Record<string, string>' } },
-    },
   } satisfies ArgTypes<Props>,
   parameters: {
     docs: {
       description: {
         component:
-          'Box is the simplest layout primitive — a plain `<div>` wrapper that signals design-system membership. All styling is applied through `className` with `gi-*` Tailwind utilities.',
+          'Box is the simplest layout primitive — a plain `<div>` wrapper that signals design-system membership. It takes any classes and inline styles.',
       },
     },
   },
@@ -81,7 +69,25 @@ export const Default = {
 };
 
 export const WithContainerAndStack = {
-  args: {
-    ...boxMeta.args,
+  parameters: {
+    docs: {
+      description: {
+        story: 'Boxes as equal-width flex items of a row Stack inside a Container.',
+      },
+    },
+  },
+  play: async ({ canvasElement, step }: StoryContext<Renderer>) => {
+    const canvas = within(canvasElement as HTMLElement);
+
+    await step('renders every box as a div in the same row stack', async () => {
+      const boxes = ['Box 1', 'Box 2', 'Box 3'].map((text) => canvas.getByText(text));
+      const stacks = new Set(boxes.map((box) => box.closest('.gi-flex-row')));
+
+      for (const box of boxes) {
+        expect(box.tagName).toBe('DIV');
+      }
+      expect(stacks.size).toBe(1);
+      expect(stacks.has(null)).toBe(false);
+    });
   },
 };

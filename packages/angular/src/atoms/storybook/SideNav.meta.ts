@@ -7,6 +7,7 @@
 import type { ArgTypes, StoryContext, Renderer } from 'storybook/internal/types';
 import { within, expect, userEvent } from 'storybook/test';
 import type { Props } from '../sidenav/SideNav';
+import argTypes from './argTypes';
 import { boxMeta } from './Box.meta';
 import { checker } from './utilities';
 export const sideNavMeta = {
@@ -16,8 +17,8 @@ export const sideNavMeta = {
     ariaLabel: 'Side navigation',
   },
   argTypes: {
-    className: boxMeta.argTypes.className,
-    styles: boxMeta.argTypes.styles,
+    className: argTypes.class,
+    styles: argTypes.style,
     id: boxMeta.argTypes.id,
     dataTestId: boxMeta.argTypes.dataTestId,
     ariaLabel: {

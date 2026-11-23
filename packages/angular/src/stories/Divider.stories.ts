@@ -4,11 +4,21 @@ import { GiDivider, GiDividerDirective } from '@/Divider';
 import { GiStack, GiStackDirective } from '@/Stack';
 import { GiLink } from '@/Link';
 import * as stories from '@/atoms/storybook/Divider.meta';
+import argTypes from '@/atoms/storybook/argTypes';
 import { Orientation } from '@/atoms/constants';
 
 const meta = {
   ...stories.meta,
   title: 'Layout/Divider',
+  argTypes: {
+    ...stories.meta.argTypes,
+    class: argTypes.class,
+    style: {
+      control: false,
+      description: 'Inline styles applied directly to the element.',
+      table: { type: { summary: 'string | Record<string, string | number | null | undefined>' } },
+    },
+  },
 };
 
 export default meta;
