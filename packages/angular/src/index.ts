@@ -48,3 +48,11 @@ export { GiPaginationItemButton, GiPaginationButtonDirective } from './paginatio
 export { GiPaginationItemDirective } from './pagination/PaginationItem';
 export { GiPaginationItemEllipsis } from './pagination/PaginationItemEllipsis';
 export { getPaginationList } from './atoms/pagination/utils';
+
+export { GiSideNav } from './sidenav/SideNav';
+export { GiSideNavGroup } from './sidenav/SideNavGroup';
+export { GiSideNavHeading } from './sidenav/SideNavHeading';
+export { GiSideNavItemButton, GiSideNavButtonDirective } from './sidenav/SideNavItemButton';
+export { GiSideNavItemLink, GiSideNavLinkDirective } from './sidenav/SideNavItemLink';
+export { GiSideNavItemDirective } from './sidenav/SideNavItem';
+export { GiSideNavActionDirective } from './sidenav/SideNavAction';

@@ -44,7 +44,7 @@ export const sideNavItemLinkMeta = {
     docs: {
       description: {
         component:
-          'Link-style navigation item for SideNav. Renders an anchor in a list item with SideNav item styling. Use for destinations that navigate to a URL.',
+          'Link-style item for the side navigation. Use for destinations that navigate to a URL. Place it directly in the side navigation or inside a group.',
       },
     },
   },

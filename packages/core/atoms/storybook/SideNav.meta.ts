@@ -32,7 +32,7 @@ export const sideNavMeta = {
     docs: {
       description: {
         component:
-          'SideNav is a composable navigation landmark. Nest `SideNavHeading`, `SideNavGroup`, `SideNavItem` and `SideNavItemLink` to build grouped, expandable side navigation.\n\n`SideNav` renders the semantic `<nav>` landmark. Use `SideNavHeading` to label groups of items, `SideNavGroup` for disclosure (expandable) sections, `SideNavItem` for button-style destinations and `SideNavItemLink` for URL destinations.',
+          'Side navigation is a `<nav>` landmark built from headings, expandable groups, button items and link items.\n\nUse headings to label the items that follow them, groups for sections the user can expand and collapse, button items for destinations that select in place and link items for destinations that navigate to a URL.',
       },
     },
   },
@@ -44,7 +44,7 @@ export const Default = {
     docs: {
       description: {
         story:
-          'Full SideNav composition with section headings, an expandable group, button items, a link item, a disabled item and a trailing action.',
+          'Full side navigation with section headings, an expandable group, button items, a link item, a disabled item and a trailing action.',
       },
     },
   },
@@ -82,7 +82,7 @@ export const Expandable = {
     docs: {
       description: {
         story:
-          'Disclosure pattern using `SideNavGroup`. Each group is controlled: the parent owns `open` and flips it when the header is activated. One group starts open and another starts closed; toggling a header reveals or hides its nested items.',
+          'Expandable groups. Each group is controlled: the parent owns `open` and flips it when the header is activated. One group starts open and another starts closed; toggling a header reveals or hides its nested items.',
       },
     },
   },
@@ -178,7 +178,7 @@ export const WithHeadings = {
     docs: {
       description: {
         story:
-          '`SideNavHeading` entries label the items and groups that follow them. Each heading is a sibling in the same `SideNav` list.\n\nA visible heading sits above the nav, so this story labels the landmark with `ariaLabelledBy` pointing at that heading instead of duplicating the text in `ariaLabel`.',
+          'Headings label the items and groups that follow them. A heading sits alongside those items rather than containing them.\n\nA visible heading sits above the nav, so this story labels the landmark with `ariaLabelledBy` pointing at that heading instead of duplicating the text in `ariaLabel`.',
       },
     },
   },

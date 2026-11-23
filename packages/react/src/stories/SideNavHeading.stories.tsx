@@ -14,7 +14,7 @@ const meta = {
     docs: {
       ...stories.sideNavHeadingMeta.parameters.docs,
       description: {
-        component: `${stories.sideNavHeadingMeta.parameters.docs.description.component}${importNext('SideNavHeading')}`,
+        component: `${stories.sideNavHeadingMeta.parameters.docs.description.component}\n\nPlace \`SideNavHeading\` inside \`SideNav\`, before the items it labels.${importNext('SideNavHeading')}`,
       },
     },
   },

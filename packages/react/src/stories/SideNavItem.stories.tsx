@@ -22,7 +22,7 @@ const meta = {
     docs: {
       ...buttonStories.sideNavItemButtonMeta.parameters.docs,
       description: {
-        component: `${buttonStories.sideNavItemButtonMeta.parameters.docs.description.component}${importNext('SideNavItem')}`,
+        component: `${buttonStories.sideNavItemButtonMeta.parameters.docs.description.component}\n\nPlace \`SideNavItem\` inside \`SideNav\` or \`SideNavGroup\`.${importNext('SideNavItem')}`,
       },
     },
   },

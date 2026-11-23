@@ -28,7 +28,7 @@ const meta = {
     docs: {
       ...stories.sideNavGroupMeta.parameters.docs,
       description: {
-        component: `${stories.sideNavGroupMeta.parameters.docs.description.component}${importNext('SideNavGroup')}`,
+        component: `${stories.sideNavGroupMeta.parameters.docs.description.component}\n\nPlace \`SideNavGroup\` inside \`SideNav\`, with \`SideNavItem\` or \`SideNavItemLink\` children. Update \`open\` from \`onClick\`.${importNext('SideNavGroup')}`,
       },
     },
   },

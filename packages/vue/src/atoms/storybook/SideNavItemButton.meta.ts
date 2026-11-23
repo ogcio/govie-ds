@@ -24,7 +24,7 @@ export const sideNavItemButtonMeta = {
     selected: {
       control: 'boolean',
       description:
-        'Applies an accent bar on the left and a selected background to visually distinguish the active item. Acts as a manual alternative for `ariaCurrent` styling.',
+        'Shows the item as selected, with an accent bar on the left and a selected background. This is visual only: assistive technologies are not told the item is current. To mark the page the user is on, set `ariaCurrent` to `"page"` instead, which applies the same style and announces the item as the current page.',
       table: {
         type: {
           summary: 'boolean',
@@ -100,7 +100,7 @@ export const sideNavItemButtonMeta = {
     docs: {
       description: {
         component:
-          'Button-style navigation item for SideNav. Use for destinations that select in place rather than navigating to a URL. Nest inside `SideNav` or `SideNavGroup`.',
+          'Button-style item for the side navigation. Use for destinations that select in place rather than navigating to a URL. Place it directly in the side navigation or inside a group.',
       },
     },
   },

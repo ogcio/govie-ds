@@ -33,7 +33,7 @@ const meta = {
     docs: {
       ...stories.sideNavItemLinkMeta.parameters.docs,
       description: {
-        component: `${stories.sideNavItemLinkMeta.parameters.docs.description.component}${importNext('SideNavItemLink')}`,
+        component: `${stories.sideNavItemLinkMeta.parameters.docs.description.component}\n\nPlace \`SideNavItemLink\` inside \`SideNav\` or \`SideNavGroup\`.${importNext('SideNavItemLink')}`,
       },
     },
   },

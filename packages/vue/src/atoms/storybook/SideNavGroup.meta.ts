@@ -134,7 +134,7 @@ export const sideNavGroupMeta = {
     docs: {
       description: {
         component:
-          'Expandable section within a SideNav. Renders a disclosure header with a chevron and a nested list of `SideNavItem` or `SideNavItemLink` children. Open state is fully controlled: the group never toggles itself, it reports header activation and the parent updates `open`.',
+          'Expandable section of the side navigation. Its header button, marked with a chevron, shows and hides the button and link items nested inside it. Open state is fully controlled: the group never toggles itself, it reports header activation and the parent updates `open`.',
       },
     },
   },
