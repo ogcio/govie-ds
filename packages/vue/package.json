@@ -3,7 +3,6 @@
   "version": "0.7.0",
   "description": "The Government of Ireland Design System Vue components.",
   "license": "MIT",
-  "private": true,
   "type": "module",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
