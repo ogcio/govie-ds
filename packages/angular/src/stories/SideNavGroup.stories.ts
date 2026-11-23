@@ -17,7 +17,7 @@ const meta: Meta = {
   argTypes: {
     ...omit(stories.sideNavGroupMeta.argTypes, ['className', 'styles']),
     label: {
-      ...stories.sideNavGroupMeta.argTypes.label,
+      control: 'text',
       description: 'Text of the group header button.',
       table: { type: { summary: 'string' } },
     },
@@ -32,7 +32,6 @@ const meta: Meta = {
         'Emits the requested open state (`!open`) when the header button is activated. Not emitted while `disabled`.',
       table: { type: { summary: 'EventEmitter<boolean>' } },
     },
-    actions: { table: { disable: true } },
     class: {
       control: false,
       description: 'Additional CSS classes applied to the group header button.',

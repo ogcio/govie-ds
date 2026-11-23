@@ -34,18 +34,6 @@ export const sideNavItemButtonMeta = {
         },
       },
     },
-    actions: {
-      control: {
-        disable: true,
-      },
-      description:
-        'Optional slot - positioned to the right of the navigational item. Use for quick actions in the items context.',
-      table: {
-        type: {
-          summary: 'slot',
-        },
-      },
-    },
     disabled: buttonMeta.argTypes.disabled,
     className: argTypes.class,
     styles: argTypes.style,
@@ -104,11 +92,7 @@ export const sideNavItemButtonMeta = {
       },
     },
   },
-} satisfies Meta<
-  Props & {
-    actions?: any;
-  }
->;
+} satisfies Meta<Props>;
 export const Default = {
   args: sideNavItemButtonMeta.args,
   play: async ({ canvasElement, step, args }: StoryContext<Renderer>) => {

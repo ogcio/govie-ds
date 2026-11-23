@@ -22,7 +22,9 @@ const meta = {
       },
     },
     actions: {
-      ...stories.sideNavItemLinkMeta.argTypes.actions,
+      control: { disable: true },
+      description:
+        'Content shown to the right of the item, for quick actions in its context (for example an `IconButton`).',
       table: { type: { summary: 'React.ReactNode' } },
     },
   },

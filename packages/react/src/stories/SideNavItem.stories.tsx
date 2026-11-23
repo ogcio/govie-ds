@@ -13,7 +13,9 @@ const meta = {
     ...omit(buttonStories.sideNavItemButtonMeta.argTypes, 'styles'),
     style: buttonStories.sideNavItemButtonMeta.argTypes.styles,
     actions: {
-      ...buttonStories.sideNavItemButtonMeta.argTypes.actions,
+      control: { disable: true },
+      description:
+        'Content shown to the right of the item, for quick actions in its context (for example an `IconButton`).',
       table: { type: { summary: 'React.ReactNode' } },
     },
   },

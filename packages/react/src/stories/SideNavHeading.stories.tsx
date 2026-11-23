@@ -9,6 +9,18 @@ const meta = {
   ...stories.sideNavHeadingMeta,
   title: 'Navigation/SideNav/SideNavHeading',
   component: SideNavHeading,
+  args: {
+    ...stories.sideNavHeadingMeta.args,
+    children: 'Section heading',
+  },
+  argTypes: {
+    ...stories.sideNavHeadingMeta.argTypes,
+    children: {
+      control: 'text',
+      description: 'Heading text.',
+      table: { type: { summary: 'React.ReactNode' } },
+    },
+  },
   parameters: {
     ...stories.sideNavHeadingMeta.parameters,
     docs: {

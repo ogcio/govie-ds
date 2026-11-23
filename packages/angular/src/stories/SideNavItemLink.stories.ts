@@ -22,7 +22,6 @@ const meta: Meta = {
   },
   argTypes: {
     ...omit(stories.sideNavItemLinkMeta.argTypes, ['className', 'styles']),
-    actions: { table: { disable: true } },
     itemClick: {
       control: false,
       description: 'Emits the native click event when the link is activated.',

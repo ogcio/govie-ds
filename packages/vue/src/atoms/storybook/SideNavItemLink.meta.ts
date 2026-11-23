@@ -22,7 +22,6 @@ export const sideNavItemLinkMeta = {
   },
   argTypes: {
     selected: sideNavItemButtonMeta.argTypes.selected,
-    actions: sideNavItemButtonMeta.argTypes.actions,
     id: linkMeta.argTypes.id,
     href: linkMeta.argTypes.href,
     className: argTypes.class,
@@ -57,11 +56,7 @@ export const sideNavItemLinkMeta = {
       },
     },
   },
-} satisfies Meta<
-  Props & {
-    actions?: any;
-  }
->;
+} satisfies Meta<Props>;
 export const Default = {
   args: sideNavItemLinkMeta.args,
   play: async ({ canvasElement, step, args }: StoryContext<Renderer>) => {

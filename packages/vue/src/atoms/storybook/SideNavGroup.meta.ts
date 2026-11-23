@@ -17,8 +17,6 @@ import { checker } from './utilities';
  */
 type SideNavGroupArgs = {
   id?: ItemButtonProps['id'];
-  label?: any;
-  actions?: any;
   open?: boolean;
   disabled?: ItemButtonProps['disabled'];
   className?: ItemButtonProps['className'];
@@ -40,15 +38,6 @@ export const sideNavGroupMeta = {
     dataTestId: 'side-nav-group',
   },
   argTypes: {
-    label: {
-      control: 'text',
-      description: 'Content of the expandable group header button.',
-      table: {
-        type: {
-          summary: 'slot',
-        },
-      },
-    },
     open: {
       control: 'boolean',
       description: 'Whether nested items are visible. The group is fully controlled — the parent owns this state.',
@@ -67,17 +56,6 @@ export const sideNavGroupMeta = {
       table: {
         type: {
           summary: 'boolean',
-        },
-      },
-    },
-    actions: {
-      control: {
-        disable: true,
-      },
-      description: 'Trailing action slot rendered beside the group header (for example an IconButton).',
-      table: {
-        type: {
-          summary: 'slot',
         },
       },
     },

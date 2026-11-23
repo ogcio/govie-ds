@@ -14,12 +14,15 @@ const meta = {
   argTypes: {
     ...omit(stories.sideNavGroupMeta.argTypes, 'styles'),
     style: stories.sideNavGroupMeta.argTypes.styles,
-    actions: {
-      ...stories.sideNavGroupMeta.argTypes.actions,
+    label: {
+      control: 'text',
+      description: 'Content of the expandable group header button.',
       table: { type: { summary: 'React.ReactNode' } },
     },
-    label: {
-      ...stories.sideNavGroupMeta.argTypes.label,
+    actions: {
+      control: { disable: true },
+      description:
+        'Content shown to the right of the group header, for quick actions in its context (for example an `IconButton`).',
       table: { type: { summary: 'React.ReactNode' } },
     },
   },

@@ -13,7 +13,6 @@ import { checker } from './utilities';
 export const sideNavHeadingMeta = {
   title: 'Navigation/SideNav/SideNavHeading',
   args: {
-    children: 'Section heading',
     id: 'side-nav-heading-id',
     dataTestId: 'side-nav-heading',
   },

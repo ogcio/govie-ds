@@ -10,7 +10,6 @@ const meta: Meta = {
   title: 'Navigation/SideNav/SideNavHeading',
   component: GiSideNavHeading,
   argTypes: {
-    children: { table: { disable: true } },
     ...omit(stories.sideNavHeadingMeta.argTypes, ['className']),
     class: {
       control: false,

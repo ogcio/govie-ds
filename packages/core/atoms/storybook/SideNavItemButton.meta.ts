@@ -22,14 +22,6 @@ export const sideNavItemButtonMeta = {
         'Shows the item as selected, with an accent bar on the left and a selected background. This is visual only: assistive technologies are not told the item is current. To mark the page the user is on, set `ariaCurrent` to `"page"` instead, which applies the same style and announces the item as the current page.',
       table: { type: { summary: 'boolean' }, defaultValue: { summary: 'false' } },
     },
-    actions: {
-      control: {
-        disable: true,
-      },
-      description:
-        'Optional slot - positioned to the right of the navigational item. Use for quick actions in the items context.',
-      table: { type: { summary: 'slot' } },
-    },
     disabled: buttonMeta.argTypes.disabled,
     className: argTypes.class,
     styles: argTypes.style,
@@ -68,7 +60,7 @@ export const sideNavItemButtonMeta = {
       },
     },
   },
-} satisfies Meta<Props & { actions?: any }>;
+} satisfies Meta<Props>;
 
 export const Default = {
   args: sideNavItemButtonMeta.args,
