@@ -12,9 +12,7 @@ export const sideNavMeta = {
     ariaLabel: 'Side navigation',
   },
   argTypes: {
-    className: argTypes.class,
-    styles: argTypes.style,
-    id: boxMeta.argTypes.id,
+    id: argTypes.id,
     dataTestId: boxMeta.argTypes.dataTestId,
     ariaLabel: {
       control: 'text',

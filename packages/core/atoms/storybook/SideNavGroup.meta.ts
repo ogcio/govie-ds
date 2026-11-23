@@ -13,8 +13,6 @@ type SideNavGroupArgs = {
   id?: ItemButtonProps['id'];
   open?: boolean;
   disabled?: ItemButtonProps['disabled'];
-  className?: ItemButtonProps['className'];
-  styles?: ItemButtonProps['styles'];
   ariaLabel?: ItemButtonProps['ariaLabel'];
   ariaControls?: ItemButtonProps['ariaControls'];
   ariaHidden?: ItemButtonProps['ariaHidden'];
@@ -43,9 +41,7 @@ export const sideNavGroupMeta = {
       description: 'Disables the group header button and prevents toggling.',
       table: { type: { summary: 'boolean' } },
     },
-    className: argTypes.class,
-    styles: argTypes.style,
-    id: boxMeta.argTypes.id,
+    id: argTypes.id,
     ariaLabel: {
       control: 'text',
       description: 'Accessible label for the group header button. Maps to `aria-label`.',

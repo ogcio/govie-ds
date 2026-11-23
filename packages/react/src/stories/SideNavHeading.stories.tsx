@@ -3,6 +3,7 @@ import SideNav from '@/SideNav/SideNav';
 import SideNavHeading from '@/SideNav/SideNavHeading';
 import SideNavItem from '@/SideNav/SideNavItem';
 import * as stories from '@/atoms/storybook/SideNavHeading.meta';
+import argTypes from '@/atoms/storybook/argTypes';
 import { importNext } from './helpers';
 
 const meta = {
@@ -20,6 +21,7 @@ const meta = {
       description: 'Heading text.',
       table: { type: { summary: 'React.ReactNode' } },
     },
+    className: argTypes.class,
   },
   parameters: {
     ...stories.sideNavHeadingMeta.parameters,

@@ -12,8 +12,7 @@ export const sideNavHeadingMeta = {
     dataTestId: 'side-nav-heading',
   },
   argTypes: {
-    className: argTypes.class,
-    id: boxMeta.argTypes.id,
+    id: argTypes.id,
     dataTestId: boxMeta.argTypes.dataTestId,
   } satisfies ArgTypes<Props>,
   parameters: {

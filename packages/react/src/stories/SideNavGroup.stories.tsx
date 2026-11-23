@@ -5,15 +5,16 @@ import SideNavGroup from '@/SideNav/SideNavGroup';
 import SideNavItem from '@/SideNav/SideNavItem';
 import * as stories from '@/atoms/storybook/SideNavGroup.meta';
 import { importNext } from './helpers';
-import omit from 'lodash/omit';
+import argTypes from '@/atoms/storybook/argTypes';
 
 const meta = {
   ...stories.sideNavGroupMeta,
   title: 'Navigation/SideNav/SideNavGroup',
   component: SideNavGroup,
   argTypes: {
-    ...omit(stories.sideNavGroupMeta.argTypes, 'styles'),
-    style: stories.sideNavGroupMeta.argTypes.styles,
+    ...stories.sideNavGroupMeta.argTypes,
+    className: argTypes.class,
+    style: { ...argTypes.style, table: { type: { summary: 'React.CSSProperties' } } },
     label: {
       control: 'text',
       description: 'Content of the expandable group header button.',

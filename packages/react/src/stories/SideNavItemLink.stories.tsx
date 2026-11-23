@@ -5,13 +5,14 @@ import SideNav from '@/SideNav/SideNav';
 import SideNavItemLink from '@/SideNav/SideNavItemLink';
 import * as stories from '@/atoms/storybook/SideNavItemLink.meta';
 import { importNext } from './helpers';
-import omit from 'lodash/omit';
+import argTypes from '@/atoms/storybook/argTypes';
 
 const meta = {
   ...stories.sideNavItemLinkMeta,
   argTypes: {
-    ...omit(stories.sideNavItemLinkMeta.argTypes, 'styles'),
-    style: stories.sideNavItemLinkMeta.argTypes.styles,
+    ...stories.sideNavItemLinkMeta.argTypes,
+    className: argTypes.class,
+    style: argTypes.style,
     asChild: {
       control: false,
       description:

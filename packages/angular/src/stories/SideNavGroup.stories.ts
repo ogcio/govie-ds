@@ -1,4 +1,3 @@
-import omit from 'lodash/omit';
 import type { Meta, StoryObj } from '@storybook/angular-vite';
 import { expect, fn } from 'storybook/test';
 import * as stories from '@/atoms/storybook/SideNavGroup.meta';
@@ -15,7 +14,7 @@ const meta: Meta = {
     openChange: fn(),
   },
   argTypes: {
-    ...omit(stories.sideNavGroupMeta.argTypes, ['className', 'styles']),
+    ...stories.sideNavGroupMeta.argTypes,
     label: {
       control: 'text',
       description: 'Text of the group header button.',

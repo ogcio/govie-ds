@@ -23,8 +23,6 @@ export const sideNavItemButtonMeta = {
       table: { type: { summary: 'boolean' }, defaultValue: { summary: 'false' } },
     },
     disabled: buttonMeta.argTypes.disabled,
-    className: argTypes.class,
-    styles: argTypes.style,
     id: argTypes.id,
     ariaLabel: {
       control: 'text',

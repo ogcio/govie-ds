@@ -1,6 +1,7 @@
 import type { Meta, StoryObj } from '@storybook/react-vite';
 import { useState } from 'react';
 import * as stories from '@/atoms/storybook/SideNav.meta';
+import argTypes from '@/atoms/storybook/argTypes';
 import GiBox from '@/atoms/Box';
 import MailIcon from '@/atoms/icons/Mail';
 import H2 from '@/atoms/heading/H2';
@@ -22,6 +23,7 @@ const meta = {
   component: SideNav,
   argTypes: {
     ...stories.sideNavMeta.argTypes,
+    className: argTypes.class,
     style: {
       control: false,
       description: 'Inline styles. Prefer className with gi-* Tailwind utilities.',

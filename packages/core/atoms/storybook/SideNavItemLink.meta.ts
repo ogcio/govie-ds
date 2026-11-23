@@ -17,9 +17,8 @@ export const sideNavItemLinkMeta = {
   },
   argTypes: {
     selected: sideNavItemButtonMeta.argTypes.selected,
-    id: linkMeta.argTypes.id,
+    id: argTypes.id,
     href: linkMeta.argTypes.href,
-    className: argTypes.class,
     external: linkMeta.argTypes.external,
     target: linkMeta.argTypes.target,
     rel: linkMeta.argTypes.rel,
@@ -36,7 +35,6 @@ export const sideNavItemLinkMeta = {
     },
     tabIndex: linkMeta.argTypes.tabIndex,
     lang: linkMeta.argTypes.lang,
-    styles: argTypes.style,
     dataTestId: linkMeta.argTypes.dataTestId,
   },
   parameters: {

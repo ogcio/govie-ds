@@ -1,4 +1,3 @@
-import omit from 'lodash/omit';
 import { RouterLink, RouterLinkActive } from '@angular/router';
 import type { Meta, StoryObj } from '@storybook/angular-vite';
 import { expect, fn, userEvent, waitFor, within } from 'storybook/test';
@@ -21,7 +20,7 @@ const meta: Meta = {
     itemClick: fn((event: MouseEvent) => event.preventDefault()),
   },
   argTypes: {
-    ...omit(stories.sideNavItemLinkMeta.argTypes, ['className', 'styles']),
+    ...stories.sideNavItemLinkMeta.argTypes,
     itemClick: {
       control: false,
       description: 'Emits the native click event when the link is activated.',

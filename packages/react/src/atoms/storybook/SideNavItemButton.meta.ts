@@ -35,8 +35,6 @@ export const sideNavItemButtonMeta = {
       },
     },
     disabled: buttonMeta.argTypes.disabled,
-    className: argTypes.class,
-    styles: argTypes.style,
     id: argTypes.id,
     ariaLabel: {
       control: 'text',

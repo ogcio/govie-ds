@@ -1,4 +1,3 @@
-import omit from 'lodash/omit';
 import type { Meta, StoryObj } from '@storybook/angular-vite';
 import { expect, fn, userEvent, within } from 'storybook/test';
 import * as stories from '@/atoms/storybook/SideNavItemButton.meta';
@@ -18,7 +17,7 @@ const meta: Meta = {
     itemClick: fn(),
   },
   argTypes: {
-    ...omit(stories.sideNavItemButtonMeta.argTypes, ['className', 'styles']),
+    ...stories.sideNavItemButtonMeta.argTypes,
     itemClick: {
       control: false,
       description: 'Emits the native click event when the item button is activated.',

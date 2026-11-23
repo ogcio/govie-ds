@@ -15,7 +15,6 @@ import {
   SideNavItemLink,
 } from '../index';
 import { MailIcon, MoreVerticalIcon } from '../icons';
-import omit from 'lodash/omit';
 
 const meta = {
   ...stories.sideNavMeta,
@@ -23,7 +22,7 @@ const meta = {
   tags: ['!dev', '!autodocs'], // exclude story until Storybook examples complete
   component: SideNav,
   argTypes: {
-    ...omit(stories.sideNavMeta.argTypes, ['className', 'styles']),
+    ...stories.sideNavMeta.argTypes,
     class: {
       control: false,
       description: 'Additional CSS classes, merged with the classes of the `<nav>` element.',

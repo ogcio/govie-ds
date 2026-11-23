@@ -1,4 +1,3 @@
-import omit from 'lodash/omit';
 import type { Meta, StoryObj } from '@storybook/angular-vite';
 import * as stories from '@/atoms/storybook/SideNavHeading.meta';
 import { GiSideNav } from '@/sidenav/SideNav';
@@ -10,7 +9,7 @@ const meta: Meta = {
   title: 'Navigation/SideNav/SideNavHeading',
   component: GiSideNavHeading,
   argTypes: {
-    ...omit(stories.sideNavHeadingMeta.argTypes, ['className']),
+    ...stories.sideNavHeadingMeta.argTypes,
     class: {
       control: false,
       description: 'Additional CSS classes applied to the heading element.',

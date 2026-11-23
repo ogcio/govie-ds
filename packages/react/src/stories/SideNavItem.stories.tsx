@@ -3,15 +3,16 @@ import SideNav from '@/SideNav/SideNav';
 import SideNavItem from '@/SideNav/SideNavItem';
 import * as buttonStories from '@/atoms/storybook/SideNavItemButton.meta';
 import { importNext } from './helpers';
-import omit from 'lodash/omit';
+import argTypes from '@/atoms/storybook/argTypes';
 
 const meta = {
   ...buttonStories.sideNavItemButtonMeta,
   title: 'Navigation/SideNav/SideNavItem',
   component: SideNavItem,
   argTypes: {
-    ...omit(buttonStories.sideNavItemButtonMeta.argTypes, 'styles'),
-    style: buttonStories.sideNavItemButtonMeta.argTypes.styles,
+    ...buttonStories.sideNavItemButtonMeta.argTypes,
+    className: argTypes.class,
+    style: argTypes.style,
     actions: {
       control: { disable: true },
       description:
