@@ -21,3 +21,23 @@ pnpm --filter "@ogcio/examples-vue^..." build && pnpm --filter @ogcio/examples-v
 ```
 
 The static site is written to `dist`.
+
+## Deploy
+
+The site uses Vue Router with path-based URLs, so the web server must serve the site's `index.html` for any path under its base that does not match a file. With nginx, for a site built with `vite build --base /demo/`:
+
+```nginx
+location /demo/ {
+  try_files $uri $uri/ /demo/index.html;
+}
+```
+
+## Structure
+
+| Path             | Contents                                                  |
+| ---------------- | --------------------------------------------------------- |
+| `src/pages`      | Routed pages; each site section has its own folder        |
+| `src/components` | Page, page section, section layout and article components |
+| `src/router.ts`  | Routes, page titles and scroll behaviour                  |
+
+Page text lives in the page templates.
