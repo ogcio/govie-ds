@@ -4,16 +4,17 @@ import Breadcrumbs from '@/breadcrumbs/Breadcrumbs';
 import BreadcrumbLink from '@/breadcrumbs/BreadcrumbLink';
 import BreadcrumbEllipsis from '@/breadcrumbs/BreadcrumbEllipsis';
 import HomeIcon from '@/atoms/icons/Home';
+import argTypes from '@/atoms/storybook/argTypes';
 import { importNext } from './helpers';
-import omit from 'lodash/omit';
 
 const meta = {
   ...stories.meta,
   title: 'Navigation/Breadcrumbs/Breadcrumbs',
   component: Breadcrumbs,
   argTypes: {
-    ...omit(stories.meta.argTypes, 'styles'),
-    style: stories.meta.argTypes.styles,
+    ...stories.meta.argTypes,
+    className: argTypes.class,
+    style: { ...argTypes.style, table: { type: { summary: 'React.CSSProperties' } } },
   },
   parameters: {
     ...stories.meta.parameters,

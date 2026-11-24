@@ -5,7 +5,6 @@
  */
 
 import { within, expect } from 'storybook/test';
-import argTypes from './argTypes';
 import { boxMeta } from './Box.meta';
 import { checker } from './utilities';
 import type { Props } from '../breadcrumbs/Breadcrumbs';
@@ -19,8 +18,6 @@ export const meta = {
     dataTestId: BREADCRUMBS_TEST_ID,
   },
   argTypes: {
-    className: argTypes.class,
-    styles: argTypes.style,
     id: boxMeta.argTypes.id,
     dataTestId: boxMeta.argTypes.dataTestId,
     ariaLabel: {
