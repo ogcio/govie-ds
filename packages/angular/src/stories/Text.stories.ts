@@ -4,11 +4,20 @@ import { GiStack } from '@/Stack';
 import { GiText, GiTextDirective } from '@/Text';
 import { Size } from '@/atoms/constants';
 import * as TextStoryMeta from '@/atoms/storybook/Text.meta';
+import argTypes from '@/atoms/storybook/argTypes';
 
 const meta: Meta<GiText> = {
   ...TextStoryMeta.textMeta,
   title: 'Typography/Text',
   component: GiText,
+  argTypes: {
+    ...TextStoryMeta.textMeta.argTypes,
+    class: argTypes.class,
+    style: {
+      ...argTypes.style,
+      table: { type: { summary: 'string | Record<string, string | number | null | undefined>' } },
+    },
+  },
 };
 
 export default meta;

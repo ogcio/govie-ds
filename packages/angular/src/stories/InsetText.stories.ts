@@ -2,20 +2,30 @@ import type { Meta, StoryObj } from '@storybook/angular-vite';
 import { expect } from 'storybook/test';
 import { GiInsetText, GiInsetTextDirective } from '@/InsetText';
 import { insetTextMeta, Default as insetTextDefault } from '@/atoms/storybook/InsetText.meta';
+import argTypes from '@/atoms/storybook/argTypes';
 
-const meta: Meta<GiInsetText> = {
+const meta: Meta<GiInsetText & { children: string }> = {
   ...insetTextMeta,
   title: 'Typography/InsetText',
   component: GiInsetText,
+  argTypes: {
+    ...insetTextMeta.argTypes,
+    // Projected content, not an input.
+    children: { table: { disable: true } },
+    class: argTypes.class,
+    style: {
+      ...argTypes.style,
+      table: { type: { summary: 'string | Record<string, string | number | null | undefined>' } },
+    },
+  },
 };
 
 export default meta;
 
-export const Default: StoryObj<GiInsetText & { content: string }> = {
+export const Default: StoryObj<GiInsetText> = {
   ...insetTextDefault,
   args: {
     ...insetTextDefault.args,
-    content: String(insetTextDefault.args?.children),
   },
   render: (args) => ({
     props: args,
@@ -26,7 +36,7 @@ export const Default: StoryObj<GiInsetText & { content: string }> = {
         [describedBy]="describedBy"
         [labelledBy]="labelledBy"
       >
-        {{content}}
+        {{children}}
       </gi-inset-text>
     `,
   }),
@@ -40,10 +50,10 @@ export const Directive: StoryObj = {
       },
     },
   },
-  render: () => ({
-    props: { content: insetTextMeta.args.children },
+  render: (args) => ({
+    props: args,
     moduleMetadata: { imports: [GiInsetTextDirective] },
-    template: `<blockquote giInsetText>{{content}}</blockquote>`,
+    template: `<blockquote giInsetText>{{children}}</blockquote>`,
   }),
 };
 
