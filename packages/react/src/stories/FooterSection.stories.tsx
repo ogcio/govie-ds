@@ -1,5 +1,5 @@
 import type { Meta, StoryObj } from '@storybook/react-vite';
-import FooterSection from '@/atoms/footer/FooterSection';
+import FooterSection from '@/FooterSection';
 import * as stories from '@/atoms/storybook/FooterSection.meta';
 import argTypes from '@/atoms/storybook/argTypes';
 
@@ -10,6 +10,10 @@ const meta = {
     className: {
       ...argTypes.class,
       description: 'Additional CSS classes, merged with the classes of the inner content container.',
+    },
+    style: {
+      ...argTypes.style,
+      table: { type: { summary: 'React.CSSProperties' } },
     },
   },
   title: 'Layout/Footer/FooterSection',

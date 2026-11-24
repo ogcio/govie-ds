@@ -2,9 +2,9 @@
 export { default as Link, type LinkProps } from '@/Link';
 
 // Footer
-export { default as Footer, type Props as FooterProps } from '@/atoms/footer/Footer';
-export { default as FooterSection, type Props as FooterSectionProps } from '@/atoms/footer/FooterSection';
-export { default as FooterLogo, type Props as FooterLogoProps } from '@/atoms/footer/FooterLogo';
+export { default as Footer, type FooterProps } from '@/Footer';
+export { default as FooterSection, type FooterSectionProps } from '@/FooterSection';
+export { default as FooterLogo, type FooterLogoProps } from '@/FooterLogo';
 
 // Header
 export { default as Header, type Props as HeaderProps } from '@/atoms/header/Header';

@@ -1,5 +1,5 @@
 import type { Meta, StoryObj } from '@storybook/react-vite';
-import FooterLogo from '@/atoms/footer/FooterLogo';
+import FooterLogo from '@/FooterLogo';
 import { LogoGoldGreen } from '@/atoms/icons/logos';
 import * as stories from '@/atoms/storybook/FooterLogo.meta';
 import argTypes from '@/atoms/storybook/argTypes';
@@ -9,6 +9,10 @@ const meta: Meta = {
   argTypes: {
     ...stories.meta.argTypes,
     className: argTypes.class,
+    style: {
+      ...argTypes.style,
+      table: { type: { summary: 'React.CSSProperties' } },
+    },
   },
   title: 'Layout/Footer/FooterLogo',
   component: FooterLogo,
