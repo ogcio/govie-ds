@@ -1,9 +1,9 @@
-import omit from 'lodash/omit';
 import type { Meta, StoryObj } from '@storybook/angular-vite';
 import { HomeIcon } from '@/icons';
 import { GiBreadcrumbItemEllipsis } from '@/breadcrumbs/BreadcrumbItemEllipsis';
 import { GiBreadcrumbItemLink, GiBreadcrumbLinkDirective } from '@/breadcrumbs/BreadcrumbItemLink';
 import { GiBreadcrumbs } from '@/breadcrumbs/Breadcrumbs';
+import argTypes from '@/atoms/storybook/argTypes';
 import * as stories from '@/atoms/storybook/Breadcrumbs.meta';
 import { GiBreadcrumbItemDirective } from '@/breadcrumbs/BreadcrumbItem';
 import { RouterLink, RouterLinkActive } from '@angular/router';
@@ -15,9 +15,9 @@ const meta: Meta = {
   title: 'Navigation/Breadcrumbs/Breadcrumbs',
   component: GiBreadcrumbs,
   argTypes: {
-    ...omit(stories.meta.argTypes, ['className', 'styles']),
-    class: stories.meta.argTypes.className,
-    style: stories.meta.argTypes.styles,
+    ...stories.meta.argTypes,
+    class: argTypes.class,
+    style: argTypes.style,
   },
 };
 
