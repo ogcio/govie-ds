@@ -41,7 +41,7 @@ export const Default: StoryObj = {
       imports: [GiH1],
     },
     template: `
-      <gi-h1 [id]="heading-id" [size]="size">Heading</gi-h1>
+      <gi-h1 [id]="id" [size]="size">Heading</gi-h1>
     `,
   }),
 };
