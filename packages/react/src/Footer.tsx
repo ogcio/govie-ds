@@ -1,7 +1,9 @@
-import GiFooter, { type Props as GiFooterProps } from '@/atoms/footer/Footer';
+import CoreFooter, { type Props } from '@/atoms/footer/Footer';
 
-export type FooterProps = GiFooterProps & { style?: React.CSSProperties };
+export type FooterProps = Omit<Props, 'styles'> & {
+  style?: React.CSSProperties;
+};
 
 export default function Footer({ style, ...props }: FooterProps) {
-  return <GiFooter {...props} />;
+  return <CoreFooter {...props} styles={style as Record<string, string>} />;
 }
