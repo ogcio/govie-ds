@@ -49,6 +49,7 @@ export const Pagination: React.FC<PaginationProps> = ({ currentPage, totalPages,
       ) : (
         <Button
           key={page}
+          ariaCurrent={page === currentPage ? 'page' : undefined}
           variant={page === currentPage ? 'primary' : 'flat'}
           size="lg"
           appearance="dark"
@@ -82,7 +83,7 @@ export const Pagination: React.FC<PaginationProps> = ({ currentPage, totalPages,
     <div
       className={container()}
       role="navigation"
-      aria-label={t('pagination.page', {
+      aria-label={t('pagination.pageLabel', {
         currentPage,
         totalPages,
         defaultValue: `Page ${currentPage} of ${totalPages}`,
