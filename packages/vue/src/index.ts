@@ -42,6 +42,14 @@ export {
 } from './header/HeaderNavItemSeparator.vue';
 export { default as HeaderTitle } from './header/HeaderTitle.vue';
 
+// Breadcrumbs
+export { default as Breadcrumbs } from './breadcrumbs/Breadcrumbs.vue';
+export { default as BreadcrumbLink, type Props as BreadcrumbLinkProps } from './breadcrumbs/BreadcrumbLink.vue';
+export {
+  default as BreadcrumbEllipsis,
+  type Props as BreadcrumbEllipsisProps,
+} from './breadcrumbs/BreadcrumbEllipsis.vue';
+
 // SideNav
 export { default as SideNav, type Props as SideNavProps } from './atoms/sidenav/SideNav.vue';
 export { default as SideNavItem, type Props as SideNavItemProps } from './atoms/sidenav/SideNavItem.vue';
