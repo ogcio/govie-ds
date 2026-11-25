@@ -6,20 +6,16 @@ import { GiLinkButton, GiLinkButtonDirective } from '@/LinkButton';
 import { GiStackDirective } from '@/Stack';
 import { withRouter } from '@/stories/router';
 import { linkButtonMeta, Default as defaultStory } from '@/atoms/storybook/LinkButton.meta';
+import argTypes from '@/atoms/storybook/argTypes';
 
 const meta: Meta<GiLinkButton> = {
   ...linkButtonMeta,
   component: GiLinkButton,
   argTypes: {
     ...linkButtonMeta.argTypes,
-    class: {
-      control: false,
-      description: 'Additional CSS classes applied to the link element.',
-      table: { type: { summary: 'string' } },
-    },
+    class: argTypes.class,
     style: {
-      control: false,
-      description: 'Inline styles applied to the link element.',
+      ...argTypes.style,
       table: { type: { summary: 'string | Record<string, string | number | null | undefined>' } },
     },
   },

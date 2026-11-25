@@ -2,6 +2,7 @@ import type { Meta, StoryObj } from '@storybook/react-vite';
 import { LinkButton } from '@/LinkButton';
 import Box from '@/atoms/Box';
 import { linkButtonMeta, Default as defaultStory } from '@/atoms/storybook/LinkButton.meta';
+import argTypes from '@/atoms/storybook/argTypes';
 
 const meta = {
   ...linkButtonMeta,
@@ -9,11 +10,7 @@ const meta = {
   component: LinkButton,
   argTypes: {
     ...linkButtonMeta.argTypes,
-    className: {
-      control: { disable: true },
-      description: 'CSS classes to apply. Use gi-* Tailwind utilities for additional styling.',
-      table: { type: { summary: 'string' } },
-    },
+    className: argTypes.class,
     styles: {
       control: false,
       table: { disable: true },
@@ -44,8 +41,7 @@ const meta = {
       table: { type: { summary: '(event: React.KeyboardEvent) => void' } },
     },
     style: {
-      control: false,
-      description: 'Inline styles. Prefer className with gi-* Tailwind utilities.',
+      ...argTypes.style,
       table: { type: { summary: 'React.CSSProperties' } },
     },
     asChild: {

@@ -5,6 +5,7 @@ import Paragraph from '@/atoms/Paragraph';
 import { H1, H2 } from '@/atoms/heading';
 import HomeIcon from '@/atoms/icons/Home';
 import * as stories from '@/atoms/storybook/Link.meta';
+import argTypes from '@/atoms/storybook/argTypes';
 
 const meta = {
   ...stories.linkMeta,
@@ -20,11 +21,7 @@ const meta = {
   ],
   argTypes: {
     ...stories.linkMeta.argTypes,
-    className: {
-      control: { disable: true },
-      description: 'CSS classes to apply. Use gi-* Tailwind utilities for additional styling.',
-      table: { type: { summary: 'string' } },
-    },
+    className: argTypes.class,
     styles: {
       control: false,
       table: { disable: true },
@@ -39,8 +36,7 @@ const meta = {
       },
     },
     style: {
-      control: false,
-      description: 'Inline styles. Prefer className with gi-* Tailwind utilities.',
+      ...argTypes.style,
       table: { type: { summary: 'React.CSSProperties' } },
     },
   },

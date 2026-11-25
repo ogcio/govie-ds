@@ -15,6 +15,7 @@ import {
   PlainFocusState as linkPlainFocus,
   PlainLink as linkPlain,
 } from '@/atoms/storybook/Link.meta';
+import argTypes from '@/atoms/storybook/argTypes';
 
 const meta: Meta<GiLink> = {
   ...linkMeta,
@@ -22,14 +23,9 @@ const meta: Meta<GiLink> = {
   component: GiLink,
   argTypes: {
     ...linkMeta.argTypes,
-    class: {
-      control: false,
-      description: 'Additional CSS classes applied to the link element.',
-      table: { type: { summary: 'string' } },
-    },
+    class: argTypes.class,
     style: {
-      control: false,
-      description: 'Inline styles applied to the link element.',
+      ...argTypes.style,
       table: { type: { summary: 'string | Record<string, string | number | null | undefined>' } },
     },
   },
