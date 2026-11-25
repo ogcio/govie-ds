@@ -47,7 +47,8 @@
       <InsetText>
         <Paragraph>
           This is a demonstration website. The Department of Engagement is fictional: the site shows how a department
-          website looks and works when it is built with the Government of Ireland Design System for Vue.
+          website looks and works when it is built with the Government of Ireland
+          <strong>Design System Vue.</strong>
         </Paragraph>
       </InsetText>
 

@@ -146,11 +146,10 @@
     </FooterSection>
 
     <FooterSection variant="utility">
-      <Stack direction="row" justify="center">
-        <Text size="sm" class="text-center">
-          © {{ year }} Department of Engagement. Built with the Government of Ireland Design System.
-        </Text>
-      </Stack>
+      <div class="grid justify-items-center gap-2 lg:grid-cols-[1fr_auto_1fr] lg:items-center">
+        <Text size="sm" class="lg:col-start-2">© {{ year }} Department of Engagement</Text>
+        <PoweredBy class="lg:justify-self-end" />
+      </div>
     </FooterSection>
   </Footer>
 </template>
@@ -169,6 +168,7 @@ import {
   Text,
 } from '@ogcio/design-system-vue';
 import { LogoGoldGreen } from '@ogcio/design-system-vue/logos';
+import PoweredBy from './PoweredBy.vue';
 
 const year = new Date().getFullYear();
 </script>
