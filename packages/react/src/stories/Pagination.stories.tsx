@@ -18,6 +18,14 @@ const meta = {
   tags: ['next'],
   title: 'Navigation/Pagination/Pagination (Next)',
   component: Pagination,
+  // Stop the click from navigating to avoid unexpected navigation in Storybook
+  decorators: [
+    (Story) => (
+      <div onClick={(event) => event.preventDefault()}>
+        <Story />
+      </div>
+    ),
+  ],
   argTypes: {
     children: {
       control: false,
