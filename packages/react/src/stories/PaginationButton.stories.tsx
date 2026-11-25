@@ -2,6 +2,7 @@ import type { Meta, StoryObj } from '@storybook/react-vite';
 import Pagination from '@/pagination/Pagination';
 import PaginationButton from '@/pagination/PaginationButton';
 import * as stories from '@/atoms/storybook/PaginationButton.meta';
+import argTypes from '@/atoms/storybook/argTypes';
 import ArrowBackwardIcon from '@/atoms/icons/ArrowBackward';
 import ArrowForwardIcon from '@/atoms/icons/ArrowForward';
 import { importNext } from './helpers';
@@ -22,13 +23,12 @@ const meta = {
     },
     ...stories.meta.argTypes,
     className: {
-      control: false,
+      ...argTypes.class,
       description: 'Additional CSS classes applied to the button element.',
-      table: { type: { summary: 'string' } },
     },
     style: {
-      control: false,
-      description: 'Inline styles applied to the button element. Prefer className with gi-* Tailwind utilities.',
+      ...argTypes.style,
+      description: 'Inline styles applied to the button element.',
       table: { type: { summary: 'React.CSSProperties' } },
     },
     onClick: {

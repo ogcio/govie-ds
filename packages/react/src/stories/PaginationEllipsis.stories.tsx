@@ -2,6 +2,7 @@ import type { Meta, StoryObj } from '@storybook/react-vite';
 import Pagination from '@/pagination/Pagination';
 import PaginationEllipsis from '@/pagination/PaginationEllipsis';
 import * as stories from '@/atoms/storybook/PaginationEllipsis.meta';
+import argTypes from '@/atoms/storybook/argTypes';
 import PaginationButton from '@/pagination/PaginationButton';
 import ArrowBackwardIcon from '@/atoms/icons/ArrowBackward';
 import ArrowForwardIcon from '@/atoms/icons/ArrowForward';
@@ -15,14 +16,12 @@ const meta = {
   argTypes: {
     ...stories.meta.argTypes,
     className: {
-      control: false,
+      ...argTypes.class,
       description: 'Additional CSS classes applied to the icon element.',
-      table: { type: { summary: 'string' } },
     },
     style: {
-      control: false,
-      description:
-        'Inline styles applied to the list item that wraps the icon. Use for truly dynamic values that cannot be expressed as Tailwind classes.',
+      ...argTypes.style,
+      description: 'Inline styles applied to the list item that wraps the icon.',
       table: { type: { summary: 'React.CSSProperties' } },
     },
   },
