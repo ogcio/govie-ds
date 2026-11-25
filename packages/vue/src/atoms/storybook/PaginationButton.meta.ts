@@ -83,7 +83,6 @@ export const Default = {
 } satisfies Story<Props>;
 export const Current = {
   args: {
-    ...meta.args,
     current: true,
     id: 'pagination-button-current-id',
   },

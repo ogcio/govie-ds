@@ -5,6 +5,7 @@ import PaginationEllipsis from '@/pagination/PaginationEllipsis';
 import PaginationLink from '@/pagination/PaginationLink';
 import { getPaginationList } from '@/atoms/pagination/utils';
 import * as stories from '@/atoms/storybook/Pagination.meta';
+import argTypes from '@/atoms/storybook/argTypes';
 import { useState } from 'react';
 import ArrowBackward from '@/atoms/icons/ArrowBackward';
 import ArrowForward from '@/atoms/icons/ArrowForward';
@@ -25,13 +26,12 @@ const meta = {
     },
     ...stories.meta.argTypes,
     className: {
-      control: false,
+      ...argTypes.class,
       description: 'Additional CSS classes applied to the nav element.',
-      table: { type: { summary: 'string' } },
     },
     style: {
-      control: false,
-      description: 'Inline styles applied to the nav element. Prefer className with gi-* Tailwind utilities.',
+      ...argTypes.style,
+      description: 'Inline styles applied to the nav element.',
       table: { type: { summary: 'React.CSSProperties' } },
     },
   },

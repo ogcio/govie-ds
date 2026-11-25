@@ -56,7 +56,6 @@ export const Default = {
 
 export const Current = {
   args: {
-    ...meta.args,
     current: true,
     id: 'pagination-link-current-id',
   },
