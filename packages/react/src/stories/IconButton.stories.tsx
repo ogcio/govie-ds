@@ -2,6 +2,7 @@ import type { Meta, StoryObj } from '@storybook/react-vite';
 import _ from 'lodash';
 import Info from '@/atoms/icons/Info';
 import * as stories from '@/atoms/storybook/IconButton.meta';
+import argTypes from '@/atoms/storybook/argTypes';
 import { Variant, Appearance } from '@/atoms/Button.styles';
 import IconButton from '@/atoms/IconButton';
 import { Size } from '@/atoms/constants';
@@ -12,11 +13,7 @@ const meta: Meta<typeof IconButton> = {
   component: IconButton,
   argTypes: {
     ...stories.meta.argTypes,
-    className: {
-      control: false,
-      description: 'Additional CSS classes applied to the button element.',
-      table: { type: { summary: 'string' } },
-    },
+    className: argTypes.class,
     onClick: {
       control: false,
       description: 'Click event handler.',

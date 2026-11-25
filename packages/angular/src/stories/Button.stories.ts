@@ -3,6 +3,7 @@ import { GiBox } from '@/Box';
 import { GiButton, GiButtonDirective } from '@/Button';
 import { GiStack, GiStackDirective } from '@/Stack';
 import * as stories from '@/atoms/storybook/Button.meta';
+import argTypes from '@/atoms/storybook/argTypes';
 
 const meta: Meta<GiButton> = {
   ...stories.meta,
@@ -10,14 +11,9 @@ const meta: Meta<GiButton> = {
   component: GiButton,
   argTypes: {
     ...stories.meta.argTypes,
-    class: {
-      control: false,
-      description: 'Additional CSS classes applied to the button element.',
-      table: { type: { summary: 'string' } },
-    },
+    class: argTypes.class,
     style: {
-      control: false,
-      description: 'Inline styles applied to the button element.',
+      ...argTypes.style,
       table: { type: { summary: 'string | Record<string, string | number | null | undefined>' } },
     },
   },

@@ -5,6 +5,7 @@ import { GiStack, GiStackDirective } from '@/Stack';
 import { Size } from '@/atoms/constants';
 import Info from '@/atoms/icons/Info';
 import * as stories from '@/atoms/storybook/IconButton.meta';
+import argTypes from '@/atoms/storybook/argTypes';
 
 const iconSize: Record<string, number> = {
   [Size.SM]: 16,
@@ -19,14 +20,9 @@ const meta: Meta<GiIconButton> = {
   component: GiIconButton,
   argTypes: {
     ...stories.meta.argTypes,
-    class: {
-      control: false,
-      description: 'Additional CSS classes applied to the button element.',
-      table: { type: { summary: 'string' } },
-    },
+    class: argTypes.class,
     style: {
-      control: false,
-      description: 'Inline styles applied to the button element.',
+      ...argTypes.style,
       table: { type: { summary: 'string | Record<string, string | number | null | undefined>' } },
     },
   },

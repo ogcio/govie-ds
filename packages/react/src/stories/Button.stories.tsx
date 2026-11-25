@@ -3,17 +3,14 @@ import _ from 'lodash';
 import { Button } from '@/button/button';
 import { ButtonSize, Variant, Appearance } from '@/atoms/Button.styles';
 import * as stories from '@/atoms/storybook/Button.meta';
+import argTypes from '@/atoms/storybook/argTypes';
 
 const meta: Meta<typeof Button> = {
   ...stories.meta,
   title: 'Components/Button',
   argTypes: {
     ...stories.meta.argTypes,
-    className: {
-      control: false,
-      description: 'Additional CSS classes to apply to the button element.',
-      table: { type: { summary: 'string' } },
-    },
+    className: argTypes.class,
     onClick: {
       control: false,
       description: 'Click event handler.',
