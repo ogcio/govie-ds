@@ -1,5 +1,5 @@
 import type { Meta, StoryObj } from '@storybook/react-vite';
-import { expect, fn } from 'storybook/test';
+import { expect } from 'storybook/test';
 import Pagination from '@/pagination/Pagination';
 import PaginationLink from '@/pagination/PaginationLink';
 import * as stories from '@/atoms/storybook/PaginationLink.meta';
@@ -11,6 +11,14 @@ const meta = {
   ...stories.meta,
   tags: ['next'],
   title: 'Navigation/Pagination/PaginationLink',
+  // Stop the click from navigating to avoid unexpected navigation in Storybook
+  decorators: [
+    (Story) => (
+      <div onClick={(event) => event.preventDefault()}>
+        <Story />
+      </div>
+    ),
+  ],
   args: {
     ...stories.meta.args,
     children: stories.PAGINATION_LINK_LABEL,
@@ -114,7 +122,6 @@ export const AsChild: Story = {
     href: undefined,
     id: 'pagination-link-aschild-id',
     ariaLabel: 'Go to page 5',
-    onClick: fn((event: React.MouseEvent) => event.preventDefault()),
   },
   parameters: {
     docs: {
