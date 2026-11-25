@@ -13,6 +13,7 @@ import {
   GiTextDirective,
 } from '@ogcio/design-system-angular';
 import { LogoGoldGreen } from '@ogcio/design-system-angular/logos';
+import { PoweredBy } from './powered-by';
 
 @Component({
   selector: 'app-site-footer',
@@ -29,6 +30,7 @@ import { LogoGoldGreen } from '@ogcio/design-system-angular/logos';
     GiParagraphDirective,
     GiTextDirective,
     LogoGoldGreen,
+    PoweredBy,
   ],
   templateUrl: './site-footer.html',
 })
