@@ -3,6 +3,15 @@
     <Grid container :columns="{ base: 4, md: 8, lg: 12 }" :gap="8">
       <Grid :size="{ base: 4, md: 8, lg: 8 }" class="mx-auto">
         <Stack direction="column" :gap="8" align="stretch">
+          <Breadcrumbs aria-label="Breadcrumb">
+            <RouterLink v-slot="{ href, navigate }" to="/" custom>
+              <BreadcrumbLink :href="href" @click="navigate">Home</BreadcrumbLink>
+            </RouterLink>
+            <RouterLink v-slot="{ href, navigate }" to="/news" custom>
+              <BreadcrumbLink :href="href" current @click="navigate">News</BreadcrumbLink>
+            </RouterLink>
+          </Breadcrumbs>
+
           <Stack direction="column" :gap="6" align="stretch">
             <H1 size="lg">News</H1>
             <Paragraph size="lg">Announcements and updates from the Department of Engagement.</Paragraph>
@@ -99,5 +108,17 @@
 </template>
 
 <script setup lang="ts">
-import { Container, Divider, Grid, H1, H2, Link, Paragraph, Stack, Text } from '@ogcio/design-system-vue';
+import {
+  BreadcrumbLink,
+  Breadcrumbs,
+  Container,
+  Divider,
+  Grid,
+  H1,
+  H2,
+  Link,
+  Paragraph,
+  Stack,
+  Text,
+} from '@ogcio/design-system-vue';
 </script>

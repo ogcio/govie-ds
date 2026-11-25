@@ -69,6 +69,7 @@ export const router = createRouter({
     {
       path: '/design-system',
       component: SectionLayout,
+      props: { heading: 'Design System', url: '/design-system' },
       children: [
         { path: '', component: DesignSystemOverview, meta: { title: 'Design System' } },
         { path: 'principles', component: Principles, meta: { title: 'Principles' } },
@@ -80,6 +81,7 @@ export const router = createRouter({
     {
       path: '/services',
       component: SectionLayout,
+      props: { heading: 'Services', url: '/services' },
       children: [
         { path: '', component: ServicesOverview, meta: { title: 'Services' } },
         { path: 'onboarding', component: Onboarding, meta: { title: 'Onboarding' } },
@@ -92,6 +94,7 @@ export const router = createRouter({
     {
       path: '/about',
       component: SectionLayout,
+      props: { heading: 'About us', url: '/about' },
       children: [
         { path: '', component: AboutOverview, meta: { title: 'About us' } },
         { path: 'strategy', component: Strategy, meta: { title: 'Strategy' } },
@@ -101,6 +104,7 @@ export const router = createRouter({
     {
       path: '/help',
       component: SectionLayout,
+      props: { heading: 'Help', url: '/help' },
       children: [
         { path: '', component: HelpOverview, meta: { title: 'Help' } },
         { path: 'accessibility', component: Accessibility, meta: { title: 'Accessibility statement' } },

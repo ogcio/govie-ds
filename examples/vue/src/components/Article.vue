@@ -3,6 +3,18 @@
     <Grid container :columns="{ base: 4, md: 8, lg: 12 }" :gap="8">
       <Grid :size="{ base: 4, md: 8, lg: 8 }" class="mx-auto min-w-0">
         <Stack direction="column" :gap="8" align="stretch">
+          <Breadcrumbs aria-label="Breadcrumb" class="[&_li:last-child]:min-w-0">
+            <RouterLink v-slot="{ href, navigate }" to="/" custom>
+              <BreadcrumbLink :href="href" @click="navigate">Home</BreadcrumbLink>
+            </RouterLink>
+            <RouterLink v-slot="{ href, navigate }" to="/news" custom>
+              <BreadcrumbLink :href="href" @click="navigate">News</BreadcrumbLink>
+            </RouterLink>
+            <RouterLink v-slot="{ href, navigate }" :to="route.path" custom>
+              <BreadcrumbLink :href="href" current @click="navigate">{{ heading }}</BreadcrumbLink>
+            </RouterLink>
+          </Breadcrumbs>
+
           <article>
             <Stack direction="column" :gap="10" align="stretch">
               <Stack direction="column" :gap="4">
@@ -31,8 +43,20 @@
 </template>
 
 <script setup lang="ts">
-import { Container, Divider, Grid, H1, Link, Paragraph, Stack, Text } from '@ogcio/design-system-vue';
+import {
+  BreadcrumbLink,
+  Breadcrumbs,
+  Container,
+  Divider,
+  Grid,
+  H1,
+  Link,
+  Paragraph,
+  Stack,
+  Text,
+} from '@ogcio/design-system-vue';
 import { ArrowLeftIcon } from '@ogcio/design-system-vue/icons';
+import { useRoute } from 'vue-router';
 
 defineProps<{
   heading: string;
@@ -40,6 +64,8 @@ defineProps<{
   date: string;
   lead: string;
 }>();
+
+const route = useRoute();
 
 const dateFormat = new Intl.DateTimeFormat('en-IE', {
   day: 'numeric',

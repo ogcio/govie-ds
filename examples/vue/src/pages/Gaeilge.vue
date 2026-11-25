@@ -5,6 +5,8 @@
         <Page
           lang="ga"
           heading="Gaeilge"
+          home-label="Baile"
+          breadcrumb-label="Conair nascleanúna"
           lead="Táimid tiomanta dár seirbhísí agus dár n-ábhar a chur ar fáil i nGaeilge agus i mBéarla."
         >
           <PageSection anchor="abhar-gaeilge" heading="Ábhar Gaeilge">

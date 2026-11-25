@@ -11,7 +11,9 @@
 <script setup lang="ts">
 import { Container, Grid } from '@ogcio/design-system-vue';
 import { provide } from 'vue';
-import { sectionLayoutKey } from './sections';
+import { sectionLayoutKey, type SiteSection } from './sections';
 
-provide(sectionLayoutKey, true);
+const props = defineProps<SiteSection>();
+
+provide(sectionLayoutKey, props);
 </script>
