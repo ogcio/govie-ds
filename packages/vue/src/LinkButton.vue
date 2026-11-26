@@ -20,6 +20,7 @@
 </template>
 
 <script setup lang="ts">
+import type { AnchorHTMLAttributes } from 'vue';
 import CoreLinkButton from './atoms/LinkButton.vue';
 import type { Appearance, ButtonSize, Variant } from './atoms/Button.styles';
 import type { ValueOf } from './atoms/constants';
@@ -28,11 +29,12 @@ import { useCoreAttrs } from './attrs';
 
 defineOptions({ inheritAttrs: false });
 
-export type Props = Pick<LinkProps, 'href' | 'external' | 'target' | 'rel' | 'download'> & {
-  variant?: ValueOf<typeof Variant>;
-  appearance?: ValueOf<typeof Appearance>;
-  size?: ValueOf<typeof ButtonSize>;
-};
+export type Props = /* @vue-ignore */ Omit<AnchorHTMLAttributes, 'download'> &
+  Pick<LinkProps, 'href' | 'external' | 'target' | 'rel' | 'download'> & {
+    variant?: ValueOf<typeof Variant>;
+    appearance?: ValueOf<typeof Appearance>;
+    size?: ValueOf<typeof ButtonSize>;
+  };
 
 defineProps<Props>();
 
