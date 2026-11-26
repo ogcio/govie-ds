@@ -3,24 +3,21 @@ import SectionLayout from './components/SectionLayout.vue';
 import AboutOverview from './pages/about/AboutOverview.vue';
 import Accessibility from './pages/help/Accessibility.vue';
 import AccessibilityAudit from './pages/services/AccessibilityAudit.vue';
-import AccessibilityAuditsForEveryDepartment from './pages/news/AccessibilityAuditsForEveryDepartment.vue';
 import Adoption from './pages/design-system/Adoption.vue';
-import AngularLibraryJoinsTheDesignSystem from './pages/news/AngularLibraryJoinsTheDesignSystem.vue';
 import Benefits from './pages/design-system/Benefits.vue';
 import Contact from './pages/Contact.vue';
 import Cookies from './pages/help/Cookies.vue';
 import DesignReview from './pages/services/DesignReview.vue';
-import DesignReviewOpenCall from './pages/news/DesignReviewOpenCall.vue';
 import DesignSystemOverview from './pages/design-system/DesignSystemOverview.vue';
 import Frameworks from './pages/design-system/Frameworks.vue';
 import Gaeilge from './pages/Gaeilge.vue';
 import HelpOverview from './pages/help/HelpOverview.vue';
 import Home from './pages/Home.vue';
+import NewsArticle from './pages/news/NewsArticle.vue';
 import NewsList from './pages/news/NewsList.vue';
-import NewWebsiteOnTheDesignSystem from './pages/news/NewWebsiteOnTheDesignSystem.vue';
+import { news } from './pages/news/news';
 import NotFound from './pages/NotFound.vue';
 import Onboarding from './pages/services/Onboarding.vue';
-import OnboardingMilestone from './pages/news/OnboardingMilestone.vue';
 import Principles from './pages/design-system/Principles.vue';
 import Privacy from './pages/help/Privacy.vue';
 import ServicesOverview from './pages/services/ServicesOverview.vue';
@@ -41,31 +38,7 @@ export const router = createRouter({
   routes: [
     { path: '/', component: Home, meta: { title: 'Home' } },
     { path: '/news', component: NewsList, meta: { title: 'News' } },
-    {
-      path: '/news/new-website-on-the-design-system',
-      component: NewWebsiteOnTheDesignSystem,
-      meta: { title: 'Department of Engagement launches its new website on the Design System' },
-    },
-    {
-      path: '/news/angular-library-joins-the-design-system',
-      component: AngularLibraryJoinsTheDesignSystem,
-      meta: { title: 'Angular component library joins HTML, React and Vue' },
-    },
-    {
-      path: '/news/accessibility-audits-for-every-department',
-      component: AccessibilityAuditsForEveryDepartment,
-      meta: { title: 'Accessibility audits now available to every department' },
-    },
-    {
-      path: '/news/onboarding-milestone',
-      component: OnboardingMilestone,
-      meta: { title: 'Public bodies complete Design System onboarding' },
-    },
-    {
-      path: '/news/design-review-open-call',
-      component: DesignReviewOpenCall,
-      meta: { title: 'Open call: put your service forward for a design review' },
-    },
+    ...news.map((item) => ({ path: item.url, component: NewsArticle, props: item, meta: { title: item.heading } })),
     {
       path: '/design-system',
       component: SectionLayout,

@@ -20,7 +20,7 @@
               <Stack direction="column" :gap="4">
                 <Text size="sm" class="text-color-text-system-neutral-muted">
                   Press release ·
-                  <time :datetime="date">{{ dateFormat.format(new Date(date)) }}</time>
+                  <time :datetime="date">{{ newsDateFormat.format(new Date(date)) }}</time>
                 </Text>
                 <H1 size="lg">{{ heading }}</H1>
                 <Paragraph size="lg">{{ lead }}</Paragraph>
@@ -57,6 +57,7 @@ import {
 } from '@ogcio/design-system-vue';
 import { ArrowLeftIcon } from '@ogcio/design-system-vue/icons';
 import { useRoute } from 'vue-router';
+import { newsDateFormat } from '../pages/news/news';
 
 defineProps<{
   heading: string;
@@ -66,11 +67,4 @@ defineProps<{
 }>();
 
 const route = useRoute();
-
-const dateFormat = new Intl.DateTimeFormat('en-IE', {
-  day: 'numeric',
-  month: 'long',
-  year: 'numeric',
-  timeZone: 'UTC',
-});
 </script>

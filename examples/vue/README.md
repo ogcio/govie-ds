@@ -40,4 +40,4 @@ location /demo/ {
 | `src/components` | Site header and footer, page, page section, section layout and article components |
 | `src/router.ts`  | Routes, page titles and scroll behaviour                                          |
 
-Page text lives in the page templates.
+Page text lives in the page templates. News articles are data in `src/pages/news/news.ts`.

@@ -165,40 +165,14 @@
         <Grid :size="{ base: 4, md: 8, lg: 5 }">
           <Stack direction="column" :gap="6" align="stretch">
             <H2 size="lg">Latest news</H2>
-            <article>
+            <article v-for="item in latestNews" :key="item.url">
               <Stack direction="column" :gap="1">
                 <Text size="sm" class="text-color-text-system-neutral-muted">
-                  <time datetime="2026-10-14">14 October 2026</time>
+                  <time :datetime="item.date">{{ newsDateFormat.format(new Date(item.date)) }}</time>
                 </Text>
                 <H3 size="xs">
-                  <RouterLink v-slot="{ href, navigate }" to="/news/new-website-on-the-design-system" custom>
-                    <Link :href="href" @click="navigate">
-                      Department of Engagement launches its new website on the Design System
-                    </Link>
-                  </RouterLink>
-                </H3>
-              </Stack>
-            </article>
-            <article>
-              <Stack direction="column" :gap="1">
-                <Text size="sm" class="text-color-text-system-neutral-muted">
-                  <time datetime="2026-09-30">30 September 2026</time>
-                </Text>
-                <H3 size="xs">
-                  <RouterLink v-slot="{ href, navigate }" to="/news/angular-library-joins-the-design-system" custom>
-                    <Link :href="href" @click="navigate"> Angular component library joins HTML, React and Vue </Link>
-                  </RouterLink>
-                </H3>
-              </Stack>
-            </article>
-            <article>
-              <Stack direction="column" :gap="1">
-                <Text size="sm" class="text-color-text-system-neutral-muted">
-                  <time datetime="2026-09-12">12 September 2026</time>
-                </Text>
-                <H3 size="xs">
-                  <RouterLink v-slot="{ href, navigate }" to="/news/accessibility-audits-for-every-department" custom>
-                    <Link :href="href" @click="navigate"> Accessibility audits now available to every department </Link>
+                  <RouterLink v-slot="{ href, navigate }" :to="item.url" custom>
+                    <Link :href="href" @click="navigate">{{ item.heading }}</Link>
                   </RouterLink>
                 </H3>
               </Stack>
@@ -254,6 +228,9 @@ import {
   SpaceDashboardIcon,
   SwapVerticalIcon,
 } from '@ogcio/design-system-vue/icons';
+import { news, newsDateFormat } from './news/news';
+
+const latestNews = news.slice(0, 3);
 
 const benefits = [
   {
