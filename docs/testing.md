@@ -1,6 +1,6 @@
 # Testing Strategy
 
-The Govie Design System uses a comprehensive, multi-layered testing strategy to ensure the stability, accessibility, and visual integrity of both the HTML and React component libraries.
+The Govie Design System uses a comprehensive, multi-layered testing strategy to ensure the stability, accessibility, and visual integrity of the HTML, React, Angular and Vue component libraries.
 
 ## 1. Unit Testing
 
@@ -12,8 +12,14 @@ Unit tests are utilised to verify core logic, utility functions, and component b
   - Root-level scripts in [package.json](../package.json) orchestrate test runs.
   - React library: [vitest.config.ts](../packages/react/vitest.config.ts), setups: [vitest-unit.setup.ts](../packages/react/vitest-unit.setup.ts), [vitest-storybook.setup.ts](../packages/react/vitest-storybook.setup.ts)
   - HTML library: [vitest.config.ts](../packages/html/ds/vitest.config.ts), setups: [vitest-unit.setup.ts](../packages/html/ds/vitest-unit.setup.ts), [vitest-storybook.setup.ts](../packages/html/ds/vitest-storybook.setup.ts)
-- **Continuous Integration**: Integrated into the primary CI [pipeline.yaml](../.azure/pipeline.yaml) within the `Build_And_Test` stage.
+  - Angular library: [vitest.config.ts](../packages/angular/vitest.config.ts), Storybook tests only
+  - Vue library: [vitest.config.ts](../packages/vue/vitest.config.ts), Storybook tests only
+- **Continuous Integration**: Integrated into the primary CI [pipeline.yaml](../.azure/pipeline.yaml) within the unit tests stage.
 - **Reporting**: Results are published in JUnit format, with code coverage reports available as pipeline artefacts.
+
+### Coverage
+
+Coverage counts the code consumers can reach through each library's published entry points. Stories, the shared Storybook metas and generated icon components are excluded. Angular also excludes the generated atoms whose `gi-*` components render the native element themselves instead of the `core-*` tag.
 
 ## 2. Interaction Testing (Storybook Play Functions)
 
@@ -22,7 +28,7 @@ Storybook serves as both a documentation platform and an isolated environment fo
 - **Tooling**: Storybook Interaction Testing via `play` functions.
 - **Methodology**: Within `*.stories.tsx` files, `play` functions simulate user interactions (e.g., clicks, keyboard input) and assert DOM state changes.
 - **Example**: Refer to the [Tabs component stories](../packages/react/src/tabs/tabs.stories.tsx).
-- **Verification**: Tests are executed automatically during story development and can be validated via the Storybook test-runner.
+- **Verification**: Every story runs in headless Chromium through `@storybook/addon-vitest` as part of `pnpm run test`.
 
 ## 3. Visual Regression Testing
     
@@ -36,19 +42,19 @@ Chromatic is a cloud-based visual testing service integrated with Storybook that
 - **Configuration**: 
   - [React Chromatic Config](../packages/react/chromatic.config.json)
   - [HTML Chromatic Config](../packages/html/ds/chromatic.config.json)
-- **Pipeline**: Managed via [visual-regression.yaml](../.azure/visual-regression.yaml) in the `Chromatic_HTML` and `Chromatic_React` stages.
+- **Pipeline**: Managed via [visual-regression.yaml](../.azure/visual-regression.yaml) in the `ChromaticHTML` and `ChromaticReact` stages.
 - **Workflow**: Facilitates collaborative review of visual changes during the Pull Request process.
 
 ### Playwright Visual Regression (Automated Snapshots)
 
 An automated testing suite using Playwright for generating and comparing visual snapshots in the CI environment.
 
-- **Scope**: Currently configured for [`@ogcio/design-system-react`](../packages/react/README.md).
-- **Configuration**: [playwright.config.ts](../packages/react/playwright.config.ts).
-- **Implementation**: Tests are dynamically generated based on the Storybook metadata ([visual.spec.ts](../packages/react/tests/visual.spec.ts)).
-- **Execution**: Run `pnpm playwright test` within the React package.
-- **Pipeline**: Executed in the `Playwright` stage of [visual-regression.yaml](../.azure/visual-regression.yaml) using a specialised Playwright Docker container.
-- **Snapshots**: Baseline images are stored in [`packages/react/tests/visual.spec.ts-snapshots`](../packages/react/tests/visual.spec.ts-snapshots).
+- **Scope**: Configured for [`@ogcio/design-system-react`](../packages/react/README.md) and [`@ogcio/design-system-angular`](../packages/angular/README.md).
+- **Configuration**: [React playwright.config.ts](../packages/react/playwright.config.ts), [Angular playwright.config.ts](../packages/angular/playwright.config.ts).
+- **Implementation**: Tests are dynamically generated based on the Storybook metadata ([React visual.spec.ts](../packages/react/tests/visual.spec.ts), [Angular visual.spec.ts](../packages/angular/e2e/visual.spec.ts)).
+- **Execution**: Run `pnpm playwright test` within the React or Angular package.
+- **Pipeline**: Executed in the `Playwright` and `PlaywrightAngular` stages of [visual-regression.yaml](../.azure/visual-regression.yaml) using a specialised Playwright Docker container.
+- **Snapshots**: Baseline images are stored in [`packages/react/tests/visual.spec.ts-snapshots`](../packages/react/tests/visual.spec.ts-snapshots) and [`packages/angular/e2e/visual.spec.ts-snapshots`](../packages/angular/e2e/visual.spec.ts-snapshots).
 
 #### Local execution (Makefile)
 
@@ -70,6 +76,11 @@ Commands:
 - Update baseline screenshots after intentional visual changes
   ```bash
   make react-visual-update
+  ```
+- Run or update the Angular visual regression tests
+  ```bash
+  make angular-visual-tests
+  make angular-visual-update
   ```
 
 #### Running a subset of tests
@@ -97,7 +108,7 @@ Regression testing is fully integrated into Azure DevOps Pipelines to ensure con
    - Executes library builds and unit tests.
    - Conducts security vulnerability scans.
 2. **Visual Regression Pipeline ([visual-regression.yaml](../.azure/visual-regression.yaml))**:
-   - Triggered by changes in core component directories (`react`, `html/ds`, `tokens`, `tailwind`).
+   - Triggered by changes in the component libraries (`react`, `html/ds`, `angular`), the design packages and the themes.
    - Automates the build of libraries and Storybook instances.
    - Runs parallel Chromatic and Playwright visual suites across multiple browsers (Chromium, Firefox, Webkit) and mobile emulators (Android, iOS).
 
