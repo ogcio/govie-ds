@@ -51,7 +51,7 @@ export {
 } from './breadcrumbs/BreadcrumbEllipsis.vue';
 
 // Pagination
-export { default as Pagination } from './pagination/Pagination.vue';
+export { default as Pagination, type Props as PaginationProps } from './pagination/Pagination.vue';
 export { default as PaginationLink, type Props as PaginationLinkProps } from './pagination/PaginationLink.vue';
 export { default as PaginationButton, type Props as PaginationButtonProps } from './pagination/PaginationButton.vue';
 export {
