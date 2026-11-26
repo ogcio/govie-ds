@@ -43,7 +43,7 @@ export {
 export { default as HeaderTitle, type Props as HeaderTitleProps } from './header/HeaderTitle.vue';
 
 // Breadcrumbs
-export { default as Breadcrumbs } from './breadcrumbs/Breadcrumbs.vue';
+export { default as Breadcrumbs, type Props as BreadcrumbsProps } from './breadcrumbs/Breadcrumbs.vue';
 export { default as BreadcrumbLink, type Props as BreadcrumbLinkProps } from './breadcrumbs/BreadcrumbLink.vue';
 export {
   default as BreadcrumbEllipsis,

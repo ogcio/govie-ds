@@ -14,13 +14,14 @@
 </template>
 
 <script setup lang="ts">
+import type { AnchorHTMLAttributes } from 'vue';
 import CoreBreadcrumbItem from '../atoms/breadcrumbs/BreadcrumbItem.vue';
 import CoreBreadcrumbLink from '../atoms/breadcrumbs/BreadcrumbLink.vue';
 import { useCoreAttrs } from '../attrs';
 
 defineOptions({ inheritAttrs: false });
 
-export type Props = {
+export type Props = /* @vue-ignore */ AnchorHTMLAttributes & {
   href: string;
   /** Marks the page the user is on: sets `aria-current="page"` and mutes the text colour. */
   current?: boolean;
