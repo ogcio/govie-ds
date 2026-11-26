@@ -13,7 +13,17 @@ export default defineConfig({
       reporter: ['lcov', 'cobertura'],
       clean: true,
       include: ['src/**/*.ts'],
-      exclude: [...coverageConfigDefaults.exclude, 'src/**/*.stories.ts', 'src/**/storybook/**', 'src/atoms/icons/**'],
+      exclude: [
+        ...coverageConfigDefaults.exclude,
+        // Stories and the shared Storybook metas are test code.
+        'src/**/*.stories.ts',
+        'src/**/storybook/**',
+        // Generated SVG icon components.
+        'src/atoms/icons/**',
+        // Generated atoms whose classes never run: the gi-* components import only their Props type.
+        'src/atoms/{Button,IconButton,InsetText,Link,LinkButton,Paragraph,Text}.ts',
+        'src/atoms/heading/{H1,H2,H3,H4,H5,H6}.ts',
+      ],
     },
     projects: [
       {
