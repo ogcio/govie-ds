@@ -30,17 +30,17 @@ export { default as FooterLogo } from './footer/FooterLogo.vue';
 export { default as FooterSection, type Props as FooterSectionProps } from './footer/FooterSection.vue';
 
 // Header
-export { default as Header } from './header/Header.vue';
+export { default as Header, type Props as HeaderProps } from './header/Header.vue';
 export { default as HeaderSection, type Props as HeaderSectionProps } from './header/HeaderSection.vue';
-export { default as HeaderLogo } from './header/HeaderLogo.vue';
-export { default as HeaderNav } from './header/HeaderNav.vue';
+export { default as HeaderLogo, type Props as HeaderLogoProps } from './header/HeaderLogo.vue';
+export { default as HeaderNav, type Props as HeaderNavProps } from './header/HeaderNav.vue';
 export { default as HeaderNavItem, type Props as HeaderNavItemProps } from './header/HeaderNavItem.vue';
 export { default as HeaderNavItemLink, type Props as HeaderNavItemLinkProps } from './header/HeaderNavItemLink.vue';
 export {
   default as HeaderNavItemSeparator,
   type Props as HeaderNavItemSeparatorProps,
 } from './header/HeaderNavItemSeparator.vue';
-export { default as HeaderTitle } from './header/HeaderTitle.vue';
+export { default as HeaderTitle, type Props as HeaderTitleProps } from './header/HeaderTitle.vue';
 
 // Breadcrumbs
 export { default as Breadcrumbs } from './breadcrumbs/Breadcrumbs.vue';

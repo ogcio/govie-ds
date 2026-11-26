@@ -5,13 +5,14 @@
 </template>
 
 <script setup lang="ts">
+import type { HTMLAttributes } from 'vue';
 import CoreHeaderSection from '../atoms/header/HeaderSection.vue';
 import type { MaxWidth, SurfaceAppearance, SurfaceVariant, ValueOf } from '../atoms/constants';
 import { useCoreAttrs } from '../attrs';
 
 defineOptions({ inheritAttrs: false });
 
-export type Props = {
+export type Props = /* @vue-ignore */ HTMLAttributes & {
   /** `utility` is the slim bar above the main row, hidden below the `lg` breakpoint. */
   variant?: ValueOf<typeof SurfaceVariant>;
   appearance?: ValueOf<typeof SurfaceAppearance>;

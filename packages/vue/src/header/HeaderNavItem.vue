@@ -14,6 +14,7 @@
 </template>
 
 <script setup lang="ts">
+import type { ButtonHTMLAttributes } from 'vue';
 import CoreHeaderNavItem from '../atoms/header/HeaderNavItem.vue';
 import CoreHeaderNavItemButton from '../atoms/header/HeaderNavItemButton.vue';
 import type { VisibleValue } from '../atoms/header/HeaderNavItem.styles';
@@ -21,7 +22,7 @@ import { useCoreAttrs } from '../attrs';
 
 defineOptions({ inheritAttrs: false });
 
-export type Props = {
+export type Props = /* @vue-ignore */ ButtonHTMLAttributes & {
   /** Visibility: `true`/`false`, a breakpoint to show from (e.g. `"lg"`), or a per-breakpoint map like `{ base: false, lg: true }`. */
   visible?: VisibleValue;
 };
