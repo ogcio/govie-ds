@@ -1,6 +1,6 @@
 # Department of Engagement – Vue demo
 
-A demonstration website for a fictional government department, built with the Vue library of the [Government of Ireland Design System](https://ds.services.gov.ie/). It follows the layout of the Design System website: header, primary navigation, section pages and footer.
+A demonstration website for a fictional government department, built with the Vue library of the [Government of Ireland Design System](https://ds.services.gov.ie/). It follows the layout of the Design System website: header, primary navigation, section pages with side navigation and breadcrumbs, and footer.
 
 Every Design System element comes from the public API of `@ogcio/design-system-vue`. The site loads the theme, the compiled library stylesheet and fonts, and builds its own page-level utilities with Tailwind and `createTheme()` from `@ogcio/design-system-tailwind`. The application utilities have no prefix, so they never collide with the library's `gi-` classes.
 

@@ -44,23 +44,77 @@
             {{ item.label }}
           </HeaderNavItemLink>
         </RouterLink>
+        <HeaderNavItem
+          :visible="{ base: true, lg: false }"
+          aria-controls="mobile-navigation"
+          :aria-expanded="menuOpen"
+          @click="menuOpen = !menuOpen"
+        >
+          <template v-if="menuOpen">
+            Close
+            <CloseIcon />
+          </template>
+          <template v-else>
+            Menu
+            <MenuIcon />
+          </template>
+        </HeaderNavItem>
       </HeaderNav>
     </HeaderSection>
+
+    <Box
+      v-if="menuOpen"
+      id="mobile-navigation"
+      class="py-4 border-b-xs border-color-border-system-neutral-subtle bg-color-surface-system-neutral-default lg:hidden"
+    >
+      <Container>
+        <SideNav aria-label="Mobile navigation">
+          <RouterLink v-for="item in navigation" :key="item.url" v-slot="{ href, navigate }" :to="item.url" custom>
+            <SideNavItemLink
+              :href="href"
+              :selected="isCurrent(item.url)"
+              :aria-current="isCurrent(item.url) ? 'true' : undefined"
+              @click="navigate"
+            >
+              {{ item.label }}
+            </SideNavItemLink>
+          </RouterLink>
+          <RouterLink v-slot="{ href, navigate }" to="/gaeilge" custom>
+            <SideNavItemLink
+              lang="ga"
+              :href="href"
+              :selected="isCurrent('/gaeilge')"
+              :aria-current="isCurrent('/gaeilge') ? 'page' : undefined"
+              @click="navigate"
+            >
+              Gaeilge
+            </SideNavItemLink>
+          </RouterLink>
+        </SideNav>
+      </Container>
+    </Box>
   </Header>
 </template>
 
 <script setup lang="ts">
 import {
+  Box,
+  Container,
   Header,
   HeaderLogo,
   HeaderNav,
+  HeaderNavItem,
   HeaderNavItemLink,
   HeaderSection,
   HeaderTitle,
   Link,
+  SideNav,
+  SideNavItemLink,
 } from '@ogcio/design-system-vue';
+import { CloseIcon, MenuIcon } from '@ogcio/design-system-vue/icons';
 import { LogoHarpWhite, LogoWhite } from '@ogcio/design-system-vue/logos';
-import { useRoute } from 'vue-router';
+import { onBeforeUnmount, ref } from 'vue';
+import { useRoute, useRouter } from 'vue-router';
 
 const navigation = [
   { label: 'Services', url: '/services' },
@@ -74,4 +128,9 @@ const route = useRoute();
 
 /** A section link stays current on every page below it. */
 const isCurrent = (url: string) => route.path === url || route.path.startsWith(`${url}/`);
+
+const menuOpen = ref(false);
+
+// Close the menu after every navigation, including a click on the link to the current page.
+onBeforeUnmount(useRouter().afterEach(() => (menuOpen.value = false)));
 </script>
