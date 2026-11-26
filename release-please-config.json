@@ -84,8 +84,7 @@
     },
     "packages/vue": {
       "component": "vue",
-      "release-type": "node",
-      "prerelease": true
+      "release-type": "node"
     },
     "packages/angular": {
       "component": "angular",
