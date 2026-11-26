@@ -25,8 +25,8 @@ export { default as Link, type Props as LinkProps } from './Link.vue';
 export { default as LinkButton, type Props as LinkButtonProps } from './LinkButton.vue';
 
 // Footer
-export { default as Footer } from './footer/Footer.vue';
-export { default as FooterLogo } from './footer/FooterLogo.vue';
+export { default as Footer, type Props as FooterProps } from './footer/Footer.vue';
+export { default as FooterLogo, type Props as FooterLogoProps } from './footer/FooterLogo.vue';
 export { default as FooterSection, type Props as FooterSectionProps } from './footer/FooterSection.vue';
 
 // Header
