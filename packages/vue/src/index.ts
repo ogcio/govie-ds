@@ -1,5 +1,5 @@
 // Layout
-export { default as Box } from './Box.vue';
+export { default as Box, type Props as BoxProps } from './Box.vue';
 export { default as Container, type Props as ContainerProps } from './Container.vue';
 export { default as Grid, type Props as GridProps } from './Grid.vue';
 export { default as Stack, type Props as StackProps } from './Stack.vue';
