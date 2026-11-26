@@ -35,6 +35,7 @@ export default [
         'vue/define-props-declaration': 'error',
         'vue/multi-word-component-names': 'off',
         'vue/no-unused-refs': 'error',
+        'vue/prop-name-casing': ['warn', 'camelCase', { ignoreProps: ['/[-:]/'] }],
       },
     },
     {
