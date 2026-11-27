@@ -56,6 +56,7 @@
       "pagination.previous": "Previous",
       "pagination.next": "Next",
       "pagination.page": "<bold>Page {{currentPage}}</bold> of {{totalPages}}",
+      "pagination.pageLabel": "Page {{currentPage}} of {{totalPages}}",
       "pagination.goToPage": "Go to page {{page}}",
       "pagination.goToPrevious": "Go to previous",
       "pagination.goToNext": "Go to next",

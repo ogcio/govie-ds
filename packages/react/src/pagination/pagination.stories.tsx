@@ -71,6 +71,13 @@ export const Default: Story = {
       expect(nextButtonText).toBeInTheDocument();
     });
 
+    await step('exposes the page count and current page to assistive technology', async () => {
+      expect(canvas.getByRole('navigation')).toHaveAccessibleName('Page 5 of 10');
+      expect(canvas.getAllByRole('button', { current: 'page' })).toEqual([
+        canvas.getByRole('button', { name: 'Go to page 5' }),
+      ]);
+    });
+
     await step('should render page number buttons correctly on large breakpoints', async () => {
       for (const page of [1, 3, 4, 5, 6, 7, 10]) {
         expect(canvas.getByText(page.toString())).toBeInTheDocument();
