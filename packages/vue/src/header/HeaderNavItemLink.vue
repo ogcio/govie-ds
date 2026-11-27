@@ -14,6 +14,7 @@
 </template>
 
 <script setup lang="ts">
+import type { AnchorHTMLAttributes } from 'vue';
 import CoreHeaderNavItem from '../atoms/header/HeaderNavItem.vue';
 import CoreHeaderNavItemLink from '../atoms/header/HeaderNavItemLink.vue';
 import type { VisibleValue } from '../atoms/header/HeaderNavItem.styles';
@@ -21,7 +22,7 @@ import { useCoreAttrs } from '../attrs';
 
 defineOptions({ inheritAttrs: false });
 
-export type Props = {
+export type Props = /* @vue-ignore */ (Omit<AnchorHTMLAttributes, 'download'> & { download?: string | boolean }) & {
   href: string;
   /** Opens the link in a new tab with `rel="noreferrer noopener"`. */
   external?: boolean;

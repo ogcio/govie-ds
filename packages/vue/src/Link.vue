@@ -21,6 +21,7 @@
 </template>
 
 <script setup lang="ts">
+import type { AnchorHTMLAttributes } from 'vue';
 import CoreLink from './atoms/Link.vue';
 import type { Appearance, Underline, Variant, Visited } from './atoms/Link.styles';
 import type { ValueOf } from './atoms/constants';
@@ -28,7 +29,7 @@ import { useCoreAttrs } from './attrs';
 
 defineOptions({ inheritAttrs: false });
 
-export type Props = {
+export type Props = /* @vue-ignore */ Omit<AnchorHTMLAttributes, 'download'> & {
   href: string;
   variant?: ValueOf<typeof Variant>;
   underline?: ValueOf<typeof Underline>;

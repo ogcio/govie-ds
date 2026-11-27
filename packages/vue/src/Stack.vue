@@ -5,13 +5,14 @@
 </template>
 
 <script setup lang="ts">
+import type { HTMLAttributes } from 'vue';
 import CoreStack from './atoms/Stack.vue';
 import type { AlignItems, Direction, Justify, ResponsiveValue, SpacingScale, ValueOf } from './atoms/constants';
 import { useCoreAttrs } from './attrs';
 
 defineOptions({ inheritAttrs: false });
 
-export type Props = {
+export type Props = /* @vue-ignore */ HTMLAttributes & {
   direction?: ResponsiveValue<ValueOf<typeof Direction>>;
   gap?: ResponsiveValue<SpacingScale>;
   align?: ValueOf<typeof AlignItems>;

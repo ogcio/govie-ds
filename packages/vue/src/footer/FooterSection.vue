@@ -5,13 +5,14 @@
 </template>
 
 <script setup lang="ts">
+import type { HTMLAttributes } from 'vue';
 import CoreFooterSection from '../atoms/footer/FooterSection.vue';
 import type { MaxWidth, SurfaceVariant, ValueOf } from '../atoms/constants';
 import { useCoreAttrs } from '../attrs';
 
 defineOptions({ inheritAttrs: false });
 
-export type Props = {
+export type Props = /* @vue-ignore */ HTMLAttributes & {
   variant?: ValueOf<typeof SurfaceVariant>;
   maxWidth?: ValueOf<typeof MaxWidth>;
 };

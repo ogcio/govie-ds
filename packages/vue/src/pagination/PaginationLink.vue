@@ -16,13 +16,14 @@
 </template>
 
 <script setup lang="ts">
+import type { AnchorHTMLAttributes } from 'vue';
 import CorePaginationItem from '../atoms/pagination/PaginationItem.vue';
 import CorePaginationLink from '../atoms/pagination/PaginationLink.vue';
 import { useCoreAttrs } from '../attrs';
 
 defineOptions({ inheritAttrs: false });
 
-export type Props = {
+export type Props = /* @vue-ignore */ AnchorHTMLAttributes & {
   href: string;
   /** Marks the link as the current page with `aria-current="page"`. */
   current?: boolean;

@@ -16,13 +16,14 @@
 </template>
 
 <script setup lang="ts">
+import type { ButtonHTMLAttributes } from 'vue';
 import CorePaginationButton from '../atoms/pagination/PaginationButton.vue';
 import CorePaginationItem from '../atoms/pagination/PaginationItem.vue';
 import { useCoreAttrs } from '../attrs';
 
 defineOptions({ inheritAttrs: false });
 
-export type Props = {
+export type Props = /* @vue-ignore */ ButtonHTMLAttributes & {
   /** Marks the button as the current page with `aria-current="true"`. */
   current?: boolean;
   disabled?: boolean;

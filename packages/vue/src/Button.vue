@@ -16,6 +16,7 @@
 </template>
 
 <script setup lang="ts">
+import type { ButtonHTMLAttributes } from 'vue';
 import CoreButton from './atoms/Button.vue';
 import type { Appearance, ButtonSize, Variant } from './atoms/Button.styles';
 import type { ValueOf } from './atoms/constants';
@@ -23,7 +24,7 @@ import { useCoreAttrs } from './attrs';
 
 defineOptions({ inheritAttrs: false });
 
-export type Props = {
+export type Props = /* @vue-ignore */ ButtonHTMLAttributes & {
   variant?: ValueOf<typeof Variant>;
   appearance?: ValueOf<typeof Appearance>;
   size?: ValueOf<typeof ButtonSize>;
