@@ -17,15 +17,6 @@ export const headingMeta = {
       control: false,
       description: 'Optional id for linking/targeting and aria references.',
     },
-    className: {
-      control: false,
-      description: 'Additional CSS classes to apply to the heading element.',
-      table: {
-        type: {
-          summary: 'string',
-        },
-      },
-    },
     dataTestId: {
       control: false,
       description: 'Test id for targeting the element in automated tests.',

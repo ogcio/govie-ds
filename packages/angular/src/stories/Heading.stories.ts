@@ -12,12 +12,18 @@ import {
   Default as headingDefault,
   AllHeadingLevels as headingAllLevels,
 } from '@/atoms/storybook/Heading.meta';
+import argTypes from '@/atoms/storybook/argTypes';
 
 const meta: Meta = {
   ...headingMeta,
   title: 'Typography/Heading',
   argTypes: {
     ...headingMeta.argTypes,
+    class: argTypes.class,
+    style: {
+      ...argTypes.style,
+      table: { type: { summary: 'string | Record<string, string | number | null | undefined>' } },
+    },
   },
 };
 
@@ -35,7 +41,7 @@ export const Default: StoryObj = {
       imports: [GiH1],
     },
     template: `
-      <gi-h1 [id]="heading-id" [size]="size">Heading</gi-h1>
+      <gi-h1 [id]="id" [size]="size">Heading</gi-h1>
     `,
   }),
 };

@@ -6,6 +6,7 @@ import {
   Default as headingDefault,
   AllHeadingLevels as headingAllLevels,
 } from '@/atoms/storybook/Heading.meta';
+import argTypes from '@/atoms/storybook/argTypes';
 
 const meta: Meta<typeof Heading> = {
   ...headingMeta,
@@ -13,6 +14,7 @@ const meta: Meta<typeof Heading> = {
   component: Heading,
   argTypes: {
     ...headingMeta.argTypes,
+    className: argTypes.class,
     as: {
       control: {
         type: 'select',
