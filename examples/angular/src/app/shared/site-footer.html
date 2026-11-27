@@ -91,10 +91,9 @@
   </gi-footer-section>
 
   <gi-footer-section variant="utility">
-    <gi-stack direction="row" justify="center">
-      <span giText size="sm" class="text-center">
-        © {{ year }} Department of Engagement. Built with the Government of Ireland Design System.
-      </span>
-    </gi-stack>
+    <div class="grid justify-items-center gap-2 lg:grid-cols-[1fr_auto_1fr] lg:items-center">
+      <span giText size="sm" class="lg:col-start-2">© {{ year }} Department of Engagement</span>
+      <app-powered-by class="lg:justify-self-end" />
+    </div>
   </gi-footer-section>
 </gi-footer>

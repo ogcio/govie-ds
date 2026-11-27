@@ -19,6 +19,7 @@
     "examples:vite": "pnpm -F @ogcio/examples-vite^... build && pnpm --F @ogcio/examples-vite dev",
     "examples:nextjs": "pnpm -F @ogcio/examples-nextjs^... build && pnpm --F @ogcio/examples-nextjs dev",
     "examples:angular": "pnpm -F @ogcio/examples-angular^... build && pnpm --F @ogcio/examples-angular start",
+    "examples:vue": "pnpm -F @ogcio/examples-vue^... build && pnpm --F @ogcio/examples-vue dev",
     "examples:html": "pnpm -F @ogcio/examples-html^... build && pnpm --F @ogcio/examples-html dev",
     "format": "pnpm -r format",
     "format:check": "pnpm -r format:check",
@@ -41,11 +42,12 @@
     "packages/react/**/*.{js,ts,tsx}": "eslint --config packages/react/eslint.config.js",
     "packages/html/ds/**/*.{js,ts,tsx}": "eslint --config packages/html/ds/eslint.config.js",
     "packages/vue/**/*.{js,ts,tsx,vue}": "eslint --config packages/vue/eslint.config.js",
+    "examples/vue/**/*.{js,ts,vue}": "eslint --config examples/vue/eslint.config.js",
     "packages/angular/**/*.{js,ts,tsx}": "eslint --config packages/angular/eslint.config.js",
     "packages/core/**/*.{js,ts,tsx}": "eslint --config packages/core/eslint.config.js",
     "apps/docs/**/*.{js,ts,tsx}": "eslint --config apps/docs/eslint.config.js",
     "packages/inspector/**/*.{js,ts,tsx}": "eslint --config packages/inspector/eslint.config.js",
-    "{packages/!(react|html|vue|angular|core|inspector),examples}/**/*.{js,ts,tsx}": "eslint",
+    "{packages/!(react|html|vue|angular|core|inspector),examples/!(vue)}/**/*.{js,ts,tsx}": "eslint",
     "{apps,packages,examples}/**/*": "prettier --check --ignore-unknown"
   },
   "devDependencies": {
