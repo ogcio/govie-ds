@@ -1,5 +1,28 @@
 # Changelog
 
+## [0.8.0](https://github.com/ogcio/govie-ds/compare/angular-v0.7.0...angular-v0.8.0) (2026-11-27)
+
+
+### Features
+
+* **AB#44526:** enable aria-current=page to visually distinguish active sidenavitem ([c13a555](https://github.com/ogcio/govie-ds/commit/c13a5553d14e85fe0df151afd71edb27d70952e2))
+* **AB#44526:** generate native router story for SideNavItemLink ([f783c8c](https://github.com/ogcio/govie-ds/commit/f783c8c481b6633ed81cdfe07ac073cfa22d1894))
+* **AB#44526:** improve Pagination family stories ([9c098bc](https://github.com/ogcio/govie-ds/commit/9c098bc5e8c0fa72f4bbd0808267d6a9dd3d9e8a))
+* **AB#44744:** add native class and style argTypes per framework ([51e88ba](https://github.com/ogcio/govie-ds/commit/51e88ba25e6ca40f06a196fad654f44a147accd2))
+* **AB#44750:** add native vue wrappers for sidenav items ([f9d3c89](https://github.com/ogcio/govie-ds/commit/f9d3c89b48a4ae0582cef135261ce55420aed9ad))
+* **AB#44750:** restructure sidenav components ([3cda95c](https://github.com/ogcio/govie-ds/commit/3cda95c80ade1fb53ed015bd674f579984da9ccb))
+* **AB#45583:** enable asChild prop in React Pagination & update/add stories ([bf5994d](https://github.com/ogcio/govie-ds/commit/bf5994d9cd05e9a4cfffd46e4ac8691173dafbb4))
+* **AB#45794:** add native class and style argTypes per framework ([d54c4f0](https://github.com/ogcio/govie-ds/commit/d54c4f08d3bc224b725111768f48b7894518ad92))
+* **AB#45795:** add native class and style argTypes per framework ([599ca6c](https://github.com/ogcio/govie-ds/commit/599ca6ca095c0b721d3dfbc7a95137e7ac421fee))
+* **AB#46233:** add native class and style argTypes to the paragraph stories ([137185e](https://github.com/ogcio/govie-ds/commit/137185efca2b7344809d1d1411fb9083e9e24a9d))
+
+
+### Bug Fixes
+
+* **AB#44735:** add native class and style argTypes per framework ([a0dd5e0](https://github.com/ogcio/govie-ds/commit/a0dd5e06e1556acea86a31d476c25ef5414ec209))
+* **AB#44735:** remove className and styles from the Box meta ([745d3fc](https://github.com/ogcio/govie-ds/commit/745d3fc6b7057e4aa6c3c0b31d13a985c785a48b))
+* **SideNavGroup:** make children optional to patch story type issue ([248a531](https://github.com/ogcio/govie-ds/commit/248a5311804087e03712909d5791d7b568384c68))
+
 ## [0.7.0](https://github.com/ogcio/govie-ds/compare/angular-v0.6.0...angular-v0.7.0) (2026-11-17)
 
 
