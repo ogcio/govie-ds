@@ -8,20 +8,18 @@ import { checker } from './utilities';
 export const sideNavHeadingMeta = {
   title: 'Navigation/SideNav/SideNavHeading',
   args: {
-    children: 'Section heading',
     id: 'side-nav-heading-id',
     dataTestId: 'side-nav-heading',
   },
   argTypes: {
-    className: argTypes.class,
-    id: boxMeta.argTypes.id,
+    id: argTypes.id,
     dataTestId: boxMeta.argTypes.dataTestId,
   } satisfies ArgTypes<Props>,
   parameters: {
     docs: {
       description: {
         component:
-          'Non-interactive heading that labels the items following it in a SideNav list. It is a visual separator between sibling `SideNavItem`, `SideNavItemLink` and `SideNavGroup` entries, not a container: use `SideNavGroup` to nest items.',
+          'Non-interactive heading that labels the items and groups following it in the side navigation. It separates sections visually but does not contain them: to nest items, use a group.',
       },
     },
   },

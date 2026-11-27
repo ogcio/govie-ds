@@ -5,13 +5,14 @@ import SideNav from '@/SideNav/SideNav';
 import SideNavItemLink from '@/SideNav/SideNavItemLink';
 import * as stories from '@/atoms/storybook/SideNavItemLink.meta';
 import { importNext } from './helpers';
-import omit from 'lodash/omit';
+import argTypes from '@/atoms/storybook/argTypes';
 
 const meta = {
   ...stories.sideNavItemLinkMeta,
   argTypes: {
-    ...omit(stories.sideNavItemLinkMeta.argTypes, 'styles'),
-    style: stories.sideNavItemLinkMeta.argTypes.styles,
+    ...stories.sideNavItemLinkMeta.argTypes,
+    className: argTypes.class,
+    style: argTypes.style,
     asChild: {
       control: false,
       description:
@@ -22,7 +23,9 @@ const meta = {
       },
     },
     actions: {
-      ...stories.sideNavItemLinkMeta.argTypes.actions,
+      control: { disable: true },
+      description:
+        'Content shown to the right of the item, for quick actions in its context (for example an `IconButton`).',
       table: { type: { summary: 'React.ReactNode' } },
     },
   },
@@ -33,7 +36,7 @@ const meta = {
     docs: {
       ...stories.sideNavItemLinkMeta.parameters.docs,
       description: {
-        component: `${stories.sideNavItemLinkMeta.parameters.docs.description.component}${importNext('SideNavItemLink')}`,
+        component: `${stories.sideNavItemLinkMeta.parameters.docs.description.component}\n\nPlace \`SideNavItemLink\` inside \`SideNav\` or \`SideNavGroup\`.${importNext('SideNavItemLink')}`,
       },
     },
   },

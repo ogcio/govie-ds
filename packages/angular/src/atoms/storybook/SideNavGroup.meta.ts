@@ -17,12 +17,8 @@ import { checker } from './utilities';
  */
 type SideNavGroupArgs = {
   id?: ItemButtonProps['id'];
-  label?: any;
-  actions?: any;
   open?: boolean;
   disabled?: ItemButtonProps['disabled'];
-  className?: ItemButtonProps['className'];
-  styles?: ItemButtonProps['styles'];
   ariaLabel?: ItemButtonProps['ariaLabel'];
   ariaControls?: ItemButtonProps['ariaControls'];
   ariaHidden?: ItemButtonProps['ariaHidden'];
@@ -40,15 +36,6 @@ export const sideNavGroupMeta = {
     dataTestId: 'side-nav-group',
   },
   argTypes: {
-    label: {
-      control: 'text',
-      description: 'Content of the expandable group header button.',
-      table: {
-        type: {
-          summary: 'slot',
-        },
-      },
-    },
     open: {
       control: 'boolean',
       description: 'Whether nested items are visible. The group is fully controlled — the parent owns this state.',
@@ -70,20 +57,7 @@ export const sideNavGroupMeta = {
         },
       },
     },
-    actions: {
-      control: {
-        disable: true,
-      },
-      description: 'Trailing action slot rendered beside the group header (for example an IconButton).',
-      table: {
-        type: {
-          summary: 'slot',
-        },
-      },
-    },
-    className: argTypes.class,
-    styles: argTypes.style,
-    id: boxMeta.argTypes.id,
+    id: argTypes.id,
     ariaLabel: {
       control: 'text',
       description: 'Accessible label for the group header button. Maps to `aria-label`.',
@@ -134,7 +108,7 @@ export const sideNavGroupMeta = {
     docs: {
       description: {
         component:
-          'Expandable section within a SideNav. Renders a disclosure header with a chevron and a nested list of `SideNavItem` or `SideNavItemLink` children. Open state is fully controlled: the group never toggles itself, it reports header activation and the parent updates `open`.',
+          'Expandable section of the side navigation. Its header button, marked with a chevron, shows and hides the button and link items nested inside it. Open state is fully controlled: the group never toggles itself, it reports header activation and the parent updates `open`.',
       },
     },
   },

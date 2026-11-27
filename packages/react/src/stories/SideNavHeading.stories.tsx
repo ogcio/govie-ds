@@ -3,18 +3,32 @@ import SideNav from '@/SideNav/SideNav';
 import SideNavHeading from '@/SideNav/SideNavHeading';
 import SideNavItem from '@/SideNav/SideNavItem';
 import * as stories from '@/atoms/storybook/SideNavHeading.meta';
+import argTypes from '@/atoms/storybook/argTypes';
 import { importNext } from './helpers';
 
 const meta = {
   ...stories.sideNavHeadingMeta,
   title: 'Navigation/SideNav/SideNavHeading',
   component: SideNavHeading,
+  args: {
+    ...stories.sideNavHeadingMeta.args,
+    children: 'Section heading',
+  },
+  argTypes: {
+    ...stories.sideNavHeadingMeta.argTypes,
+    children: {
+      control: 'text',
+      description: 'Heading text.',
+      table: { type: { summary: 'React.ReactNode' } },
+    },
+    className: argTypes.class,
+  },
   parameters: {
     ...stories.sideNavHeadingMeta.parameters,
     docs: {
       ...stories.sideNavHeadingMeta.parameters.docs,
       description: {
-        component: `${stories.sideNavHeadingMeta.parameters.docs.description.component}${importNext('SideNavHeading')}`,
+        component: `${stories.sideNavHeadingMeta.parameters.docs.description.component}\n\nPlace \`SideNavHeading\` inside \`SideNav\`, before the items it labels.${importNext('SideNavHeading')}`,
       },
     },
   },

@@ -17,10 +17,8 @@ export const sideNavItemLinkMeta = {
   },
   argTypes: {
     selected: sideNavItemButtonMeta.argTypes.selected,
-    actions: sideNavItemButtonMeta.argTypes.actions,
-    id: linkMeta.argTypes.id,
+    id: argTypes.id,
     href: linkMeta.argTypes.href,
-    className: argTypes.class,
     external: linkMeta.argTypes.external,
     target: linkMeta.argTypes.target,
     rel: linkMeta.argTypes.rel,
@@ -37,18 +35,17 @@ export const sideNavItemLinkMeta = {
     },
     tabIndex: linkMeta.argTypes.tabIndex,
     lang: linkMeta.argTypes.lang,
-    styles: argTypes.style,
     dataTestId: linkMeta.argTypes.dataTestId,
   },
   parameters: {
     docs: {
       description: {
         component:
-          'Link-style navigation item for SideNav. Renders an anchor in a list item with SideNav item styling. Use for destinations that navigate to a URL.',
+          'Link-style item for the side navigation. Use for destinations that navigate to a URL. Place it directly in the side navigation or inside a group.',
       },
     },
   },
-} satisfies Meta<Props & { actions?: any }>;
+} satisfies Meta<Props>;
 
 export const Default = {
   args: sideNavItemLinkMeta.args,

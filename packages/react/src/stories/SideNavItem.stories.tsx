@@ -3,17 +3,20 @@ import SideNav from '@/SideNav/SideNav';
 import SideNavItem from '@/SideNav/SideNavItem';
 import * as buttonStories from '@/atoms/storybook/SideNavItemButton.meta';
 import { importNext } from './helpers';
-import omit from 'lodash/omit';
+import argTypes from '@/atoms/storybook/argTypes';
 
 const meta = {
   ...buttonStories.sideNavItemButtonMeta,
   title: 'Navigation/SideNav/SideNavItem',
   component: SideNavItem,
   argTypes: {
-    ...omit(buttonStories.sideNavItemButtonMeta.argTypes, 'styles'),
-    style: buttonStories.sideNavItemButtonMeta.argTypes.styles,
+    ...buttonStories.sideNavItemButtonMeta.argTypes,
+    className: argTypes.class,
+    style: argTypes.style,
     actions: {
-      ...buttonStories.sideNavItemButtonMeta.argTypes.actions,
+      control: { disable: true },
+      description:
+        'Content shown to the right of the item, for quick actions in its context (for example an `IconButton`).',
       table: { type: { summary: 'React.ReactNode' } },
     },
   },
@@ -22,7 +25,7 @@ const meta = {
     docs: {
       ...buttonStories.sideNavItemButtonMeta.parameters.docs,
       description: {
-        component: `${buttonStories.sideNavItemButtonMeta.parameters.docs.description.component}${importNext('SideNavItem')}`,
+        component: `${buttonStories.sideNavItemButtonMeta.parameters.docs.description.component}\n\nPlace \`SideNavItem\` inside \`SideNav\` or \`SideNavGroup\`.${importNext('SideNavItem')}`,
       },
     },
   },

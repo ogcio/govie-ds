@@ -5,21 +5,25 @@ import SideNavGroup from '@/SideNav/SideNavGroup';
 import SideNavItem from '@/SideNav/SideNavItem';
 import * as stories from '@/atoms/storybook/SideNavGroup.meta';
 import { importNext } from './helpers';
-import omit from 'lodash/omit';
+import argTypes from '@/atoms/storybook/argTypes';
 
 const meta = {
   ...stories.sideNavGroupMeta,
   title: 'Navigation/SideNav/SideNavGroup',
   component: SideNavGroup,
   argTypes: {
-    ...omit(stories.sideNavGroupMeta.argTypes, 'styles'),
-    style: stories.sideNavGroupMeta.argTypes.styles,
-    actions: {
-      ...stories.sideNavGroupMeta.argTypes.actions,
+    ...stories.sideNavGroupMeta.argTypes,
+    className: argTypes.class,
+    style: { ...argTypes.style, table: { type: { summary: 'React.CSSProperties' } } },
+    label: {
+      control: 'text',
+      description: 'Content of the expandable group header button.',
       table: { type: { summary: 'React.ReactNode' } },
     },
-    label: {
-      ...stories.sideNavGroupMeta.argTypes.label,
+    actions: {
+      control: { disable: true },
+      description:
+        'Content shown to the right of the group header, for quick actions in its context (for example an `IconButton`).',
       table: { type: { summary: 'React.ReactNode' } },
     },
   },
@@ -28,7 +32,7 @@ const meta = {
     docs: {
       ...stories.sideNavGroupMeta.parameters.docs,
       description: {
-        component: `${stories.sideNavGroupMeta.parameters.docs.description.component}${importNext('SideNavGroup')}`,
+        component: `${stories.sideNavGroupMeta.parameters.docs.description.component}\n\nPlace \`SideNavGroup\` inside \`SideNav\`, with \`SideNavItem\` or \`SideNavItemLink\` children. Update \`open\` from \`onClick\`.${importNext('SideNavGroup')}`,
       },
     },
   },
