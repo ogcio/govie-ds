@@ -4,7 +4,7 @@ import { Size } from '../atoms/constants';
 import * as stories from '../atoms/storybook/IconButton.meta';
 import argTypes from '../atoms/storybook/argTypes';
 import { InfoIcon } from '../icons';
-import { IconButton } from '../index';
+import { Box, IconButton } from '../index';
 import { withAppearanceBackground } from './utils';
 
 const variants = Object.values(Variant);
@@ -79,10 +79,10 @@ export const AllVariants: Story = {
     controls: { disable: true },
   },
   render: () => ({
-    components: { IconButton, InfoIcon },
+    components: { Box, IconButton, InfoIcon },
     setup: () => ({ variants }),
     template: `
-      <div class="gi-flex gi-gap-4">
+      <Box class="gi-flex gi-gap-4">
         <IconButton
           v-for="variant in variants"
           :key="variant"
@@ -92,7 +92,7 @@ export const AllVariants: Story = {
         >
           <InfoIcon />
         </IconButton>
-      </div>
+      </Box>
     `,
   }),
 };
@@ -103,16 +103,16 @@ export const AllAppearances: Story = {
     controls: { disable: true },
   },
   render: () => ({
-    components: { IconButton, InfoIcon },
+    components: { Box, IconButton, InfoIcon },
     setup: () => ({ appearances, light: Appearance.LIGHT }),
     template: `
-      <div class="gi-flex gi-gap-4">
-        <div v-for="appearance in appearances" :key="appearance" class="gi-p-2" :class="{ 'gi-bg-black': appearance === light }">
+      <Box class="gi-flex gi-gap-4">
+        <Box v-for="appearance in appearances" :key="appearance" class="gi-p-2" :class="{ 'gi-bg-black': appearance === light }">
           <IconButton :appearance="appearance" :aria-label="appearance" :data-testid="'icon-button-appearance-' + appearance">
             <InfoIcon />
           </IconButton>
-        </div>
-      </div>
+        </Box>
+      </Box>
     `,
   }),
 };
@@ -128,14 +128,14 @@ export const AllSizes: Story = {
     },
   },
   render: () => ({
-    components: { IconButton, InfoIcon },
+    components: { Box, IconButton, InfoIcon },
     setup: () => ({ sizes, iconSize }),
     template: `
-      <div class="gi-flex gi-items-center gi-gap-4">
+      <Box class="gi-flex gi-items-center gi-gap-4">
         <IconButton v-for="size in sizes" :key="size" :size="size" :aria-label="size" :data-testid="'icon-button-size-' + size">
           <InfoIcon :size="iconSize[size]" />
         </IconButton>
-      </div>
+      </Box>
     `,
   }),
 };
@@ -155,12 +155,12 @@ export const Disabled: Story = {
     },
   },
   render: () => ({
-    components: { IconButton, InfoIcon },
+    components: { Box, IconButton, InfoIcon },
     setup: () => ({ variants, appearances, light: Appearance.LIGHT }),
     template: `
-      <div class="gi-flex gi-flex-col gi-gap-4 gi-items-start">
+      <Box class="gi-flex gi-flex-col gi-gap-4 gi-items-start">
         <template v-for="variant in variants" :key="variant">
-          <div
+          <Box
             v-for="appearance in appearances"
             :key="variant + '-' + appearance"
             class="gi-flex gi-flex-col gi-gap-2 sm:gi-flex-row"
@@ -193,9 +193,9 @@ export const Disabled: Story = {
             >
               <InfoIcon />
             </IconButton>
-          </div>
+          </Box>
         </template>
-      </div>
+      </Box>
     `,
   }),
 };
@@ -212,12 +212,12 @@ export const InteractionStates: Story = {
     },
   },
   render: () => ({
-    components: { IconButton, InfoIcon },
+    components: { Box, IconButton, InfoIcon },
     setup: () => ({ variants, appearances, light: Appearance.LIGHT }),
     template: `
-      <div class="gi-flex gi-flex-col gi-gap-2 gi-items-start">
+      <Box class="gi-flex gi-flex-col gi-gap-2 gi-items-start">
         <template v-for="variant in variants" :key="variant">
-          <div
+          <Box
             v-for="appearance in appearances"
             :key="variant + '-' + appearance"
             class="gi-flex gi-flex-col gi-gap-2 sm:gi-flex-row"
@@ -237,9 +237,9 @@ export const InteractionStates: Story = {
             <IconButton :variant="variant" :appearance="appearance" :aria-label="variant + ' ' + appearance + ' focus'" class="pseudo-focus">
               <InfoIcon />
             </IconButton>
-          </div>
+          </Box>
         </template>
-      </div>
+      </Box>
     `,
   }),
 };

@@ -4,7 +4,7 @@ import { expect, userEvent, waitFor, within } from 'storybook/test';
 import * as stories from '../atoms/storybook/Link.meta';
 import argTypes from '../atoms/storybook/argTypes';
 import { HomeIcon } from '../icons';
-import { H1, H2, Link, Paragraph, Stack } from '../index';
+import { Box, H1, H2, Link, Paragraph, Stack } from '../index';
 import { withPreventNavigation } from './utils';
 
 const meta: Meta = {
@@ -67,59 +67,59 @@ export const InTypography: Story = {
     },
   },
   render: () => ({
-    components: { H1, H2, Link, Paragraph },
+    components: { Box, H1, H2, Link, Paragraph },
     template: `
-      <div class="gi-flex gi-flex-col gi-gap-8 gi-max-w-prose">
-        <div class="gi-flex gi-flex-col gi-gap-4">
+      <Box class="gi-flex gi-flex-col gi-gap-8 gi-max-w-prose">
+        <Box class="gi-flex gi-flex-col gi-gap-4">
           <H1>Heading with an <Link href="#" variant="inline">inline link</Link></H1>
           <Paragraph>
             Government services are available on <Link href="#" variant="inline">gov.ie</Link>.
             You can also check <Link href="#" variant="inline">your application status</Link>
             or contact the <Link href="#" variant="inline">support team</Link> for help.
           </Paragraph>
-        </div>
+        </Box>
 
-        <div class="gi-flex gi-flex-col gi-gap-4">
+        <Box class="gi-flex gi-flex-col gi-gap-4">
           <H2>Underlines</H2>
           <Paragraph>Always underlined: <Link href="#" variant="inline" underline="always">apply online</Link></Paragraph>
           <Paragraph>Hover only: <Link href="#" variant="inline" underline="hover">check status</Link></Paragraph>
           <Paragraph>No underline: <Link href="#" variant="inline" underline="none">learn more</Link></Paragraph>
-        </div>
+        </Box>
 
-        <div class="gi-flex gi-flex-col gi-gap-4">
+        <Box class="gi-flex gi-flex-col gi-gap-4">
           <H2>Visited</H2>
           <Paragraph>Default visited colour: <Link href="#" variant="inline">visited link</Link></Paragraph>
           <Paragraph>No visited colour: <Link href="#" variant="inline" visited="none">always same colour</Link></Paragraph>
-        </div>
+        </Box>
 
-        <div class="gi-flex gi-flex-col gi-gap-4">
+        <Box class="gi-flex gi-flex-col gi-gap-4">
           <H2>Appearances</H2>
-          <div class="gi-bg-black gi-p-4 gi-rounded gi-w-fit">
+          <Box class="gi-bg-black gi-p-4 gi-rounded gi-w-fit">
             <Paragraph class="gi-text-white">
               Light on dark: <Link href="#" variant="inline" appearance="light">gov.ie services</Link>
             </Paragraph>
-          </div>
+          </Box>
           <Paragraph class="gi-text-gray-700 gi-pl-4">
             Inherit parent colour: <Link href="#" variant="inline" appearance="inherit">inherited link</Link>
           </Paragraph>
-        </div>
+        </Box>
 
-        <div class="gi-flex gi-flex-col gi-gap-4">
+        <Box class="gi-flex gi-flex-col gi-gap-4">
           <H2>Interaction states</H2>
           <Paragraph class="gi-flex gi-gap-4 gi-pl-4">
             <Link href="#" variant="inline">default</Link>
             <Link href="#" variant="inline" class="pseudo-hover">hover</Link>
             <Link href="#" variant="inline" class="pseudo-focus">focus</Link>
           </Paragraph>
-          <div class="gi-bg-black gi-p-4 gi-rounded gi-w-fit">
+          <Box class="gi-bg-black gi-p-4 gi-rounded gi-w-fit">
             <Paragraph class="gi-text-white gi-flex gi-gap-4">
               <Link href="#" variant="inline" appearance="light">light</Link>
               <Link href="#" variant="inline" appearance="light" class="pseudo-hover">hover</Link>
               <Link href="#" variant="inline" appearance="light" class="pseudo-focus">focus</Link>
             </Paragraph>
-          </div>
-        </div>
-      </div>
+          </Box>
+        </Box>
+      </Box>
     `,
   }),
 };
@@ -136,16 +136,16 @@ export const PlainLink: Story = {
     },
   },
   render: () => ({
-    components: { HomeIcon, Link },
+    components: { Box, HomeIcon, Link },
     template: `
-      <div class="gi-flex gi-flex-col gi-gap-6 gi-items-start">
+      <Box class="gi-flex gi-flex-col gi-gap-6 gi-items-start">
         <Link href="#" aria-label="Home" class="gi-inline-flex gi-w-fit">
           <HomeIcon />
         </Link>
-        <div class="gi-bg-black gi-p-4 gi-rounded gi-w-fit gi-flex gi-gap-4 gi-items-center">
+        <Box class="gi-bg-black gi-p-4 gi-rounded gi-w-fit gi-flex gi-gap-4 gi-items-center">
           <Link href="#" appearance="light" visited="none">Light Appearance</Link>
-        </div>
-      </div>
+        </Box>
+      </Box>
     `,
   }),
 };
@@ -157,15 +157,15 @@ export const PlainFocusState: Story = {
     controls: { disable: true },
   },
   render: () => ({
-    components: { HomeIcon, Link },
+    components: { Box, HomeIcon, Link },
     template: `
-      <div class="gi-flex gi-flex-col gi-gap-6">
-        <div class="gi-flex gi-gap-4 gi-items-center">
+      <Box class="gi-flex gi-flex-col gi-gap-6">
+        <Box class="gi-flex gi-gap-4 gi-items-center">
           <Link href="#" aria-label="Home" data-testid="link-icon-default" class="gi-inline-flex gi-w-fit pseudo-focus">
             <HomeIcon />
           </Link>
-        </div>
-        <div class="gi-bg-black gi-p-4 gi-rounded gi-w-fit gi-flex gi-gap-4 gi-items-center">
+        </Box>
+        <Box class="gi-bg-black gi-p-4 gi-rounded gi-w-fit gi-flex gi-gap-4 gi-items-center">
           <Link
             href="#"
             appearance="light"
@@ -175,8 +175,8 @@ export const PlainFocusState: Story = {
           >
             <HomeIcon />
           </Link>
-        </div>
-      </div>
+        </Box>
+      </Box>
     `,
   }),
 };

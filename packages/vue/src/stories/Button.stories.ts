@@ -2,7 +2,7 @@ import type { Meta, StoryObj } from '@storybook/vue3-vite';
 import { Appearance, ButtonSize, Variant } from '../atoms/Button.styles';
 import * as stories from '../atoms/storybook/Button.meta';
 import argTypes from '../atoms/storybook/argTypes';
-import { Button } from '../index';
+import { Box, Button } from '../index';
 import { withAppearanceBackground } from './utils';
 
 const variants = Object.values(Variant);
@@ -60,14 +60,14 @@ export const AllVariants: Story = {
     controls: { disable: true },
   },
   render: () => ({
-    components: { Button },
+    components: { Box, Button },
     setup: () => ({ variants }),
     template: `
-      <div class="gi-flex gi-gap-4">
+      <Box class="gi-flex gi-gap-4">
         <Button v-for="variant in variants" :key="variant" :variant="variant" :data-testid="'button-variant-' + variant">
           {{ variant }}
         </Button>
-      </div>
+      </Box>
     `,
   }),
 };
@@ -78,14 +78,14 @@ export const AllAppearances: Story = {
     controls: { disable: true },
   },
   render: () => ({
-    components: { Button },
+    components: { Box, Button },
     setup: () => ({ appearances, light: Appearance.LIGHT }),
     template: `
-      <div class="gi-flex gi-gap-4">
-        <div v-for="appearance in appearances" :key="appearance" class="gi-p-2" :class="{ 'gi-bg-black': appearance === light }">
+      <Box class="gi-flex gi-gap-4">
+        <Box v-for="appearance in appearances" :key="appearance" class="gi-p-2" :class="{ 'gi-bg-black': appearance === light }">
           <Button :appearance="appearance" :data-testid="'button-appearance-' + appearance">{{ appearance }}</Button>
-        </div>
-      </div>
+        </Box>
+      </Box>
     `,
   }),
 };
@@ -96,12 +96,12 @@ export const AllSizes: Story = {
     controls: { disable: true },
   },
   render: () => ({
-    components: { Button },
+    components: { Box, Button },
     setup: () => ({ sizes }),
     template: `
-      <div class="gi-flex gi-items-center gi-gap-4">
+      <Box class="gi-flex gi-items-center gi-gap-4">
         <Button v-for="size in sizes" :key="size" :size="size" :data-testid="'button-size-' + size">{{ size }}</Button>
-      </div>
+      </Box>
     `,
   }),
 };
@@ -121,12 +121,12 @@ export const Disabled: Story = {
     },
   },
   render: () => ({
-    components: { Button },
+    components: { Box, Button },
     setup: () => ({ variants, appearances, light: Appearance.LIGHT }),
     template: `
-      <div class="gi-flex gi-flex-col gi-gap-4 gi-items-start">
+      <Box class="gi-flex gi-flex-col gi-gap-4 gi-items-start">
         <template v-for="variant in variants" :key="variant">
-          <div
+          <Box
             v-for="appearance in appearances"
             :key="variant + '-' + appearance"
             class="gi-flex gi-flex-col gi-gap-2 sm:gi-flex-row"
@@ -137,9 +137,9 @@ export const Disabled: Story = {
             </Button>
             <Button :variant="variant" :appearance="appearance" disabled class="pseudo-hover">Hover</Button>
             <Button :variant="variant" :appearance="appearance" disabled class="pseudo-focus">Focus</Button>
-          </div>
+          </Box>
         </template>
-      </div>
+      </Box>
     `,
   }),
 };
@@ -156,12 +156,12 @@ export const InteractionStates: Story = {
     },
   },
   render: () => ({
-    components: { Button },
+    components: { Box, Button },
     setup: () => ({ variants, appearances, light: Appearance.LIGHT }),
     template: `
-      <div class="gi-flex gi-flex-col gi-gap-2 gi-items-start">
+      <Box class="gi-flex gi-flex-col gi-gap-2 gi-items-start">
         <template v-for="variant in variants" :key="variant">
-          <div
+          <Box
             v-for="appearance in appearances"
             :key="variant + '-' + appearance"
             class="gi-flex gi-flex-col gi-gap-2 sm:gi-flex-row"
@@ -170,9 +170,9 @@ export const InteractionStates: Story = {
             <Button :variant="variant" :appearance="appearance" :data-testid="'button-' + variant + '-' + appearance">Button</Button>
             <Button :variant="variant" :appearance="appearance" class="pseudo-hover">Hover</Button>
             <Button :variant="variant" :appearance="appearance" class="pseudo-focus">Focus</Button>
-          </div>
+          </Box>
         </template>
-      </div>
+      </Box>
     `,
   }),
 };
